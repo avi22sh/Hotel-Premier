@@ -1,0 +1,1914 @@
+// ==========================================================================
+// HOTEL PREMIER - PRIDE PURE VEG AC RESTAURANT & HOTEL PREMIER STAYS, BHUSAWAL
+// Digital QR Menu Display & Hotel Room Booking Portal Controller
+// Supports: English, Hindi (हिंदी), Marathi (मराठी)
+// Multi-Photo Carousel Engine for Main Hero, Sub-Sections & Room Stays
+// ==========================================================================
+
+class HotelPremierApp {
+  constructor() {
+    this.menuData = [];
+    this.categories = [];
+    this.currentCategory = 'all';
+    this.currentFilter = 'all';
+    this.searchQuery = '';
+    this.viewMode = 'home'; // 'home' | 'section' | 'all' | 'search'
+    this.mainMode = 'menu'; // 'menu' | 'hotel'
+    this.isLargeFont = false;
+    this.currentLang = 'en'; // 'en' | 'hi' | 'mr'
+
+    // Storage Keys
+    this.storageKeyMenu = 'hotel_premier_menu_v2';
+    this.storageKeyOverrides = 'hotel_premier_user_overrides_v1';
+    this.storageKeyFontSize = 'hotel_premier_font_size';
+    this.storageKeyLang = 'hotel_premier_language';
+
+    // Carousel States
+    this.heroSlides = [];
+    this.currentHeroSlideIndex = 0;
+    this.heroAutoInterval = null;
+
+    this.sectionSlides = [];
+    this.currentSectionSlideIndex = 0;
+    this.sectionAutoInterval = null;
+
+    this.roomGalleries = {};
+    this.roomSlideIndices = {
+      'ac-super-deluxe': 0,
+      'ac-deluxe-queen': 0,
+      'ac-deluxe-twin': 0
+    };
+
+    this.init();
+  }
+
+  async init() {
+    this.loadPreferences();
+    await this.loadMenuData();
+    this.updateUILanguage();
+    this.renderCategoryCards();
+    this.renderCategories();
+    this.renderQuickFilters();
+    this.renderMenu();
+    this.renderLocationQR();
+    this.renderLocationDistances();
+    await this.initHeroCarousel();
+    await this.renderRoomCarousels();
+    this.renderBulkDealsSection();
+    this.calculateBulkQuote();
+    this.renderRestaurantEventPackages();
+    this.calculateRestaurantEventQuote();
+    this.checkStaffModeAccess();
+    this.prefillFeedbackTableFromUrl();
+    this.bindEvents();
+    this.setupBroadcastChannel();
+  }
+
+  // ==================== USER PREFERENCES ====================
+  loadPreferences() {
+    try {
+      const savedLang = localStorage.getItem(this.storageKeyLang);
+      if (savedLang && (savedLang === 'en' || savedLang === 'hi' || savedLang === 'mr')) {
+        this.currentLang = savedLang;
+      }
+      if (window.HOTEL_PREMIER_I18N) {
+        window.HOTEL_PREMIER_I18N.currentLang = this.currentLang;
+      }
+      this.updateLangButtons();
+
+      const savedFontSize = localStorage.getItem(this.storageKeyFontSize);
+      if (savedFontSize === 'large') {
+        this.isLargeFont = true;
+        document.body.classList.add('large-font-mode');
+        const btn = document.getElementById('font-size-toggle-btn');
+        if (btn) btn.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem;">A-</span>';
+      }
+    } catch (e) {}
+  }
+
+  // ==================== TOP MAIN MODE SWITCHER (MENU vs HOTEL) ====================
+  switchMainMode(mode) {
+    this.mainMode = mode;
+
+    const menuContainer = document.getElementById('section-menu-container');
+    const hotelContainer = document.getElementById('section-hotel-container');
+    const tabMenu = document.getElementById('tab-mode-menu');
+    const tabHotel = document.getElementById('tab-mode-hotel');
+
+    if (mode === 'hotel') {
+      if (menuContainer) menuContainer.style.display = 'none';
+      if (hotelContainer) hotelContainer.style.display = 'block';
+      if (tabMenu) tabMenu.classList.remove('active');
+      if (tabHotel) tabHotel.classList.add('active');
+      this.renderRoomCarousels();
+      this.calculateBulkQuote();
+    } else {
+      if (menuContainer) menuContainer.style.display = 'block';
+      if (hotelContainer) hotelContainer.style.display = 'none';
+      if (tabMenu) tabMenu.classList.add('active');
+      if (tabHotel) tabHotel.classList.remove('active');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ==================== MULTILINGUAL SYSTEM ====================
+  setLanguage(lang) {
+    if (lang !== 'en' && lang !== 'hi' && lang !== 'mr') return;
+    this.currentLang = lang;
+    if (window.HOTEL_PREMIER_I18N) {
+      window.HOTEL_PREMIER_I18N.currentLang = lang;
+    }
+    try {
+      localStorage.setItem(this.storageKeyLang, lang);
+    } catch (e) {}
+
+    this.updateLangButtons();
+    this.updateUILanguage();
+    this.renderQuickFilters();
+    this.renderCategoryCards();
+    this.renderCategories();
+
+    if (this.viewMode === 'section' && this.currentCategory !== 'all') {
+      const catId = this.currentCategory;
+      const titleEl = document.getElementById('active-category-title');
+      const hindiEl = document.getElementById('active-category-hindi');
+      if (titleEl) titleEl.innerText = this.getCategoryLocalizedName(catId);
+      if (hindiEl) hindiEl.innerText = this.getCategoryLocalizedSubtitle(catId);
+    } else if (this.viewMode === 'all') {
+      const titleEl = document.getElementById('active-category-title');
+      const hindiEl = document.getElementById('active-category-hindi');
+      if (titleEl) titleEl.innerText = this.t('allMenuTitle');
+      if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle');
+    }
+
+    this.renderMenu();
+    this.calculateBulkQuote();
+    this.renderRestaurantEventPackages();
+    this.calculateRestaurantEventQuote();
+
+    const toastMsg = lang === 'hi' ? 'भाषा बदलकर हिंदी की गई!' : (lang === 'mr' ? 'भाषा बदलून मराठी केली!' : 'Language changed to English!');
+    this.showToast(toastMsg, 'info');
+  }
+
+  updateLangButtons() {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === this.currentLang);
+    });
+  }
+
+  t(key, fallback = '') {
+    if (window.HOTEL_PREMIER_I18N) {
+      return window.HOTEL_PREMIER_I18N.getText(key, fallback);
+    }
+    return fallback || key;
+  }
+
+  getCategoryLocalizedName(catId) {
+    if (window.HOTEL_PREMIER_I18N) {
+      return window.HOTEL_PREMIER_I18N.getCategoryName(catId);
+    }
+    const cat = this.categories.find(c => c.id === catId);
+    return cat ? cat.name : catId;
+  }
+
+  getCategoryLocalizedSubtitle(catId) {
+    if (window.HOTEL_PREMIER_I18N) {
+      return window.HOTEL_PREMIER_I18N.getCategorySubtitle(catId);
+    }
+    const cat = this.categories.find(c => c.id === catId);
+    return cat ? (cat.hindiName || '') : '';
+  }
+
+  getCategoryLocalizedDesc(catId) {
+    if (window.HOTEL_PREMIER_I18N) {
+      return window.HOTEL_PREMIER_I18N.getCategoryDescription(catId);
+    }
+    const cat = this.categories.find(c => c.id === catId);
+    return cat ? (cat.description || '') : '';
+  }
+
+  updateUILanguage() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const text = this.t(key);
+      if (text) {
+        el.innerHTML = text;
+      }
+    });
+
+    const searchInput = document.getElementById('menu-search-input');
+    if (searchInput) {
+      searchInput.placeholder = this.t('searchPlaceholder');
+    }
+  }
+
+  // ==================== ACCESSIBILITY & FONT ZOOM ====================
+  toggleElderlyFontSize() {
+    this.isLargeFont = !this.isLargeFont;
+    const btn = document.getElementById('font-size-toggle-btn');
+    if (this.isLargeFont) {
+      document.body.classList.add('large-font-mode');
+      if (btn) btn.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem;">A-</span>';
+      localStorage.setItem(this.storageKeyFontSize, 'large');
+      this.showToast(this.t('textSizeLarge'), 'info');
+    } else {
+      document.body.classList.remove('large-font-mode');
+      if (btn) btn.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem;">A+</span>';
+      localStorage.setItem(this.storageKeyFontSize, 'normal');
+      this.showToast(this.t('textSizeNormal'), 'info');
+    }
+  }
+
+  async loadMenuData() {
+    const initialMenu = window.HOTEL_PREMIER_INITIAL_MENU ? [...window.HOTEL_PREMIER_INITIAL_MENU] : [];
+    let overridesMap = {};
+
+    // 1. Fetch from Unified Safe Storage Manager (IndexedDB + LocalStorage)
+    if (window.HOTEL_STORAGE) {
+      overridesMap = await window.HOTEL_STORAGE.getAllDishOverrides();
+    } else {
+      try {
+        const savedOverrides = localStorage.getItem(this.storageKeyOverrides);
+        if (savedOverrides) overridesMap = JSON.parse(savedOverrides);
+      } catch (e) {}
+    }
+
+    // 2. Base on fresh initial menu so new dish photos/updates always load
+    this.menuData = initialMenu.map(dish => {
+      const copy = { ...dish };
+      if (overridesMap && overridesMap[dish.id]) {
+        const ov = overridesMap[dish.id];
+        if (ov.image !== undefined) copy.image = ov.image;
+        if (ov.price !== undefined) copy.price = ov.price;
+        if (ov.isSoldOut !== undefined) copy.isSoldOut = ov.isSoldOut;
+        if (ov.tags !== undefined) copy.tags = ov.tags;
+      }
+      return copy;
+    });
+
+    // 3. Add custom dishes created by admin that are not in initialMenu
+    if (overridesMap) {
+      const initialIds = new Set(initialMenu.map(d => d.id));
+      Object.keys(overridesMap).forEach(id => {
+        if (!initialIds.has(id) && overridesMap[id].name) {
+          this.menuData.push(overridesMap[id]);
+        }
+      });
+    }
+
+    if (!this.menuData || this.menuData.length === 0) {
+      this.menuData = initialMenu;
+    }
+
+    this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
+    this.saveMenuData();
+  }
+
+  saveMenuData() {
+    try {
+      localStorage.setItem(this.storageKeyMenu, JSON.stringify(this.menuData));
+      
+      let overridesMap = {};
+      this.menuData.forEach(dish => {
+        overridesMap[dish.id] = {
+          image: dish.image,
+          price: dish.price,
+          isSoldOut: dish.isSoldOut,
+          tags: dish.tags
+        };
+      });
+      localStorage.setItem(this.storageKeyOverrides, JSON.stringify(overridesMap));
+      this.notifyMenuUpdate();
+    } catch (e) {
+      console.warn('Could not save to localStorage cache:', e);
+    }
+  }
+
+  setupBroadcastChannel() {
+    try {
+      if (typeof BroadcastChannel !== 'undefined') {
+        this.broadcast = new BroadcastChannel('hotel_premier_sync_channel');
+        this.broadcast.onmessage = (event) => {
+          if (event.data && event.data.type === 'MENU_UPDATED') {
+            this.loadMenuData();
+            this.renderCategoryCards();
+            this.renderMenu();
+          }
+        };
+      }
+    } catch (e) {}
+  }
+
+  notifyMenuUpdate() {
+    if (this.broadcast) {
+      try {
+        this.broadcast.postMessage({ type: 'MENU_UPDATED', timestamp: Date.now() });
+      } catch (e) {}
+    }
+  }
+
+  // ==================== RESTAURANT MAIN HERO CAROUSEL ====================
+  async initHeroCarousel() {
+    const defaultSlides = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.restaurantHeroSlides)
+      ? window.HOTEL_PREMIER_HOTEL_DATA.restaurantHeroSlides
+      : [];
+
+    if (window.HOTEL_STORAGE) {
+      this.heroSlides = await window.HOTEL_STORAGE.getSectionSlides('restaurant_hero', defaultSlides);
+    } else {
+      this.heroSlides = defaultSlides;
+    }
+
+    this.renderHeroCarousel();
+    this.startHeroAutoSlide();
+  }
+
+  renderHeroCarousel() {
+    const track = document.getElementById('hero-carousel-track');
+    const dotsContainer = document.getElementById('hero-carousel-dots');
+    if (!track || !this.heroSlides || this.heroSlides.length === 0) return;
+
+    track.innerHTML = this.heroSlides.map((slide, idx) => `
+      <div class="hero-carousel-slide" data-slide-index="${idx}">
+        <img src="${slide.image}" alt="${slide.title || 'Hotel Premier'}" class="hero-carousel-img" loading="${idx === 0 ? 'eager' : 'lazy'}">
+        <div class="hero-carousel-overlay">
+          <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG RESTAURANT</span>
+          <h2 class="hero-slide-title">${slide.title || 'Culinary Delights of Hotel Premier'}</h2>
+          <p class="hero-slide-subtitle">${slide.subtitle || 'Prepared fresh in standard refined oil • 100% Pure Veg'}</p>
+        </div>
+      </div>
+    `).join('');
+
+    if (dotsContainer) {
+      dotsContainer.innerHTML = this.heroSlides.map((_, idx) => `
+        <div class="carousel-dot ${idx === this.currentHeroSlideIndex ? 'active' : ''}" onclick="window.app.goToHeroSlide(${idx})"></div>
+      `).join('');
+    }
+
+    this.updateHeroSlidePosition();
+  }
+
+  updateHeroSlidePosition() {
+    const track = document.getElementById('hero-carousel-track');
+    if (track) {
+      track.style.transform = `translateX(-${this.currentHeroSlideIndex * 100}%)`;
+    }
+    const dots = document.querySelectorAll('#hero-carousel-dots .carousel-dot');
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === this.currentHeroSlideIndex);
+    });
+  }
+
+  nextHeroSlide() {
+    if (!this.heroSlides || this.heroSlides.length === 0) return;
+    this.currentHeroSlideIndex = (this.currentHeroSlideIndex + 1) % this.heroSlides.length;
+    this.updateHeroSlidePosition();
+  }
+
+  prevHeroSlide() {
+    if (!this.heroSlides || this.heroSlides.length === 0) return;
+    this.currentHeroSlideIndex = (this.currentHeroSlideIndex - 1 + this.heroSlides.length) % this.heroSlides.length;
+    this.updateHeroSlidePosition();
+  }
+
+  goToHeroSlide(index) {
+    if (index >= 0 && index < this.heroSlides.length) {
+      this.currentHeroSlideIndex = index;
+      this.updateHeroSlidePosition();
+      this.resetHeroAutoSlide();
+    }
+  }
+
+  startHeroAutoSlide() {
+    if (this.heroAutoInterval) clearInterval(this.heroAutoInterval);
+    this.heroAutoInterval = setInterval(() => {
+      this.nextHeroSlide();
+    }, 4500);
+  }
+
+  resetHeroAutoSlide() {
+    if (this.heroAutoInterval) clearInterval(this.heroAutoInterval);
+    this.startHeroAutoSlide();
+  }
+
+  // ==================== SUB-SECTION DISHES MULTI-PHOTO SLIDESHOW ====================
+  async renderSectionSlideshow(catId) {
+    const container = document.getElementById('section-slideshow-container');
+    if (!container) return;
+
+    if (this.sectionAutoInterval) {
+      clearInterval(this.sectionAutoInterval);
+      this.sectionAutoInterval = null;
+    }
+
+    if (!catId || catId === 'all') {
+      container.style.display = 'none';
+      container.innerHTML = '';
+      return;
+    }
+
+    // 1. Check custom saved slides for this category
+    let slides = null;
+    if (window.HOTEL_STORAGE) {
+      slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + catId, null);
+    }
+
+    // 2. If no custom slides stored, auto-derive from category dishes with images
+    if (!slides || !Array.isArray(slides) || slides.length === 0) {
+      const dishes = this.menuData.filter(d => d.categoryId === catId && d.image && d.image.trim() !== '');
+      slides = dishes.map(d => ({
+        id: d.id,
+        dishId: d.id,
+        name: d.name,
+        title: d.name,
+        price: d.price,
+        image: d.image,
+        badge: (d.tags && d.tags.includes('chef-special')) 
+          ? this.t('badgeChefSpecial', "👑 Chef's Special") 
+          : ((d.tags && d.tags.includes('bestseller')) 
+            ? this.t('badgeBestseller', '🔥 Bestseller') 
+            : this.t('sectionHighlight', '👑 SECTION HIGHLIGHT')),
+        subtitle: d.description || this.t('tapToViewDish', '👆 Tap to view dish details & options')
+      }));
+    }
+
+    if (slides.length < 1) {
+      container.style.display = 'none';
+      container.innerHTML = '';
+      return;
+    }
+
+    this.sectionSlides = slides;
+    this.currentSectionSlideIndex = 0;
+
+    container.style.display = 'block';
+    container.innerHTML = `
+      <div class="section-slideshow-banner" id="active-section-carousel">
+        <div class="section-slideshow-track" id="section-slides-track">
+          ${slides.map((slide, idx) => `
+            <div class="section-slide-card" onclick="${slide.dishId ? `window.app.openDishDetail('${slide.dishId}')` : ''}">
+              <img src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+              <div class="section-slide-overlay">
+                <div class="section-slide-badge-row">
+                  <span class="section-slide-badge">${slide.badge || this.t('sectionHighlight', '👑 SECTION HIGHLIGHT')}</span>
+                </div>
+                <div class="section-slide-title-row">
+                  <div>
+                    <h3 class="section-slide-title">${slide.name || slide.title}</h3>
+                    <div class="section-slide-action-hint">${slide.subtitle || this.t('tapToViewDish', '👆 Tap to view dish details & options')}</div>
+                  </div>
+                  ${slide.price !== undefined ? `<span class="section-slide-price-pill">₹${slide.price}/-</span>` : ''}
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+        ${slides.length > 1 ? `
+          <button class="carousel-nav-btn prev" onclick="window.app.prevSectionSlide(event)" aria-label="Previous Dish Slide">‹</button>
+          <button class="carousel-nav-btn next" onclick="window.app.nextSectionSlide(event)" aria-label="Next Dish Slide">›</button>
+          <div class="carousel-dots-container" id="section-carousel-dots">
+            ${slides.map((_, idx) => `
+              <div class="carousel-dot ${idx === 0 ? 'active' : ''}" onclick="window.app.goToSectionSlide(${idx}, event)"></div>
+            `).join('')}
+          </div>
+        ` : ''}
+      </div>
+    `;
+
+    this.updateSectionSlidePosition();
+    if (slides.length > 1) {
+      this.startSectionAutoSlide();
+    }
+  }
+
+  updateSectionSlidePosition() {
+    const track = document.getElementById('section-slides-track');
+    if (track && this.sectionSlides) {
+      track.style.transform = `translateX(-${this.currentSectionSlideIndex * 100}%)`;
+    }
+    const dots = document.querySelectorAll('#section-carousel-dots .carousel-dot');
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === this.currentSectionSlideIndex);
+    });
+  }
+
+  nextSectionSlide(e) {
+    if (e) e.stopPropagation();
+    if (!this.sectionSlides || this.sectionSlides.length === 0) return;
+    this.currentSectionSlideIndex = (this.currentSectionSlideIndex + 1) % this.sectionSlides.length;
+    this.updateSectionSlidePosition();
+  }
+
+  prevSectionSlide(e) {
+    if (e) e.stopPropagation();
+    if (!this.sectionSlides || this.sectionSlides.length === 0) return;
+    this.currentSectionSlideIndex = (this.currentSectionSlideIndex - 1 + this.sectionSlides.length) % this.sectionSlides.length;
+    this.updateSectionSlidePosition();
+  }
+
+  goToSectionSlide(index, e) {
+    if (e) e.stopPropagation();
+    if (index >= 0 && index < this.sectionSlides.length) {
+      this.currentSectionSlideIndex = index;
+      this.updateSectionSlidePosition();
+      this.resetSectionAutoSlide();
+    }
+  }
+
+  startSectionAutoSlide() {
+    if (this.sectionAutoInterval) clearInterval(this.sectionAutoInterval);
+    this.sectionAutoInterval = setInterval(() => {
+      this.nextSectionSlide();
+    }, 4000);
+  }
+
+  resetSectionAutoSlide() {
+    if (this.sectionAutoInterval) clearInterval(this.sectionAutoInterval);
+    this.startSectionAutoSlide();
+  }
+
+  // ==================== HOTEL ROOMS MULTI-PHOTO CAROUSELS ====================
+  async renderRoomCarousels() {
+    const rooms = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories)
+      ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories
+      : [];
+
+    for (const room of rooms) {
+      const defaultImgs = (room.images && room.images.length > 0) ? room.images : [room.image];
+      let images = defaultImgs;
+
+      if (window.HOTEL_STORAGE) {
+        images = await window.HOTEL_STORAGE.getRoomGallery(room.id, defaultImgs);
+      }
+      this.roomGalleries[room.id] = images;
+
+      const track = document.getElementById(`room-track-${room.id}`);
+      const counter = document.getElementById(`room-counter-${room.id}`);
+      const dotsContainer = document.getElementById(`room-dots-${room.id}`);
+
+      if (track) {
+        track.innerHTML = images.map((imgUrl, idx) => `
+          <div class="room-carousel-slide">
+            <img src="${imgUrl}" alt="${room.name} Photo ${idx + 1}" loading="lazy" onerror="this.src='${room.image}'">
+          </div>
+        `).join('');
+      }
+
+      const activeIdx = this.roomSlideIndices[room.id] || 0;
+      if (counter) {
+        counter.innerText = `${activeIdx + 1} / ${images.length}`;
+      }
+
+      if (dotsContainer) {
+        dotsContainer.innerHTML = images.map((_, idx) => `
+          <div class="room-dot ${idx === activeIdx ? 'active' : ''}" onclick="window.app.goToRoomSlide('${room.id}', ${idx}, event)"></div>
+        `).join('');
+      }
+
+      this.updateRoomSlidePosition(room.id);
+    }
+  }
+
+  updateRoomSlidePosition(roomId) {
+    const track = document.getElementById(`room-track-${roomId}`);
+    const activeIdx = this.roomSlideIndices[roomId] || 0;
+    const images = this.roomGalleries[roomId] || [];
+
+    if (track) {
+      track.style.transform = `translateX(-${activeIdx * 100}%)`;
+    }
+
+    const counter = document.getElementById(`room-counter-${roomId}`);
+    if (counter && images.length > 0) {
+      counter.innerText = `${activeIdx + 1} / ${images.length}`;
+    }
+
+    const dots = document.querySelectorAll(`#room-dots-${roomId} .room-dot`);
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === activeIdx);
+    });
+  }
+
+  nextRoomSlide(roomId, e) {
+    if (e) e.stopPropagation();
+    const images = this.roomGalleries[roomId] || [];
+    if (images.length <= 1) return;
+    this.roomSlideIndices[roomId] = ((this.roomSlideIndices[roomId] || 0) + 1) % images.length;
+    this.updateRoomSlidePosition(roomId);
+  }
+
+  prevRoomSlide(roomId, e) {
+    if (e) e.stopPropagation();
+    const images = this.roomGalleries[roomId] || [];
+    if (images.length <= 1) return;
+    this.roomSlideIndices[roomId] = ((this.roomSlideIndices[roomId] || 0) - 1 + images.length) % images.length;
+    this.updateRoomSlidePosition(roomId);
+  }
+
+  goToRoomSlide(roomId, index, e) {
+    if (e) e.stopPropagation();
+    const images = this.roomGalleries[roomId] || [];
+    if (index >= 0 && index < images.length) {
+      this.roomSlideIndices[roomId] = index;
+      this.updateRoomSlidePosition(roomId);
+    }
+  }
+
+  // ==================== 1. HOME CATEGORY GRID VIEW ====================
+  renderCategoryCards() {
+    const container = document.getElementById('category-cards-grid');
+    if (!container) return;
+
+    if (!this.categories || this.categories.length === 0) {
+      this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
+    }
+
+    const cats = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
+    const itemsWord = this.t('itemsCount', 'Items');
+    const viewWord = this.t('viewSection', 'View Section ➔');
+
+    container.innerHTML = cats.map(cat => {
+      const catDishes = this.menuData.filter(d => d.categoryId === cat.id);
+      const count = catDishes.length;
+      const localizedTitle = this.getCategoryLocalizedName(cat.id);
+      const localizedSubtitle = this.getCategoryLocalizedSubtitle(cat.id);
+      const localizedDesc = this.getCategoryLocalizedDesc(cat.id);
+
+      return `
+        <div class="category-card" onclick="window.app.openCategorySection('${cat.id}')">
+          <div class="category-card-media">
+            <img src="${cat.image}" alt="${localizedTitle}" class="category-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+            <div class="category-card-overlay"></div>
+            <span class="category-card-badge">${count} ${itemsWord}</span>
+          </div>
+          <div class="category-card-content">
+            <div>
+              <h3 class="category-card-title">${localizedTitle}</h3>
+              ${localizedSubtitle ? `<span class="category-card-hindi">${localizedSubtitle}</span>` : ''}
+              <p class="category-card-desc">${localizedDesc || 'Delicious vegetarian delicacies.'}</p>
+            </div>
+            <div class="category-card-footer">
+              <span class="category-card-action">${viewWord}</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  openCategorySection(catId) {
+    if (window.HOTEL_VAULT) {
+      window.HOTEL_VAULT.recordCategoryClick(catId);
+    }
+    this.currentCategory = catId;
+    this.viewMode = 'section';
+
+    const homeView = document.getElementById('home-categories-view');
+    const dishesView = document.getElementById('dishes-section-view');
+    if (homeView) homeView.style.display = 'none';
+    if (dishesView) dishesView.style.display = 'block';
+
+    const titleEl = document.getElementById('active-category-title');
+    const hindiEl = document.getElementById('active-category-hindi');
+    const countEl = document.getElementById('active-category-count');
+    const catDishes = this.menuData.filter(d => d.categoryId === catId);
+    const itemsWord = this.t('itemsCount', 'Items');
+
+    if (titleEl) titleEl.innerText = this.getCategoryLocalizedName(catId);
+    if (hindiEl) hindiEl.innerText = this.getCategoryLocalizedSubtitle(catId);
+    if (countEl) countEl.innerText = `${catDishes.length} ${itemsWord}`;
+
+    this.renderCategories();
+    this.renderSectionSlideshow(catId);
+    this.renderMenu();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  showHomeCategories() {
+    this.viewMode = 'home';
+    this.currentCategory = 'all';
+    this.searchQuery = '';
+    this.currentFilter = 'all';
+
+    const searchInput = document.getElementById('menu-search-input');
+    const clearSearch = document.getElementById('clear-search-btn');
+    if (searchInput) searchInput.value = '';
+    if (clearSearch) clearSearch.style.display = 'none';
+
+    const homeView = document.getElementById('home-categories-view');
+    const dishesView = document.getElementById('dishes-section-view');
+    if (homeView) homeView.style.display = 'block';
+    if (dishesView) dishesView.style.display = 'none';
+
+    this.renderSectionSlideshow(null);
+    this.renderQuickFilters();
+    this.renderCategoryCards();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  showAllDishesView() {
+    this.currentCategory = 'all';
+    this.viewMode = 'all';
+
+    const homeView = document.getElementById('home-categories-view');
+    const dishesView = document.getElementById('dishes-section-view');
+    if (homeView) homeView.style.display = 'none';
+    if (dishesView) dishesView.style.display = 'block';
+
+    const titleEl = document.getElementById('active-category-title');
+    const hindiEl = document.getElementById('active-category-hindi');
+    const countEl = document.getElementById('active-category-count');
+    const itemsWord = this.t('itemsCount', 'Items');
+
+    if (titleEl) titleEl.innerText = this.t('allMenuTitle');
+    if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle');
+    if (countEl) countEl.innerText = `${this.menuData.length} ${itemsWord}`;
+
+    this.renderCategories();
+    this.renderSectionSlideshow(null);
+    this.renderMenu();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ==================== 2. DISHES & CATEGORIES RENDERING ====================
+  renderCategories() {
+    const container = document.getElementById('category-chips-container');
+    if (!container) return;
+
+    if (!this.categories || this.categories.length === 0) {
+      this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
+    }
+
+    const allChips = [
+      { id: 'all', name: 'All Items', icon: '🍽️' },
+      ...this.categories.filter(c => c.id !== 'all')
+    ];
+
+    container.innerHTML = allChips.map(cat => {
+      const name = (cat.id === 'all') ? this.t('filterAll', 'All Items') : this.getCategoryLocalizedName(cat.id);
+      const icon = cat.icon || '';
+      return `
+        <button class="category-chip ${this.currentCategory === cat.id ? 'active' : ''}" data-cat-id="${cat.id}">
+          ${icon ? `<span class="chip-icon">${icon}</span>` : ''}
+          <span>${name}</span>
+        </button>
+      `;
+    }).join('');
+
+    container.querySelectorAll('.category-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const catId = btn.getAttribute('data-cat-id');
+        if (catId === 'all') {
+          this.showAllDishesView();
+        } else {
+          this.openCategorySection(catId);
+        }
+      });
+    });
+
+    // Auto-center the active category chip in view
+    setTimeout(() => {
+      const activeChip = container.querySelector('.category-chip.active');
+      if (activeChip) {
+        activeChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }, 60);
+
+    this.setupCategoryNavDrag();
+  }
+
+  scrollCategoryNav(offset) {
+    const wrapper = document.getElementById('category-nav-scroll-wrapper');
+    if (wrapper) {
+      wrapper.scrollBy({ left: offset, behavior: 'smooth' });
+    }
+  }
+
+  setupCategoryNavDrag() {
+    const wrapper = document.getElementById('category-nav-scroll-wrapper');
+    if (!wrapper || wrapper.dataset.dragInitialized) return;
+    wrapper.dataset.dragInitialized = 'true';
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    wrapper.addEventListener('mousedown', (e) => {
+      isDown = true;
+      wrapper.classList.add('dragging');
+      startX = e.pageX - wrapper.offsetLeft;
+      scrollLeft = wrapper.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (isDown) {
+        isDown = false;
+        wrapper.classList.remove('dragging');
+      }
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+      if (isDown) {
+        isDown = false;
+        wrapper.classList.remove('dragging');
+      }
+    });
+
+    wrapper.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - wrapper.offsetLeft;
+      const walk = (x - startX) * 1.6;
+      wrapper.scrollLeft = scrollLeft - walk;
+    });
+
+    // Support horizontal scroll with mouse wheel
+    wrapper.addEventListener('wheel', (e) => {
+      if (e.deltaY !== 0) {
+        e.preventDefault();
+        wrapper.scrollLeft += e.deltaY;
+      }
+    }, { passive: false });
+  }
+
+  renderQuickFilters() {
+    const filters = [
+      { id: 'all', labelKey: 'filterAll', icon: '🍽️' },
+      { id: 'chef-special', labelKey: 'filterChefSpecial', icon: '👑' },
+      { id: 'bestseller', labelKey: 'filterBestseller', icon: '🔥' },
+      { id: 'khandeshi', labelKey: 'filterKhandeshi', icon: '🌶️' },
+      { id: 'under-150', labelKey: 'filterUnder150', icon: '💰' }
+    ];
+
+    const container = document.getElementById('quick-filters-container');
+    if (!container) return;
+
+    container.innerHTML = filters.map(f => `
+      <button class="filter-pill ${this.currentFilter === f.id ? 'active' : ''}" data-filter-id="${f.id}">
+        <span>${f.icon}</span>
+        <span>${this.t(f.labelKey)}</span>
+      </button>
+    `).join('');
+
+    container.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const fId = btn.getAttribute('data-filter-id');
+        this.currentFilter = fId;
+        if (window.HOTEL_VAULT && fId !== 'all') {
+          window.HOTEL_VAULT.recordFilterClick(fId);
+        }
+        this.renderQuickFilters();
+
+        if (fId !== 'all') {
+          this.viewMode = 'section';
+          const homeView = document.getElementById('home-categories-view');
+          const dishesView = document.getElementById('dishes-section-view');
+          if (homeView) homeView.style.display = 'none';
+          if (dishesView) dishesView.style.display = 'block';
+
+          const titleEl = document.getElementById('active-category-title');
+          const hindiEl = document.getElementById('active-category-hindi');
+          const countEl = document.getElementById('active-category-count');
+          if (titleEl) titleEl.innerText = btn.innerText;
+          if (hindiEl) hindiEl.innerText = this.t('filterAll', 'Filter Results');
+
+          const filtered = this.getFilteredDishes();
+          const itemsWord = this.t('itemsCount', 'Items');
+          if (countEl) countEl.innerText = `${filtered.length} ${itemsWord}`;
+
+          this.renderSectionSlideshow(null);
+          this.renderMenu();
+        } else if (this.viewMode === 'home') {
+          this.showHomeCategories();
+        } else {
+          this.renderMenu();
+        }
+      });
+    });
+  }
+
+  getFilteredDishes() {
+    if (!this.menuData || this.menuData.length === 0) {
+      this.loadMenuData();
+    }
+
+    return this.menuData.filter(item => {
+      if (this.currentCategory === 'chef-specials') {
+        if (!item.tags || !item.tags.includes('chef-special')) return false;
+      } else if (this.currentCategory !== 'all' && item.categoryId !== this.currentCategory) {
+        return false;
+      }
+
+      if (this.currentFilter === 'chef-special' && (!item.tags || !item.tags.includes('chef-special'))) return false;
+      if (this.currentFilter === 'bestseller' && (!item.tags || !item.tags.includes('bestseller'))) return false;
+      if (this.currentFilter === 'khandeshi' && (!item.tags || !item.tags.includes('khandeshi-special'))) return false;
+      if (this.currentFilter === 'under-150' && item.price > 150) return false;
+
+      if (this.searchQuery.trim() !== '') {
+        const q = this.searchQuery.toLowerCase();
+        const matchName = item.name && item.name.toLowerCase().includes(q);
+        const matchDesc = item.description && item.description.toLowerCase().includes(q);
+        const matchTag = item.tags && item.tags.some(t => t.toLowerCase().includes(q));
+        if (!matchName && !matchDesc && !matchTag) return false;
+      }
+
+      return true;
+    });
+  }
+
+  renderMenu() {
+    const container = document.getElementById('menu-items-grid');
+    if (!container) return;
+
+    const filtered = this.getFilteredDishes();
+    const itemsWord = this.t('itemsCount', 'Items');
+
+    if (filtered.length === 0) {
+      container.innerHTML = `
+        <div style="text-align: center; padding: 48px 16px; color: var(--text-muted); background: var(--cream-card); border-radius: var(--radius-md); border: 1.5px solid var(--cream-border); margin-top: 10px;">
+          <div style="font-size: 3rem; margin-bottom: 12px;">🍲</div>
+          <h3 style="font-family: var(--font-serif); color: var(--terracotta-dark); margin-bottom: 8px;">${this.t('noDishesFound')}</h3>
+          <p style="font-size: 0.85rem;">${this.t('noDishesSub')}</p>
+          <button class="btn-primary" style="margin: 16px auto 0; max-width: 220px;" onclick="window.app.showHomeCategories()">${this.t('viewAllCategoriesBtn')}</button>
+        </div>
+      `;
+      return;
+    }
+
+    if (this.currentCategory === 'all' && this.searchQuery.trim() === '' && this.currentFilter === 'all') {
+      let html = '';
+      const activeCats = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
+      
+      activeCats.forEach(cat => {
+        const catDishes = this.menuData.filter(d => d.categoryId === cat.id);
+        if (catDishes.length > 0) {
+          const locName = this.getCategoryLocalizedName(cat.id);
+          const locSub = this.getCategoryLocalizedSubtitle(cat.id);
+          html += `
+            <div class="category-section" id="section-${cat.id}">
+              <div class="section-header">
+                <div>
+                  <h3 class="section-title">${locName}</h3>
+                  ${locSub ? `<span style="font-size: 0.8rem; color: var(--gold-primary); font-weight: 700;">${locSub}</span>` : ''}
+                </div>
+                <span class="section-count">${catDishes.length} ${itemsWord}</span>
+              </div>
+              <div class="dish-grid">
+                ${catDishes.map(dish => this.renderDishCard(dish)).join('')}
+              </div>
+            </div>
+          `;
+        }
+      });
+      container.innerHTML = html;
+    } else {
+      container.innerHTML = `
+        <div class="dish-grid">
+          ${filtered.map(dish => this.renderDishCard(dish)).join('')}
+        </div>
+      `;
+    }
+
+    this.bindDishActions();
+  }
+
+  renderDishCard(dish) {
+    const hasVariants = dish.variants && dish.variants.length > 0;
+    const hasPhoto = dish.image && dish.image.trim() !== '';
+
+    let badgesHtml = '';
+    if (dish.tags && dish.tags.includes('chef-special')) {
+      badgesHtml += `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>`;
+    }
+    if (dish.tags && dish.tags.includes('bestseller')) {
+      badgesHtml += `<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`;
+    }
+    if (dish.tags && dish.tags.includes('khandeshi-special')) {
+      badgesHtml += `<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`;
+    }
+    if (dish.tags && dish.tags.includes('spicy')) {
+      badgesHtml += `<span class="badge-tag" style="background:#FFE4E6; color:#BE123C; border:1px solid #FB7185;">${this.t('badgeSpicy')}</span>`;
+    }
+
+    let variantsHtml = '';
+    if (hasVariants) {
+      variantsHtml = `
+        <div class="dish-variants" data-dish-id="${dish.id}">
+          ${dish.variants.map((v, i) => `
+            <button class="variant-btn ${i === 0 ? 'selected' : ''}" data-variant-name="${v.name}" data-variant-price="${v.price}">
+              ${v.name} ₹${v.price}
+            </button>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    return `
+      <div class="dish-card ${dish.isSoldOut ? 'sold-out' : ''}" id="dish-card-${dish.id}" onclick="window.app.openDishDetail('${dish.id}')">
+        <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
+          ${hasPhoto ? `
+            <img src="${dish.image}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+          ` : `
+            <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
+              <div class="no-photo-icon">🌱</div>
+              <div class="no-photo-crest">HOTEL PREMIER</div>
+              <div class="no-photo-sub">PRIDE PURE VEG</div>
+            </div>
+          `}
+          ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
+          <div class="dish-badges">${badgesHtml}</div>
+          <div class="dish-veg-symbol" title="100% Pure Vegetarian">
+            <div class="dish-veg-dot"></div>
+          </div>
+        </div>
+        <div class="dish-body">
+          <div class="dish-header-row">
+            <h4 class="dish-title">${dish.name}</h4>
+            <div class="dish-rating">⭐ ${dish.rating || '4.8'}</div>
+          </div>
+          <p class="dish-desc">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
+          ${variantsHtml}
+          <div class="dish-footer">
+            <div class="dish-price-block">
+              <span class="dish-price" id="price-display-${dish.id}">₹${dish.price}</span>
+              <span class="dish-tax-note">${this.t('taxNote')}</span>
+            </div>
+            ${dish.isSoldOut ? `
+              <span style="font-size: 0.75rem; font-weight: 800; color: var(--pure-red);">${this.t('soldOut')}</span>
+            ` : `
+              <span class="view-detail-link">${this.t('detailsBtn')}</span>
+            `}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  bindDishActions() {
+    document.querySelectorAll('.variant-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const parent = btn.closest('.dish-variants');
+        const dishId = parent.getAttribute('data-dish-id');
+        parent.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        const newPrice = btn.getAttribute('data-variant-price');
+        const priceDisplay = document.getElementById(`price-display-${dishId}`);
+        if (priceDisplay) priceDisplay.innerText = `₹${newPrice}`;
+      });
+    });
+  }
+
+  // Dish Details Modal
+  openDishDetail(dishId) {
+    const dish = this.menuData.find(d => d.id === dishId);
+    if (!dish) return;
+
+    if (window.HOTEL_VAULT) {
+      window.HOTEL_VAULT.recordDishView(dish.id, dish.name, dish.categoryId);
+    }
+
+    const modal = document.getElementById('dish-detail-modal');
+    const body = document.getElementById('dish-detail-body');
+    if (!modal || !body) return;
+
+    const hasPhoto = dish.image && dish.image.trim() !== '';
+
+    let variantsList = '';
+    if (dish.variants && dish.variants.length > 0) {
+      variantsList = `
+        <div style="margin-bottom: 14px; background: var(--cream-bg); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--cream-border);">
+          <div style="font-size: 0.8rem; font-weight: 800; color: var(--terracotta-dark); margin-bottom: 6px;">${this.t('variantsTitle')}</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            ${dish.variants.map(v => `<span style="font-size: 0.85rem; font-weight: 800; color: var(--terracotta); background: #FFF; padding: 4px 10px; border-radius: 6px; border: 1.5px solid var(--gold-primary);">${v.name}: ₹${v.price}</span>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    body.innerHTML = `
+      <div style="position: relative; height: 230px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 14px;">
+        ${hasPhoto ? `
+          <img src="${dish.image}" alt="${dish.name}" id="detail-modal-img" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+        ` : `
+          <div class="dish-no-photo-placeholder" id="detail-modal-img">
+            <div class="no-photo-icon">🌱</div>
+            <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
+            <div class="no-photo-sub" style="font-size: 0.8rem;">Pride Pure Veg Restaurant</div>
+          </div>
+        `}
+        <div class="dish-veg-symbol">
+          <div class="dish-veg-dot"></div>
+        </div>
+        ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
+        <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.75); color: #FFF; border: 1px solid var(--gold-primary); font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: var(--radius-full); cursor: pointer; display: flex; align-items: center; gap: 4px;">
+          ${hasPhoto ? '📷 Change Photo' : '➕ Upload Photo'}
+        </button>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+        <div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--terracotta-dark); font-weight: 800;">${dish.name}</h3>
+          <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">${this.t('servingTime')}</div>
+        </div>
+        <span style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 900; color: var(--terracotta-dark);">₹${dish.price}</span>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
+      ${variantsList}
+      <div style="background: var(--cream-bg); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--cream-border); font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+        ${this.t('pureVegNote')}
+      </div>
+    `;
+
+    modal.classList.add('active');
+  }
+
+  closeDishDetail() {
+    const modal = document.getElementById('dish-detail-modal');
+    if (modal) modal.classList.remove('active');
+  }
+
+  // ==================== 3. BULK BOOKING & CALCULATOR ENGINE (14 ROOMS PROPERTY) ====================
+  getBulkDeals() {
+    try {
+      const saved = localStorage.getItem('hotel_premier_bulk_deals_override');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.bulkMarriageDeals)
+      ? JSON.parse(JSON.stringify(window.HOTEL_PREMIER_HOTEL_DATA.bulkMarriageDeals))
+      : [];
+  }
+
+  renderBulkDealsSection() {
+    const container = document.getElementById('bulk-deals-tiers-container');
+    if (!container) return;
+
+    const deals = this.getBulkDeals();
+    container.innerHTML = deals.map((deal, idx) => `
+      <div class="bulk-tier-card ${idx === deals.length - 1 ? 'featured' : ''}">
+        ${idx === deals.length - 1 ? '<div class="tier-badge-popular">👑 EXCLUSIVE FULL BUYOUT</div>' : ''}
+        <div class="tier-tag">${deal.badge || `${deal.minRooms}+ ROOMS`}</div>
+        <h4 class="tier-name">${deal.name}</h4>
+        <div class="tier-discount">${deal.discountPercent}% OFF</div>
+        <ul class="tier-perks">
+          ${(deal.perks || []).map(p => `<li>✦ ${p}</li>`).join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+
+  calculateBulkQuote() {
+    const roomTypeSelect = document.getElementById('calc-room-type');
+    const roomsInput = document.getElementById('calc-rooms-number');
+    const nightsSelect = document.getElementById('calc-num-nights');
+    const planRadios = document.getElementsByName('calc-plan');
+
+    if (!roomTypeSelect || !roomsInput || !nightsSelect) return;
+
+    const roomType = roomTypeSelect.value;
+    let numRooms = parseInt(roomsInput.value) || 14;
+    if (numRooms > 14) numRooms = 14;
+    const numNights = parseInt(nightsSelect.value) || 1;
+
+    let plan = 'CP';
+    planRadios.forEach(r => {
+      if (r.checked) plan = r.value;
+    });
+
+    let totalRegular = 0;
+
+    if (roomType === 'full-14') {
+      numRooms = 14;
+      document.getElementById('calc-rooms-number').value = 14;
+      const superDeluxeTotal = 2 * (plan === 'CP' ? 2600 : 2200);
+      const deluxeTotal = 12 * (plan === 'CP' ? 2400 : 2000);
+      totalRegular = (superDeluxeTotal + deluxeTotal) * numNights;
+    } else if (roomType === 'super-2') {
+      if (numRooms > 2) numRooms = 2;
+      document.getElementById('calc-rooms-number').value = numRooms;
+      const rate = plan === 'CP' ? 2600 : 2200;
+      totalRegular = rate * numRooms * numNights;
+    } else if (roomType === 'queen-4') {
+      if (numRooms > 4) numRooms = 4;
+      document.getElementById('calc-rooms-number').value = numRooms;
+      const rate = plan === 'CP' ? 2400 : 2000;
+      totalRegular = rate * numRooms * numNights;
+    } else if (roomType === 'twin-8') {
+      if (numRooms > 8) numRooms = 8;
+      document.getElementById('calc-rooms-number').value = numRooms;
+      const rate = plan === 'CP' ? 2400 : 2000;
+      totalRegular = rate * numRooms * numNights;
+    } else {
+      const rate = plan === 'CP' ? 2400 : 2000;
+      totalRegular = rate * numRooms * numNights;
+    }
+
+    const activeDeals = this.getBulkDeals().sort((a, b) => b.minRooms - a.minRooms);
+    let matchedDeal = activeDeals.find(d => numRooms >= d.minRooms);
+    let discountPercent = matchedDeal ? matchedDeal.discountPercent : (numRooms >= 5 ? 10 : 0);
+
+    const savings = Math.round((totalRegular * discountPercent) / 100);
+    const finalPrice = totalRegular - savings;
+
+    const regPriceEl = document.getElementById('quote-regular-price');
+    const discTagEl = document.getElementById('quote-discount-tag');
+    const savingsEl = document.getElementById('quote-savings-amount');
+    const finalPriceEl = document.getElementById('quote-final-price');
+
+    if (regPriceEl) regPriceEl.innerText = `₹ ${totalRegular.toLocaleString('en-IN')}/-`;
+    if (discTagEl) discTagEl.innerText = `${discountPercent}% OFF`;
+    if (savingsEl) savingsEl.innerText = `- ₹ ${savings.toLocaleString('en-IN')}/-`;
+    if (finalPriceEl) finalPriceEl.innerText = `₹ ${finalPrice.toLocaleString('en-IN')}/-`;
+
+    this.latestQuote = {
+      roomType: roomTypeSelect.options[roomTypeSelect.selectedIndex].text,
+      rooms: numRooms,
+      nights: numNights,
+      plan: plan === 'CP' ? 'Room with Breakfast (CP)' : 'Room Only (RO)',
+      eventType: document.getElementById('calc-event-type') ? document.getElementById('calc-event-type').value : 'Marriage Event',
+      regularPrice: totalRegular,
+      discountPercent: discountPercent,
+      finalPrice: finalPrice,
+      savings: savings
+    };
+  }
+
+  sendBulkWhatsAppInquiry() {
+    if (!this.latestQuote) {
+      this.calculateBulkQuote();
+    }
+
+    const q = this.latestQuote;
+    const msg = `*HOTEL PREMIER BHUSAWAL - ADVANCE BULK ROOM INQUIRY*%0A` +
+      `---------------------------------------%0A` +
+      `🏨 *Event Type:* ${encodeURIComponent(q.eventType)}%0A` +
+      `🛏️ *Room Category:* ${encodeURIComponent(q.roomType)}%0A` +
+      `🔢 *Number of Rooms:* ${q.rooms} Rooms (Total 14 Available)%0A` +
+      `🌙 *Duration of Stay:* ${q.nights} Night(s)%0A` +
+      `🍽️ *Meal Plan:* ${encodeURIComponent(q.plan)}%0A` +
+      `🏷️ *Bulk Discount Applied:* ${q.discountPercent}% OFF%0A` +
+      `💰 *Estimated Deal Price:* ₹ ${q.finalPrice.toLocaleString('en-IN')}/- (Saved ₹ ${q.savings.toLocaleString('en-IN')})%0A` +
+      `---------------------------------------%0A` +
+      `Hello Hotel Premier Team, please confirm our reservation quote!`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=919325375802&text=${msg}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  // ==================== RESTAURANT EVENTS, PARTY PACKAGES & LUNCH BUYOUT ====================
+  scrollToEventsSection() {
+    const el = document.getElementById('restaurant-events-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  getRestaurantEventPackages() {
+    return (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.restaurantEventPackages)
+      ? window.HOTEL_PREMIER_HOTEL_DATA.restaurantEventPackages
+      : [];
+  }
+
+  renderRestaurantEventPackages() {
+    const container = document.getElementById('restaurant-events-packages-grid');
+    if (!container) return;
+
+    const pkgs = this.getRestaurantEventPackages();
+    container.innerHTML = pkgs.map(pkg => {
+      let subTitle = '';
+      if (this.currentLang === 'hi' && pkg.hindiName) subTitle = `<div class="event-pkg-sub">${pkg.hindiName}</div>`;
+      else if (this.currentLang === 'mr' && pkg.marathiName) subTitle = `<div class="event-pkg-sub">${pkg.marathiName}</div>`;
+
+      return `
+        <div class="event-package-card ${pkg.featured ? 'featured' : ''} ${pkg.isBuyout ? 'buyout-card' : ''}" id="card-${pkg.id}">
+          <div class="event-pkg-badge">${pkg.badge}</div>
+          <div class="event-pkg-header">
+            <span class="event-pkg-icon">${pkg.icon || '🍽️'}</span>
+            <div>
+              <h4 class="event-pkg-title">${pkg.name}</h4>
+              ${subTitle}
+            </div>
+          </div>
+
+          <div class="event-pkg-pricing">
+            <span class="pkg-price-currency">₹</span>
+            <span class="pkg-price-val">${pkg.ratePerPax}</span>
+            <span class="pkg-price-unit">/ person</span>
+            <span class="pkg-pax-limit">${pkg.isBuyout ? 'Up to 40 Pax' : 'Min 15 Pax'}</span>
+          </div>
+
+          <p class="event-pkg-desc">${pkg.desc}</p>
+
+          <div class="event-menu-choices-block">
+            <div class="menu-choices-heading">🥗 Curated Pure Veg Inclusions:</div>
+            <ul class="event-menu-choices-list">
+              ${(pkg.menuChoices || []).map(item => `<li><span class="choice-bullet">✦</span> <span>${item}</span></li>`).join('')}
+            </ul>
+          </div>
+
+          <button class="btn-select-event-pkg" onclick="window.app ? window.app.selectEventPackage('${pkg.id}') : null">
+            <span>Select This Package in Calculator ➔</span>
+          </button>
+        </div>
+      `;
+    }).join('');
+  }
+
+  selectEventPackage(pkgId) {
+    const pkgSelect = document.getElementById('calc-event-package');
+    if (pkgSelect) {
+      pkgSelect.value = pkgId;
+    }
+    const occasionSelect = document.getElementById('calc-event-occasion');
+    if (pkgId === 'pkg-lunch-buyout' && occasionSelect) {
+      occasionSelect.value = 'Full Restaurant Lunch Buyout';
+      const slotSelect = document.getElementById('calc-event-timeslot');
+      if (slotSelect) slotSelect.value = 'Lunch (11:30 AM - 3:30 PM)';
+    }
+    this.calculateRestaurantEventQuote();
+    const calc = document.getElementById('restaurant-event-calculator');
+    if (calc) {
+      calc.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  stepPax(delta) {
+    const paxInput = document.getElementById('calc-event-pax');
+    if (!paxInput) return;
+    let current = parseInt(paxInput.value) || 20;
+    current += delta;
+    if (current < 15) current = 15;
+    if (current > 40) current = 40;
+    paxInput.value = current;
+    this.calculateRestaurantEventQuote();
+  }
+
+  calculateRestaurantEventQuote() {
+    const pkgSelect = document.getElementById('calc-event-package');
+    const occasionSelect = document.getElementById('calc-event-occasion');
+    const paxInput = document.getElementById('calc-event-pax');
+    const slotSelect = document.getElementById('calc-event-timeslot');
+    const dateInput = document.getElementById('calc-event-date');
+
+    if (!pkgSelect || !paxInput) return;
+
+    const selectedPkgId = pkgSelect.value;
+    const pkgs = this.getRestaurantEventPackages();
+    const pkg = pkgs.find(p => p.id === selectedPkgId) || pkgs[0];
+
+    let pax = parseInt(paxInput.value) || 20;
+    if (pax < 15) pax = 15;
+    if (pax > 40) pax = 40; // Up to 40 Pax max
+    paxInput.value = pax;
+
+    const occasion = occasionSelect ? occasionSelect.value : 'Family Gathering';
+    const timeslot = slotSelect ? slotSelect.value : 'Lunch (11:30 AM - 3:30 PM)';
+    const dateVal = (dateInput && dateInput.value) ? dateInput.value : 'To be confirmed';
+
+    // Base menu calculation
+    const ratePerPax = pkg.ratePerPax;
+    const baseTotal = ratePerPax * pax;
+
+    // Optional Add-ons
+    let addonsTotal = 0;
+    const chosenAddons = [];
+
+    const cakeDecor = document.getElementById('addon-cake-decor');
+    if (cakeDecor && cakeDecor.checked) {
+      addonsTotal += 999;
+      chosenAddons.push('Cake Cutting Table & Birthday Decor (+ ₹999)');
+    }
+    const liveChaat = document.getElementById('addon-live-chaat');
+    if (liveChaat && liveChaat.checked) {
+      const chaatCost = 45 * pax;
+      addonsTotal += chaatCost;
+      chosenAddons.push(`Live Pani Puri / Chaat Counter (+ ₹${chaatCost})`);
+    }
+    const extraSweet = document.getElementById('addon-extra-sweet');
+    if (extraSweet && extraSweet.checked) {
+      const sweetCost = 35 * pax;
+      addonsTotal += sweetCost;
+      chosenAddons.push(`Extra Ice Cream Cup (+ ₹${sweetCost})`);
+    }
+    const coldDrinks = document.getElementById('addon-cold-drinks');
+    if (coldDrinks && coldDrinks.checked) {
+      const drinksCost = 30 * pax;
+      addonsTotal += drinksCost;
+      chosenAddons.push(`Unlimited Cold Drinks (+ ₹${drinksCost})`);
+    }
+
+    const grandTotal = baseTotal + addonsTotal;
+    const effectiveRate = Math.round(grandTotal / pax);
+
+    // Update DOM
+    const badgeEl = document.getElementById('event-quote-tier-badge');
+    const rateEl = document.getElementById('event-effective-rate');
+    const paxCountEl = document.getElementById('summary-pax-count');
+    const slotEl = document.getElementById('summary-slot-name');
+    const baseTotalEl = document.getElementById('summary-base-total');
+    const addonsRowEl = document.getElementById('summary-addons-row');
+    const addonsTotalEl = document.getElementById('summary-addons-total');
+    const grandTotalEl = document.getElementById('event-grand-total');
+
+    if (badgeEl) badgeEl.innerText = pkg.name.toUpperCase();
+    if (rateEl) rateEl.innerText = effectiveRate;
+    if (paxCountEl) paxCountEl.innerText = `${pax} Pax (Capacity Up to 40)`;
+    if (slotEl) slotEl.innerText = timeslot;
+    if (baseTotalEl) baseTotalEl.innerText = `₹ ${baseTotal.toLocaleString('en-IN')}`;
+
+    if (addonsRowEl && addonsTotalEl) {
+      if (addonsTotal > 0) {
+        addonsRowEl.style.display = 'flex';
+        addonsTotalEl.innerText = `+ ₹ ${addonsTotal.toLocaleString('en-IN')}`;
+      } else {
+        addonsRowEl.style.display = 'none';
+      }
+    }
+
+    if (grandTotalEl) grandTotalEl.innerText = `₹ ${grandTotal.toLocaleString('en-IN')}/-`;
+
+    this.latestEventQuote = {
+      pkgName: pkg.name,
+      ratePerPax: ratePerPax,
+      pax: pax,
+      occasion: occasion,
+      timeslot: timeslot,
+      date: dateVal,
+      baseTotal: baseTotal,
+      addonsTotal: addonsTotal,
+      chosenAddons: chosenAddons,
+      grandTotal: grandTotal,
+      effectiveRate: effectiveRate,
+      isBuyout: pkg.isBuyout
+    };
+  }
+
+  sendRestaurantEventWhatsAppInquiry() {
+    if (!this.latestEventQuote) {
+      this.calculateRestaurantEventQuote();
+    }
+    const q = this.latestEventQuote;
+    const addonsText = (q.chosenAddons && q.chosenAddons.length > 0) 
+      ? q.chosenAddons.join(', ') 
+      : 'None selected';
+
+    const msg = `*HOTEL PREMIER BHUSAWAL - RESTAURANT EVENT & LUNCH BOOKING*%0A` +
+      `---------------------------------------%0A` +
+      `🎉 *Occasion:* ${encodeURIComponent(q.occasion)}%0A` +
+      `🍽️ *Package:* ${encodeURIComponent(q.pkgName)}%0A` +
+      `👥 *Number of Guests:* ${q.pax} Pax (Restaurant Capacity: Up to 40 Pax)%0A` +
+      `⏰ *Dining Time Slot:* ${encodeURIComponent(q.timeslot)}%0A` +
+      `📅 *Preferred Date:* ${encodeURIComponent(q.date)}%0A` +
+      `✨ *Special Add-ons:* ${encodeURIComponent(addonsText)}%0A` +
+      `💰 *Estimated Total Quote:* ₹ ${q.grandTotal.toLocaleString('en-IN')}/- (Approx ₹ ${q.effectiveRate}/person)%0A` +
+      `🏢 *Dining Privilege:* Private Pride Pure Veg AC Hall (Zero Hall Rent on 15–40 Pax)%0A` +
+      `---------------------------------------%0A` +
+      `Hello Hotel Premier Management, please check lunch/event availability and confirm our dining reservation!`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=919325375802&text=${msg}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  // ==================== 4. LOCATION HUB & GOOGLE MAPS QR ====================
+  renderLocationQR() {
+    const mount = document.getElementById('location-qr-mount');
+    if (!mount) return;
+
+    const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo) 
+      ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl 
+      : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201';
+
+    mount.innerHTML = '';
+    if (window.QRCode) {
+      try {
+        new QRCode(mount, {
+          text: mapsUrl,
+          width: 160,
+          height: 160,
+          colorDark: '#0E1D36',
+          colorLight: '#FFFFFF',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      } catch (e) {
+        mount.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(mapsUrl)}" alt="Location QR" style="width: 160px; height: 160px; border-radius: 8px;">`;
+      }
+    } else {
+      mount.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(mapsUrl)}" alt="Location QR" style="width: 160px; height: 160px; border-radius: 8px;">`;
+    }
+  }
+
+  renderLocationDistances() {
+    const container = document.getElementById('hotel-distances-list');
+    if (!container || !window.HOTEL_PREMIER_HOTEL_DATA || !window.HOTEL_PREMIER_HOTEL_DATA.locationDistances) return;
+
+    const distances = window.HOTEL_PREMIER_HOTEL_DATA.locationDistances;
+    container.innerHTML = distances.map(item => `
+      <div class="distance-item-row">
+        <div class="distance-place-info">
+          <span style="font-size: 1.25rem;">${item.icon}</span>
+          <div>
+            <div class="distance-place-name">${item.place}</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">${item.desc}</div>
+          </div>
+        </div>
+        <div class="distance-metrics">
+          <div class="distance-km">${item.distance}</div>
+          <div class="distance-time">${item.time}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  shareLocationOnWhatsApp() {
+    const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo) 
+      ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl 
+      : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201';
+
+    const msg = `*HOTEL PREMIER BHUSAWAL - LOCATION & GPS DIRECTIONS*%0A` +
+      `---------------------------------------%0A` +
+      `📍 *Address:* Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201%0A` +
+      `🚆 *Landmark:* 5 Mins (2 KM) from Bhusawal Railway Junction%0A` +
+      `📞 *Contact:* 09325375802 (Primary) / 09370848917 / (02582) 240422%0A` +
+      `🗺️ *Live Google Maps Directions Link:*%0A${encodeURIComponent(mapsUrl)}%0A` +
+      `---------------------------------------%0A` +
+      `Please drive safely to Hotel Premier Bhusawal!`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${msg}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  showToast(message, type = 'info') {
+    let toast = document.getElementById('app-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'app-toast';
+      toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #0E1D36;
+        color: #F7C860;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-family: 'Cinzel', serif;
+        font-size: 0.85rem;
+        font-weight: 800;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        border: 1.5px solid #D4901C;
+        z-index: 9999;
+        display: none;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+      `;
+      document.body.appendChild(toast);
+    }
+
+    let icon = 'ℹ️';
+    if (type === 'success') icon = '✅';
+    if (type === 'error') icon = '⚠️';
+
+    toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+    toast.style.display = 'flex';
+    toast.style.opacity = '1';
+
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 300);
+    }, 2800);
+  }
+
+  bindEvents() {
+    const searchInput = document.getElementById('menu-search-input');
+    const clearBtn = document.getElementById('clear-search-btn');
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        this.searchQuery = e.target.value;
+        if (clearBtn) {
+          clearBtn.style.display = this.searchQuery.length > 0 ? 'flex' : 'none';
+        }
+
+        if (this.searchQuery.trim().length > 0) {
+          if (window.HOTEL_VAULT && this.searchQuery.trim().length >= 2) {
+            clearTimeout(this._searchLogTimer);
+            this._searchLogTimer = setTimeout(() => {
+              window.HOTEL_VAULT.recordSearchQuery(this.searchQuery);
+            }, 1000);
+          }
+          this.viewMode = 'section';
+          const homeView = document.getElementById('home-categories-view');
+          const dishesView = document.getElementById('dishes-section-view');
+          if (homeView) homeView.style.display = 'none';
+          if (dishesView) dishesView.style.display = 'block';
+
+          const titleEl = document.getElementById('active-category-title');
+          const hindiEl = document.getElementById('active-category-hindi');
+          const countEl = document.getElementById('active-category-count');
+          if (titleEl) titleEl.innerText = `Search: "${this.searchQuery}"`;
+          if (hindiEl) hindiEl.innerText = this.t('filterAll', 'Search Results');
+
+          const filtered = this.getFilteredDishes();
+          const itemsWord = this.t('itemsCount', 'Items');
+          if (countEl) countEl.innerText = `${filtered.length} ${itemsWord}`;
+
+          this.renderSectionSlideshow(null);
+          this.renderMenu();
+        } else if (this.viewMode === 'home') {
+          this.showHomeCategories();
+        } else {
+          this.renderMenu();
+        }
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        this.searchQuery = '';
+        clearBtn.style.display = 'none';
+        if (this.viewMode === 'home') {
+          this.showHomeCategories();
+        } else {
+          this.renderMenu();
+        }
+      });
+    }
+
+    // Modal backdrop click-to-close
+    document.querySelectorAll('.modal-backdrop').forEach(modal => {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.remove('active');
+        }
+      });
+    });
+
+    // Touch Swipe gestures for Restaurant Hero Carousel
+    const heroWrapper = document.getElementById('restaurant-hero-carousel');
+    if (heroWrapper) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+      heroWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        if (this.heroAutoInterval) clearInterval(this.heroAutoInterval);
+      }, { passive: true });
+
+      heroWrapper.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) {
+          this.nextHeroSlide();
+        } else if (touchEndX - touchStartX > 45) {
+          this.prevHeroSlide();
+        }
+        this.startHeroAutoSlide();
+      }, { passive: true });
+    }
+
+    // Touch Swipe gestures for Section Dishes Slideshow
+    const sectionContainer = document.getElementById('section-slideshow-container');
+    if (sectionContainer) {
+      let touchStartX = 0;
+      let touchEndX = 0;
+      sectionContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        if (this.sectionAutoInterval) clearInterval(this.sectionAutoInterval);
+      }, { passive: true });
+
+      sectionContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) {
+          this.nextSectionSlide();
+        } else if (touchEndX - touchStartX > 45) {
+          this.prevSectionSlide();
+        }
+        this.startSectionAutoSlide();
+      }, { passive: true });
+    }
+
+    // Touch Swipe gestures for Room Carousels
+    ['ac-super-deluxe', 'ac-deluxe-queen', 'ac-deluxe-twin'].forEach(roomId => {
+      const roomEl = document.getElementById(`room-carousel-${roomId}`);
+      if (roomEl) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        roomEl.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        roomEl.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 45) {
+            this.nextRoomSlide(roomId);
+          } else if (touchEndX - touchStartX > 45) {
+            this.prevRoomSlide(roomId);
+          }
+        }, { passive: true });
+      }
+    });
+  // ==================== 5. STAFF ACCESS CONTROL (HIDDEN FROM GUESTS) ====================
+  checkStaffModeAccess() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const isStaffUrl = params.has('staff') || params.has('admin') || params.has('manage') || params.has('cms') || window.location.hash === '#admin';
+      const settingsBtn = document.getElementById('cms-settings-admin-btn');
+      if (settingsBtn) {
+        if (isStaffUrl || sessionStorage.getItem('hp_staff_mode_active') === 'true') {
+          settingsBtn.style.display = 'inline-flex';
+        } else {
+          settingsBtn.style.display = 'none';
+        }
+      }
+    } catch (e) {}
+  }
+
+  handleBrandLogoTap(e) {
+    if (!this.brandLogoTapCount) {
+      this.brandLogoTapCount = 0;
+      this.brandLogoTapTimer = null;
+    }
+    this.brandLogoTapCount++;
+    if (this.brandLogoTapTimer) clearTimeout(this.brandLogoTapTimer);
+
+    if (this.brandLogoTapCount >= 5) {
+      this.brandLogoTapCount = 0;
+      const settingsBtn = document.getElementById('cms-settings-admin-btn');
+      if (settingsBtn) {
+        const isCurrentlyVisible = settingsBtn.style.display !== 'none';
+        if (isCurrentlyVisible) {
+          settingsBtn.style.display = 'none';
+          sessionStorage.removeItem('hp_staff_mode_active');
+          this.showToast('Staff Settings Hidden', 'info');
+        } else {
+          settingsBtn.style.display = 'inline-flex';
+          sessionStorage.setItem('hp_staff_mode_active', 'true');
+          this.showToast('Staff Mode Activated ⚙️', 'success');
+        }
+      }
+    } else {
+      this.brandLogoTapTimer = setTimeout(() => {
+        this.brandLogoTapCount = 0;
+      }, 2500);
+    }
+  }
+
+  prefillFeedbackTableFromUrl() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const table = params.get('table') || params.get('t');
+      const room = params.get('room') || params.get('r');
+      const tableInput = document.getElementById('feedback-table-num');
+      if (tableInput) {
+        if (table) tableInput.value = `Table ${table}`;
+        else if (room) tableInput.value = `Room ${room}`;
+      }
+    } catch (e) {}
+  }
+
+  // ==================== 6. GUEST FEEDBACK & DINING RATINGS ====================
+  setStarRating(rating) {
+    this.currentStarRating = rating;
+    const input = document.getElementById('feedback-star-val');
+    if (input) input.value = rating;
+
+    const btns = document.querySelectorAll('#feedback-star-control .star-btn');
+    btns.forEach((b) => {
+      const val = parseInt(b.getAttribute('data-value')) || 0;
+      b.classList.toggle('active', val <= rating);
+    });
+
+    const verdicts = {
+      1: '🙁 1 Star — Needs Improvement',
+      2: '😐 2 Stars — Fair Dining Experience',
+      3: '🙂 3 Stars — Good Meal',
+      4: '😊 4 Stars — Very Good Quality & Taste',
+      5: '🌟 5 Stars — Exceptional Dining & Service!'
+    };
+    const verdictEl = document.getElementById('feedback-rating-verdict');
+    if (verdictEl) verdictEl.innerText = verdicts[rating] || '🌟 5 Stars';
+  }
+
+  submitGuestFeedback(e) {
+    if (e) e.preventDefault();
+    const nameEl = document.getElementById('feedback-guest-name');
+    const phoneEl = document.getElementById('feedback-guest-phone');
+    const regionEl = document.getElementById('feedback-guest-region');
+    const tableEl = document.getElementById('feedback-table-num');
+    const commentsEl = document.getElementById('feedback-guest-comments');
+    const ratingEl = document.getElementById('feedback-star-val');
+
+    const name = nameEl ? nameEl.value.trim() : '';
+    const phone = phoneEl ? phoneEl.value.trim() : '';
+    const region = regionEl ? regionEl.value : 'Bhusawal Local';
+    const table = tableEl ? tableEl.value.trim() : '';
+    const comments = commentsEl ? commentsEl.value.trim() : '';
+    const rating = ratingEl ? parseInt(ratingEl.value) || 5 : 5;
+
+    if (!name) {
+      alert('Please enter your name.');
+      if (nameEl) nameEl.focus();
+      return false;
+    }
+    if (!phone || phone.length < 10) {
+      alert('Please enter a valid 10-digit WhatsApp/mobile number.');
+      if (phoneEl) phoneEl.focus();
+      return false;
+    }
+
+    const selectedTags = [];
+    document.querySelectorAll('#feedback-tags-container .feedback-chip.active').forEach(chip => {
+      selectedTags.push(chip.innerText.trim());
+    });
+
+    if (window.HOTEL_VAULT) {
+      window.HOTEL_VAULT.recordFeedback({
+        name: name,
+        phone: phone,
+        region: region,
+        tableOrRoom: table,
+        rating: rating,
+        tags: selectedTags,
+        comments: comments
+      });
+    }
+
+    const form = document.getElementById('dining-feedback-form');
+    const thankyou = document.getElementById('feedback-thankyou-card');
+    if (form) form.style.display = 'none';
+    if (thankyou) thankyou.style.display = 'block';
+
+    this.showToast('Thank you for your rating!', 'success');
+    return false;
+  }
+
+  // ==================== 7. MASTER DEVELOPER VAULT CONTROLS ====================
+  unlockDeveloperVault() {
+    const input = document.getElementById('dev-vault-pin-input');
+    const pin = input ? input.value : '';
+    if (window.HOTEL_VAULT && window.HOTEL_VAULT.verifyMasterPin(pin)) {
+      const gate = document.getElementById('dev-vault-gate');
+      const deck = document.getElementById('dev-vault-deck');
+      if (gate) gate.style.display = 'none';
+      if (deck) deck.style.display = 'block';
+      this.renderDeveloperVaultUI();
+      this.showToast('Master Vault Unlocked 🔓', 'success');
+    } else {
+      alert('Incorrect Developer PIN. Access denied.');
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+    }
+  }
+
+  renderDeveloperVaultUI() {
+    if (!window.HOTEL_VAULT) return;
+    const scans = window.HOTEL_VAULT.getLevel1Scans();
+    const leads = window.HOTEL_VAULT.getFeedbackLeads();
+    const avgRating = leads.length
+      ? (leads.reduce((a, b) => a + (b.rating || 5), 0) / leads.length).toFixed(1)
+      : '5.0';
+
+    const scansEl = document.getElementById('vault-kpi-scans');
+    const leadsEl = document.getElementById('vault-kpi-leads');
+    const ratingEl = document.getElementById('vault-kpi-rating');
+
+    if (scansEl) scansEl.innerText = scans.length;
+    if (leadsEl) leadsEl.innerText = leads.length;
+    if (ratingEl) ratingEl.innerText = `${avgRating}★`;
+  }
+
+  promptChangeDeveloperPin() {
+    const currentPin = prompt('Enter Current Master Developer PIN:');
+    if (!window.HOTEL_VAULT || !window.HOTEL_VAULT.verifyMasterPin(currentPin)) {
+      alert('Authentication failed.');
+      return;
+    }
+    const newPin = prompt('Enter New Master Developer PIN (at least 4 digits):');
+    if (newPin && newPin.length >= 4) {
+      window.HOTEL_VAULT.setMasterPin(newPin);
+      alert('Master Developer PIN successfully updated!');
+    } else if (newPin) {
+      alert('PIN must be at least 4 digits.');
+    }
+  }
+}
+
+// Global bootstrap
+function initializeHotelPremierApp() {
+  if (!window.app) {
+    window.app = new HotelPremierApp();
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeHotelPremierApp);
+} else {
+  initializeHotelPremierApp();
+}

@@ -1,0 +1,22 @@
+# Netlify Configuration for Hotel Premier QR Menu
+[build]
+  publish = "."
+
+[build.processing]
+  skip_processing = true
+
+# Completely disable Netlify Drawer / Feedback badge on all deploys
+[context.production.environment]
+  NETLIFY_DRAWER = "false"
+
+[context.deploy-preview.environment]
+  NETLIFY_DRAWER = "false"
+
+[context.branch-deploy.environment]
+  NETLIFY_DRAWER = "false"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Netlify-Drawer = "false"
+    Cache-Control = "public, max-age=0, must-revalidate"

@@ -1,0 +1,7 @@
+# Temporary and system files
+.DS_Store
+Thumbs.db
+*.log
+
+# Deployment zip
+*.zip
