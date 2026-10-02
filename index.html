@@ -516,11 +516,12 @@
               <div class="room-starting-rate">From <strong>₹ 2000/-</strong></div>
             </div>
             <p class="room-desc">
-              Exclusive luxury room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service (7:30 AM – 10:30 PM). <strong>2 Rooms in Property</strong>.
+              Exclusive luxury room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service. <strong>Can comfortably accommodate 2 to 3 Extra Beds (₹300/bed)</strong>. <strong>2 Rooms in Property</strong>.
             </p>
             <div class="room-amenity-tags">
               <span>👑 King Bed</span>
               <span>🏢 2 Rooms Only</span>
+              <span>🛏️ Fits 2–3 Extra Beds</span>
               <span>❄️ Split AC</span>
               <span>📶 Free Wi-Fi</span>
               <span>📺 Smart TV</span>
@@ -533,6 +534,9 @@
               </div>
               <div class="price-pill-item">
                 <span>Double:</span> <strong>₹2200</strong> (RO) / <strong>₹2600</strong> (CP)
+              </div>
+              <div class="price-pill-item" style="background: rgba(212, 144, 28, 0.15); border-color: var(--gold-primary);">
+                <span>Extra Bed:</span> <strong>₹300/-</strong> (Fits 2–3 Beds)
               </div>
             </div>
           </div>
@@ -550,7 +554,7 @@
               <button class="room-carousel-btn next" onclick="window.app.nextRoomSlide('ac-deluxe-queen', event)">›</button>
               <div class="room-carousel-dots" id="room-dots-ac-deluxe-queen"></div>
             </div>
-            <span class="room-type-badge">🛏️ 4 Rooms • Queen Bed</span>
+            <span class="room-type-badge">🛏️ 4 Rooms • Queen Bed (Fits 1 Extra Bed)</span>
           </div>
           <div class="room-card-body">
             <div class="room-card-header">
@@ -558,11 +562,12 @@
               <div class="room-starting-rate">From <strong>₹ 1800/-</strong></div>
             </div>
             <p class="room-desc">
-              Spacious & peaceful AC room featuring a comfortable Queen Bed, workstation, wardrobe, and modern bath amenities. <strong>4 Rooms in Property</strong>.
+              Spacious & peaceful AC room featuring a comfortable Queen Bed, workstation, wardrobe, and modern bath amenities. <strong>Can accommodate 1 Extra Bed (₹300/bed)</strong>. <strong>4 Rooms in Property</strong>.
             </p>
             <div class="room-amenity-tags">
               <span>🛏️ Queen Bed</span>
               <span>🏢 4 Rooms</span>
+              <span>🛏️ Fits 1 Extra Bed</span>
               <span>❄️ AC</span>
               <span>📶 Free Wi-Fi</span>
               <span>📺 LED TV</span>
@@ -575,6 +580,9 @@
               </div>
               <div class="price-pill-item">
                 <span>Double:</span> <strong>₹2000</strong> (RO) / <strong>₹2400</strong> (CP)
+              </div>
+              <div class="price-pill-item" style="background: rgba(212, 144, 28, 0.15); border-color: var(--gold-primary);">
+                <span>Extra Bed:</span> <strong>₹300/-</strong> (Fits 1 Bed)
               </div>
             </div>
           </div>
@@ -592,7 +600,7 @@
               <button class="room-carousel-btn next" onclick="window.app.nextRoomSlide('ac-deluxe-twin', event)">›</button>
               <div class="room-carousel-dots" id="room-dots-ac-deluxe-twin"></div>
             </div>
-            <span class="room-type-badge">🛏️🛏️ 8 Rooms • Twin Beds</span>
+            <span class="room-type-badge">🛏️🛏️ 8 Rooms • Twin Beds (Fits 2 Extra Beds)</span>
           </div>
           <div class="room-card-body">
             <div class="room-card-header">
@@ -600,11 +608,12 @@
               <div class="room-starting-rate">From <strong>₹ 1800/-</strong></div>
             </div>
             <p class="room-desc">
-              Comfortable AC room with 2 separate Single Beds, perfect for wedding guests, Barat groups, and colleagues. <strong>8 Rooms in Property</strong>.
+              Comfortable AC room with 2 separate Single Beds, perfect for wedding guests, Barat groups, and colleagues. <strong>Can comfortably accommodate 2 Extra Beds (₹300/bed)</strong>. <strong>8 Rooms in Property</strong>.
             </p>
             <div class="room-amenity-tags">
               <span>🛏️🛏️ 2 Separate Beds</span>
               <span>🏢 8 Rooms</span>
+              <span>🛏️ Fits 2 Extra Beds</span>
               <span>❄️ AC</span>
               <span>📶 Free Wi-Fi</span>
               <span>📺 LED TV</span>
@@ -617,6 +626,9 @@
               </div>
               <div class="price-pill-item">
                 <span>Double:</span> <strong>₹2000</strong> (RO) / <strong>₹2400</strong> (CP)
+              </div>
+              <div class="price-pill-item" style="background: rgba(212, 144, 28, 0.15); border-color: var(--gold-primary);">
+                <span>Extra Bed:</span> <strong>₹300/-</strong> (Fits 2 Beds)
               </div>
             </div>
           </div>
@@ -683,6 +695,14 @@
             </div>
 
             <div class="calc-form-group">
+              <label class="form-label" data-i18n="calcExtraBeds">Extra Beds Needed (₹300 / bed / night)</label>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="number" id="calc-extra-beds" value="0" min="0" max="26" class="form-input" style="width: 70px; text-align: center; font-weight: 800;" oninput="window.app.calculateBulkQuote()">
+                <span style="font-size: 0.73rem; color: var(--text-muted); line-height: 1.25;">Max 26 extra beds across 14 rooms (Super Deluxe fits 2–3, Twin fits 2, Queen fits 1)</span>
+              </div>
+            </div>
+
+            <div class="calc-form-group">
               <label class="form-label" data-i18n="calcNumNights">Number of Nights Stay</label>
               <select id="calc-num-nights" class="form-select" onchange="window.app.calculateBulkQuote()">
                 <option value="1">1 Night (24 Hours Stay)</option>
@@ -712,6 +732,10 @@
             <div class="quote-row">
               <span data-i18n="calcTotalEst">Estimated Regular Tariff:</span>
               <span class="regular-strike-price" id="quote-regular-price">₹ 72,000/-</span>
+            </div>
+            <div class="quote-row" id="quote-extra-bed-row" style="display: none; color: var(--terracotta-dark);">
+              <span>🛏️ Extra Beds (<span id="quote-extra-bed-count">0</span> Beds @ ₹300/night):</span>
+              <span id="quote-extra-bed-amount" style="font-weight: 700;">+ ₹ 0/-</span>
             </div>
             <div class="quote-row discount-row">
               <span>Applied Group Discount (<span id="quote-discount-tag">20% OFF</span>):</span>

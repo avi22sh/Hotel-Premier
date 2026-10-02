@@ -69,10 +69,14 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&auto=format&fit=crop&q=80'
       ],
-      description: 'Exclusive luxury air-conditioned room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service (7:30 AM – 10:30 PM). Total 2 rooms in property.',
+      description: 'Exclusive luxury air-conditioned room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service (7:30 AM – 10:30 PM). Total 2 rooms in property. Can comfortably accommodate 2 to 3 Extra Beds (₹300/bed).',
+      extraBedRate: 300,
+      maxExtraBeds: 3,
+      extraBedDetail: 'Accommodates 2 to 3 Extra Beds (₹300/bed)',
       features: [
         '👑 King Size Luxury Bed',
         '🏢 Total 2 Rooms in Hotel',
+        '🛏️ Can Accommodate 2–3 Extra Beds (₹300/bed)',
         '❄️ Silent Split Air Conditioning',
         '📺 Large Screen Smart LED TV',
         '📶 High-Speed Free Wi-Fi',
@@ -81,9 +85,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       ],
       tariff: {
         single: { roomOnly: 2000, withBreakfast: 2200 },
-        double: { roomOnly: 2200, withBreakfast: 2600 }
+        double: { roomOnly: 2200, withBreakfast: 2600 },
+        extraBed: 300
       },
-      tag: 'Exclusive VIP & Couple Suite (2 Rooms)'
+      tag: 'Exclusive VIP & Couple Suite (2 Rooms • Fits 2-3 Extra Beds)'
     },
     {
       id: 'ac-deluxe-queen',
@@ -99,10 +104,14 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1591088398332-8a7791972843?w=700&auto=format&fit=crop&q=80'
       ],
-      description: 'Peaceful air-conditioned room featuring a plush Queen Size Bed, workstation, wardrobe, and modern bath amenities. Total 4 rooms available in hotel.',
+      description: 'Peaceful air-conditioned room featuring a plush Queen Size Bed, workstation, wardrobe, and modern bath amenities. Total 4 rooms available in hotel. Can accommodate 1 Extra Bed (₹300/bed).',
+      extraBedRate: 300,
+      maxExtraBeds: 1,
+      extraBedDetail: 'Accommodates 1 Extra Bed (₹300/bed)',
       features: [
         '🛏️ Queen Size Bed',
         '🏢 Total 4 Rooms in Hotel',
+        '🛏️ Can Accommodate 1 Extra Bed (₹300/bed)',
         '❄️ Powerful Air Conditioning',
         '📺 Flat Screen LED TV with DTH',
         '📶 High-Speed Free Wi-Fi',
@@ -111,9 +120,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       ],
       tariff: {
         single: { roomOnly: 1800, withBreakfast: 2000 },
-        double: { roomOnly: 2000, withBreakfast: 2400 }
+        double: { roomOnly: 2000, withBreakfast: 2400 },
+        extraBed: 300
       },
-      tag: 'Ideal for Couples & Executives (4 Rooms)'
+      tag: 'Ideal for Couples & Executives (4 Rooms • Fits 1 Extra Bed)'
     },
     {
       id: 'ac-deluxe-twin',
@@ -129,10 +139,14 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=700&auto=format&fit=crop&q=80'
       ],
-      description: 'Popular air-conditioned room with 2 comfortable separate Single Beds. Ideal for wedding attendees, Barat guests, friends, and corporate colleagues. Total 8 rooms available in hotel.',
+      description: 'Popular air-conditioned room with 2 comfortable separate Single Beds. Ideal for wedding attendees, Barat guests, friends, and corporate colleagues. Total 8 rooms available in hotel. Can comfortably accommodate 2 Extra Beds (₹300/bed).',
+      extraBedRate: 300,
+      maxExtraBeds: 2,
+      extraBedDetail: 'Accommodates 2 Extra Beds (₹300/bed)',
       features: [
         '🛏️🛏️ 2 Separate Single Beds',
         '🏢 Total 8 Rooms in Hotel',
+        '🛏️ Can Accommodate 2 Extra Beds (₹300/bed)',
         '❄️ Powerful Air Conditioning',
         '📺 Flat Screen LED TV with DTH',
         '📶 High-Speed Free Wi-Fi',
@@ -141,9 +155,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       ],
       tariff: {
         single: { roomOnly: 1800, withBreakfast: 2000 },
-        double: { roomOnly: 2000, withBreakfast: 2400 }
+        double: { roomOnly: 2000, withBreakfast: 2400 },
+        extraBed: 300
       },
-      tag: 'Most Popular for Wedding Guests & Barat (8 Rooms)'
+      tag: 'Most Popular for Wedding Guests & Barat (8 Rooms • Fits 2 Extra Beds)'
     }
   ],
 

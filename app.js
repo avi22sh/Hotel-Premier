@@ -1165,6 +1165,7 @@ class HotelPremierApp {
     const roomsInput = document.getElementById('calc-rooms-number');
     const nightsSelect = document.getElementById('calc-num-nights');
     const planRadios = document.getElementsByName('calc-plan');
+    const extraBedsInput = document.getElementById('calc-extra-beds');
 
     if (!roomTypeSelect || !roomsInput || !nightsSelect) return;
 
@@ -1173,38 +1174,48 @@ class HotelPremierApp {
     if (numRooms > 14) numRooms = 14;
     const numNights = parseInt(nightsSelect.value) || 1;
 
+    let numExtraBeds = parseInt(extraBedsInput ? extraBedsInput.value : 0) || 0;
+    if (numExtraBeds < 0) numExtraBeds = 0;
+    if (numExtraBeds > 26) numExtraBeds = 26;
+    if (extraBedsInput) extraBedsInput.value = numExtraBeds;
+
     let plan = 'CP';
     planRadios.forEach(r => {
       if (r.checked) plan = r.value;
     });
 
-    let totalRegular = 0;
+    let baseRoomRegular = 0;
 
     if (roomType === 'full-14') {
       numRooms = 14;
       document.getElementById('calc-rooms-number').value = 14;
       const superDeluxeTotal = 2 * (plan === 'CP' ? 2600 : 2200);
       const deluxeTotal = 12 * (plan === 'CP' ? 2400 : 2000);
-      totalRegular = (superDeluxeTotal + deluxeTotal) * numNights;
+      baseRoomRegular = (superDeluxeTotal + deluxeTotal) * numNights;
     } else if (roomType === 'super-2') {
       if (numRooms > 2) numRooms = 2;
       document.getElementById('calc-rooms-number').value = numRooms;
       const rate = plan === 'CP' ? 2600 : 2200;
-      totalRegular = rate * numRooms * numNights;
+      baseRoomRegular = rate * numRooms * numNights;
     } else if (roomType === 'queen-4') {
       if (numRooms > 4) numRooms = 4;
       document.getElementById('calc-rooms-number').value = numRooms;
       const rate = plan === 'CP' ? 2400 : 2000;
-      totalRegular = rate * numRooms * numNights;
+      baseRoomRegular = rate * numRooms * numNights;
     } else if (roomType === 'twin-8') {
       if (numRooms > 8) numRooms = 8;
       document.getElementById('calc-rooms-number').value = numRooms;
       const rate = plan === 'CP' ? 2400 : 2000;
-      totalRegular = rate * numRooms * numNights;
+      baseRoomRegular = rate * numRooms * numNights;
     } else {
       const rate = plan === 'CP' ? 2400 : 2000;
-      totalRegular = rate * numRooms * numNights;
+      baseRoomRegular = rate * numRooms * numNights;
     }
+
+    // Extra Bed Calculation @ Rs 300 per bed per night
+    const extraBedRate = 300;
+    const extraBedCost = numExtraBeds * extraBedRate * numNights;
+    const totalRegular = baseRoomRegular + extraBedCost;
 
     const activeDeals = this.getBulkDeals().sort((a, b) => b.minRooms - a.minRooms);
     let matchedDeal = activeDeals.find(d => numRooms >= d.minRooms);
@@ -1218,17 +1229,34 @@ class HotelPremierApp {
     const savingsEl = document.getElementById('quote-savings-amount');
     const finalPriceEl = document.getElementById('quote-final-price');
 
+    const extraBedRowEl = document.getElementById('quote-extra-bed-row');
+    const extraBedCountEl = document.getElementById('quote-extra-bed-count');
+    const extraBedAmountEl = document.getElementById('quote-extra-bed-amount');
+
     if (regPriceEl) regPriceEl.innerText = `₹ ${totalRegular.toLocaleString('en-IN')}/-`;
     if (discTagEl) discTagEl.innerText = `${discountPercent}% OFF`;
     if (savingsEl) savingsEl.innerText = `- ₹ ${savings.toLocaleString('en-IN')}/-`;
     if (finalPriceEl) finalPriceEl.innerText = `₹ ${finalPrice.toLocaleString('en-IN')}/-`;
 
+    if (extraBedRowEl && extraBedCountEl && extraBedAmountEl) {
+      if (numExtraBeds > 0) {
+        extraBedRowEl.style.display = 'flex';
+        extraBedCountEl.innerText = numExtraBeds;
+        extraBedAmountEl.innerText = `+ ₹ ${extraBedCost.toLocaleString('en-IN')}/-`;
+      } else {
+        extraBedRowEl.style.display = 'none';
+      }
+    }
+
     this.latestQuote = {
       roomType: roomTypeSelect.options[roomTypeSelect.selectedIndex].text,
       rooms: numRooms,
+      extraBeds: numExtraBeds,
+      extraBedCost: extraBedCost,
       nights: numNights,
       plan: plan === 'CP' ? 'Room with Breakfast (CP)' : 'Room Only (RO)',
       eventType: document.getElementById('calc-event-type') ? document.getElementById('calc-event-type').value : 'Marriage Event',
+      baseRoomPrice: baseRoomRegular,
       regularPrice: totalRegular,
       discountPercent: discountPercent,
       finalPrice: finalPrice,
@@ -1242,11 +1270,16 @@ class HotelPremierApp {
     }
 
     const q = this.latestQuote;
+    const extraBedsLine = (q.extraBeds > 0)
+      ? `🛏️ *Extra Beds:* ${q.extraBeds} Bed(s) @ ₹300/night (+ ₹ ${q.extraBedCost.toLocaleString('en-IN')}/-)%0A`
+      : '';
+
     const msg = `*HOTEL PREMIER BHUSAWAL - ADVANCE BULK ROOM INQUIRY*%0A` +
       `---------------------------------------%0A` +
       `🏨 *Event Type:* ${encodeURIComponent(q.eventType)}%0A` +
       `🛏️ *Room Category:* ${encodeURIComponent(q.roomType)}%0A` +
       `🔢 *Number of Rooms:* ${q.rooms} Rooms (Total 14 Available)%0A` +
+      extraBedsLine +
       `🌙 *Duration of Stay:* ${q.nights} Night(s)%0A` +
       `🍽️ *Meal Plan:* ${encodeURIComponent(q.plan)}%0A` +
       `🏷️ *Bulk Discount Applied:* ${q.discountPercent}% OFF%0A` +
