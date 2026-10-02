@@ -35,7 +35,7 @@ if %ERRORLEVEL% EQU 0 (
 ) else (
     echo.
     echo NOTE: If this is your first time, make sure you have added your remote repository:
-    echo git remote add origin https://github.com/YOUR_USERNAME/hotel-premier-qr-menu.git
+    echo git remote add origin https://github.com/YOUR_USERNAME/Hotel-Premier.git
     echo git push -u origin main
 )
 
