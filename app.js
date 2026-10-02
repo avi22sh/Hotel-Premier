@@ -1712,6 +1712,8 @@ class HotelPremierApp {
         }, { passive: true });
       }
     });
+  }
+
   // ==================== 5. STAFF ACCESS CONTROL (HIDDEN FROM GUESTS) ====================
   checkStaffModeAccess() {
     try {
