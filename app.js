@@ -424,10 +424,14 @@ class HotelPremierApp {
       slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + catId, null);
     }
 
-    // 2. If no custom slides stored, auto-derive from category dishes with images
+    // 2. If no custom slides stored, auto-derive by selecting random images from this section
     if (!slides || !Array.isArray(slides) || slides.length === 0) {
       const dishes = this.menuData.filter(d => d.categoryId === catId && d.image && d.image.trim() !== '');
-      slides = dishes.map(d => ({
+      // Shuffle and pick random 4-5 dishes from this section to display in the banner
+      const shuffledDishes = [...dishes].sort(() => 0.5 - Math.random());
+      const selectedDishes = shuffledDishes.slice(0, Math.min(5, shuffledDishes.length));
+
+      slides = selectedDishes.map(d => ({
         id: d.id,
         dishId: d.id,
         name: d.name,

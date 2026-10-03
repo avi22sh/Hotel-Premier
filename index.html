@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.1">
+  <link rel="stylesheet" href="styles.css?v=4.2">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -200,9 +200,6 @@
           <button class="menu-sections-toggle-btn" onclick="window.app.toggleMenuSectionDrawer()" title="Open Full Menu Sub-Sections Drawer">
             <span>📋 <span data-i18n="menuSectionsToggle">Menu Sections</span> ▾</span>
           </button>
-          <button class="view-all-text-btn" onclick="window.app.showAllDishesView()">
-            <span data-i18n="viewAllBtn">📖 View All Items</span>
-          </button>
         </div>
       </div>
 
@@ -235,16 +232,6 @@
           <span class="active-category-hindi" id="active-category-hindi">शाही पनीर व्यंजन ▾</span>
         </div>
         <div class="active-category-count" id="active-category-count">14 Items</div>
-      </div>
-
-      <div class="category-nav-container-bar">
-        <button class="category-nav-arrow-btn prev" onclick="window.app ? window.app.scrollCategoryNav(-240) : null" aria-label="Scroll Categories Left">◀</button>
-        <nav class="category-nav-wrapper" id="category-nav-scroll-wrapper">
-          <div class="category-nav-inner" id="category-chips-container">
-            <!-- Category chips rendered dynamically -->
-          </div>
-        </nav>
-        <button class="category-nav-arrow-btn next" onclick="window.app ? window.app.scrollCategoryNav(240) : null" aria-label="Scroll Categories Right">▶</button>
       </div>
 
       <!-- Sub-Section Multi-Photo Dish Slideshow Banner -->
@@ -1390,13 +1377,13 @@
   </div>
 
   <!-- Load Application Scripts (v4.1 Cache-Busted) -->
-  <script src="storage.js?v=4.1"></script>
-  <script src="vault.js?v=4.1"></script>
-  <script src="data/translations.js?v=4.1"></script>
-  <script src="data/hotel-data.js?v=4.1"></script>
-  <script src="data/menu-data.js?v=4.1"></script>
-  <script src="app.js?v=4.1"></script>
-  <script src="admin.js?v=4.1"></script>
+  <script src="storage.js?v=4.2"></script>
+  <script src="vault.js?v=4.2"></script>
+  <script src="data/translations.js?v=4.2"></script>
+  <script src="data/hotel-data.js?v=4.2"></script>
+  <script src="data/menu-data.js?v=4.2"></script>
+  <script src="app.js?v=4.2"></script>
+  <script src="admin.js?v=4.2"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1468,8 +1455,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.1').then(function(reg) {
-          console.log('[PWA] Service Worker v4.1 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.2').then(function(reg) {
+          console.log('[PWA] Service Worker v4.2 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();
