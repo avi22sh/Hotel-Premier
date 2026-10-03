@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.6">
+  <link rel="stylesheet" href="styles.css?v=4.7">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -147,10 +147,6 @@
         <span class="badge-ac" data-i18n="acBadge">AC RESTAURANT</span>
       </div>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <button type="button" class="header-guest-pass-pill" id="header-guest-pass-btn" onclick="window.app ? window.app.openGuestPassModal() : null" title="Fast Guest Check-in & Auto-Fill">
-          <span class="pass-icon">⚡</span>
-          <span class="pass-text" id="header-guest-pass-text">Quick Pass</span>
-        </button>
         <a href="tel:09325375802" class="hotel-phone-contact" title="Call Primary Number">
           <span>📞</span> <span>09325375802</span>
         </a>
@@ -953,7 +949,7 @@
       <!-- Public Platform Rating Social Proof & 1-Tap Reviews (Option 4) -->
       <div class="public-review-cta-card">
         <div class="public-review-header">
-          <span class="public-review-tag" data-i18n="publicReviewsTag">⭐ VERIFIED 4.2★ PUBLIC REVIEWS</span>
+          <span class="public-review-tag" data-i18n="publicReviewsTag">VERIFIED 4.2★ PUBLIC REVIEWS</span>
           <h3 class="public-review-title" data-i18n="publicReviewsTitle">Love Dining With Us? Rate Us Publicly!</h3>
           <p class="public-review-sub" data-i18n="publicReviewsSubtitle">
             Your 5-star review helps travelers and Bhusawal families discover authentic pure veg dining. 1-tap direct rating on your preferred platform:
@@ -1254,77 +1250,7 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL: QUICK GUEST PASS & FAST CHECK-IN ==================== -->
-  <div class="modal-backdrop" id="guest-pass-modal">
-    <div class="modal-sheet guest-pass-sheet">
-      <div class="modal-header">
-        <div class="modal-title">
-          <span style="font-size: 1.3rem;">⚡</span>
-          <div>
-            <h3 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--terracotta-dark); margin: 0;">Quick Guest Pass</h3>
-            <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">Fast 1-Tap Form Auto-Fill • Hotel Premier</span>
-          </div>
-        </div>
-        <button class="modal-close-btn" onclick="window.app ? window.app.closeGuestPassModal() : null">✕</button>
-      </div>
-      <div class="modal-body" style="padding: 18px 20px;">
-        <p style="font-size: 0.82rem; color: var(--text-dark); margin-bottom: 16px; line-height: 1.45;">
-          Save your details once. We will <strong>automatically pre-fill</strong> your reviews, event quote requests, and room inquiries so you never have to re-type them!
-        </p>
-        <form id="guest-pass-form" onsubmit="window.app ? window.app.saveGuestPass(event) : false;">
-          <div class="form-group" style="margin-bottom: 12px;">
-            <label class="form-label" style="font-size: 0.78rem; font-weight: 700;">Your Full Name *</label>
-            <input type="text" id="guest-pass-input-name" class="form-input" placeholder="e.g. Rajesh Patil" required>
-          </div>
-          <div class="form-group" style="margin-bottom: 12px;">
-            <label class="form-label" style="font-size: 0.78rem; font-weight: 700;">WhatsApp / Mobile Number *</label>
-            <input type="tel" id="guest-pass-input-phone" class="form-input" placeholder="e.g. 98220xxxxx" pattern="[0-9]{10}" maxlength="10" required>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
-            <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="font-size: 0.78rem; font-weight: 700;">Table / Room #</label>
-              <input type="text" id="guest-pass-input-table" class="form-input" placeholder="e.g. Table 4">
-            </div>
-            <div class="form-group" style="margin-bottom: 0;">
-              <label class="form-label" style="font-size: 0.78rem; font-weight: 700;">Region / City</label>
-              <select id="guest-pass-input-region" class="form-select" style="font-size: 0.8rem; padding: 10px 8px;">
-                <option value="Bhusawal Local">Bhusawal Local</option>
-                <option value="Jalgaon District">Jalgaon District</option>
-                <option value="Varangaon / Deepnagar">Varangaon / Deepnagar</option>
-                <option value="Malkapur / Buldhana">Malkapur / Buldhana</option>
-                <option value="Transit Passenger (Railway / Highway)">Transit Passenger</option>
-                <option value="Mumbai / Pune / Nashik">Mumbai / Pune / Nashik</option>
-                <option value="Other Region">Other Region</option>
-              </select>
-            </div>
-          </div>
-          <div style="display: flex; gap: 10px; align-items: center;">
-            <button type="submit" class="btn-primary" style="flex-grow: 1; padding: 12px; font-weight: 800; font-size: 0.9rem;">
-              💾 Save Details & Auto-Fill Everywhere
-            </button>
-            <button type="button" class="btn-secondary" style="padding: 12px 14px;" onclick="window.app ? window.app.clearGuestPass() : null" title="Clear saved details">
-              🗑️
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
-  <!-- Floating Bottom Scanned QR Welcome Prompt -->
-  <div class="guest-scan-welcome-banner" id="guest-scan-welcome-banner" style="display: none;">
-    <div class="welcome-banner-content">
-      <div class="welcome-banner-title">
-        <span class="table-pill" id="welcome-table-pill">📍 Table 4</span>
-        <span class="welcome-text">👋 Welcome to Hotel Premier!</span>
-      </div>
-      <p class="welcome-banner-sub">Save your name once to auto-fill reviews, event quotes & hotel inquiries.</p>
-    </div>
-    <div class="welcome-banner-actions">
-      <button type="button" class="btn-welcome-checkin" onclick="window.app ? window.app.openGuestPassModal() : null">⚡ 1-Tap Auto-Fill</button>
-      <button type="button" class="btn-welcome-dismiss" onclick="window.app ? window.app.dismissWelcomeBanner() : null" aria-label="Dismiss">✕</button>
-    </div>
-  </div>
 
   <!-- ==================== MODAL 5: DEVELOPER & ARCHITECTURE MODAL ==================== -->
   <div class="modal-backdrop" id="developer-credits-modal">
@@ -1418,14 +1344,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.6 Cache-Busted) -->
-  <script src="storage.js?v=4.6"></script>
-  <script src="vault.js?v=4.6"></script>
-  <script src="data/translations.js?v=4.6"></script>
-  <script src="data/hotel-data.js?v=4.6"></script>
-  <script src="data/menu-data.js?v=4.6"></script>
-  <script src="app.js?v=4.6"></script>
-  <script src="admin.js?v=4.6"></script>
+  <!-- Load Application Scripts (v4.7 Cache-Busted) -->
+  <script src="storage.js?v=4.7"></script>
+  <script src="vault.js?v=4.7"></script>
+  <script src="data/translations.js?v=4.7"></script>
+  <script src="data/hotel-data.js?v=4.7"></script>
+  <script src="data/menu-data.js?v=4.7"></script>
+  <script src="app.js?v=4.7"></script>
+  <script src="admin.js?v=4.7"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1497,8 +1423,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.6').then(function(reg) {
-          console.log('[PWA] Service Worker v4.6 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.7').then(function(reg) {
+          console.log('[PWA] Service Worker v4.7 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();

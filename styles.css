@@ -1100,6 +1100,19 @@ body.large-font-mode .category-card-title {
   flex-shrink: 0;
 }
 
+.dish-rating.zomato-rating {
+  background: linear-gradient(135deg, #E23744 0%, #CB202D 100%);
+  color: #FFFFFF;
+  font-weight: 800;
+  font-size: 0.70rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(226, 55, 68, 0.35);
+  letter-spacing: 0.3px;
+  display: inline-flex;
+  align-items: center;
+}
+
 .dish-desc {
   font-size: 0.74rem;
   color: #94A3B8;

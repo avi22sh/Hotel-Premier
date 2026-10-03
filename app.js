@@ -1022,7 +1022,7 @@ class HotelPremierApp {
   renderQuickFilters() {
     const filters = [
       { id: 'all', labelKey: 'filterAll', icon: '🍽️' },
-      { id: 'top-rated', labelKey: 'filterTopRated', icon: '⭐' },
+      { id: 'top-rated', labelKey: 'filterTopRated', icon: '' },
       { id: 'chef-special', labelKey: 'filterChefSpecial', icon: '👑' },
       { id: 'bestseller', labelKey: 'filterBestseller', icon: '🔥' },
       { id: 'khandeshi', labelKey: 'filterKhandeshi', icon: '🌶️' },
@@ -1034,7 +1034,7 @@ class HotelPremierApp {
 
     container.innerHTML = filters.map(f => `
       <button class="filter-pill ${this.currentFilter === f.id ? 'active' : ''}" data-filter-id="${f.id}">
-        <span>${f.icon}</span>
+        ${f.icon ? `<span>${f.icon}</span>` : ''}
         <span>${this.t(f.labelKey)}</span>
       </button>
     `).join('');
@@ -1093,10 +1093,8 @@ class HotelPremierApp {
       }
 
       if (this.currentFilter === 'top-rated') {
-        const isSwiggy = item.tags && item.tags.includes('swiggy-top');
-        const isZomato = item.tags && item.tags.includes('zomato-top');
-        const isHighRated = (item.rating && item.rating >= 4.9);
-        if (!isSwiggy && !isZomato && !isHighRated) return false;
+        const isZomato = (item.tags && item.tags.includes('zomato-top')) || Boolean(item.zomatoRating);
+        if (!isZomato) return false;
       }
       if (this.currentFilter === 'chef-special' && (!item.tags || !item.tags.includes('chef-special'))) return false;
       if (this.currentFilter === 'bestseller' && (!item.tags || !item.tags.includes('bestseller'))) return false;
@@ -1174,6 +1172,11 @@ class HotelPremierApp {
   renderDishCard(dish) {
     const hasVariants = dish.variants && dish.variants.length > 0;
     const hasPhoto = dish.image && dish.image.trim() !== '';
+    const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
+    const zomatoScore = dish.zomatoRating || '4.2';
+    const ratingHtml = isZomatoRated 
+      ? `<div class="dish-rating zomato-rating" title="Hotel Premier Zomato Rating">Zomato ${zomatoScore}★</div>` 
+      : '';
 
     let badgesHtml = '';
     if (dish.tags && dish.tags.includes('swiggy-top')) {
@@ -1229,7 +1232,7 @@ class HotelPremierApp {
         <div class="dish-body">
           <div class="dish-header-row">
             <h4 class="dish-title">${dish.name}</h4>
-            <div class="dish-rating">⭐ ${dish.rating || '4.8'}</div>
+            ${ratingHtml}
           </div>
           <p class="dish-desc">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
           ${variantsHtml}
@@ -1278,6 +1281,8 @@ class HotelPremierApp {
     if (!modal || !body) return;
 
     const hasPhoto = dish.image && dish.image.trim() !== '';
+    const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
+    const zomatoScore = dish.zomatoRating || '4.2';
 
     let variantsList = '';
     if (dish.variants && dish.variants.length > 0) {
@@ -1318,9 +1323,8 @@ class HotelPremierApp {
         <span style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 900; color: var(--terracotta-dark);">₹${dish.price}</span>
       </div>
       <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-        <span style="font-size: 0.8rem; font-weight: 800; background: #FEF3C7; color: #92400E; padding: 2px 8px; border-radius: 4px; border: 1px solid #F59E0B;">⭐ ${dish.rating || '4.8'} / 5.0 Rating</span>
+        ${isZomatoRated ? `<span class="dish-rating zomato-rating" style="font-size: 0.82rem; padding: 4px 10px; border-radius: 6px;" title="Hotel Premier Zomato Rating">Zomato ${zomatoScore}★</span>` : ''}
         ${dish.tags && dish.tags.includes('swiggy-top') ? `<span class="badge-tag swiggy">🛵 4.2★ Swiggy Bestseller</span>` : ''}
-        ${dish.tags && dish.tags.includes('zomato-top') ? `<span class="badge-tag zomato">🍅 Top Rated on Zomato</span>` : ''}
         ${dish.tags && dish.tags.includes('chef-special') ? `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>` : ''}
       </div>
       <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
@@ -2135,23 +2139,6 @@ class HotelPremierApp {
       }
 
       this.bindGuestProfileSync();
-
-      // Show welcome prompt if user scanned a table/room QR and hasn't saved their name or dismissed it
-      if (scannedTableOrRoom) {
-        const welcomePill = document.getElementById('welcome-table-pill');
-        if (welcomePill) welcomePill.innerText = `📍 ${scannedTableOrRoom}`;
-
-        const isDismissed = sessionStorage.getItem('hp_dismiss_welcome_banner') === 'true';
-        const currentProfile = this.getGuestProfile();
-        if (!currentProfile.name && !isDismissed) {
-          const banner = document.getElementById('guest-scan-welcome-banner');
-          if (banner) {
-            setTimeout(() => {
-              banner.style.display = 'flex';
-            }, 1200);
-          }
-        }
-      }
     } catch (e) {
       console.error('Error initializing guest profile:', e);
     }
