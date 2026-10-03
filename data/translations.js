@@ -24,6 +24,7 @@ window.HOTEL_PREMIER_I18N = {
       
       // Quick Filters
       filterAll: 'All Items',
+      filterTopRated: '⭐ 4.2★+ Top Rated',
       filterChefSpecial: "Chef's Special",
       filterBestseller: 'Bestsellers',
       filterKhandeshi: 'Khandeshi Special',
@@ -59,6 +60,8 @@ window.HOTEL_PREMIER_I18N = {
       badgeBestseller: '🔥 Bestseller',
       badgeKhandeshi: '🌶️ Khandeshi',
       badgeSpicy: '🌶️ Spicy',
+      badgeSwiggy: '🛵 4.2★ Swiggy',
+      badgeZomato: '🍅 Top on Zomato',
       sectionHighlight: '👑 SECTION HIGHLIGHT',
       tapToViewDish: '👆 Tap to view dish details & options',
 
@@ -152,6 +155,17 @@ window.HOTEL_PREMIER_I18N = {
       feedbackBadge: '⭐ YOUR VOICE MATTERS',
       feedbackTitle: 'Rate Your Dining Experience',
       feedbackSubtitle: "Help us uphold Bhusawal's highest culinary standards. Tell us how we served you today at Pride Pure Veg!",
+      publicReviewsTag: '⭐ VERIFIED 4.2★ PUBLIC REVIEWS',
+      publicReviewsTitle: 'Love Dining With Us? Rate Us Publicly!',
+      publicReviewsSubtitle: 'Your 5-star review helps travelers and Bhusawal families discover authentic pure veg dining. 1-tap direct rating on your preferred platform:',
+      rateOnGoogle: 'Rate on Google Reviews',
+      rateOnZomato: 'Rate on Zomato',
+      rateOnSwiggy: '4.2★ on Swiggy',
+      orInternalFeedback: 'OR SUBMIT IN-HOUSE GUEST FEEDBACK DIRECT TO MANAGEMENT',
+      thankyouPromptTitle: '🌟 Loved your dining experience today?',
+      thankyouPromptSub: 'Please take 10 seconds to share your 5-Star review on Google or Zomato — it means the world to our kitchen and service team!',
+      thankyouGoogleCta: '⭐ Post 5★ on Google Reviews ➔',
+      thankyouZomatoCta: '🍅 Review on Zomato ➔',
 
       // Text Size
       textSizeLarge: 'Large Text Mode enabled for easy reading!',
@@ -174,6 +188,7 @@ window.HOTEL_PREMIER_I18N = {
 
       // Quick Filters
       filterAll: 'सभी व्यंजन',
+      filterTopRated: '⭐ 4.2★+ टॉप रेटेड',
       filterChefSpecial: 'शेफ स्पेशल 👑',
       filterBestseller: 'लोकप्रिय व्यंजन 🔥',
       filterKhandeshi: 'खान्देशी स्पेशल 🌶️',
@@ -209,6 +224,8 @@ window.HOTEL_PREMIER_I18N = {
       badgeBestseller: '🔥 लोकप्रिय',
       badgeKhandeshi: '🌶️ खान्देशी',
       badgeSpicy: '🌶️ तीखा',
+      badgeSwiggy: '🛵 4.2★ स्विगी',
+      badgeZomato: '🍅 जोमैटो टॉप',
       sectionHighlight: '👑 विभाग विशेष',
       tapToViewDish: '👆 डिश विवरण और विकल्प देखने के लिए टैप करें',
 
@@ -302,6 +319,17 @@ window.HOTEL_PREMIER_I18N = {
       feedbackBadge: '⭐ आपकी राय हमारे लिए महत्वपूर्ण है',
       feedbackTitle: 'अपने भोजन अनुभव को रेट करें',
       feedbackSubtitle: 'भुसावल के सर्वश्रेष्ठ स्वाद व सेवा को बनाए रखने में हमारी सहायता करें। बताएं कि प्राइड प्योर वेज में आपका अनुभव कैसा रहा!',
+      publicReviewsTag: '⭐ सत्यापित 4.2★ पब्लिक रेटिंग्स',
+      publicReviewsTitle: 'हमारा भोजन पसंद आया? हमें पब्लिक रिव्यू दें!',
+      publicReviewsSubtitle: 'आपकी 5-स्टार रेटिंग अन्य यात्रियों और भुसावल के परिवारों को शुद्ध शाकाहारी भोजन तक पहुंचाने में मदद करती है। अपने पसंदीदा ऐप पर 1-टैप रेटिंग दें:',
+      rateOnGoogle: 'Google Reviews पर रेट करें',
+      rateOnZomato: 'Zomato पर रेट करें',
+      rateOnSwiggy: 'Swiggy पर 4.2★ रेटिंग',
+      orInternalFeedback: 'या मैनेजमेंट को सीधे इन-हाउस फीडबैक भेजें',
+      thankyouPromptTitle: '🌟 आज का भोजन और सेवा पसंद आई?',
+      thankyouPromptSub: 'कृपया 10 सेकंड निकालकर Google या Zomato पर अपना 5-स्टार रिव्यू अवश्य शेयर करें — यह हमारे शेफ एवं सर्विस टीम के लिए बहुत मायने रखता है!',
+      thankyouGoogleCta: '⭐ Google Reviews पर 5★ दें ➔',
+      thankyouZomatoCta: '🍅 Zomato पर रिव्यू करें ➔',
 
       // Text Size
       textSizeLarge: 'आसान पढ़ने के लिए बड़े अक्षरों का मोड चालू किया गया!',
@@ -324,6 +352,7 @@ window.HOTEL_PREMIER_I18N = {
 
       // Quick Filters
       filterAll: 'सर्व पदार्थ',
+      filterTopRated: '⭐ 4.2★+ टॉप रेटेड',
       filterChefSpecial: 'शेफ स्पेशल 👑',
       filterBestseller: 'लोकप्रिय पदार्थ 🔥',
       filterKhandeshi: 'खान्देशी स्पेशल 🌶️',
@@ -359,6 +388,8 @@ window.HOTEL_PREMIER_I18N = {
       badgeBestseller: '🔥 लोकप्रिय',
       badgeKhandeshi: '🌶️ खान्देशी',
       badgeSpicy: '🌶️ तिखट',
+      badgeSwiggy: '🛵 4.2★ स्विगी',
+      badgeZomato: '🍅 झोमॅटो टॉप',
       sectionHighlight: '👑 विभाग विशेष',
       tapToViewDish: '👆 डिशचे तपशील आणि पर्याय पाहण्यासाठी टॅप करा',
 
@@ -452,6 +483,17 @@ window.HOTEL_PREMIER_I18N = {
       feedbackBadge: '⭐ आपला अभिप्राय महत्त्वाचा आहे',
       feedbackTitle: 'आपल्या जेवणाचा अनुभव नोंदवा',
       feedbackSubtitle: 'भुसावळची सर्वोत्तम चव आणि तत्पर सेवा टिकवण्यासाठी आम्हाला सहकार्य करा. प्राइड प्युअर व्हेजमधील आपल्या अनुभवाचे मूल्यांकन करा!',
+      publicReviewsTag: '⭐ सत्यापित 4.2★ पब्लिक रेटिंग्स',
+      publicReviewsTitle: 'आमचे जेवण आवडले का? आम्हाला पब्लिक रिव्ह्यू द्या!',
+      publicReviewsSubtitle: 'आपले 5-स्टार रेटिंग इतर प्रवासी व भुसावळकरांना उत्कृष्ट शुद्ध शाकाहारी जेवणाचा आनंद घेण्यास मदत करते. आपल्या आवडत्या ॲपवर १-टॅप रेटिंग द्या:',
+      rateOnGoogle: 'Google Reviews वर रेट करा',
+      rateOnZomato: 'Zomato वर रेट करा',
+      rateOnSwiggy: 'Swiggy वर 4.2★ रेटिंग',
+      orInternalFeedback: 'किंवा व्यवस्थापनाकडे थेट इन-हाउस अभिप्राय नोंदवा',
+      thankyouPromptTitle: '🌟 आजचे जेवण आणि सेवा आवडली का?',
+      thankyouPromptSub: 'कृपया १० सेकंद काढून Google किंवा Zomato वर आपला 5-स्टार रिव्ह्यू नक्की शेअर करा — हे आमच्या शेफ आणि टीमसाठी अत्यंत मौल्यवान आहे!',
+      thankyouGoogleCta: '⭐ Google Reviews वर 5★ द्या ➔',
+      thankyouZomatoCta: '🍅 Zomato वर रिव्ह्यू द्या ➔',
 
       // Text Size
       textSizeLarge: 'सुलभ वाचनासाठी मोठा फॉन्ट मोड सुरू केला!',

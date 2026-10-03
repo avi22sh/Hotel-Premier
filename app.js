@@ -1022,6 +1022,7 @@ class HotelPremierApp {
   renderQuickFilters() {
     const filters = [
       { id: 'all', labelKey: 'filterAll', icon: '🍽️' },
+      { id: 'top-rated', labelKey: 'filterTopRated', icon: '⭐' },
       { id: 'chef-special', labelKey: 'filterChefSpecial', icon: '👑' },
       { id: 'bestseller', labelKey: 'filterBestseller', icon: '🔥' },
       { id: 'khandeshi', labelKey: 'filterKhandeshi', icon: '🌶️' },
@@ -1091,6 +1092,12 @@ class HotelPremierApp {
         if (item.categoryId !== this.currentCategory) return false;
       }
 
+      if (this.currentFilter === 'top-rated') {
+        const isSwiggy = item.tags && item.tags.includes('swiggy-top');
+        const isZomato = item.tags && item.tags.includes('zomato-top');
+        const isHighRated = (item.rating && item.rating >= 4.9);
+        if (!isSwiggy && !isZomato && !isHighRated) return false;
+      }
       if (this.currentFilter === 'chef-special' && (!item.tags || !item.tags.includes('chef-special'))) return false;
       if (this.currentFilter === 'bestseller' && (!item.tags || !item.tags.includes('bestseller'))) return false;
       if (this.currentFilter === 'khandeshi' && (!item.tags || !item.tags.includes('khandeshi-special'))) return false;
@@ -1169,10 +1176,16 @@ class HotelPremierApp {
     const hasPhoto = dish.image && dish.image.trim() !== '';
 
     let badgesHtml = '';
+    if (dish.tags && dish.tags.includes('swiggy-top')) {
+      badgesHtml += `<span class="badge-tag swiggy" title="4.2★ Swiggy Bestseller">${this.t('badgeSwiggy')}</span>`;
+    }
+    if (dish.tags && dish.tags.includes('zomato-top')) {
+      badgesHtml += `<span class="badge-tag zomato" title="Top Rated on Zomato">${this.t('badgeZomato')}</span>`;
+    }
     if (dish.tags && dish.tags.includes('chef-special')) {
       badgesHtml += `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>`;
     }
-    if (dish.tags && dish.tags.includes('bestseller')) {
+    if (dish.tags && dish.tags.includes('bestseller') && !dish.tags.includes('swiggy-top') && !dish.tags.includes('zomato-top')) {
       badgesHtml += `<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`;
     }
     if (dish.tags && dish.tags.includes('khandeshi-special')) {
@@ -1297,12 +1310,18 @@ class HotelPremierApp {
           ${hasPhoto ? '📷 Change Photo' : '➕ Upload Photo'}
         </button>
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
         <div>
           <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--terracotta-dark); font-weight: 800;">${dish.name}</h3>
           <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">${this.t('servingTime')}</div>
         </div>
         <span style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 900; color: var(--terracotta-dark);">₹${dish.price}</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+        <span style="font-size: 0.8rem; font-weight: 800; background: #FEF3C7; color: #92400E; padding: 2px 8px; border-radius: 4px; border: 1px solid #F59E0B;">⭐ ${dish.rating || '4.8'} / 5.0 Rating</span>
+        ${dish.tags && dish.tags.includes('swiggy-top') ? `<span class="badge-tag swiggy">🛵 4.2★ Swiggy Bestseller</span>` : ''}
+        ${dish.tags && dish.tags.includes('zomato-top') ? `<span class="badge-tag zomato">🍅 Top Rated on Zomato</span>` : ''}
+        ${dish.tags && dish.tags.includes('chef-special') ? `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>` : ''}
       </div>
       <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
       ${variantsList}
@@ -2139,7 +2158,10 @@ class HotelPremierApp {
     const form = document.getElementById('dining-feedback-form');
     const thankyou = document.getElementById('feedback-thankyou-card');
     if (form) form.style.display = 'none';
-    if (thankyou) thankyou.style.display = 'block';
+    if (thankyou) {
+      thankyou.style.display = 'block';
+      thankyou.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
     this.showToast('Thank you for your rating!', 'success');
     return false;

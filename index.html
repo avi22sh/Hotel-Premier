@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.3">
+  <link rel="stylesheet" href="styles.css?v=4.4">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -922,6 +922,48 @@
         Help us uphold Bhusawal's highest culinary standards. Tell us how we served you today at Pride Pure Veg!
       </p>
 
+      <!-- Public Platform Rating Social Proof & 1-Tap Reviews (Option 4) -->
+      <div class="public-review-cta-card">
+        <div class="public-review-header">
+          <span class="public-review-tag" data-i18n="publicReviewsTag">⭐ VERIFIED 4.2★ PUBLIC REVIEWS</span>
+          <h3 class="public-review-title" data-i18n="publicReviewsTitle">Love Dining With Us? Rate Us Publicly!</h3>
+          <p class="public-review-sub" data-i18n="publicReviewsSubtitle">
+            Your 5-star review helps travelers and Bhusawal families discover authentic pure veg dining. 1-tap direct rating on your preferred platform:
+          </p>
+        </div>
+        <div class="public-review-actions-grid">
+          <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener" class="public-platform-btn btn-google">
+            <span class="platform-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+            </span>
+            <div class="platform-meta">
+              <div class="platform-score">4.2 ★★★★★</div>
+              <div class="platform-title" data-i18n="rateOnGoogle">Rate on Google Reviews</div>
+            </div>
+            <span class="platform-arrow">➔</span>
+          </a>
+          <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener" class="public-platform-btn btn-zomato">
+            <span class="platform-emoji">🍅</span>
+            <div class="platform-meta">
+              <div class="platform-score">Top Pure Veg</div>
+              <div class="platform-title" data-i18n="rateOnZomato">Rate on Zomato</div>
+            </div>
+            <span class="platform-arrow">➔</span>
+          </a>
+          <a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener" class="public-platform-btn btn-swiggy">
+            <span class="platform-emoji">🛵</span>
+            <div class="platform-meta">
+              <div class="platform-score">4.2 ★ (1,600+)</div>
+              <div class="platform-title" data-i18n="rateOnSwiggy">4.2★ on Swiggy</div>
+            </div>
+            <span class="platform-arrow">➔</span>
+          </a>
+        </div>
+        <div class="public-review-divider">
+          <span data-i18n="orInternalFeedback">OR SUBMIT IN-HOUSE GUEST FEEDBACK DIRECT TO MANAGEMENT</span>
+        </div>
+      </div>
+
       <form id="dining-feedback-form" onsubmit="window.app ? window.app.submitGuestFeedback(event) : false;">
         <!-- Star Rating Selector -->
         <div class="feedback-rating-wrap">
@@ -1001,6 +1043,22 @@
         </p>
         <div class="thankyou-deal-badge">
           🎁 Show this screen to steward for 10% Off Dessert or Beverages on your next table booking!
+        </div>
+
+        <!-- 1-Tap Public Review Share in Thank You Card -->
+        <div class="thankyou-public-prompt">
+          <div class="thankyou-prompt-title" data-i18n="thankyouPromptTitle">🌟 Loved your dining experience today?</div>
+          <p class="thankyou-prompt-sub" data-i18n="thankyouPromptSub">
+            Please take 10 seconds to share your 5-Star review on Google or Zomato — it means the world to our kitchen and service team!
+          </p>
+          <div class="thankyou-public-actions">
+            <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener" class="thankyou-btn btn-google" data-i18n="thankyouGoogleCta">
+              ⭐ Post 5★ on Google Reviews ➔
+            </a>
+            <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener" class="thankyou-btn btn-zomato" data-i18n="thankyouZomatoCta">
+              🍅 Review on Zomato ➔
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1359,14 +1417,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.3 Cache-Busted) -->
-  <script src="storage.js?v=4.3"></script>
-  <script src="vault.js?v=4.3"></script>
-  <script src="data/translations.js?v=4.3"></script>
-  <script src="data/hotel-data.js?v=4.3"></script>
-  <script src="data/menu-data.js?v=4.3"></script>
-  <script src="app.js?v=4.3"></script>
-  <script src="admin.js?v=4.3"></script>
+  <!-- Load Application Scripts (v4.4 Cache-Busted) -->
+  <script src="storage.js?v=4.4"></script>
+  <script src="vault.js?v=4.4"></script>
+  <script src="data/translations.js?v=4.4"></script>
+  <script src="data/hotel-data.js?v=4.4"></script>
+  <script src="data/menu-data.js?v=4.4"></script>
+  <script src="app.js?v=4.4"></script>
+  <script src="admin.js?v=4.4"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1438,8 +1496,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.3').then(function(reg) {
-          console.log('[PWA] Service Worker v4.3 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.4').then(function(reg) {
+          console.log('[PWA] Service Worker v4.4 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();

@@ -953,6 +953,24 @@ body.large-font-mode .category-card-title {
   border: 1px solid #F97316;
 }
 
+.badge-tag.swiggy {
+  background: linear-gradient(135deg, #FC8019 0%, #D86000 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 2px 6px rgba(252, 128, 25, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.3px;
+}
+
+.badge-tag.zomato {
+  background: linear-gradient(135deg, #E23744 0%, #B81D2A 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 2px 6px rgba(226, 55, 68, 0.35);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  letter-spacing: 0.3px;
+}
+
 /* Indian Standard Vegetarian Symbol (Green square with green dot) */
 .dish-veg-symbol {
   position: absolute;
@@ -4986,6 +5004,251 @@ div[class*="feedback-widget"] {
   padding: 8px 14px;
   border-radius: 8px;
   display: inline-block;
+  margin-bottom: 18px;
+}
+
+/* ==========================================================================
+   OPTION 4: PUBLIC REVIEWS SOCIAL PROOF & PLATFORM RATINGS
+   ========================================================================== */
+.public-review-cta-card {
+  background: linear-gradient(135deg, rgba(212, 144, 28, 0.12) 0%, rgba(14, 29, 54, 0.6) 100%);
+  border: 1.5px solid rgba(212, 144, 28, 0.45);
+  border-radius: 16px;
+  padding: 22px 18px 20px;
+  margin-bottom: 26px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.public-review-header {
+  margin-bottom: 16px;
+}
+
+.public-review-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #F7C860;
+  background: rgba(212, 144, 28, 0.2);
+  border: 1px solid rgba(247, 200, 96, 0.4);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.public-review-title {
+  font-family: var(--font-royal);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #FFFFFF;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.public-review-sub {
+  font-size: 0.85rem;
+  color: var(--cream-parchment);
+  opacity: 0.9;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.45;
+}
+
+.public-review-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 680px) {
+  .public-review-actions-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.public-platform-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.public-platform-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+}
+
+.public-platform-btn .platform-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.public-platform-btn .platform-emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.public-platform-btn .platform-meta {
+  flex-grow: 1;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.public-platform-btn .platform-score {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  opacity: 0.9;
+}
+
+.public-platform-btn .platform-title {
+  font-size: 0.88rem;
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+.public-platform-btn .platform-arrow {
+  font-size: 0.85rem;
+  font-weight: 900;
+  opacity: 0.75;
+  transition: transform 0.2s ease;
+}
+
+.public-platform-btn:hover .platform-arrow {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+/* Button Theming */
+.public-platform-btn.btn-google {
+  background: #FFFFFF;
+  color: #1F2937;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.public-platform-btn.btn-google .platform-score {
+  color: #EA4335;
+}
+.public-platform-btn.btn-google .platform-title {
+  color: #1F2937;
+}
+
+.public-platform-btn.btn-zomato {
+  background: linear-gradient(135deg, #E23744 0%, #B81D2A 100%);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(226, 55, 68, 0.4);
+}
+.public-platform-btn.btn-zomato .platform-score {
+  color: #FFD2D6;
+}
+
+.public-platform-btn.btn-swiggy {
+  background: linear-gradient(135deg, #FC8019 0%, #D86000 100%);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(252, 128, 25, 0.4);
+}
+.public-platform-btn.btn-swiggy .platform-score {
+  color: #FFE6CC;
+}
+
+.public-review-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.public-review-divider span {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+  opacity: 0.8;
+  position: relative;
+  padding: 0 10px;
+}
+
+.public-review-divider::before,
+.public-review-divider::after {
+  content: '';
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 144, 28, 0.35), transparent);
+}
+
+/* Thank you card public review actions */
+.thankyou-public-prompt {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(212, 144, 28, 0.3);
+}
+
+.thankyou-prompt-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #F7C860;
+  margin-bottom: 6px;
+}
+
+.thankyou-prompt-sub {
+  font-size: 0.82rem;
+  color: var(--cream-parchment);
+  opacity: 0.9;
+  max-width: 480px;
+  margin: 0 auto 16px;
+  line-height: 1.45;
+}
+
+.thankyou-public-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.thankyou-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.thankyou-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+.thankyou-btn.btn-google {
+  background: #FFFFFF;
+  color: #1F2937;
+  border: 1px solid #E5E7EB;
+}
+
+.thankyou-btn.btn-zomato {
+  background: linear-gradient(135deg, #E23744 0%, #B81D2A 100%);
+  color: #FFFFFF;
 }
 
 /* ==========================================================================
