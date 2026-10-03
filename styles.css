@@ -5252,6 +5252,147 @@ div[class*="feedback-widget"] {
 }
 
 /* ==========================================================================
+   SMART GUEST PROFILE & FAST SCAN AUTO-FILL STYLES
+   ========================================================================== */
+.header-guest-pass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(212, 144, 28, 0.16);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.header-guest-pass-pill:hover,
+.header-guest-pass-pill.has-profile {
+  background: linear-gradient(135deg, rgba(212, 144, 28, 0.4) 0%, rgba(247, 200, 96, 0.25) 100%);
+  border-color: #F7C860;
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(212, 144, 28, 0.35);
+}
+
+.header-guest-pass-pill .pass-icon {
+  font-size: 0.8rem;
+}
+
+/* Guest Pass Modal */
+.guest-pass-sheet {
+  max-width: 440px;
+  width: 92%;
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--gold-primary);
+  animation: modalSlideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Scanned QR Floating Welcome Banner */
+.guest-scan-welcome-banner {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 520px;
+  background: linear-gradient(135deg, #0E1D36 0%, #1A2B4C 100%);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  animation: slideUpBanner 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideUpBanner {
+  from {
+    transform: translate(-50%, 60px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+.welcome-banner-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 2px;
+}
+
+.welcome-banner-title .table-pill {
+  background: #D4901C;
+  color: #0E1D36;
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 1px 8px;
+  border-radius: 12px;
+}
+
+.welcome-banner-sub {
+  font-size: 0.73rem;
+  color: var(--cream-parchment);
+  opacity: 0.88;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.welcome-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.btn-welcome-checkin {
+  background: linear-gradient(135deg, #D4901C 0%, #F7C860 100%);
+  color: #0E1D36;
+  border: none;
+  font-size: 0.76rem;
+  font-weight: 900;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.btn-welcome-checkin:hover {
+  transform: scale(1.05);
+}
+
+.btn-welcome-dismiss {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  color: #FFF;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
    DEVELOPER MASTER VAULT (EXCLUSIVE FOR AVINASH HEDAWOO)
    ========================================================================== */
 .dev-vault-accordion {

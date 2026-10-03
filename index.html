@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.4">
+  <link rel="stylesheet" href="styles.css?v=4.5">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -147,6 +147,10 @@
         <span class="badge-ac" data-i18n="acBadge">AC RESTAURANT</span>
       </div>
       <div style="display: flex; align-items: center; gap: 8px;">
+        <button type="button" class="header-guest-pass-pill" id="header-guest-pass-btn" onclick="window.app ? window.app.openGuestPassModal() : null" title="Fast Guest Check-in & Auto-Fill">
+          <span class="pass-icon">⚡</span>
+          <span class="pass-text" id="header-guest-pass-text">Quick Pass</span>
+        </button>
         <a href="tel:09325375802" class="hotel-phone-contact" title="Call Primary Number">
           <span>📞</span> <span>09325375802</span>
         </a>
@@ -365,6 +369,18 @@
                   <input type="checkbox" id="addon-cold-drinks" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
                   <span>🥤 Unlimited Cold Drinks Station (+ ₹30 / pax)</span>
                 </label>
+              </div>
+            </div>
+
+            <!-- Guest Contact for 1-Tap Booking Dispatch (Auto-filled) -->
+            <div class="form-group event-contact-box" style="margin-top: 14px; background: rgba(212, 144, 28, 0.08); border: 1px dashed rgba(212, 144, 28, 0.35); padding: 12px 14px; border-radius: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <label class="form-label" style="margin-bottom: 0; font-size: 0.78rem; font-weight: 800; color: var(--terracotta-dark);">👤 Your Contact Details (Auto-filled)</label>
+                <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" id="calc-event-guest-name" class="form-input" placeholder="Your Name (e.g. Amit Patil)">
+                <input type="tel" id="calc-event-guest-phone" class="form-input" placeholder="WhatsApp Number" maxlength="10">
               </div>
             </div>
           </div>
@@ -779,6 +795,18 @@
                   <input type="radio" name="calc-plan" value="CP" checked onchange="window.app.calculateBulkQuote()">
                   <span>Room + Complimentary Pride Pure Veg Breakfast (CP)</span>
                 </label>
+              </div>
+            </div>
+
+            <!-- Organizer Contact for 1-Tap Bulk Dispatch (Auto-filled) -->
+            <div class="calc-form-group" style="grid-column: 1 / -1; background: rgba(212, 144, 28, 0.08); border: 1px dashed rgba(212, 144, 28, 0.35); padding: 12px 14px; border-radius: 8px; margin-top: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <label class="form-label" style="margin-bottom: 0; font-size: 0.78rem; font-weight: 800; color: var(--terracotta-dark);">👤 Organizer Contact Details (Auto-filled)</label>
+                <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <input type="text" id="calc-bulk-guest-name" class="form-input" placeholder="Organizer / Guest Name">
+                <input type="tel" id="calc-bulk-guest-phone" class="form-input" placeholder="WhatsApp Number" maxlength="10">
               </div>
             </div>
           </div>
@@ -1226,6 +1254,78 @@
     </div>
   </div>
 
+  <!-- ==================== MODAL: QUICK GUEST PASS & FAST CHECK-IN ==================== -->
+  <div class="modal-backdrop" id="guest-pass-modal">
+    <div class="modal-sheet guest-pass-sheet">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span style="font-size: 1.3rem;">⚡</span>
+          <div>
+            <h3 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--terracotta-dark); margin: 0;">Quick Guest Pass</h3>
+            <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 600;">Fast 1-Tap Form Auto-Fill • Hotel Premier</span>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="window.app ? window.app.closeGuestPassModal() : null">✕</button>
+      </div>
+      <div class="modal-body" style="padding: 18px 20px;">
+        <p style="font-size: 0.82rem; color: var(--text-dark); margin-bottom: 16px; line-height: 1.45;">
+          Save your details once. We will <strong>automatically pre-fill</strong> your reviews, event quote requests, and room inquiries so you never have to re-type them!
+        </p>
+        <form id="guest-pass-form" onsubmit="window.app ? window.app.saveGuestPass(event) : false;">
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label" style="font-size: 0.78rem; font-weight: 700;">Your Full Name *</label>
+            <input type="text" id="guest-pass-input-name" class="form-input" placeholder="e.g. Rajesh Patil" required>
+          </div>
+          <div class="form-group" style="margin-bottom: 12px;">
+            <label class="form-label" style="font-size: 0.78rem; font-weight: 700;">WhatsApp / Mobile Number *</label>
+            <input type="tel" id="guest-pass-input-phone" class="form-input" placeholder="e.g. 98220xxxxx" pattern="[0-9]{10}" maxlength="10" required>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.78rem; font-weight: 700;">Table / Room #</label>
+              <input type="text" id="guest-pass-input-table" class="form-input" placeholder="e.g. Table 4">
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label" style="font-size: 0.78rem; font-weight: 700;">Region / City</label>
+              <select id="guest-pass-input-region" class="form-select" style="font-size: 0.8rem; padding: 10px 8px;">
+                <option value="Bhusawal Local">Bhusawal Local</option>
+                <option value="Jalgaon District">Jalgaon District</option>
+                <option value="Varangaon / Deepnagar">Varangaon / Deepnagar</option>
+                <option value="Malkapur / Buldhana">Malkapur / Buldhana</option>
+                <option value="Transit Passenger (Railway / Highway)">Transit Passenger</option>
+                <option value="Mumbai / Pune / Nashik">Mumbai / Pune / Nashik</option>
+                <option value="Other Region">Other Region</option>
+              </select>
+            </div>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button type="submit" class="btn-primary" style="flex-grow: 1; padding: 12px; font-weight: 800; font-size: 0.9rem;">
+              💾 Save Details & Auto-Fill Everywhere
+            </button>
+            <button type="button" class="btn-secondary" style="padding: 12px 14px;" onclick="window.app ? window.app.clearGuestPass() : null" title="Clear saved details">
+              🗑️
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Bottom Scanned QR Welcome Prompt -->
+  <div class="guest-scan-welcome-banner" id="guest-scan-welcome-banner" style="display: none;">
+    <div class="welcome-banner-content">
+      <div class="welcome-banner-title">
+        <span class="table-pill" id="welcome-table-pill">📍 Table 4</span>
+        <span class="welcome-text">👋 Welcome to Hotel Premier!</span>
+      </div>
+      <p class="welcome-banner-sub">Save your name once to auto-fill reviews, event quotes & hotel inquiries.</p>
+    </div>
+    <div class="welcome-banner-actions">
+      <button type="button" class="btn-welcome-checkin" onclick="window.app ? window.app.openGuestPassModal() : null">⚡ 1-Tap Auto-Fill</button>
+      <button type="button" class="btn-welcome-dismiss" onclick="window.app ? window.app.dismissWelcomeBanner() : null" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
+
   <!-- ==================== MODAL 5: DEVELOPER & ARCHITECTURE MODAL ==================== -->
   <div class="modal-backdrop" id="developer-credits-modal">
     <div class="modal-sheet" style="max-width: 440px;">
@@ -1417,14 +1517,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.4 Cache-Busted) -->
-  <script src="storage.js?v=4.4"></script>
-  <script src="vault.js?v=4.4"></script>
-  <script src="data/translations.js?v=4.4"></script>
-  <script src="data/hotel-data.js?v=4.4"></script>
-  <script src="data/menu-data.js?v=4.4"></script>
-  <script src="app.js?v=4.4"></script>
-  <script src="admin.js?v=4.4"></script>
+  <!-- Load Application Scripts (v4.5 Cache-Busted) -->
+  <script src="storage.js?v=4.5"></script>
+  <script src="vault.js?v=4.5"></script>
+  <script src="data/translations.js?v=4.5"></script>
+  <script src="data/hotel-data.js?v=4.5"></script>
+  <script src="data/menu-data.js?v=4.5"></script>
+  <script src="app.js?v=4.5"></script>
+  <script src="admin.js?v=4.5"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1496,8 +1596,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.4').then(function(reg) {
-          console.log('[PWA] Service Worker v4.4 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.5').then(function(reg) {
+          console.log('[PWA] Service Worker v4.5 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();

@@ -64,7 +64,7 @@ class HotelPremierApp {
     this.renderRestaurantEventPackages();
     this.calculateRestaurantEventQuote();
     this.checkStaffModeAccess();
-    this.prefillFeedbackTableFromUrl();
+    this.initGuestProfile();
     this.bindEvents();
     this.setupBroadcastChannel();
   }
@@ -1481,8 +1481,18 @@ class HotelPremierApp {
       ? `🛏️ *Extra Beds:* ${q.extraBeds} Bed(s) @ ₹300/night (+ ₹ ${q.extraBedCost.toLocaleString('en-IN')}/-)%0A`
       : '';
 
+    const bulkName = document.getElementById('calc-bulk-guest-name')?.value.trim() || '';
+    const bulkPhone = document.getElementById('calc-bulk-guest-phone')?.value.trim() || '';
+    if (bulkName || bulkPhone) {
+      this.saveGuestProfile({ name: bulkName, phone: bulkPhone });
+    }
+    const guestContactLine = (bulkName || bulkPhone)
+      ? `👤 *Organizer:* ${encodeURIComponent(bulkName || 'Guest')} (${encodeURIComponent(bulkPhone || 'Not provided')})%0A`
+      : '';
+
     const msg = `*HOTEL PREMIER BHUSAWAL - ADVANCE BULK ROOM INQUIRY*%0A` +
       `---------------------------------------%0A` +
+      guestContactLine +
       `🏨 *Event Type:* ${encodeURIComponent(q.eventType)}%0A` +
       `🛏️ *Room Category:* ${encodeURIComponent(q.roomType)}%0A` +
       `🔢 *Number of Rooms:* ${q.rooms} Rooms (Total 14 Available)%0A` +
@@ -1770,8 +1780,18 @@ class HotelPremierApp {
       ? q.chosenAddons.join(', ') 
       : 'None selected';
 
+    const eventName = document.getElementById('calc-event-guest-name')?.value.trim() || '';
+    const eventPhone = document.getElementById('calc-event-guest-phone')?.value.trim() || '';
+    if (eventName || eventPhone) {
+      this.saveGuestProfile({ name: eventName, phone: eventPhone });
+    }
+    const guestContactLine = (eventName || eventPhone)
+      ? `👤 *Booked By:* ${encodeURIComponent(eventName || 'Guest')} (${encodeURIComponent(eventPhone || 'Not provided')})%0A`
+      : '';
+
     const msg = `*HOTEL PREMIER BHUSAWAL - RESTAURANT EVENT & LUNCH BOOKING*%0A` +
       `---------------------------------------%0A` +
+      guestContactLine +
       `🎉 *Occasion:* ${encodeURIComponent(q.occasion)}%0A` +
       `🍽️ *Package:* ${encodeURIComponent(q.pkgName)}%0A` +
       `👥 *Number of Guests:* ${q.pax} Pax (Restaurant Capacity: Up to 40 Pax)%0A` +
@@ -2075,16 +2095,255 @@ class HotelPremierApp {
     }
   }
 
-  prefillFeedbackTableFromUrl() {
+  // ==================== 5b. SMART QR SCAN AUTO-FILL & PERSISTENT GUEST PROFILE ====================
+  initGuestProfile() {
     try {
       const params = new URLSearchParams(window.location.search);
-      const table = params.get('table') || params.get('t');
-      const room = params.get('room') || params.get('r');
-      const tableInput = document.getElementById('feedback-table-num');
-      if (tableInput) {
-        if (table) tableInput.value = `Table ${table}`;
-        else if (room) tableInput.value = `Room ${room}`;
+      const src = params.get('src') || '';
+      const tableParam = params.get('table') || params.get('t') || '';
+      const roomParam = params.get('room') || params.get('r') || '';
+      const nameParam = params.get('name') || params.get('n') || '';
+      const phoneParam = params.get('phone') || params.get('mobile') || params.get('p') || '';
+      const regionParam = params.get('region') || '';
+
+      let scannedTableOrRoom = '';
+      if (src) {
+        if (/^(table|room)\s*\w+/i.test(src.trim())) {
+          scannedTableOrRoom = src.trim();
+        } else if (/^\d+$/.test(src.trim())) {
+          scannedTableOrRoom = `Table ${src.trim()}`;
+        }
+      } else if (tableParam) {
+        scannedTableOrRoom = /^table/i.test(tableParam.trim()) ? tableParam.trim() : `Table ${tableParam.trim()}`;
+      } else if (roomParam) {
+        scannedTableOrRoom = /^room/i.test(roomParam.trim()) ? roomParam.trim() : `Room ${roomParam.trim()}`;
       }
+
+      const existingProfile = this.getGuestProfile();
+      const profileToSave = { ...existingProfile };
+
+      if (scannedTableOrRoom) profileToSave.tableOrRoom = scannedTableOrRoom;
+      if (nameParam) profileToSave.name = nameParam.trim();
+      if (phoneParam) profileToSave.phone = phoneParam.trim();
+      if (regionParam) profileToSave.region = regionParam.trim();
+
+      if (scannedTableOrRoom || nameParam || phoneParam || regionParam) {
+        this.saveGuestProfile(profileToSave);
+      } else {
+        this.applyGuestProfileToAllForms(existingProfile);
+        this.updateHeaderGuestBadge(existingProfile);
+      }
+
+      this.bindGuestProfileSync();
+
+      // Show welcome prompt if user scanned a table/room QR and hasn't saved their name or dismissed it
+      if (scannedTableOrRoom) {
+        const welcomePill = document.getElementById('welcome-table-pill');
+        if (welcomePill) welcomePill.innerText = `📍 ${scannedTableOrRoom}`;
+
+        const isDismissed = sessionStorage.getItem('hp_dismiss_welcome_banner') === 'true';
+        const currentProfile = this.getGuestProfile();
+        if (!currentProfile.name && !isDismissed) {
+          const banner = document.getElementById('guest-scan-welcome-banner');
+          if (banner) {
+            setTimeout(() => {
+              banner.style.display = 'flex';
+            }, 1200);
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error initializing guest profile:', e);
+    }
+  }
+
+  prefillFeedbackTableFromUrl() {
+    this.initGuestProfile();
+  }
+
+  getGuestProfile() {
+    try {
+      const saved = localStorage.getItem('hp_guest_profile');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return { name: '', phone: '', tableOrRoom: '', region: 'Bhusawal Local' };
+  }
+
+  saveGuestProfile(data) {
+    try {
+      const current = this.getGuestProfile();
+      const updated = {
+        name: (data.name !== undefined ? data.name : current.name).trim(),
+        phone: (data.phone !== undefined ? data.phone : current.phone).trim(),
+        tableOrRoom: (data.tableOrRoom !== undefined ? data.tableOrRoom : current.tableOrRoom).trim(),
+        region: data.region || current.region || 'Bhusawal Local',
+        updatedAt: new Date().toISOString()
+      };
+      localStorage.setItem('hp_guest_profile', JSON.stringify(updated));
+      this.applyGuestProfileToAllForms(updated);
+      this.updateHeaderGuestBadge(updated);
+      return updated;
+    } catch (e) {
+      console.error('Failed to save guest profile', e);
+    }
+  }
+
+  applyGuestProfileToAllForms(profile) {
+    const p = profile || this.getGuestProfile();
+
+    // 1. Feedback form
+    const fName = document.getElementById('feedback-guest-name');
+    const fPhone = document.getElementById('feedback-guest-phone');
+    const fRegion = document.getElementById('feedback-guest-region');
+    const fTable = document.getElementById('feedback-table-num');
+    if (fName && p.name && (!fName.value || document.activeElement !== fName)) fName.value = p.name;
+    if (fPhone && p.phone && (!fPhone.value || document.activeElement !== fPhone)) fPhone.value = p.phone;
+    if (fRegion && p.region && document.activeElement !== fRegion) fRegion.value = p.region;
+    if (fTable && p.tableOrRoom && (!fTable.value || document.activeElement !== fTable)) fTable.value = p.tableOrRoom;
+
+    // 2. Event Calculator
+    const eName = document.getElementById('calc-event-guest-name');
+    const ePhone = document.getElementById('calc-event-guest-phone');
+    if (eName && p.name && (!eName.value || document.activeElement !== eName)) eName.value = p.name;
+    if (ePhone && p.phone && (!ePhone.value || document.activeElement !== ePhone)) ePhone.value = p.phone;
+
+    // 3. Bulk Marriage Calculator
+    const bName = document.getElementById('calc-bulk-guest-name');
+    const bPhone = document.getElementById('calc-bulk-guest-phone');
+    if (bName && p.name && (!bName.value || document.activeElement !== bName)) bName.value = p.name;
+    if (bPhone && p.phone && (!bPhone.value || document.activeElement !== bPhone)) bPhone.value = p.phone;
+
+    // 4. Guest Pass Modal Form
+    const mName = document.getElementById('guest-pass-input-name');
+    const mPhone = document.getElementById('guest-pass-input-phone');
+    const mTable = document.getElementById('guest-pass-input-table');
+    const mRegion = document.getElementById('guest-pass-input-region');
+    if (mName && p.name && document.activeElement !== mName) mName.value = p.name;
+    if (mPhone && p.phone && document.activeElement !== mPhone) mPhone.value = p.phone;
+    if (mTable && p.tableOrRoom && document.activeElement !== mTable) mTable.value = p.tableOrRoom;
+    if (mRegion && p.region && document.activeElement !== mRegion) mRegion.value = p.region;
+  }
+
+  bindGuestProfileSync() {
+    if (this._guestSyncBound) return;
+    this._guestSyncBound = true;
+
+    const fields = [
+      { id: 'feedback-guest-name', key: 'name' },
+      { id: 'calc-event-guest-name', key: 'name' },
+      { id: 'calc-bulk-guest-name', key: 'name' },
+      { id: 'guest-pass-input-name', key: 'name' },
+
+      { id: 'feedback-guest-phone', key: 'phone' },
+      { id: 'calc-event-guest-phone', key: 'phone' },
+      { id: 'calc-bulk-guest-phone', key: 'phone' },
+      { id: 'guest-pass-input-phone', key: 'phone' },
+
+      { id: 'feedback-table-num', key: 'tableOrRoom' },
+      { id: 'guest-pass-input-table', key: 'tableOrRoom' },
+
+      { id: 'feedback-guest-region', key: 'region' },
+      { id: 'guest-pass-input-region', key: 'region' }
+    ];
+
+    fields.forEach(({ id, key }) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', (e) => {
+          this.onGuestFieldInput(key, e.target.value);
+        });
+        el.addEventListener('change', (e) => {
+          this.onGuestFieldInput(key, e.target.value);
+        });
+      }
+    });
+  }
+
+  onGuestFieldInput(key, value) {
+    clearTimeout(this._guestSyncTimer);
+    this._guestSyncTimer = setTimeout(() => {
+      const patch = {};
+      patch[key] = value;
+      this.saveGuestProfile(patch);
+    }, 350);
+  }
+
+  updateHeaderGuestBadge(profile) {
+    const p = profile || this.getGuestProfile();
+    const pillText = document.getElementById('header-guest-pass-text');
+    const pillBtn = document.getElementById('header-guest-pass-btn');
+    if (!pillText) return;
+
+    if (p.name) {
+      const firstName = p.name.trim().split(' ')[0];
+      pillText.innerText = `👋 ${firstName}`;
+      if (pillBtn) pillBtn.classList.add('has-profile');
+    } else if (p.tableOrRoom) {
+      pillText.innerText = `📍 ${p.tableOrRoom}`;
+      if (pillBtn) pillBtn.classList.remove('has-profile');
+    } else {
+      pillText.innerText = '⚡ Quick Pass';
+      if (pillBtn) pillBtn.classList.remove('has-profile');
+    }
+  }
+
+  openGuestPassModal() {
+    const modal = document.getElementById('guest-pass-modal');
+    if (!modal) return;
+    this.applyGuestProfileToAllForms();
+    modal.classList.add('active');
+    const nameInput = document.getElementById('guest-pass-input-name');
+    if (nameInput) setTimeout(() => nameInput.focus(), 150);
+  }
+
+  closeGuestPassModal() {
+    const modal = document.getElementById('guest-pass-modal');
+    if (modal) modal.classList.remove('active');
+  }
+
+  saveGuestPass(e) {
+    if (e) e.preventDefault();
+    const name = document.getElementById('guest-pass-input-name')?.value.trim() || '';
+    const phone = document.getElementById('guest-pass-input-phone')?.value.trim() || '';
+    const table = document.getElementById('guest-pass-input-table')?.value.trim() || '';
+    const region = document.getElementById('guest-pass-input-region')?.value || 'Bhusawal Local';
+
+    if (!name) {
+      alert('Please enter your name.');
+      return false;
+    }
+    if (!phone || phone.length < 10) {
+      alert('Please enter a valid 10-digit WhatsApp number.');
+      return false;
+    }
+
+    this.saveGuestProfile({ name, phone, tableOrRoom: table, region });
+    this.dismissWelcomeBanner();
+    this.closeGuestPassModal();
+    const firstName = name.split(' ')[0];
+    this.showToast(`Welcome, ${firstName}! Auto-Filled Everywhere ⚡`, 'success');
+    return false;
+  }
+
+  clearGuestPass() {
+    if (confirm('Clear saved guest details? You can re-enter them anytime.')) {
+      localStorage.removeItem('hp_guest_profile');
+      ['feedback-guest-name', 'feedback-guest-phone', 'calc-event-guest-name', 'calc-event-guest-phone', 
+       'calc-bulk-guest-name', 'calc-bulk-guest-phone', 'guest-pass-input-name', 'guest-pass-input-phone'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      this.updateHeaderGuestBadge({ name: '', phone: '', tableOrRoom: '', region: 'Bhusawal Local' });
+      this.showToast('Guest details cleared', 'info');
+      this.closeGuestPassModal();
+    }
+  }
+
+  dismissWelcomeBanner() {
+    const banner = document.getElementById('guest-scan-welcome-banner');
+    if (banner) banner.style.display = 'none';
+    try {
+      sessionStorage.setItem('hp_dismiss_welcome_banner', 'true');
     } catch (e) {}
   }
 
@@ -2137,6 +2396,14 @@ class HotelPremierApp {
       if (phoneEl) phoneEl.focus();
       return false;
     }
+
+    this.saveGuestProfile({
+      name: name,
+      phone: phone,
+      region: region,
+      tableOrRoom: table
+    });
+    this.dismissWelcomeBanner();
 
     const selectedTags = [];
     document.querySelectorAll('#feedback-tags-container .feedback-chip.active').forEach(chip => {
