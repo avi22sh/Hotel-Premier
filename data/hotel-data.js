@@ -227,97 +227,135 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     { icon: '⚡', place: 'Deepnagar Thermal Power Station', distance: '10 KM', time: '15 Mins Drive', desc: 'Major industrial powerhouse & Varangaon Ordnance Factory area.' }
   ],
 
-  // Restaurant Events & Party Catering Packages (15-20+ Pax & Lunch Buyout)
+  // Restaurant Events & Party Catering Packages (Party, Conference, Event, Engagement & Lunch Buyout)
   restaurantEventPackages: [
     {
-      id: 'pkg-silver',
-      name: 'Silver Executive Gathering',
-      hindiName: 'सिल्वर एग्जीक्यूटिव पैकेज',
-      marathiName: 'सिल्व्हर एक्झिक्युटिव्ह पॅकेज',
-      ratePerPax: 280,
-      minPax: 15,
-      badge: '15-20+ PAX • QUICK GATHERINGS',
-      icon: '🥈',
-      desc: 'Ideal for Corporate Lunches, Kitty Parties, Casual Family Dinners & Puja Feasts.',
-      menuChoices: [
-        'Welcome: Fresh Lime Soda or Special Masala Chai',
-        'Starter: Veg Crispy or Hara Bhara Kabab',
-        'Main Paneer: Paneer Butter Masala or Kadai Paneer',
-        'Dal: Classic Dal Fry or Dal Tadka with Desi Ghee',
-        'Breads: Butter Tandoori Roti & Butter Naan',
-        'Rice: Fragrant Jeera Rice with Green Salad & Roasted Papad',
-        'Dessert: Hot Gulab Jamun (1 pc/pax)'
-      ]
-    },
-    {
-      id: 'pkg-gold',
-      name: 'Gold Pride Celebration Feast',
-      hindiName: 'गोल्ड प्राइड उत्सव दावत',
-      marathiName: 'गोल्ड प्राइड सेलिब्रेशन मेजवानी',
-      ratePerPax: 420,
-      minPax: 15,
-      badge: 'POPULAR • 15-20+ PAX CELEBRATIONS',
-      icon: '🥇',
-      featured: true,
-      desc: 'Most loved package for Birthdays, Anniversaries, Thread Ceremonies & Family Get-Togethers.',
-      menuChoices: [
-        'Welcome: Virgin Mojito or Blue Curacao / Kokum Cooler',
-        '2 Starters: Tandoori Paneer Tikka + Veg Spring Roll or Chinese Platter',
-        '2 Main Courses: Royal Paneer Lababdar + Mix Veg / Khandeshi Shev Bhaji',
-        'Dal: Special Dal Makhani or Dal Tadka',
-        'Assorted Breads: Butter Naan, Garlic Naan, Laccha Paratha & Tandoori Roti',
-        'Rice: Rich Veg Dum Biryani with Mixed Veg Raita',
-        'Salad & Sides: Masala Papad, Tossed Green Salad, Achar',
-        '2 Desserts: Hot Gulab Jamun with Vanilla Ice Cream Cup'
-      ]
-    },
-    {
-      id: 'pkg-platinum',
-      name: 'Platinum Maharaja Royal Banquet',
-      hindiName: 'प्लैटिनम महाराजा रॉयल बैंक्वेट',
-      marathiName: 'प्लॅटिनम महाराजा रॉयल मेजवानी',
+      id: 'pkg-engagement',
+      category: 'engagement',
+      name: '💍 Shubh Vivah & Ring Ceremony Banquet',
+      hindiName: 'सगाई एवं शुभ पारिवारिक मांगलिक दावत',
+      marathiName: 'साखरपुडा व शुभ विवाह मेजवानी',
       ratePerPax: 580,
-      minPax: 15,
-      badge: '👑 ROYAL BANQUET • PRE-WEDDING & VIP',
-      icon: '💎',
-      desc: 'Grand royal culinary spread for Ring Ceremonies, Pre-Wedding Feasts & VIP Celebrations.',
+      minPax: 25,
+      badge: '💍 ENGAGEMENT, ROKA & PRE-WEDDING',
+      icon: '💍',
+      featured: true,
+      tag: 'Grand Feast',
+      desc: 'Royal banquet experience for Ring Ceremonies (Sakhar Puda / Sagai), Roka, Haldi, Baby Shower (Dohale Jevan) & Upanayan.',
+      amenities: ['Private AC Banquet Dining', 'Sound & Mic System', 'Stage / Ring Ceremony Space', 'Dedicated Stewards'],
       menuChoices: [
-        '2 Welcome Drinks: Special Fruit Punch & Masala Buttermilk Station',
-        'Soup: Hot & Sour or Veg Manchow Soup with Crispy Noodles',
-        '3 Starters: Paneer Reshmi Kabab + Veg Cutlet + Crispy Corn Chilli',
-        '3 Main Courses: Paneer Tikka Masala + Kaju Curry / Malai Kofta + Khandeshi Patodi',
-        'Dals: Dal Makhani + Dal Tadka',
-        'Royal Roti Basket: Butter Naan, Cheese Garlic Naan, Laccha Paratha & Missi Roti',
-        'Rice: Chef Special Hyderabadi Dum Biryani + Steamed Basmati Rice',
-        'Salad & Raita: Boondi Raita, Russian Salad, Roasted Masala Papad',
-        'Dessert: Moong Dal / Gajar Halwa + Premium Ice Cream Cup',
-        'Perks: Dedicated service stewards & personalized printed menu cards on tables'
+        'Welcome: Royal Kesariya Thandai & Virgin Mojito on Arrival',
+        'Soup: Hot & Sour or Veg Manchow Soup with Crispy Fried Noodles',
+        '3 Royal Starters: Paneer Reshmi Kabab + Veg Crispy + Hara Bhara Kabab',
+        '3 Premium Mains: Royal Paneer Lababdar + Kaju Curry / Malai Kofta + Khandeshi Special Shev Bhaji / Patodi Rassa',
+        'Dals: Rich Dal Makhani + Yellow Dal Tadka with Desi Ghee',
+        'Royal Bread Basket: Butter Naan, Cheese Garlic Naan, Laccha Paratha & Missi Roti',
+        'Rice & Raita: Shahi Veg Dum Biryani + Steamed Basmati + Veg Boondi Raita',
+        'Salad & Papad: Russian Salad, Tossed Green Salad, Roasted Masala Papad',
+        '2 Grand Desserts: Hot Gulab Jamun + Shahi Moong Dal / Gajar Halwa with Vanilla Ice Cream Cup',
+        'Hospitality Perks: Personalized printed menu cards on tables & dedicated senior stewards'
+      ]
+    },
+    {
+      id: 'pkg-corporate',
+      category: 'conference',
+      name: '💼 Corporate Conference & Seminar Meet',
+      hindiName: 'कॉर्पोरेट मीटिंग एवं बिजनेस सेमिनार पैकेज',
+      marathiName: 'कॉर्पोरेट कॉन्फरन्स व सेमिनार पॅकेज',
+      ratePerPax: 380,
+      minPax: 15,
+      badge: '💼 CORPORATE, CONFERENCES & DOCTOR MEETS',
+      icon: '💼',
+      tag: 'Professional',
+      desc: 'Tailored for Corporate Conferences, Doctor Seminars, Dealer Meets, Board Meetings, Training Workshops & Product Launches.',
+      amenities: ['Projector & Screen Assistance', 'Wireless Collar / Hand Mic', 'High-Speed Wi-Fi', 'Notepads & Pens'],
+      menuChoices: [
+        'Morning Welcome: Freshly Brewed Adrak Masala Chai & Filter Coffee with Assorted Cookies',
+        'Mid-Session High Tea: Hot Veg Cutlet / Veg Spring Rolls with Tea & Coffee refill',
+        'Executive Pure Veg Lunch Buffet: Fresh Garden Salad & Roasted Papad',
+        'Main Paneer: Royal Paneer Butter Masala or Kadai Paneer',
+        'Seasonal Veg: Aloo Gobi Matar or Mix Veg Kolhapuri',
+        'Dal: Classic Dal Fry / Dal Tadka with Desi Ghee',
+        'Breads: Butter Tandoori Roti & Butter Naan',
+        'Rice: Fragrant Jeera Rice with Dal Tadka',
+        'Dessert: Hot Gulab Jamun (1 pc/pax)',
+        'Conference Amenities: Projector & screen setup, wireless mic, high-speed Wi-Fi & notepad pens'
+      ]
+    },
+    {
+      id: 'pkg-birthday',
+      category: 'party',
+      name: '🎉 Birthday & Family Celebration Feast',
+      hindiName: 'बर्थडे, एनिवर्सरी एवं पारिवारिक उत्सव',
+      marathiName: 'वाढदिवस व कौटुंबिक आनंद मेजवानी',
+      ratePerPax: 320,
+      minPax: 15,
+      badge: '🎉 BIRTHDAYS, ANNIVERSARIES & PARTIES',
+      icon: '🎂',
+      tag: 'Celebration',
+      desc: 'Joyful celebration spread for Kids & Adults Birthdays, Anniversary milestones, Kitty Parties and Family Reunions.',
+      amenities: ['Cake Cutting Table Setup', 'Balloon Space', 'Party Music Connection', 'Private AC Seating'],
+      menuChoices: [
+        'Welcome Cooler: Blue Curacao Mocktail or Fresh Lime Soda',
+        '2 Crunchy Starters: Paneer Crispy + Veg Manchurian Dry / Veg Roll',
+        '2 Main Courses: Shahi Paneer Masala + Mix Veg Kolhapuri / Chana Masala',
+        'Dal: Special Dal Tadka with Jeera & Desi Ghee',
+        'Assorted Breads: Butter Tandoori Roti & Butter Naan',
+        'Rice & Raita: Fragrant Veg Pulao or Jeera Rice with Boondi Raita',
+        'Salad & Papad: Green Salad, Achar & Roasted Papad',
+        'Dessert: Hot Gulab Jamun with Creamy Vanilla Ice Cream Cup',
+        'Party Perks: Dedicated cake cutting table, balloon area & music playlist connection'
+      ]
+    },
+    {
+      id: 'pkg-hightea',
+      category: 'party',
+      name: '☕ Kitty Party & High-Tea Gathering',
+      hindiName: 'किटी पार्टी एवं हाई-टी नाश्ता मीट',
+      marathiName: 'किटी पार्टी व हाय-टी नाश्ता मेजवानी',
+      ratePerPax: 220,
+      minPax: 15,
+      badge: '☕ HIGH-TEA & CASUAL GATHERINGS',
+      icon: '☕',
+      tag: 'High Tea',
+      desc: 'Light & delightful package for Afternoon Kitty Parties, Post-Seminar High-Tea, Bhajan Gatherings & Social Meets.',
+      amenities: ['Up to 3 Hours AC Dining', 'Relaxed Ambience', 'Soft Background Music'],
+      menuChoices: [
+        'Beverage Station: Special Adrak Masala Chai & South Indian Filter Coffee (served twice)',
+        '3 Hot Savory Snacks: Paneer Pakoda + Hara Bhara Kabab + Crispy Veg Spring Roll',
+        'Dips & Chutneys: Mint-Coriander Chutney, Tangy Imli Chutney & Tomato Sauce',
+        'Dessert Sweet: Mini Hot Gulab Jamun or Besan Ladoo',
+        'Casual Dining: Comfortable 3-hour private AC hall access with pleasant background music'
       ]
     },
     {
       id: 'pkg-lunch-buyout',
+      category: 'buyout',
       name: '👑 Full Restaurant Lunch Hall Buyout (Up to 40 Pax)',
       hindiName: 'सम्पूर्ण रेस्टोरेंट लंच हॉल प्राइवेट बुकिंग (40 व्यक्तियों तक)',
       marathiName: 'संपूर्ण रेस्टॉरंट लंच हॉल प्रायव्हेट बुकिंग (४० व्यक्तींपर्यंत)',
       ratePerPax: 490,
       minPax: 25,
       maxPax: 40,
-      badge: '🌟 100% PRIVATE HALL • UP TO 40 PAX (11:30 AM - 3:30 PM)',
+      badge: '🌟 100% PRIVATE HALL BUYOUT (11:30 AM - 3:30 PM)',
       icon: '🏛️',
+      tag: 'Exclusive Buyout',
       isBuyout: true,
-      desc: 'Exclusive private buyout of the entire Pride Pure Veg AC Restaurant (up to 40 Pax capacity) during prime Lunch Hours (11:30 AM to 3:30 PM). The dining hall is closed to the general public exclusively for your private gathering, ring ceremony, or corporate luncheon.',
+      desc: 'Exclusive private buyout of the entire Pride Pure Veg AC Restaurant (up to 40 Pax capacity) during prime Lunch Hours (11:30 AM to 3:30 PM). The restaurant is 100% closed to the general public for complete privacy.',
+      amenities: ['Hall 100% Closed to Public', 'Unlimited Grand Buffet', 'Sound & Mic System', 'Zero Hall Rent', 'Reserved Parking'],
       menuChoices: [
-        'Complete Exclusive Dining Hall Privacy: General public closed for your 4-hour lunch slot',
+        'Complete Hall Privacy: Entire dining hall closed to external guests for your 4-hour slot',
         'Intimate & comfortable seating capacity for up to 40 guests',
-        'Unlimited Lavish Pure Veg Buffet Spread (3 Starters, 3 Mains, 2 Dals, Biryani, 2 Sweets)',
-        'Welcome Drinks Station for all guests on arrival',
-        'Dedicated Head Chef & Private Service Stewards',
+        'Unlimited Lavish Pure Veg Buffet (3 Starters, 3 Mains, 2 Dals, Biryani, 2 Sweets)',
+        'Welcome Drinks Station for all guests upon arrival',
+        'Dedicated Head Chef & Private Service Stewards for your guests only',
         'Sound System & Wireless Mic facility for cake cutting, speeches & music',
-        'Special Welcome Banner at restaurant entrance',
-        'Priority parking reserved for host cars & guest vehicles',
-        'Zero Hall Rental charge when booking lunch banquet for 25 to 40 guests'
+        'Personalized Welcome Signage at restaurant entrance',
+        'Priority reserved parking for host & guest vehicles',
+        'Zero Hall Rental charges when booking the banquet spread for 25 to 40 guests'
       ]
     }
   ]
 };
+
 

@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4.1">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -187,16 +187,6 @@
       <div class="quick-filters" id="quick-filters-container">
         <!-- Quick Filter Pills Rendered via JavaScript -->
       </div>
-
-      <!-- Quick Events & Lunch Buyout Highlight Banner -->
-      <div class="restaurant-events-promo-banner" onclick="window.app ? window.app.scrollToEventsSection() : null">
-        <div class="promo-banner-badge">🎉 PARTY PACKAGES</div>
-        <div class="promo-banner-text">
-          <strong>15–20+ Pax Pure Veg Feasts & Full Lunch Buyout (Up to 40 Pax)</strong>
-          <span>Custom packages starting ₹280/pax • Private AC Hall • Instant Quote</span>
-        </div>
-        <span class="promo-banner-arrow">➔</span>
-      </div>
     </section>
 
     <!-- View 1: Home Categories Grid -->
@@ -219,6 +209,18 @@
       <div class="category-cards-grid" id="category-cards-grid">
         <!-- Category Cards Rendered via JavaScript -->
       </div>
+
+      <!-- Bottom Party & Events Invite Banner (Positioned BELOW menu categories) -->
+      <div class="events-bottom-invite-banner" onclick="window.app ? window.app.scrollToEventsSection() : null">
+        <div class="invite-banner-content">
+          <span class="invite-banner-icon">🎉</span>
+          <div class="invite-banner-text">
+            <strong>Planning a Party, Corporate Conference or Engagement?</strong>
+            <span>Pure Veg Banquets (15–40 Pax) & Full AC Hall Lunch Buyout • Starting ₹220/pax</span>
+          </div>
+        </div>
+        <button class="invite-banner-btn" type="button"><span>View Packages ▾</span></button>
+      </div>
     </section>
 
     <!-- View 2: Active Category Dishes View -->
@@ -228,13 +230,10 @@
           <span class="back-arrow">⬅️</span>
           <span class="back-text" id="back-to-sections-text" data-i18n="backToSections">All Sections</span>
         </button>
-        <div class="active-category-info" id="active-category-info">
+        <div class="active-category-info" id="active-category-info" onclick="window.app.toggleMenuSectionDrawer()" style="cursor: pointer;" title="Tap to switch section">
           <h2 class="active-category-title" id="active-category-title">Paneer Specialties</h2>
-          <span class="active-category-hindi" id="active-category-hindi">शाही पनीर व्यंजन</span>
+          <span class="active-category-hindi" id="active-category-hindi">शाही पनीर व्यंजन ▾</span>
         </div>
-        <button class="section-nav-switcher-btn" onclick="window.app.toggleMenuSectionDrawer()" title="Switch Menu Sub-Section">
-          <span>📋 Switch Section ▾</span>
-        </button>
         <div class="active-category-count" id="active-category-count">14 Items</div>
       </div>
 
@@ -258,6 +257,18 @@
           <!-- Dish cards rendered dynamically -->
         </div>
       </main>
+
+      <!-- Bottom Party & Events Invite Banner (Positioned BELOW dishes) -->
+      <div class="events-bottom-invite-banner" onclick="window.app ? window.app.scrollToEventsSection() : null">
+        <div class="invite-banner-content">
+          <span class="invite-banner-icon">🎉</span>
+          <div class="invite-banner-text">
+            <strong>Planning a Party, Corporate Conference or Engagement?</strong>
+            <span>Pure Veg Banquets (15–40 Pax) & Full AC Hall Lunch Buyout • Starting ₹220/pax</span>
+          </div>
+        </div>
+        <button class="invite-banner-btn" type="button"><span>View Packages ▾</span></button>
+      </div>
     </section>
 
     <!-- ================================================================ -->
@@ -287,6 +298,16 @@
             <p class="events-subdesc" data-i18n="eventsPackagesSub">Transparent per-person pricing, fresh kitchen preparations & dedicated hospitality</p>
           </div>
         </div>
+
+        <!-- Event Package Category Quick Filter Tabs -->
+        <div class="event-category-filter-tabs" id="event-category-tabs">
+          <button type="button" class="event-filter-tab active" onclick="window.app ? window.app.filterEventPackages('all', this) : null">🌟 All Packages (5)</button>
+          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('engagement', this) : null">💍 Engagement & Functions</button>
+          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('conference', this) : null">💼 Corporate & Seminars</button>
+          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('party', this) : null">🎉 Birthdays & High-Tea</button>
+          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('buyout', this) : null">🏛️ Private Hall Buyout</button>
+        </div>
+
         <div class="events-packages-grid" id="restaurant-events-packages-grid">
           <!-- Rendered dynamically by app.js from restaurantEventPackages -->
         </div>
@@ -308,12 +329,12 @@
             <div class="form-group">
               <label class="form-label">Occasion / Event Type</label>
               <select id="calc-event-occasion" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                <option value="Birthday Party">🎂 Birthday Celebration</option>
-                <option value="Kitty Party">☕ Kitty Party / Ladies Gathering</option>
-                <option value="Family Get-Together" selected>👨‍👩‍👧‍👦 Family Get-Together / Reunion</option>
-                <option value="Corporate Lunch">💼 Corporate / Business Lunch</option>
-                <option value="Engagement / Ring Ceremony">💍 Ring Ceremony / Pre-Wedding Feast</option>
-                <option value="Puja / Religious Feast">🙏 Religious Puja / Traditional Feast</option>
+                <option value="Birthday Party" selected>🎂 Birthday Celebration (Kids / Adults)</option>
+                <option value="Kitty Party / Ladies Meet">☕ Kitty Party / Ladies High-Tea Meet</option>
+                <option value="Engagement / Ring Ceremony">💍 Ring Ceremony (Sakhar Puda / Sagai) & Roka</option>
+                <option value="Corporate Meeting / Seminar">💼 Corporate Meeting, Conference or Doctor Seminar</option>
+                <option value="Family Get-Together">👨‍👩‍👧‍👦 Family Get-Together / Reunion</option>
+                <option value="Haldi / Baby Shower / Puja">🌸 Haldi, Baby Shower (Dohale Jevan) or Puja</option>
                 <option value="Full Restaurant Lunch Buyout">👑 Full Restaurant Lunch Buyout (Private Hall)</option>
               </select>
             </div>
@@ -321,10 +342,11 @@
             <div class="form-group">
               <label class="form-label">Selected Pure Veg Package</label>
               <select id="calc-event-package" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                <option value="pkg-silver">🥈 Silver Executive (₹280/pax • Min 15 Pax)</option>
-                <option value="pkg-gold" selected>🥇 Gold Celebration Feast (₹420/pax • Min 15 Pax)</option>
-                <option value="pkg-platinum">💎 Platinum Maharaja Banquet (₹580/pax • Min 15 Pax)</option>
-                <option value="pkg-lunch-buyout">👑 Full Restaurant Lunch Buyout (₹490/pax • Up to 40 Pax)</option>
+                <option value="pkg-engagement">💍 Shubh Vivah & Ring Ceremony Banquet (₹580/pax • Min 25 Pax)</option>
+                <option value="pkg-corporate">💼 Corporate Conference & Seminar Meet (₹380/pax • Min 15 Pax)</option>
+                <option value="pkg-birthday" selected>🎉 Birthday & Family Celebration Feast (₹320/pax • Min 15 Pax)</option>
+                <option value="pkg-hightea">☕ Kitty Party & High-Tea Gathering (₹220/pax • Min 15 Pax)</option>
+                <option value="pkg-lunch-buyout">👑 Full Restaurant Lunch Hall Buyout (₹490/pax • Up to 40 Pax)</option>
               </select>
             </div>
 
@@ -1367,14 +1389,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.0 Cache-Busted) -->
-  <script src="storage.js?v=4.0"></script>
-  <script src="vault.js?v=4.0"></script>
-  <script src="data/translations.js?v=4.0"></script>
-  <script src="data/hotel-data.js?v=4.0"></script>
-  <script src="data/menu-data.js?v=4.0"></script>
-  <script src="app.js?v=4.0"></script>
-  <script src="admin.js?v=4.0"></script>
+  <!-- Load Application Scripts (v4.1 Cache-Busted) -->
+  <script src="storage.js?v=4.1"></script>
+  <script src="vault.js?v=4.1"></script>
+  <script src="data/translations.js?v=4.1"></script>
+  <script src="data/hotel-data.js?v=4.1"></script>
+  <script src="data/menu-data.js?v=4.1"></script>
+  <script src="app.js?v=4.1"></script>
+  <script src="admin.js?v=4.1"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1446,8 +1468,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.0').then(function(reg) {
-          console.log('[PWA] Service Worker v4.0 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.1').then(function(reg) {
+          console.log('[PWA] Service Worker v4.1 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();

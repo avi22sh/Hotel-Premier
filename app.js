@@ -1483,19 +1483,48 @@ class HotelPremierApp {
       : [];
   }
 
-  renderRestaurantEventPackages() {
+  filterEventPackages(cat, btnEl) {
+    this.currentEventCategoryFilter = cat;
+    const tabBtns = document.querySelectorAll('.event-filter-tab');
+    tabBtns.forEach(btn => btn.classList.remove('active'));
+    if (btnEl) {
+      btnEl.classList.add('active');
+    }
+    this.renderRestaurantEventPackages(cat);
+  }
+
+  renderRestaurantEventPackages(filter = 'all') {
     const container = document.getElementById('restaurant-events-packages-grid');
     if (!container) return;
 
-    const pkgs = this.getRestaurantEventPackages();
+    let pkgs = this.getRestaurantEventPackages();
+    if (filter && filter !== 'all') {
+      pkgs = pkgs.filter(p => p.category === filter);
+    }
+
+    if (pkgs.length === 0) {
+      container.innerHTML = `<div class="no-events-found">No packages found for this category.</div>`;
+      return;
+    }
+
     container.innerHTML = pkgs.map(pkg => {
       let subTitle = '';
       if (this.currentLang === 'hi' && pkg.hindiName) subTitle = `<div class="event-pkg-sub">${pkg.hindiName}</div>`;
       else if (this.currentLang === 'mr' && pkg.marathiName) subTitle = `<div class="event-pkg-sub">${pkg.marathiName}</div>`;
 
+      const amenitiesHtml = (pkg.amenities && pkg.amenities.length > 0)
+        ? `<div class="event-pkg-amenities">
+            ${pkg.amenities.map(a => `<span class="amenity-chip">✨ ${a}</span>`).join('')}
+           </div>`
+        : '';
+
       return `
         <div class="event-package-card ${pkg.featured ? 'featured' : ''} ${pkg.isBuyout ? 'buyout-card' : ''}" id="card-${pkg.id}">
-          <div class="event-pkg-badge">${pkg.badge}</div>
+          <div class="event-pkg-top-bar">
+            <span class="event-pkg-badge">${pkg.badge}</span>
+            ${pkg.tag ? `<span class="event-pkg-tag">${pkg.tag}</span>` : ''}
+          </div>
+
           <div class="event-pkg-header">
             <span class="event-pkg-icon">${pkg.icon || '🍽️'}</span>
             <div>
@@ -1508,24 +1537,45 @@ class HotelPremierApp {
             <span class="pkg-price-currency">₹</span>
             <span class="pkg-price-val">${pkg.ratePerPax}</span>
             <span class="pkg-price-unit">/ person</span>
-            <span class="pkg-pax-limit">${pkg.isBuyout ? 'Up to 40 Pax' : 'Min 15 Pax'}</span>
+            <span class="pkg-pax-limit">${pkg.isBuyout ? 'Up to 40 Pax' : 'Min ' + (pkg.minPax || 15) + ' Pax'}</span>
           </div>
 
           <p class="event-pkg-desc">${pkg.desc}</p>
 
+          ${amenitiesHtml}
+
           <div class="event-menu-choices-block">
-            <div class="menu-choices-heading">🥗 Curated Pure Veg Inclusions:</div>
+            <div class="menu-choices-heading">🥗 Curated Pure Veg Spread & Services:</div>
             <ul class="event-menu-choices-list">
               ${(pkg.menuChoices || []).map(item => `<li><span class="choice-bullet">✦</span> <span>${item}</span></li>`).join('')}
             </ul>
           </div>
 
-          <button class="btn-select-event-pkg" onclick="window.app ? window.app.selectEventPackage('${pkg.id}') : null">
-            <span>Select This Package in Calculator ➔</span>
-          </button>
+          <div class="event-pkg-actions">
+            <button type="button" class="btn-select-event-pkg" onclick="window.app ? window.app.selectEventPackage('${pkg.id}') : null">
+              <span>🧮 Calculate Quote ➔</span>
+            </button>
+            <button type="button" class="btn-whatsapp-event-pkg" onclick="window.app ? window.app.inquirePackageWhatsApp('${pkg.id}') : null">
+              <span>💬 Inquire on WhatsApp</span>
+            </button>
+          </div>
         </div>
       `;
     }).join('');
+  }
+
+  inquirePackageWhatsApp(pkgId) {
+    const pkgs = this.getRestaurantEventPackages();
+    const pkg = pkgs.find(p => p.id === pkgId) || pkgs[0];
+    const msg = `*HOTEL PREMIER BHUSAWAL - EVENT PACKAGE INQUIRY*%0A` +
+      `---------------------------------------%0A` +
+      `✨ *Package:* ${encodeURIComponent(pkg.name)}%0A` +
+      `💰 *Rate:* ₹${pkg.ratePerPax}/person (${pkg.isBuyout ? 'Up to 40 Pax' : 'Min ' + (pkg.minPax || 15) + ' Pax'})%0A` +
+      `🏢 *Venue:* Pride Pure Veg Private AC Hall, Hotel Premier%0A` +
+      `---------------------------------------%0A` +
+      `Hello Hotel Premier Management, I want to book/inquire about this event package for our upcoming function. Please share date availability and booking details!`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=919325375802&text=${msg}`;
+    window.open(whatsappUrl, '_blank');
   }
 
   selectEventPackage(pkgId) {
@@ -1538,7 +1588,25 @@ class HotelPremierApp {
       occasionSelect.value = 'Full Restaurant Lunch Buyout';
       const slotSelect = document.getElementById('calc-event-timeslot');
       if (slotSelect) slotSelect.value = 'Lunch (11:30 AM - 3:30 PM)';
+    } else if (pkgId === 'pkg-engagement' && occasionSelect) {
+      occasionSelect.value = 'Engagement / Ring Ceremony';
+    } else if (pkgId === 'pkg-corporate' && occasionSelect) {
+      occasionSelect.value = 'Corporate Meeting / Seminar';
+    } else if (pkgId === 'pkg-hightea' && occasionSelect) {
+      occasionSelect.value = 'Kitty Party / Ladies Meet';
+    } else if (pkgId === 'pkg-birthday' && occasionSelect) {
+      occasionSelect.value = 'Birthday Party';
     }
+
+    const paxInput = document.getElementById('calc-event-pax');
+    if (paxInput) {
+      const pkgs = this.getRestaurantEventPackages();
+      const p = pkgs.find(x => x.id === pkgId);
+      if (p && p.minPax && parseInt(paxInput.value) < p.minPax) {
+        paxInput.value = p.minPax;
+      }
+    }
+
     this.calculateRestaurantEventQuote();
     const calc = document.getElementById('restaurant-event-calculator');
     if (calc) {
@@ -1570,10 +1638,17 @@ class HotelPremierApp {
     const pkgs = this.getRestaurantEventPackages();
     const pkg = pkgs.find(p => p.id === selectedPkgId) || pkgs[0];
 
+    const minPax = pkg.minPax || 15;
     let pax = parseInt(paxInput.value) || 20;
-    if (pax < 15) pax = 15;
+    if (pax < minPax) pax = minPax;
     if (pax > 40) pax = 40; // Up to 40 Pax max
     paxInput.value = pax;
+    paxInput.min = minPax;
+
+    const hintEl = document.getElementById('pax-range-hint');
+    if (hintEl) {
+      hintEl.innerText = `Package capacity: ${minPax} to 40 Pax max`;
+    }
 
     const occasion = occasionSelect ? occasionSelect.value : 'Family Gathering';
     const timeslot = slotSelect ? slotSelect.value : 'Lunch (11:30 AM - 3:30 PM)';
