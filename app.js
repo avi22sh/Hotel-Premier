@@ -50,6 +50,7 @@ class HotelPremierApp {
     this.renderCategories();
     this.renderQuickFilters();
     this.renderMenu();
+    this.renderMenuSectionDrawer();
     this.renderLocationQR();
     this.renderLocationDistances();
     await this.initHeroCarousel();
@@ -94,12 +95,15 @@ class HotelPremierApp {
     const hotelContainer = document.getElementById('section-hotel-container');
     const tabMenu = document.getElementById('tab-mode-menu');
     const tabHotel = document.getElementById('tab-mode-hotel');
+    const floatBtn = document.getElementById('floating-menu-toggle-btn');
 
     if (mode === 'hotel') {
       if (menuContainer) menuContainer.style.display = 'none';
       if (hotelContainer) hotelContainer.style.display = 'block';
       if (tabMenu) tabMenu.classList.remove('active');
       if (tabHotel) tabHotel.classList.add('active');
+      if (floatBtn) floatBtn.style.display = 'none';
+      this.closeMenuSectionDrawer();
       this.renderRoomCarousels();
       this.calculateBulkQuote();
     } else {
@@ -107,6 +111,7 @@ class HotelPremierApp {
       if (hotelContainer) hotelContainer.style.display = 'none';
       if (tabMenu) tabMenu.classList.add('active');
       if (tabHotel) tabHotel.classList.remove('active');
+      if (floatBtn) floatBtn.style.display = 'flex';
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -143,6 +148,7 @@ class HotelPremierApp {
     }
 
     this.renderMenu();
+    this.renderMenuSectionDrawer();
     this.calculateBulkQuote();
     this.renderRestaurantEventPackages();
     this.calculateRestaurantEventQuote();
@@ -833,6 +839,147 @@ class HotelPremierApp {
         wrapper.scrollLeft += e.deltaY;
       }
     }, { passive: false });
+  }
+
+  // ==================== FULL MENU SUB-SECTIONS SWITCHER DRAWER ====================
+  renderMenuSectionDrawer() {
+    const list = document.getElementById('drawer-sections-list');
+    if (!list) return;
+
+    if (!this.categories || this.categories.length === 0) {
+      this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
+    }
+
+    const validCategories = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
+    const floatBadge = document.getElementById('floating-sections-count');
+    if (floatBadge) {
+      floatBadge.innerText = validCategories.length;
+    }
+
+    const allDishesCount = this.menuData ? this.menuData.length : 214;
+    const isAllActive = (this.currentCategory === 'all' && this.viewMode === 'all');
+    const dishesWord = this.t('itemsCount', 'Items');
+
+    const items = [
+      {
+        id: 'all',
+        name: this.t('filterAll', 'All Items'),
+        subtitle: 'Complete Restaurant Menu • All ' + allDishesCount + ' Pure Veg Dishes',
+        icon: '🍽️',
+        image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+        count: allDishesCount,
+        isActive: isAllActive,
+        isAll: true
+      },
+      ...validCategories.map(cat => {
+        const catDishes = this.menuData.filter(d => d.categoryId === cat.id);
+        const localizedTitle = this.getCategoryLocalizedName(cat.id);
+        const localizedSubtitle = this.getCategoryLocalizedSubtitle(cat.id);
+        const localizedDesc = this.getCategoryLocalizedDesc(cat.id);
+        const isActive = (this.currentCategory === cat.id && this.viewMode === 'section');
+
+        let displaySub = localizedSubtitle;
+        if (displaySub && cat.description) {
+          displaySub += ` • ${cat.description}`;
+        } else if (!displaySub) {
+          displaySub = localizedDesc || 'Fresh & pure veg delicacies';
+        }
+
+        return {
+          id: cat.id,
+          name: localizedTitle,
+          subtitle: displaySub,
+          icon: cat.icon || '🍽️',
+          image: cat.image,
+          count: catDishes.length,
+          isActive: isActive,
+          isAll: false
+        };
+      })
+    ];
+
+    list.innerHTML = items.map(item => `
+      <div class="drawer-section-item ${item.isActive ? 'active' : ''} ${item.isAll ? 'all-items-row' : ''}" 
+           data-section-id="${item.id}"
+           onclick="window.app.selectCategoryFromDrawer('${item.id}')">
+        <div class="drawer-item-media">
+          ${item.image ? `<img src="${item.image}" alt="${item.name}" class="drawer-item-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">` : `<span class="drawer-fallback-icon">${item.icon}</span>`}
+          <span class="drawer-item-badge-icon">${item.icon}</span>
+        </div>
+        <div class="drawer-item-content">
+          <div class="drawer-item-title-row">
+            <h4 class="drawer-item-title">${item.name}</h4>
+            ${item.isActive ? '<span class="drawer-active-pill">✓ CURRENT</span>' : ''}
+          </div>
+          <p class="drawer-item-sub">${item.subtitle}</p>
+        </div>
+        <div class="drawer-item-meta">
+          <span class="drawer-item-count">${item.count} ${dishesWord}</span>
+          <span class="drawer-item-arrow">➔</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  toggleMenuSectionDrawer() {
+    const modal = document.getElementById('menu-sections-drawer-modal');
+    if (!modal) return;
+    if (modal.classList.contains('active')) {
+      this.closeMenuSectionDrawer();
+    } else {
+      this.openMenuSectionDrawer();
+    }
+  }
+
+  openMenuSectionDrawer() {
+    const modal = document.getElementById('menu-sections-drawer-modal');
+    if (!modal) return;
+    this.renderMenuSectionDrawer();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    const searchInput = document.getElementById('drawer-sections-search');
+    if (searchInput) {
+      searchInput.value = '';
+      setTimeout(() => searchInput.focus(), 150);
+    }
+  }
+
+  closeMenuSectionDrawer() {
+    const modal = document.getElementById('menu-sections-drawer-modal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  selectCategoryFromDrawer(catId) {
+    this.closeMenuSectionDrawer();
+    if (catId === 'all') {
+      this.showAllDishesView();
+    } else {
+      this.openCategorySection(catId);
+    }
+    const target = document.getElementById('dishes-section-view');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  filterDrawerSections(query) {
+    const q = (query || '').toLowerCase().trim();
+    const rows = document.querySelectorAll('#drawer-sections-list .drawer-section-item');
+    rows.forEach(row => {
+      if (!q) {
+        row.style.display = 'flex';
+        return;
+      }
+      const title = row.querySelector('.drawer-item-title') ? row.querySelector('.drawer-item-title').innerText.toLowerCase() : '';
+      const sub = row.querySelector('.drawer-item-sub') ? row.querySelector('.drawer-item-sub').innerText.toLowerCase() : '';
+      if (title.includes(q) || sub.includes(q)) {
+        row.style.display = 'flex';
+      } else {
+        row.style.display = 'none';
+      }
+    });
   }
 
   renderQuickFilters() {

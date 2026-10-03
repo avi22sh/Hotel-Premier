@@ -32,6 +32,9 @@ window.HOTEL_PREMIER_I18N = {
       // Home & Sections
       exploreSections: 'Explore Menu Sections',
       exploreSubtitle: 'Tap any section below to view delicious dishes',
+      menuSectionsToggle: 'Menu Sections',
+      drawerMenuTitle: 'Menu Sub-Sections',
+      drawerMenuSub: 'Select any category to jump instantly',
       viewAllBtn: '📖 View All Items',
       itemsCount: 'Items',
       viewSection: 'View Section ➔',
@@ -179,6 +182,9 @@ window.HOTEL_PREMIER_I18N = {
       // Home & Sections
       exploreSections: 'मेन्यू सेक्शंस चुनें',
       exploreSubtitle: 'स्वादिष्ट व्यंजन देखने के लिए किसी भी सेक्शन पर क्लिक करें',
+      menuSectionsToggle: 'मेन्यू विभाग',
+      drawerMenuTitle: 'मेन्यू उप-विभाग',
+      drawerMenuSub: 'तुरंत देखने के लिए किसी भी श्रेणी पर टैप करें',
       viewAllBtn: '📖 संपूर्ण मेन्यू देखें',
       itemsCount: 'व्यंजन',
       viewSection: 'मेन्यू देखें ➔',
@@ -326,6 +332,9 @@ window.HOTEL_PREMIER_I18N = {
       // Home & Sections
       exploreSections: 'मेन्यू विभाग निवडा',
       exploreSubtitle: 'स्वादिष्ट पदार्थ पाहण्यासाठी खालील कोणत्याही विभागावर क्लिक करा',
+      menuSectionsToggle: 'मेन्यू विभाग',
+      drawerMenuTitle: 'मेन्यू उप-विभाग',
+      drawerMenuSub: 'झटपट पाहण्यासाठी कोणत्याही विभागावर टॅप करा',
       viewAllBtn: '📖 संपूर्ण मेन्यू पहा',
       itemsCount: 'पदार्थ',
       viewSection: 'विभाग पहा ➔',

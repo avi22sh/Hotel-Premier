@@ -6,14 +6,21 @@
   skip_processing = true
 
 # Completely disable Netlify Drawer / Feedback badge on all deploys
+[build.environment]
+  NETLIFY_DRAWER = "false"
+  NETLIFY_BADGE = "false"
+
 [context.production.environment]
   NETLIFY_DRAWER = "false"
+  NETLIFY_BADGE = "false"
 
 [context.deploy-preview.environment]
   NETLIFY_DRAWER = "false"
+  NETLIFY_BADGE = "false"
 
 [context.branch-deploy.environment]
   NETLIFY_DRAWER = "false"
+  NETLIFY_BADGE = "false"
 
 [[headers]]
   for = "/*"

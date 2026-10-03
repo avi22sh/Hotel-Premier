@@ -22,6 +22,62 @@
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
+  <script>
+    (function() {
+      function killNetlify(node) {
+        if (!node || node.nodeType !== 1) return;
+        var tag = (node.tagName || '').toLowerCase();
+        var id = (node.id || '').toLowerCase();
+        var cls = (typeof node.className === 'string' ? node.className : '').toLowerCase();
+        var src = (node.getAttribute && (node.getAttribute('src') || node.getAttribute('data-src')) || '').toLowerCase();
+        var title = (node.getAttribute && node.getAttribute('title') || '').toLowerCase();
+
+        if (
+          tag === 'netlify-drawer' ||
+          tag.indexOf('netlify') !== -1 ||
+          id.indexOf('netlify') !== -1 ||
+          cls.indexOf('netlify') !== -1 ||
+          src.indexOf('netlify') !== -1 ||
+          title.indexOf('netlify') !== -1 ||
+          (tag === 'iframe' && (src.indexOf('netlify') !== -1 || id.indexOf('netlify') !== -1 || cls.indexOf('netlify') !== -1 || !src)) ||
+          (tag === 'div' && (cls.indexOf('feedback') !== -1 && cls.indexOf('widget') !== -1))
+        ) {
+          try { node.remove(); } catch(e) { if (node.parentNode) node.parentNode.removeChild(node); }
+        }
+      }
+
+      var observer = new MutationObserver(function(mutations) {
+        for (var i = 0; i < mutations.length; i++) {
+          var added = mutations[i].addedNodes;
+          for (var j = 0; j < added.length; j++) {
+            killNetlify(added[j]);
+            if (added[j].querySelectorAll) {
+              var nested = added[j].querySelectorAll('netlify-drawer, [id*="netlify"], [class*="netlify"], iframe[src*="netlify"], div[class*="feedback-widget"], iframe:not([src])');
+              for (var k = 0; k < nested.length; k++) {
+                try { nested[k].remove(); } catch(e) { if (nested[k].parentNode) nested[k].parentNode.removeChild(nested[k]); }
+              }
+            }
+          }
+        }
+      });
+
+      if (document.documentElement) {
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+      } else {
+        document.addEventListener('DOMContentLoaded', function() {
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+        });
+      }
+
+      window.addEventListener('load', function() {
+        document.querySelectorAll('netlify-drawer, [id*="netlify"], [class*="netlify"], iframe[src*="netlify"], .netlify-badge, #netlify-badge, a[href*="netlify.com"]').forEach(function(el) {
+          try { el.remove(); } catch(e) {}
+        });
+      });
+    })();
+  </script>
 </head>
 <body>
 
@@ -150,9 +206,14 @@
           <h2 class="category-grid-title" data-i18n="exploreSections">Explore Menu Sections</h2>
           <p class="category-grid-subtitle" data-i18n="exploreSubtitle">Tap any section below to view delicious dishes</p>
         </div>
-        <button class="view-all-text-btn" onclick="window.app.showAllDishesView()">
-          <span data-i18n="viewAllBtn">📖 View All Items</span>
-        </button>
+        <div class="category-header-actions">
+          <button class="menu-sections-toggle-btn" onclick="window.app.toggleMenuSectionDrawer()" title="Open Full Menu Sub-Sections Drawer">
+            <span>📋 <span data-i18n="menuSectionsToggle">Menu Sections</span> ▾</span>
+          </button>
+          <button class="view-all-text-btn" onclick="window.app.showAllDishesView()">
+            <span data-i18n="viewAllBtn">📖 View All Items</span>
+          </button>
+        </div>
       </div>
 
       <div class="category-cards-grid" id="category-cards-grid">
@@ -171,6 +232,9 @@
           <h2 class="active-category-title" id="active-category-title">Paneer Specialties</h2>
           <span class="active-category-hindi" id="active-category-hindi">शाही पनीर व्यंजन</span>
         </div>
+        <button class="section-nav-switcher-btn" onclick="window.app.toggleMenuSectionDrawer()" title="Switch Menu Sub-Section">
+          <span>📋 Switch Section ▾</span>
+        </button>
         <div class="active-category-count" id="active-category-count">14 Items</div>
       </div>
 
@@ -1262,6 +1326,43 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Menu Sub-Sections Toggle Button -->
+  <button id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Menu Sections">
+    <span class="floating-btn-icon">📋</span>
+    <span class="floating-btn-text" data-i18n="menuSectionsToggle">Menu Sections</span>
+    <span class="floating-btn-badge" id="floating-sections-count">20</span>
+  </button>
+
+  <!-- ================================================================ -->
+  <!-- MODAL: FULL MENU SUB-SECTIONS SWITCHER DRAWER                     -->
+  <!-- ================================================================ -->
+  <div id="menu-sections-drawer-modal" class="modal-backdrop" onclick="if (event.target === this && window.app) window.app.closeMenuSectionDrawer();">
+    <div class="modal-sheet menu-sections-drawer-sheet" role="dialog" aria-modal="true">
+      <!-- Drawer Header -->
+      <div class="drawer-header">
+        <div class="drawer-header-title-block">
+          <span class="drawer-header-icon">📋</span>
+          <div>
+            <h3 class="drawer-title" data-i18n="drawerMenuTitle">Menu Sub-Sections</h3>
+            <p class="drawer-subtitle" data-i18n="drawerMenuSub">Select any category to jump instantly</p>
+          </div>
+        </div>
+        <button class="modal-close-btn" onclick="window.app ? window.app.closeMenuSectionDrawer() : null" aria-label="Close Drawer">✕</button>
+      </div>
+
+      <!-- Quick Search inside Drawer -->
+      <div class="drawer-search-box">
+        <span class="drawer-search-icon">🔍</span>
+        <input type="text" id="drawer-sections-search" class="drawer-search-input" placeholder="Filter sections (e.g. Morning, Paneer, Rice, Soups)..." oninput="window.app ? window.app.filterDrawerSections(this.value) : null">
+      </div>
+
+      <!-- Scrollable Sub-Sections List -->
+      <div class="drawer-sections-list" id="drawer-sections-list">
+        <!-- Rendered dynamically by app.js: All Items, Morning Delights, Tasty Tidbits, etc. -->
       </div>
     </div>
   </div>
