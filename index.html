@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.5">
+  <link rel="stylesheet" href="styles.css?v=4.6">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -1371,109 +1371,10 @@
             Digital QR Menu Engine • Live CMS • Progressive Web App (PWA) Offline Architecture • Multilingual Hindi/Marathi System
           </div>
 
-          <!-- Master Developer Data Vault (PIN Protected - Only for Avinash Hedawoo) -->
-          <div class="dev-vault-accordion" id="dev-vault-accordion">
-            <div class="dev-vault-gate" id="dev-vault-gate">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-                <div style="font-weight: 800; font-size: 0.85rem; color: var(--gold-light); display: flex; align-items: center; gap: 6px;">
-                  <span>🔒</span> <span>Master Developer Vault</span>
-                </div>
-                <span style="font-size: 0.68rem; background: rgba(212, 144, 28, 0.2); color: var(--gold-light); padding: 2px 6px; border-radius: 4px;">EXCLUSIVE</span>
-              </div>
-              <p style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4;">
-                Private analytics vault for Level 1 scans, Level 3 engagement, customer leads & master backups. Not accessible to restaurant staff.
-              </p>
-              <div style="display: flex; gap: 8px;">
-                <input type="password" id="dev-vault-pin-input" placeholder="Developer PIN (9325)" maxlength="8" style="flex: 1; padding: 8px 12px; background: rgba(0,0,0,0.4); border: 1px solid rgba(212, 144, 28, 0.4); border-radius: 6px; color: #fff; font-size: 0.9rem; text-align: center; letter-spacing: 2px;" onkeydown="if(event.key==='Enter') window.app ? window.app.unlockDeveloperVault() : null">
-                <button type="button" class="btn-primary" style="padding: 8px 14px; font-size: 0.8rem;" onclick="window.app ? window.app.unlockDeveloperVault() : null">Unlock</button>
-              </div>
-            </div>
-
-            <!-- Unlocked Developer Vault Control Deck -->
-            <div class="dev-vault-deck" id="dev-vault-deck" style="display: none;">
-              <!-- Live Counters -->
-              <div class="vault-kpi-grid" id="vault-kpi-grid">
-                <div class="vault-kpi-card">
-                  <div class="kpi-val" id="vault-kpi-scans">0</div>
-                  <div class="kpi-lbl">Total Scans</div>
-                </div>
-                <div class="vault-kpi-card">
-                  <div class="kpi-val" id="vault-kpi-leads">0</div>
-                  <div class="kpi-lbl">Guest Leads</div>
-                </div>
-                <div class="vault-kpi-card">
-                  <div class="kpi-val" id="vault-kpi-rating">5.0★</div>
-                  <div class="kpi-lbl">Avg Rating</div>
-                </div>
-              </div>
-
-              <!-- Level 1 Scans Actions -->
-              <div class="vault-section-box">
-                <div class="vault-section-title">
-                  <span>📲 Level 1: Table & Device Scans</span>
-                  <span class="vault-badge">SEPARATED</span>
-                </div>
-                <p class="vault-section-desc">Table/Room #, timestamp, scan source, phone OS & browser.</p>
-                <div class="vault-btn-row">
-                  <button type="button" class="vault-btn csv" onclick="window.HOTEL_VAULT.exportLevel1CSV()">📥 Download CSV</button>
-                  <button type="button" class="vault-btn json" onclick="window.HOTEL_VAULT.exportLevel1JSON()">📥 Download JSON</button>
-                </div>
-              </div>
-
-              <!-- Level 3 Analytics Actions -->
-              <div class="vault-section-box">
-                <div class="vault-section-title">
-                  <span>📈 Level 3: Browsing & Popularity</span>
-                  <span class="vault-badge">SEPARATED</span>
-                </div>
-                <p class="vault-section-desc">Most viewed dishes, clicked categories, search queries & dwell time.</p>
-                <div class="vault-btn-row">
-                  <button type="button" class="vault-btn csv" onclick="window.HOTEL_VAULT.exportLevel3CSV()">📥 Download CSV</button>
-                  <button type="button" class="vault-btn json" onclick="window.HOTEL_VAULT.exportLevel3JSON()">📥 Download JSON</button>
-                </div>
-              </div>
-
-              <!-- Customer Leads & Feedback Actions -->
-              <div class="vault-section-box">
-                <div class="vault-section-title">
-                  <span>⭐ Customer Dining Leads & Feedback</span>
-                  <span class="vault-badge">MAIN DETAILS</span>
-                </div>
-                <p class="vault-section-desc">Guest Name, WhatsApp Contact, Region/City, Ratings & Comments.</p>
-                <div class="vault-btn-row">
-                  <button type="button" class="vault-btn csv" onclick="window.HOTEL_VAULT.exportFeedbackCSV()">📥 Download CSV</button>
-                  <button type="button" class="vault-btn json" onclick="window.HOTEL_VAULT.exportFeedbackJSON()">📥 Download JSON</button>
-                </div>
-              </div>
-
-              <!-- Master Consolidated Backup -->
-              <div class="vault-section-box highlight">
-                <div class="vault-section-title">
-                  <span>💾 Complete Master System Backup</span>
-                  <span class="vault-badge">ALL DATA</span>
-                </div>
-                <p class="vault-section-desc">Consolidated backup of all scans, analytics, leads, menu overrides & deals.</p>
-                <div class="vault-btn-row">
-                  <button type="button" class="vault-btn master" onclick="window.HOTEL_VAULT.exportMasterVaultBackup()">💾 Export Master Backup (.json)</button>
-                </div>
-              </div>
-
-              <!-- Direct Dispatch to Developer -->
-              <div class="vault-dispatch-grid">
-                <button type="button" class="vault-dispatch-btn wa" onclick="window.HOTEL_VAULT.sendTelemetryToDeveloperWhatsApp()">
-                  <span>📲 Send to My WhatsApp</span>
-                </button>
-                <button type="button" class="vault-dispatch-btn mail" onclick="window.HOTEL_VAULT.sendTelemetryToDeveloperEmail()">
-                  <span>✉️ Email Report to Me</span>
-                </button>
-              </div>
-
-              <!-- Maintenance / Purge -->
-              <div style="margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                <button type="button" class="vault-link-btn" onclick="window.app ? window.app.promptChangeDeveloperPin() : null">🔑 Change PIN</button>
-                <button type="button" class="vault-link-btn danger" onclick="window.HOTEL_VAULT.purgeDeveloperLogs()">🧹 Reset Telemetry</button>
-              </div>
-            </div>
+          <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: center;">
+            <button type="button" class="btn-primary" style="padding: 10px 24px; font-weight: 700; font-size: 0.85rem;" onclick="closeDeveloperModal()">
+              Close
+            </button>
           </div>
         </div>
       </div>
@@ -1517,14 +1418,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.5 Cache-Busted) -->
-  <script src="storage.js?v=4.5"></script>
-  <script src="vault.js?v=4.5"></script>
-  <script src="data/translations.js?v=4.5"></script>
-  <script src="data/hotel-data.js?v=4.5"></script>
-  <script src="data/menu-data.js?v=4.5"></script>
-  <script src="app.js?v=4.5"></script>
-  <script src="admin.js?v=4.5"></script>
+  <!-- Load Application Scripts (v4.6 Cache-Busted) -->
+  <script src="storage.js?v=4.6"></script>
+  <script src="vault.js?v=4.6"></script>
+  <script src="data/translations.js?v=4.6"></script>
+  <script src="data/hotel-data.js?v=4.6"></script>
+  <script src="data/menu-data.js?v=4.6"></script>
+  <script src="app.js?v=4.6"></script>
+  <script src="admin.js?v=4.6"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1596,8 +1497,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.5').then(function(reg) {
-          console.log('[PWA] Service Worker v4.5 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.6').then(function(reg) {
+          console.log('[PWA] Service Worker v4.6 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();
