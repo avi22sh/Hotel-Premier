@@ -27,3 +27,14 @@
   [headers.values]
     X-Netlify-Drawer = "false"
     Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
