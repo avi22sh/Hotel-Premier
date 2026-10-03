@@ -1340,7 +1340,7 @@
   <!-- ================================================================ -->
   <!-- MODAL: FULL MENU SUB-SECTIONS SWITCHER DRAWER                     -->
   <!-- ================================================================ -->
-  <div id="menu-sections-drawer-modal" class="modal-backdrop" onclick="if (event.target === this && window.app) window.app.closeMenuSectionDrawer();">
+  <div id="menu-sections-drawer-modal" class="modal-backdrop menu-sections-modal-backdrop" onclick="if (event.target === this && window.app) window.app.closeMenuSectionDrawer();">
     <div class="modal-sheet menu-sections-drawer-sheet" role="dialog" aria-modal="true">
       <!-- Drawer Header -->
       <div class="drawer-header">
@@ -1367,14 +1367,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts -->
-  <script src="storage.js"></script>
-  <script src="vault.js"></script>
-  <script src="data/translations.js"></script>
-  <script src="data/hotel-data.js"></script>
-  <script src="data/menu-data.js"></script>
-  <script src="app.js"></script>
-  <script src="admin.js"></script>
+  <!-- Load Application Scripts (v4.0 Cache-Busted) -->
+  <script src="storage.js?v=4.0"></script>
+  <script src="vault.js?v=4.0"></script>
+  <script src="data/translations.js?v=4.0"></script>
+  <script src="data/hotel-data.js?v=4.0"></script>
+  <script src="data/menu-data.js?v=4.0"></script>
+  <script src="app.js?v=4.0"></script>
+  <script src="admin.js?v=4.0"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1443,13 +1443,28 @@
       window.addEventListener('load', forceRenderIfEmpty);
     })();
 
-    // Register PWA Service Worker for Offline Caching
+    // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js').then(function(reg) {
-          console.log('[PWA] Service Worker registered with scope:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.0').then(function(reg) {
+          console.log('[PWA] Service Worker v4.0 registered:', reg.scope);
+          // Check for immediate SW updates
+          if (typeof reg.update === 'function') {
+            reg.update();
+          }
+          reg.addEventListener('updatefound', function() {
+            var installingWorker = reg.installing;
+            if (installingWorker) {
+              installingWorker.addEventListener('statechange', function() {
+                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  console.log('[PWA] Fresh menu version installed, reloading...');
+                  window.location.reload();
+                }
+              });
+            }
+          });
         }).catch(function(err) {
-          console.log('[PWA] Service Worker registration skipped or failed:', err);
+          console.log('[PWA] Service Worker registration skipped:', err);
         });
       });
     }

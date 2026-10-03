@@ -3533,18 +3533,25 @@ div[class*="feedback-widget"] {
   animation: drawerSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.menu-sections-modal-backdrop {
+  z-index: 120;
+}
+
 @media (max-width: 640px) {
+  .menu-sections-modal-backdrop,
   .modal-backdrop:has(.menu-sections-drawer-sheet) {
-    align-items: flex-end;
-    padding: 0;
+    align-items: flex-end !important;
+    padding: 0 !important;
   }
   .menu-sections-drawer-sheet {
-    max-width: 100%;
-    max-height: 88vh;
-    border-radius: 20px 20px 0 0;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: 85vh !important;
+    border-radius: 20px 20px 0 0 !important;
+    border-bottom: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    margin: 0 !important;
   }
 }
 

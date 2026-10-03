@@ -7,8 +7,12 @@
 
 class HotelPremierApp {
   constructor() {
-    this.menuData = [];
-    this.categories = [];
+    this.menuData = (window.HOTEL_PREMIER_INITIAL_MENU && window.HOTEL_PREMIER_INITIAL_MENU.length > 0)
+      ? [...window.HOTEL_PREMIER_INITIAL_MENU]
+      : [];
+    this.categories = (window.HOTEL_PREMIER_CATEGORIES && window.HOTEL_PREMIER_CATEGORIES.length > 0)
+      ? [...window.HOTEL_PREMIER_CATEGORIES]
+      : [];
     this.currentCategory = 'all';
     this.currentFilter = 'all';
     this.searchQuery = '';
@@ -669,6 +673,13 @@ class HotelPremierApp {
     }
     this.currentCategory = catId;
     this.viewMode = 'section';
+    this.currentFilter = 'all';
+    this.searchQuery = '';
+
+    const searchInput = document.getElementById('menu-search-input');
+    const clearSearch = document.getElementById('clear-search-btn');
+    if (searchInput) searchInput.value = '';
+    if (clearSearch) clearSearch.style.display = 'none';
 
     const homeView = document.getElementById('home-categories-view');
     const dishesView = document.getElementById('dishes-section-view');
@@ -685,6 +696,7 @@ class HotelPremierApp {
     if (hindiEl) hindiEl.innerText = this.getCategoryLocalizedSubtitle(catId);
     if (countEl) countEl.innerText = `${catDishes.length} ${itemsWord}`;
 
+    this.renderQuickFilters();
     this.renderCategories();
     this.renderSectionSlideshow(catId);
     this.renderMenu();
@@ -718,6 +730,13 @@ class HotelPremierApp {
   showAllDishesView() {
     this.currentCategory = 'all';
     this.viewMode = 'all';
+    this.currentFilter = 'all';
+    this.searchQuery = '';
+
+    const searchInput = document.getElementById('menu-search-input');
+    const clearSearch = document.getElementById('clear-search-btn');
+    if (searchInput) searchInput.value = '';
+    if (clearSearch) clearSearch.style.display = 'none';
 
     const homeView = document.getElementById('home-categories-view');
     const dishesView = document.getElementById('dishes-section-view');
@@ -733,6 +752,7 @@ class HotelPremierApp {
     if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle');
     if (countEl) countEl.innerText = `${this.menuData.length} ${itemsWord}`;
 
+    this.renderQuickFilters();
     this.renderCategories();
     this.renderSectionSlideshow(null);
     this.renderMenu();
@@ -953,6 +973,13 @@ class HotelPremierApp {
 
   selectCategoryFromDrawer(catId) {
     this.closeMenuSectionDrawer();
+    this.currentFilter = 'all';
+    this.searchQuery = '';
+    const searchInput = document.getElementById('menu-search-input');
+    const clearSearch = document.getElementById('clear-search-btn');
+    if (searchInput) searchInput.value = '';
+    if (clearSearch) clearSearch.style.display = 'none';
+
     if (catId === 'all') {
       this.showAllDishesView();
     } else {
@@ -1040,14 +1067,18 @@ class HotelPremierApp {
 
   getFilteredDishes() {
     if (!this.menuData || this.menuData.length === 0) {
-      this.loadMenuData();
+      if (window.HOTEL_PREMIER_INITIAL_MENU && window.HOTEL_PREMIER_INITIAL_MENU.length > 0) {
+        this.menuData = [...window.HOTEL_PREMIER_INITIAL_MENU];
+      } else {
+        return [];
+      }
     }
 
     return this.menuData.filter(item => {
       if (this.currentCategory === 'chef-specials') {
         if (!item.tags || !item.tags.includes('chef-special')) return false;
-      } else if (this.currentCategory !== 'all' && item.categoryId !== this.currentCategory) {
-        return false;
+      } else if (this.currentCategory && this.currentCategory !== 'all') {
+        if (item.categoryId !== this.currentCategory) return false;
       }
 
       if (this.currentFilter === 'chef-special' && (!item.tags || !item.tags.includes('chef-special'))) return false;
@@ -1055,8 +1086,8 @@ class HotelPremierApp {
       if (this.currentFilter === 'khandeshi' && (!item.tags || !item.tags.includes('khandeshi-special'))) return false;
       if (this.currentFilter === 'under-150' && item.price > 150) return false;
 
-      if (this.searchQuery.trim() !== '') {
-        const q = this.searchQuery.toLowerCase();
+      if (this.searchQuery && this.searchQuery.trim() !== '') {
+        const q = this.searchQuery.toLowerCase().trim();
         const matchName = item.name && item.name.toLowerCase().includes(q);
         const matchDesc = item.description && item.description.toLowerCase().includes(q);
         const matchTag = item.tags && item.tags.some(t => t.toLowerCase().includes(q));
