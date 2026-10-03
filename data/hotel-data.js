@@ -29,28 +29,40 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
 
   restaurantHeroSlides: [
     {
-      id: 'slide-dining',
-      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1000&auto=format&fit=crop&q=80',
-      title: 'Pride Pure Veg AC Restaurant',
-      subtitle: 'Pure Veg Royal Culinary Experience in Bhusawal • 100% Refined Oil'
-    },
-    {
-      id: 'slide-breakfast',
-      image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=1000&auto=format&fit=crop&q=80',
-      title: 'Morning Delights Breakfast',
-      subtitle: 'Crispy Butter Masala Dosas, Soft Idlis, Poori Bhaji & Special Tea'
+      id: 'slide-thali',
+      image: 'assets/menu-images/THALIS/PREMIER MAHARAJA THALI.jfif',
+      title: 'Premier Maharaja Royal Thali',
+      subtitle: 'Lavish Multi-Course Pure Veg Feast • Authentic Indian Hospitality'
     },
     {
       id: 'slide-paneer',
-      image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=1000&auto=format&fit=crop&q=80',
+      image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.avif',
       title: 'Royal Paneer & North Indian Gravies',
-      subtitle: 'Prepared Fresh in Pride Kitchen with Authentic Fragrant Spices'
+      subtitle: 'Prepared Fresh in Pride Kitchen with Pure Desi Spices & Butter'
     },
     {
-      id: 'slide-pasta',
-      image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281691?w=1000&auto=format&fit=crop&q=80',
-      title: 'Desi Masala Pasta & Chinese Wok',
-      subtitle: 'Spicy Masala Penne, Sizzling Noodles & Crunchy Starters'
+      id: 'slide-tandoor',
+      image: 'assets/menu-images/TANDOOR CLASSICS/TANDOOR PLATTER.avif',
+      title: 'Sizzling Tandoor Classics & Kababs',
+      subtitle: 'Smoky Paneer Tikka, Reshmi Kabab & Hara Bhara from Clay Oven'
+    },
+    {
+      id: 'slide-biryani',
+      image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.avif',
+      title: 'Aromatic Veg Dum Biryani & Pulao',
+      subtitle: 'Slow-Cooked Fragrant Basmati Rice with Rich Spices & Veg Raita'
+    },
+    {
+      id: 'slide-breakfast',
+      image: 'assets/menu-images/MORNING DELIGHT/poori bhaji.avif',
+      title: 'Morning Delights Breakfast',
+      subtitle: 'Golden Crispy Poori Bhaji, Chole Bhature, Hot Parathas & Special Tea'
+    },
+    {
+      id: 'slide-chinese',
+      image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.avif',
+      title: 'Indo-Chinese Wok & Starters',
+      subtitle: 'Crispy Manchurian, Paneer Chilly, Spring Rolls & Sizzling Noodles'
     }
   ],
 

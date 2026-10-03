@@ -325,7 +325,13 @@ class HotelPremierApp {
       : [];
 
     if (window.HOTEL_STORAGE) {
-      this.heroSlides = await window.HOTEL_STORAGE.getSectionSlides('restaurant_hero', defaultSlides);
+      const stored = await window.HOTEL_STORAGE.getSectionSlides('restaurant_hero', null);
+      if (stored && Array.isArray(stored) && stored.length > 0 && !stored[0].image.includes('unsplash')) {
+        this.heroSlides = stored;
+      } else {
+        this.heroSlides = defaultSlides;
+        window.HOTEL_STORAGE.saveSectionSlides('restaurant_hero', defaultSlides);
+      }
     } else {
       this.heroSlides = defaultSlides;
     }

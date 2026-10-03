@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.2">
+  <link rel="stylesheet" href="styles.css?v=4.3">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -191,18 +191,6 @@
 
     <!-- View 1: Home Categories Grid -->
     <section class="home-categories-section" id="home-categories-view">
-      <div class="category-grid-header">
-        <div>
-          <h2 class="category-grid-title" data-i18n="exploreSections">Explore Menu Sections</h2>
-          <p class="category-grid-subtitle" data-i18n="exploreSubtitle">Tap any section below to view delicious dishes</p>
-        </div>
-        <div class="category-header-actions">
-          <button class="menu-sections-toggle-btn" onclick="window.app.toggleMenuSectionDrawer()" title="Open Full Menu Sub-Sections Drawer">
-            <span>📋 <span data-i18n="menuSectionsToggle">Menu Sections</span> ▾</span>
-          </button>
-        </div>
-      </div>
-
       <div class="category-cards-grid" id="category-cards-grid">
         <!-- Category Cards Rendered via JavaScript -->
       </div>
@@ -232,11 +220,6 @@
           <span class="active-category-hindi" id="active-category-hindi">शाही पनीर व्यंजन ▾</span>
         </div>
         <div class="active-category-count" id="active-category-count">14 Items</div>
-      </div>
-
-      <!-- Sub-Section Multi-Photo Dish Slideshow Banner -->
-      <div id="section-slideshow-container" style="display: none;">
-        <!-- Slideshow rendered dynamically based on category dishes -->
       </div>
 
       <main class="menu-container">
@@ -1376,14 +1359,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.1 Cache-Busted) -->
-  <script src="storage.js?v=4.2"></script>
-  <script src="vault.js?v=4.2"></script>
-  <script src="data/translations.js?v=4.2"></script>
-  <script src="data/hotel-data.js?v=4.2"></script>
-  <script src="data/menu-data.js?v=4.2"></script>
-  <script src="app.js?v=4.2"></script>
-  <script src="admin.js?v=4.2"></script>
+  <!-- Load Application Scripts (v4.3 Cache-Busted) -->
+  <script src="storage.js?v=4.3"></script>
+  <script src="vault.js?v=4.3"></script>
+  <script src="data/translations.js?v=4.3"></script>
+  <script src="data/hotel-data.js?v=4.3"></script>
+  <script src="data/menu-data.js?v=4.3"></script>
+  <script src="app.js?v=4.3"></script>
+  <script src="admin.js?v=4.3"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1455,8 +1438,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.2').then(function(reg) {
-          console.log('[PWA] Service Worker v4.2 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.3').then(function(reg) {
+          console.log('[PWA] Service Worker v4.3 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();
