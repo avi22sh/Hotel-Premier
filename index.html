@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.7">
+  <link rel="stylesheet" href="styles.css?v=4.8">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -492,9 +492,9 @@
           <table class="tariff-table">
             <thead>
               <tr>
-                <th class="tariff-th-room">ROOM TYPE</th>
-                <th class="tariff-th-plan">ROOM ONLY</th>
-                <th class="tariff-th-plan">ROOM WITH BREAKFAST</th>
+                <th class="tariff-th-room" data-i18n="tariffThRoom">ROOM TYPE</th>
+                <th class="tariff-th-plan" data-i18n="tariffThPlanRO">ROOM ONLY</th>
+                <th class="tariff-th-plan" data-i18n="tariffThPlanCP">ROOM WITH BREAKFAST</th>
               </tr>
             </thead>
             <tbody>
@@ -502,18 +502,18 @@
               <tr class="tariff-category-row">
                 <td colspan="3">
                   <div class="tariff-cat-title">
-                    <span>AC DELUXE ROOMS (12 Rooms Total)</span>
+                    <span data-i18n="tariffDeluxeTitle">AC DELUXE ROOMS (12 Rooms Total)</span>
                     <span class="tariff-cat-bed">4 Queen Bed + 8 Twin Beds</span>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="tariff-occ-label">SINGLE OCCUPANCY</td>
+                <td class="tariff-occ-label" data-i18n="tariffSingle">SINGLE OCCUPANCY</td>
                 <td class="tariff-price-val">₹ 1800/-</td>
                 <td class="tariff-price-val">₹ 2000/-</td>
               </tr>
               <tr>
-                <td class="tariff-occ-label">DOUBLE OCCUPANCY</td>
+                <td class="tariff-occ-label" data-i18n="tariffDouble">DOUBLE OCCUPANCY</td>
                 <td class="tariff-price-val">₹ 2000/-</td>
                 <td class="tariff-price-val">₹ 2400/-</td>
               </tr>
@@ -522,26 +522,44 @@
               <tr class="tariff-category-row">
                 <td colspan="3">
                   <div class="tariff-cat-title">
-                    <span>AC SUPER DELUXE ROOMS (2 Rooms Only)</span>
+                    <span data-i18n="tariffSuperDeluxeTitle">AC SUPER DELUXE ROOMS (2 Rooms Only)</span>
                     <span class="tariff-cat-bed">👑 King Size Luxury Bed</span>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="tariff-occ-label">SINGLE OCCUPANCY</td>
+                <td class="tariff-occ-label" data-i18n="tariffSingle">SINGLE OCCUPANCY</td>
                 <td class="tariff-price-val">₹ 2000/-</td>
                 <td class="tariff-price-val">₹ 2200/-</td>
               </tr>
               <tr>
-                <td class="tariff-occ-label">DOUBLE OCCUPANCY</td>
+                <td class="tariff-occ-label" data-i18n="tariffDouble">DOUBLE OCCUPANCY</td>
                 <td class="tariff-price-val">₹ 2200/-</td>
                 <td class="tariff-price-val">₹ 2600/-</td>
+              </tr>
+
+              <!-- EXTRA BED / MATTRESS TARIFF -->
+              <tr class="tariff-category-row tariff-extra-bed-header" style="background: rgba(212, 144, 28, 0.18);">
+                <td colspan="3">
+                  <div class="tariff-cat-title">
+                    <span data-i18n="tariffExtraBedHeader" style="color: var(--terracotta-dark); font-weight: 800;">🛏️ EXTRA BED / MATTRESS TARIFF</span>
+                    <span class="tariff-cat-bed" data-i18n="tariffExtraBedSub" style="color: var(--terracotta); font-weight: 700;">Per Person / Per Night</span>
+                  </div>
+                </td>
+              </tr>
+              <tr class="tariff-extra-bed-row" style="background: rgba(255, 255, 255, 0.6);">
+                <td class="tariff-occ-label" data-i18n="tariffExtraBedLabel" style="font-weight: 800; color: var(--terracotta-dark);">EXTRA BED (ALL ROOMS)</td>
+                <td class="tariff-price-val" style="font-weight: 900; color: var(--terracotta-dark);">₹ 300/-</td>
+                <td class="tariff-price-val" style="font-weight: 900; color: var(--terracotta-dark);">₹ 500/-</td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="tariff-footer-box">
+          <div class="tariff-extra-bed-callout" data-i18n="tariffExtraBedCallout" style="background: rgba(212, 144, 28, 0.12); border: 1.5px solid var(--gold-primary); color: var(--terracotta-dark); padding: 8px 12px; border-radius: 6px; font-size: 0.82rem; font-weight: 700; margin-bottom: 10px; text-align: center;">
+            🛏️ <strong>EXTRA BED / MATTRESS CHARGE:</strong> ₹300/- (Room Only) • ₹500/- (With Breakfast) per night
+          </div>
           <div class="tariff-inclusive-badge">
             <span class="dot-gold">●</span>
             <span data-i18n="tariffInclusive">INCLUSIVE OF ALL TAXES</span>
@@ -550,7 +568,7 @@
             CHECK OUT: 24 HOURS
           </div>
           <div class="tariff-fine-print" data-i18n="tariffNotice">
-            Tariffs are subject to change without prior notice. Complimentary breakfast served from fixed menu in Pride Pure Veg Restaurant.
+            Tariffs are subject to change without prior notice. Complimentary breakfast served from fixed menu in Pride Pure Veg Restaurant. Extra bed available subject to room space.
           </div>
         </div>
       </div>
@@ -559,8 +577,8 @@
     <!-- Room Categories Gallery -->
     <section class="hotel-rooms-gallery-section">
       <div class="section-heading-block">
-        <h2 class="section-main-heading">Explore Our 14 Luxury Rooms</h2>
-        <p class="section-sub-heading">2 Super Deluxe King Bed + 4 Deluxe Queen Bed + 8 Deluxe Twin Beds</p>
+        <h2 class="section-main-heading" data-i18n="roomsSectionTitle">Explore Our 14 Luxury Rooms</h2>
+        <p class="section-sub-heading" data-i18n="roomsSectionSub">2 Super Deluxe King Bed + 4 Deluxe Queen Bed + 8 Deluxe Twin Beds</p>
       </div>
 
       <div class="hotel-rooms-grid">
@@ -580,7 +598,7 @@
           </div>
           <div class="room-card-body">
             <div class="room-card-header">
-              <h3 class="room-title">AC Super Deluxe Room</h3>
+              <h3 class="room-title" data-i18n="roomSuperDeluxeTitle">AC Super Deluxe Room</h3>
               <div class="room-starting-rate">From <strong>₹ 2000/-</strong></div>
             </div>
             <p class="room-desc">
@@ -626,7 +644,7 @@
           </div>
           <div class="room-card-body">
             <div class="room-card-header">
-              <h3 class="room-title">AC Deluxe (Queen Bed)</h3>
+              <h3 class="room-title" data-i18n="roomQueenTitle">AC Deluxe (Queen Bed)</h3>
               <div class="room-starting-rate">From <strong>₹ 1800/-</strong></div>
             </div>
             <p class="room-desc">
@@ -672,7 +690,7 @@
           </div>
           <div class="room-card-body">
             <div class="room-card-header">
-              <h3 class="room-title">AC Deluxe (Twin Beds)</h3>
+              <h3 class="room-title" data-i18n="roomTwinTitle">AC Deluxe (Twin Beds)</h3>
               <div class="room-starting-rate">From <strong>₹ 1800/-</strong></div>
             </div>
             <p class="room-desc">
@@ -736,10 +754,10 @@
             <div class="calc-form-group">
               <label class="form-label" data-i18n="calcEventType">Event Type</label>
               <select id="calc-event-type" class="form-select" onchange="window.app.calculateBulkQuote()">
-                <option value="Wedding / Marriage Barat (विवाह सोहळा)">💍 Wedding / Marriage Barat (विवाह सोहळा)</option>
-                <option value="Family Function / Gathering (कौटुंबिक समारंभ)">👨‍👩‍👧‍👦 Family Function / Gathering (कौटुंबिक समारंभ)</option>
-                <option value="Corporate / Business Event (व्यावसायिक)">💼 Corporate / Business Event (व्यावसायिक)</option>
-                <option value="Tour / Pilgrimage Group (पर्यटन / यात्रा)">🚌 Tour / Pilgrimage Group (पर्यटन / यात्रा)</option>
+                <option value="Wedding / Marriage Barat" data-i18n="calcWedding">💍 Wedding / Marriage Barat</option>
+                <option value="Family Function / Gathering" data-i18n="calcFamily">👨‍👩‍👧‍👦 Family Function / Gathering</option>
+                <option value="Corporate / Business Event" data-i18n="calcCorporate">💼 Corporate / Business Event</option>
+                <option value="Tour / Pilgrimage Group" data-i18n="calcPilgrimage">🚌 Tour / Pilgrimage Group</option>
               </select>
             </div>
 
@@ -1344,14 +1362,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.7 Cache-Busted) -->
-  <script src="storage.js?v=4.7"></script>
-  <script src="vault.js?v=4.7"></script>
-  <script src="data/translations.js?v=4.7"></script>
-  <script src="data/hotel-data.js?v=4.7"></script>
-  <script src="data/menu-data.js?v=4.7"></script>
-  <script src="app.js?v=4.7"></script>
-  <script src="admin.js?v=4.7"></script>
+  <!-- Load Application Scripts (v4.8 Cache-Busted) -->
+  <script src="storage.js?v=4.8"></script>
+  <script src="vault.js?v=4.8"></script>
+  <script src="data/translations.js?v=4.8"></script>
+  <script src="data/hotel-data.js?v=4.8"></script>
+  <script src="data/menu-data.js?v=4.8"></script>
+  <script src="app.js?v=4.8"></script>
+  <script src="admin.js?v=4.8"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1423,8 +1441,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.7').then(function(reg) {
-          console.log('[PWA] Service Worker v4.7 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.8').then(function(reg) {
+          console.log('[PWA] Service Worker v4.8 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();

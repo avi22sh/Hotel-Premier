@@ -1089,6 +1089,15 @@ body.large-font-mode .category-card-title {
   overflow: hidden;
 }
 
+.dish-title-sub {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #94A3B8;
+  margin-top: 1px;
+}
+
 .dish-rating {
   font-size: 0.70rem;
   font-weight: 800;

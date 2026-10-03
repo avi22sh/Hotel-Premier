@@ -138,17 +138,37 @@ class HotelPremierApp {
     this.renderCategoryCards();
     this.renderCategories();
 
+    const hindiEl = document.getElementById('active-category-hindi');
     if (this.viewMode === 'section' && this.currentCategory !== 'all') {
       const catId = this.currentCategory;
       const titleEl = document.getElementById('active-category-title');
-      const hindiEl = document.getElementById('active-category-hindi');
       if (titleEl) titleEl.innerText = this.getCategoryLocalizedName(catId);
-      if (hindiEl) hindiEl.innerText = this.getCategoryLocalizedSubtitle(catId);
+      if (hindiEl) {
+        if (this.currentLang === 'en') {
+          hindiEl.style.display = 'none';
+          hindiEl.innerText = '';
+        } else {
+          const sub = this.getCategoryLocalizedSubtitle(catId);
+          if (sub) {
+            hindiEl.style.display = 'block';
+            hindiEl.innerText = sub;
+          } else {
+            hindiEl.style.display = 'none';
+          }
+        }
+      }
     } else if (this.viewMode === 'all') {
       const titleEl = document.getElementById('active-category-title');
-      const hindiEl = document.getElementById('active-category-hindi');
       if (titleEl) titleEl.innerText = this.t('allMenuTitle');
-      if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle');
+      if (hindiEl) {
+        if (this.currentLang === 'en') {
+          hindiEl.style.display = 'none';
+          hindiEl.innerText = '';
+        } else {
+          hindiEl.style.display = 'block';
+          hindiEl.innerText = this.t('allMenuSubtitle');
+        }
+      }
     }
 
     this.renderMenu();
@@ -157,7 +177,7 @@ class HotelPremierApp {
     this.renderRestaurantEventPackages();
     this.calculateRestaurantEventQuote();
 
-    const toastMsg = lang === 'hi' ? 'भाषा बदलकर हिंदी की गई!' : (lang === 'mr' ? 'भाषा बदलून मराठी केली!' : 'Language changed to English!');
+    const toastMsg = lang === 'hi' ? 'भाषा बदलकर हिंदी (Hinglish) की गई!' : (lang === 'mr' ? 'भाषा बदलून मराठी केली!' : 'Language changed to English!');
     this.showToast(toastMsg, 'info');
   }
 
@@ -183,11 +203,11 @@ class HotelPremierApp {
   }
 
   getCategoryLocalizedSubtitle(catId) {
+    if (this.currentLang === 'en') return '';
     if (window.HOTEL_PREMIER_I18N) {
       return window.HOTEL_PREMIER_I18N.getCategorySubtitle(catId);
     }
-    const cat = this.categories.find(c => c.id === catId);
-    return cat ? (cat.hindiName || '') : '';
+    return '';
   }
 
   getCategoryLocalizedDesc(catId) {
@@ -203,7 +223,11 @@ class HotelPremierApp {
       const key = el.getAttribute('data-i18n');
       const text = this.t(key);
       if (text) {
-        el.innerHTML = text;
+        if (el.tagName === 'OPTION') {
+          el.text = text;
+        } else {
+          el.innerHTML = text;
+        }
       }
     });
 
@@ -665,7 +689,7 @@ class HotelPremierApp {
           <div class="category-card-content">
             <div>
               <h3 class="category-card-title">${localizedTitle}</h3>
-              ${localizedSubtitle ? `<span class="category-card-hindi">${localizedSubtitle}</span>` : ''}
+              ${(this.currentLang !== 'en' && localizedSubtitle) ? `<span class="category-card-hindi">${localizedSubtitle}</span>` : ''}
               <p class="category-card-desc">${localizedDesc || 'Delicious vegetarian delicacies.'}</p>
             </div>
             <div class="category-card-footer">
@@ -703,7 +727,20 @@ class HotelPremierApp {
     const itemsWord = this.t('itemsCount', 'Items');
 
     if (titleEl) titleEl.innerText = this.getCategoryLocalizedName(catId);
-    if (hindiEl) hindiEl.innerText = this.getCategoryLocalizedSubtitle(catId);
+    if (hindiEl) {
+      if (this.currentLang === 'en') {
+        hindiEl.style.display = 'none';
+        hindiEl.innerText = '';
+      } else {
+        const sub = this.getCategoryLocalizedSubtitle(catId);
+        if (sub) {
+          hindiEl.style.display = 'block';
+          hindiEl.innerText = sub;
+        } else {
+          hindiEl.style.display = 'none';
+        }
+      }
+    }
     if (countEl) countEl.innerText = `${catDishes.length} ${itemsWord}`;
 
     this.renderQuickFilters();
@@ -1059,7 +1096,15 @@ class HotelPremierApp {
           const hindiEl = document.getElementById('active-category-hindi');
           const countEl = document.getElementById('active-category-count');
           if (titleEl) titleEl.innerText = btn.innerText;
-          if (hindiEl) hindiEl.innerText = this.t('filterAll', 'Filter Results');
+          if (hindiEl) {
+            if (this.currentLang === 'en') {
+              hindiEl.style.display = 'none';
+              hindiEl.innerText = '';
+            } else {
+              hindiEl.style.display = 'block';
+              hindiEl.innerText = this.t('filterAll', 'Filter Results');
+            }
+          }
 
           const filtered = this.getFilteredDishes();
           const itemsWord = this.t('itemsCount', 'Items');
@@ -1211,6 +1256,14 @@ class HotelPremierApp {
       `;
     }
 
+    let dishTitleHtml = dish.name;
+    if (this.currentLang === 'hi' && dish.hindiName) {
+      dishTitleHtml = `${dish.name} <span class="dish-title-sub">(${dish.hindiName})</span>`;
+    } else if (this.currentLang === 'mr' && (dish.marathiName || dish.hindiName)) {
+      const subName = dish.marathiName || dish.hindiName;
+      dishTitleHtml = `${dish.name} <span class="dish-title-sub">(${subName})</span>`;
+    }
+
     return `
       <div class="dish-card ${dish.isSoldOut ? 'sold-out' : ''}" id="dish-card-${dish.id}" onclick="window.app.openDishDetail('${dish.id}')">
         <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
@@ -1231,7 +1284,7 @@ class HotelPremierApp {
         </div>
         <div class="dish-body">
           <div class="dish-header-row">
-            <h4 class="dish-title">${dish.name}</h4>
+            <h4 class="dish-title">${dishTitleHtml}</h4>
             ${ratingHtml}
           </div>
           <p class="dish-desc">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
@@ -1284,6 +1337,14 @@ class HotelPremierApp {
     const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
     const zomatoScore = dish.zomatoRating || '4.2';
 
+    let dishTitleHtml = dish.name;
+    if (this.currentLang === 'hi' && dish.hindiName) {
+      dishTitleHtml = `${dish.name} <span style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${dish.hindiName})</span>`;
+    } else if (this.currentLang === 'mr' && (dish.marathiName || dish.hindiName)) {
+      const subName = dish.marathiName || dish.hindiName;
+      dishTitleHtml = `${dish.name} <span style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${subName})</span>`;
+    }
+
     let variantsList = '';
     if (dish.variants && dish.variants.length > 0) {
       variantsList = `
@@ -1317,7 +1378,7 @@ class HotelPremierApp {
       </div>
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
         <div>
-          <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--terracotta-dark); font-weight: 800;">${dish.name}</h3>
+          <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--terracotta-dark); font-weight: 800;">${dishTitleHtml}</h3>
           <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">${this.t('servingTime')}</div>
         </div>
         <span style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 900; color: var(--terracotta-dark);">₹${dish.price}</span>
