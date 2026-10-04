@@ -591,11 +591,19 @@ class HotelPremierApp {
       const dotsContainer = document.getElementById(`room-dots-${room.id}`);
 
       if (track) {
-        track.innerHTML = images.map((imgUrl, idx) => `
-          <div class="room-carousel-slide">
-            <img src="${imgUrl}" alt="${room.name} Photo ${idx + 1}" loading="lazy" onerror="this.src='${room.image}'">
-          </div>
-        `).join('');
+        track.innerHTML = images.map((imgUrl, idx) => {
+          if (window.AssetPipeline && typeof window.AssetPipeline.renderRoomMedia === 'function') {
+            return window.AssetPipeline.renderRoomMedia(imgUrl, room, idx);
+          }
+          return `
+            <div class="room-carousel-slide hp-room-pedestal">
+              <div class="hp-room-frame">
+                <img src="${imgUrl}" alt="${room.name} Photo ${idx + 1}" class="room-card-img" loading="lazy" onerror="this.src='${room.image}'">
+                <div class="hp-room-vignette"></div>
+              </div>
+            </div>
+          `;
+        }).join('');
       }
 
       const activeIdx = this.roomSlideIndices[room.id] || 0;
@@ -1263,11 +1271,12 @@ class HotelPremierApp {
       dishTitleHtml = `${dish.name} <span class="dish-title-sub">(${subName})</span>`;
     }
 
-    return `
-      <div class="dish-card ${dish.isSoldOut ? 'sold-out' : ''}" id="dish-card-${dish.id}" onclick="window.app.openDishDetail('${dish.id}')">
-        <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
+    const mediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDishMedia === 'function')
+      ? window.AssetPipeline.renderDishMedia(dish, { badgesHtml, soldOutText: this.t('soldOut') })
+      : `
+        <div class="dish-media hp-asset-pedestal ${hasPhoto ? '' : 'no-photo'}">
           ${hasPhoto ? `
-            <img src="${dish.image}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+            <img src="${dish.image}" alt="${dish.name}" class="dish-img hp-isolated-asset" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
           ` : `
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
               <div class="no-photo-icon">🌱</div>
@@ -1277,10 +1286,13 @@ class HotelPremierApp {
           `}
           ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
           <div class="dish-badges">${badgesHtml}</div>
-          <div class="dish-veg-symbol" title="100% Pure Vegetarian">
-            <div class="dish-veg-dot"></div>
-          </div>
+          <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
         </div>
+      `;
+
+    return `
+      <div class="dish-card ${dish.isSoldOut ? 'sold-out' : ''}" id="dish-card-${dish.id}" onclick="window.app.openDishDetail('${dish.id}')">
+        ${mediaHtml}
         <div class="dish-body">
           <div class="dish-header-row">
             <h4 class="dish-title">${dishTitleHtml}</h4>
@@ -1356,41 +1368,45 @@ class HotelPremierApp {
       `;
     }
 
+    const detailMediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDetailMedia === 'function')
+      ? window.AssetPipeline.renderDetailMedia(dish)
+      : `
+        <div style="position: relative; height: 230px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 14px;">
+          ${hasPhoto ? `
+            <img src="${dish.image}" alt="${dish.name}" id="detail-modal-img" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+          ` : `
+            <div class="dish-no-photo-placeholder" id="detail-modal-img">
+              <div class="no-photo-icon">🌱</div>
+              <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
+              <div class="no-photo-sub" style="font-size: 0.8rem;">Pride Pure Veg AC Restaurant</div>
+            </div>
+          `}
+          <div class="dish-veg-symbol"><div class="dish-veg-dot"></div></div>
+          ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
+          <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
+            ${hasPhoto ? '📷 Change Photo' : '➕ Upload Photo'}
+          </button>
+        </div>
+      `;
+
     body.innerHTML = `
-      <div style="position: relative; height: 230px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 14px;">
-        ${hasPhoto ? `
-          <img src="${dish.image}" alt="${dish.name}" id="detail-modal-img" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
-        ` : `
-          <div class="dish-no-photo-placeholder" id="detail-modal-img">
-            <div class="no-photo-icon">🌱</div>
-            <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
-            <div class="no-photo-sub" style="font-size: 0.8rem;">Pride Pure Veg AC Restaurant</div>
-          </div>
-        `}
-        <div class="dish-veg-symbol">
-          <div class="dish-veg-dot"></div>
-        </div>
-        ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
-        <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" style="position: absolute; bottom: 8px; right: 8px; background: rgba(0,0,0,0.75); color: #FFF; border: 1px solid var(--gold-primary); font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: var(--radius-full); cursor: pointer; display: flex; align-items: center; gap: 4px;">
-          ${hasPhoto ? '📷 Change Photo' : '➕ Upload Photo'}
-        </button>
-      </div>
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+      ${detailMediaHtml}
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin: 12px 0 6px;">
         <div>
-          <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--terracotta-dark); font-weight: 800;">${dishTitleHtml}</h3>
-          <div style="font-size: 0.82rem; color: var(--text-muted); font-weight: 600;">${this.t('servingTime')}</div>
+          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: #FFFFFF; font-weight: 800; letter-spacing: 0.3px;">${dishTitleHtml}</h3>
+          <div style="font-size: 0.84rem; color: var(--gold-light); font-weight: 600;">${this.t('servingTime')}</div>
         </div>
-        <span style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 900; color: var(--terracotta-dark);">₹${dish.price}</span>
+        <span style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 900; color: var(--champagne-gold);">₹${dish.price}</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-        ${isZomatoRated ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="dish-rating zomato-rating" style="font-size: 0.82rem; padding: 4px 10px; border-radius: 6px; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier Zomato Rating & Reviews - Tap to view">Zomato ${zomatoScore}★ ↗</a>` : ''}
-        ${dish.tags && dish.tags.includes('swiggy-top') ? `<a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="badge-tag swiggy" style="text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier 4.2★ on Swiggy - Tap to view reviews & menu">🛵 4.2★ Swiggy Bestseller ↗</a>` : ''}
-        ${dish.tags && dish.tags.includes('zomato-top') ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="badge-tag zomato" style="text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier Zomato Reviews - Tap to view">${this.t('badgeZomato')} ↗</a>` : ''}
+      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
+        ${isZomatoRated ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="dish-rating zomato-rating" style="font-size: 0.82rem; padding: 4px 10px; border-radius: 8px; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier Zomato Rating & Reviews">Zomato ${zomatoScore}★ ↗</a>` : ''}
+        ${dish.tags && dish.tags.includes('swiggy-top') ? `<a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="badge-tag swiggy" style="text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier 4.2★ on Swiggy">🛵 4.2★ Swiggy Bestseller ↗</a>` : ''}
+        ${dish.tags && dish.tags.includes('zomato-top') ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="badge-tag zomato" style="text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">${this.t('badgeZomato')} ↗</a>` : ''}
         ${dish.tags && dish.tags.includes('chef-special') ? `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>` : ''}
       </div>
-      <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
+      <p style="font-size: 0.94rem; color: #E2E8F0; line-height: 1.55; margin-bottom: 14px;">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
       ${variantsList}
-      <div style="background: var(--cream-bg); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--cream-border); font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+      <div style="background: rgba(22, 32, 53, 0.7); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--gold-border); font-size: 0.82rem; color: var(--gold-light); line-height: 1.45;">
         ${this.t('pureVegNote')}
       </div>
     `;

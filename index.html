@@ -53,10 +53,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=6.0"></script>
+  <script src="asset-pipeline.js?v=7.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=6.0">
+  <link rel="stylesheet" href="styles.css?v=7.0">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -1398,14 +1398,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v6.0 Cache-Busted) -->
-  <script src="storage.js?v=6.0"></script>
-  <script src="vault.js?v=6.0"></script>
-  <script src="data/translations.js?v=6.0"></script>
-  <script src="data/hotel-data.js?v=6.0"></script>
-  <script src="data/menu-data.js?v=6.0"></script>
-  <script src="app.js?v=6.0"></script>
-  <script src="admin.js?v=6.0"></script>
+  <!-- Load Application Scripts (v7.0 Cache-Busted) -->
+  <script src="storage.js?v=7.0"></script>
+  <script src="vault.js?v=7.0"></script>
+  <script src="data/translations.js?v=7.0"></script>
+  <script src="data/hotel-data.js?v=7.0"></script>
+  <script src="data/menu-data.js?v=7.0"></script>
+  <script src="app.js?v=7.0"></script>
+  <script src="admin.js?v=7.0"></script>
 
   <!-- Netlify Purge Handlers -->
   <script>
@@ -1472,8 +1472,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=5.4').then(function(reg) {
-          console.log('[PWA] Service Worker v5.4 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=7.0').then(function(reg) {
+          console.log('[PWA] Service Worker v7.0 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();
