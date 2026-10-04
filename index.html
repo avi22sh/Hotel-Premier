@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=5.3">
+  <link rel="stylesheet" href="styles.css?v=5.4">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -246,8 +246,7 @@
     <!-- ================================================================ -->
     <section class="restaurant-events-section" id="restaurant-events-section">
       <div class="events-hero-card">
-        <div class="events-badge" data-i18n="eventsBadge">🎉 RESTAURANT EVENTS & PRIVATE LUNCH BUYOUT</div>
-        <h2 class="events-main-title" data-i18n="eventsTitle">Pride Pure Veg AC Restaurant Events & Lunch Buyout</h2>
+        <h2 class="events-main-title" data-i18n="eventsTitle">Pride Pure Veg AC Restaurant<br><span class="events-sub-title">Events & Lunch Buyouts</span></h2>
         <p class="events-main-subtitle" data-i18n="eventsSubtitle">
           Hosted exclusively inside Pride Pure Veg AC Restaurant (Seating Capacity: Max 40 Pax • No Banquet Hall). Curated Pure Veg Packages for Birthdays, Anniversaries, Ring Ceremonies, Engagements, Roka, Baby Showers, Corporate Seminars & Kitty Parties. Full Lunch Buyout only (12:00 PM to 3:00 PM), strictly subject to availability.
         </p>
@@ -285,7 +284,6 @@
         <!-- Optional Event Decorations & Audio-Visual Supplies Showcase (Chargeable Add-ons) -->
         <div class="event-decorations-container" id="event-decorations-section">
           <div class="decorations-header-block">
-            <span class="decor-tag">🎨 OPTIONAL THEME DECOR & AV SUPPLIES</span>
             <h3 class="decor-main-title">Celebration Decorations & Audio-Visual Supplies</h3>
             <p class="decor-sub-text">
               Make your celebration special with customized theme decorations and AV setups inside our AC Restaurant. All decor and AV supplies are <strong>chargeable add-ons</strong> provided upon advance request and can be customized to your taste.
@@ -1388,14 +1386,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v5.3 Cache-Busted) -->
-  <script src="storage.js?v=5.3"></script>
-  <script src="vault.js?v=5.3"></script>
-  <script src="data/translations.js?v=5.3"></script>
-  <script src="data/hotel-data.js?v=5.3"></script>
-  <script src="data/menu-data.js?v=5.3"></script>
-  <script src="app.js?v=5.3"></script>
-  <script src="admin.js?v=5.3"></script>
+  <!-- Load Application Scripts (v5.4 Cache-Busted) -->
+  <script src="storage.js?v=5.4"></script>
+  <script src="vault.js?v=5.4"></script>
+  <script src="data/translations.js?v=5.4"></script>
+  <script src="data/hotel-data.js?v=5.4"></script>
+  <script src="data/menu-data.js?v=5.4"></script>
+  <script src="app.js?v=5.4"></script>
+  <script src="admin.js?v=5.4"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1470,8 +1468,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=5.3').then(function(reg) {
-          console.log('[PWA] Service Worker v5.3 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=5.4').then(function(reg) {
+          console.log('[PWA] Service Worker v5.4 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();
