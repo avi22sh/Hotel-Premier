@@ -118,8 +118,21 @@ class HotelPremierAdmin {
     }
   }
 
-  // Client-side HTML5 Canvas Photo Compressor
-  compressAndResizeImage(file, maxWidth = 800, maxHeight = 800, quality = 0.75) {
+  // Client-side HTML5 Canvas Photo Compressor & Intelligent Asset Pipeline Hook
+  async compressAndResizeImage(file, maxWidth = 800, maxHeight = 800, quality = 0.75, category = 'food', options = {}) {
+    if (window.AssetPipeline && typeof window.AssetPipeline.processUploadFile === 'function') {
+      try {
+        const processed = await window.AssetPipeline.processUploadFile(file, category, {
+          maxDimension: Math.max(maxWidth, maxHeight),
+          quality: quality,
+          ...options
+        });
+        return processed;
+      } catch (err) {
+        console.warn('AssetPipeline preprocessing fallback to standard compression:', err);
+      }
+    }
+
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);

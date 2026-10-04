@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#4A230D">
+  <meta name="theme-color" content="#191D24">
   <meta name="description" content="Hotel Premier - A Home in Bhusawal | Pride Pure Veg AC Restaurant & Luxury AC Rooms, Bhusawal">
   <title>Hotel Premier - A Home in Bhusawal | Pride Pure Veg AC Restaurant</title>
 
   <!-- Google Fonts: Luxury Indian Royal Serif, Devanagari & Modern Clean Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest & App Icons -->
   <link rel="manifest" href="manifest.json">
@@ -20,8 +20,11 @@
   <!-- QRCode.js for Instant Table QR Standee Generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+  <!-- Intelligent Asset Pipeline & Image Processing Engine -->
+  <script src="asset-pipeline.js?v=6.0"></script>
+
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=5.4">
+  <link rel="stylesheet" href="styles.css?v=6.0">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -1171,13 +1174,23 @@
         </div>
       </div>
 
-      <!-- Discreet Developer Credits -->
+      <!-- Direct WhatsApp Developer Communication Anchor (Phase 7 Refactor) -->
       <div class="footer-developer-credit">
-        <span class="dev-tagline">Architected & Engineered by</span>
-        <button class="dev-credit-trigger" onclick="openDeveloperModal()" title="View Developer & Engineering Details">
-          <span class="dev-name" id="app-developer-name">Avinash Hedawoo</span>
-          <span class="dev-sparkle">✨</span>
-        </button>
+        <div class="dev-credit-text">
+          Architected & Engineered by <strong>Avinash Hedawoo</strong>
+        </div>
+        <a href="https://wa.me/918983703702?text=Hello,%20I%20have%20a%20query%20regarding%20the%20Hotel%20Premier%20website." 
+           class="dev-whatsapp-btn" 
+           id="dev-whatsapp-direct-link"
+           target="_blank" 
+           rel="noopener noreferrer" 
+           aria-label="Direct WhatsApp Chat with Developer Avinash Hedawoo"
+           title="Direct WhatsApp Query with Developer">
+          <svg class="dev-whatsapp-icon" viewBox="0 0 24 24">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67ZM9.08 7.38C8.91 7.38 8.64 7.44 8.41 7.69C8.18 7.94 7.53 8.55 7.53 9.79C7.53 11.03 8.43 12.22 8.56 12.39C8.69 12.56 10.33 15.09 12.84 16.17C13.44 16.43 13.9 16.58 14.27 16.7C14.87 16.89 15.42 16.86 15.85 16.8C16.33 16.73 17.33 16.2 17.54 15.61C17.75 15.02 17.75 14.51 17.68 14.41C17.62 14.31 17.45 14.25 17.19 14.12C16.94 13.99 15.69 13.38 15.46 13.3C15.23 13.21 15.06 13.17 14.89 13.42C14.72 13.67 14.24 14.25 14.09 14.41C13.94 14.58 13.79 14.6 13.54 14.47C13.28 14.34 12.47 14.08 11.5 13.22C10.74 12.55 10.23 11.72 10.08 11.47C9.93 11.22 10.06 11.08 10.19 10.95C10.31 10.83 10.45 10.64 10.58 10.49C10.71 10.34 10.75 10.23 10.84 10.06C10.92 9.89 10.88 9.75 10.82 9.62C10.75 9.5 10.28 8.34 10.09 7.86C9.9 7.4 9.71 7.46 9.56 7.45C9.42 7.44 9.25 7.44 9.08 7.38Z"/>
+          </svg>
+          <span class="dev-whatsapp-label">Chat with Developer</span>
+        </a>
       </div>
     </div>
   </footer>
@@ -1303,53 +1316,6 @@
 
 
 
-  <!-- ==================== MODAL 5: DEVELOPER & ARCHITECTURE MODAL ==================== -->
-  <div class="modal-backdrop" id="developer-credits-modal">
-    <div class="modal-sheet" style="max-width: 440px;">
-      <div class="modal-header">
-        <div class="modal-title">
-          <span>💻</span> <span>System Architecture & Engineering</span>
-        </div>
-        <button class="modal-close-btn" onclick="closeDeveloperModal()">✕</button>
-      </div>
-      <div class="modal-body">
-        <div class="dev-modal-content">
-          <div class="dev-avatar-wrap">👨‍💻</div>
-          <h3 class="dev-modal-name" id="dev-card-name">Avinash Hedawoo</h3>
-          <p class="dev-modal-role" id="dev-card-role">Lead Systems Architect & Full-Stack Engineer</p>
-
-          <div class="dev-contact-cards">
-            <a href="tel:+918983703702" class="dev-contact-row" id="dev-contact-phone-link">
-              <div class="dev-contact-icon">📞</div>
-              <div>
-                <div class="dev-contact-label">Direct Contact / WhatsApp</div>
-                <div class="dev-contact-val" id="dev-card-phone">+91 89837 03702</div>
-              </div>
-            </a>
-
-            <a href="mailto:avinash.hedawoo@gmail.com" class="dev-contact-row" id="dev-contact-email-link">
-              <div class="dev-contact-icon">✉️</div>
-              <div>
-                <div class="dev-contact-label">Email Inquiries</div>
-                <div class="dev-contact-val" id="dev-card-email">avinash.hedawoo@gmail.com</div>
-              </div>
-            </a>
-          </div>
-
-          <div style="font-size: 0.74rem; color: var(--text-muted); line-height: 1.5; margin-top: 8px;">
-            Digital QR Menu Engine • Live CMS • Progressive Web App (PWA) Offline Architecture • Multilingual Hindi/Marathi System
-          </div>
-
-          <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; justify-content: center;">
-            <button type="button" class="btn-primary" style="padding: 10px 24px; font-weight: 700; font-size: 0.85rem;" onclick="closeDeveloperModal()">
-              Close
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Floating Menu Sub-Sections Toggle Button (Compact Circular Icon) -->
   <button id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Menu Sections" title="Browse Menu Sections">
     <span class="floating-btn-icon">📋</span>
@@ -1386,25 +1352,17 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v5.4 Cache-Busted) -->
-  <script src="storage.js?v=5.4"></script>
-  <script src="vault.js?v=5.4"></script>
-  <script src="data/translations.js?v=5.4"></script>
-  <script src="data/hotel-data.js?v=5.4"></script>
-  <script src="data/menu-data.js?v=5.4"></script>
-  <script src="app.js?v=5.4"></script>
-  <script src="admin.js?v=5.4"></script>
+  <!-- Load Application Scripts (v6.0 Cache-Busted) -->
+  <script src="storage.js?v=6.0"></script>
+  <script src="vault.js?v=6.0"></script>
+  <script src="data/translations.js?v=6.0"></script>
+  <script src="data/hotel-data.js?v=6.0"></script>
+  <script src="data/menu-data.js?v=6.0"></script>
+  <script src="app.js?v=6.0"></script>
+  <script src="admin.js?v=6.0"></script>
 
-  <!-- Developer Modal & Netlify Purge Handlers -->
+  <!-- Netlify Purge Handlers -->
   <script>
-    function openDeveloperModal() {
-      var modal = document.getElementById('developer-credits-modal');
-      if (modal) modal.classList.add('active');
-    }
-    function closeDeveloperModal() {
-      var modal = document.getElementById('developer-credits-modal');
-      if (modal) modal.classList.remove('active');
-    }
 
     // Completely remove any Netlify drawer/badge dynamically injected at runtime
     (function() {
