@@ -373,7 +373,7 @@ class HotelPremierApp {
       <div class="hero-carousel-slide" data-slide-index="${idx}">
         <img src="${slide.image}" alt="${slide.title || 'Hotel Premier'}" class="hero-carousel-img" loading="${idx === 0 ? 'eager' : 'lazy'}">
         <div class="hero-carousel-overlay">
-          <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG RESTAURANT</span>
+          <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
           <h2 class="hero-slide-title">${slide.title || 'Culinary Delights of Hotel Premier'}</h2>
           <p class="hero-slide-subtitle">${slide.subtitle || 'Prepared fresh in standard refined oil • 100% Pure Veg'}</p>
         </div>
@@ -1273,7 +1273,7 @@ class HotelPremierApp {
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
               <div class="no-photo-icon">🌱</div>
               <div class="no-photo-crest">HOTEL PREMIER</div>
-              <div class="no-photo-sub">PRIDE PURE VEG</div>
+              <div class="no-photo-sub">PRIDE PURE VEG AC RESTAURANT</div>
             </div>
           `}
           ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
@@ -1365,7 +1365,7 @@ class HotelPremierApp {
           <div class="dish-no-photo-placeholder" id="detail-modal-img">
             <div class="no-photo-icon">🌱</div>
             <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
-            <div class="no-photo-sub" style="font-size: 0.8rem;">Pride Pure Veg Restaurant</div>
+            <div class="no-photo-sub" style="font-size: 0.8rem;">Pride Pure Veg AC Restaurant</div>
           </div>
         `}
         <div class="dish-veg-symbol">

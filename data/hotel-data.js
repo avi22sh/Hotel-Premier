@@ -7,6 +7,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
   hotelInfo: {
     name: 'Hotel Premier',
     tagline: 'A Home in Bhusawal',
+    restaurantName: 'Pride Pure Veg AC Restaurant',
     fullAddress: 'Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201',
     landmark: 'Near Nahata College & Saket Society (5 Mins / 2 KM from Bhusawal Railway Junction)',
     phones: ['09325375802', '09370848917', '(02582) 240422', '(02582) 240396'],

@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#4A230D">
-  <meta name="description" content="Hotel Premier - Pride Pure Veg AC Restaurant & Luxury AC Rooms, Bhusawal">
-  <title>Hotel Premier</title>
+  <meta name="description" content="Hotel Premier - A Home in Bhusawal | Pride Pure Veg AC Restaurant & Luxury AC Rooms, Bhusawal">
+  <title>Hotel Premier - A Home in Bhusawal | Pride Pure Veg AC Restaurant</title>
 
   <!-- Google Fonts: Luxury Indian Royal Serif, Devanagari & Modern Clean Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.9">
+  <link rel="stylesheet" href="styles.css?v=5.0">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -472,7 +472,7 @@
         <div class="hotel-highlights-pills">
           <span class="highlight-pill">🚆 5 Mins from Bhusawal Railway Station</span>
           <span class="highlight-pill">⏰ 24 Hours Flexible Check-Out</span>
-          <span class="highlight-pill">🌱 Pride Pure Veg Restaurant</span>
+          <span class="highlight-pill">🌱 Pride Pure Veg AC Restaurant</span>
           <span class="highlight-pill">🚗 Free Bus & Car Parking</span>
         </div>
       </div>
@@ -1116,6 +1116,7 @@
         <!-- HP Gold Motif -->
         <span style="font-family: var(--font-royal); font-size: 1.5rem; font-weight: 900; color: var(--gold-primary);">HOTEL PREMIER</span>
         <div style="font-family: var(--font-serif); font-size: 0.75rem; color: var(--gold-light); letter-spacing: 2px;" data-i18n="brandTagline">A HOME IN BHUSAWAL</div>
+        <div style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 700; color: #E2E8F0; margin-top: 5px; letter-spacing: 0.5px;" data-i18n="footerRestaurantDetail">Pride Pure Veg AC Restaurant</div>
       </div>
 
       <div class="footer-gst-box">
@@ -1357,14 +1358,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.9 Cache-Busted) -->
-  <script src="storage.js?v=4.9"></script>
-  <script src="vault.js?v=4.9"></script>
-  <script src="data/translations.js?v=4.9"></script>
-  <script src="data/hotel-data.js?v=4.9"></script>
-  <script src="data/menu-data.js?v=4.9"></script>
-  <script src="app.js?v=4.9"></script>
-  <script src="admin.js?v=4.9"></script>
+  <!-- Load Application Scripts (v5.0 Cache-Busted) -->
+  <script src="storage.js?v=5.0"></script>
+  <script src="vault.js?v=5.0"></script>
+  <script src="data/translations.js?v=5.0"></script>
+  <script src="data/hotel-data.js?v=5.0"></script>
+  <script src="data/menu-data.js?v=5.0"></script>
+  <script src="app.js?v=5.0"></script>
+  <script src="admin.js?v=5.0"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1436,8 +1437,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.9').then(function(reg) {
-          console.log('[PWA] Service Worker v4.9 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=5.0').then(function(reg) {
+          console.log('[PWA] Service Worker v5.0 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();
