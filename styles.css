@@ -965,6 +965,13 @@ body.large-font-mode .category-card-title {
   box-shadow: 0 2px 6px rgba(252, 128, 25, 0.35);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.badge-tag.swiggy:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 10px rgba(252, 128, 25, 0.55);
 }
 
 .badge-tag.zomato {
@@ -974,6 +981,13 @@ body.large-font-mode .category-card-title {
   box-shadow: 0 2px 6px rgba(226, 55, 68, 0.35);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.badge-tag.zomato:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 10px rgba(226, 55, 68, 0.55);
 }
 
 /* Indian Standard Vegetarian Symbol (Green square with green dot) */
@@ -1114,12 +1128,20 @@ body.large-font-mode .category-card-title {
   color: #FFFFFF;
   font-weight: 800;
   font-size: 0.70rem;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: 4px;
   box-shadow: 0 2px 6px rgba(226, 55, 68, 0.35);
   letter-spacing: 0.3px;
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.dish-rating.zomato-rating:hover {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 4px 10px rgba(226, 55, 68, 0.55);
 }
 
 .dish-desc {
@@ -5296,6 +5318,11 @@ div[class*="feedback-widget"] {
 
 .thankyou-btn.btn-zomato {
   background: linear-gradient(135deg, #E23744 0%, #B81D2A 100%);
+  color: #FFFFFF;
+}
+
+.thankyou-btn.btn-swiggy {
+  background: linear-gradient(135deg, #FC8019 0%, #D86000 100%);
   color: #FFFFFF;
 }
 

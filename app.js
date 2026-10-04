@@ -1220,15 +1220,15 @@ class HotelPremierApp {
     const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
     const zomatoScore = dish.zomatoRating || '4.2';
     const ratingHtml = isZomatoRated 
-      ? `<div class="dish-rating zomato-rating" title="Hotel Premier Zomato Rating">Zomato ${zomatoScore}★</div>` 
+      ? `<button type="button" class="dish-rating zomato-rating" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('zomato') : window.open('https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier', '_blank');" title="Hotel Premier Zomato Rating & Reviews - Tap to view">Zomato ${zomatoScore}★ ↗</button>` 
       : '';
 
     let badgesHtml = '';
     if (dish.tags && dish.tags.includes('swiggy-top')) {
-      badgesHtml += `<span class="badge-tag swiggy" title="4.2★ Swiggy Bestseller">${this.t('badgeSwiggy')}</span>`;
+      badgesHtml += `<span class="badge-tag swiggy" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('swiggy') : window.open('https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948', '_blank');" title="Hotel Premier 4.2★ on Swiggy - Tap to view reviews & menu">${this.t('badgeSwiggy')} ↗</span>`;
     }
     if (dish.tags && dish.tags.includes('zomato-top')) {
-      badgesHtml += `<span class="badge-tag zomato" title="Top Rated on Zomato">${this.t('badgeZomato')}</span>`;
+      badgesHtml += `<span class="badge-tag zomato" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('zomato') : window.open('https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier', '_blank');" title="Hotel Premier Zomato Reviews - Tap to view">${this.t('badgeZomato')} ↗</span>`;
     }
     if (dish.tags && dish.tags.includes('chef-special')) {
       badgesHtml += `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>`;
@@ -1384,8 +1384,9 @@ class HotelPremierApp {
         <span style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 900; color: var(--terracotta-dark);">₹${dish.price}</span>
       </div>
       <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
-        ${isZomatoRated ? `<span class="dish-rating zomato-rating" style="font-size: 0.82rem; padding: 4px 10px; border-radius: 6px;" title="Hotel Premier Zomato Rating">Zomato ${zomatoScore}★</span>` : ''}
-        ${dish.tags && dish.tags.includes('swiggy-top') ? `<span class="badge-tag swiggy">🛵 4.2★ Swiggy Bestseller</span>` : ''}
+        ${isZomatoRated ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="dish-rating zomato-rating" style="font-size: 0.82rem; padding: 4px 10px; border-radius: 6px; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier Zomato Rating & Reviews - Tap to view">Zomato ${zomatoScore}★ ↗</a>` : ''}
+        ${dish.tags && dish.tags.includes('swiggy-top') ? `<a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="badge-tag swiggy" style="text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier 4.2★ on Swiggy - Tap to view reviews & menu">🛵 4.2★ Swiggy Bestseller ↗</a>` : ''}
+        ${dish.tags && dish.tags.includes('zomato-top') ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="badge-tag zomato" style="text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier Zomato Reviews - Tap to view">${this.t('badgeZomato')} ↗</a>` : ''}
         ${dish.tags && dish.tags.includes('chef-special') ? `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>` : ''}
       </div>
       <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 14px;">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
@@ -1401,6 +1402,16 @@ class HotelPremierApp {
   closeDishDetail() {
     const modal = document.getElementById('dish-detail-modal');
     if (modal) modal.classList.remove('active');
+  }
+
+  routeToReview(platform) {
+    const urls = {
+      google: 'https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews',
+      zomato: 'https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier',
+      swiggy: 'https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948'
+    };
+    const target = urls[platform] || urls.google;
+    window.open(target, '_blank', 'noopener,noreferrer');
   }
 
   // ==================== 3. BULK BOOKING & CALCULATOR ENGINE (14 ROOMS PROPERTY) ====================

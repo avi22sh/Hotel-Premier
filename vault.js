@@ -2,7 +2,7 @@
 // HOTEL PREMIER & PRIDE PURE VEG, BHUSAWAL
 // MASTER DEVELOPER VAULT & TELEMETRY ENGINE
 // Architected & Maintained Exclusively for: Avinash Hedawoo
-// Contact: +91 93253 75802 | avinashhedawoo@gmail.com
+// Contact: +91 89837 03702 | avinash.hedawoo@gmail.com
 // Provides:
 //   - Level 1 Scan Logs (Table, Room, Source, Device, OS, Timestamp)
 //   - Level 3 Browsing Analytics (Dish Views, Searches, Categories, Dwell Time)
@@ -446,8 +446,8 @@ class HotelPremierDeveloperVault {
       app: 'Hotel Premier & Pride Pure Veg, Bhusawal',
       vaultVersion: '3.0.0-DeveloperOnly',
       architect: 'Avinash Hedawoo',
-      contact: '+91 93253 75802',
-      email: 'avinashhedawoo@gmail.com',
+      contact: '+91 89837 03702',
+      email: 'avinash.hedawoo@gmail.com',
       backupTimestamp: new Date().toISOString(),
       telemetry: {
         totalScans: scans.length,
@@ -510,7 +510,7 @@ class HotelPremierDeveloperVault {
     }
 
     const encoded = encodeURIComponent(msg);
-    const waUrl = `https://wa.me/919325375802?text=${encoded}`;
+    const waUrl = `https://wa.me/918983703702?text=${encoded}`;
     window.open(waUrl, '_blank');
   }
 
@@ -529,7 +529,7 @@ class HotelPremierDeveloperVault {
     body += `4. Unique Searched Keywords: ${Object.keys(l3.searchQueries || {}).length}\n\n`;
     body += `You can download full CSV/JSON datasets anytime using your Developer PIN (9325) inside the Developer Modal.\n\nBest regards,\nHotel Premier System Engine`;
 
-    const mailto = `mailto:avinashhedawoo@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:avinash.hedawoo@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
   }
 

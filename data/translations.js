@@ -179,9 +179,10 @@ window.HOTEL_PREMIER_I18N = {
       rateOnSwiggy: '4.2★ on Swiggy',
       orInternalFeedback: 'OR SUBMIT IN-HOUSE GUEST FEEDBACK DIRECT TO MANAGEMENT',
       thankyouPromptTitle: '🌟 Loved your dining experience today?',
-      thankyouPromptSub: 'Please take 10 seconds to share your 5-Star review on Google or Zomato — it means the world to our kitchen and service team!',
+      thankyouPromptSub: 'Please take 10 seconds to share your 5-Star review on Google, Zomato, or Swiggy — it means the world to our kitchen and service team!',
       thankyouGoogleCta: '⭐ Post 5★ on Google Reviews ➔',
       thankyouZomatoCta: '🍅 Review on Zomato ➔',
+      thankyouSwiggyCta: '🛵 Rate 4.2★ on Swiggy ➔',
 
       // Text Size
       textSizeLarge: 'Large Text Mode enabled for easy reading!',
@@ -359,9 +360,10 @@ window.HOTEL_PREMIER_I18N = {
       rateOnSwiggy: '4.2★ on Swiggy',
       orInternalFeedback: 'Ya Direct Management ko Feedback Bhejein',
       thankyouPromptTitle: '🌟 Loved your food today?',
-      thankyouPromptSub: 'Kripya 10 seconds nikaal kar Google ya Zomato par apna 5-Star review dein!',
+      thankyouPromptSub: 'Kripya 10 seconds nikaal kar Google, Zomato ya Swiggy par apna review dein!',
       thankyouGoogleCta: '⭐ Google Reviews par 5★ Dein ➔',
       thankyouZomatoCta: '🍅 Zomato par Review Karein ➔',
+      thankyouSwiggyCta: '🛵 Swiggy par 4.2★ Dein ➔',
 
       // Text Size
       textSizeLarge: 'Bade text ka mode on kiya gaya!',
@@ -539,9 +541,10 @@ window.HOTEL_PREMIER_I18N = {
       rateOnSwiggy: '4.2★ on Swiggy',
       orInternalFeedback: 'किंवा व्यवस्थापनाकडे थेट फीडबॅक नोंदवा',
       thankyouPromptTitle: '🌟 आजचे जेवण आवडले का?',
-      thankyouPromptSub: 'कृपया 10 सेकंद काढून Google किंवा Zomato वर आपला 5-Star review नक्की द्या!',
+      thankyouPromptSub: 'कृपया 10 सेकंद काढून Google, Zomato किंवा Swiggy वर आपला 5-Star review नक्की द्या!',
       thankyouGoogleCta: '⭐ Google Reviews वर 5★ द्या ➔',
       thankyouZomatoCta: '🍅 Zomato वर Review करा ➔',
+      thankyouSwiggyCta: '🛵 Swiggy वर 4.2★ द्या ➔',
 
       // Text Size
       textSizeLarge: 'मोठा फॉन्ट मोड सुरू केला!',

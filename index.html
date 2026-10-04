@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.8">
+  <link rel="stylesheet" href="styles.css?v=4.9">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -1094,11 +1094,14 @@
             Please take 10 seconds to share your 5-Star review on Google or Zomato — it means the world to our kitchen and service team!
           </p>
           <div class="thankyou-public-actions">
-            <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener" class="thankyou-btn btn-google" data-i18n="thankyouGoogleCta">
+            <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="thankyou-btn btn-google" data-i18n="thankyouGoogleCta">
               ⭐ Post 5★ on Google Reviews ➔
             </a>
-            <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener" class="thankyou-btn btn-zomato" data-i18n="thankyouZomatoCta">
+            <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="thankyou-btn btn-zomato" data-i18n="thankyouZomatoCta">
               🍅 Review on Zomato ➔
+            </a>
+            <a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="thankyou-btn btn-swiggy" data-i18n="thankyouSwiggyCta">
+              🛵 Rate 4.2★ on Swiggy ➔
             </a>
           </div>
         </div>
@@ -1286,29 +1289,21 @@
           <p class="dev-modal-role" id="dev-card-role">Lead Systems Architect & Full-Stack Engineer</p>
 
           <div class="dev-contact-cards">
-            <a href="tel:+919325375802" class="dev-contact-row" id="dev-contact-phone-link">
+            <a href="tel:+918983703702" class="dev-contact-row" id="dev-contact-phone-link">
               <div class="dev-contact-icon">📞</div>
               <div>
                 <div class="dev-contact-label">Direct Contact / WhatsApp</div>
-                <div class="dev-contact-val" id="dev-card-phone">+91 93253 75802</div>
+                <div class="dev-contact-val" id="dev-card-phone">+91 89837 03702</div>
               </div>
             </a>
 
-            <a href="mailto:avinashhedawoo@gmail.com" class="dev-contact-row" id="dev-contact-email-link">
+            <a href="mailto:avinash.hedawoo@gmail.com" class="dev-contact-row" id="dev-contact-email-link">
               <div class="dev-contact-icon">✉️</div>
               <div>
                 <div class="dev-contact-label">Email Inquiries</div>
-                <div class="dev-contact-val" id="dev-card-email">avinashhedawoo@gmail.com</div>
+                <div class="dev-contact-val" id="dev-card-email">avinash.hedawoo@gmail.com</div>
               </div>
             </a>
-
-            <div class="dev-contact-row" style="background: rgba(212, 144, 28, 0.08); border-color: rgba(212, 144, 28, 0.25);">
-              <div class="dev-contact-icon">🏨</div>
-              <div>
-                <div class="dev-contact-label">Custom Engineered For</div>
-                <div class="dev-contact-val">Hotel Premier & Pride Pure Veg, Bhusawal</div>
-              </div>
-            </div>
           </div>
 
           <div style="font-size: 0.74rem; color: var(--text-muted); line-height: 1.5; margin-top: 8px;">
@@ -1362,14 +1357,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v4.8 Cache-Busted) -->
-  <script src="storage.js?v=4.8"></script>
-  <script src="vault.js?v=4.8"></script>
-  <script src="data/translations.js?v=4.8"></script>
-  <script src="data/hotel-data.js?v=4.8"></script>
-  <script src="data/menu-data.js?v=4.8"></script>
-  <script src="app.js?v=4.8"></script>
-  <script src="admin.js?v=4.8"></script>
+  <!-- Load Application Scripts (v4.9 Cache-Busted) -->
+  <script src="storage.js?v=4.9"></script>
+  <script src="vault.js?v=4.9"></script>
+  <script src="data/translations.js?v=4.9"></script>
+  <script src="data/hotel-data.js?v=4.9"></script>
+  <script src="data/menu-data.js?v=4.9"></script>
+  <script src="app.js?v=4.9"></script>
+  <script src="admin.js?v=4.9"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1441,8 +1436,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=4.8').then(function(reg) {
-          console.log('[PWA] Service Worker v4.8 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=4.9').then(function(reg) {
+          console.log('[PWA] Service Worker v4.9 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();
