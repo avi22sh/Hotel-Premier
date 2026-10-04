@@ -145,12 +145,12 @@ body.large-font-mode .category-card-title {
 
 /* ==================== HEADER & BRANDING ==================== */
 .app-header {
-  background: linear-gradient(135deg, rgba(13, 17, 26, 0.98) 0%, rgba(22, 32, 53, 0.95) 50%, rgba(15, 42, 38, 0.95) 100%) !important;
+  background: linear-gradient(135deg, #1C7669 0%, #173B34 32%, #162438 100%) !important;
   color: #FFF;
   position: sticky;
   top: 0;
   z-index: 60;
-  border-bottom: 2px solid var(--gold-primary) !important;
+  border-bottom: 2.5px solid var(--champagne-gold) !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -1985,11 +1985,11 @@ input:checked + .toggle-slider:before {
 }
 
 .main-mode-tab.active {
-  background: linear-gradient(135deg, rgba(28, 118, 105, 0.35) 0%, rgba(22, 32, 53, 0.8) 100%) !important;
+  background: linear-gradient(135deg, #1C7669 0%, #155E52 50%, #162438 100%) !important;
   color: #FFF !important;
-  border-bottom-color: var(--champagne-gold) !important;
+  border-bottom: 3.5px solid var(--champagne-gold) !important;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  box-shadow: inset 0 -4px 14px rgba(213, 183, 122, 0.25);
+  box-shadow: 0 4px 18px rgba(28, 118, 105, 0.45), inset 0 -3px 8px rgba(213, 183, 122, 0.35) !important;
 }
 
 /* ==========================================================================
