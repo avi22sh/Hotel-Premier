@@ -3523,65 +3523,74 @@ div[class*="feedback-widget"] {
 }
 
 /* ==========================================================================
-   FLOATING MENU SUB-SECTIONS TOGGLE BUTTON
+   FLOATING MENU SUB-SECTIONS TOGGLE BUTTON (Compact FAB Icon)
    ========================================================================== */
 .floating-menu-toggle-btn {
   position: fixed;
   bottom: 22px;
-  right: 20px;
+  right: 18px;
   z-index: 95;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
   background: linear-gradient(135deg, #1A2B4C 0%, #0E1D36 100%);
   color: #FFF;
   border: 2px solid var(--gold-primary);
-  border-radius: var(--radius-full);
-  padding: 10px 18px 10px 14px;
+  padding: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(14, 29, 54, 0.4), 0 0 12px rgba(212, 144, 28, 0.35);
+  box-shadow: 0 6px 20px rgba(14, 29, 54, 0.45), 0 0 10px rgba(212, 144, 28, 0.3);
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
-  font-family: var(--font-sans);
 }
 
 .floating-menu-toggle-btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 12px 28px rgba(14, 29, 54, 0.5), 0 0 18px rgba(212, 144, 28, 0.55);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 10px 24px rgba(14, 29, 54, 0.55), 0 0 16px rgba(212, 144, 28, 0.5);
 }
 
 .floating-menu-toggle-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.94);
 }
 
 .floating-btn-icon {
-  font-size: 1.15rem;
+  font-size: 1.35rem;
+  line-height: 1;
 }
 
 .floating-btn-text {
-  font-size: 0.86rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: var(--gold-light);
+  display: none !important;
 }
 
 .floating-btn-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
   background: var(--gold-primary);
   color: var(--primary-navy);
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 900;
-  padding: 2px 7px;
-  border-radius: var(--radius-full);
-  margin-left: 2px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #0E1D36;
+  padding: 0 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 640px) {
   .floating-menu-toggle-btn {
-    bottom: 18px;
-    right: 16px;
-    padding: 9px 15px 9px 12px;
+    bottom: 16px;
+    right: 14px;
+    width: 44px;
+    height: 44px;
   }
-  .floating-btn-text {
-    font-size: 0.8rem;
+  .floating-btn-icon {
+    font-size: 1.25rem;
   }
 }
 

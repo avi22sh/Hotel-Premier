@@ -178,9 +178,6 @@ class HotelPremierApp {
     this.renderRestaurantEventPackages();
     this.renderEventDecorations();
     this.calculateRestaurantEventQuote();
-
-    const toastMsg = lang === 'hi' ? 'भाषा बदलकर हिंदी (Hinglish) की गई!' : (lang === 'mr' ? 'भाषा बदलून मराठी केली!' : 'Language changed to English!');
-    this.showToast(toastMsg, 'info');
   }
 
   updateLangButtons() {
@@ -1646,10 +1643,11 @@ class HotelPremierApp {
 
       return `
         <div class="event-package-card ${pkg.featured ? 'featured' : ''} ${pkg.isBuyout ? 'buyout-card' : ''}" id="card-${pkg.id}">
+          ${(displayBadge || pkg.tag) ? `
           <div class="event-pkg-top-bar">
-            <span class="event-pkg-badge">${displayBadge}</span>
+            ${displayBadge ? `<span class="event-pkg-badge">${displayBadge}</span>` : ''}
             ${pkg.tag ? `<span class="event-pkg-tag">${pkg.tag}</span>` : ''}
-          </div>
+          </div>` : ''}
 
           <div class="event-pkg-header">
             <span class="event-pkg-icon">${pkg.icon || '🍽️'}</span>
@@ -1716,7 +1714,7 @@ class HotelPremierApp {
       const slotSelect = document.getElementById('calc-event-timeslot');
       if (slotSelect) slotSelect.value = 'Lunch (12:00 PM - 3:00 PM)';
     } else if (pkgId === 'pkg-engagement' && occasionSelect) {
-      occasionSelect.value = 'Engagement / Ring Ceremony';
+      occasionSelect.value = 'Engagement, Ring Ceremony & Roka';
     } else if (pkgId === 'pkg-corporate' && occasionSelect) {
       occasionSelect.value = 'Corporate Meeting / Seminar';
     } else if (pkgId === 'pkg-hightea' && occasionSelect) {

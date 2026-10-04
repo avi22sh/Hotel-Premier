@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=5.2">
+  <link rel="stylesheet" href="styles.css?v=5.3">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -200,7 +200,7 @@
         <div class="invite-banner-content">
           <span class="invite-banner-icon">🎉</span>
           <div class="invite-banner-text">
-            <strong>Planning a Birthday, Anniversary, Ring Ceremony or Corporate Meet?</strong>
+            <strong>Planning a Birthday, Anniversary, Ring Ceremony, Roka or Corporate Meet?</strong>
             <span>Pride Pure Veg AC Restaurant (Max 40 Pax) • Full Lunch Buyout (12:00 PM – 3:00 PM)</span>
           </div>
         </div>
@@ -233,7 +233,7 @@
         <div class="invite-banner-content">
           <span class="invite-banner-icon">🎉</span>
           <div class="invite-banner-text">
-            <strong>Planning a Birthday, Anniversary, Ring Ceremony or Corporate Meet?</strong>
+            <strong>Planning a Birthday, Anniversary, Ring Ceremony, Roka or Corporate Meet?</strong>
             <span>Pride Pure Veg AC Restaurant (Max 40 Pax) • Full Lunch Buyout (12:00 PM – 3:00 PM)</span>
           </div>
         </div>
@@ -249,7 +249,7 @@
         <div class="events-badge" data-i18n="eventsBadge">🎉 RESTAURANT EVENTS & PRIVATE LUNCH BUYOUT</div>
         <h2 class="events-main-title" data-i18n="eventsTitle">Pride Pure Veg AC Restaurant Events & Lunch Buyout</h2>
         <p class="events-main-subtitle" data-i18n="eventsSubtitle">
-          Hosted exclusively inside Pride Pure Veg AC Restaurant (Seating Capacity: Max 40 Pax • No Banquet Hall). Curated Pure Veg Packages for Birthdays, Anniversaries, Ring Ceremonies, Baby Showers, Corporate Seminars & Kitty Parties. Full Lunch Buyout only (12:00 PM to 3:00 PM), strictly subject to availability.
+          Hosted exclusively inside Pride Pure Veg AC Restaurant (Seating Capacity: Max 40 Pax • No Banquet Hall). Curated Pure Veg Packages for Birthdays, Anniversaries, Ring Ceremonies, Engagements, Roka, Baby Showers, Corporate Seminars & Kitty Parties. Full Lunch Buyout only (12:00 PM to 3:00 PM), strictly subject to availability.
         </p>
         <div class="events-highlights-pills">
           <span class="event-pill">🌱 Pride Pure Veg AC Restaurant</span>
@@ -272,7 +272,7 @@
         <!-- Event Package Category Quick Filter Tabs -->
         <div class="event-category-filter-tabs" id="event-category-tabs">
           <button type="button" class="event-filter-tab active" onclick="window.app ? window.app.filterEventPackages('all', this) : null">🌟 All Packages (5)</button>
-          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('engagement', this) : null">💍 Ring Ceremony & Engagement</button>
+          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('engagement', this) : null">💍 Ring Ceremony, Engagement & Roka</button>
           <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('conference', this) : null">💼 Corporate & Seminars</button>
           <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('party', this) : null">🎉 Birthdays & High-Tea</button>
           <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('buyout', this) : null">👑 Full Lunch Buyout (Max 40 Pax)</button>
@@ -316,7 +316,7 @@
               <select id="calc-event-occasion" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
                 <option value="Birthday Celebration" selected>🎂 Birthday Celebration (Kids / Adults)</option>
                 <option value="Anniversary Celebration">💖 Milestone Anniversary Celebration</option>
-                <option value="Engagement / Ring Ceremony">💍 Ring Ceremony (Sakhar Puda / Sagai) & Engagement</option>
+                <option value="Engagement, Ring Ceremony & Roka">💍 Engagement, Ring Ceremony & Roka (Sakhar Puda / Sagai)</option>
                 <option value="Baby Shower (Dohale Jevan)">👶 Baby Shower (Dohale Jevan / Godh Bharai)</option>
                 <option value="Corporate Meeting / Seminar">💼 Corporate Conference, Seminar or Doctor Meet</option>
                 <option value="Kitty Party / High-Tea">☕ Kitty Party & Afternoon High-Tea Gathering</option>
@@ -328,7 +328,7 @@
             <div class="form-group">
               <label class="form-label">Selected Pure Veg Package</label>
               <select id="calc-event-package" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                <option value="pkg-engagement">💍 Engagement & Ring Ceremony Feast (₹580/pax • Min 20 Pax)</option>
+                <option value="pkg-engagement">💍 Engagement, Ring Ceremony & Roka Feast (₹580/pax • Min 20 Pax)</option>
                 <option value="pkg-corporate">💼 Corporate Conference & Seminar Meet (₹380/pax • Min 15 Pax)</option>
                 <option value="pkg-birthday" selected>🎉 Birthday & Anniversary Celebration (₹320/pax • Min 15 Pax)</option>
                 <option value="pkg-hightea">☕ Kitty Party & High-Tea Gathering (₹220/pax • Min 15 Pax)</option>
@@ -1352,10 +1352,9 @@
     </div>
   </div>
 
-  <!-- Floating Menu Sub-Sections Toggle Button -->
-  <button id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Menu Sections">
+  <!-- Floating Menu Sub-Sections Toggle Button (Compact Circular Icon) -->
+  <button id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Menu Sections" title="Browse Menu Sections">
     <span class="floating-btn-icon">📋</span>
-    <span class="floating-btn-text" data-i18n="menuSectionsToggle">Menu Sections</span>
     <span class="floating-btn-badge" id="floating-sections-count">20</span>
   </button>
 
@@ -1389,14 +1388,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v5.2 Cache-Busted) -->
-  <script src="storage.js?v=5.2"></script>
-  <script src="vault.js?v=5.2"></script>
-  <script src="data/translations.js?v=5.2"></script>
-  <script src="data/hotel-data.js?v=5.2"></script>
-  <script src="data/menu-data.js?v=5.2"></script>
-  <script src="app.js?v=5.2"></script>
-  <script src="admin.js?v=5.2"></script>
+  <!-- Load Application Scripts (v5.3 Cache-Busted) -->
+  <script src="storage.js?v=5.3"></script>
+  <script src="vault.js?v=5.3"></script>
+  <script src="data/translations.js?v=5.3"></script>
+  <script src="data/hotel-data.js?v=5.3"></script>
+  <script src="data/menu-data.js?v=5.3"></script>
+  <script src="app.js?v=5.3"></script>
+  <script src="admin.js?v=5.3"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1471,8 +1470,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=5.2').then(function(reg) {
-          console.log('[PWA] Service Worker v5.2 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=5.3').then(function(reg) {
+          console.log('[PWA] Service Worker v5.3 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();
