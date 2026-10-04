@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=5.1">
+  <link rel="stylesheet" href="styles.css?v=5.2">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -1389,14 +1389,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v5.1 Cache-Busted) -->
-  <script src="storage.js?v=5.1"></script>
-  <script src="vault.js?v=5.1"></script>
-  <script src="data/translations.js?v=5.1"></script>
-  <script src="data/hotel-data.js?v=5.1"></script>
-  <script src="data/menu-data.js?v=5.1"></script>
-  <script src="app.js?v=5.1"></script>
-  <script src="admin.js?v=5.1"></script>
+  <!-- Load Application Scripts (v5.2 Cache-Busted) -->
+  <script src="storage.js?v=5.2"></script>
+  <script src="vault.js?v=5.2"></script>
+  <script src="data/translations.js?v=5.2"></script>
+  <script src="data/hotel-data.js?v=5.2"></script>
+  <script src="data/menu-data.js?v=5.2"></script>
+  <script src="app.js?v=5.2"></script>
+  <script src="admin.js?v=5.2"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1471,8 +1471,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=5.1').then(function(reg) {
-          console.log('[PWA] Service Worker v5.1 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=5.2').then(function(reg) {
+          console.log('[PWA] Service Worker v5.2 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();

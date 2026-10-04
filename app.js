@@ -1625,9 +1625,18 @@ class HotelPremierApp {
     }
 
     container.innerHTML = pkgs.map(pkg => {
+      // Strip any leading emoji from name and badge so exactly ONE icon is displayed
+      const displayName = (pkg.name || '').replace(/^[\p{Emoji}\u200d\uFE0F\s]+/u, '').trim();
+      const displayBadge = (pkg.badge || '').replace(/^[\p{Emoji}\u200d\uFE0F\s]+/u, '').trim();
+
       let subTitle = '';
-      if (this.currentLang === 'hi' && pkg.hindiName) subTitle = `<div class="event-pkg-sub">${pkg.hindiName}</div>`;
-      else if (this.currentLang === 'mr' && pkg.marathiName) subTitle = `<div class="event-pkg-sub">${pkg.marathiName}</div>`;
+      if (this.currentLang === 'hi' && pkg.hindiName) {
+        const cleanHi = (pkg.hindiName || '').replace(/^[\p{Emoji}\u200d\uFE0F\s]+/u, '').trim();
+        subTitle = `<div class="event-pkg-sub">${cleanHi}</div>`;
+      } else if (this.currentLang === 'mr' && pkg.marathiName) {
+        const cleanMr = (pkg.marathiName || '').replace(/^[\p{Emoji}\u200d\uFE0F\s]+/u, '').trim();
+        subTitle = `<div class="event-pkg-sub">${cleanMr}</div>`;
+      }
 
       const amenitiesHtml = (pkg.amenities && pkg.amenities.length > 0)
         ? `<div class="event-pkg-amenities">
@@ -1638,14 +1647,14 @@ class HotelPremierApp {
       return `
         <div class="event-package-card ${pkg.featured ? 'featured' : ''} ${pkg.isBuyout ? 'buyout-card' : ''}" id="card-${pkg.id}">
           <div class="event-pkg-top-bar">
-            <span class="event-pkg-badge">${pkg.badge}</span>
+            <span class="event-pkg-badge">${displayBadge}</span>
             ${pkg.tag ? `<span class="event-pkg-tag">${pkg.tag}</span>` : ''}
           </div>
 
           <div class="event-pkg-header">
             <span class="event-pkg-icon">${pkg.icon || '🍽️'}</span>
             <div>
-              <h4 class="event-pkg-title">${pkg.name}</h4>
+              <h4 class="event-pkg-title">${displayName}</h4>
               ${subTitle}
             </div>
           </div>
