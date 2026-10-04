@@ -2576,66 +2576,71 @@ input:checked + .toggle-slider:before {
 .plan-radio-label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.82rem;
+  gap: 8px;
+  font-size: 0.84rem;
   font-weight: 700;
-  color: var(--terracotta-dark);
+  color: #F1F5F9;
   cursor: pointer;
 }
 
 .quote-result-card {
-  background: linear-gradient(135deg, #FAF4E8 0%, #FFFDF9 100%);
+  background: rgba(25, 29, 36, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1.5px solid var(--gold-border);
-  border-radius: var(--radius-sm);
-  padding: 16px;
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
 }
 
 .quote-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.88rem;
-  margin-bottom: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: #F1F5F9;
 }
 
 .regular-strike-price {
   text-decoration: line-through;
-  color: var(--text-muted);
+  color: var(--muted-grey);
   font-weight: 700;
 }
 
 .discount-row {
-  color: var(--veg-green);
+  color: #34D399;
   font-weight: 800;
 }
 
 .savings-amount {
   font-weight: 900;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
 }
 
 .total-deal-row {
-  border-top: 2px solid var(--gold-primary);
-  padding-top: 10px;
-  margin-top: 10px;
+  border-top: 1.5px solid var(--gold-primary);
+  padding-top: 12px;
+  margin-top: 12px;
 }
 
 .deal-final-label {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
+  font-family: var(--font-royal);
+  font-size: 1.1rem;
   font-weight: 900;
-  color: var(--terracotta-dark);
+  color: var(--warm-ivory);
 }
 
 .deal-inclusive-sub {
-  font-size: 0.72rem;
-  color: var(--text-muted);
+  font-size: 0.74rem;
+  color: var(--muted-grey);
 }
 
 .deal-final-price {
-  font-size: 1.55rem;
+  font-size: 1.65rem;
   font-weight: 900;
-  color: var(--terracotta-dark);
+  color: var(--gold-light);
+  text-shadow: 0 0 16px rgba(213, 183, 122, 0.35);
 }
 
 .quote-action-buttons {
@@ -3818,9 +3823,9 @@ div[class*="feedback-widget"] {
 /* Nav & Header Sub-section Switcher Buttons */
 .menu-sections-toggle-btn,
 .section-nav-switcher-btn {
-  background: rgba(212, 144, 28, 0.12);
+  background: rgba(213, 183, 122, 0.12);
   border: 1.5px solid var(--gold-primary);
-  color: var(--terracotta-dark);
+  color: var(--champagne-gold);
   padding: 6px 14px;
   border-radius: var(--radius-full);
   font-size: 0.8rem;
@@ -3835,7 +3840,7 @@ div[class*="feedback-widget"] {
 .menu-sections-toggle-btn:hover,
 .section-nav-switcher-btn:hover {
   background: var(--gold-primary);
-  color: var(--terracotta-dark);
+  color: var(--charcoal-deep);
   transform: translateY(-1px);
 }
 
