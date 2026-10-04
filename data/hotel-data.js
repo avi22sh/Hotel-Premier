@@ -240,22 +240,23 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     { icon: '⚡', place: 'Deepnagar Thermal Power Station', distance: '10 KM', time: '15 Mins Drive', desc: 'Major industrial powerhouse & Varangaon Ordnance Factory area.' }
   ],
 
-  // Restaurant Events & Party Catering Packages (Party, Conference, Event, Engagement & Lunch Buyout)
+  // Restaurant Events & Party Catering Packages (Pride Pure Veg AC Restaurant - Seating Capacity Max 40 Pax)
   restaurantEventPackages: [
     {
       id: 'pkg-engagement',
       category: 'engagement',
-      name: '💍 Shubh Vivah & Ring Ceremony Banquet',
-      hindiName: 'सगाई एवं शुभ पारिवारिक मांगलिक दावत',
-      marathiName: 'साखरपुडा व शुभ विवाह मेजवानी',
+      name: '💍 Engagement & Ring Ceremony Feast',
+      hindiName: 'सगाई एवं रिंग सेरेमनी सेलिब्रेशन दावत',
+      marathiName: 'साखरपुडा व रिंग सेरेमनी आनंद मेजवानी',
       ratePerPax: 580,
-      minPax: 25,
-      badge: '💍 ENGAGEMENT, ROKA & PRE-WEDDING',
+      minPax: 20,
+      maxPax: 40,
+      badge: '💍 ENGAGEMENT & RING CEREMONY',
       icon: '💍',
       featured: true,
       tag: 'Grand Feast',
-      desc: 'Royal banquet experience for Ring Ceremonies (Sakhar Puda / Sagai), Roka, Haldi, Baby Shower (Dohale Jevan) & Upanayan.',
-      amenities: ['Private AC Banquet Dining', 'Sound & Mic System', 'Stage / Ring Ceremony Space', 'Dedicated Stewards'],
+      desc: 'Celebration dining spread inside Pride Pure Veg AC Restaurant for Ring Ceremony (Sakhar Puda / Sagai), Roka, Baby Shower (Dohale Jevan) & Family Milestones (20 to 40 Pax).',
+      amenities: ['Pride AC Restaurant Seating (Max 40 Pax)', 'Dedicated Cake / Ring Table Space', 'Music Playlist Connection', 'Dedicated Stewards'],
       menuChoices: [
         'Welcome: Royal Kesariya Thandai & Virgin Mojito on Arrival',
         'Soup: Hot & Sour or Veg Manchow Soup with Crispy Fried Noodles',
@@ -266,7 +267,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'Rice & Raita: Shahi Veg Dum Biryani + Steamed Basmati + Veg Boondi Raita',
         'Salad & Papad: Russian Salad, Tossed Green Salad, Roasted Masala Papad',
         '2 Grand Desserts: Hot Gulab Jamun + Shahi Moong Dal / Gajar Halwa with Vanilla Ice Cream Cup',
-        'Hospitality Perks: Personalized printed menu cards on tables & dedicated senior stewards'
+        'Hospitality: Personalized table setup & dedicated kitchen service'
       ]
     },
     {
@@ -277,11 +278,12 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       marathiName: 'कॉर्पोरेट कॉन्फरन्स व सेमिनार पॅकेज',
       ratePerPax: 380,
       minPax: 15,
-      badge: '💼 CORPORATE, CONFERENCES & DOCTOR MEETS',
+      maxPax: 40,
+      badge: '💼 CONFERENCES, SEMINARS & MEETS',
       icon: '💼',
       tag: 'Professional',
-      desc: 'Tailored for Corporate Conferences, Doctor Seminars, Dealer Meets, Board Meetings, Training Workshops & Product Launches.',
-      amenities: ['Projector & Screen Assistance', 'Wireless Collar / Hand Mic', 'High-Speed Wi-Fi', 'Notepads & Pens'],
+      desc: 'Tailored for Corporate Conferences, Doctor Seminars, Dealer Meets, Board Meetings, Training Workshops & Business Lunches in our AC Restaurant (15 to 40 Pax).',
+      amenities: ['AC Restaurant Seating (Max 40 Pax)', 'High-Speed Wi-Fi', 'Audio-Visual Projector Setup Available (Chargeable)', 'Notepads & Pens'],
       menuChoices: [
         'Morning Welcome: Freshly Brewed Adrak Masala Chai & Filter Coffee with Assorted Cookies',
         'Mid-Session High Tea: Hot Veg Cutlet / Veg Spring Rolls with Tea & Coffee refill',
@@ -292,22 +294,23 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'Breads: Butter Tandoori Roti & Butter Naan',
         'Rice: Fragrant Jeera Rice with Dal Tadka',
         'Dessert: Hot Gulab Jamun (1 pc/pax)',
-        'Conference Amenities: Projector & screen setup, wireless mic, high-speed Wi-Fi & notepad pens'
+        'Conference Support: Wi-Fi access, comfortable AC seating, AV projector & sound setup on request (chargeable)'
       ]
     },
     {
       id: 'pkg-birthday',
       category: 'party',
-      name: '🎉 Birthday & Family Celebration Feast',
+      name: '🎉 Birthday & Anniversary Celebration',
       hindiName: 'बर्थडे, एनिवर्सरी एवं पारिवारिक उत्सव',
-      marathiName: 'वाढदिवस व कौटुंबिक आनंद मेजवानी',
+      marathiName: 'वाढदिवस, ॲनिव्हर्सरी व कौटुंबिक मेजवानी',
       ratePerPax: 320,
       minPax: 15,
+      maxPax: 40,
       badge: '🎉 BIRTHDAYS, ANNIVERSARIES & PARTIES',
       icon: '🎂',
       tag: 'Celebration',
-      desc: 'Joyful celebration spread for Kids & Adults Birthdays, Anniversary milestones, Kitty Parties and Family Reunions.',
-      amenities: ['Cake Cutting Table Setup', 'Balloon Space', 'Party Music Connection', 'Private AC Seating'],
+      desc: 'Joyful celebration spread for Kids & Adults Birthdays, Milestone Anniversaries, Baby Showers and Family Get-Togethers inside our AC Restaurant (15 to 40 Pax).',
+      amenities: ['Cake Cutting Table Setup', 'Theme Balloon Decor Available (Chargeable)', 'Party Music Connection', 'Comfortable AC Seating'],
       menuChoices: [
         'Welcome Cooler: Blue Curacao Mocktail or Fresh Lime Soda',
         '2 Crunchy Starters: Paneer Crispy + Veg Manchurian Dry / Veg Roll',
@@ -317,7 +320,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'Rice & Raita: Fragrant Veg Pulao or Jeera Rice with Boondi Raita',
         'Salad & Papad: Green Salad, Achar & Roasted Papad',
         'Dessert: Hot Gulab Jamun with Creamy Vanilla Ice Cream Cup',
-        'Party Perks: Dedicated cake cutting table, balloon area & music playlist connection'
+        'Party Perks: Dedicated cake cutting table, music playlist connection, optional theme decor (chargeable)'
       ]
     },
     {
@@ -328,45 +331,105 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       marathiName: 'किटी पार्टी व हाय-टी नाश्ता मेजवानी',
       ratePerPax: 220,
       minPax: 15,
-      badge: '☕ HIGH-TEA & CASUAL GATHERINGS',
+      maxPax: 40,
+      badge: '☕ KITTY PARTY & HIGH-TEA',
       icon: '☕',
       tag: 'High Tea',
-      desc: 'Light & delightful package for Afternoon Kitty Parties, Post-Seminar High-Tea, Bhajan Gatherings & Social Meets.',
-      amenities: ['Up to 3 Hours AC Dining', 'Relaxed Ambience', 'Soft Background Music'],
+      desc: 'Light & delightful spread for Afternoon Kitty Parties, Post-Seminar High-Tea, Bhajan Gatherings & Social Get-Togethers inside our AC Restaurant (15 to 40 Pax).',
+      amenities: ['AC Restaurant Seating (Max 40 Pax)', 'Relaxed Ambience', 'Soft Background Music'],
       menuChoices: [
         'Beverage Station: Special Adrak Masala Chai & South Indian Filter Coffee (served twice)',
         '3 Hot Savory Snacks: Paneer Pakoda + Hara Bhara Kabab + Crispy Veg Spring Roll',
         'Dips & Chutneys: Mint-Coriander Chutney, Tangy Imli Chutney & Tomato Sauce',
         'Dessert Sweet: Mini Hot Gulab Jamun or Besan Ladoo',
-        'Casual Dining: Comfortable 3-hour private AC hall access with pleasant background music'
+        'Casual Dining: Comfortable private seating inside Pride Pure Veg AC Restaurant with pleasant background music'
       ]
     },
     {
       id: 'pkg-lunch-buyout',
       category: 'buyout',
-      name: '👑 Full Restaurant Lunch Hall Buyout (Up to 40 Pax)',
-      hindiName: 'सम्पूर्ण रेस्टोरेंट लंच हॉल प्राइवेट बुकिंग (40 व्यक्तियों तक)',
-      marathiName: 'संपूर्ण रेस्टॉरंट लंच हॉल प्रायव्हेट बुकिंग (४० व्यक्तींपर्यंत)',
+      name: '👑 Full Restaurant Lunch Buyout (Max 40 Pax)',
+      hindiName: 'सम्पूर्ण रेस्टोरेंट लंच प्राइवेट बुकिंग (अधिकतम 40 व्यक्ति)',
+      marathiName: 'संपूर्ण रेस्टॉरंट लंच प्रायव्हेट बुकिंग (जास्तीत जास्त ४० व्यक्ती)',
       ratePerPax: 490,
       minPax: 25,
       maxPax: 40,
-      badge: '🌟 100% PRIVATE HALL BUYOUT (11:30 AM - 3:30 PM)',
+      badge: '👑 100% PRIVATE LUNCH BUYOUT (12:00 PM - 3:00 PM)',
       icon: '🏛️',
       tag: 'Exclusive Buyout',
       isBuyout: true,
-      desc: 'Exclusive private buyout of the entire Pride Pure Veg AC Restaurant (up to 40 Pax capacity) during prime Lunch Hours (11:30 AM to 3:30 PM). The restaurant is 100% closed to the general public for complete privacy.',
-      amenities: ['Hall 100% Closed to Public', 'Unlimited Grand Buffet', 'Sound & Mic System', 'Zero Hall Rent', 'Reserved Parking'],
+      desc: 'Exclusive private lunch buyout of the entire Pride Pure Veg AC Restaurant (max 40 Pax capacity) from 12:00 PM to 3:00 PM. Restaurant 100% closed to the general public for complete privacy. Full lunch buyout only • Strictly depending upon availability.',
+      amenities: ['Restaurant 100% Closed to Public', 'Unlimited Grand Buffet', 'Audio / Mic Facility (Chargeable)', 'No Venue Rent', 'Reserved Parking'],
       menuChoices: [
-        'Complete Hall Privacy: Entire dining hall closed to external guests for your 4-hour slot',
-        'Intimate & comfortable seating capacity for up to 40 guests',
+        'Complete Restaurant Privacy: Entire dining area closed to external guests from 12:00 PM to 3:00 PM',
+        'Seating capacity: comfortable dining for up to 40 guests maximum (No banquet hall)',
         'Unlimited Lavish Pure Veg Buffet (3 Starters, 3 Mains, 2 Dals, Biryani, 2 Sweets)',
         'Welcome Drinks Station for all guests upon arrival',
         'Dedicated Head Chef & Private Service Stewards for your guests only',
-        'Sound System & Wireless Mic facility for cake cutting, speeches & music',
+        'Sound system connection & mics setup on advance request (chargeable)',
         'Personalized Welcome Signage at restaurant entrance',
         'Priority reserved parking for host & guest vehicles',
-        'Zero Hall Rental charges when booking the banquet spread for 25 to 40 guests'
+        'Full Lunch Buyout Only (12:00 PM - 3:00 PM) • Strictly subject to advance booking & date availability'
       ]
+    }
+  ],
+
+  // Optional Event Decorations & Audio-Visual Supplies (Chargeable Add-ons)
+  eventDecorations: [
+    {
+      id: 'decor-balloon',
+      title: 'Theme Balloon & Cake Table Decor',
+      category: 'Birthdays & Baby Showers',
+      price: 1500,
+      priceDisplay: '₹ 1,500 onwards',
+      isChargeable: true,
+      badge: '🎈 POPULAR DECOR',
+      image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&auto=format&fit=crop&q=80',
+      desc: 'Balloon arch, custom celebration color theme, dedicated cake cutting table decoration & party props. (Chargeable add-on • Customizable).'
+    },
+    {
+      id: 'decor-floral-ring',
+      title: 'Floral Ring & Stage Backdrop Decor',
+      category: 'Ring Ceremony & Anniversaries',
+      price: 2800,
+      priceDisplay: '₹ 2,800 onwards',
+      isChargeable: true,
+      badge: '💍 ROYAL SETUP',
+      image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format&fit=crop&q=80',
+      desc: 'Circular floral ring backdrop, fairy light curtain, personalized couple name board & warm stage illumination. (Chargeable add-on • Customizable).'
+    },
+    {
+      id: 'decor-baby-shower',
+      title: 'Baby Shower (Dohale Jevan) Theme Decor',
+      category: 'Baby Shower & Traditional',
+      price: 2200,
+      priceDisplay: '₹ 2,200 onwards',
+      isChargeable: true,
+      badge: '👶 TRADITIONAL & PASTEL',
+      image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=80',
+      desc: 'Traditional Dohale Jevan setup, pastel balloon garland, floral welcome stand, and photo corner props. (Chargeable add-on • Customizable).'
+    },
+    {
+      id: 'av-projector',
+      title: 'HD Projector & Wide Screen AV Setup',
+      category: 'Corporate & Seminars',
+      price: 1500,
+      priceDisplay: '₹ 1,500 flat',
+      isChargeable: true,
+      badge: '💼 BUSINESS AV',
+      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&q=80',
+      desc: 'High-lumen HDMI projector, large projection screen, power extension cables, and presentation setup support. (Chargeable add-on).'
+    },
+    {
+      id: 'av-sound-mic',
+      title: 'Party Sound System & 2 Wireless Mics',
+      category: 'Music & Speeches',
+      price: 999,
+      priceDisplay: '₹ 999 flat',
+      isChargeable: true,
+      badge: '🎤 SOUND & MIC',
+      image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=80',
+      desc: 'Dedicated party audio system with Bluetooth playlist streaming and 2 cordless microphones for speeches and games. (Chargeable add-on).'
     }
   ]
 };

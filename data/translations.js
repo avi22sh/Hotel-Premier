@@ -67,14 +67,14 @@ window.HOTEL_PREMIER_I18N = {
       sectionHighlight: '👑 SECTION HIGHLIGHT',
       tapToViewDish: '👆 Tap to view dish details & options',
 
-      // Restaurant Events & Party Catering (15-20+ Pax & Lunch Buyout)
-      eventsBadge: '🎉 EVENTS, PARTIES & PRIVATE BOOKINGS',
-      eventsTitle: 'Pride Pure Veg Events & Lunch Buyout',
-      eventsSubtitle: 'Curated Pure Vegetarian Packages for 15 to 20+ Guests & Exclusive Full Restaurant Lunch Buyout (Up to 40 Pax)',
-      eventsPackagesHeading: 'Select Your Pure Veg Event Package',
-      eventsPackagesSub: 'Transparent per-person pricing, fresh kitchen preparations & dedicated hospitality',
+      // Restaurant Events & Party Catering (15-40 Pax & Lunch Buyout)
+      eventsBadge: '🎉 RESTAURANT EVENTS & PRIVATE LUNCH BUYOUT',
+      eventsTitle: 'Pride Pure Veg AC Restaurant Events & Lunch Buyout',
+      eventsSubtitle: 'Hosted in Pride Pure Veg AC Restaurant (Max 40 Pax • No Banquet Hall). Small Events & Full Lunch Buyout (12:00 PM – 3:00 PM Only) • Strictly Subject to Availability',
+      eventsPackagesHeading: 'Select Your Restaurant Event Package',
+      eventsPackagesSub: 'All packages hosted in Pride Pure Veg AC Restaurant (Max 40 Pax • No Banquet Hall). Transparent per-person pricing.',
       calcEventTitle: 'Instant Event & Lunch Buyout Quote Calculator',
-      calcEventSubtitle: 'Customize your package, guest count (15–40 Pax) & time slot to view instant estimate',
+      calcEventSubtitle: 'Customize your package, guest count (15–40 Pax) & chargeable add-ons to view instant estimate',
 
       // Terms & Conditions
       termsTitle: 'TERMS & CONDITIONS',
@@ -250,14 +250,14 @@ window.HOTEL_PREMIER_I18N = {
       sectionHighlight: '👑 Special',
       tapToViewDish: '👆 Dish details dekhne ke liye tap karein',
 
-      // Restaurant Events & Party Catering (15-20+ Pax & Lunch Buyout)
-      eventsBadge: '🎉 Events, Party & Bulk Booking',
-      eventsTitle: 'Pure Veg Party & Lunch Hall Booking',
-      eventsSubtitle: '15 se 40 guests ke liye party packages aur private hall booking available',
-      eventsPackagesHeading: 'Apna Pure Veg Event Package Chunein',
-      eventsPackagesSub: 'Fixed per-person rate, fresh food aur dedicated service',
-      calcEventTitle: 'Event & Party Instant Calculator',
-      calcEventSubtitle: 'Guests count aur package chunein, instant estimate paayein',
+      // Restaurant Events & Party Catering (15-40 Pax & Lunch Buyout)
+      eventsBadge: '🎉 रेस्टोरेंट इवेंट्स एवं प्राइवेट लंच बुकिंग',
+      eventsTitle: 'Pride Pure Veg AC Restaurant इवेंट्स व लंच बुकिंग',
+      eventsSubtitle: 'छोटे इवेंट्स (15 से 40 व्यक्ति) एवं सम्पूर्ण रेस्टोरेंट लंच बुकिंग (12:00 PM - 3:00 PM) • कोई बैंक्वेट हॉल नहीं • उपलब्धता के अनुसार',
+      eventsPackagesHeading: 'इवेंट पैकेज चुनें',
+      eventsPackagesSub: 'सभी पैकेजेस Pride Pure Veg AC Restaurant में (अधिकतम 40 सीटें • कोई बैंक्वेट हॉल नहीं)।',
+      calcEventTitle: 'Event & Lunch Buyout Instant Calculator',
+      calcEventSubtitle: 'Guests count और पैकेज चुनें, तुरंत एस्टीमेट देखें',
 
       // Terms & Conditions
       termsTitle: 'Rules & Terms (नियम व शर्तें)',
@@ -433,13 +433,13 @@ window.HOTEL_PREMIER_I18N = {
       sectionHighlight: '👑 Special',
       tapToViewDish: '👆 Dish details पाहण्यासाठी टॅप करा',
 
-      // Restaurant Events & Party Catering (15-20+ Pax & Lunch Buyout)
-      eventsBadge: '🎉 Events, Party & Bulk Booking',
-      eventsTitle: 'Pure Veg Party & Lunch Hall Booking',
-      eventsSubtitle: '15 ते 40 लोकांसाठी party packages व हॉल बुकिंग उपलब्ध',
-      eventsPackagesHeading: 'आपले आवडते Pure Veg Event Package निवडा',
-      eventsPackagesSub: 'Fixed per-person rate, ताजे जेवण आणि दर्जेदार सेवा',
-      calcEventTitle: 'Event & Party Instant Calculator',
+      // Restaurant Events & Party Catering (15-40 Pax & Lunch Buyout)
+      eventsBadge: '🎉 रेस्टॉरंट इव्हेंट्स व प्रायव्हेट लंच बुकिंग',
+      eventsTitle: 'Pride Pure Veg AC Restaurant इव्हेंट्स व लंच बुकिंग',
+      eventsSubtitle: 'लहान कार्यक्रमांसाठी (15 ते 40 व्यक्ती) व संपूर्ण रेस्टॉरंट लंच बुकिंग (12:00 PM - 3:00 PM) • कोणताही बँक्वेट हॉल नाही • उपलब्धतेनुसार',
+      eventsPackagesHeading: 'इव्हेंट पॅकेज निवडा',
+      eventsPackagesSub: 'सर्व कार्यक्रम Pride Pure Veg AC Restaurant मध्ये (जास्तीत जास्त 40 सिटिंग • कोणताही बँक्वेट हॉल नाही).',
+      calcEventTitle: 'Event & Lunch Buyout Instant Calculator',
       calcEventSubtitle: 'पाहुण्यांची संख्या निवडा आणि त्वरित अंदाज पहा',
 
       // Terms & Conditions

@@ -21,7 +21,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=5.0">
+  <link rel="stylesheet" href="styles.css?v=5.1">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -200,8 +200,8 @@
         <div class="invite-banner-content">
           <span class="invite-banner-icon">🎉</span>
           <div class="invite-banner-text">
-            <strong>Planning a Party, Corporate Conference or Engagement?</strong>
-            <span>Pure Veg Banquets (15–40 Pax) & Full AC Hall Lunch Buyout • Starting ₹220/pax</span>
+            <strong>Planning a Birthday, Anniversary, Ring Ceremony or Corporate Meet?</strong>
+            <span>Pride Pure Veg AC Restaurant (Max 40 Pax) • Full Lunch Buyout (12:00 PM – 3:00 PM)</span>
           </div>
         </div>
         <button class="invite-banner-btn" type="button"><span>View Packages ▾</span></button>
@@ -233,8 +233,8 @@
         <div class="invite-banner-content">
           <span class="invite-banner-icon">🎉</span>
           <div class="invite-banner-text">
-            <strong>Planning a Party, Corporate Conference or Engagement?</strong>
-            <span>Pure Veg Banquets (15–40 Pax) & Full AC Hall Lunch Buyout • Starting ₹220/pax</span>
+            <strong>Planning a Birthday, Anniversary, Ring Ceremony or Corporate Meet?</strong>
+            <span>Pride Pure Veg AC Restaurant (Max 40 Pax) • Full Lunch Buyout (12:00 PM – 3:00 PM)</span>
           </div>
         </div>
         <button class="invite-banner-btn" type="button"><span>View Packages ▾</span></button>
@@ -246,40 +246,55 @@
     <!-- ================================================================ -->
     <section class="restaurant-events-section" id="restaurant-events-section">
       <div class="events-hero-card">
-        <div class="events-badge" data-i18n="eventsBadge">🎉 EVENTS, PARTIES & PRIVATE BOOKINGS</div>
-        <h2 class="events-main-title" data-i18n="eventsTitle">Pride Pure Veg Restaurant Events & Lunch Buyout</h2>
+        <div class="events-badge" data-i18n="eventsBadge">🎉 RESTAURANT EVENTS & PRIVATE LUNCH BUYOUT</div>
+        <h2 class="events-main-title" data-i18n="eventsTitle">Pride Pure Veg AC Restaurant Events & Lunch Buyout</h2>
         <p class="events-main-subtitle" data-i18n="eventsSubtitle">
-          Curated Pure Vegetarian Packages for 15 to 20+ Guests & Exclusive Full Restaurant Lunch Buyout (Up to 40 Pax)
+          Hosted exclusively inside Pride Pure Veg AC Restaurant (Seating Capacity: Max 40 Pax • No Banquet Hall). Curated Pure Veg Packages for Birthdays, Anniversaries, Ring Ceremonies, Baby Showers, Corporate Seminars & Kitty Parties. Full Lunch Buyout only (12:00 PM to 3:00 PM), strictly subject to availability.
         </p>
         <div class="events-highlights-pills">
-          <span class="event-pill">🌱 100% Pure Veg Delicacies</span>
-          <span class="event-pill">👥 15 to 20+ Pax Party Packages</span>
-          <span class="event-pill highlight-gold">🏛️ Full Restaurant Lunch Buyout (Up to 40 Pax)</span>
-          <span class="event-pill">⏰ Prime Lunch Hours: 11:30 AM – 3:30 PM</span>
-          <span class="event-pill">🎶 Sound System & Mic Facility</span>
+          <span class="event-pill">🌱 Pride Pure Veg AC Restaurant</span>
+          <span class="event-pill">👥 Seating Capacity: Max 40 Pax (No Banquet Hall)</span>
+          <span class="event-pill highlight-gold">👑 Full Lunch Buyout (12:00 PM – 3:00 PM Only)</span>
+          <span class="event-pill">📅 Strictly Subject to Availability</span>
+          <span class="event-pill">🎨 Theme Decor & AV Supplies Available (Chargeable)</span>
         </div>
       </div>
 
-      <!-- Event Packages Grid -->
+      <!-- Event Packages Grid (2 Lines Layout) -->
       <div class="events-packages-container">
         <div class="events-packages-header">
           <div>
-            <h3 class="events-subheading" data-i18n="eventsPackagesHeading">Select Your Pure Veg Event Package</h3>
-            <p class="events-subdesc" data-i18n="eventsPackagesSub">Transparent per-person pricing, fresh kitchen preparations & dedicated hospitality</p>
+            <h3 class="events-subheading" data-i18n="eventsPackagesHeading">Select Your Restaurant Event Package</h3>
+            <p class="events-subdesc" data-i18n="eventsPackagesSub">All packages hosted in Pride Pure Veg AC Restaurant (Seating Capacity Max 40 Pax • No Banquet Hall). Transparent per-person pricing.</p>
           </div>
         </div>
 
         <!-- Event Package Category Quick Filter Tabs -->
         <div class="event-category-filter-tabs" id="event-category-tabs">
           <button type="button" class="event-filter-tab active" onclick="window.app ? window.app.filterEventPackages('all', this) : null">🌟 All Packages (5)</button>
-          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('engagement', this) : null">💍 Engagement & Functions</button>
+          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('engagement', this) : null">💍 Ring Ceremony & Engagement</button>
           <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('conference', this) : null">💼 Corporate & Seminars</button>
           <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('party', this) : null">🎉 Birthdays & High-Tea</button>
-          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('buyout', this) : null">🏛️ Private Hall Buyout</button>
+          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('buyout', this) : null">👑 Full Lunch Buyout (Max 40 Pax)</button>
         </div>
 
         <div class="events-packages-grid" id="restaurant-events-packages-grid">
-          <!-- Rendered dynamically by app.js from restaurantEventPackages -->
+          <!-- Rendered dynamically by app.js from restaurantEventPackages in 2 lines -->
+        </div>
+
+        <!-- Optional Event Decorations & Audio-Visual Supplies Showcase (Chargeable Add-ons) -->
+        <div class="event-decorations-container" id="event-decorations-section">
+          <div class="decorations-header-block">
+            <span class="decor-tag">🎨 OPTIONAL THEME DECOR & AV SUPPLIES</span>
+            <h3 class="decor-main-title">Celebration Decorations & Audio-Visual Supplies</h3>
+            <p class="decor-sub-text">
+              Make your celebration special with customized theme decorations and AV setups inside our AC Restaurant. All decor and AV supplies are <strong>chargeable add-ons</strong> provided upon advance request and can be customized to your taste.
+            </p>
+          </div>
+
+          <div class="event-decorations-grid" id="event-decorations-grid">
+            <!-- Rendered dynamically by app.js from eventDecorations -->
+          </div>
         </div>
       </div>
 
@@ -289,7 +304,7 @@
           <div class="calc-icon-circle">🧮</div>
           <div>
             <h3 class="calc-card-title" data-i18n="calcEventTitle">Instant Event & Lunch Buyout Quote Calculator</h3>
-            <p class="calc-card-subtitle" data-i18n="calcEventSubtitle">Customize your package, guest count (15–40 Pax) & time slot to view instant estimate</p>
+            <p class="calc-card-subtitle" data-i18n="calcEventSubtitle">Customize your package, guest count (15–40 Pax) & chargeable add-ons to view instant estimate</p>
           </div>
         </div>
 
@@ -299,24 +314,25 @@
             <div class="form-group">
               <label class="form-label">Occasion / Event Type</label>
               <select id="calc-event-occasion" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                <option value="Birthday Party" selected>🎂 Birthday Celebration (Kids / Adults)</option>
-                <option value="Kitty Party / Ladies Meet">☕ Kitty Party / Ladies High-Tea Meet</option>
-                <option value="Engagement / Ring Ceremony">💍 Ring Ceremony (Sakhar Puda / Sagai) & Roka</option>
-                <option value="Corporate Meeting / Seminar">💼 Corporate Meeting, Conference or Doctor Seminar</option>
-                <option value="Family Get-Together">👨‍👩‍👧‍👦 Family Get-Together / Reunion</option>
-                <option value="Haldi / Baby Shower / Puja">🌸 Haldi, Baby Shower (Dohale Jevan) or Puja</option>
-                <option value="Full Restaurant Lunch Buyout">👑 Full Restaurant Lunch Buyout (Private Hall)</option>
+                <option value="Birthday Celebration" selected>🎂 Birthday Celebration (Kids / Adults)</option>
+                <option value="Anniversary Celebration">💖 Milestone Anniversary Celebration</option>
+                <option value="Engagement / Ring Ceremony">💍 Ring Ceremony (Sakhar Puda / Sagai) & Engagement</option>
+                <option value="Baby Shower (Dohale Jevan)">👶 Baby Shower (Dohale Jevan / Godh Bharai)</option>
+                <option value="Corporate Meeting / Seminar">💼 Corporate Conference, Seminar or Doctor Meet</option>
+                <option value="Kitty Party / High-Tea">☕ Kitty Party & Afternoon High-Tea Gathering</option>
+                <option value="Family Get-Together">👨‍👩‍👧‍👦 Family Get-Together & Reunion</option>
+                <option value="Full Restaurant Lunch Buyout">👑 Full Restaurant Lunch Buyout (Max 40 Pax • 12:00 PM - 3:00 PM)</option>
               </select>
             </div>
 
             <div class="form-group">
               <label class="form-label">Selected Pure Veg Package</label>
               <select id="calc-event-package" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                <option value="pkg-engagement">💍 Shubh Vivah & Ring Ceremony Banquet (₹580/pax • Min 25 Pax)</option>
+                <option value="pkg-engagement">💍 Engagement & Ring Ceremony Feast (₹580/pax • Min 20 Pax)</option>
                 <option value="pkg-corporate">💼 Corporate Conference & Seminar Meet (₹380/pax • Min 15 Pax)</option>
-                <option value="pkg-birthday" selected>🎉 Birthday & Family Celebration Feast (₹320/pax • Min 15 Pax)</option>
+                <option value="pkg-birthday" selected>🎉 Birthday & Anniversary Celebration (₹320/pax • Min 15 Pax)</option>
                 <option value="pkg-hightea">☕ Kitty Party & High-Tea Gathering (₹220/pax • Min 15 Pax)</option>
-                <option value="pkg-lunch-buyout">👑 Full Restaurant Lunch Hall Buyout (₹490/pax • Up to 40 Pax)</option>
+                <option value="pkg-lunch-buyout">👑 Full Restaurant Lunch Buyout (₹490/pax • Max 40 Pax)</option>
               </select>
             </div>
 
@@ -328,14 +344,13 @@
                   <input type="number" id="calc-event-pax" class="form-input text-center font-bold" value="20" min="15" max="40" oninput="window.app ? window.app.calculateRestaurantEventQuote() : null" style="font-size: 1.1rem; text-align: center;">
                   <button type="button" class="pax-step-btn" onclick="window.app ? window.app.stepPax(1) : null">+</button>
                 </div>
-                <span class="form-hint" id="pax-range-hint">Standard capacity: 15 to 40 Pax max</span>
+                <span class="form-hint" id="pax-range-hint">Pride Pure Veg AC Restaurant capacity: 15 to 40 Pax max</span>
               </div>
 
               <div class="form-group">
                 <label class="form-label">Dining Time Slot</label>
                 <select id="calc-event-timeslot" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <option value="Lunch (11:30 AM - 3:30 PM)" selected>☀️ Lunch (11:30 AM - 3:30 PM) [Prime]</option>
-                  <option value="Dinner (7:00 PM - 10:30 PM)">🌙 Dinner (7:00 PM - 10:30 PM)</option>
+                  <option value="Lunch (12:00 PM - 3:00 PM)" selected>☀️ Lunch Party (12:00 PM – 3:00 PM Only • Strictly Subject to Availability)</option>
                 </select>
               </div>
             </div>
@@ -347,11 +362,27 @@
 
             <!-- Optional Add-ons -->
             <div class="form-group">
-              <label class="form-label">Optional Special Add-ons</label>
+              <label class="form-label">Optional Theme Decor & AV Add-ons (Chargeable / Customizable)</label>
               <div class="addons-checkbox-grid">
                 <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-cake-decor" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>🎂 Cake Cutting Table & Birthday Decor Setup (+ ₹999 flat)</span>
+                  <input type="checkbox" id="addon-balloon-decor" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
+                  <span>🎈 Theme Balloon & Cake Table Decor (+ ₹1,500 flat)</span>
+                </label>
+                <label class="addon-checkbox-item">
+                  <input type="checkbox" id="addon-floral-ring" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
+                  <span>💍 Floral Ring & Stage Backdrop (+ ₹2,800 flat)</span>
+                </label>
+                <label class="addon-checkbox-item">
+                  <input type="checkbox" id="addon-baby-decor" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
+                  <span>👶 Baby Shower (Dohale Jevan) Decor (+ ₹2,200 flat)</span>
+                </label>
+                <label class="addon-checkbox-item">
+                  <input type="checkbox" id="addon-projector" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
+                  <span>💼 HD Projector & Wide Screen AV Setup (+ ₹1,500 flat)</span>
+                </label>
+                <label class="addon-checkbox-item">
+                  <input type="checkbox" id="addon-sound-mic" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
+                  <span>🎤 Party Sound System & 2 Wireless Mics (+ ₹999 flat)</span>
                 </label>
                 <label class="addon-checkbox-item">
                   <input type="checkbox" id="addon-live-chaat" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
@@ -359,11 +390,11 @@
                 </label>
                 <label class="addon-checkbox-item">
                   <input type="checkbox" id="addon-extra-sweet" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>🍨 Extra Premium Ice Cream Cup (+ ₹35 / pax)</span>
+                  <span>🍨 Extra Premium Sweet / Ice Cream Cup (+ ₹35 / pax)</span>
                 </label>
                 <label class="addon-checkbox-item">
                   <input type="checkbox" id="addon-cold-drinks" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>🥤 Unlimited Cold Drinks Station (+ ₹30 / pax)</span>
+                  <span>🥤 Unlimited Soft Drinks / Cold Beverages (+ ₹30 / pax)</span>
                 </label>
               </div>
             </div>
@@ -398,7 +429,7 @@
                 </div>
                 <div class="breakdown-row">
                   <span>Time Slot:</span>
-                  <strong id="summary-slot-name">Lunch (11:30 AM - 3:30 PM)</strong>
+                  <strong id="summary-slot-name">Lunch (12:00 PM - 3:00 PM)</strong>
                 </div>
                 <div class="breakdown-row">
                   <span>Base Menu Total:</span>
@@ -409,8 +440,8 @@
                   <span id="summary-addons-total">+ ₹ 0</span>
                 </div>
                 <div class="breakdown-row hall-rent-row">
-                  <span>Private AC Hall Fee:</span>
-                  <strong style="color: #2E7D32;">FREE (Waived!)</strong>
+                  <span>Restaurant Venue Charge:</span>
+                  <strong style="color: #2E7D32;">FREE (No Venue Fee)</strong>
                 </div>
               </div>
 
@@ -1358,14 +1389,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v5.0 Cache-Busted) -->
-  <script src="storage.js?v=5.0"></script>
-  <script src="vault.js?v=5.0"></script>
-  <script src="data/translations.js?v=5.0"></script>
-  <script src="data/hotel-data.js?v=5.0"></script>
-  <script src="data/menu-data.js?v=5.0"></script>
-  <script src="app.js?v=5.0"></script>
-  <script src="admin.js?v=5.0"></script>
+  <!-- Load Application Scripts (v5.1 Cache-Busted) -->
+  <script src="storage.js?v=5.1"></script>
+  <script src="vault.js?v=5.1"></script>
+  <script src="data/translations.js?v=5.1"></script>
+  <script src="data/hotel-data.js?v=5.1"></script>
+  <script src="data/menu-data.js?v=5.1"></script>
+  <script src="app.js?v=5.1"></script>
+  <script src="admin.js?v=5.1"></script>
 
   <!-- Developer Modal & Netlify Purge Handlers -->
   <script>
@@ -1424,6 +1455,9 @@
             var eventsGrid = document.getElementById('restaurant-events-packages-grid');
             if (eventsGrid && (!eventsGrid.children || eventsGrid.children.length === 0)) {
               window.app.renderRestaurantEventPackages();
+              if (typeof window.app.renderEventDecorations === 'function') {
+                window.app.renderEventDecorations();
+              }
               window.app.calculateRestaurantEventQuote();
             }
           }
@@ -1437,8 +1471,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=5.0').then(function(reg) {
-          console.log('[PWA] Service Worker v5.0 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=5.1').then(function(reg) {
+          console.log('[PWA] Service Worker v5.1 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();

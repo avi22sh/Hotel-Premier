@@ -62,6 +62,7 @@ class HotelPremierApp {
     this.renderBulkDealsSection();
     this.calculateBulkQuote();
     this.renderRestaurantEventPackages();
+    this.renderEventDecorations();
     this.calculateRestaurantEventQuote();
     this.checkStaffModeAccess();
     this.initGuestProfile();
@@ -175,6 +176,7 @@ class HotelPremierApp {
     this.renderMenuSectionDrawer();
     this.calculateBulkQuote();
     this.renderRestaurantEventPackages();
+    this.renderEventDecorations();
     this.calculateRestaurantEventQuote();
 
     const toastMsg = lang === 'hi' ? 'भाषा बदलकर हिंदी (Hinglish) की गई!' : (lang === 'mr' ? 'भाषा बदलून मराठी केली!' : 'Language changed to English!');
@@ -1682,13 +1684,14 @@ class HotelPremierApp {
   inquirePackageWhatsApp(pkgId) {
     const pkgs = this.getRestaurantEventPackages();
     const pkg = pkgs.find(p => p.id === pkgId) || pkgs[0];
-    const msg = `*HOTEL PREMIER BHUSAWAL - EVENT PACKAGE INQUIRY*%0A` +
+    const msg = `*HOTEL PREMIER BHUSAWAL - RESTAURANT EVENT INQUIRY*%0A` +
       `---------------------------------------%0A` +
       `✨ *Package:* ${encodeURIComponent(pkg.name)}%0A` +
       `💰 *Rate:* ₹${pkg.ratePerPax}/person (${pkg.isBuyout ? 'Up to 40 Pax' : 'Min ' + (pkg.minPax || 15) + ' Pax'})%0A` +
-      `🏢 *Venue:* Pride Pure Veg Private AC Hall, Hotel Premier%0A` +
+      `🏢 *Venue:* Pride Pure Veg AC Restaurant, Hotel Premier (Max 40 Pax Seating • No Banquet Hall)%0A` +
+      `⏰ *Timing:* Lunch Party (12:00 PM – 3:00 PM Only • Strictly Subject to Availability)%0A` +
       `---------------------------------------%0A` +
-      `Hello Hotel Premier Management, I want to book/inquire about this event package for our upcoming function. Please share date availability and booking details!`;
+      `Hello Hotel Premier Management, I want to book/inquire about this event package for our upcoming gathering. Please share date availability and booking details!`;
     const whatsappUrl = `https://api.whatsapp.com/send?phone=919325375802&text=${msg}`;
     window.open(whatsappUrl, '_blank');
   }
@@ -1702,15 +1705,15 @@ class HotelPremierApp {
     if (pkgId === 'pkg-lunch-buyout' && occasionSelect) {
       occasionSelect.value = 'Full Restaurant Lunch Buyout';
       const slotSelect = document.getElementById('calc-event-timeslot');
-      if (slotSelect) slotSelect.value = 'Lunch (11:30 AM - 3:30 PM)';
+      if (slotSelect) slotSelect.value = 'Lunch (12:00 PM - 3:00 PM)';
     } else if (pkgId === 'pkg-engagement' && occasionSelect) {
       occasionSelect.value = 'Engagement / Ring Ceremony';
     } else if (pkgId === 'pkg-corporate' && occasionSelect) {
       occasionSelect.value = 'Corporate Meeting / Seminar';
     } else if (pkgId === 'pkg-hightea' && occasionSelect) {
-      occasionSelect.value = 'Kitty Party / Ladies Meet';
+      occasionSelect.value = 'Kitty Party / High-Tea';
     } else if (pkgId === 'pkg-birthday' && occasionSelect) {
-      occasionSelect.value = 'Birthday Party';
+      occasionSelect.value = 'Birthday Celebration';
     }
 
     const paxInput = document.getElementById('calc-event-pax');
@@ -1740,6 +1743,97 @@ class HotelPremierApp {
     this.calculateRestaurantEventQuote();
   }
 
+  // ==================== EVENT DECORATIONS & AV SUPPLIES GALLERY ====================
+  renderEventDecorations() {
+    const container = document.getElementById('event-decorations-grid');
+    if (!container) return;
+
+    const items = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.eventDecorations) || [];
+    if (!items.length) {
+      container.innerHTML = '';
+      return;
+    }
+
+    const decorToCheckboxMap = {
+      'decor-balloon': 'addon-balloon-decor',
+      'decor-floral-ring': 'addon-floral-ring',
+      'decor-baby-shower': 'addon-baby-decor',
+      'av-projector': 'addon-projector',
+      'av-sound-mic': 'addon-sound-mic'
+    };
+
+    container.innerHTML = items.map(item => {
+      const checkboxId = decorToCheckboxMap[item.id];
+      const isChecked = checkboxId ? Boolean(document.getElementById(checkboxId)?.checked) : false;
+      const btnLabel = isChecked ? '✓ Added to Quote' : '➕ Add to Quote';
+      const btnClass = isChecked ? 'btn-decor-add added' : 'btn-decor-add';
+
+      return `
+        <div class="decor-card" id="card-${item.id}">
+          <div class="decor-img-wrap">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format&fit=crop&q=80'">
+            <span class="decor-badge">${item.badge}</span>
+            <span class="decor-chargeable-pill">💰 Chargeable Add-on</span>
+          </div>
+          <div class="decor-body">
+            <div class="decor-meta-row">
+              <span class="decor-category">${item.category}</span>
+              <span class="decor-price">${item.priceDisplay}</span>
+            </div>
+            <h4 class="decor-title">${item.title}</h4>
+            <p class="decor-desc">${item.desc}</p>
+            <div class="decor-actions">
+              <button type="button" class="${btnClass}" id="btn-toggle-${item.id}" onclick="window.app ? window.app.toggleDecorAddon('${item.id}') : null">
+                <span>${btnLabel}</span>
+              </button>
+              <a href="https://api.whatsapp.com/send?phone=919325375802&text=${encodeURIComponent('Hello Hotel Premier Management, I want to inquire about custom decoration/AV supplies: ' + item.title + ' (' + item.priceDisplay + ')')}" target="_blank" class="btn-decor-inquire">
+                <span>💬 Inquire</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  toggleDecorAddon(decorId) {
+    const decorToCheckboxMap = {
+      'decor-balloon': 'addon-balloon-decor',
+      'decor-floral-ring': 'addon-floral-ring',
+      'decor-baby-shower': 'addon-baby-decor',
+      'av-projector': 'addon-projector',
+      'av-sound-mic': 'addon-sound-mic'
+    };
+
+    const checkboxId = decorToCheckboxMap[decorId];
+    if (!checkboxId) return;
+
+    const cb = document.getElementById(checkboxId);
+    if (cb) {
+      cb.checked = !cb.checked;
+      this.calculateRestaurantEventQuote();
+
+      // Update button visual state
+      const btn = document.getElementById(`btn-toggle-${decorId}`);
+      if (btn) {
+        if (cb.checked) {
+          btn.classList.add('added');
+          btn.innerHTML = '<span>✓ Added to Quote</span>';
+          this.showToast('Added to Event Quote!', 'success');
+        } else {
+          btn.classList.remove('added');
+          btn.innerHTML = '<span>➕ Add to Quote</span>';
+          this.showToast('Removed from Event Quote', 'info');
+        }
+      }
+
+      const calc = document.getElementById('restaurant-event-calculator');
+      if (calc) {
+        calc.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+
   calculateRestaurantEventQuote() {
     const pkgSelect = document.getElementById('calc-event-package');
     const occasionSelect = document.getElementById('calc-event-occasion');
@@ -1756,32 +1850,54 @@ class HotelPremierApp {
     const minPax = pkg.minPax || 15;
     let pax = parseInt(paxInput.value) || 20;
     if (pax < minPax) pax = minPax;
-    if (pax > 40) pax = 40; // Up to 40 Pax max
+    if (pax > 40) pax = 40; // Pride Pure Veg AC Restaurant seating capacity max 40 Pax
     paxInput.value = pax;
     paxInput.min = minPax;
 
     const hintEl = document.getElementById('pax-range-hint');
     if (hintEl) {
-      hintEl.innerText = `Package capacity: ${minPax} to 40 Pax max`;
+      hintEl.innerText = `Pride AC Restaurant seating: ${minPax} to 40 Pax max`;
     }
 
-    const occasion = occasionSelect ? occasionSelect.value : 'Family Gathering';
-    const timeslot = slotSelect ? slotSelect.value : 'Lunch (11:30 AM - 3:30 PM)';
+    const occasion = occasionSelect ? occasionSelect.value : 'Birthday Celebration';
+    const timeslot = slotSelect ? slotSelect.value : 'Lunch (12:00 PM - 3:00 PM)';
     const dateVal = (dateInput && dateInput.value) ? dateInput.value : 'To be confirmed';
 
     // Base menu calculation
     const ratePerPax = pkg.ratePerPax;
     const baseTotal = ratePerPax * pax;
 
-    // Optional Add-ons
+    // Optional Theme Decor & AV Add-ons (Chargeable / Customizable)
     let addonsTotal = 0;
     const chosenAddons = [];
 
-    const cakeDecor = document.getElementById('addon-cake-decor');
-    if (cakeDecor && cakeDecor.checked) {
-      addonsTotal += 999;
-      chosenAddons.push('Cake Cutting Table & Birthday Decor (+ ₹999)');
+    const balloonDecor = document.getElementById('addon-balloon-decor');
+    if (balloonDecor && balloonDecor.checked) {
+      addonsTotal += 1500;
+      chosenAddons.push('Theme Balloon & Cake Table Decor (+ ₹1,500)');
     }
+    const floralRing = document.getElementById('addon-floral-ring');
+    if (floralRing && floralRing.checked) {
+      addonsTotal += 2800;
+      chosenAddons.push('Floral Ring & Stage Backdrop (+ ₹2,800)');
+    }
+    const babyDecor = document.getElementById('addon-baby-decor');
+    if (babyDecor && babyDecor.checked) {
+      addonsTotal += 2200;
+      chosenAddons.push('Baby Shower Dohale Jevan Theme Decor (+ ₹2,200)');
+    }
+    const projector = document.getElementById('addon-projector');
+    if (projector && projector.checked) {
+      addonsTotal += 1500;
+      chosenAddons.push('HD Projector & Screen AV (+ ₹1,500)');
+    }
+    const soundMic = document.getElementById('addon-sound-mic');
+    if (soundMic && soundMic.checked) {
+      addonsTotal += 999;
+      chosenAddons.push('Party Sound System & 2 Wireless Mics (+ ₹999)');
+    }
+
+    // Food / Beverage Extras
     const liveChaat = document.getElementById('addon-live-chaat');
     if (liveChaat && liveChaat.checked) {
       const chaatCost = 45 * pax;
@@ -1792,13 +1908,13 @@ class HotelPremierApp {
     if (extraSweet && extraSweet.checked) {
       const sweetCost = 35 * pax;
       addonsTotal += sweetCost;
-      chosenAddons.push(`Extra Ice Cream Cup (+ ₹${sweetCost})`);
+      chosenAddons.push(`Extra Sweet / Ice Cream Cup (+ ₹${sweetCost})`);
     }
     const coldDrinks = document.getElementById('addon-cold-drinks');
     if (coldDrinks && coldDrinks.checked) {
       const drinksCost = 30 * pax;
       addonsTotal += drinksCost;
-      chosenAddons.push(`Unlimited Cold Drinks (+ ₹${drinksCost})`);
+      chosenAddons.push(`Unlimited Soft Drinks / Cold Beverages (+ ₹${drinksCost})`);
     }
 
     const grandTotal = baseTotal + addonsTotal;
@@ -1816,7 +1932,7 @@ class HotelPremierApp {
 
     if (badgeEl) badgeEl.innerText = pkg.name.toUpperCase();
     if (rateEl) rateEl.innerText = effectiveRate;
-    if (paxCountEl) paxCountEl.innerText = `${pax} Pax (Capacity Up to 40)`;
+    if (paxCountEl) paxCountEl.innerText = `${pax} Pax (Max 40 Pax)`;
     if (slotEl) slotEl.innerText = timeslot;
     if (baseTotalEl) baseTotalEl.innerText = `₹ ${baseTotal.toLocaleString('en-IN')}`;
 
@@ -1870,12 +1986,12 @@ class HotelPremierApp {
       guestContactLine +
       `🎉 *Occasion:* ${encodeURIComponent(q.occasion)}%0A` +
       `🍽️ *Package:* ${encodeURIComponent(q.pkgName)}%0A` +
-      `👥 *Number of Guests:* ${q.pax} Pax (Restaurant Capacity: Up to 40 Pax)%0A` +
+      `👥 *Number of Guests:* ${q.pax} Pax (Pride AC Restaurant Seating Capacity: Max 40 Pax)%0A` +
       `⏰ *Dining Time Slot:* ${encodeURIComponent(q.timeslot)}%0A` +
       `📅 *Preferred Date:* ${encodeURIComponent(q.date)}%0A` +
-      `✨ *Special Add-ons:* ${encodeURIComponent(addonsText)}%0A` +
+      `🎨 *Theme Decor & Add-ons (Chargeable):* ${encodeURIComponent(addonsText)}%0A` +
       `💰 *Estimated Total Quote:* ₹ ${q.grandTotal.toLocaleString('en-IN')}/- (Approx ₹ ${q.effectiveRate}/person)%0A` +
-      `🏢 *Dining Privilege:* Private Pride Pure Veg AC Hall (Zero Hall Rent on 15–40 Pax)%0A` +
+      `🏢 *Venue:* Pride Pure Veg AC Restaurant, Hotel Premier (Max 40 Pax Seating • No Venue Fee • No Banquet Hall)%0A` +
       `---------------------------------------%0A` +
       `Hello Hotel Premier Management, please check lunch/event availability and confirm our dining reservation!`;
 
