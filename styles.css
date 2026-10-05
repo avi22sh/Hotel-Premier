@@ -759,7 +759,7 @@ body.large-font-mode .category-card-title {
 }
 
 .section-nav-bar {
-  background: linear-gradient(135deg, rgba(13, 17, 26, 0.96) 0%, rgba(22, 32, 53, 0.92) 100%) !important;
+  background: linear-gradient(135deg, rgba(11, 15, 23, 0.96) 0%, rgba(20, 28, 46, 0.94) 100%) !important;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1.5px solid var(--champagne-gold) !important;
@@ -1134,16 +1134,45 @@ body.large-font-mode .category-card-title {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at 50% 60%, rgba(213, 183, 122, 0.25) 0%, rgba(22, 32, 53, 0.98) 55%, #0D111A 100%);
+  background: radial-gradient(ellipse at 50% 65%, rgba(212, 175, 55, 0.20) 0%, rgba(20, 28, 46, 0.98) 55%, #0B0F17 100%) !important;
   border: 1.5px solid var(--gold-border);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 24px rgba(212, 175, 55, 0.2) !important;
+}
+
+.dish-detail-media .hp-pedestal-plate {
+  position: absolute;
+  bottom: 22px;
+  width: 70%;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.22) 0%, rgba(212, 175, 55, 0.22) 35%, rgba(22, 86, 73, 0.10) 65%, transparent 100%);
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dish-detail-media .hp-pedestal-glow {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.35) 0%, rgba(22, 86, 73, 0.18) 45%, transparent 75%);
+  filter: blur(12px);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .dish-detail-media .hp-detail-img {
-  max-width: 82%;
-  max-height: 82%;
-  object-fit: contain;
-  filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.8));
+  width: auto !important;
+  height: auto !important;
+  max-width: 82% !important;
+  max-height: 82% !important;
+  object-fit: contain !important;
+  margin: auto !important;
+  display: block !important;
+  filter: drop-shadow(0 16px 26px rgba(0, 0, 0, 0.8)) !important;
+  position: relative;
   z-index: 2;
 }
 

@@ -1308,8 +1308,11 @@ class HotelPremierApp {
       ? window.AssetPipeline.renderDishMedia(dish, { badgesHtml, soldOutText: this.t('soldOut') })
       : `
         <div class="dish-media hp-asset-pedestal ${hasPhoto ? '' : 'no-photo'}">
+          <div class="hp-pedestal-glow" aria-hidden="true"></div>
+          ${hasPhoto ? `<div class="hp-pedestal-plate" aria-hidden="true"></div>` : ''}
           ${hasPhoto ? `
             <img src="${dish.image}" alt="${dish.name}" class="dish-img hp-isolated-asset" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+            <div class="hp-glass-vignette" aria-hidden="true"></div>
           ` : `
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
               <div class="no-photo-icon">🌱</div>
