@@ -66,6 +66,15 @@ class HotelPremierApp {
     this.calculateRestaurantEventQuote();
     this.checkStaffModeAccess();
     this.initGuestProfile();
+    const urlParams = new URLSearchParams(window.location.search);
+    let catParam = urlParams.get('category') || urlParams.get('cat') || urlParams.get('section');
+    if (!catParam && window.location.hash) {
+      const match = window.location.hash.match(/(?:category|section)=([a-zA-Z0-9_-]+)/);
+      if (match) catParam = match[1];
+    }
+    if (catParam) {
+      this.openCategorySection(catParam);
+    }
     this.bindEvents();
     this.setupBroadcastChannel();
   }
@@ -368,16 +377,24 @@ class HotelPremierApp {
     const dotsContainer = document.getElementById('hero-carousel-dots');
     if (!track || !this.heroSlides || this.heroSlides.length === 0) return;
 
-    track.innerHTML = this.heroSlides.map((slide, idx) => `
-      <div class="hero-carousel-slide" data-slide-index="${idx}">
-        <img src="${slide.image}" alt="${slide.title || 'Hotel Premier'}" class="hero-carousel-img" loading="${idx === 0 ? 'eager' : 'lazy'}">
-        <div class="hero-carousel-overlay">
-          <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
-          <h2 class="hero-slide-title">${slide.title || 'Culinary Delights of Hotel Premier'}</h2>
-          <p class="hero-slide-subtitle">${slide.subtitle || 'Prepared fresh in standard refined oil • 100% Pure Veg'}</p>
+    track.innerHTML = this.heroSlides.map((slide, idx) => {
+      if (window.AssetPipeline && typeof window.AssetPipeline.renderHeroSlideMedia === 'function') {
+        return window.AssetPipeline.renderHeroSlideMedia(slide, idx);
+      }
+      return `
+        <div class="hero-carousel-slide hp-asset-pedestal" data-slide-index="${idx}">
+          <div class="hp-pedestal-glow" aria-hidden="true"></div>
+          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+          <img src="${slide.image}" alt="${slide.title || 'Hotel Premier'}" class="hero-carousel-img hp-isolated-asset" loading="${idx === 0 ? 'eager' : 'lazy'}">
+          <div class="hp-glass-vignette" aria-hidden="true"></div>
+          <div class="hero-carousel-overlay">
+            <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
+            <h2 class="hero-slide-title">${slide.title || 'Culinary Delights of Hotel Premier'}</h2>
+            <p class="hero-slide-subtitle">${slide.subtitle || 'Prepared fresh in standard refined oil • 100% Pure Veg'}</p>
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     if (dotsContainer) {
       dotsContainer.innerHTML = this.heroSlides.map((_, idx) => `
@@ -489,23 +506,31 @@ class HotelPremierApp {
     container.innerHTML = `
       <div class="section-slideshow-banner" id="active-section-carousel">
         <div class="section-slideshow-track" id="section-slides-track">
-          ${slides.map((slide, idx) => `
-            <div class="section-slide-card" onclick="${slide.dishId ? `window.app.openDishDetail('${slide.dishId}')` : ''}">
-              <img src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
-              <div class="section-slide-overlay">
-                <div class="section-slide-badge-row">
-                  <span class="section-slide-badge">${slide.badge || this.t('sectionHighlight', '👑 SECTION HIGHLIGHT')}</span>
-                </div>
-                <div class="section-slide-title-row">
-                  <div>
-                    <h3 class="section-slide-title">${slide.name || slide.title}</h3>
-                    <div class="section-slide-action-hint">${slide.subtitle || this.t('tapToViewDish', '👆 Tap to view dish details & options')}</div>
+          ${slides.map((slide, idx) => {
+            if (window.AssetPipeline && typeof window.AssetPipeline.renderSectionSlideMedia === 'function') {
+              return window.AssetPipeline.renderSectionSlideMedia(slide, idx);
+            }
+            return `
+              <div class="section-slide-card hp-asset-pedestal" onclick="${slide.dishId ? `window.app.openDishDetail('${slide.dishId}')` : ''}">
+                <div class="hp-pedestal-glow" aria-hidden="true"></div>
+                <div class="hp-pedestal-plate" aria-hidden="true"></div>
+                <img src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img hp-isolated-asset" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+                <div class="hp-glass-vignette" aria-hidden="true"></div>
+                <div class="section-slide-overlay">
+                  <div class="section-slide-badge-row">
+                    <span class="section-slide-badge">${slide.badge || this.t('sectionHighlight', '👑 SECTION HIGHLIGHT')}</span>
                   </div>
-                  ${slide.price !== undefined ? `<span class="section-slide-price-pill">₹${slide.price}/-</span>` : ''}
+                  <div class="section-slide-title-row">
+                    <div>
+                      <h3 class="section-slide-title">${slide.name || slide.title}</h3>
+                      <div class="section-slide-action-hint">${slide.subtitle || this.t('tapToViewDish', '👆 Tap to view dish details & options')}</div>
+                    </div>
+                    ${slide.price !== undefined ? `<span class="section-slide-price-pill">₹${slide.price}/-</span>` : ''}
+                  </div>
                 </div>
               </div>
-            </div>
-          `).join('')}
+            `;
+          }).join('')}
         </div>
         ${slides.length > 1 ? `
           <button class="carousel-nav-btn prev" onclick="window.app.prevSectionSlide(event)" aria-label="Previous Dish Slide">‹</button>
@@ -688,11 +713,19 @@ class HotelPremierApp {
 
       return `
         <div class="category-card" onclick="window.app.openCategorySection('${cat.id}')">
-          <div class="category-card-media">
-            <img src="${cat.image}" alt="${localizedTitle}" class="category-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
-            <div class="category-card-overlay"></div>
-            <span class="category-card-badge">${count} ${itemsWord}</span>
-          </div>
+          ${(window.AssetPipeline && typeof window.AssetPipeline.renderCategoryCardMedia === 'function')
+            ? window.AssetPipeline.renderCategoryCardMedia(cat, count, itemsWord, localizedTitle)
+            : `
+              <div class="category-card-media hp-asset-pedestal">
+                <div class="hp-pedestal-glow" aria-hidden="true"></div>
+                <div class="hp-pedestal-plate" aria-hidden="true"></div>
+                <img src="${cat.image}" alt="${localizedTitle}" class="category-card-img hp-isolated-asset" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+                <div class="hp-glass-vignette" aria-hidden="true"></div>
+                <div class="category-card-overlay"></div>
+                <span class="category-card-badge">${count} ${itemsWord}</span>
+              </div>
+            `
+          }
           <div class="category-card-content">
             <div>
               <h3 class="category-card-title">${localizedTitle}</h3>

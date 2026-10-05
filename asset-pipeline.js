@@ -59,9 +59,20 @@
     loadImage(src) {
       return new Promise((resolve, reject) => {
         const img = new Image();
-        img.crossOrigin = 'anonymous';
+        if (src.startsWith('http://') || src.startsWith('https://')) {
+          img.crossOrigin = 'anonymous';
+        }
         img.onload = () => resolve(img);
-        img.onerror = (err) => reject(err);
+        img.onerror = () => {
+          if (img.crossOrigin) {
+            const fallbackImg = new Image();
+            fallbackImg.onload = () => resolve(fallbackImg);
+            fallbackImg.onerror = (e) => reject(e);
+            fallbackImg.src = src;
+          } else {
+            reject(new Error('Failed to load image: ' + src));
+          }
+        };
         img.src = src;
       });
     }
@@ -101,31 +112,21 @@
         return typeof imageSource === 'string' ? imageSource : imageSource.src;
       }
 
-      const canvas = document.createElement('canvas');
-      const width = options.width || 640;
-      const height = options.height || 480;
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext('2d');
-
-      // 1. Draw Unified Luxury Backdrop Pedestal
-      this.drawLuxuryBackdrop(ctx, width, height, options);
-
       try {
         // 2. Offscreen Canvas for Subject Segmentation
+        const sw = img.naturalWidth || img.width || 400;
+        const sh = img.naturalHeight || img.height || 300;
         const subCanvas = document.createElement('canvas');
-        subCanvas.width = img.naturalWidth || img.width;
-        subCanvas.height = img.naturalHeight || img.height;
+        subCanvas.width = sw;
+        subCanvas.height = sh;
         const subCtx = subCanvas.getContext('2d');
         subCtx.drawImage(img, 0, 0);
 
         // 3. Pixel Background Detection & Isolation
-        const imgData = subCtx.getImageData(0, 0, subCanvas.width, subCanvas.height);
+        const imgData = subCtx.getImageData(0, 0, sw, sh);
         const data = imgData.data;
 
         // Sample corner and perimeter pixels to determine background tone
-        const sw = subCanvas.width;
-        const sh = subCanvas.height;
         const samplePoints = [
           [2, 2],
           [sw - 3, 2],
@@ -138,7 +139,9 @@
 
         let rTotal = 0, gTotal = 0, bTotal = 0, sampleCount = 0;
         for (const [x, y] of samplePoints) {
-          const idx = (y * sw + x) * 4;
+          const px = Math.min(sw - 1, Math.max(0, x));
+          const py = Math.min(sh - 1, Math.max(0, y));
+          const idx = (py * sw + px) * 4;
           rTotal += data[idx];
           gTotal += data[idx + 1];
           bTotal += data[idx + 2];
@@ -150,13 +153,15 @@
         const bgB = bTotal / sampleCount;
 
         // Background classification
-        const isLightOrStudio = (bgR > 185 && bgG > 185 && bgB > 185);
-        const isNeutral = (Math.abs(bgR - bgG) < 22 && Math.abs(bgG - bgB) < 22);
+        const isLightOrStudio = (bgR > 180 && bgG > 180 && bgB > 180);
+        const isDarkOrBlack = (bgR < 35 && bgG < 35 && bgB < 35);
+        const isNeutral = (Math.abs(bgR - bgG) < 26 && Math.abs(bgG - bgB) < 26);
 
         const tolerance = options.tolerance || 42;
-        const feather = 28;
+        const feather = 26;
+        let isolatedCount = 0;
 
-        if (isLightOrStudio || isNeutral || options.forceIsolation) {
+        if (isLightOrStudio || isDarkOrBlack || isNeutral || options.forceIsolation) {
           for (let i = 0; i < data.length; i += 4) {
             const r = data[i];
             const g = data[i + 1];
@@ -169,7 +174,8 @@
             );
 
             if (colorDist < tolerance) {
-              data[i + 3] = 0; // Cut out background
+              data[i + 3] = 0; // Cut out background to pure transparency
+              isolatedCount++;
             } else if (colorDist < tolerance + feather) {
               const alphaRatio = (colorDist - tolerance) / feather;
               data[i + 3] = Math.round(data[i + 3] * alphaRatio);
@@ -178,31 +184,44 @@
           subCtx.putImageData(imgData, 0, 0);
         }
 
-        // 4. Calculate Fitted Subject Centering on Pedestal
-        const maxDrawW = width * 0.84;
-        const maxDrawH = height * 0.82;
-        const scale = Math.min(maxDrawW / subCanvas.width, maxDrawH / subCanvas.height);
-        const drawW = subCanvas.width * scale;
-        const drawH = subCanvas.height * scale;
-        const drawX = (width - drawW) / 2;
-        const drawY = (height - drawH) / 2 - 8; // Float slightly above center
+        // 4. Tight Subject Bounding Box Crop (avoids squashed aspect ratios)
+        let finalCanvas = subCanvas;
+        if (isolatedCount > (data.length / 4) * 0.08) {
+          let minX = sw, minY = sh, maxX = 0, maxY = 0;
+          let hasForeground = false;
+          for (let y = 0; y < sh; y++) {
+            for (let x = 0; x < sw; x++) {
+              const a = data[(y * sw + x) * 4 + 3];
+              if (a > 25) {
+                if (x < minX) minX = x;
+                if (x > maxX) maxX = x;
+                if (y < minY) minY = y;
+                if (y > maxY) maxY = y;
+                hasForeground = true;
+              }
+            }
+          }
 
-        // 5. Render 3D Soft Ambient Drop Shadow onto Backdrop
-        ctx.save();
-        ctx.shadowColor = 'rgba(0, 0, 0, 0.7)';
-        ctx.shadowBlur = 32;
-        ctx.shadowOffsetX = 0;
-        ctx.shadowOffsetY = 18;
-        ctx.drawImage(subCanvas, drawX, drawY, drawW, drawH);
-        ctx.restore();
+          if (hasForeground && maxX > minX && maxY > minY) {
+            const pad = Math.max(12, Math.round(Math.min(sw, sh) * 0.03));
+            minX = Math.max(0, minX - pad);
+            minY = Math.max(0, minY - pad);
+            maxX = Math.min(sw - 1, maxX + pad);
+            maxY = Math.min(sh - 1, maxY + pad);
+            const trimW = maxX - minX + 1;
+            const trimH = maxY - minY + 1;
 
-        // 6. Draw Clean Crisp Foreground Subject
-        ctx.drawImage(subCanvas, drawX, drawY, drawW, drawH);
+            const trimCanvas = document.createElement('canvas');
+            trimCanvas.width = trimW;
+            trimCanvas.height = trimH;
+            const trimCtx = trimCanvas.getContext('2d');
+            trimCtx.drawImage(subCanvas, minX, minY, trimW, trimH, 0, 0, trimW, trimH);
+            finalCanvas = trimCanvas;
+          }
+        }
 
-        // 7. Add Sleek Blurred Glass Vignette & Champagne Gold Framing
-        this.drawGlassVignette(ctx, width, height);
-
-        const resultDataUrl = canvas.toDataURL('image/jpeg', options.quality || 0.90);
+        // 5. Output pure transparent PNG of isolated subject
+        const resultDataUrl = finalCanvas.toDataURL('image/png');
         if (cacheKey) {
           this.processedCache.set(cacheKey, resultDataUrl);
           try {
@@ -213,10 +232,8 @@
         }
         return resultDataUrl;
       } catch (canvasErr) {
-        // In case of canvas taint (external cross-origin), draw image directly inside the luxury backdrop
-        ctx.drawImage(img, (width - (width * 0.9)) / 2, (height - (height * 0.9)) / 2, width * 0.9, height * 0.9);
-        this.drawGlassVignette(ctx, width, height);
-        return canvas.toDataURL('image/jpeg', 0.85);
+        // In case of canvas taint (external cross-origin), return original source safely
+        return typeof imageSource === 'string' ? imageSource : (imageSource.src || imageSource.currentSrc);
       }
     }
 
@@ -362,7 +379,6 @@
             class="dish-img hp-isolated-asset" 
             id="dish-img-el-${dish.id}" 
             loading="lazy" 
-            crossorigin="anonymous"
             onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
             onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
@@ -370,6 +386,97 @@
           ${soldOutHtml}
           <div class="dish-badges">${badgesHtml}</div>
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
+        </div>
+      `;
+    }
+
+    /**
+     * Standardized HTML Markup Generator for Sub-Section Multi-Photo Slide Card
+     */
+    renderSectionSlideMedia(slide, idx) {
+      const clickAttr = slide.dishId ? `onclick="window.app ? window.app.openDishDetail('${slide.dishId}') : null"` : '';
+      const badgeText = slide.badge || '👑 SECTION HIGHLIGHT';
+      const priceHtml = (slide.price !== undefined && slide.price !== null) ? `<span class="section-slide-price-pill">₹${slide.price}/-</span>` : '';
+      const subtitleText = slide.subtitle || '👆 Tap to view dish details & options';
+      const slideTitle = slide.name || slide.title || 'Hotel Premier Special';
+
+      return `
+        <div class="section-slide-card hp-asset-pedestal" ${clickAttr}>
+          <div class="hp-pedestal-glow" aria-hidden="true"></div>
+          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+          <img 
+            src="${slide.image}" 
+            alt="${slideTitle}" 
+            class="section-slide-img hp-isolated-asset" 
+            loading="${idx === 0 ? 'eager' : 'lazy'}" 
+            onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
+            onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+          >
+          <div class="hp-glass-vignette" aria-hidden="true"></div>
+          <div class="section-slide-overlay">
+            <div class="section-slide-badge-row">
+              <span class="section-slide-badge">${badgeText}</span>
+            </div>
+            <div class="section-slide-title-row">
+              <div>
+                <h3 class="section-slide-title">${slideTitle}</h3>
+                <div class="section-slide-action-hint">${subtitleText}</div>
+              </div>
+              ${priceHtml}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /**
+     * Standardized HTML Markup Generator for Main Restaurant Hero Carousel Slide
+     */
+    renderHeroSlideMedia(slide, idx) {
+      const slideTitle = slide.title || 'Culinary Delights of Hotel Premier';
+      const slideSubtitle = slide.subtitle || 'Prepared fresh in standard refined oil • 100% Pure Veg';
+
+      return `
+        <div class="hero-carousel-slide hp-asset-pedestal" data-slide-index="${idx}">
+          <div class="hp-pedestal-glow" aria-hidden="true"></div>
+          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+          <img 
+            src="${slide.image}" 
+            alt="${slideTitle}" 
+            class="hero-carousel-img hp-isolated-asset" 
+            loading="${idx === 0 ? 'eager' : 'lazy'}"
+            onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
+            onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+          >
+          <div class="hp-glass-vignette" aria-hidden="true"></div>
+          <div class="hero-carousel-overlay">
+            <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
+            <h2 class="hero-slide-title">${slideTitle}</h2>
+            <p class="hero-slide-subtitle">${slideSubtitle}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    /**
+     * Standardized HTML Markup Generator for Category Cards Media
+     */
+    renderCategoryCardMedia(cat, count, itemsWord, localizedTitle) {
+      return `
+        <div class="category-card-media hp-asset-pedestal">
+          <div class="hp-pedestal-glow" aria-hidden="true"></div>
+          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+          <img 
+            src="${cat.image}" 
+            alt="${localizedTitle}" 
+            class="category-card-img hp-isolated-asset" 
+            loading="lazy" 
+            onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
+            onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+          >
+          <div class="hp-glass-vignette" aria-hidden="true"></div>
+          <div class="category-card-overlay"></div>
+          <span class="category-card-badge">${count} ${itemsWord}</span>
         </div>
       `;
     }
@@ -426,7 +533,6 @@
             alt="${dish.name}" 
             id="detail-modal-img" 
             class="hp-detail-img hp-isolated-asset" 
-            crossorigin="anonymous"
             onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
             onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
