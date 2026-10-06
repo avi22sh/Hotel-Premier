@@ -3491,6 +3491,11 @@ input:checked + .toggle-slider:before {
 }
 
 /* 4. Sub-Section Dishes Multi-Photo Slideshow */
+#section-slideshow-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .section-slideshow-banner {
   position: relative;
   width: 100%;
@@ -3500,7 +3505,7 @@ input:checked + .toggle-slider:before {
   border: 2px solid var(--gold-primary) !important;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(245, 186, 66, 0.25) !important;
   background: #08122D !important;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {

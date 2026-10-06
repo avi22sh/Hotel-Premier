@@ -748,8 +748,10 @@ class HotelPremierApp {
 
     const homeView = document.getElementById('home-categories-view');
     const dishesView = document.getElementById('dishes-section-view');
+    const heroBanner = document.querySelector('.menu-hero-banner');
     if (homeView) homeView.style.display = 'none';
     if (dishesView) dishesView.style.display = 'block';
+    if (heroBanner) heroBanner.style.display = 'none';
 
     const titleEl = document.getElementById('active-category-title');
     const hindiEl = document.getElementById('active-category-hindi');
@@ -795,8 +797,10 @@ class HotelPremierApp {
 
     const homeView = document.getElementById('home-categories-view');
     const dishesView = document.getElementById('dishes-section-view');
+    const heroBanner = document.querySelector('.menu-hero-banner');
     if (homeView) homeView.style.display = 'block';
     if (dishesView) dishesView.style.display = 'none';
+    if (heroBanner) heroBanner.style.display = 'block';
 
     this.renderSectionSlideshow(null);
     this.renderQuickFilters();
@@ -818,8 +822,10 @@ class HotelPremierApp {
 
     const homeView = document.getElementById('home-categories-view');
     const dishesView = document.getElementById('dishes-section-view');
+    const heroBanner = document.querySelector('.menu-hero-banner');
     if (homeView) homeView.style.display = 'none';
     if (dishesView) dishesView.style.display = 'block';
+    if (heroBanner) heroBanner.style.display = 'none';
 
     const titleEl = document.getElementById('active-category-title');
     const hindiEl = document.getElementById('active-category-hindi');
