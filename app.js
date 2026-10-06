@@ -762,6 +762,18 @@ class HotelPremierApp {
     }).join('');
   }
 
+  scrollDiningToView() {
+    const dineEl = document.getElementById('section-dine');
+    if (dineEl) {
+      const headerOffset = 75;
+      const elPos = dineEl.getBoundingClientRect().top;
+      window.scrollTo({
+        top: elPos + window.pageYOffset - headerOffset,
+        behavior: 'smooth'
+      });
+    }
+  }
+
   openCategorySection(catId) {
     if (window.HOTEL_VAULT) {
       window.HOTEL_VAULT.recordCategoryClick(catId);
@@ -778,10 +790,13 @@ class HotelPremierApp {
 
     const homeView = document.getElementById('home-categories-view');
     const dishesView = document.getElementById('dishes-section-view');
-    const heroBanner = document.querySelector('.menu-hero-banner');
     if (homeView) homeView.style.display = 'none';
     if (dishesView) dishesView.style.display = 'block';
-    if (heroBanner) heroBanner.style.display = 'none';
+
+    const btnAll = document.getElementById('btn-mode-all-dishes');
+    const btnCats = document.getElementById('btn-mode-categories');
+    if (btnAll) btnAll.classList.remove('active');
+    if (btnCats) btnCats.classList.remove('active');
 
     const titleEl = document.getElementById('active-category-title');
     const hindiEl = document.getElementById('active-category-hindi');
@@ -811,7 +826,7 @@ class HotelPremierApp {
     this.renderSectionSlideshow(catId);
     this.renderMenu();
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.scrollDiningToView();
   }
 
   showHomeCategories() {
@@ -827,16 +842,20 @@ class HotelPremierApp {
 
     const homeView = document.getElementById('home-categories-view');
     const dishesView = document.getElementById('dishes-section-view');
-    const heroBanner = document.querySelector('.menu-hero-banner');
     if (homeView) homeView.style.display = 'block';
     if (dishesView) dishesView.style.display = 'none';
-    if (heroBanner) heroBanner.style.display = 'block';
+
+    const btnAll = document.getElementById('btn-mode-all-dishes');
+    const btnCats = document.getElementById('btn-mode-categories');
+    if (btnAll) btnAll.classList.remove('active');
+    if (btnCats) btnCats.classList.add('active');
 
     this.renderSectionSlideshow(null);
     this.renderQuickFilters();
     this.renderCategoryCards();
+    this.renderCategories();
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.scrollDiningToView();
   }
 
   showAllDishesView() {
@@ -852,18 +871,21 @@ class HotelPremierApp {
 
     const homeView = document.getElementById('home-categories-view');
     const dishesView = document.getElementById('dishes-section-view');
-    const heroBanner = document.querySelector('.menu-hero-banner');
     if (homeView) homeView.style.display = 'none';
     if (dishesView) dishesView.style.display = 'block';
-    if (heroBanner) heroBanner.style.display = 'none';
+
+    const btnAll = document.getElementById('btn-mode-all-dishes');
+    const btnCats = document.getElementById('btn-mode-categories');
+    if (btnAll) btnAll.classList.add('active');
+    if (btnCats) btnCats.classList.remove('active');
 
     const titleEl = document.getElementById('active-category-title');
     const hindiEl = document.getElementById('active-category-hindi');
     const countEl = document.getElementById('active-category-count');
     const itemsWord = this.t('itemsCount', 'Items');
 
-    if (titleEl) titleEl.innerText = this.t('allMenuTitle');
-    if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle');
+    if (titleEl) titleEl.innerText = this.t('allMenuTitle', 'All Dishes (Full Menu)');
+    if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle', 'संपूर्ण शाकाहारी मेनू • 214 Delicacies');
     if (countEl) countEl.innerText = `${this.menuData.length} ${itemsWord}`;
 
     this.renderQuickFilters();
@@ -871,7 +893,7 @@ class HotelPremierApp {
     this.renderSectionSlideshow(null);
     this.renderMenu();
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.scrollDiningToView();
   }
 
   // ==================== 2. DISHES & CATEGORIES RENDERING ====================

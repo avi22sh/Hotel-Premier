@@ -653,6 +653,29 @@
         </div>
       </div>
 
+      <!-- Dining View Controls & Category Navigation Bar -->
+      <div class="dining-view-controls">
+        <div class="dining-view-mode-tabs">
+          <button class="dining-mode-btn" id="btn-mode-all-dishes" onclick="window.app ? window.app.showAllDishesView() : null">
+            <span>📋</span> <span>Full Menu (All 214 Dishes)</span>
+          </button>
+          <button class="dining-mode-btn active" id="btn-mode-categories" onclick="window.app ? window.app.showHomeCategories() : null">
+            <span>🗂️</span> <span>Browse Collections</span>
+          </button>
+        </div>
+
+        <!-- Horizontal Scrollable Category Chips Bar -->
+        <div class="category-nav-container-bar" id="category-nav-bar">
+          <button class="category-nav-arrow-btn prev" onclick="window.app ? window.app.scrollCategoryNav(-220) : null" aria-label="Previous Categories">‹</button>
+          <div class="category-nav-wrapper" id="category-nav-scroll-wrapper">
+            <div class="category-chips-container" id="category-chips-container">
+              <!-- Rendered dynamically by app.js: All Items + 20 categories -->
+            </div>
+          </div>
+          <button class="category-nav-arrow-btn next" onclick="window.app ? window.app.scrollCategoryNav(220) : null" aria-label="Next Categories">›</button>
+        </div>
+      </div>
+
       <!-- Concierge Dish Search & Quick Filters -->
       <div class="dining-search-filter-bar">
         <div class="search-input-wrapper">
@@ -1001,11 +1024,15 @@
         <div>🏢 GSTIN: <strong>27AGZPW6159R1ZP</strong> | HSN NO: <strong>996311</strong> • 5% GST Applicable</div>
       </div>
 
-      <div class="footer-developer-credit">
-        <div>Architected & Engineered by <strong>Avinash Hedawoo</strong></div>
-        <a href="https://wa.me/918983703702?text=Hello,%20I%20have%20a%20query%20regarding%20the%20Hotel%20Premier%20website." class="dev-whatsapp-btn" target="_blank" rel="noopener noreferrer">
-          <span>💬 Chat with Developer (Avinash)</span>
-        </a>
+      <div class="footer-bottom-bar">
+        <div class="footer-copyright">
+          © 2026 Hotel Premier & Pride Pure Veg AC Restaurant. All Rights Reserved.
+        </div>
+        <div class="footer-tech-credit">
+          <a href="https://wa.me/918983703702?text=Hello,%20I%20am%20interested%20in%20a%20custom%20hotel%20digital%20concierge%20or%20QR%20web%20app%20like%20Hotel%20Premier." class="discreet-dev-link" target="_blank" rel="noopener noreferrer">
+            <span>Looking for a custom app like this? Contact Developer →</span>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
