@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#191D24">
+  <meta name="theme-color" content="#7A0C16">
   <meta name="description" content="Hotel Premier - A Home in Bhusawal | Pride Pure Veg AC Restaurant & Luxury AC Rooms, Bhusawal">
-  <link rel="canonical" href="https://hotel-premier.netlify.app/">
+  <link rel="canonical" href="https://avi22sh.github.io/Hotel-Premier/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Hotel Premier – A Home in Bhusawal | Pride Pure Veg AC Restaurant">
   <meta property="og:description" content="Luxury AC Rooms, 24-Hour Check-Out, and 100% Pride Pure Veg Dining near Nahata College & Bhusawal Railway Junction.">
-  <meta property="og:url" content="https://hotel-premier.netlify.app/">
-  <meta property="og:image" content="https://hotel-premier.netlify.app/assets/icon-512.png">
+  <meta property="og:url" content="https://avi22sh.github.io/Hotel-Premier/">
+  <meta property="og:image" content="https://avi22sh.github.io/Hotel-Premier/assets/icon-512.png">
   <title>Hotel Premier - A Home in Bhusawal | Pride Pure Veg AC Restaurant</title>
 
   <!-- Schema.org Hotel & Restaurant Structured Data -->
@@ -20,7 +20,7 @@
     "@type": "Hotel",
     "name": "Hotel Premier",
     "description": "A Home in Bhusawal - Luxury AC Rooms and Pride Pure Veg AC Restaurant",
-    "url": "https://hotel-premier.netlify.app/",
+    "url": "https://avi22sh.github.io/Hotel-Premier/",
     "telephone": "+919325375802",
     "address": {
       "@type": "PostalAddress",
@@ -52,11 +52,26 @@
   <!-- QRCode.js for Instant Table QR Standee Generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
+  <!-- Immediate Cache Invalidation & Old Service Worker Purge -->
+  <script>
+    (function() {
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          names.forEach(function(name) {
+            if (name !== 'hotel-premier-v11.0') {
+              caches.delete(name);
+            }
+          });
+        });
+      }
+    })();
+  </script>
+
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=6.0"></script>
+  <script src="asset-pipeline.js?v=11.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=6.0">
+  <link rel="stylesheet" href="styles.css?v=11.0">
 
   <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
   <script>
@@ -201,7 +216,21 @@
     <section class="menu-hero-banner">
       <div class="hero-carousel-wrapper" id="restaurant-hero-carousel">
         <div class="hero-carousel-track" id="hero-carousel-track">
-          <!-- Slides rendered dynamically by JavaScript -->
+          <div class="hero-carousel-slide" data-slide-index="0">
+            <img 
+              src="assets/menu-images/THALIS/PREMIER%20MAHARAJA%20THALI.jfif" 
+              alt="Premier Maharaja Royal Thali" 
+              class="hero-carousel-img" 
+              loading="eager" 
+              fetchpriority="high"
+              onerror="this.src='assets/menu-images/THALIS/SIGNATURE%20THALI.avif'"
+            >
+            <div class="hero-carousel-overlay">
+              <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
+              <h2 class="hero-slide-title">Premier Maharaja Royal Thali</h2>
+              <p class="hero-slide-subtitle">Lavish Multi-Course Pure Veg Feast • Authentic Indian Hospitality</p>
+            </div>
+          </div>
         </div>
         <button class="carousel-nav-btn prev" onclick="window.app.prevHeroSlide()" aria-label="Previous Slide">‹</button>
         <button class="carousel-nav-btn next" onclick="window.app.nextHeroSlide()" aria-label="Next Slide">›</button>
@@ -256,6 +285,9 @@
         </div>
         <div class="active-category-count" id="active-category-count">14 Items</div>
       </div>
+
+      <!-- Sub-Section Multi-Photo Slideshow Banner -->
+      <div id="section-slideshow-container" style="display: none; margin-bottom: 18px;"></div>
 
       <main class="menu-container">
         <div id="menu-items-grid">
@@ -1398,14 +1430,14 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v6.0 Cache-Busted) -->
-  <script src="storage.js?v=6.0"></script>
-  <script src="vault.js?v=6.0"></script>
-  <script src="data/translations.js?v=6.0"></script>
-  <script src="data/hotel-data.js?v=6.0"></script>
-  <script src="data/menu-data.js?v=6.0"></script>
-  <script src="app.js?v=6.0"></script>
-  <script src="admin.js?v=6.0"></script>
+  <!-- Load Application Scripts (v11.0 Cache-Busted) -->
+  <script src="storage.js?v=11.0"></script>
+  <script src="vault.js?v=11.0"></script>
+  <script src="data/translations.js?v=11.0"></script>
+  <script src="data/hotel-data.js?v=11.0"></script>
+  <script src="data/menu-data.js?v=11.0"></script>
+  <script src="app.js?v=11.0"></script>
+  <script src="admin.js?v=11.0"></script>
 
   <!-- Netlify Purge Handlers -->
   <script>
@@ -1472,8 +1504,8 @@
     // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=5.4').then(function(reg) {
-          console.log('[PWA] Service Worker v5.4 registered:', reg.scope);
+        navigator.serviceWorker.register('sw.js?v=11.0').then(function(reg) {
+          console.log('[PWA] Service Worker v11.0 registered:', reg.scope);
           // Check for immediate SW updates
           if (typeof reg.update === 'function') {
             reg.update();

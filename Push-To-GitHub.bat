@@ -4,7 +4,7 @@ title Hotel Premier - 1-Click GitHub Sync
 color 0b
 
 echo ===================================================================
-echo   HOTEL PREMIER QR MENU - GITHUB & NETLIFY 1-CLICK SYNC
+echo   HOTEL PREMIER QR MENU - GITHUB PAGES 1-CLICK SYNC
 echo   Developer: Avinash Hedawoo
 echo ===================================================================
 echo.
@@ -23,14 +23,15 @@ echo [2/3] Committing changes...
 git commit -m "%commit_msg%"
 
 echo.
-echo [3/3] Pushing to GitHub (Netlify will auto-deploy in 15 seconds)...
+echo [3/3] Pushing to GitHub (GitHub Pages will auto-deploy in 15 seconds)...
 git push
 
 if %ERRORLEVEL% EQU 0 (
     echo.
     echo ===================================================================
     echo   SUCCESS! Changes pushed to GitHub!
-    echo   Netlify is building and deploying your live site right now!
+    echo   GitHub Pages is building and deploying live:
+    echo   https://avi22sh.github.io/Hotel-Premier/
     echo ===================================================================
 ) else (
     echo.

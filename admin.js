@@ -1913,7 +1913,7 @@ class HotelPremierAdmin {
     const baseUrl = window.location.href.split('#')[0].split('?')[0];
     const isLocalFile = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
     const savedCustomDomain = localStorage.getItem('hotel_premier_custom_qr_domain');
-    const initialUrl = savedCustomDomain || (isLocalFile ? 'https://menu.hotelpremier.in' : baseUrl);
+    const initialUrl = savedCustomDomain || (isLocalFile ? 'https://avi22sh.github.io/Hotel-Premier/' : baseUrl);
 
     container.innerHTML = `
       <div style="display: flex; flex-direction: column; gap: 16px;">
@@ -1930,7 +1930,7 @@ class HotelPremierAdmin {
             <div>
               <strong>Notice for Mobile QR Scanning:</strong>
               <div style="margin-top: 2px; line-height: 1.4;">
-                Phone cameras require a live <strong>https://</strong> web link (like your Netlify URL or <code>https://menu.hotelpremier.in</code>) to open the browser automatically. Enter your live website link below.
+                Phone cameras require a live <strong>https://</strong> web link (like <code>https://avi22sh.github.io/Hotel-Premier/</code>) to open the browser automatically. Enter your live website link below.
               </div>
             </div>
           </div>
@@ -1960,8 +1960,8 @@ class HotelPremierAdmin {
           </div>
           <div>
             <label class="form-label">Live App URL / Custom Domain</label>
-            <input type="text" id="qr-target-url" class="form-input" value="${initialUrl}" placeholder="https://menu-hotelpremier-bsl.netlify.app" oninput="window.admin.onCustomDomainInput(this.value)" style="font-size: 0.8rem; font-weight: 600;">
-            <span style="font-size: 0.68rem; color: var(--text-muted); margin-top: 3px; display: block;">Permanently saved. Enter Netlify link or custom domain.</span>
+            <input type="text" id="qr-target-url" class="form-input" value="${initialUrl}" placeholder="https://avi22sh.github.io/Hotel-Premier/" oninput="window.admin.onCustomDomainInput(this.value)" style="font-size: 0.8rem; font-weight: 600;">
+            <span style="font-size: 0.68rem; color: var(--text-muted); margin-top: 3px; display: block;">Permanently saved. Enter GitHub Pages link or custom domain.</span>
           </div>
         </div>
 
