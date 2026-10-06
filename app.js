@@ -382,11 +382,8 @@ class HotelPremierApp {
         return window.AssetPipeline.renderHeroSlideMedia(slide, idx);
       }
       return `
-        <div class="hero-carousel-slide hp-asset-pedestal" data-slide-index="${idx}">
-          <div class="hp-pedestal-glow" aria-hidden="true"></div>
-          <div class="hp-pedestal-plate" aria-hidden="true"></div>
-          <img src="${slide.image}" alt="${slide.title || 'Hotel Premier'}" class="hero-carousel-img hp-isolated-asset" loading="${idx === 0 ? 'eager' : 'lazy'}">
-          <div class="hp-glass-vignette" aria-hidden="true"></div>
+        <div class="hero-carousel-slide" data-slide-index="${idx}">
+          <img src="${slide.image}" alt="${slide.title || 'Hotel Premier'}" class="hero-carousel-img" loading="${idx === 0 ? 'eager' : 'lazy'}">
           <div class="hero-carousel-overlay">
             <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
             <h2 class="hero-slide-title">${slide.title || 'Culinary Delights of Hotel Premier'}</h2>
@@ -511,11 +508,8 @@ class HotelPremierApp {
               return window.AssetPipeline.renderSectionSlideMedia(slide, idx);
             }
             return `
-              <div class="section-slide-card hp-asset-pedestal" onclick="${slide.dishId ? `window.app.openDishDetail('${slide.dishId}')` : ''}">
-                <div class="hp-pedestal-glow" aria-hidden="true"></div>
-                <div class="hp-pedestal-plate" aria-hidden="true"></div>
-                <img src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img hp-isolated-asset" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
-                <div class="hp-glass-vignette" aria-hidden="true"></div>
+              <div class="section-slide-card" onclick="${slide.dishId ? `window.app.openDishDetail('${slide.dishId}')` : ''}">
+                <img src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
                 <div class="section-slide-overlay">
                   <div class="section-slide-badge-row">
                     <span class="section-slide-badge">${slide.badge || this.t('sectionHighlight', '👑 SECTION HIGHLIGHT')}</span>
@@ -716,12 +710,9 @@ class HotelPremierApp {
           ${(window.AssetPipeline && typeof window.AssetPipeline.renderCategoryCardMedia === 'function')
             ? window.AssetPipeline.renderCategoryCardMedia(cat, count, itemsWord, localizedTitle)
             : `
-              <div class="category-card-media hp-asset-pedestal">
-                <div class="hp-pedestal-glow" aria-hidden="true"></div>
-                <div class="hp-pedestal-plate" aria-hidden="true"></div>
-                <img src="${cat.image}" alt="${localizedTitle}" class="category-card-img hp-isolated-asset" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
-                <div class="hp-glass-vignette" aria-hidden="true"></div>
-                <div class="category-card-overlay"></div>
+              <div class="category-card-media">
+                <img src="${cat.image}" alt="${localizedTitle}" class="category-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+                <div class="category-card-overlay" aria-hidden="true"></div>
                 <span class="category-card-badge">${count} ${itemsWord}</span>
               </div>
             `
@@ -1307,11 +1298,9 @@ class HotelPremierApp {
     const mediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDishMedia === 'function')
       ? window.AssetPipeline.renderDishMedia(dish, { badgesHtml, soldOutText: this.t('soldOut') })
       : `
-        <div class="dish-media hp-asset-pedestal ${hasPhoto ? '' : 'no-photo'}">
-          <div class="hp-pedestal-glow" aria-hidden="true"></div>
-          ${hasPhoto ? `<div class="hp-pedestal-plate" aria-hidden="true"></div>` : ''}
+        <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
           ${hasPhoto ? `
-            <img src="${dish.image}" alt="${dish.name}" class="dish-img hp-isolated-asset" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+            <img src="${dish.image}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
             <div class="hp-glass-vignette" aria-hidden="true"></div>
           ` : `
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">

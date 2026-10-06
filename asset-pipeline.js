@@ -312,37 +312,13 @@
 
     /**
      * Automatically processes an <img> tag in real time
-     * Called from onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
+     * Safe mode: preserves authentic high-resolution food photography without destructive canvas cutout
      */
     async autoProcessImage(imgElement, type = 'food') {
       if (!imgElement || imgElement.dataset.hpProcessed === 'true') return;
-      if (this.processingQueue.has(imgElement)) return;
-
-      this.processingQueue.add(imgElement);
-
-      try {
-        const originalSrc = imgElement.src || imgElement.currentSrc;
-        if (!originalSrc || originalSrc.startsWith('data:image/svg')) {
-          this.processingQueue.delete(imgElement);
-          return;
-        }
-
-        // Apply background isolation and luxury pedestal
-        const processedUrl = await this.processIsolatedAsset(imgElement, {
-          tolerance: 44,
-          forceIsolation: type === 'food'
-        });
-
-        if (processedUrl && processedUrl !== originalSrc) {
-          imgElement.dataset.hpProcessed = 'true';
-          imgElement.classList.add('hp-isolated-processed');
-          imgElement.src = processedUrl;
-        }
-      } catch (err) {
-        console.warn('[AssetPipeline] Auto-process fallback applied:', err);
-      } finally {
-        this.processingQueue.delete(imgElement);
-      }
+      imgElement.dataset.hpProcessed = 'true';
+      // Mark element as ready and styled
+      imgElement.classList.add('hp-showcase-ready');
     }
 
     /**
@@ -355,8 +331,7 @@
 
       if (!hasPhoto) {
         return `
-          <div class="dish-media hp-asset-pedestal no-photo" id="dish-media-${dish.id}">
-            <div class="hp-pedestal-glow"></div>
+          <div class="dish-media no-photo" id="dish-media-${dish.id}">
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
               <div class="no-photo-icon">🌱</div>
               <div class="no-photo-crest">HOTEL PREMIER</div>
@@ -370,16 +345,13 @@
       }
 
       return `
-        <div class="dish-media hp-asset-pedestal" id="dish-media-${dish.id}">
-          <div class="hp-pedestal-glow" aria-hidden="true"></div>
-          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+        <div class="dish-media" id="dish-media-${dish.id}">
           <img 
             src="${dish.image}" 
             alt="${dish.name}" 
-            class="dish-img hp-isolated-asset" 
+            class="dish-img" 
             id="dish-img-el-${dish.id}" 
             loading="lazy" 
-            onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
             onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
           <div class="hp-glass-vignette" aria-hidden="true"></div>
@@ -401,18 +373,14 @@
       const slideTitle = slide.name || slide.title || 'Hotel Premier Special';
 
       return `
-        <div class="section-slide-card hp-asset-pedestal" ${clickAttr}>
-          <div class="hp-pedestal-glow" aria-hidden="true"></div>
-          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+        <div class="section-slide-card" ${clickAttr}>
           <img 
             src="${slide.image}" 
             alt="${slideTitle}" 
-            class="section-slide-img hp-isolated-asset" 
+            class="section-slide-img" 
             loading="${idx === 0 ? 'eager' : 'lazy'}" 
-            onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
             onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
-          <div class="hp-glass-vignette" aria-hidden="true"></div>
           <div class="section-slide-overlay">
             <div class="section-slide-badge-row">
               <span class="section-slide-badge">${badgeText}</span>
@@ -437,18 +405,14 @@
       const slideSubtitle = slide.subtitle || 'Prepared fresh in standard refined oil • 100% Pure Veg';
 
       return `
-        <div class="hero-carousel-slide hp-asset-pedestal" data-slide-index="${idx}">
-          <div class="hp-pedestal-glow" aria-hidden="true"></div>
-          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+        <div class="hero-carousel-slide" data-slide-index="${idx}">
           <img 
             src="${slide.image}" 
             alt="${slideTitle}" 
-            class="hero-carousel-img hp-isolated-asset" 
+            class="hero-carousel-img" 
             loading="${idx === 0 ? 'eager' : 'lazy'}"
-            onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
             onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
-          <div class="hp-glass-vignette" aria-hidden="true"></div>
           <div class="hero-carousel-overlay">
             <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
             <h2 class="hero-slide-title">${slideTitle}</h2>
@@ -463,19 +427,15 @@
      */
     renderCategoryCardMedia(cat, count, itemsWord, localizedTitle) {
       return `
-        <div class="category-card-media hp-asset-pedestal">
-          <div class="hp-pedestal-glow" aria-hidden="true"></div>
-          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+        <div class="category-card-media">
           <img 
             src="${cat.image}" 
             alt="${localizedTitle}" 
-            class="category-card-img hp-isolated-asset" 
+            class="category-card-img" 
             loading="lazy" 
-            onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
             onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
-          <div class="hp-glass-vignette" aria-hidden="true"></div>
-          <div class="category-card-overlay"></div>
+          <div class="category-card-overlay" aria-hidden="true"></div>
           <span class="category-card-badge">${count} ${itemsWord}</span>
         </div>
       `;
