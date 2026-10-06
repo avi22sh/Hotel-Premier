@@ -17,6 +17,12 @@ class HotelPremierDeveloperVault {
     this.storageKeyFeedback = 'hp_vault_feedback_leads';
     this.storageKeyMasterPin = 'hp_vault_master_pin';
 
+    // Structured Enterprise Customer CRM Collections
+    this.storageKeyGuests = 'hp_crm_guests';
+    this.storageKeyBookings = 'hp_crm_bookings';
+    this.storageKeyReviews = 'hp_crm_reviews';
+    this.storageKeyEnquiries = 'hp_crm_enquiries';
+
     this.defaultPin = '9325'; // Master Developer Secret PIN
     this.isVaultUnlocked = false;
 
@@ -208,7 +214,185 @@ class HotelPremierDeveloperVault {
   }
 
   // ========================================================================
-  // CUSTOMER LEADS & DINING FEEDBACK (Name, Contact, Region, Ratings)
+  // ENTERPRISE CUSTOMER CRM ENGINE (GUESTS, BOOKINGS, REVIEWS, ENQUIRIES)
+  // ========================================================================
+  getGuests() {
+    try {
+      const saved = localStorage.getItem(this.storageKeyGuests);
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  saveGuests(guests) {
+    try {
+      localStorage.setItem(this.storageKeyGuests, JSON.stringify(guests));
+    } catch (e) {}
+  }
+
+  upsertGuest(data) {
+    if (!data) return null;
+    const phone = (data.phone || '').trim().replace(/\D/g, '').slice(-10);
+    const name = (data.name || '').trim();
+    if (!phone && !name) return null;
+
+    const guests = this.getGuests();
+    const now = new Date().toISOString();
+    let guest = guests.find(g => (phone && g.phone === phone) || (name && g.name.toLowerCase() === name.toLowerCase()));
+
+    if (guest) {
+      if (name) guest.name = name;
+      if (phone) guest.phone = phone;
+      if (data.email) guest.email = data.email.trim();
+      if (data.region) guest.region = data.region.trim();
+      if (data.consent !== undefined) guest.consent = !!data.consent;
+      guest.lastInteraction = now;
+      guest.interactionCount = (guest.interactionCount || 1) + 1;
+    } else {
+      guest = {
+        id: 'HP-GST-' + Date.now().toString(36).toUpperCase() + '-' + Math.floor(Math.random() * 900 + 100),
+        name: name || 'Valued Guest',
+        phone: phone || '',
+        email: (data.email || '').trim(),
+        region: (data.region || 'Bhusawal Local').trim(),
+        consent: data.consent !== undefined ? !!data.consent : true,
+        createdAt: now,
+        lastInteraction: now,
+        interactionCount: 1
+      };
+      guests.unshift(guest);
+    }
+
+    this.saveGuests(guests);
+    return guest;
+  }
+
+  getBookings() {
+    try {
+      const saved = localStorage.getItem(this.storageKeyBookings);
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  saveBookings(bookings) {
+    try {
+      localStorage.setItem(this.storageKeyBookings, JSON.stringify(bookings));
+    } catch (e) {}
+  }
+
+  recordBooking(data) {
+    try {
+      const guest = this.upsertGuest({
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        region: data.region
+      });
+
+      const now = new Date();
+      const booking = {
+        id: 'HP-BKG-' + Date.now().toString(36).toUpperCase(),
+        guestId: guest ? guest.id : null,
+        guestName: (data.name || '').trim(),
+        guestPhone: (data.phone || '').trim(),
+        roomType: data.roomType || 'AC Deluxe Room',
+        checkInDate: data.checkInDate || now.toISOString().slice(0, 10),
+        checkInTime: data.checkInTime || '12:00 PM (24-Hr Check-Out)',
+        nights: Number(data.nights) || 1,
+        roomsCount: Number(data.roomsCount) || 1,
+        guestsCount: Number(data.guestsCount) || 2,
+        mealPlan: data.mealPlan || 'CP (With Breakfast)',
+        extraBeds: Number(data.extraBeds) || 0,
+        estimatedTotal: Number(data.estimatedTotal) || 0,
+        specialRequests: (data.specialRequests || '').trim(),
+        status: data.status || 'Inquiry Sent (WhatsApp)',
+        source: this.sessionSource || 'QR Concierge',
+        createdAt: now.toISOString(),
+        dateFormatted: now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+      };
+
+      const bookings = this.getBookings();
+      bookings.unshift(booking);
+      this.saveBookings(bookings);
+
+      return booking;
+    } catch (e) {
+      console.warn('[Vault] recordBooking notice:', e);
+      return null;
+    }
+  }
+
+  getReviews() {
+    try {
+      const saved = localStorage.getItem(this.storageKeyReviews);
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  saveReviews(reviews) {
+    try {
+      localStorage.setItem(this.storageKeyReviews, JSON.stringify(reviews));
+    } catch (e) {}
+  }
+
+  getEnquiries() {
+    try {
+      const saved = localStorage.getItem(this.storageKeyEnquiries);
+      return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  saveEnquiries(enquiries) {
+    try {
+      localStorage.setItem(this.storageKeyEnquiries, JSON.stringify(enquiries));
+    } catch (e) {}
+  }
+
+  recordEnquiry(data) {
+    try {
+      const guest = this.upsertGuest({
+        name: data.name,
+        phone: data.phone,
+        region: data.region
+      });
+
+      const now = new Date();
+      const enquiry = {
+        id: 'HP-ENQ-' + Date.now().toString(36).toUpperCase(),
+        guestId: guest ? guest.id : null,
+        guestName: (data.name || '').trim(),
+        guestPhone: (data.phone || '').trim(),
+        category: data.category || 'General Concierge',
+        occasion: data.occasion || '',
+        preferredDate: data.preferredDate || '',
+        pax: data.pax || '',
+        quoteEstimate: data.quoteEstimate || '',
+        details: (data.details || '').trim(),
+        status: 'Active Inquiry',
+        createdAt: now.toISOString(),
+        dateFormatted: now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+      };
+
+      const enquiries = this.getEnquiries();
+      enquiries.unshift(enquiry);
+      this.saveEnquiries(enquiries);
+
+      return enquiry;
+    } catch (e) {
+      console.warn('[Vault] recordEnquiry notice:', e);
+      return null;
+    }
+  }
+
+  // ========================================================================
+  // CUSTOMER LEADS & DINING FEEDBACK (Bridge to CRM)
   // ========================================================================
   recordFeedback(entry) {
     try {
@@ -216,8 +400,15 @@ class HotelPremierDeveloperVault {
       const dateFormatted = now.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
       const timeFormatted = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
 
+      const guest = this.upsertGuest({
+        name: entry.name,
+        phone: entry.phone,
+        region: entry.region
+      });
+
       const feedbackRecord = {
         id: 'HP-FB-' + Date.now().toString(36).toUpperCase(),
+        guestId: guest ? guest.id : null,
         timestamp: now.toISOString(),
         date: dateFormatted,
         time: timeFormatted,
@@ -234,6 +425,21 @@ class HotelPremierDeveloperVault {
       let leads = this.getFeedbackLeads();
       leads.unshift(feedbackRecord);
       localStorage.setItem(this.storageKeyFeedback, JSON.stringify(leads));
+
+      // Synchronize to Reviews Collection
+      const reviews = this.getReviews();
+      reviews.unshift({
+        id: feedbackRecord.id,
+        guestId: guest ? guest.id : null,
+        name: feedbackRecord.name,
+        rating: feedbackRecord.rating,
+        tags: feedbackRecord.tags,
+        comment: feedbackRecord.comments,
+        tableOrRoom: feedbackRecord.tableOrRoom,
+        dateFormatted: dateFormatted,
+        timestamp: now.toISOString()
+      });
+      this.saveReviews(reviews);
 
       return feedbackRecord;
     } catch (e) {
@@ -253,6 +459,14 @@ class HotelPremierDeveloperVault {
 
   // Record an Event or Room Inquiry as a Customer Lead
   recordLeadFromInquiry(name, phone, region, details, type) {
+    const enquiry = this.recordEnquiry({
+      name: name,
+      phone: phone,
+      region: region,
+      category: type || 'Event / Room Inquiry',
+      details: details
+    });
+
     return this.recordFeedback({
       name: name,
       phone: phone,
@@ -423,6 +637,10 @@ class HotelPremierDeveloperVault {
     const scans = this.getLevel1Scans();
     const l3 = this.getLevel3Data();
     const leads = this.getFeedbackLeads();
+    const guests = this.getGuests();
+    const bookings = this.getBookings();
+    const reviews = this.getReviews();
+    const enquiries = this.getEnquiries();
 
     let menuOverrides = {};
     try {
@@ -444,26 +662,145 @@ class HotelPremierDeveloperVault {
 
     const masterBackup = {
       app: 'Hotel Premier & Pride Pure Veg, Bhusawal',
-      vaultVersion: '3.0.0-DeveloperOnly',
+      vaultVersion: '4.0.0-ConciergeCRM',
       architect: 'Avinash Hedawoo',
       contact: '+91 89837 03702',
       email: 'avinash.hedawoo@gmail.com',
       backupTimestamp: new Date().toISOString(),
-      telemetry: {
-        totalScans: scans.length,
-        totalFeedbackLeads: leads.length,
-        averageRating: leads.length ? (leads.reduce((a, b) => a + (b.rating || 5), 0) / leads.length).toFixed(1) : '5.0'
-      },
+      crmStats: this.getCRMStats(),
+      guests: guests,
+      bookings: bookings,
+      reviews: reviews,
+      enquiries: enquiries,
+      customerFeedbackLeads: leads,
       level1Scans: scans,
       level3Analytics: l3,
-      customerFeedbackLeads: leads,
       menuOverrides: menuOverrides,
       roomOverrides: roomOverrides,
       bulkDeals: bulkDeals
     };
 
     const dateStr = new Date().toISOString().slice(0, 10);
-    this.triggerDownload(`HotelPremier_MASTER_VAULT_BACKUP_${dateStr}.json`, JSON.stringify(masterBackup, null, 2), 'application/json');
+    this.triggerDownload(`HotelPremier_MASTER_CRM_BACKUP_${dateStr}.json`, JSON.stringify(masterBackup, null, 2), 'application/json');
+  }
+
+  // ========================================================================
+  // CRM STATS & INDIVIDUAL CRM EXPORTS (GUESTS, BOOKINGS, REVIEWS, ENQUIRIES)
+  // ========================================================================
+  getCRMStats() {
+    const guests = this.getGuests();
+    const bookings = this.getBookings();
+    const reviews = this.getReviews();
+    const enquiries = this.getEnquiries();
+    const scans = this.getLevel1Scans();
+
+    const avgRating = reviews.length
+      ? (reviews.reduce((acc, r) => acc + (Number(r.rating) || 5), 0) / reviews.length).toFixed(1)
+      : '5.0';
+
+    return {
+      totalGuests: guests.length,
+      totalBookings: bookings.length,
+      totalReviews: reviews.length,
+      totalEnquiries: enquiries.length,
+      totalScans: scans.length,
+      averageRating: avgRating
+    };
+  }
+
+  exportGuestsCSV() {
+    const guests = this.getGuests();
+    if (!guests || guests.length === 0) {
+      alert('No guest profiles recorded yet.');
+      return;
+    }
+    const headers = ['Guest ID', 'Name', 'Phone', 'Email', 'City / Region', 'Interactions', 'Created Date', 'Last Interaction'];
+    const rows = guests.map(g => [
+      `"${g.id || ''}"`,
+      `"${(g.name || '').replace(/"/g, '""')}"`,
+      `"${g.phone || ''}"`,
+      `"${g.email || ''}"`,
+      `"${(g.region || '').replace(/"/g, '""')}"`,
+      g.interactionCount || 1,
+      `"${g.createdAt || ''}"`,
+      `"${g.lastInteraction || ''}"`
+    ]);
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const dateStr = new Date().toISOString().slice(0, 10);
+    this.triggerDownload(`HotelPremier_Guests_CRM_${dateStr}.csv`, csv, 'text/csv;charset=utf-8;');
+  }
+
+  exportBookingsCSV() {
+    const bookings = this.getBookings();
+    if (!bookings || bookings.length === 0) {
+      alert('No booking inquiries recorded yet.');
+      return;
+    }
+    const headers = ['Booking ID', 'Guest Name', 'Phone', 'Room Category', 'Check-In Date', 'Time', 'Nights', 'Rooms', 'Guests', 'Meal Plan', 'Extra Beds', 'Est Total (₹)', 'Status', 'Date'];
+    const rows = bookings.map(b => [
+      `"${b.id || ''}"`,
+      `"${(b.guestName || '').replace(/"/g, '""')}"`,
+      `"${b.guestPhone || ''}"`,
+      `"${(b.roomType || '').replace(/"/g, '""')}"`,
+      `"${b.checkInDate || ''}"`,
+      `"${b.checkInTime || ''}"`,
+      b.nights || 1,
+      b.roomsCount || 1,
+      b.guestsCount || 2,
+      `"${b.mealPlan || ''}"`,
+      b.extraBeds || 0,
+      b.estimatedTotal || 0,
+      `"${b.status || ''}"`,
+      `"${b.dateFormatted || ''}"`
+    ]);
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const dateStr = new Date().toISOString().slice(0, 10);
+    this.triggerDownload(`HotelPremier_Bookings_CRM_${dateStr}.csv`, csv, 'text/csv;charset=utf-8;');
+  }
+
+  exportReviewsCSV() {
+    const reviews = this.getReviews();
+    if (!reviews || reviews.length === 0) {
+      alert('No review records found yet.');
+      return;
+    }
+    const headers = ['Review ID', 'Guest Name', 'Rating', 'Tags', 'Comment', 'Table / Room', 'Date'];
+    const rows = reviews.map(r => [
+      `"${r.id || ''}"`,
+      `"${(r.name || '').replace(/"/g, '""')}"`,
+      r.rating || 5,
+      `"${(r.tags || []).join('; ')}"`,
+      `"${(r.comment || '').replace(/"/g, '""')}"`,
+      `"${r.tableOrRoom || ''}"`,
+      `"${r.dateFormatted || ''}"`
+    ]);
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const dateStr = new Date().toISOString().slice(0, 10);
+    this.triggerDownload(`HotelPremier_Reviews_CRM_${dateStr}.csv`, csv, 'text/csv;charset=utf-8;');
+  }
+
+  exportEnquiriesCSV() {
+    const enquiries = this.getEnquiries();
+    if (!enquiries || enquiries.length === 0) {
+      alert('No banquet / event inquiries recorded yet.');
+      return;
+    }
+    const headers = ['Enquiry ID', 'Guest Name', 'Phone', 'Category', 'Occasion', 'Event Date', 'Pax', 'Quote Estimate', 'Details', 'Date'];
+    const rows = enquiries.map(e => [
+      `"${e.id || ''}"`,
+      `"${(e.guestName || '').replace(/"/g, '""')}"`,
+      `"${e.guestPhone || ''}"`,
+      `"${e.category || ''}"`,
+      `"${e.occasion || ''}"`,
+      `"${e.preferredDate || ''}"`,
+      `"${e.pax || ''}"`,
+      `"${e.quoteEstimate || ''}"`,
+      `"${(e.details || '').replace(/"/g, '""')}"`,
+      `"${e.dateFormatted || ''}"`
+    ]);
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const dateStr = new Date().toISOString().slice(0, 10);
+    this.triggerDownload(`HotelPremier_Enquiries_CRM_${dateStr}.csv`, csv, 'text/csv;charset=utf-8;');
   }
 
   // 8. 1-Click WhatsApp Dispatch to Developer

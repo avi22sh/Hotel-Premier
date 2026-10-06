@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#7A0C16">
-  <meta name="description" content="Hotel Premier - A Home in Bhusawal | Pride Pure Veg AC Restaurant & Luxury AC Rooms, Bhusawal">
+  <meta name="theme-color" content="#0B121A">
+  <meta name="description" content="Hotel Premier - Modern Indian Boutique Hospitality in Bhusawal | 14 Luxury AC Suites, 24-Hour Check-Out & Pride Pure Veg AC Restaurant">
   <link rel="canonical" href="https://avi22sh.github.io/Hotel-Premier/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Hotel Premier – A Home in Bhusawal | Pride Pure Veg AC Restaurant">
-  <meta property="og:description" content="Luxury AC Rooms, 24-Hour Check-Out, and 100% Pride Pure Veg Dining near Nahata College & Bhusawal Railway Junction.">
+  <meta property="og:title" content="Hotel Premier — Modern Boutique Hotel Concierge & Dining, Bhusawal">
+  <meta property="og:description" content="14 Air-Conditioned Boutique Suites, 24-Hour Flexible Check-Out, and Pride Pure Veg Fine Dining near Bhusawal Railway Junction.">
   <meta property="og:url" content="https://avi22sh.github.io/Hotel-Premier/">
   <meta property="og:image" content="https://avi22sh.github.io/Hotel-Premier/assets/icon-512.png">
-  <title>Hotel Premier - A Home in Bhusawal | Pride Pure Veg AC Restaurant</title>
+  <title>Hotel Premier — A Home in Bhusawal | Boutique Suites & Dining Concierge</title>
 
   <!-- Schema.org Hotel & Restaurant Structured Data -->
   <script type="application/ld+json">
@@ -19,7 +19,7 @@
     "@context": "https://schema.org",
     "@type": "Hotel",
     "name": "Hotel Premier",
-    "description": "A Home in Bhusawal - Luxury AC Rooms and Pride Pure Veg AC Restaurant",
+    "description": "Modern Indian Boutique Hospitality in Bhusawal — 14 Luxury AC Rooms and Pride Pure Veg AC Restaurant",
     "url": "https://avi22sh.github.io/Hotel-Premier/",
     "telephone": "+919325375802",
     "address": {
@@ -34,31 +34,31 @@
       { "@type": "LocationFeatureSpecification", "name": "Free High-Speed Wi-Fi", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "24 Hours Flexible Check-Out", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Pride Pure Veg AC Restaurant", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "Free Parking", "value": true }
+      { "@type": "LocationFeatureSpecification", "name": "Free Bus & Car Parking", "value": true }
     ]
   }
   </script>
 
-  <!-- Google Fonts: Luxury Indian Royal Serif, Devanagari & Modern Clean Sans -->
+  <!-- Google Fonts: Luxury Royal Serif, Devanagari & Crisp Modern Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&family=Rozha+One&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest & App Icons -->
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
-  <!-- QRCode.js for Instant Table QR Standee Generation -->
+  <!-- QRCode.js for Instant GPS & Table QR Standee Generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-  <!-- Immediate Cache Invalidation & Old Service Worker Purge -->
+  <!-- Cache Invalidation & Old Service Worker Purge -->
   <script>
     (function() {
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v11.0') {
+            if (name !== 'hotel-premier-v12.0') {
               caches.delete(name);
             }
           });
@@ -68,89 +68,33 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=11.0"></script>
+  <script src="asset-pipeline.js?v=12.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=11.0">
-
-  <!-- Immediate Pre-Paint Netlify Badge & Drawer Purge Engine -->
-  <script>
-    (function() {
-      function killNetlify(node) {
-        if (!node || node.nodeType !== 1) return;
-        var tag = (node.tagName || '').toLowerCase();
-        var id = (node.id || '').toLowerCase();
-        var cls = (typeof node.className === 'string' ? node.className : '').toLowerCase();
-        var src = (node.getAttribute && (node.getAttribute('src') || node.getAttribute('data-src')) || '').toLowerCase();
-        var title = (node.getAttribute && node.getAttribute('title') || '').toLowerCase();
-
-        if (
-          tag === 'netlify-drawer' ||
-          tag.indexOf('netlify') !== -1 ||
-          id.indexOf('netlify') !== -1 ||
-          cls.indexOf('netlify') !== -1 ||
-          src.indexOf('netlify') !== -1 ||
-          title.indexOf('netlify') !== -1 ||
-          (tag === 'iframe' && (src.indexOf('netlify') !== -1 || id.indexOf('netlify') !== -1 || cls.indexOf('netlify') !== -1 || !src)) ||
-          (tag === 'div' && (cls.indexOf('feedback') !== -1 && cls.indexOf('widget') !== -1))
-        ) {
-          try { node.remove(); } catch(e) { if (node.parentNode) node.parentNode.removeChild(node); }
-        }
-      }
-
-      var observer = new MutationObserver(function(mutations) {
-        for (var i = 0; i < mutations.length; i++) {
-          var added = mutations[i].addedNodes;
-          for (var j = 0; j < added.length; j++) {
-            killNetlify(added[j]);
-            if (added[j].querySelectorAll) {
-              var nested = added[j].querySelectorAll('netlify-drawer, [id*="netlify"], [class*="netlify"], iframe[src*="netlify"], div[class*="feedback-widget"], iframe:not([src])');
-              for (var k = 0; k < nested.length; k++) {
-                try { nested[k].remove(); } catch(e) { if (nested[k].parentNode) nested[k].parentNode.removeChild(nested[k]); }
-              }
-            }
-          }
-        }
-      });
-
-      if (document.documentElement) {
-        observer.observe(document.documentElement, { childList: true, subtree: true });
-      } else {
-        document.addEventListener('DOMContentLoaded', function() {
-          observer.observe(document.documentElement, { childList: true, subtree: true });
-        });
-      }
-
-      window.addEventListener('load', function() {
-        document.querySelectorAll('netlify-drawer, [id*="netlify"], [class*="netlify"], iframe[src*="netlify"], .netlify-badge, #netlify-badge, a[href*="netlify.com"]').forEach(function(el) {
-          try { el.remove(); } catch(e) {}
-        });
-      });
-    })();
-  </script>
+  <link rel="stylesheet" href="styles.css?v=12.0">
 </head>
 <body>
 
-  <!-- ==================== MAIN APP HEADER ==================== -->
+  <!-- ==================== LUXURY APP HEADER ==================== -->
   <header class="app-header">
     <div class="header-top">
       <a href="#" class="brand-wrapper" onclick="if(window.app) window.app.showHomeCategories(); return false;">
         <div class="brand-logo-crest" id="header-brand-logo-crest" onclick="if(window.app) window.app.handleBrandLogoTap(event)">
           <!-- Official Hotel Premier Flying Birds Vector Logo -->
           <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="58" fill="#1A2B4C" stroke="#D4901C" stroke-width="3"/>
+            <circle cx="60" cy="60" r="58" fill="#0E1620" stroke="#C5A880" stroke-width="2.5"/>
             <!-- Bird 1 (Top Center) -->
-            <path d="M60 26C54 20 46 22 42 24C46 26 53 28 58 32C63 28 70 26 74 24C70 22 62 20 60 26Z" fill="#D4901C"/>
+            <path d="M60 26C54 20 46 22 42 24C46 26 53 28 58 32C63 28 70 26 74 24C70 22 62 20 60 26Z" fill="#C5A880"/>
             <!-- Bird 2 (Left) -->
-            <path d="M42 34C38 30 32 31 29 33C32 34 37 36 41 39C44 36 50 34 53 33C50 31 44 30 42 34Z" fill="#F7C860"/>
+            <path d="M42 34C38 30 32 31 29 33C32 34 37 36 41 39C44 36 50 34 53 33C50 31 44 30 42 34Z" fill="#DFC9A8"/>
             <!-- Bird 3 (Right) -->
-            <path d="M78 34C74 30 68 31 65 33C68 34 73 36 77 39C80 36 86 34 89 33C86 31 80 30 78 34Z" fill="#F7C860"/>
+            <path d="M78 34C74 30 68 31 65 33C68 34 73 36 77 39C80 36 86 34 89 33C86 31 80 30 78 34Z" fill="#DFC9A8"/>
             <!-- Crown / Arch Motif -->
-            <path d="M30 62L60 48L90 62L82 82H38L30 62Z" fill="#FAF5EA" stroke="#D4901C" stroke-width="2"/>
-            <circle cx="60" cy="46" r="4" fill="#D4901C"/>
-            <circle cx="30" cy="60" r="3" fill="#D4901C"/>
-            <circle cx="90" cy="60" r="3" fill="#D4901C"/>
-            <text x="60" y="76" font-family="'Cinzel', serif" font-size="16" font-weight="900" fill="#1A2B4C" text-anchor="middle">HP</text>
+            <path d="M30 62L60 48L90 62L82 82H38L30 62Z" fill="#FDFBF7" stroke="#C5A880" stroke-width="1.8"/>
+            <circle cx="60" cy="46" r="3.5" fill="#C5A880"/>
+            <circle cx="30" cy="60" r="2.5" fill="#C5A880"/>
+            <circle cx="90" cy="60" r="2.5" fill="#C5A880"/>
+            <text x="60" y="75" font-family="'Cinzel', serif" font-size="15" font-weight="900" fill="#0E1620" text-anchor="middle">HP</text>
           </svg>
         </div>
         <div class="brand-text-block">
@@ -160,966 +104,800 @@
       </a>
 
       <div class="header-actions">
-        <!-- Language Switcher: English, Hindi, Marathi -->
+        <!-- Multilingual Switcher -->
         <div class="lang-selector-group" id="lang-selector-group">
           <button class="lang-btn active" data-lang="en" onclick="window.app ? window.app.setLanguage('en') : null">EN</button>
           <button class="lang-btn" data-lang="hi" onclick="window.app ? window.app.setLanguage('hi') : null">हिंदी</button>
           <button class="lang-btn" data-lang="mr" onclick="window.app ? window.app.setLanguage('mr') : null">मराठी</button>
         </div>
 
-        <!-- Senior Citizen Font Size Toggle -->
-        <button class="icon-btn text-size-toggle" id="font-size-toggle-btn" onclick="window.app ? window.app.toggleElderlyFontSize() : null" title="Adjust Text Size for Easier Reading">
+        <!-- Guest Concierge Profile Pill -->
+        <button class="guest-concierge-pill" id="guest-profile-trigger-btn" onclick="window.app ? window.app.openGuestProfileModal() : null" title="View or Edit Your Guest Concierge Details">
+          <span class="guest-concierge-icon">👤</span>
+          <span id="header-guest-name-pill">Concierge Profile</span>
+        </button>
+
+        <!-- Senior Mode Toggle -->
+        <button class="icon-btn text-size-toggle" id="font-size-toggle-btn" onclick="window.app ? window.app.toggleElderlyFontSize() : null" title="Adjust Text Size">
           <span style="font-weight: 800; font-size: 0.85rem;">A+</span>
         </button>
 
-        <!-- CMS Settings Button (Hidden by default for guests; visible only for staff/admin via secret logo 5-tap or ?staff=1 / ?admin=1) -->
-        <button class="icon-btn" id="cms-settings-admin-btn" style="display: none;" onclick="window.admin ? window.admin.openAdminModal() : null" title="Menu CMS, Image Manager & QR Studio">
+        <!-- CMS Settings Button (Visible only for staff via logo 5-tap or ?staff=1 / ?admin=1) -->
+        <button class="icon-btn" id="cms-settings-admin-btn" style="display: none;" onclick="window.admin ? window.admin.openAdminModal() : null" title="Admin Studio & CRM">
           <span>⚙️</span>
         </button>
       </div>
     </div>
 
-    <!-- Top Mode Tab Bar: Restaurant Menu vs Hotel & Room Deals -->
-    <div class="main-mode-nav-bar">
-      <button class="main-mode-tab active" id="tab-mode-menu" onclick="window.app ? window.app.switchMainMode('menu') : null">
-        <span data-i18n="tabMenu">🍽️ Restaurant Menu</span>
-      </button>
-      <button class="main-mode-tab" id="tab-mode-hotel" onclick="window.app ? window.app.switchMainMode('hotel') : null">
-        <span data-i18n="tabHotel">🏨 Hotel & Room Deals</span>
-      </button>
-    </div>
+    <!-- Hotel Concierge Navigation Bar -->
+    <nav class="hotel-nav-bar" aria-label="Hotel Premier Navigation">
+      <div class="hotel-nav-inner">
+        <button class="hotel-nav-tab active" id="tab-nav-stay" onclick="window.app ? window.app.scrollToSection('section-stay') : null">
+          <span>🏨 The 14 Suites</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-tariffs" onclick="window.app ? window.app.scrollToSection('section-tariffs') : null">
+          <span>📜 Tariffs</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.scrollToSection('section-dine') : null">
+          <span>🍽️ Pride Dining</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.scrollToSection('section-celebrate') : null">
+          <span>💍 Banquets & Deals</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-explore" onclick="window.app ? window.app.scrollToSection('section-explore') : null">
+          <span>🗺️ Concierge Guide</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-reviews" onclick="window.app ? window.app.scrollToSection('guest-feedback-section') : null">
+          <span>⭐ Reviews</span>
+        </button>
 
-    <!-- Pride Pure Veg Sub-Banner -->
-    <div class="sub-banner">
-      <div class="veg-ac-badges">
-        <span class="badge-pride" data-i18n="prideBadge">PRIDE</span>
-        <span class="badge-veg" data-i18n="vegBadge">🌱 PURE VEG</span>
-        <span class="badge-ac" data-i18n="acBadge">AC RESTAURANT</span>
+        <!-- Reserve Stay CTA -->
+        <button class="hotel-nav-reserve-btn" onclick="window.app ? window.app.openConciergeBookingModal() : null">
+          <span>🛎️ Reserve Stay</span>
+        </button>
       </div>
-      <div style="display: flex; align-items: center; gap: 8px;">
-        <a href="tel:09325375802" class="hotel-phone-contact" title="Call Primary Number">
-          <span>📞</span> <span>09325375802</span>
-        </a>
-        <span style="color: var(--gold-light); opacity: 0.6; font-size: 0.75rem;">/</span>
-        <a href="tel:09370848917" class="hotel-phone-contact" title="Call Alternate Number">
-          <span>09370848917</span>
-        </a>
+    </nav>
+
+    <!-- Pride Pure Veg & Front Desk Contact Bar -->
+    <div class="concierge-sub-bar">
+      <div class="pride-hallmark">
+        <span class="hallmark-badge">🌱 PURE VEG</span>
+        <span class="hallmark-restaurant">Pride Pure Veg AC Restaurant</span>
+      </div>
+      <div class="concierge-contact-quick">
+        <span>Concierge:</span>
+        <a href="tel:09325375802" style="color: var(--brass-light);">09325375802</a>
+        <span>/</span>
+        <a href="tel:09370848917" style="color: var(--brass-light);">09370848917</a>
       </div>
     </div>
   </header>
 
-  <!-- ================================================================ -->
-  <!-- SECTION A: RESTAURANT QR MENU VIEW                               -->
-  <!-- ================================================================ -->
-  <div id="section-menu-container">
-    <!-- Menu Hero Multi-Photo Slideshow Banner -->
-    <section class="menu-hero-banner">
-      <div class="hero-carousel-wrapper" id="restaurant-hero-carousel">
-        <div class="hero-carousel-track" id="hero-carousel-track">
-          <div class="hero-carousel-slide" data-slide-index="0">
-            <img 
-              src="assets/menu-images/THALIS/PREMIER%20MAHARAJA%20THALI.jfif" 
-              alt="Premier Maharaja Royal Thali" 
-              class="hero-carousel-img" 
-              loading="eager" 
-              fetchpriority="high"
-              onerror="this.src='assets/menu-images/THALIS/SIGNATURE%20THALI.avif'"
-            >
-            <div class="hero-carousel-overlay">
-              <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
-              <h2 class="hero-slide-title">Premier Maharaja Royal Thali</h2>
-              <p class="hero-slide-subtitle">Lavish Multi-Course Pure Veg Feast • Authentic Indian Hospitality</p>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-nav-btn prev" onclick="window.app.prevHeroSlide()" aria-label="Previous Slide">‹</button>
-        <button class="carousel-nav-btn next" onclick="window.app.nextHeroSlide()" aria-label="Next Slide">›</button>
-        <div class="carousel-dots-container" id="hero-carousel-dots">
-          <!-- Dot indicators rendered dynamically -->
-        </div>
+  <!-- ==================== MAIN SANCTUARY HERO ==================== -->
+  <section class="sanctuary-hero-section">
+    <div class="sanctuary-hero-content">
+      <div class="sanctuary-crest-emblem">
+        <span>👑</span>
+        <span>A Sanctuary in Bhusawal</span>
       </div>
-    </section>
-
-    <!-- Search & Quick Filters -->
-    <section class="search-filter-section">
-      <div class="search-input-wrapper">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="menu-search-input" placeholder="Search dishes (e.g. Paneer, Biryani, Chai, Shev Bhaji, Pasta)...">
-        <button class="clear-search-btn" id="clear-search-btn">✕</button>
-      </div>
-
-      <div class="quick-filters" id="quick-filters-container">
-        <!-- Quick Filter Pills Rendered via JavaScript -->
-      </div>
-    </section>
-
-    <!-- View 1: Home Categories Grid -->
-    <section class="home-categories-section" id="home-categories-view">
-      <div class="category-cards-grid" id="category-cards-grid">
-        <!-- Category Cards Rendered via JavaScript -->
-      </div>
-
-      <!-- Bottom Party & Events Invite Banner (Positioned BELOW menu categories) -->
-      <div class="events-bottom-invite-banner" onclick="window.app ? window.app.scrollToEventsSection() : null">
-        <div class="invite-banner-content">
-          <span class="invite-banner-icon">🎉</span>
-          <div class="invite-banner-text">
-            <strong>Planning a Birthday, Anniversary, Ring Ceremony, Roka or Corporate Meet?</strong>
-            <span>Pride Pure Veg AC Restaurant (Max 40 Pax) • Full Lunch Buyout (12:00 PM – 3:00 PM)</span>
-          </div>
-        </div>
-        <button class="invite-banner-btn" type="button"><span>View Packages ▾</span></button>
-      </div>
-    </section>
-
-    <!-- View 2: Active Category Dishes View -->
-    <section class="dishes-section-wrapper" id="dishes-section-view" style="display: none;">
-      <div class="section-nav-bar" id="section-nav-bar">
-        <button class="back-to-categories-btn" onclick="window.app.showHomeCategories()">
-          <span class="back-arrow">⬅️</span>
-          <span class="back-text" id="back-to-sections-text" data-i18n="backToSections">All Sections</span>
-        </button>
-        <div class="active-category-info" id="active-category-info" onclick="window.app.toggleMenuSectionDrawer()" style="cursor: pointer;" title="Tap to switch section">
-          <h2 class="active-category-title" id="active-category-title">Paneer Specialties</h2>
-          <span class="active-category-hindi" id="active-category-hindi">शाही पनीर व्यंजन ▾</span>
-        </div>
-        <div class="active-category-count" id="active-category-count">14 Items</div>
-      </div>
-
-      <!-- Sub-Section Multi-Photo Slideshow Banner -->
-      <div id="section-slideshow-container" style="display: none; margin-bottom: 18px;"></div>
-
-      <main class="menu-container">
-        <div id="menu-items-grid">
-          <!-- Dish cards rendered dynamically -->
-        </div>
-      </main>
-
-      <!-- Bottom Party & Events Invite Banner (Positioned BELOW dishes) -->
-      <div class="events-bottom-invite-banner" onclick="window.app ? window.app.scrollToEventsSection() : null">
-        <div class="invite-banner-content">
-          <span class="invite-banner-icon">🎉</span>
-          <div class="invite-banner-text">
-            <strong>Planning a Birthday, Anniversary, Ring Ceremony, Roka or Corporate Meet?</strong>
-            <span>Pride Pure Veg AC Restaurant (Max 40 Pax) • Full Lunch Buyout (12:00 PM – 3:00 PM)</span>
-          </div>
-        </div>
-        <button class="invite-banner-btn" type="button"><span>View Packages ▾</span></button>
-      </div>
-    </section>
-
-    <!-- ================================================================ -->
-    <!-- SECTION: RESTAURANT EVENTS, PARTY PACKAGES & LUNCH BUYOUT        -->
-    <!-- ================================================================ -->
-    <section class="restaurant-events-section" id="restaurant-events-section">
-      <div class="events-hero-card">
-        <h2 class="events-main-title" data-i18n="eventsTitle">Pride Pure Veg AC Restaurant<br><span class="events-sub-title">Events & Lunch Buyouts</span></h2>
-        <p class="events-main-subtitle" data-i18n="eventsSubtitle">
-          Hosted exclusively inside Pride Pure Veg AC Restaurant (Seating Capacity: Max 40 Pax • No Banquet Hall). Curated Pure Veg Packages for Birthdays, Anniversaries, Ring Ceremonies, Engagements, Roka, Baby Showers, Corporate Seminars & Kitty Parties. Full Lunch Buyout only (12:00 PM to 3:00 PM), strictly subject to availability.
-        </p>
-        <div class="events-highlights-pills">
-          <span class="event-pill">🌱 Pride Pure Veg AC Restaurant</span>
-          <span class="event-pill">👥 Seating Capacity: Max 40 Pax (No Banquet Hall)</span>
-          <span class="event-pill highlight-gold">👑 Full Lunch Buyout (12:00 PM – 3:00 PM Only)</span>
-          <span class="event-pill">📅 Strictly Subject to Availability</span>
-          <span class="event-pill">🎨 Theme Decor & AV Supplies Available (Chargeable)</span>
-        </div>
-      </div>
-
-      <!-- Event Packages Grid (2 Lines Layout) -->
-      <div class="events-packages-container">
-        <div class="events-packages-header">
-          <div>
-            <h3 class="events-subheading" data-i18n="eventsPackagesHeading">Select Your Restaurant Event Package</h3>
-            <p class="events-subdesc" data-i18n="eventsPackagesSub">All packages hosted in Pride Pure Veg AC Restaurant (Seating Capacity Max 40 Pax • No Banquet Hall). Transparent per-person pricing.</p>
-          </div>
-        </div>
-
-        <!-- Event Package Category Quick Filter Tabs -->
-        <div class="event-category-filter-tabs" id="event-category-tabs">
-          <button type="button" class="event-filter-tab active" onclick="window.app ? window.app.filterEventPackages('all', this) : null">🌟 All Packages (5)</button>
-          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('engagement', this) : null">💍 Ring Ceremony, Engagement & Roka</button>
-          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('conference', this) : null">💼 Corporate & Seminars</button>
-          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('party', this) : null">🎉 Birthdays & High-Tea</button>
-          <button type="button" class="event-filter-tab" onclick="window.app ? window.app.filterEventPackages('buyout', this) : null">👑 Full Lunch Buyout (Max 40 Pax)</button>
-        </div>
-
-        <div class="events-packages-grid" id="restaurant-events-packages-grid">
-          <!-- Rendered dynamically by app.js from restaurantEventPackages in 2 lines -->
-        </div>
-
-        <!-- Optional Event Decorations & Audio-Visual Supplies Showcase (Chargeable Add-ons) -->
-        <div class="event-decorations-container" id="event-decorations-section">
-          <div class="decorations-header-block">
-            <h3 class="decor-main-title">Celebration Decorations & Audio-Visual Supplies</h3>
-            <p class="decor-sub-text">
-              Make your celebration special with customized theme decorations and AV setups inside our AC Restaurant. All decor and AV supplies are <strong>chargeable add-ons</strong> provided upon advance request and can be customized to your taste.
-            </p>
-          </div>
-
-          <div class="event-decorations-grid" id="event-decorations-grid">
-            <!-- Rendered dynamically by app.js from eventDecorations -->
-          </div>
-        </div>
-      </div>
-
-      <!-- Restaurant Event Quote Calculator -->
-      <div class="restaurant-event-calc-card" id="restaurant-event-calculator">
-        <div class="calc-header-block">
-          <div class="calc-icon-circle">🧮</div>
-          <div>
-            <h3 class="calc-card-title" data-i18n="calcEventTitle">Instant Event & Lunch Buyout Quote Calculator</h3>
-            <p class="calc-card-subtitle" data-i18n="calcEventSubtitle">Customize your package, guest count (15–40 Pax) & chargeable add-ons to view instant estimate</p>
-          </div>
-        </div>
-
-        <div class="calc-body-grid">
-          <!-- Column 1: Config Form -->
-          <div class="calc-inputs-column">
-            <div class="form-group">
-              <label class="form-label">Occasion / Event Type</label>
-              <select id="calc-event-occasion" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                <option value="Birthday Celebration" selected>🎂 Birthday Celebration (Kids / Adults)</option>
-                <option value="Anniversary Celebration">💖 Milestone Anniversary Celebration</option>
-                <option value="Engagement, Ring Ceremony & Roka">💍 Engagement, Ring Ceremony & Roka (Sakhar Puda / Sagai)</option>
-                <option value="Baby Shower (Dohale Jevan)">👶 Baby Shower (Dohale Jevan / Godh Bharai)</option>
-                <option value="Corporate Meeting / Seminar">💼 Corporate Conference, Seminar or Doctor Meet</option>
-                <option value="Kitty Party / High-Tea">☕ Kitty Party & Afternoon High-Tea Gathering</option>
-                <option value="Family Get-Together">👨‍👩‍👧‍👦 Family Get-Together & Reunion</option>
-                <option value="Full Restaurant Lunch Buyout">👑 Full Restaurant Lunch Buyout (Max 40 Pax • 12:00 PM - 3:00 PM)</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Selected Pure Veg Package</label>
-              <select id="calc-event-package" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                <option value="pkg-engagement">💍 Engagement, Ring Ceremony & Roka Feast (₹580/pax • Min 20 Pax)</option>
-                <option value="pkg-corporate">💼 Corporate Conference & Seminar Meet (₹380/pax • Min 15 Pax)</option>
-                <option value="pkg-birthday" selected>🎉 Birthday & Anniversary Celebration (₹320/pax • Min 15 Pax)</option>
-                <option value="pkg-hightea">☕ Kitty Party & High-Tea Gathering (₹220/pax • Min 15 Pax)</option>
-                <option value="pkg-lunch-buyout">👑 Full Restaurant Lunch Buyout (₹490/pax • Max 40 Pax)</option>
-              </select>
-            </div>
-
-            <div class="form-group-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-              <div class="form-group">
-                <label class="form-label">Number of Guests (Pax)</label>
-                <div style="display: flex; align-items: center; gap: 8px;">
-                  <button type="button" class="pax-step-btn" onclick="window.app ? window.app.stepPax(-1) : null">-</button>
-                  <input type="number" id="calc-event-pax" class="form-input text-center font-bold" value="20" min="15" max="40" oninput="window.app ? window.app.calculateRestaurantEventQuote() : null" style="font-size: 1.1rem; text-align: center;">
-                  <button type="button" class="pax-step-btn" onclick="window.app ? window.app.stepPax(1) : null">+</button>
-                </div>
-                <span class="form-hint" id="pax-range-hint">Pride Pure Veg AC Restaurant capacity: 15 to 40 Pax max</span>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Dining Time Slot</label>
-                <select id="calc-event-timeslot" class="form-select" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <option value="Lunch (12:00 PM - 3:00 PM)" selected>☀️ Lunch Party (12:00 PM – 3:00 PM Only • Strictly Subject to Availability)</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Preferred Event Date</label>
-              <input type="date" id="calc-event-date" class="form-input" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-            </div>
-
-            <!-- Optional Add-ons -->
-            <div class="form-group">
-              <label class="form-label">Optional Theme Decor & AV Add-ons (Chargeable / Customizable)</label>
-              <div class="addons-checkbox-grid">
-                <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-balloon-decor" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>🎈 Theme Balloon & Cake Table Decor (+ ₹1,500 flat)</span>
-                </label>
-                <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-floral-ring" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>💍 Floral Ring & Stage Backdrop (+ ₹2,800 flat)</span>
-                </label>
-                <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-baby-decor" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>👶 Baby Shower (Dohale Jevan) Decor (+ ₹2,200 flat)</span>
-                </label>
-                <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-projector" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>💼 HD Projector & Wide Screen AV Setup (+ ₹1,500 flat)</span>
-                </label>
-                <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-sound-mic" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>🎤 Party Sound System & 2 Wireless Mics (+ ₹999 flat)</span>
-                </label>
-                <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-live-chaat" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>🥟 Live Pani Puri / Chaat Counter (+ ₹45 / pax)</span>
-                </label>
-                <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-extra-sweet" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>🍨 Extra Premium Sweet / Ice Cream Cup (+ ₹35 / pax)</span>
-                </label>
-                <label class="addon-checkbox-item">
-                  <input type="checkbox" id="addon-cold-drinks" onchange="window.app ? window.app.calculateRestaurantEventQuote() : null">
-                  <span>🥤 Unlimited Soft Drinks / Cold Beverages (+ ₹30 / pax)</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Guest Contact for 1-Tap Booking Dispatch (Auto-filled) -->
-            <div class="form-group event-contact-box" style="margin-top: 14px; background: rgba(213, 183, 122, 0.08); border: 1px dashed rgba(213, 183, 122, 0.35); padding: 12px 14px; border-radius: var(--radius-sm);">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <label class="form-label" style="margin-bottom: 0; font-size: 0.78rem; font-weight: 800; color: var(--champagne-gold);">👤 Your Contact Details (Auto-filled)</label>
-                <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <input type="text" id="calc-event-guest-name" class="form-input" placeholder="Your Name (e.g. Amit Patil)">
-                <input type="tel" id="calc-event-guest-phone" class="form-input" placeholder="WhatsApp Number" maxlength="10">
-              </div>
-            </div>
-          </div>
-
-          <!-- Column 2: Quote Summary & WhatsApp Dispatch -->
-          <div class="calc-summary-column">
-            <div class="summary-box">
-              <div class="summary-badge" id="event-quote-tier-badge">GOLD CELEBRATION FEAST</div>
-              <div class="summary-head-rate">
-                <span class="rate-currency">₹</span>
-                <span class="rate-val" id="event-effective-rate">420</span>
-                <span class="rate-unit">/ person</span>
-              </div>
-
-              <div class="summary-breakdown-list">
-                <div class="breakdown-row">
-                  <span>Guests:</span>
-                  <strong id="summary-pax-count">20 Pax</strong>
-                </div>
-                <div class="breakdown-row">
-                  <span>Time Slot:</span>
-                  <strong id="summary-slot-name">Lunch (12:00 PM - 3:00 PM)</strong>
-                </div>
-                <div class="breakdown-row">
-                  <span>Base Menu Total:</span>
-                  <span id="summary-base-total">₹ 8,400</span>
-                </div>
-                <div class="breakdown-row" id="summary-addons-row" style="display: none;">
-                  <span>Selected Add-ons:</span>
-                  <span id="summary-addons-total">+ ₹ 0</span>
-                </div>
-                <div class="breakdown-row hall-rent-row">
-                  <span>Restaurant Venue Charge:</span>
-                  <strong style="color: #2E7D32;">FREE (No Venue Fee)</strong>
-                </div>
-              </div>
-
-              <div class="summary-grand-total-wrap">
-                <div class="grand-label">Estimated Total Quote</div>
-                <div class="grand-amount" id="event-grand-total">₹ 8,400/-</div>
-                <div class="grand-taxes-note">+ 5% GST Applicable • 100% Pure Veg Refined Oil</div>
-              </div>
-
-              <div class="summary-actions">
-                <button type="button" class="btn-event-whatsapp" onclick="window.app ? window.app.sendRestaurantEventWhatsAppInquiry() : null">
-                  <span>📲 Send Quote to WhatsApp & Book</span>
-                </button>
-                <a href="tel:09325375802" class="btn-event-call">
-                  <span>📞 Call Front Desk: 09325375802</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Terms & Conditions (Page 8) -->
-    <section class="terms-section">
-      <div class="terms-card">
-        <div class="terms-card-header">
-          <span class="terms-icon">📜</span>
-          <h3 class="terms-title" data-i18n="termsTitle">TERMS & CONDITIONS</h3>
-        </div>
-        <ul class="terms-list">
-          <li data-i18n="term1"><strong>5% GST</strong> is applicable on all menu orders.</li>
-          <li data-i18n="term2"><strong>Right of Admission</strong> is Reserved by the Establishment.</li>
-          <li data-i18n="term3">All food items are subject to availability in the kitchen.</li>
-          <li data-i18n="term4">Orders, once placed, cannot be canceled.</li>
-          <li data-i18n="term5">Please allow a minimum of <strong>20 minutes</strong> for your fresh order to be served.</li>
-          <li data-i18n="term6">Outside food and beverages are strictly not allowed.</li>
-          <li data-i18n="term7">Smoking and drinking are strictly prohibited on hotel premises.</li>
-        </ul>
-        <div class="thank-you-signature">
-          <span data-i18n="thankYou">We Thank You for Visiting Hotel Premier! 🙏</span>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ================================================================ -->
-  <!-- SECTION B: HOTEL PREMIER SHOWCASE, ROOM TARIFFS & BULK DEALS     -->
-  <!-- ================================================================ -->
-  <div id="section-hotel-container" style="display: none;">
-    <!-- Hotel Hero Showcase -->
-    <section class="hotel-hero-section">
-      <div class="hotel-hero-card">
-        <div class="hero-badge" data-i18n="hotelHeroBadge">WELCOME TO BHUSAWAL</div>
-        <h1 class="hotel-main-title" data-i18n="hotelHeroTitle">Hotel Premier – A Home in Bhusawal</h1>
-        <p class="hotel-main-subtitle" data-i18n="hotelHeroSubtitle">
-          Luxury AC Rooms, 24-Hour Check-out, and 100% Pride Pure Veg Dining near Nahata College
-        </p>
-        <div class="hotel-highlights-pills">
-          <span class="highlight-pill">🚆 5 Mins from Bhusawal Railway Station</span>
-          <span class="highlight-pill">⏰ 24 Hours Flexible Check-Out</span>
-          <span class="highlight-pill">🌱 Pride Pure Veg AC Restaurant</span>
-          <span class="highlight-pill">🚗 Free Bus & Car Parking</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Official Room Tariff Card (Matching Reference Design) -->
-    <section class="hotel-tariff-section">
-      <div class="official-tariff-card">
-        <div class="tariff-crest-header">
-          <div class="tariff-brand-name">HOTEL PREMIER</div>
-          <div class="tariff-brand-sub">A HOME IN BHUSAWAL</div>
-          <h2 class="tariff-main-heading">Room Tariff</h2>
-          <div class="tariff-gold-divider"></div>
-        </div>
-
-        <div class="tariff-table-wrapper">
-          <table class="tariff-table">
-            <thead>
-              <tr>
-                <th class="tariff-th-room" data-i18n="tariffThRoom">ROOM TYPE</th>
-                <th class="tariff-th-plan" data-i18n="tariffThPlanRO">ROOM ONLY</th>
-                <th class="tariff-th-plan" data-i18n="tariffThPlanCP">ROOM WITH BREAKFAST</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- AC DELUXE ROOMS -->
-              <tr class="tariff-category-row">
-                <td colspan="3">
-                  <div class="tariff-cat-title">
-                    <span data-i18n="tariffDeluxeTitle">AC DELUXE ROOMS (12 Rooms Total)</span>
-                    <span class="tariff-cat-bed">4 Queen Bed + 8 Twin Beds</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="tariff-occ-label" data-i18n="tariffSingle">SINGLE OCCUPANCY</td>
-                <td class="tariff-price-val">₹ 1800/-</td>
-                <td class="tariff-price-val">₹ 2000/-</td>
-              </tr>
-              <tr>
-                <td class="tariff-occ-label" data-i18n="tariffDouble">DOUBLE OCCUPANCY</td>
-                <td class="tariff-price-val">₹ 2000/-</td>
-                <td class="tariff-price-val">₹ 2400/-</td>
-              </tr>
-
-              <!-- AC SUPER DELUXE ROOMS -->
-              <tr class="tariff-category-row">
-                <td colspan="3">
-                  <div class="tariff-cat-title">
-                    <span data-i18n="tariffSuperDeluxeTitle">AC SUPER DELUXE ROOMS (2 Rooms Only)</span>
-                    <span class="tariff-cat-bed">👑 King Size Luxury Bed</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="tariff-occ-label" data-i18n="tariffSingle">SINGLE OCCUPANCY</td>
-                <td class="tariff-price-val">₹ 2000/-</td>
-                <td class="tariff-price-val">₹ 2200/-</td>
-              </tr>
-              <tr>
-                <td class="tariff-occ-label" data-i18n="tariffDouble">DOUBLE OCCUPANCY</td>
-                <td class="tariff-price-val">₹ 2200/-</td>
-                <td class="tariff-price-val">₹ 2600/-</td>
-              </tr>
-
-              <!-- EXTRA BED / MATTRESS TARIFF -->
-              <tr class="tariff-category-row tariff-extra-bed-header">
-                <td colspan="3">
-                  <div class="tariff-cat-title">
-                    <span data-i18n="tariffExtraBedHeader" style="color: var(--champagne-gold); font-weight: 800;">🛏️ EXTRA BED / MATTRESS TARIFF</span>
-                    <span class="tariff-cat-bed" data-i18n="tariffExtraBedSub">Per Person / Per Night</span>
-                  </div>
-                </td>
-              </tr>
-              <tr class="tariff-extra-bed-row">
-                <td class="tariff-occ-label" data-i18n="tariffExtraBedLabel" style="font-weight: 800; color: #FFFFFF;">EXTRA BED (ALL ROOMS)</td>
-                <td class="tariff-price-val" style="font-weight: 900; color: var(--gold-light);">₹ 300/-</td>
-                <td class="tariff-price-val" style="font-weight: 900; color: var(--gold-light);">₹ 500/-</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="tariff-footer-box">
-          <div class="tariff-extra-bed-callout" data-i18n="tariffExtraBedCallout">
-            🛏️ <strong>EXTRA BED / MATTRESS CHARGE:</strong> ₹300/- (Room Only) • ₹500/- (With Breakfast) per night
-          </div>
-          <div class="tariff-inclusive-badge">
-            <span class="dot-gold">●</span>
-            <span data-i18n="tariffInclusive">INCLUSIVE OF ALL TAXES</span>
-          </div>
-          <div class="tariff-checkout-highlight" data-i18n="tariffCheckout">
-            CHECK OUT: 24 HOURS
-          </div>
-          <div class="tariff-fine-print" data-i18n="tariffNotice">
-            Tariffs are subject to change without prior notice. Complimentary breakfast served from fixed menu in Pride Pure Veg Restaurant. Extra bed available subject to room space.
-          </div>
-
-          <!-- Direct 1-Tap Tariff Action Buttons -->
-          <div class="tariff-actions-row">
-            <a href="https://wa.me/919325375802?text=Hello%20Hotel%20Premier,%20I%20would%20like%20to%20inquire%20and%20book%20a%20room%20based%20on%20the%20published%20Room%20Tariff." 
-               target="_blank" 
-               rel="noopener noreferrer" 
-               class="btn-tariff-book-wa"
-               title="Book via WhatsApp">
-              <span>📲 Instant Room Booking on WhatsApp</span>
-            </a>
-            <a href="tel:09325375802" class="btn-tariff-call" title="Call Front Desk">
-              <span>📞 Call Front Desk (09325375802)</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Room Categories Gallery -->
-    <section class="hotel-rooms-gallery-section">
-      <div class="section-heading-block">
-        <h2 class="section-main-heading" data-i18n="roomsSectionTitle">Explore Our 14 Luxury Rooms</h2>
-        <p class="section-sub-heading" data-i18n="roomsSectionSub">2 Super Deluxe King Bed + 4 Deluxe Queen Bed + 8 Deluxe Twin Beds</p>
-      </div>
-
-      <div class="hotel-rooms-grid">
-        <!-- Room 1: AC Super Deluxe (2 Rooms) -->
-        <div class="hotel-room-card">
-          <div class="room-card-media" id="room-media-ac-super-deluxe">
-            <div class="room-carousel-container" id="room-carousel-ac-super-deluxe">
-              <div class="room-carousel-track" id="room-track-ac-super-deluxe">
-                <!-- Slides rendered dynamically by JavaScript -->
-              </div>
-              <span class="room-slide-counter" id="room-counter-ac-super-deluxe">1 / 3</span>
-              <button class="room-carousel-btn prev" onclick="window.app.prevRoomSlide('ac-super-deluxe', event)">‹</button>
-              <button class="room-carousel-btn next" onclick="window.app.nextRoomSlide('ac-super-deluxe', event)">›</button>
-              <div class="room-carousel-dots" id="room-dots-ac-super-deluxe"></div>
-            </div>
-            <span class="room-type-badge">👑 2 Rooms Only • King Bed</span>
-          </div>
-          <div class="room-card-body">
-            <div class="room-card-header">
-              <h3 class="room-title" data-i18n="roomSuperDeluxeTitle">AC Super Deluxe Room</h3>
-              <div class="room-starting-rate">From <strong>₹ 2000/-</strong></div>
-            </div>
-            <p class="room-desc">
-              Exclusive luxury room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service. <strong>Can comfortably accommodate 2 to 3 Extra Beds (₹300/bed)</strong>. <strong>2 Rooms in Property</strong>.
-            </p>
-            <div class="room-amenity-tags">
-              <span>👑 King Bed</span>
-              <span>🏢 2 Rooms Only</span>
-              <span>🛏️ Fits 2–3 Extra Beds</span>
-              <span>❄️ Split AC</span>
-              <span>📶 Free Wi-Fi</span>
-              <span>📺 Smart TV</span>
-              <span>🚿 24x7 Hot Water</span>
-              <span>🍽️ Room Service (7:30 AM – 10:30 PM)</span>
-            </div>
-            <div class="room-pricing-pills">
-              <div class="price-pill-item">
-                <span>Single:</span> <strong>₹2000</strong> (RO) / <strong>₹2200</strong> (CP)
-              </div>
-              <div class="price-pill-item">
-                <span>Double:</span> <strong>₹2200</strong> (RO) / <strong>₹2600</strong> (CP)
-              </div>
-              <div class="price-pill-item" style="background: rgba(212, 144, 28, 0.15); border-color: var(--gold-primary);">
-                <span>Extra Bed:</span> <strong>₹300/-</strong> (Fits 2–3 Beds)
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Room 2: AC Deluxe - Queen Bed (4 Rooms) -->
-        <div class="hotel-room-card">
-          <div class="room-card-media" id="room-media-ac-deluxe-queen">
-            <div class="room-carousel-container" id="room-carousel-ac-deluxe-queen">
-              <div class="room-carousel-track" id="room-track-ac-deluxe-queen">
-                <!-- Slides rendered dynamically by JavaScript -->
-              </div>
-              <span class="room-slide-counter" id="room-counter-ac-deluxe-queen">1 / 3</span>
-              <button class="room-carousel-btn prev" onclick="window.app.prevRoomSlide('ac-deluxe-queen', event)">‹</button>
-              <button class="room-carousel-btn next" onclick="window.app.nextRoomSlide('ac-deluxe-queen', event)">›</button>
-              <div class="room-carousel-dots" id="room-dots-ac-deluxe-queen"></div>
-            </div>
-            <span class="room-type-badge">🛏️ 4 Rooms • Queen Bed (Fits 1 Extra Bed)</span>
-          </div>
-          <div class="room-card-body">
-            <div class="room-card-header">
-              <h3 class="room-title" data-i18n="roomQueenTitle">AC Deluxe (Queen Bed)</h3>
-              <div class="room-starting-rate">From <strong>₹ 1800/-</strong></div>
-            </div>
-            <p class="room-desc">
-              Spacious & peaceful AC room featuring a comfortable Queen Bed, workstation, wardrobe, and modern bath amenities. <strong>Can accommodate 1 Extra Bed (₹300/bed)</strong>. <strong>4 Rooms in Property</strong>.
-            </p>
-            <div class="room-amenity-tags">
-              <span>🛏️ Queen Bed</span>
-              <span>🏢 4 Rooms</span>
-              <span>🛏️ Fits 1 Extra Bed</span>
-              <span>❄️ AC</span>
-              <span>📶 Free Wi-Fi</span>
-              <span>📺 LED TV</span>
-              <span>🚿 Hot Water</span>
-              <span>🍽️ Room Service (7:30 AM – 10:30 PM)</span>
-            </div>
-            <div class="room-pricing-pills">
-              <div class="price-pill-item">
-                <span>Single:</span> <strong>₹1800</strong> (RO) / <strong>₹2000</strong> (CP)
-              </div>
-              <div class="price-pill-item">
-                <span>Double:</span> <strong>₹2000</strong> (RO) / <strong>₹2400</strong> (CP)
-              </div>
-              <div class="price-pill-item" style="background: rgba(212, 144, 28, 0.15); border-color: var(--gold-primary);">
-                <span>Extra Bed:</span> <strong>₹300/-</strong> (Fits 1 Bed)
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Room 3: AC Deluxe - Twin Beds (8 Rooms) -->
-        <div class="hotel-room-card">
-          <div class="room-card-media" id="room-media-ac-deluxe-twin">
-            <div class="room-carousel-container" id="room-carousel-ac-deluxe-twin">
-              <div class="room-carousel-track" id="room-track-ac-deluxe-twin">
-                <!-- Slides rendered dynamically by JavaScript -->
-              </div>
-              <span class="room-slide-counter" id="room-counter-ac-deluxe-twin">1 / 3</span>
-              <button class="room-carousel-btn prev" onclick="window.app.prevRoomSlide('ac-deluxe-twin', event)">‹</button>
-              <button class="room-carousel-btn next" onclick="window.app.nextRoomSlide('ac-deluxe-twin', event)">›</button>
-              <div class="room-carousel-dots" id="room-dots-ac-deluxe-twin"></div>
-            </div>
-            <span class="room-type-badge">🛏️🛏️ 8 Rooms • Twin Beds (Fits 2 Extra Beds)</span>
-          </div>
-          <div class="room-card-body">
-            <div class="room-card-header">
-              <h3 class="room-title" data-i18n="roomTwinTitle">AC Deluxe (Twin Beds)</h3>
-              <div class="room-starting-rate">From <strong>₹ 1800/-</strong></div>
-            </div>
-            <p class="room-desc">
-              Comfortable AC room with 2 separate Single Beds, perfect for wedding guests, Barat groups, and colleagues. <strong>Can comfortably accommodate 2 Extra Beds (₹300/bed)</strong>. <strong>8 Rooms in Property</strong>.
-            </p>
-            <div class="room-amenity-tags">
-              <span>🛏️🛏️ 2 Separate Beds</span>
-              <span>🏢 8 Rooms</span>
-              <span>🛏️ Fits 2 Extra Beds</span>
-              <span>❄️ AC</span>
-              <span>📶 Free Wi-Fi</span>
-              <span>📺 LED TV</span>
-              <span>🚿 Hot Water</span>
-              <span>🍽️ Room Service (7:30 AM – 10:30 PM)</span>
-            </div>
-            <div class="room-pricing-pills">
-              <div class="price-pill-item">
-                <span>Single:</span> <strong>₹1800</strong> (RO) / <strong>₹2000</strong> (CP)
-              </div>
-              <div class="price-pill-item">
-                <span>Double:</span> <strong>₹2000</strong> (RO) / <strong>₹2400</strong> (CP)
-              </div>
-              <div class="price-pill-item" style="background: rgba(212, 144, 28, 0.15); border-color: var(--gold-primary);">
-                <span>Extra Bed:</span> <strong>₹300/-</strong> (Fits 2 Beds)
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Advance Bulk Booking Deals for Marriages & Events -->
-    <section class="marriage-bulk-deals-section">
-      <div class="bulk-deals-banner">
-        <div class="bulk-deals-badge" data-i18n="marriageBadge">SPECIAL MARRIAGE & EVENT OFFERS</div>
-        <h2 class="bulk-deals-title" data-i18n="marriageDealsTitle">💍 Advance Bulk Room Booking Deals</h2>
-        <p class="bulk-deals-desc" data-i18n="marriageDealsSubtitle">
-          Planning a Wedding, Reception, Barat, or Corporate Event in Bhusawal? Get Up to 20% OFF on Advance Group Bookings & Full Hotel Buyouts!
-        </p>
-
-        <!-- Dynamic Editable Bulk Tiers Container -->
-        <div class="bulk-tiers-grid" id="bulk-deals-tiers-container">
-          <!-- Rendered dynamically from window.app.getBulkDeals() -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Bulk Booking Calculator -->
-    <section class="bulk-calculator-section">
-      <div class="calculator-card">
-        <div class="calculator-header">
-          <span class="calc-icon">🧮</span>
-          <div>
-            <h3 class="calc-title" data-i18n="calcTitle">Bulk Booking Instant Quote Calculator</h3>
-            <p class="calc-subtitle" data-i18n="calcSubtitle">Select your event requirements below to calculate instant discounted estimate</p>
-          </div>
-        </div>
-
-        <div class="calculator-body">
-          <div class="calc-form-grid">
-            <div class="calc-form-group">
-              <label class="form-label" data-i18n="calcEventType">Event Type</label>
-              <select id="calc-event-type" class="form-select" onchange="window.app.calculateBulkQuote()">
-                <option value="Wedding / Marriage Barat" data-i18n="calcWedding">💍 Wedding / Marriage Barat</option>
-                <option value="Family Function / Gathering" data-i18n="calcFamily">👨‍👩‍👧‍👦 Family Function / Gathering</option>
-                <option value="Corporate / Business Event" data-i18n="calcCorporate">💼 Corporate / Business Event</option>
-                <option value="Tour / Pilgrimage Group" data-i18n="calcPilgrimage">🚌 Tour / Pilgrimage Group</option>
-              </select>
-            </div>
-
-            <div class="calc-form-group">
-              <label class="form-label" data-i18n="calcRoomType">Preferred Room Category</label>
-              <select id="calc-room-type" class="form-select" onchange="window.app.calculateBulkQuote()">
-                <option value="full-14">👑 Full Hotel Buyout (All 14 Rooms: 2 Super Deluxe + 4 Queen + 8 Twin)</option>
-                <option value="twin-8">🛏️🛏️ AC Deluxe Twin Beds Block (8 Rooms - 2 Separate Beds)</option>
-                <option value="queen-4">🛏️ AC Deluxe Queen Bed Block (4 Rooms - Queen Bed)</option>
-                <option value="super-2">👑 AC Super Deluxe Suite (2 Rooms - King Bed)</option>
-                <option value="deluxe-mixed">AC Deluxe Selection (5 to 12 Rooms)</option>
-              </select>
-            </div>
-
-            <div class="calc-form-group">
-              <label class="form-label" data-i18n="calcNumRooms">Number of Rooms Needed (Total 14 Available)</label>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <input type="range" id="calc-rooms-slider" min="2" max="14" value="14" style="flex-grow: 1; accent-color: var(--gold-primary);" oninput="document.getElementById('calc-rooms-number').value = this.value; window.app.calculateBulkQuote();">
-                <input type="number" id="calc-rooms-number" value="14" min="2" max="14" class="form-input" style="width: 70px; text-align: center; font-weight: 800;" oninput="document.getElementById('calc-rooms-slider').value = this.value; window.app.calculateBulkQuote();">
-              </div>
-            </div>
-
-            <div class="calc-form-group">
-              <label class="form-label" data-i18n="calcExtraBeds">Extra Beds Needed (₹300 / bed / night)</label>
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <input type="number" id="calc-extra-beds" value="0" min="0" max="26" class="form-input" style="width: 70px; text-align: center; font-weight: 800;" oninput="window.app.calculateBulkQuote()">
-                <span style="font-size: 0.73rem; color: var(--text-muted); line-height: 1.25;">Max 26 extra beds across 14 rooms (Super Deluxe fits 2–3, Twin fits 2, Queen fits 1)</span>
-              </div>
-            </div>
-
-            <div class="calc-form-group">
-              <label class="form-label" data-i18n="calcNumNights">Number of Nights Stay</label>
-              <select id="calc-num-nights" class="form-select" onchange="window.app.calculateBulkQuote()">
-                <option value="1">1 Night (24 Hours Stay)</option>
-                <option value="2">2 Nights (Wedding Weekend)</option>
-                <option value="3">3 Nights (Full Marriage Ceremony)</option>
-                <option value="4">4+ Nights Stay</option>
-              </select>
-            </div>
-
-            <div class="calc-form-group" style="grid-column: 1 / -1;">
-              <label class="form-label" data-i18n="calcPlan">Meal Plan Preference</label>
-              <div class="plan-options-row">
-                <label class="plan-radio-label">
-                  <input type="radio" name="calc-plan" value="RO" onchange="window.app.calculateBulkQuote()">
-                  <span>Room Only Plan (RO)</span>
-                </label>
-                <label class="plan-radio-label">
-                  <input type="radio" name="calc-plan" value="CP" checked onchange="window.app.calculateBulkQuote()">
-                  <span>Room + Complimentary Pride Pure Veg Breakfast (CP)</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Organizer Contact for 1-Tap Bulk Dispatch (Auto-filled) -->
-            <div class="calc-form-group" style="grid-column: 1 / -1; background: rgba(213, 183, 122, 0.08); border: 1px dashed rgba(213, 183, 122, 0.35); padding: 12px 14px; border-radius: var(--radius-sm); margin-top: 4px;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                <label class="form-label" style="margin-bottom: 0; font-size: 0.78rem; font-weight: 800; color: var(--champagne-gold);">👤 Organizer Contact Details (Auto-filled)</label>
-                <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
-              </div>
-              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <input type="text" id="calc-bulk-guest-name" class="form-input" placeholder="Organizer / Guest Name">
-                <input type="tel" id="calc-bulk-guest-phone" class="form-input" placeholder="WhatsApp Number" maxlength="10">
-              </div>
-            </div>
-          </div>
-
-          <!-- Quote Result Box -->
-          <div class="quote-result-card" id="quote-result-box">
-            <div class="quote-row">
-              <span data-i18n="calcTotalEst">Estimated Regular Tariff:</span>
-              <span class="regular-strike-price" id="quote-regular-price">₹ 72,000/-</span>
-            </div>
-            <div class="quote-row" id="quote-extra-bed-row" style="display: none; color: var(--champagne-gold);">
-              <span>🛏️ Extra Beds (<span id="quote-extra-bed-count">0</span> Beds @ ₹300/night):</span>
-              <span id="quote-extra-bed-amount" style="font-weight: 700;">+ ₹ 0/-</span>
-            </div>
-            <div class="quote-row discount-row">
-              <span>Applied Group Discount (<span id="quote-discount-tag">20% OFF</span>):</span>
-              <span class="savings-amount" id="quote-savings-amount">- ₹ 14,400/-</span>
-            </div>
-            <div class="quote-row total-deal-row">
-              <div>
-                <div class="deal-final-label" data-i18n="calcDiscountedEst">Special Bulk Booking Price:</div>
-                <div class="deal-inclusive-sub" data-i18n="calcInclusiveNotice">✔ Inclusive of all taxes • 24-Hour Check-Out</div>
-              </div>
-              <div class="deal-final-price" id="quote-final-price">₹ 57,600/-</div>
-            </div>
-
-            <div class="quote-action-buttons">
-              <button class="btn-whatsapp-book" onclick="window.app.sendBulkWhatsAppInquiry()">
-                <span data-i18n="calcBookWhatsapp">📲 Inquire & Book on WhatsApp</span>
-              </button>
-              <a href="tel:09325375802" class="btn-call-direct" title="Call Front Desk">
-                <span data-i18n="calcCallDirect">📞 Call Front Desk (09325375802)</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Hotel Amenities Grid -->
-    <section class="hotel-amenities-section">
-      <div class="section-heading-block">
-        <h2 class="section-main-heading" data-i18n="amenitiesTitle">Hotel Premier Amenities & Features</h2>
-        <p class="section-sub-heading" data-i18n="amenitiesSubtitle">Designed for comfort, convenience, and warm Khandeshi hospitality</p>
-      </div>
-
-      <div class="amenities-grid">
-        <div class="amenity-item-card">
-          <span class="amenity-icon">🌱</span>
-          <h4 class="amenity-title">Pride Pure Veg Restaurant</h4>
-          <p class="amenity-desc">100% pure veg North & South Indian, Khandeshi and Chinese dining on-premises.</p>
-        </div>
-        <div class="amenity-item-card">
-          <span class="amenity-icon">⏰</span>
-          <h4 class="amenity-title">24-Hour Check-Out</h4>
-          <p class="amenity-desc">Enjoy maximum flexibility with full 24-hour stay calculated from check-in.</p>
-        </div>
-        <div class="amenity-item-card">
-          <span class="amenity-icon">🚗</span>
-          <h4 class="amenity-title">Safe & Secure Parking</h4>
-          <p class="amenity-desc">Spacious on-premises parking for personal cars, wedding buses & tourist vehicles.</p>
-        </div>
-        <div class="amenity-item-card">
-          <span class="amenity-icon">📶</span>
-          <h4 class="amenity-title">High-Speed Free Wi-Fi</h4>
-          <p class="amenity-desc">Seamless wireless internet connectivity across all rooms and public areas.</p>
-        </div>
-        <div class="amenity-item-card">
-          <span class="amenity-icon">🛗</span>
-          <h4 class="amenity-title">Elevator / Lift Access</h4>
-          <p class="amenity-desc">Senior-citizen friendly lift access to all room floors.</p>
-        </div>
-        <div class="amenity-item-card">
-          <span class="amenity-icon">⚡</span>
-          <h4 class="amenity-title">Generator Power Backup</h4>
-          <p class="amenity-desc">Uninterrupted power supply for continuous AC, lighting and hot water.</p>
-        </div>
-        <div class="amenity-item-card">
-          <span class="amenity-icon">🍽️</span>
-          <h4 class="amenity-title">Room Service: 7:30 AM – 10:30 PM</h4>
-          <p class="amenity-desc">Prompt fresh kitchen room service from morning breakfast till late dinner. (Front Desk 24x7 Open)</p>
-        </div>
-        <div class="amenity-item-card">
-          <span class="amenity-icon">🚆</span>
-          <h4 class="amenity-title">Prime Junction Location</h4>
-          <p class="amenity-desc">Near Nahata College, Jamner Road — 5 mins from Bhusawal Railway Junction.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Hotel Location & GPS Navigation Hub with Live QR Code -->
-    <section class="hotel-location-section" id="hotel-location-section">
-      <div class="location-hub-card">
-        <div class="section-heading-block" style="margin-bottom: 8px;">
-          <h2 class="section-main-heading" data-i18n="locationTitle">Location & Easy GPS Access</h2>
-          <p class="section-sub-heading" data-i18n="locationSubtitle">
-            Conveniently located on Jamner Road near Nahata College – 5 mins from Bhusawal Railway Station
-          </p>
-        </div>
-
-        <div class="location-grid-layout">
-          <!-- Column 1: QR Code & Navigation Buttons -->
-          <div class="location-qr-box">
-            <h3 class="location-qr-title" data-i18n="locationQRTitle">Scan for Instant GPS Navigation</h3>
-            <p class="location-qr-sub" data-i18n="locationQRSub">
-              Scan with any phone camera or Google Lens to open Google Maps directions directly
-            </p>
-
-            <div class="location-qr-mount-container" id="location-qr-mount">
-              <!-- Location QR Code Generated Dynamically -->
-            </div>
-
-            <div class="location-action-btns">
-              <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201" target="_blank" rel="noopener noreferrer" class="btn-open-maps" data-i18n="btnOpenMaps">
-                🗺️ Open Live Google Maps Navigation
-              </a>
-              <button class="btn-share-driver" onclick="window.app ? window.app.shareLocationOnWhatsApp() : null" data-i18n="btnShareDriver">
-                📲 Share Location with Driver (WhatsApp)
-              </button>
-            </div>
-          </div>
-
-          <!-- Column 2: Landmark Distances & Nearby Connectivity -->
-          <div class="distances-table-card">
-            <h3 class="distances-title" data-i18n="distancesTitle">Nearby Landmarks & Key Transit Distances</h3>
-            <div class="distances-list" id="hotel-distances-list">
-              <!-- Rendered dynamically from window.HOTEL_PREMIER_HOTEL_DATA.locationDistances -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ==================== GUEST FEEDBACK & DINING RATINGS SECTION ==================== -->
-  <section class="guest-feedback-section" id="guest-feedback-section">
-    <div class="feedback-container">
-      <div class="feedback-badge" data-i18n="feedbackBadge">⭐ YOUR VOICE MATTERS</div>
-      <h2 class="feedback-title" data-i18n="feedbackTitle">Rate Your Dining Experience</h2>
-      <p class="feedback-subtitle" data-i18n="feedbackSubtitle">
-        Help us uphold Bhusawal's highest culinary standards. Tell us how we served you today at Pride Pure Veg!
+      <h1 class="sanctuary-hero-title">HOTEL PREMIER</h1>
+      <p class="sanctuary-hero-statement">
+        "A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."
       </p>
 
-      <!-- Public Platform Rating Social Proof & 1-Tap Reviews (Option 4) -->
-      <div class="public-review-cta-card">
-        <div class="public-review-header">
-          <span class="public-review-tag" data-i18n="publicReviewsTag">VERIFIED 4.2★ PUBLIC REVIEWS</span>
-          <h3 class="public-review-title" data-i18n="publicReviewsTitle">Love Dining With Us? Rate Us Publicly!</h3>
-          <p class="public-review-sub" data-i18n="publicReviewsSubtitle">
-            Your 5-star review helps travelers and Bhusawal families discover authentic pure veg dining. 1-tap direct rating on your preferred platform:
-          </p>
+      <div class="sanctuary-hero-highlights">
+        <span class="sanctuary-pill">⏰ 24-Hour Flexible Check-Out</span>
+        <span class="sanctuary-pill">🚆 5 Mins / 2 KM from Railway Junction</span>
+        <span class="sanctuary-pill">🌱 Pride Pure Veg AC Dining</span>
+        <span class="sanctuary-pill">🚗 Free Private Bus & Car Parking</span>
+      </div>
+
+      <!-- Concierge Fast Action Cards -->
+      <div class="concierge-quick-grid">
+        <div class="concierge-quick-card" onclick="window.app ? window.app.openConciergeBookingModal() : null">
+          <span class="quick-card-icon">🛎️</span>
+          <div class="quick-card-title">Reserve Suite</div>
+          <div class="quick-card-sub">Instant Booking</div>
         </div>
-        <div class="public-review-actions-grid">
-          <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener" class="public-platform-btn btn-google">
-            <span class="platform-icon">
-              <svg viewBox="0 0 24 24" width="22" height="22"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
-            </span>
-            <div class="platform-meta">
-              <div class="platform-score">4.2 ★★★★★</div>
-              <div class="platform-title" data-i18n="rateOnGoogle">Rate on Google Reviews</div>
+        <div class="concierge-quick-card" onclick="window.app ? window.app.scrollToSection('section-dine') : null">
+          <span class="quick-card-icon">🍽️</span>
+          <div class="quick-card-title">Pride Dining</div>
+          <div class="quick-card-sub">Editorial Menu</div>
+        </div>
+        <div class="concierge-quick-card" onclick="window.app ? window.app.scrollToSection('section-celebrate') : null">
+          <span class="quick-card-icon">💍</span>
+          <div class="quick-card-title">Marriage Deals</div>
+          <div class="quick-card-sub">Up to 20% Off</div>
+        </div>
+        <div class="concierge-quick-card" onclick="window.location.href='tel:09325375802'">
+          <span class="quick-card-icon">📞</span>
+          <div class="quick-card-title">Call Concierge</div>
+          <div class="quick-card-sub">24x7 Front Desk</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- 1. THE 14 BOUTIQUE SUITES (STAY)                                  -->
+  <!-- ================================================================ -->
+  <section class="section-wrapper" id="section-stay">
+    <div class="editorial-header-block">
+      <span class="editorial-eyebrow">The Accommodations</span>
+      <h2 class="editorial-title">14 Air-Conditioned Boutique Suites</h2>
+      <div class="editorial-divider"></div>
+      <p class="editorial-subtitle">
+        Curated for corporate professionals, visiting delegates, wedding groups, and family transit stays. 2 Super Deluxe King Suites + 4 Deluxe Queen Suites + 8 Deluxe Twin Bed Suites.
+      </p>
+    </div>
+
+    <div class="rooms-showcase-grid">
+      <!-- Suite 1: AC Super Deluxe King Room (2 Rooms Only) -->
+      <article class="boutique-room-card" id="room-card-ac-super-deluxe">
+        <div class="room-card-photo-panel">
+          <div class="room-carousel-container" id="room-carousel-ac-super-deluxe">
+            <div class="room-carousel-track" id="room-track-ac-super-deluxe">
+              <!-- Rendered dynamically by app.js -->
             </div>
-            <span class="platform-arrow">➔</span>
+            <div class="room-photo-overlay"></div>
+            <span class="room-tier-badge">👑 Exclusive Suite • 2 Rooms Only</span>
+            <span class="room-slide-counter" id="room-counter-ac-super-deluxe">1 / 3</span>
+            <button class="room-carousel-btn prev" onclick="window.app.prevRoomSlide('ac-super-deluxe', event)" aria-label="Previous Photo">‹</button>
+            <button class="room-carousel-btn next" onclick="window.app.nextRoomSlide('ac-super-deluxe', event)" aria-label="Next Photo">›</button>
+          </div>
+        </div>
+
+        <div class="room-card-info-panel">
+          <div>
+            <div class="room-header-row">
+              <h3 class="room-suite-title">AC Super Deluxe Room</h3>
+              <div class="room-starting-tariff">
+                <div class="tariff-label">From</div>
+                <div class="tariff-val">₹ 2,000/-</div>
+              </div>
+            </div>
+            <p class="room-editorial-desc">
+              Our premier executive sanctuary featuring an expansive King Size Luxury Bed, silent split air-conditioning, large smart LED TV, hot water, and attentive Pride Pure Veg room service. <strong>Accommodates 2 to 3 Extra Beds (₹300/bed)</strong>.
+            </p>
+
+            <div class="room-amenity-curation">
+              <span class="room-amenity-tag">👑 King Luxury Bed</span>
+              <span class="room-amenity-tag">🏢 Total 2 Rooms</span>
+              <span class="room-amenity-tag">🛏️ Fits 2–3 Extra Beds</span>
+              <span class="room-amenity-tag">❄️ Silent Split AC</span>
+              <span class="room-amenity-tag">📶 High-Speed Wi-Fi</span>
+              <span class="room-amenity-tag">📺 Smart LED TV</span>
+              <span class="room-amenity-tag">🚿 24x7 Hot Water</span>
+              <span class="room-amenity-tag">🍽️ Room Service</span>
+            </div>
+
+            <div class="room-rate-breakdown">
+              <div class="rate-row">
+                <span class="rate-occ">Single Occupancy:</span>
+                <span class="rate-prices"><strong>₹2,000</strong> (Room Only) / <strong>₹2,200</strong> (With Breakfast)</span>
+              </div>
+              <div class="rate-row">
+                <span class="rate-occ">Double Occupancy:</span>
+                <span class="rate-prices"><strong>₹2,200</strong> (Room Only) / <strong>₹2,600</strong> (With Breakfast)</span>
+              </div>
+              <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
+                <span class="rate-occ">Extra Bed / Mattress:</span>
+                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (With Breakfast)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="room-action-row">
+            <button class="btn-reserve-suite" onclick="window.app ? window.app.openConciergeBookingModal('ac-super-deluxe') : null">
+              <span>🛎️ Reserve Super Deluxe Suite →</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Suite 2: AC Deluxe Queen Bed (4 Rooms) -->
+      <article class="boutique-room-card" id="room-card-ac-deluxe-queen">
+        <div class="room-card-photo-panel">
+          <div class="room-carousel-container" id="room-carousel-ac-deluxe-queen">
+            <div class="room-carousel-track" id="room-track-ac-deluxe-queen">
+              <!-- Rendered dynamically by app.js -->
+            </div>
+            <div class="room-photo-overlay"></div>
+            <span class="room-tier-badge">🛏️ 4 Rooms Available • Queen Bed</span>
+            <span class="room-slide-counter" id="room-counter-ac-deluxe-queen">1 / 3</span>
+            <button class="room-carousel-btn prev" onclick="window.app.prevRoomSlide('ac-deluxe-queen', event)" aria-label="Previous Photo">‹</button>
+            <button class="room-carousel-btn next" onclick="window.app.nextRoomSlide('ac-deluxe-queen', event)" aria-label="Next Photo">›</button>
+          </div>
+        </div>
+
+        <div class="room-card-info-panel">
+          <div>
+            <div class="room-header-row">
+              <h3 class="room-suite-title">AC Deluxe (Queen Bed)</h3>
+              <div class="room-starting-tariff">
+                <div class="tariff-label">From</div>
+                <div class="tariff-val">₹ 1,800/-</div>
+              </div>
+            </div>
+            <p class="room-editorial-desc">
+              Peaceful and elegant air-conditioned room featuring a plush Queen Size Bed, workstation, wardrobe, and modern bath amenities. Designed for executives, traveling couples, and pilgrimage stays. <strong>Accommodates 1 Extra Bed (₹300/bed)</strong>.
+            </p>
+
+            <div class="room-amenity-curation">
+              <span class="room-amenity-tag">🛏️ Queen Size Bed</span>
+              <span class="room-amenity-tag">🏢 Total 4 Rooms</span>
+              <span class="room-amenity-tag">🛏️ Fits 1 Extra Bed</span>
+              <span class="room-amenity-tag">❄️ Powerful AC</span>
+              <span class="room-amenity-tag">📶 High-Speed Wi-Fi</span>
+              <span class="room-amenity-tag">📺 Flat Screen TV</span>
+              <span class="room-amenity-tag">🚿 24x7 Hot Water</span>
+              <span class="room-amenity-tag">🍽️ Room Service</span>
+            </div>
+
+            <div class="room-rate-breakdown">
+              <div class="rate-row">
+                <span class="rate-occ">Single Occupancy:</span>
+                <span class="rate-prices"><strong>₹1,800</strong> (Room Only) / <strong>₹2,000</strong> (With Breakfast)</span>
+              </div>
+              <div class="rate-row">
+                <span class="rate-occ">Double Occupancy:</span>
+                <span class="rate-prices"><strong>₹2,000</strong> (Room Only) / <strong>₹2,400</strong> (With Breakfast)</span>
+              </div>
+              <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
+                <span class="rate-occ">Extra Bed / Mattress:</span>
+                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (With Breakfast)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="room-action-row">
+            <button class="btn-reserve-suite" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-queen') : null">
+              <span>🛎️ Reserve Queen Suite →</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Suite 3: AC Deluxe Twin Beds (8 Rooms) -->
+      <article class="boutique-room-card" id="room-card-ac-deluxe-twin">
+        <div class="room-card-photo-panel">
+          <div class="room-carousel-container" id="room-carousel-ac-deluxe-twin">
+            <div class="room-carousel-track" id="room-track-ac-deluxe-twin">
+              <!-- Rendered dynamically by app.js -->
+            </div>
+            <div class="room-photo-overlay"></div>
+            <span class="room-tier-badge">🛏️🛏️ 8 Rooms Available • Twin Beds</span>
+            <span class="room-slide-counter" id="room-counter-ac-deluxe-twin">1 / 3</span>
+            <button class="room-carousel-btn prev" onclick="window.app.prevRoomSlide('ac-deluxe-twin', event)" aria-label="Previous Photo">‹</button>
+            <button class="room-carousel-btn next" onclick="window.app.nextRoomSlide('ac-deluxe-twin', event)" aria-label="Next Photo">›</button>
+          </div>
+        </div>
+
+        <div class="room-card-info-panel">
+          <div>
+            <div class="room-header-row">
+              <h3 class="room-suite-title">AC Deluxe (Twin Beds)</h3>
+              <div class="room-starting-tariff">
+                <div class="tariff-label">From</div>
+                <div class="tariff-val">₹ 1,800/-</div>
+              </div>
+            </div>
+            <p class="room-editorial-desc">
+              Popular air-conditioned suite with 2 separate Single Beds, perfect for wedding attendees, Barat groups, and corporate colleagues. <strong>Accommodates 2 Extra Beds (₹300/bed)</strong>.
+            </p>
+
+            <div class="room-amenity-curation">
+              <span class="room-amenity-tag">🛏️🛏️ 2 Separate Beds</span>
+              <span class="room-amenity-tag">🏢 Total 8 Rooms</span>
+              <span class="room-amenity-tag">🛏️ Fits 2 Extra Beds</span>
+              <span class="room-amenity-tag">❄️ Powerful AC</span>
+              <span class="room-amenity-tag">📶 High-Speed Wi-Fi</span>
+              <span class="room-amenity-tag">📺 Flat Screen TV</span>
+              <span class="room-amenity-tag">🚿 24x7 Hot Water</span>
+              <span class="room-amenity-tag">🍽️ Room Service</span>
+            </div>
+
+            <div class="room-rate-breakdown">
+              <div class="rate-row">
+                <span class="rate-occ">Single Occupancy:</span>
+                <span class="rate-prices"><strong>₹1,800</strong> (Room Only) / <strong>₹2,000</strong> (With Breakfast)</span>
+              </div>
+              <div class="rate-row">
+                <span class="rate-occ">Double Occupancy:</span>
+                <span class="rate-prices"><strong>₹2,000</strong> (Room Only) / <strong>₹2,400</strong> (With Breakfast)</span>
+              </div>
+              <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
+                <span class="rate-occ">Extra Bed / Mattress:</span>
+                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (With Breakfast)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="room-action-row">
+            <button class="btn-reserve-suite" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-twin') : null">
+              <span>🛎️ Reserve Twin Suite →</span>
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- 2. LUXURY RATE CARD & TARIFFS                                     -->
+  <!-- ================================================================ -->
+  <section class="section-wrapper" id="section-tariffs">
+    <div class="official-tariff-card">
+      <div class="tariff-crest-header">
+        <div class="tariff-brand-name">HOTEL PREMIER</div>
+        <div class="tariff-brand-sub">A HOME IN BHUSAWAL</div>
+        <h2 class="tariff-main-heading">Official Room Tariff Card</h2>
+      </div>
+
+      <div class="tariff-table-wrapper">
+        <table class="tariff-table">
+          <thead>
+            <tr>
+              <th>ROOM CATEGORY</th>
+              <th class="tariff-th-plan">ROOM ONLY (RO)</th>
+              <th class="tariff-th-plan">WITH BREAKFAST (CP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- AC DELUXE ROOMS -->
+            <tr class="tariff-category-row">
+              <td colspan="3">
+                <div class="tariff-cat-title">
+                  <span>AC DELUXE ROOMS (12 Rooms Total)</span>
+                  <span class="tariff-cat-bed">4 Queen Bed + 8 Twin Beds</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tariff-occ-label">Single Occupancy</td>
+              <td class="tariff-price-val">₹ 1,800/-</td>
+              <td class="tariff-price-val">₹ 2,000/-</td>
+            </tr>
+            <tr>
+              <td class="tariff-occ-label">Double Occupancy</td>
+              <td class="tariff-price-val">₹ 2,000/-</td>
+              <td class="tariff-price-val">₹ 2,400/-</td>
+            </tr>
+
+            <!-- AC SUPER DELUXE ROOMS -->
+            <tr class="tariff-category-row">
+              <td colspan="3">
+                <div class="tariff-cat-title">
+                  <span>AC SUPER DELUXE SUITES (2 Rooms Only)</span>
+                  <span class="tariff-cat-bed">👑 King Size Luxury Bed</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tariff-occ-label">Single Occupancy</td>
+              <td class="tariff-price-val">₹ 2,000/-</td>
+              <td class="tariff-price-val">₹ 2,200/-</td>
+            </tr>
+            <tr>
+              <td class="tariff-occ-label">Double Occupancy</td>
+              <td class="tariff-price-val">₹ 2,200/-</td>
+              <td class="tariff-price-val">₹ 2,600/-</td>
+            </tr>
+
+            <!-- EXTRA BED / MATTRESS -->
+            <tr class="tariff-category-row tariff-extra-bed-header">
+              <td colspan="3">
+                <div class="tariff-cat-title">
+                  <span>🛏️ EXTRA BED / MATTRESS CHARGE</span>
+                  <span class="tariff-cat-bed">Per Person / Per Night</span>
+                </div>
+              </td>
+            </tr>
+            <tr class="tariff-extra-bed-row">
+              <td class="tariff-occ-label">Extra Bed (All Room Categories)</td>
+              <td class="tariff-price-val">₹ 300/-</td>
+              <td class="tariff-price-val">₹ 500/-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tariff-footer-box">
+        <div class="tariff-policies-grid">
+          <div class="tariff-policy-item">
+            <div class="policy-title">Flexible Check-Out</div>
+            <div class="policy-desc">Full 24-Hours from check-in</div>
+          </div>
+          <div class="tariff-policy-item">
+            <div class="policy-title">Taxation</div>
+            <div class="policy-desc">Inclusive of all taxes</div>
+          </div>
+          <div class="tariff-policy-item">
+            <div class="policy-title">Complimentary Breakfast</div>
+            <div class="policy-desc">7:30 AM – 10:30 AM in Pride AC</div>
+          </div>
+          <div class="tariff-policy-item">
+            <div class="policy-title">Room Service</div>
+            <div class="policy-desc">7:30 AM – 10:30 PM daily</div>
+          </div>
+        </div>
+
+        <div class="tariff-actions-row">
+          <a href="https://wa.me/919325375802?text=Hello%20Hotel%20Premier,%20I%20would%20like%20to%20inquire%20and%20book%20a%20room%20based%20on%20the%20published%20Room%20Tariff." target="_blank" rel="noopener noreferrer" class="btn-tariff-book-wa">
+            <span>📲 Instant Booking on WhatsApp</span>
           </a>
-          <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener" class="public-platform-btn btn-zomato">
-            <span class="platform-emoji">🍅</span>
-            <div class="platform-meta">
-              <div class="platform-score">Top Pure Veg</div>
-              <div class="platform-title" data-i18n="rateOnZomato">Rate on Zomato</div>
-            </div>
-            <span class="platform-arrow">➔</span>
-          </a>
-          <a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener" class="public-platform-btn btn-swiggy">
-            <span class="platform-emoji">🛵</span>
-            <div class="platform-meta">
-              <div class="platform-score">4.2 ★ (1,600+)</div>
-              <div class="platform-title" data-i18n="rateOnSwiggy">4.2★ on Swiggy</div>
-            </div>
-            <span class="platform-arrow">➔</span>
+          <a href="tel:09325375802" class="btn-tariff-call">
+            <span>📞 Call Front Desk: 09325375802</span>
           </a>
         </div>
-        <div class="public-review-divider">
-          <span data-i18n="orInternalFeedback">OR SUBMIT IN-HOUSE GUEST FEEDBACK DIRECT TO MANAGEMENT</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- 3. EDITORIAL DINING AT PRIDE PURE VEG (DINE)                      -->
+  <!-- ================================================================ -->
+  <section class="section-wrapper" id="section-dine">
+    <div class="editorial-header-block">
+      <span class="editorial-eyebrow">Pride Pure Veg AC Restaurant</span>
+      <h2 class="editorial-title">Dining at Hotel Premier</h2>
+      <div class="editorial-divider"></div>
+      <p class="editorial-subtitle">
+        100% Pure Vegetarian Culinary Artistry. Authentic North Indian Gravies, Sizzling Clay Oven Tandoor, Khandeshi Delicacies & Fresh Breakfast.
+      </p>
+    </div>
+
+    <div class="editorial-dining-container">
+      <!-- Signature Creations Editorial Showcase -->
+      <div class="signature-creations-wrapper">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px;">
+          <div>
+            <h3 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--burgundy-deep);">Chef's Signature Creations</h3>
+            <p style="font-size: 0.78rem; color: var(--text-muted-dark);">Prepared fresh to order in standard refined oil</p>
+          </div>
+          <span style="font-size: 0.70rem; color: var(--brass-antique); font-weight: 700;">★ 4.2+ Rated Favorites</span>
+        </div>
+
+        <div class="signature-grid">
+          <!-- Signature 1: Premier Maharaja Thali -->
+          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('dish-thali-maharaja') : null">
+            <div class="signature-photo-wrap">
+              <img src="assets/menu-images/THALIS/PREMIER%20MAHARAJA%20THALI.jfif" alt="Premier Maharaja Royal Thali" class="signature-dish-img" loading="lazy" onerror="this.src='assets/menu-images/THALIS/SIGNATURE%20THALI.avif'">
+              <span class="signature-badge-overlay">👑 The Royal Feast</span>
+            </div>
+            <div class="signature-card-body">
+              <div>
+                <div class="signature-title-row">
+                  <h4 class="signature-dish-title">Premier Maharaja Royal Thali</h4>
+                  <div class="signature-dish-price">₹280</div>
+                </div>
+                <p class="signature-dish-desc">
+                  An authentic multi-course pure vegetarian banquet: 2 Premium Paneer & Veg Gravies, Dal Fry, Jeera Rice, 3 Butter Rotis / Parathas, Sweet, Raita, Papad & Salad.
+                </p>
+              </div>
+              <div class="signature-footer-row">
+                <span class="signature-veg-seal">🌱 100% Pure Veg Feast</span>
+                <button class="signature-inquire-btn" type="button">View Details →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signature 2: Paneer Butter Masala -->
+          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('dish-paneer-butter-masala') : null">
+            <div class="signature-photo-wrap">
+              <img src="assets/menu-images/PANEER%20SPECIALITIES/PANEER%20BUTTER%20MASALA.avif" alt="Paneer Butter Masala" class="signature-dish-img" loading="lazy">
+              <span class="signature-badge-overlay">🔥 House Favorite</span>
+            </div>
+            <div class="signature-card-body">
+              <div>
+                <div class="signature-title-row">
+                  <h4 class="signature-dish-title">Paneer Butter Masala</h4>
+                  <div class="signature-dish-price">₹220</div>
+                </div>
+                <p class="signature-dish-desc">
+                  Succulent cubes of fresh cottage cheese simmered in our rich, velvety tomato butter gravy, finished with fresh cream, roasted fenugreek, and aromatic spices.
+                </p>
+              </div>
+              <div class="signature-footer-row">
+                <span class="signature-veg-seal">🌱 Pride Kitchen Specialty</span>
+                <button class="signature-inquire-btn" type="button">View Details →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signature 3: Sizzling Tandoor Platter -->
+          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('dish-tandoor-platter') : null">
+            <div class="signature-photo-wrap">
+              <img src="assets/menu-images/TANDOOR%20CLASSICS/TANDOOR%20PLATTER.avif" alt="Tandoor Platter" class="signature-dish-img" loading="lazy">
+              <span class="signature-badge-overlay">🍢 Clay Oven Classic</span>
+            </div>
+            <div class="signature-card-body">
+              <div>
+                <div class="signature-title-row">
+                  <h4 class="signature-dish-title">Grand Tandoor Platter</h4>
+                  <div class="signature-dish-price">₹290</div>
+                </div>
+                <p class="signature-dish-desc">
+                  An assortment of smoky charcoal-grilled favorites: Paneer Tikka, Hara Bhara Kabab, Veg Seekh Kabab & Aloo Tikka, served with mint chutney and onion lachha.
+                </p>
+              </div>
+              <div class="signature-footer-row">
+                <span class="signature-veg-seal">🌱 Charcoal Grilled</span>
+                <button class="signature-inquire-btn" type="button">View Details →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Signature 4: Veg Dum Biryani -->
+          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('dish-veg-dum-biryani') : null">
+            <div class="signature-photo-wrap">
+              <img src="assets/menu-images/RICE%20&%20BIRYANI%20FIESTA/VEG%20DUM%20BIRYANI.avif" alt="Veg Dum Biryani" class="signature-dish-img" loading="lazy">
+              <span class="signature-badge-overlay">🍚 Slow Cooked Dum</span>
+            </div>
+            <div class="signature-card-body">
+              <div>
+                <div class="signature-title-row">
+                  <h4 class="signature-dish-title">Aromatic Veg Dum Biryani</h4>
+                  <div class="signature-dish-price">₹190</div>
+                </div>
+                <p class="signature-dish-desc">
+                  Slow-simmered fragrant long-grain basmati rice layered with garden vegetables, saffron milk, whole spices, and caramelized onions. Served with spiced veg raita.
+                </p>
+              </div>
+              <div class="signature-footer-row">
+                <span class="signature-veg-seal">🌱 Handi Dum Cooked</span>
+                <button class="signature-inquire-btn" type="button">View Details →</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <form id="dining-feedback-form" onsubmit="window.app ? window.app.submitGuestFeedback(event) : false;">
-        <!-- Star Rating Selector -->
-        <div class="feedback-rating-wrap">
-          <div class="feedback-rating-label">How was your meal overall?</div>
+      <!-- Concierge Dish Search & Quick Filters -->
+      <div class="dining-search-filter-bar">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="menu-search-input" placeholder="Search dishes (e.g. Paneer, Biryani, Chai, Shev Bhaji, Soup)...">
+          <button class="clear-search-btn" id="clear-search-btn">✕</button>
+        </div>
+
+        <div class="quick-filters" id="quick-filters-container">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- View 1: Culinary Collections Grid -->
+      <div id="home-categories-view">
+        <div class="category-cards-grid" id="category-cards-grid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- View 2: Active Category Dishes View -->
+      <div id="dishes-section-view" style="display: none;">
+        <div class="section-nav-bar" id="section-nav-bar">
+          <button class="back-to-categories-btn" onclick="window.app.showHomeCategories()">
+            <span>⬅️</span>
+            <span id="back-to-sections-text" data-i18n="backToSections">All Sections</span>
+          </button>
+          <div class="active-category-info" id="active-category-info" onclick="window.app.toggleMenuSectionDrawer()" style="cursor: pointer;" title="Tap to switch section">
+            <h3 class="active-category-title" id="active-category-title">Paneer Specialties</h3>
+            <span class="active-category-hindi" id="active-category-hindi">शाही पनीर व्यंजन ▾</span>
+          </div>
+          <div class="active-category-count" id="active-category-count">14 Items</div>
+        </div>
+
+        <!-- Sub-Section Multi-Photo Slideshow Banner -->
+        <div id="section-slideshow-container" style="display: none; margin-bottom: 18px;"></div>
+
+        <!-- 2-Column Side-by-Side Dish Grid -->
+        <main class="menu-container">
+          <div id="menu-items-grid">
+            <!-- Dish cards rendered dynamically -->
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- 4. CELEBRATE AT HOTEL PREMIER (BANQUETS & GROUPS)                 -->
+  <!-- ================================================================ -->
+  <section class="section-wrapper" id="section-celebrate">
+    <div class="celebrate-hero-banner">
+      <span class="editorial-eyebrow" style="color: var(--brass-light);">Pride Pure Veg Banquets</span>
+      <h2 class="celebrate-title">Celebrate at Hotel Premier</h2>
+      <p class="celebrate-subtitle">
+        From intimate ring ceremonies, birthdays, and anniversaries to exclusive corporate lunches and wedding group stays. Hosted in Pride Pure Veg AC Restaurant (Max 40 Pax).
+      </p>
+    </div>
+
+    <!-- Advance Marriage Group Blocks -->
+    <div class="editorial-header-block" style="margin-bottom: 24px;">
+      <span class="editorial-eyebrow">Wedding & Group Blocks</span>
+      <h3 class="editorial-title" style="font-size: 1.5rem;">Advance Marriage Room Deals</h3>
+      <div class="editorial-divider"></div>
+      <p class="editorial-subtitle">Exclusive group savings for weddings, Barat stays, and large family celebrations in Bhusawal.</p>
+    </div>
+
+    <div class="bulk-tiers-grid" id="bulk-deals-tiers-container">
+      <!-- Rendered dynamically by app.js from bulkMarriageDeals -->
+    </div>
+
+    <!-- Group & Event Calculator -->
+    <div class="calculator-card" style="background: #FFFFFF; border: 1.5px solid var(--ivory-border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-ambient);">
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+        <span style="font-size: 1.6rem;">🧮</span>
+        <div>
+          <h4 style="font-family: var(--font-royal); font-size: 1.10rem; color: var(--burgundy-deep);">Instant Group & Marriage Quote Calculator</h4>
+          <p style="font-size: 0.78rem; color: var(--text-muted-dark);">Select your room requirements to calculate instant group discount</p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+          <div class="form-group">
+            <label class="form-label">Occasion / Event Type</label>
+            <select id="calc-event-type" class="form-select" onchange="window.app.calculateBulkQuote()">
+              <option value="Wedding / Marriage Barat">💍 Wedding / Marriage Barat</option>
+              <option value="Family Function / Gathering">👨‍👩‍👧‍👦 Family Function / Gathering</option>
+              <option value="Corporate / Business Event">💼 Corporate / Business Event</option>
+              <option value="Tour / Pilgrimage Group">🚌 Tour / Pilgrimage Group</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Room Category</label>
+            <select id="calc-room-type" class="form-select" onchange="window.app.calculateBulkQuote()">
+              <option value="full-14">👑 Full Hotel Buyout (All 14 Rooms: 2 Super + 4 Queen + 8 Twin)</option>
+              <option value="twin-8">🛏️🛏️ AC Deluxe Twin Beds Block (8 Rooms - 2 Beds)</option>
+              <option value="queen-4">🛏️ AC Deluxe Queen Bed Block (4 Rooms)</option>
+              <option value="super-2">👑 AC Super Deluxe Suite (2 Rooms - King Bed)</option>
+              <option value="deluxe-mixed">AC Deluxe Selection (5 to 12 Rooms)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Rooms Needed (Max 14)</label>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="range" id="calc-rooms-slider" min="2" max="14" value="14" style="flex-grow: 1; accent-color: var(--burgundy-primary);" oninput="document.getElementById('calc-rooms-number').value = this.value; window.app.calculateBulkQuote();">
+              <input type="number" id="calc-rooms-number" value="14" min="2" max="14" class="form-input" style="width: 70px; text-align: center; font-weight: 800;" oninput="document.getElementById('calc-rooms-slider').value = this.value; window.app.calculateBulkQuote();">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Extra Beds (₹300/bed)</label>
+            <input type="number" id="calc-extra-beds" value="0" min="0" max="26" class="form-input" style="text-align: center; font-weight: 800;" oninput="window.app.calculateBulkQuote()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Nights Stay</label>
+            <select id="calc-num-nights" class="form-select" onchange="window.app.calculateBulkQuote()">
+              <option value="1">1 Night (24-Hour Stay)</option>
+              <option value="2">2 Nights (Wedding Weekend)</option>
+              <option value="3">3 Nights (Full Ceremony)</option>
+              <option value="4">4+ Nights Stay</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Meal Plan</label>
+            <select id="calc-plan-select" class="form-select" onchange="window.app.calculateBulkQuote()">
+              <option value="CP" selected>With Pride Pure Veg Breakfast (CP)</option>
+              <option value="RO">Room Only (RO)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Organizer Contact for 1-Tap Bulk Dispatch -->
+        <div style="background: #FAF7F0; border: 1px dashed rgba(197, 168, 128, 0.4); padding: 12px 14px; border-radius: var(--radius-sm);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep);">👤 Organizer Details (Auto-filled from Profile)</span>
+            <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <input type="text" id="calc-bulk-guest-name" class="form-input" placeholder="Organizer Name">
+            <input type="tel" id="calc-bulk-guest-phone" class="form-input" placeholder="WhatsApp Number" maxlength="10">
+          </div>
+        </div>
+
+        <!-- Quote Result Box -->
+        <div class="wizard-summary-card" id="quote-result-box">
+          <div class="summary-row">
+            <span>Regular Published Tariff:</span>
+            <span style="text-decoration: line-through; color: #8C9BAE;" id="quote-regular-price">₹ 72,000/-</span>
+          </div>
+          <div class="summary-row" id="quote-extra-bed-row" style="display: none; color: var(--burgundy-primary);">
+            <span>Extra Beds (<span id="quote-extra-bed-count">0</span> Beds):</span>
+            <span id="quote-extra-bed-amount">+ ₹ 0/-</span>
+          </div>
+          <div class="summary-row" style="color: #16A34A; font-weight: 700;">
+            <span>Group Privilege (<span id="quote-discount-tag">20% OFF</span>):</span>
+            <span id="quote-savings-amount">- ₹ 14,400/-</span>
+          </div>
+          <div class="summary-grand-row">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep); text-transform: uppercase;">Special Bulk Booking Tariff</div>
+              <div style="font-size: 0.68rem; color: #16A34A; font-weight: 600;">✔ Inclusive of all taxes • 24-Hour Check-Out</div>
+            </div>
+            <strong id="quote-final-price">₹ 57,600/-</strong>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 14px;">
+            <button class="btn-tariff-book-wa" style="flex: 1;" onclick="window.app.sendBulkWhatsAppInquiry()">
+              <span>📲 Inquire & Book Group on WhatsApp</span>
+            </button>
+            <a href="tel:09325375802" class="btn-tariff-call" style="flex: 0.8;">
+              <span>📞 Call Front Desk</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- 5. THE CONCIERGE GUIDE: EXPLORE BHUSAWAL                          -->
+  <!-- ================================================================ -->
+  <section class="section-wrapper" id="section-explore">
+    <div class="editorial-header-block">
+      <span class="editorial-eyebrow">The Concierge Guide</span>
+      <h2 class="editorial-title">Explore Bhusawal & Khandesh</h2>
+      <div class="editorial-divider"></div>
+      <p class="editorial-subtitle">
+        Hotel Premier is your central starting point on Jamner Road near Nahata College — 5 minutes from Bhusawal Railway Junction and the gateway to Ajanta Caves.
+      </p>
+    </div>
+
+    <div class="explore-concierge-card">
+      <div class="location-grid-layout">
+        <div class="location-qr-box">
+          <span style="font-size: 1.4rem;">🗺️</span>
+          <h3 style="font-family: var(--font-royal); font-size: 1.05rem; color: var(--burgundy-deep); margin: 6px 0;">Instant GPS Navigation</h3>
+          <p style="font-size: 0.76rem; color: var(--text-muted-dark); line-height: 1.4;">
+            Scan with any phone camera to launch live Google Maps directions directly to Hotel Premier
+          </p>
+
+          <div class="location-qr-mount-container" id="location-qr-mount">
+            <!-- Location QR Code generated dynamically -->
+          </div>
+
+          <div class="location-action-btns">
+            <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201" target="_blank" rel="noopener noreferrer" class="btn-open-maps">
+              <span>🗺️ Open Google Maps Navigation</span>
+            </a>
+            <button class="btn-share-driver" onclick="window.app ? window.app.shareLocationOnWhatsApp() : null">
+              <span>📲 Share Location with Driver (WhatsApp)</span>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-royal); font-size: 1.05rem; color: var(--burgundy-deep); margin-bottom: 12px;">Transit Proximity & Key Destinations</h3>
+          <div class="distances-list" id="hotel-distances-list">
+            <!-- Rendered dynamically by app.js from locationDistances -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================ -->
+  <!-- 6. GUEST REVIEWS & VOICES (MAJOR REDESIGN)                        -->
+  <!-- ================================================================ -->
+  <section class="guest-feedback-section" id="guest-feedback-section">
+    <div class="feedback-container">
+      <div style="text-align: center;">
+        <span class="feedback-badge">⭐ YOUR EXPERIENCE MATTERS</span>
+        <h2 class="feedback-title">Write a Review</h2>
+        <p class="feedback-subtitle">
+          "Enjoyed your stay or dining experience? Tell us about it."
+        </p>
+      </div>
+
+      <!-- In-House Primary Review Submission Card -->
+      <div class="review-composer-card">
+        <form id="dining-feedback-form" onsubmit="window.app ? window.app.submitGuestFeedback(event) : false;">
           <div class="star-rating-control" id="feedback-star-control">
             <button type="button" class="star-btn active" data-value="1" onclick="window.app ? window.app.setStarRating(1) : null">★</button>
             <button type="button" class="star-btn active" data-value="2" onclick="window.app ? window.app.setStarRating(2) : null">★</button>
@@ -1129,151 +907,292 @@
           </div>
           <div class="rating-verdict" id="feedback-rating-verdict">🌟 5 Stars — Exceptional Dining & Service!</div>
           <input type="hidden" id="feedback-star-val" value="5">
-        </div>
 
-        <!-- Quick Highlight Tags -->
-        <div class="feedback-tags-group">
-          <span class="tag-instruction">What stood out most? (Tap to select)</span>
+          <!-- Highlight Chips -->
           <div class="feedback-tags-list" id="feedback-tags-container">
-            <button type="button" class="feedback-chip active" onclick="this.classList.toggle('active')">🍛 Delicious Taste</button>
-            <button type="button" class="feedback-chip active" onclick="this.classList.toggle('active')">⚡ Fast Service</button>
-            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">✨ Clean & Hygienic</button>
-            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">🌿 Pure Veg / Jain Care</button>
-            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">❄️ Chill AC Ambience</button>
+            <button type="button" class="feedback-chip active" onclick="this.classList.toggle('active')">🍛 Authentic Taste</button>
+            <button type="button" class="feedback-chip active" onclick="this.classList.toggle('active')">🛏️ Peaceful Clean Room</button>
+            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">⚡ Prompt Hospitality</button>
+            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">🌿 Pure Veg Care</button>
+            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">❄️ Chill AC Comfort</button>
             <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">💰 Great Value</button>
           </div>
-        </div>
 
-        <!-- Essential Details: Name, Contact, Region, Table -->
-        <div class="feedback-form-grid">
-          <div class="feedback-input-field">
-            <label>Your Name *</label>
-            <input type="text" id="feedback-guest-name" class="fb-input" placeholder="e.g. Rajesh Patil" required>
+          <!-- Essential Guest Details (Pre-filled from Guest Profile) -->
+          <div class="feedback-form-grid">
+            <div class="feedback-input-field">
+              <label>Your Name *</label>
+              <input type="text" id="feedback-guest-name" class="fb-input" placeholder="e.g. Rajesh Patil" required>
+            </div>
+            <div class="feedback-input-field">
+              <label>WhatsApp / Mobile Number *</label>
+              <input type="tel" id="feedback-guest-phone" class="fb-input" placeholder="e.g. 98220xxxxx" pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+            <div class="feedback-input-field">
+              <label>Your City / Region</label>
+              <select id="feedback-guest-region" class="fb-select">
+                <option value="Bhusawal Local">Bhusawal Local</option>
+                <option value="Jalgaon District">Jalgaon District</option>
+                <option value="Varangaon / Deepnagar">Varangaon / Deepnagar</option>
+                <option value="Transit Passenger (Railway / Highway)">Transit Passenger (Railway / Highway)</option>
+                <option value="Mumbai / Pune / Nashik">Mumbai / Pune / Nashik</option>
+                <option value="Other Region">Other Region</option>
+              </select>
+            </div>
+            <div class="feedback-input-field">
+              <label>Room or Table # (Optional)</label>
+              <input type="text" id="feedback-table-num" class="fb-input" placeholder="e.g. Room 201 or Table 4">
+            </div>
           </div>
-          <div class="feedback-input-field">
-            <label>WhatsApp / Mobile Number *</label>
-            <input type="tel" id="feedback-guest-phone" class="fb-input" placeholder="e.g. 98220xxxxx" pattern="[0-9]{10}" maxlength="10" required>
-          </div>
-          <div class="feedback-input-field">
-            <label>Your Region / City *</label>
-            <select id="feedback-guest-region" class="fb-select" required>
-              <option value="Bhusawal Local">Bhusawal Local</option>
-              <option value="Jalgaon District">Jalgaon District</option>
-              <option value="Varangaon / Deepnagar">Varangaon / Deepnagar</option>
-              <option value="Malkapur / Buldhana">Malkapur / Buldhana</option>
-              <option value="Transit Passenger (Railway / Highway)">Transit Passenger (Railway / Highway)</option>
-              <option value="Mumbai / Pune / Nashik">Mumbai / Pune / Nashik</option>
-              <option value="Other Region">Other Region</option>
-            </select>
-          </div>
-          <div class="feedback-input-field">
-            <label>Table / Room # (Optional)</label>
-            <input type="text" id="feedback-table-num" class="fb-input" placeholder="e.g. Table 4 or Room 201">
-          </div>
-        </div>
 
-        <!-- Suggestions / Comments -->
-        <div class="feedback-input-field full-width">
-          <label>Chef & Management Note / Favorite Dish</label>
-          <textarea id="feedback-guest-comments" class="fb-textarea" rows="2" placeholder="Tell us which dish you loved most or any suggestions for improvement..."></textarea>
-        </div>
+          <div class="feedback-input-field" style="margin-bottom: 18px;">
+            <label>How was your experience? (Comments / Suggestions)</label>
+            <textarea id="feedback-guest-comments" class="fb-textarea" rows="2" placeholder="Tell us which dish or room amenity you loved most..."></textarea>
+          </div>
 
-        <!-- Submit Button -->
-        <div class="feedback-actions-bar">
           <button type="submit" class="feedback-submit-btn">
-            <span>⭐ Submit My Dining Review</span>
+            <span>⭐ Submit Review to Hotel Premier</span>
           </button>
-        </div>
-      </form>
+        </form>
 
-      <!-- Thank You Card (Hidden by Default) -->
-      <div id="feedback-thankyou-card" class="feedback-thankyou-card" style="display: none;">
-        <div class="thankyou-icon">🎉</div>
-        <h3 class="thankyou-title">Thank You For Your Gracious Review!</h3>
-        <p class="thankyou-text">
-          Your feedback has been registered with Hotel Premier management.
-        </p>
-        <div class="thankyou-deal-badge">
-          🎁 Show this screen to steward for 10% Off Dessert or Beverages on your next table booking!
-        </div>
-
-        <!-- 1-Tap Public Review Share in Thank You Card -->
-        <div class="thankyou-public-prompt">
-          <div class="thankyou-prompt-title" data-i18n="thankyouPromptTitle">🌟 Loved your dining experience today?</div>
-          <p class="thankyou-prompt-sub" data-i18n="thankyouPromptSub">
-            Please take 10 seconds to share your 5-Star review on Google or Zomato — it means the world to our kitchen and service team!
+        <!-- Thank You Toast/Card -->
+        <div id="feedback-thankyou-card" style="display: none; text-align: center; padding: 20px 10px;">
+          <div style="font-size: 2.2rem; margin-bottom: 8px;">🙏</div>
+          <h3 style="font-family: var(--font-royal); font-size: 1.3rem; color: var(--brass-light); margin-bottom: 6px;">Thank You For Your Gracious Review!</h3>
+          <p style="font-size: 0.85rem; color: #C0CFDF;">
+            Your feedback has been registered with Hotel Premier management.
           </p>
-          <div class="thankyou-public-actions">
-            <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="thankyou-btn btn-google" data-i18n="thankyouGoogleCta">
-              ⭐ Post 5★ on Google Reviews ➔
-            </a>
-            <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="thankyou-btn btn-zomato" data-i18n="thankyouZomatoCta">
-              🍅 Review on Zomato ➔
-            </a>
-            <a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="thankyou-btn btn-swiggy" data-i18n="thankyouSwiggyCta">
-              🛵 Rate 4.2★ on Swiggy ➔
-            </a>
-          </div>
+        </div>
+      </div>
+
+      <!-- Secondary Understated External Review Platforms -->
+      <div class="external-review-quiet-block">
+        <div class="external-review-quiet-title">Or share your review publicly on:</div>
+        <div class="external-platforms-quiet-row">
+          <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <span>Google Reviews (4.2★)</span>
+          </a>
+          <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <span>Zomato</span>
+          </a>
+          <a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <span>Swiggy</span>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <span>Tripadvisor</span>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== RESTAURANT & HOTEL FOOTER ==================== -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="app-footer">
     <div class="footer-inner">
       <div class="footer-crest-logo">
-        <!-- HP Gold Motif -->
-        <span style="font-family: var(--font-royal); font-size: 1.5rem; font-weight: 900; color: var(--gold-primary);">HOTEL PREMIER</span>
-        <div style="font-family: var(--font-serif); font-size: 0.75rem; color: var(--gold-light); letter-spacing: 2px;" data-i18n="brandTagline">A HOME IN BHUSAWAL</div>
-        <div style="font-family: var(--font-sans); font-size: 0.82rem; font-weight: 700; color: #E2E8F0; margin-top: 5px; letter-spacing: 0.5px;" data-i18n="footerRestaurantDetail">Pride Pure Veg AC Restaurant</div>
-      </div>
-
-      <div class="footer-gst-box">
-        <div class="gst-rate" data-i18n="footerGstRate">5% GST APPLICABLE</div>
-        <div class="gst-sub" data-i18n="footerGstSub">All Food Products From Our Kitchen Are Prepared In Standard Refined Oil</div>
+        <div style="font-family: var(--font-royal); font-size: 1.45rem; font-weight: 900; letter-spacing: 3px; color: var(--brass-light);">HOTEL PREMIER</div>
+        <div style="font-size: 0.72rem; letter-spacing: 2px; color: #A0B3C6; text-transform: uppercase;">A HOME IN BHUSAWAL</div>
+        <div style="font-size: 0.82rem; font-weight: 700; color: #E2E8F0; margin-top: 4px;">Pride Pure Veg AC Restaurant</div>
       </div>
 
       <div class="footer-details-grid">
-        <div class="footer-info-item">
-          <span class="info-icon">📍</span>
-          <span data-i18n="footerAddress">Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201</span>
-        </div>
-        <div class="footer-info-item">
-          <span class="info-icon">📞</span>
-          <span data-i18n="footerPhone">(02582) 240422 / 240396 • 09325375802 • 09370848917</span>
-        </div>
-        <div class="footer-info-item">
-          <span class="info-icon">🏢</span>
-          <span>GSTIN: <strong>27AGZPW6159R1ZP</strong> | HSN NO: <strong>996311</strong></span>
-        </div>
-        <div class="footer-info-item legal-notice">
-          <span data-i18n="footerLegal">A Unit of Sadashiv Enterprises • Subject To Bhusawal Jurisdiction</span>
-        </div>
+        <div>📍 Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201 (5 Mins from Railway Junction)</div>
+        <div>📞 Front Desk: 09325375802 • 09370848917 • (02582) 240422 / 240396</div>
+        <div>🏢 GSTIN: <strong>27AGZPW6159R1ZP</strong> | HSN NO: <strong>996311</strong> • 5% GST Applicable</div>
       </div>
 
-      <!-- Direct WhatsApp Developer Communication Anchor (Phase 7 Refactor) -->
       <div class="footer-developer-credit">
-        <div class="dev-credit-text">
-          Architected & Engineered by <strong>Avinash Hedawoo</strong>
-        </div>
-        <a href="https://wa.me/918983703702?text=Hello,%20I%20have%20a%20query%20regarding%20the%20Hotel%20Premier%20website." 
-           class="dev-whatsapp-btn" 
-           id="dev-whatsapp-direct-link"
-           target="_blank" 
-           rel="noopener noreferrer" 
-           aria-label="Direct WhatsApp Chat with Developer Avinash Hedawoo"
-           title="Direct WhatsApp Query with Developer">
-          <svg class="dev-whatsapp-icon" viewBox="0 0 24 24">
-            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.59 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67ZM9.08 7.38C8.91 7.38 8.64 7.44 8.41 7.69C8.18 7.94 7.53 8.55 7.53 9.79C7.53 11.03 8.43 12.22 8.56 12.39C8.69 12.56 10.33 15.09 12.84 16.17C13.44 16.43 13.9 16.58 14.27 16.7C14.87 16.89 15.42 16.86 15.85 16.8C16.33 16.73 17.33 16.2 17.54 15.61C17.75 15.02 17.75 14.51 17.68 14.41C17.62 14.31 17.45 14.25 17.19 14.12C16.94 13.99 15.69 13.38 15.46 13.3C15.23 13.21 15.06 13.17 14.89 13.42C14.72 13.67 14.24 14.25 14.09 14.41C13.94 14.58 13.79 14.6 13.54 14.47C13.28 14.34 12.47 14.08 11.5 13.22C10.74 12.55 10.23 11.72 10.08 11.47C9.93 11.22 10.06 11.08 10.19 10.95C10.31 10.83 10.45 10.64 10.58 10.49C10.71 10.34 10.75 10.23 10.84 10.06C10.92 9.89 10.88 9.75 10.82 9.62C10.75 9.5 10.28 8.34 10.09 7.86C9.9 7.4 9.71 7.46 9.56 7.45C9.42 7.44 9.25 7.44 9.08 7.38Z"/>
-          </svg>
-          <span class="dev-whatsapp-label">Chat with Developer</span>
+        <div>Architected & Engineered by <strong>Avinash Hedawoo</strong></div>
+        <a href="https://wa.me/918983703702?text=Hello,%20I%20have%20a%20query%20regarding%20the%20Hotel%20Premier%20website." class="dev-whatsapp-btn" target="_blank" rel="noopener noreferrer">
+          <span>💬 Chat with Developer (Avinash)</span>
         </a>
       </div>
     </div>
   </footer>
 
-  <!-- ==================== MODAL 1: DISH DETAIL MODAL ==================== -->
+  <!-- ==================== MODAL: GUIDED CONCIERGE BOOKING WIZARD ==================== -->
+  <div class="modal-backdrop" id="concierge-booking-modal">
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>🛎️</span> <span>Concierge Room Reservation</span>
+        </div>
+        <button class="modal-close-btn" onclick="window.app ? window.app.closeConciergeBookingModal() : null">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-size: 0.82rem; color: var(--text-muted-dark); margin-bottom: 16px;">
+          Reserve your boutique stay at Hotel Premier with transparent published tariffs and 24-Hour flexible check-out.
+        </p>
+
+        <!-- Step 1: Room Selection -->
+        <div class="form-group">
+          <label class="form-label">1. Select Suite Category</label>
+          <select id="booking-room-type" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
+            <option value="ac-super-deluxe">👑 AC Super Deluxe King Suite (From ₹2,000/night)</option>
+            <option value="ac-deluxe-queen" selected>🛏️ AC Deluxe Queen Suite (From ₹1,800/night)</option>
+            <option value="ac-deluxe-twin">🛏️🛏️ AC Deluxe Twin Bed Suite (From ₹1,800/night)</option>
+          </select>
+        </div>
+
+        <!-- Step 2: Check-In Details -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label">2. Check-In Date</label>
+            <input type="date" id="booking-checkin-date" class="form-input" onchange="window.app ? window.app.updateBookingEstimate() : null">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Check-In Time</label>
+            <select id="booking-checkin-time" class="form-select">
+              <option value="12:00 PM (Standard)" selected>12:00 PM (Standard)</option>
+              <option value="Morning Arrival (7:00 AM – 11:00 AM)">Morning (7 AM – 11 AM)</option>
+              <option value="Evening Arrival (4:00 PM – 9:00 PM)">Evening (4 PM – 9 PM)</option>
+              <option value="Night / Late Arrival (Railway Transit)">Late Night (Railway Transit)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 3: Nights & Guests -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+          <div class="form-group">
+            <label class="form-label">Nights</label>
+            <select id="booking-nights" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
+              <option value="1" selected>1 Night</option>
+              <option value="2">2 Nights</option>
+              <option value="3">3 Nights</option>
+              <option value="4">4+ Nights</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Rooms</label>
+            <select id="booking-rooms-count" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
+              <option value="1" selected>1 Room</option>
+              <option value="2">2 Rooms</option>
+              <option value="3">3 Rooms</option>
+              <option value="4">4+ Rooms</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Guests</label>
+            <select id="booking-guests-count" class="form-select">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests</option>
+              <option value="4">4+ Guests</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 4: Meal Plan & Extra Beds -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label">Meal Plan</label>
+            <select id="booking-meal-plan" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
+              <option value="CP" selected>With Pride Breakfast (CP)</option>
+              <option value="RO">Room Only (RO)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Extra Beds (₹300/bed)</label>
+            <select id="booking-extra-beds" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
+              <option value="0" selected>0 Extra Beds</option>
+              <option value="1">1 Extra Bed (+₹300)</option>
+              <option value="2">2 Extra Beds (+₹600)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Step 5: Guest Details (Auto-filled from Profile) -->
+        <div style="background: #FAF7F0; border: 1px dashed rgba(197, 168, 128, 0.4); padding: 12px 14px; border-radius: var(--radius-sm); margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <label class="form-label" style="margin-bottom: 0;">5. Guest Details (Auto-filled)</label>
+            <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <input type="text" id="booking-guest-name" class="form-input" placeholder="Your Name *" required>
+            <input type="tel" id="booking-guest-phone" class="form-input" placeholder="WhatsApp / Mobile *" maxlength="10" required>
+          </div>
+        </div>
+
+        <!-- Step 6: Summary & Dispatch -->
+        <div class="wizard-summary-card">
+          <div class="summary-heading">Reservation Estimate</div>
+          <div class="summary-row">
+            <span>Selected Suite:</span>
+            <strong id="booking-summary-room-name">AC Deluxe (Queen Bed)</strong>
+          </div>
+          <div class="summary-row">
+            <span>Duration:</span>
+            <span id="booking-summary-duration">1 Night • 24-Hr Check-Out</span>
+          </div>
+          <div class="summary-grand-row">
+            <div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep);">Estimated Tariff</div>
+              <div style="font-size: 0.68rem; color: #16A34A; font-weight: 600;">✔ Inclusive of all taxes</div>
+            </div>
+            <strong id="booking-summary-grand-total">₹ 2,400/-</strong>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 14px;">
+            <button class="btn-tariff-book-wa" style="flex: 1;" onclick="window.app ? window.app.dispatchConciergeBooking() : null">
+              <span>📲 Dispatch Reservation via WhatsApp</span>
+            </button>
+            <a href="tel:09325375802" class="btn-tariff-call" style="flex: 0.8;">
+              <span>📞 Call Front Desk</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: GUEST CONCIERGE PROFILE ==================== -->
+  <div class="modal-backdrop" id="guest-profile-modal">
+    <div class="modal-sheet" style="max-width: 480px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>👤</span> <span>Your Concierge Profile</span>
+        </div>
+        <button class="modal-close-btn" onclick="window.app ? window.app.closeGuestProfileModal() : null">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.82rem; color: var(--text-muted-dark); margin-bottom: 16px;">
+          Save your details once to automatically prefill room bookings, dining reviews, and event inquiries across Hotel Premier. Your data stays securely on your phone.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="profile-modal-name" class="form-input" placeholder="e.g. Rajesh Patil">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">WhatsApp / Mobile Number</label>
+          <input type="tel" id="profile-modal-phone" class="form-input" placeholder="e.g. 98220xxxxx" maxlength="10">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">City / Region</label>
+          <input type="text" id="profile-modal-region" class="form-input" placeholder="e.g. Bhusawal, Jalgaon, Pune, Mumbai">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Room or Table Number (If Currently Staying)</label>
+          <input type="text" id="profile-modal-room-table" class="form-input" placeholder="e.g. Room 201 or Table 5">
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button class="feedback-submit-btn" style="flex: 1.2;" onclick="window.app ? window.app.saveGuestProfileFromModal() : null">
+            <span>💾 Save Profile</span>
+          </button>
+          <button class="btn-tariff-call" style="flex: 0.8;" onclick="window.app ? window.app.clearGuestProfile() : null">
+            <span>Clear</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL: DISH DETAIL MODAL ==================== -->
   <div class="modal-backdrop" id="dish-detail-modal">
     <div class="modal-sheet">
       <div class="modal-header">
@@ -1288,12 +1207,12 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL 2: ADMIN CMS DASHBOARD ==================== -->
+  <!-- ==================== MODAL: ADMIN CMS & CRM STUDIO ==================== -->
   <div class="modal-backdrop" id="admin-modal-backdrop">
     <div class="modal-sheet admin-modal-sheet">
       <div class="modal-header">
         <div class="modal-title">
-          <span>⚙️</span> <span>Menu CMS & Table QR Studio</span>
+          <span>⚙️</span> <span>Hotel Premier Admin & CRM Studio</span>
         </div>
         <button class="modal-close-btn" onclick="window.admin ? window.admin.closeAdminModal() : null">✕</button>
       </div>
@@ -1301,26 +1220,27 @@
       <!-- View 1: Auth Screen -->
       <div id="admin-auth-view" style="padding: 32px 18px; text-align: center;">
         <div style="font-size: 2.5rem; margin-bottom: 10px;">🔐</div>
-        <h3 style="font-family: var(--font-serif); color: var(--champagne-gold); margin-bottom: 8px;">Staff Authentication</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
-          Enter Security PIN to edit prices, change dish images, toggle sold out items, or print table QR codes.
+        <h3 style="font-family: var(--font-royal); color: var(--burgundy-deep); margin-bottom: 8px;">Staff & Developer Authentication</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted-dark); margin-bottom: 16px;">
+          Enter Security PIN to access Customer CRM, edit prices, update room photos, or print table QR standees.
         </p>
         <div style="max-width: 280px; margin: 0 auto 16px;">
           <input type="password" id="admin-pin-input" class="form-input" placeholder="Enter PIN (Default: admin123)" style="text-align: center; font-size: 1.1rem; letter-spacing: 2px;" onkeydown="if(event.key==='Enter') window.admin.verifyPin()">
         </div>
-        <button class="btn-primary" style="max-width: 280px; margin: 0 auto;" onclick="window.admin.verifyPin()">
-          Unlock Menu Manager
+        <button class="btn-reserve-suite" style="max-width: 280px; margin: 0 auto;" onclick="window.admin.verifyPin()">
+          Unlock Admin Studio
         </button>
       </div>
 
       <!-- View 2: Dashboard Tabs -->
       <div id="admin-dashboard-view" style="display: none;">
         <div class="admin-nav-tabs">
-          <button class="admin-tab-btn active" data-tab="menu">🍔 Menu & Pricing</button>
+          <button class="admin-tab-btn active" data-tab="crm">👥 Customer CRM</button>
+          <button class="admin-tab-btn" data-tab="menu">🍔 Menu & Pricing</button>
           <button class="admin-tab-btn" data-tab="rooms">🏨 Room Photos & Deals</button>
-          <button class="admin-tab-btn" data-tab="slides">🖼️ Slides Editor (Hero & Sub-Sections)</button>
+          <button class="admin-tab-btn" data-tab="slides">🖼️ Slides Editor</button>
           <button class="admin-tab-btn" data-tab="qr">📲 Table QR Studio</button>
-          <button class="admin-tab-btn" data-tab="backup">💾 100% Safe Backup & Restore</button>
+          <button class="admin-tab-btn" data-tab="backup">💾 Master Data Backup</button>
         </div>
 
         <div class="modal-body" id="admin-tab-content" style="padding: 16px;">
@@ -1330,14 +1250,14 @@
     </div>
   </div>
 
-  <!-- ==================== MODAL 3: ADD NEW DISH MODAL ==================== -->
+  <!-- ==================== MODAL: ADD NEW DISH MODAL ==================== -->
   <div class="modal-backdrop" id="add-dish-modal">
     <div class="modal-sheet" style="max-width: 500px;">
       <div class="modal-header">
         <div class="modal-title">
           <span>➕</span> <span>Add New Dish to Menu</span>
         </div>
-        <button class="modal-close-btn" onclick="window.admin ? window.admin.closeAddDishModal() : null">✕</button>
+        <button class="modal-close-btn" onclick="window.admin.closeAddDishModal()">✕</button>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -1360,24 +1280,22 @@
         </div>
         <div class="form-group">
           <label class="form-label">Dish Image</label>
-          <div style="display: flex; gap: 8px; margin-bottom: 6px;">
-            <input type="text" id="new-dish-image" class="form-input" placeholder="Image URL (or select file below)">
-          </div>
+          <input type="text" id="new-dish-image" class="form-input" placeholder="Image URL (or select file below)" style="margin-bottom: 6px;">
           <input type="file" id="new-dish-file-input" accept="image/*" class="form-input" style="padding: 6px;" onchange="window.admin.handleNewDishImageUpload(this)">
         </div>
         <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
           <input type="checkbox" id="new-dish-special" style="width: 18px; height: 18px;">
-          <label for="new-dish-special" style="font-size: 0.85rem; font-weight: 700; color: #FFFFFF;">Mark as Chef's Special 👑</label>
+          <label for="new-dish-special" style="font-size: 0.85rem; font-weight: 700; color: var(--burgundy-deep);">Mark as Chef's Special 👑</label>
         </div>
       </div>
-      <div class="modal-footer">
-        <button class="btn-secondary" onclick="window.admin.closeAddDishModal()">Cancel</button>
-        <button class="btn-primary" onclick="window.admin.saveNewDish()">Save Dish to Menu</button>
+      <div style="padding: 14px 20px; display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--ivory-border);">
+        <button class="btn-tariff-call" onclick="window.admin.closeAddDishModal()">Cancel</button>
+        <button class="btn-reserve-suite" onclick="window.admin.saveNewDish()">Save Dish to Menu</button>
       </div>
     </div>
   </div>
 
-  <!-- ==================== MODAL 4: IMAGE REPLACEMENT MODAL ==================== -->
+  <!-- ==================== MODAL: IMAGE REPLACEMENT MODAL ==================== -->
   <div class="modal-backdrop" id="image-replace-modal">
     <div class="modal-sheet" style="max-width: 520px;">
       <div class="modal-header">
@@ -1392,141 +1310,48 @@
     </div>
   </div>
 
-
-
-  <!-- Floating Menu Sub-Sections Toggle Button (Compact Circular Icon) -->
+  <!-- Floating Menu Sub-Sections Toggle Button -->
   <button id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Menu Sections" title="Browse Menu Sections">
-    <span class="floating-btn-icon">📋</span>
+    <span style="font-size: 1.4rem;">📋</span>
     <span class="floating-btn-badge" id="floating-sections-count">20</span>
   </button>
 
-  <!-- ================================================================ -->
-  <!-- MODAL: FULL MENU SUB-SECTIONS SWITCHER DRAWER                     -->
-  <!-- ================================================================ -->
-  <div id="menu-sections-drawer-modal" class="modal-backdrop menu-sections-modal-backdrop" onclick="if (event.target === this && window.app) window.app.closeMenuSectionDrawer();">
-    <div class="modal-sheet menu-sections-drawer-sheet" role="dialog" aria-modal="true">
-      <!-- Drawer Header -->
-      <div class="drawer-header">
-        <div class="drawer-header-title-block">
-          <span class="drawer-header-icon">📋</span>
-          <div>
-            <h3 class="drawer-title" data-i18n="drawerMenuTitle">Menu Sub-Sections</h3>
-            <p class="drawer-subtitle" data-i18n="drawerMenuSub">Select any category to jump instantly</p>
-          </div>
+  <!-- MODAL: FULL MENU SUB-SECTIONS SWITCHER DRAWER -->
+  <div id="menu-sections-drawer-modal" class="modal-backdrop" onclick="if (event.target === this && window.app) window.app.closeMenuSectionDrawer();">
+    <div class="modal-sheet" style="max-width: 480px;" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📋</span> <span>Menu Culinary Collections</span>
         </div>
         <button class="modal-close-btn" onclick="window.app ? window.app.closeMenuSectionDrawer() : null" aria-label="Close Drawer">✕</button>
       </div>
-
-      <!-- Quick Search inside Drawer -->
-      <div class="drawer-search-box">
-        <span class="drawer-search-icon">🔍</span>
-        <input type="text" id="drawer-sections-search" class="drawer-search-input" placeholder="Filter sections (e.g. Morning, Paneer, Rice, Soups)..." oninput="window.app ? window.app.filterDrawerSections(this.value) : null">
+      <div style="padding: 12px 16px; border-bottom: 1px solid var(--ivory-border);">
+        <input type="text" id="drawer-sections-search" class="form-input" placeholder="Filter sections (e.g. Morning, Paneer, Rice, Soups)..." oninput="window.app ? window.app.filterDrawerSections(this.value) : null">
       </div>
-
-      <!-- Scrollable Sub-Sections List -->
-      <div class="drawer-sections-list" id="drawer-sections-list">
-        <!-- Rendered dynamically by app.js: All Items, Morning Delights, Tasty Tidbits, etc. -->
+      <div class="modal-body" id="drawer-sections-list" style="max-height: 60vh; overflow-y: auto;">
+        <!-- Rendered dynamically by app.js -->
       </div>
     </div>
   </div>
 
-  <!-- Load Application Scripts (v11.0 Cache-Busted) -->
-  <script src="storage.js?v=11.0"></script>
-  <script src="vault.js?v=11.0"></script>
-  <script src="data/translations.js?v=11.0"></script>
-  <script src="data/hotel-data.js?v=11.0"></script>
-  <script src="data/menu-data.js?v=11.0"></script>
-  <script src="app.js?v=11.0"></script>
-  <script src="admin.js?v=11.0"></script>
+  <!-- Load Application Scripts (v12.0) -->
+  <script src="storage.js?v=12.0"></script>
+  <script src="vault.js?v=12.0"></script>
+  <script src="data/translations.js?v=12.0"></script>
+  <script src="data/hotel-data.js?v=12.0"></script>
+  <script src="data/menu-data.js?v=12.0"></script>
+  <script src="app.js?v=12.0"></script>
+  <script src="admin.js?v=12.0"></script>
 
-  <!-- Netlify Purge Handlers -->
+  <!-- PWA Service Worker Registration -->
   <script>
-
-    // Completely remove any Netlify drawer/badge dynamically injected at runtime
-    (function() {
-      function purgeNetlifyBadges() {
-        var selectors = [
-          '#netlify-drawer',
-          '[data-netlify-deploy-id]',
-          'iframe[src*="netlify"]',
-          'div[class*="netlify-drawer"]',
-          'div[class*="netlify-badge"]',
-          '.netlify-badge',
-          '#netlify-identity-widget',
-          'div[class*="netlify-feedback"]',
-          '.feedback-widget',
-          '#feedback-widget'
-        ];
-        selectors.forEach(function(sel) {
-          document.querySelectorAll(sel).forEach(function(el) {
-            if (el && el.parentNode) {
-              el.parentNode.removeChild(el);
-            }
-          });
-        });
-      }
-      purgeNetlifyBadges();
-      window.addEventListener('DOMContentLoaded', purgeNetlifyBadges);
-      window.addEventListener('load', purgeNetlifyBadges);
-      setInterval(purgeNetlifyBadges, 800);
-    })();
-
-    // Direct Fallback Self-Bootstrap Script
-    (function() {
-      function forceRenderIfEmpty() {
-        if (typeof initializeHotelPremierApp === 'function') {
-          initializeHotelPremierApp();
-        }
-        if (window.app && typeof window.app.init === 'function') {
-          var cardsGrid = document.getElementById('category-cards-grid');
-          if (cardsGrid && (!cardsGrid.children || cardsGrid.children.length === 0)) {
-            window.app.renderCategoryCards();
-            window.app.renderCategories();
-            window.app.renderQuickFilters();
-          }
-          if (typeof window.app.renderRestaurantEventPackages === 'function') {
-            var eventsGrid = document.getElementById('restaurant-events-packages-grid');
-            if (eventsGrid && (!eventsGrid.children || eventsGrid.children.length === 0)) {
-              window.app.renderRestaurantEventPackages();
-              if (typeof window.app.renderEventDecorations === 'function') {
-                window.app.renderEventDecorations();
-              }
-              window.app.calculateRestaurantEventQuote();
-            }
-          }
-        }
-      }
-      setTimeout(forceRenderIfEmpty, 50);
-      setTimeout(forceRenderIfEmpty, 250);
-      window.addEventListener('load', forceRenderIfEmpty);
-    })();
-
-    // Register PWA Service Worker for Instant Network-First & Offline Caching
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=11.0').then(function(reg) {
-          console.log('[PWA] Service Worker v11.0 registered:', reg.scope);
-          // Check for immediate SW updates
-          if (typeof reg.update === 'function') {
-            reg.update();
-          }
-          reg.addEventListener('updatefound', function() {
-            var installingWorker = reg.installing;
-            if (installingWorker) {
-              installingWorker.addEventListener('statechange', function() {
-                if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  console.log('[PWA] Fresh menu version installed, reloading...');
-                  window.location.reload();
-                }
-              });
-            }
-          });
-        }).catch(function(err) {
-          console.log('[PWA] Service Worker registration skipped:', err);
-        });
+        navigator.serviceWorker.register('sw.js?v=12.0').then(function(reg) {
+          if (typeof reg.update === 'function') reg.update();
+        }).catch(function(err) {});
       });
     }
   </script>
-
 </body>
 </html>

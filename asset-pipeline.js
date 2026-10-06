@@ -48,9 +48,8 @@
      */
     shouldIsolateBackground(category, options = {}) {
       if (options.forceIsolation === true) return true;
-      if (options.preserveEnvironment === true) return false;
-      if (category === this.IMAGE_TYPES.ROOM) return false;
-      return true; // Food, categories, products, and dishes are isolated
+      // Preserve authentic hotel food photography & real room photography
+      return false;
     }
 
     /**

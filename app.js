@@ -131,6 +131,36 @@ class HotelPremierApp {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // ==================== HOTEL CONCIERGE SMOOTH SCROLL NAVIGATION ====================
+  scrollToSection(sectionId) {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const headerOffset = 100;
+      const elementPosition = el.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+
+    // Update active tab state
+    document.querySelectorAll('.hotel-nav-tab').forEach(tab => tab.classList.remove('active'));
+    const tabMap = {
+      'section-stay': 'tab-nav-stay',
+      'section-tariffs': 'tab-nav-tariffs',
+      'section-dine': 'tab-nav-dine',
+      'section-celebrate': 'tab-nav-celebrate',
+      'section-explore': 'tab-nav-explore',
+      'guest-feedback-section': 'tab-nav-reviews'
+    };
+    const activeTabId = tabMap[sectionId];
+    if (activeTabId) {
+      const activeTab = document.getElementById(activeTabId);
+      if (activeTab) activeTab.classList.add('active');
+    }
+  }
+
   // ==================== MULTILINGUAL SYSTEM ====================
   setLanguage(lang) {
     if (lang !== 'en' && lang !== 'hi' && lang !== 'mr') return;
@@ -2430,27 +2460,33 @@ class HotelPremierApp {
     if (fRegion && p.region && document.activeElement !== fRegion) fRegion.value = p.region;
     if (fTable && p.tableOrRoom && (!fTable.value || document.activeElement !== fTable)) fTable.value = p.tableOrRoom;
 
-    // 2. Event Calculator
+    // 2. Concierge Booking Wizard Form
+    const bkgName = document.getElementById('booking-guest-name');
+    const bkgPhone = document.getElementById('booking-guest-phone');
+    if (bkgName && p.name && (!bkgName.value || document.activeElement !== bkgName)) bkgName.value = p.name;
+    if (bkgPhone && p.phone && (!bkgPhone.value || document.activeElement !== bkgPhone)) bkgPhone.value = p.phone;
+
+    // 3. Event Calculator
     const eName = document.getElementById('calc-event-guest-name');
     const ePhone = document.getElementById('calc-event-guest-phone');
     if (eName && p.name && (!eName.value || document.activeElement !== eName)) eName.value = p.name;
     if (ePhone && p.phone && (!ePhone.value || document.activeElement !== ePhone)) ePhone.value = p.phone;
 
-    // 3. Bulk Marriage Calculator
+    // 4. Bulk Marriage Calculator
     const bName = document.getElementById('calc-bulk-guest-name');
     const bPhone = document.getElementById('calc-bulk-guest-phone');
     if (bName && p.name && (!bName.value || document.activeElement !== bName)) bName.value = p.name;
     if (bPhone && p.phone && (!bPhone.value || document.activeElement !== bPhone)) bPhone.value = p.phone;
 
-    // 4. Guest Pass Modal Form
-    const mName = document.getElementById('guest-pass-input-name');
-    const mPhone = document.getElementById('guest-pass-input-phone');
-    const mTable = document.getElementById('guest-pass-input-table');
-    const mRegion = document.getElementById('guest-pass-input-region');
-    if (mName && p.name && document.activeElement !== mName) mName.value = p.name;
-    if (mPhone && p.phone && document.activeElement !== mPhone) mPhone.value = p.phone;
-    if (mTable && p.tableOrRoom && document.activeElement !== mTable) mTable.value = p.tableOrRoom;
-    if (mRegion && p.region && document.activeElement !== mRegion) mRegion.value = p.region;
+    // 5. Guest Profile Modal Form
+    const pmName = document.getElementById('profile-modal-name');
+    const pmPhone = document.getElementById('profile-modal-phone');
+    const pmRegion = document.getElementById('profile-modal-region');
+    const pmTable = document.getElementById('profile-modal-room-table');
+    if (pmName && p.name && document.activeElement !== pmName) pmName.value = p.name;
+    if (pmPhone && p.phone && document.activeElement !== pmPhone) pmPhone.value = p.phone;
+    if (pmRegion && p.region && document.activeElement !== pmRegion) pmRegion.value = p.region;
+    if (pmTable && p.tableOrRoom && document.activeElement !== pmTable) pmTable.value = p.tableOrRoom;
   }
 
   bindGuestProfileSync() {
@@ -2459,20 +2495,22 @@ class HotelPremierApp {
 
     const fields = [
       { id: 'feedback-guest-name', key: 'name' },
+      { id: 'booking-guest-name', key: 'name' },
       { id: 'calc-event-guest-name', key: 'name' },
       { id: 'calc-bulk-guest-name', key: 'name' },
-      { id: 'guest-pass-input-name', key: 'name' },
+      { id: 'profile-modal-name', key: 'name' },
 
       { id: 'feedback-guest-phone', key: 'phone' },
+      { id: 'booking-guest-phone', key: 'phone' },
       { id: 'calc-event-guest-phone', key: 'phone' },
       { id: 'calc-bulk-guest-phone', key: 'phone' },
-      { id: 'guest-pass-input-phone', key: 'phone' },
+      { id: 'profile-modal-phone', key: 'phone' },
 
       { id: 'feedback-table-num', key: 'tableOrRoom' },
-      { id: 'guest-pass-input-table', key: 'tableOrRoom' },
+      { id: 'profile-modal-room-table', key: 'tableOrRoom' },
 
       { id: 'feedback-guest-region', key: 'region' },
-      { id: 'guest-pass-input-region', key: 'region' }
+      { id: 'profile-modal-region', key: 'region' }
     ];
 
     fields.forEach(({ id, key }) => {
@@ -2499,20 +2537,172 @@ class HotelPremierApp {
 
   updateHeaderGuestBadge(profile) {
     const p = profile || this.getGuestProfile();
-    const pillText = document.getElementById('header-guest-pass-text');
-    const pillBtn = document.getElementById('header-guest-pass-btn');
-    if (!pillText) return;
+    const pill = document.getElementById('header-guest-name-pill') || document.getElementById('header-guest-pass-text');
+    if (pill) {
+      if (p.name) {
+        const firstName = p.name.trim().split(' ')[0];
+        pill.textContent = `👋 ${firstName}`;
+      } else {
+        pill.textContent = 'Concierge Profile';
+      }
+    }
+  }
 
-    if (p.name) {
-      const firstName = p.name.trim().split(' ')[0];
-      pillText.innerText = `👋 ${firstName}`;
-      if (pillBtn) pillBtn.classList.add('has-profile');
-    } else if (p.tableOrRoom) {
-      pillText.innerText = `📍 ${p.tableOrRoom}`;
-      if (pillBtn) pillBtn.classList.remove('has-profile');
-    } else {
-      pillText.innerText = '⚡ Quick Pass';
-      if (pillBtn) pillBtn.classList.remove('has-profile');
+  // ==================== GUIDED CONCIERGE BOOKING WIZARD ====================
+  openConciergeBookingModal(preselectedRoomId) {
+    const modal = document.getElementById('concierge-booking-modal');
+    if (!modal) return;
+
+    if (preselectedRoomId) {
+      const roomSelect = document.getElementById('booking-room-type');
+      if (roomSelect) roomSelect.value = preselectedRoomId;
+    }
+
+    const dateInput = document.getElementById('booking-checkin-date');
+    if (dateInput && !dateInput.value) {
+      const today = new Date().toISOString().slice(0, 10);
+      dateInput.value = today;
+    }
+
+    this.applyGuestProfileToAllForms();
+    this.updateBookingEstimate();
+    modal.classList.add('active');
+    modal.style.display = 'flex';
+  }
+
+  closeConciergeBookingModal() {
+    const modal = document.getElementById('concierge-booking-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.style.display = 'none';
+    }
+  }
+
+  updateBookingEstimate() {
+    const roomType = document.getElementById('booking-room-type')?.value || 'ac-deluxe-queen';
+    const nights = Number(document.getElementById('booking-nights')?.value) || 1;
+    const roomsCount = Number(document.getElementById('booking-rooms-count')?.value) || 1;
+    const mealPlan = document.getElementById('booking-meal-plan')?.value || 'CP';
+    const extraBeds = Number(document.getElementById('booking-extra-beds')?.value) || 0;
+
+    const rates = {
+      'ac-super-deluxe': { RO: 2000, CP: 2200, name: 'AC Super Deluxe King Suite' },
+      'ac-deluxe-queen': { RO: 1800, CP: 2000, name: 'AC Deluxe (Queen Bed)' },
+      'ac-deluxe-twin': { RO: 1800, CP: 2000, name: 'AC Deluxe (Twin Beds)' }
+    };
+
+    const selected = rates[roomType] || rates['ac-deluxe-queen'];
+    const baseRatePerNight = (mealPlan === 'CP') ? selected.CP : selected.RO;
+    const extraBedRate = (mealPlan === 'CP') ? 500 : 300;
+
+    const totalEstimate = ((baseRatePerNight * roomsCount) + (extraBeds * extraBedRate)) * nights;
+
+    const roomNameEl = document.getElementById('booking-summary-room-name');
+    const durationEl = document.getElementById('booking-summary-duration');
+    const totalEl = document.getElementById('booking-summary-grand-total');
+
+    if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'With Breakfast' : 'Room Only'})`;
+    if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out ${extraBeds > 0 ? `• ${extraBeds} Extra Bed(s)` : ''}`;
+    if (totalEl) totalEl.textContent = `₹ ${totalEstimate.toLocaleString('en-IN')}/-`;
+
+    return { totalEstimate, selected, nights, roomsCount, mealPlan, extraBeds };
+  }
+
+  dispatchConciergeBooking() {
+    const estimate = this.updateBookingEstimate();
+    const guestName = document.getElementById('booking-guest-name')?.value.trim();
+    const guestPhone = document.getElementById('booking-guest-phone')?.value.trim();
+    const checkInDate = document.getElementById('booking-checkin-date')?.value;
+    const checkInTime = document.getElementById('booking-checkin-time')?.value;
+    const guestsCount = document.getElementById('booking-guests-count')?.value || '2 Guests';
+
+    if (!guestName || !guestPhone) {
+      alert('Please enter your name and WhatsApp number so Hotel Premier Concierge can assist you.');
+      return;
+    }
+
+    this.saveGuestProfile({ name: guestName, phone: guestPhone });
+
+    if (window.HOTEL_VAULT && typeof window.HOTEL_VAULT.recordBooking === 'function') {
+      window.HOTEL_VAULT.recordBooking({
+        name: guestName,
+        phone: guestPhone,
+        roomType: estimate.selected.name,
+        checkInDate: checkInDate,
+        checkInTime: checkInTime,
+        nights: estimate.nights,
+        roomsCount: estimate.roomsCount,
+        guestsCount: guestsCount,
+        mealPlan: estimate.mealPlan === 'CP' ? 'Room + Complimentary Breakfast' : 'Room Only',
+        extraBeds: estimate.extraBeds,
+        estimatedTotal: estimate.totalEstimate
+      });
+    }
+
+    let msg = `*🏨 HOTEL PREMIER, BHUSAWAL - ROOM RESERVATION REQUEST*\n`;
+    msg += `--------------------------------------------------\n`;
+    msg += `👤 *Guest Name:* ${guestName}\n`;
+    msg += `📱 *Mobile / WhatsApp:* ${guestPhone}\n`;
+    msg += `🛏️ *Suite:* ${estimate.roomsCount}x ${estimate.selected.name}\n`;
+    msg += `📅 *Check-In Date:* ${checkInDate || 'Immediate'}\n`;
+    msg += `⏰ *Arrival Time:* ${checkInTime}\n`;
+    msg += `🌙 *Duration:* ${estimate.nights} Night(s) (24-Hour Check-Out)\n`;
+    msg += `👥 *Total Guests:* ${guestsCount}\n`;
+    msg += `🍽️ *Plan:* ${estimate.mealPlan === 'CP' ? 'Room + Complimentary Breakfast (CP)' : 'Room Only (RO)'}\n`;
+    if (estimate.extraBeds > 0) {
+      msg += `🛏️ *Extra Beds:* ${estimate.extraBeds} Bed(s)\n`;
+    }
+    msg += `💰 *Estimated Published Tariff:* ₹ ${estimate.totalEstimate.toLocaleString('en-IN')}/- (Inclusive of all taxes)\n`;
+    msg += `--------------------------------------------------\n`;
+    msg += `Kindly confirm room availability and booking confirmation. Thank you!`;
+
+    const encoded = encodeURIComponent(msg);
+    const waUrl = `https://wa.me/919325375802?text=${encoded}`;
+    window.open(waUrl, '_blank');
+
+    this.closeConciergeBookingModal();
+  }
+
+  // ==================== GUEST CONCIERGE PROFILE MODAL ====================
+  openGuestProfileModal() {
+    const modal = document.getElementById('guest-profile-modal');
+    if (!modal) return;
+    this.applyGuestProfileToAllForms();
+    modal.classList.add('active');
+    modal.style.display = 'flex';
+  }
+
+  closeGuestProfileModal() {
+    const modal = document.getElementById('guest-profile-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.style.display = 'none';
+    }
+  }
+
+  saveGuestProfileFromModal() {
+    const name = document.getElementById('profile-modal-name')?.value.trim() || '';
+    const phone = document.getElementById('profile-modal-phone')?.value.trim() || '';
+    const region = document.getElementById('profile-modal-region')?.value.trim() || '';
+    const tableOrRoom = document.getElementById('profile-modal-room-table')?.value.trim() || '';
+
+    this.saveGuestProfile({ name, phone, region, tableOrRoom });
+    alert('Your Hotel Premier Concierge Profile has been updated securely!');
+    this.closeGuestProfileModal();
+  }
+
+  clearGuestProfile() {
+    if (confirm('Clear saved guest details? You can re-enter them anytime.')) {
+      localStorage.removeItem('hp_guest_profile');
+      ['feedback-guest-name', 'booking-guest-name', 'calc-event-guest-name', 'calc-bulk-guest-name',
+       'profile-modal-name', 'feedback-guest-phone', 'booking-guest-phone', 'calc-event-guest-phone',
+       'calc-bulk-guest-phone', 'profile-modal-phone'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+      this.updateHeaderGuestBadge({ name: '', phone: '', tableOrRoom: '', region: 'Bhusawal Local' });
+      this.closeGuestProfileModal();
+      alert('Guest profile cleared.');
     }
   }
 
