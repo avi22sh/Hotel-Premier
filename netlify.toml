@@ -1,6 +1,7 @@
 # Netlify Configuration for Hotel Premier QR Menu
 [build]
   publish = "."
+  command = ""
 
 [build.processing]
   skip_processing = true
@@ -37,4 +38,6 @@
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
+
 
