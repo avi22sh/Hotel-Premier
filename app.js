@@ -823,7 +823,15 @@ class HotelPremierApp {
     }
   }
 
-  // ==================== 1. HOME CATEGORY GRID VIEW ====================
+  // ==================== 1. HOME CULINARY COLLECTIONS ====================
+  filterCulinaryTheme(theme) {
+    this.currentCulinaryTheme = theme || 'all';
+    document.querySelectorAll('.culinary-theme-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.theme === this.currentCulinaryTheme);
+    });
+    this.renderCategoryCards();
+  }
+
   renderCategoryCards() {
     const container = document.getElementById('category-cards-grid');
     if (!container) return;
@@ -832,42 +840,103 @@ class HotelPremierApp {
       this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
     }
 
-    const cats = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
+    const allCategories = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
     const itemsWord = this.t('itemsCount', 'Items');
-    const viewWord = this.t('viewSection', 'View Section ➔');
+    const viewWord = this.t('viewSection', 'Explore Collection →');
 
-    container.innerHTML = cats.map(cat => {
+    const themeMap = {
+      'breakfast': ['morning-delights', 'hot-hearty'],
+      'starters': ['tandoor-classics', 'indo-chinese', 'tasty-tidbits', 'premier-soups'],
+      'curries': ['paneer-specialties', 'vegetable-specialties', 'kofta-delights', 'flavorful-dals'],
+      'grains': ['rice-biryani', 'signature-breads', 'sizzling-rice-noodles', 'pasta-section'],
+      'desserts': ['mithai-magic', 'frozen-fantasies', 'mocktails', 'milkshake-mastani', 'chilled-beverages', 'fresh-addons']
+    };
+
+    let displayCats = allCategories;
+    if (this.currentCulinaryTheme && this.currentCulinaryTheme !== 'all' && themeMap[this.currentCulinaryTheme]) {
+      displayCats = allCategories.filter(c => themeMap[this.currentCulinaryTheme].includes(c.id));
+    }
+
+    container.innerHTML = displayCats.map(cat => {
       const catDishes = this.menuData.filter(d => d.categoryId === cat.id);
       const count = catDishes.length;
       const localizedTitle = this.getCategoryLocalizedName(cat.id);
       const localizedSubtitle = this.getCategoryLocalizedSubtitle(cat.id);
       const localizedDesc = this.getCategoryLocalizedDesc(cat.id);
 
+      // Extract 2 to 3 representative star dishes for rich culinary preview
+      let starDishes = catDishes
+        .filter(d => d.tags && (d.tags.includes('bestseller') || d.tags.includes('chef-special') || d.tags.includes('swiggy-top')))
+        .slice(0, 3)
+        .map(d => d.name);
+      if (starDishes.length < 2 && catDishes.length > 0) {
+        catDishes.slice(0, 3).forEach(d => {
+          if (!starDishes.includes(d.name)) starDishes.push(d.name);
+        });
+      }
+      starDishes = starDishes.slice(0, 3);
+
       return `
-        <div class="category-card" onclick="window.app.openCategorySection('${cat.id}')">
-          ${(window.AssetPipeline && typeof window.AssetPipeline.renderCategoryCardMedia === 'function')
-            ? window.AssetPipeline.renderCategoryCardMedia(cat, count, itemsWord, localizedTitle)
-            : `
-              <div class="category-card-media">
-                <img src="${cat.image}" alt="${localizedTitle}" class="category-card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
-                <div class="category-card-overlay" aria-hidden="true"></div>
-                <span class="category-card-badge">${count} ${itemsWord}</span>
-              </div>
-            `
-          }
+        <article class="category-card" onclick="window.app.openCategorySection('${cat.id}')" role="button" tabindex="0" aria-label="Browse ${localizedTitle}">
+          <div class="category-card-media">
+            <img 
+              src="${cat.image}" 
+              alt="${localizedTitle}" 
+              class="category-card-img" 
+              loading="lazy" 
+              onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+            >
+            <div class="category-card-overlay" aria-hidden="true"></div>
+            <div class="category-crest-emblem" aria-hidden="true">${cat.icon || '🍽️'}</div>
+            <span class="category-card-badge">${count} ${itemsWord}</span>
+          </div>
           <div class="category-card-content">
-            <div>
-              <h3 class="category-card-title">${localizedTitle}</h3>
-              ${(this.currentLang !== 'en' && localizedSubtitle) ? `<span class="category-card-hindi">${localizedSubtitle}</span>` : ''}
-              <p class="category-card-desc">${localizedDesc || 'Delicious vegetarian delicacies.'}</p>
+            <div class="category-card-body-text">
+              <div class="category-card-header-row">
+                <h3 class="category-card-title">${localizedTitle}</h3>
+                ${(this.currentLang !== 'en' && localizedSubtitle) ? `<span class="category-card-hindi">${localizedSubtitle}</span>` : ''}
+              </div>
+              <p class="category-card-desc">${localizedDesc || 'Fresh & pure veg delicacies prepared to order.'}</p>
+              ${starDishes.length > 0 ? `
+                <div class="category-star-chips">
+                  ${starDishes.map(dName => `<span class="star-chip">✦ ${dName}</span>`).join('')}
+                </div>
+              ` : ''}
             </div>
             <div class="category-card-footer">
               <span class="category-card-action">${viewWord}</span>
             </div>
           </div>
-        </div>
+        </article>
       `;
     }).join('');
+  }
+
+  scrollCategoryToView() {
+    // Scroll directly to the category navigation bar or dishes view
+    const target = document.getElementById('section-nav-bar') || document.getElementById('dishes-section-view');
+    if (target) {
+      const headerOffset = 90;
+      const rect = target.getBoundingClientRect();
+      const targetScrollY = rect.top + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, targetScrollY),
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  scrollCollectionsToView() {
+    const target = document.getElementById('culinary-theme-bar') || document.getElementById('category-cards-grid') || document.getElementById('home-categories-view');
+    if (target) {
+      const headerOffset = 90;
+      const rect = target.getBoundingClientRect();
+      const targetScrollY = rect.top + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, targetScrollY),
+        behavior: 'smooth'
+      });
+    }
   }
 
   scrollDiningToView() {
@@ -886,6 +955,12 @@ class HotelPremierApp {
     if (window.HOTEL_VAULT) {
       window.HOTEL_VAULT.recordCategoryClick(catId);
     }
+
+    // Ensure dining section is actively rendered & unhidden
+    if (this.activeSection !== 'section-dine') {
+      this.switchSection('section-dine', false);
+    }
+
     this.currentCategory = catId;
     this.viewMode = 'section';
     this.currentFilter = 'all';
@@ -934,10 +1009,15 @@ class HotelPremierApp {
     this.renderSectionSlideshow(catId);
     this.renderMenu();
 
-    this.scrollDiningToView();
+    // Smoothly scroll directly into category heading so user immediately sees dishes!
+    this.scrollCategoryToView();
   }
 
   showHomeCategories() {
+    if (this.activeSection !== 'section-dine') {
+      this.switchSection('section-dine', false);
+    }
+
     this.viewMode = 'home';
     this.currentCategory = 'all';
     this.searchQuery = '';
@@ -963,10 +1043,15 @@ class HotelPremierApp {
     this.renderCategoryCards();
     this.renderCategories();
 
-    this.scrollDiningToView();
+    // Smoothly return view to the culinary collections grid
+    this.scrollCollectionsToView();
   }
 
   showAllDishesView() {
+    if (this.activeSection !== 'section-dine') {
+      this.switchSection('section-dine', false);
+    }
+
     this.currentCategory = 'all';
     this.viewMode = 'all';
     this.currentFilter = 'all';
@@ -1001,7 +1086,7 @@ class HotelPremierApp {
     this.renderSectionSlideshow(null);
     this.renderMenu();
 
-    this.scrollDiningToView();
+    this.scrollCategoryToView();
   }
 
   // ==================== 2. DISHES & CATEGORIES RENDERING ====================

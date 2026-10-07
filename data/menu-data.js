@@ -71,7 +71,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'पास्ता स्पेशल',
     marathiName: 'इटालियन पास्ता स्पेशल',
     icon: '🍝', 
-    image: 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/ITALIAN%20FUSION%20PASTA/CHILLI%20CHINESE%20PASTA.png',
     description: 'Desi Masala Pasta & Chilli Chinese Pasta prepared fresh'
   },
   { 
@@ -80,7 +80,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'सब्जियां एवं स्पेशल ग्रेवी',
     marathiName: 'भाजी व खान्देशी स्पेशल',
     icon: '🥘', 
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/VEG%20SPECIALITIES/VEG%20PRIDE%20SPECIAL.avif',
     description: 'Veg Pride Special, Shev Bhaji (Khandeshi), Kaju Curry, Veg Handi & Kolhapuri'
   },
   { 
@@ -89,7 +89,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'कोफ्ता स्पेशल',
     marathiName: 'स्वादिष्ट कोफ्ता स्पेशल',
     icon: '🧆', 
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/DELICIOUS%20KOFTA/CHEESE%20KOFTA.avif',
     description: 'Malai Kofta, Nargisi Kofta, Cheese Kofta & Paneer Kofta'
   },
   { 
@@ -107,7 +107,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'स्वादिष्ट दाल एवं कढ़ी',
     marathiName: 'खमंग डाळ व कढी',
     icon: '🥣', 
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/FLAVORFUL%20DAL/DAL%20TADKA.avif',
     description: 'Dal Fry, Dal Tadka with Desi Ghee, Dal Maharani & Punjabi Kadhi'
   },
   { 
@@ -116,7 +116,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'सलाद, रायता एवं पापड़',
     marathiName: 'सलाड, रायता व पापड',
     icon: '🥗', 
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/ACCOMPANIMENTS/GREEN%20SALAD.avif',
     description: 'Green & Kuchumber Salad, Boondi/Pineapple Raita, Urad & Nagli Papad'
   },
   { 
@@ -143,7 +143,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'मिठाई एवं संडे स्पेशल',
     marathiName: 'मिठाई व संडे स्पेशल',
     icon: '🍧', 
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/DESSERTS/GULAB%20JAMUN.avif',
     description: 'Honeymoon Surprise, Hot Chocolate Fudge, Gulab Jamun & Rasgulla'
   },
   { 

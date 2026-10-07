@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=14.0"></script>
+  <script src="asset-pipeline.js?v=15.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=14.0">
+  <link rel="stylesheet" href="styles.css?v=15.0">
 </head>
 <body>
 
@@ -802,6 +802,28 @@
 
       <!-- View 1: Culinary Collections Grid -->
       <div id="home-categories-view">
+        <!-- Curated Culinary Theme Filter Tabs -->
+        <div class="culinary-theme-bar" id="culinary-theme-bar">
+          <button class="culinary-theme-btn active" data-theme="all" onclick="window.app ? window.app.filterCulinaryTheme('all') : null">
+            <span>✨ All 20 Collections</span>
+          </button>
+          <button class="culinary-theme-btn" data-theme="breakfast" onclick="window.app ? window.app.filterCulinaryTheme('breakfast') : null">
+            <span>🌅 Breakfast & Tea</span>
+          </button>
+          <button class="culinary-theme-btn" data-theme="starters" onclick="window.app ? window.app.filterCulinaryTheme('starters') : null">
+            <span>🍢 Tandoor & Starters</span>
+          </button>
+          <button class="culinary-theme-btn" data-theme="curries" onclick="window.app ? window.app.filterCulinaryTheme('curries') : null">
+            <span>👑 Royal Curries</span>
+          </button>
+          <button class="culinary-theme-btn" data-theme="grains" onclick="window.app ? window.app.filterCulinaryTheme('grains') : null">
+            <span>🍚 Biryani & Breads</span>
+          </button>
+          <button class="culinary-theme-btn" data-theme="desserts" onclick="window.app ? window.app.filterCulinaryTheme('desserts') : null">
+            <span>🍨 Desserts & Drinks</span>
+          </button>
+        </div>
+
         <div class="category-cards-grid" id="category-cards-grid">
           <!-- Rendered dynamically by app.js -->
         </div>
@@ -1472,20 +1494,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v14.0) -->
-  <script src="storage.js?v=14.0"></script>
-  <script src="vault.js?v=14.0"></script>
-  <script src="data/translations.js?v=14.0"></script>
-  <script src="data/hotel-data.js?v=14.0"></script>
-  <script src="data/menu-data.js?v=14.0"></script>
-  <script src="app.js?v=14.0"></script>
-  <script src="admin.js?v=14.0"></script>
+  <!-- Load Application Scripts (v15.0) -->
+  <script src="storage.js?v=15.0"></script>
+  <script src="vault.js?v=15.0"></script>
+  <script src="data/translations.js?v=15.0"></script>
+  <script src="data/hotel-data.js?v=15.0"></script>
+  <script src="data/menu-data.js?v=15.0"></script>
+  <script src="app.js?v=15.0"></script>
+  <script src="admin.js?v=15.0"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=14.0').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=15.0').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

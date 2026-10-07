@@ -435,6 +435,7 @@
             onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
           <div class="category-card-overlay" aria-hidden="true"></div>
+          <div class="category-crest-emblem" aria-hidden="true">${cat.icon || '🍽️'}</div>
           <span class="category-card-badge">${count} ${itemsWord}</span>
         </div>
       `;
