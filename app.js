@@ -76,6 +76,9 @@ class HotelPremierApp {
     // Hash-based independent section routing
     const rawHash = (window.location.hash || '').replace('#', '').toLowerCase();
     const hashToSection = {
+      '': 'section-home',
+      'home': 'section-home',
+      'sanctuary': 'section-home',
       'tariffs': 'section-tariffs',
       'tariff': 'section-tariffs',
       'rates': 'section-tariffs',
@@ -88,13 +91,14 @@ class HotelPremierApp {
       'events': 'section-celebrate',
       'banquets': 'section-celebrate',
       'explore': 'section-explore',
+      'arrive': 'section-explore',
       'guide': 'section-explore',
       'location': 'section-explore',
       'reviews': 'guest-feedback-section',
       'feedback': 'guest-feedback-section'
     };
 
-    let initialSection = 'section-stay';
+    let initialSection = 'section-home';
     if (catParam) {
       initialSection = 'section-dine';
     } else if (hashToSection[rawHash]) {
@@ -164,6 +168,7 @@ class HotelPremierApp {
   // ==================== INDEPENDENT HOTEL SECTION ROUTING ====================
   switchSection(sectionId, updateHash = true) {
     const validSections = [
+      'section-home',
       'section-stay',
       'section-tariffs',
       'section-dine',
@@ -173,7 +178,7 @@ class HotelPremierApp {
     ];
 
     if (!validSections.includes(sectionId)) {
-      sectionId = 'section-stay';
+      sectionId = 'section-home';
     }
 
     this.activeSection = sectionId;
@@ -190,19 +195,15 @@ class HotelPremierApp {
       }
     });
 
-    // Control Sanctuary Hero visibility: display with Stay/Rooms, hide on dedicated Tariff/Dining/Event pages
-    const heroEl = document.querySelector('.sanctuary-hero-section');
-    if (heroEl) {
-      if (sectionId === 'section-stay') {
-        heroEl.style.display = 'block';
-      } else {
-        heroEl.style.display = 'none';
-      }
+    // Auto-fill profile whenever entering guest feedback or reviews section
+    if (sectionId === 'guest-feedback-section') {
+      this.applyGuestProfileToAllForms();
     }
 
     // Update active tab in top navigation bar
     document.querySelectorAll('.hotel-nav-tab').forEach(tab => tab.classList.remove('active'));
     const tabMap = {
+      'section-home': 'tab-nav-home',
       'section-stay': 'tab-nav-stay',
       'section-tariffs': 'tab-nav-tariffs',
       'section-dine': 'tab-nav-dine',
@@ -222,6 +223,7 @@ class HotelPremierApp {
     // Update URL hash cleanly
     if (updateHash) {
       const hashMap = {
+        'section-home': 'home',
         'section-stay': 'stay',
         'section-tariffs': 'tariffs',
         'section-dine': 'dine',
@@ -229,7 +231,7 @@ class HotelPremierApp {
         'section-explore': 'explore',
         'guest-feedback-section': 'reviews'
       };
-      const hashName = hashMap[sectionId] || 'stay';
+      const hashName = hashMap[sectionId] || 'home';
       try {
         if (window.history && window.history.replaceState) {
           window.history.replaceState(null, '', '#' + hashName);
@@ -1726,7 +1728,9 @@ class HotelPremierApp {
         ${idx === deals.length - 1 ? '<div class="tier-badge-popular">👑 EXCLUSIVE FULL BUYOUT</div>' : ''}
         <div class="tier-tag">${deal.badge || `${deal.minRooms}+ ROOMS`}</div>
         <h4 class="tier-name">${deal.name}</h4>
-        <div class="tier-discount">${deal.discountPercent}% OFF</div>
+        <div class="tier-privilege-label" style="font-size: 0.86rem; color: var(--burgundy-primary); font-weight: 700; margin: 8px 0 12px; line-height: 1.4;">
+          ${deal.privilege || 'Complimentary Group Privilege'}
+        </div>
         <ul class="tier-perks">
           ${(deal.perks || []).map(p => `<li>✦ ${p}</li>`).join('')}
         </ul>
@@ -1793,10 +1797,7 @@ class HotelPremierApp {
 
     const activeDeals = this.getBulkDeals().sort((a, b) => b.minRooms - a.minRooms);
     let matchedDeal = activeDeals.find(d => numRooms >= d.minRooms);
-    let discountPercent = matchedDeal ? matchedDeal.discountPercent : (numRooms >= 5 ? 10 : 0);
-
-    const savings = Math.round((totalRegular * discountPercent) / 100);
-    const finalPrice = totalRegular - savings;
+    const privilegeTier = matchedDeal ? matchedDeal.name : (numRooms >= 5 ? 'Group Stay Privilege' : 'Published Tariff Standard');
 
     const regPriceEl = document.getElementById('quote-regular-price');
     const discTagEl = document.getElementById('quote-discount-tag');
@@ -1808,9 +1809,9 @@ class HotelPremierApp {
     const extraBedAmountEl = document.getElementById('quote-extra-bed-amount');
 
     if (regPriceEl) regPriceEl.innerText = `₹ ${totalRegular.toLocaleString('en-IN')}/-`;
-    if (discTagEl) discTagEl.innerText = `${discountPercent}% OFF`;
-    if (savingsEl) savingsEl.innerText = `- ₹ ${savings.toLocaleString('en-IN')}/-`;
-    if (finalPriceEl) finalPriceEl.innerText = `₹ ${finalPrice.toLocaleString('en-IN')}/-`;
+    if (discTagEl) discTagEl.innerText = `✨ ${privilegeTier}`;
+    if (savingsEl) savingsEl.innerText = `Perks Included`;
+    if (finalPriceEl) finalPriceEl.innerText = `₹ ${totalRegular.toLocaleString('en-IN')}/-`;
 
     if (extraBedRowEl && extraBedCountEl && extraBedAmountEl) {
       if (numExtraBeds > 0) {
@@ -1829,12 +1830,11 @@ class HotelPremierApp {
       extraBedCost: extraBedCost,
       nights: numNights,
       plan: plan === 'CP' ? 'Room with Breakfast (CP)' : 'Room Only (RO)',
-      eventType: document.getElementById('calc-event-type') ? document.getElementById('calc-event-type').value : 'Marriage Event',
+      eventType: document.getElementById('calc-event-type') ? document.getElementById('calc-event-type').value : 'Group Stay / Event',
       baseRoomPrice: baseRoomRegular,
       regularPrice: totalRegular,
-      discountPercent: discountPercent,
-      finalPrice: finalPrice,
-      savings: savings
+      privilegeTier: privilegeTier,
+      finalPrice: totalRegular
     };
   }
 
@@ -1857,19 +1857,19 @@ class HotelPremierApp {
       ? `👤 *Organizer:* ${encodeURIComponent(bulkName || 'Guest')} (${encodeURIComponent(bulkPhone || 'Not provided')})%0A`
       : '';
 
-    const msg = `*HOTEL PREMIER BHUSAWAL - ADVANCE BULK ROOM INQUIRY*%0A` +
+    const msg = `*HOTEL PREMIER BHUSAWAL - GROUP STAY INQUIRY*%0A` +
       `---------------------------------------%0A` +
       guestContactLine +
-      `🏨 *Event Type:* ${encodeURIComponent(q.eventType)}%0A` +
+      `🏨 *Stay Purpose:* ${encodeURIComponent(q.eventType)}%0A` +
       `🛏️ *Room Category:* ${encodeURIComponent(q.roomType)}%0A` +
       `🔢 *Number of Rooms:* ${q.rooms} Rooms (Total 14 Available)%0A` +
       extraBedsLine +
       `🌙 *Duration of Stay:* ${q.nights} Night(s)%0A` +
       `🍽️ *Meal Plan:* ${encodeURIComponent(q.plan)}%0A` +
-      `🏷️ *Bulk Discount Applied:* ${q.discountPercent}% OFF%0A` +
-      `💰 *Estimated Deal Price:* ₹ ${q.finalPrice.toLocaleString('en-IN')}/- (Saved ₹ ${q.savings.toLocaleString('en-IN')})%0A` +
+      `✨ *Privilege Tier:* ${encodeURIComponent(q.privilegeTier)}%0A` +
+      `💰 *Estimated Published Tariff:* ₹ ${q.regularPrice.toLocaleString('en-IN')}/-%0A` +
       `---------------------------------------%0A` +
-      `Hello Hotel Premier Team, please confirm our reservation quote!`;
+      `Hello Hotel Premier Front Desk, please confirm our reservation and privilege perks!`;
 
     const whatsappUrl = `https://api.whatsapp.com/send?phone=919325375802&text=${msg}`;
     window.open(whatsappUrl, '_blank');
@@ -2543,6 +2543,9 @@ class HotelPremierApp {
     window.addEventListener('hashchange', () => {
       const rawHash = (window.location.hash || '').replace('#', '').toLowerCase();
       const hashToSection = {
+        '': 'section-home',
+        'home': 'section-home',
+        'sanctuary': 'section-home',
         'stay': 'section-stay',
         'rooms': 'section-stay',
         'suites': 'section-stay',
@@ -2557,13 +2560,15 @@ class HotelPremierApp {
         'banquets': 'section-celebrate',
         'offers': 'section-celebrate',
         'explore': 'section-explore',
+        'arrive': 'section-explore',
         'guide': 'section-explore',
         'location': 'section-explore',
         'reviews': 'guest-feedback-section',
         'feedback': 'guest-feedback-section'
       };
-      if (hashToSection[rawHash] && hashToSection[rawHash] !== this.activeSection) {
-        this.switchSection(hashToSection[rawHash], false);
+      const target = hashToSection[rawHash] || 'section-home';
+      if (target !== this.activeSection) {
+        this.switchSection(target, false);
       }
     });
   }

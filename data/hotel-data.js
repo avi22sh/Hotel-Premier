@@ -88,13 +88,16 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       extraBedDetail: 'Accommodates 2 to 3 Extra Beds (₹300/bed)',
       features: [
         '👑 King Size Luxury Bed',
-        '🏢 Total 2 Rooms in Hotel',
-        '🛏️ Can Accommodate 2–3 Extra Beds (₹300/bed)',
-        '❄️ Silent Split Air Conditioning',
-        '📺 Large Screen Smart LED TV',
-        '📶 High-Speed Free Wi-Fi',
-        '🚿 24x7 Hot & Cold Water',
-        '🍽️ Room Service (7:30 AM – 10:30 PM)'
+        '🏢 Total 2 Exclusive Rooms in Hotel',
+        '❄️ Silent Split Air Conditioning (Split AC)',
+        '💧 Packaged Drinking Water (Complimentary)',
+        '☕ Electric Kettle with Tea & Coffee Setup',
+        '🍪 Fresh Biscuits & Drinking Glasses',
+        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        '🚿 24x7 Geyser Hot Water & Fresh Towels',
+        '📺 Large Screen Smart LED TV & Free Wi-Fi',
+        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
+        '🛏️ Can Accommodate 2–3 Extra Beds (₹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 2000, withBreakfast: 2200 },
@@ -124,12 +127,15 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       features: [
         '🛏️ Queen Size Bed',
         '🏢 Total 4 Rooms in Hotel',
-        '🛏️ Can Accommodate 1 Extra Bed (₹300/bed)',
-        '❄️ Powerful Air Conditioning',
-        '📺 Flat Screen LED TV with DTH',
-        '📶 High-Speed Free Wi-Fi',
-        '🚿 24x7 Hot & Cold Water',
-        '🍽️ Room Service (7:30 AM – 10:30 PM)'
+        '❄️ Silent Split Air Conditioning (Split AC)',
+        '💧 Packaged Drinking Water (Complimentary)',
+        '☕ Electric Kettle with Tea & Coffee Setup',
+        '🍪 Fresh Biscuits & Drinking Glasses',
+        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        '🚿 24x7 Geyser Hot Water & Fresh Towels',
+        '📺 Flat Screen Smart LED TV & Free Wi-Fi',
+        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
+        '🛏️ Can Accommodate 1 Extra Bed (₹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 1800, withBreakfast: 2000 },
@@ -159,12 +165,15 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       features: [
         '🛏️🛏️ 2 Separate Single Beds',
         '🏢 Total 8 Rooms in Hotel',
-        '🛏️ Can Accommodate 2 Extra Beds (₹300/bed)',
-        '❄️ Powerful Air Conditioning',
-        '📺 Flat Screen LED TV with DTH',
-        '📶 High-Speed Free Wi-Fi',
-        '🚿 24x7 Hot & Cold Water',
-        '🍽️ Room Service (7:30 AM – 10:30 PM)'
+        '❄️ Silent Split Air Conditioning (Split AC)',
+        '💧 Packaged Drinking Water (Complimentary)',
+        '☕ Electric Kettle with Tea & Coffee Setup',
+        '🍪 Fresh Biscuits & Drinking Glasses',
+        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        '🚿 24x7 Geyser Hot Water & Fresh Towels',
+        '📺 Flat Screen Smart LED TV & Free Wi-Fi',
+        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
+        '🛏️ Can Accommodate 2 Extra Beds (₹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 1800, withBreakfast: 2000 },
@@ -186,46 +195,45 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     { icon: '🚆', title: 'Prime Location Connectivity', desc: 'Just 5 mins from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
   ],
 
-  // Advance Bulk Booking Deals for Marriages & Events (Fully Editable via CMS)
+  // Wedding Barat & Family Group Stay Privileges (Fully Editable via CMS)
   bulkMarriageDeals: [
     {
       tierId: 'tier-5-9',
-      name: 'Wedding Group Block (5–9 Rooms)',
-      discountPercent: 10,
+      name: 'Silver Group Stay Privilege (5–9 Rooms)',
+      discountPercent: 0,
       minRooms: 5,
-      badge: '10% OFF + Priority Allotment',
+      badge: 'Silver Privilege • Early Check-In',
       perks: [
-        'Flat 10% Discount on Published Tariff',
-        'Complimentary Morning Chai/Coffee Station',
-        'Guaranteed Early Check-in for family elders',
-        'Flexible 24-Hour Check-out'
+        'Priority Early Check-in for family elders',
+        'Complimentary Morning Chai & Coffee Station',
+        'Dedicated Floor Block for family unity',
+        'Flexible 24-Hour Check-Out Guarantee'
       ]
     },
     {
       tierId: 'tier-10-13',
-      name: 'Wedding Silver Block (10–13 Rooms)',
-      discountPercent: 15,
+      name: 'Gold Group Stay Privilege (10–13 Rooms)',
+      discountPercent: 0,
       minRooms: 10,
-      badge: '15% OFF + Free Morning Chai Station',
+      badge: 'Gold Privilege • Free Chai Station & Floor Wing',
       perks: [
-        'Flat 15% Discount on Total Tariff',
-        'Complimentary Morning Chai/Coffee station for all guests',
-        'Priority floor block for whole wedding group',
-        'Luggage storage & priority check-in assistance'
+        'Dedicated Floor Wing reserved for entire group',
+        'Complimentary Morning Chai & Filter Coffee station',
+        'Priority Luggage Handling & Transit Coordination',
+        'Flexible 24-Hour Check-Out Guarantee'
       ]
     },
     {
       tierId: 'tier-full-14',
-      name: '👑 Full Hotel Buyout (All 14 Rooms Block)',
-      discountPercent: 20,
+      name: '👑 Platinum Property Buyout (All 14 Rooms)',
+      discountPercent: 0,
       minRooms: 14,
-      badge: '👑 20% OFF + 1 FREE Super Deluxe Suite',
+      badge: '👑 Platinum Buyout • 100% Hotel Privacy',
       perks: [
         'Complete 100% Exclusive Hotel Premier Privacy',
-        'Flat 20% Mega Group Discount on entire property',
-        '1 Complimentary AC Super Deluxe Suite for Bride & Groom',
-        'Dedicated Hotel Premier Event Coordinator',
-        'Customized Pure Veg Catering Packages & Free Bus Parking'
+        '1 Complimentary AC Super Deluxe Room for Bride & Groom / Host',
+        'Dedicated Hotel Premier Hospitality Coordinator',
+        'Custom Pure Veg Restaurant Dining Coordination & Bus Parking'
       ]
     }
   ],

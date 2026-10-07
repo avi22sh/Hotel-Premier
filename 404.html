@@ -58,7 +58,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v13.0') {
+            if (name !== 'hotel-premier-v16.0') {
               caches.delete(name);
             }
           });
@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=15.0"></script>
+  <script src="asset-pipeline.js?v=16.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=15.0">
+  <link rel="stylesheet" href="styles.css?v=16.0">
 </head>
 <body>
 
@@ -131,20 +131,23 @@
     <!-- Hotel Navigation Bar: Independent Section Switching -->
     <nav class="hotel-nav-bar" aria-label="Hotel Premier Navigation">
       <div class="hotel-nav-inner">
-        <button class="hotel-nav-tab active" id="tab-nav-stay" onclick="window.app ? window.app.switchSection('section-stay') : null">
+        <button class="hotel-nav-tab active" id="tab-nav-home" onclick="window.app ? window.app.switchSection('section-home') : null">
+          <span>🏛️ Home</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-stay" onclick="window.app ? window.app.switchSection('section-stay') : null">
           <span>🏨 The 14 Suites</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-tariffs" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
           <span>📜 Tariffs</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
-          <span>🍽️ Pride Dining</span>
+          <span>🍽️ Pride Pure Veg</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
-          <span>💍 Banquets & Deals</span>
+          <span>🎉 Celebrations & Groups</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-explore" onclick="window.app ? window.app.switchSection('section-explore') : null">
-          <span>🗺️ Guide & Location</span>
+          <span>🗺️ Arrive & Location</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-reviews" onclick="window.app ? window.app.switchSection('guest-feedback-section') : null">
           <span>⭐ Reviews</span>
@@ -164,55 +167,144 @@
         <span class="hallmark-restaurant">Pride Pure Veg AC Restaurant</span>
       </div>
       <div class="concierge-contact-quick">
-        <span style="color: var(--brass-light); margin-right: 2px;">📞</span>
-        <a href="tel:09325375802" style="color: var(--brass-light);">09325375802</a>
-        <span style="opacity: 0.4;">/</span>
-        <a href="tel:09370848917" style="color: var(--brass-light);">09370848917</a>
+        <a href="tel:09325375802" class="btn-call-hotel-header">
+          <span>📞</span>
+          <span>Call Hotel Premier</span>
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- ==================== MAIN SANCTUARY HERO ==================== -->
-  <section class="sanctuary-hero-section">
-    <div class="sanctuary-hero-content">
-      <div class="sanctuary-crest-emblem">
-        <span>👑</span>
-        <span>A Sanctuary in Bhusawal</span>
-      </div>
-      <h1 class="sanctuary-hero-title">HOTEL PREMIER</h1>
-      <p class="sanctuary-hero-statement">
-        "A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."
-      </p>
+  <!-- ================================================================ -->
+  <!-- 0. SANCTUARY HOME & VISUAL HOTEL STORY                            -->
+  <!-- ================================================================ -->
+  <section class="section-wrapper" id="section-home" style="display: block;">
+    <div class="sanctuary-hero-section">
+      <div class="sanctuary-hero-content">
+        <div class="sanctuary-crest-emblem">
+          <span>👑</span>
+          <span>A Sanctuary in Bhusawal</span>
+        </div>
+        <h1 class="sanctuary-hero-title">HOTEL PREMIER</h1>
+        <p class="sanctuary-hero-statement">
+          "A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."
+        </p>
 
-      <div class="sanctuary-hero-highlights">
-        <span class="sanctuary-pill">⏰ 24-Hour Flexible Check-Out</span>
-        <span class="sanctuary-pill">🚆 5 Mins / 2 KM from Railway Junction</span>
-        <span class="sanctuary-pill">🌱 Pride Pure Veg AC Dining</span>
-        <span class="sanctuary-pill">🚗 Free Private Bus & Car Parking</span>
+        <div class="sanctuary-hero-highlights">
+          <span class="sanctuary-pill">⏰ 24-Hour Flexible Check-Out</span>
+          <span class="sanctuary-pill">🚆 5 Mins / 2 KM from Railway Junction</span>
+          <span class="sanctuary-pill">🌱 Pride Pure Veg AC Dining</span>
+          <span class="sanctuary-pill">🚗 Free Private Bus & Car Parking</span>
+        </div>
+
+        <!-- Concierge Fast Action Cards -->
+        <div class="concierge-quick-grid">
+          <div class="concierge-quick-card" onclick="window.app ? window.app.openConciergeBookingModal() : null">
+            <span class="quick-card-icon">🛎️</span>
+            <div class="quick-card-title">Reserve Suite</div>
+            <div class="quick-card-sub">Instant Booking</div>
+          </div>
+          <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-stay') : null">
+            <span class="quick-card-icon">🏨</span>
+            <div class="quick-card-title">14 AC Suites</div>
+            <div class="quick-card-sub">Suites & Inclusions</div>
+          </div>
+          <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
+            <span class="quick-card-icon">📜</span>
+            <div class="quick-card-title">Room Tariffs</div>
+            <div class="quick-card-sub">Published Rates</div>
+          </div>
+          <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-dine') : null">
+            <span class="quick-card-icon">🍽️</span>
+            <div class="quick-card-title">Pride Pure Veg</div>
+            <div class="quick-card-sub">Curated Menu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Hotel Story Pillars -->
+    <div class="home-story-container">
+      <div class="home-story-intro">
+        <span class="editorial-eyebrow">The Experience</span>
+        <h2 class="home-story-title">A Home of Comfort, Flavour & Warmth</h2>
+        <p class="home-story-subtitle">
+          Whether you are arriving from a long railway journey, attending a family wedding, or conducting business in Khandesh, Hotel Premier provides an impeccably clean, tranquil and attentive boutique sanctuary.
+        </p>
       </div>
 
-      <!-- Concierge Fast Action Cards -->
-      <div class="concierge-quick-grid">
-        <div class="concierge-quick-card" onclick="window.app ? window.app.openConciergeBookingModal() : null">
-          <span class="quick-card-icon">🛎️</span>
-          <div class="quick-card-title">Reserve Suite</div>
-          <div class="quick-card-sub">Instant Booking</div>
-        </div>
-        <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
-          <span class="quick-card-icon">📜</span>
-          <div class="quick-card-title">Room Tariffs</div>
-          <div class="quick-card-sub">Published Rates</div>
-        </div>
-        <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-dine') : null">
-          <span class="quick-card-icon">🍽️</span>
-          <div class="quick-card-title">Pride Dining</div>
-          <div class="quick-card-sub">Editorial Menu</div>
-        </div>
-        <div class="concierge-quick-card" onclick="window.location.href='tel:09325375802'">
-          <span class="quick-card-icon">📞</span>
-          <div class="quick-card-title">Call Front Desk</div>
-          <div class="quick-card-sub">24x7 Helpdesk</div>
-        </div>
+      <div class="home-pillars-grid">
+        <!-- Pillar 1: Stay -->
+        <article class="home-pillar-card">
+          <div class="home-pillar-media">
+            <img src="assets/rooms/king-bed-1.jpg" alt="Hotel Premier AC Super Deluxe Suite" class="home-pillar-img" loading="lazy" onerror="this.src='assets/rooms/deluxe-room-1.jpg'">
+            <span class="home-pillar-tag">Accommodations</span>
+          </div>
+          <div class="home-pillar-body">
+            <h3 class="home-pillar-title">14 Air-Conditioned Suites</h3>
+            <p class="home-pillar-desc">
+              Impeccably clean King and Queen suites with individual silent Split AC, electric kettle tea/coffee, 24h hot water, and complimentary bottled water.
+            </p>
+            <a href="#stay" onclick="event.preventDefault(); window.app.switchSection('section-stay');" class="home-pillar-btn">
+              <span>View Suites & Amenities</span>
+              <span>›</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Pillar 2: Pride Dining -->
+        <article class="home-pillar-card">
+          <div class="home-pillar-media">
+            <img src="assets/menu-images/paneer-tikka-masala.jpg" alt="Pride Pure Veg AC Restaurant" class="home-pillar-img" loading="lazy" onerror="this.src='assets/hero/hero-bg.jpg'">
+            <span class="home-pillar-tag">Pure Veg Dining</span>
+          </div>
+          <div class="home-pillar-body">
+            <h3 class="home-pillar-title">Pride Pure Veg AC Restaurant</h3>
+            <p class="home-pillar-desc">
+              100% vegetarian culinary kitchen serving authentic Shev Bhaji, fragrant Dal Tadka, artisanal paneer specialties, tandoor rotis, and prompt room service.
+            </p>
+            <a href="#dine" onclick="event.preventDefault(); window.app.switchSection('section-dine');" class="home-pillar-btn">
+              <span>Explore Pure Veg Menu</span>
+              <span>›</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Pillar 3: Celebrations & Group Stays -->
+        <article class="home-pillar-card">
+          <div class="home-pillar-media">
+            <img src="assets/menu-images/special-veg-thali.jpg" alt="Celebrations & Group Stays" class="home-pillar-img" loading="lazy" onerror="this.src='assets/rooms/king-bed-1.jpg'">
+            <span class="home-pillar-tag">Group Hospitality</span>
+          </div>
+          <div class="home-pillar-body">
+            <h3 class="home-pillar-title">Celebrations & Group Stays</h3>
+            <p class="home-pillar-desc">
+              Host intimate celebrations & corporate dining up to 40 guests in Pride Restaurant, or reserve group floor packages with dedicated hospitality coordination.
+            </p>
+            <a href="#celebrate" onclick="event.preventDefault(); window.app.switchSection('section-celebrate');" class="home-pillar-btn">
+              <span>Group Privileges & Dining</span>
+              <span>›</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Pillar 4: Arrival & Transit -->
+        <article class="home-pillar-card">
+          <div class="home-pillar-media">
+            <img src="assets/rooms/deluxe-room-1.jpg" alt="Bhusawal Transit Proximity" class="home-pillar-img" loading="lazy" onerror="this.src='assets/hero/hero-bg.jpg'">
+            <span class="home-pillar-tag">Transit Proximity</span>
+          </div>
+          <div class="home-pillar-body">
+            <h3 class="home-pillar-title">5 Mins from Railway Junction</h3>
+            <p class="home-pillar-desc">
+              Centrally situated with private secured bus and car parking, 24-hour flexible check-out, and swift front desk connectivity.
+            </p>
+            <a href="#explore" onclick="event.preventDefault(); window.app.switchSection('section-explore');" class="home-pillar-btn">
+              <span>Directions & Location</span>
+              <span>›</span>
+            </a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -228,6 +320,30 @@
       <p class="editorial-subtitle">
         Curated for corporate professionals, visiting delegates, wedding groups, and family transit stays. 2 Super Deluxe King Suites + 4 Deluxe Queen Suites + 8 Deluxe Twin Bed Suites.
       </p>
+    </div>
+
+    <!-- Complimentary Amenities In Every Suite -->
+    <div class="room-complimentary-amenities-banner">
+      <div class="amenities-banner-header">
+        <div class="amenities-banner-title">
+          <span>✨</span>
+          <span>Standard In Every Room • Handcrafted For Guest Comfort</span>
+        </div>
+        <a href="tel:09325375802" class="btn-room-service-call">
+          <span>📞</span>
+          <span>Call Room Service / Front Desk</span>
+        </a>
+      </div>
+      <div class="amenities-pills-grid">
+        <div class="amenity-pill"><i class="fa-solid fa-snowflake"></i> Split Air Conditioning (Split AC)</div>
+        <div class="amenity-pill"><i class="fa-solid fa-bottle-water"></i> 2 Packaged Mineral Water Bottles</div>
+        <div class="amenity-pill"><i class="fa-solid fa-mug-hot"></i> Electric Kettle, Tea/Coffee & Biscuits</div>
+        <div class="amenity-pill"><i class="fa-solid fa-soap"></i> Dental & Bath Toiletries Kit</div>
+        <div class="amenity-pill"><i class="fa-solid fa-shower"></i> 24-Hour Geyser Hot Water & Towels</div>
+        <div class="amenity-pill"><i class="fa-solid fa-wifi"></i> High-Speed Wireless Internet (Wi-Fi)</div>
+        <div class="amenity-pill"><i class="fa-solid fa-tv"></i> Smart LED Television</div>
+        <div class="amenity-pill"><i class="fa-solid fa-bell-concierge"></i> Intercom to Front Desk & Room Service</div>
+      </div>
     </div>
 
     <div class="rooms-showcase-grid">
@@ -326,7 +442,7 @@
               <span class="room-amenity-tag">🛏️ Queen Size Bed</span>
               <span class="room-amenity-tag">🏢 Total 4 Rooms</span>
               <span class="room-amenity-tag">🛏️ Fits 1 Extra Bed</span>
-              <span class="room-amenity-tag">❄️ Powerful AC</span>
+              <span class="room-amenity-tag">❄️ Split AC</span>
               <span class="room-amenity-tag">📶 High-Speed Wi-Fi</span>
               <span class="room-amenity-tag">📺 Flat Screen TV</span>
               <span class="room-amenity-tag">🚿 24x7 Hot Water</span>
@@ -389,7 +505,7 @@
               <span class="room-amenity-tag">🛏️🛏️ 2 Separate Beds</span>
               <span class="room-amenity-tag">🏢 Total 8 Rooms</span>
               <span class="room-amenity-tag">🛏️ Fits 2 Extra Beds</span>
-              <span class="room-amenity-tag">❄️ Powerful AC</span>
+              <span class="room-amenity-tag">❄️ Split AC</span>
               <span class="room-amenity-tag">📶 High-Speed Wi-Fi</span>
               <span class="room-amenity-tag">📺 Flat Screen TV</span>
               <span class="room-amenity-tag">🚿 24x7 Hot Water</span>
@@ -572,7 +688,7 @@
         <div class="tariff-card-amenities">
           <span>👑 King Size Bed</span>
           <span>💼 Executive Desk</span>
-          <span>❄️ Premium Climate Control</span>
+          <span>❄️ Split AC</span>
           <span>📺 43" Smart TV</span>
           <span>📶 Premium Wi-Fi</span>
         </div>
@@ -857,23 +973,23 @@
   </section>
 
   <!-- ================================================================ -->
-  <!-- 4. CELEBRATE AT HOTEL PREMIER (BANQUETS & GROUPS)                 -->
+  <!-- 4. CELEBRATIONS & GROUP DINING / GROUP STAYS                      -->
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-celebrate">
     <div class="celebrate-hero-banner">
-      <span class="editorial-eyebrow" style="color: var(--brass-light);">Pride Pure Veg Banquets</span>
-      <h2 class="celebrate-title">Celebrate at Hotel Premier</h2>
+      <span class="editorial-eyebrow" style="color: var(--brass-light);">Pride Pure Veg Dining & Stays</span>
+      <h2 class="celebrate-title">Celebrations & Group Stays</h2>
       <p class="celebrate-subtitle">
-        From intimate ring ceremonies, birthdays, and anniversaries to exclusive corporate lunches and wedding group stays. Hosted in Pride Pure Veg AC Restaurant (Max 40 Pax).
+        Host intimate family celebrations, birthdays, anniversaries, and corporate lunches up to 40 guests in Pride Pure Veg AC Restaurant, or reserve group room blocks with dedicated hospitality privileges.
       </p>
     </div>
 
-    <!-- Advance Marriage Group Blocks -->
+    <!-- Advance Marriage & Group Blocks -->
     <div class="editorial-header-block" style="margin-bottom: 24px;">
-      <span class="editorial-eyebrow">Wedding & Group Blocks</span>
-      <h3 class="editorial-title" style="font-size: 1.5rem;">Advance Marriage Room Deals</h3>
+      <span class="editorial-eyebrow">Curated Hospitality</span>
+      <h3 class="editorial-title" style="font-size: 1.5rem;">Group Stay Privileges</h3>
       <div class="editorial-divider"></div>
-      <p class="editorial-subtitle">Exclusive group savings for weddings, Barat stays, and large family celebrations in Bhusawal.</p>
+      <p class="editorial-subtitle">Priority check-in, dedicated floor coordination, and transparent published rates for wedding parties, delegates, and family groups.</p>
     </div>
 
     <div class="bulk-tiers-grid" id="bulk-deals-tiers-container">
@@ -885,19 +1001,19 @@
       <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
         <span style="font-size: 1.6rem;">🧮</span>
         <div>
-          <h4 style="font-family: var(--font-royal); font-size: 1.10rem; color: var(--burgundy-deep);">Instant Group & Marriage Quote Calculator</h4>
-          <p style="font-size: 0.78rem; color: var(--text-muted-dark);">Select your room requirements to calculate instant group discount</p>
+          <h4 style="font-family: var(--font-royal); font-size: 1.10rem; color: var(--burgundy-deep);">Group Stay & Privilege Estimator</h4>
+          <p style="font-size: 0.78rem; color: var(--text-muted-dark);">Select your room requirements to calculate transparent published tariff and privileges</p>
         </div>
       </div>
 
       <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
           <div class="form-group">
-            <label class="form-label">Occasion / Event Type</label>
+            <label class="form-label">Occasion / Stay Purpose</label>
             <select id="calc-event-type" class="form-select" onchange="window.app.calculateBulkQuote()">
               <option value="Wedding / Marriage Barat">💍 Wedding / Marriage Barat</option>
               <option value="Family Function / Gathering">👨‍👩‍👧‍👦 Family Function / Gathering</option>
-              <option value="Corporate / Business Event">💼 Corporate / Business Event</option>
+              <option value="Corporate / Business Delegation">💼 Corporate / Business Delegation</option>
               <option value="Tour / Pilgrimage Group">🚌 Tour / Pilgrimage Group</option>
             </select>
           </div>
@@ -930,8 +1046,8 @@
             <label class="form-label">Nights Stay</label>
             <select id="calc-num-nights" class="form-select" onchange="window.app.calculateBulkQuote()">
               <option value="1">1 Night (24-Hour Stay)</option>
-              <option value="2">2 Nights (Wedding Weekend)</option>
-              <option value="3">3 Nights (Full Ceremony)</option>
+              <option value="2">2 Nights (Weekend Stay)</option>
+              <option value="3">3 Nights (Full Event)</option>
               <option value="4">4+ Nights Stay</option>
             </select>
           </div>
@@ -960,23 +1076,23 @@
         <!-- Quote Result Box -->
         <div class="wizard-summary-card" id="quote-result-box">
           <div class="summary-row">
-            <span>Regular Published Tariff:</span>
-            <span style="text-decoration: line-through; color: #8C9BAE;" id="quote-regular-price">₹ 72,000/-</span>
+            <span>Published Tariff Total:</span>
+            <span id="quote-regular-price" style="font-weight: 700; color: var(--text-dark);">₹ 72,000/-</span>
           </div>
           <div class="summary-row" id="quote-extra-bed-row" style="display: none; color: var(--burgundy-primary);">
             <span>Extra Beds (<span id="quote-extra-bed-count">0</span> Beds):</span>
             <span id="quote-extra-bed-amount">+ ₹ 0/-</span>
           </div>
-          <div class="summary-row" style="color: #16A34A; font-weight: 700;">
-            <span>Group Privilege (<span id="quote-discount-tag">20% OFF</span>):</span>
-            <span id="quote-savings-amount">- ₹ 14,400/-</span>
+          <div class="summary-row" style="color: var(--burgundy-primary); font-weight: 700;">
+            <span>Group Privileges:</span>
+            <span id="quote-discount-tag">✨ Included Perks</span>
           </div>
           <div class="summary-grand-row">
             <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep); text-transform: uppercase;">Special Bulk Booking Tariff</div>
-              <div style="font-size: 0.68rem; color: #16A34A; font-weight: 600;">✔ Inclusive of all taxes • 24-Hour Check-Out</div>
+              <div style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep); text-transform: uppercase;">Estimated Group Stay Tariff</div>
+              <div style="font-size: 0.68rem; color: #16A34A; font-weight: 600;">✔ Transparent published rates • 24-Hour Check-Out</div>
             </div>
-            <strong id="quote-final-price">₹ 57,600/-</strong>
+            <strong id="quote-final-price">₹ 72,000/-</strong>
           </div>
 
           <div style="display: flex; gap: 10px; margin-top: 14px;">
@@ -997,12 +1113,60 @@
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-explore">
     <div class="editorial-header-block">
-      <span class="editorial-eyebrow">The Concierge Guide</span>
-      <h2 class="editorial-title">Explore Bhusawal & Khandesh</h2>
+      <span class="editorial-eyebrow">Location & Directions</span>
+      <h2 class="editorial-title">Arrive at Hotel Premier</h2>
       <div class="editorial-divider"></div>
       <p class="editorial-subtitle">
-        Hotel Premier is your central starting point on Jamner Road near Nahata College — 5 minutes from Bhusawal Railway Junction and the gateway to Ajanta Caves.
+        Centrally positioned on Jamner Road near Nahata College with secure on-site parking for buses and private cars. Choose your starting point below for instant directions.
       </p>
+    </div>
+
+    <!-- 3 Verified Route Starting Points -->
+    <div class="route-starting-points-grid">
+      <!-- Route 1: From Bhusawal Railway Junction -->
+      <div class="route-start-card">
+        <div>
+          <div class="route-start-card-header">
+            <div class="route-icon-badge">🚆</div>
+            <span class="route-time-badge">5 MINS • 2.0 KM</span>
+          </div>
+          <h4 class="route-name">From Bhusawal Railway Junction</h4>
+          <p class="route-desc">Direct route via Station Road & Jamner Road past Nahata College. Available 24x7 by auto-rickshaw or taxi.</p>
+        </div>
+        <a href="https://www.google.com/maps/dir/Bhusawal+Junction,+Bhusawal,+Maharashtra/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
+          <span>🧭 Get Live Directions</span>
+        </a>
+      </div>
+
+      <!-- Route 2: From Central Bus Stand -->
+      <div class="route-start-card">
+        <div>
+          <div class="route-start-card-header">
+            <div class="route-icon-badge">🚌</div>
+            <span class="route-time-badge">7 MINS • 2.5 KM</span>
+          </div>
+          <h4 class="route-name">From Central Bus Stand (MSRTC)</h4>
+          <p class="route-desc">Convenient drive along main Jamner road corridor straight to Hotel Premier front gate.</p>
+        </div>
+        <a href="https://www.google.com/maps/dir/Bhusawal+Bus+Stand,+Bhusawal/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
+          <span>🧭 Get Live Directions</span>
+        </a>
+      </div>
+
+      <!-- Route 3: From Highway NH-53 -->
+      <div class="route-start-card">
+        <div>
+          <div class="route-start-card-header">
+            <div class="route-icon-badge">🚗</div>
+            <span class="route-time-badge">10 MINS • 4.5 KM</span>
+          </div>
+          <h4 class="route-name">From National Highway NH-53</h4>
+          <p class="route-desc">Take the Bhusawal bypass exit into Jamner Road. Ample private coach and car parking on premises.</p>
+        </div>
+        <a href="https://www.google.com/maps/dir/NH+53,+Bhusawal/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
+          <span>🧭 Get Live Directions</span>
+        </a>
+      </div>
     </div>
 
     <div class="explore-concierge-card">
@@ -1078,11 +1242,11 @@
           <div class="feedback-form-grid">
             <div class="feedback-input-field">
               <label>Your Name *</label>
-              <input type="text" id="feedback-guest-name" class="fb-input" placeholder="e.g. Rajesh Patil" required>
+              <input type="text" id="feedback-guest-name" class="fb-input" placeholder="Enter your name" required>
             </div>
             <div class="feedback-input-field">
               <label>WhatsApp / Mobile Number *</label>
-              <input type="tel" id="feedback-guest-phone" class="fb-input" placeholder="e.g. 98220xxxxx" pattern="[0-9]{10}" maxlength="10" required>
+              <input type="tel" id="feedback-guest-phone" class="fb-input" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
             </div>
             <div class="feedback-input-field">
               <label>Your City / Region</label>
@@ -1097,7 +1261,7 @@
             </div>
             <div class="feedback-input-field">
               <label>Room or Table # (Optional)</label>
-              <input type="text" id="feedback-table-num" class="fb-input" placeholder="e.g. Room 201 or Table 4">
+              <input type="text" id="feedback-table-num" class="fb-input" placeholder="Room number or table (if staying)">
             </div>
           </div>
 
@@ -1126,16 +1290,16 @@
         <div class="external-review-quiet-title">Or share your review publicly on:</div>
         <div class="external-platforms-quiet-row">
           <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <span>Google Reviews (4.2★)</span>
+            <span>Google Reviews (4.1★)</span>
+          </a>
+          <a href="https://www.makemytrip.com/hotels/hotel_premier-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <span>MakeMyTrip (4.0★)</span>
+          </a>
+          <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-7988359765272654316/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <span>Goibibo (4.0★)</span>
           </a>
           <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <span>Zomato</span>
-          </a>
-          <a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <span>Swiggy</span>
-          </a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <span>Tripadvisor</span>
+            <span>Zomato (4.2★)</span>
           </a>
         </div>
       </div>
@@ -1322,22 +1486,22 @@
 
         <div class="form-group">
           <label class="form-label">Full Name</label>
-          <input type="text" id="profile-modal-name" class="form-input" placeholder="e.g. Rajesh Patil">
+          <input type="text" id="profile-modal-name" class="form-input" placeholder="Enter your full name">
         </div>
 
         <div class="form-group">
           <label class="form-label">WhatsApp / Mobile Number</label>
-          <input type="tel" id="profile-modal-phone" class="form-input" placeholder="e.g. 98220xxxxx" maxlength="10">
+          <input type="tel" id="profile-modal-phone" class="form-input" placeholder="Enter your 10-digit mobile number" maxlength="10">
         </div>
 
         <div class="form-group">
           <label class="form-label">City / Region</label>
-          <input type="text" id="profile-modal-region" class="form-input" placeholder="e.g. Bhusawal, Jalgaon, Pune, Mumbai">
+          <input type="text" id="profile-modal-region" class="form-input" placeholder="Your city (e.g. Bhusawal, Jalgaon, Pune, Mumbai)">
         </div>
 
         <div class="form-group">
           <label class="form-label">Room or Table Number (If Currently Staying)</label>
-          <input type="text" id="profile-modal-room-table" class="form-input" placeholder="e.g. Room 201 or Table 5">
+          <input type="text" id="profile-modal-room-table" class="form-input" placeholder="Room number or table (optional)">
         </div>
 
         <div style="display: flex; gap: 10px; margin-top: 20px;">
@@ -1494,20 +1658,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v15.0) -->
-  <script src="storage.js?v=15.0"></script>
-  <script src="vault.js?v=15.0"></script>
-  <script src="data/translations.js?v=15.0"></script>
-  <script src="data/hotel-data.js?v=15.0"></script>
-  <script src="data/menu-data.js?v=15.0"></script>
-  <script src="app.js?v=15.0"></script>
-  <script src="admin.js?v=15.0"></script>
+  <!-- Load Application Scripts (v16.0) -->
+  <script src="storage.js?v=16.0"></script>
+  <script src="vault.js?v=16.0"></script>
+  <script src="data/translations.js?v=16.0"></script>
+  <script src="data/hotel-data.js?v=16.0"></script>
+  <script src="data/menu-data.js?v=16.0"></script>
+  <script src="app.js?v=16.0"></script>
+  <script src="admin.js?v=16.0"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=15.0').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=16.0').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
