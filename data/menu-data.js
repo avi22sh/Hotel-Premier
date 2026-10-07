@@ -1,184 +1,184 @@
-// Hotel Premier - Pride Pure Veg AC Restaurant Menu Database
+﻿// Hotel Premier - Pride Pure Veg AC Restaurant Menu Database
 // Extracted accurately from Official Updated Reference Menu Document
 
 window.HOTEL_PREMIER_CATEGORIES = [
   { 
     id: 'morning-delights', 
     name: 'Morning Delights', 
-    hindiName: 'नाश्ता एवं सैंडविच',
-    marathiName: 'सकाळचा नाश्ता व सँडविच',
-    icon: '🌅', 
-    image: 'assets/menu-images/MORNING DELIGHT/poori bhaji.avif',
+    hindiName: 'à¤¨à¤¾à¤¶à¥à¤¤à¤¾ à¤à¤µà¤‚ à¤¸à¥ˆà¤‚à¤¡à¤µà¤¿à¤š',
+    marathiName: 'à¤¸à¤•à¤¾à¤³à¤šà¤¾ à¤¨à¤¾à¤¶à¥à¤¤à¤¾ à¤µ à¤¸à¤à¤¡à¤µà¤¿à¤š',
+    icon: 'ðŸŒ…', 
+    image: 'assets/menu-images/MORNING DELIGHT/POORI BHAJI.jpg',
     description: 'Poori Bhaji, Chole Bhature, Stuffed Parathas, Club Sandwiches & Poha'
   },
   { 
     id: 'hot-hearty', 
     name: 'Hot & Hearty', 
-    hindiName: 'गर्म पेय',
-    marathiName: 'गरमागरम चहा व कॉफी',
-    icon: '☕', 
-    image: 'assets/menu-images/MORNING DELIGHT/bread butter toast.avif',
+    hindiName: 'à¤—à¤°à¥à¤® à¤ªà¥‡à¤¯',
+    marathiName: 'à¤—à¤°à¤®à¤¾à¤—à¤°à¤® à¤šà¤¹à¤¾ à¤µ à¤•à¥‰à¤«à¥€',
+    icon: 'â˜•', 
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     description: 'Special Masala Tea, Filter Coffee, Bournvita & Hot Milk'
   },
   { 
     id: 'tasty-tidbits', 
     name: 'Tasty Tidbits', 
-    hindiName: 'चटपटे स्नैक्स',
-    marathiName: 'चटपटीत स्नॅक्स व भजी',
-    icon: '🍟', 
-    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.avif',
+    hindiName: 'à¤šà¤Ÿà¤ªà¤Ÿà¥‡ à¤¸à¥à¤¨à¥ˆà¤•à¥à¤¸',
+    marathiName: 'à¤šà¤Ÿà¤ªà¤Ÿà¥€à¤¤ à¤¸à¥à¤¨à¥…à¤•à¥à¤¸ à¤µ à¤­à¤œà¥€',
+    icon: 'ðŸŸ', 
+    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
     description: 'Veg/Paneer/Cheese Pakoda, Finger Chips, Chana Garlic Roast & Chaat'
   },
   { 
     id: 'premier-soups', 
     name: 'Premier Soups', 
-    hindiName: 'सूप',
-    marathiName: 'प्रीमियर सूप',
-    icon: '🍲', 
-    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.avif',
+    hindiName: 'à¤¸à¥‚à¤ª',
+    marathiName: 'à¤ªà¥à¤°à¥€à¤®à¤¿à¤¯à¤° à¤¸à¥‚à¤ª',
+    icon: 'ðŸ²', 
+    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg',
     description: 'Manchow, Hot & Sour, Cream of Tomato, Sweetcorn & Lemon Coriander'
   },
   { 
     id: 'indo-chinese', 
     name: 'Indo-Chinese Nibbles', 
-    hindiName: 'इंडो-चाइनीज स्टार्टर्स',
-    marathiName: 'इंडो-चायनीज स्टार्टर्स',
-    icon: '🥢', 
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.avif',
+    hindiName: 'à¤‡à¤‚à¤¡à¥‹-à¤šà¤¾à¤‡à¤¨à¥€à¤œ à¤¸à¥à¤Ÿà¤¾à¤°à¥à¤Ÿà¤°à¥à¤¸',
+    marathiName: 'à¤‡à¤‚à¤¡à¥‹-à¤šà¤¾à¤¯à¤¨à¥€à¤œ à¤¸à¥à¤Ÿà¤¾à¤°à¥à¤Ÿà¤°à¥à¤¸',
+    icon: 'ðŸ¥¢', 
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
     description: 'Chinese Platter, Paneer Chilly, Spring Rolls, Manchurian & Crispy Corn'
   },
   { 
     id: 'tandoor-classics', 
     name: 'Tandoor Classics', 
-    hindiName: 'तंदूरी कबाब एवं टिक्का',
-    marathiName: 'तंदूर कबाब व टिक्का',
-    icon: '🍢', 
-    image: 'assets/menu-images/TANDOOR CLASSICS/TANDOOR PLATTER.avif',
+    hindiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤•à¤¬à¤¾à¤¬ à¤à¤µà¤‚ à¤Ÿà¤¿à¤•à¥à¤•à¤¾',
+    marathiName: 'à¤¤à¤‚à¤¦à¥‚à¤° à¤•à¤¬à¤¾à¤¬ à¤µ à¤Ÿà¤¿à¤•à¥à¤•à¤¾',
+    icon: 'ðŸ¢', 
+    image: 'assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg',
     description: 'Tandoori Platter, Paneer Tikka, Reshmi Kabab, Hara Bhara & Shawarma'
   },
   { 
     id: 'sizzling-rice-noodles', 
     name: 'Sizzling Rice & Noodles', 
-    hindiName: 'फ्राइड राइस एवं नूडल्स',
-    marathiName: 'फ्राइड राईस व नूडल्स',
-    icon: '🍳', 
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/NOODLES/VEG HAKKA NOODLES.avif',
+    hindiName: 'à¤«à¥à¤°à¤¾à¤‡à¤¡ à¤°à¤¾à¤‡à¤¸ à¤à¤µà¤‚ à¤¨à¥‚à¤¡à¤²à¥à¤¸',
+    marathiName: 'à¤«à¥à¤°à¤¾à¤‡à¤¡ à¤°à¤¾à¤ˆà¤¸ à¤µ à¤¨à¥‚à¤¡à¤²à¥à¤¸',
+    icon: 'ðŸ³', 
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES.jpg',
     description: 'Triple Schezwan Rice, Hakka Noodles, Fried Rice & Combination Rice'
   },
   { 
     id: 'pasta-section', 
     name: 'Italian & Fusion Pasta', 
-    hindiName: 'पास्ता स्पेशल',
-    marathiName: 'इटालियन पास्ता स्पेशल',
-    icon: '🍝', 
+    hindiName: 'à¤ªà¤¾à¤¸à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    marathiName: 'à¤‡à¤Ÿà¤¾à¤²à¤¿à¤¯à¤¨ à¤ªà¤¾à¤¸à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    icon: 'ðŸ', 
     image: 'assets/menu-images/ITALIAN%20FUSION%20PASTA/CHILLI%20CHINESE%20PASTA.png',
     description: 'Desi Masala Pasta & Chilli Chinese Pasta prepared fresh'
   },
   { 
     id: 'vegetable-specialties', 
     name: 'Vegetable Specialties', 
-    hindiName: 'सब्जियां एवं स्पेशल ग्रेवी',
-    marathiName: 'भाजी व खान्देशी स्पेशल',
-    icon: '🥘', 
-    image: 'assets/menu-images/VEG%20SPECIALITIES/VEG%20PRIDE%20SPECIAL.avif',
+    hindiName: 'à¤¸à¤¬à¥à¤œà¤¿à¤¯à¤¾à¤‚ à¤à¤µà¤‚ à¤¸à¥à¤ªà¥‡à¤¶à¤² à¤—à¥à¤°à¥‡à¤µà¥€',
+    marathiName: 'à¤­à¤¾à¤œà¥€ à¤µ à¤–à¤¾à¤¨à¥à¤¦à¥‡à¤¶à¥€ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    icon: 'ðŸ¥˜', 
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg',
     description: 'Veg Pride Special, Shev Bhaji (Khandeshi), Kaju Curry, Veg Handi & Kolhapuri'
   },
   { 
     id: 'kofta-delights', 
     name: 'Delicious Kofta Delights', 
-    hindiName: 'कोफ्ता स्पेशल',
-    marathiName: 'स्वादिष्ट कोफ्ता स्पेशल',
-    icon: '🧆', 
-    image: 'assets/menu-images/DELICIOUS%20KOFTA/CHEESE%20KOFTA.avif',
+    hindiName: 'à¤•à¥‹à¤«à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    marathiName: 'à¤¸à¥à¤µà¤¾à¤¦à¤¿à¤·à¥à¤Ÿ à¤•à¥‹à¤«à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    icon: 'ðŸ§†', 
+    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
     description: 'Malai Kofta, Nargisi Kofta, Cheese Kofta & Paneer Kofta'
   },
   { 
     id: 'paneer-specialties', 
     name: 'Paneer Specialties', 
-    hindiName: 'शाही पनीर व्यंजन',
-    marathiName: 'शाही पनीर स्पेशल',
-    icon: '🧀', 
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.avif',
+    hindiName: 'à¤¶à¤¾à¤¹à¥€ à¤ªà¤¨à¥€à¤° à¤µà¥à¤¯à¤‚à¤œà¤¨',
+    marathiName: 'à¤¶à¤¾à¤¹à¥€ à¤ªà¤¨à¥€à¤° à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    icon: 'ðŸ§€', 
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
     description: 'Paneer Three Style, Tikka Masala, Butter Masala, Angara, Handi & Bhurji'
   },
   { 
     id: 'flavorful-dals', 
     name: 'Flavorful Dals', 
-    hindiName: 'स्वादिष्ट दाल एवं कढ़ी',
-    marathiName: 'खमंग डाळ व कढी',
-    icon: '🥣', 
-    image: 'assets/menu-images/FLAVORFUL%20DAL/DAL%20TADKA.avif',
+    hindiName: 'à¤¸à¥à¤µà¤¾à¤¦à¤¿à¤·à¥à¤Ÿ à¤¦à¤¾à¤² à¤à¤µà¤‚ à¤•à¤¢à¤¼à¥€',
+    marathiName: 'à¤–à¤®à¤‚à¤— à¤¡à¤¾à¤³ à¤µ à¤•à¤¢à¥€',
+    icon: 'ðŸ¥£', 
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg',
     description: 'Dal Fry, Dal Tadka with Desi Ghee, Dal Maharani & Punjabi Kadhi'
   },
   { 
     id: 'fresh-addons', 
     name: 'Fresh Add-Ons', 
-    hindiName: 'सलाद, रायता एवं पापड़',
-    marathiName: 'सलाड, रायता व पापड',
-    icon: '🥗', 
-    image: 'assets/menu-images/ACCOMPANIMENTS/GREEN%20SALAD.avif',
+    hindiName: 'à¤¸à¤²à¤¾à¤¦, à¤°à¤¾à¤¯à¤¤à¤¾ à¤à¤µà¤‚ à¤ªà¤¾à¤ªà¤¡à¤¼',
+    marathiName: 'à¤¸à¤²à¤¾à¤¡, à¤°à¤¾à¤¯à¤¤à¤¾ à¤µ à¤ªà¤¾à¤ªà¤¡',
+    icon: 'ðŸ¥—', 
+    image: 'assets/menu-images/ACCOMPANIMENTS/GREEN SALAD.jpg',
     description: 'Green & Kuchumber Salad, Boondi/Pineapple Raita, Urad & Nagli Papad'
   },
   { 
     id: 'signature-breads', 
     name: 'Signature Indian Breads', 
-    hindiName: 'तंदूरी रोटी, नान एवं पराठे',
-    marathiName: 'तंदूरी रोटी, नान व पराठे',
-    icon: '🫓', 
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.avif',
+    hindiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€, à¤¨à¤¾à¤¨ à¤à¤µà¤‚ à¤ªà¤°à¤¾à¤ à¥‡',
+    marathiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€, à¤¨à¤¾à¤¨ à¤µ à¤ªà¤°à¤¾à¤ à¥‡',
+    icon: 'ðŸ«“', 
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER GARLIC NAAN.jpg',
     description: 'Tandoori Roti, Butter Naan, Garlic Naan, Cheese Naan & Roti Basket'
   },
   { 
     id: 'rice-biryani', 
     name: 'Rice & Biryani Fiesta', 
-    hindiName: 'बिरयानी एवं पुलाव',
-    marathiName: 'दम बिर्याणी व पुलाव',
-    icon: '🍚', 
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.avif',
+    hindiName: 'à¤¬à¤¿à¤°à¤¯à¤¾à¤¨à¥€ à¤à¤µà¤‚ à¤ªà¥à¤²à¤¾à¤µ',
+    marathiName: 'à¤¦à¤® à¤¬à¤¿à¤°à¥à¤¯à¤¾à¤£à¥€ à¤µ à¤ªà¥à¤²à¤¾à¤µ',
+    icon: 'ðŸš', 
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
     description: 'Veg Dum Biryani, Hyderabadi Biryani, Paneer Tikka Biryani & Dal Khichadi'
   },
   { 
     id: 'mithai-magic', 
     name: 'Mithai Magic & Desserts', 
-    hindiName: 'मिठाई एवं संडे स्पेशल',
-    marathiName: 'मिठाई व संडे स्पेशल',
-    icon: '🍧', 
-    image: 'assets/menu-images/DESSERTS/GULAB%20JAMUN.avif',
+    hindiName: 'à¤®à¤¿à¤ à¤¾à¤ˆ à¤à¤µà¤‚ à¤¸à¤‚à¤¡à¥‡ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    marathiName: 'à¤®à¤¿à¤ à¤¾à¤ˆ à¤µ à¤¸à¤‚à¤¡à¥‡ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    icon: 'ðŸ§', 
+    image: 'assets/menu-images/DESSERTS/GULAB JAMUN.jpg',
     description: 'Honeymoon Surprise, Hot Chocolate Fudge, Gulab Jamun & Rasgulla'
   },
   { 
     id: 'frozen-fantasies', 
     name: 'Frozen Fantasies (Ice Cream)', 
-    hindiName: 'आइसक्रीम',
-    marathiName: 'आइसक्रीम स्पेशल',
-    icon: '🍨', 
+    hindiName: 'à¤†à¤‡à¤¸à¤•à¥à¤°à¥€à¤®',
+    marathiName: 'à¤†à¤‡à¤¸à¤•à¥à¤°à¥€à¤® à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    icon: 'ðŸ¨', 
     image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
     description: 'Butterscotch, Kaju Draksh, Afghan Dry Fruit, Chocolate & Vanilla'
   },
   { 
     id: 'mocktails', 
     name: 'Exotic Mocktails', 
-    hindiName: 'मॉकटेल्स',
-    marathiName: 'एक्झॉटिक मॉकटेल',
-    icon: '🍹', 
+    hindiName: 'à¤®à¥‰à¤•à¤Ÿà¥‡à¤²à¥à¤¸',
+    marathiName: 'à¤à¤•à¥à¤à¥‰à¤Ÿà¤¿à¤• à¤®à¥‰à¤•à¤Ÿà¥‡à¤²',
+    icon: 'ðŸ¹', 
     image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
     description: 'Blue Lagoon, Fruit Punch, Green Goddess, Sunrise & Pink Lady'
   },
   { 
     id: 'milkshake-mastani', 
     name: 'Milkshake & Mastani', 
-    hindiName: 'मिल्कशेक एवं मस्तानी',
-    marathiName: 'मिल्कशेक व मस्तानी',
-    icon: '🥤', 
+    hindiName: 'à¤®à¤¿à¤²à¥à¤•à¤¶à¥‡à¤• à¤à¤µà¤‚ à¤®à¤¸à¥à¤¤à¤¾à¤¨à¥€',
+    marathiName: 'à¤®à¤¿à¤²à¥à¤•à¤¶à¥‡à¤• à¤µ à¤®à¤¸à¥à¤¤à¤¾à¤¨à¥€',
+    icon: 'ðŸ¥¤', 
     image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
     description: 'Mango Mastani, Hotel Premier Special Mastani & Thick Milkshakes'
   },
   { 
     id: 'chilled-beverages', 
     name: 'Chilled & Aerated Drinks', 
-    hindiName: 'शीतल पेय एवं लस्सी',
-    marathiName: 'थंड पेय व लस्सी',
-    icon: '🧊', 
+    hindiName: 'à¤¶à¥€à¤¤à¤² à¤ªà¥‡à¤¯ à¤à¤µà¤‚ à¤²à¤¸à¥à¤¸à¥€',
+    marathiName: 'à¤¥à¤‚à¤¡ à¤ªà¥‡à¤¯ à¤µ à¤²à¤¸à¥à¤¸à¥€',
+    icon: 'ðŸ§Š', 
     image: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600&auto=format&fit=crop&q=80',
     description: 'Special Punjabi Lassi, Masala Chaas, Fresh Lime Soda & Soft Drinks'
   }
@@ -196,7 +196,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.2',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/poori bhaji.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/POORI BHAJI.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -209,7 +209,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/chole bhature.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/CHOLE BHATURE.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -222,7 +222,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/aloo paratha with curd.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/ALOO PARATHA WITH CURD 1.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -235,7 +235,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/poha.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/GOBHI PARATHA WITH CURD.jpg',
     rating: 4.6,
     prepTime: '15 mins'
   },
@@ -248,7 +248,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/paneer paratha with curd.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/PANEER PARATHA WITH CURD.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -261,7 +261,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/poha.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/POHA.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -274,7 +274,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/veg cutlet.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/VEG CUTLET 1.jpg',
     rating: 4.5,
     prepTime: '15 mins'
   },
@@ -287,7 +287,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/bread butter jam.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER JAM.jpg',
     rating: 4.4,
     prepTime: '5 mins'
   },
@@ -300,7 +300,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/bread butter toast.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     rating: 4.3,
     prepTime: '5 mins'
   },
@@ -313,7 +313,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/pride special sandwich.jfif',
+    image: 'assets/menu-images/MORNING DELIGHT/PRIDE SPECIAL SANDWICH.jpg',
     rating: 5.0,
     prepTime: '15 mins'
   },
@@ -326,7 +326,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/cheese chutmey sandwich.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/CHEESE CHUTNEY SANDWICH.jpg',
     rating: 4.7,
     prepTime: '10 mins'
   },
@@ -339,7 +339,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/cheese grilled sandwich.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/CHEESE GRILLED SANDWICH.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -352,7 +352,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/veg club sandwich.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/VEG CLUB SANDWICH.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -365,7 +365,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/veg grilled sandwich.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/VEG GRILLED SANDWICH.jpg',
     rating: 4.6,
     prepTime: '12 mins'
   },
@@ -378,7 +378,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/veg cheese grilled sandwich.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/VEG CHEESE GRILLED SANDWICH.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -391,7 +391,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/veg sandwich.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/VEG SANDWICH.jpg',
     rating: 4.5,
     prepTime: '8 mins'
   },
@@ -404,7 +404,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'jain-available'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/sabudana khichadi.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg',
     rating: 4.9,
     prepTime: '12 mins'
   },
@@ -417,7 +417,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA WADA.png',
+    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA WADA.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -432,7 +432,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/bread butter toast.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -445,7 +445,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/bread butter jam.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -458,7 +458,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA WADA.png',
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     rating: 4.6,
     prepTime: '5 mins'
   },
@@ -471,7 +471,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/cheese chutmey sandwich.avif',
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     rating: 4.5,
     prepTime: '5 mins'
   },
@@ -486,7 +486,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/MIX VEG PAKODA.avif',
+    image: 'assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -499,7 +499,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.avif',
+    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -512,7 +512,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHEESE PAKODA.avif',
+    image: 'assets/menu-images/TASTY TIDBITS/CHEESE PAKODA.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -525,7 +525,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.avif',
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
     rating: 4.6,
     prepTime: '10 mins'
   },
@@ -538,7 +538,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jfif',
+    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
     rating: 4.4,
     prepTime: '10 mins'
   },
@@ -551,7 +551,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA CHAAT.avif',
+    image: 'assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg',
     rating: 4.7,
     prepTime: '10 mins'
   },
@@ -564,7 +564,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/PEANUT CHAAT.avif',
+    image: 'assets/menu-images/TASTY TIDBITS/PEANUT CHAAT.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -577,7 +577,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jfif',
+    image: 'assets/menu-images/TASTY TIDBITS/CHANA GARLIC ROAST 1.jpg',
     rating: 4.9,
     prepTime: '12 mins'
   },
@@ -590,7 +590,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/ALOO CHAAT.avif',
+    image: 'assets/menu-images/TASTY TIDBITS/ALOO CHAAT 1.jpg',
     rating: 4.6,
     prepTime: '10 mins'
   },
@@ -603,7 +603,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHINESE BHEL.avif',
+    image: 'assets/menu-images/TASTY TIDBITS/CHINESE BHEL.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -618,7 +618,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.avif',
+    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -631,7 +631,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/HOT & SOUR SOUP.avif',
+    image: 'assets/menu-images/SOUPS/HOT & SOUR SOUP.jpg',
     rating: 4.7,
     prepTime: '12 mins'
   },
@@ -644,7 +644,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/TOMATO SOUP.avif',
+    image: 'assets/menu-images/SOUPS/TOMATO SOUP.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -657,7 +657,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/LMON ORIANDER SOUP.avif',
+    image: 'assets/menu-images/SOUPS/LEMON CORIANDER SOUP.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -670,7 +670,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/SWEETCORN SOUP.avif',
+    image: 'assets/menu-images/SOUPS/VEG SWEETCORN SOUP.jpg',
     rating: 4.7,
     prepTime: '12 mins'
   },
@@ -683,7 +683,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/VEG CLEAR SOUP.avif',
+    image: 'assets/menu-images/SOUPS/VEG CLEAR SOUP.jpg',
     rating: 4.5,
     prepTime: '10 mins'
   },
@@ -698,7 +698,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
     rating: 5.0,
     prepTime: '22 mins'
   },
@@ -711,7 +711,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER CHILLI.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PAANEER CHILLI 1 (1).jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -724,7 +724,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER MACHURIAN.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER MANCHURIAN.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -733,11 +733,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'indo-chinese',
     name: 'Paneer Sancho',
     price: 315,
-    description: 'Specialty paneer preparation tossed in Chef’s exotic Asian reduction with lemongrass and crushed roasted nuts.',
+    description: 'Specialty paneer preparation tossed in Chefâ€™s exotic Asian reduction with lemongrass and crushed roasted nuts.',
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SANCHO.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SANCHO 1.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -750,7 +750,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SATAY.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SATAY 1.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -763,7 +763,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -776,7 +776,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -789,7 +789,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/THREAD PANEER.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/THREAD PANEER.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -802,7 +802,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SALTON.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SALTON.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -815,7 +815,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER 65.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER 65.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -828,7 +828,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG LOLLIPOP.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER IN HOT Garlic SAUCE.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -841,7 +841,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -854,7 +854,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpeg',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpg',
     rating: 4.8,
     prepTime: '16 mins'
   },
@@ -868,7 +868,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.3',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -881,7 +881,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG LOLLIPOP.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG LOLLIPOP.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -894,7 +894,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpeg',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -907,7 +907,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/MUSHROOM BABYCORN CHILLI.jpeg',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG 65.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -920,7 +920,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY 1.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -933,7 +933,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BALL IN HOT GARLIC SAUCE.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BALL IN HOT GARLIC SAUCE.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -946,7 +946,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/MUSHROOM BABYCORN CHILLI.jpeg',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/MUSHROOM BABYCORN CHILLI.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -959,7 +959,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN 1.jpg',
     rating: 4.8,
     prepTime: '16 mins'
   },
@@ -972,7 +972,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BULLET.jpeg',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BULLET 1.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -985,7 +985,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG HOT PAN.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG HOT PAN 1.jpg',
     rating: 4.8,
     prepTime: '16 mins'
   },
@@ -998,7 +998,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -1011,7 +1011,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/HONEY CHILLI POTATO.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/HONEY CHILLI POTATO.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -1024,7 +1024,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/SOYABEAN CHILLI.avif',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/SOYABEAN CHILLI.jpg',
     rating: 4.6,
     prepTime: '15 mins'
   },
@@ -1040,7 +1040,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.5',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/TANDOOR PLATTER.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg',
     rating: 5.0,
     prepTime: '25 mins'
   },
@@ -1053,7 +1053,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1066,7 +1066,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/JUNGLI PANEER TIKKA.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/JUNGLI PANEER TIKKA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1079,7 +1079,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER PATAKHA TIKKA.jpeg',
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER PATAKHA TIKKA.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1092,7 +1092,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER RESHMI KABAB.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER RESHMI TIKKA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1105,7 +1105,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER AFGHANI TIKKA.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER AFGHANI TIKKA.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1118,7 +1118,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/LEHSUNI PANEER TIKKA.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/LASOONI PANEER TIKKA.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1131,7 +1131,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER ZAFRANI TIKKA.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER ZAFRANI TIKKA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1144,7 +1144,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA SHAWARMA.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA SHAWARMA 1.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -1157,7 +1157,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER COMBO TIKKA.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER COMBO TIKKA.jpg',
     rating: 5.0,
     prepTime: '22 mins'
   },
@@ -1170,7 +1170,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG HARA BHARA KABAB.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/VEG HARA BHARA KABAB 1.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -1183,7 +1183,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG SEEKH KABAB.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/VEG SEEKH KEBAB.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -1196,7 +1196,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG MANCHURIAN TIKKA.jpeg',
+    image: 'assets/menu-images/TANDOOR CLASSICS/VEG MANCHRIAN TIKKA.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -1209,7 +1209,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/MUSHROOM BABYCORN TIKKA.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/MUSHROOM BABYCORN TIKKA 1.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1222,7 +1222,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG CHILLI MILLI KABAB.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/VEG CHILLI MILLI KABAB.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1235,7 +1235,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/ALOO TIKKA.jfif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/ALOO TIKKA 1.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -1248,7 +1248,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG GULZARI KABAB.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/VEG GULZARI KABAB.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1261,7 +1261,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG UTTARANCHALI KABAB.avif',
+    image: 'assets/menu-images/TANDOOR CLASSICS/VEG UTTARANCHALI KABAB.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1276,7 +1276,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/RICE/VEG TRIPLE SCHEZWAN FRIED RICE.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN RICE 2.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -1289,7 +1289,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/RICE/VEG SCHEZWAN FRIED RICE.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN FRIED RICE.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -1302,7 +1302,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/RICE/VEG FRIED RICE.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -1311,11 +1311,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'sizzling-rice-noodles',
     name: 'Mushroom Garlic Rice',
     price: 260,
-    description: 'Flavorful basmati rice tossed with fresh sautéed mushrooms and roasted golden garlic.',
+    description: 'Flavorful basmati rice tossed with fresh sautÃ©ed mushrooms and roasted golden garlic.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/RICE/MUSHROOM GARLIC FRIED RICE.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/MUSHROOM GARLIC FRIED RICE.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -1328,7 +1328,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/RICE/VEG COMBINATION FRIED RICE.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG COMBINATION RICE.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -1341,7 +1341,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/NOODLES/VEG TRIPLE SCHEZWAN FRIED NOODLES.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN NOODLES.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1354,7 +1354,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/NOODLES/VEG SCHEZWAN FRIED NOODLES.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN NOODLES 2.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -1367,7 +1367,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/NOODLES/VEG HAKKA NOODLES.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES 1.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -1380,7 +1380,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/NOODLES/VEG SINGAPURI NOODLES.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SINGAPURI NOODLES.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -1393,7 +1393,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/NOODLES/VEG MANCHURIAN NOODLES.avif',
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG MANCHURIAN NOODLES.jpg',
     rating: 4.8,
     prepTime: '16 mins'
   },
@@ -1432,11 +1432,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'vegetable-specialties',
     name: 'Veg Pride Special',
     price: 340,
-    description: 'Our Executive Chef’s masterpiece curry cooked with rich brown-and-orange gravy, whole cashews, paneer, and farm-fresh exotic vegetables.',
+    description: 'Our Executive Chefâ€™s masterpiece curry cooked with rich brown-and-orange gravy, whole cashews, paneer, and farm-fresh exotic vegetables.',
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg',
     rating: 5.0,
     prepTime: '20 mins'
   },
@@ -1450,7 +1450,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.6',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/SHEV BHAJI.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/SHEV BHAJI.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -1477,7 +1477,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG CHILLI MILLI KABAB.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG CHILLI MILLI.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1490,7 +1490,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG KADAI.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG KADHAI.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -1503,7 +1503,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG HANDI.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG HANDI.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1516,7 +1516,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG KOLHAPURI.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG KOLHAPURI 1.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1529,7 +1529,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/MUSHROOM BABYCORN MASALA.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/MUSHROOM BABYCORN MASALA.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1538,11 +1538,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'vegetable-specialties',
     name: 'Bhindi Do Pyaza',
     price: 210,
-    description: 'Fresh tender ladyfinger sautéed with double portion of caramelized onions and aromatic spices.',
+    description: 'Fresh tender ladyfinger sautÃ©ed with double portion of caramelized onions and aromatic spices.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/VEG SPECIALITIES/MIX VEG.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -1555,7 +1555,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/CHOLE MASALA.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/CHOLE MASALA.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -1568,7 +1568,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/LEHSUNI METHI.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/LASOONI METHI.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1581,7 +1581,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG TOOFANI.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG TOOFANI.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1594,7 +1594,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG JAIPURI.jfif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG JAIPURI.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -1607,7 +1607,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG ZATPAT.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG ZATPAT.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -1620,7 +1620,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/DELICIOUS KOFTA/VEG HARIYALI.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1633,7 +1633,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/ALOO GOBI BANARSI.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/ALOO GOBI  BANARSI.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -1646,7 +1646,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG BUKHARA.jpeg',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG BUKHARA 1.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1659,7 +1659,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/DUM ALOO PUNJABI.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/DUM ALOO PUNJABI.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -1672,7 +1672,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/GREAN PEAS MASALA.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/GREEN PEAS MASALA.jpg',
     rating: 4.6,
     prepTime: '15 mins'
   },
@@ -1685,7 +1685,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/CORN PALAK.jfif',
+    image: 'assets/menu-images/VEG SPECIALITIES/CORN PALAK.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1698,7 +1698,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG TAWA SPECIAL.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG TAWA SPECIAL.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1711,7 +1711,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/MIX VEG.avif',
+    image: 'assets/menu-images/VEG SPECIALITIES/MIX VEG.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -1727,7 +1727,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.3',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1740,7 +1740,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/DELICIOUS KOFTA/NARGISI KOFTA 1.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1753,7 +1753,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG SUNRISE.avif',
+    image: 'assets/menu-images/DELICIOUS KOFTA/VEG SUNRISE.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1766,7 +1766,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/CHEESE KOFTA.avif',
+    image: 'assets/menu-images/DELICIOUS KOFTA/CHEESE KOFTA.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1779,7 +1779,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG KOFTA.avif',
+    image: 'assets/menu-images/DELICIOUS KOFTA/VEG KOFTA.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -1792,7 +1792,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/PANEER KOFTA.avif',
+    image: 'assets/menu-images/DELICIOUS KOFTA/PANEER KOFTA.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1807,7 +1807,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER THREE STYLE.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER THREE STYLE 1.jpg',
     rating: 5.0,
     prepTime: '22 mins'
   },
@@ -1821,7 +1821,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.4',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER TIKKA MASALA.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER TIKKA MASALA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1835,7 +1835,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.4',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -1848,7 +1848,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER PATAKHA MASALA.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER PATAKHA MASALA.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1861,7 +1861,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER ANGARA.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER ANGARA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1874,7 +1874,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER HANDI.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER HANDI.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1887,7 +1887,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER TOOFANI.jfif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER TOOFANI.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1900,7 +1900,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PALAK PANEER.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PALAK PANEER.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -1909,11 +1909,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'paneer-specialties',
     name: 'Paneer Bhurji',
     price: 300,
-    description: 'Freshly scrambled paneer sautéed with onions, tomatoes, green chilies, coriander & butter.',
+    description: 'Freshly scrambled paneer sautÃ©ed with onions, tomatoes, green chilies, coriander & butter.',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BHURJI.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BHURJI.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -1926,7 +1926,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER ADRAKI.jpeg',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER ADRAKI.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -1939,7 +1939,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER PATIYALA.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER PATIALA 1.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1952,7 +1952,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/MUTTER PANEER MASALA.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/KAJU PANEEER MASALA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -1965,7 +1965,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PALAK PANEER.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/LACHHEDAR PANEER.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1978,7 +1978,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER CHANGEZI.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER CHANGEZI.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -1991,7 +1991,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER POWER.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER POWER.jpg',
     rating: 5.0,
     prepTime: '20 mins'
   },
@@ -2004,7 +2004,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER MIRCH MASALA.jfif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER MIRCH MASALA.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -2017,7 +2017,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/MUTTER PANEER MASALA.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/MUTTER PANEER MASALA.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -2030,7 +2030,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER METHI CHAMAN.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER METHI CHAMAN.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -2043,7 +2043,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER KADAI.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER KADHAI 1.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -2056,7 +2056,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER KOLHAPURI.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER KOLHAPURI.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -2069,7 +2069,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/MUSHROOM PANEER BABYCORN MASALA.avif',
+    image: 'assets/menu-images/PANEER SPECIALITIES/MUSHROOM PANEER BABYCORN MASALA.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -2084,7 +2084,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL FRY.avif',
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL FRY.jpg',
     rating: 4.7,
     prepTime: '12 mins'
   },
@@ -2098,7 +2098,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.2',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.avif',
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -2111,7 +2111,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL MAHARANI.jfif',
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL MAHARANI.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -2124,7 +2124,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/PUNJABI KADHI PAKODA.avif',
+    image: 'assets/menu-images/FLAVORFUL DAL/KADHI PAKODA.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -2139,7 +2139,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/GREEN SALAD.avif',
+    image: 'assets/menu-images/ACCOMPANIMENTS/GREEN SALAD.jpg',
     rating: 4.6,
     prepTime: '5 mins'
   },
@@ -2152,7 +2152,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/menu-images/ACCOMPANIMENTS/KACHUMBER SALAD.jpg',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -2165,7 +2165,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.avif',
+    image: 'assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2178,7 +2178,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/PINEAPPLE RAITA.avif',
+    image: 'assets/menu-images/ACCOMPANIMENTS/PINEAPPLE RAITA.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2191,7 +2191,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/MIX FRUIT RAITA.avif',
+    image: 'assets/menu-images/ACCOMPANIMENTS/MIX FRUIT RAITA.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2204,7 +2204,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/SINDHI PAPAD.avif',
+    image: 'assets/menu-images/ACCOMPANIMENTS/SINDHI PAPAD.jpg',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -2218,11 +2218,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
       { name: 'Fried', price: 35 },
       { name: 'Masala Papad', price: 40 }
     ],
-    description: 'Crisp seasoned lentil wafer. Choose Roasted (₹30), Fried (₹35), or Masala (₹40).',
+    description: 'Crisp seasoned lentil wafer. Choose Roasted (â‚¹30), Fried (â‚¹35), or Masala (â‚¹40).',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/URAD PAPAD.avif',
+    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2250,14 +2250,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-1',
     categoryId: 'signature-breads',
     name: 'Tandoori Roti',
-    hindiName: 'तंदूरी सादी रोटी',
-    marathiName: 'तंदूरी साधी रोटी',
+    hindiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤¸à¤¾à¤¦à¥€ à¤°à¥‹à¤Ÿà¥€',
+    marathiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤¸à¤¾à¤§à¥€ à¤°à¥‹à¤Ÿà¥€',
     price: 30,
     description: 'Traditional whole wheat flatbread baked crisp and hot in a clay tandoor oven.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/TANDOORI ROTI.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/ROTI.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -2265,14 +2265,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-2',
     categoryId: 'signature-breads',
     name: 'Butter Tandoori Roti',
-    hindiName: 'बटर तंदूरी रोटी',
-    marathiName: 'बटर तंदूरी रोटी',
+    hindiName: 'à¤¬à¤Ÿà¤° à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€',
+    marathiName: 'à¤¬à¤Ÿà¤° à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€',
     price: 40,
     description: 'Clay oven roasted crisp whole wheat roti glazed generously with golden butter.',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/TANDOORI ROTI.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER ROTI 1.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2280,14 +2280,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-3',
     categoryId: 'signature-breads',
     name: 'Plain Naan',
-    hindiName: 'सादा नान',
-    marathiName: 'प्लेन नान',
+    hindiName: 'à¤¸à¤¾à¤¦à¤¾ à¤¨à¤¾à¤¨',
+    marathiName: 'à¤ªà¥à¤²à¥‡à¤¨ à¤¨à¤¾à¤¨',
     price: 60,
     description: 'Soft, pillowy leavened flatbread freshly baked against clay tandoor walls.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/NAAN.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/NAAN.jpg',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -2295,14 +2295,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-4',
     categoryId: 'signature-breads',
     name: 'Butter Naan',
-    hindiName: 'बटर नान',
-    marathiName: 'बटर नान',
+    hindiName: 'à¤¬à¤Ÿà¤° à¤¨à¤¾à¤¨',
+    marathiName: 'à¤¬à¤Ÿà¤° à¤¨à¤¾à¤¨',
     price: 75,
     description: 'Fluffy tandoor-baked leavened bread slathered with pure melted butter.',
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/NAAN.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -2310,14 +2310,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-5',
     categoryId: 'signature-breads',
     name: 'Garlic Naan',
-    hindiName: 'गार्लिक नान',
-    marathiName: 'लसूण नान',
+    hindiName: 'à¤—à¤¾à¤°à¥à¤²à¤¿à¤• à¤¨à¤¾à¤¨',
+    marathiName: 'à¤²à¤¸à¥‚à¤£ à¤¨à¤¾à¤¨',
     price: 90,
     description: 'Aromatic tandoori naan infused with minced roasted garlic, fresh coriander and butter.',
     tags: ['veg', 'chefs-special', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.jpg',
     rating: 4.9,
     zomatoRating: '4.3',
     prepTime: '10 mins'
@@ -2326,14 +2326,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-6',
     categoryId: 'signature-breads',
     name: 'Cheese Garlic Naan',
-    hindiName: 'चीज गार्लिक नान',
-    marathiName: 'चीज गार्लिक नान',
+    hindiName: 'à¤šà¥€à¤œ à¤—à¤¾à¤°à¥à¤²à¤¿à¤• à¤¨à¤¾à¤¨',
+    marathiName: 'à¤šà¥€à¤œ à¤—à¤¾à¤°à¥à¤²à¤¿à¤• à¤¨à¤¾à¤¨',
     price: 120,
     description: 'Chef special leavened tandoori naan stuffed with molten cheese and topped with crushed garlic.',
     tags: ['veg', 'chefs-special', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHEESE GARLIC NAAN.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE GARLIC NAAN.jpg',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -2341,14 +2341,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-7',
     categoryId: 'signature-breads',
     name: 'Laccha Paratha',
-    hindiName: 'लच्छा पराठा',
-    marathiName: 'लच्छा पराठा',
+    hindiName: 'à¤²à¤šà¥à¤›à¤¾ à¤ªà¤°à¤¾à¤ à¤¾',
+    marathiName: 'à¤²à¤šà¥à¤›à¤¾ à¤ªà¤°à¤¾à¤ à¤¾',
     price: 70,
     description: 'Multi-layered crisp spiral whole wheat paratha baked in clay tandoor with pure ghee.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/LACCHA PARATHA.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/LACHHA PARATHA.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -2356,14 +2356,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-8',
     categoryId: 'signature-breads',
     name: 'Butter Kulcha',
-    hindiName: 'बटर कुलचा',
-    marathiName: 'बटर कुलचा',
+    hindiName: 'à¤¬à¤Ÿà¤° à¤•à¥à¤²à¤šà¤¾',
+    marathiName: 'à¤¬à¤Ÿà¤° à¤•à¥à¤²à¤šà¤¾',
     price: 65,
     description: 'Soft and tender Amritsari style refined flour bread brushed with golden butter.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/KULCHA.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER KULCHA 1.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -2371,8 +2371,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-9',
     categoryId: 'signature-breads',
     name: 'Stuffed Veg / Aloo Kulcha',
-    hindiName: 'स्टफ्ड आलू कुलचा',
-    marathiName: 'स्टफ्ड बटाटा कुलचा',
+    hindiName: 'à¤¸à¥à¤Ÿà¤«à¥à¤¡ à¤†à¤²à¥‚ à¤•à¥à¤²à¤šà¤¾',
+    marathiName: 'à¤¸à¥à¤Ÿà¤«à¥à¤¡ à¤¬à¤Ÿà¤¾à¤Ÿà¤¾ à¤•à¥à¤²à¤šà¤¾',
     price: 90,
     description: 'Spiced seasoned potato, herbs and onion mash stuffed into leavened bread, tandoor baked.',
     tags: ['veg'],
@@ -2386,14 +2386,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-10',
     categoryId: 'signature-breads',
     name: 'Missi Roti',
-    hindiName: 'मिस्सी रोटी',
-    marathiName: 'मिस्सी रोटी',
+    hindiName: 'à¤®à¤¿à¤¸à¥à¤¸à¥€ à¤°à¥‹à¤Ÿà¥€',
+    marathiName: 'à¤®à¤¿à¤¸à¥à¤¸à¥€ à¤°à¥‹à¤Ÿà¥€',
     price: 50,
     description: 'Wholesome gram flour (besan) and wheat blend kneaded with ajwain, onions and green chillies.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/MISSI ROTI.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/MISSI ROTI.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -2401,14 +2401,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-11',
     categoryId: 'signature-breads',
     name: 'Tawa Chapati',
-    hindiName: 'तवा चपाती (रोटी)',
-    marathiName: 'तवा पोळी / चपाती',
+    hindiName: 'à¤¤à¤µà¤¾ à¤šà¤ªà¤¾à¤¤à¥€ (à¤°à¥‹à¤Ÿà¥€)',
+    marathiName: 'à¤¤à¤µà¤¾ à¤ªà¥‹à¤³à¥€ / à¤šà¤ªà¤¾à¤¤à¥€',
     price: 25,
     description: 'Home-style fresh soft thin whole wheat flatbread made on tawa.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -2416,14 +2416,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-12',
     categoryId: 'signature-breads',
     name: 'Butter Tawa Chapati',
-    hindiName: 'बटर तवा चपाती',
-    marathiName: 'बटर तवा चपाती',
+    hindiName: 'à¤¬à¤Ÿà¤° à¤¤à¤µà¤¾ à¤šà¤ªà¤¾à¤¤à¥€',
+    marathiName: 'à¤¬à¤Ÿà¤° à¤¤à¤µà¤¾ à¤šà¤ªà¤¾à¤¤à¥€',
     price: 35,
     description: 'Freshly puffed home-style tawa chapati smeared with butter.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHAPATI.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -2431,14 +2431,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-13',
     categoryId: 'signature-breads',
     name: 'Cheese Naan',
-    hindiName: 'चीज नान',
-    marathiName: 'चीज नान',
+    hindiName: 'à¤šà¥€à¤œ à¤¨à¤¾à¤¨',
+    marathiName: 'à¤šà¥€à¤œ à¤¨à¤¾à¤¨',
     price: 110,
     description: 'Gooey grated cheese stuffed inside piping hot clay oven leavened naan.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHEESE NAAN.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE NAAN.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -2446,14 +2446,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-14',
     categoryId: 'signature-breads',
     name: 'Assorted Roti Basket',
-    hindiName: 'शाही रोटी बास्केट (असोसिएटेड)',
-    marathiName: 'शाही रोटी बास्केट',
+    hindiName: 'à¤¶à¤¾à¤¹à¥€ à¤°à¥‹à¤Ÿà¥€ à¤¬à¤¾à¤¸à¥à¤•à¥‡à¤Ÿ (à¤…à¤¸à¥‹à¤¸à¤¿à¤à¤Ÿà¥‡à¤¡)',
+    marathiName: 'à¤¶à¤¾à¤¹à¥€ à¤°à¥‹à¤Ÿà¥€ à¤¬à¤¾à¤¸à¥à¤•à¥‡à¤Ÿ',
     price: 240,
     description: 'Chef basket assortment featuring Butter Naan, Garlic Naan, Laccha Paratha, Missi Roti & Tandoori Roti.',
     tags: ['veg', 'chefs-special', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
     rating: 5.0,
     prepTime: '15 mins'
   },
@@ -2468,7 +2468,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
     rating: 4.9,
     zomatoRating: '4.4',
     prepTime: '20 mins'
@@ -2482,7 +2482,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG HYDERABADI BIRYANI.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG HYDERABADI BIRYANI.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -2495,7 +2495,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER TIKKA BIRYANI.jfif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER TIKKA BIRYANI.jpg',
     rating: 5.0,
     prepTime: '20 mins'
   },
@@ -2508,7 +2508,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/KAJU PANEER BIRYANI.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/KAJU PANEER BIRYANI 1.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -2521,7 +2521,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER PATAKHA BIRYANI.jfif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER PATAKHA BIRYANI.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -2534,7 +2534,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/JEERA RICE.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/JEERA RICE.jpg',
     rating: 4.7,
     zomatoRating: '4.2',
     prepTime: '12 mins'
@@ -2548,7 +2548,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/STEAMED RICE.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/STEAMED RICE.jpg',
     rating: 4.6,
     prepTime: '10 mins'
   },
@@ -2561,7 +2561,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -2574,7 +2574,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI WITH TADKA.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI WITH TADKA.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -2587,7 +2587,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG PULAO.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG PULAO.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -2600,7 +2600,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MUTTER PANEER PULAO.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MUTTER PANEER PULAO.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -2613,7 +2613,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/CURD RICE.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/CURD RICE 1.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -2626,7 +2626,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MASALA RICE.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MASALA RICE.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -2639,7 +2639,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/LEMON RICE.avif',
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/LEMON RICE 1.jpg',
     rating: 4.7,
     prepTime: '12 mins'
   },
@@ -2680,7 +2680,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DESSERTS/GULAB JAMUN.avif',
+    image: 'assets/menu-images/DESSERTS/GULAB JAMUN.jpg',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -2693,7 +2693,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DESSERTS/RASGULLA.avif',
+    image: 'assets/menu-images/DESSERTS/RASGULLA.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2830,7 +2830,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'mocktails',
     name: 'Blue Lagoon Mocktail',
     price: 110,
-    description: 'Vibrant blue curaçao blended with zesty lime juice, sugar syrup and sparkling lemon soda.',
+    description: 'Vibrant blue curaÃ§ao blended with zesty lime juice, sugar syrup and sparkling lemon soda.',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3024,7 +3024,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
       { name: 'Water (Sweet/Salted)', price: 35 },
       { name: 'Soda (Sweet/Salted)', price: 40 }
     ],
-    description: 'Freshly squeezed Indian lemon juice with crushed ice. Choice of chilled water (₹35) or sparkling soda (₹40).',
+    description: 'Freshly squeezed Indian lemon juice with crushed ice. Choice of chilled water (â‚¹35) or sparkling soda (â‚¹40).',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3041,7 +3041,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
       { name: 'Water', price: 35 },
       { name: 'Soda', price: 40 }
     ],
-    description: 'Digestive tangy cumin and mint refresher topped with crispy boondi. Choice of water (₹35) or soda (₹40).',
+    description: 'Digestive tangy cumin and mint refresher topped with crispy boondi. Choice of water (â‚¹35) or soda (â‚¹40).',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3110,3 +3110,4 @@ window.HOTEL_PREMIER_INFO = {
   pureVeg: true,
   timings: '7:00 AM - 11:30 PM'
 };
+

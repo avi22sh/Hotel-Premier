@@ -886,18 +886,22 @@ class HotelPremierApp {
 
       return `
         <article class="category-card" onclick="window.app.openCategorySection('${cat.id}')" role="button" tabindex="0" aria-label="Browse ${localizedTitle}">
-          <div class="category-card-media">
-            <img 
-              src="${cat.image}" 
-              alt="${localizedTitle}" 
-              class="category-card-img" 
-              loading="lazy" 
-              onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
-            >
-            <div class="category-card-overlay" aria-hidden="true"></div>
-            <div class="category-crest-emblem" aria-hidden="true">${cat.icon || '🍽️'}</div>
-            <span class="category-card-badge">${count} ${itemsWord}</span>
-          </div>
+          ${(window.AssetPipeline && typeof window.AssetPipeline.renderCategoryCardMedia === 'function')
+            ? window.AssetPipeline.renderCategoryCardMedia(cat, count, itemsWord, localizedTitle)
+            : `
+            <div class="category-card-media">
+              <img 
+                src="${cat.image}" 
+                alt="${localizedTitle}" 
+                class="category-card-img" 
+                loading="lazy" 
+                onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+              >
+              <div class="category-card-overlay" aria-hidden="true"></div>
+              <div class="category-crest-emblem" aria-hidden="true">${cat.icon || '🍽️'}</div>
+              <span class="category-card-badge">${count} ${itemsWord}</span>
+            </div>
+            `}
           <div class="category-card-content">
             <div class="category-card-body-text">
               <div class="category-card-header-row">

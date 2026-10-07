@@ -1,4 +1,4 @@
-// ==========================================================================
+﻿// ==========================================================================
 // HOTEL PREMIER - A HOME IN BHUSAWAL
 // Hotel Rooms, Exact Tariffs, Timings, Location & Bulk Marriage Deals Database
 // ==========================================================================
@@ -31,37 +31,37 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
   restaurantHeroSlides: [
     {
       id: 'slide-thali',
-      image: 'assets/menu-images/THALIS/PREMIER MAHARAJA THALI.jfif',
+      image: 'assets/menu-images/THALIS/MAHARAJA THALI.jpg',
       title: 'Premier Maharaja Royal Thali',
-      subtitle: 'Lavish Multi-Course Pure Veg Feast • Authentic Indian Hospitality'
+      subtitle: 'Lavish Multi-Course Pure Veg Feast â€¢ Authentic Indian Hospitality'
     },
     {
       id: 'slide-paneer',
-      image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.avif',
+      image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
       title: 'Royal Paneer & North Indian Gravies',
       subtitle: 'Prepared Fresh in Pride Kitchen with Pure Desi Spices & Butter'
     },
     {
       id: 'slide-tandoor',
-      image: 'assets/menu-images/TANDOOR CLASSICS/TANDOOR PLATTER.avif',
+      image: 'assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg',
       title: 'Sizzling Tandoor Classics & Kababs',
       subtitle: 'Smoky Paneer Tikka, Reshmi Kabab & Hara Bhara from Clay Oven'
     },
     {
       id: 'slide-biryani',
-      image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.avif',
+      image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
       title: 'Aromatic Veg Dum Biryani & Pulao',
       subtitle: 'Slow-Cooked Fragrant Basmati Rice with Rich Spices & Veg Raita'
     },
     {
       id: 'slide-breakfast',
-      image: 'assets/menu-images/MORNING DELIGHT/poori bhaji.avif',
+      image: 'assets/menu-images/MORNING DELIGHT/POORI BHAJI.jpg',
       title: 'Morning Delights Breakfast',
       subtitle: 'Golden Crispy Poori Bhaji, Chole Bhature, Hot Parathas & Special Tea'
     },
     {
       id: 'slide-chinese',
-      image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.avif',
+      image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
       title: 'Indo-Chinese Wok & Starters',
       subtitle: 'Crispy Manchurian, Paneer Chilly, Spring Rolls & Sizzling Noodles'
     }
@@ -71,138 +71,138 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     {
       id: 'ac-super-deluxe',
       name: 'AC Super Deluxe Room',
-      hindiName: 'एसी सुपर डीलक्स रूम',
-      marathiName: 'एसी सुपर डीलक्स रूम',
+      hindiName: 'à¤à¤¸à¥€ à¤¸à¥à¤ªà¤° à¤¡à¥€à¤²à¤•à¥à¤¸ à¤°à¥‚à¤®',
+      marathiName: 'à¤à¤¸à¥€ à¤¸à¥à¤ªà¤° à¤¡à¥€à¤²à¤•à¥à¤¸ à¤°à¥‚à¤®',
       bedType: 'King Size Luxury Bed',
       inventoryCount: '2 Rooms Only',
-      bedDetail: '👑 King Bed (Total 2 Exclusive Rooms in Hotel)',
+      bedDetail: 'ðŸ‘‘ King Bed (Total 2 Exclusive Rooms in Hotel)',
       image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=700&auto=format&fit=crop&q=80',
       images: [
         'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=700&auto=format&fit=crop&q=80'
       ],
-      description: 'Exclusive luxury air-conditioned room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service (7:30 AM – 10:30 PM). Total 2 rooms in property. Can comfortably accommodate 2 to 3 Extra Beds (₹300/bed).',
+      description: 'Exclusive luxury air-conditioned room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service (7:30 AM â€“ 10:30 PM). Total 2 rooms in property. Can comfortably accommodate 2 to 3 Extra Beds (â‚¹300/bed).',
       extraBedRate: 300,
       maxExtraBeds: 3,
-      extraBedDetail: 'Accommodates 2 to 3 Extra Beds (₹300/bed)',
+      extraBedDetail: 'Accommodates 2 to 3 Extra Beds (â‚¹300/bed)',
       features: [
-        '👑 King Size Luxury Bed',
-        '🏢 Total 2 Exclusive Rooms in Hotel',
-        '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 Packaged Drinking Water (Complimentary)',
-        '☕ Electric Kettle with Tea & Coffee Setup',
-        '🍪 Fresh Biscuits & Drinking Glasses',
-        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
-        '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Large Screen Smart LED TV & Free Wi-Fi',
-        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
-        '🛏️ Can Accommodate 2–3 Extra Beds (₹300/bed)'
+        'ðŸ‘‘ King Size Luxury Bed',
+        'ðŸ¢ Total 2 Exclusive Rooms in Hotel',
+        'â„ï¸ Silent Split Air Conditioning (Split AC)',
+        'ðŸ’§ Packaged Drinking Water (Complimentary)',
+        'â˜• Electric Kettle with Tea & Coffee Setup',
+        'ðŸª Fresh Biscuits & Drinking Glasses',
+        'ðŸ§¼ Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        'ðŸš¿ 24x7 Geyser Hot Water & Fresh Towels',
+        'ðŸ“º Large Screen Smart LED TV & Free Wi-Fi',
+        'â˜Žï¸ Front Desk Intercom & Room Service (7:30 AM â€“ 10:30 PM)',
+        'ðŸ›ï¸ Can Accommodate 2â€“3 Extra Beds (â‚¹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 2000, withBreakfast: 2200 },
         double: { roomOnly: 2200, withBreakfast: 2600 },
         extraBed: 300
       },
-      tag: 'Exclusive VIP & Couple Suite (2 Rooms • Fits 2-3 Extra Beds)'
+      tag: 'Exclusive VIP & Couple Suite (2 Rooms â€¢ Fits 2-3 Extra Beds)'
     },
     {
       id: 'ac-deluxe-queen',
       name: 'AC Deluxe Room (Queen Bed)',
-      hindiName: 'एसी डीलक्स रूम (क्वीन बेड)',
-      marathiName: 'एसी डीलक्स रूम (क्वीन बेड)',
+      hindiName: 'à¤à¤¸à¥€ à¤¡à¥€à¤²à¤•à¥à¤¸ à¤°à¥‚à¤® (à¤•à¥à¤µà¥€à¤¨ à¤¬à¥‡à¤¡)',
+      marathiName: 'à¤à¤¸à¥€ à¤¡à¥€à¤²à¤•à¥à¤¸ à¤°à¥‚à¤® (à¤•à¥à¤µà¥€à¤¨ à¤¬à¥‡à¤¡)',
       bedType: 'Queen Size Bed',
       inventoryCount: '4 Rooms Available',
-      bedDetail: '🛏️ Queen Bed (Total 4 Rooms)',
+      bedDetail: 'ðŸ›ï¸ Queen Bed (Total 4 Rooms)',
       image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=700&auto=format&fit=crop&q=80',
       images: [
         'https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1591088398332-8a7791972843?w=700&auto=format&fit=crop&q=80'
       ],
-      description: 'Peaceful air-conditioned room featuring a plush Queen Size Bed, workstation, wardrobe, and modern bath amenities. Total 4 rooms available in hotel. Can accommodate 1 Extra Bed (₹300/bed).',
+      description: 'Peaceful air-conditioned room featuring a plush Queen Size Bed, workstation, wardrobe, and modern bath amenities. Total 4 rooms available in hotel. Can accommodate 1 Extra Bed (â‚¹300/bed).',
       extraBedRate: 300,
       maxExtraBeds: 1,
-      extraBedDetail: 'Accommodates 1 Extra Bed (₹300/bed)',
+      extraBedDetail: 'Accommodates 1 Extra Bed (â‚¹300/bed)',
       features: [
-        '🛏️ Queen Size Bed',
-        '🏢 Total 4 Rooms in Hotel',
-        '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 Packaged Drinking Water (Complimentary)',
-        '☕ Electric Kettle with Tea & Coffee Setup',
-        '🍪 Fresh Biscuits & Drinking Glasses',
-        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
-        '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Flat Screen Smart LED TV & Free Wi-Fi',
-        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
-        '🛏️ Can Accommodate 1 Extra Bed (₹300/bed)'
+        'ðŸ›ï¸ Queen Size Bed',
+        'ðŸ¢ Total 4 Rooms in Hotel',
+        'â„ï¸ Silent Split Air Conditioning (Split AC)',
+        'ðŸ’§ Packaged Drinking Water (Complimentary)',
+        'â˜• Electric Kettle with Tea & Coffee Setup',
+        'ðŸª Fresh Biscuits & Drinking Glasses',
+        'ðŸ§¼ Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        'ðŸš¿ 24x7 Geyser Hot Water & Fresh Towels',
+        'ðŸ“º Flat Screen Smart LED TV & Free Wi-Fi',
+        'â˜Žï¸ Front Desk Intercom & Room Service (7:30 AM â€“ 10:30 PM)',
+        'ðŸ›ï¸ Can Accommodate 1 Extra Bed (â‚¹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 1800, withBreakfast: 2000 },
         double: { roomOnly: 2000, withBreakfast: 2400 },
         extraBed: 300
       },
-      tag: 'Ideal for Couples & Executives (4 Rooms • Fits 1 Extra Bed)'
+      tag: 'Ideal for Couples & Executives (4 Rooms â€¢ Fits 1 Extra Bed)'
     },
     {
       id: 'ac-deluxe-twin',
       name: 'AC Deluxe Room (Twin Beds)',
-      hindiName: 'एसी डीलक्स रूम (ट्विन बेड्स)',
-      marathiName: 'एसी डीलक्स रूम (ट्विन बेड्स)',
+      hindiName: 'à¤à¤¸à¥€ à¤¡à¥€à¤²à¤•à¥à¤¸ à¤°à¥‚à¤® (à¤Ÿà¥à¤µà¤¿à¤¨ à¤¬à¥‡à¤¡à¥à¤¸)',
+      marathiName: 'à¤à¤¸à¥€ à¤¡à¥€à¤²à¤•à¥à¤¸ à¤°à¥‚à¤® (à¤Ÿà¥à¤µà¤¿à¤¨ à¤¬à¥‡à¤¡à¥à¤¸)',
       bedType: 'Twin Single Beds (2 Separate Beds)',
       inventoryCount: '8 Rooms Available',
-      bedDetail: '🛏️🛏️ Twin Beds (Total 8 Rooms)',
+      bedDetail: 'ðŸ›ï¸ðŸ›ï¸ Twin Beds (Total 8 Rooms)',
       image: 'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=700&auto=format&fit=crop&q=80',
       images: [
         'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&auto=format&fit=crop&q=80',
         'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=700&auto=format&fit=crop&q=80'
       ],
-      description: 'Popular air-conditioned room with 2 comfortable separate Single Beds. Ideal for wedding attendees, Barat guests, friends, and corporate colleagues. Total 8 rooms available in hotel. Can comfortably accommodate 2 Extra Beds (₹300/bed).',
+      description: 'Popular air-conditioned room with 2 comfortable separate Single Beds. Ideal for wedding attendees, Barat guests, friends, and corporate colleagues. Total 8 rooms available in hotel. Can comfortably accommodate 2 Extra Beds (â‚¹300/bed).',
       extraBedRate: 300,
       maxExtraBeds: 2,
-      extraBedDetail: 'Accommodates 2 Extra Beds (₹300/bed)',
+      extraBedDetail: 'Accommodates 2 Extra Beds (â‚¹300/bed)',
       features: [
-        '🛏️🛏️ 2 Separate Single Beds',
-        '🏢 Total 8 Rooms in Hotel',
-        '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 Packaged Drinking Water (Complimentary)',
-        '☕ Electric Kettle with Tea & Coffee Setup',
-        '🍪 Fresh Biscuits & Drinking Glasses',
-        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
-        '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Flat Screen Smart LED TV & Free Wi-Fi',
-        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
-        '🛏️ Can Accommodate 2 Extra Beds (₹300/bed)'
+        'ðŸ›ï¸ðŸ›ï¸ 2 Separate Single Beds',
+        'ðŸ¢ Total 8 Rooms in Hotel',
+        'â„ï¸ Silent Split Air Conditioning (Split AC)',
+        'ðŸ’§ Packaged Drinking Water (Complimentary)',
+        'â˜• Electric Kettle with Tea & Coffee Setup',
+        'ðŸª Fresh Biscuits & Drinking Glasses',
+        'ðŸ§¼ Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        'ðŸš¿ 24x7 Geyser Hot Water & Fresh Towels',
+        'ðŸ“º Flat Screen Smart LED TV & Free Wi-Fi',
+        'â˜Žï¸ Front Desk Intercom & Room Service (7:30 AM â€“ 10:30 PM)',
+        'ðŸ›ï¸ Can Accommodate 2 Extra Beds (â‚¹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 1800, withBreakfast: 2000 },
         double: { roomOnly: 2000, withBreakfast: 2400 },
         extraBed: 300
       },
-      tag: 'Most Popular for Wedding Guests & Barat (8 Rooms • Fits 2 Extra Beds)'
+      tag: 'Most Popular for Wedding Guests & Barat (8 Rooms â€¢ Fits 2 Extra Beds)'
     }
   ],
 
   hotelAmenities: [
-    { icon: '🌱', title: 'Pride Pure Veg Restaurant', desc: '100% pure vegetarian authentic North & South Indian, Khandeshi & Chinese dining.' },
-    { icon: '⏰', title: '24-Hour Check-Out', desc: 'Enjoy maximum flexibility with full 24-hour stay calculated from your check-in time.' },
-    { icon: '🍽️', title: 'Room Service: 7:30 AM – 10:30 PM', desc: 'Prompt fresh kitchen room service from morning breakfast till late dinner. (Front Desk 24x7)' },
-    { icon: '🚗', title: 'Safe & Secure Parking', desc: 'Spacious on-premises parking for personal cars, wedding buses & tourist vehicles.' },
-    { icon: '📶', title: 'High-Speed Wi-Fi', desc: 'Seamless wireless internet access across all rooms and common areas.' },
-    { icon: '🛗', title: 'Elevator / Lift Access', desc: 'Senior-citizen and luggage friendly lift access to all room floors.' },
-    { icon: '⚡', title: '100% Power Generator Backup', desc: 'Uninterrupted power supply for continuous AC, lighting and hot water.' },
-    { icon: '🚆', title: 'Prime Location Connectivity', desc: 'Just 5 mins from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
+    { icon: 'ðŸŒ±', title: 'Pride Pure Veg Restaurant', desc: '100% pure vegetarian authentic North & South Indian, Khandeshi & Chinese dining.' },
+    { icon: 'â°', title: '24-Hour Check-Out', desc: 'Enjoy maximum flexibility with full 24-hour stay calculated from your check-in time.' },
+    { icon: 'ðŸ½ï¸', title: 'Room Service: 7:30 AM â€“ 10:30 PM', desc: 'Prompt fresh kitchen room service from morning breakfast till late dinner. (Front Desk 24x7)' },
+    { icon: 'ðŸš—', title: 'Safe & Secure Parking', desc: 'Spacious on-premises parking for personal cars, wedding buses & tourist vehicles.' },
+    { icon: 'ðŸ“¶', title: 'High-Speed Wi-Fi', desc: 'Seamless wireless internet access across all rooms and common areas.' },
+    { icon: 'ðŸ›—', title: 'Elevator / Lift Access', desc: 'Senior-citizen and luggage friendly lift access to all room floors.' },
+    { icon: 'âš¡', title: '100% Power Generator Backup', desc: 'Uninterrupted power supply for continuous AC, lighting and hot water.' },
+    { icon: 'ðŸš†', title: 'Prime Location Connectivity', desc: 'Just 5 mins from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
   ],
 
   // Wedding Barat & Family Group Stay Privileges (Fully Editable via CMS)
   bulkMarriageDeals: [
     {
       tierId: 'tier-5-9',
-      name: 'Silver Group Stay Privilege (5–9 Rooms)',
+      name: 'Silver Group Stay Privilege (5â€“9 Rooms)',
       discountPercent: 0,
       minRooms: 5,
-      badge: 'Silver Privilege • Early Check-In',
+      badge: 'Silver Privilege â€¢ Early Check-In',
       perks: [
         'Priority Early Check-in for family elders',
         'Complimentary Morning Chai & Coffee Station',
@@ -212,10 +212,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     },
     {
       tierId: 'tier-10-13',
-      name: 'Gold Group Stay Privilege (10–13 Rooms)',
+      name: 'Gold Group Stay Privilege (10â€“13 Rooms)',
       discountPercent: 0,
       minRooms: 10,
-      badge: 'Gold Privilege • Free Chai Station & Floor Wing',
+      badge: 'Gold Privilege â€¢ Free Chai Station & Floor Wing',
       perks: [
         'Dedicated Floor Wing reserved for entire group',
         'Complimentary Morning Chai & Filter Coffee station',
@@ -225,10 +225,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     },
     {
       tierId: 'tier-full-14',
-      name: '👑 Platinum Property Buyout (All 14 Rooms)',
+      name: 'ðŸ‘‘ Platinum Property Buyout (All 14 Rooms)',
       discountPercent: 0,
       minRooms: 14,
-      badge: '👑 Platinum Buyout • 100% Hotel Privacy',
+      badge: 'ðŸ‘‘ Platinum Buyout â€¢ 100% Hotel Privacy',
       perks: [
         'Complete 100% Exclusive Hotel Premier Privacy',
         '1 Complimentary AC Super Deluxe Room for Bride & Groom / Host',
@@ -240,12 +240,12 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
 
   // Location Highlights & Nearby Connectivity
   locationDistances: [
-    { icon: '🚆', place: 'Bhusawal Junction Railway Station', distance: '2.0 KM', time: '5 Mins Drive', desc: 'Major Central Railway junction connecting North, South, East & West India.' },
-    { icon: '🎓', place: 'Nahata College (P.O. Nahata College)', distance: '200 Meters', time: '1 Min Walk', desc: 'Prime educational & residential hub on Jamner Road.' },
-    { icon: '🛣️', place: 'National Highway NH-53 (Asian Highway 46)', distance: '1.5 KM', time: '3 Mins Drive', desc: 'Direct highway connectivity towards Surat, Nagpur, Dhule & Jalgaon.' },
-    { icon: '🏛️', place: 'Ajanta Caves (UNESCO World Heritage)', distance: '58 KM', time: '1 Hr 15 Mins Drive', desc: 'World-famous Buddhist rock-cut cave monuments (Hotel Premier is the ideal transit stay).' },
-    { icon: '🕉️', place: 'Changdeo Temple (Tapi-Purna Sangam)', distance: '18 KM', time: '25 Mins Drive', desc: 'Ancient historical pilgrim temple at the holy river confluence.' },
-    { icon: '⚡', place: 'Deepnagar Thermal Power Station', distance: '10 KM', time: '15 Mins Drive', desc: 'Major industrial powerhouse & Varangaon Ordnance Factory area.' }
+    { icon: 'ðŸš†', place: 'Bhusawal Junction Railway Station', distance: '2.0 KM', time: '5 Mins Drive', desc: 'Major Central Railway junction connecting North, South, East & West India.' },
+    { icon: 'ðŸŽ“', place: 'Nahata College (P.O. Nahata College)', distance: '200 Meters', time: '1 Min Walk', desc: 'Prime educational & residential hub on Jamner Road.' },
+    { icon: 'ðŸ›£ï¸', place: 'National Highway NH-53 (Asian Highway 46)', distance: '1.5 KM', time: '3 Mins Drive', desc: 'Direct highway connectivity towards Surat, Nagpur, Dhule & Jalgaon.' },
+    { icon: 'ðŸ›ï¸', place: 'Ajanta Caves (UNESCO World Heritage)', distance: '58 KM', time: '1 Hr 15 Mins Drive', desc: 'World-famous Buddhist rock-cut cave monuments (Hotel Premier is the ideal transit stay).' },
+    { icon: 'ðŸ•‰ï¸', place: 'Changdeo Temple (Tapi-Purna Sangam)', distance: '18 KM', time: '25 Mins Drive', desc: 'Ancient historical pilgrim temple at the holy river confluence.' },
+    { icon: 'âš¡', place: 'Deepnagar Thermal Power Station', distance: '10 KM', time: '15 Mins Drive', desc: 'Major industrial powerhouse & Varangaon Ordnance Factory area.' }
   ],
 
   // Restaurant Events & Party Catering Packages (Pride Pure Veg AC Restaurant - Seating Capacity Max 40 Pax)
@@ -254,13 +254,13 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       id: 'pkg-engagement',
       category: 'engagement',
       name: 'Engagement, Ring Ceremony & Roka Feast',
-      hindiName: 'सगाई, रिंग सेरेमनी एवं रोका सेलिब्रेशन दावत',
-      marathiName: 'साखरपुडा, रिंग सेरेमनी व रोका आनंद मेजवानी',
+      hindiName: 'à¤¸à¤—à¤¾à¤ˆ, à¤°à¤¿à¤‚à¤— à¤¸à¥‡à¤°à¥‡à¤®à¤¨à¥€ à¤à¤µà¤‚ à¤°à¥‹à¤•à¤¾ à¤¸à¥‡à¤²à¤¿à¤¬à¥à¤°à¥‡à¤¶à¤¨ à¤¦à¤¾à¤µà¤¤',
+      marathiName: 'à¤¸à¤¾à¤–à¤°à¤ªà¥à¤¡à¤¾, à¤°à¤¿à¤‚à¤— à¤¸à¥‡à¤°à¥‡à¤®à¤¨à¥€ à¤µ à¤°à¥‹à¤•à¤¾ à¤†à¤¨à¤‚à¤¦ à¤®à¥‡à¤œà¤µà¤¾à¤¨à¥€',
       ratePerPax: 580,
       minPax: 20,
       maxPax: 40,
       badge: '',
-      icon: '💍',
+      icon: 'ðŸ’',
       featured: true,
       tag: 'Grand Feast',
       desc: 'Celebration dining spread inside Pride Pure Veg AC Restaurant for Engagement, Ring Ceremony (Sakhar Puda / Sagai), Roka Ceremony, Baby Shower (Dohale Jevan) & Family Milestones (20 to 40 Pax).',
@@ -282,13 +282,13 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       id: 'pkg-corporate',
       category: 'conference',
       name: 'Corporate Conference & Seminar Meet',
-      hindiName: 'कॉर्पोरेट मीटिंग एवं बिजनेस सेमिनार पैकेज',
-      marathiName: 'कॉर्पोरेट कॉन्फरन्स व सेमिनार पॅकेज',
+      hindiName: 'à¤•à¥‰à¤°à¥à¤ªà¥‹à¤°à¥‡à¤Ÿ à¤®à¥€à¤Ÿà¤¿à¤‚à¤— à¤à¤µà¤‚ à¤¬à¤¿à¤œà¤¨à¥‡à¤¸ à¤¸à¥‡à¤®à¤¿à¤¨à¤¾à¤° à¤ªà¥ˆà¤•à¥‡à¤œ',
+      marathiName: 'à¤•à¥‰à¤°à¥à¤ªà¥‹à¤°à¥‡à¤Ÿ à¤•à¥‰à¤¨à¥à¤«à¤°à¤¨à¥à¤¸ à¤µ à¤¸à¥‡à¤®à¤¿à¤¨à¤¾à¤° à¤ªà¥…à¤•à¥‡à¤œ',
       ratePerPax: 380,
       minPax: 15,
       maxPax: 40,
       badge: '',
-      icon: '💼',
+      icon: 'ðŸ’¼',
       tag: 'Professional',
       desc: 'Tailored for Corporate Conferences, Doctor Seminars, Dealer Meets, Board Meetings, Training Workshops & Business Lunches in our AC Restaurant (15 to 40 Pax).',
       amenities: ['AC Restaurant Seating (Max 40 Pax)', 'High-Speed Wi-Fi', 'Audio-Visual Projector Setup Available (Chargeable)', 'Notepads & Pens'],
@@ -309,13 +309,13 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       id: 'pkg-birthday',
       category: 'party',
       name: 'Birthday & Anniversary Celebration',
-      hindiName: 'बर्थडे, एनिवर्सरी एवं पारिवारिक उत्सव',
-      marathiName: 'वाढदिवस, ॲनिव्हर्सरी व कौटुंबिक मेजवानी',
+      hindiName: 'à¤¬à¤°à¥à¤¥à¤¡à¥‡, à¤à¤¨à¤¿à¤µà¤°à¥à¤¸à¤°à¥€ à¤à¤µà¤‚ à¤ªà¤¾à¤°à¤¿à¤µà¤¾à¤°à¤¿à¤• à¤‰à¤¤à¥à¤¸à¤µ',
+      marathiName: 'à¤µà¤¾à¤¢à¤¦à¤¿à¤µà¤¸, à¥²à¤¨à¤¿à¤µà¥à¤¹à¤°à¥à¤¸à¤°à¥€ à¤µ à¤•à¥Œà¤Ÿà¥à¤‚à¤¬à¤¿à¤• à¤®à¥‡à¤œà¤µà¤¾à¤¨à¥€',
       ratePerPax: 320,
       minPax: 15,
       maxPax: 40,
       badge: '',
-      icon: '🎉',
+      icon: 'ðŸŽ‰',
       tag: 'Celebration',
       desc: 'Joyful celebration spread for Kids & Adults Birthdays, Milestone Anniversaries, Baby Showers and Family Get-Togethers inside our AC Restaurant (15 to 40 Pax).',
       amenities: ['Cake Cutting Table Setup', 'Theme Balloon Decor Available (Chargeable)', 'Party Music Connection', 'Comfortable AC Seating'],
@@ -335,13 +335,13 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       id: 'pkg-hightea',
       category: 'party',
       name: 'Kitty Party & High-Tea Gathering',
-      hindiName: 'किटी पार्टी एवं हाई-टी नाश्ता मीट',
-      marathiName: 'किटी पार्टी व हाय-टी नाश्ता मेजवानी',
+      hindiName: 'à¤•à¤¿à¤Ÿà¥€ à¤ªà¤¾à¤°à¥à¤Ÿà¥€ à¤à¤µà¤‚ à¤¹à¤¾à¤ˆ-à¤Ÿà¥€ à¤¨à¤¾à¤¶à¥à¤¤à¤¾ à¤®à¥€à¤Ÿ',
+      marathiName: 'à¤•à¤¿à¤Ÿà¥€ à¤ªà¤¾à¤°à¥à¤Ÿà¥€ à¤µ à¤¹à¤¾à¤¯-à¤Ÿà¥€ à¤¨à¤¾à¤¶à¥à¤¤à¤¾ à¤®à¥‡à¤œà¤µà¤¾à¤¨à¥€',
       ratePerPax: 220,
       minPax: 15,
       maxPax: 40,
       badge: '',
-      icon: '☕',
+      icon: 'â˜•',
       tag: 'High Tea',
       desc: 'Light & delightful spread for Afternoon Kitty Parties, Post-Seminar High-Tea, Bhajan Gatherings & Social Get-Togethers inside our AC Restaurant (15 to 40 Pax).',
       amenities: ['AC Restaurant Seating (Max 40 Pax)', 'Relaxed Ambience', 'Soft Background Music'],
@@ -357,16 +357,16 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       id: 'pkg-lunch-buyout',
       category: 'buyout',
       name: 'Full Restaurant Lunch Buyout (Max 40 Pax)',
-      hindiName: 'सम्पूर्ण रेस्टोरेंट लंच प्राइवेट बुकिंग (अधिकतम 40 व्यक्ति)',
-      marathiName: 'संपूर्ण रेस्टॉरंट लंच प्रायव्हेट बुकिंग (जास्तीत जास्त ४० व्यक्ती)',
+      hindiName: 'à¤¸à¤®à¥à¤ªà¥‚à¤°à¥à¤£ à¤°à¥‡à¤¸à¥à¤Ÿà¥‹à¤°à¥‡à¤‚à¤Ÿ à¤²à¤‚à¤š à¤ªà¥à¤°à¤¾à¤‡à¤µà¥‡à¤Ÿ à¤¬à¥à¤•à¤¿à¤‚à¤— (à¤…à¤§à¤¿à¤•à¤¤à¤® 40 à¤µà¥à¤¯à¤•à¥à¤¤à¤¿)',
+      marathiName: 'à¤¸à¤‚à¤ªà¥‚à¤°à¥à¤£ à¤°à¥‡à¤¸à¥à¤Ÿà¥‰à¤°à¤‚à¤Ÿ à¤²à¤‚à¤š à¤ªà¥à¤°à¤¾à¤¯à¤µà¥à¤¹à¥‡à¤Ÿ à¤¬à¥à¤•à¤¿à¤‚à¤— (à¤œà¤¾à¤¸à¥à¤¤à¥€à¤¤ à¤œà¤¾à¤¸à¥à¤¤ à¥ªà¥¦ à¤µà¥à¤¯à¤•à¥à¤¤à¥€)',
       ratePerPax: 490,
       minPax: 25,
       maxPax: 40,
       badge: '',
-      icon: '👑',
+      icon: 'ðŸ‘‘',
       tag: '100% Private (12:00 PM - 3:00 PM)',
       isBuyout: true,
-      desc: 'Exclusive private lunch buyout of the entire Pride Pure Veg AC Restaurant (max 40 Pax capacity) from 12:00 PM to 3:00 PM. Restaurant 100% closed to the general public for complete privacy. Full lunch buyout only • Strictly depending upon availability.',
+      desc: 'Exclusive private lunch buyout of the entire Pride Pure Veg AC Restaurant (max 40 Pax capacity) from 12:00 PM to 3:00 PM. Restaurant 100% closed to the general public for complete privacy. Full lunch buyout only â€¢ Strictly depending upon availability.',
       amenities: ['Restaurant 100% Closed to Public', 'Unlimited Grand Buffet', 'Audio / Mic Facility (Chargeable)', 'No Venue Rent', 'Reserved Parking'],
       menuChoices: [
         'Complete Restaurant Privacy: Entire dining area closed to external guests from 12:00 PM to 3:00 PM',
@@ -377,7 +377,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'Sound system connection & mics setup on advance request (chargeable)',
         'Personalized Welcome Signage at restaurant entrance',
         'Priority reserved parking for host & guest vehicles',
-        'Full Lunch Buyout Only (12:00 PM - 3:00 PM) • Strictly subject to advance booking & date availability'
+        'Full Lunch Buyout Only (12:00 PM - 3:00 PM) â€¢ Strictly subject to advance booking & date availability'
       ]
     }
   ],
@@ -389,42 +389,42 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       title: 'Theme Balloon & Cake Table Decor',
       category: 'Birthdays & Baby Showers',
       price: 1500,
-      priceDisplay: '₹ 1,500 onwards',
+      priceDisplay: 'â‚¹ 1,500 onwards',
       isChargeable: true,
-      badge: '🎈 POPULAR DECOR',
+      badge: 'ðŸŽˆ POPULAR DECOR',
       image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&auto=format&fit=crop&q=80',
-      desc: 'Balloon arch, custom celebration color theme, dedicated cake cutting table decoration & party props. (Chargeable add-on • Customizable).'
+      desc: 'Balloon arch, custom celebration color theme, dedicated cake cutting table decoration & party props. (Chargeable add-on â€¢ Customizable).'
     },
     {
       id: 'decor-floral-ring',
       title: 'Floral Ring & Stage Backdrop Decor',
       category: 'Ring Ceremony & Anniversaries',
       price: 2800,
-      priceDisplay: '₹ 2,800 onwards',
+      priceDisplay: 'â‚¹ 2,800 onwards',
       isChargeable: true,
-      badge: '💍 ROYAL SETUP',
+      badge: 'ðŸ’ ROYAL SETUP',
       image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format&fit=crop&q=80',
-      desc: 'Circular floral ring backdrop, fairy light curtain, personalized couple name board & warm stage illumination. (Chargeable add-on • Customizable).'
+      desc: 'Circular floral ring backdrop, fairy light curtain, personalized couple name board & warm stage illumination. (Chargeable add-on â€¢ Customizable).'
     },
     {
       id: 'decor-baby-shower',
       title: 'Baby Shower (Dohale Jevan) Theme Decor',
       category: 'Baby Shower & Traditional',
       price: 2200,
-      priceDisplay: '₹ 2,200 onwards',
+      priceDisplay: 'â‚¹ 2,200 onwards',
       isChargeable: true,
-      badge: '👶 TRADITIONAL & PASTEL',
+      badge: 'ðŸ‘¶ TRADITIONAL & PASTEL',
       image: 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&auto=format&fit=crop&q=80',
-      desc: 'Traditional Dohale Jevan setup, pastel balloon garland, floral welcome stand, and photo corner props. (Chargeable add-on • Customizable).'
+      desc: 'Traditional Dohale Jevan setup, pastel balloon garland, floral welcome stand, and photo corner props. (Chargeable add-on â€¢ Customizable).'
     },
     {
       id: 'av-projector',
       title: 'HD Projector & Wide Screen AV Setup',
       category: 'Corporate & Seminars',
       price: 1500,
-      priceDisplay: '₹ 1,500 flat',
+      priceDisplay: 'â‚¹ 1,500 flat',
       isChargeable: true,
-      badge: '💼 BUSINESS AV',
+      badge: 'ðŸ’¼ BUSINESS AV',
       image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&auto=format&fit=crop&q=80',
       desc: 'High-lumen HDMI projector, large projection screen, power extension cables, and presentation setup support. (Chargeable add-on).'
     },
@@ -433,13 +433,14 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       title: 'Party Sound System & 2 Wireless Mics',
       category: 'Music & Speeches',
       price: 999,
-      priceDisplay: '₹ 999 flat',
+      priceDisplay: 'â‚¹ 999 flat',
       isChargeable: true,
-      badge: '🎤 SOUND & MIC',
+      badge: 'ðŸŽ¤ SOUND & MIC',
       image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=80',
       desc: 'Dedicated party audio system with Bluetooth playlist streaming and 2 cordless microphones for speeches and games. (Chargeable add-on).'
     }
   ]
 };
+
 
 

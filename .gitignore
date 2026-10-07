@@ -5,3 +5,8 @@ Thumbs.db
 
 # Deployment zip
 *.zip
+
+# Scratch scripts and temporary manifests
+scratch/
+*.csv
+
