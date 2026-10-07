@@ -199,6 +199,12 @@ class HotelPremierApp {
       }
     });
 
+    // Floating Quick Navigation Menu Button: ONLY show inside Dining section
+    const floatingMenuBtn = document.getElementById('floating-menu-toggle-btn');
+    if (floatingMenuBtn) {
+      floatingMenuBtn.style.display = (sectionId === 'section-dine') ? 'flex' : 'none';
+    }
+
     // Auto-fill profile whenever entering guest feedback or reviews section
     if (sectionId === 'guest-feedback-section') {
       this.applyGuestProfileToAllForms();
@@ -925,10 +931,10 @@ class HotelPremierApp {
   }
 
   scrollCategoryToView() {
-    // Scroll directly to the category navigation bar or dishes view
-    const target = document.getElementById('section-nav-bar') || document.getElementById('dishes-section-view');
+    // Scroll directly to the category navigation bar or menu container
+    const target = document.getElementById('category-nav-bar') || document.getElementById('menu-container') || document.getElementById('dishes-section-view');
     if (target) {
-      const headerOffset = 90;
+      const headerOffset = 80;
       const rect = target.getBoundingClientRect();
       const targetScrollY = rect.top + window.pageYOffset - headerOffset;
       window.scrollTo({
@@ -1326,9 +1332,15 @@ class HotelPremierApp {
     } else {
       this.openCategorySection(catId);
     }
-    const target = document.getElementById('dishes-section-view');
+    const target = document.getElementById('category-nav-bar') || document.getElementById('menu-container') || document.getElementById('dishes-section-view');
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 80;
+      const rect = target.getBoundingClientRect();
+      const targetScrollY = rect.top + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, targetScrollY),
+        behavior: 'smooth'
+      });
     }
   }
 
@@ -1485,7 +1497,7 @@ class HotelPremierApp {
               <div class="section-header">
                 <div>
                   <h3 class="section-title">${locName}</h3>
-                  ${locSub ? `<span style="font-size: 0.8rem; color: var(--gold-primary); font-weight: 700;">${locSub}</span>` : ''}
+                  ${locSub ? `<span class="section-subtitle">${locSub}</span>` : ''}
                 </div>
                 <span class="section-count">${catDishes.length} ${itemsWord}</span>
               </div>
@@ -1498,9 +1510,29 @@ class HotelPremierApp {
       });
       container.innerHTML = html;
     } else {
+      let sectionTitle = '';
+      let sectionSub = '';
+      if (this.currentCategory && this.currentCategory !== 'all') {
+        sectionTitle = this.getCategoryLocalizedName(this.currentCategory);
+        sectionSub = this.getCategoryLocalizedSubtitle(this.currentCategory);
+      } else if (this.searchQuery.trim() !== '') {
+        sectionTitle = `Search Results for "${this.searchQuery}"`;
+      } else {
+        sectionTitle = 'Culinary Selection';
+      }
+
       container.innerHTML = `
-        <div class="dish-grid">
-          ${filtered.map(dish => this.renderDishCard(dish)).join('')}
+        <div class="category-section">
+          <div class="section-header">
+            <div>
+              <h3 class="section-title">${sectionTitle}</h3>
+              ${sectionSub ? `<span class="section-subtitle">${sectionSub}</span>` : ''}
+            </div>
+            <span class="section-count">${filtered.length} ${itemsWord}</span>
+          </div>
+          <div class="dish-grid">
+            ${filtered.map(dish => this.renderDishCard(dish)).join('')}
+          </div>
         </div>
       `;
     }
@@ -1677,25 +1709,54 @@ class HotelPremierApp {
         </div>
       `;
 
+    const waOrderMsg = encodeURIComponent(`Hello Hotel Premier, I would like to order "${dish.name}" (₹${dish.price}) from the Pride Pure Veg Restaurant.`);
+    const waOrderUrl = `https://wa.me/919422279544?text=${waOrderMsg}`;
+
     body.innerHTML = `
       ${detailMediaHtml}
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin: 12px 0 6px;">
-        <div>
-          <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: #FFFFFF; font-weight: 800; letter-spacing: 0.3px;">${dishTitleHtml}</h3>
-          <div style="font-size: 0.84rem; color: var(--gold-light); font-weight: 600;">${this.t('servingTime')}</div>
+      <div class="modal-dish-detail-container">
+        <div class="modal-dish-header">
+          <div>
+            <h3 class="modal-dish-title">${dishTitleHtml}</h3>
+            <div class="modal-dish-subtitle">Pride Pure Veg AC Restaurant • Freshly prepared</div>
+          </div>
+          <span class="modal-dish-price">₹${dish.price}</span>
         </div>
-        <span style="font-family: var(--font-sans); font-size: 1.6rem; font-weight: 900; color: var(--champagne-gold);">₹${dish.price}</span>
-      </div>
-      <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px;">
-        ${isZomatoRated ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="dish-rating zomato-rating" style="font-size: 0.82rem; padding: 4px 10px; border-radius: 8px; text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier Zomato Rating & Reviews">Zomato ${zomatoScore}★ ↗</a>` : ''}
-        ${dish.tags && dish.tags.includes('swiggy-top') ? `<a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="badge-tag swiggy" style="text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier 4.2★ on Swiggy">🛵 4.2★ Swiggy Bestseller ↗</a>` : ''}
-        ${dish.tags && dish.tags.includes('zomato-top') ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="badge-tag zomato" style="text-decoration: none; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">${this.t('badgeZomato')} ↗</a>` : ''}
-        ${dish.tags && dish.tags.includes('chef-special') ? `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>` : ''}
-      </div>
-      <p style="font-size: 0.94rem; color: #E2E8F0; line-height: 1.55; margin-bottom: 14px;">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
-      ${variantsList}
-      <div style="background: rgba(22, 32, 53, 0.7); padding: 12px 14px; border-radius: var(--radius-sm); border: 1px solid var(--gold-border); font-size: 0.82rem; color: var(--gold-light); line-height: 1.45;">
-        ${this.t('pureVegNote')}
+
+        <div class="modal-dish-tags">
+          <span class="cred-badge cred-veg" style="padding: 4px 10px; font-size: 0.7rem;">● PURE VEG</span>
+          ${isZomatoRated ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="dish-rating zomato-rating" style="font-size: 0.78rem; padding: 4px 10px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier Zomato Rating">Zomato ${zomatoScore}★ ↗</a>` : ''}
+          ${dish.tags && dish.tags.includes('swiggy-top') ? `<a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="badge-tag swiggy" style="font-size: 0.74rem; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier 4.2★ on Swiggy">🛵 4.2★ Swiggy ↗</a>` : ''}
+          ${dish.tags && dish.tags.includes('chef-special') ? `<span class="badge-tag chef-special" style="font-size: 0.74rem;">${this.t('badgeChefSpecial')}</span>` : ''}
+        </div>
+
+        <p class="modal-dish-desc">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil using authentic ingredients and culinary care.'}</p>
+
+        ${variantsList ? `
+          <div class="modal-dish-variants-box">
+            <div class="modal-dish-variants-title">${this.t('variantsTitle')}</div>
+            <div class="modal-dish-variants-list">
+              ${dish.variants.map(v => `<span class="modal-dish-variant-chip">${v.name}: ₹${v.price}</span>`).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <div class="modal-dish-veg-guarantee">
+          <span style="font-size: 1.1rem; line-height: 1;">🌱</span>
+          <div>
+            <strong>100% Pure Vegetarian Kitchen Guarantee</strong>
+            <div style="font-size: 0.78rem; opacity: 0.9; margin-top: 2px;">Prepared strictly vegetarian in standard refined oil with rigorous hygiene standards.</div>
+          </div>
+        </div>
+
+        <div class="modal-dish-actions">
+          <a href="${waOrderUrl}" target="_blank" rel="noopener noreferrer" class="modal-btn-wa-order">
+            <span>📲 Order on WhatsApp</span>
+          </a>
+          <a href="tel:09422279544" class="modal-btn-call-order">
+            <span>📞 Call Restaurant: 09422279544</span>
+          </a>
+        </div>
       </div>
     `;
 

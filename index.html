@@ -58,7 +58,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v16.2') {
+            if (name !== 'hotel-premier-v16.3') {
               caches.delete(name);
             }
           });
@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=16.2"></script>
+  <script src="asset-pipeline.js?v=16.3"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=16.2">
+  <link rel="stylesheet" href="styles.css?v=16.3">
 </head>
 <body>
 
@@ -768,12 +768,17 @@
   <!-- 3. EDITORIAL DINING AT PRIDE PURE VEG (DINE)                      -->
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-dine">
-    <div class="editorial-header-block">
-      <span class="editorial-eyebrow">Pride Pure Veg AC Restaurant</span>
+    <div class="editorial-header-block dining-hero-header">
+      <div class="dining-credentials-strip">
+        <span class="cred-badge cred-pride">PRIDE</span>
+        <span class="cred-badge cred-veg">● PURE VEG</span>
+        <span class="cred-badge cred-ac">❄ AC RESTAURANT</span>
+      </div>
+      <span class="editorial-eyebrow">HOTEL PREMIER</span>
       <h2 class="editorial-title">Dining at Hotel Premier</h2>
       <div class="editorial-divider"></div>
       <p class="editorial-subtitle">
-        100% Pure Vegetarian Culinary Artistry. Authentic North Indian Gravies, Sizzling Clay Oven Tandoor, Khandeshi Delicacies & Fresh Breakfast.
+        A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
       </p>
     </div>
 
@@ -883,17 +888,8 @@
         </div>
       </div>
 
-      <!-- Dining View Controls & Category Navigation Bar -->
+      <!-- Category Navigation & Search Controls -->
       <div class="dining-view-controls">
-        <div class="dining-view-mode-tabs">
-          <button class="dining-mode-btn" id="btn-mode-all-dishes" onclick="window.app ? window.app.showAllDishesView() : null">
-            <span>📋</span> <span>Full Menu (All 214 Dishes)</span>
-          </button>
-          <button class="dining-mode-btn active" id="btn-mode-categories" onclick="window.app ? window.app.showHomeCategories() : null">
-            <span>🗂️</span> <span>Browse Collections</span>
-          </button>
-        </div>
-
         <!-- Horizontal Scrollable Category Chips Bar -->
         <div class="category-nav-container-bar" id="category-nav-bar">
           <button class="category-nav-arrow-btn prev" onclick="window.app ? window.app.scrollCategoryNav(-220) : null" aria-label="Previous Categories">‹</button>
@@ -904,74 +900,27 @@
           </div>
           <button class="category-nav-arrow-btn next" onclick="window.app ? window.app.scrollCategoryNav(220) : null" aria-label="Next Categories">›</button>
         </div>
-      </div>
 
-      <!-- Concierge Dish Search & Quick Filters -->
-      <div class="dining-search-filter-bar">
-        <div class="search-input-wrapper">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="menu-search-input" placeholder="Search dishes (e.g. Paneer, Biryani, Chai, Shev Bhaji, Soup)...">
-          <button class="clear-search-btn" id="clear-search-btn">✕</button>
-        </div>
-
-        <div class="quick-filters" id="quick-filters-container">
-          <!-- Rendered dynamically by app.js -->
-        </div>
-      </div>
-
-      <!-- View 1: Culinary Collections Grid -->
-      <div id="home-categories-view">
-        <!-- Curated Culinary Theme Filter Tabs -->
-        <div class="culinary-theme-bar" id="culinary-theme-bar">
-          <button class="culinary-theme-btn active" data-theme="all" onclick="window.app ? window.app.filterCulinaryTheme('all') : null">
-            <span>✨ All 20 Collections</span>
-          </button>
-          <button class="culinary-theme-btn" data-theme="breakfast" onclick="window.app ? window.app.filterCulinaryTheme('breakfast') : null">
-            <span>🌅 Breakfast & Tea</span>
-          </button>
-          <button class="culinary-theme-btn" data-theme="starters" onclick="window.app ? window.app.filterCulinaryTheme('starters') : null">
-            <span>🍢 Tandoor & Starters</span>
-          </button>
-          <button class="culinary-theme-btn" data-theme="curries" onclick="window.app ? window.app.filterCulinaryTheme('curries') : null">
-            <span>👑 Royal Curries</span>
-          </button>
-          <button class="culinary-theme-btn" data-theme="grains" onclick="window.app ? window.app.filterCulinaryTheme('grains') : null">
-            <span>🍚 Biryani & Breads</span>
-          </button>
-          <button class="culinary-theme-btn" data-theme="desserts" onclick="window.app ? window.app.filterCulinaryTheme('desserts') : null">
-            <span>🍨 Desserts & Drinks</span>
-          </button>
-        </div>
-
-        <div class="category-cards-grid" id="category-cards-grid">
-          <!-- Rendered dynamically by app.js -->
-        </div>
-      </div>
-
-      <!-- View 2: Active Category Dishes View -->
-      <div id="dishes-section-view" style="display: none;">
-        <div class="section-nav-bar" id="section-nav-bar">
-          <button class="back-to-categories-btn" onclick="window.app.showHomeCategories()">
-            <span>⬅️</span>
-            <span id="back-to-sections-text" data-i18n="backToSections">All Sections</span>
-          </button>
-          <div class="active-category-info" id="active-category-info" onclick="window.app.toggleMenuSectionDrawer()" style="cursor: pointer;" title="Tap to switch section">
-            <h3 class="active-category-title" id="active-category-title">Paneer Specialties</h3>
-            <span class="active-category-hindi" id="active-category-hindi">शाही पनीर व्यंजन ▾</span>
+        <!-- Concierge Dish Search & Quick Filters -->
+        <div class="dining-search-filter-bar">
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="menu-search-input" placeholder="Search dishes (e.g. Paneer, Biryani, Chai, Shev Bhaji, Soup)...">
+            <button class="clear-search-btn" id="clear-search-btn">✕</button>
           </div>
-          <div class="active-category-count" id="active-category-count">14 Items</div>
-        </div>
 
-        <!-- Sub-Section Multi-Photo Slideshow Banner -->
-        <div id="section-slideshow-container" style="display: none; margin-bottom: 18px;"></div>
-
-        <!-- 2-Column Side-by-Side Dish Grid -->
-        <main class="menu-container">
-          <div id="menu-items-grid">
-            <!-- Dish cards rendered dynamically -->
+          <div class="quick-filters" id="quick-filters-container">
+            <!-- Rendered dynamically by app.js -->
           </div>
-        </main>
+        </div>
       </div>
+
+      <!-- Main Unified Responsive Menu Container -->
+      <main class="menu-container" id="menu-container">
+        <div id="menu-items-grid">
+          <!-- Dish cards and categorized sections rendered dynamically by app.js -->
+        </div>
+      </main>
     </div>
   </section>
 
@@ -1760,20 +1709,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v16.2) -->
-  <script src="storage.js?v=16.2"></script>
-  <script src="vault.js?v=16.2"></script>
-  <script src="data/translations.js?v=16.2"></script>
-  <script src="data/hotel-data.js?v=16.2"></script>
-  <script src="data/menu-data.js?v=16.2"></script>
-  <script src="app.js?v=16.2"></script>
-  <script src="admin.js?v=16.2"></script>
+  <!-- Load Application Scripts (v16.3) -->
+  <script src="storage.js?v=16.3"></script>
+  <script src="vault.js?v=16.3"></script>
+  <script src="data/translations.js?v=16.3"></script>
+  <script src="data/hotel-data.js?v=16.3"></script>
+  <script src="data/menu-data.js?v=16.3"></script>
+  <script src="app.js?v=16.3"></script>
+  <script src="admin.js?v=16.3"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=16.2').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=16.3').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
