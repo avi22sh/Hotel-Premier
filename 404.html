@@ -58,7 +58,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v16.0') {
+            if (name !== 'hotel-premier-v16.1') {
               caches.delete(name);
             }
           });
@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=16.0"></script>
+  <script src="asset-pipeline.js?v=16.1"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=16.0">
+  <link rel="stylesheet" href="styles.css?v=16.1">
 </head>
 <body>
 
@@ -135,22 +135,25 @@
           <span>🏛️ Home</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-stay" onclick="window.app ? window.app.switchSection('section-stay') : null">
-          <span>🏨 The 14 Suites</span>
+          <span>🏨 Stay</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-tariffs" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
-          <span>📜 Tariffs</span>
+          <span>📜 Tariff</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
-          <span>🍽️ Pride Pure Veg</span>
+          <span>🍽️ Dine</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
-          <span>🎉 Celebrations & Groups</span>
+          <span>🎉 Group & Events</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-explore" onclick="window.app ? window.app.switchSection('section-explore') : null">
-          <span>🗺️ Arrive & Location</span>
+          <span>🗺️ Explore</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-reviews" onclick="window.app ? window.app.switchSection('guest-feedback-section') : null">
-          <span>⭐ Reviews</span>
+          <span>⭐ Review</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-contact" onclick="window.app ? window.app.switchSection('section-contact') : null">
+          <span>📞 Contact</span>
         </button>
 
         <!-- Reserve Stay CTA -->
@@ -201,23 +204,23 @@
         <div class="concierge-quick-grid">
           <div class="concierge-quick-card" onclick="window.app ? window.app.openConciergeBookingModal() : null">
             <span class="quick-card-icon">🛎️</span>
-            <div class="quick-card-title">Reserve Suite</div>
-            <div class="quick-card-sub">Instant Booking</div>
-          </div>
-          <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-stay') : null">
-            <span class="quick-card-icon">🏨</span>
-            <div class="quick-card-title">14 AC Suites</div>
-            <div class="quick-card-sub">Suites & Inclusions</div>
-          </div>
-          <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
-            <span class="quick-card-icon">📜</span>
-            <div class="quick-card-title">Room Tariffs</div>
-            <div class="quick-card-sub">Published Rates</div>
+            <div class="quick-card-title">Book a Room</div>
+            <div class="quick-card-sub">Instant Reservation</div>
           </div>
           <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-dine') : null">
             <span class="quick-card-icon">🍽️</span>
-            <div class="quick-card-title">Pride Pure Veg</div>
-            <div class="quick-card-sub">Curated Menu</div>
+            <div class="quick-card-title">Dine With Us</div>
+            <div class="quick-card-sub">Pride Pure Veg Menu</div>
+          </div>
+          <div class="concierge-quick-card" onclick="window.location.href='tel:09325375802'">
+            <span class="quick-card-icon">📞</span>
+            <div class="quick-card-title">Call Hotel</div>
+            <div class="quick-card-sub">Front Desk 24x7</div>
+          </div>
+          <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-explore') : null">
+            <span class="quick-card-icon">🧭</span>
+            <div class="quick-card-title">Get Directions</div>
+            <div class="quick-card-sub">5 Mins from Station</div>
           </div>
         </div>
       </div>
@@ -1306,6 +1309,105 @@
     </div>
   </section>
 
+  <!-- ================================================================ -->
+  <!-- 7. CONTACT HOTEL PREMIER                                         -->
+  <!-- ================================================================ -->
+  <section class="section-wrapper" id="section-contact" style="display: none;">
+    <div class="editorial-header-block">
+      <span class="editorial-eyebrow">Front Desk & Concierge</span>
+      <h2 class="editorial-title">Contact Hotel Premier</h2>
+      <div class="editorial-divider"></div>
+      <p class="editorial-subtitle">
+        We are at your service 24 hours a day. Reach our front desk team for room bookings, Pride Pure Veg dining, group arrangements, or route guidance.
+      </p>
+    </div>
+
+    <div class="contact-cards-grid">
+      <!-- 1. Call Hotel -->
+      <div class="contact-card">
+        <div>
+          <div class="contact-card-header">
+            <div class="contact-card-icon">📞</div>
+            <div>
+              <h3 class="contact-card-title">Call Hotel Front Desk</h3>
+              <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700;">● Available 24x7</span>
+            </div>
+          </div>
+          <div class="contact-card-body">
+            <span class="contact-card-phone-highlight">09325375802</span>
+            <p>Direct front desk assistance, suite availability, check-in queries, and corporate reservations.</p>
+            <p style="margin-top: 6px; font-size: 0.78rem; color: var(--text-muted-dark);">Alternate: <strong>09370848917</strong> • Landline: <strong>(02582) 240422</strong></p>
+          </div>
+        </div>
+        <a href="tel:09325375802" class="contact-card-btn">
+          <span>📞 Call 09325375802</span>
+        </a>
+      </div>
+
+      <!-- 2. WhatsApp Inquiry -->
+      <div class="contact-card">
+        <div>
+          <div class="contact-card-header">
+            <div class="contact-card-icon" style="color: #16A34A; background: rgba(22, 163, 74, 0.08); border-color: rgba(22, 163, 74, 0.2);">💬</div>
+            <div>
+              <h3 class="contact-card-title">WhatsApp Concierge</h3>
+              <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700;">● Instant Responses</span>
+            </div>
+          </div>
+          <div class="contact-card-body">
+            <span class="contact-card-phone-highlight" style="color: #16A34A;">+91 9325375802</span>
+            <p>Chat directly with our team for photo galleries, published tariff sheets, wedding room blocks, and instant confirmation.</p>
+          </div>
+        </div>
+        <a href="https://wa.me/919325375802?text=Hello%20Hotel%20Premier,%20I%20would%20like%20to%20inquire%20about%20room%20availability%20and%20rates." target="_blank" rel="noopener noreferrer" class="contact-card-btn wa-btn">
+          <span>📲 Chat on WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- 3. Address & Location -->
+      <div class="contact-card">
+        <div>
+          <div class="contact-card-header">
+            <div class="contact-card-icon">📍</div>
+            <div>
+              <h3 class="contact-card-title">Address & Property Location</h3>
+              <span style="font-size: 0.72rem; color: var(--brass-antique); font-weight: 700;">● Prime Jamner Road</span>
+            </div>
+          </div>
+          <div class="contact-card-body">
+            <strong style="color: var(--text-dark); display: block; margin-bottom: 4px;">Hotel Premier & Pride AC Restaurant</strong>
+            <p>Near Nahata College, Saket Society, Jamner Road, Bhusawal - 425 201, Maharashtra.</p>
+            <p style="margin-top: 6px; font-size: 0.78rem; color: var(--text-muted-dark);">5 Mins from Bhusawal Railway Junction • Free private parking on premises.</p>
+          </div>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201" target="_blank" rel="noopener noreferrer" class="contact-card-btn maps-btn">
+          <span>🗺️ Open in Google Maps</span>
+        </a>
+      </div>
+
+      <!-- 4. Restaurant & Room Service -->
+      <div class="contact-card">
+        <div>
+          <div class="contact-card-header">
+            <div class="contact-card-icon">🍽️</div>
+            <div>
+              <h3 class="contact-card-title">Restaurant & Room Service</h3>
+              <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700;">● 7:30 AM – 10:30 PM</span>
+            </div>
+          </div>
+          <div class="contact-card-body">
+            <strong style="color: var(--text-dark); display: block; margin-bottom: 4px;">Pride Pure Veg AC Restaurant</strong>
+            <p>100% pure vegetarian dining, hot breakfast, pure ghee sweets, family dining tables & prompt in-room delivery.</p>
+            <p style="margin-top: 6px; font-size: 0.78rem; color: var(--text-muted-dark);">Call for table reservations, family parcels, or room service orders.</p>
+          </div>
+        </div>
+        <a href="tel:09325375802" class="contact-card-btn">
+          <span>🍽️ Call Room Service</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== FOOTER ==================== -->
   <footer class="app-footer">
     <div class="footer-inner">
@@ -1658,20 +1760,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v16.0) -->
-  <script src="storage.js?v=16.0"></script>
-  <script src="vault.js?v=16.0"></script>
-  <script src="data/translations.js?v=16.0"></script>
-  <script src="data/hotel-data.js?v=16.0"></script>
-  <script src="data/menu-data.js?v=16.0"></script>
-  <script src="app.js?v=16.0"></script>
-  <script src="admin.js?v=16.0"></script>
+  <!-- Load Application Scripts (v16.1) -->
+  <script src="storage.js?v=16.1"></script>
+  <script src="vault.js?v=16.1"></script>
+  <script src="data/translations.js?v=16.1"></script>
+  <script src="data/hotel-data.js?v=16.1"></script>
+  <script src="data/menu-data.js?v=16.1"></script>
+  <script src="app.js?v=16.1"></script>
+  <script src="admin.js?v=16.1"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=16.0').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=16.1').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

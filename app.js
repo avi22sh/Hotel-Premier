@@ -95,7 +95,10 @@ class HotelPremierApp {
       'guide': 'section-explore',
       'location': 'section-explore',
       'reviews': 'guest-feedback-section',
-      'feedback': 'guest-feedback-section'
+      'feedback': 'guest-feedback-section',
+      'contact': 'section-contact',
+      'call': 'section-contact',
+      'phone': 'section-contact'
     };
 
     let initialSection = 'section-home';
@@ -174,7 +177,8 @@ class HotelPremierApp {
       'section-dine',
       'section-celebrate',
       'section-explore',
-      'guest-feedback-section'
+      'guest-feedback-section',
+      'section-contact'
     ];
 
     if (!validSections.includes(sectionId)) {
@@ -209,7 +213,8 @@ class HotelPremierApp {
       'section-dine': 'tab-nav-dine',
       'section-celebrate': 'tab-nav-celebrate',
       'section-explore': 'tab-nav-explore',
-      'guest-feedback-section': 'tab-nav-reviews'
+      'guest-feedback-section': 'tab-nav-reviews',
+      'section-contact': 'tab-nav-contact'
     };
     const activeTabId = tabMap[sectionId];
     if (activeTabId) {
@@ -227,9 +232,10 @@ class HotelPremierApp {
         'section-stay': 'stay',
         'section-tariffs': 'tariffs',
         'section-dine': 'dine',
-        'section-celebrate': 'celebrate',
+        'section-celebrate': 'events',
         'section-explore': 'explore',
-        'guest-feedback-section': 'reviews'
+        'guest-feedback-section': 'reviews',
+        'section-contact': 'contact'
       };
       const hashName = hashMap[sectionId] || 'home';
       try {
@@ -2564,7 +2570,10 @@ class HotelPremierApp {
         'guide': 'section-explore',
         'location': 'section-explore',
         'reviews': 'guest-feedback-section',
-        'feedback': 'guest-feedback-section'
+        'feedback': 'guest-feedback-section',
+        'contact': 'section-contact',
+        'call': 'section-contact',
+        'address': 'section-contact'
       };
       const target = hashToSection[rawHash] || 'section-home';
       if (target !== this.activeSection) {
