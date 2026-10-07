@@ -72,6 +72,36 @@ class HotelPremierApp {
       const match = window.location.hash.match(/(?:category|section)=([a-zA-Z0-9_-]+)/);
       if (match) catParam = match[1];
     }
+
+    // Hash-based independent section routing
+    const rawHash = (window.location.hash || '').replace('#', '').toLowerCase();
+    const hashToSection = {
+      'tariffs': 'section-tariffs',
+      'tariff': 'section-tariffs',
+      'rates': 'section-tariffs',
+      'stay': 'section-stay',
+      'rooms': 'section-stay',
+      'dine': 'section-dine',
+      'dining': 'section-dine',
+      'menu': 'section-dine',
+      'celebrate': 'section-celebrate',
+      'events': 'section-celebrate',
+      'banquets': 'section-celebrate',
+      'explore': 'section-explore',
+      'guide': 'section-explore',
+      'location': 'section-explore',
+      'reviews': 'guest-feedback-section',
+      'feedback': 'guest-feedback-section'
+    };
+
+    let initialSection = 'section-stay';
+    if (catParam) {
+      initialSection = 'section-dine';
+    } else if (hashToSection[rawHash]) {
+      initialSection = hashToSection[rawHash];
+    }
+    this.switchSection(initialSection, false);
+
     if (catParam) {
       this.openCategorySection(catParam);
     }
@@ -131,20 +161,46 @@ class HotelPremierApp {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // ==================== HOTEL CONCIERGE SMOOTH SCROLL NAVIGATION ====================
-  scrollToSection(sectionId) {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      const headerOffset = 100;
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+  // ==================== INDEPENDENT HOTEL SECTION ROUTING ====================
+  switchSection(sectionId, updateHash = true) {
+    const validSections = [
+      'section-stay',
+      'section-tariffs',
+      'section-dine',
+      'section-celebrate',
+      'section-explore',
+      'guest-feedback-section'
+    ];
+
+    if (!validSections.includes(sectionId)) {
+      sectionId = 'section-stay';
     }
 
-    // Update active tab state
+    this.activeSection = sectionId;
+
+    // Show ONLY the requested section; hide all other sections separately
+    validSections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        if (id === sectionId) {
+          el.style.display = 'block';
+        } else {
+          el.style.display = 'none';
+        }
+      }
+    });
+
+    // Control Sanctuary Hero visibility: display with Stay/Rooms, hide on dedicated Tariff/Dining/Event pages
+    const heroEl = document.querySelector('.sanctuary-hero-section');
+    if (heroEl) {
+      if (sectionId === 'section-stay') {
+        heroEl.style.display = 'block';
+      } else {
+        heroEl.style.display = 'none';
+      }
+    }
+
+    // Update active tab in top navigation bar
     document.querySelectorAll('.hotel-nav-tab').forEach(tab => tab.classList.remove('active'));
     const tabMap = {
       'section-stay': 'tab-nav-stay',
@@ -157,7 +213,59 @@ class HotelPremierApp {
     const activeTabId = tabMap[sectionId];
     if (activeTabId) {
       const activeTab = document.getElementById(activeTabId);
-      if (activeTab) activeTab.classList.add('active');
+      if (activeTab) {
+        activeTab.classList.add('active');
+        activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+
+    // Update URL hash cleanly
+    if (updateHash) {
+      const hashMap = {
+        'section-stay': 'stay',
+        'section-tariffs': 'tariffs',
+        'section-dine': 'dine',
+        'section-celebrate': 'celebrate',
+        'section-explore': 'explore',
+        'guest-feedback-section': 'reviews'
+      };
+      const hashName = hashMap[sectionId] || 'stay';
+      try {
+        if (window.history && window.history.replaceState) {
+          window.history.replaceState(null, '', '#' + hashName);
+        } else {
+          window.location.hash = hashName;
+        }
+      } catch (e) {}
+    }
+
+    // Smooth scroll to top of selected page view
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  scrollToSection(sectionId) {
+    this.switchSection(sectionId);
+  }
+
+  // ==================== TARIFF PLAN SWITCHER (RO vs CP vs ALL) ====================
+  setTariffPlanView(plan) {
+    this.currentTariffPlan = plan; // 'all' | 'ro' | 'cp'
+    document.querySelectorAll('.tariff-plan-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.plan === plan);
+    });
+
+    const roBoxes = document.querySelectorAll('.tariff-plan-box.plan-ro');
+    const cpBoxes = document.querySelectorAll('.tariff-plan-box.plan-cp');
+
+    if (plan === 'ro') {
+      roBoxes.forEach(b => b.style.display = 'block');
+      cpBoxes.forEach(b => b.style.display = 'none');
+    } else if (plan === 'cp') {
+      roBoxes.forEach(b => b.style.display = 'none');
+      cpBoxes.forEach(b => b.style.display = 'block');
+    } else {
+      roBoxes.forEach(b => b.style.display = 'block');
+      cpBoxes.forEach(b => b.style.display = 'block');
     }
   }
 
@@ -2345,6 +2453,34 @@ class HotelPremierApp {
         }, { passive: true });
       }
     });
+
+    // Browser URL Hash change listener for independent section navigation
+    window.addEventListener('hashchange', () => {
+      const rawHash = (window.location.hash || '').replace('#', '').toLowerCase();
+      const hashToSection = {
+        'stay': 'section-stay',
+        'rooms': 'section-stay',
+        'suites': 'section-stay',
+        'tariffs': 'section-tariffs',
+        'tariff': 'section-tariffs',
+        'rates': 'section-tariffs',
+        'dine': 'section-dine',
+        'dining': 'section-dine',
+        'food': 'section-dine',
+        'celebrate': 'section-celebrate',
+        'events': 'section-celebrate',
+        'banquets': 'section-celebrate',
+        'offers': 'section-celebrate',
+        'explore': 'section-explore',
+        'guide': 'section-explore',
+        'location': 'section-explore',
+        'reviews': 'guest-feedback-section',
+        'feedback': 'guest-feedback-section'
+      };
+      if (hashToSection[rawHash] && hashToSection[rawHash] !== this.activeSection) {
+        this.switchSection(hashToSection[rawHash], false);
+      }
+    });
   }
 
   // ==================== 5. STAFF ACCESS CONTROL (HIDDEN FROM GUESTS) ====================
@@ -2559,14 +2695,19 @@ class HotelPremierApp {
 
   updateHeaderGuestBadge(profile) {
     const p = profile || this.getGuestProfile();
-    const pill = document.getElementById('header-guest-name-pill') || document.getElementById('header-guest-pass-text');
-    if (pill) {
+    const btn = document.getElementById('guest-profile-trigger-btn');
+    if (btn) {
       if (p.name) {
-        const firstName = p.name.trim().split(' ')[0];
-        pill.textContent = `👋 ${firstName}`;
+        btn.setAttribute('title', `Guest Profile: ${p.name}`);
+        btn.classList.add('has-profile');
       } else {
-        pill.textContent = 'Concierge Profile';
+        btn.setAttribute('title', 'Guest Profile');
+        btn.classList.remove('has-profile');
       }
+    }
+    const pill = document.getElementById('header-guest-name-pill');
+    if (pill) {
+      pill.remove();
     }
   }
 

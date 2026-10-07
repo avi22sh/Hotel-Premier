@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=13.0"></script>
+  <script src="asset-pipeline.js?v=14.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=13.0">
+  <link rel="stylesheet" href="styles.css?v=14.0">
 </head>
 <body>
 
@@ -111,10 +111,9 @@
           <button class="lang-btn" data-lang="mr" onclick="window.app ? window.app.setLanguage('mr') : null">मराठी</button>
         </div>
 
-        <!-- Guest Concierge Profile Pill -->
-        <button class="guest-concierge-pill" id="guest-profile-trigger-btn" onclick="window.app ? window.app.openGuestProfileModal() : null" title="View or Edit Your Guest Concierge Details">
+        <!-- Guest Profile: Icon Only -->
+        <button class="guest-concierge-pill icon-only-pill" id="guest-profile-trigger-btn" onclick="window.app ? window.app.openGuestProfileModal() : null" title="Guest Profile" aria-label="Guest Profile">
           <span class="guest-concierge-icon">👤</span>
-          <span id="header-guest-name-pill">Concierge Profile</span>
         </button>
 
         <!-- Senior Mode Toggle -->
@@ -129,25 +128,25 @@
       </div>
     </div>
 
-    <!-- Hotel Concierge Navigation Bar -->
+    <!-- Hotel Navigation Bar: Independent Section Switching -->
     <nav class="hotel-nav-bar" aria-label="Hotel Premier Navigation">
       <div class="hotel-nav-inner">
-        <button class="hotel-nav-tab active" id="tab-nav-stay" onclick="window.app ? window.app.scrollToSection('section-stay') : null">
+        <button class="hotel-nav-tab active" id="tab-nav-stay" onclick="window.app ? window.app.switchSection('section-stay') : null">
           <span>🏨 The 14 Suites</span>
         </button>
-        <button class="hotel-nav-tab" id="tab-nav-tariffs" onclick="window.app ? window.app.scrollToSection('section-tariffs') : null">
+        <button class="hotel-nav-tab" id="tab-nav-tariffs" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
           <span>📜 Tariffs</span>
         </button>
-        <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.scrollToSection('section-dine') : null">
+        <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
           <span>🍽️ Pride Dining</span>
         </button>
-        <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.scrollToSection('section-celebrate') : null">
+        <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
           <span>💍 Banquets & Deals</span>
         </button>
-        <button class="hotel-nav-tab" id="tab-nav-explore" onclick="window.app ? window.app.scrollToSection('section-explore') : null">
-          <span>🗺️ Concierge Guide</span>
+        <button class="hotel-nav-tab" id="tab-nav-explore" onclick="window.app ? window.app.switchSection('section-explore') : null">
+          <span>🗺️ Guide & Location</span>
         </button>
-        <button class="hotel-nav-tab" id="tab-nav-reviews" onclick="window.app ? window.app.scrollToSection('guest-feedback-section') : null">
+        <button class="hotel-nav-tab" id="tab-nav-reviews" onclick="window.app ? window.app.switchSection('guest-feedback-section') : null">
           <span>⭐ Reviews</span>
         </button>
 
@@ -165,9 +164,9 @@
         <span class="hallmark-restaurant">Pride Pure Veg AC Restaurant</span>
       </div>
       <div class="concierge-contact-quick">
-        <span>Concierge:</span>
+        <span style="color: var(--brass-light); margin-right: 2px;">📞</span>
         <a href="tel:09325375802" style="color: var(--brass-light);">09325375802</a>
-        <span>/</span>
+        <span style="opacity: 0.4;">/</span>
         <a href="tel:09370848917" style="color: var(--brass-light);">09370848917</a>
       </div>
     </div>
@@ -199,20 +198,20 @@
           <div class="quick-card-title">Reserve Suite</div>
           <div class="quick-card-sub">Instant Booking</div>
         </div>
-        <div class="concierge-quick-card" onclick="window.app ? window.app.scrollToSection('section-dine') : null">
+        <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
+          <span class="quick-card-icon">📜</span>
+          <div class="quick-card-title">Room Tariffs</div>
+          <div class="quick-card-sub">Published Rates</div>
+        </div>
+        <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-dine') : null">
           <span class="quick-card-icon">🍽️</span>
           <div class="quick-card-title">Pride Dining</div>
           <div class="quick-card-sub">Editorial Menu</div>
         </div>
-        <div class="concierge-quick-card" onclick="window.app ? window.app.scrollToSection('section-celebrate') : null">
-          <span class="quick-card-icon">💍</span>
-          <div class="quick-card-title">Marriage Deals</div>
-          <div class="quick-card-sub">Up to 20% Off</div>
-        </div>
         <div class="concierge-quick-card" onclick="window.location.href='tel:09325375802'">
           <span class="quick-card-icon">📞</span>
-          <div class="quick-card-title">Call Concierge</div>
-          <div class="quick-card-sub">24x7 Front Desk</div>
+          <div class="quick-card-title">Call Front Desk</div>
+          <div class="quick-card-sub">24x7 Helpdesk</div>
         </div>
       </div>
     </div>
@@ -424,113 +423,225 @@
   </section>
 
   <!-- ================================================================ -->
-  <!-- 2. LUXURY RATE CARD & TARIFFS                                     -->
+  <!-- 2. PUBLISHED ROOM TARIFFS & SUITE RATES (TARIFFS)                -->
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-tariffs">
-    <div class="official-tariff-card">
-      <div class="tariff-crest-header">
-        <div class="tariff-brand-name">HOTEL PREMIER</div>
-        <div class="tariff-brand-sub">A HOME IN BHUSAWAL</div>
-        <h2 class="tariff-main-heading">Official Room Tariff Card</h2>
-      </div>
+    <div class="editorial-header-block">
+      <span class="editorial-eyebrow">TRANSPARENT PUBLISHED TARIFF</span>
+      <h2 class="editorial-title">Suites Tariff & Plans</h2>
+      <div class="editorial-divider"></div>
+      <p class="editorial-subtitle">
+        Authentic published room tariffs with full 24-Hour flexible check-out. All taxes included. Choose between Room Only (EP) and Fresh Pure Veg Breakfast (CP).
+      </p>
+    </div>
 
-      <div class="tariff-table-wrapper">
-        <table class="tariff-table">
-          <thead>
-            <tr>
-              <th>ROOM CATEGORY</th>
-              <th class="tariff-th-plan">ROOM ONLY (RO)</th>
-              <th class="tariff-th-plan">WITH BREAKFAST (CP)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- AC DELUXE ROOMS -->
-            <tr class="tariff-category-row">
-              <td colspan="3">
-                <div class="tariff-cat-title">
-                  <span>AC DELUXE ROOMS (12 Rooms Total)</span>
-                  <span class="tariff-cat-bed">4 Queen Bed + 8 Twin Beds</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tariff-occ-label">Single Occupancy</td>
-              <td class="tariff-price-val">₹ 1,800/-</td>
-              <td class="tariff-price-val">₹ 2,000/-</td>
-            </tr>
-            <tr>
-              <td class="tariff-occ-label">Double Occupancy</td>
-              <td class="tariff-price-val">₹ 2,000/-</td>
-              <td class="tariff-price-val">₹ 2,400/-</td>
-            </tr>
+    <!-- Plan Filter Selector -->
+    <div class="tariff-plan-switcher" id="tariff-plan-switcher">
+      <button class="tariff-plan-btn active" data-plan="all" onclick="window.app ? window.app.setTariffPlanView('all') : null">
+        <span>📊 All Plans (Comparison)</span>
+      </button>
+      <button class="tariff-plan-btn" data-plan="ro" onclick="window.app ? window.app.setTariffPlanView('ro') : null">
+        <span>🛌 Room Only (RO)</span>
+      </button>
+      <button class="tariff-plan-btn" data-plan="cp" onclick="window.app ? window.app.setTariffPlanView('cp') : null">
+        <span>☕ With Breakfast (CP)</span>
+      </button>
+    </div>
 
-            <!-- AC SUPER DELUXE ROOMS -->
-            <tr class="tariff-category-row">
-              <td colspan="3">
-                <div class="tariff-cat-title">
-                  <span>AC SUPER DELUXE SUITES (2 Rooms Only)</span>
-                  <span class="tariff-cat-bed">👑 King Size Luxury Bed</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tariff-occ-label">Single Occupancy</td>
-              <td class="tariff-price-val">₹ 2,000/-</td>
-              <td class="tariff-price-val">₹ 2,200/-</td>
-            </tr>
-            <tr>
-              <td class="tariff-occ-label">Double Occupancy</td>
-              <td class="tariff-price-val">₹ 2,200/-</td>
-              <td class="tariff-price-val">₹ 2,600/-</td>
-            </tr>
+    <!-- Organized Suite Rate Cards Grid -->
+    <div class="tariff-suites-grid">
 
-            <!-- EXTRA BED / MATTRESS -->
-            <tr class="tariff-category-row tariff-extra-bed-header">
-              <td colspan="3">
-                <div class="tariff-cat-title">
-                  <span>🛏️ EXTRA BED / MATTRESS CHARGE</span>
-                  <span class="tariff-cat-bed">Per Person / Per Night</span>
-                </div>
-              </td>
-            </tr>
-            <tr class="tariff-extra-bed-row">
-              <td class="tariff-occ-label">Extra Bed (All Room Categories)</td>
-              <td class="tariff-price-val">₹ 300/-</td>
-              <td class="tariff-price-val">₹ 500/-</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="tariff-footer-box">
-        <div class="tariff-policies-grid">
-          <div class="tariff-policy-item">
-            <div class="policy-title">Flexible Check-Out</div>
-            <div class="policy-desc">Full 24-Hours from check-in</div>
+      <!-- Suite Tier 1: AC Deluxe Rooms -->
+      <div class="tariff-suite-card">
+        <div class="tariff-suite-header">
+          <div class="tariff-suite-crest">
+            <span class="tariff-badge-pill">12 Rooms Total</span>
+            <h3 class="tariff-suite-name">AC Deluxe Room</h3>
+            <p class="tariff-suite-bed-type">Queen Bed (4 Rooms) • Twin Beds (8 Rooms)</p>
           </div>
-          <div class="tariff-policy-item">
-            <div class="policy-title">Taxation</div>
-            <div class="policy-desc">Inclusive of all taxes</div>
+          <div class="tariff-suite-space">240 sq.ft • Max 3 Guests</div>
+        </div>
+
+        <div class="tariff-pricing-breakdown">
+          <!-- Room Only Block -->
+          <div class="tariff-plan-box plan-ro">
+            <div class="plan-badge-label">ROOM ONLY (RO)</div>
+            <div class="plan-price-row">
+              <div class="plan-occ-item">
+                <span class="occ-label">Single</span>
+                <span class="occ-price">₹ 1,800</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+              <div class="plan-divider-pipe"></div>
+              <div class="plan-occ-item highlight">
+                <span class="occ-label">Double</span>
+                <span class="occ-price">₹ 2,000</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+            </div>
+            <div class="plan-inclusions-note">Includes 24-Hr Check-Out • All Taxes Included</div>
           </div>
-          <div class="tariff-policy-item">
-            <div class="policy-title">Complimentary Breakfast</div>
-            <div class="policy-desc">7:30 AM – 10:30 AM in Pride AC</div>
-          </div>
-          <div class="tariff-policy-item">
-            <div class="policy-title">Room Service</div>
-            <div class="policy-desc">7:30 AM – 10:30 PM daily</div>
+
+          <!-- With Breakfast Block -->
+          <div class="tariff-plan-box plan-cp">
+            <div class="plan-badge-label gold-badge">WITH BREAKFAST (CP)</div>
+            <div class="plan-price-row">
+              <div class="plan-occ-item">
+                <span class="occ-label">Single</span>
+                <span class="occ-price">₹ 2,000</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+              <div class="plan-divider-pipe"></div>
+              <div class="plan-occ-item highlight">
+                <span class="occ-label">Double</span>
+                <span class="occ-price">₹ 2,400</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+            </div>
+            <div class="plan-inclusions-note">Includes Pride AC Restaurant Hot Breakfast</div>
           </div>
         </div>
 
-        <div class="tariff-actions-row">
-          <a href="https://wa.me/919325375802?text=Hello%20Hotel%20Premier,%20I%20would%20like%20to%20inquire%20and%20book%20a%20room%20based%20on%20the%20published%20Room%20Tariff." target="_blank" rel="noopener noreferrer" class="btn-tariff-book-wa">
-            <span>📲 Instant Booking on WhatsApp</span>
-          </a>
-          <a href="tel:09325375802" class="btn-tariff-call">
-            <span>📞 Call Front Desk: 09325375802</span>
-          </a>
+        <div class="tariff-card-amenities">
+          <span>❄️ Split AC</span>
+          <span>📺 Smart LED TV</span>
+          <span>📶 High-Speed Wi-Fi</span>
+          <span>🛎️ 24h Room Service</span>
+          <span>🚿 Geyser Hot Water</span>
+        </div>
+
+        <div class="tariff-card-action">
+          <button class="btn-tariff-card-reserve" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-queen') : null">
+            <span>Reserve Deluxe Room →</span>
+          </button>
         </div>
       </div>
+
+      <!-- Suite Tier 2: AC Super Deluxe Suites -->
+      <div class="tariff-suite-card featured-suite">
+        <div class="tariff-suite-ribbon">👑 Premium Suite</div>
+        <div class="tariff-suite-header">
+          <div class="tariff-suite-crest">
+            <span class="tariff-badge-pill gold-pill">2 Exclusive Suites</span>
+            <h3 class="tariff-suite-name">AC Super Deluxe Suite</h3>
+            <p class="tariff-suite-bed-type">King Size Luxury Bed • Front Facing</p>
+          </div>
+          <div class="tariff-suite-space">280 sq.ft • Max 3 Guests</div>
+        </div>
+
+        <div class="tariff-pricing-breakdown">
+          <!-- Room Only Block -->
+          <div class="tariff-plan-box plan-ro">
+            <div class="plan-badge-label">ROOM ONLY (RO)</div>
+            <div class="plan-price-row">
+              <div class="plan-occ-item">
+                <span class="occ-label">Single</span>
+                <span class="occ-price">₹ 2,000</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+              <div class="plan-divider-pipe"></div>
+              <div class="plan-occ-item highlight">
+                <span class="occ-label">Double</span>
+                <span class="occ-price">₹ 2,200</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+            </div>
+            <div class="plan-inclusions-note">Includes 24-Hr Check-Out • All Taxes Included</div>
+          </div>
+
+          <!-- With Breakfast Block -->
+          <div class="tariff-plan-box plan-cp">
+            <div class="plan-badge-label gold-badge">WITH BREAKFAST (CP)</div>
+            <div class="plan-price-row">
+              <div class="plan-occ-item">
+                <span class="occ-label">Single</span>
+                <span class="occ-price">₹ 2,200</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+              <div class="plan-divider-pipe"></div>
+              <div class="plan-occ-item highlight">
+                <span class="occ-label">Double</span>
+                <span class="occ-price">₹ 2,600</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+            </div>
+            <div class="plan-inclusions-note">Includes Pride AC Restaurant Hot Breakfast</div>
+          </div>
+        </div>
+
+        <div class="tariff-card-amenities">
+          <span>👑 King Size Bed</span>
+          <span>💼 Executive Desk</span>
+          <span>❄️ Premium Climate Control</span>
+          <span>📺 43" Smart TV</span>
+          <span>📶 Premium Wi-Fi</span>
+        </div>
+
+        <div class="tariff-card-action">
+          <button class="btn-tariff-card-reserve btn-gold-action" onclick="window.app ? window.app.openConciergeBookingModal('ac-super-deluxe') : null">
+            <span>Reserve Super Deluxe Suite →</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Extra Bed / Additional Guest Facility Card -->
+    <div class="tariff-extra-bed-banner">
+      <div class="extra-bed-icon-col">🛏️</div>
+      <div class="extra-bed-content-col">
+        <h4 class="extra-bed-title">Extra Mattress & Additional Guest Facility</h4>
+        <p class="extra-bed-sub">Available across all room types for children (above 6 yrs) and additional adult guests.</p>
+        <div class="extra-bed-prices-row">
+          <div class="extra-price-chip">
+            <span class="chip-label">Room Only (RO):</span>
+            <span class="chip-value">₹ 300</span>
+            <span class="chip-period">/ night</span>
+          </div>
+          <div class="extra-price-chip gold-chip">
+            <span class="chip-label">With Breakfast (CP):</span>
+            <span class="chip-value">₹ 500</span>
+            <span class="chip-period">/ night</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hospitality Policies & Guarantees -->
+    <div class="tariff-guarantees-grid">
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🕒</div>
+        <div class="guarantee-title">24-Hour Flexible Check-Out</div>
+        <div class="guarantee-desc">Stay for a complete 24 hours from your check-in time. Arrive at 4 PM, check out at 4 PM next day.</div>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🧾</div>
+        <div class="guarantee-title">Inclusive of All Taxes</div>
+        <div class="guarantee-desc">Transparent published rates. 5% GST and all taxes are already included. No hidden service charges.</div>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🍳</div>
+        <div class="guarantee-title">Complimentary Breakfast</div>
+        <div class="guarantee-desc">For CP guests, freshly cooked pure vegetarian breakfast served 7:30 AM to 10:30 AM in Pride AC Restaurant.</div>
+      </div>
+      <div class="guarantee-card">
+        <div class="guarantee-icon">🚗</div>
+        <div class="guarantee-title">Free Parking & Security</div>
+        <div class="guarantee-desc">Spacious, safe on-site parking for four-wheelers, bikes, and tour buses with round-the-clock CCTV security.</div>
+      </div>
+    </div>
+
+    <!-- Direct Tariff Action Buttons -->
+    <div class="tariff-direct-actions-bar">
+      <button class="btn-tariff-primary" onclick="window.app ? window.app.openConciergeBookingModal() : null">
+        <span>🛎️ Book Room with Published Tariff</span>
+      </button>
+      <a href="https://wa.me/919325375802?text=Hello%20Hotel%20Premier,%20I%20would%20like%20to%20reserve%20a%20room%20based%20on%20the%20published%20Room%20Tariff." target="_blank" rel="noopener noreferrer" class="btn-tariff-wa">
+        <span>📲 Instant WhatsApp Booking</span>
+      </a>
+      <a href="tel:09325375802" class="btn-tariff-phone">
+        <span>📞 Front Desk: 09325375802</span>
+      </a>
     </div>
   </section>
 
@@ -1361,20 +1472,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v13.0) -->
-  <script src="storage.js?v=13.0"></script>
-  <script src="vault.js?v=13.0"></script>
-  <script src="data/translations.js?v=13.0"></script>
-  <script src="data/hotel-data.js?v=13.0"></script>
-  <script src="data/menu-data.js?v=13.0"></script>
-  <script src="app.js?v=13.0"></script>
-  <script src="admin.js?v=13.0"></script>
+  <!-- Load Application Scripts (v14.0) -->
+  <script src="storage.js?v=14.0"></script>
+  <script src="vault.js?v=14.0"></script>
+  <script src="data/translations.js?v=14.0"></script>
+  <script src="data/hotel-data.js?v=14.0"></script>
+  <script src="data/menu-data.js?v=14.0"></script>
+  <script src="app.js?v=14.0"></script>
+  <script src="admin.js?v=14.0"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=13.0').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=14.0').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
