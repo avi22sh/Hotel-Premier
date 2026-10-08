@@ -1545,28 +1545,18 @@ class HotelPremierApp {
     const hasPhoto = dish.image && dish.image.trim() !== '';
     const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
     const zomatoScore = dish.zomatoRating || '4.2';
-    const ratingHtml = isZomatoRated 
-      ? `<button type="button" class="dish-rating zomato-rating" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('zomato') : window.open('https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier', '_blank');" title="Hotel Premier Zomato Rating & Reviews - Tap to view">Zomato ${zomatoScore}★ ↗</button>` 
-      : '';
-
-    let badgesHtml = '';
+    let tagPillsHtml = '';
+    if (isZomatoRated) {
+      tagPillsHtml += `<button type="button" class="dish-pill-zomato" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('zomato') : window.open('https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier', '_blank');" title="Hotel Premier Zomato Rating - Tap to view">★ ${zomatoScore} Zomato</button>`;
+    }
     if (dish.tags && dish.tags.includes('swiggy-top')) {
-      badgesHtml += `<span class="badge-tag swiggy" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('swiggy') : window.open('https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948', '_blank');" title="Hotel Premier 4.2★ on Swiggy - Tap to view reviews & menu">${this.t('badgeSwiggy')} ↗</span>`;
-    }
-    if (dish.tags && dish.tags.includes('zomato-top')) {
-      badgesHtml += `<span class="badge-tag zomato" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('zomato') : window.open('https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier', '_blank');" title="Hotel Premier Zomato Reviews - Tap to view">${this.t('badgeZomato')} ↗</span>`;
-    }
-    if (dish.tags && dish.tags.includes('chef-special')) {
-      badgesHtml += `<span class="badge-tag chef-special">${this.t('badgeChefSpecial')}</span>`;
-    }
-    if (dish.tags && dish.tags.includes('bestseller') && !dish.tags.includes('swiggy-top') && !dish.tags.includes('zomato-top')) {
-      badgesHtml += `<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`;
-    }
-    if (dish.tags && dish.tags.includes('khandeshi-special')) {
-      badgesHtml += `<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`;
+      tagPillsHtml += `<button type="button" class="dish-pill-swiggy" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('swiggy') : window.open('https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948', '_blank');">🛵 4.2★ Swiggy</button>`;
     }
     if (dish.tags && dish.tags.includes('spicy')) {
-      badgesHtml += `<span class="badge-tag" style="background:#FFE4E6; color:#BE123C; border:1px solid #FB7185;">${this.t('badgeSpicy')}</span>`;
+      tagPillsHtml += `<span class="dish-pill-spice">🌶️ Spicy</span>`;
+    }
+    if (dish.tags && dish.tags.includes('chef-special')) {
+      tagPillsHtml += `<span class="dish-pill-chef">👑 Chef's Special</span>`;
     }
 
     let variantsHtml = '';
@@ -1590,8 +1580,15 @@ class HotelPremierApp {
       dishTitleHtml = `${dish.name} <span class="dish-title-sub">(${subName})</span>`;
     }
 
+    let topBadgeHtml = '';
+    if (dish.tags && dish.tags.includes('bestseller')) {
+      topBadgeHtml = `<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`;
+    } else if (dish.tags && dish.tags.includes('khandeshi-special')) {
+      topBadgeHtml = `<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`;
+    }
+
     const mediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDishMedia === 'function')
-      ? window.AssetPipeline.renderDishMedia(dish, { badgesHtml, soldOutText: this.t('soldOut') })
+      ? window.AssetPipeline.renderDishMedia(dish, { badgesHtml: topBadgeHtml, soldOutText: this.t('soldOut') })
       : `
         <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
           ${hasPhoto ? `
@@ -1605,7 +1602,7 @@ class HotelPremierApp {
             </div>
           `}
           ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
-          <div class="dish-badges">${badgesHtml}</div>
+          ${topBadgeHtml ? `<div class="dish-badges">${topBadgeHtml}</div>` : ''}
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
         </div>
       `;
@@ -1616,9 +1613,9 @@ class HotelPremierApp {
         <div class="dish-body">
           <div class="dish-header-row">
             <h4 class="dish-title">${dishTitleHtml}</h4>
-            ${ratingHtml}
           </div>
-          <p class="dish-desc">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil.'}</p>
+          ${tagPillsHtml ? `<div class="dish-tag-row">${tagPillsHtml}</div>` : ''}
+          <p class="dish-desc">${dish.description || 'Prepared fresh with fine spices and authentic culinary care.'}</p>
           ${variantsHtml}
           <div class="dish-footer">
             <div class="dish-price-block">
@@ -1718,19 +1715,19 @@ class HotelPremierApp {
         <div class="modal-dish-header">
           <div>
             <h3 class="modal-dish-title">${dishTitleHtml}</h3>
-            <div class="modal-dish-subtitle">Pride Pure Veg AC Restaurant • Freshly prepared</div>
+            <div class="modal-dish-subtitle">Pride Restaurant • Chef Curated</div>
           </div>
           <span class="modal-dish-price">₹${dish.price}</span>
         </div>
 
         <div class="modal-dish-tags">
-          <span class="cred-badge cred-veg" style="padding: 4px 10px; font-size: 0.7rem;">● PURE VEG</span>
-          ${isZomatoRated ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="dish-rating zomato-rating" style="font-size: 0.78rem; padding: 4px 10px; border-radius: 8px; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier Zomato Rating">Zomato ${zomatoScore}★ ↗</a>` : ''}
-          ${dish.tags && dish.tags.includes('swiggy-top') ? `<a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="badge-tag swiggy" style="font-size: 0.74rem; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;" title="Hotel Premier 4.2★ on Swiggy">🛵 4.2★ Swiggy ↗</a>` : ''}
-          ${dish.tags && dish.tags.includes('chef-special') ? `<span class="badge-tag chef-special" style="font-size: 0.74rem;">${this.t('badgeChefSpecial')}</span>` : ''}
+          ${isZomatoRated ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="dish-pill-zomato" style="text-decoration: none;" title="Hotel Premier Zomato Rating">★ ${zomatoScore} Zomato</a>` : ''}
+          ${dish.tags && dish.tags.includes('swiggy-top') ? `<a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="dish-pill-swiggy" style="text-decoration: none;">🛵 4.2★ Swiggy</a>` : ''}
+          ${dish.tags && dish.tags.includes('chef-special') ? `<span class="dish-pill-chef">${this.t('badgeChefSpecial')}</span>` : ''}
+          ${dish.tags && dish.tags.includes('spicy') ? `<span class="dish-pill-spice">🌶️ Spicy</span>` : ''}
         </div>
 
-        <p class="modal-dish-desc">${dish.description || 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil using authentic ingredients and culinary care.'}</p>
+        <p class="modal-dish-desc">${dish.description || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
 
         ${variantsList ? `
           <div class="modal-dish-variants-box">
@@ -1838,26 +1835,26 @@ class HotelPremierApp {
     if (roomType === 'full-14') {
       numRooms = 14;
       document.getElementById('calc-rooms-number').value = 14;
-      const superDeluxeTotal = 2 * (plan === 'CP' ? 2600 : 2200);
-      const deluxeTotal = 12 * (plan === 'CP' ? 2400 : 2000);
+      const superDeluxeTotal = 2 * (plan === 'CP' ? 3000 : 2600);
+      const deluxeTotal = 12 * (plan === 'CP' ? 2700 : 2400);
       baseRoomRegular = (superDeluxeTotal + deluxeTotal) * numNights;
     } else if (roomType === 'super-2') {
       if (numRooms > 2) numRooms = 2;
       document.getElementById('calc-rooms-number').value = numRooms;
-      const rate = plan === 'CP' ? 2600 : 2200;
+      const rate = plan === 'CP' ? 3000 : 2600;
       baseRoomRegular = rate * numRooms * numNights;
     } else if (roomType === 'queen-4') {
       if (numRooms > 4) numRooms = 4;
       document.getElementById('calc-rooms-number').value = numRooms;
-      const rate = plan === 'CP' ? 2400 : 2000;
+      const rate = plan === 'CP' ? 2700 : 2400;
       baseRoomRegular = rate * numRooms * numNights;
     } else if (roomType === 'twin-8') {
       if (numRooms > 8) numRooms = 8;
       document.getElementById('calc-rooms-number').value = numRooms;
-      const rate = plan === 'CP' ? 2400 : 2000;
+      const rate = plan === 'CP' ? 2700 : 2400;
       baseRoomRegular = rate * numRooms * numNights;
     } else {
-      const rate = plan === 'CP' ? 2400 : 2000;
+      const rate = plan === 'CP' ? 2700 : 2400;
       baseRoomRegular = rate * numRooms * numNights;
     }
 
@@ -2913,16 +2910,18 @@ class HotelPremierApp {
     const extraBeds = Number(document.getElementById('booking-extra-beds')?.value) || 0;
 
     const rates = {
-      'ac-super-deluxe': { RO: 2000, CP: 2200, name: 'AC Super Deluxe King Suite' },
-      'ac-deluxe-queen': { RO: 1800, CP: 2000, name: 'AC Deluxe (Queen Bed)' },
-      'ac-deluxe-twin': { RO: 1800, CP: 2000, name: 'AC Deluxe (Twin Beds)' }
+      'ac-super-deluxe': { RO: 2400, CP: 2600, name: 'AC Super Deluxe King Suite' },
+      'ac-deluxe-queen': { RO: 2100, CP: 2300, name: 'AC Deluxe (Queen Bed)' },
+      'ac-deluxe-twin': { RO: 2100, CP: 2300, name: 'AC Deluxe (Twin Beds)' }
     };
 
     const selected = rates[roomType] || rates['ac-deluxe-queen'];
     const baseRatePerNight = (mealPlan === 'CP') ? selected.CP : selected.RO;
     const extraBedRate = (mealPlan === 'CP') ? 500 : 300;
 
-    const totalEstimate = ((baseRatePerNight * roomsCount) + (extraBeds * extraBedRate)) * nights;
+    const grossEstimate = ((baseRatePerNight * roomsCount) + (extraBeds * extraBedRate)) * nights;
+    const directDiscount = Math.round(grossEstimate * 0.10);
+    const totalEstimate = grossEstimate - directDiscount;
 
     const roomNameEl = document.getElementById('booking-summary-room-name');
     const durationEl = document.getElementById('booking-summary-duration');
@@ -2930,9 +2929,21 @@ class HotelPremierApp {
 
     if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'With Breakfast' : 'Room Only'})`;
     if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out ${extraBeds > 0 ? `• ${extraBeds} Extra Bed(s)` : ''}`;
-    if (totalEl) totalEl.textContent = `₹ ${totalEstimate.toLocaleString('en-IN')}/-`;
+    if (totalEl) {
+      totalEl.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
+          <div>
+            <span style="text-decoration: line-through; color: #94A3B8; font-size: 0.90rem; margin-right: 6px;">₹${grossEstimate.toLocaleString('en-IN')}</span>
+            <span style="color: var(--burgundy-primary); font-size: 1.35rem; font-weight: 900;">₹ ${totalEstimate.toLocaleString('en-IN')}/-</span>
+          </div>
+          <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700; background: #DCFCE7; padding: 2px 8px; border-radius: 999px;">
+            🎁 10% Direct Guest Discount Applied (You Save ₹${directDiscount.toLocaleString('en-IN')})
+          </span>
+        </div>
+      `;
+    }
 
-    return { totalEstimate, selected, nights, roomsCount, mealPlan, extraBeds };
+    return { totalEstimate, grossEstimate, directDiscount, selected, nights, roomsCount, mealPlan, extraBeds };
   }
 
   dispatchConciergeBooking() {
@@ -2979,9 +2990,11 @@ class HotelPremierApp {
     if (estimate.extraBeds > 0) {
       msg += `🛏️ *Extra Beds:* ${estimate.extraBeds} Bed(s)\n`;
     }
-    msg += `💰 *Estimated Published Tariff:* ₹ ${estimate.totalEstimate.toLocaleString('en-IN')}/- (Inclusive of all taxes)\n`;
+    msg += `💰 *Standard Tariff:* ₹ ${estimate.grossEstimate.toLocaleString('en-IN')}/-\n`;
+    msg += `🎁 *Direct PWA Guest Privilege (10% Off):* -₹ ${estimate.directDiscount.toLocaleString('en-IN')}/-\n`;
+    msg += `✨ *Final Payable Total:* ₹ ${estimate.totalEstimate.toLocaleString('en-IN')}/- (Inclusive of all taxes)\n`;
     msg += `--------------------------------------------------\n`;
-    msg += `Kindly confirm room availability and booking confirmation. Thank you!`;
+    msg += `Kindly confirm room availability and direct guest booking privilege. Thank you!`;
 
     const encoded = encodeURIComponent(msg);
     const waUrl = `https://wa.me/919325375802?text=${encoded}`;

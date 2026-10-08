@@ -1,4 +1,4 @@
-﻿// ==========================================================================
+// ==========================================================================
 // HOTEL PREMIER - A HOME IN BHUSAWAL
 // Hotel Rooms, Exact Tariffs, Timings, Location & Bulk Marriage Deals Database
 // ==========================================================================
@@ -100,8 +100,8 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'ðŸ›ï¸ Can Accommodate 2â€“3 Extra Beds (â‚¹300/bed)'
       ],
       tariff: {
-        single: { roomOnly: 2000, withBreakfast: 2200 },
-        double: { roomOnly: 2200, withBreakfast: 2600 },
+        single: { roomOnly: 2400, withBreakfast: 2600 },
+        double: { roomOnly: 2600, withBreakfast: 3000 },
         extraBed: 300
       },
       tag: 'Exclusive VIP & Couple Suite (2 Rooms â€¢ Fits 2-3 Extra Beds)'
@@ -138,8 +138,8 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'ðŸ›ï¸ Can Accommodate 1 Extra Bed (â‚¹300/bed)'
       ],
       tariff: {
-        single: { roomOnly: 1800, withBreakfast: 2000 },
-        double: { roomOnly: 2000, withBreakfast: 2400 },
+        single: { roomOnly: 2100, withBreakfast: 2300 },
+        double: { roomOnly: 2400, withBreakfast: 2700 },
         extraBed: 300
       },
       tag: 'Ideal for Couples & Executives (4 Rooms â€¢ Fits 1 Extra Bed)'
@@ -176,8 +176,8 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'ðŸ›ï¸ Can Accommodate 2 Extra Beds (â‚¹300/bed)'
       ],
       tariff: {
-        single: { roomOnly: 1800, withBreakfast: 2000 },
-        double: { roomOnly: 2000, withBreakfast: 2400 },
+        single: { roomOnly: 2100, withBreakfast: 2300 },
+        double: { roomOnly: 2400, withBreakfast: 2700 },
         extraBed: 300
       },
       tag: 'Most Popular for Wedding Guests & Barat (8 Rooms â€¢ Fits 2 Extra Beds)'

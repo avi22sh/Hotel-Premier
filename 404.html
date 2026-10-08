@@ -58,7 +58,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v16.3') {
+            if (name !== 'hotel-premier-v16.4') {
               caches.delete(name);
             }
           });
@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=16.3"></script>
+  <script src="asset-pipeline.js?v=16.4"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=16.3">
+  <link rel="stylesheet" href="styles.css?v=16.4">
 </head>
 <body>
 
@@ -80,22 +80,7 @@
     <div class="header-top">
       <a href="#" class="brand-wrapper" onclick="if(window.app) window.app.showHomeCategories(); return false;">
         <div class="brand-logo-crest" id="header-brand-logo-crest" onclick="if(window.app) window.app.handleBrandLogoTap(event)">
-          <!-- Official Hotel Premier Flying Birds Vector Logo -->
-          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="58" fill="#0E1620" stroke="#C5A880" stroke-width="2.5"/>
-            <!-- Bird 1 (Top Center) -->
-            <path d="M60 26C54 20 46 22 42 24C46 26 53 28 58 32C63 28 70 26 74 24C70 22 62 20 60 26Z" fill="#C5A880"/>
-            <!-- Bird 2 (Left) -->
-            <path d="M42 34C38 30 32 31 29 33C32 34 37 36 41 39C44 36 50 34 53 33C50 31 44 30 42 34Z" fill="#DFC9A8"/>
-            <!-- Bird 3 (Right) -->
-            <path d="M78 34C74 30 68 31 65 33C68 34 73 36 77 39C80 36 86 34 89 33C86 31 80 30 78 34Z" fill="#DFC9A8"/>
-            <!-- Crown / Arch Motif -->
-            <path d="M30 62L60 48L90 62L82 82H38L30 62Z" fill="#FDFBF7" stroke="#C5A880" stroke-width="1.8"/>
-            <circle cx="60" cy="46" r="3.5" fill="#C5A880"/>
-            <circle cx="30" cy="60" r="2.5" fill="#C5A880"/>
-            <circle cx="90" cy="60" r="2.5" fill="#C5A880"/>
-            <text x="60" y="75" font-family="'Cinzel', serif" font-size="15" font-weight="900" fill="#0E1620" text-anchor="middle">HP</text>
-          </svg>
+          <img src="assets/hotel_premier_gold_crest.jpg" alt="Hotel Premier Official Crest" class="brand-crest-img">
         </div>
         <div class="brand-text-block">
           <span class="brand-hotel-name">HOTEL PREMIER</span>
@@ -141,7 +126,7 @@
           <span>📜 Tariff</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
-          <span>🍽️ Dine</span>
+          <span>🍽️ Pride</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
           <span>🎉 Group & Events</span>
@@ -166,8 +151,11 @@
     <!-- Pride Pure Veg & Front Desk Contact Bar -->
     <div class="concierge-sub-bar">
       <div class="pride-hallmark">
+        <span class="hallmark-brand-name">Pride</span>
+        <span class="hallmark-logo-emblem">👑</span>
+        <span class="hallmark-divider">-</span>
         <span class="hallmark-badge">🌱 PURE VEG</span>
-        <span class="hallmark-restaurant">Pride Pure Veg AC Restaurant</span>
+        <span class="hallmark-type">AC RESTAURANT</span>
       </div>
       <div class="concierge-contact-quick">
         <a href="tel:09325375802" class="btn-call-hotel-header">
@@ -349,6 +337,21 @@
       </div>
     </div>
 
+    <!-- Direct Booking PWA Privilege Card -->
+    <div class="direct-booking-privilege-card">
+      <div class="privilege-header">
+        <span class="privilege-pill">✨ Direct Guest Privilege</span>
+        <span class="privilege-saving">10% Instant Off</span>
+      </div>
+      <h3 class="privilege-title">Unlock 10% Off Direct Booking Privilege</h3>
+      <p class="privilege-desc">
+        To thank you for being our guest, you can unlock an exclusive 10% discount on your next stay by booking directly through this Web App (PWA) right now!
+      </p>
+      <button class="btn-claim-privilege" onclick="window.app ? window.app.openConciergeBookingModal() : null">
+        <span>🛎️ Book Direct & Save 10% →</span>
+      </button>
+    </div>
+
     <div class="rooms-showcase-grid">
       <!-- Suite 1: AC Super Deluxe King Room (2 Rooms Only) -->
       <article class="boutique-room-card" id="room-card-ac-super-deluxe">
@@ -371,7 +374,7 @@
               <h3 class="room-suite-title">AC Super Deluxe Room</h3>
               <div class="room-starting-tariff">
                 <div class="tariff-label">From</div>
-                <div class="tariff-val">₹ 2,000/-</div>
+                <div class="tariff-val">₹ 2,400/-</div>
               </div>
             </div>
             <p class="room-editorial-desc">
@@ -392,11 +395,11 @@
             <div class="room-rate-breakdown">
               <div class="rate-row">
                 <span class="rate-occ">Single Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,000</strong> (Room Only) / <strong>₹2,200</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,600</strong> (With Breakfast)</span>
               </div>
               <div class="rate-row">
                 <span class="rate-occ">Double Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,200</strong> (Room Only) / <strong>₹2,600</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,600</strong> (Room Only) / <strong>₹3,000</strong> (With Breakfast)</span>
               </div>
               <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
@@ -434,7 +437,7 @@
               <h3 class="room-suite-title">AC Deluxe (Queen Bed)</h3>
               <div class="room-starting-tariff">
                 <div class="tariff-label">From</div>
-                <div class="tariff-val">₹ 1,800/-</div>
+                <div class="tariff-val">₹ 2,100/-</div>
               </div>
             </div>
             <p class="room-editorial-desc">
@@ -455,11 +458,11 @@
             <div class="room-rate-breakdown">
               <div class="rate-row">
                 <span class="rate-occ">Single Occupancy:</span>
-                <span class="rate-prices"><strong>₹1,800</strong> (Room Only) / <strong>₹2,000</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,100</strong> (Room Only) / <strong>₹2,300</strong> (With Breakfast)</span>
               </div>
               <div class="rate-row">
                 <span class="rate-occ">Double Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,000</strong> (Room Only) / <strong>₹2,400</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,700</strong> (With Breakfast)</span>
               </div>
               <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
@@ -497,7 +500,7 @@
               <h3 class="room-suite-title">AC Deluxe (Twin Beds)</h3>
               <div class="room-starting-tariff">
                 <div class="tariff-label">From</div>
-                <div class="tariff-val">₹ 1,800/-</div>
+                <div class="tariff-val">₹ 2,100/-</div>
               </div>
             </div>
             <p class="room-editorial-desc">
@@ -518,11 +521,11 @@
             <div class="room-rate-breakdown">
               <div class="rate-row">
                 <span class="rate-occ">Single Occupancy:</span>
-                <span class="rate-prices"><strong>₹1,800</strong> (Room Only) / <strong>₹2,000</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,100</strong> (Room Only) / <strong>₹2,300</strong> (With Breakfast)</span>
               </div>
               <div class="rate-row">
                 <span class="rate-occ">Double Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,000</strong> (Room Only) / <strong>₹2,400</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,700</strong> (With Breakfast)</span>
               </div>
               <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
@@ -567,6 +570,21 @@
       </button>
     </div>
 
+    <!-- Direct Booking PWA Privilege Card -->
+    <div class="direct-booking-privilege-card">
+      <div class="privilege-header">
+        <span class="privilege-pill">✨ Direct Guest Privilege</span>
+        <span class="privilege-saving">10% Instant Off</span>
+      </div>
+      <h3 class="privilege-title">Unlock 10% Off Direct Booking Privilege</h3>
+      <p class="privilege-desc">
+        To thank you for being our guest, you can unlock an exclusive 10% discount on your next stay by booking directly through this Web App (PWA) right now!
+      </p>
+      <button class="btn-claim-privilege" onclick="window.app ? window.app.openConciergeBookingModal() : null">
+        <span>🛎️ Book Direct & Save 10% →</span>
+      </button>
+    </div>
+
     <!-- Organized Suite Rate Cards Grid -->
     <div class="tariff-suites-grid">
 
@@ -588,13 +606,13 @@
             <div class="plan-price-row">
               <div class="plan-occ-item">
                 <span class="occ-label">Single</span>
-                <span class="occ-price">₹ 1,800</span>
+                <span class="occ-price">₹ 2,100</span>
                 <span class="occ-unit">/ night</span>
               </div>
               <div class="plan-divider-pipe"></div>
               <div class="plan-occ-item highlight">
                 <span class="occ-label">Double</span>
-                <span class="occ-price">₹ 2,000</span>
+                <span class="occ-price">₹ 2,400</span>
                 <span class="occ-unit">/ night</span>
               </div>
             </div>
@@ -607,13 +625,13 @@
             <div class="plan-price-row">
               <div class="plan-occ-item">
                 <span class="occ-label">Single</span>
-                <span class="occ-price">₹ 2,000</span>
+                <span class="occ-price">₹ 2,300</span>
                 <span class="occ-unit">/ night</span>
               </div>
               <div class="plan-divider-pipe"></div>
               <div class="plan-occ-item highlight">
                 <span class="occ-label">Double</span>
-                <span class="occ-price">₹ 2,400</span>
+                <span class="occ-price">₹ 2,700</span>
                 <span class="occ-unit">/ night</span>
               </div>
             </div>
@@ -655,13 +673,13 @@
             <div class="plan-price-row">
               <div class="plan-occ-item">
                 <span class="occ-label">Single</span>
-                <span class="occ-price">₹ 2,000</span>
+                <span class="occ-price">₹ 2,400</span>
                 <span class="occ-unit">/ night</span>
               </div>
               <div class="plan-divider-pipe"></div>
               <div class="plan-occ-item highlight">
                 <span class="occ-label">Double</span>
-                <span class="occ-price">₹ 2,200</span>
+                <span class="occ-price">₹ 2,600</span>
                 <span class="occ-unit">/ night</span>
               </div>
             </div>
@@ -674,13 +692,13 @@
             <div class="plan-price-row">
               <div class="plan-occ-item">
                 <span class="occ-label">Single</span>
-                <span class="occ-price">₹ 2,200</span>
+                <span class="occ-price">₹ 2,600</span>
                 <span class="occ-unit">/ night</span>
               </div>
               <div class="plan-divider-pipe"></div>
               <div class="plan-occ-item highlight">
                 <span class="occ-label">Double</span>
-                <span class="occ-price">₹ 2,600</span>
+                <span class="occ-price">₹ 3,000</span>
                 <span class="occ-unit">/ night</span>
               </div>
             </div>
@@ -770,12 +788,11 @@
   <section class="section-wrapper" id="section-dine">
     <div class="editorial-header-block dining-hero-header">
       <div class="dining-credentials-strip">
-        <span class="cred-badge cred-pride">PRIDE</span>
-        <span class="cred-badge cred-veg">● PURE VEG</span>
-        <span class="cred-badge cred-ac">❄ AC RESTAURANT</span>
+        <span class="cred-badge cred-veg">🌱 PURE VEG</span>
+        <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
       </div>
-      <span class="editorial-eyebrow">HOTEL PREMIER</span>
-      <h2 class="editorial-title">Dining at Hotel Premier</h2>
+      <span class="editorial-eyebrow">PURE VEG AC RESTAURANT • HOTEL PREMIER</span>
+      <h2 class="editorial-title">Pride</h2>
       <div class="editorial-divider"></div>
       <p class="editorial-subtitle">
         A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
@@ -1396,6 +1413,16 @@
       </div>
 
       <div class="modal-body">
+        <div class="direct-booking-privilege-card" style="margin: 0 0 16px 0; padding: 12px 14px;">
+          <div class="privilege-header" style="margin-bottom: 4px;">
+            <span class="privilege-pill">✨ Direct PWA Privilege</span>
+            <span class="privilege-saving">10% Off Applied</span>
+          </div>
+          <p class="privilege-desc" style="margin-bottom: 0; font-size: 0.80rem;">
+            To thank you for being our guest, you unlock an exclusive 10% discount on your stay by booking directly through this Web App (PWA) right now!
+          </p>
+        </div>
+
         <p style="font-size: 0.82rem; color: var(--text-muted-dark); margin-bottom: 16px;">
           Reserve your boutique stay at Hotel Premier with transparent published tariffs and 24-Hour flexible check-out.
         </p>
@@ -1404,9 +1431,9 @@
         <div class="form-group">
           <label class="form-label">1. Select Suite Category</label>
           <select id="booking-room-type" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
-            <option value="ac-super-deluxe">👑 AC Super Deluxe King Suite (From ₹2,000/night)</option>
-            <option value="ac-deluxe-queen" selected>🛏️ AC Deluxe Queen Suite (From ₹1,800/night)</option>
-            <option value="ac-deluxe-twin">🛏️🛏️ AC Deluxe Twin Bed Suite (From ₹1,800/night)</option>
+            <option value="ac-super-deluxe">👑 AC Super Deluxe King Suite (From ₹2,400/night)</option>
+            <option value="ac-deluxe-queen" selected>🛏️ AC Deluxe Queen Suite (From ₹2,100/night)</option>
+            <option value="ac-deluxe-twin">🛏️🛏️ AC Deluxe Twin Bed Suite (From ₹2,100/night)</option>
           </select>
         </div>
 
@@ -1709,20 +1736,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v16.3) -->
-  <script src="storage.js?v=16.3"></script>
-  <script src="vault.js?v=16.3"></script>
-  <script src="data/translations.js?v=16.3"></script>
-  <script src="data/hotel-data.js?v=16.3"></script>
-  <script src="data/menu-data.js?v=16.3"></script>
-  <script src="app.js?v=16.3"></script>
-  <script src="admin.js?v=16.3"></script>
+  <!-- Load Application Scripts (v16.4) -->
+  <script src="storage.js?v=16.4"></script>
+  <script src="vault.js?v=16.4"></script>
+  <script src="data/translations.js?v=16.4"></script>
+  <script src="data/hotel-data.js?v=16.4"></script>
+  <script src="data/menu-data.js?v=16.4"></script>
+  <script src="app.js?v=16.4"></script>
+  <script src="admin.js?v=16.4"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=16.3').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=16.4').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
