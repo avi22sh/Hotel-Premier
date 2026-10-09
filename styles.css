@@ -2278,10 +2278,15 @@ a {
 
 .category-nav-wrapper {
   overflow-x: auto;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
   flex: 1;
+  padding: 4px 0;
 }
 .category-nav-wrapper::-webkit-scrollbar {
   display: none;
@@ -2291,8 +2296,9 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 2px 4px;
+  padding: 4px 6px;
   white-space: nowrap;
+  flex-wrap: nowrap;
 }
 
 .category-chip {
@@ -2309,8 +2315,11 @@ a {
   color: #334155;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .category-chip:hover {
@@ -4519,6 +4528,36 @@ input::placeholder, textarea::placeholder, select::placeholder {
   object-fit: cover !important;
   object-position: center !important;
   display: block;
+}
+
+.btn-detail-photo-action {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(14, 22, 32, 0.80);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFDF9;
+  border: 1px solid rgba(197, 168, 128, 0.45);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.btn-detail-photo-action:hover {
+  background: var(--burgundy-primary);
+  border-color: var(--brass-primary);
+}
+
+body.staff-mode-active .btn-detail-photo-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .modal-text-header-strip {

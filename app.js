@@ -2699,13 +2699,15 @@ class HotelPremierApp {
     try {
       const params = new URLSearchParams(window.location.search);
       const isStaffUrl = params.has('staff') || params.has('admin') || params.has('manage') || params.has('cms') || window.location.hash === '#admin';
+      const isStaff = isStaffUrl || sessionStorage.getItem('hp_staff_mode_active') === 'true';
+      if (isStaff) {
+        document.body.classList.add('staff-mode-active');
+      } else {
+        document.body.classList.remove('staff-mode-active');
+      }
       const settingsBtn = document.getElementById('cms-settings-admin-btn');
       if (settingsBtn) {
-        if (isStaffUrl || sessionStorage.getItem('hp_staff_mode_active') === 'true') {
-          settingsBtn.style.display = 'inline-flex';
-        } else {
-          settingsBtn.style.display = 'none';
-        }
+        settingsBtn.style.display = isStaff ? 'inline-flex' : 'none';
       }
     } catch (e) {}
   }
