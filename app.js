@@ -37,6 +37,11 @@ class HotelPremierApp {
     this.sectionAutoInterval = null;
 
     this.roomGalleries = {};
+    if (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories) {
+      window.HOTEL_PREMIER_HOTEL_DATA.roomCategories.forEach(room => {
+        this.roomGalleries[room.id] = (room.images && room.images.length > 0) ? [...room.images] : [room.image];
+      });
+    }
     this.roomSlideIndices = {
       'ac-super-deluxe': 0,
       'ac-deluxe-queen': 0,
@@ -814,16 +819,30 @@ class HotelPremierApp {
 
   nextRoomSlide(roomId, e) {
     if (e) e.stopPropagation();
-    const images = this.roomGalleries[roomId] || [];
-    if (images.length <= 1) return;
+    let images = this.roomGalleries[roomId];
+    if (!images || images.length === 0) {
+      const room = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories)
+        ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories.find(r => r.id === roomId)
+        : null;
+      if (room) images = (room.images && room.images.length > 0) ? room.images : [room.image];
+    }
+    if (!images || images.length <= 1) return;
+    this.roomGalleries[roomId] = images;
     this.roomSlideIndices[roomId] = ((this.roomSlideIndices[roomId] || 0) + 1) % images.length;
     this.updateRoomSlidePosition(roomId);
   }
 
   prevRoomSlide(roomId, e) {
     if (e) e.stopPropagation();
-    const images = this.roomGalleries[roomId] || [];
-    if (images.length <= 1) return;
+    let images = this.roomGalleries[roomId];
+    if (!images || images.length === 0) {
+      const room = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories)
+        ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories.find(r => r.id === roomId)
+        : null;
+      if (room) images = (room.images && room.images.length > 0) ? room.images : [room.image];
+    }
+    if (!images || images.length <= 1) return;
+    this.roomGalleries[roomId] = images;
     this.roomSlideIndices[roomId] = ((this.roomSlideIndices[roomId] || 0) - 1 + images.length) % images.length;
     this.updateRoomSlidePosition(roomId);
   }
