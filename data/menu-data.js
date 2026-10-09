@@ -14,8 +14,8 @@ window.HOTEL_PREMIER_CATEGORIES = [
   { 
     id: 'hot-hearty', 
     name: 'Hot & Hearty', 
-    hindiName: 'à¤—à¤°à¥à¤® à¤ªà¥‡à¤¯',
-    marathiName: 'à¤—à¤°à¤®à¤¾à¤—à¤°à¤® à¤šà¤¹à¤¾ à¤µ à¤•à¥‰à¤«à¥€',
+    hindiName: 'à¤—à¤°à¥à¤®à¤¾à¤—à¤°à¥à¤® à¤šà¤¾à¤¯, à¤•à¥‰à¤«à¤¼à¥€ à¤µ à¤¦à¥‚à¤§',
+    marathiName: 'à¤—à¤°à¤®à¤¾à¤—à¤°à¤® à¤šà¤¹à¤¾, à¤•à¥‰à¤«à¥€ à¤µ à¤¦à¥‚à¤§',
     icon: 'â˜•', 
     image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     description: 'Special Masala Tea, Filter Coffee, Bournvita & Hot Milk'
@@ -23,7 +23,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
   { 
     id: 'tasty-tidbits', 
     name: 'Tasty Tidbits', 
-    hindiName: 'à¤šà¤Ÿà¤ªà¤Ÿà¥‡ à¤¸à¥à¤¨à¥ˆà¤•à¥à¤¸',
+    hindiName: 'à¤šà¤Ÿà¤ªà¤Ÿà¥‡ à¤¸à¥à¤¨à¥ˆà¤•à¥à¤¸ à¤à¤µà¤‚ à¤ªà¤•à¥‹à¤¡à¤¼à¥‡',
     marathiName: 'à¤šà¤Ÿà¤ªà¤Ÿà¥€à¤¤ à¤¸à¥à¤¨à¥…à¤•à¥à¤¸ à¤µ à¤­à¤œà¥€',
     icon: 'ðŸŸ', 
     image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
@@ -32,16 +32,16 @@ window.HOTEL_PREMIER_CATEGORIES = [
   { 
     id: 'premier-soups', 
     name: 'Premier Soups', 
-    hindiName: 'à¤¸à¥‚à¤ª',
+    hindiName: 'à¤ªà¥à¤°à¥€à¤®à¤¿à¤¯à¤° à¤¸à¥‚à¤ª',
     marathiName: 'à¤ªà¥à¤°à¥€à¤®à¤¿à¤¯à¤° à¤¸à¥‚à¤ª',
-    icon: 'ðŸ²', 
+    icon: 'ðŸ¥£', 
     image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg',
     description: 'Manchow, Hot & Sour, Cream of Tomato, Sweetcorn & Lemon Coriander'
   },
   { 
     id: 'indo-chinese', 
     name: 'Indo-Chinese Nibbles', 
-    hindiName: 'à¤‡à¤‚à¤¡à¥‹-à¤šà¤¾à¤‡à¤¨à¥€à¤œ à¤¸à¥à¤Ÿà¤¾à¤°à¥à¤Ÿà¤°à¥à¤¸',
+    hindiName: 'à¤‡à¤‚à¤¡à¥‹-à¤šà¤¾à¤‡à¤¨à¥€à¤œà¤¼ à¤¸à¥à¤Ÿà¤¾à¤°à¥à¤Ÿà¤°à¥à¤¸',
     marathiName: 'à¤‡à¤‚à¤¡à¥‹-à¤šà¤¾à¤¯à¤¨à¥€à¤œ à¤¸à¥à¤Ÿà¤¾à¤°à¥à¤Ÿà¤°à¥à¤¸',
     icon: 'ðŸ¥¢', 
     image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
@@ -60,35 +60,26 @@ window.HOTEL_PREMIER_CATEGORIES = [
     id: 'sizzling-rice-noodles', 
     name: 'Sizzling Rice & Noodles', 
     hindiName: 'à¤«à¥à¤°à¤¾à¤‡à¤¡ à¤°à¤¾à¤‡à¤¸ à¤à¤µà¤‚ à¤¨à¥‚à¤¡à¤²à¥à¤¸',
-    marathiName: 'à¤«à¥à¤°à¤¾à¤‡à¤¡ à¤°à¤¾à¤ˆà¤¸ à¤µ à¤¨à¥‚à¤¡à¤²à¥à¤¸',
-    icon: 'ðŸ³', 
+    marathiName: 'à¤«à¥à¤°à¤¾à¤ˆà¤¡ à¤°à¤¾à¤ˆà¤¸ à¤µ à¤¨à¥‚à¤¡à¤²à¥à¤¸',
+    icon: 'ðŸš', 
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES.jpg',
     description: 'Triple Schezwan Rice, Hakka Noodles, Fried Rice & Combination Rice'
-  },
-  { 
-    id: 'pasta-section', 
-    name: 'Italian & Fusion Pasta', 
-    hindiName: 'à¤ªà¤¾à¤¸à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
-    marathiName: 'à¤‡à¤Ÿà¤¾à¤²à¤¿à¤¯à¤¨ à¤ªà¤¾à¤¸à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
-    icon: 'ðŸ', 
-    image: 'assets/menu-images/ITALIAN%20FUSION%20PASTA/CHILLI%20CHINESE%20PASTA.png',
-    description: 'Desi Masala Pasta & Chilli Chinese Pasta prepared fresh'
   },
   { 
     id: 'vegetable-specialties', 
     name: 'Vegetable Specialties', 
     hindiName: 'à¤¸à¤¬à¥à¤œà¤¿à¤¯à¤¾à¤‚ à¤à¤µà¤‚ à¤¸à¥à¤ªà¥‡à¤¶à¤² à¤—à¥à¤°à¥‡à¤µà¥€',
     marathiName: 'à¤­à¤¾à¤œà¥€ à¤µ à¤–à¤¾à¤¨à¥à¤¦à¥‡à¤¶à¥€ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
-    icon: 'ðŸ¥˜', 
+    icon: 'ðŸ¥—', 
     image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg',
     description: 'Veg Pride Special, Shev Bhaji (Khandeshi), Kaju Curry, Veg Handi & Kolhapuri'
   },
   { 
     id: 'kofta-delights', 
     name: 'Delicious Kofta Delights', 
-    hindiName: 'à¤•à¥‹à¤«à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
+    hindiName: 'à¤¸à¥à¤µà¤¾à¤¦à¤¿à¤·à¥à¤Ÿ à¤•à¥‹à¤«à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
     marathiName: 'à¤¸à¥à¤µà¤¾à¤¦à¤¿à¤·à¥à¤Ÿ à¤•à¥‹à¤«à¥à¤¤à¤¾ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
-    icon: 'ðŸ§†', 
+    icon: 'ðŸ¥™', 
     image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
     description: 'Malai Kofta, Nargisi Kofta, Cheese Kofta & Paneer Kofta'
   },
@@ -99,14 +90,14 @@ window.HOTEL_PREMIER_CATEGORIES = [
     marathiName: 'à¤¶à¤¾à¤¹à¥€ à¤ªà¤¨à¥€à¤° à¤¸à¥à¤ªà¥‡à¤¶à¤²',
     icon: 'ðŸ§€', 
     image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
-    description: 'Paneer Three Style, Tikka Masala, Butter Masala, Angara, Handi & Bhurji'
+    description: 'Paneer Mumtaz, Three Style, Tikka Masala, Butter Masala, Angara, Handi & Bhurji'
   },
   { 
     id: 'flavorful-dals', 
     name: 'Flavorful Dals', 
     hindiName: 'à¤¸à¥à¤µà¤¾à¤¦à¤¿à¤·à¥à¤Ÿ à¤¦à¤¾à¤² à¤à¤µà¤‚ à¤•à¤¢à¤¼à¥€',
     marathiName: 'à¤–à¤®à¤‚à¤— à¤¡à¤¾à¤³ à¤µ à¤•à¤¢à¥€',
-    icon: 'ðŸ¥£', 
+    icon: 'ðŸ²', 
     image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg',
     description: 'Dal Fry, Dal Tadka with Desi Ghee, Dal Maharani & Punjabi Kadhi'
   },
@@ -125,7 +116,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€, à¤¨à¤¾à¤¨ à¤à¤µà¤‚ à¤ªà¤°à¤¾à¤ à¥‡',
     marathiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€, à¤¨à¤¾à¤¨ à¤µ à¤ªà¤°à¤¾à¤ à¥‡',
     icon: 'ðŸ«“', 
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER GARLIC NAAN.jpg',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.jpg',
     description: 'Tandoori Roti, Butter Naan, Garlic Naan, Cheese Naan & Roti Basket'
   },
   { 
@@ -133,7 +124,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     name: 'Rice & Biryani Fiesta', 
     hindiName: 'à¤¬à¤¿à¤°à¤¯à¤¾à¤¨à¥€ à¤à¤µà¤‚ à¤ªà¥à¤²à¤¾à¤µ',
     marathiName: 'à¤¦à¤® à¤¬à¤¿à¤°à¥à¤¯à¤¾à¤£à¥€ à¤µ à¤ªà¥à¤²à¤¾à¤µ',
-    icon: 'ðŸš', 
+    icon: 'ðŸ›', 
     image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
     description: 'Veg Dum Biryani, Hyderabadi Biryani, Paneer Tikka Biryani & Dal Khichadi'
   },
@@ -142,7 +133,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     name: 'Mithai Magic & Desserts', 
     hindiName: 'à¤®à¤¿à¤ à¤¾à¤ˆ à¤à¤µà¤‚ à¤¸à¤‚à¤¡à¥‡ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
     marathiName: 'à¤®à¤¿à¤ à¤¾à¤ˆ à¤µ à¤¸à¤‚à¤¡à¥‡ à¤¸à¥à¤ªà¥‡à¤¶à¤²',
-    icon: 'ðŸ§', 
+    icon: 'ðŸ®', 
     image: 'assets/menu-images/DESSERTS/GULAB JAMUN.jpg',
     description: 'Honeymoon Surprise, Hot Chocolate Fudge, Gulab Jamun & Rasgulla'
   },
@@ -152,16 +143,16 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'à¤†à¤‡à¤¸à¤•à¥à¤°à¥€à¤®',
     marathiName: 'à¤†à¤‡à¤¸à¤•à¥à¤°à¥€à¤® à¤¸à¥à¤ªà¥‡à¤¶à¤²',
     icon: 'ðŸ¨', 
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     description: 'Butterscotch, Kaju Draksh, Afghan Dry Fruit, Chocolate & Vanilla'
   },
   { 
     id: 'mocktails', 
     name: 'Exotic Mocktails', 
     hindiName: 'à¤®à¥‰à¤•à¤Ÿà¥‡à¤²à¥à¤¸',
-    marathiName: 'à¤à¤•à¥à¤à¥‰à¤Ÿà¤¿à¤• à¤®à¥‰à¤•à¤Ÿà¥‡à¤²',
+    marathiName: 'à¤à¤•à¥à¤à¥‰à¤Ÿà¤¿à¤• à¤®à¥‰à¤•à¤Ÿà¥‡à¤²à¥à¤¸',
     icon: 'ðŸ¹', 
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: '',
     description: 'Blue Lagoon, Fruit Punch, Green Goddess, Sunrise & Pink Lady'
   },
   { 
@@ -170,7 +161,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'à¤®à¤¿à¤²à¥à¤•à¤¶à¥‡à¤• à¤à¤µà¤‚ à¤®à¤¸à¥à¤¤à¤¾à¤¨à¥€',
     marathiName: 'à¤®à¤¿à¤²à¥à¤•à¤¶à¥‡à¤• à¤µ à¤®à¤¸à¥à¤¤à¤¾à¤¨à¥€',
     icon: 'ðŸ¥¤', 
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '',
     description: 'Mango Mastani, Hotel Premier Special Mastani & Thick Milkshakes'
   },
   { 
@@ -179,11 +170,10 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'à¤¶à¥€à¤¤à¤² à¤ªà¥‡à¤¯ à¤à¤µà¤‚ à¤²à¤¸à¥à¤¸à¥€',
     marathiName: 'à¤¥à¤‚à¤¡ à¤ªà¥‡à¤¯ à¤µ à¤²à¤¸à¥à¤¸à¥€',
     icon: 'ðŸ§Š', 
-    image: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600&auto=format&fit=crop&q=80',
+    image: '',
     description: 'Special Punjabi Lassi, Masala Chaas, Fresh Lime Soda & Soft Drinks'
   }
 ];
-
 window.HOTEL_PREMIER_INITIAL_MENU = [
   // ==================== MORNING DELIGHTS ====================
   {
@@ -1398,34 +1388,6 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '16 mins'
   },
 
-  // ==================== ITALIAN & FUSION PASTA ====================
-  {
-    id: 'pasta-1',
-    categoryId: 'pasta-section',
-    name: 'Desi Masala Pasta',
-    price: 200,
-    description: 'Penne pasta tossed in aromatic Indian spices, farm-fresh vegetables, herbs, and zesty rich masala sauce.',
-    tags: ['veg', 'chef-special', 'pasta'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/ITALIAN FUSION PASTA/CHILLI CHINESE PASTA.png',
-    rating: 4.8,
-    prepTime: '15-20 mins'
-  },
-  {
-    id: 'pasta-2',
-    categoryId: 'pasta-section',
-    name: 'Chilli Chinese Pasta',
-    price: 210,
-    description: 'Fusion penne pasta wok-tossed in spicy schezwan chilli garlic glaze with crunchy bell peppers and spring onions.',
-    tags: ['veg', 'spicy', 'bestseller', 'pasta'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/ITALIAN FUSION PASTA/CHILLI CHINESE PASTA.png',
-    rating: 4.9,
-    prepTime: '15-20 mins'
-  },
-
   // ==================== VEGETABLE SPECIALTIES ====================
   {
     id: 'vs-1',
@@ -1798,6 +1760,21 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
 
   // ==================== PANEER SPECIALTIES ====================
+  {
+    id: 'ps-mumtaz',
+    categoryId: 'paneer-specialties',
+    name: 'Paneer Mumtaz',
+    hindiName: 'à¤¶à¤¾à¤¹à¥€ à¤ªà¤¨à¥€à¤° à¤®à¥à¤®à¤¤à¤¾à¤œà¤¼',
+    marathiName: 'à¤¶à¤¾à¤¹à¥€ à¤ªà¤¨à¥€à¤° à¤®à¥à¤®à¤¤à¤¾à¤œ',
+    price: 300,
+    description: 'Chef special rich royal paneer delicacy simmered with exotic spices and dry fruits in luxury gravy.',
+    tags: ['veg', 'chef-special', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: '',
+    rating: 4.9,
+    prepTime: '20 mins'
+  },
   {
     id: 'ps-1',
     categoryId: 'paneer-specialties',
@@ -2240,7 +2217,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -2250,16 +2227,20 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'sb-1',
     categoryId: 'signature-breads',
     name: 'Tandoori Roti',
-    hindiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤¸à¤¾à¤¦à¥€ à¤°à¥‹à¤Ÿà¥€',
-    marathiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤¸à¤¾à¤§à¥€ à¤°à¥‹à¤Ÿà¥€',
-    price: 30,
-    description: 'Traditional whole wheat flatbread baked crisp and hot in a clay tandoor oven.',
+    hindiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€',
+    marathiName: 'à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€',
+    price: 20,
+    variants: [
+      { name: 'Plain Roti', price: 20 },
+      { name: 'Butter Roti', price: 30 }
+    ],
+    description: 'Traditional crisp clay tandoor whole wheat flatbread baked fresh.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
     image: 'assets/menu-images/SIGNATURE INDIAN BREADS/ROTI.jpg',
     rating: 4.8,
-    prepTime: '8 mins'
+    prepTime: '5 mins'
   },
   {
     id: 'sb-2',
@@ -2267,7 +2248,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Butter Tandoori Roti',
     hindiName: 'à¤¬à¤Ÿà¤° à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€',
     marathiName: 'à¤¬à¤Ÿà¤° à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤°à¥‹à¤Ÿà¥€',
-    price: 40,
+    price: 30,
     description: 'Clay oven roasted crisp whole wheat roti glazed generously with golden butter.',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
@@ -2279,58 +2260,108 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'sb-3',
     categoryId: 'signature-breads',
-    name: 'Plain Naan',
-    hindiName: 'à¤¸à¤¾à¤¦à¤¾ à¤¨à¤¾à¤¨',
-    marathiName: 'à¤ªà¥à¤²à¥‡à¤¨ à¤¨à¤¾à¤¨',
-    price: 60,
-    description: 'Soft, pillowy leavened flatbread freshly baked against clay tandoor walls.',
+    name: 'Tawa Chapati',
+    hindiName: 'à¤¤à¤µà¤¾ à¤šà¤ªà¤¾à¤¤à¥€ (à¤ªà¥‹à¤³à¥€)',
+    marathiName: 'à¤¤à¤µà¤¾ à¤šà¤ªà¤¾à¤¤à¥€ / à¤ªà¥‹à¤³à¥€',
+    price: 20,
+    variants: [
+      { name: 'Plain Chapati', price: 20 },
+      { name: 'Butter Chapati', price: 30 }
+    ],
+    description: 'Home-style soft thin whole wheat flatbread made fresh on tawa.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/NAAN.jpg',
-    rating: 4.9,
-    prepTime: '8 mins'
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
+    rating: 4.7,
+    prepTime: '6 mins'
   },
   {
     id: 'sb-4',
     categoryId: 'signature-breads',
-    name: 'Butter Naan',
-    hindiName: 'à¤¬à¤Ÿà¤° à¤¨à¤¾à¤¨',
-    marathiName: 'à¤¬à¤Ÿà¤° à¤¨à¤¾à¤¨',
-    price: 75,
-    description: 'Fluffy tandoor-baked leavened bread slathered with pure melted butter.',
-    tags: ['veg', 'bestseller', 'swiggy-top'],
+    name: 'Plain Naan',
+    hindiName: 'à¤¸à¤¾à¤¦à¤¾ à¤¨à¤¾à¤¨',
+    marathiName: 'à¤ªà¥à¤²à¥‡à¤¨ à¤¨à¤¾à¤¨',
+    price: 50,
+    variants: [
+      { name: 'Plain Naan', price: 50 },
+      { name: 'Butter Naan', price: 55 }
+    ],
+    description: 'Soft leavened flatbread freshly baked against clay tandoor walls.',
+    tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg',
-    rating: 5.0,
-    prepTime: '10 mins'
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/NAAN.jpg',
+    rating: 4.8,
+    prepTime: '8 mins'
   },
   {
     id: 'sb-5',
     categoryId: 'signature-breads',
-    name: 'Garlic Naan',
-    hindiName: 'à¤—à¤¾à¤°à¥à¤²à¤¿à¤• à¤¨à¤¾à¤¨',
-    marathiName: 'à¤²à¤¸à¥‚à¤£ à¤¨à¤¾à¤¨',
-    price: 90,
-    description: 'Aromatic tandoori naan infused with minced roasted garlic, fresh coriander and butter.',
-    tags: ['veg', 'chefs-special', 'zomato-top'],
+    name: 'Butter Naan',
+    hindiName: 'à¤¬à¤Ÿà¤° à¤¨à¤¾à¤¨',
+    marathiName: 'à¤¬à¤Ÿà¤° à¤¨à¤¾à¤¨',
+    price: 55,
+    description: 'Fluffy tandoor-baked leavened bread slathered with pure melted butter.',
+    tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.jpg',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg',
     rating: 4.9,
-    zomatoRating: '4.3',
-    prepTime: '10 mins'
+    prepTime: '8 mins'
   },
   {
     id: 'sb-6',
     categoryId: 'signature-breads',
-    name: 'Cheese Garlic Naan',
-    hindiName: 'à¤šà¥€à¤œ à¤—à¤¾à¤°à¥à¤²à¤¿à¤• à¤¨à¤¾à¤¨',
-    marathiName: 'à¤šà¥€à¤œ à¤—à¤¾à¤°à¥à¤²à¤¿à¤• à¤¨à¤¾à¤¨',
+    name: 'Garlic Naan',
+    hindiName: 'à¤—à¤¾à¤°à¥à¤²à¤¿à¤• à¤¨à¤¾à¤¨',
+    marathiName: 'à¤²à¤¸à¥‚à¤£ à¤¨à¤¾à¤¨',
+    price: 110,
+    variants: [
+      { name: 'Plain Garlic Naan', price: 110 },
+      { name: 'Butter Garlic Naan', price: 130 }
+    ],
+    description: 'Aromatic tandoori naan infused with minced roasted garlic, coriander and butter.',
+    tags: ['veg', 'chef-special', 'zomato-top'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.jpg',
+    rating: 4.9,
+    zomatoRating: '4.4',
+    prepTime: '10 mins'
+  },
+  {
+    id: 'sb-7',
+    categoryId: 'signature-breads',
+    name: 'Cheese Naan',
+    hindiName: 'à¤šà¥€à¤œà¤¼ à¤¨à¤¾à¤¨',
+    marathiName: 'à¤šà¥€à¤œ à¤¨à¤¾à¤¨',
     price: 120,
-    description: 'Chef special leavened tandoori naan stuffed with molten cheese and topped with crushed garlic.',
-    tags: ['veg', 'chefs-special', 'bestseller'],
+    variants: [
+      { name: 'Plain Cheese Naan', price: 120 },
+      { name: 'Butter Cheese Naan', price: 150 }
+    ],
+    description: 'Gooey melted cheese stuffed inside piping hot clay oven leavened naan.',
+    tags: ['veg', 'chef-special'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE NAAN.jpg',
+    rating: 4.9,
+    prepTime: '10 mins'
+  },
+  {
+    id: 'sb-8',
+    categoryId: 'signature-breads',
+    name: 'Cheese Garlic Naan',
+    hindiName: 'à¤šà¥€à¤œà¤¼ à¤—à¤¾à¤°à¥à¤²à¤¿à¤• à¤¨à¤¾à¤¨',
+    marathiName: 'à¤šà¥€à¤œ à¤²à¤¸à¥‚à¤£ à¤¨à¤¾à¤¨',
+    price: 140,
+    variants: [
+      { name: 'Plain Cheese Garlic Naan', price: 140 },
+      { name: 'Butter Cheese Garlic Naan', price: 160 }
+    ],
+    description: 'Leavened naan packed with gooey cheese and topped with crushed roasted garlic.',
+    tags: ['veg', 'chef-special', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
     image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE GARLIC NAAN.jpg',
@@ -2338,43 +2369,36 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '10 mins'
   },
   {
-    id: 'sb-7',
+    id: 'sb-9',
     categoryId: 'signature-breads',
-    name: 'Laccha Paratha',
-    hindiName: 'à¤²à¤šà¥à¤›à¤¾ à¤ªà¤°à¤¾à¤ à¤¾',
-    marathiName: 'à¤²à¤šà¥à¤›à¤¾ à¤ªà¤°à¤¾à¤ à¤¾',
-    price: 70,
-    description: 'Multi-layered crisp spiral whole wheat paratha baked in clay tandoor with pure ghee.',
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/LACHHA PARATHA.jpg',
-    rating: 4.7,
-    prepTime: '8 mins'
-  },
-  {
-    id: 'sb-8',
-    categoryId: 'signature-breads',
-    name: 'Butter Kulcha',
-    hindiName: 'à¤¬à¤Ÿà¤° à¤•à¥à¤²à¤šà¤¾',
-    marathiName: 'à¤¬à¤Ÿà¤° à¤•à¥à¤²à¤šà¤¾',
-    price: 65,
-    description: 'Soft and tender Amritsari style refined flour bread brushed with golden butter.',
+    name: 'Kulcha',
+    hindiName: 'à¤•à¥à¤²à¤šà¤¾',
+    marathiName: 'à¤•à¥à¤²à¤šà¤¾',
+    price: 60,
+    variants: [
+      { name: 'Plain Kulcha', price: 60 },
+      { name: 'Butter Kulcha', price: 70 }
+    ],
+    description: 'Soft Amritsari style refined flour bread baked tender in tandoor.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
     image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER KULCHA 1.jpg',
     rating: 4.8,
-    prepTime: '10 mins'
+    prepTime: '8 mins'
   },
   {
-    id: 'sb-9',
+    id: 'sb-10',
     categoryId: 'signature-breads',
-    name: 'Stuffed Veg / Aloo Kulcha',
-    hindiName: 'à¤¸à¥à¤Ÿà¤«à¥à¤¡ à¤†à¤²à¥‚ à¤•à¥à¤²à¤šà¤¾',
-    marathiName: 'à¤¸à¥à¤Ÿà¤«à¥à¤¡ à¤¬à¤Ÿà¤¾à¤Ÿà¤¾ à¤•à¥à¤²à¤šà¤¾',
-    price: 90,
-    description: 'Spiced seasoned potato, herbs and onion mash stuffed into leavened bread, tandoor baked.',
+    name: 'Stuffed Kulcha',
+    hindiName: 'à¤¸à¥à¤Ÿà¤«à¤¼à¥à¤¡ à¤•à¥à¤²à¤šà¤¾ (à¤†à¤²à¥‚ / à¤µà¥‡à¤œ)',
+    marathiName: 'à¤¸à¥à¤Ÿà¤«à¥à¤¡ à¤•à¥à¤²à¤šà¤¾',
+    price: 110,
+    variants: [
+      { name: 'Plain Stuffed Kulcha', price: 110 },
+      { name: 'Butter Stuffed Kulcha', price: 120 }
+    ],
+    description: 'Spiced seasoned potato, herbs and onion mash stuffed into leavened bread.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -2383,13 +2407,55 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '10 mins'
   },
   {
-    id: 'sb-10',
+    id: 'sb-11',
+    categoryId: 'signature-breads',
+    name: 'Laccha Paratha',
+    hindiName: 'à¤²à¤šà¥à¤›à¤¾ à¤ªà¤°à¤¾à¤ à¤¾',
+    marathiName: 'à¤²à¤šà¥à¤›à¤¾ à¤ªà¤°à¤¾à¤ à¤¾',
+    price: 80,
+    variants: [
+      { name: 'Plain Laccha Paratha', price: 80 },
+      { name: 'Butter Laccha Paratha', price: 90 }
+    ],
+    description: 'Multi-layered crisp spiral whole wheat paratha baked in clay tandoor.',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/LACHHA PARATHA.jpg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'sb-12',
+    categoryId: 'signature-breads',
+    name: 'Tawa Paratha',
+    hindiName: 'à¤¤à¤µà¤¾ à¤ªà¤°à¤¾à¤ à¤¾',
+    marathiName: 'à¤¤à¤µà¤¾ à¤ªà¤°à¤¾à¤ à¤¾',
+    price: 40,
+    variants: [
+      { name: 'Plain Tawa Paratha', price: 40 },
+      { name: 'Butter Tawa Paratha', price: 55 }
+    ],
+    description: 'Fresh flaky layered whole-wheat paratha griddled crisp on tawa.',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: '',
+    rating: 4.7,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'sb-13',
     categoryId: 'signature-breads',
     name: 'Missi Roti',
     hindiName: 'à¤®à¤¿à¤¸à¥à¤¸à¥€ à¤°à¥‹à¤Ÿà¥€',
     marathiName: 'à¤®à¤¿à¤¸à¥à¤¸à¥€ à¤°à¥‹à¤Ÿà¥€',
-    price: 50,
-    description: 'Wholesome gram flour (besan) and wheat blend kneaded with ajwain, onions and green chillies.',
+    price: 45,
+    variants: [
+      { name: 'Plain Missi Roti', price: 45 },
+      { name: 'Butter Missi Roti', price: 50 }
+    ],
+    description: 'Gram flour (besan) and wheat blend kneaded with ajwain and mild spices.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -2398,67 +2464,62 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '8 mins'
   },
   {
-    id: 'sb-11',
+    id: 'sb-14',
     categoryId: 'signature-breads',
-    name: 'Tawa Chapati',
-    hindiName: 'à¤¤à¤µà¤¾ à¤šà¤ªà¤¾à¤¤à¥€ (à¤°à¥‹à¤Ÿà¥€)',
-    marathiName: 'à¤¤à¤µà¤¾ à¤ªà¥‹à¤³à¥€ / à¤šà¤ªà¤¾à¤¤à¥€',
-    price: 25,
-    description: 'Home-style fresh soft thin whole wheat flatbread made on tawa.',
+    name: 'Methi Roti',
+    hindiName: 'à¤®à¥‡à¤¥à¥€ à¤°à¥‹à¤Ÿà¥€',
+    marathiName: 'à¤®à¥‡à¤¥à¥€ à¤°à¥‹à¤Ÿà¥€',
+    price: 45,
+    variants: [
+      { name: 'Plain Methi Roti', price: 45 },
+      { name: 'Butter Methi Roti', price: 50 }
+    ],
+    description: 'Whole wheat roti infused with fresh aromatic fenugreek leaves (methi).',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
+    image: '',
     rating: 4.7,
     prepTime: '8 mins'
   },
   {
-    id: 'sb-12',
+    id: 'sb-15',
     categoryId: 'signature-breads',
-    name: 'Butter Tawa Chapati',
-    hindiName: 'à¤¬à¤Ÿà¤° à¤¤à¤µà¤¾ à¤šà¤ªà¤¾à¤¤à¥€',
-    marathiName: 'à¤¬à¤Ÿà¤° à¤¤à¤µà¤¾ à¤šà¤ªà¤¾à¤¤à¥€',
-    price: 35,
-    description: 'Freshly puffed home-style tawa chapati smeared with butter.',
-    tags: ['veg'],
+    name: 'Kashmiri Naan',
+    hindiName: 'à¤•à¤¶à¥à¤®à¥€à¤°à¥€ à¤¨à¤¾à¤¨',
+    marathiName: 'à¤•à¤¾à¤¶à¥à¤®à¤¿à¤°à¥€ à¤¨à¤¾à¤¨',
+    price: 60,
+    variants: [
+      { name: 'Plain Kashmiri Naan', price: 60 },
+      { name: 'Butter Kashmiri Naan', price: 70 }
+    ],
+    description: 'Subtly sweet tandoor-baked naan enriched with nuts, cherries and dry fruits.',
+    tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHAPATI.jpg',
-    rating: 4.7,
-    prepTime: '8 mins'
-  },
-  {
-    id: 'sb-13',
-    categoryId: 'signature-breads',
-    name: 'Cheese Naan',
-    hindiName: 'à¤šà¥€à¤œ à¤¨à¤¾à¤¨',
-    marathiName: 'à¤šà¥€à¤œ à¤¨à¤¾à¤¨',
-    price: 110,
-    description: 'Gooey grated cheese stuffed inside piping hot clay oven leavened naan.',
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE NAAN.jpg',
+    image: '',
     rating: 4.8,
     prepTime: '10 mins'
   },
   {
-    id: 'sb-14',
+    id: 'sb-16',
     categoryId: 'signature-breads',
     name: 'Assorted Roti Basket',
-    hindiName: 'à¤¶à¤¾à¤¹à¥€ à¤°à¥‹à¤Ÿà¥€ à¤¬à¤¾à¤¸à¥à¤•à¥‡à¤Ÿ (à¤…à¤¸à¥‹à¤¸à¤¿à¤à¤Ÿà¥‡à¤¡)',
+    hindiName: 'à¤¶à¤¾à¤¹à¥€ à¤°à¥‹à¤Ÿà¥€ à¤¬à¤¾à¤¸à¥à¤•à¥‡à¤Ÿ',
     marathiName: 'à¤¶à¤¾à¤¹à¥€ à¤°à¥‹à¤Ÿà¥€ à¤¬à¤¾à¤¸à¥à¤•à¥‡à¤Ÿ',
-    price: 240,
+    price: 480,
+    variants: [
+      { name: 'Plain Roti Basket', price: 480 },
+      { name: 'Butter Roti Basket', price: 520 }
+    ],
     description: 'Chef basket assortment featuring Butter Naan, Garlic Naan, Laccha Paratha, Missi Roti & Tandoori Roti.',
-    tags: ['veg', 'chefs-special', 'bestseller'],
+    tags: ['veg', 'chef-special', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
     image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
     rating: 5.0,
     prepTime: '15 mins'
-  },
-
-  // ==================== RICE & BIRYANI FIESTA ====================
+  },// ==================== RICE & BIRYANI FIESTA ====================
   {
     id: 'rb-1',
     categoryId: 'rice-biryani',
@@ -2654,7 +2715,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -2667,7 +2728,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -2706,7 +2767,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '10 mins'
   },
@@ -2719,7 +2780,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -2732,7 +2793,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -2751,7 +2812,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2768,7 +2829,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -2785,7 +2846,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -2802,7 +2863,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -2819,7 +2880,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -2834,7 +2895,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -2847,7 +2908,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -2860,7 +2921,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -2873,7 +2934,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -2886,7 +2947,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -2901,7 +2962,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -2914,7 +2975,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -2927,7 +2988,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '10 mins'
   },
@@ -2940,7 +3001,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -2953,7 +3014,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -2966,7 +3027,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -2979,123 +3040,176 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '8 mins'
   },
 
-  // ==================== CHILLED & AERATED DRINKS ====================
+  // ==================== CHILLED & AERATED DRINKS ====================" + "
+" + @"
   {
     id: 'cb-1',
     categoryId: 'chilled-beverages',
     name: 'Special Punjabi Lassi',
+    hindiName: 'à¤¸à¥à¤ªà¥‡à¤¶à¤² à¤ªà¤‚à¤œà¤¾à¤¬à¥€ à¤²à¤¸à¥à¤¸à¥€',
+    marathiName: 'à¤¸à¥à¤ªà¥‡à¤¶à¤² à¤ªà¤‚à¤œà¤¾à¤¬à¥€ à¤²à¤¸à¥à¤¸à¥€',
     price: 80,
-    description: 'Thick sweet churned curd served in traditional clay style, topped with rich malai and cardamom.',
+    description: 'Thick sweet churned curd served in traditional style, topped with rich malai and cardamom.',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '5 mins'
   },
   {
     id: 'cb-2',
     categoryId: 'chilled-beverages',
-    name: 'Butter Milk (Chaas)',
-    price: 60,
+    name: 'Chhaas (Butter Milk)',
+    hindiName: 'à¤›à¤¾à¤› (à¤®à¤¸à¤¾à¤²à¤¾ / à¤¸à¤¾à¤¦à¤¾)',
+    marathiName: 'à¤¤à¤¾à¤• (à¤®à¤¸à¤¾à¤²à¤¾ / à¤¸à¤¾à¤§à¥‡)',
+    price: 30,
     variants: [
-      { name: 'Plain Chaas', price: 60 },
-      { name: 'Masala Chaas', price: 70 }
+      { name: 'Plain Chhaas', price: 30 },
+      { name: 'Masala Chhaas', price: 35 }
     ],
     description: 'Cooling spiced churned buttermilk tempered with roasted cumin, rock salt, ginger and coriander.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1571115177098-24ec42ed204d?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '5 mins'
   },
   {
     id: 'cb-3',
     categoryId: 'chilled-beverages',
-    name: 'Fresh Lime',
-    price: 35,
+    name: 'Fresh Lime Water',
+    hindiName: 'à¤«à¥à¤°à¥‡à¤¶ à¤²à¤¾à¤‡à¤® à¤µà¥‰à¤Ÿà¤°',
+    marathiName: 'à¤«à¥à¤°à¥‡à¤¶ à¤²à¤¾à¤ˆà¤® à¤µà¥‰à¤Ÿà¤°',
+    price: 40,
     variants: [
-      { name: 'Water (Sweet/Salted)', price: 35 },
-      { name: 'Soda (Sweet/Salted)', price: 40 }
+      { name: 'Plain Lime Water', price: 40 },
+      { name: 'Sweet & Salt Lime Water', price: 50 }
     ],
-    description: 'Freshly squeezed Indian lemon juice with crushed ice. Choice of chilled water (â‚¹35) or sparkling soda (â‚¹40).',
+    description: 'Freshly squeezed Indian lemon juice with chilled purified water and choice of sweet & salt.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
     prepTime: '5 mins'
   },
   {
     id: 'cb-4',
     categoryId: 'chilled-beverages',
-    name: 'Jaljeera',
-    price: 35,
+    name: 'Fresh Lime Soda',
+    hindiName: 'à¤«à¥à¤°à¥‡à¤¶ à¤²à¤¾à¤‡à¤® à¤¸à¥‹à¤¡à¤¾',
+    marathiName: 'à¤«à¥à¤°à¥‡à¤¶ à¤²à¤¾à¤ˆà¤® à¤¸à¥‹à¤¡à¤¾',
+    price: 40,
     variants: [
-      { name: 'Water', price: 35 },
-      { name: 'Soda', price: 40 }
+      { name: 'Plain Lime Soda', price: 40 },
+      { name: 'Sweet & Salt Lime Soda', price: 50 }
     ],
-    description: 'Digestive tangy cumin and mint refresher topped with crispy boondi. Choice of water (â‚¹35) or soda (â‚¹40).',
-    tags: ['veg'],
+    description: 'Freshly squeezed lemon with fizzy chilled sparkling club soda and ice.',
+    tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
-    rating: 4.7,
+    image: '',
+    rating: 4.8,
     prepTime: '5 mins'
   },
   {
     id: 'cb-5',
     categoryId: 'chilled-beverages',
     name: 'Packaged Mineral Water (1 Ltr)',
+    hindiName: 'à¤ªà¥ˆà¤•à¥‡à¤œà¥à¤¡ à¤®à¤¿à¤¨à¤°à¤² à¤µà¥‰à¤Ÿà¤° (1 à¤²à¥€.)',
+    marathiName: 'à¤ªà¥…à¤•à¥‡à¤œà¥à¤¡ à¤®à¤¿à¤¨à¤°à¤² à¤µà¥‰à¤Ÿà¤°',
     price: 20,
-    description: 'Sealed purified packaged drinking water bottle.',
+    description: 'Sealed purified packaged drinking water bottle (served at MRP).',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.9,
     prepTime: '1 min'
   },
   {
     id: 'cb-6',
     categoryId: 'chilled-beverages',
-    name: 'Aerated Cold Drinks (Fanta / Sprite / Thums Up / Maaza)',
+    name: 'Thums Up (Chilled)',
+    hindiName: 'à¤¥à¤®à¥à¤¸ à¤…à¤ª (à¤ à¤‚à¤¡à¤¾)',
+    marathiName: 'à¤¥à¤®à¥à¤¸ à¤…à¤ª',
     price: 20,
-    variants: [
-      { name: 'Thums Up (Chilled)', price: 20 },
-      { name: 'Sprite (Chilled)', price: 20 },
-      { name: 'Fanta (Chilled)', price: 20 },
-      { name: 'Maaza Mango', price: 20 }
-    ],
-    description: 'Ice cold refreshing bottled aerated soft drinks.',
+    description: 'Refreshing chilled bottled carbonated soft drink.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
+    image: '',
     rating: 4.8,
-    prepTime: '2 mins'
+    prepTime: '1 min'
   },
   {
     id: 'cb-7',
     categoryId: 'chilled-beverages',
-    name: 'Soda (Kinley / Bisleri)',
-    price: 15,
-    description: 'Chilled sparkling soda water.',
+    name: 'Sprite (Chilled)',
+    hindiName: 'à¤¸à¥à¤ªà¥à¤°à¤¾à¤‡à¤Ÿ (à¤ à¤‚à¤¡à¤¾)',
+    marathiName: 'à¤¸à¥à¤ªà¥à¤°à¤¾à¤ˆà¤Ÿ',
+    price: 20,
+    description: 'Crisp, refreshing lemon-lime carbonated soft drink served ice-cold.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
+    image: '',
+    rating: 4.8,
+    prepTime: '1 min'
+  },
+  {
+    id: 'cb-8',
+    categoryId: 'chilled-beverages',
+    name: 'Fanta (Chilled)',
+    hindiName: 'à¤«à¥ˆà¤‚à¤Ÿà¤¾ (à¤ à¤‚à¤¡à¤¾)',
+    marathiName: 'à¤«à¤à¤Ÿà¤¾',
+    price: 20,
+    description: 'Fruity vibrant orange sparkling soft drink served ice-cold.',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: '',
+    rating: 4.8,
+    prepTime: '1 min'
+  },
+  {
+    id: 'cb-9',
+    categoryId: 'chilled-beverages',
+    name: 'Maaza (Chilled Mango)',
+    hindiName: 'à¤®à¤¾à¤œà¤¼à¤¾ à¤®à¥ˆà¤‚à¤—à¥‹ (à¤ à¤‚à¤¡à¤¾)',
+    marathiName: 'à¤®à¤¾à¤à¤¾ à¤®à¤à¤—à¥‹',
+    price: 20,
+    description: 'Rich thick Alphonso mango fruit beverage served chilled.',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: '',
+    rating: 4.8,
+    prepTime: '1 min'
+  },
+  {
+    id: 'cb-10',
+    categoryId: 'chilled-beverages',
+    name: 'Soda (Kinley / Bisleri)',
+    hindiName: 'à¤¸à¥‹à¤¡à¤¾ à¤µà¥‰à¤Ÿà¤°',
+    marathiName: 'à¤¸à¥‹à¤¡à¤¾',
+    price: 15,
+    description: 'Chilled sparkling soda water bottle.',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: '',
     rating: 4.7,
     prepTime: '1 min'
   }
 ];
-
 window.HOTEL_PREMIER_INFO = {
   name: 'Hotel Premier',
   tagline: 'A Home In Bhusawal',

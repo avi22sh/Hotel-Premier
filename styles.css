@@ -384,43 +384,67 @@ a {
 .pride-hallmark {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
-.hallmark-brand-name {
-  font-family: var(--font-royal);
-  font-size: 0.90rem;
+/* Authentic Crimson Pride Branding Badge & Crown Emblem */
+.pride-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #7A0C2E 0%, #A01740 50%, #630823 100%);
+  color: #FFFFFF;
+  padding: 3px 12px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(230, 198, 126, 0.85);
+  box-shadow: 0 2px 8px rgba(122, 12, 46, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  letter-spacing: 1.5px;
   font-weight: 800;
-  color: var(--brass-light);
-  letter-spacing: 0.5px;
-}
-
-.hallmark-logo-emblem {
-  font-size: 0.85rem;
+  font-family: var(--font-royal);
+  text-transform: uppercase;
+  font-size: 0.80rem;
   line-height: 1;
 }
 
-.hallmark-divider {
-  color: rgba(197, 168, 128, 0.45);
-  font-weight: 300;
+.pride-crown-emblem {
+  font-size: 0.95rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+.pride-badge-pill.pride-badge-hero {
+  padding: 10px 24px;
+  font-size: 1.45rem;
+  letter-spacing: 3.5px;
+  border-width: 2px;
+  box-shadow: 0 6px 22px rgba(122, 12, 46, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  margin-bottom: 10px;
+}
+
+.pride-badge-pill.pride-badge-hero .pride-crown-emblem {
+  font-size: 1.6rem;
+}
+
+.pride-hero-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .hallmark-badge {
-  background: rgba(21, 128, 61, 0.18);
-  border: 1px solid rgba(21, 128, 61, 0.45);
+  background: rgba(21, 128, 61, 0.22);
+  border: 1.5px solid rgba(74, 222, 128, 0.55);
   color: #4ADE80;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
   font-weight: 800;
-  font-size: 0.65rem;
-  letter-spacing: 0.6px;
-}
-
-.hallmark-type {
-  color: #E2E8F0;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 0.68rem;
+  letter-spacing: 0.8px;
 }
 
 .hallmark-restaurant {
@@ -3560,7 +3584,7 @@ a {
 /* ==================== FULL MENU CATEGORY SECTIONS ==================== */
 .category-section {
   margin-bottom: 36px;
-  scroll-margin-top: 90px;
+  scroll-margin-top: 140px;
 }
 
 .category-section .section-header {
@@ -4341,60 +4365,177 @@ input::placeholder, textarea::placeholder, select::placeholder {
   border-color: rgba(213, 183, 122, 0.35);
 }
 
-/* Detail Modal Luxury Showcase Pedestal */
+/* Detail Modal Luxury Showcase Image View */
 .dish-detail-media.hp-asset-pedestal {
   position: relative;
   width: 100%;
   height: 250px;
-  background: radial-gradient(circle at 50% 60%, #162035 0%, #0D111A 70%, #080B11 100%);
+  background: #0D131B;
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(213, 183, 122, 0.25);
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(213, 183, 122, 0.30);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.dish-detail-media.hp-asset-pedestal.no-photo {
+  display: none !important;
 }
 
 .hp-pedestal-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 75%;
-  height: 75%;
-  background: radial-gradient(ellipse at center, rgba(213, 183, 122, 0.22) 0%, rgba(28, 118, 105, 0.12) 40%, transparent 70%);
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .hp-pedestal-plate {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  height: 28px;
-  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.12) 0%, rgba(213, 183, 122, 0.15) 35%, transparent 75%);
-  border-radius: 50%;
-  border: 1px solid rgba(213, 183, 122, 0.20);
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .hp-detail-img {
   position: relative;
-  max-width: 90%;
-  max-height: 88%;
-  object-fit: contain;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
   z-index: 2;
-  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.65));
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.4s ease;
 }
 
 .hp-showcase-ready {
   opacity: 1 !important;
+}
+
+/* Modal Clean Image Wrappers */
+.modal-dish-photo-wrap {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  max-height: 260px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  box-shadow: 0 6px 20px rgba(10, 16, 26, 0.20);
+  background: #0E1620;
+}
+
+.modal-dish-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block;
+}
+
+.modal-text-header-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(230, 244, 234, 0.8) 0%, rgba(248, 244, 236, 0.8) 100%);
+  border: 1px solid rgba(46, 125, 50, 0.30);
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.modal-veg-hallmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  font-size: 0.80rem;
+  letter-spacing: 1px;
+  color: #1B5E20;
+}
+
+.btn-detail-upload-action {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(197, 168, 128, 0.5);
+  color: var(--burgundy-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* ==================== TEXT-ONLY DISH CARDS (NO FAKE / STOCK IMAGES) ==================== */
+.dish-card.text-only {
+  background: linear-gradient(135deg, #FFFFFF 0%, #FAFAF7 100%);
+  border-left: 3.5px solid var(--brass-primary);
+  min-height: auto;
+}
+
+.dish-card.text-only .dish-body {
+  padding: 16px 16px 14px;
+}
+
+.dish-card.text-only .dish-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.dish-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1;
+}
+
+.dish-inline-veg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  background: #FFFFFF;
+  border: 1.5px solid var(--veg-forest);
+  border-radius: 3.5px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.dish-badges-inline {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sold-out-pill {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--pure-red);
+  background: rgba(220, 38, 38, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+/* ==================== GLOBAL SCROLL HEADER CLEARANCE ==================== */
+html {
+  scroll-padding-top: 140px;
+}
+
+.section-wrapper,
+.editorial-header-block,
+.culinary-theme-bar,
+.category-nav-bar,
+#menu-container,
+#dishes-section-view,
+#category-cards-grid,
+#home-categories-view,
+.menu-category-section,
+[id^="section-"] {
+  scroll-margin-top: 140px !important;
 }
 
 /* Room Presentation Pedestal & Vignettes */

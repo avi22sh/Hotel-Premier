@@ -58,7 +58,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v16.4') {
+            if (name !== 'hotel-premier-v16.5') {
               caches.delete(name);
             }
           });
@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=16.4"></script>
+  <script src="asset-pipeline.js?v=16.5"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=16.4">
+  <link rel="stylesheet" href="styles.css?v=16.5">
 </head>
 <body>
 
@@ -117,33 +117,33 @@
     <nav class="hotel-nav-bar" aria-label="Hotel Premier Navigation">
       <div class="hotel-nav-inner">
         <button class="hotel-nav-tab active" id="tab-nav-home" onclick="window.app ? window.app.switchSection('section-home') : null">
-          <span>🏛️ Home</span>
+          <span data-i18n="navHome">🏛️ Home</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-stay" onclick="window.app ? window.app.switchSection('section-stay') : null">
-          <span>🏨 Stay</span>
+          <span data-i18n="navStay">🏨 Stay</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-tariffs" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
-          <span>📜 Tariff</span>
+          <span data-i18n="navTariff">📜 Tariff</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
-          <span>🍽️ Pride</span>
+          <span data-i18n="navDine">🍽️ Pride</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
-          <span>🎉 Group & Events</span>
+          <span data-i18n="navCelebrate">🎉 Group & Events</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-explore" onclick="window.app ? window.app.switchSection('section-explore') : null">
-          <span>🗺️ Explore</span>
+          <span data-i18n="navExplore">🗺️ Explore</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-reviews" onclick="window.app ? window.app.switchSection('guest-feedback-section') : null">
-          <span>⭐ Review</span>
+          <span data-i18n="navReview">⭐ Review</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-contact" onclick="window.app ? window.app.switchSection('section-contact') : null">
-          <span>📞 Contact</span>
+          <span data-i18n="navContact">📞 Contact</span>
         </button>
 
         <!-- Reserve Stay CTA -->
         <button class="hotel-nav-reserve-btn" onclick="window.app ? window.app.openConciergeBookingModal() : null">
-          <span>🛎️ Reserve Stay</span>
+          <span data-i18n="btnReserveStay">🛎️ Reserve Stay</span>
         </button>
       </div>
     </nav>
@@ -151,16 +151,16 @@
     <!-- Pride Pure Veg & Front Desk Contact Bar -->
     <div class="concierge-sub-bar">
       <div class="pride-hallmark">
-        <span class="hallmark-brand-name">Pride</span>
-        <span class="hallmark-logo-emblem">👑</span>
-        <span class="hallmark-divider">-</span>
+        <span class="pride-badge-pill">
+          <span class="pride-crown-emblem">👑</span>
+          <span class="pride-text">Pride</span>
+        </span>
         <span class="hallmark-badge">🌱 PURE VEG</span>
-        <span class="hallmark-type">AC RESTAURANT</span>
       </div>
       <div class="concierge-contact-quick">
         <a href="tel:09325375802" class="btn-call-hotel-header">
           <span>📞</span>
-          <span>Call Hotel Premier</span>
+          <span data-i18n="btnCallHotel">Call Hotel Premier</span>
         </a>
       </div>
     </div>
@@ -174,41 +174,41 @@
       <div class="sanctuary-hero-content">
         <div class="sanctuary-crest-emblem">
           <span>👑</span>
-          <span>A Sanctuary in Bhusawal</span>
+          <span data-i18n="sanctuaryBadge">A Sanctuary in Bhusawal</span>
         </div>
         <h1 class="sanctuary-hero-title">HOTEL PREMIER</h1>
-        <p class="sanctuary-hero-statement">
+        <p class="sanctuary-hero-statement" data-i18n="sanctuaryStatement">
           "A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."
         </p>
 
         <div class="sanctuary-hero-highlights">
-          <span class="sanctuary-pill">⏰ 24-Hour Flexible Check-Out</span>
-          <span class="sanctuary-pill">🚆 5 Mins / 2 KM from Railway Junction</span>
-          <span class="sanctuary-pill">🌱 Pride Pure Veg AC Dining</span>
-          <span class="sanctuary-pill">🚗 Free Private Bus & Car Parking</span>
+          <span class="sanctuary-pill" data-i18n="pill24hr">⏰ 24-Hour Flexible Check-Out</span>
+          <span class="sanctuary-pill" data-i18n="pill5min">🚆 5 Mins / 2 KM from Railway Junction</span>
+          <span class="sanctuary-pill" data-i18n="pillVeg">🌱 Pride Pure Veg AC Dining</span>
+          <span class="sanctuary-pill" data-i18n="pillParking">🚗 Free Private Bus & Car Parking</span>
         </div>
 
         <!-- Concierge Fast Action Cards -->
         <div class="concierge-quick-grid">
           <div class="concierge-quick-card" onclick="window.app ? window.app.openConciergeBookingModal() : null">
             <span class="quick-card-icon">🛎️</span>
-            <div class="quick-card-title">Book a Room</div>
-            <div class="quick-card-sub">Instant Reservation</div>
+            <div class="quick-card-title" data-i18n="quickBookRoom">Book a Room</div>
+            <div class="quick-card-sub" data-i18n="quickBookRoomSub">Instant Reservation</div>
           </div>
           <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-dine') : null">
             <span class="quick-card-icon">🍽️</span>
-            <div class="quick-card-title">Dine With Us</div>
-            <div class="quick-card-sub">Pride Pure Veg Menu</div>
+            <div class="quick-card-title" data-i18n="quickDine">Dine With Us</div>
+            <div class="quick-card-sub" data-i18n="quickDineSub">Pride Pure Veg Menu</div>
           </div>
-          <div class="concierge-quick-card" onclick="window.location.href='tel:09325375802'">
-            <span class="quick-card-icon">📞</span>
-            <div class="quick-card-title">Call Hotel</div>
-            <div class="quick-card-sub">Front Desk 24x7</div>
+          <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
+            <span class="quick-card-icon">📜</span>
+            <div class="quick-card-title" data-i18n="quickTariff">View Tariffs</div>
+            <div class="quick-card-sub" data-i18n="quickTariffSub">Transparent Pricing</div>
           </div>
           <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-explore') : null">
             <span class="quick-card-icon">🧭</span>
-            <div class="quick-card-title">Get Directions</div>
-            <div class="quick-card-sub">5 Mins from Station</div>
+            <div class="quick-card-title" data-i18n="quickDirections">Get Directions</div>
+            <div class="quick-card-sub" data-i18n="quickDirectionsSub">5 Mins from Station</div>
           </div>
         </div>
       </div>
@@ -787,14 +787,18 @@
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-dine">
     <div class="editorial-header-block dining-hero-header">
-      <div class="dining-credentials-strip">
-        <span class="cred-badge cred-veg">🌱 PURE VEG</span>
-        <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
+      <div class="pride-hero-branding">
+        <div class="pride-badge-pill pride-badge-hero">
+          <span class="pride-crown-emblem">👑</span>
+          <span class="pride-text">PRIDE</span>
+        </div>
+        <div class="dining-credentials-strip">
+          <span class="cred-badge cred-veg">🌱 PURE VEG</span>
+          <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
+        </div>
       </div>
-      <span class="editorial-eyebrow">PURE VEG AC RESTAURANT • HOTEL PREMIER</span>
-      <h2 class="editorial-title">Pride</h2>
       <div class="editorial-divider"></div>
-      <p class="editorial-subtitle">
+      <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
         A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
       </p>
     </div>
@@ -804,10 +808,10 @@
       <div class="signature-creations-wrapper">
         <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px;">
           <div>
-            <h3 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--burgundy-deep);">Chef's Signature Creations</h3>
-            <p style="font-size: 0.78rem; color: var(--text-muted-dark);">Prepared fresh to order in standard refined oil</p>
+            <h3 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--burgundy-deep);" data-i18n="signatureCreationsTitle">Chef's Signature Creations</h3>
+            <p style="font-size: 0.78rem; color: var(--text-muted-dark);" data-i18n="signatureCreationsSub">Prepared fresh to order in standard refined oil</p>
           </div>
-          <span style="font-size: 0.70rem; color: var(--brass-antique); font-weight: 700;">★ 4.2+ Rated Favorites</span>
+          <span style="font-size: 0.70rem; color: var(--brass-antique); font-weight: 700;" data-i18n="signatureRatedBadge">★ 4.2+ Rated Favorites</span>
         </div>
 
         <div class="signature-grid">
@@ -1736,20 +1740,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v16.4) -->
-  <script src="storage.js?v=16.4"></script>
-  <script src="vault.js?v=16.4"></script>
-  <script src="data/translations.js?v=16.4"></script>
-  <script src="data/hotel-data.js?v=16.4"></script>
-  <script src="data/menu-data.js?v=16.4"></script>
-  <script src="app.js?v=16.4"></script>
-  <script src="admin.js?v=16.4"></script>
+  <!-- Load Application Scripts (v16.5) -->
+  <script src="storage.js?v=16.5"></script>
+  <script src="vault.js?v=16.5"></script>
+  <script src="data/translations.js?v=16.5"></script>
+  <script src="data/hotel-data.js?v=16.5"></script>
+  <script src="data/menu-data.js?v=16.5"></script>
+  <script src="app.js?v=16.5"></script>
+  <script src="admin.js?v=16.5"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=16.4').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=16.5').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

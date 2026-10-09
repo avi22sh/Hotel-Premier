@@ -9,9 +9,41 @@ window.HOTEL_PREMIER_I18N = {
 
   translations: {
     en: {
-      // Top Navigation Tabs
+      // Top Navigation Tabs & Concierge Bar
       tabMenu: '🍽️ Restaurant Menu',
       tabHotel: '🏨 Hotel & Room Deals',
+      navHome: '🏛️ Home',
+      navStay: '🏨 Stay',
+      navTariff: '📜 Tariff',
+      navDine: '🍽️ Pride',
+      navCelebrate: '🎉 Group & Events',
+      navExplore: '🗺️ Explore',
+      navReview: '⭐ Review',
+      navContact: '📞 Contact',
+      btnReserveStay: '🛎️ Reserve Stay',
+      btnCallHotel: 'Call Hotel Premier',
+
+      // Sanctuary Home
+      sanctuaryBadge: 'A Sanctuary in Bhusawal',
+      sanctuaryStatement: '"A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."',
+      pill24hr: '⏰ 24-Hour Flexible Check-Out',
+      pill5min: '🚆 5 Mins / 2 KM from Railway Junction',
+      pillVeg: '🌱 Pride Pure Veg AC Dining',
+      pillParking: '🚗 Free Private Bus & Car Parking',
+      quickBookRoom: 'Book a Room',
+      quickBookRoomSub: 'Instant Reservation',
+      quickDine: 'Dine With Us',
+      quickDineSub: 'Pride AC Restaurant',
+      quickTariff: 'View Tariffs',
+      quickTariffSub: 'Transparent Pricing',
+      quickDirections: 'Get Directions',
+      quickDirectionsSub: 'Google Maps GPS',
+
+      // Dine Header
+      dineHeroSubtitle: 'A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.',
+      signatureCreationsTitle: "Chef's Signature Creations",
+      signatureCreationsSub: 'Prepared fresh to order in standard refined oil',
+      signatureRatedBadge: '★ 4.2+ Rated Favorites',
 
       brandTagline: 'A HOME IN BHUSAWAL',
       restaurantSubtitle: 'Pride Pure Veg AC Restaurant',
@@ -193,9 +225,41 @@ window.HOTEL_PREMIER_I18N = {
     },
 
     hi: {
-      // Top Navigation Tabs
+      // Top Navigation Tabs & Concierge Bar
       tabMenu: '🍽️ Restaurant Menu (मेन्यू)',
       tabHotel: '🏨 Hotel Rooms & Tariff (कमरे और किराया)',
+      navHome: '🏛️ होम',
+      navStay: '🏨 स्टे / कमरे',
+      navTariff: '📜 किराया',
+      navDine: '🍽️ प्राइड',
+      navCelebrate: '🎉 ग्रुप व कार्यक्रम',
+      navExplore: '🗺️ शहर दर्शन',
+      navReview: '⭐ रेटिंग',
+      navContact: '📞 संपर्क',
+      btnReserveStay: '🛎️ रूम बुक करें',
+      btnCallHotel: 'होटल प्रीमियर को कॉल करें',
+
+      // Sanctuary Home Content
+      sanctuaryBadge: 'भुसावल में आपका अपना घर',
+      sanctuaryStatement: '"विश्राम और शुद्ध शाकाहारी खानपान का उत्तम संगम। 14 वातानुकूलित लक्ज़री कमरे, 24 घंटे चेक-आउट और भुसावल जंक्शन से मात्र 5 मिनट की दूरी."',
+      pill24hr: '⏰ 24 घंटे चेक-आउट सुविधा',
+      pill5min: '🚆 रेलवे स्टेशन से 5 मिनट / 2 किमी',
+      pillVeg: '🌱 प्राइड शुद्ध शाकाहारी एसी रेस्तरां',
+      pillParking: '🚗 निःशुल्क बस एवं कार पार्किंग',
+      quickBookRoom: 'कमरा बुक करें',
+      quickBookRoomSub: 'तुरंत आरक्षण',
+      quickDine: 'रेस्तरां मेन्यू',
+      quickDineSub: 'प्राइड एसी रेस्तरां',
+      quickTariff: 'कमरे का किराया',
+      quickTariffSub: 'स्पष्ट एवं उचित दरें',
+      quickDirections: 'रास्ता देखें',
+      quickDirectionsSub: 'गूगल मैप्स जीपीएस',
+
+      // Dine Header Content
+      dineHeroSubtitle: 'स्वादिष्ट उत्तर भारतीय करी, दम बिरयानी, तंदूर कबाब एवं खान्देशी व्यंजनों का शाही अनुभव।',
+      signatureCreationsTitle: "शेफ के खास व्यंजन",
+      signatureCreationsSub: 'ताजा और शुद्ध रिफाइंड तेल में निर्मित',
+      signatureRatedBadge: '★ 4.2+ रेटिंग वाले पसंदीदा',
 
       brandTagline: 'A HOME IN BHUSAWAL',
       restaurantSubtitle: 'Pride Pure Veg AC Restaurant',
@@ -376,9 +440,41 @@ window.HOTEL_PREMIER_I18N = {
     },
 
     mr: {
-      // Top Navigation Tabs
+      // Top Navigation Tabs & Concierge Bar
       tabMenu: '🍽️ Restaurant Menu (मेन्यू)',
       tabHotel: '🏨 Hotel Rooms & Tariff (कमरे व दर)',
+      navHome: '🏛️ मुख्यपृष्ठ',
+      navStay: '🏨 निवास / खोल्या',
+      navTariff: '📜 दरपत्रक',
+      navDine: '🍽️ प्राईड',
+      navCelebrate: '🎉 ग्रुप व कार्यक्रम',
+      navExplore: '🗺️ शहर भ्रमंती',
+      navReview: '⭐ अभिप्राय',
+      navContact: '📞 संपर्क',
+      btnReserveStay: '🛎️ रूम बुक करा',
+      btnCallHotel: 'हॉटेल प्रीमियरला कॉल करा',
+
+      // Sanctuary Home Content
+      sanctuaryBadge: 'भुसावळमध्ये आपले हक्काचे घर',
+      sanctuaryStatement: '"उत्कृष्ट आदरातिथ्य आणि अस्सल चव यांचा संगम. 14 वातानुकूलित लक्झरी खोल्या, 24 तास चेक-आउट आणि भुसावळ रेल्वे स्थानकापासून फक्त 5 मिनिटांवर."',
+      pill24hr: '⏰ 24 तास चेक-आउट सुविधा',
+      pill5min: '🚆 रेल्वे स्टेशनपासून 5 मिनिटे / 2 किमी',
+      pillVeg: '🌱 प्राईड शुद्ध शाकाहारी एसी रेस्टॉरंट',
+      pillParking: '🚗 मोफत बस व कार पार्किंग',
+      quickBookRoom: 'खोली बुक करा',
+      quickBookRoomSub: 'त्वरित आरक्षण',
+      quickDine: 'रेस्टॉरंट मेनू',
+      quickDineSub: 'प्राईड एसी रेस्टॉरंट',
+      quickTariff: 'खोल्यांचे दरपत्रक',
+      quickTariffSub: 'पारदर्शक दर',
+      quickDirections: 'मार्गदर्शन',
+      quickDirectionsSub: 'गुगल मॅप्स जीपीएस',
+
+      // Dine Header Content
+      dineHeroSubtitle: 'अस्सल उत्तर भारतीय ग्रेव्ही, दम बिर्याणी, तंदूर कबाब आणि खास खान्देशी चवींचा राजेशाही अनुभव.',
+      signatureCreationsTitle: "शेफचे खास पदार्थ",
+      signatureCreationsSub: 'ताजे आणि दर्जेदार रिफाईंड तेलात बनवलेले',
+      signatureRatedBadge: '★ 4.2+ रेटिंगचे आवडते पदार्थ',
 
       brandTagline: 'A HOME IN BHUSAWAL',
       restaurantSubtitle: 'Pride Pure Veg AC Restaurant',
@@ -616,14 +712,6 @@ window.HOTEL_PREMIER_I18N = {
       desc_en: 'Triple Schezwan Rice, Hakka Noodles, Fried Rice & Combination Rice',
       desc_hi: 'Triple Schezwan Rice, Hakka Noodles, Fried Rice',
       desc_mr: 'Triple Schezwan Rice, Hakka Noodles, Fried Rice'
-    },
-    'pasta-section': {
-      en: 'Italian & Fusion Pasta',
-      hi: 'Pasta Special (पास्ता)',
-      mr: 'Pasta Special (पास्ता)',
-      desc_en: 'Desi Masala Pasta & Chilli Chinese Pasta',
-      desc_hi: 'Desi Masala Pasta aur Chilli Chinese Pasta',
-      desc_mr: 'Desi Masala Pasta आणि Chilli Chinese Pasta'
     },
     'vegetable-specialties': {
       en: 'Vegetable Specialties',

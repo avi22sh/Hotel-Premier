@@ -329,18 +329,7 @@
       const soldOutHtml = dish.isSoldOut ? `<div class="sold-out-overlay">${options.soldOutText || 'SOLD OUT'}</div>` : '';
 
       if (!hasPhoto) {
-        return `
-          <div class="dish-media no-photo" id="dish-media-${dish.id}">
-            <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
-              <div class="no-photo-icon">🌱</div>
-              <div class="no-photo-crest">HOTEL PREMIER</div>
-              <div class="no-photo-sub">PRIDE PURE VEG AC RESTAURANT</div>
-            </div>
-            ${soldOutHtml}
-            <div class="dish-badges">${badgesHtml}</div>
-            <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
-          </div>
-        `;
+        return '';
       }
 
       return `
@@ -351,7 +340,6 @@
             class="dish-img" 
             id="dish-img-el-${dish.id}" 
             loading="lazy" 
-            onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
           <div class="hp-glass-vignette" aria-hidden="true"></div>
           ${soldOutHtml}
@@ -470,34 +458,19 @@
       const soldOutHtml = dish.isSoldOut ? `<div class="sold-out-overlay">SOLD OUT</div>` : '';
 
       if (!hasPhoto) {
-        return `
-          <div class="dish-detail-media hp-asset-pedestal no-photo">
-            <div class="hp-pedestal-glow"></div>
-            <div class="dish-no-photo-placeholder" id="detail-modal-img">
-              <div class="no-photo-icon">🌱</div>
-              <div class="no-photo-crest" style="font-size: 1.1rem;">HOTEL PREMIER</div>
-              <div class="no-photo-sub" style="font-size: 0.85rem;">Pride Pure Veg AC Restaurant</div>
-            </div>
-            <div class="dish-veg-symbol"><div class="dish-veg-dot"></div></div>
-            ${soldOutHtml}
-          </div>
-        `;
+        return '';
       }
 
       return `
-        <div class="dish-detail-media hp-asset-pedestal">
-          <div class="hp-pedestal-glow" aria-hidden="true"></div>
-          <div class="hp-pedestal-plate" aria-hidden="true"></div>
+        <div class="modal-dish-photo-wrap">
           <img 
             src="${dish.image}" 
             alt="${dish.name}" 
             id="detail-modal-img" 
-            class="hp-detail-img hp-isolated-asset" 
-            onload="window.AssetPipeline && window.AssetPipeline.autoProcessImage(this, 'food')"
-            onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+            class="modal-dish-img" 
+            loading="eager"
           >
-          <div class="hp-glass-vignette" aria-hidden="true"></div>
-          <div class="dish-veg-symbol"><div class="dish-veg-dot"></div></div>
+          <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${soldOutHtml}
           <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
             📷 Change / Upload Photo
