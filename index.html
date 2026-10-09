@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=16.5"></script>
+  <script src="asset-pipeline.js?v=16.6"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=16.5">
+  <link rel="stylesheet" href="styles.css?v=16.6">
 </head>
 <body>
 
@@ -792,12 +792,12 @@
           <span class="pride-crown-emblem">👑</span>
           <span class="pride-text">PRIDE</span>
         </div>
+        <div class="editorial-divider pride-underline"></div>
         <div class="dining-credentials-strip">
           <span class="cred-badge cred-veg">🌱 PURE VEG</span>
           <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
         </div>
       </div>
-      <div class="editorial-divider"></div>
       <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
         A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
       </p>
@@ -1740,20 +1740,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v16.5) -->
-  <script src="storage.js?v=16.5"></script>
-  <script src="vault.js?v=16.5"></script>
-  <script src="data/translations.js?v=16.5"></script>
-  <script src="data/hotel-data.js?v=16.5"></script>
-  <script src="data/menu-data.js?v=16.5"></script>
-  <script src="app.js?v=16.5"></script>
-  <script src="admin.js?v=16.5"></script>
+  <!-- Load Application Scripts (v16.6) -->
+  <script src="storage.js?v=16.6"></script>
+  <script src="vault.js?v=16.6"></script>
+  <script src="data/translations.js?v=16.6"></script>
+  <script src="data/hotel-data.js?v=16.6"></script>
+  <script src="data/menu-data.js?v=16.6"></script>
+  <script src="app.js?v=16.6"></script>
+  <script src="admin.js?v=16.6"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=16.5').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=16.6').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

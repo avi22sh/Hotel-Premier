@@ -3045,8 +3045,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '8 mins'
   },
 
-  // ==================== CHILLED & AERATED DRINKS ====================" + "
-" + @"
+  // ==================== CHILLED & AERATED DRINKS ====================
   {
     id: 'cb-1',
     categoryId: 'chilled-beverages',
@@ -3065,15 +3064,30 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'cb-2',
     categoryId: 'chilled-beverages',
-    name: 'Chhaas (Butter Milk)',
-    hindiName: 'à¤›à¤¾à¤› (à¤®à¤¸à¤¾à¤²à¤¾ / à¤¸à¤¾à¤¦à¤¾)',
-    marathiName: 'à¤¤à¤¾à¤• (à¤®à¤¸à¤¾à¤²à¤¾ / à¤¸à¤¾à¤§à¥‡)',
-    price: 30,
+    name: 'Butter Milk (Chhaas)',
+    price: 60,
     variants: [
-      { name: 'Plain Chhaas', price: 30 },
-      { name: 'Masala Chhaas', price: 35 }
+      { name: 'Plain Butter Milk', price: 60 },
+      { name: 'Masala Butter Milk', price: 70 }
     ],
-    description: 'Cooling spiced churned buttermilk tempered with roasted cumin, rock salt, ginger and coriander.',
+    description: 'Refreshing churned dairy buttermilk served chilled, plain or tempered with roasted cumin, rock salt, ginger and coriander.',
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: '',
+    rating: 4.8,
+    prepTime: '5 mins'
+  },
+  {
+    id: 'cb-jaljeera',
+    categoryId: 'chilled-beverages',
+    name: 'Jaljeera',
+    price: 35,
+    variants: [
+      { name: 'Jaljeera Water', price: 35 },
+      { name: 'Jaljeera Soda', price: 40 }
+    ],
+    description: 'Tangy digestive cooler infused with roasted cumin, mint, rock salt, and lemon, served chilled with choice of water or fizzy soda.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3082,36 +3096,15 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '5 mins'
   },
   {
-    id: 'cb-3',
+    id: 'cb-freshlime',
     categoryId: 'chilled-beverages',
-    name: 'Fresh Lime Water',
-    hindiName: 'à¤«à¥à¤°à¥‡à¤¶ à¤²à¤¾à¤‡à¤® à¤µà¥‰à¤Ÿà¤°',
-    marathiName: 'à¤«à¥à¤°à¥‡à¤¶ à¤²à¤¾à¤ˆà¤® à¤µà¥‰à¤Ÿà¤°',
-    price: 40,
+    name: 'Fresh Lime',
+    price: 35,
     variants: [
-      { name: 'Plain Lime Water', price: 40 },
-      { name: 'Sweet & Salt Lime Water', price: 50 }
+      { name: 'Fresh Lime Water', price: 35 },
+      { name: 'Fresh Lime Soda', price: 40 }
     ],
-    description: 'Freshly squeezed Indian lemon juice with chilled purified water and choice of sweet & salt.',
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: '',
-    rating: 4.8,
-    prepTime: '5 mins'
-  },
-  {
-    id: 'cb-4',
-    categoryId: 'chilled-beverages',
-    name: 'Fresh Lime Soda',
-    hindiName: 'à¤«à¥à¤°à¥‡à¤¶ à¤²à¤¾à¤‡à¤® à¤¸à¥‹à¤¡à¤¾',
-    marathiName: 'à¤«à¥à¤°à¥‡à¤¶ à¤²à¤¾à¤ˆà¤® à¤¸à¥‹à¤¡à¤¾',
-    price: 40,
-    variants: [
-      { name: 'Plain Lime Soda', price: 40 },
-      { name: 'Sweet & Salt Lime Soda', price: 50 }
-    ],
-    description: 'Freshly squeezed lemon with fizzy chilled sparkling club soda and ice.',
+    description: 'Freshly squeezed Indian lemon juice served chilled with purified water or sparkling club soda.',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
