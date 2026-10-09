@@ -25,6 +25,7 @@ $zip = [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.Zi
 $files = Get-ChildItem -Path $sourceDir -Recurse -File | Where-Object {
     $_.FullName -notmatch "build-deployment-zip\.ps1$" -and
     $_.FullName -notmatch "\.git" -and
+    $_.FullName -notmatch "[\\/]scratch[\\/]" -and
     $_.FullName -notmatch "test_.*\.html$"
 }
 
