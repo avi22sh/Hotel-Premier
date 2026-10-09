@@ -329,7 +329,18 @@
       const soldOutHtml = dish.isSoldOut ? `<div class="sold-out-overlay">${options.soldOutText || 'SOLD OUT'}</div>` : '';
 
       if (!hasPhoto) {
-        return '';
+        return `
+          <div class="dish-media no-photo" id="dish-media-${dish.id}">
+            <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
+              <div class="no-photo-icon">🌱</div>
+              <div class="no-photo-crest">HOTEL PREMIER</div>
+              <div class="no-photo-sub">PRIDE PURE VEG AC RESTAURANT</div>
+            </div>
+            ${soldOutHtml}
+            <div class="dish-badges">${badgesHtml}</div>
+            <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
+          </div>
+        `;
       }
 
       return `
@@ -340,6 +351,7 @@
             class="dish-img" 
             id="dish-img-el-${dish.id}" 
             loading="lazy" 
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
           <div class="hp-glass-vignette" aria-hidden="true"></div>
           ${soldOutHtml}
@@ -458,7 +470,20 @@
       const soldOutHtml = dish.isSoldOut ? `<div class="sold-out-overlay">SOLD OUT</div>` : '';
 
       if (!hasPhoto) {
-        return '';
+        return `
+          <div class="modal-dish-photo-wrap no-photo" style="height: 180px;">
+            <div class="dish-no-photo-placeholder">
+              <div class="no-photo-icon">🌱</div>
+              <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
+              <div class="no-photo-sub" style="font-size: 0.75rem;">PRIDE PURE VEG AC RESTAURANT</div>
+            </div>
+            <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
+            ${soldOutHtml}
+            <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
+              📷 Upload Photo
+            </button>
+          </div>
+        `;
       }
 
       return `
@@ -469,6 +494,7 @@
             id="detail-modal-img" 
             class="modal-dish-img" 
             loading="eager"
+            onerror="this.onerror=null; this.parentElement.classList.add('no-photo'); this.parentElement.innerHTML='<div class=\'dish-no-photo-placeholder\'><div class=\'no-photo-icon\'>🌱</div><div class=\'no-photo-crest\'>HOTEL PREMIER</div><div class=\'no-photo-sub\'>PRIDE PURE VEG AC RESTAURANT</div></div>';"
           >
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${soldOutHtml}

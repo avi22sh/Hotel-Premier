@@ -58,7 +58,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v16.5') {
+            if (name !== 'hotel-premier-v17.0') {
               caches.delete(name);
             }
           });
@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=16.6"></script>
+  <script src="asset-pipeline.js?v=17.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=16.6">
+  <link rel="stylesheet" href="styles.css?v=17.0">
 </head>
 <body>
 
@@ -228,7 +228,7 @@
         <!-- Pillar 1: Stay -->
         <article class="home-pillar-card">
           <div class="home-pillar-media">
-            <img src="assets/rooms/king-bed-1.jpg" alt="Hotel Premier AC Super Deluxe Suite" class="home-pillar-img" loading="lazy" onerror="this.src='assets/rooms/deluxe-room-1.jpg'">
+            <img src="assets/hotel-images/room-super-deluxe-window.jpg" alt="Hotel Premier AC Super Deluxe Suite" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Accommodations</span>
           </div>
           <div class="home-pillar-body">
@@ -246,7 +246,7 @@
         <!-- Pillar 2: Pride Dining -->
         <article class="home-pillar-card">
           <div class="home-pillar-media">
-            <img src="assets/menu-images/PANEER SPECIALITIES/PANEER TIKKA MASALA.jpg" alt="Pride Pure Veg AC Restaurant" class="home-pillar-img" loading="lazy" onerror="this.src='assets/hero/hero-bg.jpg'">
+            <img src="assets/hotel-images/restaurant-dining-hall-1.jpg" alt="Pride Pure Veg AC Restaurant Dining Hall" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Pure Veg Dining</span>
           </div>
           <div class="home-pillar-body">
@@ -264,7 +264,7 @@
         <!-- Pillar 3: Celebrations & Group Stays -->
         <article class="home-pillar-card">
           <div class="home-pillar-media">
-            <img src="assets/menu-images/THALIS/MAHARAJA THALI.jpg" alt="Celebrations & Group Stays" class="home-pillar-img" loading="lazy" onerror="this.src='assets/rooms/king-bed-1.jpg'">
+            <img src="assets/hotel-images/restaurant-dining-hall-2.jpg" alt="Celebrations & Group Stays at Hotel Premier" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Group Hospitality</span>
           </div>
           <div class="home-pillar-body">
@@ -282,7 +282,7 @@
         <!-- Pillar 4: Arrival & Transit -->
         <article class="home-pillar-card">
           <div class="home-pillar-media">
-            <img src="assets/rooms/deluxe-room-1.jpg" alt="Bhusawal Transit Proximity" class="home-pillar-img" loading="lazy" onerror="this.src='assets/hero/hero-bg.jpg'">
+            <img src="assets/hotel-images/exterior-entrance-night.jpg" alt="Hotel Premier Entrance - 5 Mins from Railway Junction" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Transit Proximity</span>
           </div>
           <div class="home-pillar-body">
@@ -541,6 +541,67 @@
           </div>
         </div>
       </article>
+    </div>
+
+    <!-- Hotel Premier Atmosphere & Property Gallery -->
+    <div class="hotel-atmosphere-gallery">
+      <div class="atmosphere-gallery-header">
+        <span class="editorial-eyebrow">Property Moments</span>
+        <h3 class="atmosphere-gallery-title">Hotel Premier Atmosphere & Amenities</h3>
+        <p class="atmosphere-gallery-subtitle">
+          Experience authentic comfort with private sit-out balconies, sparkling sanitized en-suite bathrooms, comfortable living lounges, and our signature pure vegetarian dining hall.
+        </p>
+      </div>
+
+      <div class="atmosphere-grid">
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/hotel-balcony-terrace.jpg" alt="Private Sit-Out Balcony & Terrace" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">Balcony & Sit-Out</span>
+            <div class="atmosphere-card-caption">Private Greenery Sit-Out Balcony</div>
+          </div>
+        </div>
+
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/bathroom-sanitized-teal.jpg" alt="Pristine Sanitized Bathroom" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">Hygiene Certified</span>
+            <div class="atmosphere-card-caption">Sparkling Sanitized Modern Bathroom</div>
+          </div>
+        </div>
+
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/suite-curved-sofa.jpg" alt="Super Deluxe Suite Living Lounge" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">Executive Suite</span>
+            <div class="atmosphere-card-caption">Designer Living Lounge & Vanity Setup</div>
+          </div>
+        </div>
+
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/exterior-entrance-night.jpg" alt="Grand Hotel Entrance at Night" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">24-Hour Welcome</span>
+            <div class="atmosphere-card-caption">Illuminated Hotel Premier Entrance</div>
+          </div>
+        </div>
+
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/bathroom-sanitized-terracotta.jpg" alt="Sanitized Ensuite Bath" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">Ensuite Bath</span>
+            <div class="atmosphere-card-caption">24x7 Hot Water & Fresh Toiletries</div>
+          </div>
+        </div>
+
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/restaurant-dining-hall-1.jpg" alt="Pride Pure Veg AC Restaurant" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">Pride Dining</span>
+            <div class="atmosphere-card-caption">Air-Conditioned Family Dining Hall</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -815,20 +876,20 @@
         </div>
 
         <div class="signature-grid">
-          <!-- Signature 1: Premier Maharaja Thali -->
-          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('dish-thali-maharaja') : null">
+          <!-- Signature 1: Veg Pride Special -->
+          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('vs-1') : null">
             <div class="signature-photo-wrap">
-              <img src="assets/menu-images/THALIS/MAHARAJA THALI.jpg" alt="Premier Maharaja Royal Thali" class="signature-dish-img" loading="lazy" onerror="this.src='assets/menu-images/THALIS/SIGNATURE THALI.jpg'">
-              <span class="signature-badge-overlay">👑 The Royal Feast</span>
+              <img src="assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg" alt="Veg Pride Special" class="signature-dish-img" loading="lazy">
+              <span class="signature-badge-overlay">👑 Pride House Special</span>
             </div>
             <div class="signature-card-body">
               <div>
                 <div class="signature-title-row">
-                  <h4 class="signature-dish-title">Premier Maharaja Royal Thali</h4>
-                  <div class="signature-dish-price">₹280</div>
+                  <h4 class="signature-dish-title">Veg Pride Special</h4>
+                  <div class="signature-dish-price">₹340</div>
                 </div>
                 <p class="signature-dish-desc">
-                  An authentic multi-course pure vegetarian banquet: 2 Premium Paneer & Veg Gravies, Dal Fry, Jeera Rice, 3 Butter Rotis / Parathas, Sweet, Raita, Papad & Salad.
+                  Chef's signature double-gravy preparation with fresh paneer, roasted cashews, garden vegetables and aromatic whole spices.
                 </p>
               </div>
               <div class="signature-footer-row">
@@ -839,7 +900,7 @@
           </div>
 
           <!-- Signature 2: Paneer Butter Masala -->
-          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('dish-paneer-butter-masala') : null">
+          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('ps-3') : null">
             <div class="signature-photo-wrap">
               <img src="assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg" alt="Paneer Butter Masala" class="signature-dish-img" loading="lazy">
               <span class="signature-badge-overlay">🔥 House Favorite</span>
@@ -848,7 +909,7 @@
               <div>
                 <div class="signature-title-row">
                   <h4 class="signature-dish-title">Paneer Butter Masala</h4>
-                  <div class="signature-dish-price">₹220</div>
+                  <div class="signature-dish-price">₹300</div>
                 </div>
                 <p class="signature-dish-desc">
                   Succulent cubes of fresh cottage cheese simmered in our rich, velvety tomato butter gravy, finished with fresh cream, roasted fenugreek, and aromatic spices.
@@ -862,7 +923,7 @@
           </div>
 
           <!-- Signature 3: Sizzling Tandoor Platter -->
-          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('dish-tandoor-platter') : null">
+          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('tc-1') : null">
             <div class="signature-photo-wrap">
               <img src="assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg" alt="Tandoor Platter" class="signature-dish-img" loading="lazy">
               <span class="signature-badge-overlay">🍢 Clay Oven Classic</span>
@@ -871,7 +932,7 @@
               <div>
                 <div class="signature-title-row">
                   <h4 class="signature-dish-title">Grand Tandoor Platter</h4>
-                  <div class="signature-dish-price">₹290</div>
+                  <div class="signature-dish-price">₹600</div>
                 </div>
                 <p class="signature-dish-desc">
                   An assortment of smoky charcoal-grilled favorites: Paneer Tikka, Hara Bhara Kabab, Veg Seekh Kabab & Aloo Tikka, served with mint chutney and onion lachha.
@@ -885,7 +946,7 @@
           </div>
 
           <!-- Signature 4: Veg Dum Biryani -->
-          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('dish-veg-dum-biryani') : null">
+          <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('rb-1') : null">
             <div class="signature-photo-wrap">
               <img src="assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg" alt="Veg Dum Biryani" class="signature-dish-img" loading="lazy">
               <span class="signature-badge-overlay">🍚 Slow Cooked Dum</span>
@@ -894,7 +955,7 @@
               <div>
                 <div class="signature-title-row">
                   <h4 class="signature-dish-title">Aromatic Veg Dum Biryani</h4>
-                  <div class="signature-dish-price">₹190</div>
+                  <div class="signature-dish-price">₹260</div>
                 </div>
                 <p class="signature-dish-desc">
                   Slow-simmered fragrant long-grain basmati rice layered with garden vegetables, saffron milk, whole spices, and caramelized onions. Served with spiced veg raita.
@@ -1139,6 +1200,15 @@
         <a href="https://www.google.com/maps/dir/NH+53,+Bhusawal/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
           <span>🧭 Get Live Directions</span>
         </a>
+      </div>
+    </div>
+
+    <!-- Landmark Property Facade -->
+    <div style="margin: 24px 0 20px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-ambient); border: 1px solid var(--ivory-border); position: relative; background: #0E1620;">
+      <img src="assets/hotel-images/exterior-facade-twilight.jpg" alt="Hotel Premier Landmark Building on Jamner Road, Bhusawal" style="width: 100%; max-height: 280px; object-fit: cover; object-position: center 35%; display: block;" loading="lazy">
+      <div style="position: absolute; inset: auto 0 0 0; background: linear-gradient(to top, rgba(8, 13, 19, 0.90) 0%, rgba(8, 13, 19, 0.4) 70%, transparent 100%); padding: 14px 18px; color: #FFFDF9;">
+        <span style="font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; color: var(--brass-light); font-weight: 700; display: block;">Landmark Property</span>
+        <div style="font-family: var(--font-royal); font-size: 1.05rem; font-weight: 700;">Hotel Premier — Jamner Road, Near Nahata College</div>
       </div>
     </div>
 
@@ -1740,20 +1810,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v16.6) -->
-  <script src="storage.js?v=16.6"></script>
-  <script src="vault.js?v=16.6"></script>
-  <script src="data/translations.js?v=16.6"></script>
-  <script src="data/hotel-data.js?v=16.6"></script>
-  <script src="data/menu-data.js?v=16.6"></script>
-  <script src="app.js?v=16.6"></script>
-  <script src="admin.js?v=16.6"></script>
+  <!-- Load Application Scripts (v17.0) -->
+  <script src="storage.js?v=17.0"></script>
+  <script src="vault.js?v=17.0"></script>
+  <script src="data/translations.js?v=17.0"></script>
+  <script src="data/hotel-data.js?v=17.0"></script>
+  <script src="data/menu-data.js?v=17.0"></script>
+  <script src="app.js?v=17.0"></script>
+  <script src="admin.js?v=17.0"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=16.6').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=17.0').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

@@ -1587,42 +1587,20 @@ class HotelPremierApp {
       topBadgeHtml = `<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`;
     }
 
-    if (!hasPhoto) {
-      return `
-        <div class="dish-card text-only ${dish.isSoldOut ? 'sold-out' : ''}" id="dish-card-${dish.id}" onclick="window.app.openDishDetail('${dish.id}')">
-          <div class="dish-body">
-            <div class="dish-header-row">
-              <div class="dish-title-group">
-                <span class="dish-inline-veg" title="100% Pure Vegetarian"><span class="dish-veg-dot"></span></span>
-                <h4 class="dish-title">${dishTitleHtml}</h4>
-              </div>
-              ${topBadgeHtml ? `<div class="dish-badges-inline">${topBadgeHtml}</div>` : ''}
-            </div>
-            ${tagPillsHtml ? `<div class="dish-tag-row">${tagPillsHtml}</div>` : ''}
-            <p class="dish-desc">${dish.description || 'Prepared fresh with fine spices and authentic culinary care.'}</p>
-            ${variantsHtml}
-            <div class="dish-footer">
-              <div class="dish-price-block">
-                <span class="dish-price" id="price-display-${dish.id}">₹${dish.price}</span>
-                <span class="dish-tax-note">${this.t('taxNote')}</span>
-              </div>
-              ${dish.isSoldOut ? `
-                <span class="sold-out-pill">${this.t('soldOut')}</span>
-              ` : `
-                <span class="view-detail-link">${this.t('detailsBtn')}</span>
-              `}
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
     const mediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDishMedia === 'function')
       ? window.AssetPipeline.renderDishMedia(dish, { badgesHtml: topBadgeHtml, soldOutText: this.t('soldOut') })
       : `
-        <div class="dish-media">
-          <img src="${dish.image}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy">
-          <div class="hp-glass-vignette" aria-hidden="true"></div>
+        <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
+          ${hasPhoto ? `
+            <img src="${dish.image}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+            <div class="hp-glass-vignette" aria-hidden="true"></div>
+          ` : `
+            <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
+              <div class="no-photo-icon">🌱</div>
+              <div class="no-photo-crest">HOTEL PREMIER</div>
+              <div class="no-photo-sub">PRIDE PURE VEG AC RESTAURANT</div>
+            </div>
+          `}
           ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
           ${topBadgeHtml ? `<div class="dish-badges">${topBadgeHtml}</div>` : ''}
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
@@ -1647,7 +1625,7 @@ class HotelPremierApp {
             ${dish.isSoldOut ? `
               <span style="font-size: 0.75rem; font-weight: 800; color: var(--pure-red);">${this.t('soldOut')}</span>
             ` : `
-              <span class="view-detail-link">${this.t('detailsBtn')}</span>
+              <span class="view-detail-link" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}')">${this.t('detailsBtn')}</span>
             `}
           </div>
         </div>
@@ -1672,7 +1650,25 @@ class HotelPremierApp {
 
   // Dish Details Modal
   openDishDetail(dishId) {
-    const dish = this.menuData.find(d => d.id === dishId);
+    if (!dishId) return;
+
+    // Resilient ID Resolution & Legacy Alias Lookup
+    let dish = this.menuData.find(d => d.id === dishId);
+    if (!dish) {
+      const aliasMap = {
+        'dish-thali-maharaja': 'vs-1',
+        'dish-paneer-butter-masala': 'ps-3',
+        'dish-tandoor-platter': 'tc-1',
+        'dish-veg-dum-biryani': 'rb-1'
+      };
+      if (aliasMap[dishId]) {
+        dish = this.menuData.find(d => d.id === aliasMap[dishId]);
+      }
+    }
+    if (!dish) {
+      const cleanKey = dishId.replace(/^dish-/, '').replace(/-/g, ' ').toLowerCase();
+      dish = this.menuData.find(d => d.name && d.name.toLowerCase().includes(cleanKey));
+    }
     if (!dish) return;
 
     if (window.HOTEL_VAULT) {
@@ -1708,24 +1704,29 @@ class HotelPremierApp {
     }
 
     let detailMediaHtml = '';
-    if (hasPhoto) {
-      detailMediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDetailMedia === 'function')
-        ? window.AssetPipeline.renderDetailMedia(dish)
-        : `
-          <div class="modal-dish-photo-wrap">
-            <img src="${dish.image}" alt="${dish.name}" id="detail-modal-img" class="modal-dish-img" loading="eager">
-            <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
-            ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
-            <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
-              📷 Change Photo
-            </button>
-          </div>
-        `;
+    if (window.AssetPipeline && typeof window.AssetPipeline.renderDetailMedia === 'function') {
+      detailMediaHtml = window.AssetPipeline.renderDetailMedia(dish);
+    } else if (hasPhoto) {
+      detailMediaHtml = `
+        <div class="modal-dish-photo-wrap">
+          <img src="${dish.image}" alt="${dish.name}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.src='assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg';">
+          <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
+          ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
+          <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
+            📷 Change Photo
+          </button>
+        </div>
+      `;
     } else {
       detailMediaHtml = `
-        <div class="modal-text-header-strip">
-          <span class="modal-veg-hallmark"><span class="dish-veg-dot"></span> 100% PURE VEG</span>
-          <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-upload-action">
+        <div class="modal-dish-photo-wrap no-photo" style="height: 180px;">
+          <div class="dish-no-photo-placeholder">
+            <div class="no-photo-icon">🌱</div>
+            <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
+            <div class="no-photo-sub" style="font-size: 0.75rem;">PRIDE PURE VEG AC RESTAURANT</div>
+          </div>
+          <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
+          <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
             ➕ Add Authentic Photo
           </button>
         </div>
@@ -1783,12 +1784,16 @@ class HotelPremierApp {
       </div>
     `;
 
+    modal.style.display = 'flex';
     modal.classList.add('active');
   }
 
   closeDishDetail() {
     const modal = document.getElementById('dish-detail-modal');
-    if (modal) modal.classList.remove('active');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.style.display = 'none';
+    }
   }
 
   routeToReview(platform) {
