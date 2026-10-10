@@ -21,7 +21,7 @@ window.HOTEL_PREMIER_I18N = {
       navReview: '⭐ Review',
       navContact: '📞 Contact',
       btnReserveStay: '🛎️ Reserve Stay',
-      btnCallHotel: 'Call Hotel Premier',
+      btnCallHotel: 'Call Front Desk',
 
       // Sanctuary Home
       sanctuaryBadge: 'A Sanctuary in Bhusawal',
@@ -237,7 +237,7 @@ window.HOTEL_PREMIER_I18N = {
       navReview: '⭐ रेटिंग',
       navContact: '📞 संपर्क',
       btnReserveStay: '🛎️ रूम बुक करें',
-      btnCallHotel: 'होटल प्रीमियर को कॉल करें',
+      btnCallHotel: 'कॉल फ्रंट डेस्क',
 
       // Sanctuary Home Content
       sanctuaryBadge: 'भुसावल में आपका अपना घर',
@@ -452,7 +452,7 @@ window.HOTEL_PREMIER_I18N = {
       navReview: '⭐ अभिप्राय',
       navContact: '📞 संपर्क',
       btnReserveStay: '🛎️ रूम बुक करा',
-      btnCallHotel: 'हॉटेल प्रीमियरला कॉल करा',
+      btnCallHotel: 'कॉल फ्रंट डेस्क',
 
       // Sanctuary Home Content
       sanctuaryBadge: 'भुसावळमध्ये आपले हक्काचे घर',

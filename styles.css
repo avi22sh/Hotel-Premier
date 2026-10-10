@@ -6,11 +6,11 @@
 
 :root {
   /* ==================== 1. COLOR TOKENS ==================== */
-  /* Midnight Charcoal Slate (Primary Luxury Foundation) */
-  --midnight-deep: #080D13;
-  --midnight-surface: #0E1620;
-  --midnight-card: #141F2D;
-  --midnight-subtle: #1C2B3C;
+  /* Midnight Charcoal Slate (Primary Luxury Foundation - Warm & Refined) */
+  --midnight-deep: #161D26;
+  --midnight-surface: #1E2734;
+  --midnight-card: #253140;
+  --midnight-subtle: #2D3A4B;
   --midnight-border: rgba(197, 168, 128, 0.22);
 
   /* Warm Ivory Silk Parchment (Daytime Warmth & Tactile Surfaces) */
@@ -159,9 +159,9 @@ a {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: linear-gradient(180deg, #0A1017 0%, #101924 100%);
+  background: linear-gradient(180deg, #18202A 0%, #1E2734 100%);
   border-bottom: 1px solid rgba(197, 168, 128, 0.28);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 24px rgba(15, 23, 33, 0.25);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -169,23 +169,25 @@ a {
 .header-top {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 16px;
+  padding: 8px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
+  box-sizing: border-box;
 }
 
 .brand-wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   text-decoration: none;
+  min-width: 0;
 }
 
 .brand-logo-crest {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   flex-shrink: 0;
   filter: drop-shadow(0 2px 8px rgba(197, 168, 128, 0.35));
   transition: transform 0.25s ease;
@@ -205,31 +207,35 @@ a {
 .brand-text-block {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .brand-hotel-name {
   font-family: var(--font-royal);
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 1.4px;
   color: var(--brass-light);
   line-height: 1.1;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
 }
 
 .brand-tagline {
-  font-size: 0.62rem;
+  font-size: 0.56rem;
   font-weight: 700;
-  letter-spacing: 2.2px;
+  letter-spacing: 1.6px;
   color: #B2C0D1;
   text-transform: uppercase;
   margin-top: 2px;
+  white-space: nowrap;
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 5px;
+  flex-shrink: 0;
 }
 
 /* Multilingual Switcher */
@@ -242,9 +248,9 @@ a {
 }
 
 .lang-btn {
-  font-size: 0.70rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  padding: 4px 8px;
+  padding: 3px 6px;
   border-radius: var(--radius-full);
   color: #9AA7B7;
   transition: var(--transition-fast);
@@ -258,9 +264,9 @@ a {
 
 /* Guest Profile Icon Button (Icon Only) */
 .guest-concierge-pill {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -269,9 +275,10 @@ a {
   background: rgba(197, 168, 128, 0.12);
   border: 1px solid rgba(197, 168, 128, 0.35);
   color: var(--brass-light);
-  font-size: 0.90rem;
+  font-size: 0.85rem;
   transition: var(--transition-fast);
   cursor: pointer;
+  flex-shrink: 0;
 }
 .guest-concierge-pill:hover {
   background: rgba(197, 168, 128, 0.25);
@@ -283,13 +290,14 @@ a {
   box-shadow: 0 0 8px rgba(197, 168, 128, 0.35);
 }
 .guest-concierge-icon {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   line-height: 1;
 }
 
 .icon-btn {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -297,13 +305,14 @@ a {
   border: 1px solid rgba(197, 168, 128, 0.22);
   border-radius: var(--radius-full);
   color: var(--brass-light);
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 800;
+  flex-shrink: 0;
 }
 
 /* ==================== HOTEL CONCIERGE NAVIGATION TABS ==================== */
 .hotel-nav-bar {
-  background: #0B121A;
+  background: #161D26;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(197, 168, 128, 0.18);
   overflow-x: auto;
@@ -370,48 +379,53 @@ a {
 
 /* Pride Pure Veg & Contact Sub-Bar */
 .concierge-sub-bar {
-  background: #111A24;
-  border-bottom: 1px solid rgba(197, 168, 128, 0.14);
-  padding: 6px 16px;
+  background: #1A222D;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.16);
+  padding: 6px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 8px;
   max-width: 1200px;
   margin: 0 auto;
   font-size: 0.72rem;
+  box-sizing: border-box;
 }
 
 .pride-hallmark {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 6px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Authentic Crimson Pride Branding Badge & Crown Emblem */
 .pride-badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   background: linear-gradient(135deg, #7A0C2E 0%, #A01740 50%, #630823 100%);
   color: #FFFFFF;
-  padding: 3px 12px;
+  padding: 2.5px 8px;
   border-radius: 999px;
   border: 1.5px solid rgba(230, 198, 126, 0.85);
   box-shadow: 0 2px 8px rgba(122, 12, 46, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  letter-spacing: 1.5px;
+  letter-spacing: 0.8px;
   font-weight: 800;
   font-family: var(--font-royal);
   text-transform: uppercase;
-  font-size: 0.80rem;
-  line-height: 1;
+  font-size: 0.70rem;
+  line-height: 1.2;
 }
 
 .pride-crown-emblem {
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
   display: inline-block;
-  transform: translateY(-1px);
+  transform: translateY(-0.5px);
 }
 
 .pride-badge-pill.pride-badge-hero {
@@ -446,14 +460,18 @@ a {
 }
 
 .hallmark-badge {
+  display: inline-flex;
+  align-items: center;
   background: rgba(21, 128, 61, 0.22);
   border: 1.5px solid rgba(74, 222, 128, 0.55);
   color: #4ADE80;
-  padding: 3px 10px;
+  padding: 2.5px 7px;
   border-radius: var(--radius-full);
   font-weight: 800;
-  font-size: 0.68rem;
-  letter-spacing: 0.8px;
+  font-size: 0.62rem;
+  letter-spacing: 0.6px;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .hallmark-restaurant {
@@ -462,17 +480,43 @@ a {
 }
 
 .concierge-contact-quick {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
   color: var(--brass-light);
   font-weight: 700;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.btn-call-hotel-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--burgundy-primary);
+  color: #FFFFFF !important;
+  border: 1px solid rgba(197, 168, 128, 0.45);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.70rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn-call-hotel-header:hover {
+  background: var(--burgundy-deep);
+  border-color: var(--brass-light);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(139, 21, 56, 0.3);
 }
 
 /* ==================== CINEMATIC SANCTUARY HERO ==================== */
 .sanctuary-hero-section {
   position: relative;
-  background: radial-gradient(circle at 50% 20%, #162434 0%, #080D13 85%);
+  background: radial-gradient(circle at 50% 20%, #253344 0%, #171E27 85%);
   color: #FFFDF9;
   padding: 44px 18px 48px;
   overflow: hidden;
@@ -677,7 +721,7 @@ a {
 
 .room-card-photo-panel {
   position: relative;
-  background: #0E1620;
+  background: #1E2734;
   min-height: 280px;
   overflow: hidden;
 }
@@ -1041,7 +1085,7 @@ a {
   overflow: hidden;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
   aspect-ratio: 4 / 3;
-  background: #0E1620;
+  background: #1E2734;
 }
 .atmosphere-img {
   width: 100%;
@@ -1532,7 +1576,7 @@ a {
 
 .btn-tariff-phone {
   flex: 1;
-  background: #0E1620;
+  background: #1E2734;
   color: var(--brass-light);
   border: 1px solid var(--brass-primary);
   padding: 13px 16px;
@@ -1548,7 +1592,7 @@ a {
   text-decoration: none;
 }
 .btn-tariff-phone:hover {
-  background: #162434;
+  background: #253344;
   color: #FFFDF9;
 }
 
@@ -1593,7 +1637,7 @@ a {
   position: relative;
   width: 100%;
   height: 230px;
-  background: #0E1620;
+  background: #1E2734;
   overflow: hidden;
 }
 
@@ -1989,7 +2033,7 @@ a {
   position: relative;
   width: 100%;
   height: 135px;
-  background: #0E1620;
+  background: #1E2734;
   overflow: hidden;
 }
 @media (min-width: 768px) {
@@ -2449,7 +2493,7 @@ a {
 }
 
 .filter-chip.active {
-  background: #0E1620;
+  background: #1E2734;
   border-color: var(--brass-primary);
   color: var(--brass-light);
 }
@@ -2551,7 +2595,7 @@ a {
   position: relative;
   width: 100%;
   height: 180px;
-  background: #0E1620;
+  background: #1E2734;
   overflow: hidden;
 }
 
@@ -2802,7 +2846,7 @@ a {
 
 /* ==================== 4. CELEBRATE AT HOTEL PREMIER (BANQUETS & EVENTS) ==================== */
 .celebrate-hero-banner {
-  background: linear-gradient(135deg, #0A1017 0%, #162434 100%);
+  background: linear-gradient(135deg, #18202A 0%, #253344 100%);
   border: 1px solid rgba(197, 168, 128, 0.32);
   border-radius: var(--radius-lg);
   padding: 32px 20px;
@@ -3003,7 +3047,7 @@ a {
 
 /* ==================== 6. REVIEWS & GUEST VOICES (MAJOR REDESIGN) ==================== */
 .guest-feedback-section {
-  background: radial-gradient(circle at 50% 20%, #162434 0%, #080D13 90%);
+  background: radial-gradient(circle at 50% 20%, #253344 0%, #171E27 90%);
   color: #FFFDF9;
   padding: 50px 16px;
   border-top: 1px solid rgba(197, 168, 128, 0.28);
@@ -3398,7 +3442,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #0E1620;
+  background: #1E2734;
   color: #FFFDF9;
   font-size: 0.92rem;
   font-weight: 800;
@@ -3418,7 +3462,7 @@ a {
 .modal-header {
   position: sticky;
   top: 0;
-  background: #0E1620;
+  background: #1E2734;
   color: #FFFDF9;
   padding: 16px 20px;
   display: flex;
@@ -3544,7 +3588,7 @@ a {
 .admin-nav-tabs {
   display: flex;
   overflow-x: auto;
-  background: #0B121A;
+  background: #161D26;
   border-bottom: 1px solid rgba(197, 168, 128, 0.25);
   padding: 4px 8px;
 }
@@ -3621,7 +3665,7 @@ a {
 
 /* ==================== FOOTER ==================== */
 .app-footer {
-  background: #080D13;
+  background: #161D26;
   color: #FFFDF9;
   border-top: 2px solid var(--brass-primary);
   padding: 44px 16px 30px;
@@ -3752,7 +3796,7 @@ a {
 
 .culinary-drawer-header {
   padding: 16px 20px 14px;
-  background: linear-gradient(135deg, #162434 0%, #0D1622 100%);
+  background: linear-gradient(135deg, #18202A 0%, #253344 100%);
   color: #FFFDF9;
   display: flex;
   align-items: center;
@@ -4038,40 +4082,51 @@ a {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   /* Ultra-Clean Compact Header */
+  .header-top,
   .hotel-premier-header {
-    padding: 8px 12px;
-    gap: 8px;
+    padding: 6px 10px;
+    gap: 6px;
   }
 
   .brand-logo-crest {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
   }
 
   .brand-hotel-name {
-    font-size: 0.98rem;
-    letter-spacing: 1.2px;
+    font-size: 0.90rem;
+    letter-spacing: 0.8px;
   }
 
   .brand-tagline {
-    font-size: 0.52rem;
-    letter-spacing: 1.2px;
+    font-size: 0.48rem;
+    letter-spacing: 0.8px;
   }
 
   .header-actions {
-    gap: 5px;
+    gap: 4px;
+    flex-shrink: 0;
   }
 
   .lang-btn {
-    font-size: 0.65rem;
-    padding: 3px 6px;
+    font-size: 0.60rem;
+    padding: 2px 4px;
   }
 
   .guest-concierge-pill {
-    font-size: 0.68rem;
-    padding: 4px 8px;
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
+    padding: 0 !important;
+    font-size: 0.80rem;
+  }
+
+  .icon-btn {
+    width: 26px !important;
+    height: 26px !important;
+    min-width: 26px !important;
   }
 
   /* Concierge Navigation Bar */
@@ -4089,8 +4144,37 @@ a {
 
   /* Sub-Bar */
   .concierge-sub-bar {
-    padding: 5px 12px;
+    padding: 5px 10px;
     font-size: 0.68rem;
+    flex-wrap: nowrap;
+    gap: 6px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .pride-hallmark {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 5px;
+  }
+  .pride-badge-pill {
+    padding: 2.5px 7px;
+    font-size: 0.68rem;
+    letter-spacing: 0.8px;
+  }
+  .pride-crown-emblem {
+    font-size: 0.82rem;
+  }
+  .hallmark-badge {
+    padding: 2.5px 6px;
+    font-size: 0.62rem;
+    letter-spacing: 0.5px;
+  }
+  .btn-call-hotel-header {
+    padding: 3.5px 8px;
+    font-size: 0.66rem;
+    gap: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   /* Hero Section */
@@ -4309,6 +4393,30 @@ a {
     max-height: 84vh;
     border-radius: 20px 20px 0 0;
     width: 100%;
+}
+
+@media (max-width: 380px) {
+  .concierge-sub-bar {
+    padding: 4px 8px;
+    gap: 6px;
+  }
+  .pride-hallmark {
+    gap: 4px;
+  }
+  .pride-badge-pill {
+    padding: 2px 6px;
+    font-size: 0.66rem;
+    letter-spacing: 0.5px;
+  }
+  .hallmark-badge {
+    padding: 2px 5px;
+    font-size: 0.58rem;
+    letter-spacing: 0.4px;
+  }
+  .btn-call-hotel-header {
+    padding: 3px 8px;
+    font-size: 0.64rem;
+    gap: 3px;
   }
 }
 
@@ -4318,29 +4426,6 @@ input::placeholder, textarea::placeholder, select::placeholder {
   opacity: 1 !important;
 }
 
-/* ==================== HEADER CALL ACTION ==================== */
-.btn-call-hotel-header {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--burgundy-primary);
-  color: #FFFFFF !important;
-  border: 1px solid rgba(197, 168, 128, 0.45);
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: all 0.2s ease;
-  white-space: nowrap;
-}
-.btn-call-hotel-header:hover {
-  background: var(--burgundy-deep);
-  border-color: var(--brass-light);
-  transform: translateY(-1px);
-  box-shadow: 0 3px 10px rgba(139, 21, 56, 0.3);
-}
 
 /* ==================== HOME SECTION & PILLARS ==================== */
 .home-story-container {
@@ -4390,7 +4475,7 @@ input::placeholder, textarea::placeholder, select::placeholder {
   width: 100%;
   height: 190px;
   overflow: hidden;
-  background: #0B121A;
+  background: #1E2734;
 }
 .home-pillar-img {
   width: 100%;
@@ -4459,7 +4544,7 @@ input::placeholder, textarea::placeholder, select::placeholder {
 
 /* ==================== COMPLIMENTARY AMENITIES BANNER ==================== */
 .room-complimentary-amenities-banner {
-  background: linear-gradient(135deg, #0B121A 0%, #162436 100%);
+  background: linear-gradient(135deg, #18202A 0%, #222E3D 100%);
   border: 1px solid rgba(197, 168, 128, 0.35);
   border-radius: var(--radius-md);
   padding: 24px;
@@ -4569,7 +4654,7 @@ input::placeholder, textarea::placeholder, select::placeholder {
   font-size: 1.1rem;
 }
 .route-time-badge {
-  background: #0B121A;
+  background: #161D26;
   color: var(--brass-light);
   font-size: 0.72rem;
   font-weight: 800;
@@ -4787,7 +4872,7 @@ input::placeholder, textarea::placeholder, select::placeholder {
   margin-bottom: 16px;
   border: 1px solid rgba(197, 168, 128, 0.35);
   box-shadow: 0 6px 20px rgba(10, 16, 26, 0.20);
-  background: #0E1620;
+  background: #1E2734;
 }
 
 @media (max-width: 640px) {

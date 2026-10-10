@@ -58,7 +58,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v17.0') {
+            if (name !== 'hotel-premier-v18.1') {
               caches.delete(name);
             }
           });
@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=18.0"></script>
+  <script src="asset-pipeline.js?v=18.1"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=18.0">
+  <link rel="stylesheet" href="styles.css?v=18.1">
 </head>
 <body>
 
@@ -160,7 +160,7 @@
       <div class="concierge-contact-quick">
         <a href="tel:09325375802" class="btn-call-hotel-header">
           <span>📞</span>
-          <span data-i18n="btnCallHotel">Call Hotel Premier</span>
+          <span data-i18n="btnCallHotel">Call Front Desk</span>
         </a>
       </div>
     </div>
@@ -1813,20 +1813,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v18.0) -->
-  <script src="storage.js?v=18.0"></script>
-  <script src="vault.js?v=18.0"></script>
-  <script src="data/translations.js?v=18.0"></script>
-  <script src="data/hotel-data.js?v=18.0"></script>
-  <script src="data/menu-data.js?v=18.0"></script>
-  <script src="app.js?v=18.0"></script>
-  <script src="admin.js?v=18.0"></script>
+  <!-- Load Application Scripts (v18.1) -->
+  <script src="storage.js?v=18.1"></script>
+  <script src="vault.js?v=18.1"></script>
+  <script src="data/translations.js?v=18.1"></script>
+  <script src="data/hotel-data.js?v=18.1"></script>
+  <script src="data/menu-data.js?v=18.1"></script>
+  <script src="app.js?v=18.1"></script>
+  <script src="admin.js?v=18.1"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=18.0').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=18.1').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
