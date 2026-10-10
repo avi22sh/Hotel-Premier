@@ -113,8 +113,11 @@ class HotelPremierApp {
       'phone': 'section-contact'
     };
 
+    const src = urlParams.get('src') || '';
+    const hasTableParam = urlParams.has('table') || urlParams.has('t') || (src && /^table/i.test(src.trim()));
+
     let initialSection = 'section-home';
-    if (catParam) {
+    if (catParam || hasTableParam) {
       initialSection = 'section-dine';
     } else if (sectionParam && hashToSection[sectionParam.toLowerCase()]) {
       initialSection = hashToSection[sectionParam.toLowerCase()];
