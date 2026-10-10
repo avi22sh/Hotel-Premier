@@ -45,7 +45,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       id: 'slide-thali',
       image: 'assets/menu-images/THALIS/MAHARAJA THALI.jpg',
       title: 'Premier Maharaja Royal Thali',
-      subtitle: 'Lavish Multi-Course Pure Veg Feast â€¢ Authentic Indian Hospitality'
+      subtitle: 'Lavish Multi-Course Pure Veg Feast • Authentic Indian Hospitality'
     },
     {
       id: 'slide-paneer',

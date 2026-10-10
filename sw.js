@@ -69,11 +69,11 @@ self.addEventListener('fetch', (event) => {
       }
       return networkResponse;
     }).catch(() => {
-      // Offline fallback: serve from cache
-      return caches.match(req).then((cachedResponse) => {
+      // Offline fallback: serve from cache (ignoring version query parameters like ?v=18.1)
+      return caches.match(req, { ignoreSearch: true }).then((cachedResponse) => {
         if (cachedResponse) return cachedResponse;
         if (req.headers.get('accept') && req.headers.get('accept').includes('text/html')) {
-          return caches.match('index.html');
+          return caches.match('index.html', { ignoreSearch: true });
         }
       });
     })
