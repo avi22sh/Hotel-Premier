@@ -68,10 +68,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=17.0"></script>
+  <script src="asset-pipeline.js?v=18.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=17.0">
+  <link rel="stylesheet" href="styles.css?v=18.0">
 </head>
 <body>
 
@@ -848,17 +848,14 @@
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-dine">
     <div class="editorial-header-block dining-hero-header">
-      <div class="pride-hero-branding">
-        <div class="pride-badge-pill pride-badge-hero">
-          <span class="pride-crown-emblem">👑</span>
-          <span class="pride-text">PRIDE</span>
-        </div>
-        <div class="editorial-divider pride-underline"></div>
-        <div class="dining-credentials-strip">
-          <span class="cred-badge cred-veg">🌱 PURE VEG</span>
-          <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
-        </div>
+      <div class="dining-brand-crest">HOTEL PREMIER</div>
+      <div class="dining-credentials-strip">
+        <span class="cred-badge cred-pride"><span class="pride-crown-emblem">👑</span> PRIDE</span>
+        <span class="cred-badge cred-veg">🌱 PURE VEG</span>
+        <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
       </div>
+      <div class="editorial-divider pride-underline"></div>
+      <h2 class="dining-main-heading">Dining at Hotel Premier</h2>
       <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
         A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
       </p>
@@ -1003,6 +1000,13 @@
           <!-- Dish cards and categorized sections rendered dynamically by app.js -->
         </div>
       </main>
+
+      <!-- Floating Menu Sub-Sections Toggle Button (Strictly inside Dining section) -->
+      <button id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Culinary Menu Selection" title="Explore Menu Categories">
+        <span class="floating-btn-icon">📖</span>
+        <span class="floating-btn-text">Menu</span>
+        <span class="floating-btn-badge" id="floating-sections-count">19</span>
+      </button>
     </div>
   </section>
 
@@ -1669,13 +1673,13 @@
   </div>
 
   <!-- ==================== MODAL: DISH DETAIL MODAL ==================== -->
-  <div class="modal-backdrop" id="dish-detail-modal">
-    <div class="modal-sheet">
+  <div class="modal-backdrop" id="dish-detail-modal" onclick="if (event.target === this && window.app) window.app.closeDishDetail();">
+    <div class="modal-sheet dish-detail-sheet" role="dialog" aria-modal="true">
       <div class="modal-header">
         <div class="modal-title">
           <span>🍽️</span> <span>Dish Details</span>
         </div>
-        <button class="modal-close-btn" onclick="window.app ? window.app.closeDishDetail() : null">✕</button>
+        <button class="modal-close-btn" onclick="window.app ? window.app.closeDishDetail() : null" aria-label="Close Dish Details">✕</button>
       </div>
       <div class="modal-body" id="dish-detail-body">
         <!-- Dish details content renders dynamically -->
@@ -1786,44 +1790,43 @@
     </div>
   </div>
 
-  <!-- Floating Menu Sub-Sections Toggle Button -->
-  <button id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Menu Sections" title="Browse Menu Sections">
-    <span style="font-size: 1.4rem;">📋</span>
-    <span class="floating-btn-badge" id="floating-sections-count">20</span>
-  </button>
-
-  <!-- MODAL: FULL MENU SUB-SECTIONS SWITCHER DRAWER -->
+  <!-- MODAL: CULINARY SELECTION DRAWER -->
   <div id="menu-sections-drawer-modal" class="modal-backdrop" onclick="if (event.target === this && window.app) window.app.closeMenuSectionDrawer();">
-    <div class="modal-sheet" style="max-width: 480px;" role="dialog" aria-modal="true">
-      <div class="modal-header">
-        <div class="modal-title">
-          <span>📋</span> <span>Menu Culinary Collections</span>
+    <div class="culinary-drawer-sheet" role="dialog" aria-modal="true" aria-labelledby="drawer-heading-title">
+      <div class="culinary-drawer-header">
+        <div>
+          <div class="culinary-drawer-eyebrow">CULINARY SELECTION</div>
+          <h3 class="culinary-drawer-title" id="drawer-heading-title">Explore Our Menu</h3>
         </div>
         <button class="modal-close-btn" onclick="window.app ? window.app.closeMenuSectionDrawer() : null" aria-label="Close Drawer">✕</button>
       </div>
-      <div style="padding: 12px 16px; border-bottom: 1px solid var(--ivory-border);">
-        <input type="text" id="drawer-sections-search" class="form-input" placeholder="Filter sections (e.g. Morning, Paneer, Rice, Soups)..." oninput="window.app ? window.app.filterDrawerSections(this.value) : null">
+      <div class="culinary-drawer-search-wrap">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="drawer-sections-search" placeholder="Search categories (e.g. Morning, Paneer, Rice, Soups)..." oninput="window.app ? window.app.filterDrawerSections(this.value) : null">
+          <button class="clear-search-btn" id="drawer-clear-search-btn" onclick="document.getElementById('drawer-sections-search').value=''; if (window.app) window.app.filterDrawerSections(''); this.style.display='none';" style="display: none;">✕</button>
+        </div>
       </div>
-      <div class="modal-body" id="drawer-sections-list" style="max-height: 60vh; overflow-y: auto;">
+      <div class="drawer-sections-grid" id="drawer-sections-list">
         <!-- Rendered dynamically by app.js -->
       </div>
     </div>
   </div>
 
-  <!-- Load Application Scripts (v17.0) -->
-  <script src="storage.js?v=17.0"></script>
-  <script src="vault.js?v=17.0"></script>
-  <script src="data/translations.js?v=17.0"></script>
-  <script src="data/hotel-data.js?v=17.0"></script>
-  <script src="data/menu-data.js?v=17.0"></script>
-  <script src="app.js?v=17.0"></script>
-  <script src="admin.js?v=17.0"></script>
+  <!-- Load Application Scripts (v18.0) -->
+  <script src="storage.js?v=18.0"></script>
+  <script src="vault.js?v=18.0"></script>
+  <script src="data/translations.js?v=18.0"></script>
+  <script src="data/hotel-data.js?v=18.0"></script>
+  <script src="data/menu-data.js?v=18.0"></script>
+  <script src="app.js?v=18.0"></script>
+  <script src="admin.js?v=18.0"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=17.0').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=18.0').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

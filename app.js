@@ -72,10 +72,17 @@ class HotelPremierApp {
     this.checkStaffModeAccess();
     this.initGuestProfile();
     const urlParams = new URLSearchParams(window.location.search);
-    let catParam = urlParams.get('category') || urlParams.get('cat') || urlParams.get('section');
+    let catParam = urlParams.get('category') || urlParams.get('cat');
+    let sectionParam = urlParams.get('section') || urlParams.get('page') || urlParams.get('tab');
     if (!catParam && window.location.hash) {
-      const match = window.location.hash.match(/(?:category|section)=([a-zA-Z0-9_-]+)/);
+      const match = window.location.hash.match(/(?:category|cat)=([a-zA-Z0-9_-]+)/);
       if (match) catParam = match[1];
+    }
+
+    // Verify catParam against known categories
+    const isKnownCategory = catParam && this.categories.some(c => c.id === catParam);
+    if (!isKnownCategory) {
+      catParam = null;
     }
 
     // Hash-based independent section routing
@@ -109,6 +116,8 @@ class HotelPremierApp {
     let initialSection = 'section-home';
     if (catParam) {
       initialSection = 'section-dine';
+    } else if (sectionParam && hashToSection[sectionParam.toLowerCase()]) {
+      initialSection = hashToSection[sectionParam.toLowerCase()];
     } else if (hashToSection[rawHash]) {
       initialSection = hashToSection[rawHash];
     }
@@ -1242,17 +1251,17 @@ class HotelPremierApp {
       floatBadge.innerText = validCategories.length;
     }
 
-    const allDishesCount = this.menuData ? this.menuData.length : 214;
+    const allDishesCount = this.menuData ? this.menuData.length : 218;
     const isAllActive = (this.currentCategory === 'all' && this.viewMode === 'all');
     const dishesWord = this.t('itemsCount', 'Items');
 
     const items = [
       {
         id: 'all',
-        name: this.t('filterAll', 'All Items'),
-        subtitle: 'Complete Restaurant Menu • All ' + allDishesCount + ' Pure Veg Dishes',
+        name: this.t('filterAll', 'All Dishes'),
+        subtitle: `Complete Pure Veg Menu • All ${allDishesCount} Curated Dishes`,
         icon: '🍽️',
-        image: 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80',
+        image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg',
         count: allDishesCount,
         isActive: isAllActive,
         isAll: true
@@ -1289,8 +1298,8 @@ class HotelPremierApp {
            data-section-id="${item.id}"
            onclick="window.app.selectCategoryFromDrawer('${item.id}')">
         <div class="drawer-item-media">
-          ${item.image ? `<img src="${item.image}" alt="${item.name}" class="drawer-item-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">` : `<span class="drawer-fallback-icon">${item.icon}</span>`}
-          <span class="drawer-item-badge-icon">${item.icon}</span>
+          ${item.image ? `<img src="${item.image}" alt="${item.name}" class="drawer-item-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ''}
+          <span class="drawer-fallback-icon" style="${item.image ? 'display:none;' : 'display:flex;'}">${item.icon}</span>
         </div>
         <div class="drawer-item-content">
           <div class="drawer-item-title-row">
@@ -1301,7 +1310,7 @@ class HotelPremierApp {
         </div>
         <div class="drawer-item-meta">
           <span class="drawer-item-count">${item.count} ${dishesWord}</span>
-          <span class="drawer-item-arrow">➔</span>
+          <span class="drawer-item-arrow">→</span>
         </div>
       </div>
     `).join('');
@@ -1322,10 +1331,13 @@ class HotelPremierApp {
     if (!modal) return;
     this.renderMenuSectionDrawer();
     modal.classList.add('active');
+    modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
     const searchInput = document.getElementById('drawer-sections-search');
     if (searchInput) {
       searchInput.value = '';
+      const clearBtn = document.getElementById('drawer-clear-search-btn');
+      if (clearBtn) clearBtn.style.display = 'none';
       setTimeout(() => searchInput.focus(), 150);
     }
   }
@@ -1334,6 +1346,7 @@ class HotelPremierApp {
     const modal = document.getElementById('menu-sections-drawer-modal');
     if (!modal) return;
     modal.classList.remove('active');
+    modal.style.display = 'none';
     document.body.style.overflow = '';
   }
 
@@ -1351,20 +1364,33 @@ class HotelPremierApp {
     } else {
       this.openCategorySection(catId);
     }
-    const target = document.getElementById('category-nav-bar') || document.getElementById('menu-container') || document.getElementById('dishes-section-view');
-    if (target) {
-      const headerOffset = 140;
-      const rect = target.getBoundingClientRect();
-      const targetScrollY = rect.top + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: Math.max(0, targetScrollY),
-        behavior: 'smooth'
-      });
-    }
+
+    setTimeout(() => {
+      let target = null;
+      if (catId !== 'all') {
+        target = document.getElementById(`section-${catId}`);
+      }
+      if (!target) {
+        target = document.getElementById('category-nav-bar') || document.getElementById('menu-container');
+      }
+      if (target) {
+        const headerOffset = 130;
+        const rect = target.getBoundingClientRect();
+        const targetScrollY = rect.top + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: Math.max(0, targetScrollY),
+          behavior: 'smooth'
+        });
+      }
+    }, 120);
   }
 
   filterDrawerSections(query) {
     const q = (query || '').toLowerCase().trim();
+    const clearBtn = document.getElementById('drawer-clear-search-btn');
+    if (clearBtn) {
+      clearBtn.style.display = q ? 'block' : 'none';
+    }
     const rows = document.querySelectorAll('#drawer-sections-list .drawer-section-item');
     rows.forEach(row => {
       if (!q) {
