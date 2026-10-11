@@ -2770,13 +2770,29 @@ class HotelPremierApp {
       });
     }
 
-    // Modal backdrop click-to-close
+    // Modal backdrop click-to-close & body scroll unlock
     document.querySelectorAll('.modal-backdrop').forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
           modal.classList.remove('active');
+          modal.style.display = 'none';
+          document.body.classList.remove('modal-open');
         }
       });
+    });
+
+    // Global Escape key listener to close modals & drawers
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const dishModal = document.getElementById('dish-detail-modal');
+        if (dishModal && dishModal.classList.contains('active')) {
+          this.closeDishDetail();
+        }
+        const drawer = document.getElementById('menu-section-drawer');
+        if (drawer && drawer.classList.contains('active')) {
+          this.closeMenuSectionDrawer();
+        }
+      }
     });
 
     // Touch Swipe gestures for Restaurant Hero Carousel
