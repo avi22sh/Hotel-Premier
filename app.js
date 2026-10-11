@@ -1781,9 +1781,6 @@ class HotelPremierApp {
       `;
     }
 
-    const waOrderMsg = encodeURIComponent(`Hello Hotel Premier, I would like to order "${dish.name}" (₹${dish.price}) from the Pride Pure Veg Restaurant.`);
-    const waOrderUrl = `https://wa.me/919422279544?text=${waOrderMsg}`;
-
     body.innerHTML = `
       ${detailMediaHtml}
       <div class="modal-dish-detail-container">
@@ -1822,11 +1819,13 @@ class HotelPremierApp {
         </div>
 
         <div class="modal-dish-actions">
-          <a href="${waOrderUrl}" target="_blank" rel="noopener noreferrer" class="modal-btn-wa-order">
-            <span>📲 Order on WhatsApp</span>
+          <a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="modal-btn-zomato-order">
+            <span class="btn-delivery-brand">zomato</span>
+            <span>Order on Zomato</span>
           </a>
-          <a href="tel:09422279544" class="modal-btn-call-order">
-            <span>📞 Call Restaurant: 09422279544</span>
+          <a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="modal-btn-swiggy-order">
+            <span class="btn-delivery-brand">Swiggy</span>
+            <span>Order on Swiggy</span>
           </a>
         </div>
       </div>
