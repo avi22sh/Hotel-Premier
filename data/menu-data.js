@@ -1421,12 +1421,16 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'vegetable-specialties',
     name: 'Kaju Curry / Masala',
     price: 290,
-    description: 'Whole premium roasted cashews simmered in a luscious onion-tomato and cream gravy.',
+    variants: [
+      { name: 'Kaju Curry', price: 290, image: 'assets/menu-images/VEG SPECIALITIES/KAJU CURRY.jpg' },
+      { name: 'Kaju Masala', price: 290, image: 'assets/menu-images/VEG SPECIALITIES/KAJU MASALA.jpg' }
+    ],
+    description: 'Whole premium roasted cashews simmered in a luscious onion-tomato and cream gravy. Available in velvety Curry or rich spicy Masala style.',
     tags: ['veg', 'bestseller', 'zomato-top'],
     zomatoRating: '4.3',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/KAJU CURRY.jpeg',
+    image: 'assets/menu-images/VEG SPECIALITIES/KAJU CURRY.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -1526,7 +1530,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'vegetable-specialties',
     name: 'Lasooni Methi / Palak',
     price: 250,
-    description: 'Fresh spinach or fenugreek leaves tempered with double dose of roasted golden garlic and green chilies.',
+    variants: [
+      { name: 'Lasooni Methi', price: 250, image: 'assets/menu-images/VEG SPECIALITIES/LASOONI METHI.jpg' },
+      { name: 'Lasooni Palak', price: 250, image: 'assets/menu-images/VEG SPECIALITIES/LASOONI PALAK.jpg' }
+    ],
+    description: 'Fresh fenugreek leaves (Methi) or spinach (Palak) tempered with double dose of roasted golden garlic and green chilies.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -2191,11 +2199,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Urad Papad',
     price: 30,
     variants: [
-      { name: 'Roasted', price: 30 },
-      { name: 'Fried', price: 35 },
-      { name: 'Masala Papad', price: 40 }
+      { name: 'Roasted', price: 30, image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg' },
+      { name: 'Fried', price: 35, image: 'assets/menu-images/ACCOMPANIMENTS/FRIED PAPAD.jpg' },
+      { name: 'Masala Papad', price: 40, image: 'assets/menu-images/ACCOMPANIMENTS/MASALA PAPAD.jpg' }
     ],
-    description: 'Crisp seasoned lentil wafer. Choose Roasted (â‚¹30), Fried (â‚¹35), or Masala (â‚¹40).',
+    description: 'Crisp seasoned lentil wafer. Choose Roasted (₹30), Fried (₹35), or Masala (₹40).',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -2209,15 +2217,15 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Nagli Papad',
     price: 30,
     variants: [
-      { name: 'Roasted', price: 30 },
-      { name: 'Fried', price: 35 },
-      { name: 'Masala Papad', price: 40 }
+      { name: 'Roasted', price: 30, image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED NAGALI PAPAD.jpg' },
+      { name: 'Fried', price: 35, image: 'assets/menu-images/ACCOMPANIMENTS/NAGALI FRIED PAPAD.jpg' },
+      { name: 'Masala Papad', price: 40, image: 'assets/menu-images/ACCOMPANIMENTS/NAGALI MASALA PAPAD.jpg' }
     ],
     description: 'Healthy traditional finger millet (Ragi/Nagli) wafer roasted or fried to crisp perfection.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER ADRAKI.jpg',
+    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED NAGALI PAPAD.jpg',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -2231,8 +2239,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'तंदूरी रोटी',
     price: 20,
     variants: [
-      { name: 'Plain Roti', price: 20 },
-      { name: 'Butter Roti', price: 30 }
+      { name: 'Plain Roti', price: 20, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/ROTI.jpg' },
+      { name: 'Butter Roti', price: 30, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER ROTI 1.jpg' }
     ],
     description: 'Traditional crisp clay tandoor whole wheat flatbread baked fresh.',
     tags: ['veg'],
@@ -2265,8 +2273,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'तवा चपाती / पोळी',
     price: 20,
     variants: [
-      { name: 'Plain Chapati', price: 20 },
-      { name: 'Butter Chapati', price: 30 }
+      { name: 'Plain Chapati', price: 20, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg' },
+      { name: 'Butter Chapati', price: 30, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHAPATI.jpg' }
     ],
     description: 'Home-style soft thin whole wheat flatbread made fresh on tawa.',
     tags: ['veg'],
@@ -2284,8 +2292,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'प्लेन नान',
     price: 50,
     variants: [
-      { name: 'Plain Naan', price: 50 },
-      { name: 'Butter Naan', price: 55 }
+      { name: 'Plain Naan', price: 50, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/NAAN.jpg' },
+      { name: 'Butter Naan', price: 55, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg' }
     ],
     description: 'Soft leavened flatbread freshly baked against clay tandoor walls.',
     tags: ['veg'],
@@ -2318,8 +2326,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'लसूण नान',
     price: 110,
     variants: [
-      { name: 'Plain Garlic Naan', price: 110 },
-      { name: 'Butter Garlic Naan', price: 130 }
+      { name: 'Plain Garlic Naan', price: 110, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.jpg' },
+      { name: 'Butter Garlic Naan', price: 130, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER GARLIC NAAN.jpg' }
     ],
     description: 'Aromatic tandoori naan infused with minced roasted garlic, coriander and butter.',
     tags: ['veg', 'chef-special', 'zomato-top'],
@@ -2338,8 +2346,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'चीज नान',
     price: 120,
     variants: [
-      { name: 'Plain Cheese Naan', price: 120 },
-      { name: 'Butter Cheese Naan', price: 150 }
+      { name: 'Plain Cheese Naan', price: 120, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHEESE NAAN.avif' },
+      { name: 'Butter Cheese Naan', price: 150, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE NAAN.jpg' }
     ],
     description: 'Gooey melted cheese stuffed inside piping hot clay oven leavened naan.',
     tags: ['veg', 'chef-special'],
@@ -2357,8 +2365,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'चीज लसूण नान',
     price: 140,
     variants: [
-      { name: 'Plain Cheese Garlic Naan', price: 140 },
-      { name: 'Butter Cheese Garlic Naan', price: 160 }
+      { name: 'Plain Cheese Garlic Naan', price: 140, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHEESE GARLIC NAAN.jpg' },
+      { name: 'Butter Cheese Garlic Naan', price: 160, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE GARLIC NAAN.jpg' }
     ],
     description: 'Leavened naan packed with gooey cheese and topped with crushed roasted garlic.',
     tags: ['veg', 'chef-special', 'bestseller'],
@@ -2376,8 +2384,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'कुलचा',
     price: 60,
     variants: [
-      { name: 'Plain Kulcha', price: 60 },
-      { name: 'Butter Kulcha', price: 70 }
+      { name: 'Plain Kulcha', price: 60, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/KULCHA.jpg' },
+      { name: 'Butter Kulcha', price: 70, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER KULCHA 1.jpg' }
     ],
     description: 'Soft Amritsari style refined flour bread baked tender in tandoor.',
     tags: ['veg'],
@@ -2395,14 +2403,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'स्टफ्ड कुलचा',
     price: 110,
     variants: [
-      { name: 'Plain Stuffed Kulcha', price: 110 },
-      { name: 'Butter Stuffed Kulcha', price: 120 }
+      { name: 'Plain Stuffed Kulcha', price: 110, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/STUFFED KULCHA.jpg' },
+      { name: 'Butter Stuffed Kulcha', price: 120, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER STUFFED KULCHA.jpg' }
     ],
     description: 'Spiced seasoned potato, herbs and onion mash stuffed into leavened bread.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/KULCHA.avif',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/STUFFED KULCHA.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -2414,8 +2422,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'लच्छा पराठा',
     price: 80,
     variants: [
-      { name: 'Plain Laccha Paratha', price: 80 },
-      { name: 'Butter Laccha Paratha', price: 90 }
+      { name: 'Plain Laccha Paratha', price: 80, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/LACHHA PARATHA.jpg' },
+      { name: 'Butter Laccha Paratha', price: 90, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER LACHHA PARATHA.jpg' }
     ],
     description: 'Multi-layered crisp spiral whole wheat paratha baked in clay tandoor.',
     tags: ['veg'],
@@ -2433,14 +2441,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'तवा पराठा',
     price: 40,
     variants: [
-      { name: 'Plain Tawa Paratha', price: 40 },
-      { name: 'Butter Tawa Paratha', price: 55 }
+      { name: 'Plain Tawa Paratha', price: 40, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/TAWA PARATHA.jpg' },
+      { name: 'Butter Tawa Paratha', price: 55, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER TAWA PARATHA.jpg' }
     ],
     description: 'Fresh flaky layered whole-wheat paratha griddled crisp on tawa.',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/TOMATO SOUP.jpg',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/TAWA PARATHA.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -2452,8 +2460,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'मिस्सी रोटी',
     price: 45,
     variants: [
-      { name: 'Plain Missi Roti', price: 45 },
-      { name: 'Butter Missi Roti', price: 50 }
+      { name: 'Plain Missi Roti', price: 45, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/MISSI ROTI.jpg' },
+      { name: 'Butter Missi Roti', price: 50, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER MISSI ROTI.jpg' }
     ],
     description: 'Gram flour (besan) and wheat blend kneaded with ajwain and mild spices.',
     tags: ['veg'],
@@ -2471,14 +2479,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'मेथी रोटी',
     price: 45,
     variants: [
-      { name: 'Plain Methi Roti', price: 45 },
-      { name: 'Butter Methi Roti', price: 50 }
+      { name: 'Plain Methi Roti', price: 45, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/METHI ROTI.jpg' },
+      { name: 'Butter Methi Roti', price: 50, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER METHI ROTI.jpg' }
     ],
     description: 'Whole wheat roti infused with fresh aromatic fenugreek leaves (methi).',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG UTTARANCHALI KABAB.jpg',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/METHI ROTI.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -2490,14 +2498,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'काश्मिरी नान',
     price: 60,
     variants: [
-      { name: 'Plain Kashmiri Naan', price: 60 },
-      { name: 'Butter Kashmiri Naan', price: 70 }
+      { name: 'Plain Kashmiri Naan', price: 60, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/KASHMIRI NAAN.jpg' },
+      { name: 'Butter Kashmiri Naan', price: 70, image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER KAHMIRI NAAN.jpg' }
     ],
     description: 'Subtly sweet tandoor-baked naan enriched with nuts, cherries and dry fruits.',
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER COMBO TIKKA.jpg',
+    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/KASHMIRI NAAN.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },

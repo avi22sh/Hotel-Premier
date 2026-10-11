@@ -2940,25 +2940,78 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 4px;
+  margin-top: 6px;
+  margin-bottom: 4px;
 }
 
 .variant-btn {
-  background: #F1F5F9;
-  border: 1px solid #CBD5E1;
-  border-radius: 6px;
-  padding: 3px 8px;
-  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(213, 183, 122, 0.28);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.73rem;
   font-weight: 700;
-  color: #334155;
+  color: #E2E8F0;
   cursor: pointer;
-  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  user-select: none;
+}
+
+.variant-btn:hover {
+  border-color: rgba(213, 183, 122, 0.6);
+  background: rgba(213, 183, 122, 0.12);
+  color: #FFF;
+  transform: translateY(-1px);
 }
 
 .variant-btn.selected {
-  background: #8B1538;
+  background: linear-gradient(135deg, #8B1538 0%, #B82A4D 100%);
   color: #FFFFFF;
-  border-color: #8B1538;
+  border-color: #FBBF24;
+  box-shadow: 0 2px 8px rgba(139, 21, 56, 0.45), inset 0 0 6px rgba(251, 191, 36, 0.3);
+  font-weight: 800;
+}
+
+.modal-dish-variant-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(213, 183, 122, 0.32);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #E2E8F0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.22s ease;
+  user-select: none;
+}
+
+.modal-dish-variant-btn:hover {
+  border-color: rgba(213, 183, 122, 0.7);
+  background: rgba(213, 183, 122, 0.15);
+  color: #FFF;
+  transform: translateY(-1px);
+}
+
+.modal-dish-variant-btn.selected {
+  background: linear-gradient(135deg, #8B1538 0%, #B82A4D 100%);
+  color: #FFFFFF;
+  border-color: #FBBF24;
+  box-shadow: 0 3px 10px rgba(139, 21, 56, 0.5), inset 0 0 8px rgba(251, 191, 36, 0.35);
+  font-weight: 800;
+}
+
+.dish-img-swapping,
+.modal-img-swapping {
+  opacity: 0.2;
+  filter: blur(2px);
+  transform: scale(0.98);
 }
 
 /* ==================== 4. CELEBRATE AT HOTEL PREMIER (BANQUETS & EVENTS) ==================== */

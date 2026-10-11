@@ -1422,9 +1422,9 @@ class HotelPremierApp {
     const groupMap = {
       all: null,
       breakfast: ['morning-delights', 'hot-hearty', 'tasty-tidbits', 'premier-soups', 'indo-chinese', 'tandoor-classics', 'italian-pasta'],
-      main: ['khandeshi-specialties', 'veg-specialties', 'paneer-specialties', 'kofta-delights', 'tandoor-rotis', 'thali-combos'],
-      rice: ['flavorful-dals', 'rice-biryani', 'sizzling-rice-noodles', 'sides-accompaniments'],
-      beverages: ['desserts', 'mocktails', 'milkshake-mastani', 'chilled-beverages']
+      main: ['vegetable-specialties', 'veg-specialties', 'kofta-delights', 'paneer-specialties', 'signature-breads', 'tandoor-rotis', 'khandeshi-specialties', 'thali-combos'],
+      rice: ['flavorful-dals', 'rice-biryani', 'fresh-addons', 'sizzling-rice-noodles', 'sides-accompaniments'],
+      beverages: ['mithai-magic', 'frozen-fantasies', 'desserts', 'mocktails', 'milkshake-mastani', 'chilled-beverages']
     };
 
     const allowed = groupMap[groupKey];
@@ -1644,7 +1644,7 @@ class HotelPremierApp {
       variantsHtml = `
         <div class="dish-variants" data-dish-id="${dish.id}">
           ${dish.variants.map((v, i) => `
-            <button class="variant-btn ${i === 0 ? 'selected' : ''}" data-variant-name="${v.name}" data-variant-price="${v.price}">
+            <button type="button" class="variant-btn ${i === 0 ? 'selected' : ''}" data-variant-name="${v.name}" data-variant-price="${v.price}" data-variant-img="${v.image || ''}">
               ${v.name} ₹${v.price}
             </button>
           `).join('')}
@@ -1732,12 +1732,32 @@ class HotelPremierApp {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const parent = btn.closest('.dish-variants');
+        if (!parent) return;
         const dishId = parent.getAttribute('data-dish-id');
         parent.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
+
         const newPrice = btn.getAttribute('data-variant-price');
         const priceDisplay = document.getElementById(`price-display-${dishId}`);
-        if (priceDisplay) priceDisplay.innerText = `₹${newPrice}`;
+        if (priceDisplay && newPrice) priceDisplay.innerText = `₹${newPrice}`;
+
+        const newImg = btn.getAttribute('data-variant-img');
+        if (newImg && newImg.trim() !== '') {
+          const cardImg = document.getElementById(`dish-img-el-${dishId}`);
+          if (cardImg && cardImg.tagName === 'IMG') {
+            cardImg.classList.add('dish-img-swapping');
+            setTimeout(() => {
+              cardImg.src = newImg;
+              cardImg.classList.remove('dish-img-swapping');
+            }, 120);
+          }
+          // Also remember active variant photo on dish data
+          const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+          if (dishObj) {
+            dishObj._activeVariantImage = newImg;
+            if (newPrice) dishObj._activeVariantPrice = Number(newPrice);
+          }
+        }
       });
     });
   }
@@ -1773,7 +1793,9 @@ class HotelPremierApp {
     const body = document.getElementById('dish-detail-body');
     if (!modal || !body) return;
 
-    const hasPhoto = dish.image && dish.image.trim() !== '';
+    const displayImage = dish._activeVariantImage || dish.image;
+    const displayPrice = dish._activeVariantPrice || dish.price;
+    const hasPhoto = displayImage && displayImage.trim() !== '';
     const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
     const zomatoScore = dish.zomatoRating || '4.2';
 
@@ -1783,18 +1805,6 @@ class HotelPremierApp {
     } else if (this.currentLang === 'mr' && (dish.marathiName || dish.hindiName)) {
       const subName = dish.marathiName || dish.hindiName;
       dishTitleHtml = `${dish.name} <span style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${subName})</span>`;
-    }
-
-    let variantsList = '';
-    if (dish.variants && dish.variants.length > 0) {
-      variantsList = `
-        <div style="margin-bottom: 14px; background: var(--cream-bg); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--cream-border);">
-          <div style="font-size: 0.8rem; font-weight: 800; color: var(--terracotta-dark); margin-bottom: 6px;">${this.t('variantsTitle')}</div>
-          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            ${dish.variants.map(v => `<span style="font-size: 0.85rem; font-weight: 800; color: var(--terracotta); background: #FFF; padding: 4px 10px; border-radius: 6px; border: 1.5px solid var(--gold-primary);">${v.name}: ₹${v.price}</span>`).join('')}
-          </div>
-        </div>
-      `;
     }
 
     // Top badges on modal photo
@@ -1819,12 +1829,10 @@ class HotelPremierApp {
     const modalBadgesHtml = modalBadges.join('');
 
     let detailMediaHtml = '';
-    if (window.AssetPipeline && typeof window.AssetPipeline.renderDetailMedia === 'function') {
-      detailMediaHtml = window.AssetPipeline.renderDetailMedia(dish, { badgesHtml: modalBadgesHtml });
-    } else if (hasPhoto) {
+    if (hasPhoto) {
       detailMediaHtml = `
         <div class="modal-dish-photo-wrap">
-          <img src="${dish.image}" alt="${dish.name}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.src='assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg';">
+          <img src="${displayImage}" alt="${dish.name}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.src='assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg';">
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${modalBadgesHtml ? `<div class="dish-badges">${modalBadgesHtml}</div>` : ''}
           ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
@@ -1836,7 +1844,7 @@ class HotelPremierApp {
     } else {
       detailMediaHtml = `
         <div class="modal-dish-photo-wrap no-photo" style="height: 180px;">
-          <div class="dish-no-photo-placeholder">
+          <div class="dish-no-photo-placeholder" id="detail-modal-img">
             <div class="no-photo-icon">🌱</div>
             <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
             <div class="no-photo-sub" style="font-size: 0.75rem;">PRIDE PURE VEG AC RESTAURANT</div>
@@ -1849,6 +1857,30 @@ class HotelPremierApp {
       `;
     }
 
+    const hasModalVariants = dish.variants && dish.variants.length > 0;
+    let modalVariantsHtml = '';
+    if (hasModalVariants) {
+      modalVariantsHtml = `
+        <div class="modal-dish-variants-box">
+          <div class="modal-dish-variants-title">${this.t('variantsTitle')}</div>
+          <div class="modal-dish-variants-list" id="modal-variants-list-${dish.id}">
+            ${dish.variants.map((v, i) => {
+              const isSelected = dish._activeVariantImage ? (dish._activeVariantImage === v.image) : (i === 0);
+              return `
+                <button type="button" class="modal-dish-variant-btn ${isSelected ? 'selected' : ''}" 
+                        data-variant-name="${v.name}" 
+                        data-variant-price="${v.price}" 
+                        data-variant-img="${v.image || ''}"
+                        onclick="window.app.switchModalVariant('${dish.id}', this)">
+                  ${v.name} ₹${v.price}
+                </button>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
     body.innerHTML = `
       ${detailMediaHtml}
       <div class="modal-dish-detail-container">
@@ -1857,7 +1889,7 @@ class HotelPremierApp {
             <h3 class="modal-dish-title">${dishTitleHtml}</h3>
             <div class="modal-dish-subtitle">Pride Restaurant • Chef Curated</div>
           </div>
-          <span class="modal-dish-price">₹${dish.price}</span>
+          <span class="modal-dish-price" id="modal-dish-price-${dish.id}">₹${displayPrice}</span>
         </div>
 
         <div class="modal-dish-tags">
@@ -1870,14 +1902,7 @@ class HotelPremierApp {
 
         <p class="modal-dish-desc">${dish.description || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
 
-        ${variantsList ? `
-          <div class="modal-dish-variants-box">
-            <div class="modal-dish-variants-title">${this.t('variantsTitle')}</div>
-            <div class="modal-dish-variants-list">
-              ${dish.variants.map(v => `<span class="modal-dish-variant-chip">${v.name}: ₹${v.price}</span>`).join('')}
-            </div>
-          </div>
-        ` : ''}
+        ${modalVariantsHtml}
 
         <div class="modal-dish-veg-guarantee">
           <span style="font-size: 1.1rem; line-height: 1;">🌱</span>
@@ -1902,6 +1927,57 @@ class HotelPremierApp {
 
     modal.style.display = 'flex';
     modal.classList.add('active');
+  }
+
+  switchModalVariant(dishId, btn) {
+    if (!btn) return;
+    const parentList = btn.closest('.modal-dish-variants-list');
+    if (parentList) {
+      parentList.querySelectorAll('.modal-dish-variant-btn').forEach(b => b.classList.remove('selected'));
+    }
+    btn.classList.add('selected');
+
+    const newPrice = btn.getAttribute('data-variant-price');
+    const newImg = btn.getAttribute('data-variant-img');
+    const priceEl = document.getElementById(`modal-dish-price-${dishId}`);
+    if (priceEl && newPrice) priceEl.innerText = `₹${newPrice}`;
+
+    if (newImg && newImg.trim() !== '') {
+      const modalImg = document.getElementById('detail-modal-img');
+      if (modalImg && modalImg.tagName === 'IMG') {
+        modalImg.classList.add('modal-img-swapping');
+        setTimeout(() => {
+          modalImg.src = newImg;
+          modalImg.classList.remove('modal-img-swapping');
+        }, 120);
+      }
+    }
+
+    // Synchronize the dish card in the background too
+    const cardPrice = document.getElementById(`price-display-${dishId}`);
+    if (cardPrice && newPrice) cardPrice.innerText = `₹${newPrice}`;
+
+    const cardImg = document.getElementById(`dish-img-el-${dishId}`);
+    if (cardImg && cardImg.tagName === 'IMG' && newImg && newImg.trim() !== '') {
+      cardImg.src = newImg;
+    }
+
+    const dishVariantsCard = document.querySelector(`.dish-variants[data-dish-id="${dishId}"]`);
+    if (dishVariantsCard) {
+      dishVariantsCard.querySelectorAll('.variant-btn').forEach(b => {
+        if (b.getAttribute('data-variant-name') === btn.getAttribute('data-variant-name')) {
+          b.classList.add('selected');
+        } else {
+          b.classList.remove('selected');
+        }
+      });
+    }
+
+    const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+    if (dishObj) {
+      if (newImg) dishObj._activeVariantImage = newImg;
+      if (newPrice) dishObj._activeVariantPrice = Number(newPrice);
+    }
   }
 
   closeDishDetail() {
