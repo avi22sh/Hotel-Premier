@@ -76,10 +76,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=20.0"></script>
+  <script src="asset-pipeline.js?v=20.1"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20.0">
+  <link rel="stylesheet" href="styles.css?v=20.1">
 </head>
 <body>
 
@@ -1803,8 +1803,8 @@
     <div class="culinary-drawer-sheet" role="dialog" aria-modal="true" aria-labelledby="drawer-heading-title">
       <div class="culinary-drawer-header">
         <div>
-          <div class="culinary-drawer-eyebrow">CULINARY SELECTION</div>
-          <h3 class="culinary-drawer-title" id="drawer-heading-title">Explore Our Menu</h3>
+          <div class="culinary-drawer-eyebrow">👑 CULINARY SELECTION</div>
+          <h3 class="culinary-drawer-title" id="drawer-heading-title">📖 Explore Our Menu</h3>
         </div>
         <button class="modal-close-btn" onclick="window.app ? window.app.closeMenuSectionDrawer() : null" aria-label="Close Drawer">✕</button>
       </div>
@@ -1815,11 +1815,11 @@
           <button class="clear-search-btn" id="drawer-clear-search-btn" onclick="document.getElementById('drawer-sections-search').value=''; if (window.app) window.app.filterDrawerSections(''); this.style.display='none';" style="display: none;">✕</button>
         </div>
         <div class="drawer-quick-filter-chips" id="drawer-quick-filter-chips">
-          <button type="button" class="drawer-qf-chip active" onclick="window.app ? window.app.filterDrawerByGroup('all') : null">All</button>
-          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('breakfast') : null">Breakfast & Starters</button>
-          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('main') : null">Mains & Breads</button>
-          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('rice') : null">Rice & Dal</button>
-          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('beverages') : null">Desserts & Drinks</button>
+          <button type="button" class="drawer-qf-chip active" onclick="window.app ? window.app.filterDrawerByGroup('all') : null">🍽️ All</button>
+          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('breakfast') : null">🌅 Breakfast & Starters</button>
+          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('main') : null">🥗 Mains & Breads</button>
+          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('rice') : null">🍚 Rice & Dal</button>
+          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('beverages') : null">🍨 Desserts & Drinks</button>
         </div>
       </div>
       <div class="drawer-sections-grid" id="drawer-sections-list">
@@ -1828,20 +1828,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.0) -->
-  <script src="storage.js?v=20.0"></script>
-  <script src="vault.js?v=20.0"></script>
-  <script src="data/translations.js?v=20.0"></script>
-  <script src="data/hotel-data.js?v=20.0"></script>
-  <script src="data/menu-data.js?v=20.0"></script>
-  <script src="app.js?v=20.0"></script>
-  <script src="admin.js?v=20.0"></script>
+  <!-- Load Application Scripts (v20.1) -->
+  <script src="storage.js?v=20.1"></script>
+  <script src="vault.js?v=20.1"></script>
+  <script src="data/translations.js?v=20.1"></script>
+  <script src="data/hotel-data.js?v=20.1"></script>
+  <script src="data/menu-data.js?v=20.1"></script>
+  <script src="app.js?v=20.1"></script>
+  <script src="admin.js?v=20.1"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.0').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.1').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

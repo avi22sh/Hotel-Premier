@@ -1301,11 +1301,15 @@ class HotelPremierApp {
            data-section-id="${item.id}"
            onclick="window.app.selectCategoryFromDrawer('${item.id}')">
         <div class="drawer-item-media">
-          ${item.image ? `<img src="${item.image}" alt="${item.name}" class="drawer-item-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` : ''}
+          ${item.image ? `
+            <img src="${item.image}" alt="${item.name}" class="drawer-item-img" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="drawer-item-icon-badge">${item.icon}</span>
+          ` : ''}
           <span class="drawer-fallback-icon" style="${item.image ? 'display:none;' : 'display:flex;'}">${item.icon}</span>
         </div>
         <div class="drawer-item-content">
           <div class="drawer-item-title-row">
+            <span class="drawer-item-title-icon" aria-hidden="true">${item.icon}</span>
             <h4 class="drawer-item-title">${item.name}</h4>
             ${item.isActive ? '<span class="drawer-active-pill">✓ CURRENT</span>' : ''}
           </div>
