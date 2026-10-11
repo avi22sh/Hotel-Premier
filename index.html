@@ -76,10 +76,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=20.1"></script>
+  <script src="asset-pipeline.js?v=20.2"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20.1">
+  <link rel="stylesheet" href="styles.css?v=20.2">
 </head>
 <body>
 
@@ -1828,20 +1828,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.1) -->
-  <script src="storage.js?v=20.1"></script>
-  <script src="vault.js?v=20.1"></script>
-  <script src="data/translations.js?v=20.1"></script>
-  <script src="data/hotel-data.js?v=20.1"></script>
-  <script src="data/menu-data.js?v=20.1"></script>
-  <script src="app.js?v=20.1"></script>
-  <script src="admin.js?v=20.1"></script>
+  <!-- Load Application Scripts (v20.2) -->
+  <script src="storage.js?v=20.2"></script>
+  <script src="vault.js?v=20.2"></script>
+  <script src="data/translations.js?v=20.2"></script>
+  <script src="data/hotel-data.js?v=20.2"></script>
+  <script src="data/menu-data.js?v=20.2"></script>
+  <script src="app.js?v=20.2"></script>
+  <script src="admin.js?v=20.2"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.1').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.2').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
