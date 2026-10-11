@@ -526,28 +526,89 @@ class HotelPremierAdmin {
             </div>
 
             <div style="text-align: center;">
-              <div style="width: 100%; height: 180px; border-radius: 8px; overflow: hidden; border: 2px solid var(--gold-border); margin-bottom: 4px; background: var(--cream-darker);">
-                <img id="image-preview-element" src="${dish.image}" style="width: 100%; height: 100%; object-fit: cover;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 0.76rem; font-weight: 800; color: var(--brass-light); display: inline-flex; align-items: center; gap: 4px;">
+                  ✨ <span>4K Studio Verification</span>
+                </span>
+                <div style="display: inline-flex; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 2px; border: 1px solid rgba(213,183,122,0.3);">
+                  <button type="button" id="preview-tab-enhanced" class="btn-preview-toggle active" onclick="window.admin.togglePreviewMode('enhanced')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: var(--brass-primary); color: #000; font-weight: 800; cursor: pointer;">4K Studio</button>
+                  <button type="button" id="preview-tab-original" class="btn-preview-toggle" onclick="window.admin.togglePreviewMode('original')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Original</button>
+                </div>
               </div>
-              <span style="font-size: 0.72rem; color: var(--text-muted);">Current Active Photo Preview</span>
+
+              <div style="position: relative; width: 100%; height: 210px; border-radius: 8px; overflow: hidden; border: 2px solid var(--brass-primary); margin-bottom: 6px; background: #0D111A; box-shadow: 0 4px 14px rgba(0,0,0,0.5);">
+                <img id="image-preview-element" src="${dish.image}" style="width: 100%; height: 100%; object-fit: cover;">
+                <div id="preview-4k-badge" style="position: absolute; bottom: 8px; left: 8px; background: rgba(14,22,34,0.85); backdrop-filter: blur(6px); border: 1px solid rgba(213,183,122,0.6); color: #D5B77A; padding: 3px 8px; border-radius: 12px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.5px;">
+                  ✨ AUTO 4K CALIBRATED
+                </div>
+              </div>
+              <div style="font-size: 0.70rem; color: #8C9BAE; display: flex; justify-content: space-between;">
+                <span>Auto-balanced light, warmth & 4K unsharp clarity</span>
+                <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Engine Ready</span>
+              </div>
             </div>
           ` : `
-            <div style="background: var(--cream-bg); border: 1.5px dashed var(--gold-primary); border-radius: 8px; padding: 12px; text-align: center;">
+            <div style="background: rgba(14,22,34,0.6); border: 1.5px dashed var(--brass-primary); border-radius: 8px; padding: 12px; text-align: center;">
               <div style="font-size: 1.5rem; margin-bottom: 2px;">🌱</div>
-              <div style="font-weight: 800; font-size: 0.85rem; color: var(--terracotta-dark);">No photo currently assigned</div>
-              <div style="font-size: 0.72rem; color: var(--text-muted);">Dish is displayed in Pure Veg text mode. Select or upload a photo below to attach an image.</div>
+              <div style="font-weight: 800; font-size: 0.85rem; color: var(--brass-light);">No photo currently assigned</div>
+              <div style="font-size: 0.72rem; color: #8C9BAE;">Select or upload below. Auto 4K Engine will automatically correct tones & background balance.</div>
             </div>
 
             <div style="text-align: center;">
-              <div style="width: 100%; height: 160px; border-radius: 8px; overflow: hidden; border: 2px solid var(--gold-border); margin-bottom: 4px; background: var(--cream-darker);">
-                <img id="image-preview-element" src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <span style="font-size: 0.76rem; font-weight: 800; color: var(--brass-light); display: inline-flex; align-items: center; gap: 4px;">
+                  ✨ <span>4K Studio Verification</span>
+                </span>
+                <div style="display: inline-flex; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 2px; border: 1px solid rgba(213,183,122,0.3);">
+                  <button type="button" id="preview-tab-enhanced" class="btn-preview-toggle active" onclick="window.admin.togglePreviewMode('enhanced')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: var(--brass-primary); color: #000; font-weight: 800; cursor: pointer;">4K Studio</button>
+                  <button type="button" id="preview-tab-original" class="btn-preview-toggle" onclick="window.admin.togglePreviewMode('original')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Original</button>
+                </div>
               </div>
-              <span style="font-size: 0.72rem; color: var(--text-muted);">New Photo Preview to Apply</span>
+              <div style="position: relative; width: 100%; height: 200px; border-radius: 8px; overflow: hidden; border: 2px solid var(--brass-primary); margin-bottom: 6px; background: #0D111A;">
+                <img id="image-preview-element" src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" style="width: 100%; height: 100%; object-fit: cover;">
+                <div id="preview-4k-badge" style="position: absolute; bottom: 8px; left: 8px; background: rgba(14,22,34,0.85); backdrop-filter: blur(6px); border: 1px solid rgba(213,183,122,0.6); color: #D5B77A; padding: 3px 8px; border-radius: 12px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.5px;">
+                  ✨ AUTO 4K CALIBRATED
+                </div>
+              </div>
+              <div style="font-size: 0.70rem; color: #8C9BAE; display: flex; justify-content: space-between;">
+                <span>Auto-balanced light, warmth & 4K unsharp clarity</span>
+                <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Engine Ready</span>
+              </div>
             </div>
           `}
 
+          <!-- Auto 4K Fine-Tuning Drawer / Sliders -->
+          <div style="background: rgba(14,22,34,0.5); border: 1px solid rgba(213,183,122,0.2); border-radius: 8px; padding: 10px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; cursor: pointer;" onclick="const d = document.getElementById('engine-fine-tuning-box'); d.style.display = d.style.display === 'none' ? 'block' : 'none';">
+              <span style="font-size: 0.75rem; font-weight: 800; color: var(--brass-light);">⚙️ 4K Studio Tone & Light Parameters</span>
+              <span style="font-size: 0.70rem; color: var(--brass-light); text-decoration: underline;">Toggle Adjustments ▼</span>
+            </div>
+            <div id="engine-fine-tuning-box" style="display: none; padding-top: 6px; font-size: 0.72rem;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 6px;">
+                <div>
+                  <label style="color: #CBD5E1; display: block; margin-bottom: 2px;">Warmth (Kelvin)</label>
+                  <input type="range" id="param-warmth" min="0" max="20" value="8" style="width: 100%;" oninput="window.admin.recalculate4KLive()">
+                </div>
+                <div>
+                  <label style="color: #CBD5E1; display: block; margin-bottom: 2px;">4K Clarity (Sharpness)</label>
+                  <input type="range" id="param-sharpness" min="0" max="50" value="28" style="width: 100%;" oninput="window.admin.recalculate4KLive()">
+                </div>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <div>
+                  <label style="color: #CBD5E1; display: block; margin-bottom: 2px;">Contrast & Depth</label>
+                  <input type="range" id="param-contrast" min="95" max="125" value="108" style="width: 100%;" oninput="window.admin.recalculate4KLive()">
+                </div>
+                <div>
+                  <label style="color: #CBD5E1; display: block; margin-bottom: 2px;">Studio Vignette</label>
+                  <input type="range" id="param-vignette" min="0" max="70" value="38" style="width: 100%;" oninput="window.admin.recalculate4KLive()">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div>
-            <label class="form-label">Option 1: Upload Photo from Phone / Camera</label>
+            <label class="form-label">Option 1: Upload Raw Photo from Phone / Camera</label>
             <input type="file" accept="image/*" class="form-input" style="padding: 6px;" onchange="window.admin.handleImageFileUpload(this)">
           </div>
 
@@ -570,7 +631,7 @@ class HotelPremierAdmin {
 
           <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px;">
             <button class="btn-secondary" onclick="window.admin.closeImageModal()">Cancel</button>
-            <button class="btn-primary" onclick="window.admin.saveReplacedImage()">Apply New Photo</button>
+            <button class="btn-primary" onclick="window.admin.saveReplacedImage()">Apply 4K Enhanced Photo</button>
           </div>
         </div>
       `;
@@ -610,6 +671,70 @@ class HotelPremierAdmin {
     this.activeRoomId = null;
     this.activeRoomPhotoIndex = null;
     this.editingSlideContext = null;
+    this.rawOriginalSource = null;
+    this.enhanced4KSource = null;
+  }
+
+  togglePreviewMode(mode) {
+    const preview = document.getElementById('image-preview-element');
+    const badge = document.getElementById('preview-4k-badge');
+    const tabEnhanced = document.getElementById('preview-tab-enhanced');
+    const tabOriginal = document.getElementById('preview-tab-original');
+
+    if (mode === 'original') {
+      if (preview && this.rawOriginalSource) preview.src = this.rawOriginalSource;
+      if (badge) badge.style.display = 'none';
+      if (tabEnhanced) {
+        tabEnhanced.style.background = 'transparent';
+        tabEnhanced.style.color = '#B2C0D1';
+      }
+      if (tabOriginal) {
+        tabOriginal.style.background = 'var(--brass-primary)';
+        tabOriginal.style.color = '#000';
+      }
+    } else {
+      if (preview && (this.enhanced4KSource || this.tempImageSource)) {
+        preview.src = this.enhanced4KSource || this.tempImageSource;
+      }
+      if (badge) badge.style.display = 'block';
+      if (tabEnhanced) {
+        tabEnhanced.style.background = 'var(--brass-primary)';
+        tabEnhanced.style.color = '#000';
+      }
+      if (tabOriginal) {
+        tabOriginal.style.background = 'transparent';
+        tabOriginal.style.color = '#B2C0D1';
+      }
+    }
+  }
+
+  async recalculate4KLive() {
+    if (!this.rawOriginalSource) return;
+    const warmth = parseInt(document.getElementById('param-warmth')?.value || '8', 10);
+    const sharpness = parseInt(document.getElementById('param-sharpness')?.value || '28', 10) / 100;
+    const contrast = parseInt(document.getElementById('param-contrast')?.value || '108', 10) / 100;
+    const vignetteStrength = parseInt(document.getElementById('param-vignette')?.value || '38', 10) / 100;
+
+    const status = document.getElementById('preview-engine-status');
+    if (status) status.innerText = '⚙️ Calibrating 4K...';
+
+    if (window.AssetPipeline && typeof window.AssetPipeline.enhanceFoodTo4K === 'function') {
+      try {
+        const enhanced = await window.AssetPipeline.enhanceFoodTo4K(this.rawOriginalSource, {
+          warmth: warmth,
+          sharpness: sharpness,
+          contrast: contrast,
+          vignetteStrength: vignetteStrength
+        });
+        this.enhanced4KSource = enhanced;
+        this.tempImageSource = enhanced;
+        const preview = document.getElementById('image-preview-element');
+        if (preview) preview.src = enhanced;
+        if (status) status.innerText = '● 4K Calibrated';
+      } catch (e) {
+        if (status) status.innerText = '● Ready';
+      }
+    }
   }
 
   async handleImageFileUpload(input) {
@@ -617,31 +742,84 @@ class HotelPremierAdmin {
     if (!file) return;
 
     try {
-      window.app.showToast('Optimizing and loading photo...', 'info');
-      const compressed = await this.compressAndResizeImage(file);
-      this.tempImageSource = compressed;
+      window.app.showToast('4K Engine: Ingesting raw photo...', 'info');
+      const status = document.getElementById('preview-engine-status');
+      if (status) status.innerText = '⚙️ 4K Auto-Balancing...';
+
+      // Read raw source for instant A/B comparison
+      const rawDataUrl = await new Promise((res, rej) => {
+        const r = new FileReader();
+        r.onload = e => res(e.target.result);
+        r.onerror = rej;
+        r.readAsDataURL(file);
+      });
+      this.rawOriginalSource = rawDataUrl;
+
+      // Automatically run through 4K Auto Engine
+      let enhanced = rawDataUrl;
+      if (window.AssetPipeline && typeof window.AssetPipeline.enhanceFoodTo4K === 'function') {
+        enhanced = await window.AssetPipeline.enhanceFoodTo4K(rawDataUrl);
+      } else {
+        enhanced = await this.compressAndResizeImage(file);
+      }
+
+      this.enhanced4KSource = enhanced;
+      this.tempImageSource = enhanced;
+
       const preview = document.getElementById('image-preview-element');
       const urlInput = document.getElementById('image-url-input-field');
       if (preview) preview.src = this.tempImageSource;
-      if (urlInput) urlInput.value = '(Uploaded Local Photo - Ready to Apply)';
-      window.app.showToast('Photo ready! Click "Apply New Photo" to save.', 'success');
+      if (urlInput) urlInput.value = '(4K Studio Enhanced Photo - Ready to Apply)';
+      if (status) status.innerText = '● 4K Calibrated (Ready)';
+
+      this.togglePreviewMode('enhanced');
+      window.app.showToast('4K auto-calibrated! Inspect & click "Apply 4K Enhanced Photo".', 'success');
     } catch (err) {
       alert('Failed to process image file: ' + err.message);
     }
   }
 
-  updatePreviewFromUrl(url) {
-    this.tempImageSource = url.trim();
+  async updatePreviewFromUrl(url) {
+    const trimmed = url.trim();
+    if (!trimmed) return;
+    this.rawOriginalSource = trimmed;
+    this.tempImageSource = trimmed;
     const preview = document.getElementById('image-preview-element');
-    if (preview && this.tempImageSource) preview.src = this.tempImageSource;
+    if (preview) preview.src = trimmed;
+
+    // Auto-enhance web image if possible
+    if (window.AssetPipeline && typeof window.AssetPipeline.enhanceFoodTo4K === 'function') {
+      try {
+        const enhanced = await window.AssetPipeline.enhanceFoodTo4K(trimmed);
+        this.enhanced4KSource = enhanced;
+        this.tempImageSource = enhanced;
+        if (preview) preview.src = enhanced;
+        this.togglePreviewMode('enhanced');
+      } catch (e) {
+        this.enhanced4KSource = trimmed;
+      }
+    }
   }
 
-  selectPresetImage(url) {
+  async selectPresetImage(url) {
+    this.rawOriginalSource = url;
     this.tempImageSource = url;
     const preview = document.getElementById('image-preview-element');
     const urlInput = document.getElementById('image-url-input-field');
     if (preview) preview.src = url;
     if (urlInput) urlInput.value = url;
+
+    if (window.AssetPipeline && typeof window.AssetPipeline.enhanceFoodTo4K === 'function') {
+      try {
+        const enhanced = await window.AssetPipeline.enhanceFoodTo4K(url);
+        this.enhanced4KSource = enhanced;
+        this.tempImageSource = enhanced;
+        if (preview) preview.src = enhanced;
+        this.togglePreviewMode('enhanced');
+      } catch (e) {
+        this.enhanced4KSource = url;
+      }
+    }
   }
 
   async saveReplacedImage() {

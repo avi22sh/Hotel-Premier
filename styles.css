@@ -2634,11 +2634,16 @@ a {
   object-fit: cover !important;
   object-position: center !important;
   display: block;
-  transition: transform 0.4s ease;
+  /* 4K High-Definition Rendering & Studio Warmth Calibration */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.05) saturate(1.06) brightness(1.02);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
 }
 
 .dish-card:hover .dish-img {
   transform: scale(1.03);
+  filter: contrast(1.08) saturate(1.10) brightness(1.04);
 }
 
 .dish-veg-symbol {
@@ -4911,15 +4916,17 @@ input::placeholder, textarea::placeholder, select::placeholder {
    HOTEL PREMIER - LUXURY ASSET PIPELINE & PRESENTATION ENGINE STYLES
    ========================================================================== */
 
-/* Glass Vignette Overlay on Dish Media */
+/* Glass Vignette Overlay on Dish Media - Background Homogenization */
 .hp-glass-vignette {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(circle at center, transparent 45%, rgba(10, 13, 20, 0.45) 85%, rgba(10, 13, 20, 0.75) 100%);
-  border: 1px solid rgba(213, 183, 122, 0.15);
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(213, 183, 122, 0.05) 0%, transparent 55%),
+    radial-gradient(circle at center, transparent 40%, rgba(10, 14, 22, 0.40) 80%, rgba(8, 11, 18, 0.75) 100%);
+  border: 1px solid rgba(213, 183, 122, 0.20);
   border-radius: inherit;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, border-color 0.3s ease;
   z-index: 2;
 }
 
@@ -4999,6 +5006,11 @@ input::placeholder, textarea::placeholder, select::placeholder {
   object-fit: cover !important;
   object-position: center !important;
   display: block;
+  /* 4K High-Definition Rendering & Studio Warmth Calibration */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(1.05) saturate(1.06) brightness(1.02);
+  transition: transform 0.4s ease;
 }
 
 .btn-detail-photo-action {
