@@ -59,7 +59,7 @@ class HotelPremierAdmin {
   }
 
   // Security Verification
-  openAdminModal() {
+  openAdminModal(initialTab = null, dishQuery = null) {
     const modal = document.getElementById('admin-modal-backdrop');
     if (!modal) return;
 
@@ -69,7 +69,17 @@ class HotelPremierAdmin {
     } else {
       document.getElementById('admin-auth-view').style.display = 'none';
       document.getElementById('admin-dashboard-view').style.display = 'flex';
-      this.switchTab(this.currentTab);
+      this.switchTab(initialTab || this.currentTab);
+      if (dishQuery) {
+        setTimeout(() => {
+          const searchInput = document.getElementById('admin-search-dish');
+          if (searchInput) {
+            const dish = window.app.menuData.find(d => d.id === dishQuery);
+            searchInput.value = dish ? dish.name : dishQuery;
+            this.filterAdminDishes();
+          }
+        }, 100);
+      }
     }
 
     modal.classList.add('active');
@@ -350,10 +360,10 @@ class HotelPremierAdmin {
               <th style="width: 60px;">Photo</th>
               <th>Dish Name & Description</th>
               <th>Category</th>
-              <th style="width: 100px;">Price (₹)</th>
-              <th style="width: 70px; text-align: center;">Special</th>
-              <th style="width: 90px; text-align: center;">Available</th>
-              <th style="width: 70px; text-align: center;">Delete</th>
+              <th style="width: 90px;">Price (₹)</th>
+              <th style="min-width: 170px;">Taste & Badges (Sweet/Spicy/etc)</th>
+              <th style="width: 80px; text-align: center;">Available</th>
+              <th style="width: 60px; text-align: center;">Delete</th>
             </tr>
           </thead>
           <tbody id="admin-dish-tbody">
@@ -369,9 +379,14 @@ class HotelPremierAdmin {
 
   generateDishTableRows(dishes) {
     return dishes.map(dish => {
-      const isSpecial = dish.tags && dish.tags.includes('chef-special');
       const isSoldOut = !!dish.isSoldOut;
       const hasPhoto = dish.image && dish.image.trim() !== '';
+      const tags = dish.tags || [];
+      const isSweet = tags.includes('sweet');
+      const isSpicy = tags.includes('spicy');
+      const isChef = tags.includes('chef-special');
+      const isBestseller = tags.includes('bestseller');
+      const isKhandeshi = tags.includes('khandeshi-special');
 
       return `
         <tr id="admin-row-${dish.id}">
@@ -406,8 +421,24 @@ class HotelPremierAdmin {
               <input type="number" value="${dish.price}" style="width: 65px; padding: 4px 6px; font-size: 0.85rem; font-weight: 800; border: 1px solid var(--cream-border); border-radius: 4px;" onchange="window.admin.updatePrice('${dish.id}', this.value)">
             </div>
           </td>
-          <td style="text-align: center;">
-            <input type="checkbox" ${isSpecial ? 'checked' : ''} onchange="window.admin.toggleSpecial('${dish.id}', this.checked)" style="width: 18px; height: 18px; cursor: pointer;">
+          <td>
+            <div class="admin-taste-tags-wrap">
+              <button type="button" class="admin-tag-toggle-chip ${isSweet ? 'active-sweet' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'sweet')" title="Toggle Sweet (मीठा) Profile">
+                🍯 Sweet
+              </button>
+              <button type="button" class="admin-tag-toggle-chip ${isSpicy ? 'active-spicy' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'spicy')" title="Toggle Spicy (तीखा) Profile">
+                🌶️ Spicy
+              </button>
+              <button type="button" class="admin-tag-toggle-chip ${isChef ? 'active-chef' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'chef-special')" title="Toggle Chef's Special">
+                👑 Chef
+              </button>
+              <button type="button" class="admin-tag-toggle-chip ${isBestseller ? 'active-bestseller' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'bestseller')" title="Toggle Bestseller">
+                🔥 Hot
+              </button>
+              <button type="button" class="admin-tag-toggle-chip ${isKhandeshi ? 'active-khandeshi' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'khandeshi-special')" title="Toggle Khandeshi Special">
+                🫕 Khandeshi
+              </button>
+            </div>
           </td>
           <td style="text-align: center;">
             <label class="toggle-switch">
@@ -452,22 +483,47 @@ class HotelPremierAdmin {
     }
   }
 
-  async toggleSpecial(dishId, isSpecial) {
+  async toggleDishTag(dishId, tagName) {
     const dish = window.app.menuData.find(d => d.id === dishId);
-    if (dish) {
-      if (!dish.tags) dish.tags = [];
-      if (isSpecial && !dish.tags.includes('chef-special')) {
-        dish.tags.push('chef-special');
-      } else if (!isSpecial) {
-        dish.tags = dish.tags.filter(t => t !== 'chef-special');
-      }
-      window.app.saveMenuData();
-      if (window.HOTEL_STORAGE) {
-        await window.HOTEL_STORAGE.saveDishOverride(dishId, { tags: dish.tags });
-      }
-      window.app.renderMenu();
-      window.app.showToast(`Updated Chef's Special status for "${dish.name}"`, 'info');
+    if (!dish) return;
+
+    if (!dish.tags) dish.tags = [];
+
+    const index = dish.tags.indexOf(tagName);
+    if (index > -1) {
+      dish.tags.splice(index, 1);
+    } else {
+      dish.tags.push(tagName);
     }
+
+    window.app.saveMenuData();
+    if (window.HOTEL_STORAGE) {
+      await window.HOTEL_STORAGE.saveDishOverride(dishId, { tags: dish.tags });
+    }
+
+    // Refresh UI smoothly
+    this.filterAdminDishes();
+    window.app.renderMenu();
+
+    // If modal is open for this dish, refresh modal tags as well
+    const modal = document.getElementById('dish-detail-modal');
+    if (modal && modal.classList.contains('active')) {
+      window.app.openDishDetail(dishId);
+    }
+
+    const tagLabels = {
+      'sweet': 'Sweet (मीठा)',
+      'spicy': 'Spicy (तीखा)',
+      'chef-special': "Chef's Special 👑",
+      'bestseller': 'Bestseller 🔥',
+      'khandeshi-special': 'Khandeshi Special 🫕'
+    };
+    const action = dish.tags.includes(tagName) ? 'Added' : 'Removed';
+    window.app.showToast(`${action} ${tagLabels[tagName] || tagName} tag for "${dish.name}"`, 'success');
+  }
+
+  async toggleSpecial(dishId, isSpecial) {
+    this.toggleDishTag(dishId, 'chef-special');
   }
 
   async toggleAvailability(dishId, isAvailable) {
@@ -2186,7 +2242,11 @@ class HotelPremierAdmin {
     const price = parseFloat(document.getElementById('new-dish-price').value) || 0;
     const desc = document.getElementById('new-dish-desc').value.trim();
     const urlInput = document.getElementById('new-dish-image').value.trim();
-    const isSpecial = document.getElementById('new-dish-special').checked;
+    const isSpecial = document.getElementById('new-dish-special') ? document.getElementById('new-dish-special').checked : false;
+    const isSweet = document.getElementById('new-dish-sweet') ? document.getElementById('new-dish-sweet').checked : false;
+    const isSpicy = document.getElementById('new-dish-spicy') ? document.getElementById('new-dish-spicy').checked : false;
+    const isBestseller = document.getElementById('new-dish-bestseller') ? document.getElementById('new-dish-bestseller').checked : false;
+    const isKhandeshi = document.getElementById('new-dish-khandeshi') ? document.getElementById('new-dish-khandeshi').checked : false;
 
     if (!name || !price) {
       alert('Please provide dish name and valid price.');
@@ -2195,6 +2255,13 @@ class HotelPremierAdmin {
 
     const defaultImg = 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80';
     const finalImage = this.newDishTempImage || (urlInput && !urlInput.startsWith('(') ? urlInput : defaultImg);
+
+    const newTags = ['veg'];
+    if (isSweet) newTags.push('sweet');
+    if (isSpicy) newTags.push('spicy');
+    if (isSpecial) newTags.push('chef-special');
+    if (isBestseller) newTags.push('bestseller');
+    if (isKhandeshi) newTags.push('khandeshi-special');
 
     const newDish = {
       id: `dish-custom-${Date.now()}`,
@@ -2205,7 +2272,7 @@ class HotelPremierAdmin {
       image: finalImage,
       rating: '4.9',
       isSoldOut: false,
-      tags: isSpecial ? ['chef-special'] : []
+      tags: newTags
     };
 
     window.app.menuData.unshift(newDish);

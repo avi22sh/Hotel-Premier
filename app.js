@@ -1885,10 +1885,34 @@ class HotelPremierApp {
       <div class="modal-dish-detail-container">
         <div class="modal-dish-header">
           <div>
-            <h3 class="modal-dish-title">${dishTitleHtml}</h3>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <h3 class="modal-dish-title">${dishTitleHtml}</h3>
+              <button onclick="window.admin ? window.admin.openAdminModal('menu', '${dish.id}') : null" class="btn-staff-dish-edit-tag" title="Staff Taste & Price Editor">
+                ✏️ Edit Tags
+              </button>
+            </div>
             <div class="modal-dish-subtitle">Pride Restaurant • Chef Curated</div>
           </div>
           <span class="modal-dish-price" id="modal-dish-price-${dish.id}">₹${displayPrice}</span>
+        </div>
+
+        <div class="modal-staff-taste-modifier-bar" id="modal-staff-taste-bar-${dish.id}">
+          <span style="font-size: 0.70rem; font-weight: 800; color: var(--brass-light); text-transform: uppercase;">Taste Profile:</span>
+          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('sweet') ? 'active-sweet' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'sweet') : null">
+            🍯 Sweet
+          </button>
+          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('spicy') ? 'active-spicy' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'spicy') : null">
+            🌶️ Spicy
+          </button>
+          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('chef-special') ? 'active-chef' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'chef-special') : null">
+            👑 Chef
+          </button>
+          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('bestseller') ? 'active-bestseller' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'bestseller') : null">
+            🔥 Hot
+          </button>
+          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('khandeshi-special') ? 'active-khandeshi' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'khandeshi-special') : null">
+            🫕 Khandeshi
+          </button>
         </div>
 
         <div class="modal-dish-tags">
