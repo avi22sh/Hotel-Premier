@@ -596,86 +596,73 @@ class HotelPremierAdmin {
                 🗑️ Delete Photo
               </button>
             </div>
-
-            <!-- Interactive Before/After Studio Slider -->
-            <div style="text-align: center;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <div style="display: inline-flex; align-items: center; gap: 6px;">
-                  <span style="font-size: 0.76rem; font-weight: 800; color: var(--brass-light); display: inline-flex; align-items: center; gap: 4px;">
-                    ✨ <span>Studio Comparison</span>
-                  </span>
-                  <span id="lifecycle-status-badge" class="hp-status-pill hp-status-${this.currentEnhancementStatus}">
-                    ${this.currentEnhancementStatus.toUpperCase()} (${this.currentQualityScore}%)
-                  </span>
-                </div>
-                <div style="display: inline-flex; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 2px; border: 1px solid rgba(213,183,122,0.3);">
-                  <button type="button" id="preview-tab-split" class="btn-preview-toggle active" onclick="window.admin.toggleComparisonMode('split')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: var(--brass-primary); color: #000; font-weight: 800; cursor: pointer;">Split View</button>
-                  <button type="button" id="preview-tab-enhanced" class="btn-preview-toggle" onclick="window.admin.toggleComparisonMode('enhanced')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Studio Master</button>
-                  <button type="button" id="preview-tab-original" class="btn-preview-toggle" onclick="window.admin.toggleComparisonMode('original')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Raw Original</button>
-                </div>
-              </div>
-
-              <!-- Dual Layer Split Slider Container -->
-              <div class="hp-before-after-container" id="hp-slider-container">
-                <!-- Underlayer: Raw Original Image -->
-                <img id="image-original-element" class="hp-slider-original-img" src="${this.rawOriginalSource || dish.image}">
-                <span class="hp-slider-label hp-slider-label-left">BEFORE (RAW)</span>
-
-                <!-- Overlayer: Enhanced Studio Master (Clipped) -->
-                <div class="hp-slider-enhanced-wrap" id="hp-enhanced-wrap" style="width: 50%;">
-                  <img id="image-preview-element" class="hp-slider-enhanced-img" src="${this.enhanced4KSource || dish.image}">
-                  <span class="hp-slider-label hp-slider-label-right">AFTER (STUDIO)</span>
-                </div>
-
-                <!-- Draggable Divider Handle -->
-                <div class="hp-slider-handle" id="hp-slider-handle" style="left: 50%;">
-                  <div class="hp-slider-handle-circle">‹ ›</div>
-                </div>
-
-                <!-- 4K Studio Quality Badge -->
-                <div id="preview-4k-badge" style="position: absolute; bottom: 8px; left: 8px; z-index: 10; background: rgba(14,22,34,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(213,183,122,0.6); color: #D5B77A; padding: 3px 8px; border-radius: 12px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.5px;">
-                  ✨ AUTO STUDIO PHOTOGRAPHY CALIBRATED
-                </div>
-              </div>
-
-              <!-- Interactive Range Bar to adjust split -->
-              <input type="range" min="0" max="100" value="50" class="hp-split-range-input" id="hp-split-range" oninput="window.admin.setSplitSliderPosition(this.value)">
-
-              <div style="font-size: 0.70rem; color: #8C9BAE; display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
-                <span>Drag slider above or tap tabs to compare raw vs studio master</span>
-                <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Studio Engine Active</span>
-              </div>
-
-              <!-- Revert / Approve Action Bar -->
-              <div style="display: flex; gap: 8px; justify-content: center; margin-top: 8px;">
-                <button type="button" class="btn-theme-engine-chip" onclick="window.admin.revertActiveDishToOriginal()" title="Revert dish to untouched raw camera photo">
-                  ⏮️ Revert to Raw Original
-                </button>
-                <button type="button" class="btn-theme-engine-chip active" onclick="window.admin.approveActiveDishPhoto()" title="Mark enhanced photo as approved master">
-                  ✅ Approve Enhanced Master
-                </button>
-              </div>
-            </div>
           ` : `
-            <div style="background: rgba(14,22,34,0.6); border: 1.5px dashed var(--brass-primary); border-radius: 8px; padding: 12px; text-align: center;">
-              <div style="font-size: 1.5rem; margin-bottom: 2px;">🌱</div>
-              <div style="font-weight: 800; font-size: 0.85rem; color: var(--brass-light);">No photo currently assigned</div>
-              <div style="font-size: 0.72rem; color: #8C9BAE;">Upload below. The AI Studio Engine will automatically identify the food, protect authentic contents, harmonize backgrounds, and calibrate 3200K gourmet lighting.</div>
-            </div>
-
-            <div style="text-align: center;">
-              <div style="position: relative; width: 100%; height: 200px; border-radius: 8px; overflow: hidden; border: 2px solid var(--brass-primary); margin-bottom: 6px; background: #0D111A;">
-                <img id="image-preview-element" src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" style="width: 100%; height: 100%; object-fit: cover;">
-                <div id="preview-4k-badge" style="position: absolute; bottom: 8px; left: 8px; background: rgba(14,22,34,0.85); backdrop-filter: blur(6px); border: 1px solid rgba(213,183,122,0.6); color: #D5B77A; padding: 3px 8px; border-radius: 12px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.5px;">
-                  ✨ READY FOR AUTOMATIC UPLOAD ENHANCEMENT
-                </div>
-              </div>
-              <div style="font-size: 0.70rem; color: #8C9BAE; display: flex; justify-content: space-between;">
-                <span>Auto-categorized brand surface & 3D contact shadows</span>
-                <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Studio Engine Ready</span>
-              </div>
+            <div style="background: rgba(14,22,34,0.6); border: 1.5px dashed var(--brass-primary); border-radius: 8px; padding: 10px 12px; text-align: center;">
+              <div style="font-size: 1.3rem; margin-bottom: 2px;">🌱</div>
+              <div style="font-weight: 800; font-size: 0.82rem; color: var(--brass-light);">No photo currently assigned</div>
+              <div style="font-size: 0.70rem; color: #8C9BAE;">Select a photo below. The AI Studio Engine will automatically detect the food, preserve authentic dishes, and calibrate 3200K gourmet lighting.</div>
             </div>
           `}
+
+          <!-- Interactive Before/After Studio Slider (Always in DOM for instant seamless upload preview) -->
+          <div style="text-align: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <div style="display: inline-flex; align-items: center; gap: 6px;">
+                <span style="font-size: 0.76rem; font-weight: 800; color: var(--brass-light); display: inline-flex; align-items: center; gap: 4px;">
+                  ✨ <span>Studio Comparison</span>
+                </span>
+                <span id="lifecycle-status-badge" class="hp-status-pill hp-status-${this.currentEnhancementStatus}">
+                  ${this.currentEnhancementStatus.toUpperCase()} (${this.currentQualityScore}%)
+                </span>
+              </div>
+              <div style="display: inline-flex; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 2px; border: 1px solid rgba(213,183,122,0.3);">
+                <button type="button" id="preview-tab-split" class="btn-preview-toggle active" onclick="window.admin.toggleComparisonMode('split')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: var(--brass-primary); color: #000; font-weight: 800; cursor: pointer;">Split View</button>
+                <button type="button" id="preview-tab-enhanced" class="btn-preview-toggle" onclick="window.admin.toggleComparisonMode('enhanced')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Studio Master</button>
+                <button type="button" id="preview-tab-original" class="btn-preview-toggle" onclick="window.admin.toggleComparisonMode('original')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Raw Original</button>
+              </div>
+            </div>
+
+            <!-- Dual Layer Split Slider Container -->
+            <div class="hp-before-after-container" id="hp-slider-container">
+              <!-- Underlayer: Raw Original Image -->
+              <img id="image-original-element" class="hp-slider-original-img" src="${this.rawOriginalSource || 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'}">
+              <span class="hp-slider-label hp-slider-label-left">BEFORE (RAW)</span>
+
+              <!-- Overlayer: Enhanced Studio Master (Clipped) -->
+              <div class="hp-slider-enhanced-wrap" id="hp-enhanced-wrap" style="width: 50%;">
+                <img id="image-preview-element" class="hp-slider-enhanced-img" src="${this.enhanced4KSource || 'https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'}">
+                <span class="hp-slider-label hp-slider-label-right">AFTER (STUDIO)</span>
+              </div>
+
+              <!-- Draggable Divider Handle -->
+              <div class="hp-slider-handle" id="hp-slider-handle" style="left: 50%;">
+                <div class="hp-slider-handle-circle">‹ ›</div>
+              </div>
+
+              <!-- 4K Studio Quality Badge -->
+              <div id="preview-4k-badge" style="position: absolute; bottom: 8px; left: 8px; z-index: 10; background: rgba(14,22,34,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(213,183,122,0.6); color: #D5B77A; padding: 3px 8px; border-radius: 12px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.5px;">
+                ✨ AUTO STUDIO PHOTOGRAPHY CALIBRATED
+              </div>
+            </div>
+
+            <!-- Interactive Range Bar to adjust split -->
+            <input type="range" min="0" max="100" value="50" class="hp-split-range-input" id="hp-split-range" oninput="window.admin.setSplitSliderPosition(this.value)">
+
+            <div style="font-size: 0.70rem; color: #8C9BAE; display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span>Drag slider above or tap tabs to compare raw vs studio master</span>
+              <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Studio Engine Active</span>
+            </div>
+
+            <!-- Revert / Approve Action Bar -->
+            <div style="display: flex; gap: 8px; justify-content: center; margin-top: 8px;">
+              <button type="button" class="btn-theme-engine-chip" onclick="window.admin.revertActiveDishToOriginal()" title="Revert dish to untouched raw camera photo">
+                ⏮️ Revert to Raw Original
+              </button>
+              <button type="button" class="btn-theme-engine-chip active" onclick="window.admin.approveActiveDishPhoto()" title="Mark enhanced photo as approved master">
+                ✅ Approve Enhanced Master
+              </button>
+            </div>
+          </div>
 
           <!-- Theme Pedestal & View Adjustment Engine Controls -->
           <div style="background: rgba(14,22,34,0.7); border: 1px solid rgba(213,183,122,0.3); border-radius: 8px; padding: 10px;">
@@ -962,11 +949,13 @@ class HotelPremierAdmin {
   }
 
   async handleImageFileUpload(input) {
-    const file = input.files[0];
+    const file = input && input.files ? input.files[0] : null;
     if (!file) return;
 
     try {
-      window.app.showToast('Studio Engine: Ingesting raw photo...', 'info');
+      if (window.app && typeof window.app.showToast === 'function') {
+        window.app.showToast('Studio Engine: Ingesting raw photo...', 'info');
+      }
       const status = document.getElementById('preview-engine-status');
       if (status) status.innerText = '⚙️ Analyzing Food & Calibrating 3200K Studio...';
 
@@ -982,25 +971,36 @@ class HotelPremierAdmin {
       const origEl = document.getElementById('image-original-element');
       if (origEl) origEl.src = rawDataUrl;
 
-      const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
+      const dish = (window.app && window.app.menuData ? window.app.menuData.find(d => d.id === this.activeImageDishId) : null) || {};
 
-      // Automatically run through Automatic Studio Enhancement Pipeline
+      // Automatically run through Automatic Studio Enhancement Pipeline with robust fallback
       let enhanced = rawDataUrl;
       let qualityScore = 90;
       let category = 'curry';
       let flags = [];
 
-      if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawDataUrl, dish, {
-          backgroundMode: this.activeBackgroundMode || 'harmonize',
-          framingMode: this.activeFramingMode || 'smart'
-        });
-        enhanced = res.enhancedDataUrl;
-        qualityScore = res.qualityScore;
-        category = res.category;
-        flags = res.flags || [];
-      } else {
-        enhanced = await this.compressAndResizeImage(file);
+      try {
+        if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
+          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawDataUrl, dish, {
+            backgroundMode: this.activeBackgroundMode || 'harmonize',
+            framingMode: this.activeFramingMode || 'smart'
+          });
+          if (res && res.enhancedDataUrl) {
+            enhanced = res.enhancedDataUrl;
+            qualityScore = res.qualityScore || 90;
+            category = res.category || 'curry';
+            flags = res.flags || [];
+          }
+        } else {
+          enhanced = await this.compressAndResizeImage(file);
+        }
+      } catch (pipelineErr) {
+        console.warn('Studio enhancement pipeline recovered gracefully:', pipelineErr);
+        try {
+          enhanced = await this.compressAndResizeImage(file);
+        } catch (compErr) {
+          enhanced = rawDataUrl;
+        }
       }
 
       this.enhanced4KSource = enhanced;
@@ -1020,10 +1020,27 @@ class HotelPremierAdmin {
         badge.innerText = `STUDIO MASTER (${qualityScore}%)`;
       }
 
-      this.toggleComparisonMode('split');
-      window.app.showToast(`Studio Master ready! Category: ${category}, Score: ${qualityScore}%.`, 'success');
+      if (typeof this.toggleComparisonMode === 'function') {
+        this.toggleComparisonMode('split');
+      }
+      if (window.app && typeof window.app.showToast === 'function') {
+        window.app.showToast(`Studio Master ready! Category: ${category}, Score: ${qualityScore}%.`, 'success');
+      }
     } catch (err) {
-      alert('Failed to process image file: ' + err.message);
+      console.error('handleImageFileUpload error:', err);
+      // Fallback: never block the user from uploading an image
+      try {
+        const fallback = await this.compressAndResizeImage(file);
+        this.tempImageSource = fallback;
+        this.enhanced4KSource = fallback;
+        const preview = document.getElementById('image-preview-element');
+        if (preview) preview.src = fallback;
+        if (window.app && typeof window.app.showToast === 'function') {
+          window.app.showToast('Photo uploaded successfully (standard compression mode)', 'success');
+        }
+      } catch (fallbackErr) {
+        alert('Failed to process image file: ' + err.message);
+      }
     }
   }
 
@@ -2453,21 +2470,45 @@ class HotelPremierAdmin {
       let score = 90;
       let cat = 'curry';
 
-      if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawDataUrl, { name: dishName, categoryId: catId });
-        enhanced = res.enhancedDataUrl;
-        score = res.qualityScore;
-        cat = res.category;
-      } else {
-        enhanced = await this.compressAndResizeImage(file);
+      try {
+        if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
+          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawDataUrl, { name: dishName, categoryId: catId });
+          if (res && res.enhancedDataUrl) {
+            enhanced = res.enhancedDataUrl;
+            score = res.qualityScore || 90;
+            cat = res.category || 'curry';
+          }
+        } else {
+          enhanced = await this.compressAndResizeImage(file);
+        }
+      } catch (pipelineErr) {
+        console.warn('New dish studio pipeline fallback:', pipelineErr);
+        try {
+          enhanced = await this.compressAndResizeImage(file);
+        } catch (compErr) {
+          enhanced = rawDataUrl;
+        }
       }
 
       this.newDishTempImage = enhanced;
       const urlInput = document.getElementById('new-dish-image');
       if (urlInput) urlInput.value = `(AI Studio Enhanced • ${cat.toUpperCase()} • ${score}%)`;
-      window.app.showToast(`Studio Master photo ready (${score}%)!`, 'success');
+      if (window.app && typeof window.app.showToast === 'function') {
+        window.app.showToast(`Studio Master photo ready (${score}%)!`, 'success');
+      }
     } catch (err) {
-      alert('Failed to process photo: ' + err.message);
+      console.error('handleNewDishPhotoUpload error:', err);
+      try {
+        const fallback = await this.compressAndResizeImage(file);
+        this.newDishTempImage = fallback;
+        const urlInput = document.getElementById('new-dish-image');
+        if (urlInput) urlInput.value = '(Photo uploaded)';
+        if (window.app && typeof window.app.showToast === 'function') {
+          window.app.showToast('Photo uploaded successfully', 'success');
+        }
+      } catch (e) {
+        alert('Failed to process photo: ' + err.message);
+      }
     }
   }
 

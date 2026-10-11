@@ -227,14 +227,26 @@
       }
 
       try {
-        // 2. Offscreen Canvas for Subject Segmentation
-        const sw = img.naturalWidth || img.width || 400;
-        const sh = img.naturalHeight || img.height || 300;
+        // 2. Offscreen Canvas for Subject Segmentation (Safely capped to max 1280px to prevent mobile RAM limits)
+        let sw = img.naturalWidth || img.width || 400;
+        let sh = img.naturalHeight || img.height || 300;
+        const maxIsoDim = 1280;
+        if (sw > maxIsoDim || sh > maxIsoDim) {
+          if (sw > sh) {
+            sh = Math.round((sh * maxIsoDim) / sw);
+            sw = maxIsoDim;
+          } else {
+            sw = Math.round((sw * maxIsoDim) / sh);
+            sh = maxIsoDim;
+          }
+        }
+
         const subCanvas = document.createElement('canvas');
         subCanvas.width = sw;
         subCanvas.height = sh;
         const subCtx = subCanvas.getContext('2d');
-        subCtx.drawImage(img, 0, 0);
+        if (!subCtx) return typeof imageSource === 'string' ? imageSource : imageSource.src;
+        subCtx.drawImage(img, 0, 0, sw, sh);
 
         // 3. Pixel Background Detection & Isolation
         const imgData = subCtx.getImageData(0, 0, sw, sh);
