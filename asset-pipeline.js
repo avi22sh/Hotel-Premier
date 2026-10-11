@@ -469,6 +469,8 @@
       const hasPhoto = dish.image && dish.image.trim() !== '';
       const soldOutHtml = dish.isSoldOut ? `<div class="sold-out-overlay">SOLD OUT</div>` : '';
 
+      const badgesHtml = options.badgesHtml || '';
+
       if (!hasPhoto) {
         return `
           <div class="modal-dish-photo-wrap no-photo" style="height: 180px;">
@@ -478,6 +480,7 @@
               <div class="no-photo-sub" style="font-size: 0.75rem;">PRIDE PURE VEG AC RESTAURANT</div>
             </div>
             <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
+            ${badgesHtml ? `<div class="dish-badges">${badgesHtml}</div>` : ''}
             ${soldOutHtml}
             <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
               📷 Upload Photo
@@ -497,6 +500,7 @@
             onerror="this.onerror=null; this.parentElement.classList.add('no-photo'); this.parentElement.innerHTML='<div class=\'dish-no-photo-placeholder\'><div class=\'no-photo-icon\'>🌱</div><div class=\'no-photo-crest\'>HOTEL PREMIER</div><div class=\'no-photo-sub\'>PRIDE PURE VEG AC RESTAURANT</div></div>';"
           >
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
+          ${badgesHtml ? `<div class="dish-badges">${badgesHtml}</div>` : ''}
           ${soldOutHtml}
           <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
             📷 Change / Upload Photo

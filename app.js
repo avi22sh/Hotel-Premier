@@ -1601,10 +1601,13 @@ class HotelPremierApp {
       tagPillsHtml += `<button type="button" class="dish-pill-swiggy" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('swiggy') : window.open('https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948', '_blank');">🛵 4.2★ Swiggy</button>`;
     }
     if (dish.tags && dish.tags.includes('spicy')) {
-      tagPillsHtml += `<span class="dish-pill-spice">🌶️ Spicy</span>`;
+      tagPillsHtml += `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>`;
+    }
+    if (dish.tags && dish.tags.includes('sweet')) {
+      tagPillsHtml += `<span class="dish-pill-sweet">${this.t('badgeSweet')}</span>`;
     }
     if (dish.tags && dish.tags.includes('chef-special')) {
-      tagPillsHtml += `<span class="dish-pill-chef">👑 Chef's Special</span>`;
+      tagPillsHtml += `<span class="dish-pill-chef">${this.t('badgeChefSpecial')}</span>`;
     }
 
     let variantsHtml = '';
@@ -1629,11 +1632,25 @@ class HotelPremierApp {
     }
 
     let topBadgeHtml = '';
-    if (dish.tags && dish.tags.includes('bestseller')) {
-      topBadgeHtml = `<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`;
-    } else if (dish.tags && dish.tags.includes('khandeshi-special')) {
-      topBadgeHtml = `<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`;
+    const badgeItems = [];
+    if (dish.tags) {
+      if (dish.tags.includes('bestseller')) {
+        badgeItems.push(`<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`);
+      }
+      if (dish.tags.includes('sweet')) {
+        badgeItems.push(`<span class="badge-tag sweet">${this.t('badgeSweet')}</span>`);
+      }
+      if (dish.tags.includes('spicy')) {
+        badgeItems.push(`<span class="badge-tag spicy">${this.t('badgeSpicy')}</span>`);
+      }
+      if (dish.tags.includes('chef-special') && !dish.tags.includes('bestseller')) {
+        badgeItems.push(`<span class="badge-tag chef">${this.t('badgeChefSpecial')}</span>`);
+      }
+      if (dish.tags.includes('khandeshi-special') && !dish.tags.includes('bestseller')) {
+        badgeItems.push(`<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`);
+      }
     }
+    topBadgeHtml = badgeItems.join('');
 
     const mediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDishMedia === 'function')
       ? window.AssetPipeline.renderDishMedia(dish, { badgesHtml: topBadgeHtml, soldOutText: this.t('soldOut') })
@@ -1751,14 +1768,36 @@ class HotelPremierApp {
       `;
     }
 
+    // Top badges on modal photo
+    const modalBadges = [];
+    if (dish.tags) {
+      if (dish.tags.includes('bestseller')) {
+        modalBadges.push(`<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`);
+      }
+      if (dish.tags.includes('sweet')) {
+        modalBadges.push(`<span class="badge-tag sweet">${this.t('badgeSweet')}</span>`);
+      }
+      if (dish.tags.includes('spicy')) {
+        modalBadges.push(`<span class="badge-tag spicy">${this.t('badgeSpicy')}</span>`);
+      }
+      if (dish.tags.includes('chef-special') && !dish.tags.includes('bestseller')) {
+        modalBadges.push(`<span class="badge-tag chef">${this.t('badgeChefSpecial')}</span>`);
+      }
+      if (dish.tags.includes('khandeshi-special') && !dish.tags.includes('bestseller')) {
+        modalBadges.push(`<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`);
+      }
+    }
+    const modalBadgesHtml = modalBadges.join('');
+
     let detailMediaHtml = '';
     if (window.AssetPipeline && typeof window.AssetPipeline.renderDetailMedia === 'function') {
-      detailMediaHtml = window.AssetPipeline.renderDetailMedia(dish);
+      detailMediaHtml = window.AssetPipeline.renderDetailMedia(dish, { badgesHtml: modalBadgesHtml });
     } else if (hasPhoto) {
       detailMediaHtml = `
         <div class="modal-dish-photo-wrap">
           <img src="${dish.image}" alt="${dish.name}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.src='assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg';">
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
+          ${modalBadgesHtml ? `<div class="dish-badges">${modalBadgesHtml}</div>` : ''}
           ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
           <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
             📷 Change Photo
@@ -1796,7 +1835,8 @@ class HotelPremierApp {
           ${isZomatoRated ? `<a href="https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier" target="_blank" rel="noopener noreferrer" class="dish-pill-zomato" style="text-decoration: none;" title="Hotel Premier Zomato Rating">★ ${zomatoScore} Zomato</a>` : ''}
           ${dish.tags && dish.tags.includes('swiggy-top') ? `<a href="https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948" target="_blank" rel="noopener noreferrer" class="dish-pill-swiggy" style="text-decoration: none;">🛵 4.2★ Swiggy</a>` : ''}
           ${dish.tags && dish.tags.includes('chef-special') ? `<span class="dish-pill-chef">${this.t('badgeChefSpecial')}</span>` : ''}
-          ${dish.tags && dish.tags.includes('spicy') ? `<span class="dish-pill-spice">🌶️ Spicy</span>` : ''}
+          ${dish.tags && dish.tags.includes('sweet') ? `<span class="dish-pill-sweet">${this.t('badgeSweet')}</span>` : ''}
+          ${dish.tags && dish.tags.includes('spicy') ? `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>` : ''}
         </div>
 
         <p class="modal-dish-desc">${dish.description || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
