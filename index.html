@@ -55,10 +55,18 @@
   <!-- Cache Invalidation & Old Service Worker Purge -->
   <script>
     (function() {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for (let reg of registrations) {
+            reg.update();
+          }
+        });
+      }
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
             if (name !== 'hotel-premier-v19.0') {
+              console.log('[PWA] Purging stale cache:', name);
               caches.delete(name);
             }
           });
