@@ -58,15 +58,28 @@ class HotelPremierStorageManager {
     });
   }
 
-  // ==================== DISH OVERRIDES & IMAGES ====================
+  // ==================== DISH OVERRIDES, IMAGES & AI PHOTO LIFECYCLE ====================
   async saveDishOverride(dishId, data) {
-    // 1. Save to LocalStorage for instant sync access
+    // 1. Save to LocalStorage for instant sync access (pruning very large base64 if needed to avoid quota exception)
     try {
       let overrides = {};
       const saved = localStorage.getItem('hotel_premier_user_overrides_v1');
       if (saved) overrides = JSON.parse(saved);
       overrides[dishId] = { ...(overrides[dishId] || {}), ...data };
-      localStorage.setItem('hotel_premier_user_overrides_v1', JSON.stringify(overrides));
+      
+      // Store compact representation in localStorage
+      try {
+        localStorage.setItem('hotel_premier_user_overrides_v1', JSON.stringify(overrides));
+      } catch (quotaErr) {
+        // If quota exceeded, store without large original base64 in localStorage while preserving in IndexedDB
+        const compactOverrides = { ...overrides };
+        Object.keys(compactOverrides).forEach(k => {
+          if (compactOverrides[k] && compactOverrides[k].rawOriginalImage && compactOverrides[k].rawOriginalImage.length > 50000) {
+            compactOverrides[k] = { ...compactOverrides[k], rawOriginalImage: '[stored_in_indexeddb]' };
+          }
+        });
+        localStorage.setItem('hotel_premier_user_overrides_v1', JSON.stringify(compactOverrides));
+      }
     } catch (e) {
       console.warn('LocalStorage quota warning (Dish Override):', e);
     }
@@ -86,6 +99,123 @@ class HotelPremierStorageManager {
         console.warn('IndexedDB write error:', e);
       }
     }
+  }
+
+  /**
+   * Saves a dish photo with complete AI lifecycle tracking
+   */
+  async saveDishPhotoLifecycle(dishId, photoRecord) {
+    const data = {
+      image: photoRecord.enhancedMasterImage || photoRecord.image,
+      enhancedMasterImage: photoRecord.enhancedMasterImage || photoRecord.image,
+      rawOriginalImage: photoRecord.rawOriginalImage || photoRecord.image,
+      enhancementStatus: photoRecord.enhancementStatus || 'enhanced', // 'original'|'processing'|'enhanced'|'approved'|'flagged_review'
+      foodCategory: photoRecord.foodCategory || 'general',
+      qualityScore: photoRecord.qualityScore || 90,
+      qualityFlags: photoRecord.qualityFlags || [],
+      backgroundType: photoRecord.backgroundType || 'auto',
+      styleVersion: photoRecord.styleVersion || 'hp-studio-v2.0',
+      lastEnhancedAt: Date.now()
+    };
+    await this.saveDishOverride(dishId, data);
+    return data;
+  }
+
+  /**
+   * Reverts a dish photo to its raw original photograph
+   */
+  async revertDishToOriginal(dishId) {
+    let existing = await this.getDishOverride(dishId);
+    if (!existing || !existing.rawOriginalImage) return null;
+    const data = {
+      image: existing.rawOriginalImage,
+      enhancementStatus: 'original'
+    };
+    await this.saveDishOverride(dishId, data);
+    return data;
+  }
+
+  /**
+   * Approves an enhanced photo for publication
+   */
+  async approveDishEnhancedPhoto(dishId) {
+    let existing = await this.getDishOverride(dishId);
+    if (!existing) return null;
+    const data = {
+      image: existing.enhancedMasterImage || existing.image,
+      enhancementStatus: 'approved'
+    };
+    await this.saveDishOverride(dishId, data);
+    return data;
+  }
+
+  /**
+   * Retrieves single dish override with full high-res data from IndexedDB
+   */
+  async getDishOverride(dishId) {
+    await this.initPromise;
+    if (this.db) {
+      try {
+        const tx = this.db.transaction('dish_overrides', 'readonly');
+        const store = tx.objectStore('dish_overrides');
+        const req = store.get(dishId);
+        const res = await new Promise((resolve) => {
+          req.onsuccess = () => resolve(req.result);
+          req.onerror = () => resolve(null);
+        });
+        if (res) return res;
+      } catch (e) {}
+    }
+    try {
+      const saved = localStorage.getItem('hotel_premier_user_overrides_v1');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed[dishId]) return parsed[dishId];
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  // ==================== AI STUDIO SETTINGS PERSISTENCE ====================
+  async saveAISettings(settings) {
+    try {
+      localStorage.setItem('hotel_premier_ai_settings_v1', JSON.stringify(settings));
+    } catch (e) {}
+    if (this.db) {
+      try {
+        const tx = this.db.transaction('hotel_settings', 'readwrite');
+        const store = tx.objectStore('hotel_settings');
+        store.put({ key: 'ai_studio_settings', value: settings, updatedAt: Date.now() });
+      } catch (e) {}
+    }
+  }
+
+  async getAISettings() {
+    await this.initPromise;
+    if (this.db) {
+      try {
+        const tx = this.db.transaction('hotel_settings', 'readonly');
+        const store = tx.objectStore('hotel_settings');
+        const req = store.get('ai_studio_settings');
+        const res = await new Promise((resolve) => {
+          req.onsuccess = () => resolve(req.result ? req.result.value : null);
+          req.onerror = () => resolve(null);
+        });
+        if (res) return res;
+      } catch (e) {}
+    }
+    try {
+      const saved = localStorage.getItem('hotel_premier_ai_settings_v1');
+      if (saved) return JSON.parse(saved);
+    } catch (e) {}
+    return {
+      autoEnhanceEnabled: true,
+      defaultStyle: 'luxury-stage',
+      autoReplaceClutteredBg: true,
+      cloudAiApiKey: '',
+      cloudAiModel: 'gemini-1.5-flash',
+      qualityThreshold: 60
+    };
   }
 
   async getAllDishOverrides() {

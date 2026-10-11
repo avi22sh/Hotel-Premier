@@ -19,8 +19,123 @@
 (function(window) {
   'use strict';
 
+  /**
+   * HOTEL PREMIER - OFFICIAL BRAND PHOTOGRAPHY STYLE PROFILE
+   * The canonical master definition for all food & beverage photography across Hotel Premier.
+   */
+  const HOTEL_PREMIER_STYLE_PROFILE = {
+    version: 'hp-studio-v2.0',
+    brandName: 'Hotel Premier - Pride Pure Veg AC Restaurant, Bhusawal',
+    lighting: {
+      colorTemperatureK: 3200,      // Warm authentic golden restaurant key light
+      keyFillRatio: 2.2,            // Soft directional key with gentle champagne fill
+      specularPreservation: true,   // Retains glistening highlights on gravies, paneer, and butter
+      vignetteFalloff: 'soft-radial'
+    },
+    canvas: {
+      standardWidth: 960,
+      standardHeight: 720,
+      aspectRatio: '4:3',
+      safeSubjectMargin: 0.12,       // 12% golden breathing room around plate edges
+      maxBleedRatio: 1.15
+    },
+    surfaces: {
+      // 1. Midnight Slate & Imperial Gold: For rich north Indian curries, paneer, koftas, and biryanis
+      slate_gold: {
+        id: 'slate_gold',
+        name: 'Midnight Slate & Imperial Gold Pedestal',
+        baseGradient: ['#0A0E17', '#141D2D', '#1A263C', '#0E1420'],
+        accentGlow: 'rgba(213, 183, 122, 0.35)',
+        plateTone: 'rgba(213, 183, 122, 0.16)',
+        rimTone: 'rgba(213, 183, 122, 0.32)',
+        warmthBoost: 8,
+        contrast: 1.08,
+        saturation: 1.12
+      },
+      // 2. Warm Teak & Dark Walnut Wood: For tandoori rotis, naans, parathas, snacks, and pakodas
+      teak_wood: {
+        id: 'teak_wood',
+        name: 'Warm Teak & Dark Walnut Table',
+        baseGradient: ['#1C120C', '#2C1B10', '#3E2718', '#1A1009'],
+        accentGlow: 'rgba(224, 159, 102, 0.30)',
+        plateTone: 'rgba(210, 160, 110, 0.14)',
+        rimTone: 'rgba(217, 119, 6, 0.28)',
+        warmthBoost: 10,
+        contrast: 1.07,
+        saturation: 1.10
+      },
+      // 3. Italian Cream Marble & Brushed Brass: For milkshakes, mastani, desserts, and chilled beverages
+      cream_marble: {
+        id: 'cream_marble',
+        name: 'Refined Italian Cream Marble & Brass',
+        baseGradient: ['#161922', '#222938', '#2C3549', '#181C26'],
+        accentGlow: 'rgba(245, 230, 202, 0.28)',
+        plateTone: 'rgba(255, 248, 235, 0.15)',
+        rimTone: 'rgba(229, 213, 182, 0.35)',
+        warmthBoost: 5,
+        contrast: 1.06,
+        saturation: 1.08
+      }
+    },
+    foodCategories: {
+      curry: {
+        name: 'Rich Curries & Dals',
+        surfaceKey: 'slate_gold',
+        preserveGravyColor: true,
+        enhanceGarnishClarity: true,
+        warmth: 8,
+        sharpness: 0.30
+      },
+      bread: {
+        name: 'Tandoor & Tawa Breads',
+        surfaceKey: 'teak_wood',
+        preserveBrowningTexture: true,
+        noArtificialButter: true,
+        warmth: 10,
+        sharpness: 0.35
+      },
+      rice: {
+        name: 'Biryani & Pulao',
+        surfaceKey: 'slate_gold',
+        preserveGrainSeparation: true,
+        warmth: 7,
+        sharpness: 0.28
+      },
+      snack: {
+        name: 'Crispy Snacks & Chaat',
+        surfaceKey: 'teak_wood',
+        enhanceCrispDetails: true,
+        warmth: 9,
+        sharpness: 0.32
+      },
+      beverage: {
+        name: 'Beverages & Mastani',
+        surfaceKey: 'cream_marble',
+        preserveGlassClarity: true,
+        noArtificialToppings: true,
+        warmth: 5,
+        sharpness: 0.25
+      },
+      dessert: {
+        name: 'Desserts & Ice Cream',
+        surfaceKey: 'cream_marble',
+        preserveScoopForm: true,
+        warmth: 6,
+        sharpness: 0.26
+      }
+    },
+    prohibitions: [
+      'DO NOT alter the real type of dish or invent imaginary foods',
+      'DO NOT invent toppings, fake cherries, or sauces not present in the original',
+      'DO NOT artificially turn plain rotis into butter naans',
+      'DO NOT distort plates or stretch aspects to force-fit',
+      'DO NOT leave jagged pixel borders or halo artifacts'
+    ]
+  };
+
   class HotelAssetPipeline {
     constructor() {
+      this.styleProfile = HOTEL_PREMIER_STYLE_PROFILE;
       this.theme = {
         bgCharcoal: '#0D111A',
         bgMidnight: '#162035',
@@ -871,8 +986,543 @@
     }
 
     /**
+     * Semantic Dish Classifier & Photo Quality Analyzer
+     * Evaluates dish type, background suitability, lighting, contrast, and clarity.
+     * Guaranteed 100% authentic: Does not alter true dish food contents.
+     */
+    async analyzeDishAndImageQuality(imgOrSrc, dishMeta = {}) {
+      let img;
+      try {
+        if (typeof imgOrSrc === 'string') {
+          img = await this.loadImage(imgOrSrc);
+        } else if (imgOrSrc && imgOrSrc.naturalWidth) {
+          img = imgOrSrc;
+        } else {
+          img = await this.loadImage(imgOrSrc.src || imgOrSrc.currentSrc);
+        }
+      } catch (err) {
+        return {
+          category: 'curry',
+          qualityScore: 70,
+          backgroundType: 'neutral',
+          isCluttered: false,
+          needsBackgroundReplacement: false,
+          flags: ['LOAD_FALLBACK']
+        };
+      }
+
+      const w = img.naturalWidth || img.width || 400;
+      const h = img.naturalHeight || img.height || 300;
+
+      // Classify category based on dish metadata (name, categoryId, description)
+      const name = ((dishMeta.name || '') + ' ' + (dishMeta.categoryId || '') + ' ' + (dishMeta.description || '')).toLowerCase();
+      let category = 'curry';
+      if (/roti|naan|paratha|kulcha|chapati|bhakri|bread/.test(name)) {
+        category = 'bread';
+      } else if (/biryani|pulao|rice|jeera rice|khichdi|fried rice/.test(name)) {
+        category = 'rice';
+      } else if (/snack|pakoda|bhajiya|chaat|samosa|tikki|crispy|starter|soup|salad|papad/.test(name)) {
+        category = 'snack';
+      } else if (/shake|mastani|juice|lassi|coffee|tea|beverage|drink|mocktail|sharbat/.test(name)) {
+        category = 'beverage';
+      } else if (/ice cream|dessert|gulab jamun|kulfi|halwa|sweet|falooda/.test(name)) {
+        category = 'dessert';
+      }
+
+      // Analyze canvas pixels for background quality, exposure, contrast, and clutter
+      const sampleCanvas = document.createElement('canvas');
+      const sw = Math.min(w, 200);
+      const sh = Math.min(h, 150);
+      sampleCanvas.width = sw;
+      sampleCanvas.height = sh;
+      const ctx = sampleCanvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, sw, sh);
+
+      let isCluttered = false;
+      let backgroundType = 'neutral';
+      let qualityScore = 85;
+      const flags = [];
+
+      try {
+        const imgData = ctx.getImageData(0, 0, sw, sh);
+        const data = imgData.data;
+
+        // Sample perimeter pixels
+        const borderPixels = [];
+        for (let x = 0; x < sw; x += 4) {
+          borderPixels.push([x, 1], [x, sh - 2]);
+        }
+        for (let y = 0; y < sh; y += 4) {
+          borderPixels.push([1, y], [sw - 2, y]);
+        }
+
+        let rSum = 0, gSum = 0, bSum = 0;
+        const variances = [];
+        for (const [bx, by] of borderPixels) {
+          const idx = (by * sw + bx) * 4;
+          rSum += data[idx];
+          gSum += data[idx + 1];
+          bSum += data[idx + 2];
+        }
+        const bLen = borderPixels.length || 1;
+        const avgR = rSum / bLen;
+        const avgG = gSum / bLen;
+        const avgB = bLen ? bSum / bLen : 0;
+
+        // Variance / Clutter score along border
+        let varSum = 0;
+        for (const [bx, by] of borderPixels) {
+          const idx = (by * sw + bx) * 4;
+          const diff = Math.abs(data[idx] - avgR) + Math.abs(data[idx + 1] - avgG) + Math.abs(data[idx + 2] - avgB);
+          varSum += diff;
+        }
+        const borderVariance = varSum / bLen;
+
+        if (borderVariance > 48) {
+          isCluttered = true;
+          flags.push('CLUTTERED_BACKGROUND');
+          qualityScore -= 12;
+        }
+
+        if (avgR > 185 && avgG > 185 && avgB > 185) {
+          backgroundType = 'light_studio';
+        } else if (avgR < 40 && avgG < 40 && avgB < 40) {
+          backgroundType = 'dark_studio';
+        } else if (borderVariance > 45) {
+          backgroundType = 'busy_environment';
+        } else {
+          backgroundType = 'neutral';
+        }
+
+        // Center brightness vs edge (vignette / center dish presence)
+        const centerIdx = (Math.floor(sh / 2) * sw + Math.floor(sw / 2)) * 4;
+        const centerBright = (data[centerIdx] + data[centerIdx + 1] + data[centerIdx + 2]) / 3;
+        const edgeBright = (avgR + avgG + avgB) / 3;
+
+        if (edgeBright < 30 && centerBright < 40) {
+          flags.push('UNDEREXPOSED');
+          qualityScore -= 15;
+        } else if (edgeBright > 230 && centerBright > 230) {
+          flags.push('OVEREXPOSED');
+          qualityScore -= 10;
+        }
+
+        // Resolution score
+        if (w < 400 || h < 300) {
+          flags.push('LOW_RESOLUTION');
+          qualityScore -= 18;
+        } else if (w >= 1000 && h >= 750) {
+          qualityScore += 5;
+        }
+      } catch (e) {
+        flags.push('CANVAS_ANALYSIS_FAILED');
+      }
+
+      qualityScore = Math.max(20, Math.min(99, qualityScore));
+
+      const needsBackgroundReplacement = isCluttered || backgroundType === 'light_studio' || backgroundType === 'busy_environment';
+
+      return {
+        category,
+        qualityScore,
+        backgroundType,
+        isCluttered,
+        needsBackgroundReplacement,
+        flags
+      };
+    }
+
+    /**
+     * Surfaces Renderer for Hotel Premier Brand Aesthetics
+     * Supported surfaces: 'slate_gold', 'teak_wood', 'cream_marble'
+     */
+    drawSurfaceBackdrop(ctx, width, height, surfaceKey = 'slate_gold') {
+      if (surfaceKey === 'teak_wood') {
+        // Warm Teak & Walnut Wood Surface
+        const woodGrad = ctx.createLinearGradient(0, 0, width, height);
+        woodGrad.addColorStop(0, '#1E150F');
+        woodGrad.addColorStop(0.35, '#2A1D13');
+        woodGrad.addColorStop(0.70, '#362417');
+        woodGrad.addColorStop(1, '#1A120D');
+        ctx.fillStyle = woodGrad;
+        ctx.fillRect(0, 0, width, height);
+
+        // Fine Wood Grain Texture Lines
+        ctx.save();
+        ctx.strokeStyle = 'rgba(213, 183, 122, 0.04)';
+        ctx.lineWidth = 1;
+        for (let y = 10; y < height; y += 14) {
+          ctx.beginPath();
+          ctx.moveTo(0, y + (Math.sin(y * 0.1) * 3));
+          ctx.bezierCurveTo(
+            width * 0.3, y + (Math.cos(y * 0.05) * 6),
+            width * 0.7, y - (Math.sin(y * 0.05) * 6),
+            width, y + (Math.cos(y * 0.1) * 3)
+          );
+          ctx.stroke();
+        }
+        ctx.restore();
+
+        // Warm Amber Lighting Bloom
+        const bloom = ctx.createRadialGradient(
+          width * 0.5, height * 0.45, 10,
+          width * 0.5, height * 0.45, width * 0.65
+        );
+        bloom.addColorStop(0, 'rgba(213, 183, 122, 0.22)');
+        bloom.addColorStop(0.5, 'rgba(180, 110, 40, 0.12)');
+        bloom.addColorStop(1, 'rgba(15, 10, 7, 0)');
+        ctx.fillStyle = bloom;
+        ctx.fillRect(0, 0, width, height);
+
+      } else if (surfaceKey === 'cream_marble') {
+        // Refined Italian Cream Marble with Brass Trim
+        const marbleGrad = ctx.createLinearGradient(0, 0, width, height);
+        marbleGrad.addColorStop(0, '#151A24');
+        marbleGrad.addColorStop(0.4, '#1C2330');
+        marbleGrad.addColorStop(0.8, '#18202C');
+        marbleGrad.addColorStop(1, '#10141D');
+        ctx.fillStyle = marbleGrad;
+        ctx.fillRect(0, 0, width, height);
+
+        // Delicate Marble Veining
+        ctx.save();
+        ctx.strokeStyle = 'rgba(213, 183, 122, 0.06)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(width * 0.1, 0);
+        ctx.bezierCurveTo(width * 0.35, height * 0.3, width * 0.25, height * 0.7, width * 0.6, height);
+        ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(width * 0.75, 0);
+        ctx.bezierCurveTo(width * 0.55, height * 0.4, width * 0.8, height * 0.65, width * 0.9, height);
+        ctx.stroke();
+        ctx.restore();
+
+        // Cool-Warm Studio Light Blend
+        const glow = ctx.createRadialGradient(
+          width * 0.5, height * 0.48, 15,
+          width * 0.5, height * 0.48, width * 0.60
+        );
+        glow.addColorStop(0, 'rgba(240, 230, 210, 0.18)');
+        glow.addColorStop(0.4, 'rgba(213, 183, 122, 0.14)');
+        glow.addColorStop(1, 'rgba(16, 20, 29, 0)');
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, width, height);
+
+      } else {
+        // Default: Midnight Slate & Imperial Gold (Brand Signature)
+        this.drawLuxuryBackdrop(ctx, width, height);
+      }
+    }
+
+    /**
+     * Natural 3D Contact Shadow Generator
+     * Renders a soft double-ellipse shadow grounding the plate / vessel firmly on surface.
+     */
+    drawRealisticContactShadow(ctx, cx, cy, rx, ry) {
+      ctx.save();
+
+      // Deep direct contact shadow (dense, sharp occlusion)
+      ctx.beginPath();
+      ctx.ellipse(cx, cy + (ry * 0.15), rx * 0.82, ry * 0.5, 0, 0, Math.PI * 2);
+      const innerShadow = ctx.createRadialGradient(cx, cy + (ry * 0.15), 2, cx, cy + (ry * 0.15), rx * 0.82);
+      innerShadow.addColorStop(0, 'rgba(0, 0, 0, 0.82)');
+      innerShadow.addColorStop(0.65, 'rgba(0, 0, 0, 0.45)');
+      innerShadow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = innerShadow;
+      ctx.fill();
+
+      // Soft ambient diffuse falloff (light wrap)
+      ctx.beginPath();
+      ctx.ellipse(cx, cy + (ry * 0.35), rx * 1.18, ry * 0.85, 0, 0, Math.PI * 2);
+      const outerShadow = ctx.createRadialGradient(cx, cy + (ry * 0.35), 5, cx, cy + (ry * 0.35), rx * 1.18);
+      outerShadow.addColorStop(0, 'rgba(0, 0, 0, 0.45)');
+      outerShadow.addColorStop(0.5, 'rgba(0, 0, 0, 0.20)');
+      outerShadow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = outerShadow;
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    /**
+     * Automatic Professional Food Photography Studio Pipeline
+     * The master entry point for all uploads:
+     * 1. Analyzes dish & original quality
+     * 2. Selects category-specific brand surface
+     * 3. Isolates dish or seamlessly harmonizes background
+     * 4. Casts natural 3D contact shadows
+     * 5. Calibrates gourmet warmth (3200K) and 4K clarity
+     * 6. Returns { enhancedDataUrl, qualityScore, category, status, flags }
+     */
+    async processAutomaticStudioEnhancement(imageSource, dishMeta = {}, options = {}) {
+      let img;
+      try {
+        if (typeof imageSource === 'string') {
+          img = await this.loadImage(imageSource);
+        } else if (imageSource && imageSource.naturalWidth) {
+          img = imageSource;
+        } else if (imageSource && (imageSource.src || imageSource.currentSrc)) {
+          img = await this.loadImage(imageSource.src || imageSource.currentSrc);
+        } else {
+          throw new Error('Invalid image source');
+        }
+      } catch (err) {
+        return {
+          enhancedDataUrl: typeof imageSource === 'string' ? imageSource : (imageSource.src || ''),
+          qualityScore: 60,
+          category: 'curry',
+          status: 'failed',
+          flags: ['LOAD_ERROR']
+        };
+      }
+
+      // 1. Analyze Dish & Photo Quality
+      const analysis = await this.analyzeDishAndImageQuality(img, dishMeta);
+      const catConfig = this.styleProfile.categories[analysis.category] || this.styleProfile.categories.curry;
+      const surfaceKey = options.surfaceKey || catConfig.surfaceKey || 'slate_gold';
+
+      const targetW = options.targetWidth || 960;
+      const targetH = options.targetHeight || 720;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = targetW;
+      canvas.height = targetH;
+      const ctx = canvas.getContext('2d');
+
+      // 2. Render Surface Backdrop
+      this.drawSurfaceBackdrop(ctx, targetW, targetH, surfaceKey);
+
+      // Determine background replacement / isolation
+      const shouldCutout = (options.backgroundMode === 'pedestal') ||
+        (options.backgroundMode === 'harmonize' && (analysis.needsBackgroundReplacement || options.forceCutout));
+
+      const origW = img.naturalWidth || img.width;
+      const origH = img.naturalHeight || img.height;
+
+      if (shouldCutout) {
+        // Foreground Subject Extraction
+        const isolatedDataUrl = await this.processIsolatedAsset(img, { forceIsolation: true });
+        const isolatedImg = await this.loadImage(isolatedDataUrl);
+
+        const isoW = isolatedImg.naturalWidth || isolatedImg.width;
+        const isoH = isolatedImg.naturalHeight || isolatedImg.height;
+
+        // Position dish safely with 12% golden breathing margin
+        const maxPlateW = targetW * 0.78;
+        const maxPlateH = targetH * 0.68;
+        const scale = Math.min(maxPlateW / isoW, maxPlateH / isoH, 1.25);
+        const renderW = isoW * scale;
+        const renderH = isoH * scale;
+        const renderX = (targetW - renderW) / 2;
+        const renderY = (targetH * 0.74) - renderH;
+
+        // Realistic 3D Contact Shadow
+        this.drawRealisticContactShadow(
+          ctx,
+          targetW / 2,
+          renderY + renderH - (renderH * 0.04),
+          renderW * 0.44,
+          Math.max(14, renderH * 0.14)
+        );
+
+        // Draw Pristine Isolated Dish
+        ctx.drawImage(isolatedImg, renderX, renderY, renderW, renderH);
+
+      } else {
+        // Universal Ambient Harmonization (Ambient warm fill + Aspect Safe Frame)
+        // A. Ambient fill underlayer
+        ctx.save();
+        const blurScale = Math.max(targetW / origW, targetH / origH) * 1.05;
+        const bW = origW * blurScale;
+        const bH = origH * blurScale;
+        const bX = (targetW - bW) / 2;
+        const bY = (targetH - bH) / 2;
+        ctx.filter = 'blur(28px) saturate(1.22) brightness(0.60)';
+        ctx.drawImage(img, bX, bY, bW, bH);
+        ctx.filter = 'none';
+
+        // Dark luxury veil
+        ctx.fillStyle = 'rgba(10, 14, 22, 0.50)';
+        ctx.fillRect(0, 0, targetW, targetH);
+        ctx.restore();
+
+        // B. Authentic Foreground Dish safely centered
+        const safeScale = Math.min((targetW * 0.90) / origW, (targetH * 0.88) / origH, 1.0);
+        const fW = origW * safeScale;
+        const fH = origH * safeScale;
+        const fX = (targetW - fW) / 2;
+        const fY = (targetH - fH) / 2;
+
+        ctx.save();
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
+        ctx.shadowBlur = 24;
+        ctx.shadowOffsetY = 8;
+        ctx.drawImage(img, fX, fY, fW, fH);
+        ctx.restore();
+      }
+
+      // 3. Pixel-Level Gourmet 3200K Color Calibration & 4K Unsharp Clarity
+      try {
+        const outData = ctx.getImageData(0, 0, targetW, targetH);
+        const data = outData.data;
+        const len = data.length;
+
+        const warmthAdd = options.warmth !== undefined ? options.warmth : (catConfig.warmth || 8);
+        const sharpAmount = options.sharpness !== undefined ? options.sharpness : (catConfig.sharpness || 0.28);
+        const contrastFactor = options.contrast !== undefined ? options.contrast : 1.08;
+        const brightFactor = options.brightness !== undefined ? options.brightness : 1.04;
+        const satFactor = options.saturation !== undefined ? options.saturation : 1.12;
+
+        for (let i = 0; i < len; i += 4) {
+          let r = data[i];
+          let g = data[i + 1];
+          let b = data[i + 2];
+
+          // Tone adjustment
+          r *= brightFactor;
+          g *= brightFactor;
+          b *= brightFactor;
+          r = (r - 128) * contrastFactor + 128;
+          g = (g - 128) * contrastFactor + 128;
+          b = (b - 128) * contrastFactor + 128;
+
+          // Gourmet 3200K Warmth (+ amber glow)
+          r += warmthAdd * 1.15;
+          g += warmthAdd * 0.45;
+          b -= warmthAdd * 0.40;
+
+          // Vibrance
+          const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+          r = gray + (r - gray) * satFactor;
+          g = gray + (g - gray) * satFactor;
+          b = gray + (b - gray) * satFactor;
+
+          data[i] = Math.min(255, Math.max(0, r));
+          data[i + 1] = Math.min(255, Math.max(0, g));
+          data[i + 2] = Math.min(255, Math.max(0, b));
+        }
+        ctx.putImageData(outData, 0, 0);
+
+        // Laplacian 4K Sharpness Masking
+        if (sharpAmount > 0) {
+          const copy = ctx.getImageData(0, 0, targetW, targetH);
+          const cPx = copy.data;
+          const sharpData = ctx.createImageData(targetW, targetH);
+          const sPx = sharpData.data;
+          const w = targetW, h = targetH;
+
+          for (let y = 1; y < h - 1; y++) {
+            const row = y * w;
+            const top = (y - 1) * w;
+            const btm = (y + 1) * w;
+            for (let x = 1; x < w - 1; x++) {
+              const idx = (row + x) * 4;
+              const idxT = (top + x) * 4;
+              const idxB = (btm + x) * 4;
+              const idxL = (row + (x - 1)) * 4;
+              const idxR = (row + (x + 1)) * 4;
+              for (let c = 0; c < 3; c++) {
+                const centerVal = cPx[idx + c];
+                const blurVal = (cPx[idxT + c] + cPx[idxB + c] + cPx[idxL + c] + cPx[idxR + c]) * 0.25;
+                const edge = centerVal - blurVal;
+                sPx[idx + c] = Math.min(255, Math.max(0, centerVal + edge * sharpAmount * 1.6));
+              }
+              sPx[idx + 3] = cPx[idx + 3];
+            }
+          }
+          ctx.putImageData(sharpData, 0, 0);
+        }
+      } catch (e) {}
+
+      // 4. Subtle Studio Spotlight & Champagne Vignette
+      const vStr = options.vignetteStrength !== undefined ? options.vignetteStrength : 0.38;
+      if (vStr > 0) {
+        const vig = ctx.createRadialGradient(
+          targetW * 0.5, targetH * 0.50, Math.min(targetW, targetH) * 0.35,
+          targetW * 0.5, targetH * 0.50, Math.max(targetW, targetH) * 0.72
+        );
+        vig.addColorStop(0, 'rgba(0, 0, 0, 0)');
+        vig.addColorStop(0.65, `rgba(13, 17, 26, ${vStr * 0.38})`);
+        vig.addColorStop(1, `rgba(8, 12, 18, ${vStr * 0.85})`);
+        ctx.fillStyle = vig;
+        ctx.fillRect(0, 0, targetW, targetH);
+
+        const spot = ctx.createRadialGradient(
+          targetW * 0.5, targetH * 0.48, 10,
+          targetW * 0.5, targetH * 0.48, Math.min(targetW, targetH) * 0.48
+        );
+        spot.addColorStop(0, 'rgba(255, 238, 204, 0.08)');
+        spot.addColorStop(0.6, 'rgba(213, 183, 122, 0.03)');
+        spot.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = spot;
+        ctx.fillRect(0, 0, targetW, targetH);
+      }
+
+      // 5. Delicate Gold Trim Rim
+      ctx.save();
+      ctx.strokeStyle = 'rgba(213, 183, 122, 0.30)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(1, 1, targetW - 2, targetH - 2);
+      ctx.restore();
+
+      const quality = options.quality || 0.88;
+      const enhancedDataUrl = canvas.toDataURL('image/jpeg', quality);
+
+      return {
+        enhancedDataUrl,
+        qualityScore: analysis.qualityScore,
+        category: analysis.category,
+        surfaceKey,
+        status: 'enhanced',
+        flags: analysis.flags
+      };
+    }
+
+    /**
+     * Optional Cloud AI Adapter (Gemini / Imagen BYOK Hook)
+     * For advanced generative background enhancement when API key is provided
+     */
+    async callCloudAIEnhancer(base64Image, dishMeta = {}, apiKey = '') {
+      if (!apiKey) {
+        throw new Error('Cloud AI API Key is required');
+      }
+      // Clean base64 data
+      const cleanBase64 = base64Image.replace(/^data:image\/\w+;base64,/, '');
+      const prompt = `Professional food photograph of ${dishMeta.name || 'pure vegetarian Indian dish'} placed on an elegant restaurant table at Hotel Premier, luxury warm ambient lighting 3200K, authentic appetizing presentation, perfectly cooked, restaurant menu quality, hyper-realistic, no fake ingredients.`;
+
+      // Endpoint for Gemini 1.5 Flash vision
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+      const payload = {
+        contents: [{
+          parts: [
+            { text: prompt },
+            { inlineData: { mimeType: 'image/jpeg', data: cleanBase64 } }
+          ]
+        }]
+      };
+
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(`Cloud AI error (${res.status}): ${errText}`);
+      }
+
+      const json = await res.json();
+      return json;
+    }
+
+    /**
      * Pipeline hook for Admin CMS file upload
-     * Compresses, enhances to 4K studio quality, and returns optimized dataURL
+     * Automatically runs raw uploads through the Studio Photography Engine
      */
     async processUploadFile(file, category = this.IMAGE_TYPES.FOOD, options = {}) {
       return new Promise((resolve, reject) => {
@@ -881,27 +1531,8 @@
         reader.onload = async (e) => {
           try {
             const rawDataUrl = e.target.result;
-
-            if (this.shouldIsolateBackground(category, options)) {
-              const processed = await this.processIsolatedAsset(rawDataUrl, {
-                ...options,
-                forceIsolation: true
-              });
-              resolve(processed);
-            } else {
-              // Auto 4K Enhancement Engine
-              const enhanced = await this.enhanceFoodTo4K(rawDataUrl, {
-                brightness: options.brightness || 1.04,
-                contrast: options.contrast || 1.08,
-                saturation: options.saturation || 1.12,
-                warmth: options.warmth !== undefined ? options.warmth : 8,
-                sharpness: options.sharpness !== undefined ? options.sharpness : 0.28,
-                vignetteStrength: options.vignetteStrength !== undefined ? options.vignetteStrength : 0.38,
-                maxDimension: options.maxDimension || 1280,
-                quality: options.quality || 0.88
-              });
-              resolve(enhanced);
-            }
+            const res = await this.processAutomaticStudioEnhancement(rawDataUrl, { categoryId: category }, options);
+            resolve(res.enhancedDataUrl || rawDataUrl);
           } catch (err) {
             reject(err);
           }

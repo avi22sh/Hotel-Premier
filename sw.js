@@ -4,7 +4,7 @@
 // Guarantees mobile users always see latest menu updates & sub-sections
 // ==========================================================================
 
-const CACHE_NAME = 'hotel-premier-v20.7';
+const CACHE_NAME = 'hotel-premier-v20.8';
 const CORE_ASSETS = [
   './',
   'index.html',

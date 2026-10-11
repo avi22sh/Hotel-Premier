@@ -555,18 +555,29 @@ class HotelPremierAdmin {
   }
 
   // ==================== DISH PHOTO REPLACEMENT & DELETION MODAL ====================
-  openImageModal(dishId) {
+  async openImageModal(dishId) {
     this.activeImageDishId = dishId;
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (!dish) return;
 
-    this.activeBackgroundMode = 'harmonize';
+    // Load any existing photo lifecycle override record from IndexedDB
+    let lifecycle = null;
+    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.getDishOverride === 'function') {
+      lifecycle = await window.HOTEL_STORAGE.getDishOverride(dishId);
+    }
+
+    this.activeBackgroundMode = (lifecycle && lifecycle.backgroundType) || 'harmonize';
     this.activeFramingMode = 'smart';
     const hasPhoto = dish.image && dish.image.trim() !== '';
-    this.tempImageSource = dish.image || '';
-    this.rawOriginalSource = dish.image || '';
+
+    this.rawOriginalSource = (lifecycle && lifecycle.rawOriginalImage) ? lifecycle.rawOriginalImage : (dish.image || '');
+    this.enhanced4KSource = (lifecycle && lifecycle.enhancedMasterImage) ? lifecycle.enhancedMasterImage : (dish.image || '');
+    this.tempImageSource = this.enhanced4KSource || this.rawOriginalSource;
+    this.currentEnhancementStatus = (lifecycle && lifecycle.enhancementStatus) || (hasPhoto ? 'enhanced' : 'original');
+    this.currentQualityScore = (lifecycle && lifecycle.qualityScore) || 92;
+
     const titleEl = document.getElementById('image-modal-dish-name');
-    if (titleEl) titleEl.innerText = `${hasPhoto ? 'Manage / Replace Photo' : 'Upload Photo'}: ${dish.name}`;
+    if (titleEl) titleEl.innerText = `${hasPhoto ? 'Culinary Photography Studio' : 'Upload Food Photo'}: ${dish.name}`;
 
     const body = document.getElementById('image-modal-body');
     if (body) {
@@ -574,64 +585,92 @@ class HotelPremierAdmin {
         <div style="display: flex; flex-direction: column; gap: 14px;">
           <!-- Current Photo Status or Delete Option -->
           ${hasPhoto ? `
-            <div style="background: #FEF2F2; border: 1.5px dashed #F87171; border-radius: 8px; padding: 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+            <div style="background: #FEF2F2; border: 1.5px dashed #F87171; border-radius: 8px; padding: 10px 12px; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
               <div>
-                <div style="font-weight: 800; font-size: 0.85rem; color: #991B1B;">Want to remove this photo?</div>
-                <div style="font-size: 0.72rem; color: #B91C1C;">The dish will be displayed in elegant Pure Veg text mode until you upload a new photo.</div>
+                <div style="font-weight: 800; font-size: 0.82rem; color: #991B1B;">Want to remove this photo?</div>
+                <div style="font-size: 0.70rem; color: #B91C1C;">The dish will be displayed in elegant Pure Veg text mode until you upload a new photo.</div>
               </div>
-              <button class="slide-action-btn delete" style="padding: 6px 12px; font-size: 0.78rem; font-weight: 800; flex-shrink: 0;" onclick="window.admin.deleteDishPhoto('${dish.id}')">
+              <button class="slide-action-btn delete" style="padding: 5px 10px; font-size: 0.75rem; font-weight: 800; flex-shrink: 0;" onclick="window.admin.deleteDishPhoto('${dish.id}')">
                 🗑️ Delete Photo
               </button>
             </div>
 
+            <!-- Interactive Before/After Studio Slider -->
             <div style="text-align: center;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <span style="font-size: 0.76rem; font-weight: 800; color: var(--brass-light); display: inline-flex; align-items: center; gap: 4px;">
-                  ✨ <span>4K Studio Verification</span>
-                </span>
+                <div style="display: inline-flex; align-items: center; gap: 6px;">
+                  <span style="font-size: 0.76rem; font-weight: 800; color: var(--brass-light); display: inline-flex; align-items: center; gap: 4px;">
+                    ✨ <span>Studio Comparison</span>
+                  </span>
+                  <span id="lifecycle-status-badge" class="hp-status-pill hp-status-${this.currentEnhancementStatus}">
+                    ${this.currentEnhancementStatus.toUpperCase()} (${this.currentQualityScore}%)
+                  </span>
+                </div>
                 <div style="display: inline-flex; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 2px; border: 1px solid rgba(213,183,122,0.3);">
-                  <button type="button" id="preview-tab-enhanced" class="btn-preview-toggle active" onclick="window.admin.togglePreviewMode('enhanced')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: var(--brass-primary); color: #000; font-weight: 800; cursor: pointer;">4K Studio</button>
-                  <button type="button" id="preview-tab-original" class="btn-preview-toggle" onclick="window.admin.togglePreviewMode('original')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Original</button>
+                  <button type="button" id="preview-tab-split" class="btn-preview-toggle active" onclick="window.admin.toggleComparisonMode('split')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: var(--brass-primary); color: #000; font-weight: 800; cursor: pointer;">Split View</button>
+                  <button type="button" id="preview-tab-enhanced" class="btn-preview-toggle" onclick="window.admin.toggleComparisonMode('enhanced')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Studio Master</button>
+                  <button type="button" id="preview-tab-original" class="btn-preview-toggle" onclick="window.admin.toggleComparisonMode('original')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Raw Original</button>
                 </div>
               </div>
 
-              <div style="position: relative; width: 100%; height: 210px; border-radius: 8px; overflow: hidden; border: 2px solid var(--brass-primary); margin-bottom: 6px; background: #0D111A; box-shadow: 0 4px 14px rgba(0,0,0,0.5);">
-                <img id="image-preview-element" src="${dish.image}" style="width: 100%; height: 100%; object-fit: cover;">
-                <div id="preview-4k-badge" style="position: absolute; bottom: 8px; left: 8px; background: rgba(14,22,34,0.85); backdrop-filter: blur(6px); border: 1px solid rgba(213,183,122,0.6); color: #D5B77A; padding: 3px 8px; border-radius: 12px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.5px;">
-                  ✨ AUTO 4K CALIBRATED
+              <!-- Dual Layer Split Slider Container -->
+              <div class="hp-before-after-container" id="hp-slider-container">
+                <!-- Underlayer: Raw Original Image -->
+                <img id="image-original-element" class="hp-slider-original-img" src="${this.rawOriginalSource || dish.image}">
+                <span class="hp-slider-label hp-slider-label-left">BEFORE (RAW)</span>
+
+                <!-- Overlayer: Enhanced Studio Master (Clipped) -->
+                <div class="hp-slider-enhanced-wrap" id="hp-enhanced-wrap" style="width: 50%;">
+                  <img id="image-preview-element" class="hp-slider-enhanced-img" src="${this.enhanced4KSource || dish.image}">
+                  <span class="hp-slider-label hp-slider-label-right">AFTER (STUDIO)</span>
+                </div>
+
+                <!-- Draggable Divider Handle -->
+                <div class="hp-slider-handle" id="hp-slider-handle" style="left: 50%;">
+                  <div class="hp-slider-handle-circle">‹ ›</div>
+                </div>
+
+                <!-- 4K Studio Quality Badge -->
+                <div id="preview-4k-badge" style="position: absolute; bottom: 8px; left: 8px; z-index: 10; background: rgba(14,22,34,0.88); backdrop-filter: blur(6px); border: 1px solid rgba(213,183,122,0.6); color: #D5B77A; padding: 3px 8px; border-radius: 12px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.5px;">
+                  ✨ AUTO STUDIO PHOTOGRAPHY CALIBRATED
                 </div>
               </div>
-              <div style="font-size: 0.70rem; color: #8C9BAE; display: flex; justify-content: space-between;">
-                <span>Auto-balanced light, warmth & 4K unsharp clarity</span>
-                <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Engine Ready</span>
+
+              <!-- Interactive Range Bar to adjust split -->
+              <input type="range" min="0" max="100" value="50" class="hp-split-range-input" id="hp-split-range" oninput="window.admin.setSplitSliderPosition(this.value)">
+
+              <div style="font-size: 0.70rem; color: #8C9BAE; display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+                <span>Drag slider above or tap tabs to compare raw vs studio master</span>
+                <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Studio Engine Active</span>
+              </div>
+
+              <!-- Revert / Approve Action Bar -->
+              <div style="display: flex; gap: 8px; justify-content: center; margin-top: 8px;">
+                <button type="button" class="btn-theme-engine-chip" onclick="window.admin.revertActiveDishToOriginal()" title="Revert dish to untouched raw camera photo">
+                  ⏮️ Revert to Raw Original
+                </button>
+                <button type="button" class="btn-theme-engine-chip active" onclick="window.admin.approveActiveDishPhoto()" title="Mark enhanced photo as approved master">
+                  ✅ Approve Enhanced Master
+                </button>
               </div>
             </div>
           ` : `
             <div style="background: rgba(14,22,34,0.6); border: 1.5px dashed var(--brass-primary); border-radius: 8px; padding: 12px; text-align: center;">
               <div style="font-size: 1.5rem; margin-bottom: 2px;">🌱</div>
               <div style="font-weight: 800; font-size: 0.85rem; color: var(--brass-light);">No photo currently assigned</div>
-              <div style="font-size: 0.72rem; color: #8C9BAE;">Select or upload below. Auto 4K Engine will automatically correct tones & background balance.</div>
+              <div style="font-size: 0.72rem; color: #8C9BAE;">Upload below. The AI Studio Engine will automatically identify the food, protect authentic contents, harmonize backgrounds, and calibrate 3200K gourmet lighting.</div>
             </div>
 
             <div style="text-align: center;">
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-                <span style="font-size: 0.76rem; font-weight: 800; color: var(--brass-light); display: inline-flex; align-items: center; gap: 4px;">
-                  ✨ <span>4K Studio Verification</span>
-                </span>
-                <div style="display: inline-flex; background: rgba(0,0,0,0.4); border-radius: 20px; padding: 2px; border: 1px solid rgba(213,183,122,0.3);">
-                  <button type="button" id="preview-tab-enhanced" class="btn-preview-toggle active" onclick="window.admin.togglePreviewMode('enhanced')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: var(--brass-primary); color: #000; font-weight: 800; cursor: pointer;">4K Studio</button>
-                  <button type="button" id="preview-tab-original" class="btn-preview-toggle" onclick="window.admin.togglePreviewMode('original')" style="padding: 2px 8px; font-size: 0.68rem; border-radius: 14px; border: none; background: transparent; color: #B2C0D1; font-weight: 700; cursor: pointer;">Original</button>
-                </div>
-              </div>
               <div style="position: relative; width: 100%; height: 200px; border-radius: 8px; overflow: hidden; border: 2px solid var(--brass-primary); margin-bottom: 6px; background: #0D111A;">
                 <img id="image-preview-element" src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80" style="width: 100%; height: 100%; object-fit: cover;">
                 <div id="preview-4k-badge" style="position: absolute; bottom: 8px; left: 8px; background: rgba(14,22,34,0.85); backdrop-filter: blur(6px); border: 1px solid rgba(213,183,122,0.6); color: #D5B77A; padding: 3px 8px; border-radius: 12px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.5px;">
-                  ✨ AUTO 4K CALIBRATED
+                  ✨ READY FOR AUTOMATIC UPLOAD ENHANCEMENT
                 </div>
               </div>
               <div style="font-size: 0.70rem; color: #8C9BAE; display: flex; justify-content: space-between;">
-                <span>Auto-balanced light, warmth & 4K unsharp clarity</span>
-                <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Engine Ready</span>
+                <span>Auto-categorized brand surface & 3D contact shadows</span>
+                <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Studio Engine Ready</span>
               </div>
             </div>
           `}
@@ -764,37 +803,115 @@ class HotelPremierAdmin {
     this.enhanced4KSource = null;
   }
 
-  togglePreviewMode(mode) {
-    const preview = document.getElementById('image-preview-element');
+  setSplitSliderPosition(percent) {
+    const wrap = document.getElementById('hp-enhanced-wrap');
+    const handle = document.getElementById('hp-slider-handle');
+    const pct = Math.max(0, Math.min(100, percent));
+    if (wrap) wrap.style.width = `${pct}%`;
+    if (handle) handle.style.left = `${pct}%`;
+  }
+
+  toggleComparisonMode(mode) {
+    const origImg = document.getElementById('image-original-element');
+    const wrap = document.getElementById('hp-enhanced-wrap');
+    const handle = document.getElementById('hp-slider-handle');
+    const range = document.getElementById('hp-split-range');
     const badge = document.getElementById('preview-4k-badge');
-    const tabEnhanced = document.getElementById('preview-tab-enhanced');
-    const tabOriginal = document.getElementById('preview-tab-original');
+
+    const btnSplit = document.getElementById('preview-tab-split');
+    const btnEnhanced = document.getElementById('preview-tab-enhanced');
+    const btnOriginal = document.getElementById('preview-tab-original');
+
+    [btnSplit, btnEnhanced, btnOriginal].forEach(b => {
+      if (b) {
+        b.style.background = 'transparent';
+        b.style.color = '#B2C0D1';
+      }
+    });
 
     if (mode === 'original') {
-      if (preview && this.rawOriginalSource) preview.src = this.rawOriginalSource;
+      if (wrap) wrap.style.width = '0%';
+      if (handle) handle.style.display = 'none';
+      if (range) range.style.display = 'none';
       if (badge) badge.style.display = 'none';
-      if (tabEnhanced) {
-        tabEnhanced.style.background = 'transparent';
-        tabEnhanced.style.color = '#B2C0D1';
+      if (btnOriginal) {
+        btnOriginal.style.background = 'var(--brass-primary)';
+        btnOriginal.style.color = '#000';
       }
-      if (tabOriginal) {
-        tabOriginal.style.background = 'var(--brass-primary)';
-        tabOriginal.style.color = '#000';
+    } else if (mode === 'enhanced') {
+      if (wrap) wrap.style.width = '100%';
+      if (handle) handle.style.display = 'none';
+      if (range) range.style.display = 'none';
+      if (badge) badge.style.display = 'block';
+      if (btnEnhanced) {
+        btnEnhanced.style.background = 'var(--brass-primary)';
+        btnEnhanced.style.color = '#000';
       }
     } else {
-      if (preview && (this.enhanced4KSource || this.tempImageSource)) {
-        preview.src = this.enhanced4KSource || this.tempImageSource;
+      // Split view
+      if (wrap) wrap.style.width = '50%';
+      if (handle) {
+        handle.style.display = 'block';
+        handle.style.left = '50%';
+      }
+      if (range) {
+        range.style.display = 'block';
+        range.value = 50;
       }
       if (badge) badge.style.display = 'block';
-      if (tabEnhanced) {
-        tabEnhanced.style.background = 'var(--brass-primary)';
-        tabEnhanced.style.color = '#000';
-      }
-      if (tabOriginal) {
-        tabOriginal.style.background = 'transparent';
-        tabOriginal.style.color = '#B2C0D1';
+      if (btnSplit) {
+        btnSplit.style.background = 'var(--brass-primary)';
+        btnSplit.style.color = '#000';
       }
     }
+  }
+
+  async revertActiveDishToOriginal() {
+    if (!this.activeImageDishId) return;
+    if (!this.rawOriginalSource) {
+      alert('No raw original photo found for this dish.');
+      return;
+    }
+
+    if (confirm('Revert this dish to its untouched original photo?')) {
+      this.tempImageSource = this.rawOriginalSource;
+      this.currentEnhancementStatus = 'original';
+
+      if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.revertDishToOriginal === 'function') {
+        await window.HOTEL_STORAGE.revertDishToOriginal(this.activeImageDishId);
+      }
+
+      const dish = window.app.menuData.find(d => d.id === this.activeImageDishId);
+      if (dish) {
+        dish.image = this.rawOriginalSource;
+        window.app.saveMenuData();
+        window.app.renderMenu();
+      }
+
+      this.toggleComparisonMode('original');
+      const badge = document.getElementById('lifecycle-status-badge');
+      if (badge) {
+        badge.className = 'hp-status-pill hp-status-original';
+        badge.innerText = 'RAW ORIGINAL';
+      }
+      window.app.showToast('Reverted to raw camera photo!', 'info');
+    }
+  }
+
+  async approveActiveDishPhoto() {
+    if (!this.activeImageDishId) return;
+
+    this.currentEnhancementStatus = 'approved';
+    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.approveDishEnhancedPhoto === 'function') {
+      await window.HOTEL_STORAGE.approveDishEnhancedPhoto(this.activeImageDishId);
+    }
+
+    const badge = document.getElementById('lifecycle-status-badge');
+    if (badge) {
+      badge.className = 'hp-status-pill hp-status-approved';
+      badge.innerText = `APPROVED MASTER (${this.currentQualityScore}%)`;
+    }
+    window.app.showToast('Enhanced photo approved as official menu master!', 'success');
   }
 
   setImageEngineOption(key, val, btn) {
@@ -815,11 +932,13 @@ class HotelPremierAdmin {
     const vignetteStrength = parseInt(document.getElementById('param-vignette')?.value || '38', 10) / 100;
 
     const status = document.getElementById('preview-engine-status');
-    if (status) status.innerText = '⚙️ Auto Harmonizing...';
+    if (status) status.innerText = '⚙️ Studio Engine Harmonizing...';
 
-    if (window.AssetPipeline && typeof window.AssetPipeline.processAdaptiveDishImage === 'function') {
+    const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
+
+    if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
       try {
-        const enhanced = await window.AssetPipeline.processAdaptiveDishImage(this.rawOriginalSource, {
+        const result = await window.AssetPipeline.processAutomaticStudioEnhancement(this.rawOriginalSource, dish, {
           backgroundMode: this.activeBackgroundMode || 'harmonize',
           framingMode: this.activeFramingMode || 'smart',
           warmth: warmth,
@@ -827,11 +946,13 @@ class HotelPremierAdmin {
           contrast: contrast,
           vignetteStrength: vignetteStrength
         });
-        this.enhanced4KSource = enhanced;
-        this.tempImageSource = enhanced;
+        this.enhanced4KSource = result.enhancedDataUrl;
+        this.tempImageSource = result.enhancedDataUrl;
+        this.currentQualityScore = result.qualityScore || 90;
+
         const preview = document.getElementById('image-preview-element');
-        if (preview) preview.src = enhanced;
-        if (status) status.innerText = '● Theme Harmonized (Ready)';
+        if (preview) preview.src = result.enhancedDataUrl;
+        if (status) status.innerText = `● Studio Master Ready (${this.currentQualityScore}%)`;
       } catch (e) {
         if (status) status.innerText = '● Ready';
       }
@@ -843,9 +964,9 @@ class HotelPremierAdmin {
     if (!file) return;
 
     try {
-      window.app.showToast('Image Engine: Ingesting raw photo...', 'info');
+      window.app.showToast('Studio Engine: Ingesting raw photo...', 'info');
       const status = document.getElementById('preview-engine-status');
-      if (status) status.innerText = '⚙️ Auto-Harmonizing Theme...';
+      if (status) status.innerText = '⚙️ Analyzing Food & Calibrating 3200K Studio...';
 
       // Read raw source for instant A/B comparison
       const rawDataUrl = await new Promise((res, rej) => {
@@ -856,28 +977,49 @@ class HotelPremierAdmin {
       });
       this.rawOriginalSource = rawDataUrl;
 
-      // Automatically run through Adaptive Engine
+      const origEl = document.getElementById('image-original-element');
+      if (origEl) origEl.src = rawDataUrl;
+
+      const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
+
+      // Automatically run through Automatic Studio Enhancement Pipeline
       let enhanced = rawDataUrl;
-      if (window.AssetPipeline && typeof window.AssetPipeline.processAdaptiveDishImage === 'function') {
-        enhanced = await window.AssetPipeline.processAdaptiveDishImage(rawDataUrl, {
+      let qualityScore = 90;
+      let category = 'curry';
+      let flags = [];
+
+      if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
+        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawDataUrl, dish, {
           backgroundMode: this.activeBackgroundMode || 'harmonize',
           framingMode: this.activeFramingMode || 'smart'
         });
+        enhanced = res.enhancedDataUrl;
+        qualityScore = res.qualityScore;
+        category = res.category;
+        flags = res.flags || [];
       } else {
         enhanced = await this.compressAndResizeImage(file);
       }
 
       this.enhanced4KSource = enhanced;
       this.tempImageSource = enhanced;
+      this.currentQualityScore = qualityScore;
+      this.currentEnhancementStatus = 'enhanced';
 
       const preview = document.getElementById('image-preview-element');
       const urlInput = document.getElementById('image-url-input-field');
       if (preview) preview.src = this.tempImageSource;
-      if (urlInput) urlInput.value = '(4K Studio Enhanced Photo - Ready to Apply)';
-      if (status) status.innerText = '● 4K Calibrated (Ready)';
+      if (urlInput) urlInput.value = `(AI Studio Master - ${category.toUpperCase()} • Score ${qualityScore}%)`;
+      if (status) status.innerText = `● Studio Master Calibrated (${qualityScore}%)`;
 
-      this.togglePreviewMode('enhanced');
-      window.app.showToast('4K auto-calibrated! Inspect & click "Apply 4K Enhanced Photo".', 'success');
+      const badge = document.getElementById('lifecycle-status-badge');
+      if (badge) {
+        badge.className = 'hp-status-pill hp-status-enhanced';
+        badge.innerText = `STUDIO MASTER (${qualityScore}%)`;
+      }
+
+      this.toggleComparisonMode('split');
+      window.app.showToast(`Studio Master ready! Category: ${category}, Score: ${qualityScore}%.`, 'success');
     } catch (err) {
       alert('Failed to process image file: ' + err.message);
     }
@@ -889,16 +1031,20 @@ class HotelPremierAdmin {
     this.rawOriginalSource = trimmed;
     this.tempImageSource = trimmed;
     const preview = document.getElementById('image-preview-element');
+    const origEl = document.getElementById('image-original-element');
     if (preview) preview.src = trimmed;
+    if (origEl) origEl.src = trimmed;
 
-    // Auto-enhance web image if possible
-    if (window.AssetPipeline && typeof window.AssetPipeline.enhanceFoodTo4K === 'function') {
+    const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
+
+    if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
       try {
-        const enhanced = await window.AssetPipeline.enhanceFoodTo4K(trimmed);
-        this.enhanced4KSource = enhanced;
-        this.tempImageSource = enhanced;
-        if (preview) preview.src = enhanced;
-        this.togglePreviewMode('enhanced');
+        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(trimmed, dish);
+        this.enhanced4KSource = res.enhancedDataUrl;
+        this.tempImageSource = res.enhancedDataUrl;
+        this.currentQualityScore = res.qualityScore;
+        if (preview) preview.src = res.enhancedDataUrl;
+        this.toggleComparisonMode('split');
       } catch (e) {
         this.enhanced4KSource = trimmed;
       }
@@ -909,17 +1055,22 @@ class HotelPremierAdmin {
     this.rawOriginalSource = url;
     this.tempImageSource = url;
     const preview = document.getElementById('image-preview-element');
+    const origEl = document.getElementById('image-original-element');
     const urlInput = document.getElementById('image-url-input-field');
     if (preview) preview.src = url;
+    if (origEl) origEl.src = url;
     if (urlInput) urlInput.value = url;
 
-    if (window.AssetPipeline && typeof window.AssetPipeline.enhanceFoodTo4K === 'function') {
+    const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
+
+    if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
       try {
-        const enhanced = await window.AssetPipeline.enhanceFoodTo4K(url);
-        this.enhanced4KSource = enhanced;
-        this.tempImageSource = enhanced;
-        if (preview) preview.src = enhanced;
-        this.togglePreviewMode('enhanced');
+        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(url, dish);
+        this.enhanced4KSource = res.enhancedDataUrl;
+        this.tempImageSource = res.enhancedDataUrl;
+        this.currentQualityScore = res.qualityScore;
+        if (preview) preview.src = res.enhancedDataUrl;
+        this.toggleComparisonMode('split');
       } catch (e) {
         this.enhanced4KSource = url;
       }
@@ -934,8 +1085,17 @@ class HotelPremierAdmin {
       dish.image = this.tempImageSource;
       window.app.saveMenuData();
 
-      // Permanent Storage in IndexedDB
-      if (window.HOTEL_STORAGE) {
+      // Permanent Dual Photo Preservation in Storage with Lifecycle tracking
+      if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function') {
+        await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
+          enhancedMasterImage: this.tempImageSource,
+          rawOriginalImage: this.rawOriginalSource || this.tempImageSource,
+          enhancementStatus: this.currentEnhancementStatus || 'enhanced',
+          qualityScore: this.currentQualityScore || 90,
+          backgroundType: this.activeBackgroundMode || 'harmonize',
+          styleVersion: 'hp-studio-v2.0'
+        });
+      } else if (window.HOTEL_STORAGE) {
         await window.HOTEL_STORAGE.saveDishOverride(dish.id, { image: this.tempImageSource });
       }
 
@@ -945,7 +1105,6 @@ class HotelPremierAdmin {
         if (cardImg.tagName === 'IMG') {
           cardImg.src = this.tempImageSource;
         } else {
-          // Re-render menu to show img element
           window.app.renderMenu();
         }
       }
@@ -965,7 +1124,7 @@ class HotelPremierAdmin {
       window.app.renderMenu();
       this.filterAdminDishes();
       this.closeImageModal();
-      window.app.showToast(`Updated photo for "${dish.name}"!`, 'success');
+      window.app.showToast(`Updated studio photo for "${dish.name}"!`, 'success');
     }
   }
 
@@ -2273,12 +2432,38 @@ class HotelPremierAdmin {
     if (!file) return;
 
     try {
-      window.app.showToast('Optimizing photo...', 'info');
-      const compressed = await this.compressAndResizeImage(file);
-      this.newDishTempImage = compressed;
+      window.app.showToast('AI Studio: Processing raw food photo...', 'info');
+
+      const rawDataUrl = await new Promise((res, rej) => {
+        const r = new FileReader();
+        r.onload = e => res(e.target.result);
+        r.onerror = rej;
+        r.readAsDataURL(file);
+      });
+
+      this.newDishRawOriginal = rawDataUrl;
+
+      const catSelect = document.getElementById('new-dish-category');
+      const catId = catSelect ? catSelect.value : 'curry';
+      const dishName = (document.getElementById('new-dish-name')?.value || '').trim();
+
+      let enhanced = rawDataUrl;
+      let score = 90;
+      let cat = 'curry';
+
+      if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
+        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawDataUrl, { name: dishName, categoryId: catId });
+        enhanced = res.enhancedDataUrl;
+        score = res.qualityScore;
+        cat = res.category;
+      } else {
+        enhanced = await this.compressAndResizeImage(file);
+      }
+
+      this.newDishTempImage = enhanced;
       const urlInput = document.getElementById('new-dish-image');
-      if (urlInput) urlInput.value = '(Uploaded Local Photo)';
-      window.app.showToast('Photo ready!', 'success');
+      if (urlInput) urlInput.value = `(AI Studio Enhanced • ${cat.toUpperCase()} • ${score}%)`;
+      window.app.showToast(`Studio Master photo ready (${score}%)!`, 'success');
     } catch (err) {
       alert('Failed to process photo: ' + err.message);
     }
@@ -2326,7 +2511,19 @@ class HotelPremierAdmin {
     window.app.menuData.unshift(newDish);
     window.app.saveMenuData();
 
-    if (window.HOTEL_STORAGE) {
+    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function' && this.newDishTempImage) {
+      await window.HOTEL_STORAGE.saveDishPhotoLifecycle(newDish.id, {
+        image: newDish.image,
+        enhancedMasterImage: newDish.image,
+        rawOriginalImage: this.newDishRawOriginal || newDish.image,
+        enhancementStatus: 'enhanced',
+        qualityScore: 92,
+        foodCategory: categoryId,
+        price: newDish.price,
+        tags: newDish.tags,
+        isSoldOut: false
+      });
+    } else if (window.HOTEL_STORAGE) {
       await window.HOTEL_STORAGE.saveDishOverride(newDish.id, {
         image: newDish.image,
         price: newDish.price,
