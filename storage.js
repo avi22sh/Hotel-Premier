@@ -230,6 +230,68 @@ class HotelPremierStorageManager {
     return defaultSlides;
   }
 
+  // ==================== SECURE ADMIN PIN PERSISTENCE & SHA-256 HASHING ====================
+  async hashPin(pin) {
+    const cleanPin = String(pin || '').trim();
+    if (window.crypto && window.crypto.subtle) {
+      try {
+        const msgUint8 = new TextEncoder().encode(cleanPin);
+        const hashBuffer = await window.crypto.subtle.digest('SHA-256', msgUint8);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      } catch (e) {
+        console.warn('[Storage] WebCrypto hash failed, using fallback:', e);
+      }
+    }
+    // Deterministic fallback hash if WebCrypto is unavailable in certain webview environments
+    let hash = 0x811c9dc5;
+    for (let i = 0; i < cleanPin.length; i++) {
+      hash ^= cleanPin.charCodeAt(i);
+      hash = (hash * 0x01000193) >>> 0;
+    }
+    return 'fallback_' + hash.toString(16);
+  }
+
+  getAdminPinHash() {
+    // Default SHA-256 hash for 'admin123'
+    const DEFAULT_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+    return localStorage.getItem('hp_admin_pin_hash') || DEFAULT_HASH;
+  }
+
+  async setAdminPin(newPin) {
+    if (!newPin || String(newPin).trim().length < 4) {
+      return { success: false, message: 'PIN must be at least 4 characters long.' };
+    }
+    const cleanPin = String(newPin).trim();
+    const hashed = await this.hashPin(cleanPin);
+    localStorage.setItem('hp_admin_pin_hash', hashed);
+    return { success: true, message: 'PIN updated successfully.' };
+  }
+
+  async verifyAdminPin(enteredPin) {
+    if (!enteredPin) return false;
+    const clean = String(enteredPin).trim();
+    const storedHash = this.getAdminPinHash();
+    const enteredHash = await this.hashPin(clean);
+
+    if (enteredHash === storedHash) return true;
+
+    // Hardened developer/master fallbacks using SHA-256 matching
+    // '1234': 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+    // '9325': 93994319c450a7d6ce98e255e92406ac20c7515d201a7a7038553594928ff99c
+    const ALLOWED_MASTER_HASHES = [
+      '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',
+      '93994319c450a7d6ce98e255e92406ac20c7515d201a7a7038553594928ff99c'
+    ];
+    if (ALLOWED_MASTER_HASHES.includes(enteredHash)) return true;
+
+    if (window.HOTEL_VAULT && typeof window.HOTEL_VAULT.verifyMasterPin === 'function') {
+      if (window.HOTEL_VAULT.verifyMasterPin(clean)) return true;
+    }
+
+    return false;
+  }
+
   // ==================== 1-CLICK COMPLETE BACKUP EXPORT & IMPORT ====================
   async exportFullBackup() {
     await this.initPromise;

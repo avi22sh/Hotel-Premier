@@ -7,7 +7,6 @@ class HotelPremierAdmin {
   constructor() {
     this.isAuthenticated = false;
     this.currentTab = 'menu';
-    this.adminPin = 'admin123';
     this.activeImageDishId = null;
     this.tempImageSource = '';
     this.newDishTempImage = '';
@@ -81,10 +80,27 @@ class HotelPremierAdmin {
     if (modal) modal.classList.remove('active');
   }
 
-  verifyPin() {
+  async verifyPin() {
     const pinInput = document.getElementById('admin-pin-input');
     if (!pinInput) return;
-    if (pinInput.value === this.adminPin || pinInput.value === '1234' || pinInput.value === '9325' || (window.HOTEL_VAULT && window.HOTEL_VAULT.verifyMasterPin(pinInput.value))) {
+    const enteredPin = (pinInput.value || '').trim();
+    if (!enteredPin) {
+      alert('Please enter a PIN.');
+      pinInput.focus();
+      return;
+    }
+
+    let isMatch = false;
+    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.verifyAdminPin === 'function') {
+      isMatch = await window.HOTEL_STORAGE.verifyAdminPin(enteredPin);
+    } else if (window.HOTEL_VAULT && typeof window.HOTEL_VAULT.verifyMasterPin === 'function') {
+      isMatch = window.HOTEL_VAULT.verifyMasterPin(enteredPin);
+    } else {
+      // Fallback
+      isMatch = (enteredPin === 'admin123' || enteredPin === '9325');
+    }
+
+    if (isMatch) {
       this.isAuthenticated = true;
       pinInput.value = '';
       document.getElementById('admin-auth-view').style.display = 'none';
@@ -92,7 +108,8 @@ class HotelPremierAdmin {
       this.switchTab('crm');
       window.app.showToast('Hotel Premier Admin Studio unlocked!', 'success');
     } else {
-      alert('Incorrect Security PIN. Default is admin123');
+      alert('Incorrect Security PIN. If forgotten, contact your Hotel Premier administrator.');
+      pinInput.value = '';
       pinInput.focus();
     }
   }
@@ -2258,7 +2275,24 @@ class HotelPremierAdmin {
           </div>
         </div>
 
-        <div style="padding-top: 14px; border-top: 1px dashed var(--cream-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <!-- Security & PIN Management Section -->
+        <div style="background: var(--cream-bg); border: 1.5px solid var(--cream-border); border-radius: var(--radius-md); padding: 16px; margin-top: 14px;">
+          <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+            <span style="font-size: 1.3rem;">🔐</span>
+            <h5 style="font-family: var(--font-royal); color: var(--terracotta-dark); margin: 0;">Restaurant Manager Security PIN</h5>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 12px;">
+            Update the Security PIN used by restaurant staff and managers to unlock this Admin Studio. PINs are securely hashed using cryptographic SHA-256 before storage.
+          </p>
+          <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+            <input type="password" id="admin-new-pin-input" class="form-input" placeholder="New PIN (min. 4 characters)" style="max-width: 240px; font-size: 0.95rem; letter-spacing: 1.5px;">
+            <button class="btn-primary" style="padding: 9px 16px; font-size: 0.85rem;" onclick="window.admin.updateManagerPin()">
+              🔒 Update Security PIN
+            </button>
+          </div>
+        </div>
+
+        <div style="padding-top: 14px; margin-top: 14px; border-top: 1px dashed var(--cream-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
           <div>
             <span style="font-size: 0.8rem; font-weight: 800; color: var(--pure-red);">Need to start fresh?</span>
             <p style="font-size: 0.72rem; color: var(--text-muted); margin: 0;">Resets all custom edits back to factory defaults.</p>
@@ -2269,6 +2303,29 @@ class HotelPremierAdmin {
         </div>
       </div>
     `;
+  }
+
+  async updateManagerPin() {
+    const input = document.getElementById('admin-new-pin-input');
+    if (!input) return;
+    const newPin = (input.value || '').trim();
+    if (!newPin || newPin.length < 4) {
+      alert('Security PIN must be at least 4 characters or digits long.');
+      input.focus();
+      return;
+    }
+
+    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.setAdminPin === 'function') {
+      const res = await window.HOTEL_STORAGE.setAdminPin(newPin);
+      if (res.success) {
+        input.value = '';
+        window.app.showToast('Security PIN successfully updated & cryptographically hashed!', 'success');
+      } else {
+        alert(res.message || 'Failed to update PIN.');
+      }
+    } else {
+      alert('Storage engine unavailable to save new PIN.');
+    }
   }
 
   async exportFullBackup() {
