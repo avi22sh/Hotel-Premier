@@ -16,7 +16,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     name: 'Hot & Hearty', 
     hindiName: 'गर्मागर्म चाय, कॉफ़ी व दूध',
     marathiName: 'गरमागरम चहा, कॉफी व दूध',
-    icon: 'â˜•', 
+    icon: '☕', 
     image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     description: 'Special Masala Tea, Filter Coffee, Bournvita & Hot Milk'
   },
