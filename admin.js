@@ -137,6 +137,8 @@ class HotelPremierAdmin {
       this.renderCRMManager(contentContainer);
     } else if (tabName === 'menu') {
       this.renderMenuManager(contentContainer);
+    } else if (tabName === 'ai-studio') {
+      this.renderAIStudioManager(contentContainer);
     } else if (tabName === 'rooms') {
       this.renderRoomsManager(contentContainer);
     } else if (tabName === 'slides') {
@@ -2793,6 +2795,193 @@ class HotelPremierAdmin {
         </div>
       </div>
     `;
+  }
+
+  // ==================== 7. AI CULINARY PHOTOGRAPHY STUDIO MANAGER ====================
+  async renderAIStudioManager(container) {
+    let settings = {
+      autoEnhanceEnabled: true,
+      defaultStyle: 'slate_gold',
+      autoReplaceClutteredBg: true,
+      cloudAiApiKey: '',
+      cloudAiModel: 'gemini-1.5-flash',
+      qualityThreshold: 60
+    };
+
+    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.getAISettings === 'function') {
+      settings = await window.HOTEL_STORAGE.getAISettings();
+    }
+
+    const dishes = (window.app && window.app.menuData) ? window.app.menuData : [];
+    const withPhotos = dishes.filter(d => d.image && d.image.trim() !== '');
+
+    container.innerHTML = `
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: linear-gradient(135deg, #0D111A 0%, #162035 100%); border: 1.5px solid var(--brass-primary); border-radius: 10px; padding: 16px; color: #FFF; box-shadow: 0 4px 14px rgba(0,0,0,0.5);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 1.4rem;">✨</span>
+                <h4 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--brass-light); margin: 0;">AI Culinary Photography Studio Hub</h4>
+              </div>
+              <p style="font-size: 0.78rem; color: #B2C0D1; margin: 4px 0 0; line-height: 1.4;">
+                Transform raw camera & phone uploads into consistent, gourmet restaurant photography matching Hotel Premier's royal identity.
+              </p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn-primary" style="padding: 7px 14px; font-size: 0.75rem;" onclick="window.admin.runBatchStudioEnhance()">
+                ⚡ Batch Enhance All (${withPhotos.length} Dishes)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Automation Settings Form -->
+        <div style="background: var(--cream-bg); border: 1.5px solid var(--cream-border); border-radius: var(--radius-md); padding: 16px;">
+          <h5 style="font-family: var(--font-royal); color: var(--terracotta-dark); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+            <span>⚙️</span> <span>Studio Global Policies</span>
+          </h5>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+            <div>
+              <label class="form-label">Signature Default Surface</label>
+              <select id="ai-setting-surface" class="form-select" onchange="window.admin.saveAIStudioSettings()">
+                <option value="slate_gold" ${settings.defaultStyle === 'slate_gold' ? 'selected' : ''}>Midnight Slate & Imperial Gold (Brand Signature)</option>
+                <option value="teak_wood" ${settings.defaultStyle === 'teak_wood' ? 'selected' : ''}>Warm Teak & Walnut Wood (Breads & Snacks)</option>
+                <option value="cream_marble" ${settings.defaultStyle === 'cream_marble' ? 'selected' : ''}>Refined Italian Cream Marble (Beverages & Desserts)</option>
+              </select>
+            </div>
+            <div>
+              <label class="form-label">Clutter Isolation Mode</label>
+              <select id="ai-setting-clutter" class="form-select" onchange="window.admin.saveAIStudioSettings()">
+                <option value="auto" ${settings.autoReplaceClutteredBg ? 'selected' : ''}>Auto-Detect & Isolate Poor Backgrounds</option>
+                <option value="harmonize" ${!settings.autoReplaceClutteredBg ? 'selected' : ''}>Universal Ambient Harmonize Only</option>
+              </select>
+            </div>
+            <div style="grid-column: 1 / -1;">
+              <label class="form-label">Optional Cloud AI API Key (Gemini Vision / Imagen BYOK)</label>
+              <div style="display: flex; gap: 8px;">
+                <input type="password" id="ai-setting-apikey" class="form-input" value="${settings.cloudAiApiKey || ''}" placeholder="AIzaSy... (Leave empty for 100% offline client-side studio)">
+                <button class="btn-secondary" style="white-space: nowrap;" onclick="window.admin.saveAIStudioSettings()">Save Key</button>
+              </div>
+              <span style="font-size: 0.68rem; color: var(--text-muted); margin-top: 3px; display: block;">
+                The client-side studio engine works 100% offline with zero external dependencies. Supplying an optional Gemini key unlocks advanced contextual prompts.
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Portfolio Inspection Grid -->
+        <div style="background: #FFF; border: 1px solid var(--ivory-border); border-radius: var(--radius-md); padding: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <h5 style="font-family: var(--font-royal); color: var(--burgundy-deep); margin: 0;">
+                📸 Menu Dishes Studio Portfolio (${dishes.length} Total)
+              </h5>
+              <span style="font-size: 0.72rem; color: var(--text-muted);">
+                Tap any dish to open the Before/After split slider, adjust lighting warmth, or approve official master.
+              </span>
+            </div>
+            <input type="text" id="ai-studio-search" class="form-input" style="max-width: 220px; font-size: 0.75rem;" placeholder="Filter dishes..." oninput="window.admin.filterStudioDishes(this.value)">
+          </div>
+
+          <div id="ai-studio-dish-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; max-height: 480px; overflow-y: auto;">
+            ${dishes.map(d => {
+              const hasImg = d.image && d.image.trim() !== '';
+              return `
+                <div class="ai-studio-grid-item" onclick="window.admin.openImageModal('${d.id}')" style="background: #0D111A; border: 1.5px solid rgba(213,183,122,0.3); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease; position: relative;">
+                  <div style="width: 100%; height: 95px; background: #162035; position: relative; overflow: hidden;">
+                    ${hasImg ? `
+                      <img src="${d.image}" style="width: 100%; height: 100%; object-fit: cover;">
+                      <span class="hp-status-pill hp-status-enhanced" style="position: absolute; bottom: 4px; left: 4px; font-size: 0.55rem; padding: 1px 5px;">STUDIO</span>
+                    ` : `
+                      <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🌱</div>
+                    `}
+                  </div>
+                  <div style="padding: 6px 8px;">
+                    <div style="font-size: 0.75rem; font-weight: 800; color: #FFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${d.name}</div>
+                    <div style="font-size: 0.65rem; color: var(--brass-light);">₹${d.price} • ${d.categoryId}</div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  async saveAIStudioSettings() {
+    const surface = document.getElementById('ai-setting-surface')?.value || 'slate_gold';
+    const clutter = document.getElementById('ai-setting-clutter')?.value === 'auto';
+    const apiKey = (document.getElementById('ai-setting-apikey')?.value || '').trim();
+
+    const settings = {
+      autoEnhanceEnabled: true,
+      defaultStyle: surface,
+      autoReplaceClutteredBg: clutter,
+      cloudAiApiKey: apiKey,
+      cloudAiModel: 'gemini-1.5-flash',
+      qualityThreshold: 60
+    };
+
+    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveAISettings === 'function') {
+      await window.HOTEL_STORAGE.saveAISettings(settings);
+    }
+    window.app.showToast('AI Studio settings saved!', 'success');
+  }
+
+  async runBatchStudioEnhance() {
+    const dishes = (window.app && window.app.menuData) ? window.app.menuData : [];
+    const withPhotos = dishes.filter(d => d.image && d.image.trim() !== '' && !d.image.startsWith('data:image/svg'));
+
+    if (withPhotos.length === 0) {
+      alert('No dish photos found to enhance.');
+      return;
+    }
+
+    if (!confirm(`Run automatic studio photography enhancement on all ${withPhotos.length} menu dishes?`)) {
+      return;
+    }
+
+    window.app.showToast(`Batch Studio: Enhancing ${withPhotos.length} dishes...`, 'info');
+    let count = 0;
+
+    for (const dish of withPhotos) {
+      try {
+        if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
+          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(dish.image, dish);
+          if (res && res.enhancedDataUrl) {
+            dish.image = res.enhancedDataUrl;
+            if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function') {
+              await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
+                enhancedMasterImage: res.enhancedDataUrl,
+                rawOriginalImage: dish.image,
+                enhancementStatus: 'approved',
+                qualityScore: res.qualityScore || 92,
+                foodCategory: res.category || dish.categoryId,
+                backgroundType: res.surfaceKey || 'slate_gold'
+              });
+            }
+            count++;
+          }
+        }
+      } catch (e) {}
+    }
+
+    window.app.saveMenuData();
+    window.app.renderCategoryCards();
+    window.app.renderMenu();
+    this.renderAIStudioManager(document.getElementById('admin-tab-content'));
+    window.app.showToast(`Batch completed! ${count} dish photos enhanced to studio quality.`, 'success');
+  }
+
+  filterStudioDishes(q) {
+    const term = (q || '').toLowerCase().trim();
+    const items = document.querySelectorAll('.ai-studio-grid-item');
+    items.forEach(el => {
+      const txt = (el.innerText || '').toLowerCase();
+      el.style.display = (!term || txt.includes(term)) ? 'block' : 'none';
+    });
   }
 
   async updateManagerPin() {
