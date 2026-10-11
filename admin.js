@@ -560,8 +560,11 @@ class HotelPremierAdmin {
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (!dish) return;
 
+    this.activeBackgroundMode = 'harmonize';
+    this.activeFramingMode = 'smart';
     const hasPhoto = dish.image && dish.image.trim() !== '';
     this.tempImageSource = dish.image || '';
+    this.rawOriginalSource = dish.image || '';
     const titleEl = document.getElementById('image-modal-dish-name');
     if (titleEl) titleEl.innerText = `${hasPhoto ? 'Manage / Replace Photo' : 'Upload Photo'}: ${dish.name}`;
 
@@ -632,6 +635,36 @@ class HotelPremierAdmin {
               </div>
             </div>
           `}
+
+          <!-- Theme Pedestal & View Adjustment Engine Controls -->
+          <div style="background: rgba(14,22,34,0.7); border: 1px solid rgba(213,183,122,0.3); border-radius: 8px; padding: 10px;">
+            <div style="font-size: 0.74rem; font-weight: 800; color: var(--brass-light); margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+              <span>🎨</span> <span>Auto Background & Luxury Pedestal Engine</span>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button type="button" class="btn-theme-engine-chip ${(!this.activeBackgroundMode || this.activeBackgroundMode === 'harmonize') ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'harmonize', this)">
+                ✨ Auto Studio Harmonizer
+              </button>
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'pedestal' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'pedestal', this)">
+                🪄 Cutout onto Gold Pedestal
+              </button>
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'original' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'original', this)">
+                📷 Original Photo Tone
+              </button>
+            </div>
+
+            <div style="font-size: 0.74rem; font-weight: 800; color: var(--brass-light); margin-top: 10px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
+              <span>📐</span> <span>Item View & Distortion Protector (Cropped/Flat)</span>
+            </div>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <button type="button" class="btn-theme-engine-chip ${(!this.activeFramingMode || this.activeFramingMode === 'smart') ? 'active' : ''}" onclick="window.admin.setImageEngineOption('framingMode', 'smart', this)">
+                📐 Smart Center & Safe Margin (Preserve Plate)
+              </button>
+              <button type="button" class="btn-theme-engine-chip ${this.activeFramingMode === 'fill' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('framingMode', 'fill', this)">
+                🔍 Full Bleed Fill
+              </button>
+            </div>
+          </div>
 
           <!-- Auto 4K Fine-Tuning Drawer / Sliders -->
           <div style="background: rgba(14,22,34,0.5); border: 1px solid rgba(213,183,122,0.2); border-radius: 8px; padding: 10px;">
@@ -764,6 +797,16 @@ class HotelPremierAdmin {
     }
   }
 
+  setImageEngineOption(key, val, btn) {
+    if (key === 'backgroundMode') this.activeBackgroundMode = val;
+    if (key === 'framingMode') this.activeFramingMode = val;
+    if (btn && btn.parentElement) {
+      btn.parentElement.querySelectorAll('.btn-theme-engine-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    this.recalculate4KLive();
+  }
+
   async recalculate4KLive() {
     if (!this.rawOriginalSource) return;
     const warmth = parseInt(document.getElementById('param-warmth')?.value || '8', 10);
@@ -772,11 +815,13 @@ class HotelPremierAdmin {
     const vignetteStrength = parseInt(document.getElementById('param-vignette')?.value || '38', 10) / 100;
 
     const status = document.getElementById('preview-engine-status');
-    if (status) status.innerText = '⚙️ Calibrating 4K...';
+    if (status) status.innerText = '⚙️ Auto Harmonizing...';
 
-    if (window.AssetPipeline && typeof window.AssetPipeline.enhanceFoodTo4K === 'function') {
+    if (window.AssetPipeline && typeof window.AssetPipeline.processAdaptiveDishImage === 'function') {
       try {
-        const enhanced = await window.AssetPipeline.enhanceFoodTo4K(this.rawOriginalSource, {
+        const enhanced = await window.AssetPipeline.processAdaptiveDishImage(this.rawOriginalSource, {
+          backgroundMode: this.activeBackgroundMode || 'harmonize',
+          framingMode: this.activeFramingMode || 'smart',
           warmth: warmth,
           sharpness: sharpness,
           contrast: contrast,
@@ -786,7 +831,7 @@ class HotelPremierAdmin {
         this.tempImageSource = enhanced;
         const preview = document.getElementById('image-preview-element');
         if (preview) preview.src = enhanced;
-        if (status) status.innerText = '● 4K Calibrated';
+        if (status) status.innerText = '● Theme Harmonized (Ready)';
       } catch (e) {
         if (status) status.innerText = '● Ready';
       }
@@ -798,9 +843,9 @@ class HotelPremierAdmin {
     if (!file) return;
 
     try {
-      window.app.showToast('4K Engine: Ingesting raw photo...', 'info');
+      window.app.showToast('Image Engine: Ingesting raw photo...', 'info');
       const status = document.getElementById('preview-engine-status');
-      if (status) status.innerText = '⚙️ 4K Auto-Balancing...';
+      if (status) status.innerText = '⚙️ Auto-Harmonizing Theme...';
 
       // Read raw source for instant A/B comparison
       const rawDataUrl = await new Promise((res, rej) => {
@@ -811,10 +856,13 @@ class HotelPremierAdmin {
       });
       this.rawOriginalSource = rawDataUrl;
 
-      // Automatically run through 4K Auto Engine
+      // Automatically run through Adaptive Engine
       let enhanced = rawDataUrl;
-      if (window.AssetPipeline && typeof window.AssetPipeline.enhanceFoodTo4K === 'function') {
-        enhanced = await window.AssetPipeline.enhanceFoodTo4K(rawDataUrl);
+      if (window.AssetPipeline && typeof window.AssetPipeline.processAdaptiveDishImage === 'function') {
+        enhanced = await window.AssetPipeline.processAdaptiveDishImage(rawDataUrl, {
+          backgroundMode: this.activeBackgroundMode || 'harmonize',
+          framingMode: this.activeFramingMode || 'smart'
+        });
       } else {
         enhanced = await this.compressAndResizeImage(file);
       }

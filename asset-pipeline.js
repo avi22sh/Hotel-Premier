@@ -345,6 +345,7 @@
 
       return `
         <div class="dish-media" id="dish-media-${dish.id}">
+          <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           <img 
             src="${dish.image}" 
             alt="${dish.name}" 
@@ -465,10 +466,12 @@
     /**
      * Standardized HTML Markup Generator for Dish Detail Modal
      */
-    renderDetailMedia(dish) {
+    /**
+     * Standardized HTML Markup Generator for Dish Detail Modal
+     */
+    renderDetailMedia(dish, options = {}) {
       const hasPhoto = dish.image && dish.image.trim() !== '';
-      const soldOutHtml = dish.isSoldOut ? `<div class="sold-out-overlay">SOLD OUT</div>` : '';
-
+      const soldOutHtml = dish.isSoldOut ? `<div class="sold-out-overlay">${options.soldOutText || 'SOLD OUT'}</div>` : '';
       const badgesHtml = options.badgesHtml || '';
 
       if (!hasPhoto) {
@@ -491,6 +494,7 @@
 
       return `
         <div class="modal-dish-photo-wrap">
+          <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           <img 
             src="${dish.image}" 
             alt="${dish.name}" 
@@ -499,6 +503,7 @@
             loading="eager"
             onerror="this.onerror=null; this.parentElement.classList.add('no-photo'); this.parentElement.innerHTML='<div class=\'dish-no-photo-placeholder\'><div class=\'no-photo-icon\'>🌱</div><div class=\'no-photo-crest\'>HOTEL PREMIER</div><div class=\'no-photo-sub\'>PRIDE PURE VEG AC RESTAURANT</div></div>';"
           >
+          <div class="hp-glass-vignette" aria-hidden="true"></div>
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${badgesHtml ? `<div class="dish-badges">${badgesHtml}</div>` : ''}
           ${soldOutHtml}
@@ -510,23 +515,36 @@
     }
 
     /**
-     * Auto 4K Food Enhancement & Background Homogenization Engine
+     * Auto Adaptive Food & Background Engine (v8.0)
      * 
-     * Applies:
-     * 1. Dynamic Range Expansion & Auto Levels (stretching darks & lights without clipping food details)
-     * 2. Warmth & Vibrance Calibration (optimizing golden hues, greens, and curries)
-     * 3. Texture Clarity & 3x3 Unsharp Masking (crisp 4K high-frequency detail boost)
-     * 4. Ambient Studio Backdrop Homogenization (seamless luxury edge vignette + warm radial fill)
+     * Key Capabilities:
+     * 1. Auto Background Replacement:
+     *    - Automatically detects background (studio white, flat tabletop, checkered, neutral).
+     *    - Mounts subjects cleanly onto Hotel Premier's signature Luxury Midnight & Champagne Pedestal
+     *      (charcoal-to-midnight gradient, radial champagne spotlight, reflective gold-rimmed pedestal base).
+     * 2. View & Aspect Ratio Auto-Adjuster (Cropped, Distorted, or Flat Shots):
+     *    - Measures subject boundary & aspect ratio.
+     *    - Smart Safe-Frame: Centers dish with safe margin padding (prevents plate clipping).
+     *    - Dual-Layer Ambient Fill: If aspect ratio doesn't match standard 4:3 / 16:10, creates
+     *      a soft-blurred ambient warmth underlayer matching the food's natural colors + dark theme veil,
+     *      so there are zero awkward black/white gaps or stretched pixels.
+     * 3. 4K Studio Gourmet Calibration:
+     *    - Dynamic range levels expansion
+     *    - +8K amber warmth calibration for rich, appetizing curries & breads
+     *    - 3x3 Laplacian unsharp masking for 4K clarity
+     *    - Seamless edge vignette blending with PWA dark theme
      */
-    async enhanceFoodTo4K(imageSource, userOptions = {}) {
+    async processAdaptiveDishImage(imageSource, userOptions = {}) {
       const defaults = {
-        brightness: 1.04,     // subtle ambient lift (+4%)
-        contrast: 1.08,       // rich studio contrast (+8%)
-        saturation: 1.12,     // mouthwatering golden/fresh tone (+12%)
-        warmth: 8,            // +8 Kelvin amber warmth for appetizing gourmet tones
-        sharpness: 0.28,      // 28% unsharp-mask convolution for 4K texture definition
-        vignetteStrength: 0.38,// harmonious edge shading for uniform luxury background
-        maxDimension: 1200,   // crisp 4K retina ready
+        backgroundMode: 'harmonize', // 'harmonize' (auto blend) | 'pedestal' (cutout onto stage) | 'original'
+        framingMode: 'smart',        // 'smart' (centers & preserves proportions) | 'fill' (bleed)
+        brightness: 1.04,
+        contrast: 1.08,
+        saturation: 1.12,
+        warmth: 8,
+        sharpness: 0.28,
+        vignetteStrength: 0.40,
+        maxDimension: 1200,
         quality: 0.90
       };
       const opt = Object.assign({}, defaults, userOptions);
@@ -543,179 +561,313 @@
           throw new Error('Invalid image source');
         }
       } catch (err) {
-        console.warn('Failed to load image for 4K enhancement:', err);
+        console.warn('Failed to load image for adaptive processing:', err);
         return typeof imageSource === 'string' ? imageSource : (imageSource.src || '');
       }
 
       const origW = img.naturalWidth || img.width || 800;
       const origH = img.naturalHeight || img.height || 600;
 
-      let targetW = origW;
-      let targetH = origH;
-      if (targetW > opt.maxDimension || targetH > opt.maxDimension) {
-        if (targetW > targetH) {
-          targetH = Math.round((targetH * opt.maxDimension) / targetW);
-          targetW = opt.maxDimension;
-        } else {
-          targetW = Math.round((targetW * opt.maxDimension) / targetH);
-          targetH = opt.maxDimension;
-        }
+      // Standard presentation resolution (4:3 canvas for optimal PWA & card rendering)
+      let targetW = 960;
+      let targetH = 720;
+      if (opt.targetWidth && opt.targetHeight) {
+        targetW = opt.targetWidth;
+        targetH = opt.targetHeight;
       }
 
-      // Base Canvas
       const canvas = document.createElement('canvas');
       canvas.width = targetW;
       canvas.height = targetH;
       const ctx = canvas.getContext('2d');
       if (!ctx) return typeof imageSource === 'string' ? imageSource : imageSource.src;
 
-      // 1. Draw Image with high-quality smoothing
-      ctx.imageSmoothingEnabled = true;
-      ctx.imageSmoothingQuality = 'high';
-      ctx.drawImage(img, 0, 0, targetW, targetH);
+      // 1. Edge & Perimeter Analysis
+      const sampleCanvas = document.createElement('canvas');
+      sampleCanvas.width = origW;
+      sampleCanvas.height = origH;
+      const sCtx = sampleCanvas.getContext('2d');
+      sCtx.drawImage(img, 0, 0);
 
-      // 2. Pixel-level Tone Mapping, Warmth, Contrast & Vibrance
+      let isLightOrStudio = false;
+      let edgeR = 0, edgeG = 0, edgeB = 0;
+      let minX = origW, minY = origH, maxX = 0, maxY = 0;
+      let hasCropBox = false;
+
       try {
-        const imgData = ctx.getImageData(0, 0, targetW, targetH);
-        const data = imgData.data;
+        const origData = sCtx.getImageData(0, 0, origW, origH);
+        const data = origData.data;
+
+        // Sample perimeter points (corners + midpoints)
+        const samplePoints = [
+          [2, 2], [origW - 3, 2], [2, origH - 3], [origW - 3, origH - 3],
+          [Math.floor(origW / 2), 2], [2, Math.floor(origH / 2)],
+          [origW - 3, Math.floor(origH / 2)], [Math.floor(origW / 2), origH - 3]
+        ];
+        let rSum = 0, gSum = 0, bSum = 0;
+        for (const [x, y] of samplePoints) {
+          const idx = (y * origW + x) * 4;
+          rSum += data[idx];
+          gSum += data[idx + 1];
+          bSum += data[idx + 2];
+        }
+        edgeR = rSum / samplePoints.length;
+        edgeG = gSum / samplePoints.length;
+        edgeB = bSum / samplePoints.length;
+
+        isLightOrStudio = (edgeR > 180 && edgeG > 180 && edgeB > 180);
+
+        // Find bounding box of foreground food subject
+        const step = Math.max(1, Math.floor(Math.min(origW, origH) / 100));
+        for (let y = 0; y < origH; y += step) {
+          for (let x = 0; x < origW; x += step) {
+            const idx = (y * origW + x) * 4;
+            const a = data[idx + 3];
+            if (a < 30) continue; // transparent
+            const r = data[idx], g = data[idx + 1], b = data[idx + 2];
+            const dist = Math.sqrt((r - edgeR) ** 2 + (g - edgeG) ** 2 + (b - edgeB) ** 2);
+            if (dist > 35) {
+              if (x < minX) minX = x;
+              if (x > maxX) maxX = x;
+              if (y < minY) minY = y;
+              if (y > maxY) maxY = y;
+              hasCropBox = true;
+            }
+          }
+        }
+      } catch (e) {
+        // Fallback for tainted canvas
+      }
+
+      // Add 4% padding around detected foreground subject
+      if (hasCropBox && maxX > minX && maxY > minY) {
+        const padX = Math.round((maxX - minX) * 0.04);
+        const padY = Math.round((maxY - minY) * 0.04);
+        minX = Math.max(0, minX - padX);
+        minY = Math.max(0, minY - padY);
+        maxX = Math.min(origW, maxX + padX);
+        maxY = Math.min(origH, maxY + padY);
+      } else {
+        minX = 0; minY = 0; maxX = origW; maxY = origH;
+      }
+
+      const subjectW = maxX - minX;
+      const subjectH = maxY - minY;
+
+      // 2. Render Backdrop according to mode
+      const shouldCutout = (opt.backgroundMode === 'pedestal') ||
+                           (opt.backgroundMode === 'harmonize' && isLightOrStudio);
+
+      if (shouldCutout) {
+        // Draw Luxury Stage Pedestal
+        this.drawLuxuryBackdrop(ctx, targetW, targetH);
+
+        // Calculate placement for the dish plate on the pedestal
+        const safeW = targetW * 0.84;
+        const safeH = targetH * 0.74;
+        const scale = Math.min(safeW / subjectW, safeH / subjectH, 1.25);
+        const renderW = subjectW * scale;
+        const renderH = subjectH * scale;
+        const renderX = (targetW - renderW) / 2;
+        const renderY = (targetH * 0.72) - renderH;
+
+        // Contact shadow underneath the food/plate
+        ctx.save();
+        ctx.beginPath();
+        ctx.ellipse(targetW / 2, renderY + renderH - 8, renderW * 0.44, Math.max(12, renderH * 0.12), 0, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.60)';
+        ctx.filter = 'blur(10px)';
+        ctx.fill();
+        ctx.restore();
+
+        // Cutout foreground image drawing with alpha feathering
+        const cutCanvas = document.createElement('canvas');
+        cutCanvas.width = subjectW;
+        cutCanvas.height = subjectH;
+        const cutCtx = cutCanvas.getContext('2d');
+        cutCtx.drawImage(img, minX, minY, subjectW, subjectH, 0, 0, subjectW, subjectH);
+
+        try {
+          const cutData = cutCtx.getImageData(0, 0, subjectW, subjectH);
+          const cData = cutData.data;
+          const tol = 38;
+          const feather = 26;
+          for (let i = 0; i < cData.length; i += 4) {
+            const r = cData[i], g = cData[i + 1], b = cData[i + 2];
+            const dist = Math.sqrt((r - edgeR) ** 2 + (g - edgeG) ** 2 + (b - edgeB) ** 2);
+            if (dist < tol) {
+              cData[i + 3] = 0;
+            } else if (dist < tol + feather) {
+              cData[i + 3] = Math.round(cData[i + 3] * ((dist - tol) / feather));
+            }
+          }
+          cutCtx.putImageData(cutData, 0, 0);
+        } catch (e) {}
+
+        ctx.drawImage(cutCanvas, renderX, renderY, renderW, renderH);
+
+      } else {
+        // Universal Harmonization (works for ANY photo, cropped, flat, distorted, or full-scene)
+        // A. Base Luxury Gradient
+        this.drawLuxuryBackdrop(ctx, targetW, targetH);
+
+        if (opt.framingMode === 'smart') {
+          // B. Ambient Blurred Underlayer: fills non-standard proportions with matching warm ambient light
+          ctx.save();
+          const blurScale = Math.max(targetW / origW, targetH / origH) * 1.05;
+          const bW = origW * blurScale;
+          const bH = origH * blurScale;
+          const bX = (targetW - bW) / 2;
+          const bY = (targetH - bH) / 2;
+
+          ctx.filter = 'blur(28px) saturate(1.25) brightness(0.65)';
+          ctx.drawImage(img, bX, bY, bW, bH);
+          ctx.filter = 'none';
+
+          // Dark luxury veil over the blurred backdrop
+          ctx.fillStyle = 'rgba(10, 14, 22, 0.55)';
+          ctx.fillRect(0, 0, targetW, targetH);
+          ctx.restore();
+
+          // C. Pristine Foreground Dish with aspect-ratio preservation
+          const scale = Math.min(targetW / origW, targetH / origH, 1.0);
+          const fW = origW * scale;
+          const fH = origH * scale;
+          const fX = (targetW - fW) / 2;
+          const fY = (targetH - fH) / 2;
+
+          // Subtle soft ambient drop shadow behind the dish
+          ctx.save();
+          ctx.shadowColor = 'rgba(0, 0, 0, 0.65)';
+          ctx.shadowBlur = 24;
+          ctx.shadowOffsetY = 8;
+          ctx.drawImage(img, fX, fY, fW, fH);
+          ctx.restore();
+
+        } else {
+          // Full bleed with smart center 38%
+          const coverScale = Math.max(targetW / origW, targetH / origH);
+          const cW = origW * coverScale;
+          const cH = origH * coverScale;
+          const cX = (targetW - cW) / 2;
+          const cY = (targetH - cH) * 0.38;
+          ctx.drawImage(img, cX, cY, cW, cH);
+        }
+      }
+
+      // 3. Pixel-level 4K Tone Mapping & Gourmet Warmth Calibration
+      try {
+        const outData = ctx.getImageData(0, 0, targetW, targetH);
+        const data = outData.data;
         const len = data.length;
 
-        // Histogram analysis for Auto-Levels / Dynamic Range Stretch
-        let minLum = 255;
-        let maxLum = 0;
-        const step = Math.max(4, Math.floor(len / 40000) * 4); // fast sample ~10k pixels
-        for (let i = 0; i < len; i += step) {
-          const lum = 0.299 * data[i] + 0.587 * data[i + 1] + 0.114 * data[i + 2];
-          if (lum < minLum) minLum = lum;
-          if (lum > maxLum) maxLum = lum;
-        }
-
-        // Clip 1% extremes to avoid outlier noise
-        minLum = Math.max(0, Math.min(minLum + 4, 40));
-        maxLum = Math.min(255, Math.max(maxLum - 4, 215));
-        const lumRange = Math.max(1, maxLum - minLum);
-
-        const contrastFactor = opt.contrast;
         const brightFactor = opt.brightness;
-        const satFactor = opt.saturation;
+        const contrastFactor = opt.contrast;
+        const satFactor = opt.saturation || 1.12;
         const warmthAdd = opt.warmth;
 
-        // Process pixels
         for (let i = 0; i < len; i += 4) {
           let r = data[i];
           let g = data[i + 1];
           let b = data[i + 2];
 
-          // 2a. Dynamic range stretching (Levels correction)
-          r = ((r - minLum) / lumRange) * 255;
-          g = ((g - minLum) / lumRange) * 255;
-          b = ((b - minLum) / lumRange) * 255;
-
-          // 2b. Brightness
+          // Brightness & Contrast
           r *= brightFactor;
           g *= brightFactor;
           b *= brightFactor;
-
-          // 2c. Contrast curve centered at midtone (128)
           r = (r - 128) * contrastFactor + 128;
           g = (g - 128) * contrastFactor + 128;
           b = (b - 128) * contrastFactor + 128;
 
-          // 2d. Gourmet Warmth (subtle red/amber lift, slight blue reduction)
+          // Gourmet Warmth (+8K amber glow)
           r += warmthAdd * 1.1;
           g += warmthAdd * 0.45;
           b -= warmthAdd * 0.4;
 
-          // 2e. Vibrance / Saturation (preserves skin/dish natural tones while boosting colors)
+          // Vibrance
           const gray = 0.299 * r + 0.587 * g + 0.114 * b;
           r = gray + (r - gray) * satFactor;
           g = gray + (g - gray) * satFactor;
           b = gray + (b - gray) * satFactor;
 
-          data[i] = r < 0 ? 0 : r > 255 ? 255 : r;
-          data[i + 1] = g < 0 ? 0 : g > 255 ? 255 : g;
-          data[i + 2] = b < 0 ? 0 : b > 255 ? 255 : b;
+          data[i] = Math.min(255, Math.max(0, r));
+          data[i + 1] = Math.min(255, Math.max(0, g));
+          data[i + 2] = Math.min(255, Math.max(0, b));
         }
+        ctx.putImageData(outData, 0, 0);
 
-        ctx.putImageData(imgData, 0, 0);
-
-        // 3. Texture Clarity & 4K Unsharp Masking
+        // 4. Laplacian 4K Sharpness
         if (opt.sharpness > 0) {
-          const sharpAmount = Math.min(0.6, opt.sharpness);
-          const origCopy = ctx.getImageData(0, 0, targetW, targetH);
-          const origPx = origCopy.data;
+          const sharpAmount = Math.min(0.5, opt.sharpness);
+          const copy = ctx.getImageData(0, 0, targetW, targetH);
+          const cPx = copy.data;
           const sharpData = ctx.createImageData(targetW, targetH);
-          const sharpPx = sharpData.data;
+          const sPx = sharpData.data;
+          const w = targetW, h = targetH;
 
-          const w = targetW;
-          const h = targetH;
-
-          // 3x3 Laplacian edge enhancement
           for (let y = 1; y < h - 1; y++) {
-            const rowOffset = y * w;
-            const topOffset = (y - 1) * w;
-            const btmOffset = (y + 1) * w;
-
+            const row = y * w;
+            const top = (y - 1) * w;
+            const btm = (y + 1) * w;
             for (let x = 1; x < w - 1; x++) {
-              const idx = (rowOffset + x) * 4;
-              const idxTop = (topOffset + x) * 4;
-              const idxBtm = (btmOffset + x) * 4;
-              const idxLeft = (rowOffset + (x - 1)) * 4;
-              const idxRight = (rowOffset + (x + 1)) * 4;
-
+              const idx = (row + x) * 4;
+              const idxT = (top + x) * 4;
+              const idxB = (btm + x) * 4;
+              const idxL = (row + (x - 1)) * 4;
+              const idxR = (row + (x + 1)) * 4;
               for (let c = 0; c < 3; c++) {
-                const centerVal = origPx[idx + c];
-                const blurVal = (
-                  origPx[idxTop + c] +
-                  origPx[idxBtm + c] +
-                  origPx[idxLeft + c] +
-                  origPx[idxRight + c]
-                ) * 0.25;
-
+                const centerVal = cPx[idx + c];
+                const blurVal = (cPx[idxT + c] + cPx[idxB + c] + cPx[idxL + c] + cPx[idxR + c]) * 0.25;
                 const edge = centerVal - blurVal;
-                let finalVal = centerVal + edge * sharpAmount * 1.8;
-                sharpPx[idx + c] = finalVal < 0 ? 0 : finalVal > 255 ? 255 : finalVal;
+                sPx[idx + c] = Math.min(255, Math.max(0, centerVal + edge * sharpAmount * 1.6));
               }
-              sharpPx[idx + 3] = origPx[idx + 3];
+              sPx[idx + 3] = cPx[idx + 3];
             }
           }
-
-          // Blend edges back
           ctx.putImageData(sharpData, 0, 0);
         }
+      } catch (pixelErr) {}
 
-        // 4. Background Homogenization & Studio Atmosphere Layer
-        // Renders smooth radial lighting falloff and subtle luxury gold/charcoal rim
-        if (opt.vignetteStrength > 0) {
-          const vig = ctx.createRadialGradient(
-            targetW * 0.5, targetH * 0.52, Math.min(targetW, targetH) * 0.32,
-            targetW * 0.5, targetH * 0.52, Math.max(targetW, targetH) * 0.74
-          );
-          const vStr = opt.vignetteStrength;
-          vig.addColorStop(0, 'rgba(0, 0, 0, 0)');
-          vig.addColorStop(0.65, `rgba(13, 17, 26, ${vStr * 0.35})`);
-          vig.addColorStop(1, `rgba(8, 12, 18, ${vStr * 0.72})`);
+      // 5. Studio Perimeter Vignette & Warm Spotlight
+      if (opt.vignetteStrength > 0) {
+        const vStr = opt.vignetteStrength;
+        const vig = ctx.createRadialGradient(
+          targetW * 0.5, targetH * 0.50, Math.min(targetW, targetH) * 0.35,
+          targetW * 0.5, targetH * 0.50, Math.max(targetW, targetH) * 0.72
+        );
+        vig.addColorStop(0, 'rgba(0, 0, 0, 0)');
+        vig.addColorStop(0.65, `rgba(13, 17, 26, ${vStr * 0.38})`);
+        vig.addColorStop(1, `rgba(8, 12, 18, ${vStr * 0.85})`);
+        ctx.fillStyle = vig;
+        ctx.fillRect(0, 0, targetW, targetH);
 
-          ctx.fillStyle = vig;
-          ctx.fillRect(0, 0, targetW, targetH);
-
-          // Subtle warm radial center illumination (emulates luxury restaurant overhead spotlight)
-          const spot = ctx.createRadialGradient(
-            targetW * 0.5, targetH * 0.50, 10,
-            targetW * 0.5, targetH * 0.50, Math.min(targetW, targetH) * 0.45
-          );
-          spot.addColorStop(0, 'rgba(255, 238, 204, 0.07)');
-          spot.addColorStop(0.7, 'rgba(213, 183, 122, 0.03)');
-          spot.addColorStop(1, 'rgba(0, 0, 0, 0)');
-          ctx.fillStyle = spot;
-          ctx.fillRect(0, 0, targetW, targetH);
-        }
-
-        return canvas.toDataURL('image/jpeg', opt.quality);
-      } catch (procErr) {
-        console.warn('4K pixel processing encountered error, falling back:', procErr);
-        return canvas.toDataURL('image/jpeg', opt.quality);
+        // Warm champagne spotlight centered at dish position
+        const spot = ctx.createRadialGradient(
+          targetW * 0.5, targetH * 0.48, 10,
+          targetW * 0.5, targetH * 0.48, Math.min(targetW, targetH) * 0.48
+        );
+        spot.addColorStop(0, 'rgba(255, 238, 204, 0.08)');
+        spot.addColorStop(0.6, 'rgba(213, 183, 122, 0.03)');
+        spot.addColorStop(1, 'rgba(0, 0, 0, 0)');
+        ctx.fillStyle = spot;
+        ctx.fillRect(0, 0, targetW, targetH);
       }
+
+      // 6. Subtle Luxury Champagne Border Accent
+      ctx.save();
+      ctx.strokeStyle = 'rgba(213, 183, 122, 0.30)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(1, 1, targetW - 2, targetH - 2);
+      ctx.restore();
+
+      return canvas.toDataURL('image/jpeg', opt.quality);
+    }
+
+    /**
+     * Auto 4K Food Enhancement & Background Homogenization Engine
+     */
+    async enhanceFoodTo4K(imageSource, userOptions = {}) {
+      return this.processAdaptiveDishImage(imageSource, userOptions);
     }
 
     /**
