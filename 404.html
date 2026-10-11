@@ -1806,6 +1806,13 @@
           <input type="text" id="drawer-sections-search" placeholder="Search categories (e.g. Morning, Paneer, Rice, Soups)..." oninput="window.app ? window.app.filterDrawerSections(this.value) : null">
           <button class="clear-search-btn" id="drawer-clear-search-btn" onclick="document.getElementById('drawer-sections-search').value=''; if (window.app) window.app.filterDrawerSections(''); this.style.display='none';" style="display: none;">✕</button>
         </div>
+        <div class="drawer-quick-filter-chips" id="drawer-quick-filter-chips">
+          <button type="button" class="drawer-qf-chip active" onclick="window.app ? window.app.filterDrawerByGroup('all') : null">All</button>
+          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('breakfast') : null">Breakfast & Starters</button>
+          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('main') : null">Mains & Breads</button>
+          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('rice') : null">Rice & Dal</button>
+          <button type="button" class="drawer-qf-chip" onclick="window.app ? window.app.filterDrawerByGroup('beverages') : null">Desserts & Drinks</button>
+        </div>
       </div>
       <div class="drawer-sections-grid" id="drawer-sections-list">
         <!-- Rendered dynamically by app.js -->

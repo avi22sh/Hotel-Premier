@@ -1410,6 +1410,35 @@ class HotelPremierApp {
     });
   }
 
+  filterDrawerByGroup(groupKey) {
+    const chips = document.querySelectorAll('#drawer-quick-filter-chips .drawer-qf-chip');
+    chips.forEach(chip => chip.classList.remove('active'));
+    const clickedChip = Array.from(chips).find(c => {
+      const onclickAttr = c.getAttribute('onclick') || '';
+      return onclickAttr.includes(`'${groupKey}'`);
+    });
+    if (clickedChip) clickedChip.classList.add('active');
+
+    const groupMap = {
+      all: null,
+      breakfast: ['morning-delights', 'hot-hearty', 'tasty-tidbits', 'premier-soups', 'indo-chinese', 'tandoor-classics', 'italian-pasta'],
+      main: ['khandeshi-specialties', 'veg-specialties', 'paneer-specialties', 'kofta-delights', 'tandoor-rotis', 'thali-combos'],
+      rice: ['flavorful-dals', 'rice-biryani', 'sizzling-rice-noodles', 'sides-accompaniments'],
+      beverages: ['desserts', 'mocktails', 'milkshake-mastani', 'chilled-beverages']
+    };
+
+    const allowed = groupMap[groupKey];
+    const rows = document.querySelectorAll('#drawer-sections-list .drawer-section-item');
+    rows.forEach(row => {
+      const sectionId = row.getAttribute('data-section-id');
+      if (!allowed || sectionId === 'all' || allowed.includes(sectionId)) {
+        row.style.display = 'flex';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
   renderQuickFilters() {
     const filters = [
       { id: 'all', labelKey: 'filterAll', icon: '🍽️' },
