@@ -1625,15 +1625,7 @@ class HotelPremierApp {
     const displayImage = dish._activeVariantImage || dish.image;
     const displayPrice = dish._activeVariantPrice || dish.price;
     const hasPhoto = displayImage && displayImage.trim() !== '';
-    const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
-    const zomatoScore = dish.zomatoRating || '4.2';
     let tagPillsHtml = '';
-    if (isZomatoRated) {
-      tagPillsHtml += `<button type="button" class="dish-pill-zomato" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('zomato') : window.open('https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier', '_blank');" title="Hotel Premier Zomato Rating - Tap to view">★ ${zomatoScore} Zomato</button>`;
-    }
-    if (dish.tags && dish.tags.includes('swiggy-top')) {
-      tagPillsHtml += `<button type="button" class="dish-pill-swiggy" onclick="event.stopPropagation(); window.app ? window.app.routeToReview('swiggy') : window.open('https://www.swiggy.com/city/bhusawal/hotel-premier-saket-society-rest787948', '_blank');">🛵 4.2★ Swiggy</button>`;
-    }
     if (dish.tags && dish.tags.includes('spicy')) {
       tagPillsHtml += `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>`;
     }
@@ -2060,8 +2052,9 @@ class HotelPremierApp {
     }
 
     if (platform === 'zomato') {
-      const appUrl = 'zomato://search?query=Hotel%20Premier%20Bhusawal';
-      const webUrl = 'https://www.zomato.com/search?q=Hotel+Premier+Bhusawal';
+      // Direct restaurant deep-link to Hotel Premier Bhusawal page
+      const appUrl = 'zomato://restaurant/search?q=Hotel%20Premier%20Bhusawal';
+      const webUrl = 'https://www.zomato.com/bhusawal/restaurants?q=Hotel+Premier';
       if (isMobile) {
         const start = Date.now();
         window.location.href = appUrl;

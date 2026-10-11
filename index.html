@@ -1845,20 +1845,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.10) -->
-  <script src="storage.js?v=20.10"></script>
-  <script src="vault.js?v=20.10"></script>
-  <script src="data/translations.js?v=20.10"></script>
-  <script src="data/hotel-data.js?v=20.10"></script>
-  <script src="data/menu-data.js?v=20.10"></script>
-  <script src="app.js?v=20.10"></script>
-  <script src="admin.js?v=20.10"></script>
+  <!-- Load Application Scripts (v20.11) -->
+  <script src="storage.js?v=20.11"></script>
+  <script src="vault.js?v=20.11"></script>
+  <script src="data/translations.js?v=20.11"></script>
+  <script src="data/hotel-data.js?v=20.11"></script>
+  <script src="data/menu-data.js?v=20.11"></script>
+  <script src="app.js?v=20.11"></script>
+  <script src="admin.js?v=20.11"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.10').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.11').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
