@@ -125,13 +125,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Accessible High Contrast / Senior Mode */
+/* Accessible High Contrast / Senior Mode (A+) */
 body.elderly-mode {
   font-size: 18px !important;
   line-height: 1.7 !important;
 }
 body.elderly-mode h1, body.elderly-mode h2, body.elderly-mode h3 {
   font-size: 120% !important;
+}
+/* Senior Mode Stability: Prevent text clipping in sticky bottom pills, floating toggles, and badges */
+body.elderly-mode .floating-menu-toggle-btn {
+  height: auto !important;
+  min-height: 44px !important;
+  padding: 10px 18px !important;
+}
+body.elderly-mode .filter-pill,
+body.elderly-mode .culinary-theme-btn,
+body.elderly-mode .category-card-badge,
+body.elderly-mode .pride-badge-pill,
+body.elderly-mode .hallmark-badge,
+body.elderly-mode .cred-badge,
+body.elderly-mode .drawer-active-pill,
+body.elderly-mode .floating-btn-badge,
+body.elderly-mode .dish-pill-zomato,
+body.elderly-mode .dish-pill-swiggy,
+body.elderly-mode .view-detail-link {
+  height: auto !important;
+  line-height: 1.3 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
 }
 
 img {
@@ -2580,6 +2602,7 @@ a {
   box-shadow: 0 4px 14px rgba(10, 16, 26, 0.05);
   display: flex;
   flex-direction: column;
+  height: 100%;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
@@ -2651,7 +2674,8 @@ a {
   z-index: 4;
 }
 
-.dish-card .dish-body {
+.dish-card .dish-body,
+.dish-card-body {
   padding: 14px 16px 16px;
   display: flex;
   flex-direction: column;
@@ -2772,12 +2796,15 @@ a {
   margin: 0;
 }
 
-.dish-footer {
+.dish-footer,
+.dish-card-footer,
+.dish-price-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-top: 10px;
   border-top: 1px dashed rgba(197, 168, 128, 0.25);
+  margin-top: auto;
 }
 
 .dish-price-block {
@@ -4393,6 +4420,72 @@ a {
     max-height: 84vh;
     border-radius: 20px 20px 0 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-top,
+  .hotel-premier-header {
+    padding: 6px 8px;
+    gap: 4px;
+  }
+  .brand-wrapper {
+    gap: 6px;
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+  .brand-logo-crest {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+  }
+  .brand-text-block {
+    min-width: 0;
+    overflow: hidden;
+  }
+  .brand-hotel-name {
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .brand-tagline {
+    font-size: 0.44rem;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .header-actions {
+    gap: 3px;
+    flex-shrink: 0;
+  }
+  .lang-selector-group {
+    padding: 1.5px;
+  }
+  .lang-btn {
+    font-size: 0.56rem;
+    padding: 1.5px 3.5px;
+  }
+  .guest-concierge-pill {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    font-size: 0.72rem;
+  }
+  .guest-concierge-icon {
+    font-size: 0.75rem;
+  }
+  .icon-btn {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+  }
+  .text-size-toggle span {
+    font-size: 0.75rem !important;
+  }
 }
 
 @media (max-width: 380px) {
