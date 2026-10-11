@@ -1401,7 +1401,11 @@ class HotelPremierApp {
       }
       const title = row.querySelector('.drawer-item-title') ? row.querySelector('.drawer-item-title').innerText.toLowerCase() : '';
       const sub = row.querySelector('.drawer-item-sub') ? row.querySelector('.drawer-item-sub').innerText.toLowerCase() : '';
-      if (title.includes(q) || sub.includes(q)) {
+      const sectionId = (row.getAttribute('data-section-id') || '').toLowerCase();
+      const isVegMatch = (q === 'veg' || q === 'vegetable' || q === 'mains' || q === 'sabji' || q === 'bhaji') &&
+        (sectionId.includes('veg') || sectionId.includes('paneer') || sectionId.includes('kofta'));
+
+      if (title.includes(q) || sub.includes(q) || sectionId.includes(q) || isVegMatch) {
         row.style.display = 'flex';
       } else {
         row.style.display = 'none';
@@ -1618,7 +1622,9 @@ class HotelPremierApp {
 
   renderDishCard(dish) {
     const hasVariants = dish.variants && dish.variants.length > 0;
-    const hasPhoto = dish.image && dish.image.trim() !== '';
+    const displayImage = dish._activeVariantImage || dish.image;
+    const displayPrice = dish._activeVariantPrice || dish.price;
+    const hasPhoto = displayImage && displayImage.trim() !== '';
     const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
     const zomatoScore = dish.zomatoRating || '4.2';
     let tagPillsHtml = '';
@@ -1642,11 +1648,14 @@ class HotelPremierApp {
     if (hasVariants) {
       variantsHtml = `
         <div class="dish-variants" data-dish-id="${dish.id}">
-          ${dish.variants.map((v, i) => `
-            <button type="button" class="variant-btn ${i === 0 ? 'selected' : ''}" data-variant-name="${v.name}" data-variant-price="${v.price}" data-variant-img="${v.image || ''}">
+          ${dish.variants.map((v, i) => {
+            const isSelected = dish._activeVariantImage ? (dish._activeVariantImage === v.image) : (i === 0);
+            return `
+            <button type="button" class="variant-btn ${isSelected ? 'selected' : ''}" data-variant-name="${v.name}" data-variant-price="${v.price}" data-variant-img="${v.image || ''}">
               ${v.name} ₹${v.price}
             </button>
-          `).join('')}
+            `;
+          }).join('')}
         </div>
       `;
     }
@@ -1680,12 +1689,13 @@ class HotelPremierApp {
     }
     topBadgeHtml = badgeItems.join('');
 
+    const dishWithDisplay = { ...dish, image: displayImage, price: displayPrice };
     const mediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDishMedia === 'function')
-      ? window.AssetPipeline.renderDishMedia(dish, { badgesHtml: topBadgeHtml, soldOutText: this.t('soldOut') })
+      ? window.AssetPipeline.renderDishMedia(dishWithDisplay, { badgesHtml: topBadgeHtml, soldOutText: this.t('soldOut') })
       : `
         <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
           ${hasPhoto ? `
-            <img src="${dish.image}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+            <img src="${displayImage}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
             <div class="hp-glass-vignette" aria-hidden="true"></div>
           ` : `
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
@@ -1712,7 +1722,7 @@ class HotelPremierApp {
           ${variantsHtml}
           <div class="dish-footer">
             <div class="dish-price-block">
-              <span class="dish-price" id="price-display-${dish.id}">₹${dish.price}</span>
+              <span class="dish-price" id="price-display-${dish.id}">₹${displayPrice}</span>
               <span class="dish-tax-note">${this.t('taxNote')}</span>
             </div>
             ${dish.isSoldOut ? `
@@ -1740,6 +1750,11 @@ class HotelPremierApp {
         const priceDisplay = document.getElementById(`price-display-${dishId}`);
         if (priceDisplay && newPrice) priceDisplay.innerText = `₹${newPrice}`;
 
+        const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+        if (dishObj && newPrice) {
+          dishObj._activeVariantPrice = Number(newPrice);
+        }
+
         const newImg = btn.getAttribute('data-variant-img');
         if (newImg && newImg.trim() !== '') {
           const cardImg = document.getElementById(`dish-img-el-${dishId}`);
@@ -1750,11 +1765,8 @@ class HotelPremierApp {
               cardImg.classList.remove('dish-img-swapping');
             }, 120);
           }
-          // Also remember active variant photo on dish data
-          const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
           if (dishObj) {
             dishObj._activeVariantImage = newImg;
-            if (newPrice) dishObj._activeVariantPrice = Number(newPrice);
           }
         }
       });

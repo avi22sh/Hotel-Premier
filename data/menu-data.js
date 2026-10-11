@@ -67,9 +67,9 @@ window.HOTEL_PREMIER_CATEGORIES = [
   },
   { 
     id: 'vegetable-specialties', 
-    name: 'Vegetable Specialties', 
-    hindiName: 'सब्जियां एवं स्पेशल ग्रेवी',
-    marathiName: 'भाजी व खान्देशी स्पेशल',
+    name: 'Veg Specialities', 
+    hindiName: 'सब्जियां एवं स्पेशल ग्रेवी (Veg Specialities)',
+    marathiName: 'भाजी व खान्देशी स्पेशल (Veg Specialities)',
     icon: '🥗', 
     image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg',
     description: 'Veg Pride Special, Shev Bhaji (Khandeshi), Kaju Curry, Veg Handi & Kolhapuri'
@@ -3005,6 +3005,10 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     categoryId: 'milkshake-mastani',
     name: 'Vanilla / Chocolate Milkshake',
     price: 120,
+    variants: [
+      { name: 'Vanilla Shake', price: 120, image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg' },
+      { name: 'Chocolate Shake', price: 130, image: 'assets/menu-images/DESSERTS/HOT CHOCOLATE FUDGE.jpg' }
+    ],
     description: 'Rich creamy chilled milkshake with choice of vanilla bean or Dutch chocolate.',
     tags: ['veg'],
     dietary: 'pure-veg',
