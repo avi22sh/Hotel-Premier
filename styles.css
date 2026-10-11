@@ -3528,23 +3528,55 @@ a {
 .modal-dish-variants-box {
   background: #F8FAFC;
   border: 1px solid #E2E8F0;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 12px 14px;
 }
 
 .modal-dish-variants-title {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 800;
   color: #475569;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 8px;
+  letter-spacing: 0.6px;
+  margin-bottom: 10px;
 }
 
 .modal-dish-variants-list {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.modal-dish-variant-btn {
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1E293B;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  user-select: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.modal-dish-variant-btn:hover {
+  border-color: #8B1538;
+  color: #8B1538;
+  background: #FFF1F2;
+  transform: translateY(-1px);
+}
+
+.modal-dish-variant-btn.selected {
+  background: linear-gradient(135deg, #8B1538 0%, #B82A4D 100%) !important;
+  color: #FFFFFF !important;
+  border-color: #8B1538 !important;
+  box-shadow: 0 3px 10px rgba(139, 21, 56, 0.35) !important;
+  font-weight: 800 !important;
 }
 
 .modal-dish-variant-chip {
