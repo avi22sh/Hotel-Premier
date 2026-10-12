@@ -1,4 +1,4 @@
-﻿// ==========================================================================
+// ==========================================================================
 // HOTEL PREMIER - A HOME IN BHUSAWAL
 // Hotel Rooms, Exact Tariffs, Timings, Location & Bulk Marriage Deals Database
 // ==========================================================================
@@ -9,7 +9,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     tagline: 'A Home in Bhusawal',
     restaurantName: 'Pride Pure Veg AC Restaurant',
     fullAddress: 'Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201',
-    landmark: 'Near Nahata College & Saket Society (5 Mins / 2 KM from Bhusawal Railway Junction)',
+    landmark: 'Near Nahata College & Saket Society (15 Mins / 2 KM from Bhusawal Railway Junction)',
     phones: ['09325375802', '09370848917', '(02582) 240422', '(02582) 240396'],
     whatsapp: '919325375802',
     alternateWhatsapp: '919370848917',
@@ -207,7 +207,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     { icon: 'ðŸ“¶', title: 'High-Speed Wi-Fi', desc: 'Seamless wireless internet access across all rooms and common areas.' },
     { icon: 'ðŸ›—', title: 'Elevator / Lift Access', desc: 'Senior-citizen and luggage friendly lift access to all room floors.' },
     { icon: 'âš¡', title: '100% Power Generator Backup', desc: 'Uninterrupted power supply for continuous AC, lighting and hot water.' },
-    { icon: 'ðŸš†', title: 'Prime Location Connectivity', desc: 'Just 5 mins from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
+    { icon: 'ðŸš†', title: 'Prime Location Connectivity', desc: 'Just 15 mins from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
   ],
 
   // Wedding Barat & Family Group Stay Privileges (Fully Editable via CMS)
@@ -256,6 +256,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
   // Location Highlights & Nearby Connectivity
   locationDistances: [
     { icon: 'ðŸš†', place: 'Bhusawal Junction Railway Station', distance: '2.0 KM', time: '15 Mins Drive', desc: 'Major Central Railway junction connecting North, South, East & West India.' },
+    { icon: 'ðŸŽ‰', place: 'Major Event & Wedding Lawns (Star, Radhakrishna, Balaji, Aditya Lawns, Morya Halls)', distance: '3.0 KM', time: '10 Mins Drive', desc: 'Prime wedding lawns and family celebration destinations in Bhusawal.' },
     { icon: 'ðŸŽ“', place: 'Nahata College (P.O. Nahata College)', distance: '200 Meters', time: '1 Min Walk', desc: 'Prime educational & residential hub on Jamner Road.' },
     { icon: 'ðŸ›£ï¸', place: 'National Highway NH-53 (Asian Highway 46)', distance: '1.5 KM', time: '5 Mins Drive', desc: 'Direct highway connectivity towards Surat, Nagpur, Dhule & Jalgaon.' },
     { icon: 'ðŸ›ï¸', place: 'Ajanta Caves (UNESCO World Heritage)', distance: '58 KM', time: '1 Hr 15 Mins Drive', desc: 'World-famous Buddhist rock-cut cave monuments (Hotel Premier is the ideal transit stay).' },

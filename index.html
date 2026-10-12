@@ -191,7 +191,7 @@
 
         <div class="sanctuary-hero-highlights">
           <span class="sanctuary-pill" data-i18n="pill24hr">⏰ 24-Hour Flexible Check-Out</span>
-          <span class="sanctuary-pill" data-i18n="pill5min">🚆 5 Mins / 2 KM from Railway Junction</span>
+          <span class="sanctuary-pill" data-i18n="pill5min">🚆 15 Mins / 2 KM from Railway Junction</span>
           <span class="sanctuary-pill" data-i18n="pillVeg">🌱 Pride Pure Veg AC Dining</span>
           <span class="sanctuary-pill" data-i18n="pillParking">🚗 Free Private Bus & Car Parking</span>
         </div>
@@ -216,7 +216,7 @@
           <div class="concierge-quick-card" onclick="window.app ? window.app.switchSection('section-explore') : null">
             <span class="quick-card-icon">🧭</span>
             <div class="quick-card-title" data-i18n="quickDirections">Get Directions</div>
-            <div class="quick-card-sub" data-i18n="quickDirectionsSub">5 Mins from Station</div>
+            <div class="quick-card-sub" data-i18n="quickDirectionsSub">15 Mins from Station</div>
           </div>
         </div>
       </div>
@@ -1184,17 +1184,17 @@
         </a>
       </div>
 
-      <!-- Route 2: From Central Bus Stand -->
+      <!-- Route 2: From Major Event & Wedding Lawns -->
       <div class="route-start-card">
         <div>
           <div class="route-start-card-header">
-            <div class="route-icon-badge">🚌</div>
-            <span class="route-time-badge">7 MINS • 2.5 KM</span>
+            <div class="route-icon-badge">🎉</div>
+            <span class="route-time-badge">10 MINS • 3.0 KM</span>
           </div>
-          <h4 class="route-name">From Central Bus Stand (MSRTC)</h4>
-          <p class="route-desc">Convenient drive along main Jamner road corridor straight to Hotel Premier front gate.</p>
+          <h4 class="route-name">From Major Event & Wedding Lawns</h4>
+          <p class="route-desc">Star Lawns, Radhakrishna Lawns, Balaji Lawns, Aditya Lawns & Morya Halls. Direct comfortable corridor for wedding guests & attendees.</p>
         </div>
-        <a href="https://www.google.com/maps/dir/Bhusawal+Bus+Stand,+Bhusawal/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
+        <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
           <span>🧭 Get Live Directions</span>
         </a>
       </div>
@@ -1429,7 +1429,7 @@
           <div class="contact-card-body">
             <strong style="color: var(--text-dark); display: block; margin-bottom: 4px;">Hotel Premier & Pride AC Restaurant</strong>
             <p>Near Nahata College, Saket Society, Jamner Road, Bhusawal - 425 201, Maharashtra.</p>
-            <p style="margin-top: 6px; font-size: 0.78rem; color: var(--text-muted-dark);">5 Mins from Bhusawal Railway Junction • Free private parking on premises.</p>
+            <p style="margin-top: 6px; font-size: 0.78rem; color: var(--text-muted-dark);">15 Mins from Bhusawal Railway Junction • Free private parking on premises.</p>
           </div>
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201" target="_blank" rel="noopener noreferrer" class="contact-card-btn maps-btn">
@@ -1470,7 +1470,7 @@
       </div>
 
       <div class="footer-details-grid">
-        <div>📍 Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201 (5 Mins from Railway Junction)</div>
+        <div>📍 Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201 (15 Mins from Railway Junction)</div>
         <div>📞 Front Desk: 09325375802 • 09370848917 • (02582) 240422 / 240396</div>
         <div>🏢 GSTIN: <strong>27AGZPW6159R1ZP</strong> | HSN NO: <strong>996311</strong> • 5% GST Applicable</div>
       </div>
@@ -1845,20 +1845,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.14) -->
-  <script src="storage.js?v=20.14"></script>
-  <script src="vault.js?v=20.14"></script>
-  <script src="data/translations.js?v=20.14"></script>
-  <script src="data/hotel-data.js?v=20.14"></script>
-  <script src="data/menu-data.js?v=20.14"></script>
-  <script src="app.js?v=20.14"></script>
-  <script src="admin.js?v=20.14"></script>
+  <!-- Load Application Scripts (v20.15) -->
+  <script src="storage.js?v=20.15"></script>
+  <script src="vault.js?v=20.15"></script>
+  <script src="data/translations.js?v=20.15"></script>
+  <script src="data/hotel-data.js?v=20.15"></script>
+  <script src="data/menu-data.js?v=20.15"></script>
+  <script src="app.js?v=20.15"></script>
+  <script src="admin.js?v=20.15"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.14').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.15').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

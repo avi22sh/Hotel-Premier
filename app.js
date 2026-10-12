@@ -2735,7 +2735,7 @@ class HotelPremierApp {
     const msg = `*HOTEL PREMIER BHUSAWAL - LOCATION & GPS DIRECTIONS*%0A` +
       `---------------------------------------%0A` +
       `📍 *Address:* Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201%0A` +
-      `🚆 *Landmark:* 5 Mins (2 KM) from Bhusawal Railway Junction%0A` +
+      `🚆 *Landmark:* 15 Mins (2 KM) from Bhusawal Railway Junction%0A` +
       `📞 *Contact:* 09325375802 (Primary) / 09370848917 / (02582) 240422%0A` +
       `🗺️ *Live Google Maps Directions Link:*%0A${encodeURIComponent(mapsUrl)}%0A` +
       `---------------------------------------%0A` +
