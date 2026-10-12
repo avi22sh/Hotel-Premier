@@ -256,6 +256,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
   // Location Highlights & Nearby Connectivity
   locationDistances: [
     { icon: 'ðŸš†', place: 'Bhusawal Junction Railway Station', distance: '2.0 KM', time: '15 Mins Drive', desc: 'Major Central Railway junction connecting North, South, East & West India.' },
+    { icon: 'ðŸšŒ', place: 'Luxury Bus Transit Hub (Major Travels)', distance: '1.2 KM', time: '5 Mins Drive', desc: 'Direct sleeper & AC luxury coach boarding to & from Pune, Mumbai, Nagpur, Indore, Ahmedabad & Vadodara.' },
     { icon: 'ðŸŽ‰', place: 'Major Event & Wedding Lawns (Star, Radhakrishna, Balaji, Aditya Lawns, Morya Halls)', distance: '3.0 KM', time: '10 Mins Drive', desc: 'Prime wedding lawns and family celebration destinations in Bhusawal.' },
     { icon: 'ðŸŽ“', place: 'Nahata College (P.O. Nahata College)', distance: '200 Meters', time: '1 Min Walk', desc: 'Prime educational & residential hub on Jamner Road.' },
     { icon: 'ðŸ›£ï¸', place: 'National Highway NH-53 (Asian Highway 46)', distance: '1.5 KM', time: '5 Mins Drive', desc: 'Direct highway connectivity towards Surat, Nagpur, Dhule & Jalgaon.' },

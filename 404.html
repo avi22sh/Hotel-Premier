@@ -296,7 +296,7 @@
           <div class="home-pillar-body">
             <h3 class="home-pillar-title">15 Mins from Railway Junction</h3>
             <p class="home-pillar-desc">
-              Centrally situated 15 mins from Railway Station & 5 mins from National Highway NH-53, with secured bus & car parking.
+              Centrally situated 15 mins from Railway Station, 5 mins from Luxury Bus Hub (Pune, Mumbai, Nagpur, Indore, Gujarat) & 5 mins from NH-53.
             </p>
             <a href="#explore" onclick="event.preventDefault(); event.stopPropagation(); window.app.switchSection('section-explore');" class="home-pillar-btn">
               <span>Directions & Location</span>
@@ -1184,7 +1184,22 @@
         </a>
       </div>
 
-      <!-- Route 2: From Major Event & Wedding Lawns -->
+      <!-- Route 2: From Luxury Bus Transit Hub -->
+      <div class="route-start-card">
+        <div>
+          <div class="route-start-card-header">
+            <div class="route-icon-badge">🚌</div>
+            <span class="route-time-badge">5 MINS • 1.2 KM</span>
+          </div>
+          <h4 class="route-name">Luxury Bus Transit Hub</h4>
+          <p class="route-desc">Major travels hub connecting Pune, Mumbai, Nagpur, Indore, Ahmedabad & Vadodara. Direct 5-min auto/cab drive to Hotel Premier.</p>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
+          <span>🧭 Get Live Directions</span>
+        </a>
+      </div>
+
+      <!-- Route 3: From Major Event & Wedding Lawns -->
       <div class="route-start-card">
         <div>
           <div class="route-start-card-header">
@@ -1199,7 +1214,7 @@
         </a>
       </div>
 
-      <!-- Route 3: From Highway NH-53 -->
+      <!-- Route 4: From Highway NH-53 -->
       <div class="route-start-card">
         <div>
           <div class="route-start-card-header">
@@ -1845,20 +1860,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.15) -->
-  <script src="storage.js?v=20.15"></script>
-  <script src="vault.js?v=20.15"></script>
-  <script src="data/translations.js?v=20.15"></script>
-  <script src="data/hotel-data.js?v=20.15"></script>
-  <script src="data/menu-data.js?v=20.15"></script>
-  <script src="app.js?v=20.15"></script>
-  <script src="admin.js?v=20.15"></script>
+  <!-- Load Application Scripts (v20.16) -->
+  <script src="storage.js?v=20.16"></script>
+  <script src="vault.js?v=20.16"></script>
+  <script src="data/translations.js?v=20.16"></script>
+  <script src="data/hotel-data.js?v=20.16"></script>
+  <script src="data/menu-data.js?v=20.16"></script>
+  <script src="app.js?v=20.16"></script>
+  <script src="admin.js?v=20.16"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.15').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.16').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
