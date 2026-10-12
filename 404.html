@@ -1192,9 +1192,9 @@
             <span class="route-time-badge">5 MINS • 1.2 KM</span>
           </div>
           <h4 class="route-name">Luxury Bus Transit Hub</h4>
-          <p class="route-desc">Major travels hub connecting Pune, Mumbai, Nagpur, Indore, Ahmedabad & Vadodara. Direct 5-min auto/cab drive to Hotel Premier.</p>
+          <p class="route-desc">MG Parking / Major Travels hub connecting Pune, Mumbai, Nagpur, Indore, Ahmedabad & Vadodara. Direct 5-min auto/cab drive.</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
+        <a href="https://www.google.com/maps/dir/MG+Parking,+Bhusawal/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
           <span>🧭 Get Live Directions</span>
         </a>
       </div>
@@ -1209,9 +1209,9 @@
           <h4 class="route-name">From Major Event & Wedding Lawns</h4>
           <p class="route-desc">Star Lawns, Radhakrishna Lawns, Balaji Lawns, Aditya Lawns & Morya Halls. Direct comfortable corridor for wedding guests & attendees.</p>
         </div>
-        <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
-          <span>🧭 Get Live Directions</span>
-        </a>
+        <button type="button" class="route-directions-btn" onclick="window.app ? window.app.openRouteOptionsModal('wedding-lawns') : null">
+          <span>🧭 Choose Lawn & Get Directions</span>
+        </button>
       </div>
 
       <!-- Route 4: From Highway NH-53 -->
@@ -1224,9 +1224,9 @@
           <h4 class="route-name">From National Highway NH-53</h4>
           <p class="route-desc">Quick 5-minute drive via the Bhusawal bypass into Jamner Road. Ample private coach and car parking on premises.</p>
         </div>
-        <a href="https://www.google.com/maps/dir/NH+53,+Bhusawal/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
-          <span>🧭 Get Live Directions</span>
-        </a>
+        <button type="button" class="route-directions-btn" onclick="window.app ? window.app.openRouteOptionsModal('nh53') : null">
+          <span>🧭 Choose Direction & Get Directions</span>
+        </button>
       </div>
     </div>
 
@@ -1502,6 +1502,24 @@
       </div>
     </div>
   </footer>
+
+  <!-- ==================== MODAL: INTERACTIVE ROUTE SELECTION ==================== -->
+  <div class="modal-backdrop" id="route-options-modal" style="display: none;">
+    <div class="modal-sheet route-picker-sheet">
+      <div class="modal-header">
+        <div class="modal-title" id="route-options-modal-title">
+          <span>🧭</span> <span>Select Starting Location</span>
+        </div>
+        <button type="button" class="modal-close-btn" onclick="window.app ? window.app.closeRouteOptionsModal() : null">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="route-picker-desc" id="route-options-modal-desc"></p>
+        <div class="route-options-list" id="route-options-list">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== MODAL: GUIDED CONCIERGE BOOKING WIZARD ==================== -->
   <div class="modal-backdrop" id="concierge-booking-modal">
@@ -1860,20 +1878,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.16) -->
-  <script src="storage.js?v=20.16"></script>
-  <script src="vault.js?v=20.16"></script>
-  <script src="data/translations.js?v=20.16"></script>
-  <script src="data/hotel-data.js?v=20.16"></script>
-  <script src="data/menu-data.js?v=20.16"></script>
-  <script src="app.js?v=20.16"></script>
-  <script src="admin.js?v=20.16"></script>
+  <!-- Load Application Scripts (v20.17) -->
+  <script src="storage.js?v=20.17"></script>
+  <script src="vault.js?v=20.17"></script>
+  <script src="data/translations.js?v=20.17"></script>
+  <script src="data/hotel-data.js?v=20.17"></script>
+  <script src="data/menu-data.js?v=20.17"></script>
+  <script src="app.js?v=20.17"></script>
+  <script src="admin.js?v=20.17"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.16').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.17').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

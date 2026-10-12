@@ -2745,6 +2745,117 @@ class HotelPremierApp {
     window.open(whatsappUrl, '_blank');
   }
 
+  // ==================== INTERACTIVE ROUTE SELECTION MODALS ====================
+  openRouteOptionsModal(type) {
+    const modal = document.getElementById('route-options-modal');
+    const titleEl = document.getElementById('route-options-modal-title');
+    const descEl = document.getElementById('route-options-modal-desc');
+    const listEl = document.getElementById('route-options-list');
+    if (!modal || !titleEl || !descEl || !listEl) return;
+
+    const premierDest = 'Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal';
+
+    let title = '';
+    let desc = '';
+    let options = [];
+
+    if (type === 'wedding-lawns') {
+      title = '🎉 Select Event Lawn or Hall';
+      desc = 'Choose your event venue below to get direct GPS driving directions to Hotel Premier (approx. 8–10 mins):';
+      options = [
+        {
+          name: 'Star Lawns',
+          meta: 'Prime Wedding & Celebration Venue • Approx. 3.0 KM',
+          icon: '✨',
+          origin: 'Star+Lawns,+Bhusawal'
+        },
+        {
+          name: 'Radhakrishna Lawns',
+          meta: 'Famous Marriage & Family Function Lawn • Approx. 3.2 KM',
+          icon: '🌸',
+          origin: 'Radhakrishna+Lawns,+Bhusawal'
+        },
+        {
+          name: 'Balaji Lawns',
+          meta: 'Celebration & Wedding Lawn • Approx. 2.8 KM',
+          icon: '🌺',
+          origin: 'Balaji+Lawns,+Bhusawal'
+        },
+        {
+          name: 'Aditya Lawns',
+          meta: 'Reception & Grand Barat Destination • Approx. 3.5 KM',
+          icon: '👑',
+          origin: 'Aditya+Lawns,+Bhusawal'
+        },
+        {
+          name: 'Morya Halls',
+          meta: 'Banquet & Community Celebration Hall • Approx. 2.5 KM',
+          icon: '🏛️',
+          origin: 'Morya+Hall,+Bhusawal'
+        }
+      ];
+    } else if (type === 'nh53') {
+      title = '🚗 Select Your Highway Approach (NH-53)';
+      desc = 'Which direction are you arriving from? Choose your highway approach for the smoothest turn into Hotel Premier:';
+      options = [
+        {
+          name: 'Coming from Jalgaon / Dhule / Surat (West)',
+          meta: 'Via Asian Highway 46 / NH-53 entering Bhusawal bypass • Approx. 5 mins',
+          icon: '🛣️',
+          origin: 'Jalgaon+Road+Bhusawal+Bypass,+NH+53,+Bhusawal'
+        },
+        {
+          name: 'Coming from Nagpur / Akola / Amravati / Wardha (East)',
+          meta: 'Via NH-53 Eastern Corridor straight onto Jamner Road • Approx. 5 mins',
+          icon: '🚗',
+          origin: 'Varangaon+Road+NH+53,+Bhusawal'
+        },
+        {
+          name: 'Coming from Indore / Burhanpur / MP (North)',
+          meta: 'Via MP State Highway / NH-53 junction • Approx. 6 mins',
+          icon: '🧭',
+          origin: 'Burhanpur+Road+Junction,+Bhusawal'
+        },
+        {
+          name: 'Coming from Jamner / Ajanta Caves (South)',
+          meta: 'Direct Jamner Road corridor past Nahata College • Approx. 3 mins',
+          icon: '🏛️',
+          origin: 'Jamner+Road+Bhusawal'
+        }
+      ];
+    }
+
+    titleEl.textContent = title;
+    descEl.textContent = desc;
+
+    listEl.innerHTML = options.map(opt => {
+      const dirUrl = `https://www.google.com/maps/dir/${opt.origin}/${premierDest}`;
+      return `
+        <a href="${dirUrl}" target="_blank" rel="noopener noreferrer" class="route-option-btn" onclick="window.app ? window.app.closeRouteOptionsModal() : null">
+          <div class="route-option-info">
+            <span class="route-option-icon">${opt.icon}</span>
+            <div class="route-option-title">
+              <span class="route-option-name">${opt.name}</span>
+              <span class="route-option-meta">${opt.meta}</span>
+            </div>
+          </div>
+          <span class="route-option-arrow">➔</span>
+        </a>
+      `;
+    }).join('');
+
+    modal.classList.add('active');
+    modal.style.display = 'flex';
+  }
+
+  closeRouteOptionsModal() {
+    const modal = document.getElementById('route-options-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.style.display = 'none';
+    }
+  }
+
   showToast(message, type = 'info') {
     let toast = document.getElementById('app-toast');
     if (!toast) {

@@ -5313,10 +5313,87 @@ input::placeholder, textarea::placeholder, select::placeholder {
   border-radius: var(--radius-sm);
   text-decoration: none;
   transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: inherit;
 }
 .route-directions-btn:hover {
   background: var(--burgundy-primary);
   color: #FFFFFF;
+}
+
+/* Route Location Selection Modal */
+.route-picker-sheet {
+  max-width: 480px !important;
+}
+.route-picker-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted-dark);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.route-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.route-option-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: #FDFCF9;
+  border: 1.5px solid rgba(197, 168, 128, 0.45);
+  border-radius: var(--radius-md);
+  color: var(--text-dark);
+  text-decoration: none;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.88rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-align: left;
+}
+.route-option-btn:hover {
+  border-color: var(--burgundy-primary);
+  background: #FFF7F5;
+  color: var(--burgundy-primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(139, 21, 56, 0.10);
+}
+.route-option-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.route-option-icon {
+  font-size: 1.25rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(139, 21, 56, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.route-option-title {
+  display: flex;
+  flex-direction: column;
+}
+.route-option-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+.route-option-meta {
+  font-size: 0.72rem;
+  color: var(--text-muted-dark);
+  font-weight: 500;
+}
+.route-option-arrow {
+  color: var(--burgundy-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
 /* ==================== CONTACT SECTION STYLES ==================== */
