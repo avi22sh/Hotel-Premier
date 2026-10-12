@@ -717,12 +717,12 @@ window.HOTEL_PREMIER_I18N = {
       desc_mr: 'Triple Schezwan Rice, Hakka Noodles, Fried Rice'
     },
     'vegetable-specialties': {
-      en: 'Veg Specialities (सब्जी स्पेशल)',
-      hi: 'Veg Specialities • सब्जी स्पेशल',
-      mr: 'Veg Specialities • भाजी स्पेशल',
+      en: 'Veg Specialities',
+      hi: 'सब्जी स्पेशल (Veg Specialities)',
+      mr: 'भाजी स्पेशल (Veg Specialities)',
       desc_en: 'Veg Pride Special, Shev Bhaji (Khandeshi), Kaju Curry & Kolhapuri',
-      desc_hi: 'Shev Bhaji (Khandeshi), Kaju Curry, Veg Handi, Kolhapuri',
-      desc_mr: 'Shev Bhaji (Khandeshi), Kaju Curry, Veg Handi, Kolhapuri'
+      desc_hi: 'शेव भाजी (खान्देशी), काजू करी, वेज हांडी, कोल्हापुरी',
+      desc_mr: 'शेव भाजी (खान्देशी), काजू करी, व्हेज हांडी, कोल्हापुरी'
     },
     'kofta-delights': {
       en: 'Delicious Kofta Delights',

@@ -856,14 +856,14 @@
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-dine">
     <div class="editorial-header-block dining-hero-header">
-      <div class="dining-brand-crest">HOTEL PREMIER</div>
+      <div class="dining-brand-crest">HOTEL PREMIER PRESENTS</div>
+      <h2 class="dining-main-heading">Pride Pure Veg AC Restaurant</h2>
       <div class="dining-credentials-strip">
         <span class="cred-badge cred-pride"><span class="pride-crown-emblem">👑</span> PRIDE</span>
-        <span class="cred-badge cred-veg">🌱 PURE VEG</span>
+        <span class="cred-badge cred-veg">🌱 100% PURE VEG</span>
         <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
       </div>
       <div class="editorial-divider pride-underline"></div>
-      <h2 class="dining-main-heading">Dining at Hotel Premier</h2>
       <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
         A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
       </p>
@@ -1845,20 +1845,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.11) -->
-  <script src="storage.js?v=20.11"></script>
-  <script src="vault.js?v=20.11"></script>
-  <script src="data/translations.js?v=20.11"></script>
-  <script src="data/hotel-data.js?v=20.11"></script>
-  <script src="data/menu-data.js?v=20.11"></script>
-  <script src="app.js?v=20.11"></script>
-  <script src="admin.js?v=20.11"></script>
+  <!-- Load Application Scripts (v20.12) -->
+  <script src="storage.js?v=20.12"></script>
+  <script src="vault.js?v=20.12"></script>
+  <script src="data/translations.js?v=20.12"></script>
+  <script src="data/hotel-data.js?v=20.12"></script>
+  <script src="data/menu-data.js?v=20.12"></script>
+  <script src="app.js?v=20.12"></script>
+  <script src="admin.js?v=20.12"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.11').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.12').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

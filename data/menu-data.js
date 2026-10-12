@@ -68,8 +68,8 @@ window.HOTEL_PREMIER_CATEGORIES = [
   { 
     id: 'vegetable-specialties', 
     name: 'Veg Specialities', 
-    hindiName: 'सब्जियां एवं स्पेशल ग्रेवी (Veg Specialities)',
-    marathiName: 'भाजी व खान्देशी स्पेशल (Veg Specialities)',
+    hindiName: 'सब्जियां एवं स्पेशल ग्रेवी',
+    marathiName: 'भाजी व खान्देशी स्पेशल',
     icon: '🥗', 
     image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg',
     description: 'Veg Pride Special, Shev Bhaji (Khandeshi), Kaju Curry, Veg Handi & Kolhapuri'
