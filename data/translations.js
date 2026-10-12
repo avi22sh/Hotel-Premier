@@ -189,7 +189,7 @@ window.HOTEL_PREMIER_I18N = {
 
       // Location Hub
       locationTitle: 'Location & Easy GPS Access',
-      locationSubtitle: 'Conveniently located on Jamner Road near Nahata College – 15 mins from Bhusawal Railway Station',
+      locationSubtitle: 'Conveniently located on Jamner Road near Nahata College – 5 mins from Luxury Bus Hub, 15 mins from Railway Station',
       locationQRTitle: 'Scan for Instant GPS Navigation',
       locationQRSub: 'Scan with any phone camera to open Google Maps directions directly',
       btnOpenMaps: '🗺️ Open Live Google Maps Navigation',
@@ -405,7 +405,7 @@ window.HOTEL_PREMIER_I18N = {
 
       // Location Hub
       locationTitle: 'Hotel Location & Google Maps Navigation',
-      locationSubtitle: 'Jamner Road, near Nahata College – Bhusawal Railway Station se sirf 15 mins',
+      locationSubtitle: 'Jamner Road, near Nahata College – Luxury Bus Hub se sirf 5 mins, Railway Station se 15 mins',
       locationQRTitle: 'GPS Navigation ke liye QR Scan Karein',
       locationQRSub: 'Phone camera se scan karke direct Google Maps open karein',
       btnOpenMaps: '🗺️ Google Maps Navigation Kholein',
@@ -621,7 +621,7 @@ window.HOTEL_PREMIER_I18N = {
 
       // Location Hub
       locationTitle: 'Hotel Location & Google Maps Navigation',
-      locationSubtitle: 'जामनेर रोड, नाहाटा कॉलेजजवळ – भुसावळ रेल्वे स्टेशनपासून फक्त 15 mins',
+      locationSubtitle: 'जामनेर रोड, नाहाटा कॉलेजजवळ – लक्झरी बस हबपासून फक्त 5 mins, रेल्वे स्टेशनपासून 15 mins',
       locationQRTitle: 'GPS Navigation साठी QR Scan करा',
       locationQRSub: 'थेट Google Maps सुरू करण्यासाठी फोन कॅमेऱ्याने स्कॅन करा',
       btnOpenMaps: '🗺️ Google Maps Navigation उघडा',
