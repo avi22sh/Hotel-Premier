@@ -3674,34 +3674,32 @@ a {
 
 .modal-dish-actions {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
   margin-top: 8px;
-}
-
-@media (min-width: 480px) {
-  .modal-dish-actions {
-    flex-direction: row;
-  }
+  width: 100%;
 }
 
 .modal-btn-zomato-order {
-  flex: 1;
+  flex: 1 1 50%;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   background: linear-gradient(135deg, #E23744 0%, #CB1A27 100%);
   color: #FFFFFF;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  padding: 12px 18px;
+  padding: 10px 10px;
   border-radius: 10px;
   text-decoration: none;
   border: 1px solid rgba(226, 55, 68, 0.4);
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(226, 55, 68, 0.32);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .modal-btn-zomato-order:hover {
@@ -3712,22 +3710,24 @@ a {
 }
 
 .modal-btn-swiggy-order {
-  flex: 1;
+  flex: 1 1 50%;
+  min-width: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   background: linear-gradient(135deg, #FC8019 0%, #E66A02 100%);
   color: #FFFFFF;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  padding: 12px 18px;
+  padding: 10px 10px;
   border-radius: 10px;
   text-decoration: none;
   border: 1px solid rgba(252, 128, 25, 0.4);
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(252, 128, 25, 0.32);
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .modal-btn-swiggy-order:hover {
