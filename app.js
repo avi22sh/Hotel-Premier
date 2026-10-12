@@ -2684,7 +2684,7 @@ class HotelPremierApp {
 
     const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo) 
       ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl 
-      : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201';
+      : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal';
 
     mount.innerHTML = '';
     if (window.QRCode) {
@@ -2730,7 +2730,7 @@ class HotelPremierApp {
   shareLocationOnWhatsApp() {
     const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo) 
       ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl 
-      : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201';
+      : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal';
 
     const msg = `*HOTEL PREMIER BHUSAWAL - LOCATION & GPS DIRECTIONS*%0A` +
       `---------------------------------------%0A` +
@@ -2753,7 +2753,7 @@ class HotelPremierApp {
     const listEl = document.getElementById('route-options-list');
     if (!modal || !titleEl || !descEl || !listEl) return;
 
-    const premierDest = 'Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal';
+    const premierDest = 'Hotel+Premier,+Jamner+Road,+Bhusawal';
 
     let title = '';
     let desc = '';

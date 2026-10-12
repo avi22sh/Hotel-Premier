@@ -18,7 +18,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     roomServiceHours: '7:30 AM to 10:30 PM',
     frontDeskHours: '24 Hours Open',
     breakfastPolicy: 'Complimentary Breakfast (Served 7:30 AM to 10:30 AM from fixed menu in Pride Pure Veg Restaurant)',
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Near+Nahata+College+Bhusawal+425201',
+    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal',
     inventorySummary: {
       totalRooms: 14,
       superDeluxeRooms: 2,
