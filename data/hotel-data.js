@@ -1,4 +1,4 @@
-// ==========================================================================
+﻿// ==========================================================================
 // HOTEL PREMIER - A HOME IN BHUSAWAL
 // Hotel Rooms, Exact Tariffs, Timings, Location & Bulk Marriage Deals Database
 // ==========================================================================
@@ -255,9 +255,9 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
 
   // Location Highlights & Nearby Connectivity
   locationDistances: [
-    { icon: 'ðŸš†', place: 'Bhusawal Junction Railway Station', distance: '2.0 KM', time: '5 Mins Drive', desc: 'Major Central Railway junction connecting North, South, East & West India.' },
+    { icon: 'ðŸš†', place: 'Bhusawal Junction Railway Station', distance: '2.0 KM', time: '15 Mins Drive', desc: 'Major Central Railway junction connecting North, South, East & West India.' },
     { icon: 'ðŸŽ“', place: 'Nahata College (P.O. Nahata College)', distance: '200 Meters', time: '1 Min Walk', desc: 'Prime educational & residential hub on Jamner Road.' },
-    { icon: 'ðŸ›£ï¸', place: 'National Highway NH-53 (Asian Highway 46)', distance: '1.5 KM', time: '3 Mins Drive', desc: 'Direct highway connectivity towards Surat, Nagpur, Dhule & Jalgaon.' },
+    { icon: 'ðŸ›£ï¸', place: 'National Highway NH-53 (Asian Highway 46)', distance: '1.5 KM', time: '5 Mins Drive', desc: 'Direct highway connectivity towards Surat, Nagpur, Dhule & Jalgaon.' },
     { icon: 'ðŸ›ï¸', place: 'Ajanta Caves (UNESCO World Heritage)', distance: '58 KM', time: '1 Hr 15 Mins Drive', desc: 'World-famous Buddhist rock-cut cave monuments (Hotel Premier is the ideal transit stay).' },
     { icon: 'ðŸ•‰ï¸', place: 'Changdeo Temple (Tapi-Purna Sangam)', distance: '18 KM', time: '25 Mins Drive', desc: 'Ancient historical pilgrim temple at the holy river confluence.' },
     { icon: 'âš¡', place: 'Deepnagar Thermal Power Station', distance: '10 KM', time: '15 Mins Drive', desc: 'Major industrial powerhouse & Varangaon Ordnance Factory area.' }
@@ -544,6 +544,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     }
   ]
 };
+
 
 
 

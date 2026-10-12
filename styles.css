@@ -5086,6 +5086,7 @@ input::placeholder, textarea::placeholder, select::placeholder {
   display: flex;
   flex-direction: column;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
 }
 .home-pillar-card:hover {
   transform: translateY(-4px);

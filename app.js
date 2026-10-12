@@ -3249,8 +3249,8 @@ class HotelPremierApp {
     const extraBedRate = (mealPlan === 'CP') ? 500 : 300;
 
     const grossEstimate = ((baseRatePerNight * roomsCount) + (extraBeds * extraBedRate)) * nights;
-    const directDiscount = Math.round(grossEstimate * 0.10);
-    const totalEstimate = grossEstimate - directDiscount;
+    const directDiscount = Math.min(200, grossEstimate);
+    const totalEstimate = Math.max(0, grossEstimate - directDiscount);
 
     const roomNameEl = document.getElementById('booking-summary-room-name');
     const durationEl = document.getElementById('booking-summary-duration');
@@ -3266,7 +3266,7 @@ class HotelPremierApp {
             <span style="color: var(--burgundy-primary); font-size: 1.35rem; font-weight: 900;">₹ ${totalEstimate.toLocaleString('en-IN')}/-</span>
           </div>
           <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700; background: #DCFCE7; padding: 2px 8px; border-radius: 999px;">
-            🎁 10% Direct Guest Discount Applied (You Save ₹${directDiscount.toLocaleString('en-IN')})
+            🎁 Flat ₹200 Direct Guest Discount Applied (You Save ₹${directDiscount.toLocaleString('en-IN')})
           </span>
         </div>
       `;
@@ -3320,7 +3320,7 @@ class HotelPremierApp {
       msg += `🛏️ *Extra Beds:* ${estimate.extraBeds} Bed(s)\n`;
     }
     msg += `💰 *Standard Tariff:* ₹ ${estimate.grossEstimate.toLocaleString('en-IN')}/-\n`;
-    msg += `🎁 *Direct PWA Guest Privilege (10% Off):* -₹ ${estimate.directDiscount.toLocaleString('en-IN')}/-\n`;
+    msg += `🎁 *Direct PWA Guest Privilege (Flat ₹200 Off):* -₹ ${estimate.directDiscount.toLocaleString('en-IN')}/-\n`;
     msg += `✨ *Final Payable Total:* ₹ ${estimate.totalEstimate.toLocaleString('en-IN')}/- (Inclusive of all taxes)\n`;
     msg += `--------------------------------------------------\n`;
     msg += `Kindly confirm room availability and direct guest booking privilege. Thank you!`;

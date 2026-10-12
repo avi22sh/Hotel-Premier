@@ -234,7 +234,7 @@
 
       <div class="home-pillars-grid">
         <!-- Pillar 1: Stay -->
-        <article class="home-pillar-card">
+        <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-stay') : null">
           <div class="home-pillar-media">
             <img src="assets/hotel-images/room-super-deluxe-window.jpg" alt="Hotel Premier AC Super Deluxe Suite" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Accommodations</span>
@@ -244,7 +244,7 @@
             <p class="home-pillar-desc">
               Impeccably clean King and Queen suites with individual silent Split AC, electric kettle tea/coffee, 24h hot water, and complimentary bottled water.
             </p>
-            <a href="#stay" onclick="event.preventDefault(); window.app.switchSection('section-stay');" class="home-pillar-btn">
+            <a href="#stay" onclick="event.preventDefault(); event.stopPropagation(); window.app.switchSection('section-stay');" class="home-pillar-btn">
               <span>View Suites & Amenities</span>
               <span>›</span>
             </a>
@@ -252,7 +252,7 @@
         </article>
 
         <!-- Pillar 2: Pride Dining -->
-        <article class="home-pillar-card">
+        <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-dine') : null">
           <div class="home-pillar-media">
             <img src="assets/hotel-images/restaurant-dining-hall-1.jpg" alt="Pride Pure Veg AC Restaurant Dining Hall" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Pure Veg Dining</span>
@@ -262,7 +262,7 @@
             <p class="home-pillar-desc">
               100% vegetarian culinary kitchen serving authentic Shev Bhaji, fragrant Dal Tadka, artisanal paneer specialties, tandoor rotis, and prompt room service.
             </p>
-            <a href="#dine" onclick="event.preventDefault(); window.app.switchSection('section-dine');" class="home-pillar-btn">
+            <a href="#dine" onclick="event.preventDefault(); event.stopPropagation(); window.app.switchSection('section-dine');" class="home-pillar-btn">
               <span>Explore Pure Veg Menu</span>
               <span>›</span>
             </a>
@@ -270,7 +270,7 @@
         </article>
 
         <!-- Pillar 3: Celebrations & Group Stays -->
-        <article class="home-pillar-card">
+        <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
           <div class="home-pillar-media">
             <img src="assets/hotel-images/restaurant-dining-hall-2.jpg" alt="Celebrations & Group Stays at Hotel Premier" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Group Hospitality</span>
@@ -280,7 +280,7 @@
             <p class="home-pillar-desc">
               Host intimate celebrations & corporate dining up to 40 guests in Pride Restaurant, or reserve group floor packages with dedicated hospitality coordination.
             </p>
-            <a href="#celebrate" onclick="event.preventDefault(); window.app.switchSection('section-celebrate');" class="home-pillar-btn">
+            <a href="#celebrate" onclick="event.preventDefault(); event.stopPropagation(); window.app.switchSection('section-celebrate');" class="home-pillar-btn">
               <span>Group Privileges & Dining</span>
               <span>›</span>
             </a>
@@ -288,17 +288,17 @@
         </article>
 
         <!-- Pillar 4: Arrival & Transit -->
-        <article class="home-pillar-card">
+        <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-explore') : null">
           <div class="home-pillar-media">
-            <img src="assets/hotel-images/exterior-entrance-night.jpg" alt="Hotel Premier Entrance - 5 Mins from Railway Junction" class="home-pillar-img" loading="lazy">
+            <img src="assets/hotel-images/exterior-entrance-night.jpg" alt="Hotel Premier Entrance - 15 Mins from Railway Junction" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Transit Proximity</span>
           </div>
           <div class="home-pillar-body">
-            <h3 class="home-pillar-title">5 Mins from Railway Junction</h3>
+            <h3 class="home-pillar-title">15 Mins from Railway Junction</h3>
             <p class="home-pillar-desc">
-              Centrally situated with private secured bus and car parking, 24-hour flexible check-out, and swift front desk connectivity.
+              Centrally situated 15 mins from Railway Station & 5 mins from National Highway NH-53, with secured bus & car parking.
             </p>
-            <a href="#explore" onclick="event.preventDefault(); window.app.switchSection('section-explore');" class="home-pillar-btn">
+            <a href="#explore" onclick="event.preventDefault(); event.stopPropagation(); window.app.switchSection('section-explore');" class="home-pillar-btn">
               <span>Directions & Location</span>
               <span>›</span>
             </a>
@@ -349,14 +349,14 @@
     <div class="direct-booking-privilege-card">
       <div class="privilege-header">
         <span class="privilege-pill">✨ Direct Guest Privilege</span>
-        <span class="privilege-saving">10% Instant Off</span>
+        <span class="privilege-saving">Flat ₹200 Instant Off</span>
       </div>
-      <h3 class="privilege-title">Unlock 10% Off Direct Booking Privilege</h3>
+      <h3 class="privilege-title">Unlock Flat ₹200 Off Direct Booking Privilege</h3>
       <p class="privilege-desc">
-        To thank you for being our guest, you can unlock an exclusive 10% discount on your next stay by booking directly through this Web App (PWA) right now!
+        To thank you for being our guest, you can unlock an exclusive Flat ₹200 discount on your stay by booking directly through this Web App (PWA) right now!
       </p>
       <button class="btn-claim-privilege" onclick="window.app ? window.app.openConciergeBookingModal() : null">
-        <span>🛎️ Book Direct & Save 10% →</span>
+        <span>🛎️ Book Direct & Save Flat ₹200 →</span>
       </button>
     </div>
 
@@ -643,14 +643,14 @@
     <div class="direct-booking-privilege-card">
       <div class="privilege-header">
         <span class="privilege-pill">✨ Direct Guest Privilege</span>
-        <span class="privilege-saving">10% Instant Off</span>
+        <span class="privilege-saving">Flat ₹200 Instant Off</span>
       </div>
-      <h3 class="privilege-title">Unlock 10% Off Direct Booking Privilege</h3>
+      <h3 class="privilege-title">Unlock Flat ₹200 Off Direct Booking Privilege</h3>
       <p class="privilege-desc">
-        To thank you for being our guest, you can unlock an exclusive 10% discount on your next stay by booking directly through this Web App (PWA) right now!
+        To thank you for being our guest, you can unlock an exclusive Flat ₹200 discount on your stay by booking directly through this Web App (PWA) right now!
       </p>
       <button class="btn-claim-privilege" onclick="window.app ? window.app.openConciergeBookingModal() : null">
-        <span>🛎️ Book Direct & Save 10% →</span>
+        <span>🛎️ Book Direct & Save Flat ₹200 →</span>
       </button>
     </div>
 
@@ -1174,10 +1174,10 @@
         <div>
           <div class="route-start-card-header">
             <div class="route-icon-badge">🚆</div>
-            <span class="route-time-badge">5 MINS • 2.0 KM</span>
+            <span class="route-time-badge">15 MINS • 2.0 KM</span>
           </div>
           <h4 class="route-name">From Bhusawal Railway Junction</h4>
-          <p class="route-desc">Direct route via Station Road & Jamner Road past Nahata College. Available 24x7 by auto-rickshaw or taxi.</p>
+          <p class="route-desc">Direct route via Station Road & Jamner Road past Nahata College. Available 24x7 by auto-rickshaw or taxi (approx. 15 mins).</p>
         </div>
         <a href="https://www.google.com/maps/dir/Bhusawal+Junction,+Bhusawal,+Maharashtra/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
           <span>🧭 Get Live Directions</span>
@@ -1204,10 +1204,10 @@
         <div>
           <div class="route-start-card-header">
             <div class="route-icon-badge">🚗</div>
-            <span class="route-time-badge">10 MINS • 4.5 KM</span>
+            <span class="route-time-badge">5 MINS • 1.5 KM</span>
           </div>
           <h4 class="route-name">From National Highway NH-53</h4>
-          <p class="route-desc">Take the Bhusawal bypass exit into Jamner Road. Ample private coach and car parking on premises.</p>
+          <p class="route-desc">Quick 5-minute drive via the Bhusawal bypass into Jamner Road. Ample private coach and car parking on premises.</p>
         </div>
         <a href="https://www.google.com/maps/dir/NH+53,+Bhusawal/Hotel+Premier,+Jamner+Road,+Near+Nahata+College,+Bhusawal" target="_blank" rel="noopener noreferrer" class="route-directions-btn">
           <span>🧭 Get Live Directions</span>
@@ -1502,10 +1502,10 @@
         <div class="direct-booking-privilege-card" style="margin: 0 0 16px 0; padding: 12px 14px;">
           <div class="privilege-header" style="margin-bottom: 4px;">
             <span class="privilege-pill">✨ Direct PWA Privilege</span>
-            <span class="privilege-saving">10% Off Applied</span>
+            <span class="privilege-saving">Flat ₹200 Off Applied</span>
           </div>
           <p class="privilege-desc" style="margin-bottom: 0; font-size: 0.80rem;">
-            To thank you for being our guest, you unlock an exclusive 10% discount on your stay by booking directly through this Web App (PWA) right now!
+            To thank you for being our guest, you unlock an exclusive Flat ₹200 discount on your stay by booking directly through this Web App (PWA) right now!
           </p>
         </div>
 
@@ -1845,20 +1845,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.12) -->
-  <script src="storage.js?v=20.12"></script>
-  <script src="vault.js?v=20.12"></script>
-  <script src="data/translations.js?v=20.12"></script>
-  <script src="data/hotel-data.js?v=20.12"></script>
-  <script src="data/menu-data.js?v=20.12"></script>
-  <script src="app.js?v=20.12"></script>
-  <script src="admin.js?v=20.12"></script>
+  <!-- Load Application Scripts (v20.13) -->
+  <script src="storage.js?v=20.13"></script>
+  <script src="vault.js?v=20.13"></script>
+  <script src="data/translations.js?v=20.13"></script>
+  <script src="data/hotel-data.js?v=20.13"></script>
+  <script src="data/menu-data.js?v=20.13"></script>
+  <script src="app.js?v=20.13"></script>
+  <script src="admin.js?v=20.13"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.12').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.13').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
