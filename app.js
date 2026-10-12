@@ -53,25 +53,25 @@ class HotelPremierApp {
   }
 
   async init() {
-    this.loadPreferences();
-    await this.loadMenuData();
-    this.updateUILanguage();
-    this.renderCategoryCards();
-    this.renderCategories();
-    this.renderQuickFilters();
-    this.renderMenu();
-    this.renderMenuSectionDrawer();
-    this.renderLocationQR();
-    this.renderLocalAttractions();
-    await this.initHeroCarousel();
-    await this.renderRoomCarousels();
-    this.renderBulkDealsSection();
-    this.calculateBulkQuote();
-    this.renderRestaurantEventPackages();
-    this.renderEventDecorations();
-    this.calculateRestaurantEventQuote();
-    this.checkStaffModeAccess();
-    this.initGuestProfile();
+    try { this.loadPreferences(); } catch (e) { console.warn('[Init] loadPreferences:', e); }
+    try { await this.loadMenuData(); } catch (e) { console.warn('[Init] loadMenuData:', e); }
+    try { this.updateUILanguage(); } catch (e) { console.warn('[Init] updateUILanguage:', e); }
+    try { this.renderCategoryCards(); } catch (e) { console.warn('[Init] renderCategoryCards:', e); }
+    try { this.renderCategories(); } catch (e) { console.warn('[Init] renderCategories:', e); }
+    try { this.renderQuickFilters(); } catch (e) { console.warn('[Init] renderQuickFilters:', e); }
+    try { this.renderMenu(); } catch (e) { console.warn('[Init] renderMenu:', e); }
+    try { this.renderMenuSectionDrawer(); } catch (e) { console.warn('[Init] renderMenuSectionDrawer:', e); }
+    try { this.renderLocationQR(); } catch (e) { console.warn('[Init] renderLocationQR:', e); }
+    try { this.renderLocalAttractions(); } catch (e) { console.warn('[Init] renderLocalAttractions:', e); }
+    try { await this.initHeroCarousel(); } catch (e) { console.warn('[Init] initHeroCarousel:', e); }
+    try { await this.renderRoomCarousels(); } catch (e) { console.warn('[Init] renderRoomCarousels:', e); }
+    try { this.renderBulkDealsSection(); } catch (e) { console.warn('[Init] renderBulkDealsSection:', e); }
+    try { this.calculateBulkQuote(); } catch (e) { console.warn('[Init] calculateBulkQuote:', e); }
+    try { this.renderRestaurantEventPackages(); } catch (e) { console.warn('[Init] renderRestaurantEventPackages:', e); }
+    try { this.renderEventDecorations(); } catch (e) { console.warn('[Init] renderEventDecorations:', e); }
+    try { this.calculateRestaurantEventQuote(); } catch (e) { console.warn('[Init] calculateRestaurantEventQuote:', e); }
+    try { this.checkStaffModeAccess(); } catch (e) { console.warn('[Init] checkStaffModeAccess:', e); }
+    try { this.initGuestProfile(); } catch (e) { console.warn('[Init] initGuestProfile:', e); }
     const urlParams = new URLSearchParams(window.location.search);
     let catParam = urlParams.get('category') || urlParams.get('cat');
     let sectionParam = urlParams.get('section') || urlParams.get('page') || urlParams.get('tab');
@@ -2723,7 +2723,7 @@ class HotelPremierApp {
     }
 
     this.renderLocalAttractions(category);
-  },
+  }
 
   renderLocalAttractions(categoryFilter = null) {
     const container = document.getElementById('local-attractions-feed');
@@ -2768,9 +2768,14 @@ class HotelPremierApp {
         </div>
       </div>
     `).join('');
-  },
+  }
 
-    shareLocationOnWhatsApp() {
+  // Deprecated backwards-compatibility stub
+  renderLocationDistances() {
+    /* Legacy no-op stub to prevent cached PWA clients from throwing */
+  }
+
+  shareLocationOnWhatsApp() {
     const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo) 
       ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl 
       : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal';
