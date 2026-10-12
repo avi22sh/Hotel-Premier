@@ -1,4 +1,4 @@
-// ==========================================================================
+﻿// ==========================================================================
 // HOTEL PREMIER - PRIDE PURE VEG AC RESTAURANT & HOTEL PREMIER STAYS, BHUSAWAL
 // Digital QR Menu Display & Hotel Room Booking Portal Controller
 // Supports: English, Hindi (हिंदी), Marathi (मराठी)
@@ -47,6 +47,7 @@ class HotelPremierApp {
       'ac-deluxe-queen': 0,
       'ac-deluxe-twin': 0
     };
+    this.currentAttractionFilter = 'all';
 
     this.init();
   }
@@ -61,7 +62,7 @@ class HotelPremierApp {
     this.renderMenu();
     this.renderMenuSectionDrawer();
     this.renderLocationQR();
-    this.renderLocationDistances();
+    this.renderLocalAttractions();
     await this.initHeroCarousel();
     await this.renderRoomCarousels();
     this.renderBulkDealsSection();
@@ -2705,29 +2706,71 @@ class HotelPremierApp {
     }
   }
 
-  renderLocationDistances() {
-    const container = document.getElementById('hotel-distances-list');
-    if (!container || !window.HOTEL_PREMIER_HOTEL_DATA || !window.HOTEL_PREMIER_HOTEL_DATA.locationDistances) return;
 
-    const distances = window.HOTEL_PREMIER_HOTEL_DATA.locationDistances;
-    container.innerHTML = distances.map(item => `
-      <div class="distance-item-row">
-        <div class="distance-place-info">
-          <span style="font-size: 1.25rem;">${item.icon}</span>
-          <div>
-            <div class="distance-place-name">${item.place}</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted);">${item.desc}</div>
-          </div>
+  filterLocalAttractions(category) {
+    this.currentAttractionFilter = category;
+    
+    // Update active state on filter chips
+    const filterContainer = document.getElementById('attraction-filter-chips');
+    if (filterContainer) {
+      filterContainer.querySelectorAll('.attraction-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-category') === category) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    this.renderLocalAttractions(category);
+  },
+
+  renderLocalAttractions(categoryFilter = null) {
+    const container = document.getElementById('local-attractions-feed');
+    if (!container || !window.HOTEL_PREMIER_HOTEL_DATA || !window.HOTEL_PREMIER_HOTEL_DATA.localAttractions) return;
+
+    const filter = categoryFilter || this.currentAttractionFilter || 'all';
+    let attractions = window.HOTEL_PREMIER_HOTEL_DATA.localAttractions;
+
+    if (filter !== 'all') {
+      attractions = attractions.filter(item => item.category === filter);
+    }
+
+    container.innerHTML = attractions.map(item => `
+      <div class="attraction-card" id="${item.id}">
+        <div class="attraction-img-wrap">
+          <img src="${item.image}" alt="${item.title}" class="attraction-img" loading="lazy" onerror="this.onerror=null; this.src='assets/hotel-images/exterior-facade-twilight.jpg';">
+          <span class="attraction-category-badge">${item.categoryLabel || item.category}</span>
+          <span class="attraction-distance-badge">ðŸš— ${item.distance}</span>
         </div>
-        <div class="distance-metrics">
-          <div class="distance-km">${item.distance}</div>
-          <div class="distance-time">${item.time}</div>
+        <div class="attraction-card-content">
+          <h4 class="attraction-title">${item.title}</h4>
+          <div class="attraction-marathi-title">${item.marathiTitle || ''}</div>
+          <div class="attraction-timing-row">
+            <span class="timing-icon">ðŸ—“ï¸</span>
+            <div>
+              <span style="font-size: 0.65rem; text-transform: uppercase; color: var(--burgundy-deep); display: block; font-weight: 800;">Best Time / Season:</span>
+              <span>${item.bestTime}</span>
+            </div>
+          </div>
+          <p class="attraction-desc">${item.desc}</p>
+          <div class="attraction-highlights-list">
+            ${(item.highlights || []).map(h => `<span class="attraction-highlight-pill">âœ¨ ${h}</span>`).join('')}
+          </div>
+          <div class="attraction-card-footer">
+            <div class="attraction-travel-meta">
+              <span>Drive: <strong>${item.time}</strong></span>
+            </div>
+            <a href="${item.mapUrl}" target="_blank" rel="noopener noreferrer" class="attraction-directions-btn">
+              <span>ðŸ§­ Live Directions â†’</span>
+            </a>
+          </div>
         </div>
       </div>
     `).join('');
-  }
+  },
 
-  shareLocationOnWhatsApp() {
+    shareLocationOnWhatsApp() {
     const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo) 
       ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl 
       : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal';

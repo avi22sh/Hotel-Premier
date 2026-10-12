@@ -1240,33 +1240,60 @@
     </div>
 
     <div class="explore-concierge-card">
-      <div class="location-grid-layout">
-        <div class="location-qr-box">
-          <span style="font-size: 1.4rem;">🗺️</span>
-          <h3 style="font-family: var(--font-royal); font-size: 1.05rem; color: var(--burgundy-deep); margin: 6px 0;">Instant GPS Navigation</h3>
-          <p style="font-size: 0.76rem; color: var(--text-muted-dark); line-height: 1.4;">
-            Scan with any phone camera to launch live Google Maps directions directly to Hotel Premier
-          </p>
+      <div class="location-qr-box" style="max-width: 600px; margin: 0 auto 24px;">
+        <span style="font-size: 1.4rem;">🗺️</span>
+        <h3 style="font-family: var(--font-royal); font-size: 1.05rem; color: var(--burgundy-deep); margin: 6px 0;">Instant GPS Navigation</h3>
+        <p style="font-size: 0.76rem; color: var(--text-muted-dark); line-height: 1.4;">
+          Scan with any phone camera to launch live Google Maps directions directly to Hotel Premier
+        </p>
 
-          <div class="location-qr-mount-container" id="location-qr-mount">
-            <!-- Location QR Code generated dynamically -->
-          </div>
-
-          <div class="location-action-btns">
-            <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal" target="_blank" rel="noopener noreferrer" class="btn-open-maps">
-              <span>🗺️ Open Google Maps Navigation</span>
-            </a>
-            <button class="btn-share-driver" onclick="window.app ? window.app.shareLocationOnWhatsApp() : null">
-              <span>📲 Share Location with Driver (WhatsApp)</span>
-            </button>
-          </div>
+        <div class="location-qr-mount-container" id="location-qr-mount">
+          <!-- Location QR Code generated dynamically -->
         </div>
 
-        <div>
-          <h3 style="font-family: var(--font-royal); font-size: 1.05rem; color: var(--burgundy-deep); margin-bottom: 12px;">Transit Proximity & Key Destinations</h3>
-          <div class="distances-list" id="hotel-distances-list">
-            <!-- Rendered dynamically by app.js from locationDistances -->
-          </div>
+        <div class="location-action-btns">
+          <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal" target="_blank" rel="noopener noreferrer" class="btn-open-maps">
+            <span>🗺️ Open Google Maps Navigation</span>
+          </a>
+          <button class="btn-share-driver" onclick="window.app ? window.app.shareLocationOnWhatsApp() : null">
+            <span>📲 Share Location with Driver (WhatsApp)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Unified Local Attractions & Cultural Heritage Explore Feed -->
+      <div class="attractions-section-wrapper">
+        <div class="editorial-header-block" style="text-align: left; margin-bottom: 8px;">
+          <span class="editorial-eyebrow">Khandesh Discovery & Pilgrim Guide</span>
+          <h3 class="editorial-title" style="font-size: 1.45rem;">Local Attractions & Cultural Heritage</h3>
+          <div class="editorial-divider" style="margin: 8px 0;"></div>
+          <p class="editorial-subtitle" style="margin: 0;">
+            Immerse yourself in world heritage wonders, ancient river confluences, sacred temples, Satpuda hill trails, and vibrant cultural yatras in and around Bhusawal.
+          </p>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="attraction-filter-chips" id="attraction-filter-chips">
+          <button type="button" class="attraction-filter-btn active" data-category="all" onclick="window.app ? window.app.filterLocalAttractions('all') : null">
+            <span>✨ All Attractions (15)</span>
+          </button>
+          <button type="button" class="attraction-filter-btn" data-category="spiritual" onclick="window.app ? window.app.filterLocalAttractions('spiritual') : null">
+            <span>🕉️ Spiritual & Temples</span>
+          </button>
+          <button type="button" class="attraction-filter-btn" data-category="heritage" onclick="window.app ? window.app.filterLocalAttractions('heritage') : null">
+            <span>🏛️ World Heritage & Pilgrim</span>
+          </button>
+          <button type="button" class="attraction-filter-btn" data-category="festivals" onclick="window.app ? window.app.filterLocalAttractions('festivals') : null">
+            <span>🚩 Yatras & Cultural Festivals</span>
+          </button>
+          <button type="button" class="attraction-filter-btn" data-category="nature" onclick="window.app ? window.app.filterLocalAttractions('nature') : null">
+            <span>🌿 Nature, Caves & Agri-Tourism</span>
+          </button>
+        </div>
+
+        <!-- Rendered dynamically by app.js from localAttractions -->
+        <div class="attractions-grid" id="local-attractions-feed">
+          <!-- Dynamic Attraction Cards -->
         </div>
       </div>
     </div>
@@ -1878,20 +1905,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.18) -->
-  <script src="storage.js?v=20.18"></script>
-  <script src="vault.js?v=20.18"></script>
-  <script src="data/translations.js?v=20.18"></script>
-  <script src="data/hotel-data.js?v=20.18"></script>
-  <script src="data/menu-data.js?v=20.18"></script>
-  <script src="app.js?v=20.18"></script>
-  <script src="admin.js?v=20.18"></script>
+  <!-- Load Application Scripts (v20.19) -->
+  <script src="storage.js?v=20.19"></script>
+  <script src="vault.js?v=20.19"></script>
+  <script src="data/translations.js?v=20.19"></script>
+  <script src="data/hotel-data.js?v=20.19"></script>
+  <script src="data/menu-data.js?v=20.19"></script>
+  <script src="app.js?v=20.19"></script>
+  <script src="admin.js?v=20.19"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.18').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.19').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
