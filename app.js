@@ -228,6 +228,16 @@ class HotelPremierApp {
       this.applyGuestProfileToAllForms();
     }
 
+    // Dynamic render Explore Concierge & Local Attractions when navigating to explore
+    if (sectionId === 'section-explore') {
+      try {
+        this.renderLocalAttractions();
+        this.renderLocationQR();
+      } catch (e) {
+        console.warn('[switchSection] explore render:', e);
+      }
+    }
+
     // Update active tab in top navigation bar
     document.querySelectorAll('.hotel-nav-tab').forEach(tab => tab.classList.remove('active'));
     const tabMap = {

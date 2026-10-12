@@ -3402,7 +3402,7 @@ a {
 .attraction-marathi-title {
   font-family: var(--font-marathi);
   font-size: 0.82rem;
-  color: var(--text-muted);
+  color: var(--text-muted-dark);
   margin-bottom: 8px;
 }
 
@@ -3417,7 +3417,7 @@ a {
   padding: 6px 10px;
   border-radius: var(--radius-sm);
   margin-bottom: 10px;
-  border-left: 3px solid var(--brass-gold);
+  border-left: 3px solid var(--brass-primary);
 }
 
 .attraction-timing-row .timing-icon {

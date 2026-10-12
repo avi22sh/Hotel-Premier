@@ -1,4 +1,4 @@
-﻿// ==========================================================================
+// ==========================================================================
 // HOTEL PREMIER - A HOME IN BHUSAWAL
 // Hotel Rooms, Exact Tariffs, Timings, Location & Bulk Marriage Deals Database
 // ==========================================================================
@@ -253,7 +253,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     }
   ],
 
-  // Local Attractions & Cultural Heritage Guide (15 Hand-Curated Spiritual, Heritage, Festival & Nature Sites)
+  // Local Attractions & Cultural Heritage Guide (7 Hand-Curated Heritage, Festival & Nature Sites)
   localAttractions: [
     {
       id: 'attraction-ajanta-caves',
@@ -271,21 +271,6 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Ajanta+Caves'
     },
     {
-      id: 'attraction-gaavdevi-bhadrakali',
-      title: 'Bhusawal Gaavdevi Bhadrakali Ashtbhuja Devi Mandir',
-      marathiTitle: '\u092d\u0941\u0938\u093e\u0935\u0933 \u0917\u093e\u0935\u0926\u0947\u0935\u0940 \u092d\u0926\u094d\u0930\u0915\u093e\u0932\u0940 \u0905\u0937\u094d\u091f\u092d\u0941\u091c\u093e \u0926\u0947\u0935\u0940 \u092e\u0902\u0926\u093f\u0930',
-      category: 'spiritual',
-      categoryLabel: 'Spiritual Temple',
-      icon: '\uD83D\uDED5',
-      distance: '1.8 KM',
-      time: '5 Mins',
-      bestTime: 'Chaitra Yatra (Baragadya Utsav) & Navratri Festival',
-      desc: 'The venerated town deity (Gaavdevi) of Bhusawal situated in Athawade Bazar. Renowned for its ancient eight-armed (Ashtbhuja) Bhadrakali idol and the historic Baragadya Utsav (chariot pulling ceremony) that gathers thousands of devotees across Khandesh.',
-      highlights: ['Town Deity of Bhusawal', 'Historic Baragadya Utsav', 'Athawade Bazar Heritage'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/Bhadrakali_Mandir.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Bhadrakali+Mandir,+Athawade+Bazar,+Bhusawal'
-    },
-    {
       id: 'attraction-yawal-wildlife',
       title: 'Yawal Wildlife Sanctuary',
       marathiTitle: '\u092f\u093e\u0935\u0932 \u0935\u0928\u094d\u092f\u091c\u0940\u0935 \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f (\u0938\u093e\u0924\u092a\u0941\u0921\u093e \u092a\u0930\u094d\u0935\u0924)',
@@ -301,76 +286,31 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Yawal+Wildlife+Sanqtuaray'
     },
     {
-      id: 'attraction-kapileshwar-velhale',
-      title: 'Shri Kapileshwar Mahadev Mandir Velhale',
-      marathiTitle: '\u0936\u094d\u0930\u0940 \u0915\u092a\u093f\u0932\u0947\u0936\u094d\u0935\u0930 \u092e\u0939\u093e\u0926\u0947\u0935 \u092e\u0902\u0926\u093f\u0930, \u0935\u0947\u0933\u0939\u093e\u0933\u0947',
-      category: 'spiritual',
-      categoryLabel: 'Spiritual Temple',
-      icon: '\uD83D\uDD49\uFE0F',
-      distance: '6 KM',
-      time: '12 Mins',
-      bestTime: 'Mahashivratri & Holy Shravan Month Mondays',
-      desc: 'Ancient 1,000-year-old Hemadpanthi stone-carved Shiva temple situated on the tranquil outskirts at Velhale. Revered by tradition as established by Sage Kapil Muni, offering meditative peace, ancient stone pillars, and grand Mahashivratri celebrations.',
-      highlights: ['1,000-Year Hemadpanthi Architecture', 'Sage Kapil Muni Legacy', 'Grand Mahashivratri Mela'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Hemadpanthi_type_temple.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Kapileshwar+Mandir,+Velhale,+Bhusawal'
-    },
-    {
-      id: 'attraction-datta-girnari-math',
-      title: 'Shri Datta Girnari Math Bhusawal',
-      marathiTitle: '\u0936\u094d\u0930\u0940 \u0926\u0924\u094d\u0924 \u0917\u093f\u0930\u0928\u093e\u0930\u0940 \u092e\u0920, \u092d\u0941\u0938\u093e\u0935\u0933',
-      category: 'spiritual',
-      categoryLabel: 'Spiritual Math',
-      icon: '\uD83D\uDCFF',
-      distance: '3 KM',
-      time: '8 Mins',
-      bestTime: 'Datta Jayanti (Margashirsha) & Guru Purnima',
-      desc: 'Peaceful spiritual retreat in Samarth Colony enshrining a rare, divine Ek-mukhi Shadbhuja white marble idol of Lord Dattatreya blessed in the Girnar tradition. Known for daily Aarati, Akhand Namasmaran, and soul-stirring Datta Jayanti celebrations.',
-      highlights: ['Ek-mukhi Shadbhuja Datta Idol', 'Girnar Nath Tradition', 'Tranquil Meditation Ambience'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Lord_Dattatreya.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Datta+Mandir,+Samarth+Colony,+Bhusawal'
-    },
-    {
       id: 'attraction-changdeo-yatra',
-      title: 'Changdeo Yatra (Shri Sant Changdev Maharaj Mandir)',
-      marathiTitle: '\u091a\u093e\u0902\u0917\u0926\u0947\u0935 \u092f\u093e\u0924\u094d\u0930\u093e \u0935 \u0936\u094d\u0930\u0940 \u0938\u0902\u0924 \u091a\u093e\u0902\u0917\u0926\u0947\u0935 \u092e\u0939\u093e\u0930\u093e\u091c \u092e\u0902\u0926\u093f\u0930 (\u0924\u093e\u092a\u0940-\u092a\u0942\u0930\u094d\u0923\u093e \u0938\u0902\u0917\u092e)',
+      title: 'Changdeo Heritage Site & Tapi-Purna Sangam',
+      marathiTitle: '\u091a\u093e\u0902\u0917\u0926\u0947\u0935 \u0910\u0924\u093f\u0939\u093e\u0938\u093f\u0915 \u0935\u093e\u0938\u094d\u0924\u0942 (\u0924\u093e\u092a\u0940-\u092a\u0942\u0930\u094d\u0923\u093e \u0938\u0902\u0917\u092e)',
       category: 'heritage',
-      categoryLabel: 'Heritage & Pilgrim',
+      categoryLabel: 'ASI Ancient Heritage',
       icon: '\uD83C\uDF0A',
       distance: '18 KM',
       time: '25 Mins',
-      bestTime: 'Magh Purnima Annual Yatra (Feb) & Year-round',
-      desc: 'Magnificent 11th-century ASI-protected Hemadpanthi temple situated at the sacred confluence (Sangam) of Tapi and Purna rivers. Associated with the mystic 1400-year yogi Sant Changdev Maharaj who rode a tiger, boasting intricate stone sculptures and a grand Magh Purnima fair.',
-      highlights: ['Tapi-Purna River Confluence', '11th-Century ASI Protected', 'Sant Changdev Samadhi Bhoomi'],
+      bestTime: 'October to March & Magh Annual Fair',
+      desc: 'Magnificent 11th-century ASI-protected Hemadpanthi monument situated at the scenic natural confluence (Sangam) of Tapi and Purna rivers. Boasts intricate stone rock carvings, ancient medieval architecture, and pristine river views.',
+      highlights: ['Tapi-Purna River Confluence', '11th-Century ASI Protected', 'Medieval Rock Carvings'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Changdev_Temple_Muktainagar_Dist_Jalgaon_P1220210_%283%29.JPG',
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Changdev+Temple,+Maharashtra'
-    },
-    {
-      id: 'attraction-old-sant-muktabai',
-      title: 'Old Shree Sant Muktabai Temple (Mehun / Kothali)',
-      marathiTitle: '\u091c\u0941\u0928\u0947 \u0936\u094d\u0930\u0940 \u0938\u0902\u0924 \u092e\u0941\u0915\u094d\u0924\u093e\u092c\u093e\u0908 \u092e\u0902\u0926\u093f\u0930 (\u092e\u0947\u0939\u0941\u0923 / \u0915\u094b\u0925\u0933\u0940)',
-      category: 'spiritual',
-      categoryLabel: 'Spiritual Peeth',
-      icon: '\uD83C\uDF38',
-      distance: '28 KM',
-      time: '35 Mins',
-      bestTime: 'Ekadashi, Kartiki Yatra & Holy Shravan',
-      desc: 'Sacred original shrine where Sant Muktabai, divine younger sister of Sant Dnyaneshwar Maharaj, entered Samadhi amidst divine lightning on the serene banks of the Tapi river. A premier Warkari spiritual haven in Khandesh.',
-      highlights: ['Sant Muktabai Samadhi Sthal', 'Holy Tapi River Ghats', 'Premier Warkari Pilgrim'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/c/c3/Old_muktai_temple%2C_Kothali.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Old+Sant+Muktabai+Temple,+Mehun'
     },
     {
       id: 'attraction-nandgram-godham',
       title: 'Nandgram Godham (Gau-Sanskriti & Agri-Tourism)',
       marathiTitle: '\u0928\u0902\u0926\u0917\u094d\u0930\u093e\u092e \u0917\u094b\u0927\u093e\u092e (\u0917\u094b-\u0938\u0902\u0938\u094d\u0915\u0943\u0924\u0940 \u0935 \u0915\u0943\u0937\u0940 \u092a\u0930\u094d\u092f\u091f\u0928 \u0915\u0947\u0902\u0926\u094d\u0930)',
       category: 'nature',
-      categoryLabel: 'Agri-Tourism & Gau Seva',
+      categoryLabel: 'Agri-Tourism Resort',
       icon: '\uD83D\uDC04',
       distance: '7 KM',
       time: '12 Mins',
       bestTime: 'Weekends, Festive Holidays & Evenings (3:00 PM - 8:00 PM)',
-      desc: 'Serene eco-spiritual destination and ethical Gir cow preservation sanctuary on Yawal Road, Anjale. Features organic Vedic farming, pure A2 dairy products, lush gardens, children\'s adventure zones, and rural Khandeshi hospitality.',
+      desc: 'Serene eco-destination and ethical Gir cow sanctuary on Yawal Road, Anjale. Features organic Vedic farming, pure A2 dairy products, lush gardens, children\'s adventure zones, and rural Khandeshi hospitality.',
       highlights: ['Gir Cow Gaushala & A2 Dairy', 'Agri-Tourism & Rural Ambiance', 'Family Day Outing Resort'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Gir_cow.jpg',
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Nandgram+Godham,+Anjale+Road'
@@ -380,13 +320,13 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       title: 'Muktai Yatra (Mehun / Kothali Mahotsav)',
       marathiTitle: '\u092e\u0941\u0915\u094d\u0924\u093e\u0908 \u092f\u093e\u0924\u094d\u0930\u093e (\u0915\u094b\u0925\u0933\u0940 / \u092e\u0947\u0939\u0941\u0923 \u092e\u0939\u093e\u092f\u093e\u0924\u094d\u0930\u093e)',
       category: 'festivals',
-      categoryLabel: 'Cultural Festival',
+      categoryLabel: 'Cultural Fair & Carnival',
       icon: '\uD83D\uDEA9',
       distance: '28 KM',
       time: '35 Mins',
-      bestTime: 'Magh Vadya Ekadashi (Annual Feb/March Carnival)',
-      desc: 'The biggest spiritual festival in North Maharashtra attracting over 500,000 Warkari pilgrims from Maharashtra, Gujarat, and Madhya Pradesh. Features sacred Palkhi processions, Dindi bhajans, giant Ferris wheels, and vibrant village craft bazaars.',
-      highlights: ['Over 5 Lakh Devotees', 'Sacred Palkhi Procession', 'Traditional Khandesh Fair'],
+      bestTime: 'Annual February/March Fair & Carnival',
+      desc: 'North Maharashtra\'s largest rural folk gathering and annual fair. Features traditional cultural processions, folk music, giant Ferris wheels, amusement rides, and vibrant Khandesh regional handicrafts.',
+      highlights: ['Massive Cultural Carnival', 'Giant Wheels & Folk Rides', 'Traditional Khandesh Fair'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Dnyaneshwar_Maharaj_Palkhi_%28Dindi_or_Wari%29.jpg',
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Muktainagar,+Maharashtra'
     },
@@ -407,78 +347,18 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     },
     {
       id: 'attraction-ganpati-navratri-bhusawal',
-      title: 'Bhusawal Ganpati, Navratri & Dussehra Festivals',
-      marathiTitle: '\u092d\u0941\u0938\u093e\u0935\u0933 \u0917\u0923\u0947\u0936\u094b\u0924\u094d\u0938\u0935, \u0928\u0935\u0930\u093e\u0924\u094d\u0930\u094c\u0924\u094d\u0938\u0935 \u0935 \u0926\u0938\u0930\u093e \u092e\u0939\u094b\u0924\u094d\u0938\u0935',
+      title: 'Bhusawal Ganpati & Navratri Town Festivals',
+      marathiTitle: '\u092d\u0941\u0938\u093e\u0935\u0933 \u0917\u0923\u0947\u0936\u094b\u0924\u094d\u0938\u0935 \u0935 \u0928\u0935\u0930\u093e\u0924\u094d\u0930\u094c\u0924\u094d\u0938\u0935',
       category: 'festivals',
-      categoryLabel: 'Town Festival',
+      categoryLabel: 'Town Festival & Garba',
       icon: '\uD83E\uDE94',
       distance: 'Across Town (0.5 - 3 KM)',
       time: '5 to 10 Mins',
-      bestTime: 'Ganeshotsav (Bhadrapad) & Navratri-Dussehra (Ashwin)',
-      desc: 'Bhusawal is celebrated across Maharashtra for its vibrant community Ganpati pandals led by railway workshops and local clubs. Celebrations transition seamlessly into vibrant Dandiya-Garba nights and grand Dussehra Ravan Dahan and Aapta leaf exchange at Nehru Grounds.',
-      highlights: ['Massive Thematic Ganpati Pandals', 'Dhol Tasha & Garba Nights', 'Grand Dussehra Ravan Dahan'],
+      bestTime: 'Ganeshotsav & Navratri Season (September - October)',
+      desc: 'Bhusawal is celebrated across Maharashtra for its vibrant community celebrations organized by railway workshops and local clubs. Features colourful illumination displays, Dhol-Tasha troupes, and vibrant Garba nights.',
+      highlights: ['Thematic City Illumination', 'Dhol Tasha & Garba Nights', 'Vibrant Town Festivities'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Ganesh_Visarjan_2016_at_Chinawal_1.jpg',
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Bhusawal+Town+Center'
-    },
-    {
-      id: 'attraction-iccha-devi',
-      title: 'Iccha Devi Mandir (Mehrun, Jalgaon)',
-      marathiTitle: '\u0936\u094d\u0930\u0940 \u0907\u091a\u094d\u091b\u093e\u092a\u0942\u0930\u094d\u0924\u0940 \u0907\u091a\u094d\u091b\u093e \u0926\u0947\u0935\u0940 \u092e\u0902\u0926\u093f\u0930 (\u092e\u0947\u0939\u0940\u0930\u0941\u0923, \u091c\u0933\u0917\u093e\u0935)',
-      category: 'spiritual',
-      categoryLabel: 'Spiritual Temple',
-      icon: '\uD83C\uDF3A',
-      distance: '27 KM',
-      time: '35 Mins',
-      bestTime: 'Chaitra & Ashwin Navratri (Round the year)',
-      desc: 'Revered wish-fulfilling Goddess temple with a legacy of over two centuries. Set close to the picturesque Mehrun Lake, devotees offer coconuts, choli-patal, and prayers for marriage, health, and family prosperity.',
-      highlights: ['Wish-Fulfilling Goddess Shrine', 'Serene Mehrun Lake Surroundings', 'Festive Navratri Utsav'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Mehrun_Lake.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Icchadevi+Mandir,+Jalgaon'
-    },
-    {
-      id: 'attraction-manu-devi',
-      title: 'Shri Manu Devi Temple (Satpuda Foothills, Adgaon)',
-      marathiTitle: '\u0936\u094d\u0930\u0940 \u0915\u0941\u0932\u0938\u094d\u0935\u093e\u092e\u093f\u0928\u0940 \u092e\u0928\u0941\u0926\u0947\u0935\u0940 \u092e\u0902\u0926\u093f\u0930 (\u0938\u093e\u0924\u092a\u0941\u0921\u093e \u092a\u093e\u092f\u0925\u093e, \u0906\u0921\u0917\u093e\u0935)',
-      category: 'spiritual',
-      categoryLabel: 'Kuldevi & Nature',
-      icon: '\u26F0\uFE0F',
-      distance: '40 KM',
-      time: '55 Mins',
-      bestTime: 'Navratri, Shravan, and Monsoon Season (July to Dec)',
-      desc: 'Supreme Kuldevi (patron goddess) of Khandesh nestled in deep Satpuda valleys. Accessible via a scenic hill road from Adgaon, surrounded on three sides by lush green hills, freshwater mountain streams, and a spectacular 400-foot waterfall during monsoons.',
-      highlights: ['Supreme Kuldevi of Khandesh', 'Scenic 400-Ft Monsoon Waterfall', 'Satpuda Hill Pilgrimage'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/6/62/Manudevi_Waterfall.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Manudevi+Temple,+Adgaon'
-    },
-    {
-      id: 'attraction-runmukteshwar-mahadev',
-      title: 'Runmukteshwar Mahadev Temple',
-      marathiTitle: '\u090b\u0923\u092e\u0941\u0915\u094d\u0924\u0947\u0936\u094d\u0935\u0930 \u092e\u0939\u093e\u0926\u0947\u0935 \u092e\u0902\u0926\u093f\u0930 (\u0924\u093e\u092a\u0940-\u092a\u0942\u0930\u094d\u0923\u093e \u0938\u0902\u0917\u092e \u092a\u0930\u093f\u0938\u0930)',
-      category: 'spiritual',
-      categoryLabel: 'Spiritual Temple',
-      icon: '\uD83D\uDED5',
-      distance: '19 KM',
-      time: '28 Mins',
-      bestTime: 'Shravan Somwar & Mahashivratri',
-      desc: 'Sacred riverbank Shiva shrine situated near the holy Tapi-Purna basin. Worshipped by seekers and pilgrims for liberation from debts (Rin-Mukti), peace of mind, and ancestral blessings in the ancient Vedic tradition.',
-      highlights: ['Sacred Rin-Mukti Blessings', 'Tapi Riverfront Serenity', 'Ancient Spiritual Significance'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Temple_at_Tapi_River_%28Taapti%29_in_Burhapur_Madhya_Pradesh_-_panoramio.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Runmukteshwar+Mahadev+Mandir'
-    },
-    {
-      id: 'attraction-sirvel-mahadev',
-      title: 'Sirvel Mahadev Cave Temple & Waterfall',
-      marathiTitle: '\u0938\u093f\u0930\u0935\u0947\u0932 \u092e\u0939\u093e\u0926\u0947\u0935 \u0917\u0941\u0939\u093e \u092e\u0902\u0926\u093f\u0930 \u0935 \u0927\u092c\u0927\u092c\u093e (\u0938\u093e\u0924\u092a\u0941\u0921\u093e \u0921\u094b\u0902\u0917\u0930\u0930\u093e\u0902\u0917\u093e)',
-      category: 'nature',
-      categoryLabel: 'Cave Temple & Nature',
-      icon: '\uD83C\uDFDE\uFE0F',
-      distance: '48 KM',
-      time: '1 Hr',
-      bestTime: 'July to February (Monsoon Waterfalls & Mahashivratri)',
-      desc: 'A hidden natural marvel tucked into Satpuda forest cliffs. Features a natural rock cave where fresh mountain springs continuously drip water (Abhisheka) onto the sacred Shivling round the year, adjacent to a cascading waterfall and scenic trekking paths.',
-      highlights: ['Natural Spring Shivling Abhisheka', 'Forest Cave & Seasonal Waterfall', 'Satpuda Eco-Trek'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Waterfall_in_the_Satpura_Range.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Sirvel+Mahadev+Mandir'
     }
   ],
   // Restaurant Events & Party Catering Packages (Pride Pure Veg AC Restaurant - Seating Capacity Max 40 Pax)

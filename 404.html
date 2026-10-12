@@ -1275,19 +1275,16 @@
         <!-- Category Filter Pills -->
         <div class="attraction-filter-chips" id="attraction-filter-chips">
           <button type="button" class="attraction-filter-btn active" data-category="all" onclick="window.app ? window.app.filterLocalAttractions('all') : null">
-            <span>✨ All Attractions (15)</span>
-          </button>
-          <button type="button" class="attraction-filter-btn" data-category="spiritual" onclick="window.app ? window.app.filterLocalAttractions('spiritual') : null">
-            <span>🕉️ Spiritual & Temples</span>
+            <span>✨ All Attractions (7)</span>
           </button>
           <button type="button" class="attraction-filter-btn" data-category="heritage" onclick="window.app ? window.app.filterLocalAttractions('heritage') : null">
-            <span>🏛️ World Heritage & Pilgrim</span>
+            <span>🏛️ World Heritage & Monuments</span>
           </button>
           <button type="button" class="attraction-filter-btn" data-category="festivals" onclick="window.app ? window.app.filterLocalAttractions('festivals') : null">
-            <span>🚩 Yatras & Cultural Festivals</span>
+            <span>🚩 Cultural Fairs & Festivals</span>
           </button>
           <button type="button" class="attraction-filter-btn" data-category="nature" onclick="window.app ? window.app.filterLocalAttractions('nature') : null">
-            <span>🌿 Nature, Caves & Agri-Tourism</span>
+            <span>🌿 Nature & Agri-Tourism</span>
           </button>
         </div>
 
@@ -1905,20 +1902,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.22) -->
-  <script src="storage.js?v=20.22"></script>
-  <script src="vault.js?v=20.22"></script>
-  <script src="data/translations.js?v=20.22"></script>
-  <script src="data/hotel-data.js?v=20.22"></script>
-  <script src="data/menu-data.js?v=20.22"></script>
-  <script src="app.js?v=20.22"></script>
-  <script src="admin.js?v=20.22"></script>
+  <!-- Load Application Scripts (v20.23) -->
+  <script src="storage.js?v=20.23"></script>
+  <script src="vault.js?v=20.23"></script>
+  <script src="data/translations.js?v=20.23"></script>
+  <script src="data/hotel-data.js?v=20.23"></script>
+  <script src="data/menu-data.js?v=20.23"></script>
+  <script src="app.js?v=20.23"></script>
+  <script src="admin.js?v=20.23"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.22').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.23').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
