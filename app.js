@@ -1,4 +1,4 @@
-﻿// ==========================================================================
+// ==========================================================================
 // HOTEL PREMIER - PRIDE PURE VEG AC RESTAURANT & HOTEL PREMIER STAYS, BHUSAWAL
 // Digital QR Menu Display & Hotel Room Booking Portal Controller
 // Supports: English, Hindi (हिंदी), Marathi (मराठी)
@@ -2741,13 +2741,13 @@ class HotelPremierApp {
         <div class="attraction-img-wrap">
           <img src="${item.image}" alt="${item.title}" class="attraction-img" loading="lazy" onerror="this.onerror=null; this.src='assets/hotel-images/exterior-facade-twilight.jpg';">
           <span class="attraction-category-badge">${item.categoryLabel || item.category}</span>
-          <span class="attraction-distance-badge">ðŸš— ${item.distance}</span>
+          <span class="attraction-distance-badge">&#128663; ${item.distance}</span>
         </div>
         <div class="attraction-card-content">
           <h4 class="attraction-title">${item.title}</h4>
           <div class="attraction-marathi-title">${item.marathiTitle || ''}</div>
           <div class="attraction-timing-row">
-            <span class="timing-icon">ðŸ—“ï¸</span>
+            <span class="timing-icon">&#128197;</span>
             <div>
               <span style="font-size: 0.65rem; text-transform: uppercase; color: var(--burgundy-deep); display: block; font-weight: 800;">Best Time / Season:</span>
               <span>${item.bestTime}</span>
@@ -2755,14 +2755,14 @@ class HotelPremierApp {
           </div>
           <p class="attraction-desc">${item.desc}</p>
           <div class="attraction-highlights-list">
-            ${(item.highlights || []).map(h => `<span class="attraction-highlight-pill">âœ¨ ${h}</span>`).join('')}
+            ${(item.highlights || []).map(h => `<span class="attraction-highlight-pill">&#10024; ${h}</span>`).join('')}
           </div>
           <div class="attraction-card-footer">
             <div class="attraction-travel-meta">
               <span>Drive: <strong>${item.time}</strong></span>
             </div>
             <a href="${item.mapUrl}" target="_blank" rel="noopener noreferrer" class="attraction-directions-btn">
-              <span>ðŸ§­ Live Directions â†’</span>
+              <span>&#129517; Live Directions &rarr;</span>
             </a>
           </div>
         </div>
