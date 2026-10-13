@@ -65,7 +65,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v19.0') {
+            if (name !== 'hotel-premier-v20.24') {
               console.log('[PWA] Purging stale cache:', name);
               caches.delete(name);
             }
@@ -1256,42 +1256,42 @@
             <span>🗺️ Open Google Maps Navigation</span>
           </a>
           <button class="btn-share-driver" onclick="window.app ? window.app.shareLocationOnWhatsApp() : null">
-            <span>📲 Share Location with Driver (WhatsApp)</span>
+            <span>📲 Share Location</span>
           </button>
         </div>
       </div>
+    </div>
 
-      <!-- Unified Local Attractions & Cultural Heritage Explore Feed -->
-      <div class="attractions-section-wrapper">
-        <div class="editorial-header-block" style="text-align: left; margin-bottom: 8px;">
-          <span class="editorial-eyebrow">Khandesh Discovery & Pilgrim Guide</span>
-          <h3 class="editorial-title" style="font-size: 1.45rem;">Local Attractions & Cultural Heritage</h3>
-          <div class="editorial-divider" style="margin: 8px 0;"></div>
-          <p class="editorial-subtitle" style="margin: 0;">
-            Immerse yourself in world heritage wonders, ancient river confluences, sacred temples, Satpuda hill trails, and vibrant cultural yatras in and around Bhusawal.
-          </p>
-        </div>
+    <!-- Unified Local Attractions & Cultural Heritage Explore Feed -->
+    <div class="attractions-section-wrapper">
+      <div class="editorial-header-block" style="text-align: left; margin-bottom: 8px;">
+        <span class="editorial-eyebrow">Khandesh Discovery & Heritage Guide</span>
+        <h3 class="editorial-title" style="font-size: 1.45rem;">Local Attractions & Cultural Heritage</h3>
+        <div class="editorial-divider" style="margin: 8px 0;"></div>
+        <p class="editorial-subtitle" style="margin: 0;">
+          Immerse yourself in world heritage wonders, ancient river confluences, Satpuda hill trails, and vibrant cultural yatras in and around Bhusawal.
+        </p>
+      </div>
 
-        <!-- Category Filter Pills -->
-        <div class="attraction-filter-chips" id="attraction-filter-chips">
-          <button type="button" class="attraction-filter-btn active" data-category="all" onclick="window.app ? window.app.filterLocalAttractions('all') : null">
-            <span>✨ All Attractions (7)</span>
-          </button>
-          <button type="button" class="attraction-filter-btn" data-category="heritage" onclick="window.app ? window.app.filterLocalAttractions('heritage') : null">
-            <span>🏛️ World Heritage & Monuments</span>
-          </button>
-          <button type="button" class="attraction-filter-btn" data-category="festivals" onclick="window.app ? window.app.filterLocalAttractions('festivals') : null">
-            <span>🚩 Cultural Fairs & Festivals</span>
-          </button>
-          <button type="button" class="attraction-filter-btn" data-category="nature" onclick="window.app ? window.app.filterLocalAttractions('nature') : null">
-            <span>🌿 Nature & Agri-Tourism</span>
-          </button>
-        </div>
+      <!-- Category Filter Pills -->
+      <div class="attraction-filter-chips" id="attraction-filter-chips">
+        <button type="button" class="attraction-filter-btn active" data-category="all" onclick="window.app ? window.app.filterLocalAttractions('all') : null">
+          <span>✨ All Attractions (7)</span>
+        </button>
+        <button type="button" class="attraction-filter-btn" data-category="heritage" onclick="window.app ? window.app.filterLocalAttractions('heritage') : null">
+          <span>🏛️ World Heritage & Monuments</span>
+        </button>
+        <button type="button" class="attraction-filter-btn" data-category="festivals" onclick="window.app ? window.app.filterLocalAttractions('festivals') : null">
+          <span>🚩 Cultural Fairs & Festivals</span>
+        </button>
+        <button type="button" class="attraction-filter-btn" data-category="nature" onclick="window.app ? window.app.filterLocalAttractions('nature') : null">
+          <span>🌿 Nature & Agri-Tourism</span>
+        </button>
+      </div>
 
-        <!-- Rendered dynamically by app.js from localAttractions -->
-        <div class="attractions-grid" id="local-attractions-feed">
-          <!-- Dynamic Attraction Cards -->
-        </div>
+      <!-- Rendered dynamically by app.js from localAttractions -->
+      <div class="attractions-grid" id="local-attractions-feed">
+        <!-- Dynamic Attraction Cards -->
       </div>
     </div>
   </section>
@@ -1902,20 +1902,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.23) -->
-  <script src="storage.js?v=20.23"></script>
-  <script src="vault.js?v=20.23"></script>
-  <script src="data/translations.js?v=20.23"></script>
-  <script src="data/hotel-data.js?v=20.23"></script>
-  <script src="data/menu-data.js?v=20.23"></script>
-  <script src="app.js?v=20.23"></script>
-  <script src="admin.js?v=20.23"></script>
+  <!-- Load Application Scripts (v20.24) -->
+  <script src="storage.js?v=20.24"></script>
+  <script src="vault.js?v=20.24"></script>
+  <script src="data/translations.js?v=20.24"></script>
+  <script src="data/hotel-data.js?v=20.24"></script>
+  <script src="data/menu-data.js?v=20.24"></script>
+  <script src="app.js?v=20.24"></script>
+  <script src="admin.js?v=20.24"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.23').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.24').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

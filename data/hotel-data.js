@@ -87,7 +87,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       marathiName: '\u090f\u0938\u0940 \u0938\u0941\u092a\u0930 \u0921\u0940\u0932\u0915\u094d\u0938 \u0930\u0942\u092e',
       bedType: 'King Size Luxury Bed',
       inventoryCount: '2 Rooms Only',
-        '🏢 Total 2 Exclusive Rooms in Hotel',
+      bedDetail: '👑 King Bed (Total 2 Rooms)',
       image: 'assets/hotel-images/room-super-deluxe-window.jpg',
       images: [
         'assets/hotel-images/room-super-deluxe-window.jpg',
