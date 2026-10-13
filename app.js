@@ -2746,38 +2746,103 @@ class HotelPremierApp {
       attractions = attractions.filter(item => item.category === filter);
     }
 
-    container.innerHTML = attractions.map(item => `
-      <div class="attraction-card" id="${item.id}">
-        <div class="attraction-img-wrap">
-          <img src="${item.image}" alt="${item.title}" class="attraction-img" loading="lazy" onerror="this.onerror=null; this.src='assets/hotel-images/exterior-facade-twilight.jpg';">
-          <span class="attraction-category-badge">${item.categoryLabel || item.category}</span>
-          <span class="attraction-distance-badge">&#128663; ${item.distance}</span>
+    container.innerHTML = attractions.map((item, cardIdx) => {
+      const imgList = (item.images && item.images.length > 0)
+        ? item.images
+        : [{ url: item.image, caption: item.title }];
+      const hasMultiple = imgList.length > 1;
+
+      const slidesHtml = imgList.map((imgObj, sIdx) => `
+        <div class="attraction-slide" data-slide-index="${sIdx}">
+          <img src="${imgObj.url}" alt="${imgObj.caption || item.title}" class="attraction-img" loading="lazy" onerror="this.onerror=null; this.src='assets/hotel-images/exterior-facade-twilight.jpg';">
+          ${imgObj.caption ? `<span class="attraction-slide-caption">${imgObj.caption}</span>` : ''}
         </div>
-        <div class="attraction-card-content">
-          <h4 class="attraction-title">${item.title}</h4>
-          <div class="attraction-marathi-title">${item.marathiTitle || ''}</div>
-          <div class="attraction-timing-row">
-            <span class="timing-icon">&#128197;</span>
-            <div>
-              <span style="font-size: 0.65rem; text-transform: uppercase; color: var(--burgundy-deep); display: block; font-weight: 800;">Best Time / Season:</span>
-              <span>${item.bestTime}</span>
+      `).join('');
+
+      const dotsHtml = hasMultiple ? `
+        <div class="attraction-gallery-dots" id="dots-${item.id}">
+          ${imgList.map((_, dIdx) => `
+            <button type="button" class="attraction-dot ${dIdx === 0 ? 'active' : ''}" aria-label="Slide ${dIdx + 1}" onclick="window.app ? window.app.scrollAttractionSlide('${item.id}', ${dIdx}) : null"></button>
+          `).join('')}
+        </div>
+      ` : '';
+
+      const arrowsHtml = hasMultiple ? `
+        <button type="button" class="attraction-nav-btn prev" aria-label="Previous Photo" onclick="window.app ? window.app.navAttractionSlide('${item.id}', -1) : null">&#10094;</button>
+        <button type="button" class="attraction-nav-btn next" aria-label="Next Photo" onclick="window.app ? window.app.navAttractionSlide('${item.id}', 1) : null">&#10095;</button>
+      ` : '';
+
+      return `
+        <div class="attraction-card" id="${item.id}">
+          <div class="attraction-img-wrap">
+            <div class="attraction-gallery-track" id="gallery-${item.id}" onscroll="window.app ? window.app.handleAttractionScroll('${item.id}') : null">
+              ${slidesHtml}
+            </div>
+            ${arrowsHtml}
+            ${dotsHtml}
+            <span class="attraction-category-badge">${item.categoryLabel || item.category}</span>
+            <span class="attraction-distance-badge">&#128663; ${item.distance}</span>
+            ${hasMultiple ? `<span class="attraction-photo-count-badge">&#128247; ${imgList.length} Photos</span>` : ''}
+          </div>
+          <div class="attraction-card-content">
+            <h4 class="attraction-title">${item.title}</h4>
+            <div class="attraction-marathi-title">${item.marathiTitle || ''}</div>
+            <div class="attraction-timing-row">
+              <span class="timing-icon">&#128197;</span>
+              <div>
+                <span style="font-size: 0.65rem; text-transform: uppercase; color: var(--burgundy-deep); display: block; font-weight: 800;">Best Time / Season:</span>
+                <span>${item.bestTime}</span>
+              </div>
+            </div>
+            <p class="attraction-desc">${item.desc}</p>
+            <div class="attraction-highlights-list">
+              ${(item.highlights || []).map(h => `<span class="attraction-highlight-pill">&#10024; ${h}</span>`).join('')}
+            </div>
+            <div class="attraction-card-footer">
+              <div class="attraction-travel-meta">
+                <span>Drive: <strong>${item.time}</strong></span>
+              </div>
+              <a href="${item.mapUrl}" target="_blank" rel="noopener noreferrer" class="attraction-directions-btn">
+                <span>&#129517; Live Directions &rarr;</span>
+              </a>
             </div>
           </div>
-          <p class="attraction-desc">${item.desc}</p>
-          <div class="attraction-highlights-list">
-            ${(item.highlights || []).map(h => `<span class="attraction-highlight-pill">&#10024; ${h}</span>`).join('')}
-          </div>
-          <div class="attraction-card-footer">
-            <div class="attraction-travel-meta">
-              <span>Drive: <strong>${item.time}</strong></span>
-            </div>
-            <a href="${item.mapUrl}" target="_blank" rel="noopener noreferrer" class="attraction-directions-btn">
-              <span>&#129517; Live Directions &rarr;</span>
-            </a>
-          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
+  }
+
+  scrollAttractionSlide(cardId, slideIdx) {
+    const track = document.getElementById(`gallery-${cardId}`);
+    if (!track) return;
+    const slides = track.querySelectorAll('.attraction-slide');
+    if (slides[slideIdx]) {
+      track.scrollTo({ left: slides[slideIdx].offsetLeft, behavior: 'smooth' });
+    }
+  }
+
+  navAttractionSlide(cardId, direction) {
+    const track = document.getElementById(`gallery-${cardId}`);
+    if (!track) return;
+    const slides = track.querySelectorAll('.attraction-slide');
+    if (!slides.length) return;
+    const currentScroll = track.scrollLeft;
+    const slideWidth = track.clientWidth || 280;
+    const currentIdx = Math.round(currentScroll / slideWidth);
+    const nextIdx = Math.max(0, Math.min(slides.length - 1, currentIdx + direction));
+    this.scrollAttractionSlide(cardId, nextIdx);
+  }
+
+  handleAttractionScroll(cardId) {
+    const track = document.getElementById(`gallery-${cardId}`);
+    const dotsWrap = document.getElementById(`dots-${cardId}`);
+    if (!track || !dotsWrap) return;
+    const slideWidth = track.clientWidth || 280;
+    const currentIdx = Math.round(track.scrollLeft / slideWidth);
+    const dots = dotsWrap.querySelectorAll('.attraction-dot');
+    dots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentIdx);
+    });
   }
 
   // Deprecated backwards-compatibility stub

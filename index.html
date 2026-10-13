@@ -65,7 +65,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v20.29') {
+            if (name !== 'hotel-premier-v20.30') {
               console.log('[PWA] Purging stale cache:', name);
               caches.delete(name);
             }
@@ -1262,24 +1262,24 @@
       </div>
     </div>
 
-    <!-- Unified Local Attractions & Cultural Heritage Explore Feed -->
+    <!-- Unified Signature Escapes & World Heritage Explore Feed -->
     <div class="attractions-section-wrapper">
       <div class="editorial-header-block" style="text-align: left; margin-bottom: 8px;">
-        <span class="editorial-eyebrow">Khandesh Discovery & Heritage Guide</span>
-        <h3 class="editorial-title" style="font-size: 1.45rem;">Local Attractions & Cultural Heritage</h3>
+        <span class="editorial-eyebrow">Premier Concierge Excursions</span>
+        <h3 class="editorial-title" style="font-size: 1.45rem;">Signature Escapes & World Heritage</h3>
         <div class="editorial-divider" style="margin: 8px 0;"></div>
         <p class="editorial-subtitle" style="margin: 0;">
-          Immerse yourself in UNESCO world heritage cave wonders, Satpuda wildlife mountain trails, and family waterpark agri-tourism sanctuaries near Bhusawal.
+          Curated UNESCO cave monoliths, Satpuda wilderness reserves, and premier family waterpark escapes within comfortable reach of Hotel Premier Bhusawal.
         </p>
       </div>
 
       <!-- Category Filter Pills -->
       <div class="attraction-filter-chips" id="attraction-filter-chips">
         <button type="button" class="attraction-filter-btn active" data-category="all" onclick="window.app ? window.app.filterLocalAttractions('all') : null">
-          <span>✨ All Attractions (4)</span>
+          <span>✨ All Destinations (4)</span>
         </button>
         <button type="button" class="attraction-filter-btn" data-category="heritage" onclick="window.app ? window.app.filterLocalAttractions('heritage') : null">
-          <span>🏛️ World Heritage & Monuments (2)</span>
+          <span>🏛️ World Heritage & Monoliths (2)</span>
         </button>
         <button type="button" class="attraction-filter-btn" data-category="nature" onclick="window.app ? window.app.filterLocalAttractions('nature') : null">
           <span>🌿 Nature & Waterpark Resorts (2)</span>
@@ -1902,17 +1902,17 @@
   <!-- Load Application Scripts (v20.29) -->
   <script src="storage.js?v=20.29"></script>
   <script src="vault.js?v=20.29"></script>
-  <script src="data/translations.js?v=20.29"></script>
-  <script src="data/hotel-data.js?v=20.29"></script>
-  <script src="data/menu-data.js?v=20.29"></script>
-  <script src="app.js?v=20.29"></script>
-  <script src="admin.js?v=20.29"></script>
+  <script src="data/translations.js?v=20.30"></script>
+  <script src="data/hotel-data.js?v=20.30"></script>
+  <script src="data/menu-data.js?v=20.30"></script>
+  <script src="app.js?v=20.30"></script>
+  <script src="admin.js?v=20.30"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.29').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.30').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

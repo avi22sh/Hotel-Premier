@@ -253,7 +253,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     }
   ],
 
-  // Local Attractions & Cultural Heritage Guide (4 Hand-Curated Heritage & Nature Sites)
+  // Signature Escapes & World Heritage Guide (4 Hand-Curated Destinations with Multi-Photo Showcase)
   localAttractions: [
     {
       id: 'attraction-ajanta-caves',
@@ -265,9 +265,23 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       distance: '58 KM',
       time: '1 Hr 15 Mins',
       bestTime: 'October to March (9:00 AM - 5:00 PM, Closed Mondays)',
-      desc: 'World-renowned 30 rock-cut Buddhist cave monuments dating from 2nd century BCE to 480 CE. Featuring masterpieces of ancient Buddhist religious art, intricate wall frescoes, and stone-carved chaityas. Hotel Premier serves as the ideal transit stay and starting point on the Khandesh corridor.',
+      desc: 'World-renowned 30 rock-cut Buddhist cave monuments dating from 2nd century BCE to 480 CE. Masterpieces of ancient Buddhist religious art, sacred mural frescoes, and towering Chaitya halls cut into the Waghur river horseshoe gorge. Hotel Premier serves as the premier gateway stay in Bhusawal.',
       highlights: ['30 Rock-Cut Buddhist Caves', 'Ancient Murals & Frescoes', 'UNESCO World Heritage'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Ajanta_Caves_%28452434892%29.jpg',
+      images: [
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Ajanta_Caves_%28452434892%29.jpg',
+          caption: 'Horseshoe Gorge Panoramic View'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/f/f7/Bodhisattva_Padmapani%2C_Ajanta%2C_cave_1%2C_India.jpg',
+          caption: 'Bodhisattva Padmapani Fresco (Cave 1)'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Cave_26%2C_Ajanta.jpg',
+          caption: 'Cave 26 Chaitya Hall & Stupa'
+        }
+      ],
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Ajanta+Caves'
     },
     {
@@ -283,6 +297,20 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       desc: 'UNESCO World Heritage monument featuring 34 monumental rock-cut caves spanning Hindu, Buddhist, and Jain traditions. Home to the legendary Cave 16 Kailasa Temple, the largest monolithic rock excavation in the world carved top-to-bottom out of a single volcanic basalt cliff by Rashtrakuta King Krishna I.',
       highlights: ['World\'s Largest Single-Rock Monolith', '34 Monumental Rock-Cut Caves', 'UNESCO World Heritage Site'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Kailasa_Temple_at_Ellora_Caves.jpg',
+      images: [
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Kailasa_Temple_at_Ellora_Caves.jpg',
+          caption: 'Kailasa Monolith Cave 16'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/8/88/Kailasa_temple_overview%2C_Ellora.jpg',
+          caption: 'Temple Courtyard & Carved Elephants'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/7/72/Cave_No._10_at_Ellora_Caves._Chaithya.jpg',
+          caption: 'Vishvakarma Chaitya Hall (Cave 10)'
+        }
+      ],
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Ellora+Caves,+Maharashtra'
     },
     {
@@ -297,13 +325,31 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       bestTime: 'October to February (Post-Monsoon & Winter)',
       desc: 'Sprawling over 178 sq km along the dense Satpuda mountain ranges along the Anjar river basin. Home to lush teak, salai & bamboo reserves sheltering leopards, wild dogs, sloth bears, sambar, chital, barking deer, and exotic birdlife.',
       highlights: ['Satpuda Mountain Hills', 'Leopard & Sloth Bear Habitat', 'Scenic Forest Trails'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Langoor_%40_Yawal_Wildlife_Sanctuary_01.jpg',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Waterfall_in_the_Satpura_Range.jpg',
+      images: [
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Waterfall_in_the_Satpura_Range.jpg',
+          caption: 'Satpuda Mountain Waterfall'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Langoor_%40_Yawal_Wildlife_Sanctuary_01.jpg',
+          caption: 'Grey Langur Wildlife Habitat'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Amazing_Landscape_%40Satpura_Tiger_Reserve.jpg',
+          caption: 'Dense Satpuda Forest Canopy'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/A_bird_eye_view_of_the_Satpuda_Ranges.jpg',
+          caption: 'Satpuda Mountain Ranges Panorama'
+        }
+      ],
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Yawal+Wildlife+Sanqtuaray'
     },
     {
       id: 'attraction-nandgram-godham',
       title: 'Nandgram Godham & Waterpark (Agri-Tourism & Gau-Sanskriti)',
-      marathiTitle: '\u0928\u0902\u0926\u0917\u094d\u0930\u093e\u092e \u0917\u094b\u0927\u093e\u092e \u0935 \u0935\u0949\u091f\u0930\u092a\u093e\u0930\u094d\u0915 (\u0915\u0943\u0937\u0940 \u092a\u0930\u094d\u092f\u091f\u0928 \u0935 \u0917\u094b-\u0938\u0902\u0938\u094d\u0915\u0943\u0924\u0940)',
+      marathiTitle: '\u0928\u0902\u0926\u0917\u094d\u0930\u093e\u092e \u0917\u094b\u0927\u093e\u092e \u0935 \u0935\u0949\u091f\u0930\u092a\u093e\u0930\u094d\u0915 (\u0915\u0943\u0937\u0940 \u092a\u0930\u094d\u093f\u092f\u091f\u0928 \u0935 \u0917\u094b-\u0938\u0902\u0938\u094d\u0915\u0943\u0924\u0940)',
       category: 'nature',
       categoryLabel: 'Waterpark & Agri-Resort',
       icon: '\uD83C\uDFCA',
@@ -313,6 +359,20 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       desc: 'Popular family recreation park and eco-retreat on Yawal Road, Anjale. Features an exciting family waterpark with swimming pools, water slides, splash pads, and rain dance, alongside ethical Gir cow gaushala, organic Vedic farming, pure A2 dairy products, children\'s adventure zones, and rural Khandeshi hospitality.',
       highlights: ['Waterpark Slides & Splash Pools', 'Rain Dance & Family Day Outing', 'Gir Cow Gaushala & A2 Dairy'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Gir_cow.jpg',
+      images: [
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Gir_cow.jpg',
+          caption: 'Gir Cow Sanctuary & Vedic Gaushala'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Wet_n_joy.jpg',
+          caption: 'Family Waterpark Slides & Wave Pool'
+        },
+        {
+          url: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&auto=format&fit=crop&q=80',
+          caption: 'Lush Organic Agro-Tourism Retreat'
+        }
+      ],
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Nandgram+Godham,+Anjale+Road'
     }
   ],
