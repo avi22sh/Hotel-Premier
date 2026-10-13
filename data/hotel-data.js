@@ -253,7 +253,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     }
   ],
 
-  // Signature Escapes & World Heritage Guide (4 Hand-Curated Destinations with Multi-Photo Showcase)
+  // Signature Escapes & World Heritage Guide (4 Hand-Curated Destinations with Multi-Photo HD Showcase)
   localAttractions: [
     {
       id: 'attraction-ajanta-caves',
@@ -279,7 +279,11 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         },
         {
           url: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Cave_26%2C_Ajanta.jpg',
-          caption: 'Cave 26 Chaitya Hall & Stupa'
+          caption: 'Cave 26 Chaitya Hall & Central Stupa'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Ajanta_cave9_2010.jpg',
+          caption: 'Ancient Chaitya Facade (Cave 9)'
         }
       ],
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Ajanta+Caves'
@@ -301,6 +305,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         {
           url: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Kailasa_Temple_at_Ellora_Caves.jpg',
           caption: 'Kailasa Monolith Cave 16'
+        },
+        {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Ellora_caves_-_Kailasa_Temple_%28cave_16%29_vrvbajel0924_%28472%29.jpg',
+          caption: 'Colossal Monolithic Shikhara & Carvings'
         },
         {
           url: 'https://upload.wikimedia.org/wikipedia/commons/8/88/Kailasa_temple_overview%2C_Ellora.jpg',
@@ -330,6 +338,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         {
           url: 'https://upload.wikimedia.org/wikipedia/commons/4/40/Waterfall_in_the_Satpura_Range.jpg',
           caption: 'Satpuda Mountain Waterfall'
+        },
+        {
+          url: 'https://images.unsplash.com/photo-1564059400075-416b5f3df71c?w=1200&auto=format&fit=crop&q=85',
+          caption: 'Indian Leopard Reserve Habitat'
         },
         {
           url: 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Langoor_%40_Yawal_Wildlife_Sanctuary_01.jpg',
@@ -365,11 +377,15 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
           caption: 'Gir Cow Sanctuary & Vedic Gaushala'
         },
         {
-          url: 'https://upload.wikimedia.org/wikipedia/commons/e/e1/Wet_n_joy.jpg',
+          url: 'https://upload.wikimedia.org/wikipedia/commons/6/64/Wet_N_joy_theme_Park.jpg',
           caption: 'Family Waterpark Slides & Wave Pool'
         },
         {
-          url: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&auto=format&fit=crop&q=80',
+          url: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Boomerango.JPG',
+          caption: 'Thrill Slides & Splash Pools'
+        },
+        {
+          url: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=1200&auto=format&fit=crop&q=85',
           caption: 'Lush Organic Agro-Tourism Retreat'
         }
       ],
