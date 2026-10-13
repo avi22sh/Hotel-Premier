@@ -253,7 +253,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     }
   ],
 
-  // Local Attractions & Cultural Heritage Guide (5 Hand-Curated Heritage, Festival & Nature Sites)
+  // Local Attractions & Cultural Heritage Guide (4 Hand-Curated Heritage & Nature Sites)
   localAttractions: [
     {
       id: 'attraction-ajanta-caves',
@@ -314,21 +314,6 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       highlights: ['Waterpark Slides & Splash Pools', 'Rain Dance & Family Day Outing', 'Gir Cow Gaushala & A2 Dairy'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Gir_cow.jpg',
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Nandgram+Godham,+Anjale+Road'
-    },
-    {
-      id: 'attraction-ganpati-navratri-bhusawal',
-      title: 'Bhusawal Ganpati & Navratri Grand Festivities',
-      marathiTitle: '\u092d\u0941\u0938\u093e\u0935\u0933 \u0917\u0923\u0947\u0936\u094b\u0924\u094d\u0938\u0935 (\u0906\u0917\u092e\u0928-\u0935\u093f\u0938\u0930\u094d\u091c\u0928 \u092e\u093f\u0930\u0935\u0923\u0942\u0915) \u0935 \u0928\u0935\u0930\u093e\u0924\u094d\u0930\u094c\u0924\u094d\u0938\u0935',
-      category: 'festivals',
-      categoryLabel: 'Town Festival & Processions',
-      icon: '\uD83E\uDE94',
-      distance: 'Across Town (0.5 - 3 KM)',
-      time: '5 to 10 Mins',
-      bestTime: 'Ganeshotsav & Navratri Season (September - October)',
-      desc: 'Bhusawal is renowned throughout North Maharashtra for its electrifying Ganeshotsav and Navratri celebrations. Experience grand Aagman and Visarjan processions featuring thunderous traditional Dhol-Tasha pathaks, pulsating DJ sound setups, vibrant Gulal celebrations, thematic pandals organized by railway workshops and town mandals, seamlessly transitioning into high-energy Dandiya-Garba nights and Dussehra celebrations.',
-      highlights: ['Grand Aagman & Visarjan Processions', 'High-Energy DJ & Live Dhol-Tasha', 'Thematic Pandals & Garba Nights'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Ganesh_Visarjan_2016_at_Chinawal_1.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Bhusawal+Town+Center'
     }
   ],
   // Restaurant Events & Party Catering Packages (Pride Pure Veg AC Restaurant - Seating Capacity Max 40 Pax)
