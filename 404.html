@@ -65,7 +65,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v20.26') {
+            if (name !== 'hotel-premier-v20.27') {
               console.log('[PWA] Purging stale cache:', name);
               caches.delete(name);
             }
@@ -1269,20 +1269,20 @@
         <h3 class="editorial-title" style="font-size: 1.45rem;">Local Attractions & Cultural Heritage</h3>
         <div class="editorial-divider" style="margin: 8px 0;"></div>
         <p class="editorial-subtitle" style="margin: 0;">
-          Immerse yourself in world heritage wonders, ancient river confluences, Satpuda hill trails, and vibrant cultural yatras in and around Bhusawal.
+          Immerse yourself in world heritage wonders, Satpuda hill trails, agri-tourism sanctuaries, and vibrant cultural town festivals in and around Bhusawal.
         </p>
       </div>
 
       <!-- Category Filter Pills -->
       <div class="attraction-filter-chips" id="attraction-filter-chips">
         <button type="button" class="attraction-filter-btn active" data-category="all" onclick="window.app ? window.app.filterLocalAttractions('all') : null">
-          <span>✨ All Attractions (7)</span>
+          <span>✨ All Attractions (5)</span>
         </button>
         <button type="button" class="attraction-filter-btn" data-category="heritage" onclick="window.app ? window.app.filterLocalAttractions('heritage') : null">
           <span>🏛️ World Heritage & Monuments</span>
         </button>
         <button type="button" class="attraction-filter-btn" data-category="festivals" onclick="window.app ? window.app.filterLocalAttractions('festivals') : null">
-          <span>🚩 Cultural Fairs & Festivals</span>
+          <span>🚩 Town Festivals & Celebrations</span>
         </button>
         <button type="button" class="attraction-filter-btn" data-category="nature" onclick="window.app ? window.app.filterLocalAttractions('nature') : null">
           <span>🌿 Nature & Agri-Tourism</span>
@@ -1902,20 +1902,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.26) -->
-  <script src="storage.js?v=20.26"></script>
-  <script src="vault.js?v=20.26"></script>
-  <script src="data/translations.js?v=20.26"></script>
-  <script src="data/hotel-data.js?v=20.26"></script>
-  <script src="data/menu-data.js?v=20.26"></script>
-  <script src="app.js?v=20.26"></script>
-  <script src="admin.js?v=20.26"></script>
+  <!-- Load Application Scripts (v20.27) -->
+  <script src="storage.js?v=20.27"></script>
+  <script src="vault.js?v=20.27"></script>
+  <script src="data/translations.js?v=20.27"></script>
+  <script src="data/hotel-data.js?v=20.27"></script>
+  <script src="data/menu-data.js?v=20.27"></script>
+  <script src="app.js?v=20.27"></script>
+  <script src="admin.js?v=20.27"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.26').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.27').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

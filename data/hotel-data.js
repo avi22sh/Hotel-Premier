@@ -253,7 +253,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     }
   ],
 
-  // Local Attractions & Cultural Heritage Guide (7 Hand-Curated Heritage, Festival & Nature Sites)
+  // Local Attractions & Cultural Heritage Guide (5 Hand-Curated Heritage, Festival & Nature Sites)
   localAttractions: [
     {
       id: 'attraction-ajanta-caves',
@@ -301,24 +301,9 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Yawal+Wildlife+Sanqtuaray'
     },
     {
-      id: 'attraction-changdeo-yatra',
-      title: 'Changdeo Heritage Site & Tapi-Purna Sangam',
-      marathiTitle: '\u091a\u093e\u0902\u0917\u0926\u0947\u0935 \u0910\u0924\u093f\u0939\u093e\u0938\u093f\u0915 \u0935\u093e\u0938\u094d\u0924\u0942 (\u0924\u093e\u092a\u0940-\u092a\u0942\u0930\u094d\u0923\u093e \u0938\u0902\u0917\u092e)',
-      category: 'heritage',
-      categoryLabel: 'ASI Ancient Heritage',
-      icon: '\uD83C\uDF0A',
-      distance: '18 KM',
-      time: '25 Mins',
-      bestTime: 'October to March & Magh Annual Fair',
-      desc: 'Magnificent 11th-century ASI-protected Hemadpanthi monument situated at the scenic natural confluence (Sangam) of Tapi and Purna rivers. Boasts intricate stone rock carvings, ancient medieval architecture, and pristine river views.',
-      highlights: ['Tapi-Purna River Confluence', '11th-Century ASI Protected', 'Medieval Rock Carvings'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/2/20/Changdev_Temple_Muktainagar_Dist_Jalgaon_P1220210_%283%29.JPG',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Changdev+Temple,+Maharashtra'
-    },
-    {
       id: 'attraction-nandgram-godham',
       title: 'Nandgram Godham (Gau-Sanskriti & Agri-Tourism)',
-      marathiTitle: '\u0928\u0902\u0926\u0917\u094d\u0930\u093e\u092e \u0917\u094b\u0927\u093e\u092e (\u0917\u094b-\u0938\u0902\u0938\u094d\u0915\u0943\u0924\u0940 \u0935 \u0915\u0943\u0937\u0940 \u092a\u0930\u094d\u092f\u091f\u0928 \u0915\u0947\u0902\u0926\u094d\u0930)',
+      marathiTitle: '\u0928\u0902\u0926\u0917\u094d\u0930\u093e\u092e \u0917\u094b\u0927\u093e\u092e (\u0917\u094b-\u0938\u0902\u0938\u094d\u0915\u0943\u0924\u0940 \u0935 \u0915\u0943\u0937\u0940 \u092a\u0930\u094d\u0935\u0924\u0928 \u0915\u0947\u0902\u0926\u094d\u0930)',
       category: 'nature',
       categoryLabel: 'Agri-Tourism Resort',
       icon: '\uD83D\uDC04',
@@ -329,21 +314,6 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       highlights: ['Gir Cow Gaushala & A2 Dairy', 'Agri-Tourism & Rural Ambiance', 'Family Day Outing Resort'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Gir_cow.jpg',
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Nandgram+Godham,+Anjale+Road'
-    },
-    {
-      id: 'attraction-muktai-yatra',
-      title: 'Muktai Yatra (Mehun / Kothali Mahotsav)',
-      marathiTitle: '\u092e\u0941\u0915\u094d\u0924\u093e\u0908 \u092f\u093e\u0924\u094d\u0930\u093e (\u0915\u094b\u0925\u0933\u0940 / \u092e\u0947\u0939\u0941\u0923 \u092e\u0939\u093e\u092f\u093e\u0924\u094d\u0930\u093e)',
-      category: 'festivals',
-      categoryLabel: 'Cultural Fair & Carnival',
-      icon: '\uD83D\uDEA9',
-      distance: '28 KM',
-      time: '35 Mins',
-      bestTime: 'Annual February/March Fair & Carnival',
-      desc: 'North Maharashtra\'s largest rural folk gathering and annual fair. Features traditional cultural processions, folk music, giant Ferris wheels, amusement rides, and vibrant Khandesh regional handicrafts.',
-      highlights: ['Massive Cultural Carnival', 'Giant Wheels & Folk Rides', 'Traditional Khandesh Fair'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Dnyaneshwar_Maharaj_Palkhi_%28Dindi_or_Wari%29.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Muktainagar,+Maharashtra'
     },
     {
       id: 'attraction-ganpati-navratri-bhusawal',
