@@ -253,7 +253,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     }
   ],
 
-  // Local Attractions & Cultural Heritage Guide (8 Hand-Curated Heritage, Festival & Nature Sites)
+  // Local Attractions & Cultural Heritage Guide (7 Hand-Curated Heritage, Festival & Nature Sites)
   localAttractions: [
     {
       id: 'attraction-ajanta-caves',
@@ -344,21 +344,6 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       highlights: ['Massive Cultural Carnival', 'Giant Wheels & Folk Rides', 'Traditional Khandesh Fair'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/6/60/Dnyaneshwar_Maharaj_Palkhi_%28Dindi_or_Wari%29.jpg',
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Muktainagar,+Maharashtra'
-    },
-    {
-      id: 'attraction-bahinabai-utsav',
-      title: 'Bahinabai Utsav (Jalgaon - Sagar Park)',
-      marathiTitle: '\u092c\u0939\u093f\u0923\u093e\u092c\u093e\u0908 \u092e\u0939\u094b\u0924\u094d\u0938\u0935 (\u0938\u093e\u0917\u0930 \u092a\u093e\u0930\u094d\u0915, \u091c\u0933\u0917\u093e\u0935)',
-      category: 'festivals',
-      categoryLabel: 'Cultural & Food Fair',
-      icon: '\uD83C\uDFAD',
-      distance: '26 KM',
-      time: '35 Mins',
-      bestTime: 'Annual Winter Festival (December - January)',
-      desc: 'Grand 10-day cultural, folk art, and food extravaganza celebrating the timeless poetry of Khandesh\'s rustic saint-poet Bahinabai Chaudhari. Features 100+ authentic food stalls offering Shev Bhaji, Khandeshi Vange Bharit, Kalna Bhakri, and handicrafts.',
-      highlights: ['Authentic Khandeshi Food Court', 'Folk Music & Lavani Drama', 'Khandesh Heritage Crafts'],
-      image: 'https://upload.wikimedia.org/wikipedia/commons/9/91/Kaviyatri_Bahinabai_North_Maharashtra_University.jpg',
-      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Sagar+Park,+Jalgaon'
     },
     {
       id: 'attraction-ganpati-navratri-bhusawal',

@@ -65,7 +65,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v20.25') {
+            if (name !== 'hotel-premier-v20.26') {
               console.log('[PWA] Purging stale cache:', name);
               caches.delete(name);
             }
@@ -1276,7 +1276,7 @@
       <!-- Category Filter Pills -->
       <div class="attraction-filter-chips" id="attraction-filter-chips">
         <button type="button" class="attraction-filter-btn active" data-category="all" onclick="window.app ? window.app.filterLocalAttractions('all') : null">
-          <span>✨ All Attractions (8)</span>
+          <span>✨ All Attractions (7)</span>
         </button>
         <button type="button" class="attraction-filter-btn" data-category="heritage" onclick="window.app ? window.app.filterLocalAttractions('heritage') : null">
           <span>🏛️ World Heritage & Monuments</span>
@@ -1902,20 +1902,20 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.25) -->
-  <script src="storage.js?v=20.25"></script>
-  <script src="vault.js?v=20.25"></script>
-  <script src="data/translations.js?v=20.25"></script>
-  <script src="data/hotel-data.js?v=20.25"></script>
-  <script src="data/menu-data.js?v=20.25"></script>
-  <script src="app.js?v=20.25"></script>
-  <script src="admin.js?v=20.25"></script>
+  <!-- Load Application Scripts (v20.26) -->
+  <script src="storage.js?v=20.26"></script>
+  <script src="vault.js?v=20.26"></script>
+  <script src="data/translations.js?v=20.26"></script>
+  <script src="data/hotel-data.js?v=20.26"></script>
+  <script src="data/menu-data.js?v=20.26"></script>
+  <script src="app.js?v=20.26"></script>
+  <script src="admin.js?v=20.26"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.25').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.26').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
