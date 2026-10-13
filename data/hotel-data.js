@@ -88,13 +88,19 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       bedType: 'King Size Luxury Bed',
       inventoryCount: '2 Rooms Only',
       bedDetail: '👑 King Bed (Total 2 Rooms)',
-      image: 'assets/hotel-images/room-super-deluxe-window.jpg',
+      image: 'assets/hotel-images/s-dlx-suite-master-angle.jpg',
       images: [
-        'assets/hotel-images/room-super-deluxe-window.jpg',
-        'assets/hotel-images/suite-curved-sofa.jpg',
-        'assets/hotel-images/room-super-deluxe-wardrobe.jpg',
-        'assets/hotel-images/hotel-balcony-terrace.jpg',
-        'assets/hotel-images/bathroom-sanitized-terracotta.jpg'
+        'assets/hotel-images/s-dlx-suite-master-angle.jpg',
+        'assets/hotel-images/s-dlx-suite-wide-view.jpg',
+        'assets/hotel-images/s-dlx-bed-king-luxury.jpg',
+        'assets/hotel-images/s-dlx-suite-full-view.jpg',
+        'assets/hotel-images/s-dlx-suite-side-angle.jpg',
+        'assets/hotel-images/s-dlx-suite-mood-lighting.jpg',
+        'assets/hotel-images/s-dlx-bed-comfort-angle.jpg',
+        'assets/hotel-images/s-dlx-suite-headboard-detail.jpg',
+        'assets/hotel-images/s-dlx-balcony-terrace-view.jpg',
+        'assets/hotel-images/s-dlx-washroom-sanitized-1.jpg',
+        'assets/hotel-images/s-dlx-washroom-sanitized-2.jpg'
       ],
       description: 'Exclusive luxury air-conditioned room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service (7:30 AM – 10:30 PM). Total 2 rooms in property. Can comfortably accommodate 2 to 3 Extra Beds (₹300/bed).',
       extraBedRate: 300,
@@ -128,12 +134,17 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       bedType: 'Queen Size Bed',
       inventoryCount: '4 Rooms Available',
       bedDetail: '🛏️ Queen Bed (Total 4 Rooms)',
-      image: 'assets/hotel-images/room-deluxe-main.jpg',
+      image: 'assets/hotel-images/dlx-queen-corner-wide.jpg',
       images: [
-        'assets/hotel-images/room-deluxe-main.jpg',
-        'assets/hotel-images/room-deluxe-angle.jpg',
-        'assets/hotel-images/hotel-balcony-terrace.jpg',
-        'assets/hotel-images/bathroom-sanitized-teal.jpg'
+        'assets/hotel-images/dlx-queen-corner-wide.jpg',
+        'assets/hotel-images/dlx-queen-room-warm-ambience.jpg',
+        'assets/hotel-images/dlx-queen-bed-plush-view.jpg',
+        'assets/hotel-images/dlx-queen-corner-angle-2.jpg',
+        'assets/hotel-images/dlx-queen-corner-angle-3.jpg',
+        'assets/hotel-images/dlx-queen-corner-angle-4.jpg',
+        'assets/hotel-images/dlx-washroom-sanitized-1.jpg',
+        'assets/hotel-images/dlx-washroom-sanitized-2.jpg',
+        'assets/hotel-images/s-dlx-balcony-terrace-view.jpg'
       ],
       description: 'Peaceful air-conditioned room featuring a plush Queen Size Bed, workstation, wardrobe, and modern bath amenities. Total 4 rooms available in hotel. Can accommodate 1 Extra Bed (₹300/bed).',
       extraBedRate: 300,
@@ -167,11 +178,13 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       bedType: 'Twin Single Beds (2 Separate Beds)',
       inventoryCount: '8 Rooms Available',
       bedDetail: '🛏️🛏️ Twin Beds (Total 8 Rooms)',
-      image: 'assets/hotel-images/room-deluxe-angle.jpg',
+      image: 'assets/hotel-images/dlx-twin-beds-wide-angle.jpg',
       images: [
-        'assets/hotel-images/room-deluxe-angle.jpg',
-        'assets/hotel-images/room-deluxe-main.jpg',
-        'assets/hotel-images/bathroom-sanitized-teal.jpg'
+        'assets/hotel-images/dlx-twin-beds-wide-angle.jpg',
+        'assets/hotel-images/dlx-twin-beds-perspective.jpg',
+        'assets/hotel-images/dlx-washroom-sanitized-1.jpg',
+        'assets/hotel-images/dlx-washroom-sanitized-2.jpg',
+        'assets/hotel-images/s-dlx-balcony-terrace-view.jpg'
       ],
       description: 'Popular air-conditioned room with 2 comfortable separate Single Beds. Ideal for wedding attendees, Barat guests, friends, and corporate colleagues. Total 8 rooms available in hotel. Can comfortably accommodate 2 Extra Beds (₹300/bed).',
       extraBedRate: 300,
@@ -588,6 +601,13 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
   // Comprehensive Authentic Hotel Photography Gallery
   hotelGallery: [
     {
+      id: 'gallery-facade-enhanced',
+      category: 'exterior',
+      title: 'Hotel Premier Landmark Facade',
+      subtitle: 'Multi-Story Landmark Property on Jamner Road Near Nahata College',
+      image: 'assets/hotel-images/exterior-facade-enhanced.jpg'
+    },
+    {
       id: 'gallery-entrance',
       category: 'exterior',
       title: 'Grand Hotel Entrance at Night',
@@ -595,17 +615,31 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       image: 'assets/hotel-images/exterior-entrance-night.jpg'
     },
     {
-      id: 'gallery-facade',
+      id: 'gallery-facade-dusk',
       category: 'exterior',
-      title: 'Hotel Premier Facade at Dusk',
-      subtitle: 'Multi-Story Landmark Property on Jamner Road',
+      title: 'Hotel Facade Twilight Illumination',
+      subtitle: 'Modern Architectural Elevation with Reserved Parking Forecourt',
       image: 'assets/hotel-images/exterior-facade-twilight.jpg'
+    },
+    {
+      id: 'gallery-atrium-elevator',
+      category: 'exterior',
+      title: 'Modern Atrium & Elevator Access',
+      subtitle: 'Passenger Lift Serving All Room Floors with Wheelchair & Luggage Access',
+      image: 'assets/hotel-images/atrium-elevator-enhanced.jpg'
+    },
+    {
+      id: 'gallery-restaurant-enhanced',
+      category: 'dining',
+      title: 'Pride Pure Veg AC Restaurant Dining Hall',
+      subtitle: 'Comfortable Air-Conditioned Family Dining with Warm Ambient Lighting',
+      image: 'assets/hotel-images/restaurant-dining-enhanced.jpg'
     },
     {
       id: 'gallery-restaurant-1',
       category: 'dining',
-      title: 'Pride Pure Veg AC Restaurant Dining Hall',
-      subtitle: 'Comfortable Air-Conditioned Family Dining with Warm Ambience',
+      title: 'Pride Restaurant Family Section',
+      subtitle: 'Spacious Seating for Family Gatherings, Groups & Private Feasts',
       image: 'assets/hotel-images/restaurant-dining-hall-1.jpg'
     },
     {
@@ -616,60 +650,102 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       image: 'assets/hotel-images/restaurant-dining-hall-2.jpg'
     },
     {
-      id: 'gallery-super-deluxe-suite',
+      id: 'gallery-s-dlx-master',
       category: 'stay',
-      title: 'AC Super Deluxe Executive Suite',
-      subtitle: 'Plush Double Bed, Ambient Wooden Cove Lighting & Lounge Ledge',
-      image: 'assets/hotel-images/room-super-deluxe-window.jpg'
+      title: 'AC Super Deluxe Master Suite',
+      subtitle: 'Plush King Bed, Designer Wood Headboard & Warm Ambient Lighting',
+      image: 'assets/hotel-images/s-dlx-suite-master-angle.jpg'
     },
     {
-      id: 'gallery-suite-sofa',
+      id: 'gallery-s-dlx-wide',
       category: 'stay',
-      title: 'Super Deluxe Living Lounge Area',
-      subtitle: 'Designer Curved Sofa, Botanical Art & Vanity Dressing Station',
-      image: 'assets/hotel-images/suite-curved-sofa.jpg'
+      title: 'Super Deluxe Suite Wide Perspective',
+      subtitle: 'Spacious Executive Floor Plan with Workstation & Premium Split AC',
+      image: 'assets/hotel-images/s-dlx-suite-wide-view.jpg'
     },
     {
-      id: 'gallery-super-deluxe-wardrobe',
+      id: 'gallery-s-dlx-king-bed',
       category: 'stay',
-      title: 'Spacious Wardrobe & Bed Setup',
-      subtitle: 'Crisp Linen, Bedside Controls & Ample Luggage Storage',
-      image: 'assets/hotel-images/room-super-deluxe-wardrobe.jpg'
+      title: 'Super Deluxe King Bed Setup',
+      subtitle: 'Crisp White Linen, Ergonomic Pillows & Bedside Electrical Docks',
+      image: 'assets/hotel-images/s-dlx-bed-king-luxury.jpg'
     },
     {
-      id: 'gallery-balcony',
+      id: 'gallery-s-dlx-mood',
+      category: 'stay',
+      title: 'Super Deluxe Mood & Cove Lighting',
+      subtitle: 'Serene Warm Golden Hues for Ultimate Evening Relaxation',
+      image: 'assets/hotel-images/s-dlx-suite-mood-lighting.jpg'
+    },
+    {
+      id: 'gallery-s-dlx-balcony',
       category: 'stay',
       title: 'Private Sit-Out Balcony & Terrace',
       subtitle: 'Peaceful Greenery Views for Morning Chai & Fresh Air',
-      image: 'assets/hotel-images/hotel-balcony-terrace.jpg'
+      image: 'assets/hotel-images/s-dlx-balcony-terrace-view.jpg'
     },
     {
-      id: 'gallery-deluxe-main',
+      id: 'gallery-dlx-queen-corner',
       category: 'stay',
-      title: 'AC Deluxe Room - Double / Queen Bed',
-      subtitle: 'Warm Golden Accents, Premium Mattress & Silent Split AC',
-      image: 'assets/hotel-images/room-deluxe-main.jpg'
+      title: 'AC Deluxe Room - Queen Bed Sanctuary',
+      subtitle: 'Plush Mattress, Elegant Headboard Accent & Ambient Warm Lighting',
+      image: 'assets/hotel-images/dlx-queen-corner-wide.jpg'
     },
     {
-      id: 'gallery-deluxe-angle',
+      id: 'gallery-dlx-queen-warm',
       category: 'stay',
-      title: 'AC Deluxe Room - Dressing & Wardrobe',
-      subtitle: 'Dressing Desk, Mirror, Wardrobe & Smart Workstation',
-      image: 'assets/hotel-images/room-deluxe-angle.jpg'
+      title: 'AC Deluxe Room - Warm Ambience',
+      subtitle: 'Cozy Atmosphere Ideal for Executives, Couples & Pilgrims',
+      image: 'assets/hotel-images/dlx-queen-room-warm-ambience.jpg'
     },
     {
-      id: 'gallery-bath-teal',
+      id: 'gallery-dlx-queen-plush',
       category: 'stay',
-      title: 'Pristine Sanitized Bathroom (Teal Theme)',
-      subtitle: 'Wall-Hung WC, Chrome Fixtures, Granite Counter & 24x7 Hot Water',
-      image: 'assets/hotel-images/bathroom-sanitized-teal.jpg'
+      title: 'AC Deluxe Room - Plush Bed Perspective',
+      subtitle: 'Silent Split AC, Flat Screen Smart TV & Free High-Speed Wi-Fi',
+      image: 'assets/hotel-images/dlx-queen-bed-plush-view.jpg'
     },
     {
-      id: 'gallery-bath-terracotta',
+      id: 'gallery-dlx-twin-wide',
       category: 'stay',
-      title: 'Pristine Sanitized Ensuite Bathroom (Terracotta Theme)',
-      subtitle: 'Sanitized for Protection Seal, Sparkling Clean & Fresh Towels',
-      image: 'assets/hotel-images/bathroom-sanitized-terracotta.jpg'
+      title: 'AC Deluxe Room - Twin Beds (2 Single Beds)',
+      subtitle: 'Ideal for Wedding Barat Attendees, Corporate Colleagues & Friends',
+      image: 'assets/hotel-images/dlx-twin-beds-wide-angle.jpg'
+    },
+    {
+      id: 'gallery-dlx-twin-perspective',
+      category: 'stay',
+      title: 'AC Deluxe Twin - Comfort Perspective',
+      subtitle: 'Two Separate Beds with Individual Nightstands & Split AC',
+      image: 'assets/hotel-images/dlx-twin-beds-perspective.jpg'
+    },
+    {
+      id: 'gallery-s-dlx-bath-1',
+      category: 'stay',
+      title: 'Pristine Sanitized Bathroom - Suite',
+      subtitle: 'Wall-Hung Sanitaryware, Chrome Shower, Granite Vanity & 24x7 Hot Water',
+      image: 'assets/hotel-images/s-dlx-washroom-sanitized-1.jpg'
+    },
+    {
+      id: 'gallery-s-dlx-bath-2',
+      category: 'stay',
+      title: 'Sanitized Bathroom Seal for Protection',
+      subtitle: 'Sparkling Cleaned, Disinfected & Stocked with Fresh Toiletries',
+      image: 'assets/hotel-images/s-dlx-washroom-sanitized-2.jpg'
+    },
+    {
+      id: 'gallery-dlx-bath-1',
+      category: 'stay',
+      title: 'AC Deluxe Ensuite Sanitized Bathroom',
+      subtitle: 'Modern Ceramic Tiles, Geyser Hot Water & Premium Fixtures',
+      image: 'assets/hotel-images/dlx-washroom-sanitized-1.jpg'
+    },
+    {
+      id: 'gallery-dlx-bath-2',
+      category: 'stay',
+      title: 'Deluxe Bathroom Hygiene Certified',
+      subtitle: 'Spotless Mirrors, Sealed WC & Complimentary Toiletries Kit',
+      image: 'assets/hotel-images/dlx-washroom-sanitized-2.jpg'
     }
   ]
 };

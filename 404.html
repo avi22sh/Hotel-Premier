@@ -65,7 +65,7 @@
       if ('caches' in window) {
         caches.keys().then(function(names) {
           names.forEach(function(name) {
-            if (name !== 'hotel-premier-v20.32') {
+            if (name !== 'hotel-premier-v20.33') {
               console.log('[PWA] Purging stale cache:', name);
               caches.delete(name);
             }
@@ -563,7 +563,31 @@
 
       <div class="atmosphere-grid">
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/hotel-balcony-terrace.jpg" alt="Private Sit-Out Balcony & Terrace" class="atmosphere-img" loading="lazy">
+          <img src="assets/hotel-images/exterior-facade-enhanced.jpg" alt="Hotel Premier Landmark Facade" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">Landmark Facade</span>
+            <div class="atmosphere-card-caption">Premier Multi-Story Property on Jamner Road</div>
+          </div>
+        </div>
+
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/atrium-elevator-enhanced.jpg" alt="Modern Elevator & Atrium" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">Lift Access</span>
+            <div class="atmosphere-card-caption">Spacious Elevator Access to All Room Floors</div>
+          </div>
+        </div>
+
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/restaurant-dining-enhanced.jpg" alt="Pride Pure Veg AC Restaurant" class="atmosphere-img" loading="lazy">
+          <div class="atmosphere-card-overlay">
+            <span class="atmosphere-card-tag">Pride Dining</span>
+            <div class="atmosphere-card-caption">Air-Conditioned Family Dining Hall</div>
+          </div>
+        </div>
+
+        <div class="atmosphere-card">
+          <img src="assets/hotel-images/s-dlx-balcony-terrace-view.jpg" alt="Private Sit-Out Balcony & Terrace" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Balcony & Sit-Out</span>
             <div class="atmosphere-card-caption">Private Greenery Sit-Out Balcony</div>
@@ -571,18 +595,10 @@
         </div>
 
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/bathroom-sanitized-teal.jpg" alt="Pristine Sanitized Bathroom" class="atmosphere-img" loading="lazy">
+          <img src="assets/hotel-images/s-dlx-washroom-sanitized-1.jpg" alt="Pristine Sanitized Bathroom" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Hygiene Certified</span>
-            <div class="atmosphere-card-caption">Sparkling Sanitized Modern Bathroom</div>
-          </div>
-        </div>
-
-        <div class="atmosphere-card">
-          <img src="assets/hotel-images/suite-curved-sofa.jpg" alt="Super Deluxe Suite Living Lounge" class="atmosphere-img" loading="lazy">
-          <div class="atmosphere-card-overlay">
-            <span class="atmosphere-card-tag">Executive Suite</span>
-            <div class="atmosphere-card-caption">Designer Living Lounge & Vanity Setup</div>
+            <div class="atmosphere-card-caption">Sparkling Sanitized Modern Ensuite Bathroom</div>
           </div>
         </div>
 
@@ -591,22 +607,6 @@
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">24-Hour Welcome</span>
             <div class="atmosphere-card-caption">Illuminated Hotel Premier Entrance</div>
-          </div>
-        </div>
-
-        <div class="atmosphere-card">
-          <img src="assets/hotel-images/bathroom-sanitized-terracotta.jpg" alt="Sanitized Ensuite Bath" class="atmosphere-img" loading="lazy">
-          <div class="atmosphere-card-overlay">
-            <span class="atmosphere-card-tag">Ensuite Bath</span>
-            <div class="atmosphere-card-caption">24x7 Hot Water & Fresh Toiletries</div>
-          </div>
-        </div>
-
-        <div class="atmosphere-card">
-          <img src="assets/hotel-images/restaurant-dining-hall-1.jpg" alt="Pride Pure Veg AC Restaurant" class="atmosphere-img" loading="lazy">
-          <div class="atmosphere-card-overlay">
-            <span class="atmosphere-card-tag">Pride Dining</span>
-            <div class="atmosphere-card-caption">Air-Conditioned Family Dining Hall</div>
           </div>
         </div>
       </div>
@@ -1232,7 +1232,7 @@
 
     <!-- Landmark Property Facade -->
     <div style="margin: 24px 0 20px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-ambient); border: 1px solid var(--ivory-border); position: relative; background: #0E1620;">
-      <img src="assets/hotel-images/exterior-facade-twilight.jpg" alt="Hotel Premier Landmark Building on Jamner Road, Bhusawal" style="width: 100%; max-height: 280px; object-fit: cover; object-position: center 35%; display: block;" loading="lazy">
+      <img src="assets/hotel-images/exterior-facade-enhanced.jpg" alt="Hotel Premier Landmark Building on Jamner Road, Bhusawal" style="width: 100%; max-height: 280px; object-fit: cover; object-position: center 35%; display: block;" loading="lazy">
       <div style="position: absolute; inset: auto 0 0 0; background: linear-gradient(to top, rgba(8, 13, 19, 0.90) 0%, rgba(8, 13, 19, 0.4) 70%, transparent 100%); padding: 14px 18px; color: #FFFDF9;">
         <span style="font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; color: var(--brass-light); font-weight: 700; display: block;">Landmark Property</span>
         <div style="font-family: var(--font-royal); font-size: 1.05rem; font-weight: 700;">Hotel Premier — Jamner Road, Opposite Nahata College</div>
@@ -1902,17 +1902,17 @@
   <!-- Load Application Scripts (v20.29) -->
   <script src="storage.js?v=20.29"></script>
   <script src="vault.js?v=20.29"></script>
-  <script src="data/translations.js?v=20.32"></script>
-  <script src="data/hotel-data.js?v=20.32"></script>
-  <script src="data/menu-data.js?v=20.32"></script>
-  <script src="app.js?v=20.32"></script>
-  <script src="admin.js?v=20.32"></script>
+  <script src="data/translations.js?v=20.33"></script>
+  <script src="data/hotel-data.js?v=20.33"></script>
+  <script src="data/menu-data.js?v=20.33"></script>
+  <script src="app.js?v=20.33"></script>
+  <script src="admin.js?v=20.33"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.32').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.33').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
