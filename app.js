@@ -2782,7 +2782,6 @@ class HotelPremierApp {
             ${dotsHtml}
             <span class="attraction-category-badge">${item.categoryLabel || item.category}</span>
             <span class="attraction-distance-badge">&#128663; ${item.distance}</span>
-            ${hasMultiple ? `<span class="attraction-photo-count-badge">&#128247; ${imgList.length} Photos</span>` : ''}
           </div>
           <div class="attraction-card-content">
             <h4 class="attraction-title">${item.title}</h4>
