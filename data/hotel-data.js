@@ -253,7 +253,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     }
   ],
 
-  // Local Attractions & Cultural Heritage Guide (7 Hand-Curated Heritage, Festival & Nature Sites)
+  // Local Attractions & Cultural Heritage Guide (8 Hand-Curated Heritage, Festival & Nature Sites)
   localAttractions: [
     {
       id: 'attraction-ajanta-caves',
@@ -269,6 +269,21 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       highlights: ['30 Rock-Cut Buddhist Caves', 'Ancient Murals & Frescoes', 'UNESCO World Heritage'],
       image: 'https://upload.wikimedia.org/wikipedia/commons/c/c8/Ajanta_Caves_%28452434892%29.jpg',
       mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Ajanta+Caves'
+    },
+    {
+      id: 'attraction-ellora-kailasa',
+      title: 'Ellora Caves & Kailasa Temple (UNESCO World Heritage)',
+      marathiTitle: '\u0935\u0947\u0930\u0942\u0933 \u0932\u0947\u0923\u0940 \u0935 \u0915\u0948\u0932\u093e\u0938 \u092e\u0902\u0926\u093f\u0930 (\u091c\u093e\u0917\u0924\u093f\u0915 \u0935\u093e\u0930\u0938\u093e \u0938\u094d\u0925\u0933)',
+      category: 'heritage',
+      categoryLabel: 'World Heritage & Monolith',
+      icon: '\uD83C\uDFDB\uFE0F',
+      distance: '155 KM',
+      time: '3 Hrs 15 Mins',
+      bestTime: 'October to March (Sunrise to Sunset, Closed Tuesdays)',
+      desc: 'UNESCO World Heritage monument featuring 34 monumental rock-cut caves spanning Hindu, Buddhist, and Jain traditions. Home to the legendary Cave 16 Kailasa Temple, the largest monolithic rock excavation in the world carved top-to-bottom out of a single volcanic basalt cliff by Rashtrakuta King Krishna I.',
+      highlights: ['World\'s Largest Single-Rock Monolith', '34 Monumental Rock-Cut Caves', 'UNESCO World Heritage Site'],
+      image: 'https://upload.wikimedia.org/wikipedia/commons/9/92/Kailasa_Temple_at_Ellora_Caves.jpg',
+      mapUrl: 'https://www.google.com/maps/dir/Hotel+Premier,+Jamner+Road,+Bhusawal/Ellora+Caves,+Maharashtra'
     },
     {
       id: 'attraction-yawal-wildlife',
