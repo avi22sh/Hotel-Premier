@@ -478,7 +478,8 @@
             alt="${dish.name}" 
             class="dish-img" 
             id="dish-img-el-${dish.id}" 
-            loading="lazy" 
+            loading="lazy"
+            decoding="async"
             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
           <div class="hp-glass-vignette" aria-hidden="true"></div>
@@ -505,7 +506,8 @@
             src="${slide.image}" 
             alt="${slideTitle}" 
             class="section-slide-img" 
-            loading="${idx === 0 ? 'eager' : 'lazy'}" 
+            loading="${idx === 0 ? 'eager' : 'lazy'}"
+            decoding="async"
             onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
           >
           <div class="section-slide-overlay">
@@ -1294,28 +1296,58 @@
 
       // 1. Analyze Dish & Photo Quality
       const analysis = await this.analyzeDishAndImageQuality(img, dishMeta);
-      const catConfig = this.styleProfile.categories[analysis.category] || this.styleProfile.categories.curry;
+      const foodCategories = this.styleProfile.foodCategories || {};
+      const catConfig = foodCategories[analysis.category] || foodCategories.curry || {};
+
+      // Keeping the original is the safest default for real restaurant photography.
+      // Canvas cannot reliably isolate every plate, garnish, reflection, and table edge.
+      if (options.backgroundMode === 'original') {
+        return {
+          enhancedDataUrl: typeof imageSource === 'string' ? imageSource : (imageSource.src || imageSource.currentSrc || ''),
+          qualityScore: analysis.qualityScore,
+          category: analysis.category,
+          surfaceKey: null,
+          status: 'original',
+          flags: analysis.flags
+        };
+      }
       const surfaceKey = options.surfaceKey || catConfig.surfaceKey || 'slate_gold';
 
-      const targetW = options.targetWidth || 960;
-      const targetH = options.targetHeight || 720;
+      const origW = img.naturalWidth || img.width;
+      const origH = img.naturalHeight || img.height;
+      const naturalMode = options.backgroundMode === 'natural';
+      // V3 natural polish keeps camera framing intact. This is intentionally
+      // separate from the stylised 4:3 studio and pedestal treatments.
+      const targetW = naturalMode
+        ? Math.min(Math.max(origW, 640), 1440)
+        : (options.targetWidth || 960);
+      const targetH = naturalMode
+        ? Math.round(targetW * (origH / origW))
+        : (options.targetHeight || 720);
 
       const canvas = document.createElement('canvas');
       canvas.width = targetW;
       canvas.height = targetH;
       const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
 
-      // 2. Render Surface Backdrop
-      this.drawSurfaceBackdrop(ctx, targetW, targetH, surfaceKey);
+      // 2. Render the untouched composition for Natural Polish, otherwise use
+      // the selected studio surface.
+      if (naturalMode) {
+        ctx.drawImage(img, 0, 0, targetW, targetH);
+      } else {
+        this.drawSurfaceBackdrop(ctx, targetW, targetH, surfaceKey);
+      }
 
       // Determine background replacement / isolation
       const shouldCutout = (options.backgroundMode === 'pedestal') ||
         (options.backgroundMode === 'harmonize' && (analysis.needsBackgroundReplacement || options.forceCutout));
 
-      const origW = img.naturalWidth || img.width;
-      const origH = img.naturalHeight || img.height;
-
-      if (shouldCutout) {
+      if (naturalMode) {
+        // The original composition is already drawn above; only apply the
+        // restrained photo correction below.
+      } else if (shouldCutout) {
         // Foreground Subject Extraction
         const isolatedDataUrl = await this.processIsolatedAsset(img, { forceIsolation: true });
         const isolatedImg = await this.loadImage(isolatedDataUrl);
@@ -1383,11 +1415,17 @@
         const data = outData.data;
         const len = data.length;
 
-        const warmthAdd = options.warmth !== undefined ? options.warmth : (catConfig.warmth || 8);
-        const sharpAmount = options.sharpness !== undefined ? options.sharpness : (catConfig.sharpness || 0.28);
-        const contrastFactor = options.contrast !== undefined ? options.contrast : 1.08;
-        const brightFactor = options.brightness !== undefined ? options.brightness : 1.04;
-        const satFactor = options.saturation !== undefined ? options.saturation : 1.12;
+        const warmthAdd = naturalMode
+          ? Math.min(options.warmth !== undefined ? options.warmth : 2, 4)
+          : (options.warmth !== undefined ? options.warmth : (catConfig.warmth || 8));
+        const sharpAmount = naturalMode
+          ? Math.min(options.sharpness !== undefined ? options.sharpness : 0.10, 0.16)
+          : (options.sharpness !== undefined ? options.sharpness : (catConfig.sharpness || 0.28));
+        const contrastFactor = naturalMode
+          ? Math.min(options.contrast !== undefined ? options.contrast : 1.02, 1.05)
+          : (options.contrast !== undefined ? options.contrast : 1.08);
+        const brightFactor = naturalMode ? 1.01 : (options.brightness !== undefined ? options.brightness : 1.04);
+        const satFactor = naturalMode ? 1.04 : (options.saturation !== undefined ? options.saturation : 1.12);
 
         for (let i = 0; i < len; i += 4) {
           let r = data[i];
@@ -1451,7 +1489,7 @@
       } catch (e) {}
 
       // 4. Subtle Studio Spotlight & Champagne Vignette
-      const vStr = options.vignetteStrength !== undefined ? options.vignetteStrength : 0.38;
+      const vStr = naturalMode ? 0 : (options.vignetteStrength !== undefined ? options.vignetteStrength : 0.38);
       if (vStr > 0) {
         const vig = ctx.createRadialGradient(
           targetW * 0.5, targetH * 0.50, Math.min(targetW, targetH) * 0.35,
@@ -1474,12 +1512,14 @@
         ctx.fillRect(0, 0, targetW, targetH);
       }
 
-      // 5. Delicate Gold Trim Rim
-      ctx.save();
-      ctx.strokeStyle = 'rgba(213, 183, 122, 0.30)';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(1, 1, targetW - 2, targetH - 2);
-      ctx.restore();
+      // 5. Delicate Gold Trim Rim belongs only to the stylised studio modes.
+      if (!naturalMode) {
+        ctx.save();
+        ctx.strokeStyle = 'rgba(213, 183, 122, 0.30)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(1, 1, targetW - 2, targetH - 2);
+        ctx.restore();
+      }
 
       const quality = options.quality || 0.88;
       const enhancedDataUrl = canvas.toDataURL('image/jpeg', quality);
@@ -1489,7 +1529,7 @@
         qualityScore: analysis.qualityScore,
         category: analysis.category,
         surfaceKey,
-        status: 'enhanced',
+        status: naturalMode ? 'natural' : 'enhanced',
         flags: analysis.flags
       };
     }

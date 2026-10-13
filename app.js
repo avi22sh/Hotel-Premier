@@ -26,6 +26,8 @@ class HotelPremierApp {
     this.storageKeyOverrides = 'hotel_premier_user_overrides_v1';
     this.storageKeyFontSize = 'hotel_premier_font_size';
     this.storageKeyLang = 'hotel_premier_language';
+    this.storageKeyTheme = 'hotel_premier_theme';
+    this.themeMode = 'system';
 
     // Carousel States
     this.heroSlides = [];
@@ -89,7 +91,7 @@ class HotelPremierApp {
     // Hash-based independent section routing
     const rawHash = (window.location.hash || '').replace('#', '').toLowerCase();
     const hashToSection = {
-      '': 'section-home',
+      '': 'section-dine',
       'home': 'section-home',
       'sanctuary': 'section-home',
       'tariffs': 'section-tariffs',
@@ -117,14 +119,15 @@ class HotelPremierApp {
     const src = urlParams.get('src') || '';
     const hasTableParam = urlParams.has('table') || urlParams.has('t') || (src && /^table/i.test(src.trim()));
 
-    let initialSection = 'section-home';
+    let initialSection = 'section-dine';
     if (catParam || hasTableParam) {
       initialSection = 'section-dine';
     } else if (sectionParam && hashToSection[sectionParam.toLowerCase()]) {
       initialSection = hashToSection[sectionParam.toLowerCase()];
-    } else if (hashToSection[rawHash]) {
+    } else if (rawHash && hashToSection[rawHash]) {
       initialSection = hashToSection[rawHash];
     }
+    this.prioritizeDiningControls();
     this.switchSection(initialSection, false);
 
     if (catParam) {
@@ -134,9 +137,31 @@ class HotelPremierApp {
     this.setupBroadcastChannel();
   }
 
+  // QR visitors should be able to search or choose a menu category immediately.
+  prioritizeDiningControls() {
+    const diningContainer = document.querySelector('.editorial-dining-container');
+    const controls = diningContainer?.querySelector('.dining-view-controls');
+    const featuredDishes = diningContainer?.querySelector('.signature-creations-wrapper');
+    if (!diningContainer || !controls || !featuredDishes) return;
+
+    diningContainer.insertBefore(controls, featuredDishes);
+    diningContainer.classList.add('qr-menu-first');
+  }
+
   // ==================== USER PREFERENCES ====================
   loadPreferences() {
     try {
+      const savedTheme = localStorage.getItem(this.storageKeyTheme);
+      this.themeMode = ['light', 'dark', 'system'].includes(savedTheme) ? savedTheme : 'system';
+      this.applyTheme();
+
+      if (window.matchMedia) {
+        this.colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        this.colorSchemeQuery.addEventListener('change', () => {
+          if (this.themeMode === 'system') this.applyTheme();
+        });
+      }
+
       const savedLang = localStorage.getItem(this.storageKeyLang);
       if (savedLang && (savedLang === 'en' || savedLang === 'hi' || savedLang === 'mr')) {
         this.currentLang = savedLang;
@@ -154,6 +179,34 @@ class HotelPremierApp {
         if (btn) btn.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem;">A-</span>';
       }
     } catch (e) {}
+  }
+
+  cycleTheme() {
+    const themes = ['system', 'dark', 'light'];
+    const nextTheme = themes[(themes.indexOf(this.themeMode) + 1) % themes.length];
+    this.themeMode = nextTheme;
+    localStorage.setItem(this.storageKeyTheme, nextTheme);
+    this.applyTheme();
+    this.showToast(`Theme: ${nextTheme === 'system' ? 'System default' : nextTheme === 'dark' ? 'Dark' : 'Light'}`, 'info');
+  }
+
+  applyTheme() {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const resolvedTheme = this.themeMode === 'system' ? (prefersDark ? 'dark' : 'light') : this.themeMode;
+    document.body.classList.toggle('theme-dark', resolvedTheme === 'dark');
+    document.body.classList.toggle('theme-light', resolvedTheme === 'light');
+    document.documentElement.style.colorScheme = resolvedTheme;
+
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.content = resolvedTheme === 'dark' ? '#0D141C' : '#FAF7F0';
+
+    const toggle = document.getElementById('theme-toggle-btn');
+    if (toggle) {
+      const label = this.themeMode === 'system' ? 'System theme' : `${this.themeMode[0].toUpperCase()}${this.themeMode.slice(1)} theme`;
+      toggle.title = `${label}. Tap to change.`;
+      toggle.setAttribute('aria-label', `${label}. Tap to change.`);
+      toggle.innerHTML = `<span aria-hidden="true">${this.themeMode === 'system' ? '◐' : resolvedTheme === 'dark' ? '☾' : '☀'}</span>`;
+    }
   }
 
   // ==================== TOP MAIN MODE SWITCHER (MENU vs HOTEL) ====================
@@ -1546,7 +1599,7 @@ class HotelPremierApp {
       if (this.searchQuery && this.searchQuery.trim() !== '') {
         const q = this.searchQuery.toLowerCase().trim();
         const matchName = item.name && item.name.toLowerCase().includes(q);
-        const matchDesc = item.description && item.description.toLowerCase().includes(q);
+        const matchDesc = (item.description && item.description.toLowerCase().includes(q)) || (item.descriptionHi && item.descriptionHi.toLowerCase().includes(q)) || (item.descriptionMr && item.descriptionMr.toLowerCase().includes(q));
         const matchTag = item.tags && item.tags.some(t => t.toLowerCase().includes(q));
         if (!matchName && !matchDesc && !matchTag) return false;
       }
@@ -1629,6 +1682,12 @@ class HotelPremierApp {
     }
 
     this.bindDishActions();
+  }
+
+  getDishDescription(dish) {
+    if (this.currentLang === 'hi' && dish.descriptionHi) return dish.descriptionHi;
+    if (this.currentLang === 'mr' && dish.descriptionMr) return dish.descriptionMr;
+    return dish.description;
   }
 
   renderDishCard(dish) {
@@ -1721,7 +1780,7 @@ class HotelPremierApp {
             <h4 class="dish-title">${dishTitleHtml}</h4>
           </div>
           ${tagPillsHtml ? `<div class="dish-tag-row">${tagPillsHtml}</div>` : ''}
-          <p class="dish-desc">${dish.description || 'Prepared fresh with fine spices and authentic culinary care.'}</p>
+          <p class="dish-desc">${this.getDishDescription(dish) || 'Prepared fresh with fine spices and authentic culinary care.'}</p>
           ${variantsHtml}
           <div class="dish-footer">
             <div class="dish-price-block">
@@ -1806,13 +1865,11 @@ class HotelPremierApp {
     const modal = document.getElementById('dish-detail-modal');
     const body = document.getElementById('dish-detail-body');
     if (!modal || !body) return;
+    this.lastDishDetailTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
     const displayImage = dish._activeVariantImage || dish.image;
     const displayPrice = dish._activeVariantPrice || dish.price;
     const hasPhoto = displayImage && displayImage.trim() !== '';
-    const isZomatoRated = (dish.tags && dish.tags.includes('zomato-top')) || Boolean(dish.zomatoRating);
-    const zomatoScore = dish.zomatoRating || '4.2';
-
     let dishTitleHtml = dish.name;
     if (this.currentLang === 'hi' && dish.hindiName) {
       dishTitleHtml = `${dish.name} <span style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${dish.hindiName})</span>`;
@@ -1949,7 +2006,7 @@ class HotelPremierApp {
           ${dish.tags && dish.tags.includes('spicy') ? `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>` : ''}
         </div>
 
-        <p class="modal-dish-desc">${dish.description || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
+        <p class="modal-dish-desc">${this.getDishDescription(dish) || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
 
         ${modalVariantsHtml}
 
@@ -1961,22 +2018,13 @@ class HotelPremierApp {
           </div>
         </div>
 
-        <div class="modal-dish-actions">
-          <a href="https://www.zomato.com/search?q=Hotel+Premier+Bhusawal" target="_blank" rel="noopener noreferrer" class="modal-btn-zomato-order" onclick="event.preventDefault(); window.app && window.app.openExternalPlatform('zomato');">
-            <span class="btn-delivery-brand">zomato</span>
-            <span>Order on Zomato</span>
-          </a>
-          <a href="https://www.swiggy.com/restaurants/hotel-premier-saket-society-bhusawal-787948" target="_blank" rel="noopener noreferrer" class="modal-btn-swiggy-order" onclick="event.preventDefault(); window.app && window.app.openExternalPlatform('swiggy');">
-            <span class="btn-delivery-brand">Swiggy</span>
-            <span>Order on Swiggy</span>
-          </a>
-        </div>
       </div>
     `;
 
     modal.style.display = 'flex';
     modal.classList.add('active');
     document.body.classList.add('modal-open');
+    window.setTimeout(() => modal.querySelector('.modal-close-btn')?.focus(), 0);
   }
 
   switchModalVariant(dishId, btn) {
@@ -2036,6 +2084,8 @@ class HotelPremierApp {
       modal.classList.remove('active');
       modal.style.display = 'none';
       document.body.classList.remove('modal-open');
+      if (this.lastDishDetailTrigger?.isConnected) this.lastDishDetailTrigger.focus();
+      this.lastDishDetailTrigger = null;
     }
   }
 
@@ -3100,6 +3150,24 @@ class HotelPremierApp {
         const drawer = document.getElementById('menu-section-drawer');
         if (drawer && drawer.classList.contains('active')) {
           this.closeMenuSectionDrawer();
+        }
+      }
+
+      // Keep keyboard focus inside an open dish sheet, just like a native dialog.
+      if (e.key === 'Tab') {
+        const dishModal = document.getElementById('dish-detail-modal');
+        if (!dishModal || !dishModal.classList.contains('active')) return;
+        const focusable = [...dishModal.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+          .filter(el => el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
         }
       }
     });

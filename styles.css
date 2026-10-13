@@ -125,6 +125,127 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ==================== SAVED DARK THEME ==================== */
+body.theme-dark {
+  --ivory-canvas: #0D141C;
+  --ivory-surface: #17212D;
+  --ivory-card: #17212D;
+  --ivory-warm: #202C3A;
+  --ivory-muted: #2A3746;
+  --ivory-border: rgba(223, 201, 168, 0.20);
+  --text-dark: #F5F1E8;
+  --text-muted-dark: #B8C2CE;
+  --text-placeholder: #9EABB9;
+  --price-dark: #F0C7A0;
+  --burgundy-deep: #F0C7A0;
+  --burgundy-primary: #9E2B3C;
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.22);
+  --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.30);
+  --shadow-ambient: 0 16px 48px rgba(0, 0, 0, 0.40);
+  --cream-card: #17212D;
+  --cream-border: rgba(223, 201, 168, 0.20);
+  --white: #17212D;
+  color-scheme: dark;
+}
+
+body.theme-dark .section-wrapper,
+body.theme-dark .editorial-dining-container,
+body.theme-dark .menu-container {
+  background: transparent;
+}
+
+body.theme-dark .boutique-room-card,
+body.theme-dark .signature-dish-card,
+body.theme-dark .category-card,
+body.theme-dark .dish-card,
+body.theme-dark .dish-card .dish-body,
+body.theme-dark .modal-sheet,
+body.theme-dark .category-nav-container-bar,
+body.theme-dark .search-input-wrapper,
+body.theme-dark .form-input,
+body.theme-dark .form-select,
+body.theme-dark .form-textarea {
+  background: #17212D;
+  border-color: rgba(223, 201, 168, 0.22);
+  color: #F5F1E8;
+}
+
+body.theme-dark .dish-title,
+body.theme-dark .editorial-title,
+body.theme-dark .dining-main-heading,
+body.theme-dark .category-card-title,
+body.theme-dark .section-title,
+body.theme-dark .room-suite-title {
+  color: #F5F1E8;
+}
+
+body.theme-dark .dish-desc,
+body.theme-dark .dish-title-sub,
+body.theme-dark .editorial-subtitle,
+body.theme-dark .category-card-desc,
+body.theme-dark .section-subtitle,
+body.theme-dark .dish-tax-note,
+body.theme-dark .form-label {
+  color: #B8C2CE;
+}
+
+body.theme-dark .category-chip,
+body.theme-dark .category-nav-arrow-btn {
+  background: #202C3A;
+  border-color: rgba(223, 201, 168, 0.25);
+  color: #F5F1E8;
+}
+
+body.theme-dark .view-detail-link {
+  background: rgba(158, 43, 60, 0.24);
+  border-color: rgba(240, 199, 160, 0.35);
+  color: #F0C7A0;
+}
+
+/* The dish sheet is the menu's deepest reading surface, so retain contrast
+   when its base light-theme colours would otherwise override dark tokens. */
+body.theme-dark .modal-dish-detail-container {
+  color: #E8EDF3;
+}
+
+body.theme-dark .modal-dish-title,
+body.theme-dark .modal-dish-variants-title {
+  color: #F5F1E8;
+}
+
+body.theme-dark .modal-dish-subtitle,
+body.theme-dark .modal-dish-desc {
+  color: #C5CFD9;
+}
+
+body.theme-dark .modal-dish-price {
+  color: #F0C7A0;
+}
+
+body.theme-dark .modal-dish-variants-box {
+  background: #202C3A;
+  border-color: rgba(223, 201, 168, 0.22);
+}
+
+body.theme-dark .modal-dish-variant-btn,
+body.theme-dark .modal-dish-variant-chip {
+  background: #17212D;
+  border-color: rgba(223, 201, 168, 0.35);
+  color: #F5F1E8;
+}
+
+body.theme-dark .modal-dish-variant-btn:hover {
+  background: rgba(158, 43, 60, 0.26);
+  border-color: #F0C7A0;
+  color: #F5F1E8;
+}
+
+body.theme-dark .modal-dish-veg-guarantee {
+  background: rgba(22, 101, 52, 0.20);
+  border-color: rgba(134, 239, 172, 0.38);
+  color: #BBF7D0;
+}
+
 /* Accessible High Contrast / Senior Mode (A+) */
 body.elderly-mode {
   font-size: 18px !important;
@@ -2263,6 +2384,27 @@ a {
   text-align: center;
 }
 
+/* A cropped detail from the official crest keeps the flying-bird motif visible
+   at the dining entry without introducing a second, unrelated illustration. */
+.brand-bird-mark {
+  width: 112px;
+  height: 42px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 4px;
+  filter: drop-shadow(0 3px 7px rgba(197, 168, 128, 0.25));
+}
+
+.brand-bird-mark img {
+  position: absolute;
+  width: 210px;
+  max-width: none;
+  height: auto;
+  left: 50%;
+  top: -18px;
+  transform: translateX(-50%);
+}
+
 .dining-credentials-strip {
   display: flex;
   align-items: center;
@@ -2335,6 +2477,15 @@ a {
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+/* Put menu discovery before featured content for guests arriving from a table QR. */
+.qr-menu-first .dining-view-controls {
+  margin-bottom: 20px;
+}
+
+.qr-menu-first .signature-creations-wrapper {
+  margin-top: 0;
 }
 
 .category-nav-container-bar {
@@ -2547,6 +2698,38 @@ a {
   width: 100% !important;
   max-width: 1100px !important;
   margin: 0 auto 30px auto !important;
+}
+
+@media (min-width: 1024px) {
+  .section-wrapper {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .qr-menu-first .dining-view-controls {
+    position: sticky;
+    top: 126px;
+    z-index: 20;
+    padding: 12px 0;
+    background: var(--ivory-canvas);
+    border-bottom: 1px solid var(--ivory-border);
+  }
+
+  .qr-menu-first .signature-creations-wrapper {
+    margin-top: 12px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .signature-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .dish-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 20px !important;
+  }
 }
 
 .category-section {
@@ -4106,8 +4289,8 @@ a {
 }
 
 .modal-close-btn {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(197, 168, 128, 0.3);
   border-radius: var(--radius-full);
@@ -4116,6 +4299,19 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus-visible {
+  background: rgba(197, 168, 128, 0.22);
+  outline: 2px solid var(--brass-light);
+  outline-offset: 2px;
+}
+
+.modal-close-btn:active {
+  transform: scale(0.94);
 }
 
 .modal-body {
@@ -4861,6 +5057,14 @@ a {
   scroll-margin-top: 140px;
 }
 
+/* Avoid painting off-screen menu sections until a guest scrolls to them. */
+@supports (content-visibility: auto) {
+  .category-section {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 680px;
+  }
+}
+
 .category-section .section-header {
   display: flex;
   align-items: flex-end;
@@ -4979,6 +5183,15 @@ a {
     gap: 6px;
   }
 
+  .brand-wrapper {
+    flex: 1 1 auto;
+    overflow: hidden;
+  }
+
+  .brand-text-block {
+    min-width: 0;
+  }
+
   .brand-logo-crest {
     width: 32px;
     height: 32px;
@@ -5000,32 +5213,35 @@ a {
   }
 
   .lang-btn {
-    font-size: 0.60rem;
-    padding: 2px 4px;
+    min-height: 34px;
+    font-size: 0.62rem;
+    padding: 3px 5px;
   }
 
   .guest-concierge-pill {
-    width: 26px !important;
-    height: 26px !important;
-    min-width: 26px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
     padding: 0 !important;
     font-size: 0.80rem;
   }
 
   .icon-btn {
-    width: 26px !important;
-    height: 26px !important;
-    min-width: 26px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
   }
 
   /* Concierge Navigation Bar */
   .hotel-nav-tab {
-    padding: 9px 11px;
+    min-height: 44px;
+    padding: 9px 12px;
     font-size: 0.70rem;
     letter-spacing: 0.8px;
   }
 
   .hotel-nav-reserve-btn {
+    min-height: 36px;
     padding: 5px 10px;
     font-size: 0.66rem;
     letter-spacing: 0.8px;
@@ -5059,6 +5275,7 @@ a {
     letter-spacing: 0.5px;
   }
   .btn-call-hotel-header {
+    min-height: 34px;
     padding: 3.5px 8px;
     font-size: 0.66rem;
     gap: 3px;
@@ -5165,8 +5382,18 @@ a {
   }
 
   .category-chip {
-    font-size: 0.70rem;
-    padding: 5px 9px;
+    min-height: 40px;
+    font-size: 0.72rem;
+    padding: 6px 10px;
+  }
+
+  .category-nav-arrow-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .search-input-wrapper input {
+    min-height: 46px;
   }
 
   /* Mobile Category Cards in 2-Column Grid */
@@ -5237,8 +5464,14 @@ a {
   }
 
   .btn-dish-inquire {
-    padding: 5px 8px;
+    min-height: 40px;
+    padding: 6px 10px;
     font-size: 0.68rem;
+  }
+
+  .view-detail-link {
+    min-height: 40px;
+    padding: 6px 12px;
   }
 
   /* Mobile Bottom-Sheet Modals */
@@ -5271,7 +5504,7 @@ a {
 
   /* Floating Drawer Button & Culinary Drawer on Mobile */
   .floating-menu-toggle-btn {
-    bottom: 20px;
+    bottom: max(20px, env(safe-area-inset-bottom));
     right: 16px;
     padding: 8px 14px 8px 12px;
     font-size: 0.80rem;
@@ -5282,6 +5515,10 @@ a {
     max-height: 84vh;
     border-radius: 20px 20px 0 0;
     width: 100%;
+  }
+
+  #section-dine {
+    padding-bottom: calc(104px + env(safe-area-inset-bottom));
   }
 }
 
@@ -5332,18 +5569,18 @@ a {
     padding: 1.5px 3.5px;
   }
   .guest-concierge-pill {
-    width: 24px !important;
-    height: 24px !important;
-    min-width: 24px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
     font-size: 0.72rem;
   }
   .guest-concierge-icon {
     font-size: 0.75rem;
   }
   .icon-btn {
-    width: 24px !important;
-    height: 24px !important;
-    min-width: 24px !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
   }
   .text-size-toggle span {
     font-size: 0.75rem !important;
@@ -6282,6 +6519,12 @@ html {
   background: rgba(100, 116, 139, 0.25);
   color: #CBD5E1;
   border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.hp-status-natural {
+  background: rgba(22, 101, 52, 0.22);
+  color: #86EFAC;
+  border: 1px solid rgba(134, 239, 172, 0.40);
 }
 
 .hp-status-flagged_review {

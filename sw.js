@@ -4,7 +4,7 @@
 // Guarantees mobile users always see latest menu updates & sub-sections
 // ==========================================================================
 
-const CACHE_NAME = 'hotel-premier-v20.33';
+const CACHE_NAME = 'hotel-premier-v20.36';
 const CORE_ASSETS = [
   './',
   'index.html',
@@ -51,12 +51,30 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch Event - Network-First for HTML, Scripts & Styles so changes reflect immediately
+// Fetch Event - keep the app shell fresh without caching third-party food photos.
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
 
   const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+
+  // A cached local image makes repeat menu visits near-instant, while the first
+  // visit still downloads normally. Scripts and data remain network-first below.
+  if (req.destination === 'image') {
+    event.respondWith(
+      caches.match(req, { ignoreSearch: true }).then((cachedResponse) => {
+        if (cachedResponse) return cachedResponse;
+        return fetch(req).then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, networkResponse.clone())).catch(() => {});
+          }
+          return networkResponse;
+        });
+      })
+    );
+    return;
+  }
 
   // Network-First strategy: fetch newest version from network, fallback to cache if offline
   event.respondWith(

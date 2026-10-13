@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B121A">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="Hotel Premier - Modern Indian Boutique Hospitality in Bhusawal | 14 Luxury AC Suites, 24-Hour Check-Out & Pride Pure Veg AC Restaurant">
   <link rel="canonical" href="https://avi22sh.github.io/Hotel-Premier/">
   <meta property="og:type" content="website">
@@ -45,7 +48,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&family=Rozha+One&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest & App Icons -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json?v=20.36">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
@@ -62,24 +65,16 @@
           }
         });
       }
-      if ('caches' in window) {
-        caches.keys().then(function(names) {
-          names.forEach(function(name) {
-            if (name !== 'hotel-premier-v20.33') {
-              console.log('[PWA] Purging stale cache:', name);
-              caches.delete(name);
-            }
-          });
-        });
-      }
+      // The service worker owns cache versioning. Deleting caches here would
+      // discard the offline shell and local dish photos on every page visit.
     })();
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=20.8"></script>
+  <script src="asset-pipeline.js?v=20.36"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20.8">
+  <link rel="stylesheet" href="styles.css?v=20.36">
 </head>
 <body>
 
@@ -114,6 +109,10 @@
           <span style="font-weight: 800; font-size: 0.85rem;">A+</span>
         </button>
 
+        <button class="icon-btn" id="theme-toggle-btn" onclick="window.app ? window.app.cycleTheme() : null" title="System theme. Tap to change." aria-label="System theme. Tap to change.">
+          <span aria-hidden="true">◐</span>
+        </button>
+
         <!-- CMS Settings Button (Visible only for staff via logo 5-tap or ?staff=1 / ?admin=1) -->
         <button class="icon-btn" id="cms-settings-admin-btn" style="display: none;" onclick="window.admin ? window.admin.openAdminModal() : null" title="Admin Studio & CRM">
           <span>⚙️</span>
@@ -124,17 +123,17 @@
     <!-- Hotel Navigation Bar: Independent Section Switching -->
     <nav class="hotel-nav-bar" aria-label="Hotel Premier Navigation">
       <div class="hotel-nav-inner">
-        <button class="hotel-nav-tab active" id="tab-nav-home" onclick="window.app ? window.app.switchSection('section-home') : null">
-          <span data-i18n="navHome">🏛️ Home</span>
+        <button class="hotel-nav-tab active" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
+          <span data-i18n="navDine">🍽️ Menu</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-home" onclick="window.app ? window.app.switchSection('section-home') : null">
+          <span data-i18n="navHome">🏛️ Hotel</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-stay" onclick="window.app ? window.app.switchSection('section-stay') : null">
           <span data-i18n="navStay">🏨 Stay</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-tariffs" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
           <span data-i18n="navTariff">📜 Tariff</span>
-        </button>
-        <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
-          <span data-i18n="navDine">🍽️ Pride</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
           <span data-i18n="navCelebrate">🎉 Group & Events</span>
@@ -856,6 +855,9 @@
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-dine">
     <div class="editorial-header-block dining-hero-header">
+      <div class="brand-bird-mark" aria-hidden="true">
+        <img src="assets/hotel_premier_gold_crest.jpg" alt="">
+      </div>
       <div class="dining-brand-crest">HOTEL PREMIER PRESENTS</div>
       <h2 class="dining-main-heading">Pride Pure Veg AC Restaurant</h2>
       <div class="dining-credentials-strip">
@@ -1736,9 +1738,9 @@
 
   <!-- ==================== MODAL: DISH DETAIL MODAL ==================== -->
   <div class="modal-backdrop" id="dish-detail-modal" onclick="if (event.target === this && window.app) window.app.closeDishDetail();">
-    <div class="modal-sheet dish-detail-sheet" role="dialog" aria-modal="true">
+    <div class="modal-sheet dish-detail-sheet" role="dialog" aria-modal="true" aria-labelledby="dish-detail-title" tabindex="-1">
       <div class="modal-header">
-        <div class="modal-title">
+        <div class="modal-title" id="dish-detail-title">
           <span>🍽️</span> <span>Dish Details</span>
         </div>
         <button class="modal-close-btn" onclick="window.app ? window.app.closeDishDetail() : null" aria-label="Close Dish Details">✕</button>
@@ -1902,17 +1904,17 @@
   <!-- Load Application Scripts (v20.29) -->
   <script src="storage.js?v=20.29"></script>
   <script src="vault.js?v=20.29"></script>
-  <script src="data/translations.js?v=20.33"></script>
+  <script src="data/translations.js?v=20.35"></script>
   <script src="data/hotel-data.js?v=20.33"></script>
   <script src="data/menu-data.js?v=20.33"></script>
-  <script src="app.js?v=20.33"></script>
-  <script src="admin.js?v=20.33"></script>
+  <script src="app.js?v=20.36"></script>
+  <script src="admin.js?v=20.36"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.33').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.36').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

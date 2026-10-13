@@ -568,7 +568,7 @@ class HotelPremierAdmin {
       lifecycle = await window.HOTEL_STORAGE.getDishOverride(dishId);
     }
 
-    this.activeBackgroundMode = (lifecycle && lifecycle.backgroundType) || 'harmonize';
+    this.activeBackgroundMode = (lifecycle && lifecycle.backgroundType) || 'original';
     this.activeFramingMode = 'smart';
     const hasPhoto = dish.image && dish.image.trim() !== '';
 
@@ -600,7 +600,7 @@ class HotelPremierAdmin {
             <div style="background: rgba(14,22,34,0.6); border: 1.5px dashed var(--brass-primary); border-radius: 8px; padding: 10px 12px; text-align: center;">
               <div style="font-size: 1.3rem; margin-bottom: 2px;">🌱</div>
               <div style="font-weight: 800; font-size: 0.82rem; color: var(--brass-light);">No photo currently assigned</div>
-              <div style="font-size: 0.70rem; color: #8C9BAE;">Select a photo below. The AI Studio Engine will automatically detect the food, preserve authentic dishes, and calibrate 3200K gourmet lighting.</div>
+              <div style="font-size: 0.70rem; color: #8C9BAE;">Your original photo stays protected. Choose an optional studio treatment only after checking the preview.</div>
             </div>
           `}
 
@@ -670,14 +670,17 @@ class HotelPremierAdmin {
               <span>🎨</span> <span>Auto Background & Luxury Pedestal Engine</span>
             </div>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <button type="button" class="btn-theme-engine-chip ${(!this.activeBackgroundMode || this.activeBackgroundMode === 'harmonize') ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'harmonize', this)">
-                ✨ Auto Studio Harmonizer
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'natural' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'natural', this)" title="Preserves the original framing with subtle colour and clarity correction">
+                🌿 Natural Polish V3
+              </button>
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'harmonize' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'harmonize', this)">
+                ✨ Studio Frame & Tone
               </button>
               <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'pedestal' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'pedestal', this)">
                 🪄 Cutout onto Gold Pedestal
               </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'original' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'original', this)">
-                📷 Original Photo Tone
+              <button type="button" class="btn-theme-engine-chip ${(!this.activeBackgroundMode || this.activeBackgroundMode === 'original') ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'original', this)">
+                📷 Keep Original Photo
               </button>
             </div>
 
@@ -921,14 +924,16 @@ class HotelPremierAdmin {
     const vignetteStrength = parseInt(document.getElementById('param-vignette')?.value || '38', 10) / 100;
 
     const status = document.getElementById('preview-engine-status');
-    if (status) status.innerText = '⚙️ Studio Engine Harmonizing...';
+    if (status) status.innerText = this.activeBackgroundMode === 'original'
+      ? '● Original photo preserved'
+      : '⚙️ Preparing studio preview...';
 
     const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
 
     if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
       try {
         const result = await window.AssetPipeline.processAutomaticStudioEnhancement(this.rawOriginalSource, dish, {
-          backgroundMode: this.activeBackgroundMode || 'harmonize',
+          backgroundMode: this.activeBackgroundMode || 'original',
           framingMode: this.activeFramingMode || 'smart',
           warmth: warmth,
           sharpness: sharpness,
@@ -941,7 +946,11 @@ class HotelPremierAdmin {
 
         const preview = document.getElementById('image-preview-element');
         if (preview) preview.src = result.enhancedDataUrl;
-        if (status) status.innerText = `● Studio Master Ready (${this.currentQualityScore}%)`;
+        if (status) status.innerText = result.status === 'original'
+          ? '● Original photo preserved'
+          : result.status === 'natural'
+            ? `● Natural Polish V3 ready (${this.currentQualityScore}%)`
+            : `● Studio preview ready (${this.currentQualityScore}%)`;
       } catch (e) {
         if (status) status.innerText = '● Ready';
       }
@@ -982,7 +991,7 @@ class HotelPremierAdmin {
       try {
         if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
           const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawDataUrl, dish, {
-            backgroundMode: this.activeBackgroundMode || 'harmonize',
+            backgroundMode: this.activeBackgroundMode || 'original',
             framingMode: this.activeFramingMode || 'smart'
           });
           if (res && res.enhancedDataUrl) {
@@ -1006,25 +1015,43 @@ class HotelPremierAdmin {
       this.enhanced4KSource = enhanced;
       this.tempImageSource = enhanced;
       this.currentQualityScore = qualityScore;
-      this.currentEnhancementStatus = 'enhanced';
+      this.currentEnhancementStatus = this.activeBackgroundMode === 'original'
+        ? 'original'
+        : this.activeBackgroundMode === 'natural' ? 'natural' : 'enhanced';
 
       const preview = document.getElementById('image-preview-element');
       const urlInput = document.getElementById('image-url-input-field');
       if (preview) preview.src = this.tempImageSource;
-      if (urlInput) urlInput.value = `(AI Studio Master - ${category.toUpperCase()} • Score ${qualityScore}%)`;
-      if (status) status.innerText = `● Studio Master Calibrated (${qualityScore}%)`;
+      if (urlInput) urlInput.value = this.currentEnhancementStatus === 'original'
+        ? '(Original photo — no studio treatment applied)'
+        : this.currentEnhancementStatus === 'natural'
+          ? `(Natural Polish V3 — ${category.toUpperCase()} • Score ${qualityScore}%)`
+          : `(Studio preview — ${category.toUpperCase()} • Score ${qualityScore}%)`;
+      if (status) status.innerText = this.currentEnhancementStatus === 'original'
+        ? '● Original photo preserved'
+        : this.currentEnhancementStatus === 'natural'
+          ? `● Natural Polish V3 ready (${qualityScore}%)`
+          : `● Studio preview ready (${qualityScore}%)`;
 
       const badge = document.getElementById('lifecycle-status-badge');
       if (badge) {
-        badge.className = 'hp-status-pill hp-status-enhanced';
-        badge.innerText = `STUDIO MASTER (${qualityScore}%)`;
+        badge.className = `hp-status-pill hp-status-${this.currentEnhancementStatus}`;
+        badge.innerText = this.currentEnhancementStatus === 'original'
+          ? 'ORIGINAL PHOTO'
+          : this.currentEnhancementStatus === 'natural'
+            ? `NATURAL V3 (${qualityScore}%)`
+            : `STUDIO PREVIEW (${qualityScore}%)`;
       }
 
       if (typeof this.toggleComparisonMode === 'function') {
         this.toggleComparisonMode('split');
       }
       if (window.app && typeof window.app.showToast === 'function') {
-        window.app.showToast(`Studio Master ready! Category: ${category}, Score: ${qualityScore}%.`, 'success');
+        window.app.showToast(this.currentEnhancementStatus === 'original'
+          ? 'Original photo ready. Select a studio treatment only if needed.'
+          : this.currentEnhancementStatus === 'natural'
+            ? `Natural Polish V3 ready. Category: ${category}, Score: ${qualityScore}%.`
+            : `Studio preview ready. Category: ${category}, Score: ${qualityScore}%.`, 'success');
       }
     } catch (err) {
       console.error('handleImageFileUpload error:', err);
@@ -1058,7 +1085,10 @@ class HotelPremierAdmin {
 
     if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
       try {
-        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(trimmed, dish);
+        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(trimmed, dish, {
+          backgroundMode: this.activeBackgroundMode || 'original',
+          framingMode: this.activeFramingMode || 'smart'
+        });
         this.enhanced4KSource = res.enhancedDataUrl;
         this.tempImageSource = res.enhancedDataUrl;
         this.currentQualityScore = res.qualityScore;
@@ -1084,7 +1114,10 @@ class HotelPremierAdmin {
 
     if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
       try {
-        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(url, dish);
+        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(url, dish, {
+          backgroundMode: this.activeBackgroundMode || 'original',
+          framingMode: this.activeFramingMode || 'smart'
+        });
         this.enhanced4KSource = res.enhancedDataUrl;
         this.tempImageSource = res.enhancedDataUrl;
         this.currentQualityScore = res.qualityScore;
@@ -1111,7 +1144,7 @@ class HotelPremierAdmin {
           rawOriginalImage: this.rawOriginalSource || this.tempImageSource,
           enhancementStatus: this.currentEnhancementStatus || 'enhanced',
           qualityScore: this.currentQualityScore || 90,
-          backgroundType: this.activeBackgroundMode || 'harmonize',
+          backgroundType: this.activeBackgroundMode || 'original',
           styleVersion: 'hp-studio-v2.0'
         });
       } else if (window.HOTEL_STORAGE) {
@@ -1312,15 +1345,16 @@ class HotelPremierAdmin {
       try {
         if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
           const res = await window.AssetPipeline.processAutomaticStudioEnhancement(dish.image, dish, {
-            backgroundMode: 'harmonize',
+            backgroundMode: 'natural',
             framingMode: 'smart'
           });
           if (res && res.enhancedDataUrl) {
+            const rawOriginalImage = dish.image;
             dish.image = res.enhancedDataUrl;
             if (window.HOTEL_STORAGE) {
               await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
                 enhancedMasterImage: res.enhancedDataUrl,
-                rawOriginalImage: dish.image,
+                rawOriginalImage,
                 enhancementStatus: 'enhanced',
                 qualityScore: res.qualityScore || 92,
                 backgroundType: 'harmonize',
@@ -3185,7 +3219,7 @@ class HotelPremierAdmin {
     for (const dish of withPhotos) {
       try {
         if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(dish.image, dish);
+          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(dish.image, dish, { backgroundMode: 'natural' });
           if (res && res.enhancedDataUrl) {
             dish.image = res.enhancedDataUrl;
             if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function') {
