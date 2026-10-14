@@ -2384,27 +2384,35 @@ a {
   text-align: center;
 }
 
-/* Exact four-bird artwork from the original hotelpremier.in logo. */
-.brand-bird-mark {
-  width: 116px;
-  height: 72px;
+/* Original logo alpha silhouettes, cropped to the birds and anchored to M.
+   em-based dimensions keep the artwork aligned when type scales on mobile. */
+.bird-wordmark {
+  padding-top: 1.3em;
+}
+
+.bird-letter {
   position: relative;
-  overflow: hidden;
-  margin: 0 auto 4px;
-  filter: drop-shadow(0 2px 5px rgba(0, 112, 154, 0.15));
+  display: inline-block;
 }
 
-.brand-bird-mark img {
+.bird-letter::before {
+  content: "";
   position: absolute;
-  width: 449px;
-  max-width: none;
-  height: 201px;
-  left: -204px;
-  top: -8px;
+  pointer-events: none;
+  width: 2em;
+  height: 1.2414em;
+  left: 50%;
+  bottom: 100%;
+  transform: translateX(-50%);
+  background: linear-gradient(145deg, #805D2B 8%, #C7A15F 35%, #F0D8A1 49%, #A47A3C 66%, #D5B77A 92%);
+  -webkit-mask: url('assets/premier-original-logo.png') -3.5172em -0.1379em / 7.7414em 3.4655em no-repeat;
+  mask: url('assets/premier-original-logo.png') -3.5172em -0.1379em / 7.7414em 3.4655em no-repeat;
+  filter: drop-shadow(0 1px 1px rgba(80, 54, 20, 0.16));
 }
 
-body.theme-dark .brand-bird-mark {
-  filter: brightness(1.6) drop-shadow(0 2px 6px rgba(72, 181, 220, 0.18));
+.brand-hotel-name .bird-letter::before,
+body.theme-dark .bird-letter::before {
+  background: linear-gradient(145deg, #B79255 8%, #E0C58C 35%, #FFF0CA 49%, #BE975D 66%, #E7CB94 92%);
 }
 
 .dining-credentials-strip {
