@@ -1273,6 +1273,7 @@
      * 6. Returns { enhancedDataUrl, qualityScore, category, status, flags }
      */
     async processAutomaticStudioEnhancement(imageSource, dishMeta = {}, options = {}) {
+      options = { backgroundMode: 'natural', ...options };
       let img;
       try {
         if (typeof imageSource === 'string') {
@@ -1285,13 +1286,7 @@
           throw new Error('Invalid image source');
         }
       } catch (err) {
-        return {
-          enhancedDataUrl: typeof imageSource === 'string' ? imageSource : (imageSource.src || ''),
-          qualityScore: 60,
-          category: 'curry',
-          status: 'failed',
-          flags: ['LOAD_ERROR']
-        };
+        throw new Error('Unable to load this photo. Upload a local JPG, PNG or WebP file, or check the image URL.');
       }
 
       // 1. Analyze Dish & Photo Quality
@@ -1318,11 +1313,12 @@
       const naturalMode = options.backgroundMode === 'natural';
       // V3 natural polish keeps camera framing intact. This is intentionally
       // separate from the stylised 4:3 studio and pedestal treatments.
+      const naturalScale = Math.min(1, 1440 / Math.max(origW, origH));
       const targetW = naturalMode
-        ? Math.min(Math.max(origW, 640), 1440)
+        ? Math.max(1, Math.round(origW * naturalScale))
         : (options.targetWidth || 960);
       const targetH = naturalMode
-        ? Math.round(targetW * (origH / origW))
+        ? Math.max(1, Math.round(origH * naturalScale))
         : (options.targetHeight || 720);
 
       const canvas = document.createElement('canvas');
@@ -1341,8 +1337,7 @@
       }
 
       // Determine background replacement / isolation
-      const shouldCutout = (options.backgroundMode === 'pedestal') ||
-        (options.backgroundMode === 'harmonize' && (analysis.needsBackgroundReplacement || options.forceCutout));
+      const shouldCutout = options.backgroundMode === 'pedestal';
 
       if (naturalMode) {
         // The original composition is already drawn above; only apply the
@@ -1395,7 +1390,9 @@
         ctx.restore();
 
         // B. Authentic Foreground Dish safely centered
-        const safeScale = Math.min((targetW * 0.90) / origW, (targetH * 0.88) / origH, 1.0);
+        const safeScale = options.framingMode === 'fill'
+          ? Math.max(targetW / origW, targetH / origH)
+          : Math.min((targetW * 0.90) / origW, (targetH * 0.88) / origH, 1.0);
         const fW = origW * safeScale;
         const fH = origH * safeScale;
         const fX = (targetW - fW) / 2;
@@ -1463,6 +1460,7 @@
           const cPx = copy.data;
           const sharpData = ctx.createImageData(targetW, targetH);
           const sPx = sharpData.data;
+          sPx.set(cPx); // Preserve border pixels instead of exporting a black rim.
           const w = targetW, h = targetH;
 
           for (let y = 1; y < h - 1; y++) {

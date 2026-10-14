@@ -2040,14 +2040,26 @@ class HotelPremierApp {
         <div class="modal-dish-veg-guarantee">
           <span style="font-size: 1.1rem; line-height: 1;">🌱</span>
           <div>
-            <strong>100% Pure Vegetarian Kitchen Guarantee</strong>
-            <div style="font-size: 0.78rem; opacity: 0.9; margin-top: 2px;">Prepared strictly vegetarian in standard refined oil with rigorous hygiene standards.</div>
+            <strong>100% Vegetarian</strong>
+            <div style="font-size: 0.78rem; opacity: 0.9; margin-top: 2px;">Pride Pure Veg Restaurant · Please tell our team about any food allergies or dietary requirements.</div>
           </div>
         </div>
 
       </div>
     `;
 
+    const orderActions = document.createElement('div');
+    orderActions.className = 'modal-dish-actions';
+    for (const platform of ['zomato', 'swiggy']) {
+      const link = document.createElement('a');
+      link.className = `modal-btn-${platform}-order`;
+      link.href = this.getDeliveryUrl(platform, dish);
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = `Order on ${platform === 'zomato' ? 'Zomato' : 'Swiggy'} ↗`;
+      orderActions.appendChild(link);
+    }
+    body.querySelector('.modal-dish-detail-container').appendChild(orderActions);
     modal.style.display = 'flex';
     modal.classList.add('active');
     document.body.classList.add('modal-open');
@@ -2117,6 +2129,10 @@ class HotelPremierApp {
   }
 
   openExternalPlatform(platform) {
+    if (platform === 'zomato' || platform === 'swiggy') {
+      window.open(this.getDeliveryUrl(platform), '_blank', 'noopener,noreferrer');
+      return;
+    }
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     if (platform === 'swiggy') {
@@ -2172,6 +2188,24 @@ class HotelPremierApp {
 
   routeToReview(platform) {
     this.openExternalPlatform(platform);
+  }
+
+  getDeliveryUrl(platform, dish = {}) {
+    const restaurants = {
+      zomato: 'https://www.zomato.com/bhusawal/hotel-premier-bhusawal-locality/order',
+      swiggy: 'https://www.swiggy.com/city/bhusawal/hotel-premier-gayatri-nagar-jamner-road-rest165366'
+    };
+    // Accept a platform's real item/share URL when one has been supplied.
+    // Otherwise the verified restaurant menu is the reliable destination.
+    const candidate = dish[`${platform}OrderUrl`];
+    if (candidate) {
+      try {
+        const url = new URL(candidate);
+        const domain = `${platform}.com`;
+        if (url.protocol === 'https:' && (url.hostname === domain || url.hostname.endsWith(`.${domain}`))) return url.href;
+      } catch (e) {}
+    }
+    return restaurants[platform];
   }
 
   // ==================== 3. BULK BOOKING & CALCULATOR ENGINE (14 ROOMS PROPERTY) ====================

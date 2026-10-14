@@ -4215,7 +4215,10 @@ a {
   gap: 8px;
   margin-top: 8px;
   width: 100%;
+  flex-wrap: wrap;
 }
+
+.modal-dish-actions a { min-height: 44px; box-sizing: border-box; }
 
 .modal-btn-zomato-order {
   flex: 1 1 50%;

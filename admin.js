@@ -558,6 +558,9 @@ class HotelPremierAdmin {
 
   // ==================== DISH PHOTO REPLACEMENT & DELETION MODAL ====================
   async openImageModal(dishId) {
+    this.previewRequestId = (this.previewRequestId || 0) + 1;
+    this.isPreviewProcessing = false;
+    this.previewFailed = false;
     this.activeImageDishId = dishId;
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (!dish) return;
@@ -751,7 +754,7 @@ class HotelPremierAdmin {
 
           <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px;">
             <button class="btn-secondary" onclick="window.admin.closeImageModal()">Cancel</button>
-            <button class="btn-primary" onclick="window.admin.saveReplacedImage()">Apply 4K Enhanced Photo</button>
+            <button class="btn-primary" id="apply-dish-photo-btn" onclick="window.admin.saveReplacedImage()">Save selected photo</button>
           </div>
         </div>
       `;
@@ -785,6 +788,9 @@ class HotelPremierAdmin {
   }
 
   closeImageModal() {
+    this.previewRequestId = (this.previewRequestId || 0) + 1;
+    this.isPreviewProcessing = false;
+    this.previewFailed = false;
     const modal = document.getElementById('image-replace-modal');
     if (modal) modal.classList.remove('active');
     this.activeImageDishId = null;
@@ -891,11 +897,15 @@ class HotelPremierAdmin {
   }
 
   async approveActiveDishPhoto() {
-    if (!this.activeImageDishId) return;
+    if (!this.activeImageDishId || this.isPreviewProcessing || this.previewFailed) return;
+
+    const dishId = this.activeImageDishId;
+    this.currentEnhancementStatus = 'approved';
+    await this.saveReplacedImage();
 
     this.currentEnhancementStatus = 'approved';
     if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.approveDishEnhancedPhoto === 'function') {
-      await window.HOTEL_STORAGE.approveDishEnhancedPhoto(this.activeImageDishId);
+      await window.HOTEL_STORAGE.approveDishEnhancedPhoto(dishId);
     }
 
     const badge = document.getElementById('lifecycle-status-badge');
@@ -918,6 +928,13 @@ class HotelPremierAdmin {
 
   async recalculate4KLive() {
     if (!this.rawOriginalSource) return;
+    const requestId = this.previewRequestId = (this.previewRequestId || 0) + 1;
+    const source = this.rawOriginalSource;
+    const dishId = this.activeImageDishId;
+    this.isPreviewProcessing = true;
+    this.previewFailed = false;
+    const saveButton = document.getElementById('apply-dish-photo-btn');
+    if (saveButton) saveButton.disabled = true;
     const warmth = parseInt(document.getElementById('param-warmth')?.value || '8', 10);
     const sharpness = parseInt(document.getElementById('param-sharpness')?.value || '28', 10) / 100;
     const contrast = parseInt(document.getElementById('param-contrast')?.value || '108', 10) / 100;
@@ -940,8 +957,15 @@ class HotelPremierAdmin {
           contrast: contrast,
           vignetteStrength: vignetteStrength
         });
+        if (requestId !== this.previewRequestId || source !== this.rawOriginalSource || dishId !== this.activeImageDishId) return;
         this.enhanced4KSource = result.enhancedDataUrl;
         this.tempImageSource = result.enhancedDataUrl;
+        this.currentEnhancementStatus = result.status;
+        const lifecycleBadge = document.getElementById('lifecycle-status-badge');
+        if (lifecycleBadge) {
+          lifecycleBadge.className = `hp-status-pill hp-status-${result.status}`;
+          lifecycleBadge.innerText = result.status === 'natural' ? 'NATURAL POLISH' : result.status.toUpperCase();
+        }
         this.currentQualityScore = result.qualityScore || 90;
 
         const preview = document.getElementById('image-preview-element');
@@ -952,7 +976,13 @@ class HotelPremierAdmin {
             ? `● Natural Polish V3 ready (${this.currentQualityScore}%)`
             : `● Studio preview ready (${this.currentQualityScore}%)`;
       } catch (e) {
-        if (status) status.innerText = '● Ready';
+        if (requestId === this.previewRequestId) this.previewFailed = true;
+        if (requestId === this.previewRequestId && status) status.innerText = 'Preview failed. Try uploading the photo directly.';
+      } finally {
+        if (requestId === this.previewRequestId) {
+          this.isPreviewProcessing = false;
+          if (saveButton) saveButton.disabled = this.previewFailed;
+        }
       }
     }
   }
@@ -960,6 +990,15 @@ class HotelPremierAdmin {
   async handleImageFileUpload(input) {
     const file = input && input.files ? input.files[0] : null;
     if (!file) return;
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
+      alert('Please choose a JPG, PNG or WebP photo.');
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      alert('Please choose a photo smaller than 20 MB.');
+      return;
+    }
+    this.previewFailed = false;
 
     try {
       if (window.app && typeof window.app.showToast === 'function') {
@@ -1074,6 +1113,10 @@ class HotelPremierAdmin {
   async updatePreviewFromUrl(url) {
     const trimmed = url.trim();
     if (!trimmed) return;
+    try {
+      const parsed = new URL(trimmed);
+      if (!['https:', 'http:'].includes(parsed.protocol)) return;
+    } catch (e) { return; }
     this.rawOriginalSource = trimmed;
     this.tempImageSource = trimmed;
     const preview = document.getElementById('image-preview-element');
@@ -1081,23 +1124,7 @@ class HotelPremierAdmin {
     if (preview) preview.src = trimmed;
     if (origEl) origEl.src = trimmed;
 
-    const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
-
-    if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-      try {
-        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(trimmed, dish, {
-          backgroundMode: this.activeBackgroundMode || 'original',
-          framingMode: this.activeFramingMode || 'smart'
-        });
-        this.enhanced4KSource = res.enhancedDataUrl;
-        this.tempImageSource = res.enhancedDataUrl;
-        this.currentQualityScore = res.qualityScore;
-        if (preview) preview.src = res.enhancedDataUrl;
-        this.toggleComparisonMode('split');
-      } catch (e) {
-        this.enhanced4KSource = trimmed;
-      }
-    }
+    await this.recalculate4KLive();
   }
 
   async selectPresetImage(url) {
@@ -1110,26 +1137,11 @@ class HotelPremierAdmin {
     if (origEl) origEl.src = url;
     if (urlInput) urlInput.value = url;
 
-    const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
-
-    if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-      try {
-        const res = await window.AssetPipeline.processAutomaticStudioEnhancement(url, dish, {
-          backgroundMode: this.activeBackgroundMode || 'original',
-          framingMode: this.activeFramingMode || 'smart'
-        });
-        this.enhanced4KSource = res.enhancedDataUrl;
-        this.tempImageSource = res.enhancedDataUrl;
-        this.currentQualityScore = res.qualityScore;
-        if (preview) preview.src = res.enhancedDataUrl;
-        this.toggleComparisonMode('split');
-      } catch (e) {
-        this.enhanced4KSource = url;
-      }
-    }
+    await this.recalculate4KLive();
   }
 
   async saveReplacedImage() {
+    if (this.isPreviewProcessing || this.previewFailed) return;
     if (!this.activeImageDishId || !this.tempImageSource) return;
 
     const dish = window.app.menuData.find(d => d.id === this.activeImageDishId);
@@ -1145,7 +1157,7 @@ class HotelPremierAdmin {
           enhancementStatus: this.currentEnhancementStatus || 'enhanced',
           qualityScore: this.currentQualityScore || 90,
           backgroundType: this.activeBackgroundMode || 'original',
-          styleVersion: 'hp-studio-v2.0'
+          styleVersion: 'hp-studio-v3.0'
         });
       } else if (window.HOTEL_STORAGE) {
         await window.HOTEL_STORAGE.saveDishOverride(dish.id, { image: this.tempImageSource });
@@ -1199,7 +1211,7 @@ class HotelPremierAdmin {
       const rec = overrides[d.id];
       if (rec) {
         if (rec.enhancementStatus === 'approved') approvedCount++;
-        else if (rec.enhancementStatus === 'enhanced') studioMasterCount++;
+        else if (['enhanced', 'natural'].includes(rec.enhancementStatus)) studioMasterCount++;
         else if (rec.enhancementStatus === 'original') rawOriginalCount++;
       } else if (d.image) {
         studioMasterCount++;
@@ -1334,7 +1346,7 @@ class HotelPremierAdmin {
       return;
     }
 
-    if (!confirm(`Run Automated Studio Enhancement on ${dishesWithPhotos.length} dishes?\n\nThis will apply 3200K gourmet lighting, background harmonization, and 4K sharpness to all menu photos.`)) {
+    if (!confirm(`Apply Natural Polish to ${dishesWithPhotos.length} dishes? Original framing is preserved, with gentle tone and clarity adjustments. Originals remain available to restore.`)) {
       return;
     }
 
@@ -1344,21 +1356,22 @@ class HotelPremierAdmin {
     for (const dish of dishesWithPhotos) {
       try {
         if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(dish.image, dish, {
+          const record = await window.HOTEL_STORAGE?.getDishOverride(dish.id);
+          const rawOriginalImage = record?.rawOriginalImage || dish.image;
+          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawOriginalImage, dish, {
             backgroundMode: 'natural',
             framingMode: 'smart'
           });
           if (res && res.enhancedDataUrl) {
-            const rawOriginalImage = dish.image;
             dish.image = res.enhancedDataUrl;
             if (window.HOTEL_STORAGE) {
               await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
                 enhancedMasterImage: res.enhancedDataUrl,
                 rawOriginalImage,
-                enhancementStatus: 'enhanced',
+                enhancementStatus: res.status,
                 qualityScore: res.qualityScore || 92,
-                backgroundType: 'harmonize',
-                styleVersion: 'hp-studio-v2.0'
+                backgroundType: 'natural',
+                styleVersion: 'hp-studio-v3.0'
               });
             }
             processed++;
@@ -3219,17 +3232,20 @@ class HotelPremierAdmin {
     for (const dish of withPhotos) {
       try {
         if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(dish.image, dish, { backgroundMode: 'natural' });
+          const record = await window.HOTEL_STORAGE?.getDishOverride(dish.id);
+          const rawOriginalImage = record?.rawOriginalImage || dish.image;
+          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawOriginalImage, dish, { backgroundMode: 'natural' });
           if (res && res.enhancedDataUrl) {
             dish.image = res.enhancedDataUrl;
             if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function') {
               await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
                 enhancedMasterImage: res.enhancedDataUrl,
-                rawOriginalImage: dish.image,
-                enhancementStatus: 'approved',
+                rawOriginalImage,
+                enhancementStatus: res.status,
                 qualityScore: res.qualityScore || 92,
                 foodCategory: res.category || dish.categoryId,
-                backgroundType: res.surfaceKey || 'slate_gold'
+                backgroundType: 'natural',
+                styleVersion: 'hp-studio-v3.0'
               });
             }
             count++;
