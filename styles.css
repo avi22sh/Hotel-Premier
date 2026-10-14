@@ -2384,25 +2384,27 @@ a {
   text-align: center;
 }
 
-/* A cropped detail from the official crest keeps the flying-bird motif visible
-   at the dining entry without introducing a second, unrelated illustration. */
+/* Exact four-bird artwork from the original hotelpremier.in logo. */
 .brand-bird-mark {
-  width: 112px;
-  height: 42px;
+  width: 116px;
+  height: 72px;
   position: relative;
   overflow: hidden;
   margin: 0 auto 4px;
-  filter: drop-shadow(0 3px 7px rgba(197, 168, 128, 0.25));
+  filter: drop-shadow(0 2px 5px rgba(0, 112, 154, 0.15));
 }
 
 .brand-bird-mark img {
   position: absolute;
-  width: 210px;
+  width: 449px;
   max-width: none;
-  height: auto;
-  left: 50%;
-  top: -18px;
-  transform: translateX(-50%);
+  height: 201px;
+  left: -204px;
+  top: -8px;
+}
+
+body.theme-dark .brand-bird-mark {
+  filter: brightness(1.6) drop-shadow(0 2px 6px rgba(72, 181, 220, 0.18));
 }
 
 .dining-credentials-strip {
