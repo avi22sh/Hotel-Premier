@@ -74,7 +74,7 @@
   <script src="asset-pipeline.js?v=20.36"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20.38">
+  <link rel="stylesheet" href="styles.css?v=20.39">
 </head>
 <body>
 
@@ -86,38 +86,52 @@
           <img src="assets/hotel_premier_gold_crest.jpg" alt="Hotel Premier Official Crest" class="brand-crest-img">
         </div>
         <div class="brand-text-block">
-          <span class="brand-hotel-name bird-wordmark" aria-label="Hotel Premier">HOTEL PRE<span class="bird-letter">M</span>IER</span>
+          <span class="brand-hotel-name">HOTEL PREMIER</span>
           <span class="brand-tagline" id="brand-tagline-text" data-i18n="brandTagline">A HOME IN BHUSAWAL</span>
         </div>
       </a>
 
-      <div class="header-actions">
+      <details class="guest-settings" id="guest-settings">
+        <summary class="settings-trigger">Settings <span aria-hidden="true">⚙</span></summary>
+        <div class="settings-panel" aria-label="Guest settings">
+        <h2 class="settings-title">Your preferences</h2>
+        <div class="settings-row">
+        <span class="settings-label" id="settings-language-label">Language</span>
         <!-- Multilingual Switcher -->
-        <div class="lang-selector-group" id="lang-selector-group">
+        <div class="lang-selector-group" id="lang-selector-group" role="group" aria-labelledby="settings-language-label">
           <button class="lang-btn active" data-lang="en" onclick="window.app ? window.app.setLanguage('en') : null">EN</button>
           <button class="lang-btn" data-lang="hi" onclick="window.app ? window.app.setLanguage('hi') : null">हिंदी</button>
           <button class="lang-btn" data-lang="mr" onclick="window.app ? window.app.setLanguage('mr') : null">मराठी</button>
         </div>
+        </div>
 
         <!-- Guest Profile: Icon Only -->
-        <button class="guest-concierge-pill icon-only-pill" id="guest-profile-trigger-btn" onclick="window.app ? window.app.openGuestProfileModal() : null" title="Guest Profile" aria-label="Guest Profile">
-          <span class="guest-concierge-icon">👤</span>
+        <div class="settings-row"><span class="settings-label">Guest profile</span>
+        <button class="settings-action" id="guest-profile-trigger-btn" onclick="document.getElementById('guest-settings').open=false; window.app ? window.app.openGuestProfileModal() : null" title="Guest Profile" aria-label="Open guest profile">
+          Manage profile
         </button>
+        </div>
 
         <!-- Senior Mode Toggle -->
-        <button class="icon-btn text-size-toggle" id="font-size-toggle-btn" onclick="window.app ? window.app.toggleElderlyFontSize() : null" title="Adjust Text Size">
+        <div class="settings-row"><span class="settings-label">Text size</span>
+        <button class="icon-btn text-size-toggle" id="font-size-toggle-btn" onclick="window.app ? window.app.toggleElderlyFontSize() : null" title="Adjust Text Size" aria-label="Toggle larger text">
           <span style="font-weight: 800; font-size: 0.85rem;">A+</span>
         </button>
+        </div>
 
+        <div class="settings-row"><span class="settings-label">Appearance</span>
         <button class="icon-btn" id="theme-toggle-btn" onclick="window.app ? window.app.cycleTheme() : null" title="System theme. Tap to change." aria-label="System theme. Tap to change.">
           <span aria-hidden="true">◐</span>
         </button>
+        </div>
+        <a href="tel:09325375802" class="settings-action settings-contact" data-i18n="btnCallHotel">Call Front Desk</a>
 
         <!-- CMS Settings Button (Visible only for staff via logo 5-tap or ?staff=1 / ?admin=1) -->
-        <button class="icon-btn" id="cms-settings-admin-btn" style="display: none;" onclick="window.admin ? window.admin.openAdminModal() : null" title="Admin Studio & CRM">
-          <span>⚙️</span>
+        <button class="settings-action" id="cms-settings-admin-btn" style="display: none;" onclick="document.getElementById('guest-settings').open=false; window.admin ? window.admin.openAdminModal() : null" title="Admin Studio & CRM">
+          Staff studio
         </button>
-      </div>
+        </div>
+      </details>
     </div>
 
     <!-- Hotel Navigation Bar: Independent Section Switching -->
@@ -155,22 +169,6 @@
       </div>
     </nav>
 
-    <!-- Pride Pure Veg & Front Desk Contact Bar -->
-    <div class="concierge-sub-bar">
-      <div class="pride-hallmark">
-        <span class="pride-badge-pill">
-          <span class="pride-crown-emblem">👑</span>
-          <span class="pride-text">Pride</span>
-        </span>
-        <span class="hallmark-badge">🌱 PURE VEG</span>
-      </div>
-      <div class="concierge-contact-quick">
-        <a href="tel:09325375802" class="btn-call-hotel-header">
-          <span>📞</span>
-          <span data-i18n="btnCallHotel">Call Front Desk</span>
-        </a>
-      </div>
-    </div>
   </header>
 
   <!-- ================================================================ -->
@@ -855,13 +853,8 @@
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-dine">
     <div class="editorial-header-block dining-hero-header">
-      <div class="dining-brand-crest bird-wordmark" aria-label="Hotel Premier presents">HOTEL PRE<span class="bird-letter">M</span>IER PRESENTS</div>
+      <div class="dining-brand-crest">HOTEL PREMIER PRESENTS</div>
       <h2 class="dining-main-heading">Pride Pure Veg AC Restaurant</h2>
-      <div class="dining-credentials-strip">
-        <span class="cred-badge cred-pride"><span class="pride-crown-emblem">👑</span> PRIDE</span>
-        <span class="cred-badge cred-veg">🌱 100% PURE VEG</span>
-        <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
-      </div>
       <div class="editorial-divider pride-underline"></div>
       <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
         A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
@@ -1904,7 +1897,7 @@
   <script src="data/translations.js?v=20.35"></script>
   <script src="data/hotel-data.js?v=20.33"></script>
   <script src="data/menu-data.js?v=20.33"></script>
-  <script src="app.js?v=20.36"></script>
+  <script src="app.js?v=20.39"></script>
   <script src="admin.js?v=20.36"></script>
 
   <!-- PWA Service Worker Registration -->

@@ -2384,36 +2384,45 @@ a {
   text-align: center;
 }
 
-/* Original logo alpha silhouettes, cropped to the birds and anchored to M.
-   em-based dimensions keep the artwork aligned when type scales on mobile. */
-.bird-wordmark {
-  padding-top: 1.3em;
+/* Preferences live in one accessible disclosure, leaving two header rows. */
+.guest-settings { position: relative; flex-shrink: 0; }
+.settings-trigger {
+  display: flex; align-items: center; gap: 8px; min-height: 44px;
+  padding: 0 12px; border: 1px solid rgba(213,183,122,.35);
+  border-radius: 10px; color: #F1DFC0; cursor: pointer;
+  font-size: .8rem; font-weight: 600; list-style: none;
+  background: rgba(255,255,255,.04);
 }
-
-.bird-letter {
-  position: relative;
-  display: inline-block;
+.settings-trigger::-webkit-details-marker { display: none; }
+.settings-trigger:focus-visible,
+.settings-panel button:focus-visible,
+.settings-panel a:focus-visible { outline: 2px solid #C7A15F; outline-offset: 3px; }
+.settings-panel {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 100;
+  width: min(340px, calc(100vw - 28px)); box-sizing: border-box;
+  padding: 18px; border-radius: 16px;
+  background: var(--ivory-card, #FFFDF8); color: var(--text-dark, #202C3A);
+  border: 1px solid var(--ivory-border, #DCCDB5);
+  box-shadow: 0 16px 40px rgba(0,0,0,.24);
+  max-height: calc(100dvh - 100px); overflow-y: auto;
 }
-
-.bird-letter::before {
-  content: "";
-  position: absolute;
-  pointer-events: none;
-  width: 2em;
-  height: 1.2414em;
-  left: 50%;
-  bottom: 100%;
-  transform: translateX(-50%);
-  background: linear-gradient(145deg, #805D2B 8%, #C7A15F 35%, #F0D8A1 49%, #A47A3C 66%, #D5B77A 92%);
-  -webkit-mask: url('assets/premier-original-logo.png') -3.5172em -0.1379em / 7.7414em 3.4655em no-repeat;
-  mask: url('assets/premier-original-logo.png') -3.5172em -0.1379em / 7.7414em 3.4655em no-repeat;
-  filter: drop-shadow(0 1px 1px rgba(80, 54, 20, 0.16));
+.settings-title { margin: 0 0 10px; font-size: 1rem; color: inherit; }
+.settings-row {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--ivory-border, #DCCDB5);
 }
-
-.brand-hotel-name .bird-letter::before,
-body.theme-dark .bird-letter::before {
-  background: linear-gradient(145deg, #B79255 8%, #E0C58C 35%, #FFF0CA 49%, #BE975D 66%, #E7CB94 92%);
+.settings-label { font-size: .85rem; font-weight: 600; }
+.settings-panel .icon-btn, .settings-action {
+  min-height: 44px; min-width: 44px; border-radius: 8px;
+  border: 1px solid var(--ivory-border, #DCCDB5);
+  background: var(--ivory-warm, #F3EEE3); color: var(--text-dark, #202C3A);
+  padding: 8px 12px; cursor: pointer; font-size: .8rem;
+  text-decoration: none; display: inline-flex; align-items: center; justify-content: center;
 }
+.settings-panel .lang-selector-group { background: var(--ivory-warm, #F3EEE3); }
+.settings-panel .lang-btn { min-height: 44px; color: var(--text-dark, #202C3A); }
+.settings-panel .lang-btn.active { background: #865C28; color: #FFF; }
+.settings-contact { margin-top: 14px; }
 
 .dining-credentials-strip {
   display: flex;
@@ -2718,7 +2727,7 @@ body.theme-dark .bird-letter::before {
 
   .qr-menu-first .dining-view-controls {
     position: sticky;
-    top: 126px;
+    top: var(--app-header-height, 112px);
     z-index: 20;
     padding: 12px 0;
     background: var(--ivory-canvas);

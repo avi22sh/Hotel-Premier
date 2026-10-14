@@ -139,6 +139,26 @@ class HotelPremierApp {
 
   // QR visitors should be able to search or choose a menu category immediately.
   prioritizeDiningControls() {
+    const header = document.querySelector('.app-header');
+    if (header && window.ResizeObserver) {
+      this.headerResizeObserver = new ResizeObserver(() => {
+        document.documentElement.style.setProperty('--app-header-height', `${header.getBoundingClientRect().height}px`);
+      });
+      this.headerResizeObserver.observe(header);
+    }
+    const settings = document.getElementById('guest-settings');
+    if (settings) {
+      document.addEventListener('click', (event) => {
+        if (settings.open && !settings.contains(event.target)) settings.open = false;
+      });
+      settings.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          settings.open = false;
+          settings.querySelector('summary').focus();
+          event.stopPropagation();
+        }
+      });
+    }
     const diningContainer = document.querySelector('.editorial-dining-container');
     const controls = diningContainer?.querySelector('.dining-view-controls');
     const featuredDishes = diningContainer?.querySelector('.signature-creations-wrapper');
