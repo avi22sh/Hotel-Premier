@@ -2395,6 +2395,22 @@ a {
   background: rgba(255,255,255,.04);
 }
 .settings-trigger::-webkit-details-marker { display: none; }
+
+/* Exact bird silhouettes from the original transparent hotel logo. */
+.settings-bird-icon {
+  --bird-icon-color: #D5B77A;
+  display: block;
+  flex: 0 0 auto;
+  font-size: 16px;
+  width: 2em;
+  height: 1.2414em;
+  background-color: var(--bird-icon-color);
+  -webkit-mask: url('assets/premier-original-logo.png') -3.5172em -0.1379em / 7.7414em 3.4655em no-repeat;
+  mask: url('assets/premier-original-logo.png') -3.5172em -0.1379em / 7.7414em 3.4655em no-repeat;
+}
+body.theme-dark .settings-bird-icon { --bird-icon-color: #F3D7A0; }
+.settings-trigger { padding-inline: 5px; }
+
 .settings-trigger:focus-visible,
 .settings-panel button:focus-visible,
 .settings-panel a:focus-visible { outline: 2px solid #C7A15F; outline-offset: 3px; }
