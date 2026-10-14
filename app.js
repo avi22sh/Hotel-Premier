@@ -2035,24 +2035,24 @@ class HotelPremierApp {
 
         <p class="modal-dish-desc">${this.getDishDescription(dish) || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
 
-        ${modalVariantsHtml}
-
         <div class="modal-dish-veg-guarantee">
-          <span style="font-size: 1.1rem; line-height: 1;">🌱</span>
+          <span class="veg-guarantee-icon" aria-hidden="true">🌱</span>
           <div>
-            <strong>100% Vegetarian</strong>
-            <div style="font-size: 0.78rem; opacity: 0.9; margin-top: 2px;">Pride Pure Veg Restaurant · Please tell our team about any food allergies or dietary requirements.</div>
+            <strong class="veg-guarantee-title">100% Pure Veg Kitchen Guarantee</strong>
+            <p class="veg-guarantee-note">Please tell our team about any food allergies or dietary requirements.</p>
           </div>
         </div>
+
+        ${modalVariantsHtml}
 
       </div>
     `;
 
     const orderActions = document.createElement('div');
-    orderActions.className = 'modal-dish-actions';
+    orderActions.className = 'modal-dish-actions delivery-buttons-container';
     for (const platform of ['zomato', 'swiggy']) {
       const link = document.createElement('a');
-      link.className = `modal-btn-${platform}-order`;
+      link.className = `modal-btn-${platform}-order delivery-btn`;
       link.href = this.getDeliveryUrl(platform, dish);
       link.target = '_blank';
       link.rel = 'noopener noreferrer';

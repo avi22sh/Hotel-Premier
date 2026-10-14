@@ -4196,6 +4196,7 @@ a {
 }
 
 .modal-dish-veg-guarantee {
+  font-family: var(--font-sans);
   background: #F0FDF4;
   border: 1px solid #BBF7D0;
   border-radius: 10px;
@@ -4208,6 +4209,10 @@ a {
   gap: 8px;
 }
 
+.veg-guarantee-icon { font-size: 1.25rem; flex-shrink: 0; line-height: 1.4; }
+.veg-guarantee-title { display: block; font-size: .9rem; font-weight: 700; line-height: 1.45; }
+.veg-guarantee-note { margin: 4px 0 0; font-size: .78rem; line-height: 1.5; }
+
 .modal-dish-actions {
   display: flex;
   flex-direction: row;
@@ -4219,6 +4224,23 @@ a {
 }
 
 .modal-dish-actions a { min-height: 44px; box-sizing: border-box; }
+
+.modal-dish-actions.delivery-buttons-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+}
+
+.delivery-buttons-container .delivery-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
 
 .modal-btn-zomato-order {
   flex: 1 1 50%;
