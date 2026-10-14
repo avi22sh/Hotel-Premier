@@ -901,7 +901,7 @@ a {
 .room-photo-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 13, 19, 0.15) 0%, rgba(8, 13, 19, 0.65) 100%);
+  background: linear-gradient(180deg, transparent 75%, rgba(8, 13, 19, 0.18) 100%);
   pointer-events: none;
 }
 
@@ -2387,6 +2387,7 @@ a {
 /* Preferences live in one accessible disclosure, leaving two header rows. */
 .guest-settings { position: relative; flex-shrink: 0; }
 .settings-trigger {
+  width: 44px; box-sizing: border-box; justify-content: center;
   display: flex; align-items: center; gap: 8px; min-height: 44px;
   padding: 0 12px; border: 1px solid rgba(213,183,122,.35);
   border-radius: 10px; color: #F1DFC0; cursor: pointer;
@@ -5076,13 +5077,6 @@ a {
   scroll-margin-top: 140px;
 }
 
-/* Avoid painting off-screen menu sections until a guest scrolls to them. */
-@supports (content-visibility: auto) {
-  .category-section {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 680px;
-  }
-}
 
 .category-section .section-header {
   display: flex;
@@ -6375,7 +6369,7 @@ html {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(13, 17, 26, 0.15) 0%, transparent 40%, rgba(13, 17, 26, 0.6) 100%);
+  background: none;
   z-index: 2;
 }
 
@@ -6383,7 +6377,7 @@ html {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+  box-shadow: none;
   border: 1px solid rgba(213, 183, 122, 0.18);
   border-radius: inherit;
   z-index: 3;

@@ -16,7 +16,7 @@ class HotelPremierApp {
     this.currentCategory = 'all';
     this.currentFilter = 'all';
     this.searchQuery = '';
-    this.viewMode = 'home'; // 'home' | 'section' | 'all' | 'search'
+    this.viewMode = 'all'; // 'home' | 'section' | 'all' | 'search'
     this.mainMode = 'menu'; // 'menu' | 'hotel'
     this.isLargeFont = false;
     this.currentLang = 'en'; // 'en' | 'hi' | 'mr'
@@ -165,6 +165,8 @@ class HotelPremierApp {
     if (!diningContainer || !controls || !featuredDishes) return;
 
     diningContainer.insertBefore(controls, featuredDishes);
+    const menu = diningContainer.querySelector('#menu-container');
+    if (menu) diningContainer.insertBefore(menu, featuredDishes);
     diningContainer.classList.add('qr-menu-first');
   }
 
@@ -1147,6 +1149,11 @@ class HotelPremierApp {
   }
 
   showHomeCategories() {
+    // The unified menu replaced the old category-card home screen.
+    if (!document.getElementById('home-categories-view')) {
+      this.showAllDishesView();
+      return;
+    }
     if (this.activeSection !== 'section-dine') {
       this.switchSection('section-dine', false);
     }
