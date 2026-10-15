@@ -10,3 +10,8 @@ Thumbs.db
 scratch/
 *.csv
 
+# Never commit provider credentials or local environment secrets
+.env
+.env.*
+!.env.example
+

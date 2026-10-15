@@ -60,6 +60,8 @@ class HotelPremierStorageManager {
 
   // ==================== DISH OVERRIDES, IMAGES & AI PHOTO LIFECYCLE ====================
   async saveDishOverride(dishId, data) {
+    await this.initPromise;
+    let fullLocalSave = false;
     // 1. Save to LocalStorage for instant sync access (pruning very large base64 if needed to avoid quota exception)
     try {
       let overrides = {};
@@ -70,6 +72,7 @@ class HotelPremierStorageManager {
       // Store compact representation in localStorage
       try {
         localStorage.setItem('hotel_premier_user_overrides_v1', JSON.stringify(overrides));
+        fullLocalSave = true;
       } catch (quotaErr) {
         // If quota exceeded, store without large original base64 in localStorage while preserving in IndexedDB
         const compactOverrides = { ...overrides };
@@ -87,18 +90,23 @@ class HotelPremierStorageManager {
     // 2. Save full high-res payload safely to IndexedDB
     if (this.db) {
       try {
-        const tx = this.db.transaction('dish_overrides', 'readwrite');
-        const store = tx.objectStore('dish_overrides');
-        const getReq = store.get(dishId);
-        getReq.onsuccess = () => {
-          const existing = getReq.result || { id: dishId };
-          const merged = { ...existing, ...data, id: dishId, updatedAt: Date.now() };
-          store.put(merged);
-        };
+        await new Promise((resolve, reject) => {
+          const tx = this.db.transaction('dish_overrides', 'readwrite');
+          tx.oncomplete = resolve;
+          tx.onabort = () => reject(tx.error || new Error('Photo save was interrupted'));
+          tx.onerror = () => reject(tx.error || new Error('Photo save failed'));
+          const store = tx.objectStore('dish_overrides');
+          const getReq = store.get(dishId);
+          getReq.onsuccess = () => {
+            store.put({ ...(getReq.result || {}), ...data, id: dishId, updatedAt: Date.now() });
+          };
+        });
+        return;
       } catch (e) {
         console.warn('IndexedDB write error:', e);
       }
     }
+    if (!fullLocalSave) throw new Error('Unable to save the complete photo on this device. Free storage space and retry.');
   }
 
   /**
@@ -178,6 +186,10 @@ class HotelPremierStorageManager {
 
   // ==================== AI STUDIO SETTINGS PERSISTENCE ====================
   async saveAISettings(settings) {
+    // Provider credentials do not belong in this public, local-only PWA.
+    settings = { ...settings };
+    delete settings.cloudAiApiKey;
+    delete settings.cloudAiModel;
     try {
       localStorage.setItem('hotel_premier_ai_settings_v1', JSON.stringify(settings));
     } catch (e) {}
@@ -212,8 +224,6 @@ class HotelPremierStorageManager {
       autoEnhanceEnabled: true,
       defaultStyle: 'luxury-stage',
       autoReplaceClutteredBg: true,
-      cloudAiApiKey: '',
-      cloudAiModel: 'gemini-1.5-flash',
       qualityThreshold: 60
     };
   }

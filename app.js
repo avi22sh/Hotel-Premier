@@ -534,6 +534,10 @@ class HotelPremierApp {
     // 2. Base on fresh initial menu so new dish photos/updates always load
     this.menuData = initialMenu.map(dish => {
       const copy = { ...dish };
+      // Published owner-selected photos are the baseline; newer local edits win.
+      if (Object.prototype.hasOwnProperty.call(window.HOTEL_PREMIER_PHOTOS || {}, dish.id)) {
+        copy.image = window.HOTEL_PREMIER_PHOTOS[dish.id];
+      }
       if (overridesMap && overridesMap[dish.id]) {
         const ov = overridesMap[dish.id];
         if (ov.image !== undefined) copy.image = ov.image;
@@ -1784,7 +1788,7 @@ class HotelPremierApp {
       : `
         <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
           ${hasPhoto ? `
-            <img src="${displayImage}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+            <img src="${displayImage}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
             <div class="hp-glass-vignette" aria-hidden="true"></div>
           ` : `
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
@@ -1940,7 +1944,7 @@ class HotelPremierApp {
       detailMediaHtml = `
         <div class="modal-dish-photo-wrap">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
-          <img src="${displayImage}" alt="${dish.name}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.src='assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg';">
+          <img src="${displayImage}" alt="${dish.name}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
           <div class="hp-glass-vignette" aria-hidden="true"></div>
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${modalBadgesHtml ? `<div class="dish-badges">${modalBadgesHtml}</div>` : ''}

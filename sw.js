@@ -4,7 +4,7 @@
 // Guarantees mobile users always see latest menu updates & sub-sections
 // ==========================================================================
 
-const CACHE_NAME = 'hotel-premier-v20.45';
+const CACHE_NAME = 'hotel-premier-v20.46';
 const CORE_ASSETS = [
   './',
   'index.html',
@@ -17,6 +17,7 @@ const CORE_ASSETS = [
   'vault.js',
   'data/hotel-data.js',
   'data/menu-data.js',
+  'data/menu-photos.js',
   'data/translations.js',
   'manifest.json',
   'assets/premier-original-logo.png',

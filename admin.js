@@ -741,15 +741,10 @@ class HotelPremierAdmin {
           </div>
 
           <div>
-            <label class="form-label">Option 3: Choose Curated HD Food Preset</label>
-            <div class="preset-image-grid" style="max-height: 120px; overflow-y: auto;">
-              ${this.curatedPresets.map(preset => `
-                <div class="preset-image-item" onclick="window.admin.selectPresetImage('${preset.url}')" title="${preset.name}">
-                  <img src="${preset.url}" alt="${preset.name}">
-                  <div class="preset-label">${preset.name}</div>
-                </div>
-              `).join('')}
-            </div>
+            <label class="form-label">Option 3: Reuse This Dish’s Saved Photos</label>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">Only photos already assigned to this dish are shown; verify they depict the correct food. Upload a real dish photo if none matches.</p>
+            <div id="dish-saved-photo-options" class="preset-image-grid" style="max-height: 120px; overflow-y: auto;"></div>
+            <p style="font-size: 0.75rem; color: var(--text-muted);">Natural Polish adjusts lighting. Studio modes create local surface treatments, not AI-generated scenes. Saves stay on this device; cloud generation and publishing are not connected.</p>
           </div>
 
           <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 8px;">
@@ -760,6 +755,32 @@ class HotelPremierAdmin {
       `;
     }
 
+    const presetGrid = document.getElementById('dish-saved-photo-options');
+    if (presetGrid) {
+      const seen = new Set();
+      const candidates = [
+        ['Saved original', lifecycle?.rawOriginalImage],
+        ['Current dish photo', dish.image]
+      ];
+      for (const [label, source] of candidates) {
+        if (typeof source !== 'string' || !/^(https?:\/\/|data:image\/|\.?\/?assets\/)/i.test(source) || seen.has(source)) continue;
+        seen.add(source);
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'preset-image-item';
+        button.title = label;
+        button.onclick = () => this.selectPresetImage(source);
+        const img = document.createElement('img');
+        img.src = source;
+        img.alt = `${dish.name}: ${label}`;
+        const caption = document.createElement('div');
+        caption.className = 'preset-label';
+        caption.textContent = label;
+        button.append(img, caption);
+        presetGrid.append(button);
+      }
+      if (!seen.size) presetGrid.textContent = 'No saved photo for this dish. Use Upload Photo above.';
+    }
     const modal = document.getElementById('image-replace-modal');
     if (modal) modal.classList.add('active');
   }
@@ -1146,10 +1167,8 @@ class HotelPremierAdmin {
 
     const dish = window.app.menuData.find(d => d.id === this.activeImageDishId);
     if (dish) {
-      dish.image = this.tempImageSource;
-      window.app.saveMenuData();
-
       // Permanent Dual Photo Preservation in Storage with Lifecycle tracking
+      try {
       if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function') {
         await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
           enhancedMasterImage: this.tempImageSource,
@@ -1161,7 +1180,15 @@ class HotelPremierAdmin {
         });
       } else if (window.HOTEL_STORAGE) {
         await window.HOTEL_STORAGE.saveDishOverride(dish.id, { image: this.tempImageSource });
+      } else {
+        throw new Error('Photo storage is not ready. Reload and retry.');
       }
+      } catch (error) {
+        window.app.showToast(error.message || 'Photo could not be saved. Please retry.', 'error');
+        throw error;
+      }
+      dish.image = this.tempImageSource;
+      window.app.saveMenuData();
 
       // Direct live DOM updates so changes reflect immediately without needing reload
       const cardImg = document.getElementById(`dish-img-el-${dish.id}`);
@@ -3086,8 +3113,6 @@ class HotelPremierAdmin {
       autoEnhanceEnabled: true,
       defaultStyle: 'slate_gold',
       autoReplaceClutteredBg: true,
-      cloudAiApiKey: '',
-      cloudAiModel: 'gemini-1.5-flash',
       qualityThreshold: 60
     };
 
@@ -3141,13 +3166,9 @@ class HotelPremierAdmin {
               </select>
             </div>
             <div style="grid-column: 1 / -1;">
-              <label class="form-label">Optional Cloud AI API Key (Gemini Vision / Imagen BYOK)</label>
-              <div style="display: flex; gap: 8px;">
-                <input type="password" id="ai-setting-apikey" class="form-input" value="${settings.cloudAiApiKey || ''}" placeholder="AIzaSy... (Leave empty for 100% offline client-side studio)">
-                <button class="btn-secondary" style="white-space: nowrap;" onclick="window.admin.saveAIStudioSettings()">Save Key</button>
-              </div>
+              <label class="form-label">Local Photo Studio — No Image API Charges</label>
               <span style="font-size: 0.68rem; color: var(--text-muted); margin-top: 3px; display: block;">
-                The client-side studio engine works 100% offline with zero external dependencies. Supplying an optional Gemini key unlocks advanced contextual prompts.
+                Uploaded photos are processed on this device, with no service quota. Cloud generation is disabled. Device storage and memory limits still apply. Local edits are not automatically published to other devices; export backups regularly. This studio is not a generative AI model.
               </span>
             </div>
           </div>
@@ -3196,14 +3217,11 @@ class HotelPremierAdmin {
   async saveAIStudioSettings() {
     const surface = document.getElementById('ai-setting-surface')?.value || 'slate_gold';
     const clutter = document.getElementById('ai-setting-clutter')?.value === 'auto';
-    const apiKey = (document.getElementById('ai-setting-apikey')?.value || '').trim();
 
     const settings = {
       autoEnhanceEnabled: true,
       defaultStyle: surface,
       autoReplaceClutteredBg: clutter,
-      cloudAiApiKey: apiKey,
-      cloudAiModel: 'gemini-1.5-flash',
       qualityThreshold: 60
     };
 

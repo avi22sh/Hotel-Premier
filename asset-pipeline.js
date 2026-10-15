@@ -450,6 +450,22 @@
     /**
      * Standardized HTML Markup Generator for Dish Media
      */
+    handleImageError(image) {
+      image.onerror = null;
+      image.hidden = true;
+      const wrapper = image.parentElement;
+      if (!wrapper) return;
+      wrapper.classList.add('no-photo');
+      // Preserve upload controls, sold-out state and badges. Never substitute food.
+      if (!wrapper.querySelector('.dish-no-photo-placeholder')) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'dish-no-photo-placeholder';
+        placeholder.textContent = 'Photo coming soon';
+        placeholder.setAttribute('role', 'status');
+        wrapper.appendChild(placeholder);
+      }
+    }
+
     renderDishMedia(dish, options = {}) {
       const hasPhoto = dish.image && dish.image.trim() !== '';
       const badgesHtml = options.badgesHtml || '';
@@ -480,7 +496,7 @@
             id="dish-img-el-${dish.id}" 
             loading="lazy"
             decoding="async"
-            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+            onerror="window.AssetPipeline.handleImageError(this)"
           >
           <div class="hp-glass-vignette" aria-hidden="true"></div>
           ${soldOutHtml}
@@ -508,7 +524,7 @@
             class="section-slide-img" 
             loading="${idx === 0 ? 'eager' : 'lazy'}"
             decoding="async"
-            onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+            onerror="window.AssetPipeline.handleImageError(this)"
           >
           <div class="section-slide-overlay">
             <div class="section-slide-badge-row">
@@ -540,7 +556,7 @@
             alt="${slideTitle}" 
             class="hero-carousel-img" 
             loading="${idx === 0 ? 'eager' : 'lazy'}"
-            onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+            onerror="window.AssetPipeline.handleImageError(this)"
           >
           <div class="hero-carousel-overlay">
             <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
@@ -562,7 +578,7 @@
             alt="${localizedTitle}" 
             class="category-card-img" 
             loading="lazy" 
-            onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+            onerror="window.AssetPipeline.handleImageError(this)"
           >
           <div class="category-card-overlay" aria-hidden="true"></div>
           <div class="category-crest-emblem" aria-hidden="true">${cat.icon || '🍽️'}</div>
@@ -630,7 +646,7 @@
             id="detail-modal-img" 
             class="modal-dish-img" 
             loading="eager"
-            onerror="this.onerror=null; this.parentElement.classList.add('no-photo'); this.parentElement.innerHTML='<div class=\'dish-no-photo-placeholder\'><div class=\'no-photo-icon\'>🌱</div><div class=\'no-photo-crest\'>HOTEL PREMIER</div><div class=\'no-photo-sub\'>PRIDE PURE VEG AC RESTAURANT</div></div>';"
+            onerror="window.AssetPipeline.handleImageError(this)"
           >
           <div class="hp-glass-vignette" aria-hidden="true"></div>
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
@@ -1306,7 +1322,10 @@
           flags: analysis.flags
         };
       }
-      const surfaceKey = options.surfaceKey || catConfig.surfaceKey || 'slate_gold';
+      const savedSettings = await window.HOTEL_STORAGE?.getAISettings?.() || {};
+      const requestedSurface = options.surfaceKey || savedSettings.defaultStyle || catConfig.surfaceKey;
+      const surfaceKey = ['slate_gold', 'teak_wood', 'cream_marble'].includes(requestedSurface)
+        ? requestedSurface : 'slate_gold';
 
       const origW = img.naturalWidth || img.width;
       const origH = img.naturalHeight || img.height;
@@ -1533,41 +1552,11 @@
     }
 
     /**
-     * Optional Cloud AI Adapter (Gemini / Imagen BYOK Hook)
-     * For advanced generative background enhancement when API key is provided
+     * Cloud generation is intentionally disabled under the zero-paid-usage policy.
+     * Keep the compatibility method so old callers fail clearly without sending photos or keys.
      */
     async callCloudAIEnhancer(base64Image, dishMeta = {}, apiKey = '') {
-      if (!apiKey) {
-        throw new Error('Cloud AI API Key is required');
-      }
-      // Clean base64 data
-      const cleanBase64 = base64Image.replace(/^data:image\/\w+;base64,/, '');
-      const prompt = `Professional food photograph of ${dishMeta.name || 'pure vegetarian Indian dish'} placed on an elegant restaurant table at Hotel Premier, luxury warm ambient lighting 3200K, authentic appetizing presentation, perfectly cooked, restaurant menu quality, hyper-realistic, no fake ingredients.`;
-
-      // Endpoint for Gemini 1.5 Flash vision
-      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-      const payload = {
-        contents: [{
-          parts: [
-            { text: prompt },
-            { inlineData: { mimeType: 'image/jpeg', data: cleanBase64 } }
-          ]
-        }]
-      };
-
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      if (!res.ok) {
-        const errText = await res.text();
-        throw new Error(`Cloud AI error (${res.status}): ${errText}`);
-      }
-
-      const json = await res.json();
-      return json;
+      throw new Error('Cloud image generation is disabled: this app uses local, no-API-fee photo processing.');
     }
 
     /**

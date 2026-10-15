@@ -6633,4 +6633,40 @@ html {
   border: 1px solid rgba(248, 113, 113, 0.5);
 }
 
+/* Theme-aware frames, not a filter or a generated replacement for real food. */
+body {
+  --dish-photo-surface: #e8e1d5;
+  --dish-photo-edge: rgba(120, 96, 65, 0.25);
+}
+body.theme-dark {
+  --dish-photo-surface: #17212d;
+  --dish-photo-edge: rgba(197, 168, 128, 0.32);
+}
+.dish-media, .modal-dish-photo-wrap {
+  background: var(--dish-photo-surface);
+  border-color: var(--dish-photo-edge);
+}
+.dish-media .hp-dish-pedestal-backdrop,
+.modal-dish-photo-wrap .hp-dish-pedestal-backdrop {
+  background: var(--dish-photo-surface);
+}
+.dish-media .hp-dish-pedestal-backdrop::after,
+.modal-dish-photo-wrap .hp-dish-pedestal-backdrop::after,
+.dish-media .hp-glass-vignette,
+.modal-dish-photo-wrap .hp-glass-vignette {
+  display: none;
+}
+.dish-media .dish-img, .modal-dish-photo-wrap .modal-dish-img {
+  object-fit: contain !important;
+  object-position: center !important;
+  filter: none !important;
+  image-rendering: auto;
+  transform: none !important;
+}
+.dish-media img[hidden], .modal-dish-photo-wrap img[hidden],
+.section-slide-card img[hidden], .hero-carousel-slide img[hidden],
+.category-card-media img[hidden] {
+  display: none !important;
+}
+
 
