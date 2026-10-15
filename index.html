@@ -71,10 +71,10 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=20.41"></script>
+  <script src="asset-pipeline.js?v=20.44"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20.43">
+  <link rel="stylesheet" href="styles.css?v=20.45">
 </head>
 <body>
 
@@ -1745,10 +1745,11 @@
   <div class="modal-backdrop" id="admin-modal-backdrop">
     <div class="modal-sheet admin-modal-sheet">
       <div class="modal-header">
+        <button type="button" class="admin-back-btn" onclick="window.admin.closeAdminModal()" aria-label="Back to app">← Back</button>
         <div class="modal-title">
           <span>⚙️</span> <span>Hotel Premier Admin & CRM Studio</span>
         </div>
-        <button class="modal-close-btn" onclick="window.admin ? window.admin.closeAdminModal() : null">✕</button>
+        <button type="button" class="modal-close-btn" aria-label="Close CRM Studio" onclick="window.admin ? window.admin.closeAdminModal() : null">✕</button>
       </div>
 
       <!-- View 1: Auth Screen -->
@@ -1892,13 +1893,13 @@
   </div>
 
   <!-- Load Application Scripts (v20.29) -->
-  <script src="storage.js?v=20.29"></script>
+  <script src="storage.js?v=20.44"></script>
   <script src="vault.js?v=20.29"></script>
   <script src="data/translations.js?v=20.35"></script>
   <script src="data/hotel-data.js?v=20.33"></script>
   <script src="data/menu-data.js?v=20.33"></script>
   <script src="app.js?v=20.42"></script>
-  <script src="admin.js?v=20.41"></script>
+  <script src="admin.js?v=20.44"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>

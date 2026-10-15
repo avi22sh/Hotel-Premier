@@ -4462,10 +4462,56 @@ body.theme-dark .settings-bird-icon { --bird-icon-color: #F3D7A0; }
 /* ==================== 8. PRIVATE ADMIN CRM & DATA EXPORT ==================== */
 .admin-modal-sheet {
   max-width: 960px !important;
+  overflow-x: hidden;
+}
+
+.admin-modal-sheet > .modal-header {
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.admin-modal-sheet .modal-title {
+  flex: 1;
+  min-width: 0;
+  font-size: clamp(0.8rem, 2.5vw, 1.1rem);
+  letter-spacing: 0.5px;
+}
+
+.admin-back-btn {
+  flex: 0 0 auto;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--brass-primary);
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.admin-back-btn:focus-visible {
+  outline: 2px solid var(--brass-light);
+  outline-offset: 3px;
+}
+
+#admin-dashboard-view {
+  flex-direction: column;
+  min-width: 0;
+}
+
+#admin-tab-content {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+.admin-modal-sheet .modal-close-btn {
+  flex: 0 0 44px;
+  height: 44px;
 }
 
 .admin-nav-tabs {
   display: flex;
+  flex-shrink: 0;
   overflow-x: auto;
   background: #161D26;
   border-bottom: 1px solid rgba(197, 168, 128, 0.25);
