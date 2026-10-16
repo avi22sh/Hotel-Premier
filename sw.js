@@ -4,12 +4,15 @@
 // Guarantees mobile users always see latest menu updates & sub-sections
 // ==========================================================================
 
-const CACHE_NAME = 'hotel-premier-v20.56';
+const CACHE_NAME = 'hotel-premier-v21.0';
 const CORE_ASSETS = [
   './',
   'index.html',
   'admin.html',
   'styles.css',
+  'royal.css',
+  'public-reviews.js',
+  'data/public-reviews.json',
   'asset-pipeline.js',
   'app.js',
   'admin.js',
@@ -44,7 +47,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((keys) => {
       return Promise.all(
         keys.map((key) => {
-          if (key !== CACHE_NAME) {
+          if (key.startsWith('hotel-premier-') && key !== CACHE_NAME) {
             console.log('[SW] Purging old cache:', key);
             return caches.delete(key);
           }
@@ -66,14 +69,17 @@ self.addEventListener('fetch', (event) => {
   // visit still downloads normally. Scripts and data remain network-first below.
   if (req.destination === 'image') {
     event.respondWith(
-      caches.match(req, { ignoreSearch: true }).then((cachedResponse) => {
-        if (cachedResponse) return cachedResponse;
-        return fetch(req).then((networkResponse) => {
+      caches.open(CACHE_NAME).then(async (cache) => {
+        const cachedResponse = await cache.match(req);
+        // Content-hashed derivatives are immutable; original filenames may be replaced.
+        if (cachedResponse && /\/menu-responsive\/[a-f0-9]+-\d+\.webp$/.test(url.pathname)) return cachedResponse;
+        return fetch(req, { cache: 'reload' }).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
-            caches.open(CACHE_NAME).then((cache) => cache.put(req, networkResponse.clone())).catch(() => {});
+            const imageCopy = networkResponse.clone();
+            cache.put(req, imageCopy).catch(() => {});
           }
           return networkResponse;
-        });
+        }).catch(() => cachedResponse || Response.error());
       })
     );
     return;
@@ -81,7 +87,7 @@ self.addEventListener('fetch', (event) => {
 
   // Network-First strategy: fetch newest version from network, fallback to cache if offline
   event.respondWith(
-    fetch(req).then((networkResponse) => {
+    fetch(req, { cache: 'no-cache' }).then((networkResponse) => {
       if (networkResponse && networkResponse.status === 200) {
         const responseToCache = networkResponse.clone();
         caches.open(CACHE_NAME).then((cache) => {

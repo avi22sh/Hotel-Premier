@@ -1,0 +1,50 @@
+/* Royal presentation layer. Loaded last to unify legacy component styles. */
+:root { --royal-surface: rgba(255,253,247,.88); --royal-ink:#28332F; --royal-muted:#59665F; --royal-edge:rgba(152,120,80,.24); --royal-gold:#80602E; }
+body { background: radial-gradient(ellipse at top left,#F1E6D1,transparent 55%),#FAF7F0; color:var(--royal-ink); }
+body.theme-dark {
+  --royal-surface:rgba(20,32,39,.9); --royal-ink:#E9E4D8; --royal-muted:#B9C2BE; --royal-edge:rgba(226,202,154,.23); --royal-gold:#DFC69A;
+  --burgundy-primary:#B79B66; --burgundy-deep:#DFC69A; --burgundy-light:#E3D1AF; --burgundy-glow:rgba(183,155,102,.18);
+  --glass-bg-card:rgba(20,32,39,.9); --glass-bg-modal:rgba(20,32,39,.97);
+  background:radial-gradient(ellipse at top left,#19372F,transparent 60%),#0D151C;
+  color:var(--royal-ink);
+}
+body :is(.dish-card,.boutique-room-card,.tariff-suite-card,.modal-sheet,.settings-panel,.feedback-container,.review-card,.ota-booking-panel) {
+  background:var(--royal-surface); border:1px solid var(--royal-edge); color:var(--royal-ink);
+  box-shadow:0 10px 32px rgba(5,16,24,.1),inset 0 1px rgba(255,255,255,.12);
+}
+/* Blur large panels only; hundreds of individually blurred menu cards hurt mobile scrolling. */
+body :is(.app-header,.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+body .dish-card { backdrop-filter:none; -webkit-backdrop-filter:none; }
+body.theme-dark :is(.room-card-info-panel,.tariff-suite-card,.tariff-card-amenities,.tariff-card-action,.feedback-container,.modal-header) { background:transparent; color:var(--royal-ink); }
+body.theme-dark :is(.dish-title,.modal-dish-name,.room-suite-title,.tariff-suite-title,.feedback-title) { color:var(--royal-ink) !important; }
+body.theme-dark :is(.dish-tax-note,.modal-dish-desc,.room-suite-desc,.tariff-suite-desc) { color:var(--royal-muted); }
+body.theme-dark :is(.view-detail-link,.subcat-chip.active,.filter-pill.active,.floating-menu-toggle-btn,.badge-tag,.dish-soldout-label,.modal-dish-variant-btn.active,.variant-btn.selected) {
+  background:#D6BC87 !important; color:#14231F !important; border-color:#E0CCA4 !important; box-shadow:0 3px 12px rgba(0,0,0,.18) !important;
+}
+body.theme-dark :is(.modal-dish-price,.dish-price,.signature-dish-price) { color:#DFC69A !important; }
+body.theme-dark .modal-btn-zomato-order { background:#28443C; border-color:#BCA578; box-shadow:none; color:#F0E8D9; }
+body.theme-dark .modal-btn-swiggy-order { background:#1C3546; border-color:#BCA578; box-shadow:none; color:#F0E8D9; }
+.app-header { border-bottom:1px solid rgba(220,191,136,.34); background:rgba(13,23,28,.95); }
+.brand-hotel-name { font-family:var(--font-royal),serif; letter-spacing:.14em; color:#EADCC0; text-shadow:none; }
+.brand-tagline { letter-spacing:.23em; color:#BCAD91; }
+.settings-trigger { border-radius:50%; border-color:rgba(220,191,136,.3); box-shadow:none; }
+.hotel-nav-tab { letter-spacing:.06em; }
+.settings-panel { max-height:calc(100dvh - 100px); overflow-y:auto; }
+.settings-developer { display:block; margin-top:18px; padding-top:14px; border-top:1px solid var(--royal-edge); font-size:.72rem; text-decoration:none; color:var(--royal-muted); }
+.ota-booking-panel { padding:16px; margin-top:20px; border-radius:14px; }
+.ota-booking-panel p { margin:0 0 10px; font-size:.82rem; color:var(--royal-muted); }
+.ota-booking-links { display:flex; gap:10px; }
+.ota-booking-links a { flex:1; min-width:0; padding:13px 8px; text-align:center; border:1px solid var(--royal-edge); border-radius:10px; background:rgba(164,134,79,.1); color:var(--royal-gold); text-decoration:none; font-weight:700; }
+.public-reviews { margin-bottom:28px; }
+.public-reviews h2 { font-family:var(--font-royal),serif; color:var(--royal-gold); }
+.review-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:16px; }
+.review-card { padding:20px; border-radius:16px; }
+.review-card blockquote { margin:12px 0; line-height:1.65; }
+.review-status { color:var(--royal-muted); line-height:1.6; }
+#dish-detail-modal { z-index:10020; }
+#dish-detail-modal.active { display:flex !important; visibility:visible !important; opacity:1 !important; pointer-events:auto !important; }
+#dish-detail-modal.active .dish-detail-sheet { opacity:1 !important; transform:translateY(0) !important; visibility:visible !important; }
+body.modal-open { overflow:hidden; }
+@media (max-width:640px) { .brand-hotel-name { font-size:1.1rem; letter-spacing:.08em; } .brand-tagline { font-size:.55rem; } .ota-booking-links a { font-size:.82rem; } }
+@media (prefers-reduced-motion:reduce) { .modal-backdrop,.modal-sheet { transition:none !important; } }
+@supports not (backdrop-filter:blur(1px)) { body :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { background:var(--ivory-canvas); } body.theme-dark :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { background:#142027; } }

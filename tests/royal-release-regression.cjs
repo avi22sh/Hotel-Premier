@@ -1,0 +1,26 @@
+const fs = require('node:fs');
+const vm = require('node:vm');
+const assert = require('node:assert/strict');
+const appSource = fs.readFileSync('app.js','utf8');
+const html = fs.readFileSync('index.html','utf8');
+const sw = fs.readFileSync('sw.js','utf8');
+assert.match(appSource,/clearTimeout\(this.dishDetailCloseTimer\)/);
+assert.match(appSource,/if \(modal.classList.contains\('active'\)\) return;/);
+assert.match(sw,/cache\.match\(req\)/);
+assert.match(sw,/fetch\(req, \{ cache: 'reload' \}\)/);
+assert.match(sw,/key.startsWith\('hotel-premier-'\)/);
+assert.doesNotMatch(html, /Looking for a custom app like this/);
+assert.match(html, /class="settings-developer"/);
+assert.match(html, /class="ota-booking-links"/);
+const callbacks = {};
+const classes = new Set(['active']);
+const modal = {style:{},setAttribute(){},classList:{contains:v=>classes.has(v),add:v=>classes.add(v),remove:v=>classes.delete(v)}};
+const context = {window:{},document:{readyState:'loading',addEventListener(){},getElementById:()=>modal,body:{classList:{remove(){}}}},console,setTimeout:fn=>(callbacks.close=fn,1)};
+vm.createContext(context);
+vm.runInContext(appSource+';window.App=HotelPremierApp;',context);
+const app = Object.create(context.window.App.prototype);
+app.closeDishDetail();
+classes.add('active'); // Simulate a new open before the old close callback fires.
+callbacks.close();
+assert.notEqual(modal.style.display,'none');
+console.log('PASS: reopened modal survives stale close callback; exact image cache keys, scoped purge, settings credit, booking links');

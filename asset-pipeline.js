@@ -466,6 +466,13 @@
       }
     }
 
+    versionedPhotoSource(source) {
+      if (typeof source !== 'string' || !source.startsWith('assets/')) return source || '';
+      const clean = source.split('?')[0];
+      const hash = window.HOTEL_PREMIER_IMAGE_SIZES?.[clean]?.[0]?.src?.match(/\/([a-f0-9]+)-\d+\.webp$/)?.[1];
+      return `${clean}?v=${hash || '21.0'}`;
+    }
+
     responsivePhotoAttributes(source, detail = false, compact = false) {
       const sizes = window.HOTEL_PREMIER_IMAGE_SIZES?.[source];
       if (Array.isArray(sizes) && sizes.length) {
@@ -502,7 +509,7 @@
         <div class="dish-media" id="dish-media-${dish.id}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           <img 
-            src="${dish.image}" 
+            src="${this.versionedPhotoSource(dish.image)}"
             ${this.responsivePhotoAttributes(dish.image)}
             alt="${dish.name}" 
             class="dish-img" 
@@ -654,7 +661,7 @@
         <div class="modal-dish-photo-wrap">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           <img 
-            src="${dish.image}" 
+            src="${this.versionedPhotoSource(dish.image)}"
             alt="${dish.name}" 
             id="detail-modal-img" 
             ${this.responsivePhotoAttributes(dish.image, true)}

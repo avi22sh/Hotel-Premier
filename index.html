@@ -71,11 +71,13 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="data/menu-image-sizes.js?v=20.56"></script>
-  <script src="asset-pipeline.js?v=20.56"></script>
+  <script src="data/menu-image-sizes.js?v=21.0"></script>
+  <script src="asset-pipeline.js?v=21.0"></script>
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=20.55">
+  <link rel="stylesheet" href="royal.css?v=21.0">
+  <script src="public-reviews.js?v=21.0" defer></script>
 </head>
 <body>
 
@@ -128,6 +130,7 @@
         <button class="settings-action" id="cms-settings-admin-btn" style="display: none;" onclick="document.getElementById('guest-settings').open=false; window.admin ? window.admin.openAdminModal() : null" title="Admin Studio & CRM">
           Staff studio
         </button>
+        <a class="settings-developer" href="https://wa.me/918983703702?text=Hello,%20I%20am%20interested%20in%20a%20custom%20hotel%20digital%20concierge%20or%20QR%20web%20app%20like%20Hotel%20Premier." target="_blank" rel="noopener noreferrer">Digital experience · Contact developer ↗</a>
         </div>
       </details>
     </div>
@@ -1277,6 +1280,11 @@
   <!-- ================================================================ -->
   <section class="guest-feedback-section" id="guest-feedback-section">
     <div class="feedback-container">
+      <section class="public-reviews" aria-labelledby="public-review-heading">
+        <h2 id="public-review-heading">Guest Experiences</h2>
+        <p class="review-status" id="public-review-status" role="status">Loading guest experiences…</p>
+        <div class="review-grid" id="public-review-grid"></div>
+      </section>
       <div style="text-align: center;">
         <span class="feedback-badge">⭐ YOUR EXPERIENCE MATTERS</span>
         <h2 class="feedback-title">Write a Review</h2>
@@ -1494,11 +1502,6 @@
         <div class="footer-copyright">
           © 2026 Hotel Premier & Pride Pure Veg AC Restaurant. All Rights Reserved.
         </div>
-        <div class="footer-tech-credit">
-          <a href="https://wa.me/918983703702?text=Hello,%20I%20am%20interested%20in%20a%20custom%20hotel%20digital%20concierge%20or%20QR%20web%20app%20like%20Hotel%20Premier." class="discreet-dev-link" target="_blank" rel="noopener noreferrer">
-            <span>Looking for a custom app like this? Contact Developer →</span>
-          </a>
-        </div>
       </div>
     </div>
   </footer>
@@ -1661,6 +1664,13 @@
             <a href="tel:09325375802" class="btn-tariff-call" style="flex: 0.8;">
               <span>📞 Call Front Desk</span>
             </a>
+          </div>
+          <div class="ota-booking-panel">
+            <p>Prefer a booking partner? Check availability and rates directly. Partner offers and cancellation terms may differ.</p>
+            <div class="ota-booking-links" aria-label="Book Hotel Premier through a partner">
+              <a href="https://www.makemytrip.com/hotels/hotel_premier-bhusawal.html" target="_blank" rel="noopener noreferrer">MakeMyTrip ↗</a>
+              <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-7988359765272654316/" target="_blank" rel="noopener noreferrer">Goibibo ↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1886,14 +1896,15 @@
   <script src="data/hotel-data.js?v=20.51"></script>
   <script src="data/menu-data.js?v=20.51"></script>
   <script src="data/menu-photos.js?v=20.51"></script>
-  <script src="app.js?v=20.56"></script>
+  <script src="app.js?v=21.0"></script>
   <script src="admin.js?v=20.51"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.56').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.0', { updateViaCache: 'none' }).then(function(reg) {
+          reg.update().catch(function() {});
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

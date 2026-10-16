@@ -541,7 +541,9 @@ class HotelPremierApp {
       }
       if (overridesMap && overridesMap[dish.id]) {
         const ov = overridesMap[dish.id];
-        if (ov.image !== undefined) copy.image = ov.image;
+        // Published asset paths are authoritative. Preserve private/new uploads,
+        // but do not let legacy device-local asset paths resurrect replaced files.
+        if (ov.image !== undefined && !(typeof ov.image === 'string' && ov.image.startsWith('assets/') && Object.prototype.hasOwnProperty.call(window.HOTEL_PREMIER_PHOTOS || {}, dish.id))) copy.image = ov.image;
         if (ov.price !== undefined) copy.price = ov.price;
         if (ov.isSoldOut !== undefined) copy.isSoldOut = ov.isSoldOut;
         if (ov.notAvailable !== undefined) copy.notAvailable = Boolean(ov.notAvailable);
@@ -1867,7 +1869,7 @@ class HotelPremierApp {
         <div class="dish-banner-media ${hasPhoto ? '' : 'no-photo'}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           ${hasPhoto ? `
-            <img src="${displayImage}" ${window.AssetPipeline?.responsivePhotoAttributes(displayImage, false, true) || ''} alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" decoding="async" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
+            <img src="${window.AssetPipeline?.versionedPhotoSource(displayImage) || displayImage}" ${window.AssetPipeline?.responsivePhotoAttributes(displayImage, false, true) || ''} alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" decoding="async" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
             <div class="hp-glass-vignette" aria-hidden="true"></div>
           ` : `
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
@@ -1965,13 +1967,13 @@ class HotelPremierApp {
     }
     if (!dish) return;
 
-    if (window.HOTEL_VAULT) {
-      window.HOTEL_VAULT.recordDishView(dish.id, dish.name, dish.categoryId);
-    }
+    try { window.HOTEL_VAULT?.recordDishView(dish.id, dish.name, dish.categoryId); }
+    catch (error) { console.warn('Dish analytics unavailable', error); }
 
     const modal = document.getElementById('dish-detail-modal');
     const body = document.getElementById('dish-detail-body');
     if (!modal || !body) return;
+    clearTimeout(this.dishDetailCloseTimer);
     this.lastDishDetailTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
     const displayImage = dish._activeVariantImage || dish.image;
@@ -2145,9 +2147,8 @@ class HotelPremierApp {
     body.querySelector('.modal-dish-detail-container').appendChild(orderActions);
     modal.classList.remove('closing');
     modal.style.display = 'flex';
-    requestAnimationFrame(() => {
-      modal.classList.add('active');
-    });
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
     window.setTimeout(() => modal.querySelector('.modal-close-btn')?.focus(), 60);
   }
@@ -2209,8 +2210,10 @@ class HotelPremierApp {
       modal.classList.add('closing');
       modal.classList.remove('active');
       document.body.classList.remove('modal-open');
-      setTimeout(() => {
+      this.dishDetailCloseTimer = setTimeout(() => {
+        if (modal.classList.contains('active')) return;
         modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
         modal.classList.remove('closing');
         if (this.lastDishDetailTrigger?.isConnected) this.lastDishDetailTrigger.focus();
         this.lastDishDetailTrigger = null;

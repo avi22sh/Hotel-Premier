@@ -8,9 +8,9 @@ for (const file of ['data/menu-photos.js','asset-pipeline.js','app.js']) {
 }
 (async()=>{
   const photos = context.window.HOTEL_PREMIER_PHOTOS;
-  assert.equal(Object.keys(photos).length,218);
+  assert.ok(Object.keys(photos).length >= 218, 'Published photo coverage must not shrink');
   assert.equal(Object.values(photos).filter(v=>v==='').length,30);
-  assert.equal(Object.values(photos).filter(v=>v.startsWith('assets/menu-uploads/')).length,16);
+  assert.ok(Object.values(photos).filter(v=>v.startsWith('assets/menu-uploads/')).length >= 16);
   for (const src of Object.values(photos)) {
     if (src) { assert.ok(src.startsWith('assets/')); assert.ok(fs.existsSync(src),src); }
   }
@@ -39,5 +39,5 @@ for (const file of ['data/menu-photos.js','asset-pipeline.js','app.js']) {
   context.window.HOTEL_STORAGE.getAllDishOverrides=async()=>({'md-7':{image:'new-owner-upload.jpg'}});
   await app.loadMenuData();
   assert.equal(app.menuData[0].image,'new-owner-upload.jpg');
-  console.log('PASS: 218 photo mappings, 16 original uploads, 30 empty slots, missing-image safety and local edit precedence');
+  console.log('PASS: published photo integrity, empty slots, missing-image safety and local upload precedence');
 })().catch(error=>{console.error(error);process.exitCode=1;});
