@@ -74,7 +74,7 @@
   <script src="asset-pipeline.js?v=20.51"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20.51">
+  <link rel="stylesheet" href="styles.css?v=20.52">
 </head>
 <body>
 
@@ -89,7 +89,7 @@
       </a>
 
       <details class="guest-settings" id="guest-settings">
-        <summary class="settings-trigger" aria-label="Open settings and guest profile" title="Settings and guest profile"><span class="settings-bird-icon" aria-hidden="true"></span></summary>
+        <summary class="settings-trigger" aria-label="Open settings and guest profile" title="Settings and guest profile"><svg class="settings-gear-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 3-.5 2a7 7 0 0 0-1.7 1L4.8 5.5l-2 3.5 1.5 1.5a7 7 0 0 0 0 2L2.8 14l2 3.5 2-.5a7 7 0 0 0 1.7 1L9 20h4l.5-2a7 7 0 0 0 1.7-1l2 .5 2-3.5-1.5-1.5a7 7 0 0 0 0-2L19.2 9l-2-3.5-2 .5a7 7 0 0 0-1.7-1L13 3Z" transform="translate(1 0.5)"/><circle cx="12" cy="12" r="3"/></svg></summary>
         <div class="settings-panel" aria-label="Guest settings">
         <h2 class="settings-title">Your preferences</h2>
         <div class="settings-row">
@@ -966,17 +966,6 @@
 
       <!-- Category Navigation & Search Controls -->
       <div class="dining-view-controls">
-        <!-- Horizontal Scrollable Category Chips Bar -->
-        <div class="category-nav-container-bar" id="category-nav-bar">
-          <button class="category-nav-arrow-btn prev" onclick="window.app ? window.app.scrollCategoryNav(-220) : null" aria-label="Previous Categories">‹</button>
-          <div class="category-nav-wrapper" id="category-nav-scroll-wrapper">
-            <div class="category-chips-container" id="category-chips-container">
-              <!-- Rendered dynamically by app.js: All Items + 20 categories -->
-            </div>
-          </div>
-          <button class="category-nav-arrow-btn next" onclick="window.app ? window.app.scrollCategoryNav(220) : null" aria-label="Next Categories">›</button>
-        </div>
-
         <!-- Concierge Dish Search & Quick Filters -->
         <div class="dining-search-filter-bar">
           <div class="search-input-wrapper">
@@ -1903,7 +1892,7 @@
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.51').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.52').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

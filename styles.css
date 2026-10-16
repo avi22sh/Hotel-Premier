@@ -2458,19 +2458,13 @@ a {
 }
 .settings-trigger::-webkit-details-marker { display: none; }
 
-/* Exact bird silhouettes from the original transparent hotel logo. */
-.settings-bird-icon {
-  --bird-icon-color: #D5B77A;
+/* Small theme-inheriting icon inside the existing 44px touch target. */
+.settings-gear-icon {
   display: block;
   flex: 0 0 auto;
-  font-size: 16px;
-  width: 2em;
-  height: 1.2414em;
-  background-color: var(--bird-icon-color);
-  -webkit-mask: url('assets/premier-original-logo.png') -3.5172em -0.1379em / 7.7414em 3.4655em no-repeat;
-  mask: url('assets/premier-original-logo.png') -3.5172em -0.1379em / 7.7414em 3.4655em no-repeat;
+  width: 20px;
+  height: 20px;
 }
-body.theme-dark .settings-bird-icon { --bird-icon-color: #F3D7A0; }
 .settings-trigger { padding-inline: 5px; }
 
 .settings-trigger:focus-visible,

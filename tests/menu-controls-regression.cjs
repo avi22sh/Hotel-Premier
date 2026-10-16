@@ -1,0 +1,12 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const html = fs.readFileSync('index.html', 'utf8');
+const css = fs.readFileSync('styles.css', 'utf8');
+assert.doesNotMatch(html, /id="category-(nav-bar|nav-scroll-wrapper|chips-container)"/);
+assert.doesNotMatch(html, /settings-bird-icon/);
+assert.match(html, /<svg class="settings-gear-icon"[^>]*stroke="currentColor"/);
+assert.match(html, /aria-label="Open settings and guest profile"/);
+assert.match(css, /\.settings-trigger\s*\{[^}]*width:\s*44px[^}]*min-height:\s*44px/);
+assert.match(html, /id="menu-search-input"/);
+assert.match(html, /id="floating-menu-toggle-btn"/);
+console.log('PASS: category strip removed, category drawer and search retained, accessible theme-aware settings gear');
