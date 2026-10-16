@@ -466,7 +466,12 @@
       }
     }
 
-    responsivePhotoAttributes(source, detail = false) {
+    responsivePhotoAttributes(source, detail = false, compact = false) {
+      const sizes = window.HOTEL_PREMIER_IMAGE_SIZES?.[source];
+      if (Array.isArray(sizes) && sizes.length) {
+        const unique = sizes.filter((entry, i) => sizes.findIndex(other => other.width === entry.width) === i);
+        return `srcset="${unique.map(entry => `${entry.src} ${entry.width}w`).join(', ')}" sizes="${compact ? '(max-width: 400px) 72px, 80px' : detail ? '(max-width: 640px) 92vw, 640px' : '(max-width: 640px) 92vw, 540px'}"`;
+      }
       // Only approved build-generated assets have these companion sizes.
       if (!/^assets\/menu-uploads\/approved\/(ic-10|ms-7)-v1-1280\.webp$/.test(source || '')) return '';
       const small = source.replace('-1280.webp', '-640.webp');

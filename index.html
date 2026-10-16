@@ -71,7 +71,8 @@
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=20.51"></script>
+  <script src="data/menu-image-sizes.js?v=20.56"></script>
+  <script src="asset-pipeline.js?v=20.56"></script>
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=20.55">
@@ -1885,14 +1886,14 @@
   <script src="data/hotel-data.js?v=20.51"></script>
   <script src="data/menu-data.js?v=20.51"></script>
   <script src="data/menu-photos.js?v=20.51"></script>
-  <script src="app.js?v=20.54"></script>
+  <script src="app.js?v=20.56"></script>
   <script src="admin.js?v=20.51"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.55').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.56').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
