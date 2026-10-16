@@ -2706,6 +2706,9 @@ a {
 .more-menu-filters-options { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
 .more-menu-filters summary:focus-visible, #section-dine .filter-pill:focus-visible { outline: 2px solid #B68B45; outline-offset: 3px; }
 body.theme-dark #section-dine .dining-search-filter-bar { background: #17212D; border-color: #384452; }
+body:not(.theme-dark) #section-dine #menu-search-input { background: #FFFDF8 !important; color: #263342 !important; border-color: #B8A88C; }
+body:not(.theme-dark) #section-dine #menu-search-input::placeholder { color: #5A6571 !important; opacity: 1; }
+body:not(.theme-dark) #section-dine .compact-dish-card .view-detail-link { background: #F4E9DA; color: #76213A; border-color: #CBB79B; }
 body.theme-dark #section-dine #menu-search-input { background: #101820; color: #F5EFE4; border-color: #475360; }
 body.theme-dark #section-dine #menu-search-input::placeholder { color: #B7C0CA; }
 body.theme-dark #section-dine .filter-pill { background: #24303D; color: #ECE5D8; border-color: #475360; }
