@@ -3,7 +3,7 @@
 body { background: radial-gradient(ellipse at top left,#F1E6D1,transparent 55%),#FAF7F0; color:var(--royal-ink); }
 body.theme-dark {
   --royal-surface:rgba(20,32,39,.9); --royal-ink:#E9E4D8; --royal-muted:#B9C2BE; --royal-edge:rgba(226,202,154,.23); --royal-gold:#DFC69A;
-  --burgundy-primary:#B79B66; --burgundy-deep:#DFC69A; --burgundy-light:#E3D1AF; --burgundy-glow:rgba(183,155,102,.18);
+  --burgundy-primary:#29473E; --burgundy-deep:#DFC69A; --burgundy-light:#365D50; --burgundy-glow:rgba(183,155,102,.18);
   --glass-bg-card:rgba(20,32,39,.9); --glass-bg-modal:rgba(20,32,39,.97);
   background:radial-gradient(ellipse at top left,#19372F,transparent 60%),#0D151C;
   color:var(--royal-ink);
@@ -18,10 +18,11 @@ body .dish-card { backdrop-filter:none; -webkit-backdrop-filter:none; }
 body.theme-dark :is(.room-card-info-panel,.tariff-suite-card,.tariff-card-amenities,.tariff-card-action,.feedback-container,.modal-header) { background:transparent; color:var(--royal-ink); }
 body.theme-dark :is(.dish-title,.modal-dish-name,.room-suite-title,.tariff-suite-title,.feedback-title) { color:var(--royal-ink) !important; }
 body.theme-dark :is(.dish-tax-note,.modal-dish-desc,.room-suite-desc,.tariff-suite-desc) { color:var(--royal-muted); }
-body.theme-dark :is(.view-detail-link,.subcat-chip.active,.filter-pill.active,.floating-menu-toggle-btn,.badge-tag,.dish-soldout-label,.modal-dish-variant-btn.active,.variant-btn.selected) {
+body.theme-dark :is(.view-detail-link,.subcat-chip.active,.filter-pill.active,.floating-menu-toggle-btn,.badge-tag,.dish-soldout-label,.modal-dish-variant-btn.selected,.variant-btn.selected) {
   background:#D6BC87 !important; color:#14231F !important; border-color:#E0CCA4 !important; box-shadow:0 3px 12px rgba(0,0,0,.18) !important;
 }
 body.theme-dark :is(.modal-dish-price,.dish-price,.signature-dish-price) { color:#DFC69A !important; }
+body.theme-dark .modal-dish-variant-btn:hover { background:#29473E; color:#E9E4D8; border-color:#DFC69A; }
 body.theme-dark .modal-btn-zomato-order { background:#28443C; border-color:#BCA578; box-shadow:none; color:#F0E8D9; }
 body.theme-dark .modal-btn-swiggy-order { background:#1C3546; border-color:#BCA578; box-shadow:none; color:#F0E8D9; }
 .app-header { border-bottom:1px solid rgba(220,191,136,.34); background:rgba(13,23,28,.95); }

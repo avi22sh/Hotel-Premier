@@ -76,7 +76,7 @@
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=20.55">
-  <link rel="stylesheet" href="royal.css?v=21.0">
+  <link rel="stylesheet" href="royal.css?v=21.1">
   <script src="public-reviews.js?v=21.0" defer></script>
 </head>
 <body>
@@ -1903,7 +1903,7 @@
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.0', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.1', { updateViaCache: 'none' }).then(function(reg) {
           reg.update().catch(function() {});
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
