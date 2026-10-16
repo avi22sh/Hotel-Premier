@@ -19,3 +19,9 @@
 - The feed is intentionally empty until approved public reviews or an authorized external feed are supplied. No private CRM feedback or contact details are published. No fabricated testimonials.
 - MMT and Goibibo links reuse existing hotel URLs; automated remote verification was unavailable. They are outbound booking links, not live inventory/payment integrations.
 - No paid service or API has been enabled.
+
+## Requested review-feed policy
+- Display only approved 3–5-star reviews and disclose that the display is selected, not the full review history. Never derive or present an overall hotel rating from this subset.
+- Display source and last successful update date. Mark data older than seven days as awaiting refresh.
+- Weekly ingestion is not active: Google Business Profile project/API approval and owner OAuth authorization are required. MMT/Goibibo partner support must provide authorized review-feed access and republication permission. Booking account access alone is not a configured feed.
+- Secrets must stay in a server-side secret store, never GitHub Pages JavaScript, JSON, or chat. No scraping or paid review widget is enabled.
