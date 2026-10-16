@@ -20,6 +20,7 @@ class HotelPremierApp {
     this.mainMode = 'menu'; // 'menu' | 'hotel'
     this.isLargeFont = false;
     this.currentLang = 'en'; // 'en' | 'hi' | 'mr'
+    this.activeSubCategories = {}; // { [catId]: subCatId }
 
     // Storage Keys
     this.storageKeyMenu = 'hotel_premier_menu_v2';
@@ -543,6 +544,7 @@ class HotelPremierApp {
         if (ov.image !== undefined) copy.image = ov.image;
         if (ov.price !== undefined) copy.price = ov.price;
         if (ov.isSoldOut !== undefined) copy.isSoldOut = ov.isSoldOut;
+        if (ov.notAvailable !== undefined) copy.notAvailable = Boolean(ov.notAvailable);
         if (ov.tags !== undefined) copy.tags = ov.tags;
       }
       return copy;
@@ -576,6 +578,7 @@ class HotelPremierApp {
           image: dish.image,
           price: dish.price,
           isSoldOut: dish.isSoldOut,
+          notAvailable: Boolean(dish.notAvailable),
           tags: dish.tags
         };
       });
@@ -728,7 +731,7 @@ class HotelPremierApp {
 
     // 2. If no custom slides stored, auto-derive by selecting random images from this section
     if (!slides || !Array.isArray(slides) || slides.length === 0) {
-      const dishes = this.menuData.filter(d => d.categoryId === catId && d.image && d.image.trim() !== '');
+      const dishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === catId && d.image && d.image.trim() !== '');
       // Shuffle and pick random 4-5 dishes from this section to display in the banner
       const shuffledDishes = [...dishes].sort(() => 0.5 - Math.random());
       const selectedDishes = shuffledDishes.slice(0, Math.min(5, shuffledDishes.length));
@@ -993,7 +996,7 @@ class HotelPremierApp {
     }
 
     container.innerHTML = displayCats.map(cat => {
-      const catDishes = this.menuData.filter(d => d.categoryId === cat.id);
+      const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === cat.id);
       const count = catDishes.length;
       const localizedTitle = this.getCategoryLocalizedName(cat.id);
       const localizedSubtitle = this.getCategoryLocalizedSubtitle(cat.id);
@@ -1123,7 +1126,7 @@ class HotelPremierApp {
     const titleEl = document.getElementById('active-category-title');
     const hindiEl = document.getElementById('active-category-hindi');
     const countEl = document.getElementById('active-category-count');
-    const catDishes = this.menuData.filter(d => d.categoryId === catId);
+    const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === catId);
     const itemsWord = this.t('itemsCount', 'Items');
 
     if (titleEl) titleEl.innerText = this.getCategoryLocalizedName(catId);
@@ -1223,7 +1226,7 @@ class HotelPremierApp {
 
     if (titleEl) titleEl.innerText = this.t('allMenuTitle', 'All Dishes (Full Menu)');
     if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle', 'संपूर्ण शाकाहारी मेनू • 214 Delicacies');
-    if (countEl) countEl.innerText = `${this.menuData.length} ${itemsWord}`;
+    if (countEl) countEl.innerText = `${this.menuData.filter(d => !d.notAvailable).length} ${itemsWord}`;
 
     this.renderQuickFilters();
     this.renderCategories();
@@ -1349,7 +1352,7 @@ class HotelPremierApp {
       floatBadge.innerText = validCategories.length;
     }
 
-    const allDishesCount = this.menuData ? this.menuData.length : 218;
+    const allDishesCount = this.menuData ? this.menuData.filter(d => !d.notAvailable).length : 218;
     const isAllActive = (this.currentCategory === 'all' && this.viewMode === 'all');
     const dishesWord = this.t('itemsCount', 'Items');
 
@@ -1365,7 +1368,7 @@ class HotelPremierApp {
         isAll: true
       },
       ...validCategories.map(cat => {
-        const catDishes = this.menuData.filter(d => d.categoryId === cat.id);
+        const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === cat.id);
         const localizedTitle = this.getCategoryLocalizedName(cat.id);
         const localizedSubtitle = this.getCategoryLocalizedSubtitle(cat.id);
         const localizedDesc = this.getCategoryLocalizedDesc(cat.id);
@@ -1612,6 +1615,7 @@ class HotelPremierApp {
     }
 
     return this.menuData.filter(item => {
+      if (item.notAvailable) return false;
       if (this.currentCategory === 'chef-specials') {
         if (!item.tags || !item.tags.includes('chef-special')) return false;
       } else if (this.currentCategory && this.currentCategory !== 'all') {
@@ -1639,6 +1643,87 @@ class HotelPremierApp {
     });
   }
 
+  getSubCategoryLocalizedName(subCat) {
+    if (!subCat) return '';
+    if (this.currentLang === 'hi' && subCat.hindiName) return subCat.hindiName;
+    if (this.currentLang === 'mr' && subCat.marathiName) return subCat.marathiName;
+    return subCat.name;
+  }
+
+  renderSubCategoryChips(catId, catDishes) {
+    const subCats = (window.HOTEL_PREMIER_SUB_CATEGORIES && window.HOTEL_PREMIER_SUB_CATEGORIES[catId]) || [];
+    if (!subCats || subCats.length <= 1) return '';
+
+    const activeSubId = this.activeSubCategories[catId] || 'all';
+
+    return `
+      <div class="subcat-nav-wrapper">
+        <div class="subcat-chips-scroll" id="subcat-chips-${catId}" role="tablist" aria-label="Sub categories">
+          ${subCats.map(sc => {
+            const isActive = (sc.id === activeSubId);
+            let count = 0;
+            if (sc.id === 'all') {
+              count = catDishes.length;
+            } else if (sc.dishIds) {
+              count = catDishes.filter(d => sc.dishIds.includes(d.id)).length;
+            }
+            if (count === 0 && sc.id !== 'all') return '';
+            const label = this.getSubCategoryLocalizedName(sc);
+            return `
+              <button type="button" 
+                      class="subcat-chip ${isActive ? 'active' : ''}" 
+                      data-cat-id="${catId}" 
+                      data-subcat-id="${sc.id}"
+                      role="tab"
+                      aria-selected="${isActive ? 'true' : 'false'}"
+                      onclick="window.app.setSubCategoryFilter('${catId}', '${sc.id}')">
+                <span class="subcat-chip-name">${label}</span>
+                <span class="subcat-chip-count">${count}</span>
+              </button>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  setSubCategoryFilter(catId, subCatId) {
+    this.activeSubCategories[catId] = subCatId;
+
+    const container = document.getElementById(`subcat-chips-${catId}`);
+    if (container) {
+      container.querySelectorAll('.subcat-chip').forEach(btn => {
+        const isMatch = btn.getAttribute('data-subcat-id') === subCatId;
+        btn.classList.toggle('active', isMatch);
+        btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+        if (isMatch) {
+          btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      });
+    }
+
+    const grid = document.getElementById(`dish-grid-${catId}`);
+    if (grid) {
+      const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === catId);
+      const subCats = (window.HOTEL_PREMIER_SUB_CATEGORIES && window.HOTEL_PREMIER_SUB_CATEGORIES[catId]) || [];
+      const subCat = subCats.find(s => s.id === subCatId);
+
+      let displayed = catDishes;
+      if (subCat && subCat.id !== 'all' && subCat.dishIds) {
+        displayed = catDishes.filter(d => subCat.dishIds.includes(d.id));
+      }
+
+      grid.style.opacity = '0.35';
+      grid.style.transform = 'translateY(4px)';
+      setTimeout(() => {
+        grid.innerHTML = displayed.map(dish => this.renderDishCard(dish)).join('');
+        this.bindDishActions();
+        grid.style.opacity = '1';
+        grid.style.transform = 'translateY(0)';
+      }, 90);
+    }
+  }
+
   renderMenu() {
     const container = document.getElementById('menu-items-grid');
     if (!container) return;
@@ -1661,12 +1746,21 @@ class HotelPremierApp {
     if (this.currentCategory === 'all' && this.searchQuery.trim() === '' && this.currentFilter === 'all') {
       let html = '';
       const activeCats = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
-      
+
       activeCats.forEach(cat => {
-        const catDishes = this.menuData.filter(d => d.categoryId === cat.id);
+        const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === cat.id);
         if (catDishes.length > 0) {
           const locName = this.getCategoryLocalizedName(cat.id);
           const locSub = this.getCategoryLocalizedSubtitle(cat.id);
+          const activeSubId = this.activeSubCategories[cat.id] || 'all';
+          const subCats = (window.HOTEL_PREMIER_SUB_CATEGORIES && window.HOTEL_PREMIER_SUB_CATEGORIES[cat.id]) || [];
+          const subCat = subCats.find(s => s.id === activeSubId);
+
+          let displayedDishes = catDishes;
+          if (subCat && subCat.id !== 'all' && subCat.dishIds) {
+            displayedDishes = catDishes.filter(d => subCat.dishIds.includes(d.id));
+          }
+
           html += `
             <div class="category-section" id="section-${cat.id}">
               <div class="section-header">
@@ -1676,8 +1770,9 @@ class HotelPremierApp {
                 </div>
                 <span class="section-count">${catDishes.length} ${itemsWord}</span>
               </div>
-              <div class="dish-grid">
-                ${catDishes.map(dish => this.renderDishCard(dish)).join('')}
+              ${this.renderSubCategoryChips(cat.id, catDishes)}
+              <div class="dish-grid" id="dish-grid-${cat.id}">
+                ${displayedDishes.map(dish => this.renderDishCard(dish)).join('')}
               </div>
             </div>
           `;
@@ -1687,17 +1782,34 @@ class HotelPremierApp {
     } else {
       let sectionTitle = '';
       let sectionSub = '';
+      let subCatChipsHtml = '';
+      let displayedDishes = filtered;
+
       if (this.currentCategory && this.currentCategory !== 'all') {
-        sectionTitle = this.getCategoryLocalizedName(this.currentCategory);
-        sectionSub = this.getCategoryLocalizedSubtitle(this.currentCategory);
+        const catId = this.currentCategory;
+        sectionTitle = this.getCategoryLocalizedName(catId);
+        sectionSub = this.getCategoryLocalizedSubtitle(catId);
+        const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === catId);
+
+        const activeSubId = this.activeSubCategories[catId] || 'all';
+        const subCats = (window.HOTEL_PREMIER_SUB_CATEGORIES && window.HOTEL_PREMIER_SUB_CATEGORIES[catId]) || [];
+        const subCat = subCats.find(s => s.id === activeSubId);
+
+        if (subCat && subCat.id !== 'all' && subCat.dishIds) {
+          displayedDishes = filtered.filter(d => subCat.dishIds.includes(d.id));
+        }
+
+        subCatChipsHtml = this.renderSubCategoryChips(catId, catDishes);
       } else if (this.searchQuery.trim() !== '') {
         sectionTitle = `Search Results for "${this.searchQuery}"`;
       } else {
         sectionTitle = 'Culinary Selection';
       }
 
+      const activeCatId = (this.currentCategory && this.currentCategory !== 'all') ? this.currentCategory : 'custom';
+
       container.innerHTML = `
-        <div class="category-section">
+        <div class="category-section" id="section-${activeCatId}">
           <div class="section-header">
             <div>
               <h3 class="section-title">${sectionTitle}</h3>
@@ -1705,8 +1817,9 @@ class HotelPremierApp {
             </div>
             <span class="section-count">${filtered.length} ${itemsWord}</span>
           </div>
-          <div class="dish-grid">
-            ${filtered.map(dish => this.renderDishCard(dish)).join('')}
+          ${subCatChipsHtml}
+          <div class="dish-grid" id="dish-grid-${activeCatId}">
+            ${displayedDishes.map(dish => this.renderDishCard(dish)).join('')}
           </div>
         </div>
       `;
@@ -1726,7 +1839,11 @@ class HotelPremierApp {
     const displayImage = dish._activeVariantImage || dish.image;
     const displayPrice = dish._activeVariantPrice || dish.price;
     const hasPhoto = displayImage && displayImage.trim() !== '';
+
     let tagPillsHtml = '';
+    if (dish.tags && dish.tags.includes('bestseller')) {
+      tagPillsHtml += `<span class="dish-pill-bestseller">${this.t('badgeBestseller')}</span>`;
+    }
     if (dish.tags && dish.tags.includes('spicy')) {
       tagPillsHtml += `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>`;
     }
@@ -1736,11 +1853,14 @@ class HotelPremierApp {
     if (dish.tags && dish.tags.includes('chef-special')) {
       tagPillsHtml += `<span class="dish-pill-chef">${this.t('badgeChefSpecial')}</span>`;
     }
+    if (dish.tags && dish.tags.includes('khandeshi-special')) {
+      tagPillsHtml += `<span class="dish-pill-khandeshi">${this.t('badgeKhandeshi')}</span>`;
+    }
 
     let variantsHtml = '';
     if (hasVariants) {
       variantsHtml = `
-        <div class="dish-variants" data-dish-id="${dish.id}">
+        <div class="dish-variants" data-dish-id="${dish.id}" onclick="event.stopPropagation()">
           ${dish.variants.map((v, i) => {
             const isSelected = dish._activeVariantImage ? (dish._activeVariantImage === v.image) : (i === 0);
             return `
@@ -1761,32 +1881,16 @@ class HotelPremierApp {
       dishTitleHtml = `${dish.name} <span class="dish-title-sub">(${subName})</span>`;
     }
 
-    let topBadgeHtml = '';
-    const badgeItems = [];
-    if (dish.tags) {
-      if (dish.tags.includes('bestseller')) {
-        badgeItems.push(`<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`);
-      }
-      if (dish.tags.includes('sweet')) {
-        badgeItems.push(`<span class="badge-tag sweet">${this.t('badgeSweet')}</span>`);
-      }
-      if (dish.tags.includes('spicy')) {
-        badgeItems.push(`<span class="badge-tag spicy">${this.t('badgeSpicy')}</span>`);
-      }
-      if (dish.tags.includes('chef-special') && !dish.tags.includes('bestseller')) {
-        badgeItems.push(`<span class="badge-tag chef">${this.t('badgeChefSpecial')}</span>`);
-      }
-      if (dish.tags.includes('khandeshi-special') && !dish.tags.includes('bestseller')) {
-        badgeItems.push(`<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`);
-      }
-    }
-    topBadgeHtml = badgeItems.join('');
-
-    const dishWithDisplay = { ...dish, image: displayImage, price: displayPrice };
-    const mediaHtml = (window.AssetPipeline && typeof window.AssetPipeline.renderDishMedia === 'function')
-      ? window.AssetPipeline.renderDishMedia(dishWithDisplay, { badgesHtml: topBadgeHtml, soldOutText: this.t('soldOut') })
-      : `
-        <div class="dish-media ${hasPhoto ? '' : 'no-photo'}">
+    return `
+      <div class="dish-card ${dish.isSoldOut ? 'sold-out' : ''}" 
+           id="dish-card-${dish.id}" 
+           onclick="window.app.openDishDetail('${dish.id}')"
+           role="button"
+           tabindex="0"
+           aria-label="${dish.name}, ₹${displayPrice}"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.openDishDetail('${dish.id}');}">
+        <div class="dish-banner-media ${hasPhoto ? '' : 'no-photo'}">
+          <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           ${hasPhoto ? `
             <img src="${displayImage}" alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
             <div class="hp-glass-vignette" aria-hidden="true"></div>
@@ -1794,35 +1898,34 @@ class HotelPremierApp {
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
               <div class="no-photo-icon">🌱</div>
               <div class="no-photo-crest">HOTEL PREMIER</div>
-              <div class="no-photo-sub">PRIDE PURE VEG AC RESTAURANT</div>
             </div>
           `}
           ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
-          ${topBadgeHtml ? `<div class="dish-badges">${topBadgeHtml}</div>` : ''}
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
         </div>
-      `;
-
-    return `
-      <div class="dish-card ${dish.isSoldOut ? 'sold-out' : ''}" id="dish-card-${dish.id}" onclick="window.app.openDishDetail('${dish.id}')">
-        ${mediaHtml}
-        <div class="dish-body">
-          <div class="dish-header-row">
-            <h4 class="dish-title">${dishTitleHtml}</h4>
-          </div>
-          ${tagPillsHtml ? `<div class="dish-tag-row">${tagPillsHtml}</div>` : ''}
-          <p class="dish-desc">${this.getDishDescription(dish) || 'Prepared fresh with fine spices and authentic culinary care.'}</p>
-          ${variantsHtml}
-          <div class="dish-footer">
-            <div class="dish-price-block">
+        <div class="dish-banner-content">
+          <div class="dish-banner-top">
+            <div class="dish-banner-header">
+              <h4 class="dish-title">${dishTitleHtml}</h4>
+            </div>
+            <div class="dish-banner-price-stack">
               <span class="dish-price" id="price-display-${dish.id}">₹${displayPrice}</span>
               <span class="dish-tax-note">${this.t('taxNote')}</span>
             </div>
-            ${dish.isSoldOut ? `
-              <span style="font-size: 0.75rem; font-weight: 800; color: var(--pure-red);">${this.t('soldOut')}</span>
-            ` : `
-              <span class="view-detail-link" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}')">${this.t('detailsBtn')}</span>
-            `}
+          </div>
+          ${tagPillsHtml ? `<div class="dish-tag-row">${tagPillsHtml}</div>` : ''}
+          <p class="dish-desc">${this.getDishDescription(dish) || 'Prepared fresh with fine spices and authentic culinary care.'}</p>
+          <div class="dish-banner-bottom">
+            ${variantsHtml}
+            <div class="dish-banner-action">
+              ${dish.isSoldOut ? `
+                <span class="dish-soldout-label">${this.t('soldOut')}</span>
+              ` : `
+                <span class="view-detail-link" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}')">
+                  ${this.t('detailsBtn')}
+                </span>
+              `}
+            </div>
           </div>
         </div>
       </div>
@@ -2027,6 +2130,9 @@ class HotelPremierApp {
           <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('khandeshi-special') ? 'active-khandeshi' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'khandeshi-special') : null">
             🫕 Khandeshi
           </button>
+          <button type="button" class="admin-tag-toggle-chip ${dish.notAvailable ? 'active-not-available' : ''}" onclick="window.app.toggleDishNotAvailable('${dish.id}', !${Boolean(dish.notAvailable)})" title="Toggle visibility in customer PWA">
+            ${dish.notAvailable ? '🚫 Hidden from PWA' : '👁️ Hide (Not Available)'}
+          </button>
         </div>
 
         <div class="modal-dish-tags">
@@ -2064,10 +2170,13 @@ class HotelPremierApp {
       orderActions.appendChild(link);
     }
     body.querySelector('.modal-dish-detail-container').appendChild(orderActions);
+    modal.classList.remove('closing');
     modal.style.display = 'flex';
-    modal.classList.add('active');
+    requestAnimationFrame(() => {
+      modal.classList.add('active');
+    });
     document.body.classList.add('modal-open');
-    window.setTimeout(() => modal.querySelector('.modal-close-btn')?.focus(), 0);
+    window.setTimeout(() => modal.querySelector('.modal-close-btn')?.focus(), 60);
   }
 
   switchModalVariant(dishId, btn) {
@@ -2123,12 +2232,41 @@ class HotelPremierApp {
 
   closeDishDetail() {
     const modal = document.getElementById('dish-detail-modal');
-    if (modal) {
+    if (modal && modal.classList.contains('active')) {
+      modal.classList.add('closing');
       modal.classList.remove('active');
-      modal.style.display = 'none';
       document.body.classList.remove('modal-open');
-      if (this.lastDishDetailTrigger?.isConnected) this.lastDishDetailTrigger.focus();
-      this.lastDishDetailTrigger = null;
+      setTimeout(() => {
+        modal.style.display = 'none';
+        modal.classList.remove('closing');
+        if (this.lastDishDetailTrigger?.isConnected) this.lastDishDetailTrigger.focus();
+        this.lastDishDetailTrigger = null;
+      }, 240);
+    }
+  }
+
+  async toggleDishNotAvailable(dishId, isNotAvailable) {
+    const dish = this.menuData.find(d => d.id === dishId);
+    if (!dish) return;
+    dish.notAvailable = Boolean(isNotAvailable);
+    this.saveMenuData();
+    if (window.HOTEL_STORAGE) {
+      await window.HOTEL_STORAGE.saveDishOverride(dishId, { notAvailable: dish.notAvailable });
+    }
+    this.renderCategoryCards();
+    this.renderMenu();
+    if (window.admin && typeof window.admin.filterAdminDishes === 'function') {
+      window.admin.filterAdminDishes();
+    }
+    const statusText = dish.notAvailable 
+      ? `"${dish.name}" is now marked Not Available and hidden from PWA!` 
+      : `"${dish.name}" is now Available and restored to PWA!`;
+    this.showToast(statusText, dish.notAvailable ? 'warning' : 'success');
+
+    // If modal is open for this dish, re-render it so staff immediately sees the updated state
+    const modal = document.getElementById('dish-detail-modal');
+    if (modal && modal.classList.contains('active')) {
+      this.openDishDetail(dishId);
     }
   }
 
@@ -3198,9 +3336,13 @@ class HotelPremierApp {
     document.querySelectorAll('.modal-backdrop').forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-          modal.classList.remove('active');
-          modal.style.display = 'none';
-          document.body.classList.remove('modal-open');
+          if (modal.id === 'dish-detail-modal') {
+            this.closeDishDetail();
+          } else {
+            modal.classList.remove('active');
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+          }
         }
       });
     });

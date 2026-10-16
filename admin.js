@@ -343,11 +343,16 @@ class HotelPremierAdmin {
 
     container.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
-        <div style="display: flex; gap: 8px; flex-grow: 1; max-width: 480px;">
-          <input type="text" id="admin-search-dish" placeholder="Search dish name to edit price, photo, or status..." class="form-input" style="padding: 7px 12px; font-size: 0.82rem;">
+        <div style="display: flex; gap: 8px; flex-grow: 1; max-width: 620px; flex-wrap: wrap;">
+          <input type="text" id="admin-search-dish" placeholder="Search dish name to edit price, photo, or status..." class="form-input" style="padding: 7px 12px; font-size: 0.82rem; min-width: 220px; flex: 1;">
           <select id="admin-category-filter" class="form-select" style="padding: 7px 12px; font-size: 0.82rem; width: auto;">
             <option value="all">All Categories</option>
             ${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
+          </select>
+          <select id="admin-status-filter" class="form-select" style="padding: 7px 12px; font-size: 0.82rem; width: auto;">
+            <option value="all">All Items</option>
+            <option value="active">Active Only (Visible)</option>
+            <option value="notAvailable">Not Available (Hidden)</option>
           </select>
         </div>
         <button class="btn-primary" style="padding: 8px 16px; font-size: 0.82rem;" onclick="window.admin.openAddDishModal()">
@@ -363,9 +368,10 @@ class HotelPremierAdmin {
               <th>Dish Name & Description</th>
               <th>Category</th>
               <th style="width: 90px;">Price (₹)</th>
-              <th style="min-width: 170px;">Taste & Badges (Sweet/Spicy/etc)</th>
-              <th style="width: 80px; text-align: center;">Available</th>
-              <th style="width: 60px; text-align: center;">Delete</th>
+              <th style="min-width: 170px;">Taste & Badges</th>
+              <th style="width: 80px; text-align: center;">Sold Out</th>
+              <th style="width: 110px; text-align: center;">PWA Visibility</th>
+              <th style="width: 50px; text-align: center;">Delete</th>
             </tr>
           </thead>
           <tbody id="admin-dish-tbody">
@@ -377,6 +383,7 @@ class HotelPremierAdmin {
 
     document.getElementById('admin-search-dish').addEventListener('input', () => this.filterAdminDishes());
     document.getElementById('admin-category-filter').addEventListener('change', () => this.filterAdminDishes());
+    document.getElementById('admin-status-filter').addEventListener('change', () => this.filterAdminDishes());
   }
 
   generateDishTableRows(dishes) {
@@ -443,10 +450,20 @@ class HotelPremierAdmin {
             </div>
           </td>
           <td style="text-align: center;">
-            <label class="toggle-switch">
+            <label class="toggle-switch" title="Mark dish Sold Out (shows Sold Out banner in PWA)">
               <input type="checkbox" ${!isSoldOut ? 'checked' : ''} onchange="window.admin.toggleAvailability('${dish.id}', this.checked)">
               <span class="toggle-slider"></span>
             </label>
+            <div style="font-size: 0.62rem; color: var(--text-muted); margin-top: 2px;">${isSoldOut ? 'Sold Out' : 'In Stock'}</div>
+          </td>
+          <td style="text-align: center;">
+            <label class="toggle-switch" title="Check to make invisible from customer PWA">
+              <input type="checkbox" ${dish.notAvailable ? 'checked' : ''} onchange="window.admin.toggleNotAvailable('${dish.id}', this.checked)">
+              <span class="toggle-slider toggle-slider-danger"></span>
+            </label>
+            <div style="font-size: 0.65rem; font-weight: 800; color: ${dish.notAvailable ? '#EF4444' : '#10B981'}; margin-top: 2px;">
+              ${dish.notAvailable ? '🚫 Hidden' : 'Active'}
+            </div>
           </td>
           <td style="text-align: center;">
             <button style="background: none; border: none; font-size: 1rem; cursor: pointer; opacity: 0.7;" onclick="window.admin.deleteDish('${dish.id}')" title="Delete Dish">🗑️</button>
@@ -457,14 +474,18 @@ class HotelPremierAdmin {
   }
 
   filterAdminDishes() {
-    const q = (document.getElementById('admin-search-dish').value || '').toLowerCase();
-    const cat = document.getElementById('admin-category-filter').value;
+    const q = (document.getElementById('admin-search-dish')?.value || '').toLowerCase();
+    const cat = document.getElementById('admin-category-filter')?.value || 'all';
+    const status = document.getElementById('admin-status-filter')?.value || 'all';
     const tbody = document.getElementById('admin-dish-tbody');
 
     const filtered = window.app.menuData.filter(d => {
       const matchesQ = d.name.toLowerCase().includes(q) || (d.description && d.description.toLowerCase().includes(q));
       const matchesCat = (cat === 'all') || (d.categoryId === cat);
-      return matchesQ && matchesCat;
+      let matchesStatus = true;
+      if (status === 'active') matchesStatus = !d.notAvailable;
+      if (status === 'notAvailable') matchesStatus = Boolean(d.notAvailable);
+      return matchesQ && matchesCat && matchesStatus;
     });
 
     if (tbody) {
@@ -539,6 +560,13 @@ class HotelPremierAdmin {
       window.app.renderMenu();
       const statusText = isAvailable ? 'Available' : 'Marked Sold Out';
       window.app.showToast(`"${dish.name}" is now ${statusText}!`, 'info');
+    }
+  }
+
+  async toggleNotAvailable(dishId, isNotAvailable) {
+    if (window.app && typeof window.app.toggleDishNotAvailable === 'function') {
+      await window.app.toggleDishNotAvailable(dishId, isNotAvailable);
+      this.filterAdminDishes();
     }
   }
 

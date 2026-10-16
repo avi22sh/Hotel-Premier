@@ -466,6 +466,13 @@
       }
     }
 
+    responsivePhotoAttributes(source, detail = false) {
+      // Only approved build-generated assets have these companion sizes.
+      if (!/^assets\/menu-uploads\/approved\/(ic-10|ms-7)-v1-1280\.webp$/.test(source || '')) return '';
+      const small = source.replace('-1280.webp', '-640.webp');
+      return `srcset="${small} 640w, ${source} 1280w" sizes="${detail ? '(max-width: 640px) 92vw, 640px' : '(max-width: 640px) 92vw, 540px'}"`;
+    }
+
     renderDishMedia(dish, options = {}) {
       const hasPhoto = dish.image && dish.image.trim() !== '';
       const badgesHtml = options.badgesHtml || '';
@@ -491,6 +498,7 @@
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           <img 
             src="${dish.image}" 
+            ${this.responsivePhotoAttributes(dish.image)}
             alt="${dish.name}" 
             class="dish-img" 
             id="dish-img-el-${dish.id}" 
@@ -644,6 +652,7 @@
             src="${dish.image}" 
             alt="${dish.name}" 
             id="detail-modal-img" 
+            ${this.responsivePhotoAttributes(dish.image, true)}
             class="modal-dish-img" 
             loading="eager"
             onerror="window.AssetPipeline.handleImageError(this)"
