@@ -1553,12 +1553,20 @@ class HotelPremierApp {
     const container = document.getElementById('quick-filters-container');
     if (!container) return;
 
-    container.innerHTML = filters.map(f => `
-      <button class="filter-pill ${this.currentFilter === f.id ? 'active' : ''}" data-filter-id="${f.id}">
+    const primaryIds = ['all', 'bestseller', 'chef-special'];
+    const renderFilter = f => `
+      <button type="button" class="filter-pill ${this.currentFilter === f.id ? 'active' : ''}" data-filter-id="${f.id}" aria-pressed="${this.currentFilter === f.id}">
         ${f.icon ? `<span>${f.icon}</span>` : ''}
         <span>${this.t(f.labelKey)}</span>
       </button>
-    `).join('');
+    `;
+    const extraFilters = filters.filter(f => !primaryIds.includes(f.id));
+    const activeExtra = extraFilters.find(f => f.id === this.currentFilter);
+    container.innerHTML = primaryIds.map(id => renderFilter(filters.find(f => f.id === id))).join('') + `
+      <details class="more-menu-filters" ${activeExtra ? 'open' : ''}>
+        <summary>${this.t('filterMore', 'More filters')}${activeExtra ? ' •' : ''}</summary>
+        <div class="more-menu-filters-options">${extraFilters.map(renderFilter).join('')}</div>
+      </details>`;
 
     container.querySelectorAll('.filter-pill').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -2160,7 +2168,7 @@ class HotelPremierApp {
 
     const orderActions = document.createElement('div');
     orderActions.className = 'modal-dish-actions delivery-buttons-container';
-    for (const platform of ['zomato', 'swiggy']) {
+    for (const platform of ['swiggy', 'zomato']) {
       const link = document.createElement('a');
       link.className = `modal-btn-${platform}-order delivery-btn`;
       link.href = this.getDeliveryUrl(platform, dish);

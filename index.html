@@ -74,7 +74,7 @@
   <script src="asset-pipeline.js?v=20.51"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20.52">
+  <link rel="stylesheet" href="styles.css?v=20.53">
 </head>
 <body>
 
@@ -1881,18 +1881,18 @@
   <!-- Load Application Scripts (v20.51) -->
   <script src="storage.js?v=20.51"></script>
   <script src="vault.js?v=20.51"></script>
-  <script src="data/translations.js?v=20.51"></script>
+  <script src="data/translations.js?v=20.53"></script>
   <script src="data/hotel-data.js?v=20.51"></script>
   <script src="data/menu-data.js?v=20.51"></script>
   <script src="data/menu-photos.js?v=20.51"></script>
-  <script src="app.js?v=20.51"></script>
+  <script src="app.js?v=20.53"></script>
   <script src="admin.js?v=20.51"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.52').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=20.53').then(function(reg) {
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });

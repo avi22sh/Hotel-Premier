@@ -2693,6 +2693,33 @@ a {
   line-height: 1;
 }
 
+/* Compact menu controls: one search field and three primary filters. */
+#section-dine .dining-hero-header { padding-block: 18px; margin-bottom: 16px; }
+#section-dine .dining-hero-header .editorial-subtitle { margin: 8px auto 0; max-width: 620px; }
+#section-dine .dining-brand-crest { display: none; }
+#section-dine .dining-search-filter-bar { background: #F7F2E9; padding: 12px; gap: 12px; flex-wrap: wrap; }
+#section-dine .search-input-wrapper { margin-bottom: 0; padding: 0; min-width: 210px; box-shadow: none; background: transparent; }
+#section-dine .quick-filters { flex-wrap: wrap; overflow: visible; gap: 6px; }
+#section-dine .filter-pill { min-height: 40px; cursor: pointer; }
+.more-menu-filters { flex-basis: 100%; }
+.more-menu-filters summary { cursor: pointer; font-size: .8rem; padding: 10px 4px; color: #604724; }
+.more-menu-filters-options { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
+.more-menu-filters summary:focus-visible, #section-dine .filter-pill:focus-visible { outline: 2px solid #B68B45; outline-offset: 3px; }
+body.theme-dark #section-dine .dining-search-filter-bar { background: #17212D; border-color: #384452; }
+body.theme-dark #section-dine #menu-search-input { background: #101820; color: #F5EFE4; border-color: #475360; }
+body.theme-dark #section-dine #menu-search-input::placeholder { color: #B7C0CA; }
+body.theme-dark #section-dine .filter-pill { background: #24303D; color: #ECE5D8; border-color: #475360; }
+body.theme-dark #section-dine .filter-pill.active { background: #E2C38D; color: #17212D; border-color: #E2C38D; }
+body.theme-dark .more-menu-filters summary { color: #E2C38D; }
+body.theme-dark #section-dine .dish-banner-price-stack .dish-price { color: #E2C38D; }
+@media (max-width: 639px) {
+  #section-dine .dining-hero-header { padding-block: 10px; margin-bottom: 12px; }
+  #section-dine .dining-main-heading { font-size: 1.35rem; }
+  #section-dine .dining-hero-header .editorial-subtitle { font-size: .82rem; line-height: 1.45; }
+  #section-dine .search-input-wrapper { width: 100%; min-width: 0; }
+  #section-dine .filter-pill { padding-inline: 10px; }
+}
+
 /* Dining Search & Quick Filters Bar */
 .dining-search-filter-bar {
   display: flex;
@@ -4645,6 +4672,7 @@ a {
   align-items: stretch;
   gap: 12px;
   width: 100%;
+  direction: ltr;
 }
 
 .delivery-buttons-container .delivery-btn {
