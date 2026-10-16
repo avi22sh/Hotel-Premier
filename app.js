@@ -1848,39 +1848,6 @@ class HotelPremierApp {
     const displayPrice = dish._activeVariantPrice || dish.price;
     const hasPhoto = displayImage && displayImage.trim() !== '';
 
-    let tagPillsHtml = '';
-    if (dish.tags && dish.tags.includes('bestseller')) {
-      tagPillsHtml += `<span class="dish-pill-bestseller">${this.t('badgeBestseller')}</span>`;
-    }
-    if (dish.tags && dish.tags.includes('spicy')) {
-      tagPillsHtml += `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>`;
-    }
-    if (dish.tags && dish.tags.includes('sweet')) {
-      tagPillsHtml += `<span class="dish-pill-sweet">${this.t('badgeSweet')}</span>`;
-    }
-    if (dish.tags && dish.tags.includes('chef-special')) {
-      tagPillsHtml += `<span class="dish-pill-chef">${this.t('badgeChefSpecial')}</span>`;
-    }
-    if (dish.tags && dish.tags.includes('khandeshi-special')) {
-      tagPillsHtml += `<span class="dish-pill-khandeshi">${this.t('badgeKhandeshi')}</span>`;
-    }
-
-    let variantsHtml = '';
-    if (hasVariants) {
-      variantsHtml = `
-        <div class="dish-variants" data-dish-id="${dish.id}" onclick="event.stopPropagation()">
-          ${dish.variants.map((v, i) => {
-            const isSelected = dish._activeVariantImage ? (dish._activeVariantImage === v.image) : (i === 0);
-            return `
-            <button type="button" class="variant-btn ${isSelected ? 'selected' : ''}" data-variant-name="${v.name}" data-variant-price="${v.price}" data-variant-img="${v.image || ''}">
-              ${v.name} ₹${v.price}
-            </button>
-            `;
-          }).join('')}
-        </div>
-      `;
-    }
-
     let dishTitleHtml = dish.name;
     if (this.currentLang === 'hi' && dish.hindiName) {
       dishTitleHtml = `${dish.name} <span class="dish-title-sub">(${dish.hindiName})</span>`;
@@ -1890,7 +1857,7 @@ class HotelPremierApp {
     }
 
     return `
-      <div class="dish-card ${dish.isSoldOut ? 'sold-out' : ''}" 
+      <div class="dish-card compact-dish-card ${dish.isSoldOut ? 'sold-out' : ''}"
            id="dish-card-${dish.id}" 
            onclick="window.app.openDishDetail('${dish.id}')"
            role="button"
@@ -1921,10 +1888,8 @@ class HotelPremierApp {
               <span class="dish-tax-note">${this.t('taxNote')}</span>
             </div>
           </div>
-          ${tagPillsHtml ? `<div class="dish-tag-row">${tagPillsHtml}</div>` : ''}
-          <p class="dish-desc">${this.getDishDescription(dish) || 'Prepared fresh with fine spices and authentic culinary care.'}</p>
           <div class="dish-banner-bottom">
-            ${variantsHtml}
+            ${hasVariants ? `<span class="dish-options-hint">${this.t('dishOptionsHint', 'Portion options available')}</span>` : ''}
             <div class="dish-banner-action">
               ${dish.isSoldOut ? `
                 <span class="dish-soldout-label">${this.t('soldOut')}</span>

@@ -57,6 +57,7 @@ window.HOTEL_PREMIER_I18N = {
       searchPlaceholder: 'Search dishes (e.g. Paneer, Biryani, Chai, Shev Bhaji, Pasta)...',
       
       // Quick Filters
+      dishOptionsHint: 'Portion options available',
       filterMore: 'More filters',
       filterAll: 'All Items',
       filterTopRated: '4.2★+ Top Rated',
@@ -275,6 +276,7 @@ window.HOTEL_PREMIER_I18N = {
       searchPlaceholder: 'Dishes search karein (Paneer, Biryani, Roti, Chai, Shev Bhaji)...',
 
       // Quick Filters
+      dishOptionsHint: 'मात्रा के विकल्प उपलब्ध',
       filterMore: 'अन्य फ़िल्टर',
       filterAll: 'All Items (सभी)',
       filterTopRated: '4.2★+ Top Rated',
@@ -492,6 +494,7 @@ window.HOTEL_PREMIER_I18N = {
       searchPlaceholder: 'Dishes शोधा (Paneer, Biryani, Roti, Chai, Shev Bhaji)...',
 
       // Quick Filters
+      dishOptionsHint: 'प्रमाणाचे पर्याय उपलब्ध',
       filterMore: 'आणखी फिल्टर',
       filterAll: 'All Items (सर्व)',
       filterTopRated: '4.2★+ Top Rated',
