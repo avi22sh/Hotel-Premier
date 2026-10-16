@@ -46,6 +46,12 @@ body.theme-dark .modal-btn-swiggy-order { background:#1C3546; border-color:#BCA5
 #dish-detail-modal.active { display:flex !important; visibility:visible !important; opacity:1 !important; pointer-events:auto !important; }
 #dish-detail-modal.active .dish-detail-sheet { opacity:1 !important; transform:translateY(0) !important; visibility:visible !important; }
 body.modal-open { overflow:hidden; }
+/* Fixed mobile scale requested by the owner. Keep ordinary scrolling and text-size settings. */
+@media (max-width:640px) {
+  html { -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  body :is(button,a,summary,[role="button"]) { touch-action:manipulation; }
+  body :is(input,select,textarea), #section-dine #menu-search-input { font-size:16px !important; }
+}
 @media (max-width:640px) { .brand-hotel-name { font-size:1.1rem; letter-spacing:.08em; } .brand-tagline { font-size:.55rem; } .ota-booking-links a { font-size:.82rem; } }
 @media (prefers-reduced-motion:reduce) { .modal-backdrop,.modal-sheet { transition:none !important; } }
 @supports not (backdrop-filter:blur(1px)) { body :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { background:var(--ivory-canvas); } body.theme-dark :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { background:#142027; } }
