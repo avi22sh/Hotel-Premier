@@ -9,7 +9,8 @@ for (const file of ['data/menu-photos.js','asset-pipeline.js','app.js']) {
 (async()=>{
   const photos = context.window.HOTEL_PREMIER_PHOTOS;
   assert.ok(Object.keys(photos).length >= 218, 'Published photo coverage must not shrink');
-  assert.equal(Object.values(photos).filter(v=>v==='').length,30);
+  // Eleven previously empty dishes now have approved, published photos.
+  assert.equal(Object.values(photos).filter(v=>v==='').length,19);
   assert.ok(Object.values(photos).filter(v=>v.startsWith('assets/menu-uploads/')).length >= 16);
   for (const src of Object.values(photos)) {
     if (src) { assert.ok(src.startsWith('assets/')); assert.ok(fs.existsSync(src),src); }
@@ -35,7 +36,7 @@ for (const file of ['data/menu-photos.js','asset-pipeline.js','app.js']) {
   app.saveMenuData=()=>{};
   await app.loadMenuData();
   assert.equal(app.menuData[0].image,photos['md-7']);
-  assert.equal(app.menuData[1].image,'');
+  assert.equal(app.menuData[1].image,photos['hh-1']);
   context.window.HOTEL_STORAGE.getAllDishOverrides=async()=>({'md-7':{image:'new-owner-upload.jpg'}});
   await app.loadMenuData();
   assert.equal(app.menuData[0].image,'new-owner-upload.jpg');

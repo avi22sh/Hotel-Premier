@@ -2448,7 +2448,7 @@ class HotelPremierApp {
       extraBeds: numExtraBeds,
       extraBedCost: extraBedCost,
       nights: numNights,
-      plan: plan === 'CP' ? 'Room with Breakfast (CP)' : 'Room Only (RO)',
+      plan: plan === 'CP' ? 'CP — Breakfast from a fixed menu; conditions apply' : 'Room Only (RO)',
       eventType: document.getElementById('calc-event-type') ? document.getElementById('calc-event-type').value : 'Group Stay / Event',
       baseRoomPrice: baseRoomRegular,
       regularPrice: totalRegular,
@@ -3720,12 +3720,26 @@ class HotelPremierApp {
     const nights = Number(document.getElementById('booking-nights')?.value) || 1;
     const roomsCount = Number(document.getElementById('booking-rooms-count')?.value) || 1;
     const mealPlan = document.getElementById('booking-meal-plan')?.value || 'CP';
-    const extraBeds = Number(document.getElementById('booking-extra-beds')?.value) || 0;
+    const extraBedsInput = document.getElementById('booking-extra-beds');
+    const roomCategory = window.HOTEL_PREMIER_HOTEL_DATA?.roomCategories?.find(room => room.id === roomType);
+    const extraBedLimit = (roomCategory?.maxExtraBeds || 1) * Math.max(1, Math.floor(roomsCount));
+    const childBedsInput = document.getElementById('booking-child-extra-beds');
+    const childExtraBeds = Math.min(extraBedLimit, Math.max(0, Math.floor(Number(childBedsInput?.value) || 0)));
+    if (childBedsInput) {
+      childBedsInput.max = String(extraBedLimit);
+      childBedsInput.value = String(childExtraBeds);
+    }
+    const requestedExtraBeds = Number(extraBedsInput?.value) || 0;
+    const extraBeds = Math.min(extraBedLimit - childExtraBeds, Math.max(0, Math.floor(requestedExtraBeds)));
+    if (extraBedsInput) {
+      extraBedsInput.max = String(extraBedLimit - childExtraBeds);
+      extraBedsInput.value = String(extraBeds);
+    }
 
     const rates = {
-      'ac-super-deluxe': { RO: 2400, CP: 2600, name: 'AC Super Deluxe King Suite' },
-      'ac-deluxe-queen': { RO: 2100, CP: 2300, name: 'AC Deluxe (Queen Bed)' },
-      'ac-deluxe-twin': { RO: 2100, CP: 2300, name: 'AC Deluxe (Twin Beds)' }
+      'ac-super-deluxe': { RO: 2400, CP: 2600, name: 'Premier Royale King' },
+      'ac-deluxe-queen': { RO: 2100, CP: 2300, name: 'Premier Signature Queen' },
+      'ac-deluxe-twin': { RO: 2100, CP: 2300, name: 'Premier Companion Twin' }
     };
 
     const selected = rates[roomType] || rates['ac-deluxe-queen'];
@@ -3740,8 +3754,8 @@ class HotelPremierApp {
     const durationEl = document.getElementById('booking-summary-duration');
     const totalEl = document.getElementById('booking-summary-grand-total');
 
-    if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'With Breakfast' : 'Room Only'})`;
-    if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out ${extraBeds > 0 ? `• ${extraBeds} Extra Bed(s)` : ''}`;
+    if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'CP: fixed-menu breakfast; conditions apply' : 'Room Only'})`;
+    if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out ${extraBeds > 0 ? `• ${extraBeds} Paid Extra Bed(s)` : ''}${childExtraBeds > 0 ? ` • ${childExtraBeds} Complimentary Child Extra Bed(s), ages 5–10` : ''}`;
     if (totalEl) {
       totalEl.innerHTML = `
         <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
@@ -3756,7 +3770,7 @@ class HotelPremierApp {
       `;
     }
 
-    return { totalEstimate, grossEstimate, directDiscount, selected, nights, roomsCount, mealPlan, extraBeds };
+    return { totalEstimate, grossEstimate, directDiscount, selected, nights, roomsCount, mealPlan, extraBeds, childExtraBeds };
   }
 
   dispatchConciergeBooking() {
@@ -3784,8 +3798,9 @@ class HotelPremierApp {
         nights: estimate.nights,
         roomsCount: estimate.roomsCount,
         guestsCount: guestsCount,
-        mealPlan: estimate.mealPlan === 'CP' ? 'Room + Complimentary Breakfast' : 'Room Only',
+        mealPlan: estimate.mealPlan === 'CP' ? 'CP — Breakfast from a fixed menu; conditions apply' : 'Room Only',
         extraBeds: estimate.extraBeds,
+        childExtraBeds: estimate.childExtraBeds,
         estimatedTotal: estimate.totalEstimate
       });
     }
@@ -3799,9 +3814,12 @@ class HotelPremierApp {
     msg += `⏰ *Arrival Time:* ${checkInTime}\n`;
     msg += `🌙 *Duration:* ${estimate.nights} Night(s) (24-Hour Check-Out)\n`;
     msg += `👥 *Total Guests:* ${guestsCount}\n`;
-    msg += `🍽️ *Plan:* ${estimate.mealPlan === 'CP' ? 'Room + Complimentary Breakfast (CP)' : 'Room Only (RO)'}\n`;
+    msg += `🍽️ *Plan:* ${estimate.mealPlan === 'CP' ? 'CP — Breakfast from a fixed menu; conditions apply' : 'Room Only (RO)'}\n`;
     if (estimate.extraBeds > 0) {
       msg += `🛏️ *Extra Beds:* ${estimate.extraBeds} Bed(s)\n`;
+    }
+    if (estimate.childExtraBeds > 0) {
+      msg += `🧒 *Complimentary Extra Beds (ages 5–10 inclusive):* ${estimate.childExtraBeds}\nChildren's meals: please confirm charges separately.\n`;
     }
     msg += `💰 *Standard Tariff:* ₹ ${estimate.grossEstimate.toLocaleString('en-IN')}/-\n`;
     msg += `🎁 *Direct PWA Guest Privilege (Flat ₹200 Off):* -₹ ${estimate.directDiscount.toLocaleString('en-IN')}/-\n`;

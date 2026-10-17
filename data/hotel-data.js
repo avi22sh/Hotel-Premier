@@ -14,10 +14,11 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     whatsapp: '919325375802',
     alternateWhatsapp: '919370848917',
     checkoutPolicy: '24 Hours Check-Out',
+    childExtraBedPolicy: 'Complimentary extra beds for children aged 5–10 inclusive, within room extra-bed limits. Meals confirmed separately.',
     taxPolicy: 'Inclusive of All Taxes',
     roomServiceHours: '7:30 AM to 10:30 PM',
     frontDeskHours: '24 Hours Open',
-    breakfastPolicy: 'Complimentary Breakfast (Served 7:30 AM to 10:30 AM from fixed menu in Pride Pure Veg Restaurant)',
+    breakfastPolicy: 'Complimentary Breakfast (Served 7:30 AM to 10:30 AM from a fixed menu in Pride Pure Veg Restaurant; conditions apply)',
     googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal',
     inventorySummary: {
       totalRooms: 14,
@@ -82,9 +83,11 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
   roomCategories: [
     {
       id: 'ac-super-deluxe',
-      name: 'AC Super Deluxe Room',
-      hindiName: '\u090f\u0938\u0940 \u0938\u0941\u092a\u0930 \u0921\u0940\u0932\u0915\u094d\u0938 \u0930\u0942\u092e',
-      marathiName: '\u090f\u0938\u0940 \u0938\u0941\u092a\u0930 \u0921\u0940\u0932\u0915\u094d\u0938 \u0930\u0942\u092e',
+      name: 'Premier Royale King',
+      areaSqFt: 172,
+      balconyViews: ['Road-facing balcony (1 room)', 'Rear-facing balcony (1 room)'],
+      hindiName: 'प्रीमियर रॉयल किंग',
+      marathiName: 'प्रीमियर रॉयल किंग',
       bedType: 'King Size Luxury Bed',
       inventoryCount: '2 Rooms Only',
       bedDetail: '👑 King Bed (Total 2 Rooms)',
@@ -102,18 +105,18 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'assets/hotel-images/s-dlx-washroom-sanitized-1.jpg',
         'assets/hotel-images/s-dlx-washroom-sanitized-2.jpg'
       ],
-      description: 'Exclusive luxury air-conditioned room with an expansive King Size bed, split AC, smart LED TV, hot water, and Pride Pure Veg room service (7:30 AM – 10:30 PM). Total 2 rooms in property. Can comfortably accommodate 2 to 3 Extra Beds (₹300/bed).',
-      extraBedRate: 300,
+      description: 'A 172 sq.ft air-conditioned King room with a private balcony. Of the two rooms, one has a front road-facing balcony and one has a rear-facing balcony; allocation is subject to availability. Includes a complimentary welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Pride Pure Veg room service: 7:30 AM – 10:30 PM.',
+    extraBedRate: 300,
       maxExtraBeds: 3,
       extraBedDetail: 'Accommodates 2 to 3 Extra Beds (₹300/bed)',
       features: [
         '👑 King Size Luxury Bed',
         '🏢 Total 2 Exclusive Rooms in Hotel',
         '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 Packaged Drinking Water (Complimentary)',
-        '☕ Electric Kettle with Tea & Coffee Setup',
-        '🍪 Fresh Biscuits & Drinking Glasses',
-        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        '💧 2 Complimentary Packaged Mineral Water Bottles',
+        '☕ Electric Kettle & 2 Complimentary Premix Teas',
+        '🍪 Complimentary Welcome Snacks Basket',
+        '🧼 Complimentary Toiletries',
         '🚿 24x7 Geyser Hot Water & Fresh Towels',
         '📺 Large Screen Smart LED TV & Free Wi-Fi',
         '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
@@ -128,9 +131,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     },
     {
       id: 'ac-deluxe-queen',
-      name: 'AC Deluxe Room (Queen Bed)',
-      hindiName: '\u090f\u0938\u0940 \u0921\u0940\u0932\u0915\u094d\u0938 \u0930\u0942\u092e (\u0915\u094d\u0935\u0940\u0928 \u092c\u0947\u0921)',
-      marathiName: '\u090f\u0938\u0940 \u0921\u0940\u0932\u0915\u094d\u0938 \u0930\u0942\u092e (\u0915\u094d\u0935\u0940\u0928 \u092c\u0947\u0921)',
+      name: 'Premier Signature Queen',
+      areaSqFt: 144,
+      hindiName: 'प्रीमियर सिग्नेचर क्वीन',
+      marathiName: 'प्रीमियर सिग्नेचर क्वीन',
       bedType: 'Queen Size Bed',
       inventoryCount: '4 Rooms Available',
       bedDetail: '🛏️ Queen Bed (Total 4 Rooms)',
@@ -143,10 +147,9 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'assets/hotel-images/dlx-queen-corner-angle-3.jpg',
         'assets/hotel-images/dlx-queen-corner-angle-4.jpg',
         'assets/hotel-images/dlx-washroom-sanitized-1.jpg',
-        'assets/hotel-images/dlx-washroom-sanitized-2.jpg',
-        'assets/hotel-images/s-dlx-balcony-terrace-view.jpg'
+        'assets/hotel-images/dlx-washroom-sanitized-2.jpg'
       ],
-      description: 'Peaceful air-conditioned room featuring a plush Queen Size Bed, workstation, wardrobe, and modern bath amenities. Total 4 rooms available in hotel. Can accommodate 1 Extra Bed (₹300/bed).',
+      description: 'A thoughtfully appointed 144 sq.ft air-conditioned Queen room. Includes a complimentary welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Four rooms available in the hotel.',
       extraBedRate: 300,
       maxExtraBeds: 1,
       extraBedDetail: 'Accommodates 1 Extra Bed (₹300/bed)',
@@ -154,10 +157,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         '🛏️ Queen Size Bed',
         '🏢 Total 4 Rooms in Hotel',
         '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 Packaged Drinking Water (Complimentary)',
-        '☕ Electric Kettle with Tea & Coffee Setup',
-        '🍪 Fresh Biscuits & Drinking Glasses',
-        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        '💧 2 Complimentary Packaged Mineral Water Bottles',
+        '☕ Electric Kettle & 2 Complimentary Premix Teas',
+        '🍪 Complimentary Welcome Snacks Basket',
+        '🧼 Complimentary Toiletries',
         '🚿 24x7 Geyser Hot Water & Fresh Towels',
         '📺 Flat Screen Smart LED TV & Free Wi-Fi',
         '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
@@ -172,9 +175,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     },
     {
       id: 'ac-deluxe-twin',
-      name: 'AC Deluxe Room (Twin Beds)',
-      hindiName: '\u090f\u0938\u0940 \u0921\u0940\u0932\u0915\u094d\u0938 \u0930\u0942\u092e (\u091f\u094d\u0935\u093f\u0928 \u092c\u0947\u0921\u094d\u0938)',
-      marathiName: '\u090f\u0938\u0940 \u0921\u0940\u0932\u0915\u094d\u0938 \u0930\u0942\u092e (\u091f\u094d\u0935\u093f\u0928 \u092c\u0947\u0921\u094d\u0938)',
+      name: 'Premier Companion Twin',
+      areaSqFt: 144,
+      hindiName: 'प्रीमियर कम्पैनियन ट्विन',
+      marathiName: 'प्रीमियर कम्पैनियन ट्विन',
       bedType: 'Twin Single Beds (2 Separate Beds)',
       inventoryCount: '8 Rooms Available',
       bedDetail: '🛏️🛏️ Twin Beds (Total 8 Rooms)',
@@ -183,10 +187,9 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'assets/hotel-images/dlx-twin-beds-wide-angle.jpg',
         'assets/hotel-images/dlx-twin-beds-perspective.jpg',
         'assets/hotel-images/dlx-washroom-sanitized-1.jpg',
-        'assets/hotel-images/dlx-washroom-sanitized-2.jpg',
-        'assets/hotel-images/s-dlx-balcony-terrace-view.jpg'
+        'assets/hotel-images/dlx-washroom-sanitized-2.jpg'
       ],
-      description: 'Popular air-conditioned room with 2 comfortable separate Single Beds. Ideal for wedding attendees, Barat guests, friends, and corporate colleagues. Total 8 rooms available in hotel. Can comfortably accommodate 2 Extra Beds (₹300/bed).',
+      description: 'A comfortable 144 sq.ft air-conditioned room with two separate single beds for friends, colleagues or family travelling together. Includes a complimentary welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Eight rooms available in the hotel.',
       extraBedRate: 300,
       maxExtraBeds: 2,
       extraBedDetail: 'Accommodates 2 Extra Beds (₹300/bed)',
@@ -194,10 +197,10 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         '🛏️🛏️ 2 Separate Single Beds',
         '🏢 Total 8 Rooms in Hotel',
         '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 Packaged Drinking Water (Complimentary)',
-        '☕ Electric Kettle with Tea & Coffee Setup',
-        '🍪 Fresh Biscuits & Drinking Glasses',
-        '🧼 Toiletries Kit (Soap, Shampoo, Dental Kit)',
+        '💧 2 Complimentary Packaged Mineral Water Bottles',
+        '☕ Electric Kettle & 2 Complimentary Premix Teas',
+        '🍪 Complimentary Welcome Snacks Basket',
+        '🧼 Complimentary Toiletries',
         '🚿 24x7 Geyser Hot Water & Fresh Towels',
         '📺 Flat Screen Smart LED TV & Free Wi-Fi',
         '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
@@ -259,7 +262,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       badge: '👑 Platinum Buyout • 100% Hotel Privacy',
       perks: [
         'Complete 100% Exclusive Hotel Premier Privacy',
-        '1 Complimentary AC Super Deluxe Room for Bride & Groom / Host',
+        '1 Complimentary Premier Royale King for Bride & Groom / Host',
         'Dedicated Hotel Premier Hospitality Coordinator',
         'Custom Pure Veg Restaurant Dining Coordination & Bus Parking'
       ]
@@ -652,70 +655,70 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     {
       id: 'gallery-s-dlx-master',
       category: 'stay',
-      title: 'AC Super Deluxe Master Suite',
+      title: 'Premier Royale King',
       subtitle: 'Plush King Bed, Designer Wood Headboard & Warm Ambient Lighting',
       image: 'assets/hotel-images/s-dlx-suite-master-angle.jpg'
     },
     {
       id: 'gallery-s-dlx-wide',
       category: 'stay',
-      title: 'Super Deluxe Suite Wide Perspective',
+      title: 'Premier Royale King — Wide View',
       subtitle: 'Spacious Executive Floor Plan with Workstation & Premium Split AC',
       image: 'assets/hotel-images/s-dlx-suite-wide-view.jpg'
     },
     {
       id: 'gallery-s-dlx-king-bed',
       category: 'stay',
-      title: 'Super Deluxe King Bed Setup',
+      title: 'Premier Royale King — Bed Setup',
       subtitle: 'Crisp White Linen, Ergonomic Pillows & Bedside Electrical Docks',
       image: 'assets/hotel-images/s-dlx-bed-king-luxury.jpg'
     },
     {
       id: 'gallery-s-dlx-mood',
       category: 'stay',
-      title: 'Super Deluxe Mood & Cove Lighting',
+      title: 'Premier Royale King — Ambient Lighting',
       subtitle: 'Serene Warm Golden Hues for Ultimate Evening Relaxation',
       image: 'assets/hotel-images/s-dlx-suite-mood-lighting.jpg'
     },
     {
       id: 'gallery-s-dlx-balcony',
       category: 'stay',
-      title: 'Private Sit-Out Balcony & Terrace',
-      subtitle: 'Peaceful Greenery Views for Morning Chai & Fresh Air',
+      title: 'Premier Royale King Balcony',
+      subtitle: 'One road-facing balcony room and one rear-facing balcony room; subject to availability',
       image: 'assets/hotel-images/s-dlx-balcony-terrace-view.jpg'
     },
     {
       id: 'gallery-dlx-queen-corner',
       category: 'stay',
-      title: 'AC Deluxe Room - Queen Bed Sanctuary',
+      title: 'Premier Signature Queen — Room View',
       subtitle: 'Plush Mattress, Elegant Headboard Accent & Ambient Warm Lighting',
       image: 'assets/hotel-images/dlx-queen-corner-wide.jpg'
     },
     {
       id: 'gallery-dlx-queen-warm',
       category: 'stay',
-      title: 'AC Deluxe Room - Warm Ambience',
+      title: 'Premier Signature Queen — Warm Ambience',
       subtitle: 'Cozy Atmosphere Ideal for Executives, Couples & Pilgrims',
       image: 'assets/hotel-images/dlx-queen-room-warm-ambience.jpg'
     },
     {
       id: 'gallery-dlx-queen-plush',
       category: 'stay',
-      title: 'AC Deluxe Room - Plush Bed Perspective',
+      title: 'Premier Signature Queen — Bed View',
       subtitle: 'Silent Split AC, Flat Screen Smart TV & Free High-Speed Wi-Fi',
       image: 'assets/hotel-images/dlx-queen-bed-plush-view.jpg'
     },
     {
       id: 'gallery-dlx-twin-wide',
       category: 'stay',
-      title: 'AC Deluxe Room - Twin Beds (2 Single Beds)',
+      title: 'Premier Companion Twin — Two Single Beds',
       subtitle: 'Ideal for Wedding Barat Attendees, Corporate Colleagues & Friends',
       image: 'assets/hotel-images/dlx-twin-beds-wide-angle.jpg'
     },
     {
       id: 'gallery-dlx-twin-perspective',
       category: 'stay',
-      title: 'AC Deluxe Twin - Comfort Perspective',
+      title: 'Premier Companion Twin — Room View',
       subtitle: 'Two Separate Beds with Individual Nightstands & Split AC',
       image: 'assets/hotel-images/dlx-twin-beds-perspective.jpg'
     },
@@ -736,7 +739,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     {
       id: 'gallery-dlx-bath-1',
       category: 'stay',
-      title: 'AC Deluxe Ensuite Sanitized Bathroom',
+      title: 'Signature & Companion — En-suite Bathroom',
       subtitle: 'Modern Ceramic Tiles, Geyser Hot Water & Premium Fixtures',
       image: 'assets/hotel-images/dlx-washroom-sanitized-1.jpg'
     },
