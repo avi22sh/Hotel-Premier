@@ -1895,7 +1895,7 @@
   <script src="data/translations.js?v=20.54"></script>
   <script src="data/hotel-data.js?v=20.51"></script>
   <script src="data/menu-data.js?v=20.51"></script>
-  <script src="data/menu-photos.js?v=20.51"></script>
+  <script src="data/menu-photos.js?v=21.6"></script>
   <script src="app.js?v=21.0"></script>
   <script src="admin.js?v=20.51"></script>
 
@@ -1903,7 +1903,7 @@
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.5', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.6', { updateViaCache: 'none' }).then(function(reg) {
           reg.update().catch(function() {});
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
