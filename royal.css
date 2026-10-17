@@ -1,14 +1,8 @@
 /* Royal presentation layer. Loaded last to unify legacy component styles with true glassmorphism. */
-.premier-menu-index { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); max-width:760px; margin:26px auto 0; border-block:1px solid var(--royal-edge); }
-.premier-menu-index button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:17px 10px; border:0; border-right:1px solid var(--royal-edge); background:transparent; color:var(--royal-ink); font:inherit; font-size:.87rem; cursor:pointer; min-height:76px; }
-.premier-menu-index button:last-child { border-right:0; }
-.premier-menu-index button span { color:var(--royal-gold); font-family:var(--font-royal); font-size:.75rem; letter-spacing:.12em; }
-.premier-menu-index button:hover { background:var(--royal-surface); }
-.premier-menu-index button:focus-visible { outline:2px solid var(--royal-gold); outline-offset:-3px; }
 .section-wrapper :is(.editorial-subtitle,.room-suite-desc,.atmosphere-gallery-subtitle) { line-height:1.75; }
 .section-wrapper .editorial-header-block { max-width:900px; margin-inline:auto; }
 .section-wrapper :is(.boutique-room-card,.tariff-suite-card,.guarantee-card) { overflow-wrap:anywhere; }
-@media(max-width:600px) { .premier-menu-index { grid-template-columns:repeat(2,minmax(0,1fr)); } .premier-menu-index button:nth-child(2) { border-right:0; } .premier-menu-index button:nth-child(-n+2) { border-bottom:1px solid var(--royal-edge); } .dining-main-heading { font-size:clamp(1.5rem,6vw,2rem); text-wrap:balance; } }
+@media(max-width:600px) { .dining-main-heading { font-size:clamp(1.5rem,6vw,2rem); text-wrap:balance; } }
 :root { 
   --royal-surface: rgba(255, 255, 255, 0.74); 
   --royal-ink: #1E293B; 
@@ -78,8 +72,16 @@ body.theme-dark :is(.view-detail-link,.subcat-chip.active,.filter-pill.active,.f
 }
 body.theme-dark :is(.modal-dish-price,.dish-price,.signature-dish-price) { color:#DFC69A !important; }
 body.theme-dark .modal-dish-variant-btn:hover { background:#29473E; color:#E9E4D8; border-color:#DFC69A; }
-body.theme-dark .modal-btn-zomato-order { background:#28443C; border-color:#BCA578; box-shadow:none; color:#F0E8D9; }
-body.theme-dark .modal-btn-swiggy-order { background:#1C3546; border-color:#BCA578; box-shadow:none; color:#F0E8D9; }
+/* Partner identities stay independent of Hotel Premier's light/dark palette. */
+body :is(.modal-btn-zomato-order,.dish-pill-zomato), body .platform-pill-btn[href*="zomato.com"] { background:#E23744; border-color:#E23744; color:#fff; box-shadow:none; }
+body :is(.modal-btn-swiggy-order,.dish-pill-swiggy), body .platform-pill-btn[href*="swiggy.com"] { background:#FF5200; border-color:#FF5200; color:#171717; box-shadow:none; }
+body :is(.modal-btn-zomato-order,.modal-btn-swiggy-order):hover { filter:brightness(.96); }
+body .modal-btn-zomato-order:hover { background:#E23744; color:#fff; }
+body .modal-btn-swiggy-order:hover { background:#FF5200; color:#171717; }
+body :is(.ota-booking-links a,.platform-pill-btn) { background:#fff; color:#202124; border-color:#d3d7df; }
+body :is(.ota-booking-links a,.platform-pill-btn)[href*="makemytrip.com"] { background:#fff; color:#a51e2c; border-color:#e23744; }
+body :is(.ota-booking-links a,.platform-pill-btn)[href*="goibibo.com"] { background:#fff; color:#164f9c; border-color:#f58220; }
+body :is(.modal-btn-zomato-order,.modal-btn-swiggy-order,.ota-booking-links a,.platform-pill-btn):focus-visible { outline:3px solid var(--royal-gold); outline-offset:3px; }
 .app-header { border-bottom:1px solid rgba(220,191,136,.34); background:rgba(13,23,28,.95); }
 .brand-hotel-name { font-family:var(--font-royal),serif; letter-spacing:.14em; color:#EADCC0; text-shadow:none; }
 .brand-tagline { letter-spacing:.23em; color:#BCAD91; }

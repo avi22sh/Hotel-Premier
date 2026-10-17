@@ -21,7 +21,6 @@ for(const juice of juices) {
 const group=context.window.HOTEL_PREMIER_SUB_CATEGORIES['chilled-beverages'].find(item=>item.id==='packaged-fruit-juices');
 assert.deepEqual(Array.from(group.dishIds).sort(),Array.from(juices,item=>item.id).sort());
 const html=fs.readFileSync('index.html','utf8');
-assert.match(html,/aria-label="Menu shortcuts"/);
-assert.match(html,/openCategorySection\('pasta-section'\)/);
-assert.match(html,/openCategorySection\('indo-chinese'\)/);
-console.log('PASS: four packaged juices at ₹80, accurate grouping, no invented images/ratings and menu heading shortcuts');
+assert.doesNotMatch(html,/class="premier-menu-index"/);
+assert.match(html,/Indo-Chinese and Pastas—served with refreshing beverages/);
+console.log('PASS: four packaged juices at ₹80, accurate grouping, no invented images/ratings and cuisines in subtitle only');
