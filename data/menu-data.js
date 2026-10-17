@@ -48,6 +48,15 @@ window.HOTEL_PREMIER_CATEGORIES = [
     description: 'Chinese Platter, Paneer Chilly, Spring Rolls, Manchurian & Crispy Corn'
   },
   { 
+    id: 'pasta-section',
+    name: 'Pastas',
+    hindiName: 'पास्ता',
+    marathiName: 'पास्ता',
+    icon: '🍝',
+    image: '',
+    description: 'Chilli Chinese Pasta & Desi Masala Pasta'
+  },
+  {
     id: 'tandoor-classics', 
     name: 'Tandoor Classics', 
     hindiName: 'तंदूरी कबाब एवं टिक्का',
@@ -194,8 +203,7 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
     { "id": "all", "name": "All Tidbits", "hindiName": "सभी स्नैक्स", "marathiName": "सर्व स्नॅक्स" },
     { "id": "pakodas", "name": "Crisp Pakodas", "hindiName": "कुरकुरे पकोड़े", "marathiName": "कुरकुरीत भजी", "dishIds": ["tt-1", "tt-2", "tt-3"] },
     { "id": "fries-roast", "name": "Fries & Roasts", "hindiName": "फ्राइज एवं रोस्ट", "marathiName": "फ्राईज व रोस्ट", "dishIds": ["tt-4", "tt-5", "tt-8"] },
-    { "id": "chaat-bhel", "name": "Chaat & Bhel", "hindiName": "चाट एवं भेल", "marathiName": "चाट व भेळ", "dishIds": ["tt-6", "tt-7", "tt-9", "tt-10"] },
-    { "id": "desi-pasta", "name": "Desi Masala Pasta", "hindiName": "देसी पास्ता", "marathiName": "देसी पास्ता", "dishIds": ["tt-11"] }
+    { "id": "chaat-bhel", "name": "Chaat & Bhel", "hindiName": "चाट एवं भेल", "marathiName": "चाट व भेळ", "dishIds": ["tt-6", "tt-7", "tt-9", "tt-10"] }
   ],
   "premier-soups": [
     { "id": "all", "name": "All Soups", "hindiName": "सभी सूप", "marathiName": "सर्व सूप" },
@@ -208,7 +216,11 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
     { "id": "paneer-starters", "name": "Paneer Starters", "hindiName": "पनीर स्टार्टर्स", "marathiName": "पनीर स्टार्टर्स", "dishIds": ["ic-2", "ic-3", "ic-4", "ic-5", "ic-6", "ic-7", "ic-8", "ic-9", "ic-10", "ic-27", "ic-28"] },
     { "id": "veg-crispy", "name": "Veg Crispy & Manchurian", "hindiName": "वेज क्रिस्पी व मंचूरियन", "marathiName": "व्हेज क्रिस्पी व मंचूरियन", "dishIds": ["ic-11", "ic-12", "ic-13", "ic-14", "ic-15", "ic-16", "ic-17", "ic-18", "ic-19", "ic-29"] },
     { "id": "mushroom-corn", "name": "Mushroom & Baby Corn", "hindiName": "मशरूम एवं बेबीकॉर्न", "marathiName": "मशरूम व बेबीकॉर्न", "dishIds": ["ic-20", "ic-21", "ic-22", "ic-23", "ic-24", "ic-25", "ic-26"] },
-    { "id": "chinese-pasta", "name": "Fusion Pasta", "hindiName": "चाइनीज़ पास्ता", "marathiName": "चायनीज पास्ता", "dishIds": ["ic-30"] }
+  ],
+  "pasta-section": [
+    { "id": "all", "name": "All Pastas", "hindiName": "सभी पास्ता", "marathiName": "सर्व पास्ता" },
+    { "id": "chinese-pasta", "name": "Chilli Chinese Pasta", "hindiName": "चिली चाइनीज़ पास्ता", "marathiName": "चिली चायनीज पास्ता", "dishIds": ["ic-30"] },
+    { "id": "desi-pasta", "name": "Desi Masala Pasta", "hindiName": "देसी मसाला पास्ता", "marathiName": "देसी मसाला पास्ता", "dishIds": ["tt-11"] }
   ],
   "tandoor-classics": [
     { "id": "all", "name": "All Tandoori", "hindiName": "सभी तंदूरी", "marathiName": "सर्व तंदूरी" },
@@ -286,6 +298,7 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "chilled-beverages": [
     { "id": "all", "name": "All Drinks", "hindiName": "सभी शीतल पेय", "marathiName": "सर्व थंड पेये" },
+    { "id": "packaged-fruit-juices", "name": "Packaged Fruit Juices", "hindiName": "पैक्ड फ्रूट जूस", "marathiName": "पॅकबंद फळांचे ज्यूस", "dishIds": ["cb-juice-orange", "cb-juice-mango", "cb-juice-pineapple", "cb-juice-guava"] },
     { "id": "lassi-chaas", "name": "Punjabi Lassi & Masala Chaas", "hindiName": "लस्सी एवं छाछ", "marathiName": "लस्सी व ताक", "dishIds": ["cb-1", "cb-2"] },
     { "id": "digestive-soda", "name": "Jaljeera, Lime Soda & Cold Drinks", "hindiName": "जलजीरा व सॉफ्ट ड्रिंक्स", "marathiName": "जलजिरा व शीतपेये", "dishIds": ["cb-jaljeera", "cb-freshlime", "cb-5", "cb-6", "cb-7", "cb-8", "cb-9", "cb-10"] }
   ]
@@ -293,6 +306,38 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
 ;
 
 window.HOTEL_PREMIER_INITIAL_MENU = [
+  {
+    id: 'cb-juice-orange', categoryId: 'chilled-beverages',
+    name: 'Orange Packaged Fruit Juice', hindiName: 'ऑरेंज पैक्ड फ्रूट जूस', marathiName: 'संत्रा पॅकबंद फ्रूट ज्यूस',
+    description: 'Packaged orange fruit juice. Ask our team for the available brand and pack size.',
+    descriptionHi: 'पैक्ड ऑरेंज फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।',
+    descriptionMr: 'पॅकबंद संत्रा फ्रूट ज्यूस. उपलब्ध ब्रँड आणि पॅकच्या आकारासाठी कर्मचाऱ्यांना विचारा.',
+    price: 80, tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, image: ''
+  },
+  {
+    id: 'cb-juice-mango', categoryId: 'chilled-beverages',
+    name: 'Mango Packaged Fruit Juice', hindiName: 'मैंगो पैक्ड फ्रूट जूस', marathiName: 'आंबा पॅकबंद फ्रूट ज्यूस',
+    description: 'Packaged mango fruit juice. Ask our team for the available brand and pack size.',
+    descriptionHi: 'पैक्ड मैंगो फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।',
+    descriptionMr: 'पॅकबंद आंबा फ्रूट ज्यूस. उपलब्ध ब्रँड आणि पॅकच्या आकारासाठी कर्मचाऱ्यांना विचारा.',
+    price: 80, tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, image: ''
+  },
+  {
+    id: 'cb-juice-pineapple', categoryId: 'chilled-beverages',
+    name: 'Pineapple Packaged Fruit Juice', hindiName: 'पाइनएप्पल पैक्ड फ्रूट जूस', marathiName: 'अननस पॅकबंद फ्रूट ज्यूस',
+    description: 'Packaged pineapple fruit juice. Ask our team for the available brand and pack size.',
+    descriptionHi: 'पैक्ड पाइनएप्पल फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।',
+    descriptionMr: 'पॅकबंद अननस फ्रूट ज्यूस. उपलब्ध ब्रँड आणि पॅकच्या आकारासाठी कर्मचाऱ्यांना विचारा.',
+    price: 80, tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, image: ''
+  },
+  {
+    id: 'cb-juice-guava', categoryId: 'chilled-beverages',
+    name: 'Guava Packaged Fruit Juice', hindiName: 'गुआवा पैक्ड फ्रूट जूस', marathiName: 'पेरू पॅकबंद फ्रूट ज्यूस',
+    description: 'Packaged guava fruit juice. Ask our team for the available brand and pack size.',
+    descriptionHi: 'पैक्ड गुआवा फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।',
+    descriptionMr: 'पॅकबंद पेरू फ्रूट ज्यूस. उपलब्ध ब्रँड आणि पॅकच्या आकारासाठी कर्मचाऱ्यांना विचारा.',
+    price: 80, tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, image: ''
+  },
   // ==================== MORNING DELIGHTS ====================
   {
     id: 'md-1',
@@ -4211,7 +4256,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'ic-30',
-    categoryId: 'indo-chinese',
+    categoryId: 'pasta-section',
     name: 'Chilli Chinese Pasta',
     hindiName: 'चिली चाइनीज़ पास्ता',
     marathiName: 'चिली चायनीज पास्ता',
@@ -4228,7 +4273,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tt-11',
-    categoryId: 'tasty-tidbits',
+    categoryId: 'pasta-section',
     name: 'Desi Masala Pasta',
     hindiName: 'देसी मसाला पास्ता',
     marathiName: 'देसी मसाला पास्ता',

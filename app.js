@@ -1524,7 +1524,7 @@ class HotelPremierApp {
 
     const groupMap = {
       all: null,
-      breakfast: ['morning-delights', 'hot-hearty', 'tasty-tidbits', 'premier-soups', 'indo-chinese', 'tandoor-classics', 'italian-pasta'],
+      breakfast: ['morning-delights', 'hot-hearty', 'tasty-tidbits', 'premier-soups', 'indo-chinese', 'tandoor-classics', 'pasta-section'],
       main: ['vegetable-specialties', 'veg-specialties', 'kofta-delights', 'paneer-specialties', 'signature-breads', 'tandoor-rotis', 'khandeshi-specialties', 'thali-combos'],
       rice: ['flavorful-dals', 'rice-biryani', 'fresh-addons', 'sizzling-rice-noodles', 'sides-accompaniments'],
       beverages: ['mithai-magic', 'frozen-fantasies', 'desserts', 'mocktails', 'milkshake-mastani', 'chilled-beverages']

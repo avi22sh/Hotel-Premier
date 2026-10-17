@@ -76,7 +76,7 @@
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=21.5">
-  <link rel="stylesheet" href="royal.css?v=21.5">
+  <link rel="stylesheet" href="royal.css?v=21.8">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -860,8 +860,14 @@
       <h2 class="dining-main-heading">Pride Pure Veg AC Restaurant</h2>
       <div class="editorial-divider pride-underline"></div>
       <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
-        A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
+        North Indian & Khandeshi favourites, clay oven tandoor, dum biryani, Indo-Chinese and Pastas—served with refreshing beverages.
       </p>
+      <nav class="premier-menu-index" aria-label="Menu shortcuts">
+        <button type="button" onclick="window.app?.openCategorySection('indo-chinese')"><span>01</span> Indo-Chinese</button>
+        <button type="button" onclick="window.app?.openCategorySection('pasta-section')"><span>02</span> Pastas</button>
+        <button type="button" onclick="window.app?.openCategorySection('chilled-beverages')"><span>03</span> Beverages</button>
+        <button type="button" onclick="window.app?.toggleMenuSectionDrawer()"><span>☷</span> All sections</button>
+      </nav>
     </div>
 
     <div class="editorial-dining-container">
@@ -1777,6 +1783,7 @@
           <button class="admin-tab-btn" data-tab="menu">🍔 Menu & Pricing</button>
           <button class="admin-tab-btn" data-tab="ai-studio">✨ AI Photo Studio</button>
           <button class="admin-tab-btn" data-tab="rooms">🏨 Room Photos & Deals</button>
+          <button class="admin-tab-btn" data-tab="content">✏️ Page Content</button>
           <button class="admin-tab-btn" data-tab="slides">🖼️ Slides Editor</button>
           <button class="admin-tab-btn" data-tab="qr">📲 Table QR Studio</button>
           <button class="admin-tab-btn" data-tab="backup">💾 Master Data Backup</button>
@@ -1898,18 +1905,19 @@
   <!-- Load Application Scripts (v20.51) -->
   <script src="storage.js?v=20.51"></script>
   <script src="vault.js?v=20.51"></script>
-  <script src="data/translations.js?v=21.7"></script>
+  <script src="data/translations.js?v=21.8"></script>
   <script src="data/hotel-data.js?v=21.7"></script>
-  <script src="data/menu-data.js?v=20.51"></script>
+  <script src="data/menu-data.js?v=21.8"></script>
   <script src="data/menu-photos.js?v=21.6"></script>
-  <script src="app.js?v=21.7"></script>
-  <script src="admin.js?v=20.51"></script>
+  <script src="app.js?v=21.8"></script>
+  <script src="content-studio.js?v=21.8"></script>
+  <script src="admin.js?v=21.8"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.7', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.8', { updateViaCache: 'none' }).then(function(reg) {
           reg.update().catch(function() {});
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});

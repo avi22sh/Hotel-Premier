@@ -1,4 +1,14 @@
 /* Royal presentation layer. Loaded last to unify legacy component styles with true glassmorphism. */
+.premier-menu-index { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); max-width:760px; margin:26px auto 0; border-block:1px solid var(--royal-edge); }
+.premier-menu-index button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; padding:17px 10px; border:0; border-right:1px solid var(--royal-edge); background:transparent; color:var(--royal-ink); font:inherit; font-size:.87rem; cursor:pointer; min-height:76px; }
+.premier-menu-index button:last-child { border-right:0; }
+.premier-menu-index button span { color:var(--royal-gold); font-family:var(--font-royal); font-size:.75rem; letter-spacing:.12em; }
+.premier-menu-index button:hover { background:var(--royal-surface); }
+.premier-menu-index button:focus-visible { outline:2px solid var(--royal-gold); outline-offset:-3px; }
+.section-wrapper :is(.editorial-subtitle,.room-suite-desc,.atmosphere-gallery-subtitle) { line-height:1.75; }
+.section-wrapper .editorial-header-block { max-width:900px; margin-inline:auto; }
+.section-wrapper :is(.boutique-room-card,.tariff-suite-card,.guarantee-card) { overflow-wrap:anywhere; }
+@media(max-width:600px) { .premier-menu-index { grid-template-columns:repeat(2,minmax(0,1fr)); } .premier-menu-index button:nth-child(2) { border-right:0; } .premier-menu-index button:nth-child(-n+2) { border-bottom:1px solid var(--royal-edge); } .dining-main-heading { font-size:clamp(1.5rem,6vw,2rem); text-wrap:balance; } }
 :root { 
   --royal-surface: rgba(255, 255, 255, 0.74); 
   --royal-ink: #1E293B; 
@@ -99,4 +109,30 @@ body.modal-open { overflow:hidden; }
 }
 @media (max-width:640px) { .brand-hotel-name { font-size:1.1rem; letter-spacing:.08em; } .brand-tagline { font-size:.55rem; } .ota-booking-links a { font-size:.82rem; } }
 @media (prefers-reduced-motion:reduce) { .modal-backdrop,.modal-sheet { transition:none !important; } }
+.content-card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:18px; margin:28px 0; }
+.content-editorial-card { padding:24px; border:1px solid var(--royal-edge); border-radius:16px; background:var(--cream-bg); color:var(--royal-ink); }
+.content-editorial-card h3 { margin:0 0 12px; font-family:var(--font-royal); }
+.content-editorial-card p { margin:0; line-height:1.7; white-space:pre-wrap; overflow-wrap:anywhere; }
+.content-studio { max-width:900px; margin:auto; color:var(--royal-ink); }
+.content-studio :is(input,textarea) { display:block; width:100%; box-sizing:border-box; padding:12px; border:1px solid var(--royal-edge); border-radius:10px; background:var(--cream-bg); color:inherit; font:inherit; }
+.content-studio textarea { resize:vertical; }
+.studio-notice { padding:14px; border-left:3px solid var(--royal-gold); line-height:1.6; background:var(--cream-bg); }
+.studio-toolbar { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0; }
+.studio-toolbar input { max-width:280px; }
+.studio-button { padding:10px 14px; margin:4px; min-height:44px; border:1px solid var(--royal-edge); border-radius:9px; background:var(--cream-bg); color:var(--royal-ink); font:inherit; cursor:pointer; }
+.studio-button:hover { border-color:var(--royal-gold); }
+.content-studio :focus-visible { outline:2px solid var(--royal-gold); outline-offset:3px; }
+.studio-section { padding:16px; margin:12px 0; border:1px solid var(--royal-edge); border-radius:12px; }
+.studio-section summary { cursor:pointer; font-weight:700; padding:8px; }
+.studio-field { display:block; margin-top:18px; }
+.studio-field span { display:block; margin-bottom:8px; color:var(--royal-muted); }
+.studio-card { margin-top:20px; padding:16px; border:1px solid var(--royal-edge); border-radius:12px; }
+.studio-card textarea { margin-top:10px; }
+#admin-tab-content { overflow-x:auto; min-width:0; }
+#admin-modal-backdrop .admin-tab-btn { min-height:44px; white-space:nowrap; }
+body.theme-dark :is(.content-editorial-card,.studio-button,.studio-notice,.content-studio input,.content-studio textarea) { background:#192831; color:#eee5d5; }
+body.theme-dark :is(.tariff-suite-header,.tariff-pricing-breakdown,.tariff-plan-column,.tariff-guarantees-grid .guarantee-card) { background:#17252c; color:#eee5d5; }
+body.theme-dark #admin-tab-content :is(.form-input,.form-select,.form-textarea,.admin-table) { background:#192831 !important; color:#eee5d5 !important; border-color:#4b514b !important; }
+body.theme-dark #admin-tab-content [style*="background: #FFF"] { background:#192831 !important; color:#eee5d5 !important; }
+@media(max-width:640px) { .content-editorial-card,.studio-section,.studio-card { padding:14px; } .studio-toolbar { flex-direction:column; } .studio-toolbar input { max-width:100%; } }
 @supports not (backdrop-filter:blur(1px)) { body :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { background:var(--ivory-canvas); } body.theme-dark :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { background:#142027; } }

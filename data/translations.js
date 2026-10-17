@@ -40,7 +40,7 @@ window.HOTEL_PREMIER_I18N = {
       quickDirectionsSub: 'Google Maps GPS',
 
       // Dine Header
-      dineHeroSubtitle: 'A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.',
+      dineHeroSubtitle: 'North Indian & Khandeshi favourites, clay oven tandoor, dum biryani, Indo-Chinese and Pastas—served with refreshing beverages.',
       signatureCreationsTitle: "Chef's Signature Creations",
       signatureCreationsSub: 'Prepared fresh to order in standard refined oil',
       signatureRatedBadge: '★ 4.2+ Rated Favorites',
@@ -259,7 +259,7 @@ window.HOTEL_PREMIER_I18N = {
       quickDirectionsSub: 'गूगल मैप्स जीपीएस',
 
       // Dine Header Content
-      dineHeroSubtitle: 'स्वादिष्ट उत्तर भारतीय करी, दम बिरयानी, तंदूर कबाब एवं खान्देशी व्यंजनों का शाही अनुभव।',
+      dineHeroSubtitle: 'उत्तर भारतीय और खान्देशी व्यंजन, तंदूर, दम बिरयानी, इंडो-चाइनीज़, पास्ता और ताज़गी भरे पेय।',
       signatureCreationsTitle: "शेफ के खास व्यंजन",
       signatureCreationsSub: 'ताजा और शुद्ध रिफाइंड तेल में निर्मित',
       signatureRatedBadge: '★ 4.2+ रेटिंग वाले पसंदीदा',
@@ -477,7 +477,7 @@ window.HOTEL_PREMIER_I18N = {
       quickDirectionsSub: 'गुगल मॅप्स जीपीएस',
 
       // Dine Header Content
-      dineHeroSubtitle: 'अस्सल उत्तर भारतीय ग्रेव्ही, दम बिर्याणी, तंदूर कबाब आणि खास खान्देशी चवींचा राजेशाही अनुभव.',
+      dineHeroSubtitle: 'उत्तर भारतीय आणि खान्देशी चवी, तंदूर, दम बिर्याणी, इंडो-चायनीज, पास्ता आणि ताजेतवाने पेय.',
       signatureCreationsTitle: "शेफचे खास पदार्थ",
       signatureCreationsSub: 'ताजे आणि दर्जेदार रिफाईंड तेलात बनवलेले',
       signatureRatedBadge: '★ 4.2+ रेटिंगचे आवडते पदार्थ',
@@ -705,6 +705,12 @@ window.HOTEL_PREMIER_I18N = {
       desc_en: 'Chinese Platter, Paneer Chilli, Spring Rolls, Manchurian & Crispy Corn',
       desc_hi: 'Paneer Chilli, Manchurian, Spring Rolls, Chinese Platter',
       desc_mr: 'Paneer Chilli, Manchurian, Spring Rolls, Chinese Platter'
+    },
+    'pasta-section': {
+      en: 'Pastas', hi: 'पास्ता', mr: 'पास्ता',
+      desc_en: 'Chilli Chinese Pasta & Desi Masala Pasta',
+      desc_hi: 'चिली चाइनीज़ पास्ता और देसी मसाला पास्ता',
+      desc_mr: 'चिली चायनीज पास्ता आणि देसी मसाला पास्ता'
     },
     'tandoor-classics': {
       en: 'Tandoor Classics',

@@ -133,7 +133,9 @@ class HotelPremierAdmin {
     const contentContainer = document.getElementById('admin-tab-content');
     if (!contentContainer) return;
 
-    if (tabName === 'crm') {
+    if (tabName === 'content') {
+      window.HotelContentStudio?.render(contentContainer);
+    } else if (tabName === 'crm') {
       this.renderCRMManager(contentContainer);
     } else if (tabName === 'menu') {
       this.renderMenuManager(contentContainer);
@@ -349,6 +351,8 @@ class HotelPremierAdmin {
             <option value="all">All Categories</option>
             ${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
           </select>
+          <button type="button" class="studio-button" onclick="document.getElementById('admin-category-filter').value='indo-chinese'; window.admin.filterAdminDishes()">Indo-Chinese</button>
+          <button type="button" class="studio-button" onclick="document.getElementById('admin-category-filter').value='pasta-section'; window.admin.filterAdminDishes()">Pastas</button>
           <select id="admin-status-filter" class="form-select" style="padding: 7px 12px; font-size: 0.82rem; width: auto;">
             <option value="all">All Items</option>
             <option value="active">Active Only (Visible)</option>
@@ -1467,12 +1471,12 @@ class HotelPremierAdmin {
       <div style="margin-bottom: 16px;">
         <h4 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--terracotta-dark); margin-bottom: 4px;">Hotel Premier Room Multi-Photo & Deals Manager</h4>
         <p style="font-size: 0.8rem; color: var(--text-muted);">
-          Total Inventory: <strong>14 AC Rooms</strong> (2 Super Deluxe King Bed + 4 Deluxe Queen Bed + 8 Deluxe Twin Beds). Reorder, replace or add photos, update tariffs, and customize wedding bulk packages.
+          Total Inventory: <strong>14 AC Rooms</strong> (2 Royale King + 4 Signature Queen + 8 Companion Twin). Reorder, replace or add photos, update tariffs, and customize group packages. Saves apply to this browser; export a backup for publishing.
         </p>
       </div>
 
       <!-- Room Multi-Photo Cards Grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-bottom: 24px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; margin-bottom: 24px;">
         ${rooms.map(room => {
           const gallery = liveGalleries[room.id] || [room.image];
           return `
