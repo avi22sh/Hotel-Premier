@@ -76,7 +76,7 @@
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=21.5">
-  <link rel="stylesheet" href="royal.css?v=21.9">
+  <link rel="stylesheet" href="royal.css?v=21.11">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -551,9 +551,9 @@
     <div class="hotel-atmosphere-gallery">
       <div class="atmosphere-gallery-header">
         <span class="editorial-eyebrow">Property Moments</span>
-        <h3 class="atmosphere-gallery-title">Hotel Premier Atmosphere & Amenities</h3>
+        <h3 class="atmosphere-gallery-title">A Closer Look at Premier</h3>
         <p class="atmosphere-gallery-subtitle">
-          Explore the two Premier Royale King balcony outlooks—one road-facing and one rear-facing—alongside en-suite bathrooms, welcoming common areas, and our pure vegetarian dining hall.
+          From your first welcome to a quiet moment between plans—discover the spaces that make a Premier stay. Tap a photograph to explore.
         </p>
       </div>
 
@@ -586,7 +586,7 @@
           <img src="assets/hotel-images/s-dlx-balcony-terrace-view.jpg" alt="Premier Royale King Balcony" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Balcony & Sit-Out</span>
-            <div class="atmosphere-card-caption">Royale King balconies: one road-facing and one rear-facing</div>
+            <div class="atmosphere-card-caption">A Little Space to Pause</div>
           </div>
         </div>
 
@@ -1901,13 +1901,14 @@
   <script src="data/menu-photos.js?v=21.6"></script>
   <script src="app.js?v=21.8"></script>
   <script src="content-studio.js?v=21.8"></script>
+  <script src="property-gallery.js?v=21.11"></script>
   <script src="admin.js?v=21.8"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.10', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.11', { updateViaCache: 'none' }).then(function(reg) {
           reg.update().catch(function() {});
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
