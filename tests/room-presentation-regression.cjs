@@ -19,6 +19,8 @@ for (const room of rooms) {
 assert.deepEqual(Array.from(rooms,r=>r.tariff.single.roomOnly),[2400,2100,2100]);
 assert.deepEqual(Array.from(rooms,r=>r.tariff.double.withBreakfast),[3000,2700,2700]);
 const html = fs.readFileSync('index.html','utf8');
+assert.match(html,/The Premier Way to Stay/);
+assert.doesNotMatch(html,/Call Room Service \/ Front Desk/);
 assert.doesNotMatch(html,/240 sq\.ft|280 sq\.ft|King Size Luxury Bed • Front Facing/);
 assert.match(html,/CP includes breakfast from a fixed menu; conditions apply/);
 assert.match(fs.readFileSync('app.js','utf8'),/CP — Breakfast from a fixed menu; conditions apply/);
