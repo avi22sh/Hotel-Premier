@@ -1,20 +1,65 @@
-/* Royal presentation layer. Loaded last to unify legacy component styles. */
-:root { --royal-surface: rgba(255,253,247,.88); --royal-ink:#28332F; --royal-muted:#59665F; --royal-edge:rgba(152,120,80,.24); --royal-gold:#80602E; }
-body { background: radial-gradient(ellipse at top left,#F1E6D1,transparent 55%),#FAF7F0; color:var(--royal-ink); }
+/* Royal presentation layer. Loaded last to unify legacy component styles with true glassmorphism. */
+:root { 
+  --royal-surface: rgba(255, 255, 255, 0.74); 
+  --royal-ink: #1E293B; 
+  --royal-muted: #59665F; 
+  --royal-edge: rgba(255, 255, 255, 0.65); 
+  --royal-gold: #80602E; 
+}
+body { 
+  background: 
+    radial-gradient(circle at 10% 15%, rgba(197, 168, 128, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 90% 25%, rgba(139, 21, 56, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 75%, rgba(197, 168, 128, 0.10) 0%, transparent 50%),
+    #FAF7F2; 
+  background-attachment: fixed;
+  color: var(--royal-ink); 
+}
 body.theme-dark {
-  --royal-surface:rgba(20,32,39,.9); --royal-ink:#E9E4D8; --royal-muted:#B9C2BE; --royal-edge:rgba(226,202,154,.23); --royal-gold:#DFC69A;
-  --burgundy-primary:#29473E; --burgundy-deep:#DFC69A; --burgundy-light:#365D50; --burgundy-glow:rgba(183,155,102,.18);
-  --glass-bg-card:rgba(20,32,39,.9); --glass-bg-modal:rgba(20,32,39,.97);
-  background:radial-gradient(ellipse at top left,#19372F,transparent 60%),#0D151C;
-  color:var(--royal-ink);
+  --royal-surface: rgba(18, 26, 38, 0.72); 
+  --royal-ink: #E9E4D8; 
+  --royal-muted: #B9C2BE; 
+  --royal-edge: rgba(255, 255, 255, 0.14); 
+  --royal-gold: #DFC69A;
+  --burgundy-primary: #29473E; 
+  --burgundy-deep: #DFC69A; 
+  --burgundy-light: #365D50; 
+  --burgundy-glow: rgba(183, 155, 102, 0.18);
+  --glass-bg-card: rgba(18, 26, 38, 0.72); 
+  --glass-bg-modal: rgba(16, 24, 35, 0.88);
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(139, 21, 56, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(197, 168, 128, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 60%, rgba(20, 31, 46, 0.55) 0%, transparent 55%),
+    #0A1017;
+  background-attachment: fixed;
+  color: var(--royal-ink);
 }
-body :is(.dish-card,.boutique-room-card,.tariff-suite-card,.modal-sheet,.settings-panel,.feedback-container,.review-card,.ota-booking-panel) {
-  background:var(--royal-surface); border:1px solid var(--royal-edge); color:var(--royal-ink);
-  box-shadow:0 10px 32px rgba(5,16,24,.1),inset 0 1px rgba(255,255,255,.12);
+body :is(.dish-card, .boutique-room-card, .tariff-suite-card, .modal-sheet, .settings-panel, .feedback-container, .review-card, .ota-booking-panel) {
+  background: var(--royal-surface); 
+  border: 1px solid var(--royal-edge); 
+  color: var(--royal-ink);
+  box-shadow: 0 10px 32px rgba(5, 16, 24, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(14px); 
+  -webkit-backdrop-filter: blur(14px);
+  transform: translateZ(0);
 }
-/* Blur large panels only; hundreds of individually blurred menu cards hurt mobile scrolling. */
-body :is(.app-header,.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
-body .dish-card { backdrop-filter:none; -webkit-backdrop-filter:none; }
+body .dish-card {
+  border-radius: 16px;
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+body .dish-card:hover {
+  background: rgba(255, 255, 255, 0.84);
+  border-color: rgba(197, 168, 128, 0.55);
+  box-shadow: 0 14px 38px rgba(5, 16, 24, 0.12), inset 0 1px 1px 0 rgba(255, 255, 255, 0.70);
+  transform: translateY(-2px);
+}
+body.theme-dark .dish-card:hover {
+  background: rgba(24, 35, 50, 0.82);
+  border-color: rgba(223, 201, 168, 0.35);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.20);
+  transform: translateY(-2px);
+}
 body.theme-dark :is(.room-card-info-panel,.tariff-suite-card,.tariff-card-amenities,.tariff-card-action,.feedback-container,.modal-header) { background:transparent; color:var(--royal-ink); }
 body.theme-dark :is(.dish-title,.modal-dish-name,.room-suite-title,.tariff-suite-title,.feedback-title) { color:var(--royal-ink) !important; }
 body.theme-dark :is(.dish-tax-note,.modal-dish-desc,.room-suite-desc,.tariff-suite-desc) { color:var(--royal-muted); }
