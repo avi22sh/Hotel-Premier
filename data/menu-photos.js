@@ -1,5 +1,9 @@
 // Owner-selected photos, exported 2026-10-15. Originals preserved.
 window.HOTEL_PREMIER_PHOTOS = {
+  "thali-mini": "assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL.jpg",
+  "thali-signature": "assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg",
+  "thali-maharaja": "assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg",
+  "thali-chinese": "assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg",
   "md-1": "assets/menu-images/MORNING DELIGHT/POORI BHAJI.jpg",
   "md-2": "assets/menu-images/MORNING DELIGHT/CHOLE BHATURE.jpg",
   "md-3": "assets/menu-images/MORNING DELIGHT/ALOO PARATHA WITH CURD 1.jpg",

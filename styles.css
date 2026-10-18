@@ -3708,6 +3708,45 @@ body.theme-dark .dish-options-hint { color: #BAC4CE; }
   border-radius: 999px;
 }
 
+.dish-badge-delivery-exclusive {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #DC2626;
+  background: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  margin-bottom: 4px;
+  width: fit-content;
+}
+body.theme-dark .dish-badge-delivery-exclusive {
+  color: #F87171;
+  background: rgba(239, 68, 68, 0.16);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.dish-pill-delivery-exclusive {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(245, 158, 11, 0.15));
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #DC2626;
+}
+body.theme-dark .dish-pill-delivery-exclusive {
+  color: #F87171;
+  border-color: rgba(248, 113, 113, 0.45);
+}
+
 .dish-pill-bestseller {
   display: inline-flex;
   align-items: center;

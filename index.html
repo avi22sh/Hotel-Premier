@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.27">
-  <link rel="stylesheet" href="royal.css?v=21.27">
+  <link rel="stylesheet" href="styles.css?v=21.28">
+  <link rel="stylesheet" href="royal.css?v=21.28">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -622,19 +622,6 @@
       </p>
     </div>
 
-    <!-- Plan Filter Selector -->
-    <div class="tariff-plan-switcher" id="tariff-plan-switcher" role="group" aria-label="Compare room meal plans">
-      <button type="button" class="tariff-plan-btn active" data-plan="all" aria-pressed="true" onclick="window.app ? window.app.setTariffPlanView('all') : null">
-        <span>Compare plans</span>
-      </button>
-      <button type="button" class="tariff-plan-btn" data-plan="ro" aria-pressed="false" onclick="window.app ? window.app.setTariffPlanView('ro') : null">
-        <span>Room only · RO</span>
-      </button>
-      <button type="button" class="tariff-plan-btn" data-plan="cp" aria-pressed="false" onclick="window.app ? window.app.setTariffPlanView('cp') : null">
-        <span>With breakfast · CP</span>
-      </button>
-    </div>
-
     <!-- Direct Booking PWA Privilege Card -->
     <div class="direct-booking-privilege-card">
       <div class="privilege-header">
@@ -653,7 +640,74 @@
     <!-- Organized Suite Rate Cards Grid -->
     <div class="tariff-suites-grid">
 
-      <!-- Suite Tier 1: Premier Signature & Companion Rooms -->
+      <!-- Suite Tier 1: Premier Royale Kings -->
+      <div class="tariff-suite-card featured-suite">
+        <div class="tariff-suite-ribbon">👑 Premium Suite</div>
+        <div class="tariff-suite-header">
+          <div class="tariff-suite-crest">
+            <span class="tariff-badge-pill gold-pill">2 Exclusive Suites</span>
+            <h3 class="tariff-suite-name">Premier Royale King</h3>
+            <p class="tariff-suite-bed-type">King bed • Your own balcony retreat</p>
+          </div>
+          <div class="tariff-suite-space">172 sq.ft • Accommodates 2–3 extra beds</div>
+        </div>
+
+        <div class="tariff-pricing-breakdown">
+          <!-- Room Only Block -->
+          <div class="tariff-plan-box plan-ro">
+            <div class="plan-badge-label">ROOM ONLY (RO)</div>
+            <div class="plan-price-row">
+              <div class="plan-occ-item">
+                <span class="occ-label">Single</span>
+                <span class="occ-price">₹ 2,400</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+              <div class="plan-divider-pipe"></div>
+              <div class="plan-occ-item highlight">
+                <span class="occ-label">Double</span>
+                <span class="occ-price">₹ 2,600</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+            </div>
+            <div class="plan-inclusions-note">Includes 24-Hr Check-Out (Direct Bookings Only) • All Taxes Included</div>
+          </div>
+
+          <!-- With Breakfast Block -->
+          <div class="tariff-plan-box plan-cp">
+            <div class="plan-badge-label gold-badge">WITH BREAKFAST (CP)</div>
+            <div class="plan-price-row">
+              <div class="plan-occ-item">
+                <span class="occ-label">Single</span>
+                <span class="occ-price">₹ 2,600</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+              <div class="plan-divider-pipe"></div>
+              <div class="plan-occ-item highlight">
+                <span class="occ-label">Double</span>
+                <span class="occ-price">₹ 3,000</span>
+                <span class="occ-unit">/ night</span>
+              </div>
+            </div>
+            <div class="plan-inclusions-note">CP breakfast from a fixed menu • Conditions apply</div>
+          </div>
+        </div>
+
+        <div class="tariff-card-amenities">
+          <span>👑 King Size Bed</span>
+          <span>💼 Executive Desk</span>
+          <span>❄️ Split AC</span>
+          <span>📺 43" Smart TV</span>
+          <span>📶 Premium Wi-Fi</span>
+        </div>
+
+        <div class="tariff-card-action">
+          <button class="btn-tariff-card-reserve btn-gold-action" onclick="window.app ? window.app.openConciergeBookingModal('ac-super-deluxe') : null">
+            <span>Reserve Royale King →</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Suite Tier 2: Premier Signature & Companion Rooms -->
       <div class="tariff-suite-card">
         <div class="tariff-suite-header">
           <div class="tariff-suite-crest">
@@ -718,73 +772,6 @@
           </button>
           <button class="btn-tariff-card-reserve" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-twin') : null">
             <span>Companion Twin →</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Suite Tier 2: Premier Royale Kings -->
-      <div class="tariff-suite-card featured-suite">
-        <div class="tariff-suite-ribbon">👑 Premium Suite</div>
-        <div class="tariff-suite-header">
-          <div class="tariff-suite-crest">
-            <span class="tariff-badge-pill gold-pill">2 Exclusive Suites</span>
-            <h3 class="tariff-suite-name">Premier Royale King</h3>
-            <p class="tariff-suite-bed-type">King bed • Your own balcony retreat</p>
-          </div>
-          <div class="tariff-suite-space">172 sq.ft • Accommodates 2–3 extra beds</div>
-        </div>
-
-        <div class="tariff-pricing-breakdown">
-          <!-- Room Only Block -->
-          <div class="tariff-plan-box plan-ro">
-            <div class="plan-badge-label">ROOM ONLY (RO)</div>
-            <div class="plan-price-row">
-              <div class="plan-occ-item">
-                <span class="occ-label">Single</span>
-                <span class="occ-price">₹ 2,400</span>
-                <span class="occ-unit">/ night</span>
-              </div>
-              <div class="plan-divider-pipe"></div>
-              <div class="plan-occ-item highlight">
-                <span class="occ-label">Double</span>
-                <span class="occ-price">₹ 2,600</span>
-                <span class="occ-unit">/ night</span>
-              </div>
-            </div>
-            <div class="plan-inclusions-note">Includes 24-Hr Check-Out (Direct Bookings Only) • All Taxes Included</div>
-          </div>
-
-          <!-- With Breakfast Block -->
-          <div class="tariff-plan-box plan-cp">
-            <div class="plan-badge-label gold-badge">WITH BREAKFAST (CP)</div>
-            <div class="plan-price-row">
-              <div class="plan-occ-item">
-                <span class="occ-label">Single</span>
-                <span class="occ-price">₹ 2,600</span>
-                <span class="occ-unit">/ night</span>
-              </div>
-              <div class="plan-divider-pipe"></div>
-              <div class="plan-occ-item highlight">
-                <span class="occ-label">Double</span>
-                <span class="occ-price">₹ 3,000</span>
-                <span class="occ-unit">/ night</span>
-              </div>
-            </div>
-            <div class="plan-inclusions-note">CP breakfast from a fixed menu • Conditions apply</div>
-          </div>
-        </div>
-
-        <div class="tariff-card-amenities">
-          <span>👑 King Size Bed</span>
-          <span>💼 Executive Desk</span>
-          <span>❄️ Split AC</span>
-          <span>📺 43" Smart TV</span>
-          <span>📶 Premium Wi-Fi</span>
-        </div>
-
-        <div class="tariff-card-action">
-          <button class="btn-tariff-card-reserve btn-gold-action" onclick="window.app ? window.app.openConciergeBookingModal('ac-super-deluxe') : null">
-            <span>Reserve Royale King →</span>
           </button>
         </div>
       </div>
@@ -1915,9 +1902,9 @@
   <script src="vault.js?v=20.51"></script>
   <script src="data/translations.js?v=21.14"></script>
   <script src="data/hotel-data.js?v=21.14"></script>
-  <script src="data/menu-data.js?v=21.8"></script>
-  <script src="data/menu-photos.js?v=21.6"></script>
-  <script src="app.js?v=21.27"></script>
+  <script src="data/menu-data.js?v=21.28"></script>
+  <script src="data/menu-photos.js?v=21.28"></script>
+  <script src="app.js?v=21.28"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
   <script src="admin.js?v=21.8"></script>

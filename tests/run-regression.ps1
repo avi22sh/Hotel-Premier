@@ -119,9 +119,9 @@ if (-not $html.Contains("The Premier Way to Stay") -or -not $html.Contains("CP i
 }
 Write-Host "PASS [9/15]: Room categories and CP fixed-menu terms verified" -ForegroundColor Green
 
-# 10. Menu Categories Integrity & Packaged Juices
-if (-not ($menuData -match 'pasta-section') -or -not ($menuData -match 'packaged-fruit-juices')) {
-    Write-Error "FAILED: menu-data.js missing pasta-section or packaged-fruit-juices"
+# 10. Menu Categories Integrity, Packaged Juices & Online-Exclusive Thalis
+if (-not ($menuData -match 'pasta-section') -or -not ($menuData -match 'packaged-fruit-juices') -or -not ($menuData -match 'delivery-thalis')) {
+    Write-Error "FAILED: menu-data.js missing pasta-section, packaged-fruit-juices, or delivery-thalis"
     exit 1
 }
 foreach ($j in @('cb-juice-orange', 'cb-juice-mango', 'cb-juice-pineapple', 'cb-juice-guava')) {
@@ -130,7 +130,13 @@ foreach ($j in @('cb-juice-orange', 'cb-juice-mango', 'cb-juice-pineapple', 'cb-
         exit 1
     }
 }
-Write-Host "PASS [10/15]: Menu categories integrity and 4 packaged juices verified" -ForegroundColor Green
+foreach ($thaliId in @('thali-mini', 'thali-signature', 'thali-maharaja', 'thali-chinese')) {
+    if (-not $menuData.Contains("'$thaliId'")) {
+        Write-Error "FAILED: menu-data.js missing thali $thaliId"
+        exit 1
+    }
+}
+Write-Host "PASS [10/15]: Menu categories integrity, 4 packaged juices, and 4 Swiggy/Zomato exclusive thalis verified" -ForegroundColor Green
 
 # 11. Hotel Image Optimization Health
 $hotelImages = Get-ChildItem -Path "assets/hotel-images" -Filter "*.jpg"

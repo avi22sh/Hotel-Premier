@@ -989,7 +989,7 @@ class HotelPremierApp {
     const themeMap = {
       'breakfast': ['morning-delights', 'hot-hearty'],
       'starters': ['tandoor-classics', 'indo-chinese', 'tasty-tidbits', 'premier-soups'],
-      'curries': ['paneer-specialties', 'vegetable-specialties', 'kofta-delights', 'flavorful-dals'],
+      'curries': ['paneer-specialties', 'vegetable-specialties', 'kofta-delights', 'flavorful-dals', 'delivery-thalis'],
       'grains': ['rice-biryani', 'signature-breads', 'sizzling-rice-noodles', 'pasta-section'],
       'desserts': ['mithai-magic', 'frozen-fantasies', 'mocktails', 'milkshake-mastani', 'chilled-beverages', 'fresh-addons']
     };
@@ -1885,6 +1885,7 @@ class HotelPremierApp {
         <div class="dish-banner-content">
           <div class="dish-banner-top">
             <div class="dish-banner-header">
+              ${dish.tags && dish.tags.includes('online-exclusive') ? `<div class="dish-badge-delivery-exclusive">🛵 Swiggy &amp; Zomato Exclusive</div>` : ''}
               <h4 class="dish-title">${dishTitleHtml}</h4>
             </div>
             <div class="dish-banner-price-stack">
@@ -2113,6 +2114,7 @@ class HotelPremierApp {
         </div>
 
         <div class="modal-dish-tags">
+          ${dish.tags && dish.tags.includes('online-exclusive') ? `<span class="dish-pill-delivery-exclusive" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(245, 158, 11, 0.15)); border: 1px solid rgba(239, 68, 68, 0.35); color: #DC2626; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px;">🛵 Swiggy &amp; Zomato Exclusive</span>` : ''}
           ${dish.tags && dish.tags.includes('bestseller') ? `<span class="dish-pill-bestseller" style="background: rgba(220, 38, 38, 0.12); border: 1px solid rgba(220, 38, 38, 0.3); color: #EF4444; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 999px;">${this.t('badgeBestseller')}</span>` : ''}
           ${dish.tags && dish.tags.includes('chef-special') ? `<span class="dish-pill-chef">${this.t('badgeChefSpecial')}</span>` : ''}
           ${dish.tags && dish.tags.includes('khandeshi-special') ? `<span class="dish-pill-khandeshi" style="background: rgba(217, 119, 6, 0.15); border: 1px solid rgba(217, 119, 6, 0.35); color: #F59E0B; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 999px;">${this.t('badgeKhandeshi')}</span>` : ''}

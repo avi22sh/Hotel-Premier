@@ -1,4 +1,4 @@
-﻿// Hotel Premier - Pride Pure Veg AC Restaurant Menu Database
+// Hotel Premier - Pride Pure Veg AC Restaurant Menu Database
 // Standardized Multilingual Menu: English, Hindi (Devanagari), Marathi (Devanagari)
 // Verified Against Official Updated Reference Menu Document (DETAILS.docx)
 window.HOTEL_PREMIER_CATEGORIES = [
@@ -73,6 +73,15 @@ window.HOTEL_PREMIER_CATEGORIES = [
     icon: '🍚', 
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN FRIED RICE.jpg',
     description: 'Triple Schezwan Rice, Hakka Noodles, Manchurian Noodles & Fried Rice'
+  },
+  { 
+    id: 'delivery-thalis', 
+    name: 'Premier Royal Thalis • Online Exclusives', 
+    hindiName: 'प्रीमियर रॉयल थालियाँ (स्विगी व ज़ोमैटो)',
+    marathiName: 'प्रीमियर रॉयल थाळी (स्विगी व झोमॅटो)',
+    icon: '🍱', 
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL.jpg',
+    description: 'Swiggy & Zomato exclusive complete thali platters: Mini Thali, Pride Signature, Maharaja Grand Feast & Indo-Chinese Wok Thali'
   },
   { 
     id: 'vegetable-specialties', 
@@ -232,6 +241,11 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
     { "id": "all", "name": "All Rice & Noodles", "hindiName": "सभी राइस व नूडल्स", "marathiName": "सर्व राईस व नूडल्स" },
     { "id": "fried-rice", "name": "Fried Rice Varieties", "hindiName": "फ्राइड राइस", "marathiName": "फ्राईड राईस", "dishIds": ["rn-1", "rn-2", "rn-3", "rn-4", "rn-5"] },
     { "id": "noodles", "name": "Hakka & Schezwan Noodles", "hindiName": "नूडल्स", "marathiName": "नूडल्स", "dishIds": ["rn-6", "rn-7", "rn-8", "rn-9", "rn-10"] }
+  ],
+  "delivery-thalis": [
+    { "id": "all", "name": "All Delivery Thalis", "hindiName": "सभी थालियाँ", "marathiName": "सर्व थाळ्या" },
+    { "id": "traditional-thalis", "name": "Royal Indian Thalis", "hindiName": "शाही भारतीय थालियाँ", "marathiName": "शाही भारतीय थाळी", "dishIds": ["thali-mini", "thali-signature", "thali-maharaja"] },
+    { "id": "fusion-thalis", "name": "Indo-Chinese Platters", "hindiName": "इंडो-चाइनीज़ प्लेटर", "marathiName": "इंडो-चायनीज प्लेटर", "dishIds": ["thali-chinese"] }
   ],
   "vegetable-specialties": [
     { "id": "all", "name": "All Sabzi", "hindiName": "सभी सब्ज़ियां", "marathiName": "सर्व भाज्या" },
@@ -1917,6 +1931,76 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG MANCHURIAN NOODLES.jpg',
     rating: 4.8,
     prepTime: '16 mins'
+  },
+
+  // ==================== PREMIER ROYAL THALIS (SWIGGY & ZOMATO EXCLUSIVE) ====================
+  {
+    id: 'thali-mini', categoryId: 'delivery-thalis',
+    name: 'Premier Quick Mini Thali',
+    hindiName: 'प्रीमियर क्विक मिनी थाली',
+    marathiName: 'प्रीमियर क्विक मिनी थाळी',
+    description: 'Wholesome everyday meal: 1 Seasonal Sabzi, Yellow Dal Tadka, 3 Butter Tawa Phulkas (or 2 Rotis), Steamed Jeera Rice, Fresh Pickle, and Crispy Papad. Exclusively on Swiggy & Zomato.',
+    descriptionHi: 'दैनिक संतुलित भोजन: 1 मौसमी सब्ज़ी, दाल तड़का, 3 बटर फुल्का (या 2 रोटी), जीरा राइस, पापड़ एवं आचार। स्विगी व ज़ोमैटो पर विशेष उपलब्ध।',
+    descriptionMr: 'रोजचा परिपूर्ण डबा: 1 ताजी भाजी, खमंग डाळ तडका, 3 मऊ बटर फुलके (किंवा 2 पोळ्या), जिरा राईस, कुरकुरीत पापड व लोणचे. केवळ स्विगी व झोमॅटोवर उपलब्ध.',
+    price: 160,
+    tags: ['veg', 'bestseller', 'online-exclusive', 'swiggy-top', 'zomato-top'],
+    zomatoRating: '4.4',
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL.jpg',
+    rating: 4.7,
+    prepTime: '20 mins'
+  },
+  {
+    id: 'thali-signature', categoryId: 'delivery-thalis',
+    name: 'Pride Signature Royal Thali',
+    hindiName: 'प्राइड सिग्नेचर रॉयल थाली',
+    marathiName: 'प्राइड सिग्नेचर रॉयल थाळी',
+    description: 'Our iconic pure-veg feast: Paneer Butter Masala, 1 Seasonal Veg Specialty, Dal Tadka, 3 Butter Phulkas or 2 Butter Naan pieces, fragrant Veg Pulao, Gulab Jamun (1 pc), Boondi Raita, Roasted Papad, and Salad. Exclusively on Swiggy & Zomato.',
+    descriptionHi: 'प्रीमियर की सिग्नेचर थाली: शाही पनीर बटर मसाला, मौसमी वेज सब्ज़ी, दाल तड़का, 3 बटर फुल्का / बटर नान, वेज पुलाव, 1 गुलाब जामुन, बूंदी रायता, भुना पापड़ व सलाद। स्विगी व ज़ोमैटो एक्सक्लूसिव।',
+    descriptionMr: 'हॉटेल प्रीमियरची प्रसिद्ध थाळी: पनीर बटर मसाला, मिक्स व्हेज भाजी, डाळ तडका, 3 बटर फुलके / बटर नान, व्हेज पुलाव, 1 गरम गुलाबजाम, बुंदी रायता, भाजलेला पापड व ताजे सॅलड. स्विगी व झोमॅटो एक्सक्लुझिव्ह.',
+    price: 240,
+    tags: ['veg', 'bestseller', 'chef-special', 'online-exclusive', 'swiggy-top', 'zomato-top'],
+    zomatoRating: '4.5',
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
+    rating: 4.9,
+    prepTime: '20 mins'
+  },
+  {
+    id: 'thali-maharaja', categoryId: 'delivery-thalis',
+    name: 'Premier Maharaja Grand Feast Thali',
+    hindiName: 'प्रीमियर महाराजा ग्रांड फीस्ट थाली',
+    marathiName: 'प्रीमियर महाराजा ग्रँड थाळी',
+    description: 'Grand royal banquet box: Rich Paneer Tikka Lababdar, Khandeshi Shev Bhaji, Dal Maharani, 2 Butter Naan or 4 Laccha Phulkas, aromatic Veg Dum Biryani, 2 Hot Gulab Jamuns, Boondi Raita, Roasted Papad, and Fresh Salad. Exclusively on Swiggy & Zomato.',
+    descriptionHi: 'महाराजाओं जैसी भव्य थाली: पनीर टिक्का लबाबदार, खान्देशी शेव भाजी, दाल महारानी, 2 बटर नान या 4 फुल्का, खुशबूदार दम बिरयानी, 2 गुलाब जामुन, बूंदी रायता, रोस्टेड पापड़ व स्पेशल सलाद। स्विगी व ज़ोमैटो एक्सक्लूसिव।',
+    descriptionMr: 'महाराजा थाळीचा शाही थाट: पनीर टिक्का लबाबदार, झणझणीत खान्देशी शेव भाजी, डाळ महारानी, 2 बटर नान किंवा 4 फुलके, सुगंधी व्हेज दम बिर्याणी, 2 रसरशीत गुलाबजाम, रायता, भाजलेला पापड व सॅलड. स्विगी व झोमॅटो एक्सक्लुझिव्ह.',
+    price: 320,
+    tags: ['veg', 'bestseller', 'chef-special', 'online-exclusive', 'swiggy-top', 'zomato-top'],
+    zomatoRating: '4.6',
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg',
+    rating: 4.9,
+    prepTime: '25 mins'
+  },
+  {
+    id: 'thali-chinese', categoryId: 'delivery-thalis',
+    name: 'Indo-Chinese Wok Fusion Thali',
+    hindiName: 'इंडो-चाइनीज़ वोक फ़्यूज़न थाली',
+    marathiName: 'इंडो-चायनीज वोक फ्युजन थाळी',
+    description: 'Sizzling oriental feast combo: Veg Hakka Noodles, Veg Fried Rice, Veg Manchurian Gravy (4 pcs), Paneer Chilli Dry (4 pcs), Crispy Fried Noodles, and Spicy Schezwan Dip. Exclusively on Swiggy & Zomato.',
+    descriptionHi: 'चटपटा इंडो-चाइनीज़ कम्प्लीट मील: वेज हक्का नूडल्स, वेज फ्राइड राइस, वेज मंचूरियन ग्रेवी (4 पीस), पनीर चिली ड्राई (4 पीस), फ्राइड क्रिस्पी नूडल्स एवं शेज़वान चटनी। स्विगी व ज़ोमैटो एक्सक्लूसिव।',
+    descriptionMr: 'झणझणीत इंडो-चायनीज कॉम्बो: व्हेज हक्का नूडल्स, व्हेज फ्राईड राईस, व्हेज मंच्युरियन ग्रेव्ही, पनीर चिली ड्राय, क्रिस्पी नूडल्स आणि तिखट शेजवान सॉस. स्विगी व झोमॅटो एक्सक्लुझिव्ह.',
+    price: 220,
+    tags: ['veg', 'chef-special', 'online-exclusive', 'swiggy-top', 'zomato-top'],
+    zomatoRating: '4.3',
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
+    rating: 4.8,
+    prepTime: '20 mins'
   },
 
   // ==================== VEGETABLE SPECIALTIES ====================
