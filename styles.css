@@ -6002,9 +6002,9 @@ body.theme-dark .tier-perks-list li {
   }
 
   .lang-btn {
-    min-height: 34px;
-    font-size: 0.62rem;
-    padding: 3px 5px;
+    min-height: 38px;
+    font-size: 0.65rem;
+    padding: 5px 8px;
   }
 
   .guest-concierge-pill {
@@ -6030,9 +6030,9 @@ body.theme-dark .tier-perks-list li {
   }
 
   .hotel-nav-reserve-btn {
-    min-height: 36px;
-    padding: 5px 10px;
-    font-size: 0.66rem;
+    min-height: 44px;
+    padding: 7px 12px;
+    font-size: 0.68rem;
     letter-spacing: 0.8px;
   }
 

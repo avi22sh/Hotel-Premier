@@ -39,6 +39,14 @@ body.theme-dark .property-viewer { background:#19292e; color:#eee5d5; }
   --royal-edge: rgba(255, 255, 255, 0.65); 
   --royal-gold: #80602E; 
 }
+:focus-visible {
+  outline: 2px solid var(--royal-gold, #80602E);
+  outline-offset: 2px;
+}
+body.theme-dark :focus-visible {
+  outline: 2px solid var(--royal-gold, #DFC69A);
+  outline-offset: 2px;
+}
 body { 
   background: 
     radial-gradient(circle at 10% 15%, rgba(197, 168, 128, 0.16) 0%, transparent 45%),

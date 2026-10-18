@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.24">
-  <link rel="stylesheet" href="royal.css?v=21.24">
+  <link rel="stylesheet" href="styles.css?v=21.25">
+  <link rel="stylesheet" href="royal.css?v=21.25">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -1051,7 +1051,7 @@
       <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
           <div class="form-group">
-            <label class="form-label">Occasion / Stay Purpose</label>
+            <label class="form-label" for="calc-event-type">Occasion / Stay Purpose</label>
             <select id="calc-event-type" class="form-select" onchange="window.app.calculateBulkQuote()">
               <option value="Wedding / Marriage Barat">💍 Wedding / Marriage Barat</option>
               <option value="Family Function / Gathering">👨‍👩‍👧‍👦 Family Function / Gathering</option>
@@ -1061,7 +1061,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Room Category</label>
+            <label class="form-label" for="calc-room-type">Room Category</label>
             <select id="calc-room-type" class="form-select" onchange="window.app.calculateBulkQuote()">
               <option value="full-14">👑 Full Hotel Buyout (14 Rooms: 2 Royale + 4 Signature + 8 Companion)</option>
               <option value="twin-8">🛏️🛏️ Premier Companion Twin Block (8 Rooms - 2 Beds)</option>
@@ -1072,21 +1072,21 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Rooms Needed (Max 14)</label>
+            <label class="form-label" for="calc-rooms-number">Rooms Needed (Max 14)</label>
             <div style="display: flex; align-items: center; gap: 10px;">
-              <input type="range" id="calc-rooms-slider" min="2" max="14" value="14" style="flex-grow: 1; accent-color: var(--burgundy-primary);" oninput="document.getElementById('calc-rooms-number').value = this.value; window.app.calculateBulkQuote();">
-              <input type="number" id="calc-rooms-number" value="14" min="2" max="14" class="form-input" style="width: 70px; text-align: center; font-weight: 800;" oninput="document.getElementById('calc-rooms-slider').value = this.value; window.app.calculateBulkQuote();">
+              <input type="range" id="calc-rooms-slider" aria-label="Rooms needed slider (Max 14)" min="2" max="14" value="14" style="flex-grow: 1; accent-color: var(--burgundy-primary);" oninput="document.getElementById('calc-rooms-number').value = this.value; window.app.calculateBulkQuote();">
+              <input type="number" id="calc-rooms-number" aria-label="Rooms needed count" value="14" min="2" max="14" class="form-input" style="width: 70px; text-align: center; font-weight: 800;" oninput="document.getElementById('calc-rooms-slider').value = this.value; window.app.calculateBulkQuote();">
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Chargeable Extra Beds (₹300/bed)</label>
-            <input type="number" id="calc-extra-beds" value="0" min="0" max="26" class="form-input" style="text-align: center; font-weight: 800;" oninput="window.app.calculateBulkQuote()">
+            <label class="form-label" for="calc-extra-beds">Chargeable Extra Beds (₹300/bed)</label>
+            <input type="number" id="calc-extra-beds" aria-label="Chargeable extra beds" value="0" min="0" max="26" class="form-input" style="text-align: center; font-weight: 800;" oninput="window.app.calculateBulkQuote()">
             <small>Enter chargeable beds only. Complimentary beds for children aged 5–10 inclusive can be requested in your group inquiry, within room limits; confirm meals separately.</small>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Nights Stay</label>
+            <label class="form-label" for="calc-num-nights">Nights Stay</label>
             <select id="calc-num-nights" class="form-select" onchange="window.app.calculateBulkQuote()">
               <option value="1">1 Night (24-Hour Stay)</option>
               <option value="2">2 Nights (Weekend Stay)</option>
@@ -1096,7 +1096,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Meal Plan</label>
+            <label class="form-label" for="calc-plan-select">Meal Plan</label>
             <select id="calc-plan-select" class="form-select" onchange="window.app.calculateBulkQuote()">
               <option value="CP" selected>CP — Fixed-menu breakfast; conditions apply</option>
               <option value="RO">Room Only (RO)</option>
@@ -1111,8 +1111,8 @@
             <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <input type="text" id="calc-bulk-guest-name" class="form-input" placeholder="Organizer Name">
-            <input type="tel" id="calc-bulk-guest-phone" class="form-input" placeholder="WhatsApp Number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel">
+            <input type="text" id="calc-bulk-guest-name" aria-label="Organizer full name" class="form-input" placeholder="Organizer Name">
+            <input type="tel" id="calc-bulk-guest-phone" aria-label="Organizer 10-digit WhatsApp number" class="form-input" placeholder="WhatsApp Number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel">
           </div>
         </div>
 
@@ -1528,7 +1528,7 @@
         <div class="modal-title" id="route-options-modal-title">
           <span>🧭</span> <span>Select Starting Location</span>
         </div>
-        <button type="button" class="modal-close-btn" onclick="window.app ? window.app.closeRouteOptionsModal() : null">✕</button>
+        <button type="button" class="modal-close-btn" aria-label="Close route options modal" onclick="window.app ? window.app.closeRouteOptionsModal() : null">✕</button>
       </div>
       <div class="modal-body">
         <p class="route-picker-desc" id="route-options-modal-desc"></p>
@@ -1546,7 +1546,7 @@
         <div class="modal-title">
           <span>🛎️</span> <span>Concierge Room Reservation</span>
         </div>
-        <button class="modal-close-btn" onclick="window.app ? window.app.closeConciergeBookingModal() : null">✕</button>
+        <button class="modal-close-btn" aria-label="Close concierge room reservation modal" onclick="window.app ? window.app.closeConciergeBookingModal() : null">✕</button>
       </div>
 
       <div class="modal-body">
@@ -1566,7 +1566,7 @@
 
         <!-- Step 1: Room Selection -->
         <div class="form-group">
-          <label class="form-label">1. Select Suite Category</label>
+          <label class="form-label" for="booking-room-type">1. Select Suite Category</label>
           <select id="booking-room-type" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
             <option value="ac-super-deluxe">👑 Premier Royale King (From ₹2,400/night)</option>
             <option value="ac-deluxe-queen" selected>🛏️ Premier Signature Queen (From ₹2,100/night)</option>
@@ -1577,11 +1577,11 @@
         <!-- Step 2: Check-In Details -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label class="form-label">2. Check-In Date</label>
+            <label class="form-label" for="booking-checkin-date">2. Check-In Date</label>
             <input type="date" id="booking-checkin-date" class="form-input" onchange="window.app ? window.app.updateBookingEstimate() : null" required>
           </div>
           <div class="form-group">
-            <label class="form-label">Check-In Time</label>
+            <label class="form-label" for="booking-checkin-time">Check-In Time</label>
             <select id="booking-checkin-time" class="form-select">
               <option value="12:00 PM (Standard)" selected>12:00 PM (Standard)</option>
               <option value="Morning Arrival (7:00 AM – 11:00 AM)">Morning (7 AM – 11 AM)</option>
@@ -1594,7 +1594,7 @@
         <!-- Step 3: Nights & Guests -->
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
           <div class="form-group">
-            <label class="form-label">Nights</label>
+            <label class="form-label" for="booking-nights">Nights</label>
             <select id="booking-nights" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
               <option value="1" selected>1 Night</option>
               <option value="2">2 Nights</option>
@@ -1603,7 +1603,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Rooms</label>
+            <label class="form-label" for="booking-rooms-count">Rooms</label>
             <select id="booking-rooms-count" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
               <option value="1" selected>1 Room</option>
               <option value="2">2 Rooms</option>
@@ -1612,7 +1612,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Guests</label>
+            <label class="form-label" for="booking-guests-count">Guests</label>
             <select id="booking-guests-count" class="form-select">
               <option value="1">1 Guest</option>
               <option value="2" selected>2 Guests</option>
@@ -1625,7 +1625,7 @@
         <!-- Step 4: Meal Plan & Extra Beds -->
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label class="form-label">Meal Plan</label>
+            <label class="form-label" for="booking-meal-plan">Meal Plan</label>
             <select id="booking-meal-plan" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
               <option value="CP" selected>CP — Fixed-menu breakfast; conditions apply</option>
               <option value="RO">Room Only (RO)</option>
@@ -1633,14 +1633,14 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="booking-extra-beds">Chargeable Extra Beds (total across rooms)</label>
-            <input type="number" id="booking-extra-beds" value="0" min="0" max="1" step="1" class="form-input" oninput="window.app ? window.app.updateBookingEstimate() : null">
+            <input type="number" id="booking-extra-beds" aria-label="Chargeable extra beds" value="0" min="0" max="1" step="1" class="form-input" oninput="window.app ? window.app.updateBookingEstimate() : null">
             <small>₹300 per bed/night RO; ₹500 CP with fixed-menu breakfast.</small>
           </div>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="booking-child-extra-beds">Complimentary Extra Beds — Children Aged 5–10 Inclusive</label>
-          <input type="number" id="booking-child-extra-beds" value="0" min="0" max="1" step="1" class="form-input" oninput="window.app ? window.app.updateBookingEstimate() : null">
+          <input type="number" id="booking-child-extra-beds" aria-label="Complimentary child extra beds (aged 5-10)" value="0" min="0" max="1" step="1" class="form-input" oninput="window.app ? window.app.updateBookingEstimate() : null">
           <small>Count across all booked rooms. Paid and complimentary beds share the room's extra-bed limit. Children's meals are not priced in this estimate; please confirm them with the hotel.</small>
         </div>
 
@@ -1653,8 +1653,8 @@
             <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <input type="text" id="booking-guest-name" class="form-input" placeholder="Your Name *" required>
-            <input type="tel" id="booking-guest-phone" class="form-input" placeholder="WhatsApp / Mobile *" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel" required>
+            <input type="text" id="booking-guest-name" aria-label="Guest full name" class="form-input" placeholder="Your Name *" required>
+            <input type="tel" id="booking-guest-phone" aria-label="Guest 10-digit WhatsApp or mobile number" class="form-input" placeholder="WhatsApp / Mobile *" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel" required>
           </div>
         </div>
 
@@ -1704,7 +1704,7 @@
         <div class="modal-title">
           <span>👤</span> <span>Your Concierge Profile</span>
         </div>
-        <button class="modal-close-btn" onclick="window.app ? window.app.closeGuestProfileModal() : null">✕</button>
+        <button class="modal-close-btn" aria-label="Close guest concierge profile modal" onclick="window.app ? window.app.closeGuestProfileModal() : null">✕</button>
       </div>
       <div class="modal-body">
         <p style="font-size: 0.82rem; color: var(--text-muted-dark); margin-bottom: 16px;">
@@ -1712,22 +1712,22 @@
         </p>
 
         <div class="form-group">
-          <label class="form-label">Full Name</label>
+          <label class="form-label" for="profile-modal-name">Full Name</label>
           <input type="text" id="profile-modal-name" class="form-input" placeholder="Enter your full name">
         </div>
 
         <div class="form-group">
-          <label class="form-label">WhatsApp / Mobile Number</label>
+          <label class="form-label" for="profile-modal-phone">WhatsApp / Mobile Number</label>
           <input type="tel" id="profile-modal-phone" class="form-input" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel">
         </div>
 
         <div class="form-group">
-          <label class="form-label">City / Region</label>
+          <label class="form-label" for="profile-modal-region">City / Region</label>
           <input type="text" id="profile-modal-region" class="form-input" placeholder="Your city (e.g. Bhusawal, Jalgaon, Pune, Mumbai)">
         </div>
 
         <div class="form-group">
-          <label class="form-label">Room or Table Number (If Currently Staying)</label>
+          <label class="form-label" for="profile-modal-room-table">Room or Table Number (If Currently Staying)</label>
           <input type="text" id="profile-modal-room-table" class="form-input" placeholder="Room number or table (optional)">
         </div>
 
@@ -1811,49 +1811,49 @@
         <div class="modal-title">
           <span>➕</span> <span>Add New Dish to Menu</span>
         </div>
-        <button class="modal-close-btn" onclick="window.admin.closeAddDishModal()">✕</button>
+        <button class="modal-close-btn" aria-label="Close add dish modal" onclick="window.admin.closeAddDishModal()">✕</button>
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label class="form-label">Dish Name *</label>
+          <label class="form-label" for="new-dish-name">Dish Name *</label>
           <input type="text" id="new-dish-name" class="form-input" placeholder="e.g. Kaju Paneer Handi">
         </div>
         <div class="form-group">
-          <label class="form-label">Category *</label>
+          <label class="form-label" for="new-dish-category">Category *</label>
           <select id="new-dish-category" class="form-select">
             <!-- Categories populated by admin.js -->
           </select>
         </div>
         <div class="form-group">
-          <label class="form-label">Price (₹) *</label>
+          <label class="form-label" for="new-dish-price">Price (₹) *</label>
           <input type="number" id="new-dish-price" class="form-input" placeholder="280">
         </div>
         <div class="form-group">
-          <label class="form-label">Description</label>
+          <label class="form-label" for="new-dish-desc">Description</label>
           <textarea id="new-dish-desc" class="form-textarea" rows="2" placeholder="Rich cottage cheese cooked in earthen handi with royal spices."></textarea>
         </div>
         <div class="form-group">
-          <label class="form-label">Dish Image</label>
+          <label class="form-label" for="new-dish-image">Dish Image</label>
           <input type="text" id="new-dish-image" class="form-input" placeholder="Image URL (or select file below)" style="margin-bottom: 6px;">
-          <input type="file" id="new-dish-file-input" accept="image/*" class="form-input" style="padding: 6px;" onchange="window.admin.handleNewDishImageUpload(this)">
+          <input type="file" id="new-dish-file-input" aria-label="Upload dish photo" accept="image/*" class="form-input" style="padding: 6px;" onchange="window.admin.handleNewDishImageUpload(this)">
         </div>
         <div class="form-group">
           <label class="form-label">Taste Profile & Special Badges</label>
           <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;">
             <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #B45309; cursor: pointer;">
-              <input type="checkbox" id="new-dish-sweet" style="width: 16px; height: 16px;"> 🍯 Sweet (मीठा)
+              <input type="checkbox" id="new-dish-sweet" aria-label="Sweet taste profile" style="width: 16px; height: 16px;"> 🍯 Sweet (मीठा)
             </label>
             <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #DC2626; cursor: pointer;">
-              <input type="checkbox" id="new-dish-spicy" style="width: 16px; height: 16px;"> 🌶️ Spicy (तीखा)
+              <input type="checkbox" id="new-dish-spicy" aria-label="Spicy taste profile" style="width: 16px; height: 16px;"> 🌶️ Spicy (तीखा)
             </label>
             <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #92400E; cursor: pointer;">
-              <input type="checkbox" id="new-dish-special" style="width: 16px; height: 16px;"> 👑 Chef's Special
+              <input type="checkbox" id="new-dish-special" aria-label="Chef's Special badge" style="width: 16px; height: 16px;"> 👑 Chef's Special
             </label>
             <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #B91C1C; cursor: pointer;">
-              <input type="checkbox" id="new-dish-bestseller" style="width: 16px; height: 16px;"> 🔥 Bestseller
+              <input type="checkbox" id="new-dish-bestseller" aria-label="Bestseller badge" style="width: 16px; height: 16px;"> 🔥 Bestseller
             </label>
             <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #7C2D12; cursor: pointer;">
-              <input type="checkbox" id="new-dish-khandeshi" style="width: 16px; height: 16px;"> 🫕 Khandeshi Special
+              <input type="checkbox" id="new-dish-khandeshi" aria-label="Khandeshi Special badge" style="width: 16px; height: 16px;"> 🫕 Khandeshi Special
             </label>
           </div>
         </div>
@@ -1872,7 +1872,7 @@
         <div class="modal-title">
           <span>📷</span> <span id="image-modal-dish-name">Replace Dish Image</span>
         </div>
-        <button class="modal-close-btn" onclick="window.admin ? window.admin.closeImageModal() : null">✕</button>
+        <button class="modal-close-btn" aria-label="Close image replacement modal" onclick="window.admin ? window.admin.closeImageModal() : null">✕</button>
       </div>
       <div class="modal-body" id="image-modal-body">
         <!-- Rendered dynamically by admin.js -->
@@ -1917,7 +1917,7 @@
   <script src="data/hotel-data.js?v=21.14"></script>
   <script src="data/menu-data.js?v=21.8"></script>
   <script src="data/menu-photos.js?v=21.6"></script>
-  <script src="app.js?v=21.24"></script>
+  <script src="app.js?v=21.25"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
   <script src="admin.js?v=21.8"></script>
