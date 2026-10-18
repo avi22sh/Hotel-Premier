@@ -2,13 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="theme-color" content="#0B121A">
-  <meta name="description" content="Hotel Premier - Modern Indian Boutique Hospitality in Bhusawal | 14 Luxury AC Suites, 24-Hour Check-Out & Pride Pure Veg AC Restaurant">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Hotel Premier - Modern Indian Boutique Hospitality in Bhusawal | 14 Luxury AC Suites, 24-Hour Check-Out (Direct Bookings Only) & Pride Pure Veg AC Restaurant">
   <link rel="canonical" href="https://avi22sh.github.io/Hotel-Premier/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Hotel Premier — Modern Boutique Hotel Concierge & Dining, Bhusawal">
-  <meta property="og:description" content="14 Air-Conditioned Boutique Suites, 24-Hour Flexible Check-Out, and Pride Pure Veg Fine Dining near Bhusawal Railway Junction.">
+  <meta property="og:description" content="14 Air-Conditioned Boutique Suites, 24-Hour Flexible Check-Out (Direct Bookings Only), and Pride Pure Veg Fine Dining near Bhusawal Railway Junction.">
   <meta property="og:url" content="https://avi22sh.github.io/Hotel-Premier/">
   <meta property="og:image" content="https://avi22sh.github.io/Hotel-Premier/assets/icon-512.png">
   <title>Hotel Premier — A Home in Bhusawal | Boutique Suites & Dining Concierge</title>
@@ -32,7 +35,7 @@
     },
     "amenityFeature": [
       { "@type": "LocationFeatureSpecification", "name": "Free High-Speed Wi-Fi", "value": true },
-      { "@type": "LocationFeatureSpecification", "name": "24 Hours Flexible Check-Out", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "24 Hours Flexible Check-Out (Direct Bookings Only)", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Pride Pure Veg AC Restaurant", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Free Bus & Car Parking", "value": true }
     ]
@@ -45,7 +48,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&family=Rozha+One&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest & App Icons -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="manifest.json?v=20.36">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
@@ -62,24 +65,19 @@
           }
         });
       }
-      if ('caches' in window) {
-        caches.keys().then(function(names) {
-          names.forEach(function(name) {
-            if (name !== 'hotel-premier-v20.33') {
-              console.log('[PWA] Purging stale cache:', name);
-              caches.delete(name);
-            }
-          });
-        });
-      }
+      // The service worker owns cache versioning. Deleting caches here would
+      // discard the offline shell and local dish photos on every page visit.
     })();
   </script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="asset-pipeline.js?v=20.8"></script>
+  <script src="data/menu-image-sizes.js?v=21.0"></script>
+  <script src="asset-pipeline.js?v=21.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=20.8">
+  <link rel="stylesheet" href="styles.css?v=21.20">
+  <link rel="stylesheet" href="royal.css?v=21.20">
+  <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
 
@@ -93,45 +91,64 @@
         </div>
       </a>
 
-      <div class="header-actions">
+      <details class="guest-settings" id="guest-settings">
+        <summary class="settings-trigger" aria-label="Open settings and guest profile" title="Settings and guest profile"><svg class="settings-gear-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 3-.5 2a7 7 0 0 0-1.7 1L4.8 5.5l-2 3.5 1.5 1.5a7 7 0 0 0 0 2L2.8 14l2 3.5 2-.5a7 7 0 0 0 1.7 1L9 20h4l.5-2a7 7 0 0 0 1.7-1l2 .5 2-3.5-1.5-1.5a7 7 0 0 0 0-2L19.2 9l-2-3.5-2 .5a7 7 0 0 0-1.7-1L13 3Z" transform="translate(1 0.5)"/><circle cx="12" cy="12" r="3"/></svg></summary>
+        <div class="settings-panel" aria-label="Guest settings">
+        <h2 class="settings-title">Your preferences</h2>
+        <div class="settings-row">
+        <span class="settings-label" id="settings-language-label">Language</span>
         <!-- Multilingual Switcher -->
-        <div class="lang-selector-group" id="lang-selector-group">
+        <div class="lang-selector-group" id="lang-selector-group" role="group" aria-labelledby="settings-language-label">
           <button class="lang-btn active" data-lang="en" onclick="window.app ? window.app.setLanguage('en') : null">EN</button>
           <button class="lang-btn" data-lang="hi" onclick="window.app ? window.app.setLanguage('hi') : null">हिंदी</button>
           <button class="lang-btn" data-lang="mr" onclick="window.app ? window.app.setLanguage('mr') : null">मराठी</button>
         </div>
+        </div>
 
         <!-- Guest Profile: Icon Only -->
-        <button class="guest-concierge-pill icon-only-pill" id="guest-profile-trigger-btn" onclick="window.app ? window.app.openGuestProfileModal() : null" title="Guest Profile" aria-label="Guest Profile">
-          <span class="guest-concierge-icon">👤</span>
+        <div class="settings-row"><span class="settings-label">Guest profile</span>
+        <button class="settings-action" id="guest-profile-trigger-btn" onclick="document.getElementById('guest-settings').open=false; window.app ? window.app.openGuestProfileModal() : null" title="Guest Profile" aria-label="Open guest profile">
+          Manage profile
         </button>
+        </div>
 
         <!-- Senior Mode Toggle -->
-        <button class="icon-btn text-size-toggle" id="font-size-toggle-btn" onclick="window.app ? window.app.toggleElderlyFontSize() : null" title="Adjust Text Size">
+        <div class="settings-row"><span class="settings-label">Text size</span>
+        <button class="icon-btn text-size-toggle" id="font-size-toggle-btn" onclick="window.app ? window.app.toggleElderlyFontSize() : null" title="Adjust Text Size" aria-label="Toggle larger text">
           <span style="font-weight: 800; font-size: 0.85rem;">A+</span>
         </button>
+        </div>
+
+        <div class="settings-row"><span class="settings-label">Appearance</span>
+        <button class="icon-btn" id="theme-toggle-btn" onclick="window.app ? window.app.cycleTheme() : null" title="System theme. Tap to change." aria-label="System theme. Tap to change.">
+          <span aria-hidden="true">◐</span>
+        </button>
+        </div>
+        <a href="tel:09325375802" class="settings-action settings-contact" data-i18n="btnCallHotel">Call Front Desk</a>
 
         <!-- CMS Settings Button (Visible only for staff via logo 5-tap or ?staff=1 / ?admin=1) -->
-        <button class="icon-btn" id="cms-settings-admin-btn" style="display: none;" onclick="window.admin ? window.admin.openAdminModal() : null" title="Admin Studio & CRM">
-          <span>⚙️</span>
+        <button class="settings-action" id="cms-settings-admin-btn" style="display: none;" onclick="document.getElementById('guest-settings').open=false; window.admin ? window.admin.openAdminModal() : null" title="Admin Studio & CRM">
+          Staff studio
         </button>
-      </div>
+        <a class="settings-developer" href="https://wa.me/918983703702?text=Hello,%20I%20am%20interested%20in%20a%20custom%20hotel%20digital%20concierge%20or%20QR%20web%20app%20like%20Hotel%20Premier." target="_blank" rel="noopener noreferrer">Digital experience · Contact developer ↗</a>
+        </div>
+      </details>
     </div>
 
     <!-- Hotel Navigation Bar: Independent Section Switching -->
     <nav class="hotel-nav-bar" aria-label="Hotel Premier Navigation">
       <div class="hotel-nav-inner">
-        <button class="hotel-nav-tab active" id="tab-nav-home" onclick="window.app ? window.app.switchSection('section-home') : null">
-          <span data-i18n="navHome">🏛️ Home</span>
+        <button class="hotel-nav-tab active" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
+          <span data-i18n="navDine">🍽️ Menu</span>
+        </button>
+        <button class="hotel-nav-tab" id="tab-nav-home" onclick="window.app ? window.app.switchSection('section-home') : null">
+          <span data-i18n="navHome">🏛️ Hotel</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-stay" onclick="window.app ? window.app.switchSection('section-stay') : null">
           <span data-i18n="navStay">🏨 Stay</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-tariffs" onclick="window.app ? window.app.switchSection('section-tariffs') : null">
           <span data-i18n="navTariff">📜 Tariff</span>
-        </button>
-        <button class="hotel-nav-tab" id="tab-nav-dine" onclick="window.app ? window.app.switchSection('section-dine') : null">
-          <span data-i18n="navDine">🍽️ Pride</span>
         </button>
         <button class="hotel-nav-tab" id="tab-nav-celebrate" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
           <span data-i18n="navCelebrate">🎉 Group & Events</span>
@@ -153,22 +170,6 @@
       </div>
     </nav>
 
-    <!-- Pride Pure Veg & Front Desk Contact Bar -->
-    <div class="concierge-sub-bar">
-      <div class="pride-hallmark">
-        <span class="pride-badge-pill">
-          <span class="pride-crown-emblem">👑</span>
-          <span class="pride-text">Pride</span>
-        </span>
-        <span class="hallmark-badge">🌱 PURE VEG</span>
-      </div>
-      <div class="concierge-contact-quick">
-        <a href="tel:09325375802" class="btn-call-hotel-header">
-          <span>📞</span>
-          <span data-i18n="btnCallHotel">Call Front Desk</span>
-        </a>
-      </div>
-    </div>
   </header>
 
   <!-- ================================================================ -->
@@ -187,7 +188,7 @@
         </p>
 
         <div class="sanctuary-hero-highlights">
-          <span class="sanctuary-pill" data-i18n="pill24hr">⏰ 24-Hour Flexible Check-Out</span>
+          <span class="sanctuary-pill" data-i18n="pill24hr">⏰ 24-Hour Flexible Check-Out (Direct Bookings Only)</span>
           <span class="sanctuary-pill" data-i18n="pill5min">🚆 15 Mins / 2 KM from Railway Junction</span>
           <span class="sanctuary-pill" data-i18n="pillVeg">🌱 Pride Pure Veg AC Dining</span>
           <span class="sanctuary-pill" data-i18n="pillParking">🚗 Free Private Bus & Car Parking</span>
@@ -233,13 +234,13 @@
         <!-- Pillar 1: Stay -->
         <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-stay') : null">
           <div class="home-pillar-media">
-            <img src="assets/hotel-images/room-super-deluxe-window.jpg" alt="Hotel Premier AC Super Deluxe Suite" class="home-pillar-img" loading="lazy">
+            <img src="assets/hotel-images/room-super-deluxe-window.jpg" alt="Premier Royale King at Hotel Premier" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Accommodations</span>
           </div>
           <div class="home-pillar-body">
             <h3 class="home-pillar-title">14 Air-Conditioned Suites</h3>
             <p class="home-pillar-desc">
-              Impeccably clean King and Queen suites with individual silent Split AC, electric kettle tea/coffee, 24h hot water, and complimentary bottled water.
+              Impeccably clean King and Queen suites with individual silent Split AC, a complimentary welcome snacks basket, 2 premix teas, an electric kettle, 2 packaged mineral water bottles, toiletries, and 24h hot water.
             </p>
             <a href="#stay" onclick="event.preventDefault(); event.stopPropagation(); window.app.switchSection('section-stay');" class="home-pillar-btn">
               <span>View Suites & Amenities</span>
@@ -310,11 +311,11 @@
   <!-- ================================================================ -->
   <section class="section-wrapper" id="section-stay">
     <div class="editorial-header-block">
-      <span class="editorial-eyebrow">The Accommodations</span>
-      <h2 class="editorial-title">14 Air-Conditioned Boutique Suites</h2>
+      <span class="editorial-eyebrow">A Home in Bhusawal</span>
+      <h2 class="editorial-title">The Premier Way to Stay</h2>
       <div class="editorial-divider"></div>
       <p class="editorial-subtitle">
-        Curated for corporate professionals, visiting delegates, wedding groups, and family transit stays. 2 Super Deluxe King Suites + 4 Deluxe Queen Suites + 8 Deluxe Twin Bed Suites.
+        Arrive to a warm welcome, unpack at your own pace, and make yourself at home. Our 14 air-conditioned rooms offer three ways to settle in: Royale King, Signature Queen and Companion Twin—with thoughtful essentials ready for your stay.
       </p>
     </div>
 
@@ -325,16 +326,12 @@
           <span>✨</span>
           <span>Standard In Every Room • Handcrafted For Guest Comfort</span>
         </div>
-        <a href="tel:09325375802" class="btn-room-service-call">
-          <span>📞</span>
-          <span>Call Room Service / Front Desk</span>
-        </a>
       </div>
       <div class="amenities-pills-grid">
         <div class="amenity-pill"><i class="fa-solid fa-snowflake"></i> Split Air Conditioning (Split AC)</div>
-        <div class="amenity-pill"><i class="fa-solid fa-bottle-water"></i> 2 Packaged Mineral Water Bottles</div>
-        <div class="amenity-pill"><i class="fa-solid fa-mug-hot"></i> Electric Kettle, Tea/Coffee & Biscuits</div>
-        <div class="amenity-pill"><i class="fa-solid fa-soap"></i> Dental & Bath Toiletries Kit</div>
+        <div class="amenity-pill"><i class="fa-solid fa-bottle-water"></i> 2 Complimentary Packaged Mineral Water Bottles</div>
+        <div class="amenity-pill"><i class="fa-solid fa-mug-hot"></i> Complimentary Welcome Snacks Basket • 2 Premix Teas • Electric Kettle</div>
+        <div class="amenity-pill"><i class="fa-solid fa-soap"></i> Complimentary Toiletries</div>
         <div class="amenity-pill"><i class="fa-solid fa-shower"></i> 24-Hour Geyser Hot Water & Towels</div>
         <div class="amenity-pill"><i class="fa-solid fa-wifi"></i> High-Speed Wireless Internet (Wi-Fi)</div>
         <div class="amenity-pill"><i class="fa-solid fa-tv"></i> Smart LED Television</div>
@@ -357,6 +354,8 @@
       </button>
     </div>
 
+    <p class="editorial-subtitle">CP includes breakfast from a fixed menu; conditions apply. The welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, kettle and toiletries are complimentary room amenities.</p>
+    <p class="editorial-subtitle">Family welcome: complimentary extra beds for children aged 5–10 inclusive, within each room's extra-bed limit. Please confirm children's meals separately.</p>
     <div class="rooms-showcase-grid">
       <!-- Suite 1: AC Super Deluxe King Room (2 Rooms Only) -->
       <article class="boutique-room-card" id="room-card-ac-super-deluxe">
@@ -376,14 +375,14 @@
         <div class="room-card-info-panel">
           <div>
             <div class="room-header-row">
-              <h3 class="room-suite-title">AC Super Deluxe Room</h3>
+              <h3 class="room-suite-title">Premier Royale King</h3>
               <div class="room-starting-tariff">
                 <div class="tariff-label">From</div>
                 <div class="tariff-val">₹ 2,400/-</div>
               </div>
             </div>
             <p class="room-editorial-desc">
-              Our premier executive sanctuary featuring an expansive King Size Luxury Bed, silent split air-conditioning, large smart LED TV, hot water, and attentive Pride Pure Veg room service. <strong>Accommodates 2 to 3 Extra Beds (₹300/bed)</strong>.
+              A refined <strong>172 sq.ft</strong> air-conditioned King room with a private balcony. Our two rooms offer distinct outlooks: <strong>one front road-facing balcony and one rear-facing balcony</strong>. View allocation is subject to availability. Your complimentary welcome setup includes a snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries.
             </p>
 
             <div class="room-amenity-curation">
@@ -400,22 +399,22 @@
             <div class="room-rate-breakdown">
               <div class="rate-row">
                 <span class="rate-occ">Single Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,600</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,600</strong> (CP)</span>
               </div>
               <div class="rate-row">
                 <span class="rate-occ">Double Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,600</strong> (Room Only) / <strong>₹3,000</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,600</strong> (Room Only) / <strong>₹3,000</strong> (CP)</span>
               </div>
               <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
-                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (CP)</span>
               </div>
             </div>
           </div>
 
           <div class="room-action-row">
             <button class="btn-reserve-suite" onclick="window.app ? window.app.openConciergeBookingModal('ac-super-deluxe') : null">
-              <span>🛎️ Reserve Super Deluxe Suite →</span>
+              <span>🛎️ Reserve Royale King →</span>
             </button>
           </div>
         </div>
@@ -439,14 +438,14 @@
         <div class="room-card-info-panel">
           <div>
             <div class="room-header-row">
-              <h3 class="room-suite-title">AC Deluxe (Queen Bed)</h3>
+              <h3 class="room-suite-title">Premier Signature Queen</h3>
               <div class="room-starting-tariff">
                 <div class="tariff-label">From</div>
                 <div class="tariff-val">₹ 2,100/-</div>
               </div>
             </div>
             <p class="room-editorial-desc">
-              Peaceful and elegant air-conditioned room featuring a plush Queen Size Bed, workstation, wardrobe, and modern bath amenities. Designed for executives, traveling couples, and pilgrimage stays. <strong>Accommodates 1 Extra Bed (₹300/bed)</strong>.
+              A thoughtfully appointed <strong>144 sq.ft</strong> air-conditioned Queen room for a comfortable stay. Includes a complimentary welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries.
             </p>
 
             <div class="room-amenity-curation">
@@ -463,22 +462,22 @@
             <div class="room-rate-breakdown">
               <div class="rate-row">
                 <span class="rate-occ">Single Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,100</strong> (Room Only) / <strong>₹2,300</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,100</strong> (Room Only) / <strong>₹2,300</strong> (CP)</span>
               </div>
               <div class="rate-row">
                 <span class="rate-occ">Double Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,700</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,700</strong> (CP)</span>
               </div>
               <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
-                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (CP)</span>
               </div>
             </div>
           </div>
 
           <div class="room-action-row">
             <button class="btn-reserve-suite" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-queen') : null">
-              <span>🛎️ Reserve Queen Suite →</span>
+              <span>🛎️ Reserve Signature Queen →</span>
             </button>
           </div>
         </div>
@@ -502,14 +501,14 @@
         <div class="room-card-info-panel">
           <div>
             <div class="room-header-row">
-              <h3 class="room-suite-title">AC Deluxe (Twin Beds)</h3>
+              <h3 class="room-suite-title">Premier Companion Twin</h3>
               <div class="room-starting-tariff">
                 <div class="tariff-label">From</div>
                 <div class="tariff-val">₹ 2,100/-</div>
               </div>
             </div>
             <p class="room-editorial-desc">
-              Popular air-conditioned suite with 2 separate Single Beds, perfect for wedding attendees, Barat groups, and corporate colleagues. <strong>Accommodates 2 Extra Beds (₹300/bed)</strong>.
+              A comfortable <strong>144 sq.ft</strong> air-conditioned room with two separate single beds for friends, colleagues or family. Includes a complimentary welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries.
             </p>
 
             <div class="room-amenity-curation">
@@ -526,22 +525,22 @@
             <div class="room-rate-breakdown">
               <div class="rate-row">
                 <span class="rate-occ">Single Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,100</strong> (Room Only) / <strong>₹2,300</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,100</strong> (Room Only) / <strong>₹2,300</strong> (CP)</span>
               </div>
               <div class="rate-row">
                 <span class="rate-occ">Double Occupancy:</span>
-                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,700</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,700</strong> (CP)</span>
               </div>
               <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
-                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (With Breakfast)</span>
+                <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (CP)</span>
               </div>
             </div>
           </div>
 
           <div class="room-action-row">
             <button class="btn-reserve-suite" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-twin') : null">
-              <span>🛎️ Reserve Twin Suite →</span>
+              <span>🛎️ Reserve Companion Twin →</span>
             </button>
           </div>
         </div>
@@ -552,9 +551,9 @@
     <div class="hotel-atmosphere-gallery">
       <div class="atmosphere-gallery-header">
         <span class="editorial-eyebrow">Property Moments</span>
-        <h3 class="atmosphere-gallery-title">Hotel Premier Atmosphere & Amenities</h3>
+        <h3 class="atmosphere-gallery-title">A Closer Look at Premier</h3>
         <p class="atmosphere-gallery-subtitle">
-          Experience authentic comfort with private sit-out balconies, sparkling sanitized en-suite bathrooms, comfortable living lounges, and our signature pure vegetarian dining hall.
+          From your first welcome to a quiet moment between plans—discover the spaces that make a Premier stay. Tap a photograph to explore.
         </p>
       </div>
 
@@ -584,10 +583,10 @@
         </div>
 
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/s-dlx-balcony-terrace-view.jpg" alt="Private Sit-Out Balcony & Terrace" class="atmosphere-img" loading="lazy">
+          <img src="assets/hotel-images/s-dlx-balcony-terrace-view.jpg" alt="Premier Royale King Balcony" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Balcony & Sit-Out</span>
-            <div class="atmosphere-card-caption">Private Greenery Sit-Out Balcony</div>
+            <div class="atmosphere-card-caption">A Little Space to Pause</div>
           </div>
         </div>
 
@@ -619,20 +618,20 @@
       <h2 class="editorial-title">Suites Tariff & Plans</h2>
       <div class="editorial-divider"></div>
       <p class="editorial-subtitle">
-        Authentic published room tariffs with full 24-Hour flexible check-out. All taxes included. Choose between Room Only (EP) and Fresh Pure Veg Breakfast (CP).
+        Choose your room, then your rhythm: room-only simplicity or a stay with breakfast. Rates below are per room, per night, inclusive of taxes. CP breakfast is from a fixed menu; conditions apply.
       </p>
     </div>
 
     <!-- Plan Filter Selector -->
-    <div class="tariff-plan-switcher" id="tariff-plan-switcher">
-      <button class="tariff-plan-btn active" data-plan="all" onclick="window.app ? window.app.setTariffPlanView('all') : null">
-        <span>📊 All Plans (Comparison)</span>
+    <div class="tariff-plan-switcher" id="tariff-plan-switcher" role="group" aria-label="Compare room meal plans">
+      <button type="button" class="tariff-plan-btn active" data-plan="all" aria-pressed="true" onclick="window.app ? window.app.setTariffPlanView('all') : null">
+        <span>Compare plans</span>
       </button>
-      <button class="tariff-plan-btn" data-plan="ro" onclick="window.app ? window.app.setTariffPlanView('ro') : null">
-        <span>🛌 Room Only (RO)</span>
+      <button type="button" class="tariff-plan-btn" data-plan="ro" aria-pressed="false" onclick="window.app ? window.app.setTariffPlanView('ro') : null">
+        <span>Room only · RO</span>
       </button>
-      <button class="tariff-plan-btn" data-plan="cp" onclick="window.app ? window.app.setTariffPlanView('cp') : null">
-        <span>☕ With Breakfast (CP)</span>
+      <button type="button" class="tariff-plan-btn" data-plan="cp" aria-pressed="false" onclick="window.app ? window.app.setTariffPlanView('cp') : null">
+        <span>With breakfast · CP</span>
       </button>
     </div>
 
@@ -654,15 +653,15 @@
     <!-- Organized Suite Rate Cards Grid -->
     <div class="tariff-suites-grid">
 
-      <!-- Suite Tier 1: AC Deluxe Rooms -->
+      <!-- Suite Tier 1: Premier Signature & Companion Rooms -->
       <div class="tariff-suite-card">
         <div class="tariff-suite-header">
           <div class="tariff-suite-crest">
             <span class="tariff-badge-pill">12 Rooms Total</span>
-            <h3 class="tariff-suite-name">AC Deluxe Room</h3>
+            <h3 class="tariff-suite-name">Premier Signature & Companion Rooms</h3>
             <p class="tariff-suite-bed-type">Queen Bed (4 Rooms) • Twin Beds (8 Rooms)</p>
           </div>
-          <div class="tariff-suite-space">240 sq.ft • Max 3 Guests</div>
+          <div class="tariff-suite-space">144 sq.ft • Queen: 1 extra bed • Twin: 2 extra beds</div>
         </div>
 
         <div class="tariff-pricing-breakdown">
@@ -682,7 +681,7 @@
                 <span class="occ-unit">/ night</span>
               </div>
             </div>
-            <div class="plan-inclusions-note">Includes 24-Hr Check-Out • All Taxes Included</div>
+            <div class="plan-inclusions-note">Includes 24-Hr Check-Out (Direct Bookings Only) • All Taxes Included</div>
           </div>
 
           <!-- With Breakfast Block -->
@@ -701,7 +700,7 @@
                 <span class="occ-unit">/ night</span>
               </div>
             </div>
-            <div class="plan-inclusions-note">Includes Pride AC Restaurant Hot Breakfast</div>
+            <div class="plan-inclusions-note">CP breakfast from a fixed menu • Conditions apply</div>
           </div>
         </div>
 
@@ -709,27 +708,30 @@
           <span>❄️ Split AC</span>
           <span>📺 Smart LED TV</span>
           <span>📶 High-Speed Wi-Fi</span>
-          <span>🛎️ 24h Room Service</span>
+          <span>🛎️ Room Service · 7:30 AM–10:30 PM</span>
           <span>🚿 Geyser Hot Water</span>
         </div>
 
-        <div class="tariff-card-action">
+        <div class="tariff-card-action tariff-room-choices">
           <button class="btn-tariff-card-reserve" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-queen') : null">
-            <span>Reserve Deluxe Room →</span>
+            <span>Signature Queen →</span>
+          </button>
+          <button class="btn-tariff-card-reserve" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-twin') : null">
+            <span>Companion Twin →</span>
           </button>
         </div>
       </div>
 
-      <!-- Suite Tier 2: AC Super Deluxe Suites -->
+      <!-- Suite Tier 2: Premier Royale Kings -->
       <div class="tariff-suite-card featured-suite">
         <div class="tariff-suite-ribbon">👑 Premium Suite</div>
         <div class="tariff-suite-header">
           <div class="tariff-suite-crest">
             <span class="tariff-badge-pill gold-pill">2 Exclusive Suites</span>
-            <h3 class="tariff-suite-name">AC Super Deluxe Suite</h3>
-            <p class="tariff-suite-bed-type">King Size Luxury Bed • Front Facing</p>
+            <h3 class="tariff-suite-name">Premier Royale King</h3>
+            <p class="tariff-suite-bed-type">King bed • Your own balcony retreat</p>
           </div>
-          <div class="tariff-suite-space">280 sq.ft • Max 3 Guests</div>
+          <div class="tariff-suite-space">172 sq.ft • Accommodates 2–3 extra beds</div>
         </div>
 
         <div class="tariff-pricing-breakdown">
@@ -749,7 +751,7 @@
                 <span class="occ-unit">/ night</span>
               </div>
             </div>
-            <div class="plan-inclusions-note">Includes 24-Hr Check-Out • All Taxes Included</div>
+            <div class="plan-inclusions-note">Includes 24-Hr Check-Out (Direct Bookings Only) • All Taxes Included</div>
           </div>
 
           <!-- With Breakfast Block -->
@@ -768,7 +770,7 @@
                 <span class="occ-unit">/ night</span>
               </div>
             </div>
-            <div class="plan-inclusions-note">Includes Pride AC Restaurant Hot Breakfast</div>
+            <div class="plan-inclusions-note">CP breakfast from a fixed menu • Conditions apply</div>
           </div>
         </div>
 
@@ -782,7 +784,7 @@
 
         <div class="tariff-card-action">
           <button class="btn-tariff-card-reserve btn-gold-action" onclick="window.app ? window.app.openConciergeBookingModal('ac-super-deluxe') : null">
-            <span>Reserve Super Deluxe Suite →</span>
+            <span>Reserve Royale King →</span>
           </button>
         </div>
       </div>
@@ -794,7 +796,7 @@
       <div class="extra-bed-icon-col">🛏️</div>
       <div class="extra-bed-content-col">
         <h4 class="extra-bed-title">Extra Mattress & Additional Guest Facility</h4>
-        <p class="extra-bed-sub">Available across all room types for children (above 6 yrs) and additional adult guests.</p>
+        <p class="extra-bed-sub">Royale King accommodates 2–3 extra beds; Signature Queen accommodates 1 and Companion Twin accommodates 2. Extra beds for children aged 5–10 inclusive are complimentary within these limits. This benefit covers the extra bed only; children's meals should be confirmed with the hotel.</p>
         <div class="extra-bed-prices-row">
           <div class="extra-price-chip">
             <span class="chip-label">Room Only (RO):</span>
@@ -814,8 +816,8 @@
     <div class="tariff-guarantees-grid">
       <div class="guarantee-card">
         <div class="guarantee-icon">🕒</div>
-        <div class="guarantee-title">24-Hour Flexible Check-Out</div>
-        <div class="guarantee-desc">Stay for a complete 24 hours from your check-in time. Arrive at 4 PM, check out at 4 PM next day.</div>
+        <div class="guarantee-title">24-Hour Flexible Check-Out (Direct Bookings Only)</div>
+        <div class="guarantee-desc">For direct bookings only: stay for a complete 24 hours from check-in. Arrive at 4 PM, check out at 4 PM the next day. Partner bookings follow the checkout time on their confirmation.</div>
       </div>
       <div class="guarantee-card">
         <div class="guarantee-icon">🧾</div>
@@ -825,7 +827,7 @@
       <div class="guarantee-card">
         <div class="guarantee-icon">🍳</div>
         <div class="guarantee-title">Complimentary Breakfast</div>
-        <div class="guarantee-desc">For CP guests, freshly cooked pure vegetarian breakfast served 7:30 AM to 10:30 AM in Pride AC Restaurant.</div>
+        <div class="guarantee-desc">For CP guests: breakfast from a fixed menu, served 7:30 AM to 10:30 AM in Pride AC Restaurant. Conditions apply.</div>
       </div>
       <div class="guarantee-card">
         <div class="guarantee-icon">🚗</div>
@@ -833,6 +835,19 @@
         <div class="guarantee-desc">Spacious, safe on-site parking for four-wheelers, bikes, and tour buses with round-the-clock CCTV security.</div>
       </div>
     </div>
+
+    <section class="guest-policy-panel" aria-labelledby="guest-policy-heading">
+      <span class="editorial-eyebrow">Before You Arrive</span>
+      <h3 id="guest-policy-heading">A Few Things to Know</h3>
+      <div class="guest-policy-grid">
+        <article><h4>Pets</h4><p>Pets are not allowed at the property.</p></article>
+        <article><h4>Couple bookings</h4><p>Unmarried couples are not allowed.</p></article>
+        <article><h4>Local identification</h4><p>Local IDs are not accepted for check-in.</p></article>
+        <article><h4>Primary guest</h4><p>The primary guest must be at least 18 years old.</p></article>
+        <article><h4>Identification</h4><p>Accepted ID types: Passport, Aadhaar, Driving License or government ID. Please bring valid identification for check-in.</p></article>
+      </div>
+      <p class="guest-policy-note">Booking through a partner? Check the check-in, checkout, payment and cancellation terms shown on your booking confirmation. Contact the front desk before booking if you need clarification.</p>
+    </section>
 
     <!-- Direct Tariff Action Buttons -->
     <div class="tariff-direct-actions-bar">
@@ -855,14 +870,9 @@
     <div class="editorial-header-block dining-hero-header">
       <div class="dining-brand-crest">HOTEL PREMIER PRESENTS</div>
       <h2 class="dining-main-heading">Pride Pure Veg AC Restaurant</h2>
-      <div class="dining-credentials-strip">
-        <span class="cred-badge cred-pride"><span class="pride-crown-emblem">👑</span> PRIDE</span>
-        <span class="cred-badge cred-veg">🌱 100% PURE VEG</span>
-        <span class="cred-badge cred-ac">❄️ AC RESTAURANT</span>
-      </div>
       <div class="editorial-divider pride-underline"></div>
       <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
-        A refined selection of authentic North Indian curries, slow dum biryani, clay oven tandoor, and regional Khandeshi favourites.
+        North Indian & Khandeshi favourites, clay oven tandoor, dum biryani, Indo-Chinese and Pastas—served with refreshing beverages.
       </p>
     </div>
 
@@ -974,17 +984,6 @@
 
       <!-- Category Navigation & Search Controls -->
       <div class="dining-view-controls">
-        <!-- Horizontal Scrollable Category Chips Bar -->
-        <div class="category-nav-container-bar" id="category-nav-bar">
-          <button class="category-nav-arrow-btn prev" onclick="window.app ? window.app.scrollCategoryNav(-220) : null" aria-label="Previous Categories">‹</button>
-          <div class="category-nav-wrapper" id="category-nav-scroll-wrapper">
-            <div class="category-chips-container" id="category-chips-container">
-              <!-- Rendered dynamically by app.js: All Items + 20 categories -->
-            </div>
-          </div>
-          <button class="category-nav-arrow-btn next" onclick="window.app ? window.app.scrollCategoryNav(220) : null" aria-label="Next Categories">›</button>
-        </div>
-
         <!-- Concierge Dish Search & Quick Filters -->
         <div class="dining-search-filter-bar">
           <div class="search-input-wrapper">
@@ -1040,7 +1039,7 @@
     </div>
 
     <!-- Group & Event Calculator -->
-    <div class="calculator-card" style="background: #FFFFFF; border: 1.5px solid var(--ivory-border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-ambient);">
+    <div class="calculator-card" style="background: var(--royal-surface); border: 1.5px solid var(--royal-edge); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-ambient);">
       <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
         <span style="font-size: 1.6rem;">🧮</span>
         <div>
@@ -1064,11 +1063,11 @@
           <div class="form-group">
             <label class="form-label">Room Category</label>
             <select id="calc-room-type" class="form-select" onchange="window.app.calculateBulkQuote()">
-              <option value="full-14">👑 Full Hotel Buyout (All 14 Rooms: 2 Super + 4 Queen + 8 Twin)</option>
-              <option value="twin-8">🛏️🛏️ AC Deluxe Twin Beds Block (8 Rooms - 2 Beds)</option>
-              <option value="queen-4">🛏️ AC Deluxe Queen Bed Block (4 Rooms)</option>
-              <option value="super-2">👑 AC Super Deluxe Suite (2 Rooms - King Bed)</option>
-              <option value="deluxe-mixed">AC Deluxe Selection (5 to 12 Rooms)</option>
+              <option value="full-14">👑 Full Hotel Buyout (14 Rooms: 2 Royale + 4 Signature + 8 Companion)</option>
+              <option value="twin-8">🛏️🛏️ Premier Companion Twin Block (8 Rooms - 2 Beds)</option>
+              <option value="queen-4">🛏️ Premier Signature Queen Block (4 Rooms)</option>
+              <option value="super-2">👑 Premier Royale King (2 Rooms - King Bed)</option>
+              <option value="deluxe-mixed">Signature & Companion Selection (5 to 12 Rooms)</option>
             </select>
           </div>
 
@@ -1081,8 +1080,9 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">Extra Beds (₹300/bed)</label>
+            <label class="form-label">Chargeable Extra Beds (₹300/bed)</label>
             <input type="number" id="calc-extra-beds" value="0" min="0" max="26" class="form-input" style="text-align: center; font-weight: 800;" oninput="window.app.calculateBulkQuote()">
+            <small>Enter chargeable beds only. Complimentary beds for children aged 5–10 inclusive can be requested in your group inquiry, within room limits; confirm meals separately.</small>
           </div>
 
           <div class="form-group">
@@ -1098,21 +1098,21 @@
           <div class="form-group">
             <label class="form-label">Meal Plan</label>
             <select id="calc-plan-select" class="form-select" onchange="window.app.calculateBulkQuote()">
-              <option value="CP" selected>With Pride Pure Veg Breakfast (CP)</option>
+              <option value="CP" selected>CP — Fixed-menu breakfast; conditions apply</option>
               <option value="RO">Room Only (RO)</option>
             </select>
           </div>
         </div>
 
         <!-- Organizer Contact for 1-Tap Bulk Dispatch -->
-        <div style="background: #FAF7F0; border: 1px dashed rgba(197, 168, 128, 0.4); padding: 12px 14px; border-radius: var(--radius-sm);">
+        <div class="guest-details-panel" style="padding: 12px 14px; border-radius: var(--radius-sm);">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <span style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep);">👤 Organizer Details (Auto-filled from Profile)</span>
             <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
             <input type="text" id="calc-bulk-guest-name" class="form-input" placeholder="Organizer Name">
-            <input type="tel" id="calc-bulk-guest-phone" class="form-input" placeholder="WhatsApp Number" maxlength="10">
+            <input type="tel" id="calc-bulk-guest-phone" class="form-input" placeholder="WhatsApp Number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel">
           </div>
         </div>
 
@@ -1133,7 +1133,7 @@
           <div class="summary-grand-row">
             <div>
               <div style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep); text-transform: uppercase;">Estimated Group Stay Tariff</div>
-              <div style="font-size: 0.68rem; color: #16A34A; font-weight: 600;">✔ Transparent published rates • 24-Hour Check-Out</div>
+              <div style="font-size: 0.68rem; color: #16A34A; font-weight: 600;">✔ Transparent published rates • 24-Hour Check-Out (Direct Bookings Only)</div>
             </div>
             <strong id="quote-final-price">₹ 72,000/-</strong>
           </div>
@@ -1295,6 +1295,11 @@
   <!-- ================================================================ -->
   <section class="guest-feedback-section" id="guest-feedback-section">
     <div class="feedback-container">
+      <section class="public-reviews" aria-labelledby="public-review-heading">
+        <h2 id="public-review-heading">Guest Experiences</h2>
+        <p class="review-status" id="public-review-status" role="status">Loading guest experiences…</p>
+        <div class="review-grid" id="public-review-grid"></div>
+      </section>
       <div style="text-align: center;">
         <span class="feedback-badge">⭐ YOUR EXPERIENCE MATTERS</span>
         <h2 class="feedback-title">Write a Review</h2>
@@ -1380,10 +1385,10 @@
           <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
             <span>Google Reviews (4.1★)</span>
           </a>
-          <a href="https://www.makemytrip.com/hotels/hotel_premier-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+          <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
             <span>MakeMyTrip (4.0★)</span>
           </a>
-          <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-7988359765272654316/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+          <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
             <span>Goibibo (4.0★)</span>
           </a>
           <a href="https://www.zomato.com/search?q=Hotel+Premier+Bhusawal" target="_blank" rel="noopener noreferrer" class="platform-pill-btn" onclick="event.preventDefault(); window.app && window.app.openExternalPlatform('zomato');">
@@ -1512,11 +1517,6 @@
         <div class="footer-copyright">
           © 2026 Hotel Premier & Pride Pure Veg AC Restaurant. All Rights Reserved.
         </div>
-        <div class="footer-tech-credit">
-          <a href="https://wa.me/918983703702?text=Hello,%20I%20am%20interested%20in%20a%20custom%20hotel%20digital%20concierge%20or%20QR%20web%20app%20like%20Hotel%20Premier." class="discreet-dev-link" target="_blank" rel="noopener noreferrer">
-            <span>Looking for a custom app like this? Contact Developer →</span>
-          </a>
-        </div>
       </div>
     </div>
   </footer>
@@ -1561,16 +1561,16 @@
         </div>
 
         <p style="font-size: 0.82rem; color: var(--text-muted-dark); margin-bottom: 16px;">
-          Reserve your boutique stay at Hotel Premier with transparent published tariffs and 24-Hour flexible check-out.
+          Reserve your boutique stay at Hotel Premier with transparent published tariffs and 24-Hour flexible check-out (Direct Bookings Only).
         </p>
 
         <!-- Step 1: Room Selection -->
         <div class="form-group">
           <label class="form-label">1. Select Suite Category</label>
           <select id="booking-room-type" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
-            <option value="ac-super-deluxe">👑 AC Super Deluxe King Suite (From ₹2,400/night)</option>
-            <option value="ac-deluxe-queen" selected>🛏️ AC Deluxe Queen Suite (From ₹2,100/night)</option>
-            <option value="ac-deluxe-twin">🛏️🛏️ AC Deluxe Twin Bed Suite (From ₹2,100/night)</option>
+            <option value="ac-super-deluxe">👑 Premier Royale King (From ₹2,400/night)</option>
+            <option value="ac-deluxe-queen" selected>🛏️ Premier Signature Queen (From ₹2,100/night)</option>
+            <option value="ac-deluxe-twin">🛏️🛏️ Premier Companion Twin (From ₹2,100/night)</option>
           </select>
         </div>
 
@@ -1578,7 +1578,7 @@
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
             <label class="form-label">2. Check-In Date</label>
-            <input type="date" id="booking-checkin-date" class="form-input" onchange="window.app ? window.app.updateBookingEstimate() : null">
+            <input type="date" id="booking-checkin-date" class="form-input" onchange="window.app ? window.app.updateBookingEstimate() : null" required>
           </div>
           <div class="form-group">
             <label class="form-label">Check-In Time</label>
@@ -1627,29 +1627,34 @@
           <div class="form-group">
             <label class="form-label">Meal Plan</label>
             <select id="booking-meal-plan" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
-              <option value="CP" selected>With Pride Breakfast (CP)</option>
+              <option value="CP" selected>CP — Fixed-menu breakfast; conditions apply</option>
               <option value="RO">Room Only (RO)</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">Extra Beds (₹300/bed)</label>
-            <select id="booking-extra-beds" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null">
-              <option value="0" selected>0 Extra Beds</option>
-              <option value="1">1 Extra Bed (+₹300)</option>
-              <option value="2">2 Extra Beds (+₹600)</option>
-            </select>
+            <label class="form-label" for="booking-extra-beds">Chargeable Extra Beds (total across rooms)</label>
+            <input type="number" id="booking-extra-beds" value="0" min="0" max="1" step="1" class="form-input" oninput="window.app ? window.app.updateBookingEstimate() : null">
+            <small>₹300 per bed/night RO; ₹500 CP with fixed-menu breakfast.</small>
           </div>
         </div>
 
+        <div class="form-group">
+          <label class="form-label" for="booking-child-extra-beds">Complimentary Extra Beds — Children Aged 5–10 Inclusive</label>
+          <input type="number" id="booking-child-extra-beds" value="0" min="0" max="1" step="1" class="form-input" oninput="window.app ? window.app.updateBookingEstimate() : null">
+          <small>Count across all booked rooms. Paid and complimentary beds share the room's extra-bed limit. Children's meals are not priced in this estimate; please confirm them with the hotel.</small>
+        </div>
+
+        <p class="booking-policy-note">Pets and unmarried couples are not allowed. Local IDs are not accepted. Primary guest: 18 years or older. Bring valid non-local identification; accepted types include Passport, Aadhaar, Driving License and government ID. The 24-hour checkout benefit applies only to direct bookings; partner bookings follow their confirmation terms.</p>
+
         <!-- Step 5: Guest Details (Auto-filled from Profile) -->
-        <div style="background: #FAF7F0; border: 1px dashed rgba(197, 168, 128, 0.4); padding: 12px 14px; border-radius: var(--radius-sm); margin-bottom: 16px;">
+        <div class="guest-details-panel" style="padding: 12px 14px; border-radius: var(--radius-sm); margin-bottom: 16px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
             <label class="form-label" style="margin-bottom: 0;">5. Guest Details (Auto-filled)</label>
             <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
             <input type="text" id="booking-guest-name" class="form-input" placeholder="Your Name *" required>
-            <input type="tel" id="booking-guest-phone" class="form-input" placeholder="WhatsApp / Mobile *" maxlength="10" required>
+            <input type="tel" id="booking-guest-phone" class="form-input" placeholder="WhatsApp / Mobile *" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel" required>
           </div>
         </div>
 
@@ -1658,11 +1663,11 @@
           <div class="summary-heading">Reservation Estimate</div>
           <div class="summary-row">
             <span>Selected Suite:</span>
-            <strong id="booking-summary-room-name">AC Deluxe (Queen Bed)</strong>
+            <strong id="booking-summary-room-name">Premier Signature Queen</strong>
           </div>
           <div class="summary-row">
             <span>Duration:</span>
-            <span id="booking-summary-duration">1 Night • 24-Hr Check-Out</span>
+            <span id="booking-summary-duration">1 Night • 24-Hr Check-Out (Direct Bookings Only)</span>
           </div>
           <div class="summary-grand-row">
             <div>
@@ -1679,6 +1684,13 @@
             <a href="tel:09325375802" class="btn-tariff-call" style="flex: 0.8;">
               <span>📞 Call Front Desk</span>
             </a>
+          </div>
+          <div class="ota-booking-panel">
+            <p>Prefer a booking partner? Check availability and rates directly. Partner offers and cancellation terms may differ.</p>
+            <div class="ota-booking-links" aria-label="Book Hotel Premier through a partner">
+              <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer">MakeMyTrip ↗</a>
+              <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer">Goibibo ↗</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1706,7 +1718,7 @@
 
         <div class="form-group">
           <label class="form-label">WhatsApp / Mobile Number</label>
-          <input type="tel" id="profile-modal-phone" class="form-input" placeholder="Enter your 10-digit mobile number" maxlength="10">
+          <input type="tel" id="profile-modal-phone" class="form-input" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel">
         </div>
 
         <div class="form-group">
@@ -1733,9 +1745,9 @@
 
   <!-- ==================== MODAL: DISH DETAIL MODAL ==================== -->
   <div class="modal-backdrop" id="dish-detail-modal" onclick="if (event.target === this && window.app) window.app.closeDishDetail();">
-    <div class="modal-sheet dish-detail-sheet" role="dialog" aria-modal="true">
+    <div class="modal-sheet dish-detail-sheet" role="dialog" aria-modal="true" aria-labelledby="dish-detail-title" tabindex="-1">
       <div class="modal-header">
-        <div class="modal-title">
+        <div class="modal-title" id="dish-detail-title">
           <span>🍽️</span> <span>Dish Details</span>
         </div>
         <button class="modal-close-btn" onclick="window.app ? window.app.closeDishDetail() : null" aria-label="Close Dish Details">✕</button>
@@ -1750,10 +1762,11 @@
   <div class="modal-backdrop" id="admin-modal-backdrop">
     <div class="modal-sheet admin-modal-sheet">
       <div class="modal-header">
+        <button type="button" class="admin-back-btn" onclick="window.admin.closeAdminModal()" aria-label="Back to app">← Back</button>
         <div class="modal-title">
           <span>⚙️</span> <span>Hotel Premier Admin & CRM Studio</span>
         </div>
-        <button class="modal-close-btn" onclick="window.admin ? window.admin.closeAdminModal() : null">✕</button>
+        <button type="button" class="modal-close-btn" aria-label="Close CRM Studio" onclick="window.admin ? window.admin.closeAdminModal() : null">✕</button>
       </div>
 
       <!-- View 1: Auth Screen -->
@@ -1778,6 +1791,7 @@
           <button class="admin-tab-btn" data-tab="menu">🍔 Menu & Pricing</button>
           <button class="admin-tab-btn" data-tab="ai-studio">✨ AI Photo Studio</button>
           <button class="admin-tab-btn" data-tab="rooms">🏨 Room Photos & Deals</button>
+          <button class="admin-tab-btn" data-tab="content">✏️ Page Content</button>
           <button class="admin-tab-btn" data-tab="slides">🖼️ Slides Editor</button>
           <button class="admin-tab-btn" data-tab="qr">📲 Table QR Studio</button>
           <button class="admin-tab-btn" data-tab="backup">💾 Master Data Backup</button>
@@ -1896,20 +1910,24 @@
     </div>
   </div>
 
-  <!-- Load Application Scripts (v20.29) -->
-  <script src="storage.js?v=20.29"></script>
-  <script src="vault.js?v=20.29"></script>
-  <script src="data/translations.js?v=20.33"></script>
-  <script src="data/hotel-data.js?v=20.33"></script>
-  <script src="data/menu-data.js?v=20.33"></script>
-  <script src="app.js?v=20.33"></script>
-  <script src="admin.js?v=20.33"></script>
+  <!-- Load Application Scripts (v20.51) -->
+  <script src="storage.js?v=20.51"></script>
+  <script src="vault.js?v=20.51"></script>
+  <script src="data/translations.js?v=21.14"></script>
+  <script src="data/hotel-data.js?v=21.14"></script>
+  <script src="data/menu-data.js?v=21.8"></script>
+  <script src="data/menu-photos.js?v=21.6"></script>
+  <script src="app.js?v=21.20"></script>
+  <script src="content-studio.js?v=21.8"></script>
+  <script src="property-gallery.js?v=21.11"></script>
+  <script src="admin.js?v=21.8"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=20.33').then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.14', { updateViaCache: 'none' }).then(function(reg) {
+          reg.update().catch(function() {});
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
       });
