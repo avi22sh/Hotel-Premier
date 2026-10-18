@@ -11,9 +11,9 @@ for (const name of ['booking-original-price', 'booking-final-price', 'booking-sa
   assert.ok(css.includes(`.${name} {`));
 }
 assert.ok(css.includes('body.theme-dark #concierge-booking-modal .direct-booking-privilege-card'));
-assert.ok(css.includes('body.theme-dark .modal-header { background:#19232a; }'));
-assert.ok(css.includes('body.theme-dark .wizard-summary-card { background:#19232a;'));
-assert.ok(css.includes('.wizard-summary-card .btn-tariff-book-wa { background:#166534; color:#fff;'));
+assert.ok(css.includes('body.theme-dark .modal-header { background:rgba(22, 32, 46, 0.90); }'));
+assert.ok(css.includes('body.theme-dark .wizard-summary-card { background:rgba(20, 29, 42, 0.76);'));
+assert.ok(css.includes('.wizard-summary-card .btn-tariff-book-wa { background:linear-gradient(135deg, #1E8449 0%, #166534 100%); color:#fff;'));
 function luminance(hex) {
   const rgb = hex.match(/\w\w/g).map(x => parseInt(x, 16) / 255)
     .map(x => x <= .04045 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4);
