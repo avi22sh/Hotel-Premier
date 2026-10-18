@@ -151,44 +151,44 @@ body {
 
 /* ==================== SAVED DARK THEME ==================== */
 body.theme-dark {
-  --ivory-canvas: #0A1017;
-  --ivory-surface: #141D28;
-  --ivory-card: #151F2C;
-  --ivory-warm: #1D2A3B;
-  --ivory-muted: #243447;
-  --ivory-border: rgba(223, 201, 168, 0.20);
-  --text-dark: #F5F1E8;
-  --text-muted-dark: #B8C2CE;
-  --text-placeholder: #9EABB9;
-  --price-dark: #F0C7A0;
-  --burgundy-deep: #F0C7A0;
-  --burgundy-primary: #9E2B3C;
-  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.22);
-  --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.30);
-  --shadow-ambient: 0 16px 48px rgba(0, 0, 0, 0.40);
-  --cream-card: #151F2C;
-  --cream-border: rgba(223, 201, 168, 0.20);
-  --white: #151F2C;
+  --ivory-canvas: #131C26;
+  --ivory-surface: #192534;
+  --ivory-card: #1D2A3A;
+  --ivory-warm: #233246;
+  --ivory-muted: #2C3E56;
+  --ivory-border: rgba(223, 201, 168, 0.22);
+  --text-dark: #F8F6F0;
+  --text-muted-dark: #CBD5E1;
+  --text-placeholder: #94A3B8;
+  --price-dark: #DFC69A;
+  --burgundy-deep: #DFC69A;
+  --burgundy-primary: #DFC69A;
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-ambient: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --cream-card: #192534;
+  --cream-border: rgba(223, 201, 168, 0.22);
+  --white: #192534;
   color-scheme: dark;
-  background-color: #0A1017;
+  background-color: #131C26;
   background-image: 
-    radial-gradient(circle at 15% 15%, rgba(139, 21, 56, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 85% 20%, rgba(197, 168, 128, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 50% 60%, rgba(20, 31, 46, 0.55) 0%, transparent 55%),
-    radial-gradient(circle at 90% 85%, rgba(139, 21, 56, 0.18) 0%, transparent 45%),
-    radial-gradient(circle at 10% 90%, rgba(197, 168, 128, 0.12) 0%, transparent 40%);
+    radial-gradient(circle at 15% 15%, rgba(139, 21, 56, 0.20) 0%, transparent 45%),
+    radial-gradient(circle at 85% 20%, rgba(197, 168, 128, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 50% 60%, rgba(22, 34, 50, 0.65) 0%, transparent 55%),
+    radial-gradient(circle at 90% 85%, rgba(139, 21, 56, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 10% 90%, rgba(197, 168, 128, 0.14) 0%, transparent 40%);
   background-attachment: fixed;
 
   /* ==================== GLASSMORPHISM TOKENS (DARK THEME) ==================== */
-  --glass-bg-subtle: rgba(18, 26, 38, 0.58);
-  --glass-bg-surface: rgba(18, 26, 38, 0.70);
-  --glass-bg-card: rgba(18, 26, 38, 0.74);
-  --glass-bg-header: rgba(10, 15, 23, 0.86);
-  --glass-bg-nav: rgba(14, 21, 31, 0.82);
-  --glass-bg-modal: rgba(15, 23, 34, 0.88);
+  --glass-bg-subtle: rgba(22, 32, 46, 0.55);
+  --glass-bg-surface: rgba(22, 32, 46, 0.72);
+  --glass-bg-card: rgba(24, 35, 50, 0.76);
+  --glass-bg-header: rgba(15, 22, 32, 0.88);
+  --glass-bg-nav: rgba(18, 26, 38, 0.85);
+  --glass-bg-modal: rgba(19, 28, 40, 0.92);
   --glass-border: rgba(255, 255, 255, 0.14);
   --glass-border-light: rgba(255, 255, 255, 0.22);
-  --glass-border-subtle: rgba(197, 168, 128, 0.24);
+  --glass-border-subtle: rgba(223, 198, 154, 0.22);
   --glass-shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.35);
   --glass-shadow-md: 0 10px 36px rgba(0, 0, 0, 0.45);
   --glass-shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.60);
@@ -204,13 +204,17 @@ body.theme-dark .menu-container {
 body.theme-dark .boutique-room-card,
 body.theme-dark .signature-dish-card,
 body.theme-dark .category-card,
-body.theme-dark .dish-card {
+body.theme-dark .dish-card,
+body.theme-dark .tariff-suite-card,
+body.theme-dark .bulk-tier-card,
+body.theme-dark .calculator-card,
+body.theme-dark .explore-concierge-card {
   background: var(--glass-bg-card);
   backdrop-filter: var(--glass-blur-md);
   -webkit-backdrop-filter: var(--glass-blur-md);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow-md), var(--glass-inner-bevel);
-  color: #F5F1E8;
+  color: #F8F6F0;
 }
 
 body.theme-dark .dish-card .dish-body {
@@ -1656,15 +1660,17 @@ a {
 
 /* Extra Bed / Additional Guest Facility Banner */
 .tariff-extra-bed-banner {
-  background: linear-gradient(135deg, #FAF7F0 0%, #F5ECE0 100%);
-  border: 1.5px solid rgba(197, 168, 128, 0.45);
+  background: var(--glass-bg-card, rgba(250, 247, 240, 0.85));
+  border: 1.5px solid rgba(197, 168, 128, 0.35);
   border-radius: var(--radius-md);
-  padding: 18px 20px;
+  padding: 20px 22px;
   display: flex;
   align-items: center;
   gap: 16px;
   margin-bottom: 24px;
   box-shadow: var(--shadow-subtle);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 @media (max-width: 640px) {
   .tariff-extra-bed-banner {
@@ -1684,16 +1690,17 @@ a {
 
 .extra-bed-title {
   font-family: var(--font-royal);
-  font-size: 1.05rem;
+  font-size: 1.10rem;
   font-weight: 800;
-  color: var(--burgundy-deep);
+  color: #8B1538;
   margin-bottom: 4px;
 }
 
 .extra-bed-sub {
-  font-size: 0.78rem;
-  color: #4A5568;
-  margin-bottom: 10px;
+  font-size: 0.80rem;
+  color: #475569;
+  margin-bottom: 12px;
+  line-height: 1.5;
 }
 
 .extra-bed-prices-row {
@@ -1708,7 +1715,7 @@ a {
 }
 
 .extra-price-chip {
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(197, 168, 128, 0.35);
   border-radius: var(--radius-full);
   padding: 6px 14px;
@@ -1718,21 +1725,48 @@ a {
   font-size: 0.76rem;
 }
 .extra-price-chip.gold-chip {
-  background: #FFFDF9;
+  background: rgba(255, 253, 249, 0.95);
   border-color: var(--brass-primary);
 }
 .chip-label {
   font-weight: 700;
-  color: #4A5568;
+  color: #475569;
 }
 .chip-value {
   font-family: var(--font-editorial);
   font-weight: 900;
   font-size: 1.05rem;
-  color: var(--burgundy-deep);
+  color: #8B1538;
 }
 .chip-period {
   font-size: 0.65rem;
+  color: #64748B;
+}
+
+body.theme-dark .tariff-extra-bed-banner {
+  background: var(--glass-bg-card, rgba(22, 32, 46, 0.76));
+  border-color: rgba(223, 198, 154, 0.22);
+}
+body.theme-dark .extra-bed-title {
+  color: #F8F6F0;
+}
+body.theme-dark .extra-bed-sub {
+  color: #CBD5E1;
+}
+body.theme-dark .extra-price-chip {
+  background: rgba(20, 29, 42, 0.72);
+  border-color: rgba(223, 198, 154, 0.25);
+  color: #F8F6F0;
+}
+body.theme-dark .chip-label {
+  color: #CBD5E1;
+}
+body.theme-dark .chip-value {
+  color: #DFC69A;
+}
+body.theme-dark .chip-period {
+  color: #94A3B8;
+}
   color: #718096;
 }
 
@@ -3827,31 +3861,39 @@ body.theme-dark .dish-options-hint { color: #BAC4CE; }
 
 /* ==================== 4. CELEBRATE AT HOTEL PREMIER (BANQUETS & EVENTS) ==================== */
 .celebrate-hero-banner {
-  background: linear-gradient(135deg, #18202A 0%, #253344 100%);
-  border: 1px solid rgba(197, 168, 128, 0.32);
+  background: linear-gradient(135deg, rgba(22, 32, 46, 0.94) 0%, rgba(35, 48, 66, 0.88) 100%);
+  border: 1px solid rgba(197, 168, 128, 0.35);
   border-radius: var(--radius-lg);
-  padding: 32px 20px;
+  padding: 34px 22px;
   color: #FFFDF9;
   text-align: center;
   margin-bottom: 30px;
-  box-shadow: var(--shadow-ambient);
+  box-shadow: 0 12px 36px rgba(10, 16, 26, 0.20);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .celebrate-title {
   font-family: var(--font-royal);
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 4vw, 2rem);
   font-weight: 800;
-  color: var(--brass-light);
+  color: var(--brass-light, #DFC69A);
   margin-bottom: 8px;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 }
 
 .celebrate-subtitle {
-  font-size: 0.88rem;
-  color: #C0CFDF;
+  font-size: 0.90rem;
+  color: #CBD5E1;
   max-width: 680px;
   margin: 0 auto 20px;
-  line-height: 1.6;
+  line-height: 1.65;
+}
+
+body.theme-dark .celebrate-hero-banner {
+  background: linear-gradient(135deg, rgba(20, 29, 42, 0.85) 0%, rgba(28, 40, 56, 0.78) 100%);
+  border-color: rgba(223, 198, 154, 0.25);
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.45);
 }
 
 /* Advance Marriage & Group Blocks */
@@ -3868,56 +3910,118 @@ body.theme-dark .dish-options-hint { color: #BAC4CE; }
 }
 
 .bulk-tier-card {
-  background: #FFFFFF;
+  background: var(--glass-bg-card, #FFFFFF);
   border: 1.5px solid var(--ivory-border);
   border-radius: var(--radius-md);
-  padding: 20px 16px;
+  padding: 22px 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: var(--shadow-subtle);
   transition: var(--transition-silky);
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
+.bulk-tier-card.featured,
 .bulk-tier-card.featured-buyout {
   border-color: var(--brass-primary);
-  background: linear-gradient(180deg, #FFFFFF 0%, #FAF6EE 100%);
-  box-shadow: 0 10px 30px rgba(197, 168, 128, 0.25);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 246, 238, 0.90) 100%);
+  box-shadow: 0 10px 32px rgba(197, 168, 128, 0.25);
 }
 
-.tier-badge {
+.tier-badge,
+.tier-tag {
   display: inline-block;
-  background: rgba(107, 17, 29, 0.10);
-  border: 1px solid rgba(107, 17, 29, 0.25);
-  color: var(--burgundy-primary);
+  background: rgba(139, 21, 56, 0.08);
+  border: 1px solid rgba(139, 21, 56, 0.25);
+  color: #8B1538;
   font-size: 0.68rem;
   font-weight: 800;
   padding: 3px 10px;
   border-radius: var(--radius-full);
   margin-bottom: 10px;
   width: fit-content;
+  letter-spacing: 0.6px;
 }
 
-.tier-title {
-  font-family: var(--font-royal);
-  font-size: 1.10rem;
+.tier-badge-popular {
+  position: absolute;
+  top: -11px;
+  right: 14px;
+  background: var(--brass-shimmer, linear-gradient(135deg, #C5A880 0%, #987850 100%));
+  color: #121820;
+  font-size: 0.65rem;
   font-weight: 800;
-  color: var(--burgundy-deep);
-  margin-bottom: 6px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
-.tier-perks-list {
+.tier-title,
+.tier-name {
+  font-family: var(--font-royal);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #8B1538;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.tier-privilege-label {
+  font-size: 0.86rem;
+  color: #8B1538;
+  font-weight: 700;
+  margin: 6px 0 12px;
+  line-height: 1.4;
+}
+
+.tier-perks-list,
+.tier-perks {
   list-style: none;
-  margin: 12px 0 18px;
+  margin: 10px 0 16px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
 }
-.tier-perks-list li {
-  font-size: 0.78rem;
-  color: #4A5568;
+.tier-perks-list li,
+.tier-perks li {
+  font-size: 0.80rem;
+  color: #475569;
   display: flex;
   align-items: flex-start;
   gap: 6px;
+  line-height: 1.45;
+}
+
+body.theme-dark .bulk-tier-card {
+  background: var(--glass-bg-card, rgba(24, 35, 50, 0.76));
+  border-color: rgba(223, 198, 154, 0.22);
+}
+body.theme-dark .bulk-tier-card.featured,
+body.theme-dark .bulk-tier-card.featured-buyout {
+  border-color: #DFC69A;
+  background: linear-gradient(180deg, rgba(28, 40, 58, 0.85) 0%, rgba(20, 29, 42, 0.80) 100%);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45);
+}
+body.theme-dark .tier-tag,
+body.theme-dark .tier-badge {
+  background: rgba(223, 198, 154, 0.12);
+  border-color: rgba(223, 198, 154, 0.35);
+  color: #DFC69A;
+}
+body.theme-dark .tier-name,
+body.theme-dark .tier-title {
+  color: #F8F6F0;
+}
+body.theme-dark .tier-privilege-label {
+  color: #DFC69A;
+}
+body.theme-dark .tier-perks li,
+body.theme-dark .tier-perks-list li {
+  color: #CBD5E1;
 }
 
 /* ==================== 5. CONCIERGE GUIDE: EXPLORE BHUSAWAL ==================== */
@@ -6402,13 +6506,19 @@ input::placeholder, textarea::placeholder, select::placeholder {
 
 /* ==================== COMPLIMENTARY AMENITIES BANNER ==================== */
 .room-complimentary-amenities-banner {
-  background: linear-gradient(135deg, #18202A 0%, #222E3D 100%);
+  background: linear-gradient(135deg, rgba(22, 32, 46, 0.94) 0%, rgba(35, 48, 66, 0.90) 100%);
   border: 1px solid rgba(197, 168, 128, 0.35);
   border-radius: var(--radius-md);
   padding: 24px;
   margin: 24px 0 32px;
   color: #FFFFFF;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 28px rgba(10, 16, 26, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+body.theme-dark .room-complimentary-amenities-banner {
+  background: linear-gradient(135deg, rgba(20, 29, 42, 0.82) 0%, rgba(28, 40, 56, 0.78) 100%);
+  border-color: rgba(223, 198, 154, 0.22);
 }
 .amenities-banner-header {
   display: flex;
