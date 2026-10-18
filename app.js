@@ -2469,13 +2469,30 @@ class HotelPremierApp {
       ? `🛏️ *Extra Beds:* ${q.extraBeds} Bed(s) @ ₹300/night (+ ₹ ${q.extraBedCost.toLocaleString('en-IN')}/-)%0A`
       : '';
 
-    const bulkName = document.getElementById('calc-bulk-guest-name')?.value.trim() || '';
-    const bulkPhone = document.getElementById('calc-bulk-guest-phone')?.value.trim() || '';
-    if (bulkName || bulkPhone) {
-      this.saveGuestProfile({ name: bulkName, phone: bulkPhone });
+    const bulkNameEl = document.getElementById('calc-bulk-guest-name');
+    const bulkPhoneEl = document.getElementById('calc-bulk-guest-phone');
+    const bulkName = bulkNameEl?.value.trim() || '';
+    const rawBulkPhone = bulkPhoneEl?.value.trim() || '';
+    const cleanBulkPhone = this.sanitizeIndianMobile(rawBulkPhone);
+
+    if (rawBulkPhone && !this.isValidIndianMobile(cleanBulkPhone)) {
+      alert('Please enter a valid 10-digit WhatsApp/mobile number for the organizer (e.g., 9876543210).');
+      if (bulkPhoneEl) {
+        bulkPhoneEl.value = cleanBulkPhone;
+        bulkPhoneEl.focus();
+      }
+      return;
     }
-    const guestContactLine = (bulkName || bulkPhone)
-      ? `👤 *Organizer:* ${encodeURIComponent(bulkName || 'Guest')} (${encodeURIComponent(bulkPhone || 'Not provided')})%0A`
+
+    if (cleanBulkPhone && bulkPhoneEl) {
+      bulkPhoneEl.value = cleanBulkPhone;
+    }
+
+    if (bulkName || cleanBulkPhone) {
+      this.saveGuestProfile({ name: bulkName, phone: cleanBulkPhone });
+    }
+    const guestContactLine = (bulkName || cleanBulkPhone)
+      ? `👤 *Organizer:* ${encodeURIComponent(bulkName || 'Guest')} (${encodeURIComponent(cleanBulkPhone || 'Not provided')})%0A`
       : '';
 
     const msg = `*HOTEL PREMIER BHUSAWAL - GROUP STAY INQUIRY*%0A` +
@@ -3650,6 +3667,17 @@ class HotelPremierApp {
     fields.forEach(({ id, key }) => {
       const el = document.getElementById(id);
       if (el) {
+        if (key === 'phone') {
+          el.setAttribute('inputmode', 'numeric');
+          el.setAttribute('autocomplete', 'tel');
+          el.addEventListener('blur', (e) => {
+            const cleaned = this.sanitizeIndianMobile(e.target.value);
+            if (e.target.value !== cleaned) {
+              e.target.value = cleaned;
+              this.onGuestFieldInput(key, cleaned);
+            }
+          });
+        }
         el.addEventListener('input', (e) => {
           this.onGuestFieldInput(key, e.target.value);
         });
@@ -3664,7 +3692,7 @@ class HotelPremierApp {
     clearTimeout(this._guestSyncTimer);
     this._guestSyncTimer = setTimeout(() => {
       const patch = {};
-      patch[key] = value;
+      patch[key] = (key === 'phone') ? this.sanitizeIndianMobile(value) : value;
       this.saveGuestProfile(patch);
     }, 350);
   }
@@ -3687,6 +3715,23 @@ class HotelPremierApp {
     }
   }
 
+  // ==================== PHONE & CONTACT HELPERS ====================
+  sanitizeIndianMobile(raw) {
+    if (!raw) return '';
+    let digits = String(raw).replace(/\D/g, '');
+    if (digits.startsWith('0')) {
+      digits = digits.replace(/^0+/, '');
+    }
+    if (digits.startsWith('91') && digits.length > 10) {
+      digits = digits.slice(2);
+    }
+    return digits.slice(0, 10);
+  }
+
+  isValidIndianMobile(digits) {
+    return /^[6-9]\d{9}$/.test(digits);
+  }
+
   // ==================== GUIDED CONCIERGE BOOKING WIZARD ====================
   openConciergeBookingModal(preselectedRoomId) {
     const modal = document.getElementById('concierge-booking-modal');
@@ -3704,9 +3749,12 @@ class HotelPremierApp {
     }
 
     const dateInput = document.getElementById('booking-checkin-date');
-    if (dateInput && !dateInput.value) {
-      const today = new Date().toISOString().slice(0, 10);
-      dateInput.value = today;
+    const today = new Date().toISOString().slice(0, 10);
+    if (dateInput) {
+      dateInput.min = today;
+      if (!dateInput.value || dateInput.value < today) {
+        dateInput.value = today;
+      }
     }
 
     this.applyGuestProfileToAllForms();
@@ -3783,23 +3831,49 @@ class HotelPremierApp {
 
   dispatchConciergeBooking() {
     const estimate = this.updateBookingEstimate();
-    const guestName = document.getElementById('booking-guest-name')?.value.trim();
-    const guestPhone = document.getElementById('booking-guest-phone')?.value.trim();
-    const checkInDate = document.getElementById('booking-checkin-date')?.value;
+    const guestNameInput = document.getElementById('booking-guest-name');
+    const guestPhoneInput = document.getElementById('booking-guest-phone');
+    const checkInDateInput = document.getElementById('booking-checkin-date');
+
+    const guestName = guestNameInput?.value.trim() || '';
+    const rawGuestPhone = guestPhoneInput?.value.trim() || '';
+    const cleanGuestPhone = this.sanitizeIndianMobile(rawGuestPhone);
+    const checkInDate = checkInDateInput?.value;
     const checkInTime = document.getElementById('booking-checkin-time')?.value;
     const guestsCount = document.getElementById('booking-guests-count')?.value || '2 Guests';
+    const today = new Date().toISOString().slice(0, 10);
 
-    if (!guestName || !guestPhone) {
-      alert('Please enter your name and WhatsApp number so Hotel Premier Concierge can assist you.');
+    if (!guestName) {
+      alert('Please enter your name so Hotel Premier Concierge can assist you.');
+      guestNameInput?.focus();
       return;
     }
 
-    this.saveGuestProfile({ name: guestName, phone: guestPhone });
+    if (!cleanGuestPhone || !this.isValidIndianMobile(cleanGuestPhone)) {
+      alert('Please enter a valid 10-digit WhatsApp/mobile number (e.g., 9876543210).');
+      if (guestPhoneInput) {
+        guestPhoneInput.value = cleanGuestPhone;
+        guestPhoneInput.focus();
+      }
+      return;
+    }
+
+    if (checkInDate && checkInDate < today) {
+      alert('Check-in date cannot be in the past. Please select today or a future date.');
+      if (checkInDateInput) {
+        checkInDateInput.value = today;
+        checkInDateInput.focus();
+      }
+      return;
+    }
+
+    if (guestPhoneInput) guestPhoneInput.value = cleanGuestPhone;
+    this.saveGuestProfile({ name: guestName, phone: cleanGuestPhone });
 
     if (window.HOTEL_VAULT && typeof window.HOTEL_VAULT.recordBooking === 'function') {
       window.HOTEL_VAULT.recordBooking({
         name: guestName,
-        phone: guestPhone,
+        phone: cleanGuestPhone,
         roomType: estimate.selected.name,
         checkInDate: checkInDate,
         checkInTime: checkInTime,
@@ -3816,7 +3890,7 @@ class HotelPremierApp {
     let msg = `*🏨 HOTEL PREMIER, BHUSAWAL - ROOM RESERVATION REQUEST*\n`;
     msg += `--------------------------------------------------\n`;
     msg += `👤 *Guest Name:* ${guestName}\n`;
-    msg += `📱 *Mobile / WhatsApp:* ${guestPhone}\n`;
+    msg += `📱 *Mobile / WhatsApp:* ${cleanGuestPhone}\n`;
     msg += `🛏️ *Suite:* ${estimate.roomsCount}x ${estimate.selected.name}\n`;
     msg += `📅 *Check-In Date:* ${checkInDate || 'Immediate'}\n`;
     msg += `⏰ *Arrival Time:* ${checkInTime}\n`;
@@ -3860,12 +3934,28 @@ class HotelPremierApp {
   }
 
   saveGuestProfileFromModal() {
-    const name = document.getElementById('profile-modal-name')?.value.trim() || '';
-    const phone = document.getElementById('profile-modal-phone')?.value.trim() || '';
+    const nameEl = document.getElementById('profile-modal-name');
+    const phoneEl = document.getElementById('profile-modal-phone');
+    const name = nameEl?.value.trim() || '';
+    const rawPhone = phoneEl?.value.trim() || '';
+    const cleanPhone = this.sanitizeIndianMobile(rawPhone);
     const region = document.getElementById('profile-modal-region')?.value.trim() || '';
     const tableOrRoom = document.getElementById('profile-modal-room-table')?.value.trim() || '';
 
-    this.saveGuestProfile({ name, phone, region, tableOrRoom });
+    if (rawPhone && !this.isValidIndianMobile(cleanPhone)) {
+      alert('Please enter a valid 10-digit WhatsApp/mobile number (e.g., 9876543210).');
+      if (phoneEl) {
+        phoneEl.value = cleanPhone;
+        phoneEl.focus();
+      }
+      return;
+    }
+
+    if (cleanPhone && phoneEl) {
+      phoneEl.value = cleanPhone;
+    }
+
+    this.saveGuestProfile({ name, phone: cleanPhone, region, tableOrRoom });
     alert('Your Hotel Premier Concierge Profile has been updated securely!');
     this.closeGuestProfileModal();
   }
