@@ -9,7 +9,11 @@ Sources:
 
 Added: no pets (also owner-confirmed), minimum primary-guest age 18, accepted IDs (Passport, Aadhaar, Driving License, government ID). MMT and Goibibo agree on these rules. Updated partner links to the researched listing URLs.
 
-## Awaiting owner confirmation — do not automatically publish
+## Owner confirmation received
+
+The owner confirmed that unmarried couples are not allowed, local IDs are not accepted, and 24-hour checkout applies only to direct bookings. These rules are now reflected in guest policies and booking copy. Smoking remains unconfirmed.
+
+## Original discrepancies and remaining verification
 
 - Checkout: PWA advertises 24 hours. OTA policy sections say noon check-in / 10 AM checkout; Goibibo prose gives different times, and Google shows midnight. Preserve owner-confirmed PWA policy pending clarification of direct versus partner bookings.
 - Smoking: both OTA rules prohibit smoking, but amenity lists advertise smoking rooms. Needs clarification.

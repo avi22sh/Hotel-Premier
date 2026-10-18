@@ -2,7 +2,9 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const c={window:{}};vm.runInNewContext(fs.readFileSync('data/hotel-data.js','utf8'),c);
 const info=c.window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo;
 assert.equal(info.petsPolicy,'Pets are not allowed.');assert.equal(info.primaryGuestMinimumAge,18);assert.equal(info.acceptedGuestIDs.length,4);
-assert.equal(info.checkoutPolicy,'24 Hours Check-Out');
+assert.equal(info.checkoutPolicy,'24 Hours Check-Out (Direct Bookings Only)');
+assert.equal(info.unmarriedCouplesAllowed,false);
+assert.equal(info.localIDsAccepted,false);
 const html=fs.readFileSync('index.html','utf8'),css=fs.readFileSync('royal.css','utf8');
 assert.match(html,/guest-policy-panel/);assert.match(html,/booking-policy-note/);
 assert.match(html,/8559568898096275433/);assert.doesNotMatch(html,/7988359765272654316/);

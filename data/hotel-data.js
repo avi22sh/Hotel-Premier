@@ -13,8 +13,11 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     phones: ['09325375802', '09370848917', '(02582) 240422', '(02582) 240396'],
     whatsapp: '919325375802',
     alternateWhatsapp: '919370848917',
-    checkoutPolicy: '24 Hours Check-Out',
+    checkoutPolicy: '24 Hours Check-Out (Direct Bookings Only)',
     petsPolicy: 'Pets are not allowed.',
+    unmarriedCouplesAllowed: false,
+    localIDsAccepted: false,
+    partnerCheckoutPolicy: 'Check-in and checkout follow the terms on the partner booking confirmation.',
     primaryGuestMinimumAge: 18,
     acceptedGuestIDs: ['Passport', 'Aadhaar', 'Driving License', 'Government ID'],
     childExtraBedPolicy: 'Complimentary extra beds for children aged 5–10 inclusive, within room extra-bed limits. Meals confirmed separately.',
@@ -220,7 +223,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
 
   hotelAmenities: [
     { icon: '🌱', title: 'Pride Pure Veg Restaurant', desc: '100% pure vegetarian authentic North & South Indian, Khandeshi & Chinese dining.' },
-    { icon: '⏰', title: '24-Hour Check-Out', desc: 'Enjoy maximum flexibility with full 24-hour stay calculated from your check-in time.' },
+    { icon: '⏰', title: '24-Hour Check-Out (Direct Bookings Only)', desc: 'Enjoy maximum flexibility with full 24-hour stay calculated from your check-in time.' },
     { icon: '🍽️', title: 'Room Service: 7:30 AM – 10:30 PM', desc: 'Prompt fresh kitchen room service from morning breakfast till late dinner. (Front Desk 24x7)' },
     { icon: '🚗', title: 'Safe & Secure Parking', desc: 'Spacious on-premises parking for personal cars, wedding buses & tourist vehicles.' },
     { icon: '📶', title: 'High-Speed Wi-Fi', desc: 'Seamless wireless internet access across all rooms and common areas.' },
@@ -241,7 +244,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'Priority Early Check-in for family elders',
         'Complimentary Morning Chai & Coffee Station',
         'Dedicated Floor Block for family unity',
-        'Flexible 24-Hour Check-Out Guarantee'
+        'Flexible 24-Hour Check-Out (Direct Bookings Only) Guarantee'
       ]
     },
     {
@@ -254,7 +257,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'Dedicated Floor Wing reserved for entire group',
         'Complimentary Morning Chai & Filter Coffee station',
         'Priority Luggage Handling & Transit Coordination',
-        'Flexible 24-Hour Check-Out Guarantee'
+        'Flexible 24-Hour Check-Out (Direct Bookings Only) Guarantee'
       ]
     },
     {

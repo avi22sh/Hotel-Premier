@@ -3763,7 +3763,7 @@ class HotelPremierApp {
     const totalEl = document.getElementById('booking-summary-grand-total');
 
     if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'CP: fixed-menu breakfast; conditions apply' : 'Room Only'})`;
-    if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out ${extraBeds > 0 ? `• ${extraBeds} Paid Extra Bed(s)` : ''}${childExtraBeds > 0 ? ` • ${childExtraBeds} Complimentary Child Extra Bed(s), ages 5–10` : ''}`;
+    if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out (Direct Bookings Only) ${extraBeds > 0 ? `• ${extraBeds} Paid Extra Bed(s)` : ''}${childExtraBeds > 0 ? ` • ${childExtraBeds} Complimentary Child Extra Bed(s), ages 5–10` : ''}`;
     if (totalEl) {
       totalEl.innerHTML = `
         <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
@@ -3820,7 +3820,7 @@ class HotelPremierApp {
     msg += `🛏️ *Suite:* ${estimate.roomsCount}x ${estimate.selected.name}\n`;
     msg += `📅 *Check-In Date:* ${checkInDate || 'Immediate'}\n`;
     msg += `⏰ *Arrival Time:* ${checkInTime}\n`;
-    msg += `🌙 *Duration:* ${estimate.nights} Night(s) (24-Hour Check-Out)\n`;
+    msg += `🌙 *Duration:* ${estimate.nights} Night(s) (24-Hour Check-Out (Direct Bookings Only))\n`;
     msg += `👥 *Total Guests:* ${guestsCount}\n`;
     msg += `🍽️ *Plan:* ${estimate.mealPlan === 'CP' ? 'CP — Breakfast from a fixed menu; conditions apply' : 'Room Only (RO)'}\n`;
     if (estimate.extraBeds > 0) {

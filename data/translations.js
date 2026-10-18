@@ -26,7 +26,7 @@ window.HOTEL_PREMIER_I18N = {
       // Sanctuary Home
       sanctuaryBadge: 'A Sanctuary in Bhusawal',
       sanctuaryStatement: '"A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."',
-      pill24hr: '⏰ 24-Hour Flexible Check-Out',
+      pill24hr: '⏰ 24-Hour Flexible Check-Out (Direct Bookings Only)',
       pill5min: '🚆 15 Mins / 2 KM from Railway Junction',
       pillVeg: '🌱 Pride Pure Veg AC Dining',
       pillParking: '🚗 Free Private Bus & Car Parking',
@@ -125,13 +125,13 @@ window.HOTEL_PREMIER_I18N = {
       // Hotel Showcase & Room Tariff
       hotelHeroBadge: 'WELCOME TO BHUSAWAL',
       hotelHeroTitle: 'Hotel Premier – A Home in Bhusawal',
-      hotelHeroSubtitle: 'Luxury AC Rooms, 24-Hour Check-out, and 100% Pride Pure Veg Dining near Nahata College',
+      hotelHeroSubtitle: 'Luxury AC Rooms, 24-Hour Check-out (Direct Bookings Only), and 100% Pride Pure Veg Dining near Nahata College',
       hotelLocationBadge: '📍 Strategic Location: 15 Mins from Bhusawal Railway Junction',
       
       tariffTitle: 'Official Room Tariff',
       tariffSubtitle: 'Comfortable & Hygienic AC Stays in Bhusawal with Transparent Pricing',
       tariffInclusive: 'INCLUSIVE OF ALL TAXES',
-      tariffCheckout: 'CHECK-OUT: 24 HOURS',
+      tariffCheckout: 'CHECK-OUT: 24 HOURS • Direct Bookings Only',
       tariffNotice: 'Tariffs are subject to change without prior notice. Complimentary breakfast served from a fixed menu in Pride Pure Veg Restaurant; conditions apply. Extra bed available subject to room space.',
       tariffExtraBedHeader: '🛏️ EXTRA BED / MATTRESS TARIFF',
       tariffExtraBedSub: 'Per Person / Per Night',
@@ -181,7 +181,7 @@ window.HOTEL_PREMIER_I18N = {
       calcTotalEst: 'Estimated Total Tariff',
       calcDiscountedEst: 'Estimated Group Stay Package',
       calcYouSave: 'Privilege Benefits Included',
-      calcInclusiveNotice: '✔ Inclusive of all taxes • 24-Hour Flexible Check-Out Guarantee',
+      calcInclusiveNotice: '✔ Inclusive of all taxes • 24-Hour Flexible Check-Out (Direct Bookings Only) Guarantee',
       calcBookWhatsapp: '📲 Inquire on WhatsApp: 9325375802',
       calcCallDirect: '📞 Call Hotel Premier',
 
@@ -245,7 +245,7 @@ window.HOTEL_PREMIER_I18N = {
       // Sanctuary Home Content
       sanctuaryBadge: 'भुसावल में आपका अपना घर',
       sanctuaryStatement: '"विश्राम और शुद्ध शाकाहारी खानपान का उत्तम संगम। 14 वातानुकूलित लक्ज़री कमरे, 24 घंटे चेक-आउट और भुसावल जंक्शन से मात्र 15 मिनट की दूरी."',
-      pill24hr: '⏰ 24 घंटे चेक-आउट सुविधा',
+      pill24hr: '⏰ 24 घंटे चेक-आउट सुविधा • Direct Bookings Only',
       pill5min: '🚆 रेलवे स्टेशन से 15 मिनट / 2 किमी',
       pillVeg: '🌱 प्राइड शुद्ध शाकाहारी एसी रेस्तरां',
       pillParking: '🚗 निःशुल्क बस एवं कार पार्किंग',
@@ -344,13 +344,13 @@ window.HOTEL_PREMIER_I18N = {
       // Hotel Showcase & Room Tariff
       hotelHeroBadge: 'Welcome to Bhusawal',
       hotelHeroTitle: 'Hotel Premier – Clean & Comfortable AC Rooms',
-      hotelHeroSubtitle: 'Luxury AC Rooms, 24-Hour Check-Out & 100% Pure Veg Dining near Nahata College',
+      hotelHeroSubtitle: 'Luxury AC Rooms, 24-Hour Check-Out (Direct Bookings Only) & 100% Pure Veg Dining near Nahata College',
       hotelLocationBadge: '📍 Bhusawal Railway Station se sirf 15 minutes',
 
       tariffTitle: 'Official Room Tariff & Rates',
       tariffSubtitle: 'Clean, Hygienic & Comfortable AC Stay in Bhusawal with Transparent Rates',
       tariffInclusive: 'INCLUSIVE OF ALL TAXES (सभी टैक्स शामिल)',
-      tariffCheckout: 'CHECK-OUT: 24 HOURS (24 घंटे)',
+      tariffCheckout: 'CHECK-OUT: 24 HOURS (24 घंटे) • Direct Bookings Only',
       tariffNotice: 'Rates subject to change without prior notice. CP breakfast from a fixed menu; conditions apply. Extra Bed available subject to room space.',
       tariffExtraBedHeader: '🛏️ EXTRA BED / MATTRESS TARIFF',
       tariffExtraBedSub: 'Per Person / Per Night',
@@ -399,7 +399,7 @@ window.HOTEL_PREMIER_I18N = {
       calcTotalEst: 'सामान्य कुल दर (Standard Tariff)',
       calcDiscountedEst: 'ग्रुप स्टे पैकेज दर (Group Stay Tariff)',
       calcYouSave: 'शामिल विशेषाधिकार लाभ (Privileges Included)',
-      calcInclusiveNotice: '✔ सभी टैक्स सम्मिलित • 24 घंटे चेक-आउट गारंटी',
+      calcInclusiveNotice: '✔ सभी टैक्स सम्मिलित • 24 घंटे चेक-आउट गारंटी • Direct Bookings Only',
       calcBookWhatsapp: '📲 WhatsApp पर संपर्क करें: 9325375802',
       calcCallDirect: '📞 होटल प्रीमियर को कॉल करें',
 
@@ -463,7 +463,7 @@ window.HOTEL_PREMIER_I18N = {
       // Sanctuary Home Content
       sanctuaryBadge: 'भुसावळमध्ये आपले हक्काचे घर',
       sanctuaryStatement: '"उत्कृष्ट आदरातिथ्य आणि अस्सल चव यांचा संगम. 14 वातानुकूलित लक्झरी खोल्या, 24 तास चेक-आउट आणि भुसावळ रेल्वे स्थानकापासून फक्त 15 मिनिटांवर."',
-      pill24hr: '⏰ 24 तास चेक-आउट सुविधा',
+      pill24hr: '⏰ 24 तास चेक-आउट सुविधा • Direct Bookings Only',
       pill5min: '🚆 रेल्वे स्टेशनपासून 15 मिनिटे / 2 किमी',
       pillVeg: '🌱 प्राईड शुद्ध शाकाहारी एसी रेस्टॉरंट',
       pillParking: '🚗 मोफत बस व कार पार्किंग',
@@ -562,13 +562,13 @@ window.HOTEL_PREMIER_I18N = {
       // Hotel Showcase & Room Tariff
       hotelHeroBadge: 'Welcome to Bhusawal',
       hotelHeroTitle: 'Hotel Premier – Clean & Comfortable AC Rooms',
-      hotelHeroSubtitle: 'Luxury AC Rooms, 24-Hour Check-Out & 100% Pure Veg Dining near Nahata College',
+      hotelHeroSubtitle: 'Luxury AC Rooms, 24-Hour Check-Out (Direct Bookings Only) & 100% Pure Veg Dining near Nahata College',
       hotelLocationBadge: '📍 भुसावळ रेल्वे स्टेशनपासून फक्त 15 मिनिटे',
 
       tariffTitle: 'Official Room Tariff & Rates',
       tariffSubtitle: 'भुसावळमध्ये आरामदायी व स्वच्छ AC मुक्काम, पारदर्शक दरांसह',
       tariffInclusive: 'INCLUSIVE OF ALL TAXES (सर्व टॅक्स समाविष्ट)',
-      tariffCheckout: 'CHECK-OUT: 24 HOURS (24 तास)',
+      tariffCheckout: 'CHECK-OUT: 24 HOURS (24 तास) • Direct Bookings Only',
       tariffNotice: 'दर पूर्वसूचनेशिवाय बदलू शकतात. CP योजनेत ठरलेल्या मेन्यूमधून नाश्ता दिला जातो; अटी लागू. Extra Bed जागेच्या उपलब्धतेनुसार मिळेल.',
       tariffExtraBedHeader: '🛏️ EXTRA BED / MATTRESS TARIFF',
       tariffExtraBedSub: 'Per Person / Per Night',
@@ -617,7 +617,7 @@ window.HOTEL_PREMIER_I18N = {
       calcTotalEst: 'Standard Tariff (नियमित दर)',
       calcDiscountedEst: 'Group Stay Package (ग्रुप स्टे दर)',
       calcYouSave: 'समाविष्ट विशेषाधिकार (Privileges Included)',
-      calcInclusiveNotice: '✔ सर्व कर समाविष्ट • 24 तास चेक-आउट हमी',
+      calcInclusiveNotice: '✔ सर्व कर समाविष्ट • 24 तास चेक-आउट हमी • Direct Bookings Only',
       calcBookWhatsapp: '📲 WhatsApp वर संपर्क साधा: 9325375802',
       calcCallDirect: '📞 हॉटेल प्रीमियरला थेट कॉल करा',
 
