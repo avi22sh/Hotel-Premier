@@ -775,7 +775,7 @@ class HotelPremierApp {
             }
             return `
               <div class="section-slide-card" onclick="${slide.dishId ? `window.app.openDishDetail('${slide.dishId}')` : ''}">
-                <img src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'">
+                <img src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.onerror=null; this.src='assets/premier-original-logo.png'">
                 <div class="section-slide-overlay">
                   <div class="section-slide-badge-row">
                     <span class="section-slide-badge">${slide.badge || this.t('sectionHighlight', '👑 SECTION HIGHLIGHT')}</span>
@@ -883,7 +883,7 @@ class HotelPremierApp {
           return `
             <div class="room-carousel-slide hp-room-pedestal">
               <div class="hp-room-frame">
-                <img src="${imgUrl}" alt="${room.name} Photo ${idx + 1}" class="room-card-img" loading="lazy" onerror="this.src='${room.image}'">
+                <img src="${imgUrl}" alt="${room.name} Photo ${idx + 1}" class="room-card-img" loading="lazy" onerror="this.onerror=null; this.src='${room.image}'">
                 <div class="hp-room-vignette"></div>
               </div>
             </div>
@@ -1029,7 +1029,7 @@ class HotelPremierApp {
                 alt="${localizedTitle}" 
                 class="category-card-img" 
                 loading="lazy" 
-                onerror="this.src='https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&auto=format&fit=crop&q=80'"
+                onerror="this.onerror=null; this.src='assets/premier-original-logo.png'"
               >
               <div class="category-card-overlay" aria-hidden="true"></div>
               <div class="category-crest-emblem" aria-hidden="true">${cat.icon || '🍽️'}</div>
@@ -2708,7 +2708,7 @@ class HotelPremierApp {
       return `
         <div class="decor-card" id="card-${item.id}">
           <div class="decor-img-wrap">
-            <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format&fit=crop&q=80'">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.onerror=null; this.src='assets/premier-original-logo.png'">
             <span class="decor-badge">${item.badge}</span>
             <span class="decor-chargeable-pill">💰 Chargeable Add-on</span>
           </div>
