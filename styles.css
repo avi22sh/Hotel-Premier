@@ -4176,8 +4176,8 @@ body.theme-dark .tier-perks-list li {
 }
 
 .attraction-card {
-  background: #FFFFFF;
-  border: 1px solid var(--ivory-border);
+  background: var(--royal-surface, #FFFFFF);
+  border: 1px solid var(--royal-edge, var(--ivory-border));
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -6606,8 +6606,8 @@ body.theme-dark .room-complimentary-amenities-banner {
   margin: 22px 0 32px;
 }
 .route-start-card {
-  background: #FFFFFF;
-  border: 1px solid rgba(197, 168, 128, 0.35);
+  background: var(--royal-surface, #FFFFFF);
+  border: 1px solid var(--royal-edge, rgba(197, 168, 128, 0.35));
   border-radius: var(--radius-md);
   padding: 20px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
@@ -6667,7 +6667,7 @@ body.theme-dark .room-complimentary-amenities-banner {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  background: #F8F5EE;
+  background: var(--cream-bg, #F8F5EE);
   border: 1px solid var(--brass-primary);
   color: var(--burgundy-primary);
   font-weight: 700;

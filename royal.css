@@ -69,7 +69,7 @@ body.theme-dark {
   background-attachment: fixed;
   color: var(--royal-ink);
 }
-body :is(.dish-card, .boutique-room-card, .tariff-suite-card, .modal-sheet, .settings-panel, .feedback-container, .review-card, .ota-booking-panel) {
+body :is(.dish-card, .boutique-room-card, .tariff-suite-card, .modal-sheet, .settings-panel, .feedback-container, .review-card, .ota-booking-panel, .attraction-card, .route-start-card) {
   background: var(--royal-surface); 
   border: 1px solid var(--royal-edge); 
   color: var(--royal-ink);
@@ -166,20 +166,20 @@ body.modal-open { overflow:hidden; }
 #admin-tab-content { overflow-x:auto; min-width:0; }
 #admin-modal-backdrop .admin-tab-btn { min-height:44px; white-space:nowrap; }
 body.theme-dark :is(.content-editorial-card,.studio-button,.studio-notice,.content-studio input,.content-studio textarea) { background:#1C2836; color:#F8F6F0; }
-body.theme-dark :is(.tariff-suite-header,.tariff-pricing-breakdown,.tariff-plan-box,.tariff-guarantees-grid .guarantee-card,.bulk-tier-card) { background:rgba(20, 29, 42, 0.72) !important; color:#F8F6F0 !important; border-color:rgba(223, 198, 154, 0.22) !important; }
+body.theme-dark :is(.tariff-suite-header,.tariff-pricing-breakdown,.tariff-plan-box,.tariff-guarantees-grid .guarantee-card,.bulk-tier-card,.route-start-card,.attraction-card) { background:rgba(20, 29, 42, 0.72) !important; color:#F8F6F0 !important; border-color:rgba(223, 198, 154, 0.22) !important; }
 body.theme-dark #admin-tab-content :is(.form-input,.form-select,.form-textarea,.admin-table) { background:#1C2836 !important; color:#F8F6F0 !important; border-color:rgba(223, 198, 154, 0.22) !important; }
 body.theme-dark #admin-tab-content [style*="background: #FFF"] { background:#1C2836 !important; color:#F8F6F0 !important; }
 @media(max-width:640px) { .content-editorial-card,.studio-section,.studio-card { padding:14px; } .studio-toolbar { flex-direction:column; } .studio-toolbar input { max-width:100%; } }
-@supports not (backdrop-filter:blur(1px)) { body :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card,.bulk-tier-card) { background:var(--ivory-canvas); } body.theme-dark :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card,.bulk-tier-card) { background:#162231; } }
+@supports not (backdrop-filter:blur(1px)) { body :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card,.bulk-tier-card,.route-start-card,.attraction-card) { background:var(--ivory-canvas); } body.theme-dark :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card,.bulk-tier-card,.route-start-card,.attraction-card) { background:#162231; } }
 
 /* Night palette: readable ivory text, restrained champagne and neutral surfaces. */
 body.theme-dark { --royal-surface:rgba(22, 32, 46, 0.78); --royal-ink:#F8F6F0; --royal-muted:#CBD5E1; --royal-edge:rgba(223, 198, 154, 0.22); --royal-gold:#DFC69A; --text-dark:#F8F6F0; --text-muted-dark:#CBD5E1; --text-heading:#F8F6F0; --text-placeholder:#94A3B8; --cream-bg:#162231; --cream-card:#162231; --cream-border:rgba(223, 198, 154, 0.22); }
-body.theme-dark :is(.room-suite-price,.rate-row,.guarantee-title,.extra-bed-title,.chip-value,.signature-dish-title,.dining-main-heading,.editorial-title,.atmosphere-gallery-title,.tier-name,.celebrate-title) { color:var(--royal-ink) !important; }
-body.theme-dark :is(.editorial-subtitle,.guarantee-desc,.extra-bed-sub,.signature-dish-desc,.room-suite-desc,.privilege-desc,.chip-label,.chip-period,.tier-perks li,.celebrate-subtitle,.form-group small,.form-hint) { color:var(--royal-muted) !important; }
-body.theme-dark :is(.room-amenity-tag,.amenity-pill,.extra-price-chip,.tariff-extra-bed-banner,.room-complimentary-amenities-banner,.celebrate-hero-banner) { background:rgba(22, 32, 46, 0.76); color:#F8F6F0; border-color:rgba(223, 198, 154, 0.22); }
+body.theme-dark :is(.room-suite-price,.rate-row,.guarantee-title,.extra-bed-title,.chip-value,.signature-dish-title,.dining-main-heading,.editorial-title,.atmosphere-gallery-title,.tier-name,.celebrate-title,.route-name,.attraction-title) { color:var(--royal-ink) !important; }
+body.theme-dark :is(.editorial-subtitle,.guarantee-desc,.extra-bed-sub,.signature-dish-desc,.room-suite-desc,.privilege-desc,.chip-label,.chip-period,.tier-perks li,.celebrate-subtitle,.form-group small,.form-hint,.route-desc,.attraction-desc,.attraction-travel-meta span) { color:var(--royal-muted) !important; }
+body.theme-dark :is(.room-amenity-tag,.amenity-pill,.extra-price-chip,.tariff-extra-bed-banner,.room-complimentary-amenities-banner,.celebrate-hero-banner,.route-time-badge,.route-icon-badge,.attraction-highlight-pill) { background:rgba(22, 32, 46, 0.76); color:#DFC69A; border-color:rgba(223, 198, 154, 0.22); }
 body.theme-dark :is(.form-input,.form-select,.form-textarea) { color:#F8F6F0; background:#182535; border-color:rgba(223, 198, 154, 0.30); color-scheme:dark; }
 body.theme-dark :is(.form-input,.form-textarea)::placeholder { color:#94A3B8; }
-body.theme-dark :is(.btn-claim-privilege,.btn-tariff-primary,.btn-tariff-card-reserve,.btn-reserve-suite) { background:#DFC69A; color:#121820; border-color:#DFC69A; box-shadow:none; }
+body.theme-dark :is(.btn-claim-privilege,.btn-tariff-primary,.btn-tariff-card-reserve,.btn-reserve-suite,.route-directions-btn,.attraction-directions-btn) { background:#DFC69A !important; color:#121820 !important; border-color:#DFC69A !important; box-shadow:none; }
 .guest-policy-panel { margin:28px 0; padding:24px; border:1px solid var(--royal-edge); border-radius:18px; background:var(--royal-surface); color:var(--royal-ink); }
 .guest-policy-panel h3 { margin:8px 0 20px; font-family:var(--font-royal); }
 .guest-policy-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
