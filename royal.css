@@ -127,7 +127,10 @@ body :is(.modal-btn-zomato-order,.modal-btn-swiggy-order,.ota-booking-links a,.p
 .public-reviews h2 { font-family:var(--font-royal),serif; color:var(--royal-gold); }
 .review-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:16px; }
 .review-card { padding:20px; border-radius:16px; }
-.review-card blockquote { margin:12px 0; line-height:1.65; }
+.review-card strong { display:block; font-family:var(--font-royal),serif; font-size:0.95rem; color:var(--royal-ink); }
+.review-card blockquote { margin:10px 0 12px; line-height:1.65; font-size:0.86rem; color:var(--royal-muted); font-style:italic; }
+.review-card small { display:inline-block; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--royal-gold); }
+.review-card p { margin:6px 0 0; font-size:0.82rem; font-weight:700; color:var(--royal-gold); }
 .review-status { color:var(--royal-muted); line-height:1.6; }
 #dish-detail-modal { z-index:10020; }
 #dish-detail-modal.active { display:flex !important; visibility:visible !important; opacity:1 !important; pointer-events:auto !important; }
