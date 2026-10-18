@@ -3766,12 +3766,12 @@ class HotelPremierApp {
     if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out (Direct Bookings Only) ${extraBeds > 0 ? `• ${extraBeds} Paid Extra Bed(s)` : ''}${childExtraBeds > 0 ? ` • ${childExtraBeds} Complimentary Child Extra Bed(s), ages 5–10` : ''}`;
     if (totalEl) {
       totalEl.innerHTML = `
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 2px;">
+        <div class="booking-price-summary">
           <div>
-            <span style="text-decoration: line-through; color: #94A3B8; font-size: 0.90rem; margin-right: 6px;">₹${grossEstimate.toLocaleString('en-IN')}</span>
-            <span style="color: var(--burgundy-primary); font-size: 1.35rem; font-weight: 900;">₹ ${totalEstimate.toLocaleString('en-IN')}/-</span>
+            <span class="booking-original-price">₹${grossEstimate.toLocaleString('en-IN')}</span>
+            <span class="booking-final-price">₹ ${totalEstimate.toLocaleString('en-IN')}/-</span>
           </div>
-          <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700; background: #DCFCE7; padding: 2px 8px; border-radius: 999px;">
+          <span class="booking-savings-note">
             🎁 Flat ₹200 Direct Guest Discount Applied (You Save ₹${directDiscount.toLocaleString('en-IN')})
           </span>
         </div>

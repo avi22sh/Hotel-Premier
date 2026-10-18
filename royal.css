@@ -183,3 +183,18 @@ body.theme-dark :is(.btn-claim-privilege,.btn-tariff-primary,.btn-tariff-card-re
 .guest-policy-note { margin-top:20px; padding-top:16px; border-top:1px solid var(--royal-edge); }
 .booking-policy-note { padding:12px; border:1px solid var(--royal-edge); border-radius:10px; }
 @media(max-width:640px) { .guest-policy-grid { grid-template-columns:1fr; gap:16px; } .guest-policy-panel { padding:18px; } }
+
+/* Booking surfaces share the same palette as Stay, including nested dialogs. */
+.guest-details-panel { background:var(--cream-bg); border:1px dashed var(--royal-edge); color:var(--royal-ink); }
+.booking-price-summary { display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-width:0; }
+.booking-original-price { text-decoration:line-through; color:var(--royal-muted); font-size:.9rem; margin-right:6px; }
+.booking-final-price { color:var(--royal-gold); font-size:1.35rem; font-weight:900; }
+.booking-savings-note { font-size:.75rem; line-height:1.5; color:#23573e; background:#e9f3ec; font-weight:700; padding:5px 10px; border-radius:10px; text-align:right; overflow-wrap:anywhere; }
+body.theme-dark #concierge-booking-modal .direct-booking-privilege-card { background:#1c2b31; border:1px solid var(--royal-edge); box-shadow:none; }
+body.theme-dark #concierge-booking-modal .direct-booking-privilege-card::before { display:none; }
+body.theme-dark #concierge-booking-modal :is(.privilege-pill,.privilege-saving) { color:var(--royal-gold); background:transparent; border-color:var(--royal-edge); box-shadow:none; }
+body.theme-dark .booking-savings-note { background:#233c34; color:#c0e5cf; }
+body.theme-dark .guest-details-panel { background:#1c2b31; }
+body.theme-dark :is(.calculator-card,#concierge-booking-modal) .form-label { color:var(--royal-ink); }
+body.theme-dark :is(.calculator-card,#concierge-booking-modal) :focus-visible { outline:2px solid var(--royal-gold); outline-offset:3px; }
+@media(max-width:640px) { .booking-price-summary { align-items:flex-start; } .booking-savings-note { text-align:left; } }
