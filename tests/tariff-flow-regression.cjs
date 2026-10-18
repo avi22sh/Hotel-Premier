@@ -1,0 +1,13 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const buttons=['all','ro','cp'].map(plan=>({dataset:{plan},classList:{toggle(){}},setAttribute(k,v){this[k]=v;}}));
+const ro=[{style:{}}],cp=[{style:{}}];
+const fields={'booking-meal-plan':{value:'CP'},'booking-room-type':{value:'ac-deluxe-queen'},'booking-checkin-date':{value:'2026-10-18'},'concierge-booking-modal':{classList:{add(){}},style:{}}};
+const c={window:{},console,document:{readyState:'loading',addEventListener(){},getElementById:id=>fields[id],querySelectorAll:selector=>selector==='.tariff-plan-btn'?buttons:selector.endsWith('.plan-ro')?ro:cp}};
+vm.createContext(c);vm.runInContext(fs.readFileSync('app.js','utf8')+';window.App=HotelPremierApp;',c);
+const app=Object.create(c.window.App.prototype);app.activeSection='section-tariffs';app.applyGuestProfileToAllForms=()=>{};app.updateBookingEstimate=()=>{};
+app.setTariffPlanView('ro');assert.equal(ro[0].style.display,'block');assert.equal(cp[0].style.display,'none');assert.equal(buttons[1]['aria-pressed'],'true');
+app.openConciergeBookingModal('ac-deluxe-twin');assert.equal(fields['booking-meal-plan'].value,'RO');assert.equal(fields['booking-room-type'].value,'ac-deluxe-twin');
+app.setTariffPlanView('cp');app.openConciergeBookingModal();assert.equal(fields['booking-meal-plan'].value,'CP');
+app.setTariffPlanView('invalid');assert.equal(app.currentTariffPlan,'all');assert.equal(ro[0].style.display,'block');assert.equal(cp[0].style.display,'block');
+const html=fs.readFileSync('index.html','utf8');assert.doesNotMatch(html,/Reserve Deluxe Room|24h Room Service|Room Only \(EP\)/);
+console.log('PASS: tariff comparison, accessible selection, plan handoff, Twin booking and consistent service wording');

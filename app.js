@@ -367,9 +367,11 @@ class HotelPremierApp {
 
   // ==================== TARIFF PLAN SWITCHER (RO vs CP vs ALL) ====================
   setTariffPlanView(plan) {
+    if (!['all','ro','cp'].includes(plan)) plan = 'all';
     this.currentTariffPlan = plan; // 'all' | 'ro' | 'cp'
     document.querySelectorAll('.tariff-plan-btn').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.plan === plan);
+      btn.setAttribute('aria-pressed', String(btn.dataset.plan === plan));
     });
 
     const roBoxes = document.querySelectorAll('.tariff-plan-box.plan-ro');
@@ -3689,6 +3691,12 @@ class HotelPremierApp {
   openConciergeBookingModal(preselectedRoomId) {
     const modal = document.getElementById('concierge-booking-modal');
     if (!modal) return;
+
+    // Carry an explicit tariff plan into the inquiry without changing Stay defaults.
+    if (this.activeSection === 'section-tariffs' && ['ro','cp'].includes(this.currentTariffPlan)) {
+      const planSelect = document.getElementById('booking-meal-plan');
+      if (planSelect) planSelect.value = this.currentTariffPlan.toUpperCase();
+    }
 
     if (preselectedRoomId) {
       const roomSelect = document.getElementById('booking-room-type');

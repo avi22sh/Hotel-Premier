@@ -76,7 +76,7 @@
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=21.5">
-  <link rel="stylesheet" href="royal.css?v=21.11">
+  <link rel="stylesheet" href="royal.css?v=21.12">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -618,20 +618,20 @@
       <h2 class="editorial-title">Suites Tariff & Plans</h2>
       <div class="editorial-divider"></div>
       <p class="editorial-subtitle">
-        Authentic published room tariffs with full 24-Hour flexible check-out. All taxes included. Choose between Room Only (EP) and Breakfast from a fixed menu (CP; conditions apply).
+        Choose your room, then your rhythm: room-only simplicity or a stay with breakfast. Rates below are per room, per night, inclusive of taxes. CP breakfast is from a fixed menu; conditions apply.
       </p>
     </div>
 
     <!-- Plan Filter Selector -->
-    <div class="tariff-plan-switcher" id="tariff-plan-switcher">
-      <button class="tariff-plan-btn active" data-plan="all" onclick="window.app ? window.app.setTariffPlanView('all') : null">
-        <span>📊 All Plans (Comparison)</span>
+    <div class="tariff-plan-switcher" id="tariff-plan-switcher" role="group" aria-label="Compare room meal plans">
+      <button type="button" class="tariff-plan-btn active" data-plan="all" aria-pressed="true" onclick="window.app ? window.app.setTariffPlanView('all') : null">
+        <span>Compare plans</span>
       </button>
-      <button class="tariff-plan-btn" data-plan="ro" onclick="window.app ? window.app.setTariffPlanView('ro') : null">
-        <span>🛌 Room Only (RO)</span>
+      <button type="button" class="tariff-plan-btn" data-plan="ro" aria-pressed="false" onclick="window.app ? window.app.setTariffPlanView('ro') : null">
+        <span>Room only · RO</span>
       </button>
-      <button class="tariff-plan-btn" data-plan="cp" onclick="window.app ? window.app.setTariffPlanView('cp') : null">
-        <span>☕ With Breakfast (CP)</span>
+      <button type="button" class="tariff-plan-btn" data-plan="cp" aria-pressed="false" onclick="window.app ? window.app.setTariffPlanView('cp') : null">
+        <span>With breakfast · CP</span>
       </button>
     </div>
 
@@ -708,13 +708,16 @@
           <span>❄️ Split AC</span>
           <span>📺 Smart LED TV</span>
           <span>📶 High-Speed Wi-Fi</span>
-          <span>🛎️ 24h Room Service</span>
+          <span>🛎️ Room Service · 7:30 AM–10:30 PM</span>
           <span>🚿 Geyser Hot Water</span>
         </div>
 
-        <div class="tariff-card-action">
+        <div class="tariff-card-action tariff-room-choices">
           <button class="btn-tariff-card-reserve" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-queen') : null">
-            <span>Reserve Deluxe Room →</span>
+            <span>Signature Queen →</span>
+          </button>
+          <button class="btn-tariff-card-reserve" onclick="window.app ? window.app.openConciergeBookingModal('ac-deluxe-twin') : null">
+            <span>Companion Twin →</span>
           </button>
         </div>
       </div>
@@ -726,7 +729,7 @@
           <div class="tariff-suite-crest">
             <span class="tariff-badge-pill gold-pill">2 Exclusive Suites</span>
             <h3 class="tariff-suite-name">Premier Royale King</h3>
-            <p class="tariff-suite-bed-type">King Bed • 1 road-facing balcony room + 1 rear-facing balcony room</p>
+            <p class="tariff-suite-bed-type">King bed • Your own balcony retreat</p>
           </div>
           <div class="tariff-suite-space">172 sq.ft • Accommodates 2–3 extra beds</div>
         </div>
@@ -1899,7 +1902,7 @@
   <script src="data/hotel-data.js?v=21.7"></script>
   <script src="data/menu-data.js?v=21.8"></script>
   <script src="data/menu-photos.js?v=21.6"></script>
-  <script src="app.js?v=21.8"></script>
+  <script src="app.js?v=21.12"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
   <script src="admin.js?v=21.8"></script>
@@ -1908,7 +1911,7 @@
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.11', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.12', { updateViaCache: 'none' }).then(function(reg) {
           reg.update().catch(function() {});
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
