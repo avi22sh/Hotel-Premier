@@ -60,7 +60,7 @@ body.theme-dark {
   --glass-bg-card: rgba(18, 26, 38, 0.72); 
   --glass-bg-modal: rgba(16, 24, 35, 0.88);
   background: 
-    radial-gradient(circle at 15% 15%, rgba(139, 21, 56, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 15% 15%, rgba(57, 84, 76, 0.18) 0%, transparent 45%),
     radial-gradient(circle at 85% 20%, rgba(197, 168, 128, 0.15) 0%, transparent 40%),
     radial-gradient(circle at 50% 60%, rgba(20, 31, 46, 0.55) 0%, transparent 55%),
     #0A1017;
@@ -166,3 +166,20 @@ body.theme-dark #admin-tab-content :is(.form-input,.form-select,.form-textarea,.
 body.theme-dark #admin-tab-content [style*="background: #FFF"] { background:#192831 !important; color:#eee5d5 !important; }
 @media(max-width:640px) { .content-editorial-card,.studio-section,.studio-card { padding:14px; } .studio-toolbar { flex-direction:column; } .studio-toolbar input { max-width:100%; } }
 @supports not (backdrop-filter:blur(1px)) { body :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { background:var(--ivory-canvas); } body.theme-dark :is(.settings-panel,.modal-sheet,.boutique-room-card,.tariff-suite-card) { background:#142027; } }
+
+/* Night palette: readable ivory text, restrained champagne and neutral surfaces. */
+body.theme-dark { --royal-surface:rgba(25,35,42,.94); --royal-ink:#eee8de; --royal-muted:#bac3c5; --royal-edge:#43504f; --royal-gold:#dfc69a; --text-dark:#eee8de; --text-muted-dark:#bac3c5; --text-heading:#eee8de; --text-placeholder:#aab6bb; --cream-bg:#19232a; --cream-card:#19232a; --cream-border:#43504f; }
+body.theme-dark :is(.room-suite-price,.rate-row,.guarantee-title,.extra-bed-title,.chip-value,.signature-dish-title,.dining-main-heading,.editorial-title,.atmosphere-gallery-title) { color:var(--royal-ink) !important; }
+body.theme-dark :is(.editorial-subtitle,.guarantee-desc,.extra-bed-sub,.signature-dish-desc,.room-suite-desc,.privilege-desc,.chip-label,.chip-period) { color:var(--royal-muted) !important; }
+body.theme-dark :is(.room-amenity-tag,.amenity-pill,.extra-price-chip,.tariff-extra-bed-banner,.room-complimentary-amenities-banner) { background:#1c2b31; color:#eee8de; border-color:#43504f; }
+body.theme-dark :is(.form-input,.form-select,.form-textarea) { color:#eee8de; background:#19232a; border-color:#53615e; color-scheme:dark; }
+body.theme-dark :is(.form-input,.form-textarea)::placeholder { color:#aab6bb; }
+body.theme-dark :is(.btn-claim-privilege,.btn-tariff-primary,.btn-tariff-card-reserve,.btn-reserve-suite) { background:#dfc69a; color:#18231f; border-color:#dfc69a; box-shadow:none; }
+.guest-policy-panel { margin:28px 0; padding:24px; border:1px solid var(--royal-edge); border-radius:18px; background:var(--royal-surface); color:var(--royal-ink); }
+.guest-policy-panel h3 { margin:8px 0 20px; font-family:var(--font-royal); }
+.guest-policy-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+.guest-policy-grid h4 { margin:0 0 8px; color:var(--royal-gold); }
+.guest-policy-grid p,.guest-policy-note,.booking-policy-note { font-size:.85rem; line-height:1.7; color:var(--royal-muted); }
+.guest-policy-note { margin-top:20px; padding-top:16px; border-top:1px solid var(--royal-edge); }
+.booking-policy-note { padding:12px; border:1px solid var(--royal-edge); border-radius:10px; }
+@media(max-width:640px) { .guest-policy-grid { grid-template-columns:1fr; gap:16px; } .guest-policy-panel { padding:18px; } }

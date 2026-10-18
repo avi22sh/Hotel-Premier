@@ -76,7 +76,7 @@
 
   <!-- Application Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=21.5">
-  <link rel="stylesheet" href="royal.css?v=21.12">
+  <link rel="stylesheet" href="royal.css?v=21.13">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -836,6 +836,17 @@
       </div>
     </div>
 
+    <section class="guest-policy-panel" aria-labelledby="guest-policy-heading">
+      <span class="editorial-eyebrow">Before You Arrive</span>
+      <h3 id="guest-policy-heading">A Few Things to Know</h3>
+      <div class="guest-policy-grid">
+        <article><h4>Pets</h4><p>Pets are not allowed at the property.</p></article>
+        <article><h4>Primary guest</h4><p>The primary guest must be at least 18 years old.</p></article>
+        <article><h4>Identification</h4><p>Accepted ID types: Passport, Aadhaar, Driving License or government ID. Please bring valid identification for check-in.</p></article>
+      </div>
+      <p class="guest-policy-note">Booking through a partner? Check the check-in, checkout, payment and cancellation terms shown on your booking confirmation. Contact the front desk before booking if you need clarification.</p>
+    </section>
+
     <!-- Direct Tariff Action Buttons -->
     <div class="tariff-direct-actions-bar">
       <button class="btn-tariff-primary" onclick="window.app ? window.app.openConciergeBookingModal() : null">
@@ -1372,10 +1383,10 @@
           <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
             <span>Google Reviews (4.1★)</span>
           </a>
-          <a href="https://www.makemytrip.com/hotels/hotel_premier-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+          <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
             <span>MakeMyTrip (4.0★)</span>
           </a>
-          <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-7988359765272654316/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+          <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
             <span>Goibibo (4.0★)</span>
           </a>
           <a href="https://www.zomato.com/search?q=Hotel+Premier+Bhusawal" target="_blank" rel="noopener noreferrer" class="platform-pill-btn" onclick="event.preventDefault(); window.app && window.app.openExternalPlatform('zomato');">
@@ -1631,6 +1642,8 @@
           <small>Count across all booked rooms. Paid and complimentary beds share the room's extra-bed limit. Children's meals are not priced in this estimate; please confirm them with the hotel.</small>
         </div>
 
+        <p class="booking-policy-note">Pets are not allowed. Primary guest: 18 years or older. Bring valid identification; accepted types include Passport, Aadhaar, Driving License and government ID.</p>
+
         <!-- Step 5: Guest Details (Auto-filled from Profile) -->
         <div style="background: #FAF7F0; border: 1px dashed rgba(197, 168, 128, 0.4); padding: 12px 14px; border-radius: var(--radius-sm); margin-bottom: 16px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
@@ -1673,8 +1686,8 @@
           <div class="ota-booking-panel">
             <p>Prefer a booking partner? Check availability and rates directly. Partner offers and cancellation terms may differ.</p>
             <div class="ota-booking-links" aria-label="Book Hotel Premier through a partner">
-              <a href="https://www.makemytrip.com/hotels/hotel_premier-bhusawal.html" target="_blank" rel="noopener noreferrer">MakeMyTrip ↗</a>
-              <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-7988359765272654316/" target="_blank" rel="noopener noreferrer">Goibibo ↗</a>
+              <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer">MakeMyTrip ↗</a>
+              <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer">Goibibo ↗</a>
             </div>
           </div>
         </div>
@@ -1899,7 +1912,7 @@
   <script src="storage.js?v=20.51"></script>
   <script src="vault.js?v=20.51"></script>
   <script src="data/translations.js?v=21.8"></script>
-  <script src="data/hotel-data.js?v=21.7"></script>
+  <script src="data/hotel-data.js?v=21.13"></script>
   <script src="data/menu-data.js?v=21.8"></script>
   <script src="data/menu-photos.js?v=21.6"></script>
   <script src="app.js?v=21.12"></script>
@@ -1911,7 +1924,7 @@
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.12', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.13', { updateViaCache: 'none' }).then(function(reg) {
           reg.update().catch(function() {});
           if (typeof reg.update === 'function') reg.update();
         }).catch(function(err) {});
