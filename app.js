@@ -221,7 +221,7 @@ class HotelPremierApp {
     document.documentElement.style.colorScheme = resolvedTheme;
 
     const themeMeta = document.querySelector('meta[name="theme-color"]');
-    if (themeMeta) themeMeta.content = resolvedTheme === 'dark' ? '#0D141C' : '#FAF7F0';
+    if (themeMeta) themeMeta.content = resolvedTheme === 'dark' ? '#131C26' : '#FAF7F0';
 
     const toggle = document.getElementById('theme-toggle-btn');
     if (toggle) {
