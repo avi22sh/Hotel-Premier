@@ -4,7 +4,7 @@
 // Guarantees mobile users always see latest menu updates & sub-sections
 // ==========================================================================
 
-const CACHE_NAME = 'hotel-premier-v21.26';
+const CACHE_NAME = 'hotel-premier-v21.27';
 const CORE_ASSETS = [
   './',
   'index.html',
@@ -101,8 +101,10 @@ self.addEventListener('fetch', (event) => {
       // Offline fallback: serve from cache (ignoring version query parameters like ?v=18.1)
       return caches.match(req, { ignoreSearch: true }).then((cachedResponse) => {
         if (cachedResponse) return cachedResponse;
-        if (req.headers.get('accept') && req.headers.get('accept').includes('text/html')) {
-          return caches.match('index.html', { ignoreSearch: true });
+        if (req.mode === 'navigate' || (req.headers.get('accept') && req.headers.get('accept').includes('text/html'))) {
+          return caches.match('index.html', { ignoreSearch: true }).then((htmlResponse) => {
+            return htmlResponse || caches.match('./', { ignoreSearch: true });
+          });
         }
       });
     })
