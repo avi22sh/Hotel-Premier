@@ -4068,7 +4068,8 @@ class HotelPremierApp {
     const ratingEl = document.getElementById('feedback-star-val');
 
     const name = nameEl ? nameEl.value.trim() : '';
-    const phone = phoneEl ? phoneEl.value.trim() : '';
+    const rawPhone = phoneEl ? phoneEl.value.trim() : '';
+    const cleanPhone = this.sanitizeIndianMobile(rawPhone);
     const region = regionEl ? regionEl.value : 'Bhusawal Local';
     const table = tableEl ? tableEl.value.trim() : '';
     const comments = commentsEl ? commentsEl.value.trim() : '';
@@ -4079,15 +4080,18 @@ class HotelPremierApp {
       if (nameEl) nameEl.focus();
       return false;
     }
-    if (!phone || phone.length < 10) {
-      alert('Please enter a valid 10-digit WhatsApp/mobile number.');
-      if (phoneEl) phoneEl.focus();
+    if (!this.isValidIndianMobile(cleanPhone)) {
+      alert('Please enter a valid 10-digit Indian WhatsApp/mobile number (e.g., 9876543210).');
+      if (phoneEl) {
+        phoneEl.value = cleanPhone;
+        phoneEl.focus();
+      }
       return false;
     }
 
     this.saveGuestProfile({
       name: name,
-      phone: phone,
+      phone: cleanPhone,
       region: region,
       tableOrRoom: table
     });

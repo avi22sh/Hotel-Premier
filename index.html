@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.25">
-  <link rel="stylesheet" href="royal.css?v=21.25">
+  <link rel="stylesheet" href="styles.css?v=21.26">
+  <link rel="stylesheet" href="royal.css?v=21.26">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -1334,15 +1334,15 @@
           <!-- Essential Guest Details (Pre-filled from Guest Profile) -->
           <div class="feedback-form-grid">
             <div class="feedback-input-field">
-              <label>Your Name *</label>
-              <input type="text" id="feedback-guest-name" class="fb-input" placeholder="Enter your name" required>
+              <label for="feedback-guest-name">Your Name *</label>
+              <input type="text" id="feedback-guest-name" aria-label="Your full name" class="fb-input" placeholder="Enter your name" required>
             </div>
             <div class="feedback-input-field">
-              <label>WhatsApp / Mobile Number *</label>
-              <input type="tel" id="feedback-guest-phone" class="fb-input" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+              <label for="feedback-guest-phone">WhatsApp / Mobile Number *</label>
+              <input type="tel" id="feedback-guest-phone" aria-label="10-digit WhatsApp or mobile number" class="fb-input" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel" required>
             </div>
             <div class="feedback-input-field">
-              <label>Your City / Region</label>
+              <label for="feedback-guest-region">Your City / Region</label>
               <select id="feedback-guest-region" class="fb-select">
                 <option value="Bhusawal Local">Bhusawal Local</option>
                 <option value="Jalgaon District">Jalgaon District</option>
@@ -1353,13 +1353,13 @@
               </select>
             </div>
             <div class="feedback-input-field">
-              <label>Room or Table # (Optional)</label>
-              <input type="text" id="feedback-table-num" class="fb-input" placeholder="Room number or table (if staying)">
+              <label for="feedback-table-num">Room or Table # (Optional)</label>
+              <input type="text" id="feedback-table-num" aria-label="Room or table number" class="fb-input" placeholder="Room number or table (if staying)">
             </div>
           </div>
 
           <div class="feedback-input-field" style="margin-bottom: 18px;">
-            <label>How was your experience? (Comments / Suggestions)</label>
+            <label for="feedback-guest-comments">How was your experience? (Comments / Suggestions)</label>
             <textarea id="feedback-guest-comments" class="fb-textarea" rows="2" placeholder="Tell us which dish or room amenity you loved most..."></textarea>
           </div>
 
@@ -1917,7 +1917,7 @@
   <script src="data/hotel-data.js?v=21.14"></script>
   <script src="data/menu-data.js?v=21.8"></script>
   <script src="data/menu-photos.js?v=21.6"></script>
-  <script src="app.js?v=21.25"></script>
+  <script src="app.js?v=21.26"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
   <script src="admin.js?v=21.8"></script>
