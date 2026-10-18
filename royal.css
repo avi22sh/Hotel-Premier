@@ -186,6 +186,14 @@ body.theme-dark :is(.btn-claim-privilege,.btn-tariff-primary,.btn-tariff-card-re
 
 /* Booking surfaces share the same palette as Stay, including nested dialogs. */
 .guest-details-panel { background:var(--cream-bg); border:1px dashed var(--royal-edge); color:var(--royal-ink); }
+body.theme-dark .modal-header { background:#19232a; }
+body.theme-dark .wizard-summary-card { background:#19232a; border-color:var(--royal-edge); color:var(--royal-ink); }
+body.theme-dark .wizard-summary-card .summary-row { color:var(--royal-muted); gap:12px; }
+body.theme-dark .summary-grand-row strong { color:var(--royal-gold); }
+.wizard-summary-card :is(.btn-tariff-book-wa,.btn-tariff-call) { display:flex; align-items:center; justify-content:center; min-height:44px; padding:12px; border-radius:10px; font:inherit; font-size:.82rem; font-weight:700; text-align:center; text-decoration:none; white-space:normal; }
+.wizard-summary-card .btn-tariff-book-wa { background:#166534; color:#fff; border:1px solid #166534; }
+.wizard-summary-card .btn-tariff-call { background:var(--royal-surface); color:var(--royal-ink); border:1px solid var(--royal-edge); }
+@media(max-width:640px) { .wizard-summary-card .summary-grand-row { flex-direction:column; align-items:flex-start; gap:12px; } }
 .booking-price-summary { display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-width:0; }
 .booking-original-price { text-decoration:line-through; color:var(--royal-muted); font-size:.9rem; margin-right:6px; }
 .booking-final-price { color:var(--royal-gold); font-size:1.35rem; font-weight:900; }
