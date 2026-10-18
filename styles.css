@@ -5092,11 +5092,13 @@ body.theme-dark .tier-perks-list li {
   box-shadow: 0 0 0 2px rgba(197, 168, 128, 0.15);
 }
 
+.form-group small,
 .form-hint {
-  font-size: 0.70rem;
+  font-size: 0.72rem;
   color: var(--text-muted-dark);
-  margin-top: 4px;
+  margin-top: 5px;
   display: block;
+  line-height: 1.4;
 }
 
 /* Wizard Summary Box */

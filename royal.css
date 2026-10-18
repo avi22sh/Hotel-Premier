@@ -172,7 +172,7 @@ body.theme-dark #admin-tab-content [style*="background: #FFF"] { background:#1C2
 /* Night palette: readable ivory text, restrained champagne and neutral surfaces. */
 body.theme-dark { --royal-surface:rgba(22, 32, 46, 0.78); --royal-ink:#F8F6F0; --royal-muted:#CBD5E1; --royal-edge:rgba(223, 198, 154, 0.22); --royal-gold:#DFC69A; --text-dark:#F8F6F0; --text-muted-dark:#CBD5E1; --text-heading:#F8F6F0; --text-placeholder:#94A3B8; --cream-bg:#162231; --cream-card:#162231; --cream-border:rgba(223, 198, 154, 0.22); }
 body.theme-dark :is(.room-suite-price,.rate-row,.guarantee-title,.extra-bed-title,.chip-value,.signature-dish-title,.dining-main-heading,.editorial-title,.atmosphere-gallery-title,.tier-name,.celebrate-title) { color:var(--royal-ink) !important; }
-body.theme-dark :is(.editorial-subtitle,.guarantee-desc,.extra-bed-sub,.signature-dish-desc,.room-suite-desc,.privilege-desc,.chip-label,.chip-period,.tier-perks li,.celebrate-subtitle) { color:var(--royal-muted) !important; }
+body.theme-dark :is(.editorial-subtitle,.guarantee-desc,.extra-bed-sub,.signature-dish-desc,.room-suite-desc,.privilege-desc,.chip-label,.chip-period,.tier-perks li,.celebrate-subtitle,.form-group small,.form-hint) { color:var(--royal-muted) !important; }
 body.theme-dark :is(.room-amenity-tag,.amenity-pill,.extra-price-chip,.tariff-extra-bed-banner,.room-complimentary-amenities-banner,.celebrate-hero-banner) { background:rgba(22, 32, 46, 0.76); color:#F8F6F0; border-color:rgba(223, 198, 154, 0.22); }
 body.theme-dark :is(.form-input,.form-select,.form-textarea) { color:#F8F6F0; background:#182535; border-color:rgba(223, 198, 154, 0.30); color-scheme:dark; }
 body.theme-dark :is(.form-input,.form-textarea)::placeholder { color:#94A3B8; }
