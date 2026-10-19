@@ -529,6 +529,121 @@ const NAAN_VARIANTS = [
   }
 ];
 
+const DAL_FRY_VARIANTS = [
+  {
+    name: 'Dal Fry',
+    hindiName: 'दाल फ्राई',
+    marathiName: 'डाळ फ्राय',
+    price: 190,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL FRY.jpg',
+    description: 'Yellow lentils gently simmered and sautéed with onions, ripe tomatoes and aromatic spices.',
+    descriptionHi: 'प्याज, टमाटर और हरी मिर्च के साथ भुनी हुई स्वादिष्ट पीली दाल।',
+    descriptionMr: 'कांदा, टोमॅटो व मसाल्यांची खमंग फोडणी दिलेली चवदार डाळ फ्राय.'
+  },
+  {
+    name: 'Dal Tadka (Desi Ghee)',
+    hindiName: 'दाल तड़का (देसी घी)',
+    marathiName: 'डाळ तडका (साजूक तूप)',
+    price: 210,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg',
+    description: 'Creamy yellow lentils tempered with pure desi ghee, cumin seeds, garlic, red chillies and hing.',
+    descriptionHi: 'देसी घी, लहसुन, सूखी लाल मिर्च और जीरे के तड़के वाली होटल प्राइड की खास दाल तड़का।',
+    descriptionMr: 'साजूक तूप, लसूण, जिरे व लाल मिरचीची झणझणीत फोडणी दिलेली डाळ तडका.'
+  }
+];
+
+const DAL_PALAK_VARIANTS = [
+  {
+    name: 'Dal Palak',
+    hindiName: 'दाल पालक',
+    marathiName: 'डाळ पालक',
+    price: 150,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK.jpg',
+    description: 'Wholesome yellow lentils cooked with fresh nutritious spinach leaves and mild spices.',
+    descriptionHi: 'ताज़ी पालक और पीली दाल का पौष्टिक व स्वादिष्ट मेल।',
+    descriptionMr: 'ताजी पालकाची पाने व डाळीचे पौष्टिक आणि खमंग मिश्रण.'
+  },
+  {
+    name: 'Dal Palak Tadka',
+    hindiName: 'दाल पालक तड़का',
+    marathiName: 'डाळ पालक तडका',
+    price: 165,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK TADKA.jpg',
+    description: 'Nutritious dal palak finished with an aromatic tempering of garlic, cumin and ghee.',
+    descriptionHi: 'देसी घी, भुने लहसुन और जीरे के तड़के वाली गरमागरम दाल पालक।',
+    descriptionMr: 'लसूण, जिरे आणि साजूक तुपाची खमंग फोडणी दिलेली पौष्टिक डाळ पालक तडका.'
+  }
+];
+
+const DAL_METHI_VARIANTS = [
+  {
+    name: 'Dal Methi',
+    hindiName: 'दाल मेथी',
+    marathiName: 'डाळ मेथी',
+    price: 150,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI.jpg',
+    description: 'Healthy yellow lentils cooked with fresh earthy fenugreek leaves and ground spices.',
+    descriptionHi: 'ताज़ी हरी मेथी और पीली दाल का स्वादिष्ट संगम।',
+    descriptionMr: 'ताजी मेथीची पाने व डाळ एकत्र शिजवून तयार केलेली चवदार डाळ.'
+  },
+  {
+    name: 'Dal Methi Tadka',
+    hindiName: 'दाल मेथी तड़का',
+    marathiName: 'डाळ मेथी तडका',
+    price: 165,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI TADKA.jpg',
+    description: 'Flavorful dal methi tempered with sizzling garlic, cumin and whole red chillies in ghee.',
+    descriptionHi: 'देसी घी, लहसुन और साबुत लाल मिर्च के तड़के वाली दाल मेथी।',
+    descriptionMr: 'साजूक तूप, लसूण व लाल मिरचीची खमंग फोडणी दिलेली डाळ मेथी तडका.'
+  }
+];
+
+const DAL_KHICHADI_VARIANTS = [
+  {
+    name: 'Dal Khichadi',
+    hindiName: 'दाल खिचड़ी',
+    marathiName: 'डाळ खिचडी',
+    price: 240,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI.jpg',
+    description: 'A comforting combination of aged basmati rice and yellow lentils cooked with mild spices and butter.',
+    descriptionHi: 'बासमती चावल और दाल से बनी सुपाच्य एवं स्वादिष्ट पारंपरिक खिचड़ी।',
+    descriptionMr: 'बासमती तांदूळ आणि डाळीपासून बनवलेली मऊ, पचनास हलकी व खमंग खिचडी.'
+  },
+  {
+    name: 'Dal Khichadi with Tadka',
+    hindiName: 'दाल खिचड़ी तड़का',
+    marathiName: 'डाळ खिचडी तडका',
+    price: 245,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI WITH TADKA.jpg',
+    description: 'Aromatic dal khichadi finished with a sizzling tempering of cumin, garlic, curry leaves and dry red chillies.',
+    descriptionHi: 'लहसुन, जीरा, कढ़ी पत्ता और लाल मिर्च के कड़क तड़के वाली मशहूर दाल खिचड़ी।',
+    descriptionMr: 'लसूण, जिरे, कढीपत्ता आणि लाल मिरचीचा गरमागरम तडका दिलेली लोकप्रिय डाळ खिचडी.'
+  }
+];
+
+const RICE_VARIANTS = [
+  {
+    name: 'Steamed Rice',
+    hindiName: 'स्टीम्ड राइस',
+    marathiName: 'स्टीम्ड राईस',
+    price: 180,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/STEAMED RICE.jpg',
+    description: 'Aromatic long-grain basmati rice, steamed tender and fluffy.',
+    descriptionHi: 'खुशबूदार लंबे दाने वाला बासमती सादा उबला चावल।',
+    descriptionMr: 'सुगंधी लांब दाण्यांचा मऊ व मोकळा शिजवलेला बासमती भात.'
+  },
+  {
+    name: 'Jeera Rice',
+    hindiName: 'जीरा राइस',
+    marathiName: 'जिरा राईस',
+    price: 190,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/JEERA RICE.jpg',
+    description: 'Fluffy basmati rice tossed with roasted cumin seeds and fresh coriander in pure ghee.',
+    descriptionHi: 'देसी घी में भुने जीरे और हरी धनिया के साथ तड़का लगाया हुआ बासमती चावल।',
+    descriptionMr: 'साजूक तुपात भाजलेले जिरे व कोथिंबिरीचा तडका दिलेला खमंग बासमती जिरा राईस.'
+  }
+];
+
 window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'md-mix-veg-paratha', categoryId: 'morning-delights',
@@ -2851,8 +2966,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Dal Fry',
     hindiName: 'दाल फ्राई',
     marathiName: 'डाळ फ्राय',
-    description: "Lentils cooked with a warming blend of spices.",
+    description: "Yellow lentils gently simmered and sautéed with onions, ripe tomatoes and aromatic spices.",
     price: 190,
+    variants: DAL_FRY_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -2868,6 +2984,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'डाळ तडका (साजूक तूप)',
     description: "Lentils finished with a fragrant ghee tadka of cumin, garlic, curry leaves and coriander.",
     price: 210,
+    variants: DAL_FRY_VARIANTS,
     tags: ['veg', 'bestseller', 'zomato-top'],
     zomatoRating: '4.2',
     dietary: 'pure-veg',
@@ -3627,8 +3744,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Jeera Rice',
     hindiName: 'जीरा राइस',
     marathiName: 'जिरा राईस',
-    description: "Basmati rice sauteed with cumin seeds and fresh coriander.",
+    description: "Fluffy basmati rice tossed with roasted cumin seeds and fresh coriander in pure ghee.",
     price: 190,
+    variants: RICE_VARIANTS,
     tags: ['veg', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3643,8 +3761,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Steamed Rice',
     hindiName: 'स्टीम्ड राइस',
     marathiName: 'स्टीम्ड राईस',
-    description: "Plain white rice, served steamed.",
+    description: "Aromatic long-grain basmati rice, steamed tender and fluffy.",
     price: 180,
+    variants: RICE_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3658,8 +3777,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Dal Khichadi',
     hindiName: 'दाल खिचड़ी',
     marathiName: 'डाळ खिचडी',
-    description: "A comforting combination of rice and lentils cooked with mild spices.",
+    description: "A comforting combination of aged basmati rice and yellow lentils cooked with mild spices and butter.",
     price: 240,
+    variants: DAL_KHICHADI_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3673,8 +3793,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Dal Khichadi with Tadka',
     hindiName: 'दाल खिचड़ी तड़का',
     marathiName: 'डाळ खिचडी तडका',
-    description: "Rice and lentils finished with a fragrant tempering of cumin, garlic, curry leaves and chillies.",
+    description: "Aromatic dal khichadi finished with a sizzling tempering of cumin, garlic, curry leaves and dry red chillies.",
     price: 245,
+    variants: DAL_KHICHADI_VARIANTS,
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -4223,8 +4344,26 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionMr: 'भाजलेले जिरे, सैंधव मीठ आणि कोथिंबिरीची फोडणी दिलेले थंडगार व पाचक ताक.',
     price: 60,
     variants: [
-      { name: 'Plain Butter Milk', price: 60 },
-      { name: 'Masala Butter Milk', price: 70 }
+      {
+        name: 'Plain Butter Milk',
+        hindiName: 'सादा छाछ',
+        marathiName: 'साधे ताक',
+        price: 60,
+        image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+        description: 'Refreshing churned dairy buttermilk served chilled and lightly salted.',
+        descriptionHi: 'ठंडी और ताज़ी सादी नमकीन छाछ।',
+        descriptionMr: 'थंडगार आणि ताजे साधे ताक.'
+      },
+      {
+        name: 'Masala Butter Milk',
+        hindiName: 'मसाला छाछ',
+        marathiName: 'मसाला ताक',
+        price: 70,
+        image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+        description: 'Refreshing churned buttermilk tempered with roasted cumin, rock salt, ginger and fresh coriander.',
+        descriptionHi: 'भुने जीरे, अदरक, सेंधा नमक और हरी धनिया से भरपूर स्वादिष्ट मसाला छाछ।',
+        descriptionMr: 'भाजलेले जिरे, आले, सैंधव मीठ आणि कोथिंबीर घातलेले खमंग मसाला ताक.'
+      }
     ],
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
@@ -4244,13 +4383,31 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionMr: 'भाजलेले जिरे, पुदिना, काळे मीठ आणि लिंबाच्या चटपटीत चवीचे थंड पाचक पेय.',
     price: 35,
     variants: [
-      { name: 'Jaljeera Water', price: 35 },
-      { name: 'Jaljeera Soda', price: 40 }
+      {
+        name: 'Jaljeera Water',
+        hindiName: 'जलजीरा पानी',
+        marathiName: 'जलजिरा पाणी',
+        price: 35,
+        image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&auto=format&fit=crop&q=80',
+        description: 'Cool digestive drink blended with mint, roasted cumin, black salt and fresh lemon juice in chilled water.',
+        descriptionHi: 'पुदीना, भुना जीरा, काला नमक और नींबू के रस से बना ठंडा पाचक जलजीरा पानी।',
+        descriptionMr: 'पुदिना, जिरे, काळे मीठ आणि लिंबाच्या रसाने बनवलेले थंड पाचक जलजिरा पाणी.'
+      },
+      {
+        name: 'Jaljeera Soda',
+        hindiName: 'जलजीरा सोडा',
+        marathiName: 'जलजिरा सोडा',
+        price: 40,
+        image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&auto=format&fit=crop&q=80',
+        description: 'Sparkling effervescent cooler blended with cumin, mint, black salt and chilled club soda.',
+        descriptionHi: 'फ़िज़ी क्लब सोडे और चटपटे जलजीरा मसालों का ताजगी भरा पेय।',
+        descriptionMr: 'थंडगार क्लब सोडा आणि चटपटीत जलजिरा मसाल्यांचे फिजी पेय.'
+      }
     ],
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/PINEAPPLE RAITA.jpg',
+    image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&auto=format&fit=crop&q=80',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -4265,13 +4422,31 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionMr: 'ताज्या लिंबाचा रस, थंड पाणी किंवा सोड्यासोबत, गोड अथवा खारट चवीत दिला जातो.',
     price: 35,
     variants: [
-      { name: 'Fresh Lime Water', price: 35 },
-      { name: 'Fresh Lime Soda', price: 40 }
+      {
+        name: 'Fresh Lime Water',
+        hindiName: 'फ्रेश लाइम पानी',
+        marathiName: 'फ्रेश लाईम पाणी',
+        price: 35,
+        image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+        description: 'Fresh squeezed lime juice served chilled with purified water, sweet or salted as per your taste.',
+        descriptionHi: 'ताज़े नींबू का रस और ठंडा पानी, मीठा या नमकीन आपकी पसंद अनुसार।',
+        descriptionMr: 'ताज्या लिंबाचा रस व थंड पाणी, आपल्या आवडीनुसार गोड किंवा खारट.'
+      },
+      {
+        name: 'Fresh Lime Soda',
+        hindiName: 'फ्रेश लाइम सोडा',
+        marathiName: 'फ्रेश लाईम सोडा',
+        price: 40,
+        image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+        description: 'Fresh squeezed lime juice served with effervescent sparkling club soda, sweet or salted.',
+        descriptionHi: 'ताज़े नींबू के रस और फ़िज़ी क्लब सोडे का ताजगी भरा शीतल पेय।',
+        descriptionMr: 'ताज्या लिंबाचा रस आणि फिजी क्लब सोड्याचे खमंग थंडगार पेय.'
+      }
     ],
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER ROTI 1.jpg',
+    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -4536,7 +4711,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     hindiName: 'दाल पालक',
     marathiName: 'डाळ पालक',
     price: 150,
-    description: "Slow-cooked lentils and spinach seasoned with Indian spices.",
+    variants: DAL_PALAK_VARIANTS,
+    description: "Wholesome yellow lentils cooked with fresh nutritious spinach leaves and mild spices.",
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -4551,7 +4727,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     hindiName: 'दाल पालक तड़का',
     marathiName: 'डाळ पालक तडका',
     price: 165,
-    description: "Lentils and spinach finished with a ghee tadka of cumin, garlic, curry leaves and coriander.",
+    variants: DAL_PALAK_VARIANTS,
+    description: "Nutritious dal palak finished with an aromatic tempering of garlic, cumin and ghee.",
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -4566,7 +4743,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     hindiName: 'दाल मेथी',
     marathiName: 'डाळ मेथी',
     price: 150,
-    description: "Lentils gently cooked with fresh fenugreek leaves for an earthy flavour.",
+    variants: DAL_METHI_VARIANTS,
+    description: "Healthy yellow lentils cooked with fresh earthy fenugreek leaves and ground spices.",
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -4581,7 +4759,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     hindiName: 'दाल मेथी तड़का',
     marathiName: 'डाळ मेथी तडका',
     price: 165,
-    description: "Lentils and fresh fenugreek finished with garlic, cumin and spices tempered in ghee.",
+    variants: DAL_METHI_VARIANTS,
+    description: "Flavorful dal methi tempered with sizzling garlic, cumin and whole red chillies in ghee.",
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
