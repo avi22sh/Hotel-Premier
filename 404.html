@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.33">
-  <link rel="stylesheet" href="royal.css?v=21.33">
+  <link rel="stylesheet" href="styles.css?v=21.34">
+  <link rel="stylesheet" href="royal.css?v=21.34">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -971,16 +971,12 @@
 
       <!-- Category Navigation & Search Controls -->
       <div class="dining-view-controls">
-        <!-- Concierge Dish Search & Quick Filters -->
+        <!-- Concierge Dish Search Console -->
         <div class="dining-search-filter-bar">
-          <div class="search-input-wrapper">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="menu-search-input" placeholder="Search dishes (e.g. Paneer, Biryani, Chai, Shev Bhaji, Soup)...">
-            <button class="clear-search-btn" id="clear-search-btn">✕</button>
-          </div>
-
-          <div class="quick-filters" id="quick-filters-container">
-            <!-- Rendered dynamically by app.js -->
+          <div class="search-input-wrapper" role="search">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="search" id="menu-search-input" placeholder="Search dishes (e.g. Paneer, Biryani, Naan, Dal, Soup)..." autocomplete="off" spellcheck="false" aria-label="Search all pure veg dishes">
+            <button class="clear-search-btn" id="clear-search-btn" type="button" aria-label="Clear search query" style="display: none;">✕</button>
           </div>
         </div>
       </div>
@@ -1902,12 +1898,12 @@
   <script src="vault.js?v=20.51"></script>
   <script src="data/translations.js?v=21.28"></script>
   <script src="data/hotel-data.js?v=21.14"></script>
-  <script src="data/menu-data.js?v=21.33"></script>
-  <script src="data/menu-photos.js?v=21.33"></script>
-  <script src="app.js?v=21.33"></script>
+  <script src="data/menu-data.js?v=21.34"></script>
+  <script src="data/menu-photos.js?v=21.34"></script>
+  <script src="app.js?v=21.34"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
-  <script src="admin.js?v=21.33"></script>
+  <script src="admin.js?v=21.34"></script>
 
   <!-- PWA Service Worker Registration -->
   <script>
