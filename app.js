@@ -1905,7 +1905,7 @@ class HotelPremierApp {
           <div class="dish-banner-top">
             <div class="dish-banner-header">
               ${dish.tags && dish.tags.includes('online-exclusive') ? `<div class="dish-badge-delivery-exclusive">🛵 Swiggy &amp; Zomato Exclusive</div>` : ''}
-              ${isMaster ? `<div class="dish-badge-group-master"><span class="badge-sparkle">✨</span> ${dish.variants.length} Options Available</div>` : ''}
+              ${isMaster ? `<div class="dish-badge-group-master"><span class="badge-gem" aria-hidden="true">◆</span> ${dish.variants.length} ${this.t('badgeSelections', 'Curated Selections')}</div>` : ''}
               <h4 class="dish-title">${dishTitleHtml}</h4>
             </div>
             <div class="dish-banner-price-stack">
@@ -1916,12 +1916,15 @@ class HotelPremierApp {
           <div class="dish-banner-bottom">
             ${isMaster ? `
               <div class="dish-card-variant-chips" onclick="event.stopPropagation()">
-                ${dish.variants.map((v, vIdx) => `
-                  <button type="button" class="dish-card-chip" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}', ${vIdx})" title="${v.name} - ₹${v.price}">
-                    <span class="chip-name">${v.name}</span>
-                    <span class="chip-price">₹${v.price}</span>
-                  </button>
-                `).join('')}
+                ${dish.variants.map((v, vIdx) => {
+                  const vChipName = (this.currentLang === 'hi' && v.hindiName) ? v.hindiName : ((this.currentLang === 'mr' && (v.marathiName || v.hindiName)) ? (v.marathiName || v.hindiName) : v.name);
+                  return `
+                    <button type="button" class="dish-card-chip" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}', ${vIdx})" title="${v.name} - ₹${v.price}">
+                      <span class="chip-name">${vChipName}</span>
+                      <span class="chip-price">₹${v.price}</span>
+                    </button>
+                  `;
+                }).join('')}
               </div>
             ` : (hasVariants ? `<span class="dish-options-hint">${this.t('dishOptionsHint', 'Portion options available')}</span>` : '')}
             <div class="dish-banner-action">
@@ -2128,10 +2131,10 @@ class HotelPremierApp {
       modalVariantsHtml = `
         <div class="modal-dish-variants-box">
           <div class="modal-dish-variants-header">
-            <span class="modal-dish-variants-icon" aria-hidden="true">✨</span>
+            <span class="modal-dish-variants-icon" aria-hidden="true">◆</span>
             <div class="modal-dish-variants-header-text">
-              <span class="modal-dish-variants-title">${this.t('variantsTitle')}</span>
-              <span class="modal-dish-variants-hint">Tap any option below to view photo, price &amp; description</span>
+              <span class="modal-dish-variants-title">${this.t('variantsTitle', 'Curated Options & Styles')}</span>
+              <span class="modal-dish-variants-hint">${this.t('variantsHint', 'Select an option below to view photo, price & details')}</span>
             </div>
           </div>
           <div class="modal-dish-variants-list" id="modal-variants-list-${dish.id}" role="radiogroup" aria-label="Available Dish Variations">
@@ -2157,6 +2160,7 @@ class HotelPremierApp {
                         data-variant-desc-hi="${descHi}"
                         data-variant-desc-mr="${descMr}"
                         onclick="window.app.switchModalVariant('${dish.id}', this)">
+                  <span class="variant-btn-radio" aria-hidden="true">${isSelected ? '●' : '○'}</span>
                   <span class="variant-btn-name">${displayName}</span>
                   <span class="variant-btn-price">₹${v.price}</span>
                 </button>
@@ -2284,10 +2288,14 @@ class HotelPremierApp {
       parentList.querySelectorAll('.modal-dish-variant-btn').forEach(b => {
         b.classList.remove('selected');
         b.setAttribute('aria-checked', 'false');
+        const radio = b.querySelector('.variant-btn-radio');
+        if (radio) radio.innerText = '○';
       });
     }
     btn.classList.add('selected');
     btn.setAttribute('aria-checked', 'true');
+    const radio = btn.querySelector('.variant-btn-radio');
+    if (radio) radio.innerText = '●';
 
     const newPrice = btn.getAttribute('data-variant-price');
     const newImg = btn.getAttribute('data-variant-img');

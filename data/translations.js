@@ -87,7 +87,9 @@ window.HOTEL_PREMIER_I18N = {
       soldOut: 'Currently Sold Out',
       taxNote: '+ 5% GST Applicable',
       servingTime: 'Est. Serving Time: 15-20 mins',
-      variantsTitle: 'Available Portions / Choices:',
+      variantsTitle: 'Curated Options & Styles',
+      variantsHint: 'Select an option below to view photo, price & details',
+      badgeSelections: 'Curated Selections',
       pureVegNote: '🌱 100% Pride Pure Vegetarian • Prepared with fresh ingredients & standard refined oil.',
       closeBtn: 'Close',
       
@@ -306,7 +308,9 @@ window.HOTEL_PREMIER_I18N = {
       soldOut: 'Currently Sold Out (खत्म हो गया)',
       taxNote: '+ 5% GST Extra',
       servingTime: 'Prep Time: 15-20 mins',
-      variantsTitle: 'Portion & Options:',
+      variantsTitle: 'खास विकल्प एवं किस्में',
+      variantsHint: 'फोटो, मूल्य व विवरण देखने के लिए विकल्प चुनें',
+      badgeSelections: 'खास विकल्प उपलब्ध',
       pureVegNote: '🌱 100% Pride Pure Veg • Fresh Quality Ingredients & Standard Refined Oil. 5% GST extra.',
       closeBtn: 'Close (बंद करें)',
 
@@ -524,7 +528,9 @@ window.HOTEL_PREMIER_I18N = {
       soldOut: 'Currently Sold Out (सध्या संपले आहे)',
       taxNote: '+ 5% GST Extra',
       servingTime: 'Prep Time: 15-20 mins',
-      variantsTitle: 'Portion & Options:',
+      variantsTitle: 'खास पर्याय व प्रकार',
+      variantsHint: 'फोटो, किंमत व माहिती पाहण्यासाठी पर्याय निवडा',
+      badgeSelections: 'खास पर्याय उपलब्ध',
       pureVegNote: '🌱 100% Pride Pure Veg • ताजे व दर्जेदार साहित्य. 5% GST लागू.',
       closeBtn: 'Close (बंद करा)',
 

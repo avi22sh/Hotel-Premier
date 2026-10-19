@@ -122,8 +122,10 @@ body.theme-dark .modal-dish-variants-title { color:#EADCC0 !important; }
 body.theme-dark .modal-dish-variants-hint { color:#94A3B8 !important; }
 body.theme-dark .modal-dish-variant-btn { background:#17212D !important; border-color:rgba(214, 188, 135, 0.32) !important; color:#F1E7D0 !important; }
 body.theme-dark .modal-dish-variant-btn:hover { background:rgba(214, 188, 135, 0.15) !important; border-color:#D6BC87 !important; color:#FFFFFF !important; }
+body.theme-dark .modal-dish-variant-btn .variant-btn-radio { color:rgba(214, 188, 135, 0.5) !important; }
 body.theme-dark .modal-dish-variant-btn .variant-btn-price { background:rgba(255, 255, 255, 0.12) !important; color:#E2E8F0 !important; }
 body.theme-dark .modal-dish-variant-btn.selected { background:linear-gradient(135deg, #D6BC87 0%, #C4A467 100%) !important; color:#0E1620 !important; border-color:#EADCC0 !important; box-shadow:0 4px 14px rgba(214, 188, 135, 0.35) !important; }
+body.theme-dark .modal-dish-variant-btn.selected .variant-btn-radio { color:#0E1620 !important; }
 body.theme-dark .modal-dish-variant-btn.selected .variant-btn-name { color:#0E1620 !important; font-weight:800 !important; }
 body.theme-dark .modal-dish-variant-btn.selected .variant-btn-price { background:rgba(14, 22, 32, 0.22) !important; color:#0E1620 !important; font-weight:900 !important; }
 body :is(.ota-booking-links a,.platform-pill-btn) { background:#fff; color:#202124; border-color:#d3d7df; }

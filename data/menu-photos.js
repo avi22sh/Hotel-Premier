@@ -1,5 +1,13 @@
-// Owner-selected photos, exported 2026-10-15. Originals preserved.
+﻿// Owner-selected photos, exported 2026-10-15. Originals preserved.
 window.HOTEL_PREMIER_PHOTOS = {
+  "tc-paneer-tikka-group": "assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg",
+  "tt-pakoda-group": "assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg",
+  "fa-papad-group": "assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg",
+  "cb-packaged-fruit-juice-group": "",
+  "cb-soft-drinks-group": "assets/menu-uploads/2026-10-15/cb-6.jpg",
+  "hh-beverages-group": "assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg",
+  "ff-ice-cream-group": "assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg",
+  "fd-leaf-dal-group": "assets/menu-images/FLAVORFUL DAL/DAL PALAK.jpg",
   "thali-mini": "assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL.jpg",
   "thali-signature": "assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg",
   "thali-maharaja": "assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg",
@@ -250,4 +258,5 @@ window.HOTEL_PREMIER_PHOTOS = {
   "fd-dal-fry-group": "assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg",
   "sp-soups-group": "assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg"
 };
+
 

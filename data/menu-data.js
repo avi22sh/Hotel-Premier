@@ -1,4 +1,4 @@
-// Hotel Premier - Pride Pure Veg AC Restaurant Menu Database
+﻿// Hotel Premier - Pride Pure Veg AC Restaurant Menu Database
 // Standardized Multilingual Menu: English, Hindi (Devanagari), Marathi (Devanagari)
 // Verified Against Official Updated Reference Menu Document (DETAILS.docx)
 window.HOTEL_PREMIER_CATEGORIES = [
@@ -205,12 +205,12 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "hot-hearty": [
     { "id": "all", "name": "All Drinks", "hindiName": "सभी पेय", "marathiName": "सर्व पेये" },
-    { "id": "tea-coffee", "name": "Special Tea & Coffee", "hindiName": "चाय एवं कॉफ़ी", "marathiName": "चहा व कॉफी", "dishIds": ["hh-1", "hh-2"] },
-    { "id": "milk-drinks", "name": "Hot Milk & Bournvita", "hindiName": "गर्म दूध एवं बोर्नविटा", "marathiName": "गरम दूध व बोर्नव्हिटा", "dishIds": ["hh-3", "hh-4"] }
+    { "id": "tea-coffee", "name": "Special Tea & Coffee", "hindiName": "चाय एवं कॉफ़ी", "marathiName": "चहा व कॉफी", "dishIds": ["hh-beverages-group", "hh-1", "hh-2"] },
+    { "id": "milk-drinks", "name": "Hot Milk & Bournvita", "hindiName": "गर्म दूध एवं बोर्नविटा", "marathiName": "गरम दूध व बोर्नव्हिटा", "dishIds": ["hh-beverages-group", "hh-3", "hh-4"] }
   ],
   "tasty-tidbits": [
     { "id": "all", "name": "All Tidbits", "hindiName": "सभी स्नैक्स", "marathiName": "सर्व स्नॅक्स" },
-    { "id": "pakodas", "name": "Crisp Pakodas", "hindiName": "कुरकुरे पकोड़े", "marathiName": "कुरकुरीत भजी", "dishIds": ["tt-1", "tt-2", "tt-3"] },
+    { "id": "pakodas", "name": "Crisp Pakodas", "hindiName": "कुरकुरे पकोड़े", "marathiName": "कुरकुरीत भजी", "dishIds": ["tt-pakoda-group", "tt-1", "tt-2", "tt-3"] },
     { "id": "fries-roast", "name": "Fries & Roasts", "hindiName": "फ्राइज एवं रोस्ट", "marathiName": "फ्राईज व रोस्ट", "dishIds": ["tt-4", "tt-5", "tt-8"] },
     { "id": "chaat-bhel", "name": "Chaat & Bhel", "hindiName": "चाट एवं भेल", "marathiName": "चाट व भेळ", "dishIds": ["tt-6", "tt-7", "tt-9", "tt-10"] }
   ],
@@ -234,7 +234,7 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   "tandoor-classics": [
     { "id": "all", "name": "All Tandoori", "hindiName": "सभी तंदूरी", "marathiName": "सर्व तंदूरी" },
     { "id": "tandoori-platters", "name": "Tandoori Platters", "hindiName": "तंदूरी प्लैटर्स", "marathiName": "तंदूरी प्लॅटर्स", "dishIds": ["tc-1", "tc-9"] },
-    { "id": "paneer-tikka", "name": "Paneer Tikka Varieties", "hindiName": "पनीर टिक्का", "marathiName": "पनीर टिक्का", "dishIds": ["tc-paneer-achari-tikka", "tc-2", "tc-3", "tc-4", "tc-5", "tc-6", "tc-7", "tc-8", "tc-15"] },
+    { "id": "paneer-tikka", "name": "Paneer Tikka Varieties", "hindiName": "पनीर टिक्का", "marathiName": "पनीर टिक्का", "dishIds": ["tc-paneer-tikka-group", "tc-paneer-achari-tikka", "tc-2", "tc-3", "tc-4", "tc-5", "tc-6", "tc-7", "tc-8", "tc-15"] },
     { "id": "veg-kebabs", "name": "Veg Seekh & Kebabs", "hindiName": "वेज कबाब", "marathiName": "व्हेज कबाब", "dishIds": ["tc-10", "tc-11", "tc-12", "tc-13", "tc-14", "tc-16", "tc-17", "tc-18"] }
   ],
   "sizzling-rice-noodles": [
@@ -269,14 +269,14 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   "flavorful-dals": [
     { "id": "all", "name": "All Dals", "hindiName": "सभी दालें", "marathiName": "सर्व डाळी" },
     { "id": "fry-tadka", "name": "Dal Fry & Desi Ghee Tadka", "hindiName": "दाल फ्राई एवं तड़का", "marathiName": "डाळ फ्राय व तडका", "dishIds": ["fd-dal-fry-group", "fd-1", "fd-2"] },
-    { "id": "palak-methi-dal", "name": "Palak & Methi Dal", "hindiName": "पालक एवं मेथी दाल", "marathiName": "पालक व मेथी डाळ", "dishIds": ["fd-5", "fd-6", "fd-7", "fd-8"] },
+    { "id": "palak-methi-dal", "name": "Palak & Methi Dal", "hindiName": "पालक एवं मेथी दाल", "marathiName": "पालक व मेथी डाळ", "dishIds": ["fd-leaf-dal-group", "fd-5", "fd-6", "fd-7", "fd-8"] },
     { "id": "royal-dal", "name": "Dal Maharani & Kadhi Pakoda", "hindiName": "दाल महारानी व कढ़ी", "marathiName": "डाळ महाराणी व कढी", "dishIds": ["fd-3", "fd-4"] }
   ],
   "fresh-addons": [
     { "id": "all", "name": "All Add-Ons", "hindiName": "सभी सलाद व रायता", "marathiName": "सर्व सॅलड व रायता" },
     { "id": "salads", "name": "Fresh Cut Salads", "hindiName": "सलाद", "marathiName": "सॅलड", "dishIds": ["fa-1", "fa-2"] },
     { "id": "raita", "name": "Cooling Raita Varieties", "hindiName": "रायता", "marathiName": "रायता", "dishIds": ["fa-raita-group", "fa-curd", "fa-3", "fa-4", "fa-5", "fa-9"] },
-    { "id": "papad", "name": "Crispy Papad Wafer", "hindiName": "पापड़", "marathiName": "पापड", "dishIds": ["fa-6", "fa-7", "fa-8"] }
+    { "id": "papad", "name": "Crispy Papad Wafer", "hindiName": "पापड़", "marathiName": "पापड", "dishIds": ["fa-papad-group", "fa-6", "fa-7", "fa-8"] }
   ],
   "signature-breads": [
     { "id": "all", "name": "All Breads", "hindiName": "सभी रोटियां", "marathiName": "सर्व रोट्या" },
@@ -297,8 +297,8 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "frozen-fantasies": [
     { "id": "all", "name": "All Ice Creams", "hindiName": "सभी आइसक्रीम", "marathiName": "सर्व आईस्क्रीम" },
-    { "id": "classic-scoops", "name": "Classic Scoops", "hindiName": "क्लासिक फ्लेवर्स", "marathiName": "क्लासिक फ्लेवर्स", "dishIds": ["ff-1", "ff-2", "ff-4"] },
-    { "id": "dry-fruit-scoops", "name": "Afghan & Dry Fruit", "hindiName": "शाही ड्राई फ्रूट", "marathiName": "शाही ड्रायफ्रूट", "dishIds": ["ff-3", "ff-5"] }
+    { "id": "classic-scoops", "name": "Classic Scoops", "hindiName": "क्लासिक फ्लेवर्स", "marathiName": "क्लासिक फ्लेवर्स", "dishIds": ["ff-ice-cream-group", "ff-1", "ff-2", "ff-4"] },
+    { "id": "dry-fruit-scoops", "name": "Afghan & Dry Fruit", "hindiName": "शाही ड्राई फ्रूट", "marathiName": "शाही ड्रायफ्रूट", "dishIds": ["ff-ice-cream-group", "ff-3", "ff-5"] }
   ],
   "mocktails": [
     { "id": "all", "name": "All Mocktails", "hindiName": "सभी मॉकटेल", "marathiName": "सर्व मॉकतेल" },
@@ -312,9 +312,9 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "chilled-beverages": [
     { "id": "all", "name": "All Drinks", "hindiName": "सभी शीतल पेय", "marathiName": "सर्व थंड पेये" },
-    { "id": "packaged-fruit-juices", "name": "Packaged Fruit Juices", "hindiName": "पैक्ड फ्रूट जूस", "marathiName": "पॅकबंद फळांचे ज्यूस", "dishIds": ["cb-juice-orange", "cb-juice-mango", "cb-juice-pineapple", "cb-juice-guava"] },
+    { "id": "packaged-fruit-juices", "name": "Packaged Fruit Juices", "hindiName": "पैक्ड फ्रूट जूस", "marathiName": "पॅकबंद फळांचे ज्यूस", "dishIds": ["cb-packaged-fruit-juice-group", "cb-juice-orange", "cb-juice-mango", "cb-juice-pineapple", "cb-juice-guava"] },
     { "id": "lassi-chaas", "name": "Punjabi Lassi & Masala Chaas", "hindiName": "लस्सी एवं छाछ", "marathiName": "लस्सी व ताक", "dishIds": ["cb-1", "cb-2"] },
-    { "id": "digestive-soda", "name": "Jaljeera, Lime Soda & Cold Drinks", "hindiName": "जलजीरा व सॉफ्ट ड्रिंक्स", "marathiName": "जलजिरा व शीतपेये", "dishIds": ["cb-jaljeera", "cb-freshlime", "cb-5", "cb-6", "cb-7", "cb-8", "cb-9", "cb-10"] }
+    { "id": "digestive-soda", "name": "Jaljeera, Lime Soda & Cold Drinks", "hindiName": "जलजीरा व सॉफ्ट ड्रिंक्स", "marathiName": "जलजिरा व शीतपेये", "dishIds": ["cb-soft-drinks-group", "cb-jaljeera", "cb-freshlime", "cb-5", "cb-6", "cb-7", "cb-8", "cb-9", "cb-10"] }
   ]
 }
 ;
@@ -982,7 +982,480 @@ const PULAO_VARIANTS = [
   }
 ];
 
+const PANEER_TIKKA_VARIANTS = [
+  {
+    name: 'Paneer Tikka (Classic)',
+    hindiName: 'पनीर टिक्का (क्लासिक)',
+    marathiName: 'पनीर टिक्का (क्लासिक)',
+    price: 295,
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg',
+    description: 'Fresh cottage cheese cubes marinated in spiced hung curd, skewered with bell peppers and roasted in clay oven.',
+    descriptionHi: 'ताज़े पनीर के टुकड़े, गाढ़े दही और पारंपरिक मसालों में मैरीनेट कर तंदूर में भूने हुए।',
+    descriptionMr: 'ताज्या पनीरचे तुकडे, मसालेदार दही व खमंग मसाल्यांमध्ये घोळवून तंदूरमध्ये भाजलेले.'
+  },
+  {
+    name: 'Lehsuni Paneer Tikka',
+    hindiName: 'लहसुनी पनीर टिक्का',
+    marathiName: 'लसुणी पनीर टिक्का',
+    price: 300,
+    image: 'assets/menu-images/TANDOOR CLASSICS/LASOONI PANEER TIKKA.jpg',
+    description: 'Charcoal grilled cottage cheese marinated with freshly roasted garlic and aromatic spices.',
+    descriptionHi: 'भुने हुए ताज़े लहसुन और खुशबूदार मसालों के खास तंदूरी मैरिनेशन में तैयार पनीर टिक्का।',
+    descriptionMr: 'खमंग भाजलेला लसूण आणि खास तंदूरी मसाल्यांच्या चवीचा मऊ लुसलुशीत पनीर टिक्का.'
+  },
+  {
+    name: 'Paneer Achari Tikka',
+    hindiName: 'पनीर अचारी टिक्का',
+    marathiName: 'पनीर अचारी टिक्का',
+    price: 240,
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg',
+    description: 'Paneer cubes marinated with tangy pickling spices and slow grilled in traditional tandoor.',
+    descriptionHi: 'अचारी मसालों और कलौंजी के तीखे-चटपटे स्वाद में रंगा हुआ तंदूरी पनीर टिक्का।',
+    descriptionMr: 'चटपटीत लोणच्याचे मसाले आणि मोहरीच्या चवीमध्ये मुरवलेला तंदूरी पनीर टिक्का.'
+  },
+  {
+    name: 'Paneer Reshmi Kabab',
+    hindiName: 'पनीर रेशमी कबाब',
+    marathiName: 'पनीर रेशमी कबाब',
+    price: 300,
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER RESHMI TIKKA.jpg',
+    description: 'Silky smooth paneer tikka marinated in rich cashew cream and mild aromatic royal spices.',
+    descriptionHi: 'काजू का पेस्ट, मलाई और खुशबूदार केसरिया मसालों में डूबा हुआ बेहद नरम व मखमली कबाब।',
+    descriptionMr: 'काजूची पेस्ट, ताजी साय आणि सुगंधी मसाल्यात तयार केलेला मऊ रेशमी कबाब.'
+  },
+  {
+    name: 'Paneer Afghani Tikka',
+    hindiName: 'पनीर अफगानी टिक्का',
+    marathiName: 'पनीर अफगाणी टिक्का',
+    price: 285,
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER AFGHANI TIKKA.jpg',
+    description: 'Mellow, rich paneer cubes infused with curd, cheese, black pepper and cardamom roasted to perfection.',
+    descriptionHi: 'दही, चीज़, काली मिर्च और छोटी इलायची के सुगंधित अफ़गानी मिश्रण में भुना हुआ पनीर।',
+    descriptionMr: 'दही, चीज, काळी मिरी आणि वेलचीच्या शाही चवीत भाजलेला अफगाणी पनीर टिक्का.'
+  },
+  {
+    name: 'Paneer Patakha Tikka',
+    hindiName: 'पनीर पटाखा टिक्का',
+    marathiName: 'पनीर फटाका टिक्का',
+    price: 300,
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER PATAKHA TIKKA.jpg',
+    description: 'Extra fiery and spicy tandoori paneer marinated in red chilli flakes and Khandeshi herbs.',
+    descriptionHi: 'तीखी लाल मिर्च, नींबू और भुने खड़े मसालों का धमाकेदार तीखा स्वाद।',
+    descriptionMr: 'झणझणीत लाल मिरची आणि खानदेशी मसाल्यांचा धमाकेदार तडका असलेला तिखट टिक्का.'
+  },
+  {
+    name: 'Paneer Jafrani Tikka',
+    hindiName: 'पनीर ज़ाफ़रानी टिक्का',
+    marathiName: 'पनीर जाफरानी टिक्का',
+    price: 315,
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER ZAFRANI TIKKA.jpg',
+    description: 'Regal paneer tikka scented with pure saffron strands, mace, cream and royal spices.',
+    descriptionHi: 'शुद्ध कश्मीरी केसर, जावित्री और मलाई के शाही मिश्रण में पका हुआ ज़ाफ़रानी पनीर टिक्का।',
+    descriptionMr: 'शुद्ध काश्मिरी केशर, जायपत्री आणि सायीच्या शाही मिश्रणात भाजलेला जाफरानी टिक्का.'
+  },
+  {
+    name: 'Jungli Paneer Tikka',
+    hindiName: 'जंगली पनीर टिक्का',
+    marathiName: 'जंगली पनीर टिक्का',
+    price: 295,
+    image: 'assets/menu-images/TANDOOR CLASSICS/JUNGLI PANEER TIKKA.jpg',
+    description: 'Rustic countryside spiced paneer tikka with crushed coriander seeds and cracked black pepper.',
+    descriptionHi: 'साबुत कुटे धनिया, काली मिर्च और पुदीने के देहाती जंगली तड़के वाला पनीर टिक्का।',
+    descriptionMr: 'धणे, काळी मिरी आणि पुदिन्याची गावरान खमंग चव असलेला जंगली पनीर टिक्का.'
+  }
+];
+
+const PAKODA_VARIANTS = [
+  {
+    name: 'Crispy Veg Pakoda',
+    hindiName: 'वेज पकोड़ा',
+    marathiName: 'व्हेज भजी',
+    price: 130,
+    image: 'assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg',
+    description: 'Assorted seasonal vegetables coated in seasoned chickpea batter and deep-fried golden and crisp.',
+    descriptionHi: 'बारीक कटी मौसमी सब्जियों और अजवाइन वाले बेसन का कुरकुरा गरमागरम पकोड़ा।',
+    descriptionMr: 'बारीक चिरलेल्या ताज्या भाज्या आणि ओव्याच्या बेसनात तळलेली कुरकुरीत खमंग भजी.'
+  },
+  {
+    name: 'Paneer Pakoda',
+    hindiName: 'पनीर पकोड़ा',
+    marathiName: 'पनीर भजी',
+    price: 190,
+    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
+    description: 'Thick soft cottage cheese cubes layered with mint chutney, dipped in gram flour batter and fried crisp.',
+    descriptionHi: 'नरम पनीर के टुकड़े, हरी चटनी और खास मसालों में लिपटे हुए कुरकुरे पनीर पकोड़े।',
+    descriptionMr: 'मऊ पनीरचे काप, पुदिना चटणी आणि खमंग बेसनात घोळवून तळलेले पनीर पकोडे.'
+  },
+  {
+    name: 'Cheese Pakoda',
+    hindiName: 'चीज़ पकोड़ा',
+    marathiName: 'चीज भजी',
+    price: 210,
+    image: 'assets/menu-images/TASTY TIDBITS/CHEESE PAKODA.jpg',
+    description: 'Decadent melted cheese stuffed fritters with a crunchy golden crust, served with tangy dip.',
+    descriptionHi: 'चीज़ के स्वादिष्ट भरावन वाले गरमागरम पकोड़े, जो मुंह में डालते ही घुल जाते हैं।',
+    descriptionMr: 'चीजचे खमंग सारण भरलेली गरमागरम चीज भजी, अत्यंत चविष्ट व कुरकुरीत.'
+  }
+];
+
+const PAPAD_VARIANTS = [
+  {
+    name: 'Urad Papad (Roasted / Fried)',
+    hindiName: 'उड़द पापड़ (रोस्टेड / फ्राइड)',
+    marathiName: 'उडीद पापड (भाजलेला / तळलेला)',
+    price: 30,
+    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg',
+    description: 'Traditional crisp black-pepper urad dal papad, roasted on open flame or golden fried.',
+    descriptionHi: 'काली मिर्च और हींग के पारंपरिक स्वाद वाला उड़द पापड़, भुना या तला हुआ।',
+    descriptionMr: 'काळी मिरी आणि हिंगाची खमंग चव असलेला पारंपरिक उडीद पापड, भाजलेला किंवा तळलेला.'
+  },
+  {
+    name: 'Nagli Papad (Roasted / Fried)',
+    hindiName: 'नागली / रागी पापड़ (रोस्टेड / फ्राइड)',
+    marathiName: 'नाचणी पापड (भाजलेला / तळलेला)',
+    price: 30,
+    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED NAGALI PAPAD.jpg',
+    description: 'Wholesome rustic finger millet (ragi/nagli) crisp papad, authentic Maharashtrian recipe.',
+    descriptionHi: 'पौष्टिक रागी (नागली) से तैयार पारंपरिक कुरकुरा पापड़, सुपाच्य और स्वादिष्ट।',
+    descriptionMr: 'पौष्टिक नाचणीपासून तयार केलेला पारंपरिक कुरकुरीत गावराण पापड.'
+  },
+  {
+    name: 'Sindhi Papad',
+    hindiName: 'सिंधी पापड़',
+    marathiName: 'सिंधी पापड',
+    price: 70,
+    image: 'assets/menu-images/ACCOMPANIMENTS/SINDHI PAPAD.jpg',
+    description: 'Special spicy Sindhi seasoned papad packed with cracked black pepper and royal cumin.',
+    descriptionHi: 'काली मिर्च और जीरे के तीखे-चटपटे स्वाद वाला खास बड़ा सिंधी पापड़।',
+    descriptionMr: 'काळी मिरी व जिऱ्याचा झणझणीत स्वाद असलेला खास सिंधी पापड.'
+  }
+];
+
+const PACKAGED_JUICES_VARIANTS = [
+  {
+    name: 'Orange Packaged Fruit Juice',
+    hindiName: 'ऑरेंज फ्रूट जूस',
+    marathiName: 'संत्रा फ्रूट ज्यूस',
+    price: 80,
+    image: '',
+    description: 'Chilled packaged orange fruit juice bursting with zesty citrus freshness.',
+    descriptionHi: 'ठंडा पैक्ड संतरा फ्रूट जूस, ताजगी और विटामिन सी से भरपूर।',
+    descriptionMr: 'थंडगार पॅकबंद संत्रा ज्यूस, ताज्या संत्र्याची आंबट-गोड चव.'
+  },
+  {
+    name: 'Mango Packaged Fruit Juice',
+    hindiName: 'मैंगो फ्रूट जूस',
+    marathiName: 'आंबा फ्रूट ज्यूस',
+    price: 80,
+    image: '',
+    description: 'Luscious, rich packaged mango fruit nectar made from ripe golden mangoes.',
+    descriptionHi: 'पके मीठे आमों से बना गाढ़ा व स्वादिष्ट पैक्ड मैंगो जूस।',
+    descriptionMr: 'पिकलेल्या आंब्यांचा गोड व घट्ट चविष्ट पॅकबंद मँगो ज्यूस.'
+  },
+  {
+    name: 'Pineapple Packaged Fruit Juice',
+    hindiName: 'पाइनएप्पल फ्रूट जूस',
+    marathiName: 'अननस फ्रूट ज्यूस',
+    price: 80,
+    image: '',
+    description: 'Crisp and tropical packaged pineapple fruit juice with a sweet-tangy finish.',
+    descriptionHi: 'खट्टे-मीठे अनानास का ताज़गी भरा ठंडा पैक्ड फ्रूट जूस।',
+    descriptionMr: 'आंबट-गोड अननसाचा अत्यंत रिफ्रेशिंग थंडगार पॅकबंद ज्यूस.'
+  },
+  {
+    name: 'Guava Packaged Fruit Juice',
+    hindiName: 'अमरूद फ्रूट जूस',
+    marathiName: 'पेरू फ्रूट ज्यूस',
+    price: 80,
+    image: '',
+    description: 'Classic ripe pink guava fruit nectar, smooth, fragrant and refreshing.',
+    descriptionHi: 'गुलाबी पके अमरूदों की खुशबू और मिठास से भरपूर ठंडा पैक्ड जूस।',
+    descriptionMr: 'गुलाबी ताज्या पेरूचा सुगंधित, गोड व पौष्टिक पॅकबंद ज्यूस.'
+  }
+];
+
+const AERATED_BEVERAGES_VARIANTS = [
+  {
+    name: 'Thums Up (Chilled)',
+    hindiName: 'थम्स अप (ठंडा)',
+    marathiName: 'थम्स अप (थंडगार)',
+    price: 20,
+    image: 'assets/menu-uploads/2026-10-15/cb-6.jpg',
+    description: 'Iconic spicy strong carbonated cola, served chilled.',
+    descriptionHi: 'कड़क और तीखे फ़िज़ वाली भारत की पसंदीदा ठंडी कोला।',
+    descriptionMr: 'कडक आणि स्ट्रॉंग फिज असलेले थंडगार थम्स अप.'
+  },
+  {
+    name: 'Sprite (Chilled)',
+    hindiName: 'स्प्राइट (ठंडा)',
+    marathiName: 'स्प्राइट (थंडगार)',
+    price: 20,
+    image: 'assets/menu-uploads/2026-10-15/cb-7.jpg',
+    description: 'Crisp and refreshing lemon-lime carbonated soda, served chilled.',
+    descriptionHi: 'नींबू की ताजगी वाला हल्का और बुलबुलेदार ठंडा सोडा।',
+    descriptionMr: 'लिंबाचा रिफ्रेशिंग स्वाद असलेले थंडगार स्प्राइट.'
+  },
+  {
+    name: 'Fanta (Chilled)',
+    hindiName: 'फैंटा (ठंडा)',
+    marathiName: 'फँटा (थंडगार)',
+    price: 20,
+    image: 'assets/menu-uploads/2026-10-15/cb-8.jpg',
+    description: 'Sweet bubbly orange-flavoured sparkling beverage, served chilled.',
+    descriptionHi: 'संतरे के मीठे और चुलबुले स्वाद वाला ठंडा पेय।',
+    descriptionMr: 'संत्र्याची गोड चव असलेले फ्रूटी थंडगार फँटा.'
+  },
+  {
+    name: 'Maaza (Chilled Mango)',
+    hindiName: 'माज़ा (ठंडा आम रस)',
+    marathiName: 'माझा (थंडगार आंब्याचा रस)',
+    price: 20,
+    image: 'assets/menu-uploads/2026-10-15/cb-9.jpg',
+    description: 'Real mango pulp based sweet still beverage, served chilled.',
+    descriptionHi: 'असली आम के पल्प से बना गाढ़ा व मीठा ठंडा मैंगो ड्रिंक।',
+    descriptionMr: 'खऱ्या आंब्याच्या गरापासून बनवलेला गोड व घट्ट माझा.'
+  },
+  {
+    name: 'Kinley Club Soda',
+    hindiName: 'सोडा (ठंडा)',
+    marathiName: 'सोडा (थंडगार)',
+    price: 15,
+    image: 'assets/menu-uploads/2026-10-15/cb-10.jpg',
+    description: 'Sparkling effervescent club soda, served ice-chilled.',
+    descriptionHi: 'बुलबुलों से भरपूर कड़क व ताज़ा चिल्ड क्लब सोडा।',
+    descriptionMr: 'कडक फिज असलेला थंडगार क्लब सोडा.'
+  }
+];
+
+const HOT_BEVERAGES_VARIANTS = [
+  {
+    name: 'Special Masala Tea',
+    hindiName: 'स्पेशल मसाला चाय',
+    marathiName: 'स्पेशल मसाला चहा',
+    price: 25,
+    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
+    description: 'Freshly brewed strong tea infused with cardamom, ginger, cinnamon and fresh whole milk.',
+    descriptionHi: 'अदरक, इलायची और ताज़े दूध से पकाई गई कड़क स्पेशल मसाला चाय।',
+    descriptionMr: 'आले, वेलची आणि खड्या मसाल्यांनी युक्त गरमागरम कडक स्पेशल चहा.'
+  },
+  {
+    name: 'Hot Filter Coffee',
+    hindiName: 'हॉट कॉफ़ी',
+    marathiName: 'गरम कॉफी',
+    price: 35,
+    image: 'assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg',
+    description: 'Rich roasted aromatic coffee frothed with steaming hot milk.',
+    descriptionHi: 'भुने हुए कॉफ़ी बीन्स और गर्मागर्म झागदार दूध से तैयार खुशबूदार कॉफ़ी।',
+    descriptionMr: 'ताज्या भाजलेल्या कॉफीचा सुवास आणि फेसाळलेल्या दुधाची गरम कॉफी.'
+  },
+  {
+    name: 'Hot Milk',
+    hindiName: 'गर्म दूध',
+    marathiName: 'गरम दूध',
+    price: 60,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    description: 'Pure, steaming whole dairy milk served hot with sugar on the side.',
+    descriptionHi: 'ताज़ा गाढ़ा उबला हुआ शुद्ध गर्म दूध।',
+    descriptionMr: 'ताजे, उकळलेले पौष्टिक व शुद्ध गरम दूध.'
+  },
+  {
+    name: 'Bournvita Milk',
+    hindiName: 'बोर्नविटा',
+    marathiName: 'बोर्नव्हिटा',
+    price: 80,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    description: 'Nourishing malt chocolate beverage blended into steaming hot milk.',
+    descriptionHi: 'चॉकलेट माल्ट और गर्म दूध का पौष्टिक व स्वादिष्ट ड्रिंक।',
+    descriptionMr: 'चॉकलेट माल्ट आणि गरम दुधाचे पौष्टिक व चविष्ट पेय.'
+  }
+];
+
+const ICE_CREAM_VARIANTS = [
+  {
+    name: 'Vanilla Ice Cream',
+    hindiName: 'वैनिला आइसक्रीम',
+    marathiName: 'व्हॅनिला आईस्क्रीम',
+    price: 40,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    description: 'Classic velvety vanilla bean ice cream scoop.',
+    descriptionHi: 'पारंपरिक मखमली वैनिला आइसक्रीम का ठंडा स्कूप।',
+    descriptionMr: 'अत्यंत मऊ, मलईदार आणि चविष्ट व्हॅनिला आईस्क्रीम.'
+  },
+  {
+    name: 'Butterscotch Ice Cream',
+    hindiName: 'बटरस्कॉच आइसक्रीम',
+    marathiName: 'बटरस्कॉच आईस्क्रीम',
+    price: 50,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    description: 'Rich creamy butterscotch ice cream with crunchy praline nuts.',
+    descriptionHi: 'कुरकुरे कैरेमल प्रालिन नट्स वाला गाढ़ा बटरस्कॉच आइसक्रीम।',
+    descriptionMr: 'कुरकुरीत कॅरॅमल नट्स असलेला स्वादिष्ट बटरस्कॉच आईस्क्रीम.'
+  },
+  {
+    name: 'Chocolate Ice Cream',
+    hindiName: 'चॉकलेट आइसक्रीम',
+    marathiName: 'चॉकलेट आईस्क्रीम',
+    price: 50,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    description: 'Decadent deep cocoa chocolate ice cream scoop.',
+    descriptionHi: 'रिच डार्क कोकोआ और मलाई से भरपूर चॉकलेट आइसक्रीम।',
+    descriptionMr: 'डार्क कोको आणि सायीने भरलेला चॉकलेटी आईस्क्रीम.'
+  },
+  {
+    name: 'Kaju Draksh Ice Cream',
+    hindiName: 'काजू द्राक्ष आइसक्रीम',
+    marathiName: 'काजू द्राक्ष आईस्क्रीम',
+    price: 50,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    description: 'Traditional royal ice cream loaded with cashew nuts and sweet raisins.',
+    descriptionHi: 'कुरकुरे काजू और किशमिश के टुकड़ों से भरा स्वादिष्ट आइसक्रीम।',
+    descriptionMr: 'काजूचे काप आणि मनुका घातलेला शाही चवीचा आईस्क्रीम.'
+  },
+  {
+    name: 'Afghan Dry Fruit Ice Cream',
+    hindiName: 'अफ़गान ड्राई फ्रूट आइसक्रीम',
+    marathiName: 'अफगाण ड्रायफ्रूट आईस्क्रीम',
+    price: 40,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    description: 'Exotic dried fruits and roasted nuts infused into chilled sweet cream.',
+    descriptionHi: 'मेवों और भुने हुए बादाम-पिस्ते से सजा अफ़गानी ड्राई फ्रूट आइसक्रीम।',
+    descriptionMr: 'बदाम, पिस्ता आणि सुकामेव्याने युक्त थंडगार अफगाणी आईस्क्रीम.'
+  }
+];
+
+const GREEN_DAL_VARIANTS = [
+  {
+    name: 'Dal Palak',
+    hindiName: 'दाल पालक',
+    marathiName: 'डाळ पालक',
+    price: 150,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK.jpg',
+    description: 'Yellow lentils gently simmered with fresh tender spinach leaves and mild garlic.',
+    descriptionHi: 'ताज़ी पालक और पीली दाल का सुपाच्य एवं पौष्टिक हल्का मेल।',
+    descriptionMr: 'ताजी हिरवीगार पालक आणि पिवळी डाळ एकत्र शिजवून लसणाची खमंग फोडणी.'
+  },
+  {
+    name: 'Dal Palak Tadka',
+    hindiName: 'दाल पालक तड़का',
+    marathiName: 'डाळ पालक तडका',
+    price: 165,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK TADKA.jpg',
+    description: 'Nutritious spinach dal finished with a sizzling tempered garlic, cumin and ghee tadka.',
+    descriptionHi: 'देसी घी, लहसुन, साबुत लाल मिर्च और जीरे के तेज़ तड़के वाली पालक दाल।',
+    descriptionMr: 'साजूक तूप, लसूण आणि जिऱ्याची चमचमीत फोडणी दिलेली खमंग डाळ पालक.'
+  },
+  {
+    name: 'Dal Methi',
+    hindiName: 'दाल मेथी',
+    marathiName: 'डाळ मेथी',
+    price: 150,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI.jpg',
+    description: 'Wholesome yellow lentils cooked with fresh aromatic fenugreek (methi) leaves.',
+    descriptionHi: 'ताज़ी खुशबूदार मेथी की पत्तियों और पीली दाल की स्वादिष्ट पारंपरिक तैयारी।',
+    descriptionMr: 'ताजी मेथीची पाने आणि डाळ एकत्र शिजवून तयार केलेली पौष्टिक डाळ.'
+  },
+  {
+    name: 'Dal Methi Tadka',
+    hindiName: 'दाल मेथी तड़का',
+    marathiName: 'डाळ मेथी तडका',
+    price: 165,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI TADKA.jpg',
+    description: 'Fenugreek leaves simmered in dal, elevated with a fragrant cumin, garlic and chilli tadka.',
+    descriptionHi: 'साबुत लाल मिर्च, लहसुन और हींग-जीरे के कड़क तड़के से सजी दाल मेथी।',
+    descriptionMr: 'हिंग, जिरे, लसूण व लाल मिरचीची कडक फोडणी दिलेली झणझणीत डाळ मेथी.'
+  }
+];
+
+
 window.HOTEL_PREMIER_INITIAL_MENU = [
+  {
+    id: 'tc-paneer-tikka-group', categoryId: 'tandoor-classics',
+    name: 'Royal Tandoori Paneer Tikkas', hindiName: 'à¤¶à¤¾à¤¹à¥€ à¤¤à¤‚à¤¦à¥‚à¤°à¥€ à¤ªà¤¨à¥€à¤° à¤Ÿà¤¿à¤•à¥à¤•à¤¾', marathiName: 'à¤¶à¤¾à¤¹à¥€ à¤¤à¤‚à¤¦à¥à¤°à¥€ à¤ªà¤¨à¥€à¤° à¤Ÿà¤¿à¤•à¥à¤•à¤¾',
+    description: 'Clay-oven charcoal roasted fresh cottage cheese cubes in 8 royal culinary preparations: Classic, Lehsuni, Achari, Reshmi, Afghani, Patakha, Jafrani and Jungli.',
+    descriptionHi: 'à¤¤à¤‚à¤¦à¥‚à¤° à¤®à¥‡à¤‚ à¤­à¥à¤¨à¥‡ à¤¤à¤¾à¤œà¤¼à¥‡ à¤ªà¤¨à¥€à¤° à¤Ÿà¤¿à¤•à¥à¤•à¤¾ à¤•à¥‡ 8 à¤¶à¤¾à¤¹à¥€ à¤¸à¥à¤µà¤¾à¤¦: à¤•à¥à¤²à¤¾à¤¸à¤¿à¤•, à¤²à¤¹à¤¸à¥à¤¨à¥€, à¤…à¤šà¤¾à¤°à¥€, à¤°à¥‡à¤¶à¤®à¥€, à¤…à¤«à¤—à¤¾à¤¨à¥€, à¤ªà¤Ÿà¤¾à¤–à¤¾, à¤œà¤¼à¤¾à¤«à¤¼à¤°à¤¾à¤¨à¥€ à¤”à¤° à¤œà¤‚à¤—à¤²à¥€à¥¤',
+    descriptionMr: 'à¤¤à¤‚à¤¦à¥‚à¤°à¤®à¤§à¥à¤¯à¥‡ à¤­à¤¾à¤œà¤²à¥‡à¤²à¥à¤¯à¤¾ à¤¤à¤¾à¤œà¥à¤¯à¤¾ à¤ªà¤¨à¥€à¤° à¤Ÿà¤¿à¤•à¥à¤•à¤¾à¤šà¥‡ à¥® à¤¶à¤¾à¤¹à¥€ à¤ªà¥à¤°à¤•à¤¾à¤°: à¤•à¥à¤²à¤¾à¤¸à¤¿à¤•, à¤²à¤¸à¥à¤£à¥€, à¤…à¤šà¤¾à¤°à¥€, à¤°à¥‡à¤¶à¤®à¥€, à¤…à¤«à¤—à¤¾à¤£à¥€, à¤«à¤Ÿà¤¾à¤•à¤¾, à¤œà¤¾à¤«à¤°à¤¾à¤¨à¥€ à¤†à¤£à¤¿ à¤œà¤‚à¤—à¤²à¥€.',
+    price: 240, displayPriceRange: 'â‚¹240 â€“ â‚¹315', isGroupMaster: true,
+    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg',
+    tags: ['veg', 'chef-special', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '15-20 mins',
+    variants: PANEER_TIKKA_VARIANTS
+  },
+  {
+    id: 'tt-pakoda-group', categoryId: 'tasty-tidbits',
+    name: 'Golden Crisp Pakodas', hindiName: 'à¤•à¥à¤°à¤•à¥à¤°à¥‡ à¤—à¤°à¤®à¤¾à¤—à¤°à¤® à¤ªà¤•à¥‹à¤¡à¤¼à¥‡', marathiName: 'à¤•à¥à¤°à¤•à¥à¤°à¥€à¤¤ à¤—à¤°à¤®à¤¾à¤—à¤°à¤® à¤­à¤œà¥€',
+    description: 'Crisp deep-fried golden fritters prepared fresh to order: Assorted Seasonal Vegetables, Soft Cottage Cheese, and Molten Cheese.',
+    descriptionHi: 'à¤¬à¥‡à¤¸à¤¨ à¤”à¤° à¤–à¤¾à¤¸ à¤®à¤¸à¤¾à¤²à¥‹à¤‚ à¤®à¥‡à¤‚ à¤¤à¤²à¥‡ à¤¹à¥à¤ à¤•à¥à¤°à¤•à¥à¤°à¥‡ à¤—à¤°à¤®à¤¾à¤—à¤°à¤® à¤ªà¤•à¥‹à¤¡à¤¼à¥‡: à¤®à¤¿à¤•à¥à¤¸ à¤µà¥‡à¤œ, à¤ªà¤¨à¥€à¤° à¤”à¤° à¤¸à¥à¤µà¤¾à¤¦à¤¿à¤·à¥à¤Ÿ à¤šà¥€à¤œà¤¼ à¤ªà¤•à¥‹à¤¡à¤¼à¤¾à¥¤',
+    descriptionMr: 'à¤–à¤®à¤‚à¤— à¤¬à¥‡à¤¸à¤¨à¤¾à¤¤ à¤¤à¤³à¤²à¥‡à¤²à¥€ à¤—à¤°à¤®à¤¾à¤—à¤°à¤® à¤•à¥à¤°à¤•à¥à¤°à¥€à¤¤ à¤­à¤œà¥€: à¤®à¤¿à¤•à¥à¤¸ à¤µà¥à¤¹à¥‡à¤œ, à¤®à¤Š à¤ªà¤¨à¥€à¤° à¤†à¤£à¤¿ à¤šà¥€à¤œ à¤­à¤œà¥€.',
+    price: 130, displayPriceRange: 'â‚¹130 â€“ â‚¹210', isGroupMaster: true,
+    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '10-15 mins',
+    variants: PAKODA_VARIANTS
+  },
+  {
+    id: 'fa-papad-group', categoryId: 'fresh-addons',
+    name: 'Crispy Indian Papads', hindiName: 'à¤•à¥à¤°à¤•à¥à¤°à¥‡ à¤­à¤¾à¤°à¤¤à¥€à¤¯ à¤ªà¤¾à¤ªà¤¡à¤¼', marathiName: 'à¤•à¥à¤°à¤•à¥à¤°à¥€à¤¤ à¤­à¤¾à¤°à¤¤à¥€à¤¯ à¤ªà¤¾à¤ªà¤¡',
+    description: 'Traditional crisp accompaniment papads in Roasted and Fried variations: Spiced Urad Dal, Rustic Nagli (Ragi), and Spicy Sindhi Papad.',
+    descriptionHi: 'à¤•à¤¾à¤²à¥€ à¤®à¤¿à¤°à¥à¤š à¤µà¤¾à¤²à¥‡ à¤‰à¤¡à¤¼à¤¦ à¤ªà¤¾à¤ªà¤¡à¤¼, à¤ªà¥Œà¤·à¥à¤Ÿà¤¿à¤• à¤¨à¤¾à¤—à¤²à¥€ (à¤°à¤¾à¤—à¥€) à¤ªà¤¾à¤ªà¤¡à¤¼ à¤”à¤° à¤–à¤¾à¤¸ à¤¸à¤¿à¤‚à¤§à¥€ à¤ªà¤¾à¤ªà¤¡à¤¼, à¤­à¥à¤¨à¥‡ à¤¯à¤¾ à¤¤à¤²à¥‡ à¤¹à¥à¤à¥¤',
+    descriptionMr: 'à¤ªà¤¾à¤°à¤‚à¤ªà¤°à¤¿à¤• à¤‰à¤¡à¥€à¤¦ à¤ªà¤¾à¤ªà¤¡, à¤ªà¥Œà¤·à¥à¤Ÿà¤¿à¤• à¤¨à¤¾à¤šà¤£à¥€ à¤ªà¤¾à¤ªà¤¡ à¤†à¤£à¤¿ à¤–à¤®à¤‚à¤— à¤¸à¤¿à¤‚à¤§à¥€ à¤ªà¤¾à¤ªà¤¡, à¤­à¤¾à¤œà¤²à¥‡à¤²à¥‡ à¤•à¤¿à¤‚à¤µà¤¾ à¤¤à¤³à¤²à¥‡à¤²à¥‡.',
+    price: 30, displayPriceRange: 'â‚¹30 â€“ â‚¹70', isGroupMaster: true,
+    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg',
+    tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.7, prepTime: '5 mins',
+    variants: PAPAD_VARIANTS
+  },
+  {
+    id: 'cb-packaged-fruit-juice-group', categoryId: 'chilled-beverages',
+    name: 'Packaged Real Fruit Juices', hindiName: 'à¤ªà¥ˆà¤•à¥à¤¡ à¤°à¤¿à¤¯à¤² à¤«à¥à¤°à¥‚à¤Ÿ à¤œà¥‚à¤¸', marathiName: 'à¤ªà¥…à¤•à¤¬à¤‚à¤¦ à¤°à¤¿à¤…à¤² à¤«à¥à¤°à¥‚à¤Ÿ à¤œà¥à¤¯à¥‚à¤¸',
+    description: 'Chilled sealed packaged real fruit juices: Refreshing Orange, Rich Mango Nectar, Tropical Pineapple, and Sweet Pink Guava.',
+    descriptionHi: 'à¤¸à¥€à¤² à¤ªà¥ˆà¤• à¤ à¤‚à¤¡à¥‡ à¤¸à¥à¤µà¤¾à¤¦à¤¿à¤·à¥à¤Ÿ à¤«à¥à¤°à¥‚à¤Ÿ à¤œà¥‚à¤¸: à¤¸à¤‚à¤¤à¤°à¤¾, à¤†à¤®, à¤…à¤¨à¤¾à¤¨à¤¾à¤¸ à¤”à¤° à¤—à¥à¤²à¤¾à¤¬à¥€ à¤…à¤®à¤°à¥‚à¤¦à¥¤',
+    descriptionMr: 'à¤¥à¤‚à¤¡à¤—à¤¾à¤° à¤¸à¥€à¤²à¤¬à¤‚à¤¦ à¤ªà¥…à¤•à¤¬à¤‚à¤¦ à¤«à¥à¤°à¥‚à¤Ÿ à¤œà¥à¤¯à¥‚à¤¸: à¤¸à¤‚à¤¤à¥à¤°à¤¾, à¤†à¤‚à¤¬à¤¾, à¤…à¤¨à¤¨à¤¸ à¤†à¤£à¤¿ à¤ªà¥‡à¤°à¥‚.',
+    price: 80, displayPriceRange: 'â‚¹80 (Flat)', isGroupMaster: true,
+    image: '',
+    tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.7, prepTime: 'Instant',
+    variants: PACKAGED_JUICES_VARIANTS
+  },
+  {
+    id: 'cb-soft-drinks-group', categoryId: 'chilled-beverages',
+    name: 'Chilled Aerated Beverages', hindiName: 'à¤ à¤‚à¤¡à¥‡ à¤•à¥‹à¤²à¥à¤¡ à¤¡à¥à¤°à¤¿à¤‚à¤•à¥à¤¸ à¤µ à¤¸à¥‹à¤¡à¤¾', marathiName: 'à¤¥à¤‚à¤¡à¤—à¤¾à¤° à¤•à¥‹à¤²à¥à¤¡à¥à¤°à¤¿à¤‚à¤•à¥à¤¸ à¤µ à¤¸à¥‹à¤¡à¤¾',
+    description: 'Popular ice-chilled bottled sparkling sodas and fruit beverages: Thums Up, Sprite, Fanta, Maaza, and Kinley Club Soda.',
+    descriptionHi: 'à¤¬à¤°à¥à¤« à¤œà¥ˆà¤¸à¥‡ à¤ à¤‚à¤¡à¥‡ à¤²à¥‹à¤•à¤ªà¥à¤°à¤¿à¤¯ à¤•à¥‹à¤²à¥à¤¡ à¤¡à¥à¤°à¤¿à¤‚à¤•à¥à¤¸: à¤¥à¤®à¥à¤¸ à¤…à¤ª, à¤¸à¥à¤ªà¥à¤°à¤¾à¤‡à¤Ÿ, à¤«à¥ˆà¤‚à¤Ÿà¤¾, à¤®à¤¾à¤œà¤¼à¤¾ à¤”à¤° à¤•à¥à¤²à¤¬ à¤¸à¥‹à¤¡à¤¾à¥¤',
+    descriptionMr: 'à¤¬à¤°à¥à¤«à¤¾à¤¸à¤¾à¤°à¤–à¥‡ à¤¥à¤‚à¤¡à¤—à¤¾à¤° à¤²à¥‹à¤•à¤ªà¥à¤°à¤¿à¤¯ à¤•à¥‹à¤²à¥à¤¡à¥à¤°à¤¿à¤‚à¤•à¥à¤¸: à¤¥à¤®à¥à¤¸ à¤…à¤ª, à¤¸à¥à¤ªà¥à¤°à¤¾à¤‡à¤Ÿ, à¤«à¤à¤Ÿà¤¾, à¤®à¤¾à¤à¤¾ à¤†à¤£à¤¿ à¤•à¥à¤²à¤¬ à¤¸à¥‹à¤¡à¤¾.',
+    price: 15, displayPriceRange: 'â‚¹15 â€“ â‚¹20', isGroupMaster: true,
+    image: 'assets/menu-uploads/2026-10-15/cb-6.jpg',
+    tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.6, prepTime: 'Instant',
+    variants: AERATED_BEVERAGES_VARIANTS
+  },
+  {
+    id: 'hh-beverages-group', categoryId: 'hot-hearty',
+    name: 'Hot Beverages & Morning Brews', hindiName: 'à¤—à¤°à¥à¤®à¤¾à¤—à¤°à¥à¤® à¤šà¤¾à¤¯, à¤•à¥‰à¤«à¤¼à¥€ à¤µ à¤¦à¥‚à¤§', marathiName: 'à¤—à¤°à¤®à¤¾à¤—à¤°à¤® à¤šà¤¹à¤¾, à¤•à¥‰à¤«à¥€ à¤µ à¤¦à¥‚à¤§',
+    description: 'Freshly brewed aromatic morning drinks: Cardamom Ginger Masala Tea, Frothy Filter Coffee, Steaming Pure Milk, and Nutritious Bournvita.',
+    descriptionHi: 'à¤…à¤¦à¤°à¤•-à¤‡à¤²à¤¾à¤¯à¤šà¥€ à¤µà¤¾à¤²à¥€ à¤•à¤¡à¤¼à¤• à¤®à¤¸à¤¾à¤²à¤¾ à¤šà¤¾à¤¯, à¤à¤¾à¤—à¤¦à¤¾à¤° à¤«à¤¿à¤²à¥à¤Ÿà¤° à¤•à¥‰à¤«à¤¼à¥€, à¤¶à¥à¤¦à¥à¤§ à¤—à¤°à¥à¤® à¤¦à¥‚à¤§ à¤”à¤° à¤¬à¥‹à¤°à¥à¤¨à¤µà¤¿à¤Ÿà¤¾à¥¤',
+    descriptionMr: 'à¤†à¤²à¥‡-à¤µà¥‡à¤²à¤šà¥€à¤¯à¥à¤•à¥à¤¤ à¤•à¤¡à¤• à¤®à¤¸à¤¾à¤²à¤¾ à¤šà¤¹à¤¾, à¤«à¥‡à¤¸à¤¾à¤³à¤²à¥‡à¤²à¥€ à¤«à¤¿à¤²à¥à¤Ÿà¤° à¤•à¥‰à¤«à¥€, à¤—à¤°à¤® à¤¦à¥‚à¤§ à¤†à¤£à¤¿ à¤¬à¥‹à¤°à¥à¤¨à¤µà¥à¤¹à¤¿à¤Ÿà¤¾.',
+    price: 25, displayPriceRange: 'â‚¹25 â€“ â‚¹80', isGroupMaster: true,
+    image: 'assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '5-10 mins',
+    variants: HOT_BEVERAGES_VARIANTS
+  },
+  {
+    id: 'ff-ice-cream-group', categoryId: 'frozen-fantasies',
+    name: 'Gourmet Ice Cream Scoops', hindiName: 'à¤†à¤‡à¤¸à¤•à¥à¤°à¥€à¤® à¤¸à¥à¤•à¥‚à¤ªà¥à¤¸', marathiName: 'à¤†à¤ˆà¤¸à¥à¤•à¥à¤°à¥€à¤® à¤¸à¥à¤•à¥‚à¤ªà¥à¤¸',
+    description: 'Creamy chilled dessert scoops: Classic Vanilla, Crunchy Butterscotch, Rich Chocolate, Royal Kaju Draksh, and Afghan Dry Fruit.',
+    descriptionHi: 'à¤®à¤²à¤¾à¤ˆà¤¦à¤¾à¤° à¤ à¤‚à¤¡à¥€ à¤†à¤‡à¤¸à¤•à¥à¤°à¥€à¤® à¤•à¥‡ à¤®à¤¨à¤ªà¤¸à¤‚à¤¦ à¤¸à¥à¤•à¥‚à¤ª: à¤µà¥ˆà¤¨à¤¿à¤²à¤¾, à¤¬à¤Ÿà¤°à¤¸à¥à¤•à¥‰à¤š, à¤šà¥‰à¤•à¤²à¥‡à¤Ÿ, à¤•à¤¾à¤œà¥‚ à¤¦à¥à¤°à¤¾à¤•à¥à¤· à¤”à¤° à¤…à¤«à¤¼à¤—à¤¾à¤¨ à¤¡à¥à¤°à¤¾à¤ˆ à¤«à¥à¤°à¥‚à¤Ÿà¥¤',
+    descriptionMr: 'à¤®à¤²à¤ˆà¤¦à¤¾à¤° à¤¥à¤‚à¤¡à¤—à¤¾à¤° à¤†à¤ˆà¤¸à¥à¤•à¥à¤°à¥€à¤®à¤šà¥‡ à¤–à¤¾à¤¸ à¤¸à¥à¤•à¥‚à¤ª: à¤µà¥à¤¹à¥…à¤¨à¤¿à¤²à¤¾, à¤¬à¤Ÿà¤°à¤¸à¥à¤•à¥‰à¤š, à¤šà¥‰à¤•à¤²à¥‡à¤Ÿ, à¤•à¤¾à¤œà¥‚ à¤¦à¥à¤°à¤¾à¤•à¥à¤· à¤†à¤£à¤¿ à¤…à¤«à¤—à¤¾à¤£ à¤¡à¥à¤°à¤¾à¤¯à¤«à¥à¤°à¥‚à¤Ÿ.',
+    price: 40, displayPriceRange: 'â‚¹40 â€“ â‚¹50', isGroupMaster: true,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: 'Instant',
+    variants: ICE_CREAM_VARIANTS
+  },
+  {
+    id: 'fd-leaf-dal-group', categoryId: 'flavorful-dals',
+    name: 'Green Leaf Dals (Palak & Methi)', hindiName: 'à¤ªà¤¾à¤²à¤• à¤à¤µà¤‚ à¤®à¥‡à¤¥à¥€ à¤¦à¤¾à¤²', marathiName: 'à¤ªà¤¾à¤²à¤• à¤µ à¤®à¥‡à¤¥à¥€ à¤¡à¤¾à¤³',
+    description: 'Wholesome nutritious yellow lentils cooked with fresh greens: Dal Palak, Dal Palak Tadka, Dal Methi, and Dal Methi Tadka.',
+    descriptionHi: 'à¤¤à¤¾à¤œà¤¼à¥€ à¤¹à¤°à¥€ à¤ªà¤¾à¤²à¤• à¤”à¤° à¤®à¥‡à¤¥à¥€ à¤•à¥‡ à¤ªà¤¤à¥à¤¤à¥‹à¤‚ à¤¸à¥‡ à¤¬à¤¨à¥€ à¤ªà¥Œà¤·à¥à¤Ÿà¤¿à¤• à¤¦à¤¾à¤²à¥‡à¤‚, à¤¸à¤¾à¤¦à¥€ à¤¯à¤¾ à¤•à¤¡à¤¼à¤• à¤¦à¥‡à¤¸à¥€ à¤˜à¥€ à¤¤à¤¡à¤¼à¤•à¥‡ à¤•à¥‡ à¤¸à¤¾à¤¥à¥¤',
+    descriptionMr: 'à¤¤à¤¾à¤œà¥€ à¤¹à¤¿à¤°à¤µà¥€ à¤ªà¤¾à¤²à¤• à¤†à¤£à¤¿ à¤®à¥‡à¤¥à¥€ à¤˜à¤¾à¤²à¥‚à¤¨ à¤¶à¤¿à¤œà¤µà¤²à¥‡à¤²à¥€ à¤ªà¥Œà¤·à¥à¤Ÿà¤¿à¤• à¤¡à¤¾à¤³, à¤¸à¤¾à¤§à¥€ à¤•à¤¿à¤‚à¤µà¤¾ à¤¸à¤¾à¤œà¥‚à¤• à¤¤à¥à¤ªà¤¾à¤šà¥à¤¯à¤¾ à¤¤à¤¡à¤•à¥à¤¯à¤¾à¤¸à¤¹.',
+    price: 150, displayPriceRange: 'â‚¹150 â€“ â‚¹165', isGroupMaster: true,
+    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK.jpg',
+    tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '15 mins',
+    variants: GREEN_DAL_VARIANTS
+  },
   {
     id: 'md-mix-veg-paratha', categoryId: 'morning-delights',
     name: 'Mix Veg Paratha', hindiName: 'मिक्स वेज पराठा', marathiName: 'मिक्स व्हेज पराठा',
@@ -993,7 +1466,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     groupedUnder: 'md-parathas-group'
   },
   {
-    id: 'tc-paneer-achari-tikka', categoryId: 'tandoor-classics',
+    id: 'tc-paneer-achari-tikka', categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Paneer Achari Tikka', hindiName: 'पनीर अचारी टिक्का', marathiName: 'पनीर अचारी टिक्का',
     description: 'Paneer cubes marinated with tangy pickling spices and grilled for a bold achari flavour.',
     price: 240, image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg', tags: ['veg', 'chef-special'], dietary: 'pure-veg', isSoldOut: false,
@@ -1009,7 +1482,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     groupedUnder: 'fa-raita-group'
   },
   {
-    id: 'cb-juice-orange', categoryId: 'chilled-beverages',
+    id: 'cb-juice-orange', categoryId: 'chilled-beverages', groupedUnder: 'cb-packaged-fruit-juice-group',
     name: 'Orange Packaged Fruit Juice', hindiName: 'ऑरेंज पैक्ड फ्रूट जूस', marathiName: 'संत्रा पॅकबंद फ्रूट ज्यूस',
     description: 'Packaged orange fruit juice. Ask our team for the available brand and pack size.',
     descriptionHi: 'पैक्ड ऑरेंज फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।',
@@ -1017,7 +1490,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     price: 80, tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, image: ''
   },
   {
-    id: 'cb-juice-mango', categoryId: 'chilled-beverages',
+    id: 'cb-juice-mango', categoryId: 'chilled-beverages', groupedUnder: 'cb-packaged-fruit-juice-group',
     name: 'Mango Packaged Fruit Juice', hindiName: 'मैंगो पैक्ड फ्रूट जूस', marathiName: 'आंबा पॅकबंद फ्रूट ज्यूस',
     description: 'Packaged mango fruit juice. Ask our team for the available brand and pack size.',
     descriptionHi: 'पैक्ड मैंगो फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।',
@@ -1025,7 +1498,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     price: 80, tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, image: ''
   },
   {
-    id: 'cb-juice-pineapple', categoryId: 'chilled-beverages',
+    id: 'cb-juice-pineapple', categoryId: 'chilled-beverages', groupedUnder: 'cb-packaged-fruit-juice-group',
     name: 'Pineapple Packaged Fruit Juice', hindiName: 'पाइनएप्पल पैक्ड फ्रूट जूस', marathiName: 'अननस पॅकबंद फ्रूट ज्यूस',
     description: 'Packaged pineapple fruit juice. Ask our team for the available brand and pack size.',
     descriptionHi: 'पैक्ड पाइनएप्पल फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।',
@@ -1033,7 +1506,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     price: 80, tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, image: ''
   },
   {
-    id: 'cb-juice-guava', categoryId: 'chilled-beverages',
+    id: 'cb-juice-guava', categoryId: 'chilled-beverages', groupedUnder: 'cb-packaged-fruit-juice-group',
     name: 'Guava Packaged Fruit Juice', hindiName: 'गुआवा पैक्ड फ्रूट जूस', marathiName: 'पेरू पॅकबंद फ्रूट ज्यूस',
     description: 'Packaged guava fruit juice. Ask our team for the available brand and pack size.',
     descriptionHi: 'पैक्ड गुआवा फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।',
@@ -1376,7 +1849,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   // ==================== HOT & HEARTY ====================
   {
     id: 'hh-1',
-    categoryId: 'hot-hearty',
+    categoryId: 'hot-hearty', groupedUnder: 'hh-beverages-group',
     name: 'Tea (Special Masala)',
     hindiName: 'स्पेशल मसाला चाय',
     marathiName: 'स्पेशल मसाला चहा',
@@ -1393,7 +1866,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'hh-2',
-    categoryId: 'hot-hearty',
+    categoryId: 'hot-hearty', groupedUnder: 'hh-beverages-group',
     name: 'Hot Coffee',
     hindiName: 'गर्म दूध',
     marathiName: 'गरम दूध',
@@ -1410,7 +1883,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'hh-3',
-    categoryId: 'hot-hearty',
+    categoryId: 'hot-hearty', groupedUnder: 'hh-beverages-group',
     name: 'Bournvita',
     hindiName: 'बॉर्नविटा / हॉर्लिक्स',
     marathiName: 'बॉर्नव्हिटा / हॉर्लिक्स',
@@ -1427,7 +1900,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'hh-4',
-    categoryId: 'hot-hearty',
+    categoryId: 'hot-hearty', groupedUnder: 'hh-beverages-group',
     name: 'Hot Milk',
     hindiName: 'स्पेशल फिल्टर कॉफ़ी',
     marathiName: 'स्पेशल फिल्टर कॉफी',
@@ -1446,7 +1919,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   // ==================== TASTY TIDBITS ====================
   {
     id: 'tt-1',
-    categoryId: 'tasty-tidbits',
+    categoryId: 'tasty-tidbits', groupedUnder: 'tt-pakoda-group',
     name: 'Veg Pakoda',
     hindiName: 'वेज पकोड़ा',
     marathiName: 'व्हेज भजी',
@@ -1461,7 +1934,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tt-2',
-    categoryId: 'tasty-tidbits',
+    categoryId: 'tasty-tidbits', groupedUnder: 'tt-pakoda-group',
     name: 'Paneer Pakoda',
     hindiName: 'पनीर पकोड़ा',
     marathiName: 'पनीर भजी',
@@ -1476,7 +1949,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tt-3',
-    categoryId: 'tasty-tidbits',
+    categoryId: 'tasty-tidbits', groupedUnder: 'tt-pakoda-group',
     name: 'Cheese Pakoda',
     hindiName: 'चीज़ पकोड़ा',
     marathiName: 'चीज भजी',
@@ -2135,7 +2608,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tc-2',
-    categoryId: 'tandoor-classics',
+    categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Paneer Tikka',
     hindiName: 'पनीर टिक्का',
     marathiName: 'पनीर टिक्का',
@@ -2150,7 +2623,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tc-3',
-    categoryId: 'tandoor-classics',
+    categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Jungli Paneer Tikka',
     hindiName: 'जंगली पनीर टिक्का',
     marathiName: 'जंगली पनीर टिक्का',
@@ -2165,7 +2638,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tc-4',
-    categoryId: 'tandoor-classics',
+    categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Paneer Patakha Tikka',
     hindiName: 'पनीर पटाखा टिक्का',
     marathiName: 'पनीर फटाका टिक्का',
@@ -2180,7 +2653,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tc-5',
-    categoryId: 'tandoor-classics',
+    categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Paneer Reshmi Kabab',
     hindiName: 'पनीर रेशमी कबाब',
     marathiName: 'पनीर रेशमी कबाब',
@@ -2195,7 +2668,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tc-6',
-    categoryId: 'tandoor-classics',
+    categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Paneer Afghani Tikka',
     hindiName: 'पनीर अफ़गानी टिक्का',
     marathiName: 'पनीर अफगाणी टिक्का',
@@ -2210,7 +2683,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tc-7',
-    categoryId: 'tandoor-classics',
+    categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Lehsuni Paneer Tikka',
     hindiName: 'पनीर ज़ाफ़रानी टिक्का',
     marathiName: 'पनीर झाफरानी टिक्का',
@@ -2225,7 +2698,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'tc-8',
-    categoryId: 'tandoor-classics',
+    categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Paneer Jafrani Tikka',
     hindiName: 'पनीर अचारी टिक्का',
     marathiName: 'पनीर अचारी टिक्का',
@@ -3574,7 +4047,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'fa-6',
-    categoryId: 'fresh-addons',
+    categoryId: 'fresh-addons', groupedUnder: 'fa-papad-group',
     name: 'Sindhi Papad',
     hindiName: 'सिंधी पापड़',
     marathiName: 'सिंधी पापड',
@@ -3589,7 +4062,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'fa-7',
-    categoryId: 'fresh-addons',
+    categoryId: 'fresh-addons', groupedUnder: 'fa-papad-group',
     name: 'Urad Papad',
     hindiName: 'उड़द पापड़',
     marathiName: 'उडीद पापड',
@@ -3638,7 +4111,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'fa-8',
-    categoryId: 'fresh-addons',
+    categoryId: 'fresh-addons', groupedUnder: 'fa-papad-group',
     name: 'Nagli Papad',
     hindiName: 'नागली पापड़',
     marathiName: 'नाचणी पापड',
@@ -4424,7 +4897,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   // ==================== FROZEN FANTASIES ====================
   {
     id: 'ff-1',
-    categoryId: 'frozen-fantasies',
+    categoryId: 'frozen-fantasies', groupedUnder: 'ff-ice-cream-group',
     name: 'Butterscotch Ice Cream',
     hindiName: 'बटरस्कॉच आइसक्रीम',
     marathiName: 'बटरस्कॉच आईस्क्रीम',
@@ -4445,7 +4918,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'ff-2',
-    categoryId: 'frozen-fantasies',
+    categoryId: 'frozen-fantasies', groupedUnder: 'ff-ice-cream-group',
     name: 'Vanilla Ice Cream',
     hindiName: 'वैनिला आइसक्रीम',
     marathiName: 'व्हॅनिला आईस्क्रीम',
@@ -4466,7 +4939,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'ff-3',
-    categoryId: 'frozen-fantasies',
+    categoryId: 'frozen-fantasies', groupedUnder: 'ff-ice-cream-group',
     name: 'Kaju Draksh Ice Cream',
     hindiName: 'काजू द्राक्ष आइसक्रीम',
     marathiName: 'काजू द्राक्ष आईस्क्रीम',
@@ -4487,7 +4960,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'ff-4',
-    categoryId: 'frozen-fantasies',
+    categoryId: 'frozen-fantasies', groupedUnder: 'ff-ice-cream-group',
     name: 'Chocolate Ice Cream',
     hindiName: 'चॉकलेट आइसक्रीम',
     marathiName: 'चॉकलेट आईस्क्रीम',
@@ -4508,7 +4981,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'ff-5',
-    categoryId: 'frozen-fantasies',
+    categoryId: 'frozen-fantasies', groupedUnder: 'ff-ice-cream-group',
     name: 'Afghan Dry Fruit Ice Cream',
     hindiName: 'अफ़गान ड्राई फ्रूट आइसक्रीम',
     marathiName: 'अफाण ड्रायफ्रूट आईस्क्रीम',
@@ -4900,7 +5373,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'cb-6',
-    categoryId: 'chilled-beverages',
+    categoryId: 'chilled-beverages', groupedUnder: 'cb-soft-drinks-group',
     name: 'Thums Up (Chilled)',
     hindiName: 'थम्स अप (चिल्ड)',
     marathiName: 'थम्ब्स अप (चिल्ड)',
@@ -4917,7 +5390,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'cb-7',
-    categoryId: 'chilled-beverages',
+    categoryId: 'chilled-beverages', groupedUnder: 'cb-soft-drinks-group',
     name: 'Sprite (Chilled)',
     hindiName: 'स्प्राइट (चिल्ड)',
     marathiName: 'स्प्राइट (चिल्ड)',
@@ -4934,7 +5407,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'cb-8',
-    categoryId: 'chilled-beverages',
+    categoryId: 'chilled-beverages', groupedUnder: 'cb-soft-drinks-group',
     name: 'Fanta (Chilled)',
     hindiName: 'फैंटा (चिल्ड)',
     marathiName: 'फँटा (चिल्ड)',
@@ -4951,7 +5424,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'cb-9',
-    categoryId: 'chilled-beverages',
+    categoryId: 'chilled-beverages', groupedUnder: 'cb-soft-drinks-group',
     name: 'Maaza (Chilled Mango)',
     hindiName: 'माज़ा (चिल्ड मैंगो)',
     marathiName: 'माझा (चिल्ड मँगो)',
@@ -4968,7 +5441,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'cb-10',
-    categoryId: 'chilled-beverages',
+    categoryId: 'chilled-beverages', groupedUnder: 'cb-soft-drinks-group',
     name: 'Soda (Kinley / Bisleri)',
     hindiName: 'सोडा (किनले / बिसलेरी)',
     marathiName: 'सोडा (किन्ले / बिसलेरी)',
@@ -5137,7 +5610,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'fd-5',
-    categoryId: 'flavorful-dals',
+    categoryId: 'flavorful-dals', groupedUnder: 'fd-leaf-dal-group',
     name: 'Dal Palak',
     hindiName: 'दाल पालक',
     marathiName: 'डाळ पालक',
@@ -5153,7 +5626,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'fd-6',
-    categoryId: 'flavorful-dals',
+    categoryId: 'flavorful-dals', groupedUnder: 'fd-leaf-dal-group',
     name: 'Dal Palak Tadka',
     hindiName: 'दाल पालक तड़का',
     marathiName: 'डाळ पालक तडका',
@@ -5169,7 +5642,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'fd-7',
-    categoryId: 'flavorful-dals',
+    categoryId: 'flavorful-dals', groupedUnder: 'fd-leaf-dal-group',
     name: 'Dal Methi',
     hindiName: 'दाल मेथी',
     marathiName: 'डाळ मेथी',
@@ -5185,7 +5658,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'fd-8',
-    categoryId: 'flavorful-dals',
+    categoryId: 'flavorful-dals', groupedUnder: 'fd-leaf-dal-group',
     name: 'Dal Methi Tadka',
     hindiName: 'दाल मेथी तड़का',
     marathiName: 'डाळ मेथी तडका',
@@ -5217,3 +5690,4 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '10 mins'
   }
 ];
+
