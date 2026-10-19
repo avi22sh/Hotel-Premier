@@ -2214,6 +2214,8 @@ class HotelPremierApp {
           ${dish.tags && dish.tags.includes('spicy') ? `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>` : ''}
         </div>
 
+        ${modalVariantsHtml}
+
         <p class="modal-dish-desc">${initialDesc || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
 
         <div class="modal-dish-veg-guarantee">
@@ -2223,8 +2225,6 @@ class HotelPremierApp {
             <p class="veg-guarantee-note">Please tell our team about any food allergies or dietary requirements.</p>
           </div>
         </div>
-
-        ${modalVariantsHtml}
 
       </div>
     `;
@@ -2347,7 +2347,17 @@ class HotelPremierApp {
       }, 120);
     }
 
-    // 5. Synchronize the dish card in the background too
+    // 5. Update delivery buttons aria labels
+    const swiggyBtn = document.querySelector('.modal-btn-swiggy-order');
+    if (swiggyBtn && varName) {
+      swiggyBtn.setAttribute('aria-label', `Order ${varName} on Swiggy`);
+    }
+    const zomatoBtn = document.querySelector('.modal-btn-zomato-order');
+    if (zomatoBtn && varName) {
+      zomatoBtn.setAttribute('aria-label', `Order ${varName} on Zomato`);
+    }
+
+    // 6. Synchronize the dish card in the background too
     const cardPrice = document.getElementById(`price-display-${dishId}`);
     if (cardPrice && newPrice) cardPrice.innerText = `₹${newPrice}`;
 
@@ -2367,7 +2377,7 @@ class HotelPremierApp {
       });
     }
 
-    // 6. Persist active state on dish object
+    // 7. Persist active state on dish object
     const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
     if (dishObj) {
       if (newImg) dishObj._activeVariantImage = newImg;

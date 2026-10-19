@@ -3595,6 +3595,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'उडीद पापड',
     description: "Crisp traditional urad dal papad, served roasted, fried or with spicy masala topping.",
     price: 30,
+    displayPriceRange: '₹30 – ₹40',
+    isGroupMaster: true,
     variants: [
       {
         name: 'Roasted Papad',
@@ -3642,6 +3644,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'नाचणी पापड',
     description: "Crisp healthy finger millet (ragi/nagli) papad, available roasted, fried or with chatpata masala.",
     price: 30,
+    displayPriceRange: '₹30 – ₹40',
+    isGroupMaster: true,
     variants: [
       {
         name: 'Roasted Nagli Papad',
@@ -4009,6 +4013,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'अस्सॉर्टेड रोटी बास्केट',
     description: "Nine breads: one each of tandoori roti, naan, missi roti, pudina roti, kulcha, laccha paratha, garlic naan, methi paratha and aloo paratha.",
     price: 480,
+    displayPriceRange: '₹480 – ₹520',
+    isGroupMaster: true,
     variants: [
       { name: 'Plain Roti Basket', price: 480 },
       { name: 'Butter Roti Basket', price: 520 }
@@ -4762,6 +4768,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'भुने जीरे, सेंधा नमक और हरी धनिया से तड़की हुई ठंडी और पाचक पारंपरिक छाछ।',
     descriptionMr: 'भाजलेले जिरे, सैंधव मीठ आणि कोथिंबिरीची फोडणी दिलेले थंडगार व पाचक ताक.',
     price: 60,
+    displayPriceRange: '₹60 – ₹70',
+    isGroupMaster: true,
     variants: [
       {
         name: 'Plain Butter Milk',
@@ -4801,6 +4809,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'भुना जीरा, पुदीना, काला नमक और नींबू के चटपटे मसालों से बना पाचक शीतल पेय।',
     descriptionMr: 'भाजलेले जिरे, पुदिना, काळे मीठ आणि लिंबाच्या चटपटीत चवीचे थंड पाचक पेय.',
     price: 35,
+    displayPriceRange: '₹35 – ₹40',
+    isGroupMaster: true,
     variants: [
       {
         name: 'Jaljeera Water',
@@ -4840,6 +4850,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'ताज़े नींबू का रस, ठंडे पानी या फ़िज़ी सोडे के साथ, मीठा या नमकीन परोसा जाता है।',
     descriptionMr: 'ताज्या लिंबाचा रस, थंड पाणी किंवा सोड्यासोबत, गोड अथवा खारट चवीत दिला जातो.',
     price: 35,
+    displayPriceRange: '₹35 – ₹40',
+    isGroupMaster: true,
     variants: [
       {
         name: 'Fresh Lime Water',
