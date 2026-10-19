@@ -2242,32 +2242,20 @@ class HotelPremierApp {
     swiggyBtn.href = this.getDeliveryUrl('swiggy', dish);
     swiggyBtn.target = '_blank';
     swiggyBtn.rel = 'noopener noreferrer';
-    swiggyBtn.setAttribute('aria-label', `Order on Swiggy`);
+    swiggyBtn.setAttribute('aria-label', `Order from Swiggy`);
     swiggyBtn.innerHTML = `
-      <span class="delivery-brand-badge swiggy-badge">
-        <svg class="delivery-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 10.5c-1.93 0-3.5-1.57-3.5-3.5S10.07 5.5 12 5.5s3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
-        </svg>
-        <span class="delivery-brand-name">SWIGGY</span>
-      </span>
-      <span class="delivery-btn-action-label">Order Online ↗</span>
+      <span class="delivery-btn-text">Order from Swiggy ↗</span>
     `;
 
-    // Zomato button with authentic brand color & badge
+    // Zomato button with authentic brand color & typography
     const zomatoBtn = document.createElement('a');
     zomatoBtn.className = 'modal-btn-zomato-order delivery-btn';
     zomatoBtn.href = this.getDeliveryUrl('zomato', dish);
     zomatoBtn.target = '_blank';
     zomatoBtn.rel = 'noopener noreferrer';
-    zomatoBtn.setAttribute('aria-label', `Order on Zomato`);
+    zomatoBtn.setAttribute('aria-label', `Order from Zomato`);
     zomatoBtn.innerHTML = `
-      <span class="delivery-brand-badge zomato-badge">
-        <svg class="delivery-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
-          <path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/>
-        </svg>
-        <span class="delivery-brand-name zomato-wordmark">zomato</span>
-      </span>
-      <span class="delivery-btn-action-label">Order Online ↗</span>
+      <span class="delivery-btn-text">Order from Zomato ↗</span>
     `;
 
     orderActions.appendChild(swiggyBtn);

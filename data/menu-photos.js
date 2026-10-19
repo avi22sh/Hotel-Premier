@@ -1,5 +1,8 @@
-﻿// Owner-selected photos, exported 2026-10-15. Originals preserved.
+// Owner-selected photos, exported 2026-10-15. Originals preserved.
 window.HOTEL_PREMIER_PHOTOS = {
+  "upvas-fasting-group": "assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg",
+  "tt-chaat-group": "assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg",
+  "tt-chana-roast-group": "assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg",
   "tc-paneer-tikka-group": "assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg",
   "tt-pakoda-group": "assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg",
   "fa-papad-group": "assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg",

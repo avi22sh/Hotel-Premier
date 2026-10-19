@@ -1,4 +1,4 @@
-﻿// Hotel Premier - Pride Pure Veg AC Restaurant Menu Database
+// Hotel Premier - Pride Pure Veg AC Restaurant Menu Database
 // Standardized Multilingual Menu: English, Hindi (Devanagari), Marathi (Devanagari)
 // Verified Against Official Updated Reference Menu Document (DETAILS.docx)
 window.HOTEL_PREMIER_CATEGORIES = [
@@ -199,9 +199,8 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
     { "id": "all", "name": "All Breakfast", "hindiName": "सभी नाश्ता", "marathiName": "सर्व नाश्ता" },
     { "id": "poori-chole", "name": "Poori & Chole", "hindiName": "पूरी एवं छोले", "marathiName": "पुरी व छोले", "dishIds": ["md-1", "md-2"] },
     { "id": "parathas", "name": "Stuffed Parathas", "hindiName": "भरवां पराठे", "marathiName": "खमंग पराठे", "dishIds": ["md-parathas-group", "md-3", "md-4", "md-5", "md-mix-veg-paratha"] },
-    { "id": "poha-snacks", "name": "Poha & Snacks", "hindiName": "पोहा व उपवास स्नैक्स", "marathiName": "पोहे व उपवास", "dishIds": ["md-6", "md-7", "md-17", "md-18"] },
-    { "id": "sandwiches", "name": "Club & Grilled Sandwiches", "hindiName": "सैंडविच", "marathiName": "सँडविच", "dishIds": ["md-sandwiches-group", "md-16", "md-11", "md-14", "md-12", "md-15", "md-13", "md-10"] },
-    { "id": "toast-jam", "name": "Toast & Butter", "hindiName": "टोस्ट एवं बटर", "marathiName": "टोस्ट व बटर", "dishIds": ["md-8", "md-9"] }
+    { "id": "poha-snacks", "name": "Poha & Fasting", "hindiName": "पोहा व उपवास", "marathiName": "पोहे व उपवास", "dishIds": ["md-6", "md-7", "upvas-fasting-group", "md-17", "md-18"] },
+    { "id": "sandwiches", "name": "Sandwiches & Toasts", "hindiName": "सैंडविच एवं टोस्ट", "marathiName": "सँडविच व टोस्ट", "dishIds": ["md-sandwiches-group", "md-8", "md-9", "md-16", "md-11", "md-14", "md-12", "md-15", "md-13", "md-10"] }
   ],
   "hot-hearty": [
     { "id": "all", "name": "All Drinks", "hindiName": "सभी पेय", "marathiName": "सर्व पेये" },
@@ -211,8 +210,8 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   "tasty-tidbits": [
     { "id": "all", "name": "All Tidbits", "hindiName": "सभी स्नैक्स", "marathiName": "सर्व स्नॅक्स" },
     { "id": "pakodas", "name": "Crisp Pakodas", "hindiName": "कुरकुरे पकोड़े", "marathiName": "कुरकुरीत भजी", "dishIds": ["tt-pakoda-group", "tt-1", "tt-2", "tt-3"] },
-    { "id": "fries-roast", "name": "Fries & Roasts", "hindiName": "फ्राइज एवं रोस्ट", "marathiName": "फ्राईज व रोस्ट", "dishIds": ["tt-4", "tt-5", "tt-8"] },
-    { "id": "chaat-bhel", "name": "Chaat & Bhel", "hindiName": "चाट एवं भेल", "marathiName": "चाट व भेळ", "dishIds": ["tt-6", "tt-7", "tt-9", "tt-10"] }
+    { "id": "fries-roast", "name": "Roasted Chana & Fries", "hindiName": "चना रोस्ट एवं फ्राइज", "marathiName": "चणा रोस्ट व फ्राईज", "dishIds": ["tt-chana-roast-group", "upvas-fasting-group", "tt-4", "tt-5", "tt-8"] },
+    { "id": "chaat-bhel", "name": "Chaat & Bhel", "hindiName": "चाट एवं भेल", "marathiName": "चाट व भेळ", "dishIds": ["tt-chaat-group", "tt-6", "tt-7", "tt-9", "tt-10"] }
   ],
   "premier-soups": [
     { "id": "all", "name": "All Soups", "hindiName": "सभी सूप", "marathiName": "सर्व सूप" },
@@ -364,6 +363,26 @@ const PARATHAS_VARIANTS = [
 ];
 
 const SANDWICHES_VARIANTS = [
+  {
+    name: 'Bread Butter Toast',
+    hindiName: 'ब्रेड बटर टोस्ट',
+    marathiName: 'ब्रेड बटर टोस्ट',
+    price: 80,
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
+    description: 'Golden crispy toasted bread generously brushed with fresh creamy dairy butter.',
+    descriptionHi: 'मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।',
+    descriptionMr: 'ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड.'
+  },
+  {
+    name: 'Bread Butter with Jam',
+    hindiName: 'ब्रेड बटर जैम',
+    marathiName: 'ब्रेड बटर जॅम',
+    price: 80,
+    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER JAM.jpg',
+    description: 'Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.',
+    descriptionHi: 'मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।',
+    descriptionMr: 'मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन.'
+  },
   {
     name: 'Veg Sandwich',
     hindiName: 'वेज सैंडविच',
@@ -1367,6 +1386,105 @@ const GREEN_DAL_VARIANTS = [
 ];
 
 
+const UPVAS_FASTING_VARIANTS = [
+  {
+    name: 'Sabudana Khichadi',
+    hindiName: 'साबुदाना खिचड़ी',
+    marathiName: 'साबुदाणा खिचडी',
+    price: 140,
+    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg',
+    description: 'Soaked tapioca pearls tossed with potatoes, roasted peanuts, green chillies, fresh coriander and rock salt.',
+    descriptionHi: 'मूंगफली, हरी मिर्च और सेंधा नमक के साथ बनी पारंपरिक व्रत स्पेशल साबुदाना खिचड़ी।',
+    descriptionMr: 'शेंगदाण्याचा कूट, हिरवी मिरची व बटाट्यासह बनवलेली सात्विक उपवासाची साबुदाणा खिचडी.'
+  },
+  {
+    name: 'Sabudana Wada with Curd',
+    hindiName: 'साबुदाना वड़ा (दही के साथ)',
+    marathiName: 'साबुदाणा वडा (दह्यासोबत)',
+    price: 150,
+    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA WADA.jpg',
+    description: 'Crisp golden deep-fried sago and potato patties, served hot with sweetened fresh curd.',
+    descriptionHi: 'बाहर से कुरकुरे और अंदर से नर्म साबुदाना वड़े, ठंडे मीठे दही के साथ परोसे जाते हैं।',
+    descriptionMr: 'कुरकुरीत गरमागरम साबुदाणा वडे, गोडसर ताज्या दह्यासोबत वाढलेले.'
+  },
+  {
+    name: 'Crispy French Fries (Finger Chips)',
+    hindiName: 'फ़िंगर चिप्स',
+    marathiName: 'फिंगर चिप्स',
+    price: 140,
+    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    description: 'Golden fried potato batons seasoned with mild salt, crisp on the outside and tender inside.',
+    descriptionHi: 'गोल्डन फ्राइड कुरकुरे आलू फिंगर चिप्स, व्रत और स्नैक्स के लिए बेहतरीन।',
+    descriptionMr: 'सोनेरी कुरकुरीत तळलेले बटाटा फिंगर चिप्स, उपवासासाठी व चवीसाठी अप्रतिम.'
+  }
+];
+
+const CHAAT_VARIANTS = [
+  {
+    name: 'Aloo Chaat',
+    hindiName: 'आलू चाट',
+    marathiName: 'आलू चाट',
+    price: 110,
+    image: 'assets/menu-images/TASTY TIDBITS/ALOO CHAAT 1.jpg',
+    description: 'Crisp potato cubes tossed with tangy tamarind chutney, mint spread, chaat masala and fresh coriander.',
+    descriptionHi: 'कुरकुरे उबले आलू, खट्टी-मीठी इमली की चटनी और तीखे मसालों से बनी चटपटी आलू चाट।',
+    descriptionMr: 'उकडलेले खमंग बटाटे, चिंचेची चटणी व चाट मसाल्याची खमंग चटपटीत आलू चाट.'
+  },
+  {
+    name: 'Chana Chaat',
+    hindiName: 'चना चाट',
+    marathiName: 'चना चाट',
+    price: 160,
+    image: 'assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg',
+    description: 'Tender chickpeas and finely chopped garden vegetables tossed with lemon juice, chaat spices and zesty chutney.',
+    descriptionHi: 'उबले काबुली चने, बारीक कटी सब्जियाँ और नींबू-मसालों का चटपटा स्वास्थ्यवर्धक मेल।',
+    descriptionMr: 'काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट.'
+  },
+  {
+    name: 'Peanut Chaat',
+    hindiName: 'पीनट चाट',
+    marathiName: 'पीनट चाट',
+    price: 190,
+    image: 'assets/menu-images/TASTY TIDBITS/PEANUT CHAAT.jpg',
+    description: 'Roasted crunchy peanuts tossed with diced onions, juicy tomatoes, green chillies and fresh lemon coriander.',
+    descriptionHi: 'कुरकुरी भुनी मूंगफली, प्याज, टमाटर और हरी मिर्च की चटपटी चाट।',
+    descriptionMr: 'खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट.'
+  },
+  {
+    name: 'Chinese Bhel',
+    hindiName: 'चाइनीज़ भेल',
+    marathiName: 'चायनीज भेळ',
+    price: 200,
+    image: 'assets/menu-images/TASTY TIDBITS/CHINESE BHEL.jpg',
+    description: 'Crisp fried noodles tossed with wok-tossed cabbage, carrots and spicy tangy Indo-Chinese Schezwan sauce.',
+    descriptionHi: 'कुरकुरी फ्राइड नूडल्स, शिमला मिर्च, पत्तागोभी और तीखी शेजवान सॉस से बनी लोकप्रिय चाइनीज़ भेल।',
+    descriptionMr: 'कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ.'
+  }
+];
+
+const CHANA_ROAST_VARIANTS = [
+  {
+    name: 'Chana Roasted',
+    hindiName: 'चना रोस्ट',
+    marathiName: 'चना रोस्ट',
+    price: 170,
+    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
+    description: 'Whole chickpeas roasted golden-brown with dry roasted aromatic Indian spices, crispy and wholesome.',
+    descriptionHi: 'विशेष मसालों में सुनहरा कुरकुरा भुना हुआ काबुली चना, शाम के नाश्ते के लिए उत्तम।',
+    descriptionMr: 'खमंग भाजलेले चणे व मसाल्यांचा कुरकुरीत पारंपारिक चणा रोस्ट.'
+  },
+  {
+    name: 'Chana Garlic Roast',
+    hindiName: 'चना लहसुन रोस्ट',
+    marathiName: 'चना लसूण रोस्ट',
+    price: 200,
+    image: 'assets/menu-images/TASTY TIDBITS/CHANA GARLIC ROAST 1.jpg',
+    description: 'Golden roasted chickpeas infused with intense burnt garlic, crushed pepper and savory house spices.',
+    descriptionHi: 'भुने हुए चने में भुने लहसुन और तीखे मसालों का तीखा व लाजवाब स्वाद।',
+    descriptionMr: 'तळलेला लसूण आणि खमंग मसाल्यांनी युक्त कुरकुरीत चणा लसूण रोस्ट.'
+  }
+];
+
 window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'tc-paneer-tikka-group', categoryId: 'tandoor-classics',
@@ -1389,6 +1507,45 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '10-15 mins',
     variants: PAKODA_VARIANTS
+  },
+  {
+    id: 'upvas-fasting-group', categoryId: 'morning-delights',
+    name: 'Royal Vrat & Fasting Specialties (Upvas Delicacies)',
+    hindiName: 'शाही उपवास एवं व्रत स्पेशल',
+    marathiName: 'शाही उपवास विशेष डिशेस',
+    description: 'Pure satvik fasting delicacies made with premium tapioca pearls, roasted peanuts, golden potatoes and rock salt.',
+    descriptionHi: 'सात्विक उपवास थाली - साबुदाना खिचड़ी, कुरकुरे वड़े और फिंगर चिप्स का पवित्र व स्वादिष्ट संगम।',
+    descriptionMr: 'शुद्ध सात्विक उपवासाचे पदार्थ - साबुदाणा खिचडी, कुरकुरीत वडे आणि फिंगर चिप्स.',
+    price: 140, displayPriceRange: '₹140 – ₹150', isGroupMaster: true,
+    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg',
+    tags: ['veg', 'jain-available', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '12 mins',
+    variants: UPVAS_FASTING_VARIANTS
+  },
+  {
+    id: 'tt-chaat-group', categoryId: 'tasty-tidbits',
+    name: 'Chaat & Bhel Street Delicacies',
+    hindiName: 'चाट एवं भेल स्पेशल',
+    marathiName: 'चाट व भेळ स्पेशल',
+    description: 'Tangy, crunchy and spicy street-style chaats tossed with zesty chutneys, fresh herbs, sev and roasted spices.',
+    descriptionHi: 'चटपटी आलू चाट, चना चाट, पीनट चाट और क्रिस्पी चाइनीज़ भेल का स्वादिष्ट जायका।',
+    descriptionMr: 'चटपटीत आलू चाट, चना चाट, पीनट चाट आणि कुरकुरीत चायनीज भेळ.',
+    price: 110, displayPriceRange: '₹110 – ₹200', isGroupMaster: true,
+    image: 'assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '10 mins',
+    variants: CHAAT_VARIANTS
+  },
+  {
+    id: 'tt-chana-roast-group', categoryId: 'tasty-tidbits',
+    name: 'Crisp Roasted Chana Specialties',
+    hindiName: 'कुरकुरा चना रोस्ट स्पेशल',
+    marathiName: 'कुरकुरीत चणा रोस्ट स्पेशल',
+    description: 'Golden roasted chickpeas tossed with aromatic Indian spices, sea salt and golden-fried garlic cloves.',
+    descriptionHi: 'पारंपरिक मसालों और भुने लहसुन के साथ कुरकुरा तैयार किया गया चना रोस्ट।',
+    descriptionMr: 'खमंग मसाले व भाजलेल्या लसणासह कुरकुरीत भाजलेले चणे.',
+    price: 170, displayPriceRange: '₹170 – ₹200', isGroupMaster: true,
+    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '10 mins',
+    variants: CHANA_ROAST_VARIANTS
   },
   {
     id: 'fa-papad-group', categoryId: 'fresh-addons',
@@ -1659,7 +1816,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER JAM.jpg',
     rating: 4.4,
-    prepTime: '5 mins'
+    prepTime: '5 mins',
+    variants: SANDWICHES_VARIANTS,
+    groupedUnder: 'md-sandwiches-group'
   },
   {
     id: 'md-9',
@@ -1674,7 +1833,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
     rating: 4.3,
-    prepTime: '5 mins'
+    prepTime: '5 mins',
+    variants: SANDWICHES_VARIANTS,
+    groupedUnder: 'md-sandwiches-group'
   },
   {
     id: 'md-sandwiches-group',
@@ -1685,8 +1846,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     description: 'Freshly prepared cold, toasted and jumbo grilled sandwiches, layered with garden veggies, cheese and mint chutney.',
     descriptionHi: 'ताज़ी सब्जियों, पिघलते चीज़ और हरी चटनी से बने प्लेन, टोस्ट और जंबो ग्रिल्ड सैंडविच।',
     descriptionMr: 'भाज्या, भरपूर चीज आणि हिरव्या चटणीचे प्लेन, टोस्ट व जंबो ग्रील्ड सँडविच.',
-    price: 85,
-    displayPriceRange: '₹85 – ₹200',
+    price: 80,
+    displayPriceRange: '₹80 – ₹200',
     isGroupMaster: true,
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
@@ -1828,7 +1989,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg',
     rating: 4.9,
-    prepTime: '12 mins'
+    prepTime: '12 mins',
+    variants: UPVAS_FASTING_VARIANTS,
+    groupedUnder: 'upvas-fasting-group'
   },
   {
     id: 'md-18',
@@ -1843,7 +2006,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/MORNING DELIGHT/SABUDANA WADA.jpg',
     rating: 4.9,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: UPVAS_FASTING_VARIANTS,
+    groupedUnder: 'upvas-fasting-group'
   },
 
   // ==================== HOT & HEARTY ====================
@@ -1975,7 +2140,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
     rating: 4.6,
-    prepTime: '10 mins'
+    prepTime: '10 mins',
+    variants: UPVAS_FASTING_VARIANTS,
+    groupedUnder: 'upvas-fasting-group'
   },
   {
     id: 'tt-5',
@@ -1990,7 +2157,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
     rating: 4.4,
-    prepTime: '10 mins'
+    prepTime: '10 mins',
+    variants: CHANA_ROAST_VARIANTS,
+    groupedUnder: 'tt-chana-roast-group'
   },
   {
     id: 'tt-6',
@@ -2005,7 +2174,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg',
     rating: 4.7,
-    prepTime: '10 mins'
+    prepTime: '10 mins',
+    variants: CHAAT_VARIANTS,
+    groupedUnder: 'tt-chaat-group'
   },
   {
     id: 'tt-7',
@@ -2020,7 +2191,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/TASTY TIDBITS/PEANUT CHAAT.jpg',
     rating: 4.8,
-    prepTime: '10 mins'
+    prepTime: '10 mins',
+    variants: CHAAT_VARIANTS,
+    groupedUnder: 'tt-chaat-group'
   },
   {
     id: 'tt-8',
@@ -2035,7 +2208,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/TASTY TIDBITS/CHANA GARLIC ROAST 1.jpg',
     rating: 4.9,
-    prepTime: '12 mins'
+    prepTime: '12 mins',
+    variants: CHANA_ROAST_VARIANTS,
+    groupedUnder: 'tt-chana-roast-group'
   },
   {
     id: 'tt-9',
@@ -2050,7 +2225,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/TASTY TIDBITS/ALOO CHAAT 1.jpg',
     rating: 4.6,
-    prepTime: '10 mins'
+    prepTime: '10 mins',
+    variants: CHAAT_VARIANTS,
+    groupedUnder: 'tt-chaat-group'
   },
   {
     id: 'tt-10',
@@ -2065,7 +2242,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/TASTY TIDBITS/CHINESE BHEL.jpg',
     rating: 4.8,
-    prepTime: '12 mins'
+    prepTime: '12 mins',
+    variants: CHAAT_VARIANTS,
+    groupedUnder: 'tt-chaat-group'
   },
 
   // ==================== PREMIER SOUPS ====================
