@@ -644,6 +644,228 @@ const RICE_VARIANTS = [
   }
 ];
 
+const RAITA_VARIANTS = [
+  {
+    name: 'Mix Veg Raita',
+    hindiName: 'मिक्स वेज रायता',
+    marathiName: 'मिक्स व्हेज रायता',
+    price: 80,
+    image: 'assets/menu-images/ACCOMPANIMENTS/MIX VEG RAITA.jpg',
+    description: 'Chilled creamy yogurt blended with diced cucumber, onions, tomatoes and subtle spices.',
+    descriptionHi: 'बारीक कटे खीरे, प्याज, टमाटर और भुने मसालों से बना ताज़ा वेज रायता।',
+    descriptionMr: 'बारीक चिरलेली काकडी, कांदा, टोमॅटो आणि जिरेपूड घातलेले ताजे व्हेज रायता.'
+  },
+  {
+    name: 'Boondi Raita',
+    hindiName: 'बूंदी रायता',
+    marathiName: 'बुंदी रायता',
+    price: 90,
+    image: 'assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.jpg',
+    description: 'Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.',
+    descriptionHi: 'भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।',
+    descriptionMr: 'भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता.'
+  },
+  {
+    name: 'Pineapple Raita',
+    hindiName: 'पाइनएप्पल रायता',
+    marathiName: 'अननस रायता',
+    price: 120,
+    image: 'assets/menu-images/ACCOMPANIMENTS/PINEAPPLE RAITA.jpg',
+    description: 'Sweet juicy pineapple titbits folded in velvety sweetened chilled yogurt.',
+    descriptionHi: 'मीठे रसीले अनन्नास के टुकड़ों और ठंडे गाढ़े दही का लाजवाब संगम।',
+    descriptionMr: 'गोड रसाळ अननसाचे तुकडे आणि थंडगार दाट दह्याचे स्वादिष्ट रायता.'
+  },
+  {
+    name: 'Mix Fruit Raita',
+    hindiName: 'मिक्स फ्रूट रायता',
+    marathiName: 'मिक्स फ्रूट रायता',
+    price: 130,
+    image: 'assets/menu-images/ACCOMPANIMENTS/MIX FRUIT RAITA.jpg',
+    description: 'A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.',
+    descriptionHi: 'ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।',
+    descriptionMr: 'ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता.'
+  },
+  {
+    name: 'Curd (Plain)',
+    hindiName: 'ताज़ा दही',
+    marathiName: 'ताजे दही',
+    price: 60,
+    image: 'assets/menu-images/ACCOMPANIMENTS/CURD.jpg',
+    description: 'Traditional thick, creamy and fresh home-set dairy yogurt.',
+    descriptionHi: 'शुद्ध दूध से जमाया हुआ गाढ़ा, ताज़ा और मीठा सादा दही।',
+    descriptionMr: 'घरगुती पद्धतीने लावलेले घट्ट, ताजे आणि चवदार साधे दही.'
+  }
+];
+
+const SOUPS_VARIANTS = [
+  {
+    name: 'Veg Manchow Soup',
+    hindiName: 'वेज मंचाऊ सूप',
+    marathiName: 'व्हेज मंचाव सूप',
+    price: 140,
+    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg',
+    description: 'A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.',
+    descriptionHi: 'लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।',
+    descriptionMr: 'लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप.'
+  },
+  {
+    name: 'Hot & Sour Soup',
+    hindiName: 'हॉट एंड सोर सूप',
+    marathiName: 'हॉट अँड सोर सूप',
+    price: 140,
+    image: 'assets/menu-images/SOUPS/HOT & SOUR SOUP.jpg',
+    description: 'Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.',
+    descriptionHi: 'तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।',
+    descriptionMr: 'तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप.'
+  },
+  {
+    name: 'Tomato Soup',
+    hindiName: 'टमाटर सूप',
+    marathiName: 'टोमॅटो सूप',
+    price: 140,
+    image: 'assets/menu-images/SOUPS/TOMATO SOUP.jpg',
+    description: 'Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.',
+    descriptionHi: 'ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।',
+    descriptionMr: 'पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह.'
+  },
+  {
+    name: 'Lemon Coriander Soup',
+    hindiName: 'लेमन कोरिएंडर सूप',
+    marathiName: 'लेमन कोथिंबीर सूप',
+    price: 140,
+    image: 'assets/menu-images/SOUPS/LEMON CORIANDER SOUP.jpg',
+    description: 'Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.',
+    descriptionHi: 'हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।',
+    descriptionMr: 'ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप.'
+  },
+  {
+    name: 'Sweetcorn Soup',
+    hindiName: 'वेज स्वीटकॉर्न सूप',
+    marathiName: 'व्हेज स्वीटकॉर्न सूप',
+    price: 140,
+    image: 'assets/menu-images/SOUPS/VEG SWEETCORN SOUP.jpg',
+    description: 'Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.',
+    descriptionHi: 'मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।',
+    descriptionMr: 'गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप.'
+  },
+  {
+    name: 'Veg Clear Soup',
+    hindiName: 'वेज क्लियर सूप',
+    marathiName: 'व्हेज क्लिअर सूप',
+    price: 120,
+    image: 'assets/menu-images/SOUPS/VEG CLEAR SOUP.jpg',
+    description: 'Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.',
+    descriptionHi: 'गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।',
+    descriptionMr: 'गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप.'
+  }
+];
+
+const BIRYANI_VARIANTS = [
+  {
+    name: 'Veg Dum Biryani',
+    hindiName: 'वेज दम बिरयानी',
+    marathiName: 'व्हेज दम बिर्याणी',
+    price: 260,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
+    description: 'Layered basmati rice slow-cooked on dum with vegetables, saffron, mint and roasted cashews.',
+    descriptionHi: 'धीमी आंच पर दम देकर पकाई गई खुशबूदार केसर, पुदीना और काजू वाली खास वेज बिरयानी।',
+    descriptionMr: 'दमवर शिजवलेला सुगंधी बासमती तांदूळ, भाज्या, केशर, पुदिना आणि काजू घातलेली शाही बिर्याणी.'
+  },
+  {
+    name: 'Veg Hyderabadi Biryani',
+    hindiName: 'वेज हैदराबादी बिरयानी',
+    marathiName: 'व्हेज हैदराबादी बिर्याणी',
+    price: 270,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG HYDERABADI BIRYANI.jpg',
+    description: 'Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.',
+    descriptionHi: 'हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।',
+    descriptionMr: 'हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी.'
+  },
+  {
+    name: 'Paneer Tikka Biryani',
+    hindiName: 'पनीर टिक्का बिरयानी',
+    marathiName: 'पनीर टिक्का बिर्याणी',
+    price: 275,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER TIKKA BIRYANI.jpg',
+    description: 'Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.',
+    descriptionHi: 'तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।',
+    descriptionMr: 'तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी.'
+  },
+  {
+    name: 'Kaju Paneer Biryani',
+    hindiName: 'काजू पनीर बिरयानी',
+    marathiName: 'काजू पनीर बिर्याणी',
+    price: 275,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/KAJU PANEER BIRYANI 1.jpg',
+    description: 'Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.',
+    descriptionHi: 'घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।',
+    descriptionMr: 'तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी.'
+  },
+  {
+    name: 'Paneer Patakha Biryani',
+    hindiName: 'पनीर पटाखा बिरयानी',
+    marathiName: 'पनीर फटाका बिर्याणी',
+    price: 285,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER PATAKHA BIRYANI.jpg',
+    description: 'Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.',
+    descriptionHi: 'तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।',
+    descriptionMr: 'झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका.'
+  }
+];
+
+const PULAO_VARIANTS = [
+  {
+    name: 'Veg Pulao',
+    hindiName: 'वेज पुलाव',
+    marathiName: 'व्हेज पुलाव',
+    price: 240,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG PULAO.jpg',
+    description: 'Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.',
+    descriptionHi: 'ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।',
+    descriptionMr: 'ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव.'
+  },
+  {
+    name: 'Mutter Paneer Pulao',
+    hindiName: 'मटर पनीर पुलाव',
+    marathiName: 'मटार पनीर पुलाव',
+    price: 245,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MUTTER PANEER PULAO.jpg',
+    description: 'Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.',
+    descriptionHi: 'नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।',
+    descriptionMr: 'मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव.'
+  },
+  {
+    name: 'Masala Rice',
+    hindiName: 'मसाला राइस',
+    marathiName: 'मसाला राईस',
+    price: 250,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MASALA RICE.jpg',
+    description: 'Aromatic basmati rice cooked with authentic Khandeshi spices, onions, tomatoes and coriander.',
+    descriptionHi: 'खानदेशी भुने मसालों, प्याज, टमाटर और हरी धनिया से तैयार चटपटा मसाला चावल।',
+    descriptionMr: 'खानदेशी खमंग मसाले, कांदा, टोमॅटो व कोथिंबीर घालून परतलेला झणझणीत मसाला भात.'
+  },
+  {
+    name: 'Lemon Rice',
+    hindiName: 'लेमन राइस',
+    marathiName: 'लेमन राईस',
+    price: 200,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/LEMON RICE 1.jpg',
+    description: 'Tangy South Indian-style basmati rice tempered with mustard seeds, curry leaves and lemon.',
+    descriptionHi: 'राई, कढ़ी पत्ता, हरी मिर्च और ताज़े नींबू के रस के तड़के वाला खट्टा-नमकीन चावल।',
+    descriptionMr: 'मोहरी, कढीपत्ता, हिरवी मिरची आणि ताज्या लिंबाचा रस घातलेला चवदार लेमन राईस.'
+  },
+  {
+    name: 'Curd Rice',
+    hindiName: 'कर्ड राइस',
+    marathiName: 'कर्ड राईस',
+    price: 230,
+    image: 'assets/menu-images/RICE & BIRYANI FIESTA/CURD RICE 1.jpg',
+    description: 'Cool comforting basmati rice blended with fresh creamy curd and tempered with mustard and ginger.',
+    descriptionHi: 'ताज़े गाढ़े दही और चावल का मेल, राई, अदरक और कढ़ी पत्ते के तड़के के साथ।',
+    descriptionMr: 'थंडगार ताजे दही व मऊ भाताचे मिश्रण, मोहरी, आले आणि कढीपत्त्याची खमंग फोडणी.'
+  }
+];
+
 window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'md-mix-veg-paratha', categoryId: 'morning-delights',
@@ -665,7 +887,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Curd', hindiName: 'दही', marathiName: 'दही',
     description: 'Creamy, gently tangy plain yogurt to accompany your meal.',
     price: 60, image: 'assets/menu-images/ACCOMPANIMENTS/CURD.jpg', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false,
-    rating: 4.7, prepTime: '5 mins'
+    rating: 4.7, prepTime: '5 mins',
+    variants: RAITA_VARIANTS
   },
   {
     id: 'cb-juice-orange', categoryId: 'chilled-beverages',
@@ -1213,6 +1436,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'व्हेज मंचाव सूप',
     description: "A spicy, tangy vegetable soup with garlic, soy sauce and chilli, finished with crisp fried noodles.",
     price: 140,
+    variants: SOUPS_VARIANTS,
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -1228,6 +1452,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'हॉट अँड सोर सूप',
     description: "Vegetable soup with the warmth of chilli and black pepper, balanced by a tangy splash of vinegar.",
     price: 140,
+    variants: SOUPS_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -1243,6 +1468,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'टोमॅटो सूप',
     description: "Smooth tomato soup with a gently tangy finish.",
     price: 140,
+    variants: SOUPS_VARIANTS,
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -1258,6 +1484,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'लेमन कोथिंबीर सूप',
     description: "A light, clear soup brightened with fresh coriander and lemon juice.",
     price: 140,
+    variants: SOUPS_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -1273,6 +1500,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'व्हेज स्वीटकॉर्न सूप',
     description: "A comforting sweetcorn soup with aromatic seasoning.",
     price: 140,
+    variants: SOUPS_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -1288,6 +1516,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'व्हेज क्लिअर सूप',
     description: "A light broth with carrots, beans, button mushrooms and onions, topped with spring onions.",
     price: 120,
+    variants: SOUPS_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3063,6 +3292,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'बुंदी रायता',
     description: "Creamy yogurt blended with lightly spiced boondi.",
     price: 90,
+    variants: RAITA_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3078,6 +3308,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'अननस रायता',
     description: "Creamy yogurt with sweet pineapple chunks and a light touch of spice.",
     price: 120,
+    variants: RAITA_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3093,6 +3324,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'मिक्स फ्रूट रायता',
     description: "Creamy yogurt folded with a medley of juicy fruits.",
     price: 130,
+    variants: RAITA_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3670,6 +3902,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'व्हेज दम बिर्याणी',
     description: "Vegetable biryani with crunchy cashews, saffron, coriander and mint.",
     price: 260,
+    variants: BIRYANI_VARIANTS,
     tags: ['veg', 'bestseller', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3686,6 +3919,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'व्हेज हैदराबादी बिर्याणी',
     description: "Fragrant, spiced vegetable biryani prepared in a green Hyderabadi style.",
     price: 270,
+    variants: BIRYANI_VARIANTS,
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3701,6 +3935,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'पनीर टिक्का बिर्याणी',
     description: "Grilled paneer paired with aromatic, spiced biryani rice.",
     price: 275,
+    variants: BIRYANI_VARIANTS,
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3716,6 +3951,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'काजू पनीर बिर्याणी',
     description: "Fragrant rice cooked with paneer, cashews and aromatic spices.",
     price: 275,
+    variants: BIRYANI_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3731,6 +3967,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'पनीर फटाका बिर्याणी',
     description: "Spicy paneer tikka roasted in the tandoor and cooked with fragrant basmati rice.",
     price: 285,
+    variants: BIRYANI_VARIANTS,
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3811,6 +4048,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'व्हेज पुलाव',
     description: "Rice cooked with a medley of vegetables and spices.",
     price: 240,
+    variants: PULAO_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3826,6 +4064,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'मटार पनीर पुलाव',
     description: "Fragrant rice with green peas, soft paneer and aromatic spices.",
     price: 245,
+    variants: PULAO_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3841,6 +4080,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'कर्ड राईस',
     description: "Rice mixed with yogurt and seasoned with mustard, curry leaves and spices.",
     price: 230,
+    variants: PULAO_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3856,6 +4096,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'मसाला राईस',
     description: "Basmati rice seasoned with aromatic herbs and spices.",
     price: 250,
+    variants: PULAO_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -3871,6 +4112,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'लेमन राईस',
     description: "Tangy South Indian-style rice with lemon juice, mustard seeds and curry leaves.",
     price: 200,
+    variants: PULAO_VARIANTS,
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -4775,6 +5017,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     hindiName: 'मिक्स वेज रायता',
     marathiName: 'मिक्स व्हेज रायता',
     price: 80,
+    variants: RAITA_VARIANTS,
     description: "Chilled yogurt blended with mixed vegetables and subtle spices.",
     tags: ['veg'],
     dietary: 'pure-veg',
