@@ -728,6 +728,14 @@ window.HOTEL_PREMIER_I18N = {
       desc_hi: 'Triple Schezwan Rice, Hakka Noodles, Fried Rice',
       desc_mr: 'Triple Schezwan Rice, Hakka Noodles, Fried Rice'
     },
+    'delivery-thalis': {
+      en: 'Premier Royal Thalis • Online Exclusives',
+      hi: 'प्रीमियर रॉयल थालियाँ (स्विगी व ज़ोमैटो)',
+      mr: 'प्रीमियर रॉयल थाळी (स्विगी व झोमॅटो)',
+      desc_en: 'Swiggy & Zomato exclusive complete thali platters: Mini Thali, Pride Signature, Maharaja Grand Feast & Indo-Chinese Wok Thali',
+      desc_hi: 'स्विगी व ज़ोमैटो पर विशेष रूप से उपलब्ध स्वादिष्ट, सम्पूर्ण एवं पौष्टिक प्रीमियर थालियाँ',
+      desc_mr: 'झोमॅटो व स्विगीवर विशेष उपलब्ध चविष्ट, परिपूर्ण आणि रुचकर प्रीमियर थाळी'
+    },
     'vegetable-specialties': {
       en: 'Veg Specialities',
       hi: 'सब्जी स्पेशल (Veg Specialities)',
