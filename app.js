@@ -1846,6 +1846,13 @@ class HotelPremierApp {
     return dish.description;
   }
 
+  getVariantDescription(variant) {
+    if (!variant) return '';
+    if (this.currentLang === 'hi' && variant.descriptionHi) return variant.descriptionHi;
+    if (this.currentLang === 'mr' && (variant.descriptionMr || variant.descriptionHi)) return variant.descriptionMr || variant.descriptionHi;
+    return variant.description || '';
+  }
+
   renderDishCard(dish) {
     const hasVariants = dish.variants && dish.variants.length > 0;
     const displayImage = dish._activeVariantImage || dish.image;
@@ -1979,15 +1986,42 @@ class HotelPremierApp {
     clearTimeout(this.dishDetailCloseTimer);
     this.lastDishDetailTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
-    const displayImage = dish._activeVariantImage || dish.image;
-    const displayPrice = dish._activeVariantPrice || dish.price;
+    const hasModalVariants = dish.variants && dish.variants.length > 0;
+    let initialVariantIndex = 0;
+    if (hasModalVariants) {
+      if (dish._activeVariantName) {
+        const found = dish.variants.findIndex(v => v.name.toLowerCase() === dish._activeVariantName.toLowerCase());
+        if (found !== -1) initialVariantIndex = found;
+      } else {
+        const found = dish.variants.findIndex(v =>
+          v.name.toLowerCase() === dish.name.toLowerCase() ||
+          dish.name.toLowerCase().includes(v.name.toLowerCase()) ||
+          v.name.toLowerCase().includes(dish.name.toLowerCase())
+        );
+        if (found !== -1) initialVariantIndex = found;
+      }
+    }
+
+    const activeVariant = hasModalVariants ? dish.variants[initialVariantIndex] : null;
+    const displayImage = activeVariant ? (activeVariant.image || dish.image) : (dish._activeVariantImage || dish.image);
+    const displayPrice = activeVariant ? (activeVariant.price || dish.price) : (dish._activeVariantPrice || dish.price);
     const hasPhoto = displayImage && displayImage.trim() !== '';
-    let dishTitleHtml = dish.name;
-    if (this.currentLang === 'hi' && dish.hindiName) {
-      dishTitleHtml = `${dish.name} <span style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${dish.hindiName})</span>`;
-    } else if (this.currentLang === 'mr' && (dish.marathiName || dish.hindiName)) {
-      const subName = dish.marathiName || dish.hindiName;
-      dishTitleHtml = `${dish.name} <span style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${subName})</span>`;
+
+    const currentVariantName = activeVariant ? activeVariant.name : dish.name;
+    const currentVariantHi = activeVariant ? (activeVariant.hindiName || dish.hindiName) : dish.hindiName;
+    const currentVariantMr = activeVariant ? (activeVariant.marathiName || dish.marathiName || dish.hindiName) : (dish.marathiName || dish.hindiName);
+
+    let dishTitleHtml = currentVariantName;
+    if (this.currentLang === 'hi' && currentVariantHi) {
+      dishTitleHtml = `${currentVariantName} <span class="dish-title-sub" style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${currentVariantHi})</span>`;
+    } else if (this.currentLang === 'mr' && currentVariantMr) {
+      dishTitleHtml = `${currentVariantName} <span class="dish-title-sub" style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${currentVariantMr})</span>`;
+    }
+
+    let initialDesc = this.getDishDescription(dish);
+    if (activeVariant) {
+      const vDesc = this.getVariantDescription(activeVariant);
+      if (vDesc) initialDesc = vDesc;
     }
 
     // Top badges on modal photo
@@ -2015,6 +2049,7 @@ class HotelPremierApp {
     if (window.AssetPipeline && typeof window.AssetPipeline.renderDetailMedia === 'function') {
       detailMediaHtml = window.AssetPipeline.renderDetailMedia({
         ...dish,
+        name: currentVariantName,
         image: displayImage,
         isSoldOut: dish.isSoldOut
       }, {
@@ -2025,7 +2060,7 @@ class HotelPremierApp {
       detailMediaHtml = `
         <div class="modal-dish-photo-wrap">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
-          <img src="${displayImage}" alt="${dish.name}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
+          <img src="${displayImage}" alt="${currentVariantName}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
           <div class="hp-glass-vignette" aria-hidden="true"></div>
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${modalBadgesHtml ? `<div class="dish-badges">${modalBadgesHtml}</div>` : ''}
@@ -2051,22 +2086,42 @@ class HotelPremierApp {
       `;
     }
 
-    const hasModalVariants = dish.variants && dish.variants.length > 0;
     let modalVariantsHtml = '';
     if (hasModalVariants) {
       modalVariantsHtml = `
         <div class="modal-dish-variants-box">
-          <div class="modal-dish-variants-title">${this.t('variantsTitle')}</div>
-          <div class="modal-dish-variants-list" id="modal-variants-list-${dish.id}">
+          <div class="modal-dish-variants-header">
+            <span class="modal-dish-variants-icon" aria-hidden="true">✨</span>
+            <div class="modal-dish-variants-header-text">
+              <span class="modal-dish-variants-title">${this.t('variantsTitle')}</span>
+              <span class="modal-dish-variants-hint">Tap any option below to view photo, price &amp; description</span>
+            </div>
+          </div>
+          <div class="modal-dish-variants-list" id="modal-variants-list-${dish.id}" role="radiogroup" aria-label="Available Dish Variations">
             ${dish.variants.map((v, i) => {
-              const isSelected = dish._activeVariantImage ? (dish._activeVariantImage === v.image) : (i === 0);
+              const isSelected = (i === initialVariantIndex);
+              const displayName = (this.currentLang === 'hi' && v.hindiName) ? v.hindiName : ((this.currentLang === 'mr' && (v.marathiName || v.hindiName)) ? (v.marathiName || v.hindiName) : v.name);
+              const descEn = encodeURIComponent(v.description || '');
+              const descHi = encodeURIComponent(v.descriptionHi || v.description || '');
+              const descMr = encodeURIComponent(v.descriptionMr || v.descriptionHi || v.description || '');
+              const nameHi = encodeURIComponent(v.hindiName || '');
+              const nameMr = encodeURIComponent(v.marathiName || '');
               return `
-                <button type="button" class="modal-dish-variant-btn ${isSelected ? 'selected' : ''}" 
+                <button type="button" 
+                        class="modal-dish-variant-btn ${isSelected ? 'selected' : ''}" 
+                        role="radio"
+                        aria-checked="${isSelected}"
                         data-variant-name="${v.name}" 
+                        data-variant-name-hi="${nameHi}" 
+                        data-variant-name-mr="${nameMr}" 
                         data-variant-price="${v.price}" 
                         data-variant-img="${v.image || ''}"
+                        data-variant-desc="${descEn}"
+                        data-variant-desc-hi="${descHi}"
+                        data-variant-desc-mr="${descMr}"
                         onclick="window.app.switchModalVariant('${dish.id}', this)">
-                  ${v.name} ₹${v.price}
+                  <span class="variant-btn-name">${displayName}</span>
+                  <span class="variant-btn-price">₹${v.price}</span>
                 </button>
               `;
             }).join('')}
@@ -2122,7 +2177,7 @@ class HotelPremierApp {
           ${dish.tags && dish.tags.includes('spicy') ? `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>` : ''}
         </div>
 
-        <p class="modal-dish-desc">${this.getDishDescription(dish) || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
+        <p class="modal-dish-desc">${initialDesc || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
 
         <div class="modal-dish-veg-guarantee">
           <span class="veg-guarantee-icon" aria-hidden="true">🌱</span>
@@ -2139,15 +2194,43 @@ class HotelPremierApp {
 
     const orderActions = document.createElement('div');
     orderActions.className = 'modal-dish-actions delivery-buttons-container';
-    for (const platform of ['swiggy', 'zomato']) {
-      const link = document.createElement('a');
-      link.className = `modal-btn-${platform}-order delivery-btn`;
-      link.href = this.getDeliveryUrl(platform, dish);
-      link.target = '_blank';
-      link.rel = 'noopener noreferrer';
-      link.textContent = `Order on ${platform === 'zomato' ? 'Zomato' : 'Swiggy'} ↗`;
-      orderActions.appendChild(link);
-    }
+
+    // Swiggy button with authentic brand color & badge
+    const swiggyBtn = document.createElement('a');
+    swiggyBtn.className = 'modal-btn-swiggy-order delivery-btn';
+    swiggyBtn.href = this.getDeliveryUrl('swiggy', dish);
+    swiggyBtn.target = '_blank';
+    swiggyBtn.rel = 'noopener noreferrer';
+    swiggyBtn.setAttribute('aria-label', `Order on Swiggy`);
+    swiggyBtn.innerHTML = `
+      <span class="delivery-brand-badge swiggy-badge">
+        <svg class="delivery-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 10.5c-1.93 0-3.5-1.57-3.5-3.5S10.07 5.5 12 5.5s3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+        </svg>
+        <span class="delivery-brand-name">SWIGGY</span>
+      </span>
+      <span class="delivery-btn-action-label">Order Online ↗</span>
+    `;
+
+    // Zomato button with authentic brand color & badge
+    const zomatoBtn = document.createElement('a');
+    zomatoBtn.className = 'modal-btn-zomato-order delivery-btn';
+    zomatoBtn.href = this.getDeliveryUrl('zomato', dish);
+    zomatoBtn.target = '_blank';
+    zomatoBtn.rel = 'noopener noreferrer';
+    zomatoBtn.setAttribute('aria-label', `Order on Zomato`);
+    zomatoBtn.innerHTML = `
+      <span class="delivery-brand-badge zomato-badge">
+        <svg class="delivery-brand-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+          <path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/>
+        </svg>
+        <span class="delivery-brand-name zomato-wordmark">zomato</span>
+      </span>
+      <span class="delivery-btn-action-label">Order Online ↗</span>
+    `;
+
+    orderActions.appendChild(swiggyBtn);
+    orderActions.appendChild(zomatoBtn);
     body.querySelector('.modal-dish-detail-container').appendChild(orderActions);
     modal.classList.remove('closing');
     modal.style.display = 'flex';
@@ -2161,15 +2244,28 @@ class HotelPremierApp {
     if (!btn) return;
     const parentList = btn.closest('.modal-dish-variants-list');
     if (parentList) {
-      parentList.querySelectorAll('.modal-dish-variant-btn').forEach(b => b.classList.remove('selected'));
+      parentList.querySelectorAll('.modal-dish-variant-btn').forEach(b => {
+        b.classList.remove('selected');
+        b.setAttribute('aria-checked', 'false');
+      });
     }
     btn.classList.add('selected');
+    btn.setAttribute('aria-checked', 'true');
 
     const newPrice = btn.getAttribute('data-variant-price');
     const newImg = btn.getAttribute('data-variant-img');
+    const varName = btn.getAttribute('data-variant-name');
+    const varNameHi = decodeURIComponent(btn.getAttribute('data-variant-name-hi') || '');
+    const varNameMr = decodeURIComponent(btn.getAttribute('data-variant-name-mr') || '');
+    const descEn = decodeURIComponent(btn.getAttribute('data-variant-desc') || '');
+    const descHi = decodeURIComponent(btn.getAttribute('data-variant-desc-hi') || '');
+    const descMr = decodeURIComponent(btn.getAttribute('data-variant-desc-mr') || '');
+
+    // 1. Update price
     const priceEl = document.getElementById(`modal-dish-price-${dishId}`);
     if (priceEl && newPrice) priceEl.innerText = `₹${newPrice}`;
 
+    // 2. Update image with smooth crossfade
     if (newImg && newImg.trim() !== '') {
       const modalImg = document.getElementById('detail-modal-img');
       if (modalImg && modalImg.tagName === 'IMG') {
@@ -2178,10 +2274,43 @@ class HotelPremierApp {
           modalImg.src = newImg;
           modalImg.classList.remove('modal-img-swapping');
         }, 120);
+      } else if (modalImg) {
+        const wrap = modalImg.closest('.modal-dish-photo-wrap');
+        if (wrap) {
+          wrap.classList.remove('no-photo');
+          modalImg.outerHTML = `<img src="${newImg}" alt="${varName || ''}" id="detail-modal-img" class="modal-dish-img" loading="eager">`;
+        }
       }
     }
 
-    // Synchronize the dish card in the background too
+    // 3. Update title
+    const titleEl = document.querySelector('.modal-dish-title');
+    if (titleEl && varName) {
+      let subTitle = '';
+      if (this.currentLang === 'hi' && varNameHi) {
+        subTitle = ` <span class="dish-title-sub" style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${varNameHi})</span>`;
+      } else if (this.currentLang === 'mr' && (varNameMr || varNameHi)) {
+        const sm = varNameMr || varNameHi;
+        subTitle = ` <span class="dish-title-sub" style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${sm})</span>`;
+      }
+      titleEl.innerHTML = `${varName}${subTitle}`;
+    }
+
+    // 4. Update description
+    let activeDesc = descEn;
+    if (this.currentLang === 'hi' && descHi) activeDesc = descHi;
+    else if (this.currentLang === 'mr' && (descMr || descHi)) activeDesc = descMr || descHi;
+    const descEl = document.querySelector('.modal-dish-desc');
+    if (descEl && activeDesc) {
+      descEl.style.transition = 'opacity 0.15s ease';
+      descEl.style.opacity = '0.3';
+      setTimeout(() => {
+        descEl.textContent = activeDesc;
+        descEl.style.opacity = '1';
+      }, 120);
+    }
+
+    // 5. Synchronize the dish card in the background too
     const cardPrice = document.getElementById(`price-display-${dishId}`);
     if (cardPrice && newPrice) cardPrice.innerText = `₹${newPrice}`;
 
@@ -2193,7 +2322,7 @@ class HotelPremierApp {
     const dishVariantsCard = document.querySelector(`.dish-variants[data-dish-id="${dishId}"]`);
     if (dishVariantsCard) {
       dishVariantsCard.querySelectorAll('.variant-btn').forEach(b => {
-        if (b.getAttribute('data-variant-name') === btn.getAttribute('data-variant-name')) {
+        if (b.getAttribute('data-variant-name') === varName) {
           b.classList.add('selected');
         } else {
           b.classList.remove('selected');
@@ -2201,10 +2330,12 @@ class HotelPremierApp {
       });
     }
 
+    // 6. Persist active state on dish object
     const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
     if (dishObj) {
       if (newImg) dishObj._activeVariantImage = newImg;
       if (newPrice) dishObj._activeVariantPrice = Number(newPrice);
+      if (varName) dishObj._activeVariantName = varName;
     }
   }
 
