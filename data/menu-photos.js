@@ -238,6 +238,16 @@ window.HOTEL_PREMIER_PHOTOS = {
   "fd-6": "assets/menu-images/FLAVORFUL DAL/DAL PALAK TADKA.jpg",
   "fd-7": "assets/menu-images/FLAVORFUL DAL/DAL METHI.jpg",
   "fd-8": "assets/menu-images/FLAVORFUL DAL/DAL METHI TADKA.jpg",
-  "fa-9": "assets/menu-images/ACCOMPANIMENTS/MIX VEG RAITA.jpg"
+  "fa-9": "assets/menu-images/ACCOMPANIMENTS/MIX VEG RAITA.jpg",
+  "md-parathas-group": "assets/menu-images/MORNING DELIGHT/ALOO PARATHA WITH CURD.jpg",
+  "md-sandwiches-group": "assets/dishes/pride_special_sandwich.jfif",
+  "sb-roti-group": "assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER ROTI.jpg",
+  "sb-naan-group": "assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg",
+  "sb-kulcha-group": "assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER KULCHA.jpg",
+  "fa-raita-group": "assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.jpg",
+  "rb-biryani-group": "assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg",
+  "rb-pulao-group": "assets/menu-images/RICE & BIRYANI FIESTA/VEG PULAO.jpg",
+  "fd-dal-fry-group": "assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg",
+  "sp-soups-group": "assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg"
 };
 

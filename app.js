@@ -1626,8 +1626,12 @@ class HotelPremierApp {
       }
     }
 
+    const hasSearch = Boolean(this.searchQuery && this.searchQuery.trim() !== '');
+
     return this.menuData.filter(item => {
       if (item.notAvailable) return false;
+      if (item.groupedUnder) return false;
+
       if (this.currentCategory === 'chef-specials') {
         if (!item.tags || !item.tags.includes('chef-special')) return false;
       } else if (this.currentCategory && this.currentCategory !== 'all') {
@@ -1643,12 +1647,18 @@ class HotelPremierApp {
       if (this.currentFilter === 'khandeshi' && (!item.tags || !item.tags.includes('khandeshi-special'))) return false;
       if (this.currentFilter === 'under-150' && (!Number.isFinite(item.price) || item.price > 150)) return false;
 
-      if (this.searchQuery && this.searchQuery.trim() !== '') {
+      if (hasSearch) {
         const q = this.searchQuery.toLowerCase().trim();
         const matchName = item.name && item.name.toLowerCase().includes(q);
         const matchDesc = (item.description && item.description.toLowerCase().includes(q)) || (item.descriptionHi && item.descriptionHi.toLowerCase().includes(q)) || (item.descriptionMr && item.descriptionMr.toLowerCase().includes(q));
         const matchTag = item.tags && item.tags.some(t => t.toLowerCase().includes(q));
-        if (!matchName && !matchDesc && !matchTag) return false;
+        const matchVariant = item.variants && item.variants.some(v =>
+          (v.name && v.name.toLowerCase().includes(q)) ||
+          (v.hindiName && v.hindiName.toLowerCase().includes(q)) ||
+          (v.marathiName && v.marathiName.toLowerCase().includes(q)) ||
+          (v.description && v.description.toLowerCase().includes(q))
+        );
+        if (!matchName && !matchDesc && !matchTag && !matchVariant) return false;
       }
 
       return true;
@@ -1716,7 +1726,7 @@ class HotelPremierApp {
 
     const grid = document.getElementById(`dish-grid-${catId}`);
     if (grid) {
-      const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === catId);
+      const catDishes = this.menuData.filter(d => !d.notAvailable && !d.groupedUnder && d.categoryId === catId);
       const subCats = (window.HOTEL_PREMIER_SUB_CATEGORIES && window.HOTEL_PREMIER_SUB_CATEGORIES[catId]) || [];
       const subCat = subCats.find(s => s.id === subCatId);
 
@@ -1760,7 +1770,7 @@ class HotelPremierApp {
       const activeCats = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
 
       activeCats.forEach(cat => {
-        const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === cat.id);
+        const catDishes = this.menuData.filter(d => !d.notAvailable && !d.groupedUnder && d.categoryId === cat.id);
         if (catDishes.length > 0) {
           const locName = this.getCategoryLocalizedName(cat.id);
           const locSub = this.getCategoryLocalizedSubtitle(cat.id);
@@ -1801,7 +1811,7 @@ class HotelPremierApp {
         const catId = this.currentCategory;
         sectionTitle = this.getCategoryLocalizedName(catId);
         sectionSub = this.getCategoryLocalizedSubtitle(catId);
-        const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === catId);
+        const catDishes = this.menuData.filter(d => !d.notAvailable && !d.groupedUnder && d.categoryId === catId);
 
         const activeSubId = this.activeSubCategories[catId] || 'all';
         const subCats = (window.HOTEL_PREMIER_SUB_CATEGORIES && window.HOTEL_PREMIER_SUB_CATEGORIES[catId]) || [];
@@ -1855,8 +1865,10 @@ class HotelPremierApp {
 
   renderDishCard(dish) {
     const hasVariants = dish.variants && dish.variants.length > 0;
+    const isMaster = Boolean(dish.isGroupMaster && hasVariants);
     const displayImage = dish._activeVariantImage || dish.image;
     const displayPrice = dish._activeVariantPrice || dish.price;
+    const priceRangeText = (isMaster && dish.displayPriceRange && !dish._activeVariantPrice) ? dish.displayPriceRange : (Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request');
     const hasPhoto = displayImage && displayImage.trim() !== '';
 
     let dishTitleHtml = dish.name;
@@ -1868,12 +1880,12 @@ class HotelPremierApp {
     }
 
     return `
-      <div class="dish-card compact-dish-card ${dish.isSoldOut ? 'sold-out' : ''}"
+      <div class="dish-card compact-dish-card ${isMaster ? 'group-master-card' : ''} ${dish.isSoldOut ? 'sold-out' : ''}"
            id="dish-card-${dish.id}" 
            onclick="window.app.openDishDetail('${dish.id}')"
            role="button"
            tabindex="0"
-           aria-label="${dish.name}, ${Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request'}"
+           aria-label="${dish.name}, ${priceRangeText}"
            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.openDishDetail('${dish.id}');}">
         <div class="dish-banner-media ${hasPhoto ? '' : 'no-photo'}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
@@ -1893,15 +1905,25 @@ class HotelPremierApp {
           <div class="dish-banner-top">
             <div class="dish-banner-header">
               ${dish.tags && dish.tags.includes('online-exclusive') ? `<div class="dish-badge-delivery-exclusive">🛵 Swiggy &amp; Zomato Exclusive</div>` : ''}
+              ${isMaster ? `<div class="dish-badge-group-master"><span class="badge-sparkle">✨</span> ${dish.variants.length} Options Available</div>` : ''}
               <h4 class="dish-title">${dishTitleHtml}</h4>
             </div>
             <div class="dish-banner-price-stack">
-              <span class="dish-price" id="price-display-${dish.id}">${Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request'}</span>
+              <span class="dish-price" id="price-display-${dish.id}">${priceRangeText}</span>
               <span class="dish-tax-note">${this.t('taxNote')}</span>
             </div>
           </div>
           <div class="dish-banner-bottom">
-            ${hasVariants ? `<span class="dish-options-hint">${this.t('dishOptionsHint', 'Portion options available')}</span>` : ''}
+            ${isMaster ? `
+              <div class="dish-card-variant-chips" onclick="event.stopPropagation()">
+                ${dish.variants.map((v, vIdx) => `
+                  <button type="button" class="dish-card-chip" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}', ${vIdx})" title="${v.name} - ₹${v.price}">
+                    <span class="chip-name">${v.name}</span>
+                    <span class="chip-price">₹${v.price}</span>
+                  </button>
+                `).join('')}
+              </div>
+            ` : (hasVariants ? `<span class="dish-options-hint">${this.t('dishOptionsHint', 'Portion options available')}</span>` : '')}
             <div class="dish-banner-action">
               ${dish.isSoldOut ? `
                 <span class="dish-soldout-label">${this.t('soldOut')}</span>
@@ -1955,7 +1977,7 @@ class HotelPremierApp {
   }
 
   // Dish Details Modal
-  openDishDetail(dishId) {
+  openDishDetail(dishId, targetVariantIndex = null) {
     if (!dishId) return;
 
     // Resilient ID Resolution & Legacy Alias Lookup
@@ -1977,6 +1999,19 @@ class HotelPremierApp {
     }
     if (!dish) return;
 
+    // Subsumed item redirect: if this dish is grouped under a master card, redirect to master card at this variant
+    if (dish.groupedUnder) {
+      const master = this.menuData.find(d => d.id === dish.groupedUnder);
+      if (master && master.variants && master.variants.length > 0) {
+        const vIdx = master.variants.findIndex(v =>
+          v.name.toLowerCase() === dish.name.toLowerCase() ||
+          dish.name.toLowerCase().includes(v.name.toLowerCase()) ||
+          v.name.toLowerCase().includes(dish.name.toLowerCase())
+        );
+        return this.openDishDetail(master.id, vIdx !== -1 ? vIdx : 0);
+      }
+    }
+
     try { window.HOTEL_VAULT?.recordDishView(dish.id, dish.name, dish.categoryId); }
     catch (error) { console.warn('Dish analytics unavailable', error); }
 
@@ -1989,7 +2024,9 @@ class HotelPremierApp {
     const hasModalVariants = dish.variants && dish.variants.length > 0;
     let initialVariantIndex = 0;
     if (hasModalVariants) {
-      if (dish._activeVariantName) {
+      if (typeof targetVariantIndex === 'number' && targetVariantIndex >= 0 && targetVariantIndex < dish.variants.length) {
+        initialVariantIndex = targetVariantIndex;
+      } else if (dish._activeVariantName) {
         const found = dish.variants.findIndex(v => v.name.toLowerCase() === dish._activeVariantName.toLowerCase());
         if (found !== -1) initialVariantIndex = found;
       } else {
