@@ -1641,7 +1641,7 @@ class HotelPremierApp {
       if (this.currentFilter === 'chef-special' && (!item.tags || !item.tags.includes('chef-special'))) return false;
       if (this.currentFilter === 'bestseller' && (!item.tags || !item.tags.includes('bestseller'))) return false;
       if (this.currentFilter === 'khandeshi' && (!item.tags || !item.tags.includes('khandeshi-special'))) return false;
-      if (this.currentFilter === 'under-150' && item.price > 150) return false;
+      if (this.currentFilter === 'under-150' && (!Number.isFinite(item.price) || item.price > 150)) return false;
 
       if (this.searchQuery && this.searchQuery.trim() !== '') {
         const q = this.searchQuery.toLowerCase().trim();
@@ -1866,7 +1866,7 @@ class HotelPremierApp {
            onclick="window.app.openDishDetail('${dish.id}')"
            role="button"
            tabindex="0"
-           aria-label="${dish.name}, ₹${displayPrice}"
+           aria-label="${dish.name}, ${Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request'}"
            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.openDishDetail('${dish.id}');}">
         <div class="dish-banner-media ${hasPhoto ? '' : 'no-photo'}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
@@ -1889,7 +1889,7 @@ class HotelPremierApp {
               <h4 class="dish-title">${dishTitleHtml}</h4>
             </div>
             <div class="dish-banner-price-stack">
-              <span class="dish-price" id="price-display-${dish.id}">₹${displayPrice}</span>
+              <span class="dish-price" id="price-display-${dish.id}">${Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request'}</span>
               <span class="dish-tax-note">${this.t('taxNote')}</span>
             </div>
           </div>
@@ -2088,7 +2088,7 @@ class HotelPremierApp {
             </div>
             <div class="modal-dish-subtitle">Pride Restaurant • Chef Curated</div>
           </div>
-          <span class="modal-dish-price" id="modal-dish-price-${dish.id}">₹${displayPrice}</span>
+          <span class="modal-dish-price" id="modal-dish-price-${dish.id}">${Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request'}</span>
         </div>
 
         <div class="modal-staff-taste-modifier-bar" id="modal-staff-taste-bar-${dish.id}">

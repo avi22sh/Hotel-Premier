@@ -15,6 +15,8 @@ Source: owner-supplied DETAILS.docx, reviewed 19 October 2026.
 
 ## Owner clarification needed
 
+Update 19 October 2026: Owner confirmed Lahsuni Methi as fenugreek leaves in rich sauce with crispy fried garlic. The combined Methi / Palak entry now explains both leaf options. Mix Veg Paratha, Paneer Achari Tikka and Curd have been added to their requested sections with unset prices displayed as "Price on request". The historical pending notes below are resolved for these four items.
+
 - Lahsuni Methi repeats the chickpea description for Chole Masala in the source. The existing Lasooni Methi / Palak entry was left unchanged; the separate Lasooni Palak entry was updated from its own source description.
 - Mix Veg Paratha, Paneer Achari Tikka and plain Curd have no standalone matching menu entry. No new dishes or prices were invented.
 - Paneer Basket Sauce and Noodles Spring Roll have no matching source details and were left unchanged, although their current descriptions warrant owner review.

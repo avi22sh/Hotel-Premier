@@ -431,7 +431,7 @@ class HotelPremierAdmin {
           <td>
             <div style="display: flex; align-items: center; gap: 4px;">
               <span style="font-size: 0.82rem; font-weight: 700;">₹</span>
-              <input type="number" value="${dish.price}" style="width: 65px; padding: 4px 6px; font-size: 0.85rem; font-weight: 800; border: 1px solid var(--cream-border); border-radius: 4px;" onchange="window.admin.updatePrice('${dish.id}', this.value)">
+              <input type="number" value="${dish.price ?? ''}" placeholder="Unset" min="0" style="width: 65px; padding: 4px 6px; font-size: 0.85rem; font-weight: 800; border: 1px solid var(--cream-border); border-radius: 4px;" onchange="window.admin.updatePrice('${dish.id}', this.value)">
             </div>
           </td>
           <td>
@@ -500,13 +500,15 @@ class HotelPremierAdmin {
   async updatePrice(dishId, newPrice) {
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (dish) {
-      dish.price = parseFloat(newPrice) || 0;
+      const parsedPrice = newPrice.trim() === '' ? null : Number(newPrice);
+      if (parsedPrice !== null && (!Number.isFinite(parsedPrice) || parsedPrice < 0)) return;
+      dish.price = parsedPrice;
       window.app.saveMenuData();
       if (window.HOTEL_STORAGE) {
         await window.HOTEL_STORAGE.saveDishOverride(dishId, { price: dish.price });
       }
       window.app.renderMenu();
-      window.app.showToast(`Updated price for "${dish.name}" to ₹${dish.price}`, 'success');
+      window.app.showToast(`Updated price for "${dish.name}" to ${dish.price === null ? 'Price on request' : `₹${dish.price}`}`, 'success');
     }
   }
 
@@ -1363,7 +1365,7 @@ class HotelPremierAdmin {
                     <div style="font-weight: 800; font-size: 0.85rem; color: var(--terracotta-dark); margin: 2px 0 4px; line-height: 1.2;">${dish.name}</div>
                   </div>
                   <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; border-top: 1px solid var(--cream-border); padding-top: 6px;">
-                    <span style="font-weight: 800; color: var(--burgundy-deep); font-size: 0.85rem;">₹${dish.price}</span>
+                    <span style="font-weight: 800; color: var(--burgundy-deep); font-size: 0.85rem;">${dish.price === null ? 'Price on request' : `₹${dish.price}`}</span>
                     <button class="slide-action-btn" style="font-size: 0.70rem; padding: 2px 6px;" onclick="window.admin.openImageModal('${dish.id}')">Calibrate ⚙️</button>
                   </div>
                 </div>

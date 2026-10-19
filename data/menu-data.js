@@ -198,7 +198,7 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   "morning-delights": [
     { "id": "all", "name": "All Breakfast", "hindiName": "सभी नाश्ता", "marathiName": "सर्व नाश्ता" },
     { "id": "poori-chole", "name": "Poori & Chole", "hindiName": "पूरी एवं छोले", "marathiName": "पुरी व छोले", "dishIds": ["md-1", "md-2"] },
-    { "id": "parathas", "name": "Stuffed Parathas", "hindiName": "भरवां पराठे", "marathiName": "खमंग पराठे", "dishIds": ["md-3", "md-4", "md-5", "md-18"] },
+    { "id": "parathas", "name": "Stuffed Parathas", "hindiName": "भरवां पराठे", "marathiName": "खमंग पराठे", "dishIds": ["md-mix-veg-paratha", "md-3", "md-4", "md-5", "md-18"] },
     { "id": "poha-snacks", "name": "Poha & Snacks", "hindiName": "पोहा व उपवास स्नैक्स", "marathiName": "पोहे व उपवास", "dishIds": ["md-6", "md-7", "md-16", "md-17"] },
     { "id": "sandwiches", "name": "Club & Grilled Sandwiches", "hindiName": "सैंडविच", "marathiName": "सँडविच", "dishIds": ["md-10", "md-11", "md-12", "md-13", "md-14", "md-15"] },
     { "id": "toast-jam", "name": "Toast & Butter", "hindiName": "टोस्ट एवं बटर", "marathiName": "टोस्ट व बटर", "dishIds": ["md-8", "md-9"] }
@@ -234,7 +234,7 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   "tandoor-classics": [
     { "id": "all", "name": "All Tandoori", "hindiName": "सभी तंदूरी", "marathiName": "सर्व तंदूरी" },
     { "id": "tandoori-platters", "name": "Tandoori Platters", "hindiName": "तंदूरी प्लैटर्स", "marathiName": "तंदूरी प्लॅटर्स", "dishIds": ["tc-1", "tc-9"] },
-    { "id": "paneer-tikka", "name": "Paneer Tikka Varieties", "hindiName": "पनीर टिक्का", "marathiName": "पनीर टिक्का", "dishIds": ["tc-2", "tc-3", "tc-4", "tc-5", "tc-6", "tc-7", "tc-8", "tc-15"] },
+    { "id": "paneer-tikka", "name": "Paneer Tikka Varieties", "hindiName": "पनीर टिक्का", "marathiName": "पनीर टिक्का", "dishIds": ["tc-paneer-achari-tikka", "tc-2", "tc-3", "tc-4", "tc-5", "tc-6", "tc-7", "tc-8", "tc-15"] },
     { "id": "veg-kebabs", "name": "Veg Seekh & Kebabs", "hindiName": "वेज कबाब", "marathiName": "व्हेज कबाब", "dishIds": ["tc-10", "tc-11", "tc-12", "tc-13", "tc-14", "tc-16", "tc-17", "tc-18"] }
   ],
   "sizzling-rice-noodles": [
@@ -275,7 +275,7 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   "fresh-addons": [
     { "id": "all", "name": "All Add-Ons", "hindiName": "सभी सलाद व रायता", "marathiName": "सर्व सॅलड व रायता" },
     { "id": "salads", "name": "Fresh Cut Salads", "hindiName": "सलाद", "marathiName": "सॅलड", "dishIds": ["fa-1", "fa-2"] },
-    { "id": "raita", "name": "Cooling Raita Varieties", "hindiName": "रायता", "marathiName": "रायता", "dishIds": ["fa-3", "fa-4", "fa-5", "fa-9"] },
+    { "id": "raita", "name": "Cooling Raita Varieties", "hindiName": "रायता", "marathiName": "रायता", "dishIds": ["fa-curd", "fa-3", "fa-4", "fa-5", "fa-9"] },
     { "id": "papad", "name": "Crispy Papad Wafer", "hindiName": "पापड़", "marathiName": "पापड", "dishIds": ["fa-6", "fa-7", "fa-8"] }
   ],
   "signature-breads": [
@@ -320,6 +320,24 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
 ;
 
 window.HOTEL_PREMIER_INITIAL_MENU = [
+  {
+    id: 'md-mix-veg-paratha', categoryId: 'morning-delights',
+    name: 'Mix Veg Paratha', hindiName: 'मिक्स वेज पराठा', marathiName: 'मिक्स व्हेज पराठा',
+    description: 'A golden paratha stuffed with finely chopped seasonal vegetables, herbs and aromatic spices, crisp outside and soft within.',
+    price: null, image: '', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false
+  },
+  {
+    id: 'tc-paneer-achari-tikka', categoryId: 'tandoor-classics',
+    name: 'Paneer Achari Tikka', hindiName: 'पनीर अचारी टिक्का', marathiName: 'पनीर अचारी टिक्का',
+    description: 'Paneer cubes marinated with tangy pickling spices and grilled for a bold achari flavour.',
+    price: null, image: '', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false
+  },
+  {
+    id: 'fa-curd', categoryId: 'fresh-addons',
+    name: 'Curd', hindiName: 'दही', marathiName: 'दही',
+    description: 'Creamy, gently tangy plain yogurt to accompany your meal.',
+    price: null, image: '', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false
+  },
   {
     id: 'cb-juice-orange', categoryId: 'chilled-beverages',
     name: 'Orange Packaged Fruit Juice', hindiName: 'ऑरेंज पैक्ड फ्रूट जूस', marathiName: 'संत्रा पॅकबंद फ्रूट ज्यूस',
@@ -1996,9 +2014,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Lasooni Methi / Palak',
     hindiName: 'लहसुनी मेथी',
     marathiName: 'लसुणी मेथी',
-    description: 'Fresh tender fenugreek greens tempered with a generous double dose of golden roasted garlic.',
-    descriptionHi: 'ताज़ी मेथी के पत्ते और भुने हुए सुनहरे लहसुन के खास तड़के से बनी खुशबूदार सब्ज़ी।',
-    descriptionMr: 'ताजी कोवळी मेथी आणि खमंग भाजलेल्या लसणाच्या झणझणीत फोडणीत तयार केलेली सुगंधी भाजी.',
+    description: 'Fenugreek leaves in a rich, flavourful sauce, finished with crisp fried garlic. The Palak option uses spinach in place of fenugreek.',
     price: 250,
     variants: [
       { name: 'Lasooni Methi', price: 250, image: 'assets/menu-images/VEG SPECIALITIES/LASOONI METHI.jpg' },

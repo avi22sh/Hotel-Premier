@@ -16,6 +16,18 @@ for (const [id, expected] of [
 ]) assert.match(dish(id).description, expected, id);
 assert.equal(dish('ic-11').description, dish('ic-27').description);
 const app = Object.create(context.window.App.prototype);
+app.currentLang = 'en';
+app.t = (key, fallback) => fallback || key;
+for (const [id, category] of [['md-mix-veg-paratha', 'morning-delights'], ['tc-paneer-achari-tikka', 'tandoor-classics'], ['fa-curd', 'fresh-addons']]) {
+  const item = dish(id);
+  assert.equal(item.categoryId, category);
+  assert.equal(item.price, null);
+  assert.equal(item.image, '');
+  assert.match(app.renderDishCard(item), /Price on request/);
+  assert.doesNotMatch(app.renderDishCard(item), /₹null|₹0/);
+  assert.ok(context.window.HOTEL_PREMIER_SUB_CATEGORIES[category].some(section => section.dishIds?.includes(id)));
+}
+assert.match(dish('vs-11').description, /Fenugreek leaves.*crisp fried garlic/);
 for (const lang of ['en', 'hi', 'mr']) {
   app.currentLang = lang;
   assert.equal(app.getDishDescription(dish('ic-21')), dish('ic-21').description);
