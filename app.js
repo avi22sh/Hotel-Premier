@@ -1229,7 +1229,7 @@ class HotelPremierApp {
     const itemsWord = this.t('itemsCount', 'Items');
 
     if (titleEl) titleEl.innerText = this.t('allMenuTitle', 'All Dishes (Full Menu)');
-    if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle', 'संपूर्ण शाकाहारी मेनू • 241 Delicacies');
+    if (hindiEl) hindiEl.innerText = this.t('allMenuSubtitle', 'All Pure Veg Categories & Dishes');
     if (countEl) countEl.innerText = `${this.menuData.filter(d => !d.notAvailable).length} ${itemsWord}`;
 
     this.renderQuickFilters();
@@ -1356,7 +1356,7 @@ class HotelPremierApp {
       floatBadge.innerText = validCategories.length;
     }
 
-    const allDishesCount = this.menuData ? this.menuData.filter(d => !d.notAvailable).length : 241;
+    const allDishesCount = (this.menuData || window.HOTEL_PREMIER_INITIAL_MENU || []).filter(d => !d.notAvailable).length;
     const isAllActive = (this.currentCategory === 'all' && this.viewMode === 'all');
     const dishesWord = this.t('itemsCount', 'Items');
 

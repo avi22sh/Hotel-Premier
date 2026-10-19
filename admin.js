@@ -3237,7 +3237,7 @@ class HotelPremierAdmin {
                   </div>
                   <div style="padding: 6px 8px;">
                     <div style="font-size: 0.75rem; font-weight: 800; color: #FFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${d.name}</div>
-                    <div style="font-size: 0.65rem; color: var(--brass-light);">₹${d.price} • ${d.categoryId}</div>
+                    <div style="font-size: 0.65rem; color: var(--brass-light);">${Number.isFinite(d.price) ? `₹${d.price}` : 'Price on request'} • ${d.categoryId}</div>
                   </div>
                 </div>
               `;
