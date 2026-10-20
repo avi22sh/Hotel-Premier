@@ -65,6 +65,7 @@ window.HOTEL_PREMIER_I18N = {
       filterBestseller: 'Bestsellers',
       filterKhandeshi: 'Khandeshi Special',
       filterUnder150: 'Under ₹150',
+      favoritesFilter: 'My Favorites',
 
       // Home & Sections
       exploreSections: 'Explore Menu Sections',
@@ -286,6 +287,7 @@ window.HOTEL_PREMIER_I18N = {
       filterBestseller: 'Bestseller 🔥',
       filterKhandeshi: 'Khandeshi Special 🌶️',
       filterUnder150: 'Under ₹150 💰',
+      favoritesFilter: 'पसंदीदा डिशेस',
 
       // Home & Sections
       exploreSections: 'Menu Categories',
@@ -506,6 +508,7 @@ window.HOTEL_PREMIER_I18N = {
       filterBestseller: 'Bestseller 🔥',
       filterKhandeshi: 'Khandeshi Special 🌶️',
       filterUnder150: 'Under ₹150 💰',
+      favoritesFilter: 'माझ्या आवडत्या',
 
       // Home & Sections
       exploreSections: 'Menu Categories',
