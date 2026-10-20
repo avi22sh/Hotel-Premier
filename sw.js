@@ -4,7 +4,7 @@
 // Guarantees mobile users always see latest menu updates & sub-sections
 // ==========================================================================
 
-const CACHE_NAME = 'hotel-premier-v21.39';
+const CACHE_NAME = 'hotel-premier-v21.40';
 const CORE_ASSETS = [
   './',
   'index.html',
@@ -43,7 +43,7 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate Event - Clean up all stale cache versions
+// Activate Event - Clean up all stale cache versions & claim clients immediately
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -56,7 +56,22 @@ self.addEventListener('activate', (event) => {
         })
       );
     }).then(() => self.clients.claim())
+      .then(() => {
+        // Broadcast update to all open windows so they immediately sync without manual reload
+        return self.clients.matchAll({ type: 'window' }).then((clients) => {
+          clients.forEach((client) => {
+            client.postMessage({ type: 'SW_UPDATED', version: CACHE_NAME });
+          });
+        });
+      })
   );
+});
+
+// Support SKIP_WAITING message
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 // Fetch Event - keep the app shell fresh without caching third-party food photos.
