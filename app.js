@@ -1906,7 +1906,6 @@ class HotelPremierApp {
             <div class="dish-banner-header">
               ${dish.tags && dish.tags.includes('online-exclusive') ? `<div class="dish-badge-delivery-exclusive">🛵 Swiggy &amp; Zomato Exclusive</div>` : ''}
               <h4 class="dish-title">${dishTitleHtml}</h4>
-              ${isMaster ? `<div class="dish-badge-group-master"><span class="badge-gem" aria-hidden="true">◆</span> ${dish.variants.length} ${this.t('badgeSelections', 'Curated Selections')}</div>` : ''}
             </div>
             <div class="dish-banner-price-stack">
               <span class="dish-price" id="price-display-${dish.id}">${priceRangeText}</span>
