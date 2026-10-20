@@ -221,9 +221,9 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   "indo-chinese": [
     { "id": "all", "name": "All Starters", "hindiName": "सभी स्टार्टर्स", "marathiName": "सर्व स्टार्टर्स" },
     { "id": "platters", "name": "Platters & Combos", "hindiName": "प्लैटर्स", "marathiName": "प्लॅटर्स", "dishIds": ["ic-1"] },
-    { "id": "paneer-starters", "name": "Paneer Starters", "hindiName": "पनीर स्टार्टर्स", "marathiName": "पनीर स्टार्टर्स", "dishIds": ["ic-2", "ic-3", "ic-4", "ic-5", "ic-6", "ic-7", "ic-8", "ic-9", "ic-10", "ic-27", "ic-28"] },
-    { "id": "veg-crispy", "name": "Veg Crispy & Manchurian", "hindiName": "वेज क्रिस्पी व मंचूरियन", "marathiName": "व्हेज क्रिस्पी व मंचूरियन", "dishIds": ["ic-11", "ic-12", "ic-13", "ic-14", "ic-15", "ic-16", "ic-17", "ic-18", "ic-19", "ic-29"] },
-    { "id": "mushroom-corn", "name": "Mushroom & Baby Corn", "hindiName": "मशरूम एवं बेबीकॉर्न", "marathiName": "मशरूम व बेबीकॉर्न", "dishIds": ["ic-20", "ic-21", "ic-22", "ic-23", "ic-24", "ic-25", "ic-26"] },
+    { "id": "paneer-starters", "name": "Paneer Starters", "hindiName": "पनीर स्टार्टर्स", "marathiName": "पनीर स्टार्टर्स", "dishIds": ["ic-paneer-starters-group", "ic-2", "ic-3", "ic-4", "ic-5", "ic-6", "ic-7", "ic-8", "ic-9", "ic-10", "ic-27", "ic-28"] },
+    { "id": "veg-crispy", "name": "Veg Crispy & Manchurian", "hindiName": "वेज क्रिस्पी व मंचूरियन", "marathiName": "व्हेज क्रिस्पी व मंचूरियन", "dishIds": ["ic-spring-rolls-group", "ic-veg-starters-group", "ic-11", "ic-12", "ic-13", "ic-14", "ic-15", "ic-16", "ic-17", "ic-18", "ic-19", "ic-29"] },
+    { "id": "mushroom-corn", "name": "Mushroom & Baby Corn", "hindiName": "मशरूम एवं बेबीकॉर्न", "marathiName": "मशरूम व बेबीकॉर्न", "dishIds": ["ic-corn-potato-group", "ic-20", "ic-21", "ic-22", "ic-23", "ic-24", "ic-25", "ic-26"] },
   ],
   "pasta-section": [
     { "id": "all", "name": "All Pastas", "hindiName": "सभी पास्ता", "marathiName": "सर्व पास्ता" },
@@ -238,8 +238,8 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "sizzling-rice-noodles": [
     { "id": "all", "name": "All Rice & Noodles", "hindiName": "सभी राइस व नूडल्स", "marathiName": "सर्व राईस व नूडल्स" },
-    { "id": "fried-rice", "name": "Fried Rice Varieties", "hindiName": "फ्राइड राइस", "marathiName": "फ्राईड राईस", "dishIds": ["rn-1", "rn-2", "rn-3", "rn-4", "rn-5"] },
-    { "id": "noodles", "name": "Hakka & Schezwan Noodles", "hindiName": "नूडल्स", "marathiName": "नूडल्स", "dishIds": ["rn-6", "rn-7", "rn-8", "rn-9", "rn-10"] }
+    { "id": "fried-rice", "name": "Fried Rice Varieties", "hindiName": "फ्राइड राइस", "marathiName": "फ्राईड राईस", "dishIds": ["rn-fried-rice-group", "rn-1", "rn-2", "rn-3", "rn-4", "rn-5"] },
+    { "id": "noodles", "name": "Hakka & Schezwan Noodles", "hindiName": "नूडल्स", "marathiName": "नूडल्स", "dishIds": ["rn-noodles-group", "rn-6", "rn-7", "rn-8", "rn-9", "rn-10"] }
   ],
   "delivery-thalis": [
     { "id": "all", "name": "All Delivery Thalis", "hindiName": "सभी थालियाँ", "marathiName": "सर्व थाळ्या" },
@@ -255,8 +255,8 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "kofta-delights": [
     { "id": "all", "name": "All Koftas", "hindiName": "सभी कोफ्ते", "marathiName": "सर्व कोफ्ते" },
-    { "id": "royal-kofta", "name": "Royal Malai & Cheese Kofta", "hindiName": "मलाई एवं चीज़ कोफ्ता", "marathiName": "मलाई व चीज कोफ्ता", "dishIds": ["kf-1", "kf-4", "kf-6", "kf-8"] },
-    { "id": "handi-kofta", "name": "Handi & Mughlai Kofta", "hindiName": "हांडी व मुगलई कोफ्ता", "marathiName": "हांडी व मुघलाई कोफ्ता", "dishIds": ["kf-2", "kf-3", "kf-5", "kf-7"] }
+    { "id": "royal-kofta", "name": "Royal Malai & Cheese Kofta", "hindiName": "मलाई एवं चीज़ कोफ्ता", "marathiName": "मलाई व चीज कोफ्ता", "dishIds": ["kd-kofta-group", "kf-1", "kf-4", "kf-6", "kf-8"] },
+    { "id": "handi-kofta", "name": "Handi & Mughlai Kofta", "hindiName": "हांडी व मुगलई कोफ्ता", "marathiName": "हांडी व मुघलाई कोफ्ता", "dishIds": ["kd-kofta-group", "kf-2", "kf-3", "kf-5", "kf-7"] }
   ],
   "paneer-specialties": [
     { "id": "all", "name": "All Paneer", "hindiName": "सभी पनीर", "marathiName": "सर्व पनीर" },
@@ -1485,6 +1485,427 @@ const CHANA_ROAST_VARIANTS = [
   }
 ];
 
+const SPRING_ROLLS_VARIANTS = [
+  {
+    name: 'Veg Spring Roll',
+    hindiName: 'वेज स्प्रिंग रोल',
+    marathiName: 'व्हेज स्प्रिंग रोल',
+    price: 300,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpg',
+    description: 'Golden-fried crisp rolls stuffed with julienned seasonal vegetables and glass noodles, served with spicy Schezwan dip.',
+    descriptionHi: 'पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, तीखी शेज़वान सॉस के साथ।',
+    descriptionMr: 'कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, शेजवान चटणीसह.'
+  },
+  {
+    name: 'Noodles Spring Roll',
+    hindiName: 'नूडल्स स्प्रिंग रोल',
+    marathiName: 'नूडल्स स्प्रिंग रोल',
+    price: 280,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
+    description: 'Crispy fried rolls filled with wok-tossed Hakka noodles, spring onions and savory Chinese spices.',
+    descriptionHi: 'चटपटे हक्का नूडल्स और हरी सब्जियों के कुरकुरे स्वादिष्ट स्प्रिंग रोल।',
+    descriptionMr: 'हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स.'
+  },
+  {
+    name: 'Paneer Spring Roll',
+    hindiName: 'पनीर स्प्रिंग रोल',
+    marathiName: 'पनीर स्प्रिंग रोल',
+    price: 325,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
+    description: 'Delicate pastry sheets packed with seasoned shredded cottage cheese, peppers and oriental spices.',
+    descriptionHi: 'ताज़े पनीर के स्वादिष्ट भरावन और मसालों से बने क्रिस्पी पनीर स्प्रिंग रोल।',
+    descriptionMr: 'मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स.'
+  },
+  {
+    name: 'Paneer Spider Roll',
+    hindiName: 'पनीर स्पाइडर रोल',
+    marathiName: 'पनीर स्पायडर रोल',
+    price: 300,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
+    description: 'Chef signature appetizer: crunchy noodle-web wrapped paneer batons tossed in a tangy glaze.',
+    descriptionHi: 'नूडल्स की क्रिस्पी जाली में लिपटा हुआ स्पेशल पनीर, शेफ की खास रेसिपी।',
+    descriptionMr: 'नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी.'
+  }
+];
+
+const PANEER_STARTERS_VARIANTS = [
+  {
+    name: 'Paneer Chilly',
+    hindiName: 'पनीर चिली',
+    marathiName: 'पनीर चिली',
+    price: 265,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PAANEER CHILLI 1 (1).jpg',
+    description: 'Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.',
+    descriptionHi: 'शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।',
+    descriptionMr: 'शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.'
+  },
+  {
+    name: 'Paneer Manchurian',
+    hindiName: 'पनीर मंचूरियन',
+    marathiName: 'पनीर मंचूरियन',
+    price: 265,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER MANCHURIAN.jpg',
+    description: 'Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.',
+    descriptionHi: 'अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।',
+    descriptionMr: 'आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.'
+  },
+  {
+    name: 'Paneer 65',
+    hindiName: 'पनीर 65',
+    marathiName: 'पनीर ६५',
+    price: 275,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER 65.jpg',
+    description: 'South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.',
+    descriptionHi: 'कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।',
+    descriptionMr: 'कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.'
+  },
+  {
+    name: 'Paneer Satay',
+    hindiName: 'पनीर साते',
+    marathiName: 'पनीर साते',
+    price: 265,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SATAY 1.jpg',
+    description: 'Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.',
+    descriptionHi: 'मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।',
+    descriptionMr: 'शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.'
+  },
+  {
+    name: 'Thread Paneer',
+    hindiName: 'थ्रेड पनीर',
+    marathiName: 'थ्रेड पनीर',
+    price: 275,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/THREAD PANEER.jpg',
+    description: 'Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.',
+    descriptionHi: 'नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।',
+    descriptionMr: 'बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.'
+  },
+  {
+    name: 'Paneer in Hot Garlic Sauce',
+    hindiName: 'पनीर इन हॉट गार्लिक सॉस',
+    marathiName: 'पनीर इन हॉट गार्लिक सॉस',
+    price: 265,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER IN HOT Garlic SAUCE.jpg',
+    description: 'Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.',
+    descriptionHi: 'तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।',
+    descriptionMr: 'झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.'
+  },
+  {
+    name: 'Paneer Sancho',
+    hindiName: 'पनीर सांचो',
+    marathiName: 'पनीर सांचो',
+    price: 315,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SANCHO 1.jpg',
+    description: 'Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.',
+    descriptionHi: 'स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।',
+    descriptionMr: 'सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.'
+  },
+  {
+    name: 'Paneer Salton',
+    hindiName: 'पनीर साल्टन',
+    marathiName: 'पनीर साल्टन',
+    price: 270,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SALTON.jpg',
+    description: 'Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.',
+    descriptionHi: 'चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।',
+    descriptionMr: 'चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.'
+  }
+];
+
+const VEG_STARTERS_VARIANTS = [
+  {
+    name: 'Veg Manchurian',
+    hindiName: 'वेज मंचूरियन',
+    marathiName: 'व्हेज मंचूरियन',
+    price: 240,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN.jpg',
+    description: 'Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.',
+    descriptionHi: 'बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।',
+    descriptionMr: 'ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.'
+  },
+  {
+    name: 'Veg Crispy',
+    hindiName: 'वेज क्रिस्पी',
+    marathiName: 'व्हेज क्रिस्पी',
+    price: 240,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY 1.jpg',
+    description: 'Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.',
+    descriptionHi: 'खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।',
+    descriptionMr: 'चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.'
+  },
+  {
+    name: 'Veg 65',
+    hindiName: 'वेज 65',
+    marathiName: 'व्हेज ६५',
+    price: 240,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG 65.jpg',
+    description: 'Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.',
+    descriptionHi: 'कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।',
+    descriptionMr: 'कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.'
+  },
+  {
+    name: 'Veg Lollipop',
+    hindiName: 'वेज लॉलीपॉप',
+    marathiName: 'व्हेज लॉलीपॉप',
+    price: 260,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG LOLLIPOP.jpg',
+    description: 'Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.',
+    descriptionHi: 'मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।',
+    descriptionMr: 'भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.'
+  },
+  {
+    name: 'Veg Bullet',
+    hindiName: 'वेज बुलेट',
+    marathiName: 'व्हेज बुलेट',
+    price: 280,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BULLET 1.jpg',
+    description: 'Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.',
+    descriptionHi: 'तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।',
+    descriptionMr: 'तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.'
+  },
+  {
+    name: 'Veg Hot Pan',
+    hindiName: 'वेज हॉट पैन',
+    marathiName: 'व्हेज हॉट पॅन',
+    price: 270,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG HOT PAN 1.jpg',
+    description: 'Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.',
+    descriptionHi: 'सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।',
+    descriptionMr: 'गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.'
+  },
+  {
+    name: 'Veg Kothe',
+    hindiName: 'वेज कोठे',
+    marathiName: 'व्हेज कोठे',
+    price: 250,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN 1.jpg',
+    description: 'Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.',
+    descriptionHi: 'तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।',
+    descriptionMr: 'तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.'
+  },
+  {
+    name: 'Veg Ball in Hot Garlic Sauce',
+    hindiName: 'वेज बॉल इन हॉट गार्लिक सॉस',
+    marathiName: 'व्हेज बॉल इन हॉट गार्लिक सॉस',
+    price: 250,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BALL IN HOT GARLIC SAUCE.jpg',
+    description: 'Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.',
+    descriptionHi: 'लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।',
+    descriptionMr: 'लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.'
+  }
+];
+
+const CORN_POTATO_VARIANTS = [
+  {
+    name: 'Crispy Corn Chilly',
+    hindiName: 'क्रिस्पी कॉर्न चिली',
+    marathiName: 'क्रिस्पी कॉर्न चिली',
+    price: 210,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.jpg',
+    description: 'Golden fried sweet corn kernels tossed with crunchy capsicum, onions, spring onions and black pepper.',
+    descriptionHi: 'कुरकुरे फ्राइड स्वीटकॉर्न, शिमला मिर्च और काली मिर्च का चटपटा स्वाद।',
+    descriptionMr: 'कुरकुरीत तळलेले मक्याचे दाणे, शिमला मिरची आणि काळी मिरीचे चटकदार स्टार्टर.'
+  },
+  {
+    name: 'Honey Chilly Potato',
+    hindiName: 'हनी चिली पोटैटो',
+    marathiName: 'हनी चिली पोटॅटो',
+    price: 260,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/HONEY CHILLI POTATO.jpg',
+    description: 'Crisp golden potato batons tossed in a sweet and spicy honey, chilli and toasted sesame glaze.',
+    descriptionHi: 'शहद, लाल मिर्च और भुने तिल की मीठी-तीखी चमक से सजे कुरकुरे आलू फिंगर्स।',
+    descriptionMr: 'मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे.'
+  },
+  {
+    name: 'Mushroom Babycorn Chilly',
+    hindiName: 'मशरूम बेबीकॉर्न चिली',
+    marathiName: 'मशरूम बेबीकॉर्न चिली',
+    price: 270,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/MUSHROOM BABYCORN CHILLI.jpg',
+    description: 'Button mushrooms and crisp baby corn stir-fried with capsicum, garlic and dark soya sauce.',
+    descriptionHi: 'ताज़े मशरूम और बेबीकॉर्न को शिमला मिर्च व लहसुन के साथ फ्राई किया हुआ स्टार्टर।',
+    descriptionMr: 'ताजे अळंबी (मशरूम) आणि कोवळी मका (बेबीकॉर्न) यांचे झणझणीत चायनीज स्टार्टर.'
+  },
+  {
+    name: 'Soyabean Chilly',
+    hindiName: 'सोयाबीन चिली',
+    marathiName: 'सोयाबीन चिली',
+    price: 240,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/SOYABEAN CHILLI.jpg',
+    description: 'High-protein soya chunks coated and tossed with bell peppers in a spicy, savory garlic chilli glaze.',
+    descriptionHi: 'प्रोटीन से भरपूर सोया चंक्स, शिमला मिर्च और तीखे मसालों से बना हेल्दी चिली स्टार्टर।',
+    descriptionMr: 'पौष्टिक सोयाबीन वड्या आणि शिमला मिरचीचे चमचमीत चिली स्टार्टर.'
+  }
+];
+
+const FRIED_RICE_VARIANTS = [
+  {
+    name: 'Veg Fried Rice',
+    hindiName: 'वेज फ्राइड राइस',
+    marathiName: 'व्हेज फ्राईड राईस',
+    price: 230,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg',
+    description: 'Aromatic long-grain basmati rice stir-fried in a hot wok with finely diced vegetables and mild soya seasoning.',
+    descriptionHi: 'बारीक कटी सब्जियों और हल्के मसालों के साथ वोक में भुना हुआ क्लासिक फ्राइड राइस।',
+    descriptionMr: 'बारीक चिरलेल्या भाज्या आणि सुगंधी बासमती तांदळाचा पारंपरिक फ्राईड राईस.'
+  },
+  {
+    name: 'Veg Schezwan Rice',
+    hindiName: 'वेज शेज़वान राइस',
+    marathiName: 'व्हेज शेजवान राईस',
+    price: 240,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN FRIED RICE.jpg',
+    description: 'Wok-tossed basmati rice infused with fiery red Schezwan sauce, garlic, celery and garden vegetables.',
+    descriptionHi: 'तीखी लाल शेज़वान सॉस, लहसुन और ताज़ी सब्जियों के मेल से बना स्पाइसी राइस।',
+    descriptionMr: 'झणझणीत शेजवान सॉस आणि भाज्यांनी युक्त खमंग शेजवान राईस.'
+  },
+  {
+    name: 'Veg Combination Rice',
+    hindiName: 'वेज कॉम्बिनेशन राइस',
+    marathiName: 'व्हेज कॉम्बिनेशन राईस',
+    price: 230,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG COMBINATION RICE.jpg',
+    description: 'The best of both worlds: fragrant basmati rice and Hakka noodles stir-fried together with vegetables.',
+    descriptionHi: 'चावल और नूडल्स का लाजवाब संगम, ताज़ी सब्जियों और चाइनीज़ मसालों के साथ।',
+    descriptionMr: 'बासमती तांदूळ आणि नूडल्स एकत्र करून बनवलेला स्वादिष्ट कॉम्बिनेशन राईस.'
+  },
+  {
+    name: 'Mushroom Garlic Rice',
+    hindiName: 'मशरूम गार्लिक राइस',
+    marathiName: 'मशरूम गार्लिक राईस',
+    price: 260,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/MUSHROOM GARLIC FRIED RICE.jpg',
+    description: 'Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.',
+    descriptionHi: 'भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।',
+    descriptionMr: 'परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात.'
+  },
+  {
+    name: 'Veg Triple Schezwan Rice',
+    hindiName: 'वेज ट्रिपल शेज़वान राइस',
+    marathiName: 'व्हेज ट्रिपल शेजवान राईस',
+    price: 290,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN RICE.jpg',
+    description: 'Hotel Pride blockbuster: Schezwan rice and noodles layered with crispy noodles and served with spicy Manchurian gravy.',
+    descriptionHi: 'शेज़वान राइस, नूडल्स, क्रिस्पी फ्राइड नूडल्स और गरमागरम मंचूरियन ग्रेवी की रॉयल दावत।',
+    descriptionMr: 'शेजवान राईस, नूडल्स, कुरकुरीत नूडल्स आणि गरमागरम मंचूरियन ग्रेव्हीचे भव्य कॉम्बिनेशन.'
+  }
+];
+
+const NOODLES_VARIANTS = [
+  {
+    name: 'Veg Hakka Noodles',
+    hindiName: 'वेज हक्का नूडल्स',
+    marathiName: 'व्हेज हक्का नूडल्स',
+    price: 230,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES 1.jpg',
+    description: 'Wok-tossed thin noodles with shredded cabbage, carrots, bell peppers, spring onions and savory soya seasoning.',
+    descriptionHi: 'पत्तागोभी, गाजर और शिमला मिर्च के साथ वोक में टॉस किए गए क्लासिक हक्का नूडल्स।',
+    descriptionMr: 'शिमला मिरची, कोबी व गाजराच्या पातळ कापांसह टॉस केलेले प्रसिद्ध हक्का नूडल्स.'
+  },
+  {
+    name: 'Veg Schezwan Noodles',
+    hindiName: 'वेज शेज़वान नूडल्स',
+    marathiName: 'व्हेज शेजवान नूडल्स',
+    price: 230,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN NOODLES 2.jpg',
+    description: 'Fiery wok-fried noodles tossed in our house-made Schezwan paste with crunchy vegetables and spring onions.',
+    descriptionHi: 'तीखी शेज़वान सॉस और कटी सब्जियों से बने गरमागरम स्पाइसी नूडल्स।',
+    descriptionMr: 'तिखट शेजवान सॉस आणि भाज्यांनी युक्त गरमागरम शेजवान नूडल्स.'
+  },
+  {
+    name: 'Veg Singapuri Noodles',
+    hindiName: 'वेज सिंगापुरी नूडल्स',
+    marathiName: 'व्हेज सिंगापुरी नूडल्स',
+    price: 240,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SINGAPURI NOODLES.jpg',
+    description: 'Curry-seasoned yellow noodles stir-fried with vegetables and garnished with roasted cashew nuts.',
+    descriptionHi: 'हल्की कढ़ी मसालों की खुशबू और काजू से सजे अनोखे सिंगापुरी नूडल्स।',
+    descriptionMr: 'खमंग काजू आणि मसाल्यांच्या फोडणीत तयार केलेले पिवळसर सिंगापुरी नूडल्स.'
+  },
+  {
+    name: 'Veg Manchurian Noodles',
+    hindiName: 'वेज मंचूरियन नूडल्स',
+    marathiName: 'व्हेज मंचूरियन नूडल्स',
+    price: 240,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG MANCHURIAN NOODLES.jpg',
+    description: 'Stir-fried noodles paired with succulent vegetable Manchurian dumplings in a savory, dark sauce.',
+    descriptionHi: 'मंचूरियन कोफ्तों और स्वादिष्ट ग्रेवी के साथ वोक-टॉस्ड चाइनीज़ नूडल्स।',
+    descriptionMr: 'मंचूरियन बॉल्स आणि खमंग ग्रेव्हीसह टॉस केलेले मंचूरियन नूडल्स.'
+  },
+  {
+    name: 'Veg Triple Schezwan Noodles',
+    hindiName: 'वेज ट्रिपल शेज़वान नूडल्स',
+    marathiName: 'व्हेज ट्रिपल शेजवान नूडल्स',
+    price: 280,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN NOODLES.jpg',
+    description: 'A lavish combo of spicy Schezwan noodles topped with crisp fried noodles and accompanied by vegetable Manchurian gravy.',
+    descriptionHi: 'स्पाइसी शेज़वान नूडल्स, क्रिस्पी फ्राइड नूडल्स और मंचूरियन ग्रेवी का संपूर्ण भोजन।',
+    descriptionMr: 'तिखट शेजवान नूडल्स, वरून कुरकुरीत नूडल्स आणि सोबत मंचूरियन ग्रेव्ही.'
+  }
+];
+
+const KOFTA_VARIANTS = [
+  {
+    name: 'Malai Kofta',
+    hindiName: 'मलाई कोफ्ता',
+    marathiName: 'मलाई कोफ्ता',
+    price: 290,
+    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
+    description: 'Melt-in-mouth cottage cheese and mawa dumplings simmered in an opulent, velvety cashew nut and cream gravy.',
+    descriptionHi: 'मुलायम पनीर और खोया के कोफ्ते, काजू और मलाई की शाही मखमली ग्रेवी में।',
+    descriptionMr: 'काजू आणि मलईच्या शाही मऊशार ग्रेव्हीत भिजवलेले मखमली मलाई कोफ्ते.'
+  },
+  {
+    name: 'Veg Sunrise Kofta',
+    hindiName: 'वेज सनराइज कोफ्ता',
+    marathiName: 'व्हेज सनराईज कोफ्ता',
+    price: 290,
+    image: 'assets/menu-images/DELICIOUS KOFTA/VEG SUNRISE.jpg',
+    description: 'Two-toned stuffed vegetable and cottage cheese koftas served in a dual chef-curated royal yellow and red gravy.',
+    descriptionHi: 'दो रंगों वाले स्वादिष्ट वेज कोफ्ते, शेफ की खास सुनहरी क्रीमी ग्रेवी के साथ।',
+    descriptionMr: 'दोन रंगांचे भरलेले कोफ्ते, शेफच्या खास शाही पिवळ्या ग्रेव्हीत.'
+  },
+  {
+    name: 'Veg Kofta',
+    hindiName: 'वेज कोफ्ता',
+    marathiName: 'व्हेज कोफ्ता',
+    price: 290,
+    image: 'assets/menu-images/DELICIOUS KOFTA/VEG KOFTA.jpg',
+    description: 'Spiced minced garden vegetable dumplings simmered in a homestyle onion, tomato and garam masala curry.',
+    descriptionHi: 'सब्जियों के स्वादिष्ट कोफ्ते, प्याज और टमाटर की पारंपरिक मसालेदार ग्रेवी में।',
+    descriptionMr: 'कांदा, टोमॅटो आणि मसाल्यांच्या पारंपरिक ग्रेव्हीत बनवलेले व्हेज कोफ्ते.'
+  },
+  {
+    name: 'Nargisi Kofta',
+    hindiName: 'नरगिसी कोफ्ता',
+    marathiName: 'नरगिसी कोफ्ता',
+    price: 300,
+    image: 'assets/menu-images/DELICIOUS KOFTA/NARGISI KOFTA 1.jpg',
+    description: 'Royal stuffed cottage cheese and dry fruit dumplings cooked in a deeply aromatic, rich brown gravy.',
+    descriptionHi: 'मेवों और पनीर से भरे शाही नरगिसी कोफ्ते, महकती मसालेदार ग्रेवी के साथ।',
+    descriptionMr: 'ड्रायफ्रूट्स आणि पनीरचे भरलेले शाही कोफ्ते, सुगंधी मसालेदार ग्रेव्हीत.'
+  },
+  {
+    name: 'Cheese Kofta',
+    hindiName: 'चीज़ कोफ्ता',
+    marathiName: 'चीज कोफ्ता',
+    price: 300,
+    image: 'assets/menu-images/DELICIOUS KOFTA/CHEESE KOFTA.jpg',
+    description: 'Gooey molten mozzarella and paneer balls cooked in a rich, buttery tomato velvet gravy.',
+    descriptionHi: 'अंदर से पिघलते चीज़ वाले कोफ्ते, बटर और टमाटर की मखमली ग्रेवी में।',
+    descriptionMr: 'आत वितळलेले चीज असलेले कोफ्ते, बटर आणि टोमॅटोच्या मऊशार ग्रेव्हीत.'
+  },
+  {
+    name: 'Paneer Kofta',
+    hindiName: 'पनीर कोफ्ता',
+    marathiName: 'पनीर कोफ्ता',
+    price: 315,
+    image: 'assets/menu-images/DELICIOUS KOFTA/PANEER KOFTA.jpg',
+    description: 'Pure cottage cheese dumplings infused with green chillies and mint, simmered in a luscious cashew curry.',
+    descriptionHi: 'हरी मिर्च और पुदीने से सुगंधित शुद्ध पनीर के कोफ्ते, गाढ़ी काजू ग्रेवी में।',
+    descriptionMr: 'शुद्ध पनीरचे कोफ्ते, पुदिना आणि काजूच्या शाही दाट ग्रेव्हीत.'
+  }
+];
+
 window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'tc-paneer-tikka-group', categoryId: 'tandoor-classics',
@@ -1546,6 +1967,97 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '10 mins',
     variants: CHANA_ROAST_VARIANTS
+  },
+  {
+    id: 'ic-spring-rolls-group', categoryId: 'indo-chinese',
+    name: 'Crisp Golden Spring Rolls',
+    hindiName: 'कुरकुरे स्प्रिंग रोल्स',
+    marathiName: 'कुरकुरीत स्प्रिंग रोल्स',
+    description: 'Golden hand-rolled crispy sheets stuffed with gourmet seasonal vegetables, paneer or cheese, served piping hot with fiery Schezwan chutney.',
+    descriptionHi: 'सब्जियों, पनीर और चीज से भरे क्रिस्पी स्प्रिंग रोल्स, शेजवान सॉस के साथ।',
+    descriptionMr: 'भाज्या, पनीर आणि चीजने भरलेले कुरकुरीत स्प्रिंग रोल्स, शेजवान चटणीसोबत.',
+    price: 280, displayPriceRange: '₹280 – ₹325', isGroupMaster: true,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '12-15 mins',
+    variants: SPRING_ROLLS_VARIANTS
+  },
+  {
+    id: 'ic-paneer-starters-group', categoryId: 'indo-chinese',
+    name: 'Signature Indo-Chinese Paneer Delights',
+    hindiName: 'इंडो-चाइनीज पनीर स्टार्टर्स',
+    marathiName: 'इंडो-चायनीज पनीर स्टार्टर्स',
+    description: 'Succulent malai paneer cubes wok-tossed in authentic oriental sauces: Chilli, Crispy, Schezwan, Garlic, Ginger, 65, and signature Hot Pan.',
+    descriptionHi: 'चिली, क्रिस्पी, शेजवान और गार्लिक सॉस में टॉस किए गए स्वादिष्ट पनीर स्टार्टर्स।',
+    descriptionMr: 'चिली, क्रिस्पी, शेजवान आणि गार्लिक सॉसमध्ये टॉस केलेले चवदार पनीर स्टार्टर्स.',
+    price: 265, displayPriceRange: '₹265 – ₹315', isGroupMaster: true,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PAANEER CHILLI 1 (1).jpg',
+    tags: ['veg', 'bestseller', 'chef-special'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '12-15 mins',
+    variants: PANEER_STARTERS_VARIANTS
+  },
+  {
+    id: 'ic-veg-starters-group', categoryId: 'indo-chinese',
+    name: 'Crunchy Garden Veg Starters',
+    hindiName: 'कुरकुरे वेज स्टार्टर्स',
+    marathiName: 'कुरकुरीत व्हेज स्टार्टर्स',
+    description: 'Fresh farm-fresh vegetables and crispy fritters wok-tossed in zesty Chinese gravies and dry glazes: Manchurian, Crispy, 65, Schezwan, and Hot Pan.',
+    descriptionHi: 'वेज मंचूरियन, क्रिस्पी वेज, 65 और हॉट पैन के साथ तीखे और कुरकुरे वेज स्टार्टर्स।',
+    descriptionMr: 'व्हेज मंचूरियन, क्रिस्पी व्हेज, 65 आणि हॉट पॅनसह मसालेदार व कुरकुरीत व्हेज स्टार्टर्स.',
+    price: 240, displayPriceRange: '₹240 – ₹280', isGroupMaster: true,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY 1.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '12-15 mins',
+    variants: VEG_STARTERS_VARIANTS
+  },
+  {
+    id: 'ic-corn-potato-group', categoryId: 'indo-chinese',
+    name: 'Crispy Corn, Baby Corn & Potato Crunch',
+    hindiName: 'क्रिस्पी कॉर्न एवं पोटैटो स्पेशल',
+    marathiName: 'क्रिस्पी कॉर्न व पोटॅटो स्पेशल',
+    description: 'Tender sweet corn, tender baby corn and golden potato batons crackled crisp and tossed in fiery Schezwan, Chilli and pepper aromatics.',
+    descriptionHi: 'क्रिस्पी कॉर्न चिली, बेबी कॉर्न चिली और हनी पोटैटो का लाजवाब क्रंच।',
+    descriptionMr: 'क्रिस्पी कॉर्न चिली, बेबी कॉर्न चिली आणि हनी पोटॅटोचा कुरकुरीत स्वाद.',
+    price: 210, displayPriceRange: '₹210 – ₹270', isGroupMaster: true,
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '10-12 mins',
+    variants: CORN_POTATO_VARIANTS
+  },
+  {
+    id: 'rn-fried-rice-group', categoryId: 'sizzling-rice-noodles',
+    name: 'Wok-Tossed Fried Rice Selections',
+    hindiName: 'तड़का फ्राइड राइस स्पेशल',
+    marathiName: 'तडका फ्राईड राईस स्पेशल',
+    description: 'Fragrant long-grain basmati rice wok-tossed on high flame with farm vegetables, golden garlic, fiery Schezwan, mushroom, and triple combination.',
+    descriptionHi: 'वेज फ्राइड राइस, शेजवान राइस, गार्लिक राइस और ट्रिपल राइस का स्वादिष्ट संगम।',
+    descriptionMr: 'व्हेज फ्राईड राईस, शेजवान राईस, गार्लिक राईस आणि ट्रिपल राईसचा खमंग स्वाद.',
+    price: 230, displayPriceRange: '₹230 – ₹290', isGroupMaster: true,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '12-15 mins',
+    variants: FRIED_RICE_VARIANTS
+  },
+  {
+    id: 'rn-noodles-group', categoryId: 'sizzling-rice-noodles',
+    name: 'Sizzling Hakka & Schezwan Noodles',
+    hindiName: 'हक्का एवं शेजवान नूडल्स',
+    marathiName: 'हक्का व शेजवान नूडल्स',
+    description: 'Steamed thin noodles wok-tossed with crunchy julienned vegetables, roasted garlic, fiery red chillies, and savory soy sauces.',
+    descriptionHi: 'वेज हक्का नूडल्स, शेजवान नूडल्स, गार्लिक नूडल्स और सिंगापुर नूडल्स।',
+    descriptionMr: 'व्हेज हक्का नूडल्स, शेजवान नूडल्स, गार्लिक नूडल्स आणि सिंगापूर नूडल्स.',
+    price: 230, displayPriceRange: '₹230 – ₹280', isGroupMaster: true,
+    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES 1.jpg',
+    tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '12-15 mins',
+    variants: NOODLES_VARIANTS
+  },
+  {
+    id: 'kd-kofta-group', categoryId: 'kofta-delights',
+    name: 'Royal Handcrafted Kofta Curries',
+    hindiName: 'शाही कोफ्ता करी स्पेशल',
+    marathiName: 'शाही कोफ्ता करी स्पेशल',
+    description: 'Delicate handcrafted vegetable and cottage cheese dumplings simmered in rich, creamy royal gravies: Malai, Dilbahar, Hariyali, and Nargisi.',
+    descriptionHi: 'मलाई कोफ्ता, दिलबहार कोफ्ता, हरियाली कोफ्ता और शाही कश्मीरी कोफ्ता करी।',
+    descriptionMr: 'मलाई कोफ्ता, दिलबहार कोफ्ता, हरियाली कोफ्ता आणि शाही कश्मीरी कोफ्ता करी.',
+    price: 290, displayPriceRange: '₹290 – ₹315', isGroupMaster: true,
+    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
+    tags: ['veg', 'bestseller', 'chef-special'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '15-20 mins',
+    variants: KOFTA_VARIANTS
   },
   {
     id: 'fa-papad-group', categoryId: 'fresh-addons',
@@ -2400,7 +2912,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/PAANEER CHILLI 1 (1).jpg',
     rating: 4.9,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: PANEER_STARTERS_VARIANTS,
+    groupedUnder: 'ic-paneer-starters-group'
   },
   {
     id: 'ic-3',
@@ -2415,7 +2929,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER MANCHURIAN.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: PANEER_STARTERS_VARIANTS,
+    groupedUnder: 'ic-paneer-starters-group'
   },
   {
     id: 'ic-4',
@@ -2430,7 +2946,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SANCHO 1.jpg',
     rating: 4.9,
-    prepTime: '18 mins'
+    prepTime: '18 mins',
+    variants: PANEER_STARTERS_VARIANTS,
+    groupedUnder: 'ic-paneer-starters-group'
   },
   {
     id: 'ic-5',
@@ -2445,7 +2963,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SATAY 1.jpg',
     rating: 4.7,
-    prepTime: '18 mins'
+    prepTime: '18 mins',
+    variants: PANEER_STARTERS_VARIANTS,
+    groupedUnder: 'ic-paneer-starters-group'
   },
   {
     id: 'ic-6',
@@ -2458,9 +2978,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
     rating: 4.9,
-    prepTime: '20 mins'
+    prepTime: '20 mins',
+    variants: SPRING_ROLLS_VARIANTS,
+    groupedUnder: 'ic-spring-rolls-group'
   },
   {
     id: 'ic-7',
@@ -2475,7 +2997,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
     rating: 4.8,
-    prepTime: '18 mins'
+    prepTime: '18 mins',
+    variants: SPRING_ROLLS_VARIANTS,
+    groupedUnder: 'ic-spring-rolls-group'
   },
   {
     id: 'ic-8',
@@ -2490,7 +3014,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/THREAD PANEER.jpg',
     rating: 4.8,
-    prepTime: '18 mins'
+    prepTime: '18 mins',
+    variants: PANEER_STARTERS_VARIANTS,
+    groupedUnder: 'ic-paneer-starters-group'
   },
   {
     id: 'ic-9',
@@ -2505,7 +3031,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SALTON.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: PANEER_STARTERS_VARIANTS,
+    groupedUnder: 'ic-paneer-starters-group'
   },
   {
     id: 'ic-10',
@@ -2520,7 +3048,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER 65.jpg',
     rating: 4.9,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: PANEER_STARTERS_VARIANTS,
+    groupedUnder: 'ic-paneer-starters-group'
   },
   {
     id: 'ic-11',
@@ -2535,7 +3065,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER IN HOT Garlic SAUCE.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: PANEER_STARTERS_VARIANTS,
+    groupedUnder: 'ic-paneer-starters-group'
   },
   {
     id: 'ic-12',
@@ -2567,9 +3099,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpg',
+    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
     rating: 4.8,
-    prepTime: '16 mins'
+    prepTime: '16 mins',
+    variants: SPRING_ROLLS_VARIANTS,
+    groupedUnder: 'ic-spring-rolls-group'
   },
   {
     id: 'ic-14',
@@ -2585,7 +3119,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: VEG_STARTERS_VARIANTS,
+    groupedUnder: 'ic-veg-starters-group'
   },
   {
     id: 'ic-15',
@@ -2600,7 +3136,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG LOLLIPOP.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: VEG_STARTERS_VARIANTS,
+    groupedUnder: 'ic-veg-starters-group'
   },
   {
     id: 'ic-16',
@@ -2615,7 +3153,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: SPRING_ROLLS_VARIANTS,
+    groupedUnder: 'ic-spring-rolls-group'
   },
   {
     id: 'ic-17',
@@ -2630,7 +3170,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG 65.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: VEG_STARTERS_VARIANTS,
+    groupedUnder: 'ic-veg-starters-group'
   },
   {
     id: 'ic-18',
@@ -2645,7 +3187,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY 1.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: VEG_STARTERS_VARIANTS,
+    groupedUnder: 'ic-veg-starters-group'
   },
   {
     id: 'ic-19',
@@ -2660,7 +3204,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BALL IN HOT GARLIC SAUCE.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: VEG_STARTERS_VARIANTS,
+    groupedUnder: 'ic-veg-starters-group'
   },
   {
     id: 'ic-20',
@@ -2675,7 +3221,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/MUSHROOM BABYCORN CHILLI.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: CORN_POTATO_VARIANTS,
+    groupedUnder: 'ic-corn-potato-group'
   },
   {
     id: 'ic-21',
@@ -2690,7 +3238,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN 1.jpg',
     rating: 4.8,
-    prepTime: '16 mins'
+    prepTime: '16 mins',
+    variants: VEG_STARTERS_VARIANTS,
+    groupedUnder: 'ic-veg-starters-group'
   },
   {
     id: 'ic-22',
@@ -2705,7 +3255,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BULLET 1.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: VEG_STARTERS_VARIANTS,
+    groupedUnder: 'ic-veg-starters-group'
   },
   {
     id: 'ic-23',
@@ -2720,7 +3272,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG HOT PAN 1.jpg',
     rating: 4.8,
-    prepTime: '16 mins'
+    prepTime: '16 mins',
+    variants: VEG_STARTERS_VARIANTS,
+    groupedUnder: 'ic-veg-starters-group'
   },
   {
     id: 'ic-24',
@@ -2735,7 +3289,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.jpg',
     rating: 4.8,
-    prepTime: '12 mins'
+    prepTime: '12 mins',
+    variants: CORN_POTATO_VARIANTS,
+    groupedUnder: 'ic-corn-potato-group'
   },
   {
     id: 'ic-25',
@@ -2750,7 +3306,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/HONEY CHILLI POTATO.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: CORN_POTATO_VARIANTS,
+    groupedUnder: 'ic-corn-potato-group'
   },
   {
     id: 'ic-26',
@@ -2765,7 +3323,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/INDO CHINESE NIBBLES/SOYABEAN CHILLI.jpg',
     rating: 4.6,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: CORN_POTATO_VARIANTS,
+    groupedUnder: 'ic-corn-potato-group'
   },
 
   // ==================== TANDOOR CLASSICS ====================
@@ -3055,7 +3615,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN RICE 2.jpg',
     rating: 4.9,
-    prepTime: '18 mins'
+    prepTime: '18 mins',
+    variants: FRIED_RICE_VARIANTS,
+    groupedUnder: 'rn-fried-rice-group'
   },
   {
     id: 'rn-2',
@@ -3070,7 +3632,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN FRIED RICE.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: FRIED_RICE_VARIANTS,
+    groupedUnder: 'rn-fried-rice-group'
   },
   {
     id: 'rn-3',
@@ -3085,7 +3649,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: FRIED_RICE_VARIANTS,
+    groupedUnder: 'rn-fried-rice-group'
   },
   {
     id: 'rn-4',
@@ -3100,7 +3666,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/MUSHROOM GARLIC FRIED RICE.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: FRIED_RICE_VARIANTS,
+    groupedUnder: 'rn-fried-rice-group'
   },
   {
     id: 'rn-5',
@@ -3115,7 +3683,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG COMBINATION RICE.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: FRIED_RICE_VARIANTS,
+    groupedUnder: 'rn-fried-rice-group'
   },
   {
     id: 'rn-6',
@@ -3130,7 +3700,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN NOODLES.jpg',
     rating: 4.8,
-    prepTime: '18 mins'
+    prepTime: '18 mins',
+    variants: NOODLES_VARIANTS,
+    groupedUnder: 'rn-noodles-group'
   },
   {
     id: 'rn-7',
@@ -3145,7 +3717,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN NOODLES 2.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: NOODLES_VARIANTS,
+    groupedUnder: 'rn-noodles-group'
   },
   {
     id: 'rn-8',
@@ -3160,7 +3734,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES 1.jpg',
     rating: 4.8,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: NOODLES_VARIANTS,
+    groupedUnder: 'rn-noodles-group'
   },
   {
     id: 'rn-9',
@@ -3175,7 +3751,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SINGAPURI NOODLES.jpg',
     rating: 4.7,
-    prepTime: '15 mins'
+    prepTime: '15 mins',
+    variants: NOODLES_VARIANTS,
+    groupedUnder: 'rn-noodles-group'
   },
   {
     id: 'rn-10',
@@ -3190,7 +3768,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG MANCHURIAN NOODLES.jpg',
     rating: 4.8,
-    prepTime: '16 mins'
+    prepTime: '16 mins',
+    variants: NOODLES_VARIANTS,
+    groupedUnder: 'rn-noodles-group'
   },
 
   // ==================== PREMIER ROYAL THALIS (SWIGGY & ZOMATO EXCLUSIVE) ====================
@@ -3622,7 +4202,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
     rating: 4.9,
-    prepTime: '20 mins'
+    prepTime: '20 mins',
+    variants: KOFTA_VARIANTS,
+    groupedUnder: 'kd-kofta-group'
   },
   {
     id: 'kf-2',
@@ -3637,7 +4219,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/DELICIOUS KOFTA/NARGISI KOFTA 1.jpg',
     rating: 4.8,
-    prepTime: '20 mins'
+    prepTime: '20 mins',
+    variants: KOFTA_VARIANTS,
+    groupedUnder: 'kd-kofta-group'
   },
   {
     id: 'kf-3',
@@ -3652,7 +4236,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/DELICIOUS KOFTA/VEG SUNRISE.jpg',
     rating: 4.8,
-    prepTime: '20 mins'
+    prepTime: '20 mins',
+    variants: KOFTA_VARIANTS,
+    groupedUnder: 'kd-kofta-group'
   },
   {
     id: 'kf-4',
@@ -3667,7 +4253,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/DELICIOUS KOFTA/CHEESE KOFTA.jpg',
     rating: 4.8,
-    prepTime: '20 mins'
+    prepTime: '20 mins',
+    variants: KOFTA_VARIANTS,
+    groupedUnder: 'kd-kofta-group'
   },
   {
     id: 'kf-5',
@@ -3682,7 +4270,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/DELICIOUS KOFTA/VEG KOFTA.jpg',
     rating: 4.7,
-    prepTime: '18 mins'
+    prepTime: '18 mins',
+    variants: KOFTA_VARIANTS,
+    groupedUnder: 'kd-kofta-group'
   },
   {
     id: 'kf-6',
@@ -3697,7 +4287,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/DELICIOUS KOFTA/PANEER KOFTA.jpg',
     rating: 4.8,
-    prepTime: '20 mins'
+    prepTime: '20 mins',
+    variants: KOFTA_VARIANTS,
+    groupedUnder: 'kd-kofta-group'
   },
 
   // ==================== PANEER SPECIALTIES ====================

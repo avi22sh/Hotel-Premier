@@ -3398,8 +3398,27 @@ body.theme-dark #section-dine .dish-banner-price-stack .dish-price { color: #DFC
 #section-dine .compact-dish-card .dish-price { font-size: 1rem; }
 #section-dine .compact-dish-card .dish-tax-note { font-size: .6rem; }
 #section-dine .compact-dish-card .dish-banner-bottom { padding: 0; gap: 6px; }
-.dish-options-hint { font-size: .68rem; line-height: 1.3; color: #657180; }
-body.theme-dark .dish-options-hint { color: #BAC4CE; }
+.dish-options-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #7A531E;
+  background: rgba(182, 139, 69, 0.08);
+  border: 1px solid rgba(182, 139, 69, 0.26);
+  padding: 3px 8px;
+  border-radius: 999px;
+  width: fit-content;
+  white-space: nowrap;
+}
+body.theme-dark .dish-options-hint {
+  color: #DFC69A;
+  background: rgba(223, 198, 154, 0.12);
+  border-color: rgba(223, 198, 154, 0.28);
+}
 
 /* Group Master Dishes & Option Pill Chips */
 .dish-badge-group-master {
@@ -3415,8 +3434,10 @@ body.theme-dark .dish-options-hint { color: #BAC4CE; }
   border: 1px solid rgba(182, 139, 69, 0.32);
   padding: 3px 9px;
   border-radius: 999px;
-  margin-bottom: 6px;
+  margin-top: 4px;
+  margin-bottom: 3px;
   width: fit-content;
+  white-space: nowrap;
   box-shadow: 0 1px 4px rgba(182, 139, 69, 0.08);
 }
 .dish-badge-group-master .badge-gem {

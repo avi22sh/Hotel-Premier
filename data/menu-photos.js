@@ -1,5 +1,12 @@
 // Owner-selected photos, exported 2026-10-15. Originals preserved.
 window.HOTEL_PREMIER_PHOTOS = {
+  "ic-spring-rolls-group": "assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg",
+  "ic-paneer-starters-group": "assets/menu-images/INDO CHINESE NIBBLES/PAANEER CHILLI 1 (1).jpg",
+  "ic-veg-starters-group": "assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY 1.jpg",
+  "ic-corn-potato-group": "assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.jpg",
+  "rn-fried-rice-group": "assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg",
+  "rn-noodles-group": "assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES 1.jpg",
+  "kd-kofta-group": "assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg",
   "upvas-fasting-group": "assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg",
   "tt-chaat-group": "assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg",
   "tt-chana-roast-group": "assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg",
