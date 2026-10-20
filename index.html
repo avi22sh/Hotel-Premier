@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#131C26">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -45,7 +45,7 @@
   <!-- Google Fonts: Luxury Royal Serif, Devanagari & Crisp Modern Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&family=Rozha+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest & App Icons -->
   <link rel="manifest" href="manifest.json?v=20.36">
@@ -53,7 +53,7 @@
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
   <!-- QRCode.js for Instant GPS & Table QR Standee Generation -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
   <!-- Cache Invalidation & Old Service Worker Purge -->
   <script>
@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.40">
-  <link rel="stylesheet" href="royal.css?v=21.40">
+  <link rel="stylesheet" href="styles.css?v=21.50">
+  <link rel="stylesheet" href="royal.css?v=21.50">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -127,7 +127,7 @@
         <a href="tel:09325375802" class="settings-action settings-contact" data-i18n="btnCallHotel">Call Front Desk</a>
 
         <!-- CMS Settings Button (Visible only for staff via logo 5-tap or ?staff=1 / ?admin=1) -->
-        <button class="settings-action" id="cms-settings-admin-btn" style="display: none;" onclick="document.getElementById('guest-settings').open=false; window.admin ? window.admin.openAdminModal() : null" title="Admin Studio & CRM">
+        <button class="settings-action" id="cms-settings-admin-btn" style="display: none;" onclick="document.getElementById('guest-settings').open=false; window.app ? window.app.ensureAdminLoaded(() => window.admin.openAdminModal()) : null" title="Admin Studio & CRM">
           Staff studio
         </button>
         <a class="settings-developer" href="https://wa.me/918983703702?text=Hello,%20I%20am%20interested%20in%20a%20custom%20hotel%20digital%20concierge%20or%20QR%20web%20app%20like%20Hotel%20Premier." target="_blank" rel="noopener noreferrer">Digital experience · Contact developer ↗</a>
@@ -192,6 +192,9 @@
           <span class="sanctuary-pill" data-i18n="pill5min">🚆 15 Mins / 2 KM from Railway Junction</span>
           <span class="sanctuary-pill" data-i18n="pillVeg">🌱 Pride Pure Veg AC Dining</span>
           <span class="sanctuary-pill" data-i18n="pillParking">🚗 Free Private Bus & Car Parking</span>
+          <button type="button" class="sanctuary-share-btn" onclick="window.app ? window.app.shareHotel() : null" aria-label="Share Hotel Premier website">
+            <span>📤 Share Hotel</span>
+          </button>
         </div>
 
         <!-- Concierge Fast Action Cards -->
@@ -978,13 +981,58 @@
             <input type="search" id="menu-search-input" placeholder="Search dishes (e.g. Paneer, Biryani, Naan, Dal, Soup)..." autocomplete="off" spellcheck="false" aria-label="Search all pure veg dishes">
             <button class="clear-search-btn" id="clear-search-btn" type="button" aria-label="Clear search query" style="display: none;">✕</button>
           </div>
+          <div class="search-actions-row">
+            <button type="button" class="btn-favorites-filter" id="btn-favorites-filter" onclick="window.app ? window.app.toggleFavoritesFilter() : null" aria-label="View favorite dishes">
+              <span class="fav-filter-icon">♥</span>
+              <span class="fav-filter-label" data-i18n="favoritesFilter">My Favorites</span>
+              <span class="fav-filter-count" id="favorites-count-badge">0</span>
+            </button>
+            <div class="recent-searches-bar" id="recent-searches-bar" style="display: none;">
+              <span class="recent-search-label">Recent:</span>
+              <div class="recent-searches-list" id="recent-searches-list"></div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Main Unified Responsive Menu Container -->
       <main class="menu-container" id="menu-container">
         <div id="menu-items-grid">
-          <!-- Dish cards and categorized sections rendered dynamically by app.js -->
+          <!-- Initial skeleton placeholders replaced when app.js renders -->
+          <div class="menu-skeleton-grid" id="menu-skeleton-grid" aria-hidden="true">
+            <div class="skeleton-card">
+              <div class="skeleton-image skeleton-shimmer"></div>
+              <div class="skeleton-content">
+                <div class="skeleton-text skeleton-title skeleton-shimmer"></div>
+                <div class="skeleton-text skeleton-subtitle skeleton-shimmer"></div>
+                <div class="skeleton-text skeleton-price skeleton-shimmer"></div>
+              </div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-image skeleton-shimmer"></div>
+              <div class="skeleton-content">
+                <div class="skeleton-text skeleton-title skeleton-shimmer"></div>
+                <div class="skeleton-text skeleton-subtitle skeleton-shimmer"></div>
+                <div class="skeleton-text skeleton-price skeleton-shimmer"></div>
+              </div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-image skeleton-shimmer"></div>
+              <div class="skeleton-content">
+                <div class="skeleton-text skeleton-title skeleton-shimmer"></div>
+                <div class="skeleton-text skeleton-subtitle skeleton-shimmer"></div>
+                <div class="skeleton-text skeleton-price skeleton-shimmer"></div>
+              </div>
+            </div>
+            <div class="skeleton-card">
+              <div class="skeleton-image skeleton-shimmer"></div>
+              <div class="skeleton-content">
+                <div class="skeleton-text skeleton-title skeleton-shimmer"></div>
+                <div class="skeleton-text skeleton-subtitle skeleton-shimmer"></div>
+                <div class="skeleton-text skeleton-price skeleton-shimmer"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
 
@@ -1900,10 +1948,9 @@
   <script src="data/hotel-data.js?v=21.14"></script>
   <script src="data/menu-data.js?v=21.40"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
-  <script src="app.js?v=21.40"></script>
+  <script src="app.js?v=21.50"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
-  <script src="admin.js?v=21.40"></script>
 
   <!-- PWA Service Worker Registration & Real-Time Sync Engine -->
   <script>
@@ -1929,7 +1976,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.40', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.50', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load
