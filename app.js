@@ -2159,7 +2159,6 @@ class HotelPremierApp {
                         data-variant-desc-hi="${descHi}"
                         data-variant-desc-mr="${descMr}"
                         onclick="window.app.switchModalVariant('${dish.id}', this)">
-                  <span class="variant-btn-radio" aria-hidden="true">${isSelected ? '●' : '○'}</span>
                   <span class="variant-btn-name">${displayName}</span>
                   <span class="variant-btn-price">₹${v.price}</span>
                 </button>
@@ -2275,14 +2274,10 @@ class HotelPremierApp {
       parentList.querySelectorAll('.modal-dish-variant-btn').forEach(b => {
         b.classList.remove('selected');
         b.setAttribute('aria-checked', 'false');
-        const radio = b.querySelector('.variant-btn-radio');
-        if (radio) radio.innerText = '○';
       });
     }
     btn.classList.add('selected');
     btn.setAttribute('aria-checked', 'true');
-    const radio = btn.querySelector('.variant-btn-radio');
-    if (radio) radio.innerText = '●';
 
     const newPrice = btn.getAttribute('data-variant-price');
     const newImg = btn.getAttribute('data-variant-img');
