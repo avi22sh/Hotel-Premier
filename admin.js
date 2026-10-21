@@ -375,6 +375,7 @@ class HotelPremierAdmin {
               <th style="min-width: 170px;">Taste & Badges</th>
               <th style="width: 80px; text-align: center;">Sold Out</th>
               <th style="width: 110px; text-align: center;">PWA Visibility</th>
+              <th style="width: 75px; text-align: center;">Order</th>
               <th style="width: 50px; text-align: center;">Delete</th>
             </tr>
           </thead>
@@ -424,6 +425,13 @@ class HotelPremierAdmin {
           <td>
             <div style="font-weight: 700; color: var(--terracotta-dark); font-size: 0.88rem;">${dish.name}</div>
             <div style="font-size: 0.72rem; color: var(--text-muted); max-width: 260px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${dish.description || ''}</div>
+            ${dish.variants && dish.variants.length > 0 ? `
+              <div style="margin-top: 3px;">
+                <button type="button" onclick="window.app.openDishDetail('${dish.id}')" style="background: rgba(180, 140, 75, 0.15); border: 1px solid rgba(180, 140, 75, 0.4); color: var(--gold-dark); border-radius: 4px; font-size: 0.68rem; font-weight: 700; padding: 2px 6px; cursor: pointer;">
+                  🛠️ ${dish.variants.length} Options (Reorder / Manage)
+                </button>
+              </div>
+            ` : ''}
           </td>
           <td>
             <span style="font-size: 0.75rem; background: var(--cream-darker); padding: 3px 8px; border-radius: 4px; font-weight: 600;">${dish.categoryId}</span>
@@ -467,6 +475,12 @@ class HotelPremierAdmin {
             </label>
             <div style="font-size: 0.65rem; font-weight: 800; color: ${dish.notAvailable ? '#EF4444' : '#10B981'}; margin-top: 2px;">
               ${dish.notAvailable ? '🚫 Hidden' : 'Active'}
+            </div>
+          </td>
+          <td style="text-align: center;">
+            <div style="display: flex; gap: 3px; justify-content: center;">
+              <button type="button" onclick="window.app.moveDish('${dish.id}', 'up')" style="background: rgba(0,0,0,0.06); border: 1px solid var(--cream-border); border-radius: 3px; padding: 2px 6px; cursor: pointer; font-size: 0.72rem; font-weight: 700;" title="Move Up in Category">▲</button>
+              <button type="button" onclick="window.app.moveDish('${dish.id}', 'down')" style="background: rgba(0,0,0,0.06); border: 1px solid var(--cream-border); border-radius: 3px; padding: 2px 6px; cursor: pointer; font-size: 0.72rem; font-weight: 700;" title="Move Down in Category">▼</button>
             </div>
           </td>
           <td style="text-align: center;">

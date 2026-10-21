@@ -837,6 +837,7 @@ class HotelPremierApp {
         if (ov.isSoldOut !== undefined) copy.isSoldOut = ov.isSoldOut;
         if (ov.notAvailable !== undefined) copy.notAvailable = Boolean(ov.notAvailable);
         if (ov.tags !== undefined) copy.tags = ov.tags;
+        if (ov.variants !== undefined) copy.variants = ov.variants;
       }
       return copy;
     });
@@ -850,6 +851,25 @@ class HotelPremierApp {
         }
       });
     }
+
+    try {
+      const savedOrder = localStorage.getItem('hp_menu_dish_order');
+      if (savedOrder) {
+        const idOrder = JSON.parse(savedOrder);
+        if (Array.isArray(idOrder) && idOrder.length > 0) {
+          const map = new Map(this.menuData.map(d => [d.id, d]));
+          const reordered = [];
+          idOrder.forEach(id => {
+            if (map.has(id)) {
+              reordered.push(map.get(id));
+              map.delete(id);
+            }
+          });
+          map.forEach(d => reordered.push(d));
+          this.menuData = reordered;
+        }
+      }
+    } catch (e) {}
 
     if (!this.menuData || this.menuData.length === 0) {
       this.menuData = initialMenu;
@@ -870,10 +890,15 @@ class HotelPremierApp {
           price: dish.price,
           isSoldOut: dish.isSoldOut,
           notAvailable: Boolean(dish.notAvailable),
-          tags: dish.tags
+          tags: dish.tags,
+          variants: dish.variants
         };
       });
       localStorage.setItem(this.storageKeyOverrides, JSON.stringify(overridesMap));
+      try {
+        const idOrder = this.menuData.map(d => d.id);
+        localStorage.setItem('hp_menu_dish_order', JSON.stringify(idOrder));
+      } catch (e) {}
       this.notifyMenuUpdate();
     } catch (e) {
       console.warn('Could not save to localStorage cache:', e);
@@ -2385,22 +2410,14 @@ class HotelPremierApp {
     if (hasModalVariants) {
       if (typeof targetVariantIndex === 'number' && targetVariantIndex >= 0 && targetVariantIndex < dish.variants.length) {
         initialVariantIndex = targetVariantIndex;
-      } else if (dish._activeVariantName) {
-        const found = dish.variants.findIndex(v => v.name.toLowerCase() === dish._activeVariantName.toLowerCase());
-        if (found !== -1) initialVariantIndex = found;
       } else {
-        const found = dish.variants.findIndex(v =>
-          v.name.toLowerCase() === dish.name.toLowerCase() ||
-          dish.name.toLowerCase().includes(v.name.toLowerCase()) ||
-          v.name.toLowerCase().includes(dish.name.toLowerCase())
-        );
-        if (found !== -1) initialVariantIndex = found;
+        initialVariantIndex = 0;
       }
     }
 
     const activeVariant = hasModalVariants ? dish.variants[initialVariantIndex] : null;
-    const displayImage = activeVariant ? (activeVariant.image || dish.image) : (dish._activeVariantImage || dish.image);
-    const displayPrice = activeVariant ? (activeVariant.price || dish.price) : (dish._activeVariantPrice || dish.price);
+    const displayImage = activeVariant ? (activeVariant.image || dish.image) : (dish.image);
+    const displayPrice = activeVariant ? (activeVariant.price || dish.price) : (dish.price);
     const hasPhoto = displayImage && displayImage.trim() !== '';
 
     const currentVariantName = activeVariant ? activeVariant.name : dish.name;
@@ -2483,7 +2500,9 @@ class HotelPremierApp {
     }
 
     let modalVariantsHtml = '';
+    const isStaff = document.body.classList.contains('staff-mode-active');
     if (hasModalVariants) {
+      const variantsToDisplay = isStaff ? dish.variants : dish.variants.filter(v => !v.hidden);
       modalVariantsHtml = `
         <div class="modal-dish-variants-box">
           <div class="modal-dish-variants-header">
@@ -2494,7 +2513,7 @@ class HotelPremierApp {
             </div>
           </div>
           <div class="modal-dish-variants-list" id="modal-variants-list-${dish.id}" role="radiogroup" aria-label="Available Dish Variations">
-            ${dish.variants.map((v, i) => {
+            ${variantsToDisplay.map((v, i) => {
               const isSelected = (i === initialVariantIndex);
               const displayName = (this.currentLang === 'hi' && v.hindiName) ? v.hindiName : ((this.currentLang === 'mr' && (v.marathiName || v.hindiName)) ? (v.marathiName || v.hindiName) : v.name);
               const descEn = encodeURIComponent(v.description || '');
@@ -2521,6 +2540,30 @@ class HotelPremierApp {
                 </button>
               `;
             }).join('')}
+          </div>
+        </div>
+
+        <div class="modal-staff-variants-manager" id="staff-variants-mgr-${dish.id}">
+          <div style="font-size: 0.72rem; font-weight: 800; color: var(--brass-light); text-transform: uppercase; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+            <span>🛠️ Option Controls (Sequence, Hide &amp; Delete)</span>
+            <button type="button" class="staff-add-opt-btn" onclick="window.app.promptAddVariant('${dish.id}')" style="background: rgba(16, 185, 129, 0.2); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 4px; padding: 2px 7px; font-size: 0.70rem; cursor: pointer; font-weight: 700;">+ Add Option</button>
+          </div>
+          <div class="staff-variants-list" style="display: flex; flex-direction: column; gap: 4px;">
+            ${dish.variants.map((v, i) => `
+              <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 5px 8px; border-radius: 6px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.08); ${v.hidden ? 'opacity: 0.6;' : ''}">
+                <span style="display: flex; align-items: center; gap: 6px;">
+                  <strong style="color: var(--brass-light);">${i + 1}.</strong>
+                  <span>${v.name} (₹${v.price})</span>
+                  ${v.hidden ? '<span style="font-size: 0.62rem; background: #DC2626; color: #FFF; padding: 1px 4px; border-radius: 3px; font-weight: 800;">HIDDEN</span>' : ''}
+                </span>
+                <div style="display: flex; gap: 3px;">
+                  <button type="button" onclick="window.app.moveVariant('${dish.id}', ${i}, ${i - 1})" ${i === 0 ? 'disabled style="opacity: 0.3;"' : ''} style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Move Up (Make Earlier)">▲</button>
+                  <button type="button" onclick="window.app.moveVariant('${dish.id}', ${i}, ${i + 1})" ${i === dish.variants.length - 1 ? 'disabled style="opacity: 0.3;"' : ''} style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Move Down">▼</button>
+                  <button type="button" onclick="window.app.toggleVariantAvailability('${dish.id}', ${i})" style="background: ${v.hidden ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'}; border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="${v.hidden ? 'Show to customers' : 'Hide from customers'}">${v.hidden ? '👁️ Show' : '🚫 Hide'}</button>
+                  <button type="button" onclick="window.app.deleteVariant('${dish.id}', ${i})" style="background: rgba(220,38,38,0.2); border: 1px solid rgba(220,38,38,0.4); color: #EF4444; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Delete Option">🗑️</button>
+                </div>
+              </div>
+            `).join('')}
           </div>
         </div>
       `;
@@ -2569,6 +2612,9 @@ class HotelPremierApp {
           <button type="button" class="admin-tag-toggle-chip ${dish.notAvailable ? 'active-not-available' : ''}" onclick="window.app.toggleDishNotAvailable('${dish.id}', !${Boolean(dish.notAvailable)})" title="Toggle visibility in customer PWA">
             ${dish.notAvailable ? '🚫 Hidden from PWA' : '👁️ Hide (Not Available)'}
           </button>
+          <button type="button" class="admin-tag-toggle-chip" onclick="window.app.promptAddVariant('${dish.id}')" title="Add portion/style options to this dish">
+            ➕ Add Option
+          </button>
         </div>
 
         <div class="modal-dish-tags">
@@ -2613,7 +2659,7 @@ class HotelPremierApp {
     swiggyBtn.setAttribute('aria-label', `Order ${dish.name} on Swiggy`);
     swiggyBtn.innerHTML = `
       <span class="delivery-btn-brand swiggy-brand">SWIGGY</span>
-      <span class="delivery-btn-text">Order on Swiggy &#x2197;</span>
+      <span class="delivery-btn-text">Order Now &#x2197;</span>
     `;
 
     // Zomato button with authentic brand color & typography
@@ -2625,7 +2671,7 @@ class HotelPremierApp {
     zomatoBtn.setAttribute('aria-label', `Order ${dish.name} on Zomato`);
     zomatoBtn.innerHTML = `
       <span class="delivery-btn-brand zomato-brand">zomato</span>
-      <span class="delivery-btn-text">Order on Zomato &#x2197;</span>
+      <span class="delivery-btn-text">Order Now &#x2197;</span>
     `;
 
     orderActions.appendChild(swiggyBtn);
@@ -2799,6 +2845,126 @@ class HotelPremierApp {
     if (modal && modal.classList.contains('active')) {
       this.openDishDetail(dishId);
     }
+  }
+
+  // ==================== VARIANT / OPTION MANAGEMENT ====================
+  moveVariant(dishId, fromIdx, toIdx) {
+    this.haptic(10);
+    const dish = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+    if (!dish || !dish.variants || fromIdx < 0 || toIdx < 0 || fromIdx >= dish.variants.length || toIdx >= dish.variants.length) return;
+    const item = dish.variants.splice(fromIdx, 1)[0];
+    dish.variants.splice(toIdx, 0, item);
+    this.saveMenuData();
+    if (window.HOTEL_STORAGE) {
+      window.HOTEL_STORAGE.saveDishOverride(dishId, { variants: dish.variants });
+    }
+    this.openDishDetail(dishId, 0);
+    this.renderMenu();
+    this.showToast(`Updated option sequence for "${dish.name}"`, 'success');
+  }
+
+  toggleVariantAvailability(dishId, variantIdx) {
+    this.haptic(10);
+    const dish = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+    if (!dish || !dish.variants || variantIdx < 0 || variantIdx >= dish.variants.length) return;
+    const v = dish.variants[variantIdx];
+    v.hidden = !v.hidden;
+    this.saveMenuData();
+    if (window.HOTEL_STORAGE) {
+      window.HOTEL_STORAGE.saveDishOverride(dishId, { variants: dish.variants });
+    }
+    this.openDishDetail(dishId, 0);
+    this.renderMenu();
+    this.showToast(`Option "${v.name}" is now ${v.hidden ? 'hidden from guests' : 'visible'}`, 'info');
+  }
+
+  deleteVariant(dishId, variantIdx) {
+    this.haptic(15);
+    const dish = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+    if (!dish || !dish.variants || variantIdx < 0 || variantIdx >= dish.variants.length) return;
+    if (dish.variants.length <= 1) {
+      alert('A dish must have at least one option. To hide this dish entirely, use the Hide button.');
+      return;
+    }
+    const vName = dish.variants[variantIdx].name;
+    if (!confirm(`Are you sure you want to remove portion/option "${vName}"?`)) return;
+    dish.variants.splice(variantIdx, 1);
+    this.saveMenuData();
+    if (window.HOTEL_STORAGE) {
+      window.HOTEL_STORAGE.saveDishOverride(dishId, { variants: dish.variants });
+    }
+    this.openDishDetail(dishId, 0);
+    this.renderMenu();
+    this.showToast(`Removed option "${vName}"`, 'warning');
+  }
+
+  promptAddVariant(dishId) {
+    this.haptic(10);
+    const dish = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+    if (!dish) return;
+    const name = prompt(`Enter Option / Portion Name for "${dish.name}" (e.g. Full, Half, Regular, Large):`);
+    if (!name || !name.trim()) return;
+    const priceStr = prompt(`Enter Price (₹) for "${name.trim()}":`, String(dish.price || ''));
+    const price = Number(priceStr);
+    if (!Number.isFinite(price) || price < 0) {
+      alert('Please enter a valid numeric price.');
+      return;
+    }
+    const desc = prompt(`Optional short description for "${name.trim()}" (leave blank to inherit dish description):`, '');
+    if (!dish.variants) dish.variants = [];
+    dish.variants.push({
+      name: name.trim(),
+      price: price,
+      description: desc && desc.trim() ? desc.trim() : (dish.description || ''),
+      image: dish.image || ''
+    });
+    this.saveMenuData();
+    if (window.HOTEL_STORAGE) {
+      window.HOTEL_STORAGE.saveDishOverride(dishId, { variants: dish.variants });
+    }
+    this.openDishDetail(dishId, dish.variants.length - 1);
+    this.renderMenu();
+    this.showToast(`Added option "${name.trim()}"`, 'success');
+  }
+
+  moveDish(dishId, direction) {
+    this.haptic(10);
+    const idx = this.menuData.findIndex(d => d.id === dishId);
+    if (idx === -1) return;
+    const current = this.menuData[idx];
+    const catId = current.categoryId;
+    
+    if (direction === 'up') {
+      let targetIdx = -1;
+      for (let i = idx - 1; i >= 0; i--) {
+        if (this.menuData[i].categoryId === catId) {
+          targetIdx = i;
+          break;
+        }
+      }
+      if (targetIdx !== -1) {
+        const item = this.menuData.splice(idx, 1)[0];
+        this.menuData.splice(targetIdx, 0, item);
+      }
+    } else if (direction === 'down') {
+      let targetIdx = -1;
+      for (let i = idx + 1; i < this.menuData.length; i++) {
+        if (this.menuData[i].categoryId === catId) {
+          targetIdx = i;
+          break;
+        }
+      }
+      if (targetIdx !== -1) {
+        const item = this.menuData.splice(idx, 1)[0];
+        this.menuData.splice(targetIdx, 0, item);
+      }
+    }
+    this.saveMenuData();
+    this.renderMenu();
+    if (window.admin && typeof window.admin.filterAdminDishes === 'function') {
+      window.admin.filterAdminDishes();
+    }
+    this.showToast(`Updated dish order for "${current.name}"`, 'info');
   }
 
   openExternalPlatform(platform) {
