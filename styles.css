@@ -5084,44 +5084,56 @@ body.theme-dark .tier-perks-list li {
   flex-direction: column !important;
   flex: 1 1 auto !important;
   min-height: 0 !important;
-  overflow-y: auto !important;
-  -webkit-overflow-scrolling: touch !important;
-  scroll-behavior: smooth !important;
-  overscroll-behavior: contain !important;
-  padding: 16px 20px 24px !important;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(180, 140, 75, 0.35) transparent;
-}
-
-#dish-detail-body::-webkit-scrollbar {
-  width: 5px;
-}
-
-#dish-detail-body::-webkit-scrollbar-thumb {
-  background: rgba(180, 140, 75, 0.35);
-  border-radius: 4px;
+  overflow: hidden !important;
+  padding: 16px 20px 14px !important;
 }
 
 #dish-detail-body .modal-dish-photo-wrap {
   width: 100% !important;
-  height: 240px !important;
-  max-height: 260px !important;
+  height: 225px !important;
+  max-height: 235px !important;
   flex: 0 0 auto !important;
   border-radius: var(--radius-md) !important;
-  margin: 0 0 16px 0 !important;
+  margin: 0 0 12px 0 !important;
   position: relative !important;
   overflow: hidden !important;
   border: 1.5px solid rgba(197, 168, 128, 0.35) !important;
-  box-shadow: 0 8px 24px rgba(10, 16, 26, 0.25) !important;
+  box-shadow: 0 6px 20px rgba(10, 16, 26, 0.25) !important;
+  background: radial-gradient(ellipse at 50% 50%, #1E2734 0%, #111822 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#dish-detail-body .modal-dish-photo-wrap .modal-dish-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
 }
 
 #dish-detail-body .modal-dish-detail-container {
   display: flex !important;
   flex-direction: column !important;
   flex: 1 1 auto !important;
-  overflow: visible !important;
-  padding: 0 !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  scroll-behavior: smooth !important;
+  overscroll-behavior: contain !important;
+  padding: 0 4px 14px 2px !important;
   gap: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(180, 140, 75, 0.35) transparent;
+}
+
+#dish-detail-body .modal-dish-detail-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+#dish-detail-body .modal-dish-detail-container::-webkit-scrollbar-thumb {
+  background: rgba(180, 140, 75, 0.35);
+  border-radius: 4px;
 }
 
 @media (max-width: 640px) {
@@ -5144,18 +5156,18 @@ body.theme-dark .tier-perks-list li {
   }
 
   #dish-detail-body {
-    padding: 14px 16px 20px !important;
+    padding: 12px 14px 10px !important;
   }
 
   #dish-detail-body .modal-dish-photo-wrap {
-    height: 210px !important;
-    max-height: 220px !important;
-    margin: 0 0 14px 0 !important;
+    height: 185px !important;
+    max-height: 195px !important;
+    margin: 0 0 10px 0 !important;
     border-radius: var(--radius-md) !important;
   }
 
   #dish-detail-body .modal-dish-detail-container {
-    padding: 0 !important;
+    padding: 0 2px 12px 2px !important;
     gap: 12px;
   }
 }
@@ -5371,6 +5383,9 @@ body.theme-dark .tier-perks-list li {
   gap: 12px;
   width: 100%;
   direction: ltr;
+  flex: 0 0 auto !important;
+  margin-top: 10px !important;
+  padding-bottom: 2px;
 }
 
 .delivery-buttons-container .delivery-btn {
@@ -5394,7 +5409,7 @@ body.theme-dark .tier-perks-list li {
 }
 
 .delivery-btn-text {
-  font-size: 0.88rem;
+  font-size: clamp(0.78rem, 2.8vw, 0.90rem);
   font-weight: 800;
   white-space: nowrap;
   letter-spacing: 0.2px;
@@ -7441,12 +7456,11 @@ body.theme-dark .room-complimentary-amenities-banner {
   z-index: 1;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
-  object-position: center 38% !important;
+  object-fit: contain !important;
+  object-position: center !important;
   display: block;
   /* 4K High-Definition Rendering & Studio Warmth Calibration */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  image-rendering: auto;
   filter: contrast(1.05) saturate(1.06) brightness(1.02);
   transition: transform 0.4s ease;
 }
@@ -7865,11 +7879,18 @@ body.theme-dark {
   display: none !important;
 }
 .dish-media .dish-img,
-.modal-dish-photo-wrap .modal-dish-img,
 .dish-banner-media .dish-img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
+  object-position: center !important;
+  display: block;
+  image-rendering: auto;
+}
+.modal-dish-photo-wrap .modal-dish-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
   object-position: center !important;
   display: block;
   image-rendering: auto;

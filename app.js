@@ -2657,10 +2657,7 @@ class HotelPremierApp {
     swiggyBtn.target = '_blank';
     swiggyBtn.rel = 'noopener noreferrer';
     swiggyBtn.setAttribute('aria-label', `Order ${dish.name} on Swiggy`);
-    swiggyBtn.innerHTML = `
-      <span class="delivery-btn-brand swiggy-brand">SWIGGY</span>
-      <span class="delivery-btn-text">Order Now &#x2197;</span>
-    `;
+    swiggyBtn.innerHTML = `<span class="delivery-btn-text">Order on Swiggy &#x2197;</span>`;
 
     // Zomato button with authentic brand color & typography
     const zomatoBtn = document.createElement('a');
@@ -2669,10 +2666,7 @@ class HotelPremierApp {
     zomatoBtn.target = '_blank';
     zomatoBtn.rel = 'noopener noreferrer';
     zomatoBtn.setAttribute('aria-label', `Order ${dish.name} on Zomato`);
-    zomatoBtn.innerHTML = `
-      <span class="delivery-btn-brand zomato-brand">zomato</span>
-      <span class="delivery-btn-text">Order Now &#x2197;</span>
-    `;
+    zomatoBtn.innerHTML = `<span class="delivery-btn-text">Order on Zomato &#x2197;</span>`;
 
     orderActions.appendChild(swiggyBtn);
     orderActions.appendChild(zomatoBtn);
