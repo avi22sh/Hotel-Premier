@@ -4,13 +4,13 @@
 .modal-header-share-btn .share-text { display:none; }
 .modal-header-share-btn { min-width:44px; min-height:44px; }
 #dish-detail-body > .delivery-buttons-container { flex:0 0 auto; margin:4px 0 0; padding:2px 0 max(6px,env(safe-area-inset-bottom)); box-sizing:border-box; border-top:none !important; background:transparent !important; box-shadow:none !important; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:none; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-text { white-space:normal; font-size:.78rem; font-weight:700; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-block !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-text { white-space:normal; font-size:.76rem; font-weight:800; }
 .modal-dish-variant-btn { min-height:48px; align-items:flex-start; }
 .modal-dish-variant-btn .variant-btn-name { min-width:0; overflow-wrap:anywhere; }
 .modal-dish-variant-btn .variant-btn-price { flex-shrink:0; }
 @media(max-width:640px) {
-  #dish-detail-body .modal-dish-photo-wrap { height:200px !important; max-height:215px !important; }
+  #dish-detail-body .modal-dish-photo-wrap { height:205px !important; max-height:215px !important; border-radius:12px !important; }
   .modal-sheet.dish-detail-sheet { height:90dvh !important; max-height:90dvh !important; }
   .modal-dish-variant-btn { flex-direction:column; gap:4px; }
   #dish-detail-body > .delivery-buttons-container .delivery-btn { padding:4px 8px !important; min-height:34px !important; height:34px !important; }
@@ -130,10 +130,10 @@ body.theme-dark .modal-dish-variant-btn:hover { background:rgba(223, 198, 154, 0
 /* Partner identities stay independent of Hotel Premier's light/dark palette with authentic brand colors */
 body :is(.dish-pill-zomato, .platform-pill-btn[href*="zomato.com"]) { background:#E23744 !important; border-color:#E23744 !important; color:#ffffff !important; box-shadow:0 4px 14px rgba(226, 55, 68, 0.35) !important; }
 body :is(.dish-pill-swiggy, .platform-pill-btn[href*="swiggy.com"]) { background:#FC8019 !important; border-color:#FC8019 !important; color:#ffffff !important; box-shadow:0 4px 14px rgba(252, 128, 25, 0.35) !important; }
-body .modal-btn-zomato-order { background:transparent !important; border:1.5px solid #E23744 !important; color:#E23744 !important; box-shadow:none !important; min-height:36px !important; height:36px !important; padding:4px 12px !important; border-radius:999px !important; }
-body .modal-btn-zomato-order:hover { background:rgba(226, 55, 68, 0.12) !important; color:#E23744 !important; }
-body .modal-btn-swiggy-order { background:transparent !important; border:1.5px solid #FC8019 !important; color:#FC8019 !important; box-shadow:none !important; min-height:36px !important; height:36px !important; padding:4px 12px !important; border-radius:999px !important; }
-body .modal-btn-swiggy-order:hover { background:rgba(252, 128, 25, 0.12) !important; color:#FC8019 !important; }
+body .modal-btn-zomato-order { background:linear-gradient(135deg, #E23744 0%, #CB1A27 100%) !important; border:1px solid rgba(226, 55, 68, 0.6) !important; color:#ffffff !important; box-shadow:0 2px 8px rgba(226, 55, 68, 0.35) !important; min-height:35px !important; height:35px !important; padding:4px 10px !important; border-radius:8px !important; }
+body .modal-btn-zomato-order:hover { background:linear-gradient(135deg, #F04452 0%, #DC2635 100%) !important; color:#ffffff !important; }
+body .modal-btn-swiggy-order { background:linear-gradient(135deg, #FC8019 0%, #E66A02 100%) !important; border:1px solid rgba(252, 128, 25, 0.6) !important; color:#ffffff !important; box-shadow:0 2px 8px rgba(252, 128, 25, 0.35) !important; min-height:35px !important; height:35px !important; padding:4px 10px !important; border-radius:8px !important; }
+body .modal-btn-swiggy-order:hover { background:linear-gradient(135deg, #FF9030 0%, #F57409 100%) !important; color:#ffffff !important; }
 body.theme-dark .modal-dish-variants-box { background:linear-gradient(145deg, #1A2430 0%, #131B24 100%) !important; border-color:rgba(214, 188, 135, 0.28) !important; box-shadow:0 4px 20px rgba(0, 0, 0, 0.3) !important; }
 body.theme-dark .modal-dish-variants-header { border-bottom:1px dashed rgba(214, 188, 135, 0.2) !important; }
 body.theme-dark .modal-dish-variants-title { color:#EADCC0 !important; }

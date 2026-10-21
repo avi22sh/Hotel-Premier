@@ -483,7 +483,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.58';
+    s.src = 'admin.js?v=21.59';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -2437,8 +2437,29 @@ class HotelPremierApp {
       if (vDesc) initialDesc = vDesc;
     }
 
-    // Photo remains clean and uncropped per user preference; badges displayed below subtitle
-    const modalBadgesHtml = '';
+    // Badges on modal photo per user request
+    const modalBadges = [];
+    if (dish.tags) {
+      if (dish.tags.includes('bestseller')) {
+        modalBadges.push(`<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`);
+      }
+      if (dish.tags.includes('khandeshi-special')) {
+        modalBadges.push(`<span class="badge-tag khandeshi">${this.t('badgeKhandeshi')}</span>`);
+      }
+      if (dish.tags.includes('chef-special') && !dish.tags.includes('bestseller')) {
+        modalBadges.push(`<span class="badge-tag chef">${this.t('badgeChefSpecial')}</span>`);
+      }
+      if (dish.tags.includes('sweet')) {
+        modalBadges.push(`<span class="badge-tag sweet">${this.t('badgeSweet')}</span>`);
+      }
+      if (dish.tags.includes('spicy')) {
+        modalBadges.push(`<span class="badge-tag spicy">${this.t('badgeSpicy')}</span>`);
+      }
+      if (dish.tags.includes('online-exclusive')) {
+        modalBadges.push(`<span class="badge-tag delivery-exclusive" style="background: linear-gradient(135deg, #EF4444 0%, #F59E0B 100%); color: #FFF; font-weight: 800;">🛵 Online Exclusive</span>`);
+      }
+    }
+    const modalBadgesHtml = modalBadges.join('');
 
     let detailMediaHtml = '';
     if (window.AssetPipeline && typeof window.AssetPipeline.renderDetailMedia === 'function') {
@@ -2569,14 +2590,7 @@ class HotelPremierApp {
                 ✏️ Edit Tags
               </button>
             </div>
-            <div class="modal-dish-subtitle-row" style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
-              <span class="modal-dish-subtitle" style="margin: 0;">Pride Restaurant • Chef Curated</span>
-              ${dish.tags && dish.tags.includes('bestseller') ? `<span class="dish-pill-bestseller" style="background: rgba(220, 38, 38, 0.12); border: 1px solid rgba(220, 38, 38, 0.3); color: #EF4444; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 999px;">${this.t('badgeBestseller')}</span>` : ''}
-              ${dish.tags && dish.tags.includes('khandeshi-special') ? `<span class="dish-pill-khandeshi" style="background: rgba(217, 119, 6, 0.15); border: 1px solid rgba(217, 119, 6, 0.35); color: #F59E0B; font-size: 0.68rem; font-weight: 700; padding: 2px 7px; border-radius: 999px;">${this.t('badgeKhandeshi')}</span>` : ''}
-              ${dish.tags && dish.tags.includes('sweet') ? `<span class="dish-pill-sweet">${this.t('badgeSweet')}</span>` : ''}
-              ${dish.tags && dish.tags.includes('spicy') ? `<span class="dish-pill-spice">${this.t('badgeSpicy')}</span>` : ''}
-              ${dish.tags && dish.tags.includes('online-exclusive') ? `<span class="dish-pill-delivery-exclusive" style="background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(245, 158, 11, 0.15)); border: 1px solid rgba(239, 68, 68, 0.35); color: #DC2626; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px;">🛵 Delivery Exclusive</span>` : ''}
-            </div>
+            <div class="modal-dish-subtitle">Pride Restaurant • Chef Curated</div>
           </div>
           <span class="modal-dish-price" id="modal-dish-price-${dish.id}">${Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request'}</span>
         </div>
@@ -2637,7 +2651,10 @@ class HotelPremierApp {
     swiggyBtn.target = '_blank';
     swiggyBtn.rel = 'noopener noreferrer';
     swiggyBtn.setAttribute('aria-label', `Order ${dish.name} on Swiggy`);
-    swiggyBtn.innerHTML = `<span class="delivery-btn-text">Order on Swiggy &#x2197;</span>`;
+    swiggyBtn.innerHTML = `
+      <span class="delivery-btn-brand swiggy-brand">SWIGGY</span>
+      <span class="delivery-btn-text">Order Now &#x2197;</span>
+    `;
 
     // Zomato button with authentic brand color & typography
     const zomatoBtn = document.createElement('a');
@@ -2646,7 +2663,10 @@ class HotelPremierApp {
     zomatoBtn.target = '_blank';
     zomatoBtn.rel = 'noopener noreferrer';
     zomatoBtn.setAttribute('aria-label', `Order ${dish.name} on Zomato`);
-    zomatoBtn.innerHTML = `<span class="delivery-btn-text">Order on Zomato &#x2197;</span>`;
+    zomatoBtn.innerHTML = `
+      <span class="delivery-btn-brand zomato-brand">zomato</span>
+      <span class="delivery-btn-text">Order Now &#x2197;</span>
+    `;
 
     orderActions.appendChild(swiggyBtn);
     orderActions.appendChild(zomatoBtn);
