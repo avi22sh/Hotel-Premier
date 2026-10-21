@@ -317,15 +317,17 @@ class HotelPremierApp {
 
   // ==================== WEB SHARE ENGINE ====================
   shareDish(dishId) {
+    if (!dishId && this.currentDetailDishId) dishId = this.currentDetailDishId;
     this.haptic(10);
     const dish = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
     if (!dish) return;
     const currentPrice = dish._activeVariantPrice || dish.price;
     const priceText = Number.isFinite(currentPrice) ? `₹${currentPrice}` : '';
+    const variantName = dish._activeVariantName ? ` - ${dish._activeVariantName}` : '';
     const desc = this.getDishDescription(dish) || '';
     const shareUrl = `${window.location.origin}${window.location.pathname}?dish=${encodeURIComponent(dish.id)}`;
-    const title = `${dish.name} | Hotel Premier Pure Veg`;
-    const text = `${dish.name} ${priceText ? `(${priceText})` : ''} at Pride Pure Veg Restaurant, Hotel Premier: ${desc}`;
+    const title = `${dish.name}${variantName} | Hotel Premier Pure Veg`;
+    const text = `${dish.name}${variantName} ${priceText ? `(${priceText})` : ''} at Pride Pure Veg Restaurant, Hotel Premier: ${desc}`;
 
     if (navigator.share) {
       navigator.share({
@@ -2234,14 +2236,6 @@ class HotelPremierApp {
            onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.openDishDetail('${dish.id}');}">
         <div class="dish-banner-media ${hasPhoto ? '' : 'no-photo'}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
-          <button type="button" 
-                  class="dish-fav-btn ${isFav ? 'active' : ''}" 
-                  data-dish-id="${dish.id}"
-                  onclick="event.stopPropagation(); window.app.toggleFavorite('${dish.id}')"
-                  aria-label="${isFav ? 'Remove from favorites' : 'Add to favorites'}"
-                  title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
-            <span class="fav-icon" aria-hidden="true">${isFav ? '♥' : '♡'}</span>
-          </button>
           ${hasPhoto ? `
             <img src="${window.AssetPipeline?.versionedPhotoSource(displayImage) || displayImage}" ${window.AssetPipeline?.responsivePhotoAttributes(displayImage, false, true) || ''} alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" decoding="async" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
             <div class="hp-glass-vignette" aria-hidden="true"></div>
@@ -2280,6 +2274,14 @@ class HotelPremierApp {
               </div>
             ` : (hasVariants ? `<span class="dish-options-hint">${this.t('dishOptionsHint', 'Portion options available')}</span>` : '')}
             <div class="dish-banner-action">
+              <button type="button" 
+                      class="dish-fav-btn ${isFav ? 'active' : ''}" 
+                      data-dish-id="${dish.id}"
+                      onclick="event.stopPropagation(); window.app.toggleFavorite('${dish.id}')"
+                      aria-label="${isFav ? 'Remove from favorites' : 'Add to favorites'}"
+                      title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
+                <span class="fav-icon" aria-hidden="true">${isFav ? '♥' : '♡'}</span>
+              </button>
               ${dish.isSoldOut ? `
                 <span class="dish-soldout-label">${this.t('soldOut')}</span>
               ` : `
@@ -2376,6 +2378,7 @@ class HotelPremierApp {
     if (!modal || !body) return;
     clearTimeout(this.dishDetailCloseTimer);
     this.lastDishDetailTrigger = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    this.currentDetailDishId = dish.id;
 
     const hasModalVariants = dish.variants && dish.variants.length > 0;
     let initialVariantIndex = 0;
@@ -2508,7 +2511,7 @@ class HotelPremierApp {
                         data-variant-name-hi="${nameHi}" 
                         data-variant-name-mr="${nameMr}" 
                         data-variant-price="${v.price}" 
-                        data-variant-img="${v.image || ''}"
+                        data-variant-img="${v.image || dish.image || ''}"
                         data-variant-desc="${descEn}"
                         data-variant-desc-hi="${descHi}"
                         data-variant-desc-mr="${descMr}"
@@ -2592,6 +2595,12 @@ class HotelPremierApp {
       </div>
     `;
 
+    const headerShareBtn = document.getElementById('modal-dish-share-btn');
+    if (headerShareBtn) {
+      headerShareBtn.onclick = () => this.shareDish(dish.id);
+      headerShareBtn.setAttribute('aria-label', `Share ${dish.name}`);
+    }
+
     const orderActions = document.createElement('div');
     orderActions.className = 'modal-dish-actions delivery-buttons-container';
 
@@ -2601,9 +2610,10 @@ class HotelPremierApp {
     swiggyBtn.href = this.getDeliveryUrl('swiggy', dish);
     swiggyBtn.target = '_blank';
     swiggyBtn.rel = 'noopener noreferrer';
-    swiggyBtn.setAttribute('aria-label', `Order from Swiggy`);
+    swiggyBtn.setAttribute('aria-label', `Order ${dish.name} on Swiggy`);
     swiggyBtn.innerHTML = `
-      <span class="delivery-btn-text">Order from Swiggy ↗</span>
+      <span class="delivery-btn-brand swiggy-brand">SWIGGY</span>
+      <span class="delivery-btn-text">Order on Swiggy &#x2197;</span>
     `;
 
     // Zomato button with authentic brand color & typography
@@ -2612,24 +2622,13 @@ class HotelPremierApp {
     zomatoBtn.href = this.getDeliveryUrl('zomato', dish);
     zomatoBtn.target = '_blank';
     zomatoBtn.rel = 'noopener noreferrer';
-    zomatoBtn.setAttribute('aria-label', `Order from Zomato`);
+    zomatoBtn.setAttribute('aria-label', `Order ${dish.name} on Zomato`);
     zomatoBtn.innerHTML = `
-      <span class="delivery-btn-text">Order from Zomato ↗</span>
+      <span class="delivery-btn-brand zomato-brand">zomato</span>
+      <span class="delivery-btn-text">Order on Zomato &#x2197;</span>
     `;
-
-    // Native Web Share button
-    const shareBtn = document.createElement('button');
-    shareBtn.type = 'button';
-    shareBtn.className = 'modal-btn-share delivery-btn';
-    shareBtn.setAttribute('aria-label', `Share ${dish.name}`);
-    shareBtn.innerHTML = `
-      <span class="delivery-btn-text">📤 Share Dish</span>
-    `;
-    shareBtn.onclick = () => this.shareDish(dish.id);
 
     orderActions.appendChild(swiggyBtn);
-    orderActions.appendChild(zomatoBtn);
-    orderActions.appendChild(shareBtn);
     orderActions.appendChild(zomatoBtn);
     body.querySelector('.modal-dish-detail-container').appendChild(orderActions);
     modal.classList.remove('closing');
@@ -2660,25 +2659,31 @@ class HotelPremierApp {
     const descEn = decodeURIComponent(btn.getAttribute('data-variant-desc') || '');
     const descHi = decodeURIComponent(btn.getAttribute('data-variant-desc-hi') || '');
     const descMr = decodeURIComponent(btn.getAttribute('data-variant-desc-mr') || '');
+    const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
 
     // 1. Update price
     const priceEl = document.getElementById(`modal-dish-price-${dishId}`);
     if (priceEl && newPrice) priceEl.innerText = `₹${newPrice}`;
 
-    // 2. Update image with smooth crossfade
-    if (newImg && newImg.trim() !== '') {
+    // 2. Update image with smooth crossfade and clear responsive srcset so browser loads variant photo
+    const targetImg = (newImg && newImg.trim() !== '') ? newImg : (dishObj ? (dishObj._activeVariantImage || dishObj.image) : '');
+    if (targetImg && targetImg.trim() !== '') {
+      const versionedSrc = window.AssetPipeline?.versionedPhotoSource(targetImg) || targetImg;
       const modalImg = document.getElementById('detail-modal-img');
       if (modalImg && modalImg.tagName === 'IMG') {
         modalImg.classList.add('modal-img-swapping');
         setTimeout(() => {
-          modalImg.src = newImg;
+          modalImg.removeAttribute('srcset');
+          modalImg.removeAttribute('sizes');
+          modalImg.src = versionedSrc;
+          modalImg.alt = varName || '';
           modalImg.classList.remove('modal-img-swapping');
         }, 120);
       } else if (modalImg) {
         const wrap = modalImg.closest('.modal-dish-photo-wrap');
         if (wrap) {
           wrap.classList.remove('no-photo');
-          modalImg.outerHTML = `<img src="${newImg}" alt="${varName || ''}" id="detail-modal-img" class="modal-dish-img" loading="eager">`;
+          modalImg.outerHTML = `<img src="${versionedSrc}" alt="${varName || ''}" id="detail-modal-img" class="modal-dish-img" loading="eager">`;
         }
       }
     }
@@ -2725,8 +2730,11 @@ class HotelPremierApp {
     if (cardPrice && newPrice) cardPrice.innerText = `₹${newPrice}`;
 
     const cardImg = document.getElementById(`dish-img-el-${dishId}`);
-    if (cardImg && cardImg.tagName === 'IMG' && newImg && newImg.trim() !== '') {
-      cardImg.src = newImg;
+    if (cardImg && cardImg.tagName === 'IMG' && targetImg && targetImg.trim() !== '') {
+      const versionedCardSrc = window.AssetPipeline?.versionedPhotoSource(targetImg) || targetImg;
+      cardImg.removeAttribute('srcset');
+      cardImg.removeAttribute('sizes');
+      cardImg.src = versionedCardSrc;
     }
 
     const dishVariantsCard = document.querySelector(`.dish-variants[data-dish-id="${dishId}"]`);

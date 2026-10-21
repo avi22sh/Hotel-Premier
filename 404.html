@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.0"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.50">
-  <link rel="stylesheet" href="royal.css?v=21.50">
+  <link rel="stylesheet" href="styles.css?v=21.51">
+  <link rel="stylesheet" href="royal.css?v=21.51">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -1781,7 +1781,13 @@
         <div class="modal-title" id="dish-detail-title">
           <span>🍽️</span> <span>Dish Details</span>
         </div>
-        <button class="modal-close-btn" onclick="window.app ? window.app.closeDishDetail() : null" aria-label="Close Dish Details">✕</button>
+        <div class="modal-header-actions">
+          <button type="button" class="modal-header-action-btn modal-header-share-btn" id="modal-dish-share-btn" onclick="window.app ? window.app.shareDish() : null" aria-label="Share Dish" title="Share Dish">
+            <span class="share-icon" aria-hidden="true">📤</span>
+            <span class="share-text">Share</span>
+          </button>
+          <button class="modal-close-btn" onclick="window.app ? window.app.closeDishDetail() : null" aria-label="Close Dish Details">✕</button>
+        </div>
       </div>
       <div class="modal-body" id="dish-detail-body">
         <!-- Dish details content renders dynamically -->
@@ -1944,11 +1950,11 @@
   <!-- Load Application Scripts (v20.51) -->
   <script src="storage.js?v=20.51"></script>
   <script src="vault.js?v=20.51"></script>
-  <script src="data/translations.js?v=21.50"></script>
+  <script src="data/translations.js?v=21.51"></script>
   <script src="data/hotel-data.js?v=21.14"></script>
   <script src="data/menu-data.js?v=21.40"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
-  <script src="app.js?v=21.50"></script>
+  <script src="app.js?v=21.51"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1976,7 +1982,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.50', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.51', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load
