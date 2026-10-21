@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const html = fs.readFileSync('index.html', 'utf8');
 const css = fs.readFileSync('styles.css', 'utf8');
 const source = fs.readFileSync('app.js', 'utf8');
-assert.match(source, /for \(const platform of \['swiggy', 'zomato'\]\)/);
+assert.match(source, /orderActions.appendChild\(swiggyBtn\);\s*orderActions.appendChild\(zomatoBtn\)/);
 assert.match(source, /const primaryIds = \['all', 'bestseller', 'chef-special'\]/);
 assert.match(source, /class="more-menu-filters"/);
 assert.match(css, /\.modal-dish-actions\.delivery-buttons-container\s*\{[^}]*flex-wrap:\s*nowrap/);

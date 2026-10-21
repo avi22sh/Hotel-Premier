@@ -19,7 +19,11 @@ for(const juice of juices) {
   assert.match(app.renderDishCard(juice),/₹80/);
 }
 const group=context.window.HOTEL_PREMIER_SUB_CATEGORIES['chilled-beverages'].find(item=>item.id==='packaged-fruit-juices');
-assert.deepEqual(Array.from(group.dishIds).sort(),Array.from(juices,item=>item.id).sort());
+const master=context.window.HOTEL_PREMIER_INITIAL_MENU.find(item=>item.id==='cb-packaged-fruit-juice-group');
+assert.ok(master.isGroupMaster);
+assert.equal(master.variants.length,4);
+for(const variant of master.variants) assert.equal(variant.price,80);
+assert.deepEqual(Array.from(group.dishIds).sort(),[master.id,...Array.from(juices,item=>item.id)].sort());
 const html=fs.readFileSync('index.html','utf8');
 assert.doesNotMatch(html,/class="premier-menu-index"/);
 assert.match(html,/Indo-Chinese and Pastas—served with refreshing beverages/);

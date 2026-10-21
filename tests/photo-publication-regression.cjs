@@ -10,7 +10,8 @@ for (const file of ['data/menu-photos.js','asset-pipeline.js','app.js']) {
   const photos = context.window.HOTEL_PREMIER_PHOTOS;
   assert.ok(Object.keys(photos).length >= 218, 'Published photo coverage must not shrink');
   // Eleven previously empty dishes now have approved, published photos.
-  assert.equal(Object.values(photos).filter(v=>v==='').length,19);
+  assert.equal(photos['cb-packaged-fruit-juice-group'], '');
+  assert.equal(Object.entries(photos).filter(([id,v])=>v==='' && id!=='cb-packaged-fruit-juice-group').length,19);
   assert.ok(Object.values(photos).filter(v=>v.startsWith('assets/menu-uploads/')).length >= 16);
   for (const src of Object.values(photos)) {
     if (src) { assert.ok(src.startsWith('assets/')); assert.ok(fs.existsSync(src),src); }

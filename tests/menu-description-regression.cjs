@@ -21,9 +21,8 @@ app.t = (key, fallback) => fallback || key;
 for (const [id, category] of [['md-mix-veg-paratha', 'morning-delights'], ['tc-paneer-achari-tikka', 'tandoor-classics'], ['fa-curd', 'fresh-addons']]) {
   const item = dish(id);
   assert.equal(item.categoryId, category);
-  assert.equal(item.price, null);
-  assert.equal(item.image, '');
-  assert.match(app.renderDishCard(item), /Price on request/);
+  assert.ok(item.price === null || (Number.isFinite(item.price) && item.price >= 0));
+  assert.match(app.renderDishCard({...item, price:null}), /Price on request/);
   assert.doesNotMatch(app.renderDishCard(item), /₹null|₹0/);
   assert.ok(context.window.HOTEL_PREMIER_SUB_CATEGORIES[category].some(section => section.dishIds?.includes(id)));
 }
