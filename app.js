@@ -2630,7 +2630,7 @@ class HotelPremierApp {
 
     orderActions.appendChild(swiggyBtn);
     orderActions.appendChild(zomatoBtn);
-    body.querySelector('.modal-dish-detail-container').appendChild(orderActions);
+    body.appendChild(orderActions);
     modal.classList.remove('closing');
     modal.style.display = 'flex';
     modal.classList.add('active');
@@ -2666,26 +2666,35 @@ class HotelPremierApp {
     if (priceEl && newPrice) priceEl.innerText = `₹${newPrice}`;
 
     // 2. Update image with smooth crossfade and clear responsive srcset so browser loads variant photo
-    const targetImg = (newImg && newImg.trim() !== '') ? newImg : (dishObj ? (dishObj._activeVariantImage || dishObj.image) : '');
-    if (targetImg && targetImg.trim() !== '') {
+    const targetImg = (newImg && newImg.trim() !== '') ? newImg : (dishObj?.image || '');
+    const previousImg = document.getElementById('detail-modal-img') || document.querySelector('#dish-detail-body .dish-no-photo-placeholder');
+    const photoWrap = previousImg?.closest('.modal-dish-photo-wrap');
+    if (targetImg && targetImg.trim() !== '' && photoWrap) {
       const versionedSrc = window.AssetPipeline?.versionedPhotoSource(targetImg) || targetImg;
-      const modalImg = document.getElementById('detail-modal-img');
-      if (modalImg && modalImg.tagName === 'IMG') {
-        modalImg.classList.add('modal-img-swapping');
-        setTimeout(() => {
-          modalImg.removeAttribute('srcset');
-          modalImg.removeAttribute('sizes');
-          modalImg.src = versionedSrc;
-          modalImg.alt = varName || '';
-          modalImg.classList.remove('modal-img-swapping');
-        }, 120);
-      } else if (modalImg) {
-        const wrap = modalImg.closest('.modal-dish-photo-wrap');
-        if (wrap) {
-          wrap.classList.remove('no-photo');
-          modalImg.outerHTML = `<img src="${versionedSrc}" alt="${varName || ''}" id="detail-modal-img" class="modal-dish-img" loading="eager">`;
-        }
-      }
+      const modalImg = document.createElement('img');
+      modalImg.id = 'detail-modal-img';
+      modalImg.className = 'modal-dish-img';
+      modalImg.alt = varName || '';
+      modalImg.loading = 'eager';
+      modalImg.onerror = () => {
+        if (!modalImg.isConnected) return;
+        const placeholder = document.createElement('div');
+        placeholder.id = 'detail-modal-img';
+        placeholder.className = 'dish-no-photo-placeholder';
+        placeholder.textContent = 'Photo coming soon';
+        photoWrap.classList.add('no-photo');
+        modalImg.replaceWith(placeholder);
+      };
+      photoWrap.classList.remove('no-photo');
+      previousImg.replaceWith(modalImg);
+      modalImg.src = versionedSrc;
+    } else if (previousImg && photoWrap) {
+      const placeholder = document.createElement('div');
+      placeholder.id = 'detail-modal-img';
+      placeholder.className = 'dish-no-photo-placeholder';
+      placeholder.textContent = 'Photo coming soon';
+      photoWrap.classList.add('no-photo');
+      previousImg.replaceWith(placeholder);
     }
 
     // 3. Update title
@@ -2706,14 +2715,7 @@ class HotelPremierApp {
     if (this.currentLang === 'hi' && descHi) activeDesc = descHi;
     else if (this.currentLang === 'mr' && (descMr || descHi)) activeDesc = descMr || descHi;
     const descEl = document.querySelector('.modal-dish-desc');
-    if (descEl && activeDesc) {
-      descEl.style.transition = 'opacity 0.15s ease';
-      descEl.style.opacity = '0.3';
-      setTimeout(() => {
-        descEl.textContent = activeDesc;
-        descEl.style.opacity = '1';
-      }, 120);
-    }
+    if (descEl) descEl.textContent = activeDesc || (dishObj ? this.getDishDescription(dishObj) : '');
 
     // 5. Update delivery buttons aria labels
     const swiggyBtn = document.querySelector('.modal-btn-swiggy-order');
@@ -2749,9 +2751,8 @@ class HotelPremierApp {
     }
 
     // 7. Persist active state on dish object
-    const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
     if (dishObj) {
-      if (newImg) dishObj._activeVariantImage = newImg;
+      dishObj._activeVariantImage = targetImg;
       if (newPrice) dishObj._activeVariantPrice = Number(newPrice);
       if (varName) dishObj._activeVariantName = varName;
     }

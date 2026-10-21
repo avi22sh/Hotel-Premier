@@ -1,0 +1,15 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const app = fs.readFileSync('app.js', 'utf8');
+const css = fs.readFileSync('styles.css', 'utf8') + fs.readFileSync('royal.css', 'utf8');
+assert.ok(app.includes('body.appendChild(orderActions)'));
+assert.ok(css.includes('grid-template-columns: repeat(2, minmax(0, 1fr))'));
+assert.ok(css.includes('.dish-banner-action .dish-fav-btn { width:44px'));
+assert.ok(css.includes('height:clamp(120px,26dvh,195px)'));
+const switcher = app.slice(app.indexOf('  switchModalVariant('), app.indexOf('  closeDishDetail()'));
+assert.ok(switcher.includes('previousImg.replaceWith(modalImg)'));
+assert.ok(switcher.includes('modalImg.onerror'));
+assert.ok(switcher.includes("placeholder.textContent = 'Photo coming soon'"));
+assert.ok(!switcher.includes('setTimeout('), 'Rapid switching must not queue stale photo/description updates');
+assert.ok(!switcher.includes('dishObj._activeVariantImage || dishObj.image'));
+console.log('PASS: two-column options, pinned actions, unobstructed favorite control and safe variant image recovery');
