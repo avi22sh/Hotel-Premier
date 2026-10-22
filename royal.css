@@ -420,3 +420,33 @@ body .modal-close-btn { flex-shrink:0; }
 @media(max-width:640px) { #dish-detail-body .modal-dish-photo-wrap { height:clamp(120px,25dvh,205px) !important; } }
 .studio-card-item { content-visibility:auto; contain-intrinsic-size:auto 240px; }
 @media(prefers-reduced-motion:reduce) { .section-slideshow-track { transition:none !important; } }
+
+/* Hotel story cards: surface and text must change theme together. */
+body .home-pillar-card { background:#f4efe6; border-color:#cdbfa9; box-shadow:0 8px 24px rgba(42,48,40,.08); }
+body .home-pillar-body { background:transparent; }
+body .home-pillar-title { color:#25362f; }
+body .home-pillar-desc { color:#4c5d55; }
+body .home-pillar-btn { background:#e6dccb; border-color:#bba98a; color:#294b3d; }
+body .home-pillar-btn:hover { background:#294b3d; color:#fff8eb; }
+body.theme-dark .home-pillar-card { background:#1b2a37; border-color:#4b5c65; box-shadow:0 10px 28px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.06); }
+body.theme-dark .home-pillar-title { color:#f2eadc; }
+body.theme-dark .home-pillar-desc { color:#c3ced5; }
+body.theme-dark .home-pillar-btn { background:#2b3f4a; color:#ead4ac; border-color:#637269; }
+body.theme-dark .home-pillar-btn:hover { background:#ead4ac; color:#1b2a37; }
+
+/* Warm stone canvas, parchment RO panels and sage CP panels replace white-on-white tariffs. */
+body.theme-light #section-tariffs { background:#e9e2d6; border-radius:20px; --stay-panel:#e4d8c5; --stay-line:#c7b99f; --stay-accent:#294f40; }
+body.theme-light #section-tariffs .tariff-suite-card { background:#f3ede2; border-color:#bdad91; }
+body.theme-light #section-tariffs .tariff-suite-header { background:#e4d8c5; }
+body.theme-light #section-tariffs .tariff-pricing-breakdown { background:transparent; }
+body.theme-light #section-tariffs .tariff-plan-box.plan-ro { background:#faf6ee; border-color:#cfc0a6; }
+body.theme-light #section-tariffs .tariff-plan-box.plan-cp { background:#e3ebe3; border-color:#afc1b0; }
+body.theme-light #section-tariffs :is(.tariff-suite-bed-type,.tariff-suite-space,.occ-label,.occ-unit,.plan-inclusions-note,.plan-badge-label) { color:#475b50; }
+body.theme-light #section-tariffs :is(.tariff-suite-name,.occ-price,.plan-badge-label.gold-badge) { color:#294f40; }
+body.theme-dark #section-tariffs .tariff-suite-card { background:#1b2936 !important; border-color:#4b5c65; }
+body.theme-dark #section-tariffs .tariff-suite-header { background:#253644 !important; }
+body.theme-dark #section-tariffs .tariff-pricing-breakdown { background:transparent !important; }
+body.theme-dark #section-tariffs .tariff-plan-box.plan-ro { background:#172633 !important; border-color:#4b5c65 !important; }
+body.theme-dark #section-tariffs .tariff-plan-box.plan-cp { background:#20382f !important; border-color:#5b7464 !important; }
+body.theme-dark #section-tariffs :is(.tariff-suite-bed-type,.tariff-suite-space,.occ-label,.occ-unit,.plan-inclusions-note,.plan-badge-label) { color:#c3ced5; }
+body.theme-dark #section-tariffs :is(.tariff-suite-name,.occ-price,.plan-badge-label.gold-badge) { color:#ead4ac !important; }
