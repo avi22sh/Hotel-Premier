@@ -391,6 +391,10 @@ body.theme-dark .celebrate-hero-banner {
 @media(max-width:640px) { .booking-price-summary { align-items:flex-start; } .booking-savings-note { text-align:left; } }
 
 /* Premier glass keeps text solid and concentrates blur on navigation and dialogs. */
+body .modal-sheet { background:rgba(255,253,247,.97) !important; backdrop-filter:blur(20px) !important; -webkit-backdrop-filter:blur(20px) !important; }
+body.theme-dark .modal-sheet { background:rgba(22,33,45,.97) !important; }
+body .settings-panel { background:rgba(255,253,247,.96); }
+body.theme-dark .settings-panel { background:rgba(22,33,45,.96); }
 body { --premier-glass:rgba(255,253,247,.84); --premier-glass-edge:rgba(155,132,95,.3); }
 body.theme-dark { --premier-glass:rgba(22,33,45,.88); --premier-glass-edge:rgba(223,198,154,.3); --text-muted:#bfc9d2; --text-light:#eee8de; }
 body :is(.settings-panel,.modal-sheet,.header-container) { background:var(--premier-glass); border-color:var(--premier-glass-edge); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 14px 42px rgba(10,20,30,.15),inset 0 1px rgba(255,255,255,.18); }

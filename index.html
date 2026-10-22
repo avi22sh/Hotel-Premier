@@ -72,11 +72,11 @@
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
   <script src="data/menu-image-sizes.js?v=21.0"></script>
-  <script src="asset-pipeline.js?v=21.64"></script>
+  <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.64">
-  <link rel="stylesheet" href="royal.css?v=21.64">
+  <link rel="stylesheet" href="styles.css?v=21.65">
+  <link rel="stylesheet" href="royal.css?v=21.65">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -1950,11 +1950,11 @@
   <!-- Load Application Scripts (v20.51) -->
   <script src="storage.js?v=20.51"></script>
   <script src="vault.js?v=20.51"></script>
-  <script src="data/translations.js?v=21.64"></script>
+  <script src="data/translations.js?v=21.65"></script>
   <script src="data/hotel-data.js?v=21.14"></script>
-  <script src="data/menu-data.js?v=21.64"></script>
+  <script src="data/menu-data.js?v=21.65"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
-  <script src="app.js?v=21.64"></script>
+  <script src="app.js?v=21.65"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1962,27 +1962,34 @@
   <script>
     if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
       let refreshing = false;
+      function refreshWhenIdle() {
+        if (refreshing) return;
+        refreshing = true;
+        function check() {
+          const editing = document.activeElement && document.activeElement.matches('input,textarea,select,[contenteditable="true"]');
+          if (document.hidden || editing || document.querySelector('.modal-backdrop.active') || window.admin?.isPreviewProcessing) {
+            window.setTimeout(check, 2000);
+            return;
+          }
+          window.location.reload();
+        }
+        check();
+      }
 
       // Auto-reload when new service worker activates (instant developer sync)
       navigator.serviceWorker.addEventListener('controllerchange', function() {
-        if (!refreshing) {
-          refreshing = true;
-          window.location.reload();
-        }
+        refreshWhenIdle();
       });
 
       // Handle direct update broadcasts from service worker
       navigator.serviceWorker.addEventListener('message', function(event) {
         if (event.data && (event.data.type === 'SW_UPDATED' || event.data.type === 'HOTEL_PREMIER_RELOAD')) {
-          if (!refreshing) {
-            refreshing = true;
-            window.location.reload();
-          }
+          refreshWhenIdle();
         }
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.64', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.65', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load
