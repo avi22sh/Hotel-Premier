@@ -421,32 +421,27 @@ body .modal-close-btn { flex-shrink:0; }
 .studio-card-item { content-visibility:auto; contain-intrinsic-size:auto 240px; }
 @media(prefers-reduced-motion:reduce) { .section-slideshow-track { transition:none !important; } }
 
-/* Hotel story cards: surface and text must change theme together. */
-body .home-pillar-card { background:#f4efe6; border-color:#cdbfa9; box-shadow:0 8px 24px rgba(42,48,40,.08); }
-body .home-pillar-body { background:transparent; }
-body .home-pillar-title { color:#25362f; }
-body .home-pillar-desc { color:#4c5d55; }
-body .home-pillar-btn { background:#e6dccb; border-color:#bba98a; color:#294b3d; }
-body .home-pillar-btn:hover { background:#294b3d; color:#fff8eb; }
-body.theme-dark .home-pillar-card { background:#1b2a37; border-color:#4b5c65; box-shadow:0 10px 28px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.06); }
-body.theme-dark .home-pillar-title { color:#f2eadc; }
-body.theme-dark .home-pillar-desc { color:#c3ced5; }
-body.theme-dark .home-pillar-btn { background:#2b3f4a; color:#ead4ac; border-color:#637269; }
-body.theme-dark .home-pillar-btn:hover { background:#ead4ac; color:#1b2a37; }
-
-/* Warm stone canvas, parchment RO panels and sage CP panels replace white-on-white tariffs. */
-body.theme-light #section-tariffs { background:#e9e2d6; border-radius:20px; --stay-panel:#e4d8c5; --stay-line:#c7b99f; --stay-accent:#294f40; }
-body.theme-light #section-tariffs .tariff-suite-card { background:#f3ede2; border-color:#bdad91; }
-body.theme-light #section-tariffs .tariff-suite-header { background:#e4d8c5; }
-body.theme-light #section-tariffs .tariff-pricing-breakdown { background:transparent; }
-body.theme-light #section-tariffs .tariff-plan-box.plan-ro { background:#faf6ee; border-color:#cfc0a6; }
-body.theme-light #section-tariffs .tariff-plan-box.plan-cp { background:#e3ebe3; border-color:#afc1b0; }
-body.theme-light #section-tariffs :is(.tariff-suite-bed-type,.tariff-suite-space,.occ-label,.occ-unit,.plan-inclusions-note,.plan-badge-label) { color:#475b50; }
-body.theme-light #section-tariffs :is(.tariff-suite-name,.occ-price,.plan-badge-label.gold-badge) { color:#294f40; }
-body.theme-dark #section-tariffs .tariff-suite-card { background:#1b2936 !important; border-color:#4b5c65; }
-body.theme-dark #section-tariffs .tariff-suite-header { background:#253644 !important; }
-body.theme-dark #section-tariffs .tariff-pricing-breakdown { background:transparent !important; }
-body.theme-dark #section-tariffs .tariff-plan-box.plan-ro { background:#172633 !important; border-color:#4b5c65 !important; }
-body.theme-dark #section-tariffs .tariff-plan-box.plan-cp { background:#20382f !important; border-color:#5b7464 !important; }
-body.theme-dark #section-tariffs :is(.tariff-suite-bed-type,.tariff-suite-space,.occ-label,.occ-unit,.plan-inclusions-note,.plan-badge-label) { color:#c3ced5; }
-body.theme-dark #section-tariffs :is(.tariff-suite-name,.occ-price,.plan-badge-label.gold-badge) { color:#ead4ac !important; }
+/* Champagne and smoked crystal: translucent surfaces with solid, readable type. */
+body { --crystal-ink:#34323a; --crystal-muted:#58555f; --crystal-accent:#694c2c; --crystal-edge:rgba(255,255,255,.7); --crystal-surface:linear-gradient(145deg,rgba(255,255,255,.46),rgba(224,220,216,.58)); --crystal-shadow:0 16px 40px rgba(40,35,45,.11),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(140,129,115,.14); }
+body.theme-light { background:radial-gradient(ellipse at 12% 12%,rgba(199,179,149,.24),transparent 52%),radial-gradient(ellipse at 85% 38%,rgba(163,171,188,.22),transparent 55%),#e4e1dd; }
+body.theme-dark { --crystal-ink:#f0ebe3; --crystal-muted:#cbc7d0; --crystal-accent:#e6d0af; --crystal-edge:rgba(223,218,231,.23); --crystal-surface:linear-gradient(145deg,rgba(71,73,86,.66),rgba(31,34,44,.82)); --crystal-shadow:0 18px 42px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.19),inset 0 -1px 0 rgba(255,255,255,.035); background:radial-gradient(ellipse at 15% 14%,rgba(158,131,96,.13),transparent 50%),radial-gradient(ellipse at 86% 35%,rgba(121,128,157,.14),transparent 52%),#141720; }
+body .home-pillar-card, body #section-tariffs .tariff-suite-card { background:var(--crystal-surface) !important; border:1px solid var(--crystal-edge); border-radius:24px; box-shadow:var(--crystal-shadow); backdrop-filter:blur(22px) saturate(1.12); -webkit-backdrop-filter:blur(22px) saturate(1.12); }
+body :is(#section-stay,#section-tariffs) :is(.direct-booking-privilege-card,.tariff-extra-bed-banner,.guest-policy-panel,.guarantee-card) { background:var(--crystal-surface) !important; border-color:var(--crystal-edge); box-shadow:var(--crystal-shadow); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+body .home-pillar-body { background:linear-gradient(125deg,rgba(255,255,255,.08),transparent 65%); }
+body .home-pillar-title { color:var(--crystal-ink); }
+body .home-pillar-desc { color:var(--crystal-muted); }
+body .home-pillar-btn { background:rgba(147,126,96,.12); border-color:rgba(138,116,85,.35); color:var(--crystal-accent); border-radius:14px; box-shadow:inset 0 1px rgba(255,255,255,.32); }
+body .home-pillar-btn:hover { background:rgba(147,126,96,.22); color:var(--crystal-ink); }
+body.theme-dark .home-pillar-btn { background:rgba(220,207,189,.08); border-color:rgba(229,214,192,.3); }
+body #section-tariffs { background:transparent; border-radius:24px; --stay-panel:rgba(193,183,172,.14); --stay-line:var(--crystal-edge); --stay-accent:var(--crystal-accent); }
+body #section-tariffs .tariff-suite-header { background:linear-gradient(135deg,rgba(180,157,123,.18),rgba(255,255,255,.04)) !important; border-bottom:1px solid var(--crystal-edge); }
+body #section-tariffs .tariff-pricing-breakdown { background:transparent !important; }
+body #section-tariffs .tariff-plan-box { border-radius:20px; box-shadow:inset 0 1px rgba(255,255,255,.38),0 4px 14px rgba(30,24,36,.035); }
+body #section-tariffs .tariff-plan-box.plan-ro { background:linear-gradient(135deg,rgba(221,223,232,.42),rgba(213,209,207,.3)) !important; border-color:rgba(145,143,153,.24) !important; }
+body #section-tariffs .tariff-plan-box.plan-cp { background:linear-gradient(135deg,rgba(193,173,145,.34),rgba(215,202,184,.32)) !important; border-color:rgba(155,130,94,.32) !important; }
+body #section-tariffs :is(.tariff-suite-bed-type,.tariff-suite-space,.occ-label,.occ-unit,.plan-inclusions-note,.plan-badge-label) { color:var(--crystal-muted); }
+body #section-tariffs :is(.tariff-suite-name,.occ-price,.plan-badge-label.gold-badge) { color:var(--crystal-accent) !important; }
+body.theme-dark #section-tariffs .tariff-plan-box.plan-ro { background:linear-gradient(135deg,rgba(119,122,148,.12),rgba(21,24,33,.3)) !important; border-color:rgba(212,210,225,.2) !important; }
+body.theme-dark #section-tariffs .tariff-plan-box.plan-cp { background:linear-gradient(135deg,rgba(183,153,111,.15),rgba(41,36,34,.24)) !important; border-color:rgba(230,208,175,.3) !important; }
+body.theme-dark #section-tariffs .tariff-plan-box { box-shadow:inset 0 1px rgba(255,255,255,.1),0 4px 16px rgba(0,0,0,.08); }
+@supports not (backdrop-filter:blur(1px)) { body .home-pillar-card,body #section-tariffs .tariff-suite-card { background:#ded9d3 !important; } body.theme-dark .home-pillar-card,body.theme-dark #section-tariffs .tariff-suite-card { background:#292c36 !important; } }
