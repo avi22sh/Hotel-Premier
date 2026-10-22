@@ -459,7 +459,7 @@ body.theme-light .modal-backdrop .modal-title { color:var(--crystal-accent); }
 body.theme-light .modal-backdrop .modal-close-btn { color:var(--crystal-ink); background:rgba(109,95,78,.08); border-color:rgba(109,95,78,.3); }
 body.theme-light #dish-detail-modal .modal-header { background:#e2ddd7 !important; }
 body.theme-light #dish-detail-modal .modal-title { color:var(--crystal-accent) !important; }
-body.theme-light #dish-detail-modal .modal-header-action-btn { color:var(--crystal-ink); background:rgba(109,95,78,.08); border-color:rgba(109,95,78,.3); }
+body.theme-light #dish-detail-modal :is(.modal-header-action-btn,.modal-close-btn) { color:var(--crystal-ink); background:rgba(109,95,78,.08); border-color:rgba(109,95,78,.3); }
 #dish-detail-body .modal-dish-img { object-fit:contain !important; object-position:center !important; transform:none !important; }
 #dish-detail-body .hp-glass-vignette { pointer-events:none; opacity:.12; }
 @media(max-height:520px) {
