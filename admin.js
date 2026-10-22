@@ -949,6 +949,9 @@ class HotelPremierAdmin {
       }
       window.app.renderMenu();
       this.filterAdminDishes();
+      if (document.getElementById('studio-dishes-grid')) {
+        this.renderAIStudioManager(document.getElementById('admin-tab-content'));
+      }
       this.closeImageModal();
       window.app.showToast(`Photo removed for "${dish.name}". Showing in text-only mode!`, 'info');
     }
@@ -1436,6 +1439,9 @@ class HotelPremierAdmin {
       }
       window.app.renderMenu();
       this.filterAdminDishes();
+      if (document.getElementById('studio-dishes-grid')) {
+        this.renderAIStudioManager(document.getElementById('admin-tab-content'));
+      }
       this.closeImageModal();
       window.app.showToast(`Updated studio photo for "${dish.name}"!`, 'success');
     }
