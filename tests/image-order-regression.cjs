@@ -10,7 +10,7 @@ const document = {
     const canvas = { width: 0, height: 0 };
     let pixels;
     canvas.getContext = () => ({
-      drawImage() {}, save() {}, restore() {}, fillRect() {}, strokeRect() {},
+      drawImage() { pixels = new Uint8ClampedArray(canvas.width * canvas.height * 4); for(let i=0;i<pixels.length;i+=4) pixels.set([50,100,180,128],i); }, save() {}, restore() {}, fillRect() {}, clearRect() {}, strokeRect() {}, translate() {}, scale() {}, rotate() {}, transform() {},
       getImageData() { return { data: pixels || new Uint8ClampedArray(canvas.width * canvas.height * 4).fill(128) }; },
       createImageData(w, h) { return { data: new Uint8ClampedArray(w * h * 4) }; },
       putImageData(data) { pixels = data.data; }
@@ -37,6 +37,16 @@ vm.runInContext(fs.readFileSync(path.join(root, 'app.js'), 'utf8') + ';window.Ap
   assert.equal(exported.width, 8);
   assert.equal(exported.height, 12);
   assert.equal(exported.pixels[3], 128, 'Sharpening must preserve border alpha');
+  assert.deepEqual(Array.from(exported.pixels.slice(0,4)),[50,100,180,128], 'Default processing must preserve foreground RGB');
+  await pipeline.processAutomaticStudioEnhancement('original.jpg', {}, {enhanceColors:true,brightness:1,contrast:1,saturation:1,warmth:0,sharpness:0});
+  assert.deepEqual(Array.from(exported.pixels.slice(0,4)),[50,100,180,128], 'Neutral controls must preserve independent blue channel');
+  pipeline.processIsolatedAsset = async () => 'isolated.png';
+  pipeline.drawSurfaceBackdrop = () => {};
+  pipeline.drawRealisticContactShadow = () => {};
+  for (const backgroundMode of ['slate_gold','cream_marble','cutout']) {
+    await pipeline.processAutomaticStudioEnhancement('original.jpg', {}, {backgroundMode,targetWidth:8,targetHeight:12});
+    assert.deepEqual(Array.from(exported.pixels.slice(0,4)),[50,100,180,128], `${backgroundMode} must not apply a color grade`);
+  }
   context.window.HOTEL_STORAGE = { getAISettings: async () => ({ defaultStyle: 'cream_marble' }) };
   assert.equal((await pipeline.processAutomaticStudioEnhancement('original.jpg')).surfaceKey, 'cream_marble');
   assert.equal((await pipeline.processAutomaticStudioEnhancement('original.jpg', {}, { surfaceKey: 'teak_wood' })).surfaceKey, 'teak_wood');

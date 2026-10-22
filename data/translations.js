@@ -20,7 +20,7 @@ window.HOTEL_PREMIER_I18N = {
       navExplore: '🗺️ Explore',
       navReview: '⭐ Review',
       navContact: '📞 Contact',
-      btnReserveStay: '🛎️ Reserve Stay',
+      btnReserveStay: '🛎️ Room Enquiry',
       btnCallHotel: 'Call Front Desk',
 
       // Sanctuary Home
@@ -30,8 +30,8 @@ window.HOTEL_PREMIER_I18N = {
       pill5min: '🚆 15 Mins / 2 KM from Railway Junction',
       pillVeg: '🌱 Pride Pure Veg AC Dining',
       pillParking: '🚗 Free Private Bus & Car Parking',
-      quickBookRoom: 'Book a Room',
-      quickBookRoomSub: 'Instant Reservation',
+      quickBookRoom: 'Room Enquiry',
+      quickBookRoomSub: 'Availability & rates',
       quickDine: 'Dine With Us',
       quickDineSub: 'Pride AC Restaurant',
       quickTariff: 'View Tariffs',
@@ -242,7 +242,7 @@ window.HOTEL_PREMIER_I18N = {
       navExplore: '🗺️ शहर दर्शन',
       navReview: '⭐ रेटिंग',
       navContact: '📞 संपर्क',
-      btnReserveStay: '🛎️ रूम बुक करें',
+      btnReserveStay: '🛎️ रूम की पूछताछ',
       btnCallHotel: 'कॉल फ्रंट डेस्क',
 
       // Sanctuary Home Content
@@ -252,8 +252,8 @@ window.HOTEL_PREMIER_I18N = {
       pill5min: '🚆 रेलवे स्टेशन से 15 मिनट / 2 किमी',
       pillVeg: '🌱 प्राइड शुद्ध शाकाहारी एसी रेस्तरां',
       pillParking: '🚗 निःशुल्क बस एवं कार पार्किंग',
-      quickBookRoom: 'कमरा बुक करें',
-      quickBookRoomSub: 'तुरंत आरक्षण',
+      quickBookRoom: 'कमरे की पूछताछ',
+      quickBookRoomSub: 'उपलब्धता और दरें',
       quickDine: 'रेस्तरां मेन्यू',
       quickDineSub: 'प्राइड एसी रेस्तरां',
       quickTariff: 'कमरे का किराया',
@@ -463,7 +463,7 @@ window.HOTEL_PREMIER_I18N = {
       navExplore: '🗺️ शहर भ्रमंती',
       navReview: '⭐ अभिप्राय',
       navContact: '📞 संपर्क',
-      btnReserveStay: '🛎️ रूम बुक करा',
+      btnReserveStay: '🛎️ रूमची चौकशी',
       btnCallHotel: 'कॉल फ्रंट डेस्क',
 
       // Sanctuary Home Content
@@ -473,8 +473,8 @@ window.HOTEL_PREMIER_I18N = {
       pill5min: '🚆 रेल्वे स्टेशनपासून 15 मिनिटे / 2 किमी',
       pillVeg: '🌱 प्राईड शुद्ध शाकाहारी एसी रेस्टॉरंट',
       pillParking: '🚗 मोफत बस व कार पार्किंग',
-      quickBookRoom: 'खोली बुक करा',
-      quickBookRoomSub: 'त्वरित आरक्षण',
+      quickBookRoom: 'खोलीची चौकशी',
+      quickBookRoomSub: 'उपलब्धता आणि दर',
       quickDine: 'रेस्टॉरंट मेनू',
       quickDineSub: 'प्राईड एसी रेस्टॉरंट',
       quickTariff: 'खोल्यांचे दरपत्रक',
@@ -603,13 +603,13 @@ window.HOTEL_PREMIER_I18N = {
       queenTwinTag: '🛏️ Queen / Twin Beds',
 
       // Marriage & Bulk Deals
-      marriageDealsTitle: '💍 Marriage, Barat & Bulk Room Booking Deals',
+      marriageDealsTitle: '💍 Marriage, Barat & Group Stay Enquiries',
       marriageDealsSubtitle: 'भुसावळमध्ये लग्न, साखरपुडा, वरात किंवा कार्यक्रमासाठी ॲडव्हान्स बुकिंगवर 30% पर्यंत सूट मिळवा!',
       marriageBadge: 'SPECIAL MARRIAGE & GROUP OFFERS',
       perksTitle: 'Special Perks & Benefits:',
 
       // Bulk Quote Calculator
-      calcTitle: '🧮 Bulk Booking Instant Quote Calculator',
+      calcTitle: '🧮 Group Stay Enquiry Estimate',
       calcSubtitle: 'आपली आवश्यकता निवडा आणि लगेच सवलतीचे दर व बचत तपासा',
       calcEventType: 'Event Type',
       calcWedding: 'Wedding / Marriage Barat (लग्न/वरात)',

@@ -1520,7 +1520,7 @@
       }
 
       // 3. Pixel-Level Gourmet 3200K Color Calibration & 4K Unsharp Clarity
-      if (bgMode !== 'original') {
+      if (options.enhanceColors === true && bgMode !== 'original') {
         try {
           const outData = ctx.getImageData(0, 0, targetW, targetH);
           const data = outData.data;
@@ -1535,8 +1535,8 @@
           const contrastFactor = naturalMode
             ? Math.min(options.contrast !== undefined ? options.contrast : 1.02, 1.05)
             : (options.contrast !== undefined ? options.contrast : 1.08);
-          const brightFactor = naturalMode ? 1.01 : (options.brightness !== undefined ? options.brightness : 1.04);
-          const satFactor = naturalMode ? 1.04 : (options.saturation !== undefined ? options.saturation : 1.12);
+          const brightFactor = options.brightness !== undefined ? options.brightness : (naturalMode ? 1.01 : 1.04);
+          const satFactor = options.saturation !== undefined ? options.saturation : (naturalMode ? 1.04 : 1.12);
 
           for (let i = 0; i < len; i += 4) {
             if (data[i + 3] === 0) continue; // Skip pure transparent pixels (crucial for cutout mode)
@@ -1561,7 +1561,7 @@
             const gray = 0.299 * r + 0.587 * g + 0.114 * b;
             r = gray + (r - gray) * satFactor;
             g = gray + (g - gray) * satFactor;
-            b = gray + (g - gray) * satFactor;
+            b = gray + (b - gray) * satFactor;
 
             data[i] = Math.min(255, Math.max(0, r));
             data[i + 1] = Math.min(255, Math.max(0, g));
@@ -1604,7 +1604,7 @@
       }
 
       // 4. Subtle Studio Spotlight & Champagne Vignette (Only for studio surfaces, never cutout or natural)
-      const vStr = (naturalMode || isCutout || bgMode === 'original') ? 0 : (options.vignetteStrength !== undefined ? options.vignetteStrength : 0.38);
+      const vStr = options.enhanceColors !== true || naturalMode || isCutout || bgMode === 'original' ? 0 : (options.vignetteStrength !== undefined ? options.vignetteStrength : 0.38);
       if (vStr > 0) {
         const vig = ctx.createRadialGradient(
           targetW * 0.5, targetH * 0.50, Math.min(targetW, targetH) * 0.35,

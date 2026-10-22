@@ -853,6 +853,7 @@ class HotelPremierAdmin {
               <span style="font-size: 0.70rem; color: var(--brass-light); text-decoration: underline;">Toggle Adjustments ▼</span>
             </div>
             <div id="engine-fine-tuning-box" style="display: none; padding-top: 6px; font-size: 0.72rem;">
+              <label style="display:block;color:#eee8de;margin-bottom:10px;"><input type="checkbox" id="engine-adjust-colors" onchange="window.admin.recalculate4KLive()"> Adjust dish colors (optional). Leave off to preserve the original food colors.</label>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 6px;">
                 <div>
                   <label style="color: #CBD5E1; display: block; margin-bottom: 2px;">Warmth (Kelvin)</label>
@@ -1216,7 +1217,17 @@ class HotelPremierAdmin {
     window.app?.showToast?.(`Downloaded ${filename}`, 'success');
   }
 
-  async recalculate4KLive() {
+  recalculate4KLive() {
+    clearTimeout(this.previewDebounceTimer);
+    const saveButton = document.getElementById('apply-dish-photo-btn');
+    if (saveButton) saveButton.disabled = true;
+    this.previewDebounceTimer = setTimeout(() => {
+      if (this.isPreviewProcessing) { this.previewQueued = true; return; }
+      this.runImagePreview();
+    }, 180);
+  }
+
+  async runImagePreview() {
     if (!this.rawOriginalSource) return;
     const requestId = this.previewRequestId = (this.previewRequestId || 0) + 1;
     const source = this.rawOriginalSource;
@@ -1242,6 +1253,7 @@ class HotelPremierAdmin {
         const opts = this.activeImageOptions || {};
         const result = await window.AssetPipeline.processAutomaticStudioEnhancement(this.rawOriginalSource, dish, {
           backgroundMode: this.activeBackgroundMode || 'original',
+          enhanceColors: document.getElementById('engine-adjust-colors')?.checked === true,
           framingMode: this.activeFramingMode || 'smart',
           tolerance: opts.tolerance !== undefined ? opts.tolerance : 42,
           feather: opts.feather !== undefined ? opts.feather : 26,
@@ -1283,6 +1295,10 @@ class HotelPremierAdmin {
         if (requestId === this.previewRequestId) {
           this.isPreviewProcessing = false;
           if (saveButton) saveButton.disabled = this.previewFailed;
+          if (this.previewQueued) {
+            this.previewQueued = false;
+            this.recalculate4KLive();
+          }
         }
       }
     }
@@ -1449,6 +1465,7 @@ class HotelPremierAdmin {
 
   // ==================== 1B. AI PHOTO STUDIO & BATCH PHOTOGRAPHY HUB ====================
   async renderAIStudioManager(container) {
+    const renderId = this.studioRenderId = (this.studioRenderId || 0) + 1;
     const dishes = window.app.menuData || [];
     const withPhotos = dishes.filter(d => d.image && d.image.trim() !== '');
     const withoutPhotos = dishes.filter(d => !d.image || d.image.trim() === '');
@@ -1467,6 +1484,7 @@ class HotelPremierAdmin {
       : {};
 
     let approvedCount = 0;
+    if (renderId !== this.studioRenderId || this.currentTab !== 'ai-studio') return;
     let studioMasterCount = 0;
     let rawOriginalCount = 0;
 
@@ -1550,12 +1568,13 @@ class HotelPremierAdmin {
             <button class="btn-theme-engine-chip" id="studio-filter-photos" onclick="window.admin.filterStudioGallery('with-photos', this)">With Photos (${withPhotos.length})</button>
             <button class="btn-theme-engine-chip" id="studio-filter-missing" onclick="window.admin.filterStudioGallery('missing-photos', this)">Needs Photo (${withoutPhotos.length})</button>
           </div>
+          <button type="button" class="studio-button" onclick="window.admin.switchTab('slides')">Section photos & captions</button>
           <input type="text" placeholder="Search dishes..." class="form-input" style="max-width: 240px; padding: 6px 12px; font-size: 0.8rem;" oninput="window.admin.searchStudioGallery(this.value)">
         </div>
 
         <!-- Gallery Grid -->
         <div id="studio-dishes-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px;">
-          ${dishes.map(dish => {
+          ${dishes.filter(dish => !dish.groupedUnder).map(dish => {
             const hasPhoto = dish.image && dish.image.trim() !== '';
             const rec = overrides[dish.id];
             const status = rec ? rec.enhancementStatus : (hasPhoto ? 'enhanced' : 'none');
@@ -1565,7 +1584,7 @@ class HotelPremierAdmin {
               <div class="studio-card-item" data-has-photo="${hasPhoto ? '1' : '0'}" data-name="${dish.name.toLowerCase()}" style="background: #FFF; border: 1.5px solid var(--cream-border); border-radius: var(--radius-sm); overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--shadow-sm);">
                 <div style="position: relative; height: 140px; background: #0D111A; overflow: hidden; cursor: pointer;" onclick="window.admin.openImageModal('${dish.id}')">
                   ${hasPhoto ? `
-                    <img src="${dish.image}" style="width: 100%; height: 100%; object-fit: cover;" alt="${dish.name}">
+                    <img src="${dish.image}" loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover;" alt="${dish.name}">
                     <span class="hp-status-pill hp-status-${status}" style="position: absolute; top: 6px; left: 6px; font-size: 0.60rem;">
                       ${status.toUpperCase()}${score ? ` (${score}%)` : ''}
                     </span>
@@ -2293,6 +2312,9 @@ class HotelPremierAdmin {
 
   // 3B. CATEGORY SUB-SECTION SLIDES CMS
   async renderCategorySlidesCMS(container, categories) {
+    categories = categories.flatMap(category => [category, ...(window.HOTEL_PREMIER_SUB_CATEGORIES?.[category.id] || [])
+      .filter(sub => sub.id !== 'all')
+      .map(sub => ({...sub, id:`${category.id}::${sub.id}`, name:`${category.name} / ${sub.name}`}))]);
     const catId = this.selectedCategoryForSlides || (categories[0] ? categories[0].id : 'morning-delights');
 
     // Fetch custom slides or auto-derive from category dishes
@@ -2302,7 +2324,7 @@ class HotelPremierAdmin {
     }
 
     if (!currentSlides || !Array.isArray(currentSlides) || currentSlides.length === 0) {
-      const dishes = window.app.menuData.filter(d => d.categoryId === catId && d.image && d.image.trim() !== '');
+      const dishes = window.app.getSectionDishes(catId);
       currentSlides = dishes.map(d => ({
         id: d.id,
         dishId: d.id,
@@ -2388,7 +2410,7 @@ class HotelPremierAdmin {
         slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + targetId, null);
       }
       if (!slides) {
-        const dishes = window.app.menuData.filter(d => d.categoryId === targetId && d.image && d.image.trim() !== '');
+        const dishes = window.app.getSectionDishes(targetId);
         slides = dishes.map(d => ({
           id: d.id,
           dishId: d.id,
@@ -2515,7 +2537,7 @@ class HotelPremierAdmin {
         slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + targetId, null);
       }
       if (!slides) {
-        const dishes = window.app.menuData.filter(d => d.categoryId === targetId && d.image);
+        const dishes = window.app.getSectionDishes(targetId);
         slides = dishes.map(d => ({
           id: d.id,
           dishId: d.id,
@@ -2730,7 +2752,7 @@ class HotelPremierAdmin {
       slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + catId, null);
     }
     if (!slides) {
-      const dishes = window.app.menuData.filter(d => d.categoryId === catId && d.image && d.image.trim() !== '');
+      const dishes = window.app.getSectionDishes(catId);
       slides = dishes.map(d => ({
         id: d.id,
         dishId: d.id,
@@ -2767,7 +2789,7 @@ class HotelPremierAdmin {
       slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + catId, null);
     }
     if (!slides) {
-      const dishes = window.app.menuData.filter(d => d.categoryId === catId && d.image && d.image.trim() !== '');
+      const dishes = window.app.getSectionDishes(catId);
       slides = dishes.map(d => ({
         id: d.id,
         dishId: d.id,
@@ -2915,7 +2937,7 @@ class HotelPremierAdmin {
       slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + catId, null);
     }
     if (!slides) {
-      const dishes = window.app.menuData.filter(d => d.categoryId === catId && d.image && d.image.trim() !== '');
+      const dishes = window.app.getSectionDishes(catId);
       slides = dishes.map(d => ({
         id: d.id,
         dishId: d.id,

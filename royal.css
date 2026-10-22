@@ -251,6 +251,8 @@ body.theme-dark :is(.calculator-card,#concierge-booking-modal) .form-label { col
 body.theme-dark :is(.calculator-card,#concierge-booking-modal) :focus-visible { outline:2px solid var(--royal-gold); outline-offset:3px; }
 @media(max-width:640px) { .booking-price-summary { align-items:flex-start; } .booking-savings-note { text-align:left; } }
 
+
+
 /* Group Stay & Bulk Tiers Comprehensive Glass Architecture */
 .bulk-tier-card {
   background: var(--royal-surface);
@@ -387,3 +389,22 @@ body.theme-dark .celebrate-hero-banner {
   flex-shrink: 0;
 }
 @media(max-width:640px) { .booking-price-summary { align-items:flex-start; } .booking-savings-note { text-align:left; } }
+
+/* Premier glass keeps text solid and concentrates blur on navigation and dialogs. */
+body { --premier-glass:rgba(255,253,247,.84); --premier-glass-edge:rgba(155,132,95,.3); }
+body.theme-dark { --premier-glass:rgba(22,33,45,.88); --premier-glass-edge:rgba(223,198,154,.3); --text-muted:#bfc9d2; --text-light:#eee8de; }
+body :is(.settings-panel,.modal-sheet,.header-container) { background:var(--premier-glass); border-color:var(--premier-glass-edge); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 14px 42px rgba(10,20,30,.15),inset 0 1px rgba(255,255,255,.18); }
+body :is(.dish-card,.boutique-room-card,.tariff-suite-card,.route-start-card,.attraction-card) { border-color:var(--premier-glass-edge); box-shadow:0 8px 24px rgba(10,20,30,.08),inset 0 1px rgba(255,255,255,.12); }
+body.theme-dark :is(.modal-dish-desc,.modal-dish-subtitle,.modal-dish-variants-hint,.form-label,.summary-row,.studio-field,.slide-manage-card,.studio-card-item) { color:#cbd5df; }
+body.theme-dark :is(.modal-dish-variant-btn,.studio-card-item,.slide-manage-card) { background:#1c2b38 !important; border-color:#536474; color:#eee8de; }
+body.theme-dark :is(.variant-btn-name,.modal-dish-title) { color:#eee8de !important; }
+.enquiry-confirmation-note { color:var(--royal-ink); font-size:.85rem; line-height:1.65; padding:12px; border:1px solid var(--royal-edge); border-radius:10px; }
+#modal-dish-share-btn { width:40px; height:40px; min-width:40px; padding:10px; border-radius:50%; }
+#modal-dish-share-btn .share-icon { width:18px; height:18px; display:block; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:none !important; }
+#dish-detail-body > .delivery-buttons-container { padding:10px 14px max(10px,env(safe-area-inset-bottom)) !important; margin:0 !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn { min-height:44px !important; height:auto !important; padding:10px 6px !important; }
+#dish-detail-body .modal-dish-photo-wrap { flex-shrink:0 !important; }
+@media(max-width:640px) { #dish-detail-body .modal-dish-photo-wrap { height:clamp(120px,25dvh,205px) !important; } }
+.studio-card-item { content-visibility:auto; contain-intrinsic-size:auto 240px; }
+@media(prefers-reduced-motion:reduce) { .section-slideshow-track { transition:none !important; } }

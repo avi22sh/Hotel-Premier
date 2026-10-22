@@ -5,7 +5,7 @@ const css = fs.readFileSync('styles.css', 'utf8') + fs.readFileSync('royal.css',
 assert.ok(app.includes('body.appendChild(orderActions)'));
 assert.ok(css.includes('grid-template-columns: repeat(2, minmax(0, 1fr))'));
 assert.ok(css.includes('.dish-banner-action .dish-fav-btn { width:44px'));
-assert.ok(css.includes('height:clamp(120px,26dvh,195px)'));
+assert.ok(css.includes('height:clamp(120px,25dvh,205px)'));
 const switcher = app.slice(app.indexOf('  switchModalVariant('), app.indexOf('  closeDishDetail()'));
 assert.ok(switcher.includes('previousImg.replaceWith(modalImg)'));
 assert.ok(switcher.includes('modalImg.onerror'));

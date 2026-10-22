@@ -483,7 +483,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.59';
+    s.src = 'admin.js?v=21.63';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1024,7 +1024,16 @@ class HotelPremierApp {
   }
 
   // ==================== SUB-SECTION DISHES MULTI-PHOTO SLIDESHOW ====================
+  getSectionDishes(sectionId) {
+    const [categoryId, subId] = sectionId.split('::');
+    const sub = (window.HOTEL_PREMIER_SUB_CATEGORIES?.[categoryId] || []).find(s => s.id === subId);
+    const ids = sub?.dishIds ? new Set(sub.dishIds) : null;
+    return this.menuData.filter(d => !d.notAvailable && d.categoryId === categoryId && d.image && d.image.trim() &&
+      (ids ? ids.has(d.id) || ids.has(d.groupedUnder) : !d.groupedUnder)).slice(0, 5);
+  }
+
   async renderSectionSlideshow(catId) {
+    const renderId = this.sectionRenderId = (this.sectionRenderId || 0) + 1;
     const container = document.getElementById('section-slideshow-container');
     if (!container) return;
 
@@ -1042,14 +1051,18 @@ class HotelPremierApp {
     // 1. Check custom saved slides for this category
     let slides = null;
     if (window.HOTEL_STORAGE) {
-      slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + catId, null);
+      const subId = this.activeSubCategories[catId];
+      const sectionId = subId && subId !== 'all' ? `${catId}::${subId}` : catId;
+      slides = await window.HOTEL_STORAGE.getSectionSlides('category_' + sectionId, null);
     }
 
-    // 2. If no custom slides stored, auto-derive by selecting random images from this section
+    if (renderId !== this.sectionRenderId) return;
+    // Use a stable sequence so photos and captions keep the same order.
     if (!slides || !Array.isArray(slides) || slides.length === 0) {
-      const dishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === catId && d.image && d.image.trim() !== '');
+      const subId = this.activeSubCategories[catId];
+      const dishes = this.getSectionDishes(subId && subId !== 'all' ? `${catId}::${subId}` : catId);
       // Shuffle and pick random 4-5 dishes from this section to display in the banner
-      const shuffledDishes = [...dishes].sort(() => 0.5 - Math.random());
+      const shuffledDishes = [...dishes].filter(d => !d.groupedUnder);
       const selectedDishes = shuffledDishes.slice(0, Math.min(5, shuffledDishes.length));
 
       slides = selectedDishes.map(d => ({
@@ -1159,6 +1172,7 @@ class HotelPremierApp {
   startSectionAutoSlide() {
     if (this.sectionAutoInterval) clearInterval(this.sectionAutoInterval);
     this.sectionAutoInterval = setInterval(() => {
+      if (document.hidden || document.body.classList.contains('modal-open')) return;
       this.nextSectionSlide();
     }, 4000);
   }
@@ -2036,6 +2050,7 @@ class HotelPremierApp {
 
   setSubCategoryFilter(catId, subCatId) {
     this.activeSubCategories[catId] = subCatId;
+    if (this.currentCategory === catId) this.renderSectionSlideshow(catId);
 
     const container = document.getElementById(`subcat-chips-${catId}`);
     if (container) {
@@ -3631,7 +3646,7 @@ class HotelPremierApp {
       ? `👤 *Booked By:* ${encodeURIComponent(eventName || 'Guest')} (${encodeURIComponent(eventPhone || 'Not provided')})%0A`
       : '';
 
-    const msg = `*HOTEL PREMIER BHUSAWAL - RESTAURANT EVENT & LUNCH BOOKING*%0A` +
+    const msg = `*HOTEL PREMIER BHUSAWAL - RESTAURANT EVENT & LUNCH ENQUIRY*%0A` +
       `---------------------------------------%0A` +
       guestContactLine +
       `🎉 *Occasion:* ${encodeURIComponent(q.occasion)}%0A` +
@@ -4660,7 +4675,7 @@ class HotelPremierApp {
       });
     }
 
-    let msg = `*🏨 HOTEL PREMIER, BHUSAWAL - ROOM RESERVATION REQUEST*\n`;
+    let msg = `*🏨 HOTEL PREMIER, BHUSAWAL - ROOM ENQUIRY*\n`;
     msg += `--------------------------------------------------\n`;
     msg += `👤 *Guest Name:* ${guestName}\n`;
     msg += `📱 *Mobile / WhatsApp:* ${cleanGuestPhone}\n`;
@@ -4680,7 +4695,7 @@ class HotelPremierApp {
     msg += `🎁 *Direct PWA Guest Privilege (Flat ₹200 Off):* -₹ ${estimate.directDiscount.toLocaleString('en-IN')}/-\n`;
     msg += `✨ *Final Payable Total:* ₹ ${estimate.totalEstimate.toLocaleString('en-IN')}/- (Inclusive of all taxes)\n`;
     msg += `--------------------------------------------------\n`;
-    msg += `Kindly confirm room availability and direct guest booking privilege. Thank you!`;
+    msg += `Please check availability and confirm the final rate and stay details. This is an enquiry, not a confirmed reservation. Thank you!`;
 
     const encoded = encodeURIComponent(msg);
     const waUrl = `https://wa.me/919325375802?text=${encoded}`;
