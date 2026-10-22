@@ -455,6 +455,11 @@ body.theme-dark #section-tariffs .tariff-plan-box { box-shadow:inset 0 1px rgba(
 .modal-backdrop .modal-header { flex:0 0 auto; }
 .modal-backdrop .modal-body { min-height:0; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
 .modal-backdrop .modal-close-btn { flex-shrink:0; min-width:44px; min-height:44px; }
+body.theme-light .modal-backdrop .modal-title { color:var(--crystal-accent); }
+body.theme-light .modal-backdrop .modal-close-btn { color:var(--crystal-ink); background:rgba(109,95,78,.08); border-color:rgba(109,95,78,.3); }
+body.theme-light #dish-detail-modal .modal-header { background:#e2ddd7 !important; }
+body.theme-light #dish-detail-modal .modal-title { color:var(--crystal-accent) !important; }
+body.theme-light #dish-detail-modal .modal-header-action-btn { color:var(--crystal-ink); background:rgba(109,95,78,.08); border-color:rgba(109,95,78,.3); }
 #dish-detail-body .modal-dish-img { object-fit:contain !important; object-position:center !important; transform:none !important; }
 #dish-detail-body .hp-glass-vignette { pointer-events:none; opacity:.12; }
 @media(max-height:520px) {
@@ -468,6 +473,7 @@ body.theme-dark #section-tariffs .tariff-plan-box { box-shadow:inset 0 1px rgba(
 #concierge-booking-modal .enquiry-intro { color:var(--crystal-muted); font-size:.9rem; line-height:1.6; margin:0 0 16px; }
 #concierge-booking-modal .enquiry-privilege { display:flex; flex-wrap:wrap; gap:4px 14px; justify-content:space-between; margin:0 0 20px; padding:12px 14px; border-radius:12px; font-size:.8rem; color:var(--crystal-accent); }
 #concierge-booking-modal .enquiry-privilege::before { display:none; }
+body #concierge-booking-modal .enquiry-privilege { background:rgba(147,126,96,.09) !important; border:1px solid rgba(147,126,96,.28); box-shadow:none; }
 .enquiry-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
 .enquiry-grid > * { min-width:0; }
 .enquiry-counts { grid-template-columns:repeat(3,minmax(0,1fr)); }
