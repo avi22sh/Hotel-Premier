@@ -1319,67 +1319,11 @@ class HotelPremierAdmin {
 
       const dish = (window.app && window.app.menuData ? window.app.menuData.find(d => d.id === this.activeImageDishId) : null) || {};
 
-      // Automatically run through Automatic Studio Enhancement Pipeline with robust fallback
-      let enhanced = rawDataUrl;
-      let qualityScore = 90;
-      let category = 'curry';
-      let flags = [];
+      // Run live calibration with active image options (background, angle, tilt, tolerance, etc.)
+      await this.recalculate4KLive();
 
-      try {
-        if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawDataUrl, dish, {
-            backgroundMode: this.activeBackgroundMode || 'original',
-            framingMode: this.activeFramingMode || 'smart'
-          });
-          if (res && res.enhancedDataUrl) {
-            enhanced = res.enhancedDataUrl;
-            qualityScore = res.qualityScore || 90;
-            category = res.category || 'curry';
-            flags = res.flags || [];
-          }
-        } else {
-          enhanced = await this.compressAndResizeImage(file);
-        }
-      } catch (pipelineErr) {
-        console.warn('Studio enhancement pipeline recovered gracefully:', pipelineErr);
-        try {
-          enhanced = await this.compressAndResizeImage(file);
-        } catch (compErr) {
-          enhanced = rawDataUrl;
-        }
-      }
-
-      this.enhanced4KSource = enhanced;
-      this.tempImageSource = enhanced;
-      this.currentQualityScore = qualityScore;
-      this.currentEnhancementStatus = this.activeBackgroundMode === 'original'
-        ? 'original'
-        : this.activeBackgroundMode === 'natural' ? 'natural' : 'enhanced';
-
-      const preview = document.getElementById('image-preview-element');
       const urlInput = document.getElementById('image-url-input-field');
-      if (preview) preview.src = this.tempImageSource;
-      if (urlInput) urlInput.value = this.currentEnhancementStatus === 'original'
-        ? '(Original photo — no studio treatment applied)'
-        : this.currentEnhancementStatus === 'natural'
-          ? `(Natural Polish V3 — ${category.toUpperCase()} • Score ${qualityScore}%)`
-          : `(Studio preview — ${category.toUpperCase()} • Score ${qualityScore}%)`;
-      if (status) status.innerText = this.currentEnhancementStatus === 'original'
-        ? '● Original photo preserved'
-        : this.currentEnhancementStatus === 'natural'
-          ? `● Natural Polish V3 ready (${qualityScore}%)`
-          : `● Studio preview ready (${qualityScore}%)`;
-
-      const badge = document.getElementById('lifecycle-status-badge');
-      if (badge) {
-        badge.className = `hp-status-pill hp-status-${this.currentEnhancementStatus}`;
-        badge.innerText = this.currentEnhancementStatus === 'original'
-          ? 'ORIGINAL PHOTO'
-          : this.currentEnhancementStatus === 'natural'
-            ? `NATURAL V3 (${qualityScore}%)`
-            : `STUDIO PREVIEW (${qualityScore}%)`;
-      }
-
+      if (urlInput) urlInput.value = '(Uploaded from device)';
       if (typeof this.toggleComparisonMode === 'function') {
         this.toggleComparisonMode('split');
       }
@@ -1497,12 +1441,20 @@ class HotelPremierAdmin {
     }
   }
 
-  // ==================== 1B. ✨ AI PHOTO STUDIO & BATCH PHOTOGRAPHY HUB ====================
+  // ==================== 1B. AI PHOTO STUDIO & BATCH PHOTOGRAPHY HUB ====================
   async renderAIStudioManager(container) {
     const dishes = window.app.menuData || [];
     const withPhotos = dishes.filter(d => d.image && d.image.trim() !== '');
     const withoutPhotos = dishes.filter(d => !d.image || d.image.trim() === '');
 
+    let settings = {
+      autoEnhanceEnabled: true,
+      defaultStyle: 'slate_gold',
+      autoReplaceClutteredBg: true
+    };
+    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.getAISettings === 'function') {
+      settings = await window.HOTEL_STORAGE.getAISettings() || settings;
+    }
     // Collect overrides from storage
     const overrides = (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.getAllDishOverrides === 'function')
       ? await window.HOTEL_STORAGE.getAllDishOverrides()
@@ -1562,6 +1514,25 @@ class HotelPremierAdmin {
             <div style="background: rgba(0,0,0,0.45); border: 1px solid rgba(248,113,113,0.25); border-radius: 8px; padding: 10px; text-align: center;">
               <div style="font-size: 1.3rem; font-weight: 900; color: #F87171;">${withoutPhotos.length}</div>
               <div style="font-size: 0.70rem; color: #94A3B8; text-transform: uppercase;">Awaiting Photos</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Global Brand Surface Policy -->
+        <div style="background: rgba(14,22,34,0.6); border: 1px solid rgba(213,183,122,0.3); border-radius: 8px; padding: 12px 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <div style="font-weight: 800; font-size: 0.82rem; color: var(--brass-light); display: flex; align-items: center; gap: 6px;">
+                <span>&#x2699;&#xFE0F;</span> <span>Signature Default Studio Surface</span>
+              </div>
+              <div style="font-size: 0.70rem; color: #8C9BAE;">New food uploads and batch calibrations will default to this luxury surface backdrop.</div>
+            </div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+              <select id="ai-setting-surface" class="form-select" style="min-width: 260px; font-size: 0.75rem;" onchange="window.admin.saveAIStudioSettings()">
+                <option value="slate_gold" ${settings.defaultStyle === 'slate_gold' ? 'selected' : ''}>Midnight Slate & Imperial Gold (Brand Signature)</option>
+                <option value="teak_wood" ${settings.defaultStyle === 'teak_wood' ? 'selected' : ''}>Warm Teak & Walnut Wood (Breads & Snacks)</option>
+                <option value="cream_marble" ${settings.defaultStyle === 'cream_marble' ? 'selected' : ''}>Refined Italian Cream Marble (Beverages & Desserts)</option>
+              </select>
             </div>
           </div>
         </div>
@@ -3385,113 +3356,7 @@ class HotelPremierAdmin {
     `;
   }
 
-  // ==================== 7. AI CULINARY PHOTOGRAPHY STUDIO MANAGER ====================
-  async renderAIStudioManager(container) {
-    let settings = {
-      autoEnhanceEnabled: true,
-      defaultStyle: 'slate_gold',
-      autoReplaceClutteredBg: true,
-      qualityThreshold: 60
-    };
-
-    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.getAISettings === 'function') {
-      settings = await window.HOTEL_STORAGE.getAISettings();
-    }
-
-    const dishes = (window.app && window.app.menuData) ? window.app.menuData : [];
-    const withPhotos = dishes.filter(d => d.image && d.image.trim() !== '');
-
-    container.innerHTML = `
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <div style="background: linear-gradient(135deg, #0D111A 0%, #162035 100%); border: 1.5px solid var(--brass-primary); border-radius: 10px; padding: 16px; color: #FFF; box-shadow: 0 4px 14px rgba(0,0,0,0.5);">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px;">
-                <span style="font-size: 1.4rem;">✨</span>
-                <h4 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--brass-light); margin: 0;">AI Culinary Photography Studio Hub</h4>
-              </div>
-              <p style="font-size: 0.78rem; color: #B2C0D1; margin: 4px 0 0; line-height: 1.4;">
-                Transform raw camera & phone uploads into consistent, gourmet restaurant photography matching Hotel Premier's royal identity.
-              </p>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <button class="btn-primary" style="padding: 7px 14px; font-size: 0.75rem;" onclick="window.admin.runBatchStudioEnhance()">
-                ⚡ Batch Enhance All (${withPhotos.length} Dishes)
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Studio Automation Settings Form -->
-        <div style="background: var(--cream-bg); border: 1.5px solid var(--cream-border); border-radius: var(--radius-md); padding: 16px;">
-          <h5 style="font-family: var(--font-royal); color: var(--terracotta-dark); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
-            <span>⚙️</span> <span>Studio Global Policies</span>
-          </h5>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
-            <div>
-              <label class="form-label">Signature Default Surface</label>
-              <select id="ai-setting-surface" class="form-select" onchange="window.admin.saveAIStudioSettings()">
-                <option value="slate_gold" ${settings.defaultStyle === 'slate_gold' ? 'selected' : ''}>Midnight Slate & Imperial Gold (Brand Signature)</option>
-                <option value="teak_wood" ${settings.defaultStyle === 'teak_wood' ? 'selected' : ''}>Warm Teak & Walnut Wood (Breads & Snacks)</option>
-                <option value="cream_marble" ${settings.defaultStyle === 'cream_marble' ? 'selected' : ''}>Refined Italian Cream Marble (Beverages & Desserts)</option>
-              </select>
-            </div>
-            <div>
-              <label class="form-label">Clutter Isolation Mode</label>
-              <select id="ai-setting-clutter" class="form-select" onchange="window.admin.saveAIStudioSettings()">
-                <option value="auto" ${settings.autoReplaceClutteredBg ? 'selected' : ''}>Auto-Detect & Isolate Poor Backgrounds</option>
-                <option value="harmonize" ${!settings.autoReplaceClutteredBg ? 'selected' : ''}>Universal Ambient Harmonize Only</option>
-              </select>
-            </div>
-            <div style="grid-column: 1 / -1;">
-              <label class="form-label">Local Photo Studio — No Image API Charges</label>
-              <span style="font-size: 0.68rem; color: var(--text-muted); margin-top: 3px; display: block;">
-                Uploaded photos are processed on this device, with no service quota. Cloud generation is disabled. Device storage and memory limits still apply. Local edits are not automatically published to other devices; export backups regularly. This studio is not a generative AI model.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Studio Portfolio Inspection Grid -->
-        <div style="background: #FFF; border: 1px solid var(--ivory-border); border-radius: var(--radius-md); padding: 16px;">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
-            <div>
-              <h5 style="font-family: var(--font-royal); color: var(--burgundy-deep); margin: 0;">
-                📸 Menu Dishes Studio Portfolio (${dishes.length} Total)
-              </h5>
-              <span style="font-size: 0.72rem; color: var(--text-muted);">
-                Tap any dish to open the Before/After split slider, adjust lighting warmth, or approve official master.
-              </span>
-            </div>
-            <input type="text" id="ai-studio-search" class="form-input" style="max-width: 220px; font-size: 0.75rem;" placeholder="Filter dishes..." oninput="window.admin.filterStudioDishes(this.value)">
-          </div>
-
-          <div id="ai-studio-dish-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; max-height: 480px; overflow-y: auto;">
-            ${dishes.map(d => {
-              const hasImg = d.image && d.image.trim() !== '';
-              return `
-                <div class="ai-studio-grid-item" onclick="window.admin.openImageModal('${d.id}')" style="background: #0D111A; border: 1.5px solid rgba(213,183,122,0.3); border-radius: 8px; overflow: hidden; cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease; position: relative;">
-                  <div style="width: 100%; height: 95px; background: #162035; position: relative; overflow: hidden;">
-                    ${hasImg ? `
-                      <img src="${d.image}" style="width: 100%; height: 100%; object-fit: cover;">
-                      <span class="hp-status-pill hp-status-enhanced" style="position: absolute; bottom: 4px; left: 4px; font-size: 0.55rem; padding: 1px 5px;">STUDIO</span>
-                    ` : `
-                      <div style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🌱</div>
-                    `}
-                  </div>
-                  <div style="padding: 6px 8px;">
-                    <div style="font-size: 0.75rem; font-weight: 800; color: #FFF; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${d.name}</div>
-                    <div style="font-size: 0.65rem; color: var(--brass-light);">${Number.isFinite(d.price) ? `₹${d.price}` : 'Price on request'} • ${d.categoryId}</div>
-                  </div>
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
+  // ==================== 7. AI STUDIO GLOBAL POLICIES ====================
   async saveAIStudioSettings() {
     const surface = document.getElementById('ai-setting-surface')?.value || 'slate_gold';
     const clutter = document.getElementById('ai-setting-clutter')?.value === 'auto';
@@ -3507,54 +3372,6 @@ class HotelPremierAdmin {
       await window.HOTEL_STORAGE.saveAISettings(settings);
     }
     window.app.showToast('AI Studio settings saved!', 'success');
-  }
-
-  async runBatchStudioEnhance() {
-    const dishes = (window.app && window.app.menuData) ? window.app.menuData : [];
-    const withPhotos = dishes.filter(d => d.image && d.image.trim() !== '' && !d.image.startsWith('data:image/svg'));
-
-    if (withPhotos.length === 0) {
-      alert('No dish photos found to enhance.');
-      return;
-    }
-
-    if (!confirm(`Run automatic studio photography enhancement on all ${withPhotos.length} menu dishes?`)) {
-      return;
-    }
-
-    window.app.showToast(`Batch Studio: Enhancing ${withPhotos.length} dishes...`, 'info');
-    let count = 0;
-
-    for (const dish of withPhotos) {
-      try {
-        if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-          const record = await window.HOTEL_STORAGE?.getDishOverride(dish.id);
-          const rawOriginalImage = record?.rawOriginalImage || dish.image;
-          const res = await window.AssetPipeline.processAutomaticStudioEnhancement(rawOriginalImage, dish, { backgroundMode: 'natural' });
-          if (res && res.enhancedDataUrl) {
-            dish.image = res.enhancedDataUrl;
-            if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function') {
-              await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
-                enhancedMasterImage: res.enhancedDataUrl,
-                rawOriginalImage,
-                enhancementStatus: res.status,
-                qualityScore: res.qualityScore || 92,
-                foodCategory: res.category || dish.categoryId,
-                backgroundType: 'natural',
-                styleVersion: 'hp-studio-v3.0'
-              });
-            }
-            count++;
-          }
-        }
-      } catch (e) {}
-    }
-
-    window.app.saveMenuData();
-    window.app.renderCategoryCards();
-    window.app.renderMenu();
-    this.renderAIStudioManager(document.getElementById('admin-tab-content'));
-    window.app.showToast(`Batch completed! ${count} dish photos enhanced to studio quality.`, 'success');
   }
 
   filterStudioDishes(q) {
