@@ -196,7 +196,10 @@
      * Isolates foreground subject from original background and places it on the luxury pedestal.
      */
     async processIsolatedAsset(imageSource, options = {}) {
-      const cacheKey = typeof imageSource === 'string' ? imageSource : (imageSource.src || imageSource.currentSrc);
+      const baseKey = typeof imageSource === 'string' ? imageSource : (imageSource.src || imageSource.currentSrc);
+      const tol = options.tolerance !== undefined ? Number(options.tolerance) : 42;
+      const fth = options.feather !== undefined ? Number(options.feather) : 26;
+      const cacheKey = baseKey ? `${baseKey}_tol${tol}_fth${fth}` : null;
       if (cacheKey && this.processedCache.has(cacheKey)) {
         return this.processedCache.get(cacheKey);
       }
@@ -283,8 +286,8 @@
         const isDarkOrBlack = (bgR < 35 && bgG < 35 && bgB < 35);
         const isNeutral = (Math.abs(bgR - bgG) < 26 && Math.abs(bgG - bgB) < 26);
 
-        const tolerance = options.tolerance || 42;
-        const feather = 26;
+        const tolerance = options.tolerance !== undefined ? Number(options.tolerance) : 42;
+        const feather = options.feather !== undefined ? Number(options.feather) : 26;
         let isolatedCount = 0;
 
         if (isLightOrStudio || isDarkOrBlack || isNeutral || options.forceIsolation) {
@@ -1300,14 +1303,59 @@
     }
 
     /**
+     * 2.5D Camera Angle, Perspective, Pan & Zoom Transformation Engine
+     * Adjusts plate rotation, 2.5D tilt/pitch, perspective yaw, zoom scale, and pan offsets.
+     */
+    applyItemViewTransform(ctx, targetW, targetH, options = {}) {
+      const rotation = Number(options.rotation || 0); // degrees -45 to 45 (or 90 increments)
+      const tilt = Number(options.tilt || 0); // pitch degrees -30 to 30
+      const yaw = Number(options.yaw || 0); // perspective yaw degrees -30 to 30
+      const scale = Number(options.scale !== undefined ? options.scale : 1.0);
+      const panX = Number(options.panX || 0);
+      const panY = Number(options.panY || 0);
+      const flipH = !!options.flipH;
+      const flipV = !!options.flipV;
+
+      const cx = targetW / 2;
+      const cy = targetH / 2;
+
+      ctx.translate(cx + panX, cy + panY);
+
+      if (flipH) ctx.scale(-1, 1);
+      if (flipV) ctx.scale(1, -1);
+
+      if (scale !== 1.0) {
+        ctx.scale(scale, scale);
+      }
+
+      if (rotation !== 0) {
+        ctx.rotate((rotation * Math.PI) / 180);
+      }
+
+      // 2.5D Camera Angle Tilt (Pitch) and Perspective (Yaw) simulation
+      const pitchRad = (tilt * Math.PI) / 180;
+      const yawRad = (yaw * Math.PI) / 180;
+      if (tilt !== 0 || yaw !== 0) {
+        const sy = Math.cos(pitchRad);
+        const sx = Math.cos(yawRad);
+        const kx = Math.tan(yawRad) * 0.38;
+        const ky = Math.tan(pitchRad) * 0.28;
+        ctx.transform(sx, ky, kx, sy, 0, 0);
+      }
+
+      ctx.translate(-cx, -cy);
+    }
+
+    /**
      * Automatic Professional Food Photography Studio Pipeline
      * The master entry point for all uploads:
      * 1. Analyzes dish & original quality
-     * 2. Selects category-specific brand surface
+     * 2. Selects category-specific brand surface or transparent cutout
      * 3. Isolates dish or seamlessly harmonizes background
      * 4. Casts natural 3D contact shadows
-     * 5. Calibrates gourmet warmth (3200K) and 4K clarity
-     * 6. Returns { enhancedDataUrl, qualityScore, category, status, flags }
+     * 5. Adjusts 2.5D camera angle, rotation, tilt, pan & zoom
+     * 6. Calibrates gourmet warmth (3200K) and 4K clarity
+     * 7. Returns { enhancedDataUrl, qualityScore, category, status, flags }
      */
     async processAutomaticStudioEnhancement(imageSource, dishMeta = {}, options = {}) {
       options = { backgroundMode: 'natural', ...options };
@@ -1331,9 +1379,19 @@
       const foodCategories = this.styleProfile.foodCategories || {};
       const catConfig = foodCategories[analysis.category] || foodCategories.curry || {};
 
-      // Keeping the original is the safest default for real restaurant photography.
-      // Canvas cannot reliably isolate every plate, garnish, reflection, and table edge.
-      if (options.backgroundMode === 'original') {
+      const hasTransform = (
+        (Number(options.rotation || 0) !== 0) ||
+        (Number(options.tilt || 0) !== 0) ||
+        (Number(options.yaw || 0) !== 0) ||
+        (options.scale !== undefined && Number(options.scale) !== 1.0) ||
+        (Number(options.panX || 0) !== 0) ||
+        (Number(options.panY || 0) !== 0) ||
+        options.flipH ||
+        options.flipV
+      );
+
+      // Keeping original untouched if requested and no view transformation is specified
+      if (options.backgroundMode === 'original' && !hasTransform) {
         return {
           enhancedDataUrl: typeof imageSource === 'string' ? imageSource : (imageSource.src || imageSource.currentSrc || ''),
           qualityScore: analysis.qualityScore,
@@ -1343,16 +1401,19 @@
           flags: analysis.flags
         };
       }
+
+      const bgMode = options.backgroundMode || 'natural';
+      const isCutout = (bgMode === 'cutout');
+      const isIsolatedMode = isCutout || ['slate_gold', 'teak_wood', 'cream_marble', 'pedestal'].includes(bgMode);
+      const naturalMode = (bgMode === 'natural');
+
       const savedSettings = await window.HOTEL_STORAGE?.getAISettings?.() || {};
-      const requestedSurface = options.surfaceKey || savedSettings.defaultStyle || catConfig.surfaceKey;
-      const surfaceKey = ['slate_gold', 'teak_wood', 'cream_marble'].includes(requestedSurface)
+      const requestedSurface = options.surfaceKey || (['slate_gold', 'teak_wood', 'cream_marble', 'pedestal'].includes(bgMode) ? bgMode : (savedSettings.defaultStyle || catConfig.surfaceKey));
+      const surfaceKey = ['slate_gold', 'teak_wood', 'cream_marble', 'pedestal'].includes(requestedSurface)
         ? requestedSurface : 'slate_gold';
 
       const origW = img.naturalWidth || img.width;
       const origH = img.naturalHeight || img.height;
-      const naturalMode = options.backgroundMode === 'natural';
-      // V3 natural polish keeps camera framing intact. This is intentionally
-      // separate from the stylised 4:3 studio and pedestal treatments.
       const naturalScale = Math.min(1, 1440 / Math.max(origW, origH));
       const targetW = naturalMode
         ? Math.max(1, Math.round(origW * naturalScale))
@@ -1368,52 +1429,63 @@
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = 'high';
 
-      // 2. Render the untouched composition for Natural Polish, otherwise use
-      // the selected studio surface.
-      if (naturalMode) {
+      // 2. Render Backdrop or Untouched Composition
+      if (isCutout) {
+        // Transparent cutout mode: pristine transparent background
+        ctx.clearRect(0, 0, targetW, targetH);
+      } else if (naturalMode || bgMode === 'original') {
+        // Natural or Original with transform: draw original composition with view transforms
+        ctx.save();
+        this.applyItemViewTransform(ctx, targetW, targetH, options);
         ctx.drawImage(img, 0, 0, targetW, targetH);
-      } else {
+        ctx.restore();
+      } else if (isIsolatedMode) {
         this.drawSurfaceBackdrop(ctx, targetW, targetH, surfaceKey);
       }
 
-      // Determine background replacement / isolation
-      const shouldCutout = options.backgroundMode === 'pedestal';
-
-      if (naturalMode) {
-        // The original composition is already drawn above; only apply the
-        // restrained photo correction below.
-      } else if (shouldCutout) {
+      if (isIsolatedMode) {
         // Foreground Subject Extraction
-        const isolatedDataUrl = await this.processIsolatedAsset(img, { forceIsolation: true });
+        const isolatedDataUrl = await this.processIsolatedAsset(img, {
+          forceIsolation: true,
+          tolerance: options.tolerance,
+          feather: options.feather
+        });
         const isolatedImg = await this.loadImage(isolatedDataUrl);
 
         const isoW = isolatedImg.naturalWidth || isolatedImg.width;
         const isoH = isolatedImg.naturalHeight || isolatedImg.height;
 
-        // Position dish safely with 12% golden breathing margin
+        // Position dish safely with golden breathing margin
         const maxPlateW = targetW * 0.78;
         const maxPlateH = targetH * 0.68;
-        const scale = Math.min(maxPlateW / isoW, maxPlateH / isoH, 1.25);
-        const renderW = isoW * scale;
-        const renderH = isoH * scale;
+        const baseScale = Math.min(maxPlateW / isoW, maxPlateH / isoH, 1.25);
+        const renderW = isoW * baseScale;
+        const renderH = isoH * baseScale;
         const renderX = (targetW - renderW) / 2;
         const renderY = (targetH * 0.74) - renderH;
 
-        // Realistic 3D Contact Shadow
-        this.drawRealisticContactShadow(
-          ctx,
-          targetW / 2,
-          renderY + renderH - (renderH * 0.04),
-          renderW * 0.44,
-          Math.max(14, renderH * 0.14)
-        );
+        // Grounding 3D Contact Shadow (rendered on surfaces, omitted on transparent cutout)
+        if (!isCutout) {
+          const userScale = Number(options.scale !== undefined ? options.scale : 1.0);
+          const shadowCx = (targetW / 2) + Number(options.panX || 0);
+          const shadowCy = (renderY + renderH - (renderH * 0.04)) + Number(options.panY || 0);
+          this.drawRealisticContactShadow(
+            ctx,
+            shadowCx,
+            shadowCy,
+            renderW * 0.44 * userScale,
+            Math.max(14, renderH * 0.14 * userScale)
+          );
+        }
 
-        // Draw Pristine Isolated Dish
+        // Draw Pristine Isolated Dish with View Transformations
+        ctx.save();
+        this.applyItemViewTransform(ctx, targetW, targetH, options);
         ctx.drawImage(isolatedImg, renderX, renderY, renderW, renderH);
+        ctx.restore();
 
-      } else {
+      } else if (!naturalMode && bgMode !== 'original') {
         // Universal Ambient Harmonization (Ambient warm fill + Aspect Safe Frame)
-        // A. Ambient fill underlayer
         ctx.save();
         const blurScale = Math.max(targetW / origW, targetH / origH) * 1.05;
         const bW = origW * blurScale;
@@ -1429,7 +1501,7 @@
         ctx.fillRect(0, 0, targetW, targetH);
         ctx.restore();
 
-        // B. Authentic Foreground Dish safely centered
+        // Authentic Foreground Dish safely centered with transform
         const safeScale = options.framingMode === 'fill'
           ? Math.max(targetW / origW, targetH / origH)
           : Math.min((targetW * 0.90) / origW, (targetH * 0.88) / origH, 1.0);
@@ -1439,6 +1511,7 @@
         const fY = (targetH - fH) / 2;
 
         ctx.save();
+        this.applyItemViewTransform(ctx, targetW, targetH, options);
         ctx.shadowColor = 'rgba(0, 0, 0, 0.75)';
         ctx.shadowBlur = 24;
         ctx.shadowOffsetY = 8;
@@ -1447,87 +1520,91 @@
       }
 
       // 3. Pixel-Level Gourmet 3200K Color Calibration & 4K Unsharp Clarity
-      try {
-        const outData = ctx.getImageData(0, 0, targetW, targetH);
-        const data = outData.data;
-        const len = data.length;
+      if (bgMode !== 'original') {
+        try {
+          const outData = ctx.getImageData(0, 0, targetW, targetH);
+          const data = outData.data;
+          const len = data.length;
 
-        const warmthAdd = naturalMode
-          ? Math.min(options.warmth !== undefined ? options.warmth : 2, 4)
-          : (options.warmth !== undefined ? options.warmth : (catConfig.warmth || 8));
-        const sharpAmount = naturalMode
-          ? Math.min(options.sharpness !== undefined ? options.sharpness : 0.10, 0.16)
-          : (options.sharpness !== undefined ? options.sharpness : (catConfig.sharpness || 0.28));
-        const contrastFactor = naturalMode
-          ? Math.min(options.contrast !== undefined ? options.contrast : 1.02, 1.05)
-          : (options.contrast !== undefined ? options.contrast : 1.08);
-        const brightFactor = naturalMode ? 1.01 : (options.brightness !== undefined ? options.brightness : 1.04);
-        const satFactor = naturalMode ? 1.04 : (options.saturation !== undefined ? options.saturation : 1.12);
+          const warmthAdd = naturalMode
+            ? Math.min(options.warmth !== undefined ? options.warmth : 2, 4)
+            : (options.warmth !== undefined ? options.warmth : (catConfig.warmth || 8));
+          const sharpAmount = naturalMode
+            ? Math.min(options.sharpness !== undefined ? options.sharpness : 0.10, 0.16)
+            : (options.sharpness !== undefined ? options.sharpness : (catConfig.sharpness || 0.28));
+          const contrastFactor = naturalMode
+            ? Math.min(options.contrast !== undefined ? options.contrast : 1.02, 1.05)
+            : (options.contrast !== undefined ? options.contrast : 1.08);
+          const brightFactor = naturalMode ? 1.01 : (options.brightness !== undefined ? options.brightness : 1.04);
+          const satFactor = naturalMode ? 1.04 : (options.saturation !== undefined ? options.saturation : 1.12);
 
-        for (let i = 0; i < len; i += 4) {
-          let r = data[i];
-          let g = data[i + 1];
-          let b = data[i + 2];
+          for (let i = 0; i < len; i += 4) {
+            if (data[i + 3] === 0) continue; // Skip pure transparent pixels (crucial for cutout mode)
+            let r = data[i];
+            let g = data[i + 1];
+            let b = data[i + 2];
 
-          // Tone adjustment
-          r *= brightFactor;
-          g *= brightFactor;
-          b *= brightFactor;
-          r = (r - 128) * contrastFactor + 128;
-          g = (g - 128) * contrastFactor + 128;
-          b = (b - 128) * contrastFactor + 128;
+            // Tone adjustment
+            r *= brightFactor;
+            g *= brightFactor;
+            b *= brightFactor;
+            r = (r - 128) * contrastFactor + 128;
+            g = (g - 128) * contrastFactor + 128;
+            b = (b - 128) * contrastFactor + 128;
 
-          // Gourmet 3200K Warmth (+ amber glow)
-          r += warmthAdd * 1.15;
-          g += warmthAdd * 0.45;
-          b -= warmthAdd * 0.40;
+            // Gourmet 3200K Warmth (+ amber glow)
+            r += warmthAdd * 1.15;
+            g += warmthAdd * 0.45;
+            b -= warmthAdd * 0.40;
 
-          // Vibrance
-          const gray = 0.299 * r + 0.587 * g + 0.114 * b;
-          r = gray + (r - gray) * satFactor;
-          g = gray + (g - gray) * satFactor;
-          b = gray + (b - gray) * satFactor;
+            // Vibrance
+            const gray = 0.299 * r + 0.587 * g + 0.114 * b;
+            r = gray + (r - gray) * satFactor;
+            g = gray + (g - gray) * satFactor;
+            b = gray + (g - gray) * satFactor;
 
-          data[i] = Math.min(255, Math.max(0, r));
-          data[i + 1] = Math.min(255, Math.max(0, g));
-          data[i + 2] = Math.min(255, Math.max(0, b));
-        }
-        ctx.putImageData(outData, 0, 0);
-
-        // Laplacian 4K Sharpness Masking
-        if (sharpAmount > 0) {
-          const copy = ctx.getImageData(0, 0, targetW, targetH);
-          const cPx = copy.data;
-          const sharpData = ctx.createImageData(targetW, targetH);
-          const sPx = sharpData.data;
-          sPx.set(cPx); // Preserve border pixels instead of exporting a black rim.
-          const w = targetW, h = targetH;
-
-          for (let y = 1; y < h - 1; y++) {
-            const row = y * w;
-            const top = (y - 1) * w;
-            const btm = (y + 1) * w;
-            for (let x = 1; x < w - 1; x++) {
-              const idx = (row + x) * 4;
-              const idxT = (top + x) * 4;
-              const idxB = (btm + x) * 4;
-              const idxL = (row + (x - 1)) * 4;
-              const idxR = (row + (x + 1)) * 4;
-              for (let c = 0; c < 3; c++) {
-                const centerVal = cPx[idx + c];
-                const blurVal = (cPx[idxT + c] + cPx[idxB + c] + cPx[idxL + c] + cPx[idxR + c]) * 0.25;
-                const edge = centerVal - blurVal;
-                sPx[idx + c] = Math.min(255, Math.max(0, centerVal + edge * sharpAmount * 1.6));
-              }
-              sPx[idx + 3] = cPx[idx + 3];
-            }
+            data[i] = Math.min(255, Math.max(0, r));
+            data[i + 1] = Math.min(255, Math.max(0, g));
+            data[i + 2] = Math.min(255, Math.max(0, b));
           }
-          ctx.putImageData(sharpData, 0, 0);
-        }
-      } catch (e) {}
+          ctx.putImageData(outData, 0, 0);
 
-      // 4. Subtle Studio Spotlight & Champagne Vignette
-      const vStr = naturalMode ? 0 : (options.vignetteStrength !== undefined ? options.vignetteStrength : 0.38);
+          // Laplacian 4K Sharpness Masking
+          if (sharpAmount > 0) {
+            const copy = ctx.getImageData(0, 0, targetW, targetH);
+            const cPx = copy.data;
+            const sharpData = ctx.createImageData(targetW, targetH);
+            const sPx = sharpData.data;
+            sPx.set(cPx); // Preserve border pixels
+            const w = targetW, h = targetH;
+
+            for (let y = 1; y < h - 1; y++) {
+              const row = y * w;
+              const top = (y - 1) * w;
+              const btm = (y + 1) * w;
+              for (let x = 1; x < w - 1; x++) {
+                const idx = (row + x) * 4;
+                if (cPx[idx + 3] === 0) continue; // Skip transparent pixels
+                const idxT = (top + x) * 4;
+                const idxB = (btm + x) * 4;
+                const idxL = (row + (x - 1)) * 4;
+                const idxR = (row + (x + 1)) * 4;
+                for (let c = 0; c < 3; c++) {
+                  const centerVal = cPx[idx + c];
+                  const blurVal = (cPx[idxT + c] + cPx[idxB + c] + cPx[idxL + c] + cPx[idxR + c]) * 0.25;
+                  const edge = centerVal - blurVal;
+                  sPx[idx + c] = Math.min(255, Math.max(0, centerVal + edge * sharpAmount * 1.6));
+                }
+                sPx[idx + 3] = cPx[idx + 3];
+              }
+            }
+            ctx.putImageData(sharpData, 0, 0);
+          }
+        } catch (e) {}
+      }
+
+      // 4. Subtle Studio Spotlight & Champagne Vignette (Only for studio surfaces, never cutout or natural)
+      const vStr = (naturalMode || isCutout || bgMode === 'original') ? 0 : (options.vignetteStrength !== undefined ? options.vignetteStrength : 0.38);
       if (vStr > 0) {
         const vig = ctx.createRadialGradient(
           targetW * 0.5, targetH * 0.50, Math.min(targetW, targetH) * 0.35,
@@ -1550,8 +1627,8 @@
         ctx.fillRect(0, 0, targetW, targetH);
       }
 
-      // 5. Delicate Gold Trim Rim belongs only to the stylised studio modes.
-      if (!naturalMode) {
+      // 5. Delicate Gold Trim Rim (Only for studio surfaces)
+      if (!naturalMode && !isCutout && bgMode !== 'original') {
         ctx.save();
         ctx.strokeStyle = 'rgba(213, 183, 122, 0.30)';
         ctx.lineWidth = 2;
@@ -1559,15 +1636,15 @@
         ctx.restore();
       }
 
-      const quality = options.quality || 0.88;
-      const enhancedDataUrl = canvas.toDataURL('image/jpeg', quality);
+      const quality = options.quality || 0.90;
+      const enhancedDataUrl = isCutout ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', quality);
 
       return {
         enhancedDataUrl,
         qualityScore: analysis.qualityScore,
         category: analysis.category,
-        surfaceKey,
-        status: naturalMode ? 'natural' : 'enhanced',
+        surfaceKey: isCutout ? 'cutout' : surfaceKey,
+        status: isCutout ? 'cutout' : (naturalMode ? 'natural' : (bgMode === 'original' ? 'original' : 'enhanced')),
         flags: analysis.flags
       };
     }

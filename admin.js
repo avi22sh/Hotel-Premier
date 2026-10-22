@@ -619,7 +619,21 @@ class HotelPremierAdmin {
       lifecycle = await window.HOTEL_STORAGE.getDishOverride(dishId);
     }
 
-    this.activeBackgroundMode = (lifecycle && lifecycle.backgroundType) || 'original';
+    const savedOpts = (lifecycle && lifecycle.imageOptions) || {};
+    this.activeImageOptions = {
+      backgroundMode: (lifecycle && lifecycle.backgroundType) || 'original',
+      tolerance: savedOpts.tolerance !== undefined ? savedOpts.tolerance : 42,
+      feather: 26,
+      rotation: savedOpts.rotation !== undefined ? savedOpts.rotation : 0,
+      tilt: savedOpts.tilt !== undefined ? savedOpts.tilt : 0,
+      yaw: savedOpts.yaw !== undefined ? savedOpts.yaw : 0,
+      scale: savedOpts.scale !== undefined ? savedOpts.scale : 1.0,
+      panX: savedOpts.panX !== undefined ? savedOpts.panX : 0,
+      panY: savedOpts.panY !== undefined ? savedOpts.panY : 0,
+      flipH: !!savedOpts.flipH,
+      flipV: !!savedOpts.flipV
+    };
+    this.activeBackgroundMode = this.activeImageOptions.backgroundMode;
     this.activeFramingMode = 'smart';
     const hasPhoto = dish.image && dish.image.trim() !== '';
 
@@ -704,51 +718,135 @@ class HotelPremierAdmin {
               <span id="preview-engine-status" style="color: #4ADE80; font-weight: 700;">● Studio Engine Active</span>
             </div>
 
-            <!-- Revert / Approve Action Bar -->
-            <div style="display: flex; gap: 8px; justify-content: center; margin-top: 8px;">
+            <!-- Revert / Approve / Download Action Bar -->
+            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 8px;">
               <button type="button" class="btn-theme-engine-chip" onclick="window.admin.revertActiveDishToOriginal()" title="Revert dish to untouched raw camera photo">
-                ⏮️ Revert to Raw Original
+                &#x23EE;&#xFE0F; Revert to Raw Original
+              </button>
+              <button type="button" class="btn-theme-engine-chip" onclick="window.admin.downloadEnhancedAsset()" title="Download high-resolution image directly to disk">
+                &#x1F4BE; Download Asset
               </button>
               <button type="button" class="btn-theme-engine-chip active" onclick="window.admin.approveActiveDishPhoto()" title="Mark enhanced photo as approved master">
-                ✅ Approve Enhanced Master
+                &#x2705; Approve Enhanced Master
               </button>
             </div>
           </div>
-
-          <!-- Theme Pedestal & View Adjustment Engine Controls -->
+          <!-- 1. Background Removal & Luxury Surfaces Panel -->
           <div style="background: rgba(14,22,34,0.7); border: 1px solid rgba(213,183,122,0.3); border-radius: 8px; padding: 10px;">
-            <div style="font-size: 0.74rem; font-weight: 800; color: var(--brass-light); margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
-              <span>🎨</span> <span>Auto Background & Luxury Pedestal Engine</span>
+            <div style="font-size: 0.74rem; font-weight: 800; color: var(--brass-light); margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+              <span>&#x1F3A8; Background Removal & Surface Engine</span>
+              <span style="font-size: 0.68rem; color: #94A3B8;">Automatic plate segmentation</span>
             </div>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'natural' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'natural', this)" title="Preserves the original framing with subtle colour and clarity correction">
-                🌿 Natural Polish V3
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="bg-engine-chips">
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'natural' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'natural', this)" title="Preserves original framing with subtle warmth and clarity">
+                &#x1F33F; Natural Polish
               </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'harmonize' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'harmonize', this)">
-                ✨ Studio Frame & Tone
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'cutout' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'cutout', this)" title="Cuts out dish with 100% transparent PNG background">
+                &#x2702;&#xFE0F; Transparent Cutout (Remove BG)
               </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'pedestal' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'pedestal', this)">
-                🪄 Cutout onto Gold Pedestal
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'slate_gold' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'slate_gold', this)" title="Midnight Slate & Imperial Gold luxury table surface">
+                &#x1F30C; Midnight Slate & Gold
               </button>
-              <button type="button" class="btn-theme-engine-chip ${(!this.activeBackgroundMode || this.activeBackgroundMode === 'original') ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'original', this)">
-                📷 Keep Original Photo
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'teak_wood' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'teak_wood', this)" title="Warm Teak & Walnut dining table with fine grain">
+                &#x1FAB5; Warm Teak Wood
+              </button>
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'cream_marble' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'cream_marble', this)" title="Italian Cream Marble with delicate veining">
+                &#x1F3DB;&#xFE0F; Italian Cream Marble
+              </button>
+              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'pedestal' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'pedestal', this)" title="Unified 3D Gold Pedestal Mount">
+                &#x1FA84; 3D Gold Pedestal
+              </button>
+              <button type="button" class="btn-theme-engine-chip ${(!this.activeBackgroundMode || this.activeBackgroundMode === 'original') ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'original', this)" title="Original untouched photo">
+                &#x1F4F7; Raw Original
               </button>
             </div>
 
-            <div style="font-size: 0.74rem; font-weight: 800; color: var(--brass-light); margin-top: 10px; margin-bottom: 6px; display: flex; align-items: center; gap: 4px;">
-              <span>📐</span> <span>Item View & Distortion Protector (Cropped/Flat)</span>
-            </div>
-            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <button type="button" class="btn-theme-engine-chip ${(!this.activeFramingMode || this.activeFramingMode === 'smart') ? 'active' : ''}" onclick="window.admin.setImageEngineOption('framingMode', 'smart', this)">
-                📐 Smart Center & Safe Margin (Preserve Plate)
-              </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeFramingMode === 'fill' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('framingMode', 'fill', this)">
-                🔍 Full Bleed Fill
-              </button>
+            <!-- Edge Sensitivity / Tolerance Slider for Cutout & Surfaces -->
+            <div id="cutout-tolerance-panel" style="margin-top: 10px; padding-top: 8px; border-top: 1px dashed rgba(213,183,122,0.2); ${['cutout', 'slate_gold', 'teak_wood', 'cream_marble', 'pedestal'].includes(this.activeBackgroundMode) ? 'display: block;' : 'display: none;'}">
+              <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.70rem; color: #CBD5E1; margin-bottom: 3px;">
+                <span>Edge Detection Sensitivity (Cutout Tolerance)</span>
+                <span id="lbl-tolerance" style="font-weight: 800; color: var(--brass-light);">${this.activeImageOptions.tolerance || 42}</span>
+              </div>
+              <input type="range" id="param-cutout-tolerance" min="15" max="90" value="${this.activeImageOptions.tolerance || 42}" style="width: 100%;" oninput="window.admin.updateCutoutTolerance(this.value)">
+              <div style="font-size: 0.65rem; color: #8C9BAE; margin-top: 2px;">Slide right if background still shows; slide left if plate edges get clipped.</div>
             </div>
           </div>
 
-          <!-- Auto 4K Fine-Tuning Drawer / Sliders -->
+          <!-- 2. Camera Angle, Tilt & View Engine Panel -->
+          <div style="background: rgba(14,22,34,0.7); border: 1px solid rgba(213,183,122,0.3); border-radius: 8px; padding: 10px;">
+            <div style="font-size: 0.74rem; font-weight: 800; color: var(--brass-light); margin-bottom: 6px; display: flex; align-items: center; justify-content: space-between;">
+              <span>&#x1F4D0; Camera Angle, Tilt & View Engine</span>
+              <button type="button" class="slide-action-btn" style="padding: 2px 8px; font-size: 0.65rem;" onclick="window.admin.resetAngleAndView()">&#x21BA; Reset View</button>
+            </div>
+
+            <!-- Rotation & Quick Turn -->
+            <div style="display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; margin-bottom: 8px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.70rem; color: #CBD5E1; margin-bottom: 2px;">
+                  <span>Plate Rotation</span>
+                  <span id="lbl-angle-rotation" style="font-weight: 800; color: var(--brass-light);">${this.activeImageOptions.rotation || 0}&deg;</span>
+                </div>
+                <input type="range" id="param-rotation" min="-45" max="45" value="${this.activeImageOptions.rotation || 0}" style="width: 100%;" oninput="window.admin.updateAngleOption('rotation', this.value)">
+              </div>
+              <div style="display: flex; gap: 4px; padding-top: 14px;">
+                <button type="button" class="btn-theme-engine-chip" style="padding: 3px 7px; font-size: 0.68rem;" onclick="window.admin.adjustRotation(-90)" title="Rotate 90 counter-clockwise">&#x27F2; -90&deg;</button>
+                <button type="button" class="btn-theme-engine-chip" style="padding: 3px 7px; font-size: 0.68rem;" onclick="window.admin.adjustRotation(90)" title="Rotate 90 clockwise">&#x27F3; +90&deg;</button>
+              </div>
+            </div>
+
+            <!-- 2.5D Camera Pitch (Tilt) & Yaw (Perspective) -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.70rem; color: #CBD5E1; margin-bottom: 2px;">
+                  <span>Camera Pitch (Tilt)</span>
+                  <span id="lbl-angle-tilt" style="font-weight: 800; color: var(--brass-light);">${this.activeImageOptions.tilt || 0}&deg;</span>
+                </div>
+                <input type="range" id="param-tilt" min="-30" max="30" value="${this.activeImageOptions.tilt || 0}" style="width: 100%;" oninput="window.admin.updateAngleOption('tilt', this.value)" title="Simulates overhead (flat) vs eye-level perspective angle">
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.70rem; color: #CBD5E1; margin-bottom: 2px;">
+                  <span>Perspective (Yaw)</span>
+                  <span id="lbl-angle-yaw" style="font-weight: 800; color: var(--brass-light);">${this.activeImageOptions.yaw || 0}&deg;</span>
+                </div>
+                <input type="range" id="param-yaw" min="-30" max="30" value="${this.activeImageOptions.yaw || 0}" style="width: 100%;" oninput="window.admin.updateAngleOption('yaw', this.value)" title="Simulates viewing the dish from left or right">
+              </div>
+            </div>
+
+            <!-- Scale (Zoom) & Pan Position -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-bottom: 8px;">
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.70rem; color: #CBD5E1; margin-bottom: 2px;">
+                  <span>Zoom</span>
+                  <span id="lbl-angle-scale" style="font-weight: 800; color: var(--brass-light);">${Number(this.activeImageOptions.scale || 1.0).toFixed(2)}x</span>
+                </div>
+                <input type="range" id="param-scale" min="0.5" max="1.8" step="0.05" value="${this.activeImageOptions.scale || 1.0}" style="width: 100%;" oninput="window.admin.updateAngleOption('scale', this.value)">
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.70rem; color: #CBD5E1; margin-bottom: 2px;">
+                  <span>Pan X</span>
+                  <span id="lbl-angle-panX" style="font-weight: 800; color: var(--brass-light);">${this.activeImageOptions.panX || 0}px</span>
+                </div>
+                <input type="range" id="param-pan-x" min="-120" max="120" value="${this.activeImageOptions.panX || 0}" style="width: 100%;" oninput="window.admin.updateAngleOption('panX', this.value)">
+              </div>
+              <div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.70rem; color: #CBD5E1; margin-bottom: 2px;">
+                  <span>Pan Y</span>
+                  <span id="lbl-angle-panY" style="font-weight: 800; color: var(--brass-light);">${this.activeImageOptions.panY || 0}px</span>
+                </div>
+                <input type="range" id="param-pan-y" min="-120" max="120" value="${this.activeImageOptions.panY || 0}" style="width: 100%;" oninput="window.admin.updateAngleOption('panY', this.value)">
+              </div>
+            </div>
+
+            <!-- Flip Buttons -->
+            <div style="display: flex; gap: 6px;">
+              <button type="button" id="btn-flip-h" class="btn-theme-engine-chip ${this.activeImageOptions.flipH ? 'active' : ''}" style="flex: 1;" onclick="window.admin.toggleFlip('h', this)">
+                &#x21C6; Flip Horizontal
+              </button>
+              <button type="button" id="btn-flip-v" class="btn-theme-engine-chip ${this.activeImageOptions.flipV ? 'active' : ''}" style="flex: 1;" onclick="window.admin.toggleFlip('v', this)">
+                &#x21C5; Flip Vertical
+              </button>
+            </div>
+          </div>          <!-- Auto 4K Fine-Tuning Drawer / Sliders -->
           <div style="background: rgba(14,22,34,0.5); border: 1px solid rgba(213,183,122,0.2); border-radius: 8px; padding: 10px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; cursor: pointer;" onclick="const d = document.getElementById('engine-fine-tuning-box'); d.style.display = d.style.display === 'none' ? 'block' : 'none';">
               <span style="font-size: 0.75rem; font-weight: 800; color: var(--brass-light);">⚙️ 4K Studio Tone & Light Parameters</span>
@@ -986,13 +1084,133 @@ class HotelPremierAdmin {
   }
 
   setImageEngineOption(key, val, btn) {
-    if (key === 'backgroundMode') this.activeBackgroundMode = val;
+    if (!this.activeImageOptions) this.activeImageOptions = {};
+    this.activeImageOptions[key] = val;
+    if (key === 'backgroundMode') {
+      this.activeBackgroundMode = val;
+      const tolPanel = document.getElementById('cutout-tolerance-panel');
+      if (tolPanel) {
+        tolPanel.style.display = ['cutout', 'slate_gold', 'teak_wood', 'cream_marble', 'pedestal'].includes(val) ? 'block' : 'none';
+      }
+    }
     if (key === 'framingMode') this.activeFramingMode = val;
     if (btn && btn.parentElement) {
       btn.parentElement.querySelectorAll('.btn-theme-engine-chip').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     }
     this.recalculate4KLive();
+  }
+
+  updateCutoutTolerance(val) {
+    if (!this.activeImageOptions) this.activeImageOptions = {};
+    this.activeImageOptions.tolerance = parseInt(val, 10);
+    const lbl = document.getElementById('lbl-tolerance');
+    if (lbl) lbl.innerText = val;
+    this.recalculate4KLive();
+  }
+
+  updateAngleOption(key, val) {
+    if (!this.activeImageOptions) this.activeImageOptions = {};
+    this.activeImageOptions[key] = parseFloat(val);
+    const lbl = document.getElementById(`lbl-angle-${key}`);
+    if (lbl) {
+      if (key === 'scale') lbl.innerText = `${parseFloat(val).toFixed(2)}x`;
+      else if (key === 'rotation' || key === 'tilt' || key === 'yaw') lbl.innerText = `${parseInt(val, 10)}\u00B0`;
+      else if (key === 'panX' || key === 'panY') lbl.innerText = `${parseInt(val, 10)}px`;
+    }
+    this.recalculate4KLive();
+  }
+
+  adjustRotation(delta) {
+    if (!this.activeImageOptions) this.activeImageOptions = {};
+    let cur = parseInt(this.activeImageOptions.rotation || 0, 10);
+    let next = cur + delta;
+    if (next > 180) next -= 360;
+    if (next < -180) next += 360;
+    this.activeImageOptions.rotation = next;
+    const input = document.getElementById('param-rotation');
+    if (input) input.value = next;
+    const lbl = document.getElementById('lbl-angle-rotation');
+    if (lbl) lbl.innerText = `${next}\u00B0`;
+    this.recalculate4KLive();
+  }
+
+  toggleFlip(axis, btn) {
+    if (!this.activeImageOptions) this.activeImageOptions = {};
+    if (axis === 'h') {
+      this.activeImageOptions.flipH = !this.activeImageOptions.flipH;
+      if (btn) btn.classList.toggle('active', !!this.activeImageOptions.flipH);
+    } else if (axis === 'v') {
+      this.activeImageOptions.flipV = !this.activeImageOptions.flipV;
+      if (btn) btn.classList.toggle('active', !!this.activeImageOptions.flipV);
+    }
+    this.recalculate4KLive();
+  }
+
+  resetAngleAndView() {
+    if (!this.activeImageOptions) this.activeImageOptions = {};
+    this.activeImageOptions.rotation = 0;
+    this.activeImageOptions.tilt = 0;
+    this.activeImageOptions.yaw = 0;
+    this.activeImageOptions.scale = 1.0;
+    this.activeImageOptions.panX = 0;
+    this.activeImageOptions.panY = 0;
+    this.activeImageOptions.flipH = false;
+    this.activeImageOptions.flipV = false;
+
+    const rotEl = document.getElementById('param-rotation');
+    if (rotEl) rotEl.value = 0;
+    const tiltEl = document.getElementById('param-tilt');
+    if (tiltEl) tiltEl.value = 0;
+    const yawEl = document.getElementById('param-yaw');
+    if (yawEl) yawEl.value = 0;
+    const scaleEl = document.getElementById('param-scale');
+    if (scaleEl) scaleEl.value = 1.0;
+    const panXEl = document.getElementById('param-pan-x');
+    if (panXEl) panXEl.value = 0;
+    const panYEl = document.getElementById('param-pan-y');
+    if (panYEl) panYEl.value = 0;
+
+    const lblRot = document.getElementById('lbl-angle-rotation');
+    if (lblRot) lblRot.innerText = '0\u00B0';
+    const lblTilt = document.getElementById('lbl-angle-tilt');
+    if (lblTilt) lblTilt.innerText = '0\u00B0';
+    const lblYaw = document.getElementById('lbl-angle-yaw');
+    if (lblYaw) lblYaw.innerText = '0\u00B0';
+    const lblScale = document.getElementById('lbl-angle-scale');
+    if (lblScale) lblScale.innerText = '1.00x';
+    const lblPanX = document.getElementById('lbl-angle-panX');
+    if (lblPanX) lblPanX.innerText = '0px';
+    const lblPanY = document.getElementById('lbl-angle-panY');
+    if (lblPanY) lblPanY.innerText = '0px';
+
+    const flipHBtn = document.getElementById('btn-flip-h');
+    if (flipHBtn) flipHBtn.classList.remove('active');
+    const flipVBtn = document.getElementById('btn-flip-v');
+    if (flipVBtn) flipVBtn.classList.remove('active');
+
+    this.recalculate4KLive();
+  }
+
+  downloadEnhancedAsset() {
+    if (!this.tempImageSource) {
+      window.app?.showToast?.('No processed asset available to download.', 'warning');
+      return;
+    }
+    const dish = window.app?.menuData?.find(d => d.id === this.activeImageDishId) || { name: 'dish' };
+    const isPng = (this.activeBackgroundMode === 'cutout') || (typeof this.tempImageSource === 'string' && this.tempImageSource.startsWith('data:image/png'));
+    const ext = isPng ? 'png' : 'jpg';
+    const safeName = (dish.name || 'dish').toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+    const mode = this.activeBackgroundMode || 'enhanced';
+    const filename = `${safeName}_${mode}.${ext}`;
+
+    const a = document.createElement('a');
+    a.href = this.tempImageSource;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.app?.showToast?.(`Downloaded ${filename}`, 'success');
   }
 
   async recalculate4KLive() {
@@ -1011,16 +1229,27 @@ class HotelPremierAdmin {
 
     const status = document.getElementById('preview-engine-status');
     if (status) status.innerText = this.activeBackgroundMode === 'original'
-      ? '● Original photo preserved'
-      : '⚙️ Preparing studio preview...';
+      ? '\u25CF Original photo preserved'
+      : (this.activeBackgroundMode === 'cutout' ? '\u2702 Cutting out transparent background...' : '\u2699 Preparing studio preview...');
 
     const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
 
     if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
       try {
+        const opts = this.activeImageOptions || {};
         const result = await window.AssetPipeline.processAutomaticStudioEnhancement(this.rawOriginalSource, dish, {
           backgroundMode: this.activeBackgroundMode || 'original',
           framingMode: this.activeFramingMode || 'smart',
+          tolerance: opts.tolerance !== undefined ? opts.tolerance : 42,
+          feather: opts.feather !== undefined ? opts.feather : 26,
+          rotation: opts.rotation !== undefined ? opts.rotation : 0,
+          tilt: opts.tilt !== undefined ? opts.tilt : 0,
+          yaw: opts.yaw !== undefined ? opts.yaw : 0,
+          scale: opts.scale !== undefined ? opts.scale : 1.0,
+          panX: opts.panX !== undefined ? opts.panX : 0,
+          panY: opts.panY !== undefined ? opts.panY : 0,
+          flipH: !!opts.flipH,
+          flipV: !!opts.flipV,
           warmth: warmth,
           sharpness: sharpness,
           contrast: contrast,
@@ -1224,6 +1453,7 @@ class HotelPremierAdmin {
           enhancementStatus: this.currentEnhancementStatus || 'enhanced',
           qualityScore: this.currentQualityScore || 90,
           backgroundType: this.activeBackgroundMode || 'original',
+          imageOptions: { ...(this.activeImageOptions || {}) },
           styleVersion: 'hp-studio-v3.0'
         });
       } else if (window.HOTEL_STORAGE) {

@@ -122,7 +122,8 @@ class HotelPremierStorageManager {
       qualityScore: photoRecord.qualityScore || 90,
       qualityFlags: photoRecord.qualityFlags || [],
       backgroundType: photoRecord.backgroundType || 'auto',
-      styleVersion: photoRecord.styleVersion || 'hp-studio-v2.0',
+      imageOptions: photoRecord.imageOptions || null,
+      styleVersion: photoRecord.styleVersion || 'hp-studio-v3.0',
       lastEnhancedAt: Date.now()
     };
     await this.saveDishOverride(dishId, data);
