@@ -15,7 +15,7 @@ assert.match(html, /class="ota-booking-links"/);
 const callbacks = {};
 const classes = new Set(['active']);
 const modal = {style:{},setAttribute(){},classList:{contains:v=>classes.has(v),add:v=>classes.add(v),remove:v=>classes.delete(v)}};
-const context = {window:{},document:{readyState:'loading',addEventListener(){},getElementById:()=>modal,body:{classList:{remove(){}}}},console,setTimeout:fn=>(callbacks.close=fn,1)};
+const context = {window:{},document:{readyState:'loading',addEventListener(){},getElementById:()=>modal,querySelector:()=>null,body:{classList:{remove(){}}}},console,clearTimeout(){},setTimeout:fn=>(callbacks.close=fn,1)};
 vm.createContext(context);
 vm.runInContext(appSource+';window.App=HotelPremierApp;',context);
 const app = Object.create(context.window.App.prototype);

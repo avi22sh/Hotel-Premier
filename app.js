@@ -2430,9 +2430,13 @@ class HotelPremierApp {
       }
     }
 
+    // A hidden option must never become the guest-facing default or shift selection indices.
+    if (hasModalVariants && !document.body.classList.contains('staff-mode-active') && dish.variants[initialVariantIndex]?.hidden) {
+      initialVariantIndex = dish.variants.findIndex(v => !v.hidden);
+    }
     const activeVariant = hasModalVariants ? dish.variants[initialVariantIndex] : null;
     const displayImage = activeVariant ? (activeVariant.image || dish.image) : (dish.image);
-    const displayPrice = activeVariant ? (activeVariant.price || dish.price) : (dish.price);
+    const displayPrice = activeVariant ? (activeVariant.price ?? dish.price) : (dish.price);
     const hasPhoto = displayImage && displayImage.trim() !== '';
 
     const currentVariantName = activeVariant ? activeVariant.name : dish.name;
@@ -2532,7 +2536,7 @@ class HotelPremierApp {
           </div>
           <div class="modal-dish-variants-list" id="modal-variants-list-${dish.id}" role="radiogroup" aria-label="Available Dish Variations">
             ${variantsToDisplay.map((v, i) => {
-              const isSelected = (i === initialVariantIndex);
+              const isSelected = (v === activeVariant);
               const displayName = (this.currentLang === 'hi' && v.hindiName) ? v.hindiName : ((this.currentLang === 'mr' && (v.marathiName || v.hindiName)) ? (v.marathiName || v.hindiName) : v.name);
               const descEn = encodeURIComponent(v.description || '');
               const descHi = encodeURIComponent(v.descriptionHi || v.description || '');
@@ -2691,7 +2695,10 @@ class HotelPremierApp {
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
-    window.setTimeout(() => modal.querySelector('.modal-close-btn')?.focus(), 60);
+    clearTimeout(this.dishDetailFocusTimer);
+    this.dishDetailFocusTimer = window.setTimeout(() => {
+      if (modal.classList.contains('active')) modal.querySelector('.modal-close-btn')?.focus({ preventScroll:true });
+    }, 60);
   }
 
   switchModalVariant(dishId, btn) {
@@ -2815,17 +2822,18 @@ class HotelPremierApp {
 
   closeDishDetail() {
     this.haptic(5);
+    clearTimeout(this.dishDetailFocusTimer);
     const modal = document.getElementById('dish-detail-modal');
     if (modal && modal.classList.contains('active')) {
       modal.classList.add('closing');
       modal.classList.remove('active');
-      document.body.classList.remove('modal-open');
+      if (!document.querySelector('.modal-backdrop.active')) document.body.classList.remove('modal-open');
       this.dishDetailCloseTimer = setTimeout(() => {
         if (modal.classList.contains('active')) return;
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
         modal.classList.remove('closing');
-        if (this.lastDishDetailTrigger?.isConnected) this.lastDishDetailTrigger.focus();
+        if (!document.querySelector('.modal-backdrop.active') && this.lastDishDetailTrigger?.isConnected) this.lastDishDetailTrigger.focus({ preventScroll:true });
         this.lastDishDetailTrigger = null;
       }, 240);
     }
@@ -4069,13 +4077,7 @@ class HotelPremierApp {
     document.querySelectorAll('.modal-backdrop').forEach(modal => {
       modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-          if (modal.id === 'dish-detail-modal') {
-            this.closeDishDetail();
-          } else {
-            modal.classList.remove('active');
-            modal.style.display = 'none';
-            document.body.classList.remove('modal-open');
-          }
+          this.dismissGuestOverlay(modal);
         }
       });
     });
@@ -4083,9 +4085,10 @@ class HotelPremierApp {
     // Global Escape key listener to close modals & drawers
     window.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        const dishModal = document.getElementById('dish-detail-modal');
-        if (dishModal && dishModal.classList.contains('active')) {
-          this.closeDishDetail();
+        const overlays = [...document.querySelectorAll('.modal-backdrop.active')];
+        if (overlays.length) {
+          this.dismissGuestOverlay(overlays[overlays.length - 1]);
+          return;
         }
         const drawer = document.getElementById('menu-section-drawer');
         if (drawer && drawer.classList.contains('active')) {
@@ -4095,8 +4098,9 @@ class HotelPremierApp {
 
       // Keep keyboard focus inside an open dish sheet, just like a native dialog.
       if (e.key === 'Tab') {
-        const dishModal = document.getElementById('dish-detail-modal');
-        if (!dishModal || !dishModal.classList.contains('active')) return;
+        const overlays = [...document.querySelectorAll('.modal-backdrop.active')];
+        const dishModal = overlays[overlays.length - 1];
+        if (!dishModal) return;
         const focusable = [...dishModal.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')]
           .filter(el => el.offsetParent !== null);
         if (!focusable.length) return;
@@ -4520,6 +4524,30 @@ class HotelPremierApp {
     return /^[6-9]\d{9}$/.test(digits);
   }
 
+  dismissGuestOverlay(modal) {
+    if (!modal) return;
+    if (modal.id === 'dish-detail-modal') return this.closeDishDetail();
+    if (modal.id === 'admin-modal-backdrop' && window.admin) return window.admin.closeAdminModal();
+    if (modal.id === 'concierge-booking-modal') return this.closeConciergeBookingModal();
+    if (modal.id === 'guest-profile-modal') return this.closeGuestProfileModal();
+    modal.classList.remove('active', 'closing');
+    modal.style.display = 'none';
+    if (!document.querySelector('.modal-backdrop.active')) document.body.classList.remove('modal-open');
+  }
+
+  hotelToday(now = new Date()) {
+    // Hotel-local date, not UTC (which is yesterday before 05:30 IST).
+    const parts = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(now);
+    const part = type => parts.find(p => p.type === type).value;
+    return `${part('year')}-${part('month')}-${part('day')}`;
+  }
+
+  formatArrivalTime(value) {
+    if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(value || '')) return '';
+    const [hour, minute] = value.split(':').map(Number);
+    return `${hour % 12 || 12}:${String(minute).padStart(2, '0')} ${hour >= 12 ? 'PM' : 'AM'} IST`;
+  }
+
   // ==================== GUIDED CONCIERGE BOOKING WIZARD ====================
   openConciergeBookingModal(preselectedRoomId) {
     const modal = document.getElementById('concierge-booking-modal');
@@ -4537,7 +4565,7 @@ class HotelPremierApp {
     }
 
     const dateInput = document.getElementById('booking-checkin-date');
-    const today = new Date().toISOString().slice(0, 10);
+    const today = this.hotelToday();
     if (dateInput) {
       dateInput.min = today;
       if (!dateInput.value || dateInput.value < today) {
@@ -4549,6 +4577,9 @@ class HotelPremierApp {
     this.updateBookingEstimate();
     modal.classList.add('active');
     modal.style.display = 'flex';
+    this.lastEnquiryTrigger = document.activeElement;
+    document.body?.classList.add('modal-open');
+    modal.querySelector?.('.modal-close-btn')?.focus({ preventScroll: true });
   }
 
   closeConciergeBookingModal() {
@@ -4556,13 +4587,16 @@ class HotelPremierApp {
     if (modal) {
       modal.classList.remove('active');
       modal.style.display = 'none';
+      if (!document.querySelector('.modal-backdrop.active')) document.body.classList.remove('modal-open');
+      this.lastEnquiryTrigger?.focus?.({ preventScroll: true });
     }
   }
 
   updateBookingEstimate() {
     const roomType = document.getElementById('booking-room-type')?.value || 'ac-deluxe-queen';
-    const nights = Number(document.getElementById('booking-nights')?.value) || 1;
-    const roomsCount = Number(document.getElementById('booking-rooms-count')?.value) || 1;
+    const nights = Math.max(1, Math.floor(Number(document.getElementById('booking-nights')?.value) || 1));
+    const roomsCount = Math.min(14, Math.max(1, Math.floor(Number(document.getElementById('booking-rooms-count')?.value) || 1)));
+    const guestsCount = Math.max(1, Math.floor(Number(document.getElementById('booking-guests-count')?.value) || roomsCount));
     const mealPlan = document.getElementById('booking-meal-plan')?.value || 'CP';
     const extraBedsInput = document.getElementById('booking-extra-beds');
     const roomCategory = window.HOTEL_PREMIER_HOTEL_DATA?.roomCategories?.find(room => room.id === roomType);
@@ -4581,16 +4615,19 @@ class HotelPremierApp {
     }
 
     const rates = {
-      'ac-super-deluxe': { RO: 2400, CP: 2600, name: 'Premier Royale King' },
-      'ac-deluxe-queen': { RO: 2100, CP: 2300, name: 'Premier Signature Queen' },
-      'ac-deluxe-twin': { RO: 2100, CP: 2300, name: 'Premier Companion Twin' }
+      'ac-super-deluxe': { RO: 2400, CP: 2600, doubleRO: 2600, doubleCP: 3000, name: 'Premier Royale King' },
+      'ac-deluxe-queen': { RO: 2100, CP: 2300, doubleRO: 2400, doubleCP: 2700, name: 'Premier Signature Queen' },
+      'ac-deluxe-twin': { RO: 2100, CP: 2300, doubleRO: 2400, doubleCP: 2700, name: 'Premier Companion Twin' }
     };
 
     const selected = rates[roomType] || rates['ac-deluxe-queen'];
     const baseRatePerNight = (mealPlan === 'CP') ? selected.CP : selected.RO;
+    const doubleRatePerNight = mealPlan === 'CP' ? selected.doubleCP : selected.doubleRO;
+    const doubleRooms = Math.min(roomsCount, Math.max(0, guestsCount - roomsCount));
+    const roomTariffPerNight = baseRatePerNight * (roomsCount - doubleRooms) + doubleRatePerNight * doubleRooms;
     const extraBedRate = (mealPlan === 'CP') ? 500 : 300;
 
-    const grossEstimate = ((baseRatePerNight * roomsCount) + (extraBeds * extraBedRate)) * nights;
+    const grossEstimate = (roomTariffPerNight + (extraBeds * extraBedRate)) * nights;
     const directDiscount = Math.min(200, grossEstimate);
     const totalEstimate = Math.max(0, grossEstimate - directDiscount);
 
@@ -4600,6 +4637,13 @@ class HotelPremierApp {
 
     if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'CP: fixed-menu breakfast; conditions apply' : 'Room Only'})`;
     if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out (Direct Bookings Only) ${extraBeds > 0 ? `• ${extraBeds} Paid Extra Bed(s)` : ''}${childExtraBeds > 0 ? ` • ${childExtraBeds} Complimentary Child Extra Bed(s), ages 5–10` : ''}`;
+    const arrivalEl = document.getElementById('booking-summary-arrival');
+    if (arrivalEl) {
+      const date = document.getElementById('booking-checkin-date')?.value;
+      const time = this.formatArrivalTime(document.getElementById('booking-checkin-time')?.value);
+      const formattedDate = date ? new Intl.DateTimeFormat('en-IN', { day:'numeric', month:'short', year:'numeric', timeZone:'Asia/Kolkata' }).format(new Date(`${date}T12:00:00+05:30`)) : 'Choose a date';
+      arrivalEl.textContent = `${formattedDate} · ${time || 'Choose arrival time'}`;
+    }
     if (totalEl) {
       totalEl.innerHTML = `
         <div class="booking-price-summary">
@@ -4614,6 +4658,9 @@ class HotelPremierApp {
       `;
     }
 
+    const occupancyEl = document.getElementById('booking-summary-occupancy');
+    if (occupancyEl) occupancyEl.textContent = `Estimate: ${roomsCount - doubleRooms} single-occupancy + ${doubleRooms} double-occupancy room(s). Extra guests, children and room allocation are subject to hotel confirmation.`;
+
     return { totalEstimate, grossEstimate, directDiscount, selected, nights, roomsCount, mealPlan, extraBeds, childExtraBeds };
   }
 
@@ -4627,9 +4674,10 @@ class HotelPremierApp {
     const rawGuestPhone = guestPhoneInput?.value.trim() || '';
     const cleanGuestPhone = this.sanitizeIndianMobile(rawGuestPhone);
     const checkInDate = checkInDateInput?.value;
-    const checkInTime = document.getElementById('booking-checkin-time')?.value;
+    const timeInput = document.getElementById('booking-checkin-time');
+    const checkInTime = this.formatArrivalTime(timeInput?.value);
     const guestsCount = document.getElementById('booking-guests-count')?.value || '2 Guests';
-    const today = new Date().toISOString().slice(0, 10);
+    const today = this.hotelToday();
 
     if (!guestName) {
       alert('Please enter your name so Hotel Premier Concierge can assist you.');
@@ -4646,13 +4694,23 @@ class HotelPremierApp {
       return;
     }
 
-    if (checkInDate && checkInDate < today) {
+    if (!checkInDate || checkInDate < today || !checkInDateInput.checkValidity()) {
       alert('Check-in date cannot be in the past. Please select today or a future date.');
       if (checkInDateInput) {
         checkInDateInput.value = today;
         checkInDateInput.focus();
       }
       return;
+    }
+
+    if (!checkInTime) {
+      alert('Please choose your expected arrival time. All times are local to Hotel Premier (IST).');
+      timeInput?.focus();
+      return;
+    }
+    for (const id of ['booking-nights', 'booking-rooms-count', 'booking-guests-count']) {
+      const field = document.getElementById(id);
+      if (field && !field.reportValidity()) return;
     }
 
     if (guestPhoneInput) guestPhoneInput.value = cleanGuestPhone;
@@ -4693,7 +4751,7 @@ class HotelPremierApp {
     }
     msg += `💰 *Standard Tariff:* ₹ ${estimate.grossEstimate.toLocaleString('en-IN')}/-\n`;
     msg += `🎁 *Direct PWA Guest Privilege (Flat ₹200 Off):* -₹ ${estimate.directDiscount.toLocaleString('en-IN')}/-\n`;
-    msg += `✨ *Final Payable Total:* ₹ ${estimate.totalEstimate.toLocaleString('en-IN')}/- (Inclusive of all taxes)\n`;
+    msg += `✨ *Estimated Total:* ₹ ${estimate.totalEstimate.toLocaleString('en-IN')}/- (Inclusive of all taxes; hotel to confirm occupancy and final rate)\n`;
     msg += `--------------------------------------------------\n`;
     msg += `Please check availability and confirm the final rate and stay details. This is an enquiry, not a confirmed reservation. Thank you!`;
 
@@ -4718,6 +4776,7 @@ class HotelPremierApp {
     if (modal) {
       modal.classList.remove('active');
       modal.style.display = 'none';
+      if (!document.querySelector('.modal-backdrop.active')) document.body.classList.remove('modal-open');
     }
   }
 
