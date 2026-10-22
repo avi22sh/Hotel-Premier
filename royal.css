@@ -401,7 +401,15 @@ body.theme-dark :is(.variant-btn-name,.modal-dish-title) { color:#eee8de !import
 .enquiry-confirmation-note { color:var(--royal-ink); font-size:.85rem; line-height:1.65; padding:12px; border:1px solid var(--royal-edge); border-radius:10px; }
 #modal-dish-share-btn { width:40px; height:40px; min-width:40px; padding:10px; border-radius:50%; }
 #modal-dish-share-btn .share-icon { width:18px; height:18px; display:block; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:none !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-flex !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-text { display:none !important; }
+#dish-detail-modal .modal-header { display:flex !important; align-items:center; justify-content:space-between; flex-wrap:nowrap; gap:8px; padding:12px 14px; background:#1b2937 !important; color:#eee8de; }
+#dish-detail-modal .modal-title { color:#dfc69a !important; font-size:.9rem; min-width:0; letter-spacing:.08em; }
+body .modal-header { display:flex !important; align-items:center; justify-content:space-between; gap:10px; }
+body .modal-title { min-width:0; }
+body .modal-close-btn { flex-shrink:0; }
+#dish-detail-modal .modal-header-actions { display:flex; flex:0 0 auto; gap:6px; width:auto; }
+#dish-detail-modal :is(.modal-header-action-btn,.modal-close-btn) { color:#eee8de; background:rgba(255,255,255,.08); border-color:#536474; }
 #dish-detail-body > .delivery-buttons-container { padding:10px 14px max(10px,env(safe-area-inset-bottom)) !important; margin:0 !important; }
 #dish-detail-body > .delivery-buttons-container .delivery-btn { min-height:44px !important; height:auto !important; padding:10px 6px !important; }
 #dish-detail-body .modal-dish-photo-wrap { flex-shrink:0 !important; }
