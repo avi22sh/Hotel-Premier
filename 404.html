@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.74">
-  <link rel="stylesheet" href="royal.css?v=21.74">
+  <link rel="stylesheet" href="styles.css?v=21.75">
+  <link rel="stylesheet" href="royal.css?v=21.75">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -1160,13 +1160,14 @@
 
         <!-- Organizer Contact for 1-Tap Bulk Dispatch -->
         <div class="guest-details-panel" style="padding: 12px 14px; border-radius: var(--radius-sm);">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <span style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep);">👤 Organizer Details (Auto-filled from Profile)</span>
-            <span style="font-size: 0.68rem; color: #16A34A; font-weight: 700;">⚡ 1-Tap Ready</span>
-          </div>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <input type="text" id="calc-bulk-guest-name" aria-label="Organizer full name" class="form-input" placeholder="Organizer Name">
-            <input type="tel" id="calc-bulk-guest-phone" aria-label="Organizer 10-digit WhatsApp number" class="form-input" placeholder="WhatsApp Number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel">
+          <h4 class="group-organizer-title">Organizer details</h4>
+          <div class="group-organizer-fields">
+            <label for="calc-bulk-guest-name">Full name
+              <input type="text" id="calc-bulk-guest-name" aria-label="Organizer full name" class="form-input" placeholder="Full name" autocomplete="name">
+            </label>
+            <label for="calc-bulk-guest-phone">WhatsApp / mobile
+              <input type="tel" id="calc-bulk-guest-phone" aria-label="Organizer 10-digit WhatsApp number" class="form-input" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel">
+            </label>
           </div>
         </div>
 
@@ -1901,8 +1902,8 @@
   <script src="data/hotel-data.js?v=21.73"></script>
   <script src="data/menu-data.js?v=21.65"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
-  <script src="menu-structure.js?v=21.74"></script>
-  <script src="app.js?v=21.74"></script>
+  <script src="menu-structure.js?v=21.75"></script>
+  <script src="app.js?v=21.75"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1937,7 +1938,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.74', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.75', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load
