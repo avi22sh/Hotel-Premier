@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.71">
-  <link rel="stylesheet" href="royal.css?v=21.71">
+  <link rel="stylesheet" href="styles.css?v=21.72">
+  <link rel="stylesheet" href="royal.css?v=21.72">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -1554,7 +1554,7 @@
 
   <!-- ==================== MODAL: INTERACTIVE ROUTE SELECTION ==================== -->
   <div class="modal-backdrop" id="route-options-modal" style="display: none;">
-    <div class="modal-sheet route-picker-sheet">
+    <div class="modal-sheet route-picker-sheet guest-utility-sheet" role="dialog" aria-modal="true" aria-labelledby="route-options-modal-title" aria-describedby="route-options-modal-desc" tabindex="-1">
       <div class="modal-header">
         <div class="modal-title" id="route-options-modal-title">
           <span>🧭</span> <span>Select Starting Location</span>
@@ -1655,21 +1655,21 @@
 
   <!-- ==================== MODAL: GUEST CONCIERGE PROFILE ==================== -->
   <div class="modal-backdrop" id="guest-profile-modal">
-    <div class="modal-sheet" style="max-width: 480px;">
+    <div class="modal-sheet guest-utility-sheet" role="dialog" aria-modal="true" aria-labelledby="guest-profile-title" aria-describedby="guest-profile-help" tabindex="-1" style="max-width: 480px;">
       <div class="modal-header">
-        <div class="modal-title">
+        <div class="modal-title" id="guest-profile-title">
           <span>👤</span> <span>Your Concierge Profile</span>
         </div>
         <button class="modal-close-btn" aria-label="Close guest concierge profile modal" onclick="window.app ? window.app.closeGuestProfileModal() : null">✕</button>
       </div>
       <div class="modal-body">
-        <p style="font-size: 0.82rem; color: var(--text-muted-dark); margin-bottom: 16px;">
-          Save your details once to automatically prefill room enquiries, dining reviews, and event inquiries across Hotel Premier. Your data stays securely on your phone.
+        <p class="guest-utility-help" id="guest-profile-help">
+          Save time on your next enquiry. These optional details stay in this browser and prefill guest forms; no account is needed.
         </p>
 
         <div class="form-group">
           <label class="form-label" for="profile-modal-name">Full Name</label>
-          <input type="text" id="profile-modal-name" class="form-input" placeholder="Enter your full name">
+          <input type="text" id="profile-modal-name" class="form-input" placeholder="Your full name" autocomplete="name">
         </div>
 
         <div class="form-group">
@@ -1679,20 +1679,20 @@
 
         <div class="form-group">
           <label class="form-label" for="profile-modal-region">City / Region</label>
-          <input type="text" id="profile-modal-region" class="form-input" placeholder="Your city (e.g. Bhusawal, Jalgaon, Pune, Mumbai)">
+          <input type="text" id="profile-modal-region" class="form-input" placeholder="Your city" autocomplete="address-level2">
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="profile-modal-room-table">Room or Table Number (If Currently Staying)</label>
+          <label class="form-label" for="profile-modal-room-table">Room or table · optional</label>
           <input type="text" id="profile-modal-room-table" class="form-input" placeholder="Room number or table (optional)">
         </div>
 
-        <div style="display: flex; gap: 10px; margin-top: 20px;">
+        <div class="guest-profile-actions">
           <button class="feedback-submit-btn" style="flex: 1.2;" onclick="window.app ? window.app.saveGuestProfileFromModal() : null">
-            <span>💾 Save Profile</span>
+            <span>Save details</span>
           </button>
           <button class="btn-tariff-call" style="flex: 0.8;" onclick="window.app ? window.app.clearGuestProfile() : null">
-            <span>Clear</span>
+            <span>Clear saved details</span>
           </button>
         </div>
       </div>
@@ -1878,7 +1878,7 @@
   <script src="data/hotel-data.js?v=21.14"></script>
   <script src="data/menu-data.js?v=21.65"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
-  <script src="app.js?v=21.71"></script>
+  <script src="app.js?v=21.72"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1913,7 +1913,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.71', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.72', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load

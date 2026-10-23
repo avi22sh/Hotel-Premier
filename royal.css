@@ -508,3 +508,30 @@ body.theme-dark #concierge-booking-modal :is(.form-input,.form-select) { backgro
 .footer-brand-m { display:inline-block; position:relative; }
 .footer-brand-birds { position:absolute; width:50px; height:31px; left:50%; bottom:calc(100% - 3px); transform:translateX(-50%); background:currentColor; mask-image:url('assets/premier-original-logo.png'); -webkit-mask-image:url('assets/premier-original-logo.png'); mask-size:202.7px 90.5px; -webkit-mask-size:202.7px 90.5px; mask-position:-92.3px -4.5px; -webkit-mask-position:-92.3px -4.5px; mask-repeat:no-repeat; -webkit-mask-repeat:no-repeat; pointer-events:none; }
 @media(prefers-reduced-motion:reduce) { .modal-backdrop,.modal-sheet { transition:none !important; } }
+
+/* Guest utility sheets share the same readable, calm crystal treatment. */
+.guest-utility-sheet { max-height:calc(100dvh - 32px); overflow:hidden; color:var(--crystal-ink); }
+.guest-utility-sheet .modal-header { padding:14px 18px; border-bottom:1px solid var(--crystal-edge); }
+.guest-utility-sheet .modal-body { flex:1 1 auto; overflow-y:auto; padding:20px; }
+.guest-utility-sheet :is(.guest-utility-help,.route-picker-desc) { font-size:.85rem; line-height:1.65; color:var(--crystal-muted); margin:0 0 20px; }
+.guest-utility-sheet .form-label { color:var(--crystal-ink); text-transform:none; letter-spacing:.02em; font-size:.78rem; }
+.guest-utility-sheet .form-input { min-width:0; width:100%; min-height:48px; font-size:16px; border-radius:12px; padding:12px; background:rgba(139,126,113,.09); border:1px solid rgba(142,127,109,.36); color:var(--crystal-ink); }
+body.theme-dark .guest-utility-sheet .form-input { background:rgba(255,255,255,.055); border-color:rgba(230,208,175,.3); }
+.guest-utility-sheet .form-input::placeholder { color:var(--crystal-muted); opacity:.85; }
+.guest-profile-actions { display:grid; grid-template-columns:minmax(0,1fr); gap:10px; margin-top:20px; }
+.guest-profile-actions :is(button) { min-height:46px; border-radius:12px; }
+.guest-profile-actions .feedback-submit-btn { background:linear-gradient(135deg,#dfc9a8,#c6a273); color:#24212a; box-shadow:none; }
+.guest-profile-actions .btn-tariff-call { background:transparent; color:var(--crystal-muted); border-color:var(--crystal-edge); box-shadow:none; font-size:.8rem; }
+.guest-utility-sheet .route-option-btn { background:rgba(147,126,96,.08); border-color:rgba(147,126,96,.3); color:var(--crystal-ink); border-radius:14px; min-height:64px; }
+.guest-utility-sheet .route-option-btn:hover { transform:none; background:rgba(147,126,96,.16); border-color:var(--crystal-accent); box-shadow:none; }
+.guest-utility-sheet .route-option-name { color:var(--crystal-ink); line-height:1.5; }
+.guest-utility-sheet .route-option-meta { color:var(--crystal-muted); line-height:1.5; margin-top:4px; }
+.guest-utility-sheet .route-option-arrow { color:var(--crystal-accent); }
+.guest-utility-sheet .route-option-title { min-width:0; overflow-wrap:anywhere; }
+.guest-utility-sheet :focus-visible { outline:2px solid var(--crystal-accent); outline-offset:3px; }
+@media(max-width:480px) {
+  :is(#guest-profile-modal,#route-options-modal) { padding:8px; }
+  .guest-utility-sheet { max-height:calc(100dvh - 16px); border-radius:22px; }
+  .guest-utility-sheet .modal-body { padding:16px; }
+  .guest-utility-sheet .modal-title { font-size:1rem; }
+}

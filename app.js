@@ -1761,6 +1761,10 @@ class HotelPremierApp {
     const modal = document.getElementById('menu-sections-drawer-modal');
     if (!modal) return;
     this.renderMenuSectionDrawer();
+    if (!modal.classList.contains('active')) {
+      this.menuDrawerOpener = document.activeElement;
+      this.menuDrawerPreviousOverflow = document.body.style.overflow;
+    }
     modal.classList.add('active');
     modal.style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -1769,17 +1773,23 @@ class HotelPremierApp {
       searchInput.value = '';
       const clearBtn = document.getElementById('drawer-clear-search-btn');
       if (clearBtn) clearBtn.style.display = 'none';
-      setTimeout(() => searchInput.focus(), 150);
+      clearTimeout(this.menuDrawerFocusTimer);
+      this.menuDrawerFocusTimer = setTimeout(() => {
+        if (modal.classList.contains('active')) searchInput.focus({ preventScroll:true });
+      }, 150);
     }
   }
 
   closeMenuSectionDrawer() {
     this.haptic(5);
+    clearTimeout(this.menuDrawerFocusTimer);
     const modal = document.getElementById('menu-sections-drawer-modal');
-    if (!modal) return;
+    if (!modal || !modal.classList.contains('active')) return;
     modal.classList.remove('active');
     modal.style.display = 'none';
-    document.body.style.overflow = '';
+    document.body.style.overflow = this.menuDrawerPreviousOverflow || '';
+    if (this.menuDrawerOpener?.isConnected) this.menuDrawerOpener.focus({ preventScroll:true });
+    this.menuDrawerOpener = null;
   }
 
   selectCategoryFromDrawer(catId) {
@@ -3950,16 +3960,11 @@ class HotelPremierApp {
       `;
     }).join('');
 
-    modal.classList.add('active');
-    modal.style.display = 'flex';
+    this.openGuestDialog(modal);
   }
 
   closeRouteOptionsModal() {
-    const modal = document.getElementById('route-options-modal');
-    if (modal) {
-      modal.classList.remove('active');
-      modal.style.display = 'none';
-    }
+    this.closeGuestDialog(document.getElementById('route-options-modal'));
   }
 
   showToast(message, type = 'info') {
@@ -4090,7 +4095,7 @@ class HotelPremierApp {
           this.dismissGuestOverlay(overlays[overlays.length - 1]);
           return;
         }
-        const drawer = document.getElementById('menu-section-drawer');
+        const drawer = document.getElementById('menu-sections-drawer-modal');
         if (drawer && drawer.classList.contains('active')) {
           this.closeMenuSectionDrawer();
         }
@@ -4524,9 +4529,35 @@ class HotelPremierApp {
     return /^[6-9]\d{9}$/.test(digits);
   }
 
+  openGuestDialog(modal) {
+    if (!modal) return;
+    if (!modal.classList.contains('active')) {
+      const trigger = document.activeElement;
+      // Settings closes before its child action opens this sheet; return to its visible summary.
+      modal._premierOpener = trigger?.closest?.('details:not([open])')?.querySelector('summary') || trigger;
+    }
+    modal.classList.add('active');
+    modal.style.display = 'flex';
+    document.body.classList.add('modal-open');
+    modal.querySelector('.modal-close-btn')?.focus({ preventScroll:true });
+  }
+
+  closeGuestDialog(modal) {
+    if (!modal) return;
+    modal.classList.remove('active', 'closing');
+    modal.style.display = 'none';
+    if (!document.querySelector('.modal-backdrop.active')) {
+      document.body.classList.remove('modal-open');
+      if (modal._premierOpener?.isConnected) modal._premierOpener.focus({ preventScroll:true });
+    }
+    modal._premierOpener = null;
+  }
+
   dismissGuestOverlay(modal) {
     if (!modal) return;
     if (modal.id === 'dish-detail-modal') return this.closeDishDetail();
+    if (modal.id === 'menu-sections-drawer-modal') return this.closeMenuSectionDrawer();
+    if (modal.id === 'route-options-modal') return this.closeRouteOptionsModal();
     if (modal.id === 'admin-modal-backdrop' && window.admin) return window.admin.closeAdminModal();
     if (modal.id === 'concierge-booking-modal') return this.closeConciergeBookingModal();
     if (modal.id === 'guest-profile-modal') return this.closeGuestProfileModal();
@@ -4767,17 +4798,11 @@ class HotelPremierApp {
     const modal = document.getElementById('guest-profile-modal');
     if (!modal) return;
     this.applyGuestProfileToAllForms();
-    modal.classList.add('active');
-    modal.style.display = 'flex';
+    this.openGuestDialog(modal);
   }
 
   closeGuestProfileModal() {
-    const modal = document.getElementById('guest-profile-modal');
-    if (modal) {
-      modal.classList.remove('active');
-      modal.style.display = 'none';
-      if (!document.querySelector('.modal-backdrop.active')) document.body.classList.remove('modal-open');
-    }
+    this.closeGuestDialog(document.getElementById('guest-profile-modal'));
   }
 
   saveGuestProfileFromModal() {
