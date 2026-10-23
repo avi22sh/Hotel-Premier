@@ -24,6 +24,7 @@ Run all `tests/*.cjs` and `tests/run-regression.ps1`. The new group test covers 
 - Removed stale numerical ratings from external-platform link labels; existing destinations remain unchanged.
 - Dish details use a visible, native information button with a CSS-rendered symbol rather than an icon-font dependency. Card keyboard handlers ignore nested controls, preventing keyboard activation from opening the wrong option.
 - Startup now selects the requested section before awaiting photo/menu storage, with inactive sections hidden by default. This prevents unrelated sections flashing during slow QR/sub-page loads.
+- Live light-mode QA found legacy dark-only backgrounds/heading colours in the review section. Release 21.81 replaces them with theme-aware glass surfaces, readable labels/placeholders, muted copy and matching star/tag/platform controls.
 - Regression coverage includes all ratings, optional/invalid phone, preparation without transmission, opt-in local copy/failure/retry, and keyboard/detail-control markup. Live QA must not create test guest records or send messages.
 
 ## Remaining stages

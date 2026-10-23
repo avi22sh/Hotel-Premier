@@ -584,6 +584,19 @@ body.theme-dark .guest-network-dialog { background:var(--crystal-surface),#24263
 .guest-utility-sheet { max-height:calc(100dvh - 32px); overflow:hidden; color:var(--crystal-ink); }
 /* Inline display state from switchSection wins after the route is selected. */
 .section-wrapper:not(#section-home),#guest-feedback-section { display:none; }
+#guest-feedback-section { background:transparent; color:var(--crystal-ink); }
+#guest-feedback-section .review-composer-card { background:var(--crystal-surface),#e8e4df; border:1px solid var(--crystal-edge); box-shadow:var(--crystal-shadow); backdrop-filter:blur(20px); }
+body.theme-dark #guest-feedback-section .review-composer-card { background:var(--crystal-surface),#242630; }
+#guest-feedback-section .feedback-title { color:var(--crystal-ink)!important; }
+#guest-feedback-section .feedback-subtitle { color:var(--crystal-muted); font-family:var(--font-body,inherit); font-style:normal; font-size:.95rem; line-height:1.75; }
+#guest-feedback-section .feedback-badge { color:var(--crystal-accent); background:transparent; border-color:var(--crystal-edge); letter-spacing:.08em; }
+#guest-feedback-section .feedback-chip { color:var(--crystal-ink); background:rgba(139,126,113,.08); border-color:var(--crystal-edge); min-height:44px; }
+#guest-feedback-section .feedback-chip.active { color:var(--crystal-accent); background:rgba(181,148,103,.16); border-color:var(--crystal-accent); }
+#guest-feedback-section :is(.external-review-quiet-title,.platform-pill-btn) { color:var(--crystal-ink); }
+#guest-feedback-section .platform-pill-btn { background:rgba(139,126,113,.08); border-color:var(--crystal-edge); min-height:44px; }
+#guest-feedback-section .feedback-submit-btn { background:linear-gradient(135deg,#dfc9a8,#c6a273); color:#24212a; box-shadow:none; font-family:inherit; text-transform:none; letter-spacing:0; font-weight:600; }
+#guest-feedback-section :is(input,select,textarea):focus-visible { outline:2px solid var(--crystal-accent); outline-offset:2px; }
+#guest-feedback-section :is(input,textarea)::placeholder { color:var(--crystal-muted); opacity:.85; }
 .feedback-rating-field { border:0; padding:0; margin:0 0 22px; min-width:0; }
 .feedback-rating-field legend { font-size:1rem; font-weight:600; color:var(--crystal-ink); margin-bottom:12px; }
 .feedback-rating-field .star-rating-control { display:flex; justify-content:flex-start; gap:6px; flex-wrap:nowrap; }
