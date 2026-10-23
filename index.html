@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.78">
-  <link rel="stylesheet" href="royal.css?v=21.78">
+  <link rel="stylesheet" href="styles.css?v=21.79">
+  <link rel="stylesheet" href="royal.css?v=21.79">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -1381,77 +1381,58 @@
         <span class="feedback-badge">⭐ YOUR EXPERIENCE MATTERS</span>
         <h2 class="feedback-title">Write a Review</h2>
         <p class="feedback-subtitle">
-          "Enjoyed your stay or dining experience? Tell us about it."
+          Tell us what you enjoyed and where we can do better. Your feedback helps us care for every guest.
         </p>
       </div>
 
       <!-- In-House Primary Review Submission Card -->
       <div class="review-composer-card">
         <form id="dining-feedback-form" onsubmit="window.app ? window.app.submitGuestFeedback(event) : false;">
-          <div class="star-rating-control" id="feedback-star-control">
-            <button type="button" class="star-btn active" data-value="1" onclick="window.app ? window.app.setStarRating(1) : null">★</button>
-            <button type="button" class="star-btn active" data-value="2" onclick="window.app ? window.app.setStarRating(2) : null">★</button>
-            <button type="button" class="star-btn active" data-value="3" onclick="window.app ? window.app.setStarRating(3) : null">★</button>
-            <button type="button" class="star-btn active" data-value="4" onclick="window.app ? window.app.setStarRating(4) : null">★</button>
-            <button type="button" class="star-btn active" data-value="5" onclick="window.app ? window.app.setStarRating(5) : null">★</button>
+          <fieldset class="feedback-rating-field">
+            <legend>How was your visit?</legend>
+            <div class="star-rating-control" id="feedback-star-control">
+              <label class="star-choice"><input type="radio" name="feedback-rating" value="1" data-value="1" aria-label="1 star" required onchange="window.app?.setStarRating(1)"><span class="star-btn" aria-hidden="true">★</span></label>
+              <label class="star-choice"><input type="radio" name="feedback-rating" value="2" data-value="2" aria-label="2 stars" required onchange="window.app?.setStarRating(2)"><span class="star-btn" aria-hidden="true">★</span></label>
+              <label class="star-choice"><input type="radio" name="feedback-rating" value="3" data-value="3" aria-label="3 stars" required onchange="window.app?.setStarRating(3)"><span class="star-btn" aria-hidden="true">★</span></label>
+              <label class="star-choice"><input type="radio" name="feedback-rating" value="4" data-value="4" aria-label="4 stars" required onchange="window.app?.setStarRating(4)"><span class="star-btn" aria-hidden="true">★</span></label>
+              <label class="star-choice"><input type="radio" name="feedback-rating" value="5" data-value="5" aria-label="5 stars" required onchange="window.app?.setStarRating(5)"><span class="star-btn" aria-hidden="true">★</span></label>
+            </div>
+            <div class="rating-verdict" id="feedback-rating-verdict" aria-live="polite">Choose a rating from 1 to 5.</div>
+            <input type="hidden" id="feedback-star-val" value="0">
+          </fieldset>
+          <div class="feedback-input-field review-comment-field">
+            <label for="feedback-guest-comments">Tell us about your experience</label>
+            <textarea id="feedback-guest-comments" class="fb-textarea" rows="4" maxlength="2000" required placeholder="What went well, or what could we improve?"></textarea>
           </div>
-          <div class="rating-verdict" id="feedback-rating-verdict">🌟 5 Stars — Exceptional Dining & Service!</div>
-          <input type="hidden" id="feedback-star-val" value="5">
-
-          <!-- Highlight Chips -->
-          <div class="feedback-tags-list" id="feedback-tags-container">
-            <button type="button" class="feedback-chip active" onclick="this.classList.toggle('active')">🍛 Authentic Taste</button>
-            <button type="button" class="feedback-chip active" onclick="this.classList.toggle('active')">🛏️ Peaceful Clean Room</button>
-            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">⚡ Prompt Hospitality</button>
-            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">🌿 Pure Veg Care</button>
-            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">❄️ Chill AC Comfort</button>
-            <button type="button" class="feedback-chip" onclick="this.classList.toggle('active')">💰 Great Value</button>
-          </div>
-
-          <!-- Essential Guest Details (Pre-filled from Guest Profile) -->
           <div class="feedback-form-grid">
-            <div class="feedback-input-field">
-              <label for="feedback-guest-name">Your Name *</label>
-              <input type="text" id="feedback-guest-name" aria-label="Your full name" class="fb-input" placeholder="Enter your name" required>
-            </div>
-            <div class="feedback-input-field">
-              <label for="feedback-guest-phone">WhatsApp / Mobile Number *</label>
-              <input type="tel" id="feedback-guest-phone" aria-label="10-digit WhatsApp or mobile number" class="fb-input" placeholder="Enter your 10-digit mobile number" pattern="[0-9]{10}" maxlength="10" inputmode="numeric" autocomplete="tel" required>
-            </div>
-            <div class="feedback-input-field">
-              <label for="feedback-guest-region">Your City / Region</label>
-              <select id="feedback-guest-region" class="fb-select">
-                <option value="Bhusawal Local">Bhusawal Local</option>
-                <option value="Jalgaon District">Jalgaon District</option>
-                <option value="Varangaon / Deepnagar">Varangaon / Deepnagar</option>
-                <option value="Transit Passenger (Railway / Highway)">Transit Passenger (Railway / Highway)</option>
-                <option value="Mumbai / Pune / Nashik">Mumbai / Pune / Nashik</option>
-                <option value="Other Region">Other Region</option>
-              </select>
-            </div>
-            <div class="feedback-input-field">
-              <label for="feedback-table-num">Room or Table # (Optional)</label>
-              <input type="text" id="feedback-table-num" aria-label="Room or table number" class="fb-input" placeholder="Room number or table (if staying)">
-            </div>
+            <div class="feedback-input-field"><label for="feedback-guest-name">Your name</label><input type="text" id="feedback-guest-name" aria-label="Your full name" class="fb-input" placeholder="Your name" maxlength="100" autocomplete="name" required></div>
+            <div class="feedback-input-field"><label for="feedback-guest-phone">Mobile · only if you would like a reply</label><input type="tel" id="feedback-guest-phone" aria-label="10-digit WhatsApp or mobile number" class="fb-input" placeholder="10-digit mobile number" pattern="[6-9][0-9]{9}" maxlength="10" inputmode="numeric" autocomplete="tel-national"></div>
           </div>
-
-          <div class="feedback-input-field" style="margin-bottom: 18px;">
-            <label for="feedback-guest-comments">How was your experience? (Comments / Suggestions)</label>
-            <textarea id="feedback-guest-comments" class="fb-textarea" rows="2" placeholder="Tell us which dish or room amenity you loved most..."></textarea>
-          </div>
-
-          <button type="submit" class="feedback-submit-btn">
-            <span>⭐ Submit Review to Hotel Premier</span>
-          </button>
+          <details class="review-extra-details">
+            <summary>Add visit details</summary>
+            <div class="feedback-form-grid">
+              <div class="feedback-input-field"><label for="feedback-guest-region">City / region</label><select id="feedback-guest-region" class="fb-select"><option value="">Choose if relevant</option><option>Bhusawal Local</option><option>Jalgaon District</option><option>Varangaon / Deepnagar</option><option>Transit Passenger (Railway / Highway)</option><option>Mumbai / Pune / Nashik</option><option>Other Region</option></select></div>
+              <div class="feedback-input-field"><label for="feedback-table-num">Room / table</label><input type="text" id="feedback-table-num" aria-label="Room or table number" class="fb-input" maxlength="50" placeholder="If relevant to your visit"></div>
+            </div>
+            <div class="feedback-tags-list" id="feedback-tags-container" aria-label="Visit highlights">
+              <button type="button" class="feedback-chip" aria-pressed="false" onclick="this.classList.toggle('active'); this.setAttribute('aria-pressed',this.classList.contains('active'))">Authentic taste</button>
+              <button type="button" class="feedback-chip" aria-pressed="false" onclick="this.classList.toggle('active'); this.setAttribute('aria-pressed',this.classList.contains('active'))">Comfortable room</button>
+              <button type="button" class="feedback-chip" aria-pressed="false" onclick="this.classList.toggle('active'); this.setAttribute('aria-pressed',this.classList.contains('active'))">Warm hospitality</button>
+              <button type="button" class="feedback-chip" aria-pressed="false" onclick="this.classList.toggle('active'); this.setAttribute('aria-pressed',this.classList.contains('active'))">Pure-veg dining</button>
+              <button type="button" class="feedback-chip" aria-pressed="false" onclick="this.classList.toggle('active'); this.setAttribute('aria-pressed',this.classList.contains('active'))">Good value</button>
+            </div>
+            <label class="review-local-copy" for="feedback-keep-copy"><input id="feedback-keep-copy" type="checkbox" aria-label="Keep a feedback copy in this browser"> Keep a feedback copy in this browser</label>
+          </details>
+          <p class="review-privacy-note">We will prepare a WhatsApp message for you to review and send to Hotel Premier. This form does not automatically deliver feedback or publish a public review.</p>
+          <p id="feedback-status" role="status" aria-live="polite"></p>
+          <button type="submit" class="feedback-submit-btn"><span>Prepare feedback for the hotel</span></button>
         </form>
-
-        <!-- Thank You Toast/Card -->
-        <div id="feedback-thankyou-card" style="display: none; text-align: center; padding: 20px 10px;">
-          <div style="font-size: 2.2rem; margin-bottom: 8px;">🙏</div>
-          <h3 style="font-family: var(--font-royal); font-size: 1.3rem; color: var(--brass-light); margin-bottom: 6px;">Thank You For Your Gracious Review!</h3>
-          <p style="font-size: 0.85rem; color: #C0CFDF;">
-            Your feedback has been registered with Hotel Premier management.
-          </p>
+        <div id="feedback-thankyou-card" class="review-handoff" style="display:none;" tabindex="-1" aria-labelledby="feedback-handoff-heading">
+          <h3 id="feedback-handoff-heading">Your feedback is ready to share</h3>
+          <p id="feedback-copy-status"></p>
+          <p>Use WhatsApp below, review the message and tap Send. Opening WhatsApp does not send it automatically.</p>
+          <a id="feedback-whatsapp-link" class="feedback-submit-btn" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">Review and send in WhatsApp</a>
+          <button type="button" class="btn-secondary" onclick="window.app?.editGuestFeedback()">Back to edit feedback</button>
         </div>
       </div>
 
@@ -1460,16 +1441,16 @@
         <div class="external-review-quiet-title">Or share your review publicly on:</div>
         <div class="external-platforms-quiet-row">
           <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <span>Google Reviews (4.1★)</span>
+            <span>Google Reviews</span>
           </a>
           <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <span>MakeMyTrip (4.0★)</span>
+            <span>MakeMyTrip</span>
           </a>
           <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <span>Goibibo (4.0★)</span>
+            <span>Goibibo</span>
           </a>
           <a href="https://www.zomato.com/search?q=Hotel+Premier+Bhusawal" target="_blank" rel="noopener noreferrer" class="platform-pill-btn" onclick="event.preventDefault(); window.app && window.app.openExternalPlatform('zomato');">
-            <span>Zomato (4.2★)</span>
+            <span>Zomato</span>
           </a>
         </div>
       </div>
@@ -1927,7 +1908,7 @@
   <script src="menu-structure.js?v=21.75"></script>
   <script src="group-stays.js?v=21.77"></script>
   <script src="guest-network.js?v=21.76"></script>
-  <script src="app.js?v=21.78"></script>
+  <script src="app.js?v=21.79"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1962,7 +1943,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.78', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.79', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load

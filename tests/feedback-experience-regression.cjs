@@ -1,0 +1,28 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const fields={},saved=[],opened=[];let failCopy=false;
+const c={window:{open:(...args)=>opened.push(args),HOTEL_VAULT:{recordFeedback(entry){if(failCopy)return null;saved.push(entry);return {id:'fixture-only'};}}},console,document:{readyState:'loading',addEventListener(){},getElementById:id=>fields[id]||null,querySelectorAll(selector){return selector.includes('radio') ? radios : [];}}};
+const radios=[1,2,3,4,5].map(value=>({value:String(value),parentElement:{classList:{toggle(){}}}}));
+for(const id of ['dining-feedback-form','feedback-star-control','feedback-star-val','feedback-rating-verdict','feedback-guest-name','feedback-guest-phone','feedback-guest-region','feedback-table-num','feedback-guest-comments','feedback-keep-copy','feedback-status','feedback-copy-status','feedback-whatsapp-link','feedback-thankyou-card'])fields[id]={value:'',style:{},checked:false,focus(){},scrollIntoView(){},removeAttribute(name){delete this[name];},reportValidity(){return true;}};
+vm.createContext(c);vm.runInContext(fs.readFileSync('app.js','utf8')+';window.App=HotelPremierApp;',c);
+const app=Object.create(c.window.App.prototype);
+fields['feedback-guest-name'].value='Fixture guest';fields['feedback-guest-comments'].value='Fixture feedback & needs improvement';fields['feedback-star-val'].value='0';
+app.submitGuestFeedback();assert.match(fields['feedback-status'].textContent,/choose your rating/);assert.equal(saved.length,0);
+for(const rating of [1,2,3,4,5]){app.setStarRating(rating);assert.equal(radios.filter(r=>r.checked).length,1);assert.equal(radios[rating-1].checked,true);assert.equal(Number(fields['feedback-star-val'].value),rating);}
+app.setStarRating(0);assert.equal(Number(fields['feedback-star-val'].value),5,'Invalid rating must not overwrite an intentional selection');
+app.setStarRating(1);app.submitGuestFeedback();
+assert.equal(saved.length,0,'Browser feedback copy must be opt-in');assert.equal(opened.length,0,'Preparing feedback must not contact another platform');
+assert.match(decodeURIComponent(fields['feedback-whatsapp-link'].href),/Rating: 1 \/ 5/);assert.match(decodeURIComponent(fields['feedback-whatsapp-link'].href),/Fixture feedback & needs improvement/);assert.doesNotMatch(fields['feedback-copy-status'].textContent,/management.*received|delivered/);
+assert.equal(fields['dining-feedback-form'].style.display,'none');
+app.editGuestFeedback();assert.equal(fields['feedback-whatsapp-link'].href,undefined);assert.equal(fields['feedback-guest-comments'].value,'Fixture feedback & needs improvement');
+fields['feedback-guest-phone'].value='123';app.submitGuestFeedback();assert.match(fields['feedback-status'].textContent,/mobile number/);assert.equal(fields['feedback-whatsapp-link'].href,undefined);
+fields['feedback-guest-phone'].value='';fields['feedback-keep-copy'].checked=true;app.submitGuestFeedback();assert.equal(saved.length,1);assert.equal(saved[0].rating,1);assert.equal(saved[0].phone,'');
+app.editGuestFeedback();app.submitGuestFeedback();assert.equal(saved.length,1,'Preparing an unchanged feedback copy must not duplicate records');
+app.editGuestFeedback();failCopy=true;fields['feedback-guest-comments'].value='Revised fixture';app.submitGuestFeedback();assert.match(fields['feedback-copy-status'].textContent,/could not be saved/);assert.ok(fields['feedback-whatsapp-link'].href);
+app.editGuestFeedback();fields['feedback-guest-comments'].value='   ';app.submitGuestFeedback();assert.match(fields['feedback-status'].textContent,/add your feedback/);assert.equal(fields['feedback-whatsapp-link'].href,undefined);
+const html=fs.readFileSync('index.html','utf8');
+assert.doesNotMatch(html,/feedback-star-val" value="5"|feedback-chip active|feedback has been registered with Hotel Premier management/);
+assert.match(html,/feedback-guest-phone[^>]*>/);const phone=html.match(/<input[^>]*id="feedback-guest-phone"[^>]*>/)[0];assert.doesNotMatch(phone,/required/);
+assert.ok(html.indexOf('id="feedback-guest-comments"')<html.indexOf('id="feedback-guest-name"'));
+assert.equal((html.match(/name="feedback-rating"/g)||[]).length,5);
+const source=fs.readFileSync('app.js','utf8');assert.match(source,/event\.target===this/);assert.match(source,/<button type="button" class="view-detail-link"/);assert.match(source,/dish-info-symbol/);
+console.log('PASS: intentional 1–5 ratings, optional phone, no false delivery confirmation, opt-in local copies, edit/retry and native dish detail buttons');

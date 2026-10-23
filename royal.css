@@ -582,6 +582,32 @@ body.theme-dark .guest-network-dialog { background:var(--crystal-surface),#24263
 @media(max-width:700px) { .celebration-options { grid-template-columns:1fr; } #section-tariffs .tariff-extra-bed-banner { grid-template-columns:1fr; } }
 @media(max-width:480px) { #section-tariffs .tariff-guarantees-grid { grid-template-columns:1fr; } .restaurant-event-panel { padding:16px; } .restaurant-event-panel .enquiry-grid { grid-template-columns:1fr; gap:0; } }
 .guest-utility-sheet { max-height:calc(100dvh - 32px); overflow:hidden; color:var(--crystal-ink); }
+.feedback-rating-field { border:0; padding:0; margin:0 0 22px; min-width:0; }
+.feedback-rating-field legend { font-size:1rem; font-weight:600; color:var(--crystal-ink); margin-bottom:12px; }
+.feedback-rating-field .star-rating-control { display:flex; justify-content:flex-start; gap:6px; flex-wrap:nowrap; }
+.star-choice { position:relative; display:inline-flex; min-width:44px; min-height:48px; cursor:pointer; }
+.star-choice input { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); }
+.star-choice .star-btn { display:grid; place-items:center; width:44px; min-height:48px; font-size:2rem; color:var(--crystal-muted); background:rgba(139,126,113,.08); border:1px solid var(--crystal-edge); border-radius:12px; padding:0; }
+.star-choice.active .star-btn { color:var(--crystal-accent); background:rgba(181,148,103,.14); }
+.star-choice input:focus-visible + .star-btn { outline:2px solid var(--crystal-accent); outline-offset:3px; }
+.review-composer-card :is(label,legend,.rating-verdict) { color:var(--crystal-ink); }
+.review-composer-card :is(input:not([type=radio]):not([type=checkbox]),select,textarea) { font-size:16px; min-height:46px; min-width:0; width:100%; color:var(--crystal-ink); background:rgba(139,126,113,.08); border:1px solid var(--crystal-edge); border-radius:12px; }
+.review-composer-card .review-comment-field { margin-bottom:22px; }
+.review-composer-card .feedback-form-grid { margin-bottom:18px; gap:16px; }
+.review-composer-card .feedback-input-field { min-width:0; }
+.review-extra-details { border-top:1px solid var(--crystal-edge); margin:18px 0; padding-top:12px; }
+.review-extra-details summary { min-height:44px; cursor:pointer; color:var(--crystal-ink); }
+.review-local-copy { display:flex; align-items:flex-start; gap:10px; font-size:.85rem; line-height:1.6; }
+.review-local-copy input { width:20px; height:20px; flex-shrink:0; margin-top:3px; accent-color:var(--crystal-accent); }
+.review-privacy-note,.review-handoff p { font-size:.85rem; line-height:1.75; color:var(--crystal-muted); margin:16px 0; }
+#feedback-status { color:var(--crystal-ink); line-height:1.6; margin:14px 0; }
+.review-handoff h3 { color:var(--crystal-ink); font-family:var(--font-royal); line-height:1.5; }
+.review-handoff .feedback-submit-btn { display:flex; align-items:center; justify-content:center; text-decoration:none; text-align:center; min-height:48px; margin:20px 0 12px; }
+.review-handoff .btn-secondary { min-height:44px; width:100%; }
+#section-dine .dish-banner-action .view-detail-link { display:inline-flex!important; align-items:center; justify-content:center; gap:6px; min-height:44px; padding:6px 10px; font:inherit; font-size:.76rem; font-weight:600; color:var(--crystal-ink)!important; border:1px solid var(--crystal-edge); background:rgba(139,126,113,.08); border-radius:10px; cursor:pointer; }
+.dish-info-symbol { display:inline-grid; place-items:center; width:17px; height:17px; border:1px solid currentColor; border-radius:50%; font:bold 12px Georgia,serif; flex-shrink:0; }
+#section-dine .view-detail-link:focus-visible { outline:2px solid var(--crystal-accent); outline-offset:3px; }
+@media(max-width:600px) { .review-composer-card .feedback-form-grid { grid-template-columns:minmax(0,1fr); } }
 .event-preferences { margin:16px 0; border-top:1px solid var(--crystal-edge); padding-top:14px; }
 .event-preferences summary { min-height:44px; cursor:pointer; color:var(--crystal-ink); }
 .event-preferences label { display:grid; gap:8px; margin:12px 0; }

@@ -2351,7 +2351,7 @@ class HotelPremierApp {
            role="button"
            tabindex="0"
            aria-label="${dish.name}, ${priceRangeText}"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.openDishDetail('${detailId}'${detailVariant});}">
+           onkeydown="if(event.target===this && (event.key==='Enter'||event.key===' ')){event.preventDefault(); window.app.openDishDetail('${detailId}'${detailVariant});}">
         <div class="dish-banner-media ${hasPhoto ? '' : 'no-photo'}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           ${hasPhoto ? `
@@ -2396,9 +2396,9 @@ class HotelPremierApp {
               ${dish.isSoldOut ? `
                 <span class="dish-soldout-label">${this.t('soldOut')}</span>
               ` : `
-                <span class="view-detail-link" onclick="event.stopPropagation(); window.app.openDishDetail('${detailId}'${detailVariant})">
-                  ${this.t('detailsBtn')}
-                </span>
+                <button type="button" class="view-detail-link" onclick="event.stopPropagation(); window.app.openDishDetail('${detailId}'${detailVariant})" aria-label="View dish details">
+                  <span class="dish-info-symbol" aria-hidden="true">i</span><span>${this.t('detailsBtn')}</span>
+                </button>
               `}
             </div>
           </div>
@@ -4442,6 +4442,8 @@ class HotelPremierApp {
 
     fields.forEach(({ id, key }) => {
       const el = document.getElementById(id);
+      // Review edits stay in the form; they are not an implicit profile-save.
+      if (id.startsWith('feedback-')) return;
       if (el) {
         if (key === 'phone') {
           el.setAttribute('inputmode', 'numeric');
@@ -4928,92 +4930,77 @@ class HotelPremierApp {
 
   // ==================== 6. GUEST FEEDBACK & DINING RATINGS ====================
   setStarRating(rating) {
+    if (!Number.isInteger(rating) || rating < 1 || rating > 5) return;
     this.currentStarRating = rating;
     const input = document.getElementById('feedback-star-val');
     if (input) input.value = rating;
-
-    const btns = document.querySelectorAll('#feedback-star-control .star-btn');
-    btns.forEach((b) => {
-      const val = parseInt(b.getAttribute('data-value')) || 0;
-      b.classList.toggle('active', val <= rating);
+    document.querySelectorAll('#feedback-star-control input[type="radio"]').forEach(radio => {
+      const value = Number(radio.value);
+      radio.checked = value === rating;
+      radio.parentElement?.classList.toggle('active', value <= rating);
     });
-
-    const verdicts = {
-      1: '🙁 1 Star — Needs Improvement',
-      2: '😐 2 Stars — Fair Dining Experience',
-      3: '🙂 3 Stars — Good Meal',
-      4: '😊 4 Stars — Very Good Quality & Taste',
-      5: '🌟 5 Stars — Exceptional Dining & Service!'
-    };
-    const verdictEl = document.getElementById('feedback-rating-verdict');
-    if (verdictEl) verdictEl.innerText = verdicts[rating] || '🌟 5 Stars';
+    const verdict = document.getElementById('feedback-rating-verdict');
+    const words = ['','Needs improvement','Fair','Good','Very good','Excellent'];
+    if (verdict) verdict.innerText = rating+' / 5 · '+words[rating];
   }
 
-  submitGuestFeedback(e) {
-    if (e) e.preventDefault();
-    const nameEl = document.getElementById('feedback-guest-name');
-    const phoneEl = document.getElementById('feedback-guest-phone');
-    const regionEl = document.getElementById('feedback-guest-region');
-    const tableEl = document.getElementById('feedback-table-num');
-    const commentsEl = document.getElementById('feedback-guest-comments');
-    const ratingEl = document.getElementById('feedback-star-val');
-
-    const name = nameEl ? nameEl.value.trim() : '';
-    const rawPhone = phoneEl ? phoneEl.value.trim() : '';
-    const cleanPhone = this.sanitizeIndianMobile(rawPhone);
-    const region = regionEl ? regionEl.value : 'Bhusawal Local';
-    const table = tableEl ? tableEl.value.trim() : '';
-    const comments = commentsEl ? commentsEl.value.trim() : '';
-    const rating = ratingEl ? parseInt(ratingEl.value) || 5 : 5;
-
-    if (!name) {
-      alert('Please enter your name.');
-      if (nameEl) nameEl.focus();
-      return false;
-    }
-    if (!this.isValidIndianMobile(cleanPhone)) {
-      alert('Please enter a valid 10-digit Indian WhatsApp/mobile number (e.g., 9876543210).');
-      if (phoneEl) {
-        phoneEl.value = cleanPhone;
-        phoneEl.focus();
-      }
-      return false;
-    }
-
-    this.saveGuestProfile({
-      name: name,
-      phone: cleanPhone,
-      region: region,
-      tableOrRoom: table
-    });
-    this.dismissWelcomeBanner();
-
-    const selectedTags = [];
-    document.querySelectorAll('#feedback-tags-container .feedback-chip.active').forEach(chip => {
-      selectedTags.push(chip.innerText.trim());
-    });
-
-    if (window.HOTEL_VAULT) {
-      window.HOTEL_VAULT.recordFeedback({
-        name: name,
-        phone: cleanPhone,
-        region: region,
-        tableOrRoom: table,
-        rating: rating,
-        tags: selectedTags,
-        comments: comments
-      });
-    }
-
+  editGuestFeedback() {
     const form = document.getElementById('dining-feedback-form');
-    const thankyou = document.getElementById('feedback-thankyou-card');
-    if (form) form.style.display = 'none';
-    if (thankyou) {
-      thankyou.style.display = 'block';
-      thankyou.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    const handoff = document.getElementById('feedback-thankyou-card');
+    if (handoff) handoff.style.display = 'none';
+    document.getElementById('feedback-whatsapp-link')?.removeAttribute('href');
+    if (form) form.style.display = '';
+    document.getElementById('feedback-guest-comments')?.focus();
+  }
 
-    this.showToast('Thank you for your rating!', 'success');
+  submitGuestFeedback(event) {
+    if (event) event.preventDefault();
+    const get = id => document.getElementById(id);
+    const status = get('feedback-status');
+    const fail = (message, field) => { if (status) status.textContent=message; get(field)?.focus(); return false; };
+    const form = get('dining-feedback-form');
+    if (!form?.reportValidity()) return false;
+    const name = get('feedback-guest-name').value.trim();
+    const rawPhone = get('feedback-guest-phone').value.trim();
+    const phone = rawPhone ? this.sanitizeIndianMobile(rawPhone) : '';
+    const comments = get('feedback-guest-comments').value.trim();
+    const rating = Number(get('feedback-star-val').value);
+    if (!Number.isInteger(rating) || rating<1 || rating>5) return fail('Please choose your rating.','feedback-star-control');
+    if (!comments || comments.length>2000) return fail('Please add your feedback, up to 2,000 characters.','feedback-guest-comments');
+    if (!name || name.length>100) return fail('Please enter your name, up to 100 characters.','feedback-guest-name');
+    if (rawPhone && !this.isValidIndianMobile(phone)) return fail('Please check your mobile number, or leave it blank.','feedback-guest-phone');
+    const entry = {
+      name, phone, comments, rating,
+      region:get('feedback-guest-region').value,
+      tableOrRoom:get('feedback-table-num').value.trim(),
+      tags:Array.from(document.querySelectorAll('#feedback-tags-container .feedback-chip.active')).map(chip=>chip.innerText.trim())
+    };
+    let copyMessage = 'No new feedback copy was saved in this step.';
+    if (get('feedback-keep-copy').checked) {
+      const fingerprint = JSON.stringify(entry);
+      if (this.feedbackSavedFingerprint === fingerprint) copyMessage='Your feedback copy is saved in this browser only.';
+      else {
+        const record = window.HOTEL_VAULT?.recordFeedback(entry);
+        if (record) { this.feedbackSavedFingerprint=fingerprint; copyMessage='A feedback copy is saved in this browser only. It has not been delivered to the hotel.'; }
+        else copyMessage='A browser copy could not be saved. You can still send the feedback through WhatsApp.';
+      }
+    }
+    const message = [
+      'HOTEL PREMIER — GUEST FEEDBACK', 'Rating: '+rating+' / 5',
+      'Feedback: '+comments, 'Name: '+name,
+      phone ? 'Reply number: '+phone : '',
+      entry.region ? 'City / region: '+entry.region : '',
+      entry.tableOrRoom ? 'Room / table: '+entry.tableOrRoom : '',
+      entry.tags.length ? 'Highlights: '+entry.tags.join(', ') : ''
+    ].filter(Boolean).join('\n');
+    const link = get('feedback-whatsapp-link');
+    link.href='https://wa.me/919325375802?text='+encodeURIComponent(message);
+    get('feedback-copy-status').textContent=copyMessage;
+    if (status) status.textContent='';
+    form.style.display='none';
+    const handoff=get('feedback-thankyou-card');
+    handoff.style.display='block'; handoff.focus();
+    handoff.scrollIntoView({behavior:'smooth',block:'center'});
     return false;
   }
 

@@ -16,6 +16,15 @@
 
 Run all `tests/*.cjs` and `tests/run-regression.ps1`. The new group test covers caps, category limits, both tariff plans, shared bed capacity, invalid occupancy/nights, legacy offers, preserved inventory, actual dropdown pricing and stale summary prevention. External WhatsApp messages must not be sent during QA.
 
+## Release 21.79 — feedback and menu details
+
+- Review flow is now rating → comment → guest details. Rating is an explicit native radio choice; no five-star default or preselected positive highlights. Mobile is optional, and extra visit details are collapsed.
+- The prior confirmation falsely implied remote hotel delivery even though the app used device-local storage only. The new flow prepares a WhatsApp message for the guest to review and send; preparing it does not transmit anything or claim receipt. Browser feedback copies are opt-in, save failures are disclosed, and editing does not create duplicate unchanged copies. Existing stored records are untouched.
+- Feedback input edits no longer automatically save the guest profile. Previously supplied profile details can still prefill the form. Private feedback is not promoted to the authorized public-review feed.
+- Removed stale numerical ratings from external-platform link labels; existing destinations remain unchanged.
+- Dish details use a visible, native information button with a CSS-rendered symbol rather than an icon-font dependency. Card keyboard handlers ignore nested controls, preventing keyboard activation from opening the wrong option.
+- Regression coverage includes all ratings, optional/invalid phone, preparation without transmission, opt-in local copy/failure/retry, and keyboard/detail-control markup. Live QA must not create test guest records or send messages.
+
 ## Remaining stages
 
-Review-form simplification, further menu/detail navigation and whole-app visual audit remain separate follow-up stages. Actual numbered room register, router survey, secure Wi-Fi backend, private administration, network approval and physical POS/isolation/Android/iPhone connection tests remain pending owner information. The new room categories, prices and authentic photos have not been replaced.
+Further menu/detail navigation and whole-app visual audit remain separate follow-up stages. Actual numbered room register, router survey, secure Wi-Fi backend, private administration, network approval and physical POS/isolation/Android/iPhone connection tests remain pending owner information. The new room categories, prices and authentic photos have not been replaced.
