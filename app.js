@@ -934,7 +934,8 @@ class HotelPremierApp {
 
     this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
     window.HotelMenuStructure?.apply(this);
-    this.saveMenuData();
+    // Reading is not an edit. Re-saving here duplicated large photo data in
+    // localStorage and re-broadcast MENU_UPDATED on every receiving tab.
   }
 
   saveMenuData() {

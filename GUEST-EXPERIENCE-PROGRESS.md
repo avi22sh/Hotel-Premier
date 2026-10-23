@@ -1,4 +1,4 @@
-# Hotel Premier — refinement progress, release 21.77
+# Hotel Premier — refinement progress, release 21.78
 
 ## This stage
 
@@ -10,6 +10,7 @@
 - Refined Home introduction, reduced discount-heavy wording, removed room presentation emojis and clarified the one-time welcome set per stay.
 - Revised factory group tiers to remove unsupported full-property privacy, free-room and tea-station promises. Obsolete stored factory tiers fall back to current published tiers without deleting the stored backup. Valid customized tiers remain editable. Admin saves reject obsolete capacity/buyout claims.
 - Added accommodation policy calculations in `group-stays.js`, with regression coverage. Kept public QR/Wi-Fi architecture unchanged and inactive.
+- Live QA exposed redundant menu-cache writes and update broadcasts during read-only loads. Loading no longer saves/rebroadcasts the menu, avoiding quota warnings on startup and cross-tab update loops; explicit editing saves remain intact.
 
 ## Validation
 
