@@ -76,6 +76,9 @@ class HotelPremierApp {
 
   async init() {
     try { this.loadPreferences(); } catch (e) { console.warn('[Init] loadPreferences:', e); }
+    // Resolve the visible page before waiting for stored photos/menu data.
+    // Only the requested route should be visible during a slow startup.
+    try { if (window.HotelGuestNetwork) this.switchSection(window.HotelGuestNetwork.resolve(window.location), false); } catch (e) { console.warn('[Init] entry route:', e); }
     try { await this.loadMenuData(); } catch (e) { console.warn('[Init] loadMenuData:', e); }
     try { this.updateUILanguage(); } catch (e) { console.warn('[Init] updateUILanguage:', e); }
     try { this.renderCategoryCards(); } catch (e) { console.warn('[Init] renderCategoryCards:', e); }

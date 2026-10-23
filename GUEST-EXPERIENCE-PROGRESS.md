@@ -23,6 +23,7 @@ Run all `tests/*.cjs` and `tests/run-regression.ps1`. The new group test covers 
 - Feedback input edits no longer automatically save the guest profile. Previously supplied profile details can still prefill the form. Private feedback is not promoted to the authorized public-review feed.
 - Removed stale numerical ratings from external-platform link labels; existing destinations remain unchanged.
 - Dish details use a visible, native information button with a CSS-rendered symbol rather than an icon-font dependency. Card keyboard handlers ignore nested controls, preventing keyboard activation from opening the wrong option.
+- Startup now selects the requested section before awaiting photo/menu storage, with inactive sections hidden by default. This prevents unrelated sections flashing during slow QR/sub-page loads.
 - Regression coverage includes all ratings, optional/invalid phone, preparation without transmission, opt-in local copy/failure/retry, and keyboard/detail-control markup. Live QA must not create test guest records or send messages.
 
 ## Remaining stages

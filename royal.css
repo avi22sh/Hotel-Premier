@@ -582,6 +582,8 @@ body.theme-dark .guest-network-dialog { background:var(--crystal-surface),#24263
 @media(max-width:700px) { .celebration-options { grid-template-columns:1fr; } #section-tariffs .tariff-extra-bed-banner { grid-template-columns:1fr; } }
 @media(max-width:480px) { #section-tariffs .tariff-guarantees-grid { grid-template-columns:1fr; } .restaurant-event-panel { padding:16px; } .restaurant-event-panel .enquiry-grid { grid-template-columns:1fr; gap:0; } }
 .guest-utility-sheet { max-height:calc(100dvh - 32px); overflow:hidden; color:var(--crystal-ink); }
+/* Inline display state from switchSection wins after the route is selected. */
+.section-wrapper:not(#section-home),#guest-feedback-section { display:none; }
 .feedback-rating-field { border:0; padding:0; margin:0 0 22px; min-width:0; }
 .feedback-rating-field legend { font-size:1rem; font-weight:600; color:var(--crystal-ink); margin-bottom:12px; }
 .feedback-rating-field .star-rating-control { display:flex; justify-content:flex-start; gap:6px; flex-wrap:nowrap; }

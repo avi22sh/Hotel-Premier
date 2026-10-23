@@ -25,4 +25,6 @@ assert.match(html,/feedback-guest-phone[^>]*>/);const phone=html.match(/<input[^
 assert.ok(html.indexOf('id="feedback-guest-comments"')<html.indexOf('id="feedback-guest-name"'));
 assert.equal((html.match(/name="feedback-rating"/g)||[]).length,5);
 const source=fs.readFileSync('app.js','utf8');assert.match(source,/event\.target===this/);assert.match(source,/<button type="button" class="view-detail-link"/);assert.match(source,/dish-info-symbol/);
+assert.ok(source.indexOf("console.warn('[Init] entry route:'")<source.indexOf('await this.loadMenuData()'),'Initial route must resolve before asynchronous menu/photo loading');
+assert.match(fs.readFileSync('royal.css','utf8'),/\.section-wrapper:not\(#section-home\),#guest-feedback-section \{ display:none; \}/);
 console.log('PASS: intentional 1–5 ratings, optional phone, no false delivery confirmation, opt-in local copies, edit/retry and native dish detail buttons');
