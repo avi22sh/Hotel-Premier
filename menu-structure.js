@@ -73,6 +73,10 @@
   const node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;return n;};
   function render(host) {
     if(!window.admin?.isAuthenticated)return;
+    const openKeys=new Set([...(host.querySelectorAll?.('details[open][data-menu-key]') || [])].map(n=>n.dataset.menuKey));
+    const scrollHost=host.closest?.('#admin-tab-content');
+    const previousScrollTop=scrollHost?.scrollTop;
+    const preserve=(element,key)=>{element.dataset ||= {};element.dataset.menuKey=key;if(openKeys.has(key))element.open=true;return element;};
     host.replaceChildren();host.className='menu-structure-studio';
     const app=window.app;
     const status=node('p','Changes save in this browser. Export the layout for developer review and publishing to all guests. No guest data is exported.');status.setAttribute('role','status');
@@ -80,7 +84,7 @@
     const button=(text,fn)=>{const b=node('button',text);b.type='button';b.className='studio-button';b.addEventListener('click',()=>run(fn));return b;};
     const field=(label,value,tag='input')=>{const wrap=node('label'),input=node(tag);input.value=value??'';wrap.append(node('span',label),input);return {wrap,input};};
     const select=(label,options,value)=>{const f=field(label,'','select');for(const o of options){const option=node('option',o.name);option.value=o.id;f.input.append(option);}f.input.value=value;return f;};
-    const save=next=>{commit(next,app);render(host);};
+    const save=next=>{commit(next,app);render(host);app.showToast('Menu changes saved in this browser. Export to publish.', 'success');};
     const editSection=(category)=>{
       const box=node('details');box.append(node('summary',category.name));
       const name=field('Section name',category.name),description=field('Section description',category.description,'textarea');box.append(name.wrap,description.wrap);
@@ -94,7 +98,7 @@
       const subs=(window.HOTEL_PREMIER_SUB_CATEGORIES?.[category.id] || []);
       box.append(node('h4','Sub-sections'));
       for(const sub of subs.filter(s=>s.id!=='all')) {
-        const row=node('details');row.append(node('summary',sub.name));
+        const row=preserve(node('details'),'sub:'+category.id+':'+sub.id);row.append(node('summary',sub.name));
         const title=field('Sub-section name',sub.name),target=select('Move to section',app.categories,category.id);row.append(title.wrap,target.wrap);
         row.append(button('Save / move sub-section',()=>{
           const next=snapshot(app),list=next.subcategories[category.id],saved={...list.find(s=>s.id===sub.id),name:title.input.value.trim()};
@@ -116,14 +120,14 @@
       const dishes=app.menuData.filter(d=>d.categoryId===category.id && !d.groupedUnder);
       box.append(node('h4','Items & individual options'));
       for(const dish of dishes){
-        const row=node('details');row.append(node('summary',dish.name));
+        const row=preserve(node('details'),'item:'+dish.id);row.append(node('summary',dish.name));
         const name=field('Item name',dish.name),price=field('Price · blank means on request',dish.price),desc=field('Description',dish.description,'textarea'),image=field('Image asset path or HTTPS URL',dish.image),target=select('Section',app.categories,category.id);
         const sub=select('Sub-section',[{id:'',name:'All items / no sub-section'},...Object.entries(window.HOTEL_PREMIER_SUB_CATEGORIES||{}).flatMap(([cat,items])=>items.filter(s=>s.id!=='all').map(s=>({id:cat+'::'+s.id,name:(app.categories.find(c=>c.id===cat)?.name||cat)+' / '+s.name})))],category.id+'::'+(subs.find(s=>s.id!=='all'&&s.dishIds?.includes(dish.id))?.id||''));
         target.input.addEventListener('change',()=>{sub.input.value='';});
         row.append(name.wrap,price.wrap,desc.wrap,image.wrap,target.wrap,sub.wrap);
         const variants=clone(dish.variants || []),variantFields=[];
         for(const [i,v] of variants.entries()){
-          const vbox=node('details');vbox.append(node('summary',v.name));const vn=field('Option name',v.name),vp=field('Option price',v.price),vd=field('Option description',v.description,'textarea'),vi=field('Option image',v.image);vbox.append(vn.wrap,vp.wrap,vd.wrap,vi.wrap);variantFields.push({v,vn,vp,vd,vi});
+          const vbox=preserve(node('details'),'option:'+dish.id+':'+(v.id || v.name));vbox.append(node('summary',v.name));const vn=field('Option name',v.name),vp=field('Option price',v.price),vd=field('Option description',v.description,'textarea'),vi=field('Option image',v.image);vbox.append(vn.wrap,vp.wrap,vd.wrap,vi.wrap);variantFields.push({v,vn,vp,vd,vi});
           for(const [label,delta] of [['↑ Option',-1],['↓ Option',1]])vbox.append(button(label,()=>{const next=snapshot(app),copy=clone(dish.variants),j=i+delta;if(j<0||j>=copy.length)return;[copy[i],copy[j]]=[copy[j],copy[i]];next.items[dish.id]={...next.items[dish.id],variants:copy};save(next);}));
           vbox.append(button('Delete option',()=>{if(!confirm(`Delete option “${v.name}”?`))return;const next=snapshot(app);next.items[dish.id]={...next.items[dish.id],variants:variants.filter((_,idx)=>idx!==i)};save(next);}));row.append(vbox);
         }
@@ -144,14 +148,16 @@
       }
       box.append(button('Add item',()=>{const name=prompt('Item name');if(!name?.trim())return;const next=snapshot(app),id='item-'+crypto.randomUUID();next.items[id]={id,name:name.trim(),categoryId:category.id,price:null,image:'',description:''};next.order.push(id);save(next);}));return box;
     };
-    const details=node('details');details.append(node('summary','Manage sections, sub-sections & item sequence'),status);
+    const details=preserve(node('details'),'menu-editor');details.append(node('summary','Manage sections, sub-sections & item sequence'),status);
     details.append(button('Export menu layout',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(snapshot(app),null,2)],{type:'application/json'}));const a=node('a');a.href=url;a.download='hotel-premier-menu-layout.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}));
     const input=node('input');input.type='file';input.accept='.json,application/json';input.setAttribute('aria-label','Import menu layout');input.addEventListener('change',async()=>{try{const f=input.files[0];if(!f)return;if(f.size>20000000)throw Error('Layout exceeds 20 MB.');const next=validate(JSON.parse(await f.text()));if(confirm('Replace this browser’s menu layout? Export a backup first.'))save(next);}catch(e){status.textContent=e.message;}});details.append(input);
     details.append(button('Add section',()=>{const name=prompt('Section name');if(!name?.trim())return;const next=snapshot(app),id='section-'+crypto.randomUUID();next.categories.push({id,name:name.trim(),image:'',description:'',icon:'🍽️'});next.subcategories[id]=[{id:'all',name:'All items'}];save(next);}));
     for(const category of app.categories.filter(c=>!['all','chef-specials'].includes(c.id))){
-      const lazy=node('details');lazy.append(node('summary',category.name));let loaded=false;
-      lazy.addEventListener('toggle',()=>{if(!lazy.open||loaded)return;loaded=true;const built=editSection(category);for(const child of [...built.children].slice(1))lazy.append(child);});details.append(lazy);
+      const lazy=preserve(node('details'),'section:'+category.id);lazy.append(node('summary',category.name));let loaded=false;
+      const populate=()=>{if(!lazy.open||loaded)return;loaded=true;const built=editSection(category);for(const child of [...built.children].slice(1))lazy.append(child);};
+      lazy.addEventListener('toggle',populate);details.append(lazy);if(lazy.open)populate();
     }host.append(details);
+    if(scrollHost && previousScrollTop!==undefined)scrollHost.scrollTop=previousScrollTop;
   }
   window.HotelMenuStructure={apply,render,validate,capture,saveDraft:commit,hasDraft:()=>Boolean(draft.categories)};
 })();

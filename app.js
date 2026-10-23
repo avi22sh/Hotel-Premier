@@ -2023,6 +2023,7 @@ class HotelPremierApp {
     return (this.isFavoritesFilterActive ? this.getFavoriteItems() : this.menuData).filter(item => {
       if (item.notAvailable) return false;
       if (item.groupedUnder) return false;
+      if (item.variants?.length && item.variants.every(v => v.hidden)) return false;
 
       // Filter by favorites when Favorites mode is active
       if (this.isFavoritesFilterActive) {
@@ -2315,9 +2316,13 @@ class HotelPremierApp {
     const isFav = Boolean(this.favorites && this.favorites.includes(dish.id));
     const hasVariants = dish.variants && dish.variants.length > 0;
     const isMaster = Boolean(dish.isGroupMaster && hasVariants);
-    const displayImage = dish._activeVariantImage || dish.image;
-    const displayPrice = dish._activeVariantPrice || dish.price;
-    const priceRangeText = (isMaster && dish.displayPriceRange && !dish._activeVariantPrice) ? dish.displayPriceRange : (Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request');
+    const visibleVariants = hasVariants ? dish.variants.filter(v => !v.hidden) : [];
+    const selectedVariant = visibleVariants.find(v => v.name === dish._activeVariantName);
+    const displayImage = selectedVariant ? (selectedVariant.image || dish.image) : (dish._activeVariantImage || dish.image);
+    const displayPrice = selectedVariant ? selectedVariant.price : (isMaster ? dish.price : (dish._activeVariantPrice ?? dish.price));
+    const visiblePrices = visibleVariants.filter(v => Number.isFinite(v.price)).map(v => v.price);
+    const variantRange = !visiblePrices.length ? 'Price on request' : visiblePrices.length < visibleVariants.length ? `From ₹${Math.min(...visiblePrices)}` : (Math.min(...visiblePrices) === Math.max(...visiblePrices) ? `₹${Math.min(...visiblePrices)}` : `₹${Math.min(...visiblePrices)} – ₹${Math.max(...visiblePrices)}`);
+    const priceRangeText = isMaster && !selectedVariant ? variantRange : (Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request');
     const hasPhoto = displayImage && displayImage.trim() !== '';
 
     let dishTitleHtml = dish.name;
@@ -2368,12 +2373,13 @@ class HotelPremierApp {
           <div class="dish-banner-bottom">
             ${isMaster ? `
               <div class="dish-card-variant-chips" onclick="event.stopPropagation()">
-                ${dish.variants.map((v, vIdx) => {
+                ${dish.variants.filter(v => !v.hidden).map(v => {
+                  const vIdx = dish.variants.indexOf(v);
                   const vChipName = (this.currentLang === 'hi' && v.hindiName) ? v.hindiName : ((this.currentLang === 'mr' && (v.marathiName || v.hindiName)) ? (v.marathiName || v.hindiName) : v.name);
                   return `
-                    <button type="button" class="dish-card-chip" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}', ${vIdx})" title="${v.name} - ₹${v.price}">
+                    <button type="button" class="dish-card-chip" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}', ${vIdx})" title="${v.name} - ${Number.isFinite(v.price) ? `₹${v.price}` : 'Price on request'}">
                       <span class="chip-name">${vChipName}</span>
-                      <span class="chip-price">₹${v.price}</span>
+                      <span class="chip-price">${Number.isFinite(v.price) ? `₹${v.price}` : 'Price on request'}</span>
                     </button>
                   `;
                 }).join('')}
@@ -4908,8 +4914,8 @@ class HotelPremierApp {
     }
 
     this.saveGuestProfile({ name, phone: cleanPhone, region, tableOrRoom });
-    alert('Your Hotel Premier Concierge Profile has been updated securely!');
     this.closeGuestProfileModal();
+    this.showToast('Guest details saved in this browser.', 'success');
   }
 
   clearGuestProfile() {

@@ -31,22 +31,27 @@ const admin=Object.create(c.window.Admin.prototype);admin.generateTableQR();cons
 const html=fs.readFileSync('index.html','utf8');assert.match(html,/Birthday Parties/);assert.match(html,/Other Special Events/);assert.match(html,/Restaurant space only/);assert.doesNotMatch(html,/Smart LED TV|Pets and unmarried couples are not allowed/);assert.equal(html,fs.readFileSync('404.html','utf8'));
 // Exercise the actual editor controls against an isolated test DOM, never production guest data.
 class Element {
-  constructor(tag){this.tagName=tag.toUpperCase();this.children=[];this.events={};this.textContent='';this._value='';}
+  constructor(tag){this.tagName=tag.toUpperCase();this.children=[];this.events={};this.textContent='';this._value='';this.dataset={};this.open=false;}
   append(...children){this.children.push(...children);} replaceChildren(...children){this.children=children;}
   addEventListener(type,fn){this.events[type]=fn;}setAttribute(name,value){this[name]=value;}
+  querySelectorAll(){return walk(this).filter(n=>n!==this&&n.tagName==='DETAILS'&&n.open&&n.dataset.menuKey);}
+  closest(){return this.scrollParent || null;}
   set value(value){this._value=String(value);}get value(){return this.tagName==='SELECT'&&!this.children.some(n=>n.value===this._value)?'':this._value;}
 }
 c.document.createElement=tag=>new Element(tag);c.crypto=require('node:crypto').webcrypto;let answer='';c.prompt=()=>answer;c.confirm=()=>true;
 const walk=n=>[n,...n.children.flatMap(walk)];
-const host=new Element('div');app.menuData=[];app.categories=[];
+const host=new Element('div');host.scrollParent={scrollTop:410};app.menuData=[];app.categories=[];
 manager.saveDraft({version:1,categories:[{id:'a',name:'Alpha'},{id:'b',name:'Beta'}],subcategories:{a:[{id:'all',name:'All items'}],b:[{id:'all',name:'All items'}]},items:{},order:[]},app);
 const click=label=>{const b=walk(host).find(n=>n.tagName==='BUTTON'&&n.textContent===label);assert.ok(b,label);b.events.click();};
 const openSection=name=>{const section=walk(host).find(n=>n.tagName==='DETAILS'&&n.children[0]?.textContent===name);assert.ok(section,name);section.open=true;section.events.toggle?.();};
-manager.render(host);answer='Gamma';click('Add section');assert.equal(app.categories.at(-1).name,'Gamma');
+manager.render(host);host.children[0].open=true;answer='Gamma';click('Add section');assert.equal(app.categories.at(-1).name,'Gamma');
 openSection('Gamma');answer='New sub-section';click('Add sub-section');
 assert.equal(c.window.HOTEL_PREMIER_SUB_CATEGORIES[app.categories.at(-1).id][1].name,'New sub-section');
 openSection('Gamma');answer='New item';click('Add item');assert.equal(app.menuData.at(-1).name,'New item');
-openSection('Gamma');const nameField=walk(host).find(n=>n.tagName==='LABEL'&&n.children[0]?.textContent==='Item name');nameField.children[1].value='Edited item';click('Save item & options');assert.equal(app.menuData.at(-1).name,'Edited item');
+openSection('Gamma');const itemEditor=walk(host).find(n=>n.tagName==='DETAILS'&&n.children[0]?.textContent==='New item');itemEditor.open=true;const nameField=walk(host).find(n=>n.tagName==='LABEL'&&n.children[0]?.textContent==='Item name');nameField.children[1].value='Edited item';click('Save item & options');assert.equal(app.menuData.at(-1).name,'Edited item');
+assert.equal(walk(host).find(n=>n.tagName==='DETAILS'&&n.children[0]?.textContent==='Edited item').open,true,'Saving must retain the open item even after renaming');
+assert.equal(walk(host).find(n=>n.tagName==='DETAILS'&&n.children[0]?.textContent==='Gamma').open,true);
+assert.equal(host.children[0].open,true);assert.equal(host.scrollParent.scrollTop,410);
 openSection('Gamma');answer='Extra option';click('Add option');assert.equal(app.menuData.at(-1).variants[0].name,'Extra option');
 openSection('Gamma');click('Delete option');assert.equal(app.menuData.at(-1).variants.length,0);
 openSection('Gamma');click('Delete item');assert.equal(app.menuData.length,0);
