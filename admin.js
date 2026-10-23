@@ -1822,7 +1822,7 @@ class HotelPremierAdmin {
                 </div>
                 <div>
                   <label class="form-label">Min Rooms</label>
-                  <input type="number" id="bulk-deal-min-${idx}" value="${deal.minRooms}" class="form-input" style="padding: 6px 10px; font-size: 0.82rem;">
+                  <input type="number" id="bulk-deal-min-${idx}" value="${deal.minRooms}" min="1" max="12" step="1" class="form-input" style="padding: 6px 10px; font-size: 0.82rem;">
                 </div>
               </div>
               <div style="margin-bottom: 8px;">
@@ -2163,6 +2163,7 @@ class HotelPremierAdmin {
   }
 
   getBulkDeals() {
+    if (window.app?.getBulkDeals) return window.app.getBulkDeals();
     try {
       const saved = localStorage.getItem('hotel_premier_bulk_deals_override');
       if (saved) return JSON.parse(saved);
@@ -2189,6 +2190,11 @@ class HotelPremierAdmin {
         deal.perks = perksEl.value.split('\n').map(p => p.trim()).filter(p => p.length > 0);
       }
     });
+
+    if (deals.some(deal => !Number.isInteger(deal.minRooms) || deal.minRooms < 1 || deal.minRooms > 12 || /(?:all\s*14|full.property\s*buyout|10\s*[–-]\s*13|100%.*privacy)/i.test([deal.name,deal.badge,...(deal.perks || [])].join(' ')))) {
+      window.app.showToast('Group accommodation is limited to 12 rooms and 36 guests, not a full-property buyout. Please correct the tier details.','warning');
+      return;
+    }
 
     localStorage.setItem('hotel_premier_bulk_deals_override', JSON.stringify(deals));
     if (window.app) {

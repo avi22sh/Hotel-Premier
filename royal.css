@@ -582,6 +582,21 @@ body.theme-dark .guest-network-dialog { background:var(--crystal-surface),#24263
 @media(max-width:700px) { .celebration-options { grid-template-columns:1fr; } #section-tariffs .tariff-extra-bed-banner { grid-template-columns:1fr; } }
 @media(max-width:480px) { #section-tariffs .tariff-guarantees-grid { grid-template-columns:1fr; } .restaurant-event-panel { padding:16px; } .restaurant-event-panel .enquiry-grid { grid-template-columns:1fr; gap:0; } }
 .guest-utility-sheet { max-height:calc(100dvh - 32px); overflow:hidden; color:var(--crystal-ink); }
+.event-preferences { margin:16px 0; border-top:1px solid var(--crystal-edge); padding-top:14px; }
+.event-preferences summary { min-height:44px; cursor:pointer; color:var(--crystal-ink); }
+.event-preferences label { display:grid; gap:8px; margin:12px 0; }
+#section-celebrate :is(input,select,textarea) { font-size:16px; min-height:46px; min-width:0; }
+#group-stay-enquiry .form-group { min-width:0; }
+#group-stay-enquiry :is(small,.enquiry-help) { display:block; line-height:1.65; color:var(--crystal-muted); margin-top:8px; }
+#group-stay-enquiry #group-stay-validation { font-size:.9rem; line-height:1.7; color:var(--crystal-ink); margin-bottom:14px; }
+#group-stay-enquiry .summary-row { gap:14px; align-items:flex-start; }
+#group-stay-enquiry .summary-row > :last-child { text-align:right; overflow-wrap:anywhere; }
+#group-stay-enquiry button:disabled { opacity:.5; cursor:not-allowed; }
+#section-celebrate .celebrate-subtitle { max-width:760px; margin-inline:auto; line-height:1.8; }
+.direct-booking-privilege-card .privilege-saving { font-size:.8rem; font-weight:600; background:transparent; box-shadow:none; }
+.direct-booking-privilege-card .privilege-pill { font-size:.7rem; letter-spacing:.08em; background:transparent; border:0; padding:0; }
+@media(max-width:600px) { #group-stay-enquiry { padding:18px!important; } #group-stay-enquiry .summary-grand-row { flex-wrap:wrap; gap:14px; } #group-stay-enquiry .summary-grand-row strong { margin-left:auto; } }
+@media(prefers-reduced-motion:reduce) { #section-celebrate *,#section-stay *,#section-home * { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
 .guest-utility-sheet .modal-header { padding:14px 18px; border-bottom:1px solid var(--crystal-edge); }
 .guest-utility-sheet .modal-body { flex:1 1 auto; overflow-y:auto; padding:20px; }
 .guest-utility-sheet :is(.guest-utility-help,.route-picker-desc) { font-size:.85rem; line-height:1.65; color:var(--crystal-muted); margin:0 0 20px; }

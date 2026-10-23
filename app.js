@@ -537,7 +537,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.76';
+    s.src = 'admin.js?v=21.77';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -3134,13 +3134,11 @@ class HotelPremierApp {
 
   // ==================== 3. BULK BOOKING & CALCULATOR ENGINE (14 ROOMS PROPERTY) ====================
   getBulkDeals() {
+    const defaults = window.HOTEL_PREMIER_HOTEL_DATA?.bulkMarriageDeals || [];
     try {
-      const saved = localStorage.getItem('hotel_premier_bulk_deals_override');
-      if (saved) return JSON.parse(saved);
-    } catch (e) {}
-    return (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.bulkMarriageDeals)
-      ? JSON.parse(JSON.stringify(window.HOTEL_PREMIER_HOTEL_DATA.bulkMarriageDeals))
-      : [];
+      const saved = JSON.parse(localStorage.getItem('hotel_premier_bulk_deals_override') || 'null');
+      return JSON.parse(JSON.stringify(window.HotelGroupStays ? window.HotelGroupStays.deals(saved, defaults) : defaults));
+    } catch (_) { return JSON.parse(JSON.stringify(defaults)); }
   }
 
   renderBulkDealsSection() {
@@ -3148,173 +3146,87 @@ class HotelPremierApp {
     if (!container) return;
 
     const deals = this.getBulkDeals();
+    const escape = value => String(value || '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
     container.innerHTML = deals.map((deal, idx) => `
       <div class="bulk-tier-card ${idx === deals.length - 1 ? 'featured' : ''}">
-        ${idx === deals.length - 1 ? '<div class="tier-badge-popular">👑 EXCLUSIVE FULL BUYOUT</div>' : ''}
-        <div class="tier-tag">${deal.badge || `${deal.minRooms}+ ROOMS`}</div>
-        <h4 class="tier-name">${deal.name}</h4>
+        <div class="tier-tag">${escape(deal.badge || `${deal.minRooms}+ ROOMS`)}</div>
+        <h4 class="tier-name">${escape(deal.name)}</h4>
         <div class="tier-privilege-label" style="font-size: 0.86rem; color: var(--burgundy-primary); font-weight: 700; margin: 8px 0 12px; line-height: 1.4;">
-          ${deal.privilege || 'Complimentary Group Privilege'}
+          ${escape(deal.privilege || 'Availability confirmed by our team')}
         </div>
         <ul class="tier-perks">
-          ${(deal.perks || []).map(p => `<li>✦ ${p}</li>`).join('')}
+          ${(deal.perks || []).map(p => `<li>${escape(p)}</li>`).join('')}
         </ul>
       </div>
     `).join('');
   }
 
   calculateBulkQuote() {
-    const roomTypeSelect = document.getElementById('calc-room-type');
-    const roomsInput = document.getElementById('calc-rooms-number');
-    const nightsSelect = document.getElementById('calc-num-nights');
-    const planRadios = document.getElementsByName('calc-plan');
-    const extraBedsInput = document.getElementById('calc-extra-beds');
-
-    if (!roomTypeSelect || !roomsInput || !nightsSelect) return;
-
-    const roomType = roomTypeSelect.value;
-    let numRooms = parseInt(roomsInput.value) || 14;
-    if (numRooms > 14) numRooms = 14;
-    const numNights = parseInt(nightsSelect.value) || 1;
-
-    let numExtraBeds = parseInt(extraBedsInput ? extraBedsInput.value : 0) || 0;
-    if (numExtraBeds < 0) numExtraBeds = 0;
-    if (numExtraBeds > 26) numExtraBeds = 26;
-    if (extraBedsInput) extraBedsInput.value = numExtraBeds;
-
-    let plan = 'CP';
-    planRadios.forEach(r => {
-      if (r.checked) plan = r.value;
-    });
-
-    let baseRoomRegular = 0;
-
-    if (roomType === 'full-14') {
-      numRooms = 14;
-      document.getElementById('calc-rooms-number').value = 14;
-      const superDeluxeTotal = 2 * (plan === 'CP' ? 3000 : 2600);
-      const deluxeTotal = 12 * (plan === 'CP' ? 2700 : 2400);
-      baseRoomRegular = (superDeluxeTotal + deluxeTotal) * numNights;
-    } else if (roomType === 'super-2') {
-      if (numRooms > 2) numRooms = 2;
-      document.getElementById('calc-rooms-number').value = numRooms;
-      const rate = plan === 'CP' ? 3000 : 2600;
-      baseRoomRegular = rate * numRooms * numNights;
-    } else if (roomType === 'queen-4') {
-      if (numRooms > 4) numRooms = 4;
-      document.getElementById('calc-rooms-number').value = numRooms;
-      const rate = plan === 'CP' ? 2700 : 2400;
-      baseRoomRegular = rate * numRooms * numNights;
-    } else if (roomType === 'twin-8') {
-      if (numRooms > 8) numRooms = 8;
-      document.getElementById('calc-rooms-number').value = numRooms;
-      const rate = plan === 'CP' ? 2700 : 2400;
-      baseRoomRegular = rate * numRooms * numNights;
-    } else {
-      const rate = plan === 'CP' ? 2700 : 2400;
-      baseRoomRegular = rate * numRooms * numNights;
-    }
-
-    // Extra Bed Calculation @ Rs 300 per bed per night
-    const extraBedRate = 300;
-    const extraBedCost = numExtraBeds * extraBedRate * numNights;
-    const totalRegular = baseRoomRegular + extraBedCost;
-
-    const activeDeals = this.getBulkDeals().sort((a, b) => b.minRooms - a.minRooms);
-    let matchedDeal = activeDeals.find(d => numRooms >= d.minRooms);
-    const privilegeTier = matchedDeal ? matchedDeal.name : (numRooms >= 5 ? 'Group Stay Privilege' : 'Published Tariff Standard');
-
-    const regPriceEl = document.getElementById('quote-regular-price');
-    const discTagEl = document.getElementById('quote-discount-tag');
-    const savingsEl = document.getElementById('quote-savings-amount');
-    const finalPriceEl = document.getElementById('quote-final-price');
-
-    const extraBedRowEl = document.getElementById('quote-extra-bed-row');
-    const extraBedCountEl = document.getElementById('quote-extra-bed-count');
-    const extraBedAmountEl = document.getElementById('quote-extra-bed-amount');
-
-    if (regPriceEl) regPriceEl.innerText = `₹ ${totalRegular.toLocaleString('en-IN')}/-`;
-    if (discTagEl) discTagEl.innerText = `✨ ${privilegeTier}`;
-    if (savingsEl) savingsEl.innerText = `Perks Included`;
-    if (finalPriceEl) finalPriceEl.innerText = `₹ ${totalRegular.toLocaleString('en-IN')}/-`;
-
-    if (extraBedRowEl && extraBedCountEl && extraBedAmountEl) {
-      if (numExtraBeds > 0) {
-        extraBedRowEl.style.display = 'flex';
-        extraBedCountEl.innerText = numExtraBeds;
-        extraBedAmountEl.innerText = `+ ₹ ${extraBedCost.toLocaleString('en-IN')}/-`;
-      } else {
-        extraBedRowEl.style.display = 'none';
+    const get = id => document.getElementById(id);
+    if (!get('calc-room-type') || !window.HotelGroupStays) return;
+    this.latestQuote = null;
+    try {
+      const q = window.HotelGroupStays.estimate({
+        type:get('calc-room-type').value, rooms:get('calc-rooms-number').value,
+        guests:get('calc-guests').value, nights:get('calc-num-nights').value,
+        plan:get('calc-plan-select').value, paidBeds:get('calc-extra-beds').value,
+        childBeds:get('calc-child-beds').value
+      }, window.HOTEL_PREMIER_HOTEL_DATA.roomCategories);
+      for (const id of ['calc-rooms-number','calc-rooms-slider']) {
+        const el = get(id); el.min=q.minRooms; el.max=q.maxRooms; el.value=q.rooms; el.disabled=q.minRooms===q.maxRooms;
       }
+      get('calc-guests').min=q.rooms; get('calc-guests').max=q.maxGuests; get('calc-guests').value=q.guests;
+      get('calc-extra-beds').max=q.maxBeds-q.childBeds; get('calc-extra-beds').value=q.paidBeds;
+      get('calc-child-beds').max=q.maxBeds-q.paidBeds; get('calc-child-beds').value=q.childBeds;
+      if (get('calc-extra-bed-label')) get('calc-extra-bed-label').textContent='Chargeable extra beds (₹'+q.extraBedRate+'/night)';
+      const money = amount => '₹ '+amount.toLocaleString('en-IN')+'/-';
+      get('quote-regular-price').innerText = q.valid ? money(q.baseRoomPrice) : '—';
+      get('quote-final-price').innerText = q.valid ? money(q.finalPrice) : '—';
+      const tier = this.getBulkDeals().slice().sort((a,b)=>b.minRooms-a.minRooms).find(d=>q.rooms>=d.minRooms);
+      get('quote-discount-tag').innerText = tier?.name || 'Published room tariffs';
+      get('quote-extra-bed-row').style.display=q.paidBeds ? 'flex':'none';
+      get('quote-extra-bed-count').innerText=q.paidBeds;
+      get('quote-extra-bed-amount').innerText=money(q.extraBedCost);
+      get('group-stay-validation').textContent=q.error || (q.rooms+' rooms · '+q.guests+' guests including children · '+q.nights+' night(s). Availability and exact room allocation require staff confirmation.');
+      get('group-stay-send').disabled=!q.valid;
+      if (q.valid) this.latestQuote = {
+        ...q, extraBeds:q.paidBeds, regularPrice:q.finalPrice,
+        roomType:get('calc-room-type').options[get('calc-room-type').selectedIndex].text,
+        eventType:get('calc-event-type').value, privilegeTier:tier?.name || 'Published room tariffs'
+      };
+      return this.latestQuote;
+    } catch (_) {
+      get('group-stay-validation').textContent='This estimate needs staff confirmation. Please contact reception.';
+      get('group-stay-send').disabled=true;
     }
-
-    this.latestQuote = {
-      roomType: roomTypeSelect.options[roomTypeSelect.selectedIndex].text,
-      rooms: numRooms,
-      extraBeds: numExtraBeds,
-      extraBedCost: extraBedCost,
-      nights: numNights,
-      plan: plan === 'CP' ? 'CP — Breakfast from a fixed menu; Terms & conditions apply. Speak to our staff for details.' : 'Room Only (RO)',
-      eventType: document.getElementById('calc-event-type') ? document.getElementById('calc-event-type').value : 'Group Stay / Event',
-      baseRoomPrice: baseRoomRegular,
-      regularPrice: totalRegular,
-      privilegeTier: privilegeTier,
-      finalPrice: totalRegular
-    };
   }
 
   sendBulkWhatsAppInquiry() {
-    if (!this.latestQuote) {
-      this.calculateBulkQuote();
+    // Always recalculate: stale previews must not bypass current policy limits.
+    const q = this.calculateBulkQuote();
+    if (!q?.valid || q.rooms>12 || q.guests>36) return;
+    const name = document.getElementById('calc-bulk-guest-name').value.trim();
+    const rawPhone = document.getElementById('calc-bulk-guest-phone').value.trim();
+    const phone = this.sanitizeIndianMobile(rawPhone);
+    if (rawPhone && !this.isValidIndianMobile(phone)) {
+      this.showToast('Please enter a valid organizer mobile number.','warning');
+      document.getElementById('calc-bulk-guest-phone').focus(); return;
     }
-
-    const q = this.latestQuote;
-    const extraBedsLine = (q.extraBeds > 0)
-      ? `🛏️ *Extra Beds:* ${q.extraBeds} Bed(s) @ ₹300/night (+ ₹ ${q.extraBedCost.toLocaleString('en-IN')}/-)%0A`
-      : '';
-
-    const bulkNameEl = document.getElementById('calc-bulk-guest-name');
-    const bulkPhoneEl = document.getElementById('calc-bulk-guest-phone');
-    const bulkName = bulkNameEl?.value.trim() || '';
-    const rawBulkPhone = bulkPhoneEl?.value.trim() || '';
-    const cleanBulkPhone = this.sanitizeIndianMobile(rawBulkPhone);
-
-    if (rawBulkPhone && !this.isValidIndianMobile(cleanBulkPhone)) {
-      alert('Please enter a valid 10-digit WhatsApp/mobile number for the organizer (e.g., 9876543210).');
-      if (bulkPhoneEl) {
-        bulkPhoneEl.value = cleanBulkPhone;
-        bulkPhoneEl.focus();
-      }
-      return;
-    }
-
-    if (cleanBulkPhone && bulkPhoneEl) {
-      bulkPhoneEl.value = cleanBulkPhone;
-    }
-
-    if (bulkName || cleanBulkPhone) {
-      this.saveGuestProfile({ name: bulkName, phone: cleanBulkPhone });
-    }
-    const guestContactLine = (bulkName || cleanBulkPhone)
-      ? `👤 *Organizer:* ${encodeURIComponent(bulkName || 'Guest')} (${encodeURIComponent(cleanBulkPhone || 'Not provided')})%0A`
-      : '';
-
-    const msg = `*HOTEL PREMIER BHUSAWAL - GROUP STAY INQUIRY*%0A` +
-      `---------------------------------------%0A` +
-      guestContactLine +
-      `🏨 *Stay Purpose:* ${encodeURIComponent(q.eventType)}%0A` +
-      `🛏️ *Room Category:* ${encodeURIComponent(q.roomType)}%0A` +
-      `🔢 *Number of Rooms:* ${q.rooms} Rooms (Total 14 Available)%0A` +
-      extraBedsLine +
-      `🌙 *Duration of Stay:* ${q.nights} Night(s)%0A` +
-      `🍽️ *Meal Plan:* ${encodeURIComponent(q.plan)}%0A` +
-      `✨ *Privilege Tier:* ${encodeURIComponent(q.privilegeTier)}%0A` +
-      `💰 *Estimated Published Tariff:* ₹ ${q.regularPrice.toLocaleString('en-IN')}/-%0A` +
-      `---------------------------------------%0A` +
-      `Hello Hotel Premier Front Desk, please confirm our reservation and privilege perks!`;
-
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=919325375802&text=${msg}`;
-    window.open(whatsappUrl, '_blank');
+    const message = [
+      'HOTEL PREMIER — GROUP STAY ENQUIRY',
+      name ? 'Organizer: '+name : '', phone ? 'Mobile: '+phone : '',
+      'Purpose: '+q.eventType, 'Collection: '+q.roomType,
+      'Rooms: '+q.rooms+' (maximum group allocation: 12)',
+      'Guests including children: '+q.guests+' (maximum: 36)',
+      'Nights: '+q.nights,
+      'Meal plan: '+(q.plan==='CP' ? 'CP — fixed-menu breakfast. Terms & conditions apply. Speak to our staff for details.' : 'Room only (RO)'),
+      'Chargeable extra beds: '+q.paidBeds+' at ₹'+q.extraBedRate+'/bed/night',
+      'Complimentary child beds (ages 5–10 inclusive): '+q.childBeds+'; meals to be confirmed separately',
+      'Estimate: ₹'+q.finalPrice.toLocaleString('en-IN')+' using published double-occupancy room tariffs',
+      'Please check availability, room allocation and final charges. This is an enquiry, not a confirmed booking.'
+    ].filter(Boolean).join('\n');
+    window.open('https://wa.me/919325375802?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+    this.showToast('Review the enquiry in WhatsApp, then send it to reception.','info');
   }
 
   // ==================== RESTAURANT EVENTS, PARTY PACKAGES & LUNCH BUYOUT ====================
@@ -4643,7 +4555,10 @@ class HotelPremierApp {
     const panel = document.getElementById('restaurant-event-enquiry');
     if (!panel) return;
     panel.open = true;
-    document.getElementById('restaurant-event-type').value = type;
+    const occasion = document.getElementById('restaurant-event-type');
+    const aliases = { 'Birthday Parties':'Birthday Celebration', 'Other Special Events':'Special Occasion / Other' };
+    occasion.value = aliases[type] || type;
+    if (!occasion.value) occasion.selectedIndex = 0;
     const date = document.getElementById('restaurant-event-date');
     date.min = this.hotelToday();
     const profile = this.getGuestProfile();
@@ -4660,8 +4575,11 @@ class HotelPremierApp {
     if (value('date') < this.hotelToday()) { alert('Please choose today or a future date.'); return; }
     const phone = this.sanitizeIndianMobile(value('phone'));
     if (!this.isValidIndianMobile(phone)) { alert('Please enter a valid 10-digit mobile number.'); return; }
-    const message = `HOTEL PREMIER — RESTAURANT EVENT ENQUIRY\nOccasion: ${value('type')}\nVenue: Inside Pride Pure Veg AC Restaurant only\nPreferred date: ${value('date')}\nPreferred time: ${this.formatArrivalTime(value('time'))}\nGuests: ${value('guests')}\nName: ${value('name')}\nMobile: ${phone}\nRequests: ${value('notes') || 'None specified'}\nPlease confirm restaurant availability, menu, setup and final charges. This is an enquiry, not a confirmed booking.`;
+    const guests = Number(value('guests'));
+    if (!Number.isInteger(guests) || guests < 1 || guests > 40 || !this.formatArrivalTime(value('time'))) { this.showToast('Please check the guest count and preferred time.','warning'); return; }
+    const message = `HOTEL PREMIER — RESTAURANT EVENT ENQUIRY\nOccasion: ${value('type')}\nVenue: Inside Pride Pure Veg AC Restaurant only\nPreferred date: ${value('date')}\nPreferred time: ${this.formatArrivalTime(value('time'))}\nGuests: ${guests} (restaurant maximum: 40)\nName: ${value('name')}\nMobile: ${phone}\nFood preferences: ${value('food') || 'To be discussed'}\nRequests: ${value('notes') || 'None specified'}\nPlease confirm restaurant availability, menu, setup and final charges. This is an enquiry, not a confirmed booking.`;
     window.open(`https://wa.me/919325375802?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    this.showToast('Review the restaurant enquiry in WhatsApp, then send it to our team.','info');
   }
 
   formatArrivalTime(value) {

@@ -96,7 +96,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       marathiName: 'प्रीमियर रॉयल किंग',
       bedType: 'King Size Luxury Bed',
       inventoryCount: '2 Rooms Only',
-      bedDetail: '👑 King Bed (Total 2 Rooms)',
+      bedDetail: ' King Bed (Total 2 Rooms)',
       image: 'assets/hotel-images/s-dlx-suite-master-angle.jpg',
       images: [
         'assets/hotel-images/s-dlx-suite-master-angle.jpg',
@@ -111,22 +111,22 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'assets/hotel-images/s-dlx-washroom-sanitized-1.jpg',
         'assets/hotel-images/s-dlx-washroom-sanitized-2.jpg'
       ],
-      description: 'A 172 sq.ft air-conditioned King room with a private balcony. Of the two rooms, one has a front road-facing balcony and one has a rear-facing balcony; allocation is subject to availability. Includes a complimentary welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Pride Pure Veg room service: 7:30 AM – 10:30 PM.',
+      description: 'A 172 sq.ft air-conditioned King room with a private balcony. Of the two rooms, one has a front road-facing balcony and one has a rear-facing balcony; allocation is subject to availability. Includes a one-time complimentary welcome snacks basket per stay, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Pride Pure Veg room service: 7:30 AM – 10:30 PM.',
     extraBedRate: 300,
       maxExtraBeds: 3,
       extraBedDetail: 'Accommodates 2 to 3 Extra Beds (₹300/bed)',
       features: [
-        '👑 King Size Luxury Bed',
-        '🏢 Total 2 Exclusive Rooms in Hotel',
-        '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 2 Complimentary Packaged Mineral Water Bottles',
-        '☕ Electric Kettle & 2 Complimentary Premix Teas',
-        '🍪 Complimentary Welcome Snacks Basket',
-        '🧼 Complimentary Toiletries',
-        '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Large Screen LED TV with Cable Connection & Free Wi-Fi',
-        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
-        '🛏️ Can Accommodate 2–3 Extra Beds (₹300/bed)'
+        ' King Size Luxury Bed',
+        ' Total 2 Exclusive Rooms in Hotel',
+        ' Silent Split Air Conditioning (Split AC)',
+        ' 2 Complimentary Packaged Mineral Water Bottles',
+        ' Electric Kettle & 2 Complimentary Premix Teas',
+        ' Complimentary Welcome Snacks Basket',
+        ' Complimentary Toiletries',
+        ' 24x7 Geyser Hot Water & Fresh Towels',
+        ' Large Screen LED TV with Cable Connection & Free Wi-Fi',
+        ' Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
+        ' Can Accommodate 2–3 Extra Beds (₹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 2400, withBreakfast: 2600 },
@@ -143,7 +143,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       marathiName: 'प्रीमियर सिग्नेचर क्वीन',
       bedType: 'Queen Size Bed',
       inventoryCount: '4 Rooms Available',
-      bedDetail: '🛏️ Queen Bed (Total 4 Rooms)',
+      bedDetail: ' Queen Bed (Total 4 Rooms)',
       image: 'assets/hotel-images/dlx-queen-corner-wide.jpg',
       images: [
         'assets/hotel-images/dlx-queen-corner-wide.jpg',
@@ -155,22 +155,22 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'assets/hotel-images/dlx-washroom-sanitized-1.jpg',
         'assets/hotel-images/dlx-washroom-sanitized-2.jpg'
       ],
-      description: 'A thoughtfully appointed 144 sq.ft air-conditioned Queen room. Includes a complimentary welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Four rooms available in the hotel.',
+      description: 'A thoughtfully appointed 144 sq.ft air-conditioned Queen room. Includes a one-time complimentary welcome snacks basket per stay, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Four rooms available in the hotel.',
       extraBedRate: 300,
       maxExtraBeds: 1,
       extraBedDetail: 'Accommodates 1 Extra Bed (₹300/bed)',
       features: [
-        '🛏️ Queen Size Bed',
-        '🏢 Total 4 Rooms in Hotel',
-        '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 2 Complimentary Packaged Mineral Water Bottles',
-        '☕ Electric Kettle & 2 Complimentary Premix Teas',
-        '🍪 Complimentary Welcome Snacks Basket',
-        '🧼 Complimentary Toiletries',
-        '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Flat Screen LED TV with Cable Connection & Free Wi-Fi',
-        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
-        '🛏️ Can Accommodate 1 Extra Bed (₹300/bed)'
+        ' Queen Size Bed',
+        ' Total 4 Rooms in Hotel',
+        ' Silent Split Air Conditioning (Split AC)',
+        ' 2 Complimentary Packaged Mineral Water Bottles',
+        ' Electric Kettle & 2 Complimentary Premix Teas',
+        ' Complimentary Welcome Snacks Basket',
+        ' Complimentary Toiletries',
+        ' 24x7 Geyser Hot Water & Fresh Towels',
+        ' Flat Screen LED TV with Cable Connection & Free Wi-Fi',
+        ' Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
+        ' Can Accommodate 1 Extra Bed (₹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 2100, withBreakfast: 2300 },
@@ -187,7 +187,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       marathiName: 'प्रीमियर कम्पैनियन ट्विन',
       bedType: 'Twin Single Beds (2 Separate Beds)',
       inventoryCount: '8 Rooms Available',
-      bedDetail: '🛏️🛏️ Twin Beds (Total 8 Rooms)',
+      bedDetail: ' Twin Beds (Total 8 Rooms)',
       image: 'assets/hotel-images/dlx-twin-beds-wide-angle.jpg',
       images: [
         'assets/hotel-images/dlx-twin-beds-wide-angle.jpg',
@@ -195,22 +195,22 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         'assets/hotel-images/dlx-washroom-sanitized-1.jpg',
         'assets/hotel-images/dlx-washroom-sanitized-2.jpg'
       ],
-      description: 'A comfortable 144 sq.ft air-conditioned room with two separate single beds for friends, colleagues or family travelling together. Includes a complimentary welcome snacks basket, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Eight rooms available in the hotel.',
+      description: 'A comfortable 144 sq.ft air-conditioned room with two separate single beds for friends, colleagues or family travelling together. Includes a one-time complimentary welcome snacks basket per stay, 2 premix teas, 2 packaged mineral water bottles, an electric kettle and toiletries. Eight rooms available in the hotel.',
       extraBedRate: 300,
       maxExtraBeds: 2,
       extraBedDetail: 'Accommodates 2 Extra Beds (₹300/bed)',
       features: [
-        '🛏️🛏️ 2 Separate Single Beds',
-        '🏢 Total 8 Rooms in Hotel',
-        '❄️ Silent Split Air Conditioning (Split AC)',
-        '💧 2 Complimentary Packaged Mineral Water Bottles',
-        '☕ Electric Kettle & 2 Complimentary Premix Teas',
-        '🍪 Complimentary Welcome Snacks Basket',
-        '🧼 Complimentary Toiletries',
-        '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Flat Screen LED TV with Cable Connection & Free Wi-Fi',
-        '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
-        '🛏️ Can Accommodate 2 Extra Beds (₹300/bed)'
+        ' 2 Separate Single Beds',
+        ' Total 8 Rooms in Hotel',
+        ' Silent Split Air Conditioning (Split AC)',
+        ' 2 Complimentary Packaged Mineral Water Bottles',
+        ' Electric Kettle & 2 Complimentary Premix Teas',
+        ' Complimentary Welcome Snacks Basket',
+        ' Complimentary Toiletries',
+        ' 24x7 Geyser Hot Water & Fresh Towels',
+        ' Flat Screen LED TV with Cable Connection & Free Wi-Fi',
+        ' Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
+        ' Can Accommodate 2 Extra Beds (₹300/bed)'
       ],
       tariff: {
         single: { roomOnly: 2100, withBreakfast: 2300 },
@@ -222,55 +222,55 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
   ],
 
   hotelAmenities: [
-    { icon: '🌱', title: 'Pride Pure Veg Restaurant', desc: '100% pure vegetarian authentic North & South Indian, Khandeshi & Chinese dining.' },
-    { icon: '⏰', title: '24-Hour Check-Out (Direct Bookings Only)', desc: 'Enjoy maximum flexibility with full 24-hour stay calculated from your check-in time.' },
-    { icon: '🍽️', title: 'Room Service: 7:30 AM – 10:30 PM', desc: 'Prompt fresh kitchen room service from morning breakfast till late dinner. (Front Desk 24x7)' },
-    { icon: '🚗', title: 'Safe & Secure Parking', desc: 'Spacious on-premises parking for personal cars, wedding buses & tourist vehicles.' },
-    { icon: '📶', title: 'High-Speed Wi-Fi', desc: 'Seamless wireless internet access across all rooms and common areas.' },
-    { icon: '🛗', title: 'Elevator / Lift Access', desc: 'Senior-citizen and luggage friendly lift access to all room floors.' },
-    { icon: '⚡', title: '100% Power Generator Backup', desc: 'Uninterrupted power supply for continuous AC, lighting and hot water.' },
-    { icon: '🚆', title: 'Prime Location Connectivity', desc: 'Just 15 mins from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
+    { icon: '', title: 'Pride Pure Veg Restaurant', desc: '100% pure vegetarian authentic North & South Indian, Khandeshi & Chinese dining.' },
+    { icon: '', title: '24-Hour Check-Out (Direct Bookings Only)', desc: 'Enjoy maximum flexibility with full 24-hour stay calculated from your check-in time.' },
+    { icon: '', title: 'Room Service: 7:30 AM – 10:30 PM', desc: 'Prompt fresh kitchen room service from morning breakfast till late dinner. (Front Desk 24x7)' },
+    { icon: '', title: 'Safe & Secure Parking', desc: 'Spacious on-premises parking for personal cars, wedding buses & tourist vehicles.' },
+    { icon: '', title: 'High-Speed Wi-Fi', desc: 'Seamless wireless internet access across all rooms and common areas.' },
+    { icon: '', title: 'Elevator / Lift Access', desc: 'Senior-citizen and luggage friendly lift access to all room floors.' },
+    { icon: '', title: '100% Power Generator Backup', desc: 'Uninterrupted power supply for continuous AC, lighting and hot water.' },
+    { icon: '', title: 'Prime Location Connectivity', desc: 'Just 15 mins from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
   ],
 
-  // Wedding Barat & Family Group Stay Privileges (Fully Editable via CMS)
+  // Group allocation is 12 rooms / 36 guests, separate from the 14-room property.
   bulkMarriageDeals: [
     {
       tierId: 'tier-5-9',
-      name: 'Silver Group Stay Privilege (5–9 Rooms)',
+      name: 'Family & Colleague Stays (5–9 Rooms)',
       discountPercent: 0,
       minRooms: 5,
-      badge: 'Silver Privilege • Early Check-In',
+      badge: 'Stay together',
       perks: [
-        'Priority Early Check-in for family elders',
-        'Complimentary Morning Chai & Coffee Station',
-        'Dedicated Floor Block for family unity',
-        'Flexible 24-Hour Check-Out (Direct Bookings Only) Guarantee'
+        'Published room tariffs with a clear group estimate',
+        'One-time welcome amenity set per stay',
+        'Room allocation confirmed by our reception team',
+        '24-hour checkout for direct bookings only'
       ]
     },
     {
       tierId: 'tier-10-13',
-      name: 'Gold Group Stay Privilege (10–13 Rooms)',
+      name: 'Larger Group Stays (10–11 Rooms)',
       discountPercent: 0,
       minRooms: 10,
-      badge: 'Gold Privilege • Free Chai Station & Floor Wing',
+      badge: 'A considered group welcome',
       perks: [
-        'Dedicated Floor Wing reserved for entire group',
-        'Complimentary Morning Chai & Filter Coffee station',
-        'Priority Luggage Handling & Transit Coordination',
-        'Flexible 24-Hour Check-Out (Direct Bookings Only) Guarantee'
+        'Premier Signature Queen & Companion Twin options',
+        'Pride Pure Veg restaurant dining enquiries',
+        'Up to 36 accommodation guests, within room limits',
+        'Availability and room mix confirmed before booking'
       ]
     },
     {
-      tierId: 'tier-full-14',
-      name: '👑 Platinum Property Buyout (All 14 Rooms)',
+      tierId: 'tier-group-12',
+      name: 'The Premier Group Collection (12 Rooms)',
       discountPercent: 0,
-      minRooms: 14,
-      badge: '👑 Platinum Buyout • 100% Hotel Privacy',
+      minRooms: 12,
+      badge: 'Our largest group allocation',
       perks: [
-        'Complete 100% Exclusive Hotel Premier Privacy',
-        '1 Complimentary Premier Royale King for Bride & Groom / Host',
-        'Dedicated Hotel Premier Hospitality Coordinator',
-        'Custom Pure Veg Restaurant Dining Coordination & Bus Parking'
+        '2 Premier Royale King rooms',
+        '10 rooms across Premier Signature Queen & Companion Twin',
+        'Maximum 36 accommodation guests including children',
+        'Not a full-property buyout; exact allocation subject to availability'
       ]
     }
   ],
