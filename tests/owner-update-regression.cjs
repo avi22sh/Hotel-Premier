@@ -29,4 +29,27 @@ c.document.getElementById=id=>qrFields[id];c.window.location={href:'https://avi2
 let qrUrl;c.window.QRCode=class{constructor(host,options){qrUrl=options.text;}};c.window.QRCode.CorrectLevel={H:1};c.QRCode=c.window.QRCode;
 const admin=Object.create(c.window.Admin.prototype);admin.generateTableQR();const url=new URL(qrUrl);assert.equal(url.hash,'#dine');assert.equal(url.searchParams.get('entry'),'menu');assert.equal(url.searchParams.get('section'),null);assert.equal(url.searchParams.get('src'),'Room 301');
 const html=fs.readFileSync('index.html','utf8');assert.match(html,/Birthday Parties/);assert.match(html,/Other Special Events/);assert.match(html,/Restaurant space only/);assert.doesNotMatch(html,/Smart LED TV|Pets and unmarried couples are not allowed/);assert.equal(html,fs.readFileSync('404.html','utf8'));
+// Exercise the actual editor controls against an isolated test DOM, never production guest data.
+class Element {
+  constructor(tag){this.tagName=tag.toUpperCase();this.children=[];this.events={};this.textContent='';this._value='';}
+  append(...children){this.children.push(...children);} replaceChildren(...children){this.children=children;}
+  addEventListener(type,fn){this.events[type]=fn;}setAttribute(name,value){this[name]=value;}
+  set value(value){this._value=String(value);}get value(){return this.tagName==='SELECT'&&!this.children.some(n=>n.value===this._value)?'':this._value;}
+}
+c.document.createElement=tag=>new Element(tag);c.crypto=require('node:crypto').webcrypto;let answer='';c.prompt=()=>answer;c.confirm=()=>true;
+const walk=n=>[n,...n.children.flatMap(walk)];
+const host=new Element('div');app.menuData=[];app.categories=[];
+manager.saveDraft({version:1,categories:[{id:'a',name:'Alpha'},{id:'b',name:'Beta'}],subcategories:{a:[{id:'all',name:'All items'}],b:[{id:'all',name:'All items'}]},items:{},order:[]},app);
+const click=label=>{const b=walk(host).find(n=>n.tagName==='BUTTON'&&n.textContent===label);assert.ok(b,label);b.events.click();};
+const openSection=name=>{const section=walk(host).find(n=>n.tagName==='DETAILS'&&n.children[0]?.textContent===name);assert.ok(section,name);section.open=true;section.events.toggle?.();};
+manager.render(host);answer='Gamma';click('Add section');assert.equal(app.categories.at(-1).name,'Gamma');
+openSection('Gamma');answer='New sub-section';click('Add sub-section');
+assert.equal(c.window.HOTEL_PREMIER_SUB_CATEGORIES[app.categories.at(-1).id][1].name,'New sub-section');
+openSection('Gamma');answer='New item';click('Add item');assert.equal(app.menuData.at(-1).name,'New item');
+openSection('Gamma');const nameField=walk(host).find(n=>n.tagName==='LABEL'&&n.children[0]?.textContent==='Item name');nameField.children[1].value='Edited item';click('Save item & options');assert.equal(app.menuData.at(-1).name,'Edited item');
+openSection('Gamma');answer='Extra option';click('Add option');assert.equal(app.menuData.at(-1).variants[0].name,'Extra option');
+openSection('Gamma');click('Delete option');assert.equal(app.menuData.at(-1).variants.length,0);
+openSection('Gamma');click('Delete item');assert.equal(app.menuData.length,0);
+openSection('Gamma');click('Delete sub-section');assert.equal(c.window.HOTEL_PREMIER_SUB_CATEGORIES[app.categories.at(-1).id].length,1);
+openSection('Gamma');click('Delete section');assert.equal(app.categories.length,2);
 console.log('PASS: authenticated menu CRUD, sequencing, reload, storage failure, individual favourites, QR routing and restaurant-only events');
