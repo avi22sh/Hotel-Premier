@@ -1,0 +1,43 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const nodes={};let timers=[],reads=[],renders=[],saves=0;
+const c={window:{},console,setTimeout(fn){timers.push(fn);return timers.length;},clearTimeout(){},
+  FileReader:class {readAsDataURL(){reads.push(this);}},
+  document:{readyState:'loading',addEventListener(){},getElementById:id=>nodes[id]||null}};
+vm.createContext(c);vm.runInContext(fs.readFileSync('admin.js','utf8')+';window.Admin=HotelPremierAdmin;',c);
+assert.doesNotMatch(fs.readFileSync('admin.js','utf8'),/this\.(?:rawOriginalSource|enhanced4KSource) \|\| 'https:\/\/images\.unsplash/,'Empty comparisons must not substitute an unrelated stock dish');
+vm.runInContext(fs.readFileSync('app.js','utf8')+';window.App=HotelPremierApp;',c);
+const admin=Object.create(c.window.Admin.prototype);
+nodes['apply-dish-photo-btn']={disabled:false};nodes['engine-adjust-colors']={checked:true};
+nodes['image-preview-element']={src:'saved.jpg'};
+c.window.app={menuData:[{id:'dish'}],showToast(){}};
+c.window.AssetPipeline={processAutomaticStudioEnhancement(source,dish,options){return new Promise(resolve=>renders.push({source,options,resolve}));}};
+admin.activeImageDishId='dish';admin.activeBackgroundMode='cream_marble';admin.tempImageSource='saved.jpg';
+(async()=>{
+  const uploading=admin.handleImageFileUpload({files:[{type:'image/jpeg',size:12}]});
+  assert.equal(nodes['apply-dish-photo-btn'].disabled,true);
+  reads[0].onload({target:{result:'raw.jpg'}});await Promise.resolve();await Promise.resolve();
+  assert.equal(renders[0].options.enhanceColors,false,'New upload must not inherit colour grading');
+  assert.equal(admin.tempImageSource,'saved.jpg','Old preview cannot be presented as upload success');
+  renders[0].resolve({enhancedDataUrl:'new.jpg',status:'enhanced',qualityScore:80});await uploading;
+  assert.equal(admin.tempImageSource,'new.jpg');assert.equal(admin.previewFailed,false);
+  admin.recalculate4KLive();assert.equal(admin.previewPending,true);
+  c.window.HOTEL_STORAGE={saveDishPhotoLifecycle(){saves++;}};
+  await admin.saveReplacedImage();assert.equal(saves,0,'Save must be blocked during debounce');
+  const oldRender=admin.runImagePreview();
+  admin.recalculate4KLive();
+  renders[1].resolve({enhancedDataUrl:'stale.jpg',status:'enhanced'});await oldRender;
+  assert.equal(admin.tempImageSource,'new.jpg','Outdated render must not overwrite preview');
+  const newest=admin.runImagePreview();renders[2].resolve({enhancedDataUrl:'latest.jpg',status:'enhanced'});await newest;
+  assert.equal(admin.tempImageSource,'latest.jpg');assert.equal(nodes['apply-dish-photo-btn'].disabled,false);
+  const laterUpload=admin.handleImageFileUpload({files:[{type:'image/png',size:12}]});
+  admin.closeImageModal();reads[1].onload({target:{result:'late.jpg'}});await laterUpload;
+  assert.equal(admin.rawOriginalSource,null,'Closing cancels a pending file read');
+  admin.activeImageDishId='dish';admin.rawOriginalSource='raw.jpg';delete c.window.AssetPipeline;
+  await admin.runImagePreview();assert.equal(admin.previewFailed,true);assert.equal(admin.isPreviewProcessing,false);
+  const saved=new Map([['overrides',JSON.stringify({dish:{rawOriginalImage:'original.jpg',enhancementStatus:'approved'}})]]);
+  c.localStorage={getItem:k=>saved.get(k)||null,setItem(k,v){saved.set(k,v);}};
+  const app=Object.create(c.window.App.prototype);Object.assign(app,{storageKeyMenu:'unused-menu',storageKeyOverrides:'overrides',menuData:[{id:'dish',image:'new.jpg',price:80}],notifyMenuUpdate(){}});
+  app.saveMenuData();assert.equal(saved.has('unused-menu'),false);
+  assert.equal(JSON.parse(saved.get('overrides')).dish.rawOriginalImage,'original.jpg');
+  console.log('PASS: awaited upload, neutral colours, pending-save guard, stale-render cancellation, closed-upload cancellation and lean menu saving');
+})().catch(error=>{console.error(error);process.exitCode=1;});

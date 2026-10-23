@@ -592,7 +592,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.77';
+    s.src = 'admin.js?v=21.84';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -996,11 +996,13 @@ class HotelPremierApp {
   saveMenuData() {
     try {
       window.HotelMenuStructure?.capture(this);
-      localStorage.setItem(this.storageKeyMenu, JSON.stringify(this.menuData));
-      
-      let overridesMap = {};
+      // This legacy full-menu cache has no reader. Do not duplicate every photo
+      // into it or let its quota failure prevent the actual overrides saving.
+      const existingOverrides = localStorage.getItem(this.storageKeyOverrides);
+      let overridesMap = existingOverrides ? JSON.parse(existingOverrides) : {};
       this.menuData.forEach(dish => {
         overridesMap[dish.id] = {
+          ...(overridesMap[dish.id] || {}),
           image: dish.image,
           price: dish.price,
           isSoldOut: dish.isSoldOut,

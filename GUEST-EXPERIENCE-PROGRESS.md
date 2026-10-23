@@ -39,3 +39,13 @@ Run all `tests/*.cjs` and `tests/run-regression.ps1`. The new group test covers 
 ## Remaining stages
 
 Final cross-section visual polish remains a follow-up stage. Actual numbered room register, router survey, secure Wi-Fi backend, private administration, network approval and physical POS/isolation/Android/iPhone connection tests remain pending owner information. Room names, approved prices and authentic photos have not been replaced.
+
+## Release 21.84 — photo preview reliability and lighter editing saves
+
+- Upload now awaits its actual preview rather than reporting success during a debounce. Removed undefined result variables and the silent compression fallback that could replace the chosen treatment.
+- New uploads start with optional colour correction unchecked. Existing original-preserving processing remains unchanged; background selection alone does not enable colour grading.
+- Save is blocked while a preview is pending, running, failed or unavailable. Obsolete render results and file reads from closed dialogs cannot replace the current preview. Closing cancels scheduled work; opening another dish ignores stale storage reads.
+- Empty before/after panes no longer fetch an unrelated stock dish.
+- Removed the unused full-menu cache write without deleting existing stored data. Explicit menu saves preserve original-photo lifecycle metadata in their overrides rather than replacing it.
+- Verified using isolated synthetic upload/preview fixtures, plus the full regression suite. No owner photos were edited, uploaded externally or replaced during testing. Admin processing on the owner's device still needs an authenticated real-photo review.
+- Wi-Fi remains inactive; no router, POS, credential or paid-service changes.
