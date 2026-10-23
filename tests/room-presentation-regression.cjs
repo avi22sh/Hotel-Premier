@@ -22,6 +22,6 @@ const html = fs.readFileSync('index.html','utf8');
 assert.match(html,/The Premier Way to Stay/);
 assert.doesNotMatch(html,/Call Room Service \/ Front Desk/);
 assert.doesNotMatch(html,/240 sq\.ft|280 sq\.ft|King Size Luxury Bed • Front Facing/);
-assert.match(html,/CP includes breakfast from a fixed menu; conditions apply/);
-assert.match(fs.readFileSync('app.js','utf8'),/CP — Breakfast from a fixed menu; conditions apply/);
+assert.match(html,/CP includes breakfast from a fixed menu; Terms & conditions apply\. Speak to our staff for details\./);
+assert.match(fs.readFileSync('app.js','utf8'),/CP — Breakfast from a fixed menu; Terms & conditions apply\. Speak to our staff for details\./);
 console.log('PASS: branded room names, corrected areas, two distinct balcony outlooks, welcome amenities, CP terms, stable IDs and tariffs');

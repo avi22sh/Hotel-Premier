@@ -1,7 +1,7 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const c={window:{}};vm.runInNewContext(fs.readFileSync('data/hotel-data.js','utf8'),c);
 const info=c.window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo;
-assert.equal(info.petsPolicy,'Pets are not allowed.');assert.equal(info.primaryGuestMinimumAge,18);assert.equal(info.acceptedGuestIDs.length,4);
+assert.match(info.petsPolicy,/^Property Policy: Hotel guidelines strictly restrict pets/);assert.match(info.petsPolicy,/families and corporate executives/);assert.equal(info.primaryGuestMinimumAge,18);assert.equal(info.acceptedGuestIDs.length,4);
 assert.equal(info.checkoutPolicy,'24 Hours Check-Out (Direct Bookings Only)');
 assert.equal(info.unmarriedCouplesAllowed,false);
 assert.equal(info.localIDsAccepted,false);

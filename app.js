@@ -142,7 +142,10 @@ class HotelPremierApp {
     const hasTableParam = urlParams.has('table') || urlParams.has('t') || (src && /^table/i.test(src.trim()));
 
     let initialSection = 'section-dine';
-    if (catParam || hasTableParam) {
+    if (urlParams.get('entry') === 'menu' || urlParams.has('src') || urlParams.has('qr') || urlParams.has('room')) {
+      catParam = null;
+      initialSection = 'section-dine';
+    } else if (catParam || hasTableParam) {
       initialSection = 'section-dine';
     } else if (sectionParam && hashToSection[sectionParam.toLowerCase()]) {
       initialSection = hashToSection[sectionParam.toLowerCase()];
@@ -245,6 +248,48 @@ class HotelPremierApp {
   }
 
   // ==================== FAVORITES & BOOKMARKS SYSTEM ====================
+  favoriteKey(dish, variant) {
+    return variant ? `${dish.id}::${encodeURIComponent(variant.id || variant.name).replace(/'/g, '%27')}` : dish.id;
+  }
+
+  getFavoriteItems() {
+    return this.menuData.flatMap(dish => {
+      if (dish.groupedUnder || dish.notAvailable) return [];
+      if (!dish.variants?.length) return this.favorites.includes(dish.id) ? [dish] : [];
+      return dish.variants.flatMap((variant, index) => {
+        const key = this.favoriteKey(dish, variant);
+        if (variant.hidden || !this.favorites.includes(key)) return [];
+        return [{...dish, ...variant, id:key, _sourceDishId:dish.id, _sourceVariantIndex:index,
+          image:variant.image || dish.image, variants:undefined, isGroupMaster:false, displayPriceRange:undefined,
+          _activeVariantImage:undefined, _activeVariantPrice:undefined}];
+      });
+    });
+  }
+
+  syncDetailFavorite() {
+    const dish = this.menuData.find(d => d.id === this.currentDetailDishId);
+    const host = document.querySelector('#dish-detail-body .modal-dish-photo-wrap');
+    if (!dish || !host) return;
+    const variant = dish.variants?.[this.currentDetailVariantIndex];
+    const key = this.favoriteKey(dish, variant);
+    let button = host.querySelector('.detail-photo-favorite');
+    if (!button) {
+      button = document.createElement('button');
+      button.type = 'button'; button.className = 'detail-photo-favorite';
+      button.addEventListener('click', () => {
+        this.toggleFavorite(this.currentDetailFavoriteKey);
+        this.syncDetailFavorite();
+      });
+      host.appendChild(button);
+    }
+    this.currentDetailFavoriteKey = key;
+    const selected = this.favorites.includes(key);
+    button.textContent = selected ? '♥' : '♡';
+    button.classList.toggle('active', selected);
+    button.setAttribute('aria-pressed', String(selected));
+    button.setAttribute('aria-label', `${selected ? 'Remove' : 'Save'} ${variant?.name || dish.name} ${selected ? 'from' : 'to'} favourites`);
+  }
+
   toggleFavorite(dishId) {
     this.haptic([10, 50, 10]);
     const idx = this.favorites.indexOf(dishId);
@@ -283,6 +328,12 @@ class HotelPremierApp {
   }
 
   updateFavoritesBadges() {
+    // Preserve old group favourites as individually removable item favourites.
+    this.favorites = [...new Set((this.favorites || []).flatMap(key => {
+      const dish = this.menuData?.find(d => d.id === key);
+      return dish?.variants?.length ? dish.variants.filter(v => !v.hidden).map(v => this.favoriteKey(dish,v)) : [key];
+    }))];
+    try { localStorage.setItem(this.storageKeyFavorites, JSON.stringify(this.favorites)); } catch(e) {}
     const count = this.favorites ? this.favorites.length : 0;
     const badge = document.getElementById('favorites-count-badge');
     if (badge) {
@@ -483,7 +534,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.63';
+    s.src = 'admin.js?v=21.73';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -876,11 +927,13 @@ class HotelPremierApp {
     }
 
     this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
+    window.HotelMenuStructure?.apply(this);
     this.saveMenuData();
   }
 
   saveMenuData() {
     try {
+      window.HotelMenuStructure?.capture(this);
       localStorage.setItem(this.storageKeyMenu, JSON.stringify(this.menuData));
       
       let overridesMap = {};
@@ -909,9 +962,9 @@ class HotelPremierApp {
     try {
       if (typeof BroadcastChannel !== 'undefined') {
         this.broadcast = new BroadcastChannel('hotel_premier_sync_channel');
-        this.broadcast.onmessage = (event) => {
+        this.broadcast.onmessage = async (event) => {
           if (event.data && event.data.type === 'MENU_UPDATED') {
-            this.loadMenuData();
+            await this.loadMenuData();
             this.renderCategoryCards();
             this.renderMenu();
           }
@@ -1957,6 +2010,7 @@ class HotelPremierApp {
 
   getFilteredDishes() {
     if (!this.menuData || this.menuData.length === 0) {
+      if (window.HotelMenuStructure?.hasDraft()) return [];
       if (window.HOTEL_PREMIER_INITIAL_MENU && window.HOTEL_PREMIER_INITIAL_MENU.length > 0) {
         this.menuData = [...window.HOTEL_PREMIER_INITIAL_MENU];
       } else {
@@ -1966,7 +2020,7 @@ class HotelPremierApp {
 
     const hasSearch = Boolean(this.searchQuery && this.searchQuery.trim() !== '');
 
-    return this.menuData.filter(item => {
+    return (this.isFavoritesFilterActive ? this.getFavoriteItems() : this.menuData).filter(item => {
       if (item.notAvailable) return false;
       if (item.groupedUnder) return false;
 
@@ -2109,7 +2163,7 @@ class HotelPremierApp {
           <div class="favorites-empty-state">
             <span class="empty-fav-icon">♥</span>
             <h4 class="empty-fav-title">No Favorite Dishes Saved Yet</h4>
-            <p class="empty-fav-sub">Tap the heart icon ♡ on any dish card to add it to your personal favorites for instant access.</p>
+            <p class="empty-fav-sub">Open a dish and tap the small heart on its photo to save that individual item or option.</p>
             <button class="btn-primary" style="margin: 12px auto 0; max-width: 220px;" onclick="window.app.toggleFavoritesFilter()">Explore Full Menu</button>
           </div>
         `;
@@ -2256,6 +2310,8 @@ class HotelPremierApp {
   }
 
   renderDishCard(dish) {
+    const detailId = dish._sourceDishId || dish.id;
+    const detailVariant = Number.isInteger(dish._sourceVariantIndex) ? `, ${dish._sourceVariantIndex}` : '';
     const isFav = Boolean(this.favorites && this.favorites.includes(dish.id));
     const hasVariants = dish.variants && dish.variants.length > 0;
     const isMaster = Boolean(dish.isGroupMaster && hasVariants);
@@ -2279,11 +2335,11 @@ class HotelPremierApp {
     return `
       <div class="dish-card compact-dish-card dish-card-stagger ${isMaster ? 'group-master-card' : ''} ${dish.isSoldOut ? 'sold-out' : ''}"
            id="dish-card-${dish.id}" 
-           onclick="window.app.openDishDetail('${dish.id}')"
+           onclick="window.app.openDishDetail('${detailId}'${detailVariant})"
            role="button"
            tabindex="0"
            aria-label="${dish.name}, ${priceRangeText}"
-           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.openDishDetail('${dish.id}');}">
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.app.openDishDetail('${detailId}'${detailVariant});}">
         <div class="dish-banner-media ${hasPhoto ? '' : 'no-photo'}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           ${hasPhoto ? `
@@ -2324,18 +2380,10 @@ class HotelPremierApp {
               </div>
             ` : (hasVariants ? `<span class="dish-options-hint">${this.t('dishOptionsHint', 'Portion options available')}</span>` : '')}
             <div class="dish-banner-action">
-              <button type="button" 
-                      class="dish-fav-btn ${isFav ? 'active' : ''}" 
-                      data-dish-id="${dish.id}"
-                      onclick="event.stopPropagation(); window.app.toggleFavorite('${dish.id}')"
-                      aria-label="${isFav ? 'Remove from favorites' : 'Add to favorites'}"
-                      title="${isFav ? 'Remove from favorites' : 'Add to favorites'}">
-                <span class="fav-icon" aria-hidden="true">${isFav ? '♥' : '♡'}</span>
-              </button>
               ${dish.isSoldOut ? `
                 <span class="dish-soldout-label">${this.t('soldOut')}</span>
               ` : `
-                <span class="view-detail-link" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}')">
+                <span class="view-detail-link" onclick="event.stopPropagation(); window.app.openDishDetail('${detailId}'${detailVariant})">
                   ${this.t('detailsBtn')}
                 </span>
               `}
@@ -2445,8 +2493,9 @@ class HotelPremierApp {
       initialVariantIndex = dish.variants.findIndex(v => !v.hidden);
     }
     const activeVariant = hasModalVariants ? dish.variants[initialVariantIndex] : null;
+    this.currentDetailVariantIndex = initialVariantIndex;
     const displayImage = activeVariant ? (activeVariant.image || dish.image) : (dish.image);
-    const displayPrice = activeVariant ? (activeVariant.price ?? dish.price) : (dish.price);
+    const displayPrice = activeVariant ? (activeVariant.price === undefined ? dish.price : activeVariant.price) : dish.price;
     const hasPhoto = displayImage && displayImage.trim() !== '';
 
     const currentVariantName = activeVariant ? activeVariant.name : dish.name;
@@ -2568,7 +2617,7 @@ class HotelPremierApp {
                         data-variant-desc-mr="${descMr}"
                         onclick="window.app.switchModalVariant('${dish.id}', this)">
                   <span class="variant-btn-name">${displayName}</span>
-                  <span class="variant-btn-price">₹${v.price}</span>
+                  <span class="variant-btn-price">${Number.isFinite(v.price) ? `₹${v.price}` : 'Price on request'}</span>
                 </button>
               `;
             }).join('')}
@@ -2608,13 +2657,6 @@ class HotelPremierApp {
           <div>
             <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
               <h3 class="modal-dish-title">${dishTitleHtml}</h3>
-              <button type="button" 
-                      class="modal-fav-toggle-btn ${this.favorites.includes(dish.id) ? 'active' : ''}" 
-                      onclick="window.app.toggleFavorite('${dish.id}')"
-                      aria-label="${this.favorites.includes(dish.id) ? 'Remove from favorites' : 'Add to favorites'}"
-                      title="${this.favorites.includes(dish.id) ? 'Remove from favorites' : 'Add to favorites'}">
-                <span id="modal-fav-label-${dish.id}">${this.favorites.includes(dish.id) ? '♥ Favorited' : '♡ Add to Favorites'}</span>
-              </button>
               <button onclick="window.admin ? window.admin.openAdminModal('menu', '${dish.id}') : null" class="btn-staff-dish-edit-tag" title="Staff Taste & Price Editor">
                 ✏️ Edit Tags
               </button>
@@ -2700,6 +2742,7 @@ class HotelPremierApp {
     orderActions.appendChild(swiggyBtn);
     orderActions.appendChild(zomatoBtn);
     body.appendChild(orderActions);
+    this.syncDetailFavorite();
     modal.classList.remove('closing');
     modal.style.display = 'flex';
     modal.classList.add('active');
@@ -2732,10 +2775,13 @@ class HotelPremierApp {
     const descHi = decodeURIComponent(btn.getAttribute('data-variant-desc-hi') || '');
     const descMr = decodeURIComponent(btn.getAttribute('data-variant-desc-mr') || '');
     const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+    this.currentDetailVariantIndex = dishObj?.variants?.findIndex(v => v.name === varName) ?? -1;
+    this.syncDetailFavorite();
 
     // 1. Update price
     const priceEl = document.getElementById(`modal-dish-price-${dishId}`);
-    if (priceEl && newPrice) priceEl.innerText = `₹${newPrice}`;
+    const parsedVariantPrice = newPrice && !['null','undefined'].includes(newPrice) ? Number(newPrice) : null;
+    if (priceEl) priceEl.innerText = Number.isFinite(parsedVariantPrice) ? `₹${parsedVariantPrice}` : 'Price on request';
 
     // 2. Update image with smooth crossfade and clear responsive srcset so browser loads variant photo
     const targetImg = (newImg && newImg.trim() !== '') ? newImg : (dishObj?.image || '');
@@ -2801,7 +2847,7 @@ class HotelPremierApp {
 
     // 6. Synchronize the dish card in the background too
     const cardPrice = document.getElementById(`price-display-${dishId}`);
-    if (cardPrice && newPrice) cardPrice.innerText = `₹${newPrice}`;
+    if (cardPrice) cardPrice.innerText = Number.isFinite(parsedVariantPrice) ? `₹${parsedVariantPrice}` : 'Price on request';
 
     const cardImg = document.getElementById(`dish-img-el-${dishId}`);
     if (cardImg && cardImg.tagName === 'IMG' && targetImg && targetImg.trim() !== '') {
@@ -3196,7 +3242,7 @@ class HotelPremierApp {
       extraBeds: numExtraBeds,
       extraBedCost: extraBedCost,
       nights: numNights,
-      plan: plan === 'CP' ? 'CP — Breakfast from a fixed menu; conditions apply' : 'Room Only (RO)',
+      plan: plan === 'CP' ? 'CP — Breakfast from a fixed menu; Terms & conditions apply. Speak to our staff for details.' : 'Room Only (RO)',
       eventType: document.getElementById('calc-event-type') ? document.getElementById('calc-event-type').value : 'Group Stay / Event',
       baseRoomPrice: baseRoomRegular,
       regularPrice: totalRegular,
@@ -4573,6 +4619,31 @@ class HotelPremierApp {
     return `${part('year')}-${part('month')}-${part('day')}`;
   }
 
+  prepareRestaurantEnquiry(type) {
+    const panel = document.getElementById('restaurant-event-enquiry');
+    if (!panel) return;
+    panel.open = true;
+    document.getElementById('restaurant-event-type').value = type;
+    const date = document.getElementById('restaurant-event-date');
+    date.min = this.hotelToday();
+    const profile = this.getGuestProfile();
+    for (const [id,value] of [['restaurant-event-name',profile.name],['restaurant-event-phone',profile.phone]]) {
+      const field = document.getElementById(id); if (!field.value && value) field.value = value;
+    }
+    panel.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  sendRestaurantEventEnquiry() {
+    const form = document.getElementById('restaurant-event-form');
+    if (!form?.reportValidity()) return;
+    const value = id => document.getElementById('restaurant-event-'+id).value.trim();
+    if (value('date') < this.hotelToday()) { alert('Please choose today or a future date.'); return; }
+    const phone = this.sanitizeIndianMobile(value('phone'));
+    if (!this.isValidIndianMobile(phone)) { alert('Please enter a valid 10-digit mobile number.'); return; }
+    const message = `HOTEL PREMIER — RESTAURANT EVENT ENQUIRY\nOccasion: ${value('type')}\nVenue: Inside Pride Pure Veg AC Restaurant only\nPreferred date: ${value('date')}\nPreferred time: ${this.formatArrivalTime(value('time'))}\nGuests: ${value('guests')}\nName: ${value('name')}\nMobile: ${phone}\nRequests: ${value('notes') || 'None specified'}\nPlease confirm restaurant availability, menu, setup and final charges. This is an enquiry, not a confirmed booking.`;
+    window.open(`https://wa.me/919325375802?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+  }
+
   formatArrivalTime(value) {
     if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(value || '')) return '';
     const [hour, minute] = value.split(':').map(Number);
@@ -4583,6 +4654,11 @@ class HotelPremierApp {
   openConciergeBookingModal(preselectedRoomId) {
     const modal = document.getElementById('concierge-booking-modal');
     if (!modal) return;
+    const viewport = document.querySelector?.('meta[name="viewport"]');
+    if (viewport && !modal.classList.contains('active')) {
+      this.enquiryViewportContent = viewport.getAttribute('content');
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+    }
 
     // Carry an explicit tariff plan into the inquiry without changing Stay defaults.
     if (this.activeSection === 'section-tariffs' && ['ro','cp'].includes(this.currentTariffPlan)) {
@@ -4618,6 +4694,10 @@ class HotelPremierApp {
     if (modal) {
       modal.classList.remove('active');
       modal.style.display = 'none';
+      if (this.enquiryViewportContent !== undefined) {
+        document.querySelector('meta[name="viewport"]')?.setAttribute('content', this.enquiryViewportContent);
+        this.enquiryViewportContent = undefined;
+      }
       if (!document.querySelector('.modal-backdrop.active')) document.body.classList.remove('modal-open');
       this.lastEnquiryTrigger?.focus?.({ preventScroll: true });
     }
@@ -4666,7 +4746,7 @@ class HotelPremierApp {
     const durationEl = document.getElementById('booking-summary-duration');
     const totalEl = document.getElementById('booking-summary-grand-total');
 
-    if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'CP: fixed-menu breakfast; conditions apply' : 'Room Only'})`;
+    if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'CP: fixed-menu breakfast; Terms & conditions apply. Speak to our staff for details.' : 'Room Only'})`;
     if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out (Direct Bookings Only) ${extraBeds > 0 ? `• ${extraBeds} Paid Extra Bed(s)` : ''}${childExtraBeds > 0 ? ` • ${childExtraBeds} Complimentary Child Extra Bed(s), ages 5–10` : ''}`;
     const arrivalEl = document.getElementById('booking-summary-arrival');
     if (arrivalEl) {
@@ -4757,7 +4837,7 @@ class HotelPremierApp {
         nights: estimate.nights,
         roomsCount: estimate.roomsCount,
         guestsCount: guestsCount,
-        mealPlan: estimate.mealPlan === 'CP' ? 'CP — Breakfast from a fixed menu; conditions apply' : 'Room Only',
+        mealPlan: estimate.mealPlan === 'CP' ? 'CP — Breakfast from a fixed menu; Terms & conditions apply. Speak to our staff for details.' : 'Room Only',
         extraBeds: estimate.extraBeds,
         childExtraBeds: estimate.childExtraBeds,
         estimatedTotal: estimate.totalEstimate
@@ -4773,7 +4853,7 @@ class HotelPremierApp {
     msg += `⏰ *Arrival Time:* ${checkInTime}\n`;
     msg += `🌙 *Duration:* ${estimate.nights} Night(s) (24-Hour Check-Out (Direct Bookings Only))\n`;
     msg += `👥 *Total Guests:* ${guestsCount}\n`;
-    msg += `🍽️ *Plan:* ${estimate.mealPlan === 'CP' ? 'CP — Breakfast from a fixed menu; conditions apply' : 'Room Only (RO)'}\n`;
+    msg += `🍽️ *Plan:* ${estimate.mealPlan === 'CP' ? 'CP — Breakfast from a fixed menu; Terms & conditions apply. Speak to our staff for details.' : 'Room Only (RO)'}\n`;
     if (estimate.extraBeds > 0) {
       msg += `🛏️ *Extra Beds:* ${estimate.extraBeds} Bed(s)\n`;
     }

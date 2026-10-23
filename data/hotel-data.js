@@ -14,7 +14,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     whatsapp: '919325375802',
     alternateWhatsapp: '919370848917',
     checkoutPolicy: '24 Hours Check-Out (Direct Bookings Only)',
-    petsPolicy: 'Pets are not allowed.',
+    petsPolicy: 'Property Policy: Hotel guidelines strictly restrict pets on the premises. To maintain our core environment, accommodation is exclusively reserved for families and corporate executives. The management reserves the absolute right of admission, and valid verification matching our booking guidelines is mandatory for all registering guests at check-in.',
     unmarriedCouplesAllowed: false,
     localIDsAccepted: false,
     partnerCheckoutPolicy: 'Check-in and checkout follow the terms on the partner booking confirmation.',
@@ -24,7 +24,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     taxPolicy: 'Inclusive of All Taxes',
     roomServiceHours: '7:30 AM to 10:30 PM',
     frontDeskHours: '24 Hours Open',
-    breakfastPolicy: 'Complimentary Breakfast (Served 7:30 AM to 10:30 AM from a fixed menu in Pride Pure Veg Restaurant; conditions apply)',
+    breakfastPolicy: 'Complimentary Breakfast (Served 7:30 AM to 10:30 AM from a fixed menu in Pride Pure Veg Restaurant; Terms & conditions apply. Speak to our staff for details.)',
     googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal',
     inventorySummary: {
       totalRooms: 14,
@@ -124,7 +124,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         '🍪 Complimentary Welcome Snacks Basket',
         '🧼 Complimentary Toiletries',
         '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Large Screen Smart LED TV & Free Wi-Fi',
+        '📺 Large Screen LED TV with Cable Connection & Free Wi-Fi',
         '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
         '🛏️ Can Accommodate 2–3 Extra Beds (₹300/bed)'
       ],
@@ -168,7 +168,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         '🍪 Complimentary Welcome Snacks Basket',
         '🧼 Complimentary Toiletries',
         '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Flat Screen Smart LED TV & Free Wi-Fi',
+        '📺 Flat Screen LED TV with Cable Connection & Free Wi-Fi',
         '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
         '🛏️ Can Accommodate 1 Extra Bed (₹300/bed)'
       ],
@@ -208,7 +208,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
         '🍪 Complimentary Welcome Snacks Basket',
         '🧼 Complimentary Toiletries',
         '🚿 24x7 Geyser Hot Water & Fresh Towels',
-        '📺 Flat Screen Smart LED TV & Free Wi-Fi',
+        '📺 Flat Screen LED TV with Cable Connection & Free Wi-Fi',
         '☎️ Front Desk Intercom & Room Service (7:30 AM – 10:30 PM)',
         '🛏️ Can Accommodate 2 Extra Beds (₹300/bed)'
       ],
@@ -711,7 +711,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
       id: 'gallery-dlx-queen-plush',
       category: 'stay',
       title: 'Premier Signature Queen — Bed View',
-      subtitle: 'Silent Split AC, Flat Screen Smart TV & Free High-Speed Wi-Fi',
+      subtitle: 'Silent Split AC, LED TV with Cable Connection & Free High-Speed Wi-Fi',
       image: 'assets/hotel-images/dlx-queen-bed-plush-view.jpg'
     },
     {

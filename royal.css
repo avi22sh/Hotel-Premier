@@ -510,6 +510,41 @@ body.theme-dark #concierge-booking-modal :is(.form-input,.form-select) { backgro
 @media(prefers-reduced-motion:reduce) { .modal-backdrop,.modal-sheet { transition:none !important; } }
 
 /* Guest utility sheets share the same readable, calm crystal treatment. */
+.detail-photo-favorite { position:absolute; right:12px; bottom:12px; z-index:6; display:grid; place-items:center; width:36px; height:36px; padding:0; border:1px solid rgba(255,255,255,.55); border-radius:10px; color:#fff9ee; background:rgba(24,27,35,.78); backdrop-filter:blur(8px); font-size:23px; line-height:1; cursor:pointer; box-shadow:0 3px 12px rgba(0,0,0,.16); }
+.detail-photo-favorite.active { color:#edc88f; border-color:#edc88f; }
+.detail-photo-favorite:focus-visible { outline:3px solid #edc88f; outline-offset:3px; }
+#concierge-booking-modal { touch-action:pan-y; }
+#section-tariffs .tariff-guarantees-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; align-items:stretch; }
+#section-tariffs .guarantee-card { min-width:0; display:grid; grid-template-columns:36px minmax(0,1fr); gap:6px 12px; align-content:start; }
+#section-tariffs .guarantee-icon { grid-row:1 / span 2; }
+#section-tariffs .guarantee-desc { grid-column:2; line-height:1.65; overflow-wrap:anywhere; }
+#section-tariffs .tariff-extra-bed-banner { display:grid; grid-template-columns:40px minmax(0,1fr); gap:18px; align-items:start; }
+#section-tariffs .extra-bed-content-col { min-width:0; }
+#section-tariffs .extra-bed-prices-row { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+#section-tariffs .extra-price-chip { display:flex; flex-wrap:wrap; justify-content:center; gap:4px; }
+#section-tariffs .property-policy-statement { grid-column:1 / -1; }
+#section-tariffs .plan-inclusions-note { line-height:1.65; overflow-wrap:anywhere; min-height:4.8em; }
+.celebration-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin:24px 0; }
+.celebration-options article,.restaurant-event-panel { padding:22px; border-radius:22px; border:1px solid var(--crystal-edge); background:var(--crystal-surface); box-shadow:var(--crystal-shadow); backdrop-filter:blur(18px); color:var(--crystal-ink); }
+.celebration-options article { display:flex; flex-direction:column; gap:12px; min-width:0; }
+.celebration-options h3 { color:var(--crystal-accent); font-size:1.25rem; margin:0; }
+.celebration-options p,.restaurant-event-panel p { color:var(--crystal-muted); font-size:.88rem; line-height:1.7; }
+.celebration-options button,.restaurant-event-panel button { padding:12px 14px; min-height:46px; border-radius:12px; background:rgba(147,126,96,.13); color:var(--crystal-accent); border:1px solid rgba(147,126,96,.4); font:inherit; cursor:pointer; }
+.celebration-options button { margin-top:auto; text-align:left; }
+.restaurant-event-panel { margin-bottom:30px; scroll-margin-top:150px; }
+.restaurant-event-panel summary { padding:6px 0; font-weight:700; cursor:pointer; }
+.restaurant-event-panel label { display:grid; gap:7px; margin:14px 0; font-size:.8rem; font-weight:600; min-width:0; }
+.restaurant-event-panel :is(input,select,textarea) { width:100%; min-width:0; padding:12px; min-height:48px; font:inherit; font-size:16px; color:var(--crystal-ink); background:rgba(147,126,96,.08); border:1px solid rgba(147,126,96,.35); border-radius:12px; color-scheme:light; }
+body.theme-dark .restaurant-event-panel :is(input,select,textarea) { color-scheme:dark; }
+#group-stay-enquiry { scroll-margin-top:150px; }
+.menu-structure-studio { border:1px solid var(--crystal-edge); border-radius:16px; padding:16px; margin-bottom:20px; color:var(--crystal-ink); background:rgba(147,126,96,.06); }
+.menu-structure-studio details { margin:10px 0; padding:10px; border:1px solid var(--crystal-edge); border-radius:12px; }
+.menu-structure-studio summary { font-weight:700; cursor:pointer; padding:6px; }
+.menu-structure-studio label { display:grid; gap:6px; margin:12px 0; font-size:.8rem; }
+.menu-structure-studio :is(input,select,textarea) { max-width:100%; width:100%; min-height:44px; padding:10px; border-radius:10px; border:1px solid rgba(147,126,96,.4); color:var(--crystal-ink); background:rgba(147,126,96,.08); font:inherit; font-size:16px; }
+.menu-structure-studio .studio-button { margin:4px; min-height:44px; white-space:normal; }
+@media(max-width:700px) { .celebration-options { grid-template-columns:1fr; } #section-tariffs .tariff-extra-bed-banner { grid-template-columns:1fr; } }
+@media(max-width:480px) { #section-tariffs .tariff-guarantees-grid { grid-template-columns:1fr; } .restaurant-event-panel { padding:16px; } .restaurant-event-panel .enquiry-grid { grid-template-columns:1fr; gap:0; } }
 .guest-utility-sheet { max-height:calc(100dvh - 32px); overflow:hidden; color:var(--crystal-ink); }
 .guest-utility-sheet .modal-header { padding:14px 18px; border-bottom:1px solid var(--crystal-edge); }
 .guest-utility-sheet .modal-body { flex:1 1 auto; overflow-y:auto; padding:20px; }

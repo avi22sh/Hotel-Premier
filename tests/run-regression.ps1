@@ -113,7 +113,7 @@ foreach ($roomId in @('ac-super-deluxe', 'ac-deluxe-queen', 'ac-deluxe-twin')) {
         exit 1
     }
 }
-if (-not $html.Contains("The Premier Way to Stay") -or -not $html.Contains("CP includes breakfast from a fixed menu; conditions apply")) {
+if (-not $html.Contains("The Premier Way to Stay") -or -not $html.Contains("CP includes breakfast from a fixed menu; Terms & conditions apply. Speak to our staff for details.")) {
     Write-Error "FAILED: index.html missing room presentation or CP fixed-menu terms"
     exit 1
 }

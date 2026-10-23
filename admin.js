@@ -387,6 +387,9 @@ class HotelPremierAdmin {
     `;
 
     document.getElementById('admin-search-dish').addEventListener('input', () => this.filterAdminDishes());
+    const structureHost = document.createElement('div');
+    container.prepend(structureHost);
+    window.HotelMenuStructure?.render(structureHost);
     document.getElementById('admin-category-filter').addEventListener('change', () => this.filterAdminDishes());
     document.getElementById('admin-status-filter').addEventListener('change', () => this.filterAdminDishes());
   }
@@ -3260,7 +3263,17 @@ class HotelPremierAdmin {
       ? urlInput.value.trim() 
       : (savedCustomDomain || window.location.href.split('#')[0].split('?')[0]);
     
-    const targetUrl = base.includes('?') ? `${base}&src=${encodeURIComponent(selectedText)}` : `${base}?src=${encodeURIComponent(selectedText)}`;
+    let targetUrl;
+    try {
+      const url = new URL(base, window.location.href);
+      if (!['https:', 'http:'].includes(url.protocol)) throw Error('Invalid QR address');
+      url.hash = 'dine';
+      url.searchParams.delete('section'); url.searchParams.delete('page'); url.searchParams.delete('tab');
+      url.searchParams.delete('category'); url.searchParams.delete('cat');
+      url.searchParams.set('src', selectedText);
+      url.searchParams.set('entry', 'menu');
+      targetUrl = url.href;
+    } catch(error) { window.app.showToast('Enter a valid website address for this QR code.', 'warning'); return; }
 
     qrHolder.innerHTML = '';
     if (window.QRCode) {
