@@ -25,7 +25,7 @@
     const entry = url.searchParams.get('entry');
     if (entry === 'reception') return 'section-home';
     if (entry === 'room' || url.searchParams.has('room') || /^room\s+/i.test(url.searchParams.get('src') || '')) return 'section-concierge';
-    if (entry === 'restaurant' || entry === 'menu' || ['table', 't', 'category', 'cat'].some(k => url.searchParams.has(k)) || /^table\s+/i.test(url.searchParams.get('src') || '')) return 'section-dine';
+    if (entry === 'restaurant' || entry === 'menu' || ['dish', 'table', 't', 'category', 'cat'].some(k => url.searchParams.has(k)) || /^table\s+/i.test(url.searchParams.get('src') || '')) return 'section-dine';
     for (const key of ['section', 'page', 'tab']) {
       const section = sectionMap[(url.searchParams.get(key) || '').toLowerCase()];
       if (section) return section;

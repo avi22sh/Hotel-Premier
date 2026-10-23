@@ -306,6 +306,7 @@ class HotelPremierDeveloperVault {
         guestsCount: Number(data.guestsCount) || 2,
         mealPlan: data.mealPlan || 'CP (With Breakfast)',
         extraBeds: Number(data.extraBeds) || 0,
+        childExtraBeds: Number(data.childExtraBeds) || 0,
         estimatedTotal: Number(data.estimatedTotal) || 0,
         specialRequests: (data.specialRequests || '').trim(),
         status: data.status || 'Inquiry Sent (WhatsApp)',

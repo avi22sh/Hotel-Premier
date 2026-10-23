@@ -584,6 +584,9 @@ body.theme-dark .guest-network-dialog { background:var(--crystal-surface),#24263
 .guest-utility-sheet { max-height:calc(100dvh - 32px); overflow:hidden; color:var(--crystal-ink); }
 /* Inline display state from switchSection wins after the route is selected. */
 .section-wrapper:not(#section-home),#guest-feedback-section { display:none; }
+.drawer-section-item { width:100%; text-align:left; font:inherit; }
+.drawer-section-item:focus-visible { outline:2px solid var(--crystal-accent); outline-offset:3px; }
+#booking-send-enquiry:disabled { opacity:.5; cursor:not-allowed; }
 #guest-feedback-section { background:transparent; color:var(--crystal-ink); }
 #guest-feedback-section .review-composer-card { background:var(--crystal-surface),#e8e4df; border:1px solid var(--crystal-edge); box-shadow:var(--crystal-shadow); backdrop-filter:blur(20px); }
 body.theme-dark #guest-feedback-section .review-composer-card { background:var(--crystal-surface),#242630; }

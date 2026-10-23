@@ -3,6 +3,7 @@ const listeners = {};
 const c = { URL, URLSearchParams, TextEncoder, Date, console, window: { addEventListener: (name, fn) => { listeners[name] = fn; } }, document: { addEventListener() {} } };
 vm.createContext(c); vm.runInContext(fs.readFileSync('guest-network.js', 'utf8'), c);
 const api = c.window.HotelGuestNetwork, base = 'https://avi22sh.github.io/Hotel-Premier/';
+assert.equal(api.resolve({href:base+'?dish=fixture-only'}),'section-dine');
 assert.equal(api.configured(), false); assert.equal(api.getRooms().length, 0);
 for (const [suffix, section] of [['', 'home'], ['?entry=reception#home', 'home'], ['?entry=restaurant#dine', 'dine'], ['?entry=room&room=fixture#concierge', 'concierge'], ['?src=Room%20fixture', 'concierge'], ['?table=fixture', 'dine'], ['?entry=restaurant#stay', 'stay'], ['#menu', 'dine'], ['?room=fixture#contact', 'contact'], ['?src=arbitrary', 'home']]) {
   assert.equal(api.resolve({ href: base + suffix }), 'section-' + section, suffix);

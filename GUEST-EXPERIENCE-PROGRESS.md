@@ -27,6 +27,14 @@ Run all `tests/*.cjs` and `tests/run-regression.ps1`. The new group test covers 
 - Live light-mode QA found legacy dark-only backgrounds/heading colours in the review section. Release 21.81 replaces them with theme-aware glass surfaces, readable labels/placeholders, muted copy and matching star/tag/platform controls.
 - Regression coverage includes all ratings, optional/invalid phone, preparation without transmission, opt-in local copy/failure/retry, and keyboard/detail-control markup. Live QA must not create test guest records or send messages.
 
+## Release 21.82 — menu/navigation and room enquiry audit
+
+- Global search clears stale category, subcategory, filter and favourites scope. Regional dish names are searchable. Hidden options cannot supply search matches or qualify a group for the budget filter, and fully hidden groups stay out of the full menu.
+- Explicit category/all-menu selection exits favourites without deleting saved items. The category drawer uses keyboard-accessible buttons, with counts based on visible, ungrouped cards rather than duplicated hidden/grouped entries.
+- Shared dish links now reopen the exact published dish/option; removed/hidden options show a notice instead of a substitute. Sharing strips room/guest query parameters and preserves zero-priced options. An explicit non-menu hash is respected on refresh. The header brand returns Home.
+- Room enquiry counts respect category inventory and the existing 12-room/36-guest group ceiling. Paid and free beds share capacity, invalid occupancy blocks dispatch before recording, and the estimate reads current room-data tariffs. Child-bed counts are retained in local records; prepared messages are not labelled delivered.
+- Contact copy no longer promises instant confirmation. All enquiries still require staff availability checks and final confirmation. No live enquiry/message or network configuration is changed during QA.
+
 ## Remaining stages
 
-Further menu/detail navigation and whole-app visual audit remain separate follow-up stages. Actual numbered room register, router survey, secure Wi-Fi backend, private administration, network approval and physical POS/isolation/Android/iPhone connection tests remain pending owner information. The new room categories, prices and authentic photos have not been replaced.
+Final cross-section visual polish remains a follow-up stage. Actual numbered room register, router survey, secure Wi-Fi backend, private administration, network approval and physical POS/isolation/Android/iPhone connection tests remain pending owner information. Room names, approved prices and authentic photos have not been replaced.

@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.81">
-  <link rel="stylesheet" href="royal.css?v=21.81">
+  <link rel="stylesheet" href="styles.css?v=21.82">
+  <link rel="stylesheet" href="royal.css?v=21.82">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -84,7 +84,7 @@
   <!-- ==================== LUXURY APP HEADER ==================== -->
   <header class="app-header">
     <div class="header-top">
-      <a href="#" class="brand-wrapper" onclick="if(window.app) window.app.showHomeCategories(); return false;">
+      <a href="#home" class="brand-wrapper" onclick="if(window.app) window.app.switchSection('section-home'); return false;">
         <div class="brand-text-block" id="header-brand-logo-crest" onclick="if(window.app) window.app.handleBrandLogoTap(event)">
           <h1 class="brand-hotel-name">HOTEL PREMIER</h1>
           <span class="brand-tagline" id="brand-tagline-text" data-i18n="brandTagline">A HOME IN BHUSAWAL</span>
@@ -999,7 +999,7 @@
             <button class="clear-search-btn" id="clear-search-btn" type="button" aria-label="Clear search query" style="display: none;">✕</button>
           </div>
           <div class="search-actions-row">
-            <button type="button" class="btn-favorites-filter" id="btn-favorites-filter" onclick="window.app ? window.app.toggleFavoritesFilter() : null" aria-label="View favorite dishes">
+            <button type="button" class="btn-favorites-filter" id="btn-favorites-filter" onclick="window.app ? window.app.toggleFavoritesFilter() : null" aria-label="View favorite dishes" aria-pressed="false">
               <span class="fav-filter-icon">♥</span>
               <span class="fav-filter-label" data-i18n="favoritesFilter">My Favorites</span>
               <span class="fav-filter-count" id="favorites-count-badge">0</span>
@@ -1499,12 +1499,12 @@
             <div class="contact-card-icon" style="color: #16A34A; background: rgba(22, 163, 74, 0.08); border-color: rgba(22, 163, 74, 0.2);">💬</div>
             <div>
               <h3 class="contact-card-title">WhatsApp Concierge</h3>
-              <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700;">● Instant Responses</span>
+              <span style="font-size: 0.72rem; color: var(--crystal-muted); font-weight: 600;">Chat with our hotel team</span>
             </div>
           </div>
           <div class="contact-card-body">
             <span class="contact-card-phone-highlight" style="color: #16A34A;">+91 9325375802</span>
-            <p>Chat directly with our team for photo galleries, published tariff sheets, wedding room blocks, and instant confirmation.</p>
+            <p>Ask our team about rooms, published tariffs, dining and group arrangements. We will check availability and confirm the details with you.</p>
           </div>
         </div>
         <a href="https://wa.me/919325375802?text=Hello%20Hotel%20Premier,%20I%20would%20like%20to%20inquire%20about%20room%20availability%20and%20rates." target="_blank" rel="noopener noreferrer" class="contact-card-btn wa-btn">
@@ -1615,9 +1615,10 @@
         <p class="enquiry-help" id="enquiry-time-help">Choose your exact local arrival time. Direct stays include 24-hour checkout from check-in; availability is confirmed by the hotel.</p>
         <div class="enquiry-grid enquiry-counts">
           <div class="form-group"><label class="form-label" for="booking-nights">Nights</label><input id="booking-nights" type="number" class="form-input" value="1" min="1"  step="1" required onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
-          <div class="form-group"><label class="form-label" for="booking-rooms-count">Rooms</label><input id="booking-rooms-count" type="number" class="form-input" value="1" min="1" max="14" step="1" required onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
-          <div class="form-group"><label class="form-label" for="booking-guests-count">Total guests</label><input id="booking-guests-count" type="number" class="form-input" value="2" min="1"  step="1" required onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
+          <div class="form-group"><label class="form-label" for="booking-rooms-count">Rooms</label><input id="booking-rooms-count" type="number" class="form-input" value="1" min="1" max="12" step="1" required aria-describedby="booking-capacity-help" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
+          <div class="form-group"><label class="form-label" for="booking-guests-count">Total guests · including children</label><input id="booking-guests-count" type="number" class="form-input" value="2" min="1" max="36" step="1" required aria-describedby="booking-capacity-help" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
         </div>
+        <p id="booking-capacity-help" class="enquiry-help" role="status" aria-live="polite"></p>
         <div class="form-group"><label class="form-label" for="booking-meal-plan">Your stay plan</label><select id="booking-meal-plan" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null"><option value="RO">Room only</option><option value="CP" selected>With breakfast · fixed menu</option></select></div>
         <p class="enquiry-help">CP breakfast is from a fixed menu; Terms & conditions apply. Speak to our staff for details.</p>
         <details class="enquiry-options">
@@ -1661,7 +1662,7 @@
           </div>
 
           <div style="display: flex; gap: 10px; margin-top: 14px;">
-            <button class="btn-tariff-book-wa" style="flex: 1;" onclick="window.app ? window.app.dispatchConciergeBooking() : null">
+            <button id="booking-send-enquiry" type="button" class="btn-tariff-book-wa" style="flex: 1;" onclick="window.app ? window.app.dispatchConciergeBooking() : null">
               <span>📲 Send Enquiry via WhatsApp</span>
             </button>
             <a href="tel:09325375802" class="btn-tariff-call" style="flex: 0.8;">
@@ -1900,15 +1901,15 @@
 
   <!-- Load Application Scripts (v20.51) -->
   <script src="storage.js?v=20.51"></script>
-  <script src="vault.js?v=20.51"></script>
+  <script src="vault.js?v=21.82"></script>
   <script src="data/translations.js?v=21.73"></script>
   <script src="data/hotel-data.js?v=21.77"></script>
   <script src="data/menu-data.js?v=21.65"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
   <script src="menu-structure.js?v=21.75"></script>
   <script src="group-stays.js?v=21.77"></script>
-  <script src="guest-network.js?v=21.76"></script>
-  <script src="app.js?v=21.81"></script>
+  <script src="guest-network.js?v=21.82"></script>
+  <script src="app.js?v=21.82"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1943,7 +1944,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.81', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.82', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load

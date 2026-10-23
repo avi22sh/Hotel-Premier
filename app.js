@@ -166,6 +166,7 @@ class HotelPremierApp {
     }
     this.bindEvents();
     this.setupBroadcastChannel();
+    this.openSharedDishFromUrl(urlParams);
   }
 
   // QR visitors should be able to search or choose a menu category immediately.
@@ -351,9 +352,17 @@ class HotelPremierApp {
     this.haptic(15);
     this.isFavoritesFilterActive = !this.isFavoritesFilterActive;
     const btn = document.getElementById('btn-favorites-filter');
-    if (btn) btn.classList.toggle('active', this.isFavoritesFilterActive);
+    if (btn) { btn.classList.toggle('active', this.isFavoritesFilterActive); btn.setAttribute('aria-pressed',String(this.isFavoritesFilterActive)); }
 
     if (this.isFavoritesFilterActive) {
+      this.currentCategory = 'all';
+      this.currentFilter = 'all';
+      this.searchQuery = '';
+      const search = document.getElementById('menu-search-input');
+      if (search) search.value = '';
+      const clear = document.getElementById('clear-search-btn');
+      if (clear) clear.style.display = 'none';
+      this.renderQuickFilters();
       this.viewMode = 'section';
       const homeView = document.getElementById('home-categories-view');
       const dishesView = document.getElementById('dishes-section-view');
@@ -372,17 +381,60 @@ class HotelPremierApp {
     this.renderMenu();
   }
 
+  clearMenuFavoritesScope() {
+    this.isFavoritesFilterActive = false;
+    const button = document.getElementById('btn-favorites-filter');
+    if (button) { button.classList.remove('active'); button.setAttribute('aria-pressed','false'); }
+  }
+
+  setMenuSearch(query) {
+    const scopeChanged=this.currentCategory!=='all' || this.currentFilter!=='all' || this.isFavoritesFilterActive;
+    this.searchQuery = query;
+    if (query.trim()) {
+      this.currentCategory = 'all';
+      this.currentFilter = 'all';
+      this.activeSubCategories = {};
+      this.clearMenuFavoritesScope();
+      if (scopeChanged) { this.renderQuickFilters(); this.renderMenuSectionDrawer(); }
+    }
+  }
+
+  openSharedDishFromUrl(params = new URLSearchParams(window.location.search)) {
+    const hash=(window.location.hash || '').slice(1).toLowerCase();
+    if (hash && !['dine','dining','menu','food'].includes(hash)) return;
+    const id = params.get('dish');
+    if (!id) return;
+    const dish = this.menuData.find(item => item.id === id && !item.notAvailable && !item.groupedUnder);
+    if (!dish || (dish.variants?.length && dish.variants.every(v=>v.hidden))) {
+      this.showToast('This shared dish is no longer available. Please browse the current menu.','info'); return;
+    }
+    const option = params.get('variant');
+    let index = null;
+    if (option) {
+      index = dish.variants?.findIndex(v => !v.hidden && String(v.id || v.name) === option);
+      if (index == null || index < 0) { this.showToast('This shared dish option is no longer available.','info'); return; }
+    }
+    this.switchSection('section-dine');
+    this.openDishDetail(dish.id,index);
+  }
+
   // ==================== WEB SHARE ENGINE ====================
   shareDish(dishId) {
     if (!dishId && this.currentDetailDishId) dishId = this.currentDetailDishId;
     this.haptic(10);
     const dish = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
     if (!dish) return;
-    const currentPrice = dish._activeVariantPrice || dish.price;
+    const modalVariant = this.currentDetailDishId===dish.id && Number.isInteger(this.currentDetailVariantIndex) ? dish.variants?.[this.currentDetailVariantIndex] : null;
+    const activeVariant = modalVariant && !modalVariant.hidden ? modalVariant : dish.variants?.find(v => !v.hidden && v.name === dish._activeVariantName);
+    const currentPrice = activeVariant ? activeVariant.price : (dish._activeVariantPrice ?? dish.price);
     const priceText = Number.isFinite(currentPrice) ? `₹${currentPrice}` : '';
-    const variantName = dish._activeVariantName ? ` - ${dish._activeVariantName}` : '';
-    const desc = this.getDishDescription(dish) || '';
-    const shareUrl = `${window.location.origin}${window.location.pathname}?dish=${encodeURIComponent(dish.id)}`;
+    const variantName = activeVariant ? ` - ${activeVariant.name}` : '';
+    const desc = (activeVariant && this.getVariantDescription?.(activeVariant)) || this.getDishDescription(dish) || '';
+    const shareLink = new URL(window.location.pathname, window.location.origin);
+    shareLink.searchParams.set('dish',dish.id);
+    if (activeVariant) shareLink.searchParams.set('variant',String(activeVariant.id || activeVariant.name));
+    shareLink.hash='dine';
+    const shareUrl = shareLink.href;
     const title = `${dish.name}${variantName} | Hotel Premier Pure Veg`;
     const text = `${dish.name}${variantName} ${priceText ? `(${priceText})` : ''} at Pride Pure Veg Restaurant, Hotel Premier: ${desc}`;
 
@@ -401,7 +453,7 @@ class HotelPremierApp {
   shareHotel() {
     this.haptic(10);
     const title = 'Hotel Premier — A Home in Bhusawal';
-    const text = 'Discover Hotel Premier — 14 Luxury AC Rooms, 24-Hour Flexible Check-Out & Pride Pure Veg AC Restaurant in Bhusawal.';
+    const text = 'Discover Hotel Premier — 14 air-conditioned rooms, 24-hour checkout for direct bookings only, and Pride Pure Veg AC Restaurant in Bhusawal.';
     const shareUrl = window.location.origin + window.location.pathname;
 
     if (navigator.share) {
@@ -1487,6 +1539,7 @@ class HotelPremierApp {
   }
 
   openCategorySection(catId) {
+    this.clearMenuFavoritesScope();
     if (window.HOTEL_VAULT) {
       window.HOTEL_VAULT.recordCategoryClick(catId);
     }
@@ -1588,6 +1641,8 @@ class HotelPremierApp {
   }
 
   showAllDishesView() {
+    this.clearMenuFavoritesScope();
+    this.activeSubCategories = {};
     if (this.activeSection !== 'section-dine') {
       this.switchSection('section-dine', false);
     }
@@ -1745,7 +1800,8 @@ class HotelPremierApp {
       floatBadge.innerText = validCategories.length;
     }
 
-    const allDishesCount = (this.menuData || window.HOTEL_PREMIER_INITIAL_MENU || []).filter(d => !d.notAvailable).length;
+    const visibleMenu=this.getVisibleMenuItems();
+    const allDishesCount = visibleMenu.length;
     const isAllActive = (this.currentCategory === 'all' && this.viewMode === 'all');
     const dishesWord = this.t('itemsCount', 'Items');
 
@@ -1761,7 +1817,7 @@ class HotelPremierApp {
         isAll: true
       },
       ...validCategories.map(cat => {
-        const catDishes = this.menuData.filter(d => !d.notAvailable && d.categoryId === cat.id);
+        const catDishes = visibleMenu.filter(d => d.categoryId === cat.id);
         const localizedTitle = this.getCategoryLocalizedName(cat.id);
         const localizedSubtitle = this.getCategoryLocalizedSubtitle(cat.id);
         const localizedDesc = this.getCategoryLocalizedDesc(cat.id);
@@ -1788,7 +1844,7 @@ class HotelPremierApp {
     ];
 
     list.innerHTML = items.map(item => `
-      <div class="drawer-section-item ${item.isActive ? 'active' : ''} ${item.isAll ? 'all-items-row' : ''}" 
+      <button type="button" class="drawer-section-item ${item.isActive ? 'active' : ''} ${item.isAll ? 'all-items-row' : ''}"
            data-section-id="${item.id}"
            onclick="window.app.selectCategoryFromDrawer('${item.id}')">
         <div class="drawer-item-icon-emblem">
@@ -1805,7 +1861,7 @@ class HotelPremierApp {
           <span class="drawer-item-count">${item.count} ${dishesWord}</span>
           <span class="drawer-item-arrow">→</span>
         </div>
-      </div>
+      </button>
     `).join('');
   }
 
@@ -2018,6 +2074,10 @@ class HotelPremierApp {
     });
   }
 
+  getVisibleMenuItems() {
+    return (this.menuData || []).filter(item=>!item.notAvailable && !item.groupedUnder && !(item.variants?.length && item.variants.every(v=>v.hidden)));
+  }
+
   getFilteredDishes() {
     if (!this.menuData || this.menuData.length === 0) {
       if (window.HotelMenuStructure?.hasDraft()) return [];
@@ -2053,14 +2113,16 @@ class HotelPremierApp {
       if (this.currentFilter === 'chef-special' && (!item.tags || !item.tags.includes('chef-special'))) return false;
       if (this.currentFilter === 'bestseller' && (!item.tags || !item.tags.includes('bestseller'))) return false;
       if (this.currentFilter === 'khandeshi' && (!item.tags || !item.tags.includes('khandeshi-special'))) return false;
-      if (this.currentFilter === 'under-150' && (!Number.isFinite(item.price) || item.price > 150)) return false;
+      const visibleVariants = (item.variants || []).filter(v=>!v.hidden);
+      const visiblePrices=visibleVariants.length ? visibleVariants.map(v=>v.price) : [item.price];
+      if (this.currentFilter === 'under-150' && !visiblePrices.some(price=>Number.isFinite(price) && price>=0 && price<=150)) return false;
 
       if (hasSearch) {
         const q = this.searchQuery.toLowerCase().trim();
-        const matchName = item.name && item.name.toLowerCase().includes(q);
+        const matchName = [item.name,item.hindiName,item.marathiName].some(name=>typeof name==='string' && name.toLowerCase().includes(q));
         const matchDesc = (item.description && item.description.toLowerCase().includes(q)) || (item.descriptionHi && item.descriptionHi.toLowerCase().includes(q)) || (item.descriptionMr && item.descriptionMr.toLowerCase().includes(q));
         const matchTag = item.tags && item.tags.some(t => t.toLowerCase().includes(q));
-        const matchVariant = item.variants && item.variants.some(v =>
+        const matchVariant = visibleVariants.some(v =>
           (v.name && v.name.toLowerCase().includes(q)) ||
           (v.hindiName && v.hindiName.toLowerCase().includes(q)) ||
           (v.marathiName && v.marathiName.toLowerCase().includes(q)) ||
@@ -2070,7 +2132,7 @@ class HotelPremierApp {
         let isMatch = matchName || matchDesc || matchTag || matchVariant;
         if (!isMatch && q.length >= 3) {
           isMatch = this.fuzzyMatch(item.name, q, 0.6) ||
-                    (item.variants && item.variants.some(v => this.fuzzyMatch(v.name, q, 0.6)));
+                    visibleVariants.some(v => this.fuzzyMatch(v.name, q, 0.6));
         }
         if (!isMatch) return false;
       }
@@ -2226,7 +2288,7 @@ class HotelPremierApp {
       const activeCats = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
 
       activeCats.forEach(cat => {
-        const catDishes = this.menuData.filter(d => !d.notAvailable && !d.groupedUnder && d.categoryId === cat.id);
+        const catDishes = filtered.filter(d => d.categoryId === cat.id);
         if (catDishes.length > 0) {
           const locName = this.getCategoryLocalizedName(cat.id);
           const locSub = this.getCategoryLocalizedSubtitle(cat.id);
@@ -3997,7 +4059,8 @@ class HotelPremierApp {
       });
 
       searchInput.addEventListener('input', (e) => {
-        this.searchQuery = e.target.value;
+        clearTimeout(this._searchLogTimer);
+        this.setMenuSearch(e.target.value);
         if (clearBtn) {
           clearBtn.style.display = this.searchQuery.length > 0 ? 'flex' : 'none';
         }
@@ -4650,12 +4713,20 @@ class HotelPremierApp {
   updateBookingEstimate() {
     const roomType = document.getElementById('booking-room-type')?.value || 'ac-deluxe-queen';
     const nights = Math.max(1, Math.floor(Number(document.getElementById('booking-nights')?.value) || 1));
-    const roomsCount = Math.min(14, Math.max(1, Math.floor(Number(document.getElementById('booking-rooms-count')?.value) || 1)));
-    const guestsCount = Math.max(1, Math.floor(Number(document.getElementById('booking-guests-count')?.value) || roomsCount));
+    const roomCategory = window.HOTEL_PREMIER_HOTEL_DATA?.roomCategories?.find(room => room.id === roomType);
+    const categoryInventory = parseInt(roomCategory?.inventoryCount) || ({'ac-super-deluxe':2,'ac-deluxe-queen':4,'ac-deluxe-twin':8}[roomType] || 1);
+    const maxRooms = Math.min(window.HotelGroupStays?.limits.rooms || 12, categoryInventory);
+    const maxGroupGuests = window.HotelGroupStays?.limits.guests || 36;
+    const roomsField = document.getElementById('booking-rooms-count');
+    const roomsCount = Math.min(maxRooms, Math.max(1, Math.floor(Number(roomsField?.value) || 1)));
+    if (roomsField) { roomsField.max=String(maxRooms); roomsField.value=String(roomsCount); }
+    const guestsField = document.getElementById('booking-guests-count');
+    const guestsCount = Math.min(maxGroupGuests, Math.max(roomsCount, Math.floor(Number(guestsField?.value) || roomsCount)));
     const mealPlan = document.getElementById('booking-meal-plan')?.value || 'CP';
     const extraBedsInput = document.getElementById('booking-extra-beds');
-    const roomCategory = window.HOTEL_PREMIER_HOTEL_DATA?.roomCategories?.find(room => room.id === roomType);
-    const extraBedLimit = (roomCategory?.maxExtraBeds || 1) * Math.max(1, Math.floor(roomsCount));
+    const extraBedLimit = Math.min((roomCategory?.maxExtraBeds || 1) * roomsCount, maxGroupGuests-roomsCount*2);
+    const maxGuests = Math.min(maxGroupGuests,roomsCount*2+extraBedLimit);
+    if (guestsField) { guestsField.min=String(roomsCount); guestsField.max=String(maxGuests); guestsField.value=String(guestsCount); }
     const childBedsInput = document.getElementById('booking-child-extra-beds');
     const childExtraBeds = Math.min(extraBedLimit, Math.max(0, Math.floor(Number(childBedsInput?.value) || 0)));
     if (childBedsInput) {
@@ -4664,6 +4735,7 @@ class HotelPremierApp {
     }
     const requestedExtraBeds = Number(extraBedsInput?.value) || 0;
     const extraBeds = Math.min(extraBedLimit - childExtraBeds, Math.max(0, Math.floor(requestedExtraBeds)));
+    const valid = guestsCount <= roomsCount*2+extraBeds+childExtraBeds;
     if (extraBedsInput) {
       extraBedsInput.max = String(extraBedLimit - childExtraBeds);
       extraBedsInput.value = String(extraBeds);
@@ -4675,7 +4747,13 @@ class HotelPremierApp {
       'ac-deluxe-twin': { RO: 2100, CP: 2300, doubleRO: 2400, doubleCP: 2700, name: 'Premier Companion Twin' }
     };
 
-    const selected = rates[roomType] || rates['ac-deluxe-queen'];
+    const selected = { ...(rates[roomType] || rates['ac-deluxe-queen']) };
+    if (roomCategory) {
+      selected.name=roomCategory.name;
+      for (const [key,value] of Object.entries({RO:roomCategory.tariff?.single?.roomOnly,CP:roomCategory.tariff?.single?.withBreakfast,doubleRO:roomCategory.tariff?.double?.roomOnly,doubleCP:roomCategory.tariff?.double?.withBreakfast})) {
+        if (Number.isFinite(value) && value>=0) selected[key]=value;
+      }
+    }
     const baseRatePerNight = (mealPlan === 'CP') ? selected.CP : selected.RO;
     const doubleRatePerNight = mealPlan === 'CP' ? selected.doubleCP : selected.doubleRO;
     const doubleRooms = Math.min(roomsCount, Math.max(0, guestsCount - roomsCount));
@@ -4714,13 +4792,18 @@ class HotelPremierApp {
     }
 
     const occupancyEl = document.getElementById('booking-summary-occupancy');
-    if (occupancyEl) occupancyEl.textContent = `Estimate: ${roomsCount - doubleRooms} single-occupancy + ${doubleRooms} double-occupancy room(s). Extra guests, children and room allocation are subject to hotel confirmation.`;
+    if (occupancyEl) occupancyEl.textContent = valid ? `Estimate: ${roomsCount - doubleRooms} single-occupancy + ${doubleRooms} double-occupancy room(s). Maximum ${maxRooms} rooms in this category. Include children in the guest count; exact allocation and final charges require staff confirmation.` : 'The guest count exceeds the selected beds. Add extra beds within the room limit, choose more rooms or reduce the guest count. Include children in your total.';
+    const sendButton=document.getElementById('booking-send-enquiry');
+    if (sendButton) sendButton.disabled=!valid;
+    const capacityHelp=document.getElementById('booking-capacity-help');
+    if (capacityHelp) capacityHelp.textContent=valid ? `Up to ${maxRooms} ${selected.name} room(s), subject to availability. Count all adults and children.` : 'Please adjust the guest count or extra beds to stay within the selected room capacity.';
 
-    return { totalEstimate, grossEstimate, directDiscount, selected, nights, roomsCount, mealPlan, extraBeds, childExtraBeds };
+    return { totalEstimate, grossEstimate, directDiscount, selected, nights, roomsCount, guestsCount, maxRooms, maxGuests, valid, mealPlan, extraBeds, childExtraBeds };
   }
 
   dispatchConciergeBooking() {
     const estimate = this.updateBookingEstimate();
+    if (!estimate.valid) { this.showToast('Please check the guest count and extra beds before sending an enquiry.','warning'); document.getElementById('booking-guests-count')?.focus(); return; }
     const guestNameInput = document.getElementById('booking-guest-name');
     const guestPhoneInput = document.getElementById('booking-guest-phone');
     const checkInDateInput = document.getElementById('booking-checkin-date');
@@ -4731,7 +4814,7 @@ class HotelPremierApp {
     const checkInDate = checkInDateInput?.value;
     const timeInput = document.getElementById('booking-checkin-time');
     const checkInTime = this.formatArrivalTime(timeInput?.value);
-    const guestsCount = document.getElementById('booking-guests-count')?.value || '2 Guests';
+    const guestsCount = estimate.guestsCount;
     const today = this.hotelToday();
 
     if (!guestName) {
@@ -4784,6 +4867,7 @@ class HotelPremierApp {
         mealPlan: estimate.mealPlan === 'CP' ? 'CP — Breakfast from a fixed menu; Terms & conditions apply. Speak to our staff for details.' : 'Room Only',
         extraBeds: estimate.extraBeds,
         childExtraBeds: estimate.childExtraBeds,
+        status: 'Enquiry prepared — delivery unverified',
         estimatedTotal: estimate.totalEstimate
       });
     }
@@ -4812,7 +4896,7 @@ class HotelPremierApp {
 
     const encoded = encodeURIComponent(msg);
     const waUrl = `https://wa.me/919325375802?text=${encoded}`;
-    window.open(waUrl, '_blank');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
 
     this.closeConciergeBookingModal();
   }
