@@ -586,6 +586,29 @@ body.theme-dark .guest-network-dialog { background:var(--crystal-surface),#24263
 .section-wrapper:not(#section-home),#guest-feedback-section { display:none; }
 .drawer-section-item { width:100%; text-align:left; font:inherit; }
 .drawer-section-item:focus-visible { outline:2px solid var(--crystal-accent); outline-offset:3px; }
+#menu-sections-drawer-modal .culinary-drawer-sheet { background:var(--crystal-surface),#e8e4df; color:var(--crystal-ink); border-color:var(--crystal-edge); box-shadow:var(--crystal-shadow); }
+body.theme-dark #menu-sections-drawer-modal .culinary-drawer-sheet { background:var(--crystal-surface),#242630; }
+#menu-sections-drawer-modal :is(.culinary-drawer-header,.culinary-drawer-search-wrap) { background:transparent; border-color:var(--crystal-edge); }
+#menu-sections-drawer-modal .culinary-drawer-header::after { display:none; }
+#menu-sections-drawer-modal .culinary-drawer-eyebrow { color:var(--crystal-accent); letter-spacing:.08em; font-size:.65rem; line-height:1.6; }
+#menu-sections-drawer-modal .culinary-drawer-title { color:var(--crystal-ink); text-shadow:none; font-size:1.1rem; line-height:1.5; }
+#menu-sections-drawer-modal .modal-close-btn { color:var(--crystal-ink); background:rgba(139,126,113,.1); }
+#menu-sections-drawer-modal .search-input-wrapper { background:rgba(139,126,113,.08); border-color:var(--crystal-edge); box-shadow:none; }
+#menu-sections-drawer-modal input { color:var(--crystal-ink); font-size:16px; }
+#menu-sections-drawer-modal input::placeholder { color:var(--crystal-muted); opacity:.9; }
+#menu-sections-drawer-modal .drawer-qf-chip { color:var(--crystal-muted); background:transparent; border-color:var(--crystal-edge); min-height:44px; }
+#menu-sections-drawer-modal .drawer-qf-chip.active { color:var(--crystal-ink); background:rgba(181,148,103,.15); border-color:var(--crystal-accent); box-shadow:none; }
+#menu-sections-drawer-modal .drawer-sections-grid { flex:1; min-height:0; max-height:none; padding:14px 16px; gap:8px; }
+#menu-sections-drawer-modal .drawer-section-item { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:12px; min-width:0; min-height:64px; padding:14px; color:var(--crystal-ink); background:rgba(139,126,113,.06); border:1px solid var(--crystal-edge); box-shadow:none; }
+#menu-sections-drawer-modal .drawer-section-item:hover { transform:none; background:rgba(181,148,103,.1); box-shadow:none; }
+#menu-sections-drawer-modal .drawer-section-item.active { background:rgba(181,148,103,.12); border-color:var(--crystal-accent); }
+#menu-sections-drawer-modal :is(.drawer-item-icon-emblem,.drawer-active-pill) { display:none; }
+#menu-sections-drawer-modal .drawer-item-title { font-family:inherit; font-size:.95rem; color:var(--crystal-ink); white-space:normal; overflow:visible; text-overflow:clip; line-height:1.5; letter-spacing:0; }
+#menu-sections-drawer-modal .drawer-item-sub { color:var(--crystal-muted); line-height:1.6; }
+#menu-sections-drawer-modal .drawer-item-count { color:var(--crystal-muted); background:transparent; border:0; padding:0; font-size:.72rem; font-weight:500; }
+#menu-sections-drawer-modal .drawer-item-arrow { color:var(--crystal-accent); }
+@media(max-width:600px) { #menu-sections-drawer-modal .drawer-item-sub { display:none; } }
+@media(prefers-reduced-motion:reduce) { #menu-sections-drawer-modal * { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
 #booking-send-enquiry:disabled { opacity:.5; cursor:not-allowed; }
 #guest-feedback-section { background:transparent; color:var(--crystal-ink); }
 #guest-feedback-section .review-composer-card { background:var(--crystal-surface),#e8e4df; border:1px solid var(--crystal-edge); box-shadow:var(--crystal-shadow); backdrop-filter:blur(20px); }

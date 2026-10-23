@@ -1845,6 +1845,7 @@ class HotelPremierApp {
 
     list.innerHTML = items.map(item => `
       <button type="button" class="drawer-section-item ${item.isActive ? 'active' : ''} ${item.isAll ? 'all-items-row' : ''}"
+           aria-current="${item.isActive ? 'true' : 'false'}"
            data-section-id="${item.id}"
            onclick="window.app.selectCategoryFromDrawer('${item.id}')">
         <div class="drawer-item-icon-emblem">

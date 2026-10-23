@@ -34,6 +34,7 @@ Run all `tests/*.cjs` and `tests/run-regression.ps1`. The new group test covers 
 - Shared dish links now reopen the exact published dish/option; removed/hidden options show a notice instead of a substitute. Sharing strips room/guest query parameters and preserves zero-priced options. An explicit non-menu hash is respected on refresh. The header brand returns Home.
 - Room enquiry counts respect category inventory and the existing 12-room/36-guest group ceiling. Paid and free beds share capacity, invalid occupancy blocks dispatch before recording, and the estimate reads current room-data tariffs. Child-bed counts are retained in local records; prepared messages are not labelled delivered.
 - Contact copy no longer promises instant confirmation. All enquiries still require staff availability checks and final confirmation. No live enquiry/message or network configuration is changed during QA.
+- Live dark-mode QA found legacy white category tiles, oversized emblems and truncated labels in the drawer. Release 21.83 adds theme-aware glass surfaces, readable wrapping names, quieter item counts and native keyboard-accessible selection without the bulky icon/current badges. Mobile navigation omits long roll-up descriptions; desktop retains them.
 
 ## Remaining stages
 
