@@ -75,8 +75,8 @@
   <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.75">
-  <link rel="stylesheet" href="royal.css?v=21.75">
+  <link rel="stylesheet" href="styles.css?v=21.76">
+  <link rel="stylesheet" href="royal.css?v=21.76">
   <script src="public-reviews.js?v=21.5" defer></script>
 </head>
 <body>
@@ -855,10 +855,28 @@
   <!-- ================================================================ -->
   <!-- 3. EDITORIAL DINING AT PRIDE PURE VEG (DINE)                      -->
   <!-- ================================================================ -->
+  <section class="section-wrapper" id="section-concierge" style="display:none;">
+    <div class="editorial-header-block">
+      <div class="dining-brand-crest">HOTEL PREMIER · AT YOUR SERVICE</div>
+      <h2 class="dining-main-heading">Your Room Concierge</h2>
+      <p class="editorial-subtitle">A considered welcome. Dining, guest connectivity and assistance in one place.</p>
+    </div>
+    <div class="guest-network-card concierge-room-card">
+      <div id="room-concierge-content" aria-live="polite"><p>Checking the verified room register…</p></div>
+      <div class="guest-network-actions">
+        <a class="btn-secondary" href="#dine">Culinary Collection</a>
+        <a class="btn-secondary" href="#contact">Contact reception</a>
+        <a class="btn-secondary" href="#home">Hotel Home</a>
+      </div>
+      <p class="guest-network-caption">A room QR is a digital guide, not a reservation or proof of occupancy.</p>
+    </div>
+  </section>
+
   <section class="section-wrapper" id="section-dine">
     <div class="editorial-header-block dining-hero-header">
       <div class="dining-brand-crest">HOTEL PREMIER PRESENTS</div>
       <h2 class="dining-main-heading">Pride Pure Veg AC Restaurant</h2>
+      <button type="button" class="guest-wifi-action" onclick="window.HotelGuestNetwork?.showWifi('restaurant')"><i class="fa-solid fa-wifi" aria-hidden="true"></i> Guest Wi-Fi <span aria-hidden="true">↗</span></button>
       <div class="editorial-divider pride-underline"></div>
       <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
         North Indian & Khandeshi favourites, clay oven tandoor, dum biryani, Indo-Chinese and Pastas—served with refreshing beverages.
@@ -1903,7 +1921,8 @@
   <script src="data/menu-data.js?v=21.65"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
   <script src="menu-structure.js?v=21.75"></script>
-  <script src="app.js?v=21.75"></script>
+  <script src="guest-network.js?v=21.76"></script>
+  <script src="app.js?v=21.76"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1938,7 +1957,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.75', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.76', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load

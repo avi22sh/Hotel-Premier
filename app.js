@@ -113,7 +113,7 @@ class HotelPremierApp {
     // Hash-based independent section routing
     const rawHash = (window.location.hash || '').replace('#', '').toLowerCase();
     const hashToSection = {
-      '': 'section-dine',
+      '': 'section-home',
       'home': 'section-home',
       'sanctuary': 'section-home',
       'tariffs': 'section-tariffs',
@@ -141,8 +141,11 @@ class HotelPremierApp {
     const src = urlParams.get('src') || '';
     const hasTableParam = urlParams.has('table') || urlParams.has('t') || (src && /^table/i.test(src.trim()));
 
-    let initialSection = 'section-dine';
-    if (urlParams.get('entry') === 'menu' || urlParams.has('src') || urlParams.has('qr') || urlParams.has('room')) {
+    let initialSection = window.HotelGuestNetwork ? window.HotelGuestNetwork.resolve(window.location) : 'section-home';
+    if (window.HotelGuestNetwork) {
+      if (initialSection !== 'section-dine') catParam = null;
+      window.HotelGuestNetwork.load();
+    } else if (urlParams.get('entry') === 'menu' || hasTableParam) {
       catParam = null;
       initialSection = 'section-dine';
     } else if (catParam || hasTableParam) {
@@ -534,7 +537,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.73';
+    s.src = 'admin.js?v=21.76';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -602,6 +605,7 @@ class HotelPremierApp {
   switchSection(sectionId, updateHash = true) {
     this.haptic(5);
     const validSections = [
+      'section-concierge',
       'section-home',
       'section-stay',
       'section-tariffs',
@@ -617,6 +621,7 @@ class HotelPremierApp {
     }
 
     this.activeSection = sectionId;
+    if (sectionId === 'section-concierge') window.HotelGuestNetwork?.renderConcierge();
 
     // Show ONLY the requested section; hide all other sections separately
     validSections.forEach(id => {
@@ -675,6 +680,7 @@ class HotelPremierApp {
     // Update URL hash cleanly
     if (updateHash) {
       const hashMap = {
+        'section-concierge': 'concierge',
         'section-home': 'home',
         'section-stay': 'stay',
         'section-tariffs': 'tariffs',
@@ -4314,7 +4320,7 @@ class HotelPremierApp {
         'call': 'section-contact',
         'address': 'section-contact'
       };
-      const target = hashToSection[rawHash] || 'section-home';
+      const target = window.HotelGuestNetwork ? window.HotelGuestNetwork.resolve(window.location) : (hashToSection[rawHash] || 'section-home');
       if (target !== this.activeSection) {
         this.switchSection(target, false);
       }
@@ -4374,6 +4380,14 @@ class HotelPremierApp {
   // ==================== 5b. SMART QR SCAN AUTO-FILL & PERSISTENT GUEST PROFILE ====================
   initGuestProfile() {
     try {
+      // QR context is not a guest identity. Room concierge links must never persist
+      // an occupant, room assignment or personal data supplied by URL parameters.
+      if (window.HotelGuestNetwork?.resolve(window.location) === 'section-concierge') {
+        this.applyGuestProfileToAllForms(this.getGuestProfile());
+        this.updateHeaderGuestBadge(this.getGuestProfile());
+        this.bindGuestProfileSync();
+        return;
+      }
       const params = new URLSearchParams(window.location.search);
       const src = params.get('src') || '';
       const tableParam = params.get('table') || params.get('t') || '';

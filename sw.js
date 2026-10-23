@@ -4,7 +4,7 @@
 // Guarantees mobile users always see latest menu updates & sub-sections
 // ==========================================================================
 
-const CACHE_NAME = 'hotel-premier-v21.75';
+const CACHE_NAME = 'hotel-premier-v21.76';
 const CORE_ASSETS = [
   './',
   'index.html',
@@ -15,6 +15,7 @@ const CORE_ASSETS = [
   'data/public-reviews.json',
   'asset-pipeline.js',
   'app.js',
+  'guest-network.js',
   'admin.js',
   'content-studio.js',
   'menu-structure.js',
@@ -81,6 +82,9 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET') return;
 
   const url = new URL(req.url);
+  // Credential-bearing API responses must never enter offline/browser caches.
+  // External APIs also bypass this worker; request cache:no-store is mandatory.
+  if (req.cache === 'no-store' || /\/(?:guest-access|guest-network-admin)(?:\/|$)/.test(url.pathname)) return;
   if (url.origin !== self.location.origin) return;
 
   // A cached local image makes repeat menu visits near-instant, while the first
@@ -106,7 +110,7 @@ self.addEventListener('fetch', (event) => {
   // Network-First strategy: fetch newest version from network, fallback to cache if offline
   event.respondWith(
     fetch(req, { cache: 'no-cache' }).then((networkResponse) => {
-      if (networkResponse && networkResponse.status === 200) {
+      if (networkResponse && networkResponse.status === 200 && !/no-store|private/i.test(networkResponse.headers.get('cache-control') || '')) {
         const responseToCache = networkResponse.clone();
         caches.open(CACHE_NAME).then((cache) => {
           cache.put(req, responseToCache);

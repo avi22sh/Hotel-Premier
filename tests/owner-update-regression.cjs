@@ -24,10 +24,12 @@ app.favorites=[];
 const group={id:'group',name:'Options',categoryId:'new-section',variants:[{name:'Option A',price:80,image:'a.jpg'},{name:'Option B',price:90,image:'b.jpg'}]};app.menuData=[group];app.favorites=[app.favoriteKey(group,group.variants[1])];
 assert.equal(app.getFavoriteItems().length,1);assert.equal(app.getFavoriteItems()[0].name,'Option B');assert.equal(app.getFavoriteItems()[0]._sourceVariantIndex,1);
 group.variants.reverse();assert.equal(app.getFavoriteItems()[0].name,'Option B');assert.equal(app.getFavoriteItems()[0]._sourceVariantIndex,0);
-const qrFields={'qr-table-select':{value:'Room 301'},'qr-standee-label':{},'qr-canvas-holder':{},'qr-target-url':{value:'https://avi22sh.github.io/Hotel-Premier/?section=stay#stay'}};
+const qrFields={'qr-table-select':{value:'restaurant'},'qr-standee-label':{},'qr-canvas-holder':{replaceChildren(){},querySelector(){return {}; }},'qr-target-url':{value:'https://avi22sh.github.io/Hotel-Premier/?section=stay#stay'}};
 c.document.getElementById=id=>qrFields[id];c.window.location={href:'https://avi22sh.github.io/Hotel-Premier/#admin'};
 let qrUrl;c.window.QRCode=class{constructor(host,options){qrUrl=options.text;}};c.window.QRCode.CorrectLevel={H:1};c.QRCode=c.window.QRCode;
-const admin=Object.create(c.window.Admin.prototype);admin.generateTableQR();const url=new URL(qrUrl);assert.equal(url.hash,'#dine');assert.equal(url.searchParams.get('entry'),'menu');assert.equal(url.searchParams.get('section'),null);assert.equal(url.searchParams.get('src'),'Room 301');
+c.window.addEventListener=()=>{};vm.runInContext(fs.readFileSync('guest-network.js','utf8'),c);
+const originalRenderQR=c.window.HotelGuestNetwork.renderQR;c.window.HotelGuestNetwork={...c.window.HotelGuestNetwork,renderQR(host,url){qrUrl=url;}};
+const admin=Object.create(c.window.Admin.prototype);admin.generateTableQR();const url=new URL(qrUrl);assert.equal(url.hash,'#dine');assert.equal(url.searchParams.get('entry'),'restaurant');assert.equal(url.searchParams.get('section'),null);assert.equal(url.searchParams.get('src'),null);
 const html=fs.readFileSync('index.html','utf8');assert.match(html,/Birthday Parties/);assert.match(html,/Other Special Events/);assert.match(html,/Restaurant space only/);assert.doesNotMatch(html,/Smart LED TV|Pets and unmarried couples are not allowed/);assert.equal(html,fs.readFileSync('404.html','utf8'));
 // Exercise the actual editor controls against an isolated test DOM, never production guest data.
 class Element {

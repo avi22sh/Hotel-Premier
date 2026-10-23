@@ -3146,147 +3146,83 @@ class HotelPremierAdmin {
   // ==================== 5. TABLE QR STUDIO ====================
   // ==================== 5. TABLE QR STUDIO ====================
   renderQRStudio(container) {
-    const baseUrl = window.location.href.split('#')[0].split('?')[0];
-    const isLocalFile = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const savedCustomDomain = localStorage.getItem('hotel_premier_custom_qr_domain');
-    const initialUrl = savedCustomDomain || (isLocalFile ? 'https://avi22sh.github.io/Hotel-Premier/' : baseUrl);
-
     container.innerHTML = `
-      <div style="display: flex; flex-direction: column; gap: 16px;">
-        <div>
-          <h4 style="font-family: var(--font-royal); color: var(--terracotta-dark); margin-bottom: 4px;">Table Standee & Room QR Studio</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted);">
-            Generate, customize, download and print high-resolution royal QR codes for restaurant dining tables and hotel guest rooms.
-          </p>
+      <div class="qr-studio-layout">
+        <h4>Guest QR & Network Studio</h4>
+        <p>Three clear destinations. Website QR codes never contain Wi-Fi passwords.</p>
+        <div class="guest-network-notice"><strong>Network activation pending</strong>
+          <p>No routers or POS settings have been changed. The five-router survey, actual room register, secure backend and isolation tests are required before guest access is enabled.</p>
+          <p>HOTEL PREMIER GUEST is a proposed identity, not a verified network. The local Admin PIN cannot authorize server-side credential changes.</p>
+          <a href="GUEST-NETWORK-SETUP.md" target="_blank" rel="noopener">Equipment checklist & secure activation plan</a>
         </div>
-
-        ${isLocalFile && !savedCustomDomain ? `
-          <div style="background: #FFFBEB; border: 1.5px solid #F59E0B; border-radius: 8px; padding: 12px 14px; font-size: 0.78rem; color: #92400E; display: flex; gap: 10px; align-items: flex-start;">
-            <span style="font-size: 1.2rem;">💡</span>
-            <div>
-              <strong>Notice for Mobile QR Scanning:</strong>
-              <div style="margin-top: 2px; line-height: 1.4;">
-                Phone cameras require a live <strong>https://</strong> web link (like <code>https://avi22sh.github.io/Hotel-Premier/</code>) to open the browser automatically. Enter your live website link below.
-              </div>
-            </div>
-          </div>
-        ` : ''}
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: var(--cream-bg); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--cream-border);">
-          <div>
-            <label class="form-label">Select Table / Room / Counter</label>
-            <select id="qr-table-select" class="form-select" onchange="window.admin.generateTableQR()">
-              <option value="Main Restaurant QR">General Restaurant Menu (Default)</option>
-              <option value="Table 1">Table 1 (Pure Veg AC Dining)</option>
-              <option value="Table 2">Table 2 (Pure Veg AC Dining)</option>
-              <option value="Table 3">Table 3 (Pure Veg AC Dining)</option>
-              <option value="Table 4">Table 4 (Pure Veg AC Dining)</option>
-              <option value="Table 5">Table 5 (Family AC Hall)</option>
-              <option value="Table 6">Table 6 (Family AC Hall)</option>
-              <option value="Table 7">Table 7 (Pure Veg AC Dining)</option>
-              <option value="Table 8">Table 8 (Pure Veg AC Dining)</option>
-              <option value="Reception Counter">Reception / Cashier Desk</option>
-              <option value="Room 101">Room 101 (AC Super Deluxe King)</option>
-              <option value="Room 102">Room 102 (AC Super Deluxe King)</option>
-              <option value="Room 201">Room 201 (AC Deluxe Queen)</option>
-              <option value="Room 202">Room 202 (AC Deluxe Queen)</option>
-              <option value="Room 301">Room 301 (AC Deluxe Twin Beds)</option>
-              <option value="Room 302">Room 302 (AC Deluxe Twin Beds)</option>
-            </select>
-          </div>
-          <div>
-            <label class="form-label">Live App URL / Custom Domain</label>
-            <input type="text" id="qr-target-url" class="form-input" value="${initialUrl}" placeholder="https://avi22sh.github.io/Hotel-Premier/" oninput="window.admin.onCustomDomainInput(this.value)" style="font-size: 0.8rem; font-weight: 600;">
-            <span style="font-size: 0.68rem; color: var(--text-muted); margin-top: 3px; display: block;">Permanently saved. Enter GitHub Pages link or custom domain.</span>
-          </div>
+        <div class="qr-studio-fields">
+          <label>QR destination<select id="qr-table-select" class="form-select"><option value="reception">Reception → Home</option><option value="restaurant">Restaurant → Culinary Collection</option><option value="room">Room → Digital Concierge</option></select></label>
+          <label>Verified room<select id="qr-room-select" class="form-select" disabled><option value="">Awaiting verified room register</option></select></label>
+          <label>Public HTTPS PWA address<input id="qr-target-url" class="form-input" type="url" spellcheck="false"></label>
         </div>
-
-        <!-- Standee Preview -->
-        <div style="display: flex; justify-content: center; margin: 10px 0;">
-          <div id="standee-print-card" style="width: 270px; background: #FFF; border: 3px solid var(--gold-primary); border-radius: 12px; padding: 18px 16px; text-align: center; box-shadow: var(--shadow-md);">
-            <div style="font-family: var(--font-royal); font-weight: 900; font-size: 1.05rem; color: var(--terracotta-dark); letter-spacing: 0.5px;">HOTEL PREMIER</div>
-            <div style="font-size: 0.65rem; color: var(--gold-primary); font-weight: 800; letter-spacing: 1px; margin-bottom: 10px;">PRIDE PURE VEG RESTAURANT</div>
-            
-            <div id="qr-canvas-holder" style="display: flex; justify-content: center; margin-bottom: 10px; padding: 10px; background: var(--cream-bg); border-radius: 8px; border: 1px solid var(--cream-border); min-height: 170px; align-items: center;">
-              <!-- QR Rendered Here -->
-            </div>
-
-            <div id="qr-standee-label" style="font-family: var(--font-royal); font-weight: 900; font-size: 0.98rem; color: var(--terracotta-dark);">General Restaurant Menu</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 3px; line-height: 1.3;">Scan with any phone camera to view live menu, order food & explore hotel stays</div>
-          </div>
+        <p id="qr-studio-status" role="status"></p>
+        <div id="standee-print-card" class="qr-print-card">
+          <img class="qr-brand" src="assets/premier-original-logo.png" alt="Hotel Premier">
+          <h4 id="qr-standee-label"></h4><div id="qr-canvas-holder"></div>
+          <p id="qr-card-instructions">Scan to discover Hotel Premier.</p><p>Hotel Premier · Bhusawal</p>
         </div>
-
-        <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
-          <button class="btn-secondary" style="padding: 9px 18px;" onclick="window.admin.downloadQRImage()">
-            📥 Download QR (PNG)
-          </button>
-          <button class="btn-primary" style="padding: 9px 20px;" onclick="window.admin.printStandee()">
-            🖨️ Print Standee Card
-          </button>
-        </div>
-      </div>
-    `;
-
-    setTimeout(() => this.generateTableQR(), 50);
+        <div class="guest-network-actions"><button type="button" class="btn-secondary" id="qr-download">Download QR (PNG)</button><button type="button" class="btn-primary" id="qr-print">Print branded card</button></div>
+        <p>Wi-Fi connection QR codes are separate from website links and require verified guest-network information. Opening a page cannot connect a phone automatically.</p>
+      </div>`;
+    document.getElementById('qr-target-url').value = localStorage.getItem('hotel_premier_custom_qr_domain') || 'https://avi22sh.github.io/Hotel-Premier/';
+    const roomSelect = document.getElementById('qr-room-select');
+    const refreshRooms = () => {
+      const current = roomSelect.value; roomSelect.replaceChildren();
+      const rooms = window.HotelGuestNetwork?.getRooms() || [];
+      const blank = document.createElement('option'); blank.value = ''; blank.textContent = rooms.length ? 'Select verified room' : 'Awaiting verified room register'; roomSelect.append(blank);
+      rooms.forEach(room => { const option = document.createElement('option'); option.value = room.id; option.textContent = room.label + ' · ' + room.category; roomSelect.append(option); });
+      roomSelect.value = current; this.generateTableQR();
+    };
+    document.getElementById('qr-table-select').addEventListener('change', () => this.generateTableQR());
+    roomSelect.addEventListener('change', () => this.generateTableQR());
+    document.getElementById('qr-target-url').addEventListener('change', e => this.onCustomDomainInput(e.target.value));
+    document.getElementById('qr-download').addEventListener('click', () => this.downloadQRImage());
+    document.getElementById('qr-print').addEventListener('click', () => this.printStandee());
+    if (this.qrRegisterListener) window.removeEventListener('premier-room-register-updated', this.qrRegisterListener);
+    this.qrRegisterListener = () => { if (container.isConnected) refreshRooms(); };
+    window.addEventListener('premier-room-register-updated', this.qrRegisterListener);
+    refreshRooms();
   }
 
-  onCustomDomainInput(val) {
-    let clean = val.trim();
-    // Auto-correct Netlify dashboard URLs: https://app.netlify.com/projects/site-name/overview -> https://site-name.netlify.app
-    if (clean.includes('app.netlify.com/projects/') || clean.includes('app.netlify.com/sites/')) {
-      const match = clean.match(/app\.netlify\.com\/(?:projects|sites)\/([^\/\?#]+)/);
-      if (match && match[1]) {
-        clean = `https://${match[1]}.netlify.app`;
-        const inputEl = document.getElementById('qr-target-url');
-        if (inputEl) inputEl.value = clean;
-        if (window.app && typeof window.app.showToast === 'function') {
-          window.app.showToast(`Auto-corrected to live website link: ${clean}`, 'info');
-        }
-      }
-    }
-    localStorage.setItem('hotel_premier_custom_qr_domain', clean);
+  onCustomDomainInput(value) {
+    try {
+      const url = new URL(value.trim());
+      if (url.protocol !== 'https:' || url.username || url.password) throw Error();
+      url.search = ''; url.hash = '';
+      localStorage.setItem('hotel_premier_custom_qr_domain', url.href);
+    } catch (_) { /* Invalid addresses are reported by the preview, never saved. */ }
     this.generateTableQR();
   }
 
   generateTableQR() {
-    const tableSelect = document.getElementById('qr-table-select');
-    const labelEl = document.getElementById('qr-standee-label');
-    const qrHolder = document.getElementById('qr-canvas-holder');
-    const urlInput = document.getElementById('qr-target-url');
-    if (!tableSelect || !qrHolder) return;
-
-    const selectedText = tableSelect.value;
-    if (labelEl) labelEl.innerText = selectedText;
-
-    const savedCustomDomain = localStorage.getItem('hotel_premier_custom_qr_domain');
-    let base = (urlInput && urlInput.value.trim()) 
-      ? urlInput.value.trim() 
-      : (savedCustomDomain || window.location.href.split('#')[0].split('?')[0]);
-    
-    let targetUrl;
+    const select = document.getElementById('qr-table-select');
+    const host = document.getElementById('qr-canvas-holder');
+    if (!select || !host) return;
+    const type = select.value;
+    const room = document.getElementById('qr-room-select');
+    if (room) room.disabled = type !== 'room';
+    const status = document.getElementById('qr-studio-status');
+    const title = document.getElementById('qr-standee-label');
+    const help = document.getElementById('qr-card-instructions');
+    host.replaceChildren(); this.currentGuestQR = null;
+    if (title) title.textContent = type === 'restaurant' ? 'Pride Pure Veg AC Restaurant' : type === 'room' ? 'Your Room Concierge' : 'Welcome to Hotel Premier';
+    if (help) help.textContent = type === 'restaurant' ? 'Scan to explore our Culinary Collection.' : type === 'room' ? 'Scan for your room guide, dining and assistance.' : 'Scan to discover our hotel, dining and stays.';
     try {
-      const url = new URL(base, window.location.href);
-      if (!['https:', 'http:'].includes(url.protocol)) throw Error('Invalid QR address');
-      url.hash = 'dine';
-      url.searchParams.delete('section'); url.searchParams.delete('page'); url.searchParams.delete('tab');
-      url.searchParams.delete('category'); url.searchParams.delete('cat');
-      url.searchParams.set('src', selectedText);
-      url.searchParams.set('entry', 'menu');
-      targetUrl = url.href;
-    } catch(error) { window.app.showToast('Enter a valid website address for this QR code.', 'warning'); return; }
-
-    qrHolder.innerHTML = '';
-    if (window.QRCode) {
-      new QRCode(qrHolder, {
-        text: targetUrl,
-        width: 160,
-        height: 160,
-        colorDark: '#0E1D36',
-        colorLight: '#FFFFFF',
-        correctLevel: QRCode.CorrectLevel.H
-      });
-    } else {
-      qrHolder.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(targetUrl)}" alt="QR Code" style="width: 160px; height: 160px;">`;
+      if (!window.HotelGuestNetwork) throw Error('Please reload the updated QR tools.');
+      const url = window.HotelGuestNetwork.destination(document.getElementById('qr-target-url').value.trim(), type, room?.value);
+      window.HotelGuestNetwork.renderQR(host, url); this.currentGuestQR = url;
+      if (status) status.textContent = 'Website QR ready. Check the destination on a phone before printing.';
+    } catch (error) {
+      if (status) status.textContent = error.message;
+      host.textContent = 'QR unavailable until the destination is verified.';
+    }
+    for (const id of ['qr-download', 'qr-print']) {
+      const button = document.getElementById(id); if (button) button.disabled = !this.currentGuestQR || !host.querySelector('canvas');
     }
   }
 
@@ -3299,9 +3235,16 @@ class HotelPremierAdmin {
 
     const canvas = qrHolder.querySelector('canvas');
     if (canvas) {
+      // Include a quiet zone in the PNG, not only in its HTML wrapper.
+      const printable = document.createElement('canvas');
+      const margin = 28;
+      printable.width = canvas.width + margin * 2; printable.height = canvas.height + margin * 2;
+      const context = printable.getContext('2d');
+      context.fillStyle = '#ffffff'; context.fillRect(0, 0, printable.width, printable.height);
+      context.drawImage(canvas, margin, margin);
       const link = document.createElement('a');
       link.download = `Hotel_Premier_QR_${label}.png`;
-      link.href = canvas.toDataURL('image/png');
+      link.href = printable.toDataURL('image/png');
       link.click();
       window.app.showToast('QR Code PNG downloaded successfully!', 'success');
       return;
@@ -3318,6 +3261,9 @@ class HotelPremierAdmin {
   }
 
   printStandee() {
+    if (!this.currentGuestQR) return;
+    document.body.classList.add('hp-qr-print');
+    window.addEventListener('afterprint', () => document.body.classList.remove('hp-qr-print'), { once: true });
     window.print();
   }
 
