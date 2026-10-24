@@ -49,3 +49,12 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 - Removed the unused full-menu cache write without deleting existing stored data. Explicit menu saves preserve original-photo lifecycle metadata in their overrides rather than replacing it.
 - Verified using isolated synthetic upload/preview fixtures, plus the full regression suite. No owner photos were edited, uploaded externally or replaced during testing. Admin processing on the owner's device still needs an authenticated real-photo review.
 - Wi-Fi remains inactive; no router, POS, credential or paid-service changes.
+
+## Release 21.86 — device appearance and uncluttered navigation
+
+- Retains the immediately preceding light/dark palettes; no historical stylesheet rollback or replacement colour scheme. Appearance now follows device settings automatically, including live setting changes, without a manual third mode.
+- Removes the restaurant Guest Wi-Fi banner without activating or changing the deferred network infrastructure.
+- Replaces the floating Menu emoji/count pill with a compact vector icon and label, positioned outside dining containers, with safe-area spacing and expanded-state accessibility.
+- Removes visible numeric review-selection wording; retains approved review filtering, source labels, highlight context, update dates and full source links.
+- Includes the pending photo-save safety fixes: immutable save snapshots, duplicate-write protection, guarded approval/restoration, original selection on reopen and no false approval on storage failure.
+- Synthetic fixtures verify appearance changes, original restoration, concurrent edits and delayed saves. Owner photos, guest records, network settings and paid services remain unchanged.

@@ -205,8 +205,8 @@ class HotelPremierApp {
   // ==================== USER PREFERENCES ====================
   loadPreferences() {
     try {
-      const savedTheme = localStorage.getItem(this.storageKeyTheme);
-      this.themeMode = ['light', 'dark', 'system'].includes(savedTheme) ? savedTheme : 'system';
+      // Appearance follows the device; old manual choices no longer override it.
+      this.themeMode = 'system';
       this.applyTheme();
 
       if (window.matchMedia) {
@@ -236,13 +236,8 @@ class HotelPremierApp {
   }
 
   cycleTheme() {
-    this.haptic(10);
-    const themes = ['system', 'dark', 'light'];
-    const nextTheme = themes[(themes.indexOf(this.themeMode) + 1) % themes.length];
-    this.themeMode = nextTheme;
-    localStorage.setItem(this.storageKeyTheme, nextTheme);
+    this.themeMode = 'system';
     this.applyTheme();
-    this.showToast(`Theme: ${nextTheme === 'system' ? 'System default' : nextTheme === 'dark' ? 'Dark' : 'Light'}`, 'info');
   }
 
   // ==================== HAPTIC TACTILE ENGINE ====================
@@ -592,7 +587,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.84';
+    s.src = 'admin.js?v=21.86';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -609,7 +604,7 @@ class HotelPremierApp {
 
   applyTheme() {
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const resolvedTheme = this.themeMode === 'system' ? (prefersDark ? 'dark' : 'light') : this.themeMode;
+    const resolvedTheme = prefersDark ? 'dark' : 'light';
     document.body.classList.toggle('theme-dark', resolvedTheme === 'dark');
     document.body.classList.toggle('theme-light', resolvedTheme === 'light');
     document.documentElement.style.colorScheme = resolvedTheme;
@@ -619,10 +614,9 @@ class HotelPremierApp {
 
     const toggle = document.getElementById('theme-toggle-btn');
     if (toggle) {
-      const label = this.themeMode === 'system' ? 'System theme' : `${this.themeMode[0].toUpperCase()}${this.themeMode.slice(1)} theme`;
-      toggle.title = `${label}. Tap to change.`;
-      toggle.setAttribute('aria-label', `${label}. Tap to change.`);
-      toggle.innerHTML = `<span aria-hidden="true">${this.themeMode === 'system' ? '◐' : resolvedTheme === 'dark' ? '☾' : '☀'}</span>`;
+      toggle.title = 'Automatically follows your device appearance';
+      toggle.setAttribute('aria-label', `${resolvedTheme === 'dark' ? 'Dark' : 'Light'} mode, following your device`);
+      toggle.textContent = `${resolvedTheme === 'dark' ? 'Dark' : 'Light'} · Auto`;
     }
   }
 
@@ -1889,6 +1883,7 @@ class HotelPremierApp {
     }
     modal.classList.add('active');
     modal.style.display = 'flex';
+    document.getElementById('floating-menu-toggle-btn')?.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     const searchInput = document.getElementById('drawer-sections-search');
     if (searchInput) {
@@ -1904,6 +1899,7 @@ class HotelPremierApp {
 
   closeMenuSectionDrawer() {
     this.haptic(5);
+    document.getElementById('floating-menu-toggle-btn')?.setAttribute('aria-expanded', 'false');
     clearTimeout(this.menuDrawerFocusTimer);
     const modal = document.getElementById('menu-sections-drawer-modal');
     if (!modal || !modal.classList.contains('active')) return;

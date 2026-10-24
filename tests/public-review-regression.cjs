@@ -9,7 +9,8 @@ function element() { return {children:[],append(...items){this.children.push(...
   vm.runInNewContext(fs.readFileSync('public-reviews.js','utf8'),context);
   await callback();
   assert.equal(grid.children.length,3);
-  assert.match(status.textContent,/not the complete review history/);
+  assert.match(status.textContent,/Guest review highlights/);
+  assert.doesNotMatch(status.textContent,/Selected|3–5|3-5/);
   assert.match(status.textContent,/Last updated/);
   assert.doesNotMatch(status.textContent,/refresh is pending/);
   console.log('PASS: only approved 3–5-star reviews displayed, source and freshness disclosed');

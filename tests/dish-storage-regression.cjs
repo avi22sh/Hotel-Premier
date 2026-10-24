@@ -39,5 +39,10 @@ vm.runInContext(fs.readFileSync(path.join(__dirname, '..', 'storage.js'), 'utf8'
   await assert.rejects(storage.saveDishOverride('dish-1', {}), /Unable to save/);
   context.localStorage.setItem = () => {};
   await storage.saveDishOverride('dish-1', { image: 'offline.jpg' });
+  let lifecycle;
+  storage.saveDishOverride=async(id,record)=>{lifecycle=record;};
+  await storage.saveDishPhotoLifecycle('dish-1',{image:'raw.jpg',rawOriginalImage:'raw.jpg',enhancedMasterImage:'enhanced.jpg',enhancementStatus:'original'});
+  assert.equal(lifecycle.image,'raw.jpg','Explicit original selection must not be replaced by enhanced master');
+  assert.equal(lifecycle.enhancedMasterImage,'enhanced.jpg');
   console.log('PASS: transaction completion, merge preservation, failure reporting and local fallback');
 })().catch(error => { console.error(error); process.exitCode = 1; });

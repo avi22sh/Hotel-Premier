@@ -646,7 +646,9 @@ class HotelPremierAdmin {
 
     this.rawOriginalSource = (lifecycle && lifecycle.rawOriginalImage) ? lifecycle.rawOriginalImage : (dish.image || '');
     this.enhanced4KSource = (lifecycle && lifecycle.enhancedMasterImage) ? lifecycle.enhancedMasterImage : (dish.image || '');
-    this.tempImageSource = this.enhanced4KSource || this.rawOriginalSource;
+    // Reopening must select the saved current photo, not a previously enhanced
+    // master after the owner has explicitly restored the original.
+    this.tempImageSource = lifecycle?.image ?? dish.image ?? '';
     this.currentEnhancementStatus = (lifecycle && lifecycle.enhancementStatus) || (hasPhoto ? 'enhanced' : 'original');
     this.currentQualityScore = (lifecycle && lifecycle.qualityScore) || 92;
 
@@ -1045,55 +1047,18 @@ class HotelPremierAdmin {
   }
 
   async revertActiveDishToOriginal() {
-    if (!this.activeImageDishId) return;
+    if (!this.activeImageDishId || this.previewPending || this.isPreviewProcessing || this.previewFailed || this.savingDishPhoto) return;
     if (!this.rawOriginalSource) {
-      alert('No raw original photo found for this dish.');
+      window.app.showToast('No original photo is available for this dish.', 'error');
       return;
     }
-
     if (confirm('Revert this dish to its untouched original photo?')) {
-      this.tempImageSource = this.rawOriginalSource;
-      this.currentEnhancementStatus = 'original';
-
-      if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.revertDishToOriginal === 'function') {
-        await window.HOTEL_STORAGE.revertDishToOriginal(this.activeImageDishId);
-      }
-
-      const dish = window.app.menuData.find(d => d.id === this.activeImageDishId);
-      if (dish) {
-        dish.image = this.rawOriginalSource;
-        window.app.saveMenuData();
-        window.app.renderMenu();
-      }
-
-      this.toggleComparisonMode('original');
-      const badge = document.getElementById('lifecycle-status-badge');
-      if (badge) {
-        badge.className = 'hp-status-pill hp-status-original';
-        badge.innerText = 'RAW ORIGINAL';
-      }
-      window.app.showToast('Reverted to raw camera photo!', 'info');
+      return this.saveReplacedImage({ image: this.rawOriginalSource, status: 'original', backgroundMode: 'original' });
     }
   }
 
   async approveActiveDishPhoto() {
-    if (!this.activeImageDishId || this.isPreviewProcessing || this.previewFailed) return;
-
-    const dishId = this.activeImageDishId;
-    this.currentEnhancementStatus = 'approved';
-    await this.saveReplacedImage();
-
-    this.currentEnhancementStatus = 'approved';
-    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.approveDishEnhancedPhoto === 'function') {
-      await window.HOTEL_STORAGE.approveDishEnhancedPhoto(dishId);
-    }
-
-    const badge = document.getElementById('lifecycle-status-badge');
-    if (badge) {
-      badge.className = 'hp-status-pill hp-status-approved';
-      badge.innerText = `APPROVED MASTER (${this.currentQualityScore}%)`;
-    }
-    window.app.showToast('Enhanced photo approved as official menu master!', 'success');
+    return this.saveReplacedImage({ status: 'approved' });
   }
 
   setImageEngineOption(key, val, btn) {
@@ -1206,6 +1171,10 @@ class HotelPremierAdmin {
   }
 
   downloadEnhancedAsset() {
+    if (this.previewPending || this.isPreviewProcessing || this.previewFailed) {
+      window.app?.showToast?.('Wait for a successful preview before downloading.', 'info');
+      return;
+    }
     if (!this.tempImageSource) {
       window.app?.showToast?.('No processed asset available to download.', 'warning');
       return;
@@ -1307,7 +1276,7 @@ class HotelPremierAdmin {
       } finally {
         if (requestId === this.previewRequestId) {
           this.isPreviewProcessing = false;
-          if (saveButton) saveButton.disabled = this.previewFailed;
+          if (saveButton) saveButton.disabled = Boolean(this.previewFailed || this.savingDishPhoto);
         }
       }
     } else {
@@ -1409,53 +1378,65 @@ class HotelPremierAdmin {
     await this.recalculate4KLive();
   }
 
-  async saveReplacedImage() {
-    if (this.previewPending || this.isPreviewProcessing || this.previewFailed) return;
+  async saveReplacedImage(selection = {}) {
+    if (this.previewPending || this.isPreviewProcessing || this.previewFailed || this.savingDishPhoto) return false;
     if (!this.activeImageDishId || !this.tempImageSource) return;
 
     const dish = window.app.menuData.find(d => d.id === this.activeImageDishId);
     if (dish) {
+      const image = selection.image || this.tempImageSource;
+      const status = selection.status || this.currentEnhancementStatus || 'enhanced';
+      const requestId = this.previewRequestId;
+      const saveButton = document.getElementById('apply-dish-photo-btn');
+      this.savingDishPhoto = true;
+      if (saveButton) saveButton.disabled = true;
       // Permanent Dual Photo Preservation in Storage with Lifecycle tracking
       try {
       if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function') {
         await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
-          enhancedMasterImage: this.tempImageSource,
+          enhancedMasterImage: status === 'original' ? (this.enhanced4KSource || image) : image,
+          image,
           rawOriginalImage: this.rawOriginalSource || this.tempImageSource,
-          enhancementStatus: this.currentEnhancementStatus || 'enhanced',
+          enhancementStatus: status,
           qualityScore: this.currentQualityScore || 90,
-          backgroundType: this.activeBackgroundMode || 'original',
+          backgroundType: selection.backgroundMode || this.activeBackgroundMode || 'original',
           imageOptions: { ...(this.activeImageOptions || {}) },
           styleVersion: 'hp-studio-v3.0'
         });
       } else if (window.HOTEL_STORAGE) {
-        await window.HOTEL_STORAGE.saveDishOverride(dish.id, { image: this.tempImageSource });
+        await window.HOTEL_STORAGE.saveDishOverride(dish.id, { image });
       } else {
         throw new Error('Photo storage is not ready. Reload and retry.');
       }
       } catch (error) {
         window.app.showToast(error.message || 'Photo could not be saved. Please retry.', 'error');
-        throw error;
+        return false;
+      } finally {
+        this.savingDishPhoto = false;
+        if (saveButton && requestId === this.previewRequestId && this.activeImageDishId === dish.id) {
+          saveButton.disabled = Boolean(this.previewPending || this.isPreviewProcessing || this.previewFailed);
+        }
       }
-      dish.image = this.tempImageSource;
+      dish.image = image;
       window.app.saveMenuData();
 
       // Direct live DOM updates so changes reflect immediately without needing reload
       const cardImg = document.getElementById(`dish-img-el-${dish.id}`);
       if (cardImg) {
         if (cardImg.tagName === 'IMG') {
-          cardImg.src = this.tempImageSource;
+          cardImg.src = image;
         } else {
           window.app.renderMenu();
         }
       }
 
       const modalImg = document.getElementById('detail-modal-img');
-      if (modalImg && modalImg.tagName === 'IMG') {
-        modalImg.src = this.tempImageSource;
+      if (modalImg && modalImg.tagName === 'IMG' && window.app.currentDetailDishId === dish.id && !(window.app.currentDetailVariantIndex >= 0)) {
+        modalImg.src = image;
       }
 
       const thumbImg = document.getElementById(`admin-dish-thumb-${dish.id}`);
-      if (thumbImg) thumbImg.src = this.tempImageSource;
+      if (thumbImg) thumbImg.src = image;
 
       window.app.renderCategoryCards();
       if (window.app.currentCategory && window.app.currentCategory !== 'all') {
@@ -1466,8 +1447,9 @@ class HotelPremierAdmin {
       if (document.getElementById('studio-dishes-grid')) {
         this.renderAIStudioManager(document.getElementById('admin-tab-content'));
       }
-      this.closeImageModal();
-      window.app.showToast(`Updated studio photo for "${dish.name}"!`, 'success');
+      if (requestId === this.previewRequestId && this.activeImageDishId === dish.id) this.closeImageModal();
+      window.app.showToast(`Photo ${status === 'approved' ? 'approved' : status === 'original' ? 'restored' : 'saved'} for "${dish.name}" in this browser.`, 'success');
+      return true;
     }
   }
 

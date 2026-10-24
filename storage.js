@@ -114,7 +114,7 @@ class HotelPremierStorageManager {
    */
   async saveDishPhotoLifecycle(dishId, photoRecord) {
     const data = {
-      image: photoRecord.enhancedMasterImage || photoRecord.image,
+      image: photoRecord.image || photoRecord.enhancedMasterImage,
       enhancedMasterImage: photoRecord.enhancedMasterImage || photoRecord.image,
       rawOriginalImage: photoRecord.rawOriginalImage || photoRecord.image,
       enhancementStatus: photoRecord.enhancementStatus || 'enhanced', // 'original'|'processing'|'enhanced'|'approved'|'flagged_review'

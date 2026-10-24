@@ -75,9 +75,9 @@
   <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.84">
-  <link rel="stylesheet" href="royal.css?v=21.84">
-  <script src="public-reviews.js?v=21.5" defer></script>
+  <link rel="stylesheet" href="styles.css?v=21.86">
+  <link rel="stylesheet" href="royal.css?v=21.86">
+  <script src="public-reviews.js?v=21.86" defer></script>
 </head>
 <body>
 
@@ -120,9 +120,7 @@
         </div>
 
         <div class="settings-row"><span class="settings-label">Appearance</span>
-        <button class="icon-btn" id="theme-toggle-btn" onclick="window.app ? window.app.cycleTheme() : null" title="System theme. Tap to change." aria-label="System theme. Tap to change.">
-          <span aria-hidden="true">◐</span>
-        </button>
+        <span id="theme-toggle-btn" class="appearance-status" title="Automatically follows your device appearance">Light · Auto</span>
         </div>
         <a href="tel:09325375802" class="settings-action settings-contact" data-i18n="btnCallHotel">Call Front Desk</a>
 
@@ -876,7 +874,6 @@
     <div class="editorial-header-block dining-hero-header">
       <div class="dining-brand-crest">HOTEL PREMIER PRESENTS</div>
       <h2 class="dining-main-heading">Pride Pure Veg AC Restaurant</h2>
-      <button type="button" class="guest-wifi-action" onclick="window.HotelGuestNetwork?.showWifi('restaurant')"><i class="fa-solid fa-wifi" aria-hidden="true"></i> Guest Wi-Fi <span aria-hidden="true">↗</span></button>
       <div class="editorial-divider pride-underline"></div>
       <p class="editorial-subtitle" data-i18n="dineHeroSubtitle">
         North Indian & Khandeshi favourites, clay oven tandoor, dum biryani, Indo-Chinese and Pastas—served with refreshing beverages.
@@ -1053,18 +1050,18 @@
         </div>
       </main>
 
-      <!-- Floating Menu Sub-Sections Toggle Button (Strictly inside Dining section) -->
-      <button id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Culinary Menu Selection" title="Explore Menu Categories">
-        <span class="floating-btn-icon">📖</span>
-        <span class="floating-btn-text">Menu</span>
-        <span class="floating-btn-badge" id="floating-sections-count">21</span>
-      </button>
     </div>
   </section>
 
   <!-- ================================================================ -->
   <!-- 4. CELEBRATIONS & GROUP DINING / GROUP STAYS                      -->
   <!-- ================================================================ -->
+  <!-- Viewport-level control avoids clipping by dining glass containers. -->
+  <button type="button" id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Culinary Menu Selection" aria-controls="menu-sections-drawer-modal" aria-expanded="false" title="Explore Menu Categories">
+    <svg class="floating-menu-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <span class="floating-btn-text">Menu</span>
+  </button>
+
   <section class="section-wrapper" id="section-celebrate">
     <div class="celebrate-hero-banner">
       <span class="editorial-eyebrow" style="color: var(--brass-light);">Pride Pure Veg Dining & Stays</span>
@@ -1900,7 +1897,7 @@
   </div>
 
   <!-- Load Application Scripts (v20.51) -->
-  <script src="storage.js?v=20.51"></script>
+  <script src="storage.js?v=21.86"></script>
   <script src="vault.js?v=21.82"></script>
   <script src="data/translations.js?v=21.73"></script>
   <script src="data/hotel-data.js?v=21.77"></script>
@@ -1909,7 +1906,7 @@
   <script src="menu-structure.js?v=21.75"></script>
   <script src="group-stays.js?v=21.77"></script>
   <script src="guest-network.js?v=21.82"></script>
-  <script src="app.js?v=21.84"></script>
+  <script src="app.js?v=21.86"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1944,7 +1941,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.84', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.86', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load

@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fresh = Number.isFinite(updated) && updated <= Date.now() && Date.now() - updated <= 7 * 24 * 60 * 60 * 1000;
     const dateLabel = Number.isFinite(updated) ? new Date(updated).toLocaleDateString('en-IN', {timeZone:'Asia/Kolkata'}) : '';
     status.textContent = reviews.length
-      ? `Selected guest reviews rated 3–5 stars; not the complete review history. ${dateLabel ? `Last updated ${dateLabel}.` : 'Update date unavailable.'} ${fresh ? '' : 'Weekly refresh is pending.'}`
-      : 'Selected 3–5-star reviews will appear after the authorized feeds are connected. For the complete review history, visit our hotel listings below.';
+      ? `Guest review highlights. ${dateLabel ? `Last updated ${dateLabel}.` : 'Update date unavailable.'} ${fresh ? '' : 'Refresh pending.'}`
+      : 'Explore guest experiences on our hotel listings below.';
   } catch {
     status.textContent = 'Reviews are temporarily unavailable. You can still visit our hotel review links below.';
   }
