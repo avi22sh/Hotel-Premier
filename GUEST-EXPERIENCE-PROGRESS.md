@@ -58,3 +58,10 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 - Removes visible numeric review-selection wording; retains approved review filtering, source labels, highlight context, update dates and full source links.
 - Includes the pending photo-save safety fixes: immutable save snapshots, duplicate-write protection, guarded approval/restoration, original selection on reopen and no false approval on storage failure.
 - Synthetic fixtures verify appearance changes, original restoration, concurrent edits and delayed saves. Owner photos, guest records, network settings and paid services remain unchanged.
+
+## Release 21.87 — category drawer state and layout
+
+- Category search and quick filters no longer force inline flex layout over the responsive two-column grid.
+- Text search resets stale group highlights; choosing a group clears the previous search, and reopening resets the drawer to All. Active filter states are exposed to assistive technology.
+- Navigating away from Dining closes the drawer, releases its scroll lock and avoids returning focus to the now-hidden Menu control.
+- Existing light/dark palettes and automatic device appearance are unchanged. No photos, guest records, router settings or POS configuration were modified.

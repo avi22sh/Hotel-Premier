@@ -12,7 +12,7 @@ const route=modal('route-options-modal');
 elements['drawer-sections-search']={value:'old',focus(){focused='search';}};
 const doc={readyState:'loading',addEventListener(){},activeElement:opener,
   body:{style:{overflow:'auto'},classList:{add(){locked=true;},remove(){locked=false;}}},
-  getElementById:id=>elements[id],querySelector:()=>Object.values(elements).find(e=>e.classList?.contains('active'))};
+  getElementById:id=>elements[id],querySelectorAll:()=>[],querySelector:()=>Object.values(elements).find(e=>e.classList?.contains('active'))};
 const c={window:{},document:doc,console,setTimeout:fn=>(timers.push(fn),timers.length),clearTimeout(){}};
 vm.createContext(c);vm.runInContext(fs.readFileSync('app.js','utf8')+';window.App=HotelPremierApp;',c);
 const app=Object.create(c.window.App.prototype); app.renderMenuSectionDrawer=()=>{};app.applyGuestProfileToAllForms=()=>{};

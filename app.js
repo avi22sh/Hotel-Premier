@@ -587,7 +587,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.86';
+    s.src = 'admin.js?v=21.87';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -669,6 +669,7 @@ class HotelPremierApp {
       sectionId = 'section-home';
     }
 
+    if (sectionId !== 'section-dine') this.closeMenuSectionDrawer({ restoreFocus:false });
     this.activeSection = sectionId;
     if (sectionId === 'section-concierge') window.HotelGuestNetwork?.renderConcierge();
 
@@ -834,6 +835,7 @@ class HotelPremierApp {
 
     this.renderMenu();
     this.renderMenuSectionDrawer();
+    this.filterDrawerByGroup('all');
     this.calculateBulkQuote();
     this.renderRestaurantEventPackages();
     this.renderEventDecorations();
@@ -1897,7 +1899,7 @@ class HotelPremierApp {
     }
   }
 
-  closeMenuSectionDrawer() {
+  closeMenuSectionDrawer({ restoreFocus = true } = {}) {
     this.haptic(5);
     document.getElementById('floating-menu-toggle-btn')?.setAttribute('aria-expanded', 'false');
     clearTimeout(this.menuDrawerFocusTimer);
@@ -1906,7 +1908,8 @@ class HotelPremierApp {
     modal.classList.remove('active');
     modal.style.display = 'none';
     document.body.style.overflow = this.menuDrawerPreviousOverflow || '';
-    if (this.menuDrawerOpener?.isConnected) this.menuDrawerOpener.focus({ preventScroll:true });
+    if (!restoreFocus && modal.contains?.(document.activeElement)) document.activeElement.blur?.();
+    if (restoreFocus && this.menuDrawerOpener?.isConnected) this.menuDrawerOpener.focus({ preventScroll:true });
     this.menuDrawerOpener = null;
   }
 
@@ -1946,6 +1949,12 @@ class HotelPremierApp {
   }
 
   filterDrawerSections(query) {
+    // Text search spans every category; do not leave a stale group selected.
+    document.querySelectorAll('#drawer-quick-filter-chips .drawer-qf-chip').forEach(chip => {
+      const selected = (chip.getAttribute('onclick') || '').includes("'all'");
+      chip.classList.toggle('active', selected);
+      chip.setAttribute('aria-pressed', String(selected));
+    });
     const q = (query || '').toLowerCase().trim();
     const clearBtn = document.getElementById('drawer-clear-search-btn');
     if (clearBtn) {
@@ -1954,7 +1963,7 @@ class HotelPremierApp {
     const rows = document.querySelectorAll('#drawer-sections-list .drawer-section-item');
     rows.forEach(row => {
       if (!q) {
-        row.style.display = 'flex';
+        row.style.display = '';
         return;
       }
       const title = row.querySelector('.drawer-item-title') ? row.querySelector('.drawer-item-title').innerText.toLowerCase() : '';
@@ -1964,7 +1973,7 @@ class HotelPremierApp {
         (sectionId.includes('veg') || sectionId.includes('paneer') || sectionId.includes('kofta'));
 
       if (title.includes(q) || sub.includes(q) || sectionId.includes(q) || isVegMatch) {
-        row.style.display = 'flex';
+        row.style.display = '';
       } else {
         row.style.display = 'none';
       }
@@ -1972,13 +1981,17 @@ class HotelPremierApp {
   }
 
   filterDrawerByGroup(groupKey) {
+    const search = document.getElementById('drawer-sections-search');
+    if (search) search.value = '';
+    const clear = document.getElementById('drawer-clear-search-btn');
+    if (clear) clear.style.display = 'none';
     const chips = document.querySelectorAll('#drawer-quick-filter-chips .drawer-qf-chip');
-    chips.forEach(chip => chip.classList.remove('active'));
+    chips.forEach(chip => { chip.classList.remove('active'); chip.setAttribute('aria-pressed', 'false'); });
     const clickedChip = Array.from(chips).find(c => {
       const onclickAttr = c.getAttribute('onclick') || '';
       return onclickAttr.includes(`'${groupKey}'`);
     });
-    if (clickedChip) clickedChip.classList.add('active');
+    if (clickedChip) { clickedChip.classList.add('active'); clickedChip.setAttribute('aria-pressed', 'true'); }
 
     const groupMap = {
       all: null,
@@ -1993,7 +2006,7 @@ class HotelPremierApp {
     rows.forEach(row => {
       const sectionId = row.getAttribute('data-section-id');
       if (!allowed || sectionId === 'all' || allowed.includes(sectionId)) {
-        row.style.display = 'flex';
+        row.style.display = '';
       } else {
         row.style.display = 'none';
       }
