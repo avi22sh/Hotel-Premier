@@ -428,6 +428,24 @@ body.theme-dark .celebrate-hero-banner {
 #section-dine .recent-searches-bar { flex-wrap:wrap; overflow:visible; padding:0; }
 #section-dine .recent-searches-list { flex-wrap:wrap; min-width:0; gap:6px; }
 #section-dine .recent-search-chip { max-width:100%; white-space:normal; overflow-wrap:anywhere; min-height:36px; border-color:var(--crystal-edge); background:transparent; color:var(--crystal-muted); box-shadow:none; }
+/* A single, consistent search surface replaces conflicting legacy rules. */
+body #section-dine .dining-search-filter-bar { gap:12px; padding:18px; background:var(--crystal-surface),#e8e4df; border:1px solid var(--crystal-edge); border-radius:24px; box-shadow:0 8px 28px rgba(25,22,30,.06),inset 0 1px rgba(255,255,255,.35); }
+body.theme-dark #section-dine .dining-search-filter-bar { background:var(--crystal-surface),#242630; border:1px solid var(--crystal-edge); box-shadow:0 10px 30px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.07); }
+body #section-dine .search-input-wrapper,
+body.theme-dark #section-dine .search-input-wrapper { background:rgba(139,126,113,.06); border:1px solid var(--crystal-edge); box-shadow:inset 0 1px 3px rgba(0,0,0,.04); border-radius:16px; }
+body #section-dine .search-input-wrapper:focus-within,
+body.theme-dark #section-dine .search-input-wrapper:focus-within { background:rgba(181,148,103,.08); border-color:var(--crystal-accent); box-shadow:0 0 0 3px rgba(181,148,103,.12); }
+#menu-sections-drawer-modal .search-input-wrapper { display:flex; align-items:center; gap:10px; min-height:52px; padding:4px 5px 4px 14px; border-radius:14px; }
+#menu-sections-drawer-modal .search-input-wrapper:focus-within { border-color:var(--crystal-accent); box-shadow:0 0 0 3px rgba(181,148,103,.12); }
+#menu-sections-drawer-modal .menu-search-icon { flex-shrink:0; color:var(--crystal-muted); }
+#menu-sections-drawer-modal #drawer-sections-search { flex:1; min-width:0; width:0; padding:10px 0; border:0; outline:0; box-shadow:none; background:transparent; line-height:1.5; }
+#drawer-sections-search::-webkit-search-cancel-button { -webkit-appearance:none; }
+#menu-sections-drawer-modal #drawer-clear-search-btn { position:static; flex-shrink:0; min-width:44px; min-height:44px; align-items:center; justify-content:center; margin:0; color:var(--crystal-ink); background:transparent; border:0; border-radius:10px; }
+#menu-sections-drawer-modal .drawer-quick-filter-chips { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; overflow:visible; padding:0; }
+#menu-sections-drawer-modal .drawer-qf-chip { min-width:0; white-space:normal; padding:9px 10px; font-family:inherit; font-weight:500; text-align:center; line-height:1.4; }
+#menu-sections-drawer-modal .drawer-qf-chip:first-child { grid-column:1/-1; }
+#drawer-results-status { padding:10px 18px 0; margin:0; color:var(--crystal-muted); font-size:.75rem; line-height:1.6; }
+@media(max-width:600px) { #menu-sections-drawer-modal { padding:8px; } #menu-sections-drawer-modal .culinary-drawer-sheet { width:100%; max-height:calc(100dvh - 16px); border-radius:22px; } #menu-sections-drawer-modal .culinary-drawer-search-wrap { padding:12px 16px; } }
 body .btn-favorites-filter.active { background:rgba(157,48,66,.1); color:var(--crystal-ink); border-color:rgba(180,68,87,.45); box-shadow:none; }
 body .btn-favorites-filter.active .fav-filter-icon,
 body .dish-fav-btn.active .fav-icon { color:#bd4053; }

@@ -79,6 +79,7 @@ class HotelPremierApp {
     // Resolve the visible page before waiting for stored photos/menu data.
     // Only the requested route should be visible during a slow startup.
     try { if (window.HotelGuestNetwork) this.switchSection(window.HotelGuestNetwork.resolve(window.location), false); } catch (e) { console.warn('[Init] entry route:', e); }
+    try { this.bindMenuSearchEvents(); } catch (e) { console.warn('[Init] search controls:', e); }
     try { await this.loadMenuData(); } catch (e) { console.warn('[Init] loadMenuData:', e); }
     try { this.updateUILanguage(); } catch (e) { console.warn('[Init] updateUILanguage:', e); }
     try { this.renderCategoryCards(); } catch (e) { console.warn('[Init] renderCategoryCards:', e); }
@@ -161,7 +162,7 @@ class HotelPremierApp {
     this.prioritizeDiningControls();
     this.switchSection(initialSection, false);
 
-    if (catParam) {
+    if (catParam && !this.searchQuery.trim()) {
       this.openCategorySection(catParam);
     }
     this.bindEvents();
@@ -592,7 +593,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.93';
+    s.src = 'admin.js?v=21.94';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -674,7 +675,10 @@ class HotelPremierApp {
       sectionId = 'section-home';
     }
 
-    if (sectionId !== 'section-dine') this.closeMenuSectionDrawer({ restoreFocus:false });
+    if (sectionId !== 'section-dine') {
+      clearTimeout(this.drawerNavigationTimer);
+      this.closeMenuSectionDrawer({ restoreFocus:false });
+    }
     this.activeSection = sectionId;
     if (sectionId === 'section-concierge') window.HotelGuestNetwork?.renderConcierge();
 
@@ -1899,7 +1903,9 @@ class HotelPremierApp {
       if (clearBtn) clearBtn.style.display = 'none';
       clearTimeout(this.menuDrawerFocusTimer);
       this.menuDrawerFocusTimer = setTimeout(() => {
-        if (modal.classList.contains('active')) searchInput.focus({ preventScroll:true });
+        if (!modal.classList.contains('active')) return;
+        const touch = window.matchMedia?.('(pointer: coarse)').matches || window.innerWidth < 600;
+        (touch ? modal.querySelector('.modal-close-btn') : searchInput)?.focus({ preventScroll:true });
       }, 150);
     }
   }
@@ -1919,6 +1925,7 @@ class HotelPremierApp {
   }
 
   selectCategoryFromDrawer(catId) {
+    clearTimeout(this.drawerNavigationTimer);
     this.closeMenuSectionDrawer();
     this.currentFilter = 'all';
     this.searchQuery = '';
@@ -1933,7 +1940,8 @@ class HotelPremierApp {
       this.openCategorySection(catId);
     }
 
-    setTimeout(() => {
+    this.drawerNavigationTimer = setTimeout(() => {
+      if (this.activeSection !== 'section-dine') return;
       let target = null;
       if (catId !== 'all') {
         target = document.getElementById(`section-${catId}`);
@@ -1942,7 +1950,7 @@ class HotelPremierApp {
         target = document.getElementById('category-nav-bar') || document.getElementById('menu-container');
       }
       if (target) {
-        const headerOffset = 130;
+        const headerOffset = (document.querySelector('.app-header')?.getBoundingClientRect().height || 118) + 12;
         const rect = target.getBoundingClientRect();
         const targetScrollY = rect.top + window.pageYOffset - headerOffset;
         window.scrollTo({
@@ -1983,6 +1991,7 @@ class HotelPremierApp {
         row.style.display = 'none';
       }
     });
+    this.updateDrawerStatus();
   }
 
   filterDrawerByGroup(groupKey) {
@@ -2001,7 +2010,7 @@ class HotelPremierApp {
     const groupMap = {
       all: null,
       breakfast: ['morning-delights', 'hot-hearty', 'tasty-tidbits', 'premier-soups', 'indo-chinese', 'tandoor-classics', 'pasta-section'],
-      main: ['vegetable-specialties', 'veg-specialties', 'kofta-delights', 'paneer-specialties', 'signature-breads', 'tandoor-rotis', 'khandeshi-specialties', 'thali-combos'],
+      main: ['vegetable-specialties', 'veg-specialties', 'kofta-delights', 'paneer-specialties', 'signature-breads', 'tandoor-rotis', 'khandeshi-specialties', 'thali-combos', 'delivery-thalis'],
       rice: ['flavorful-dals', 'rice-biryani', 'fresh-addons', 'sizzling-rice-noodles', 'sides-accompaniments'],
       beverages: ['mithai-magic', 'frozen-fantasies', 'desserts', 'mocktails', 'milkshake-mastani', 'chilled-beverages']
     };
@@ -2016,6 +2025,19 @@ class HotelPremierApp {
         row.style.display = 'none';
       }
     });
+    this.updateDrawerStatus();
+  }
+
+  updateDrawerStatus() {
+    const list = document.getElementById('drawer-sections-list');
+    if (list) list.scrollTop = 0;
+    const status = document.getElementById('drawer-results-status');
+    if (!status) return;
+    const visible = [...document.querySelectorAll('#drawer-sections-list .drawer-section-item')].filter(row => row.style.display !== 'none');
+    const count = visible.filter(row => row.getAttribute('data-section-id') !== 'all').length;
+    status.textContent = count ? `${count} ${count === 1 ? 'collection' : 'collections'}`
+      : visible.some(row => row.getAttribute('data-section-id') === 'all') ? 'All menu items'
+      : 'No collections found. Try another name or clear your search.';
   }
 
   renderQuickFilters() {
@@ -4032,7 +4054,9 @@ class HotelPremierApp {
     }, 2800);
   }
 
-  bindEvents() {
+  bindMenuSearchEvents() {
+    if (this.menuSearchEventsBound) return;
+    this.menuSearchEventsBound = true;
     const searchInput = document.getElementById('menu-search-input');
     const clearBtn = document.getElementById('clear-search-btn');
 
@@ -4099,6 +4123,10 @@ class HotelPremierApp {
         }
       });
     }
+  }
+
+  bindEvents() {
+    this.bindMenuSearchEvents();
 
     // Modal backdrop click-to-close & body scroll unlock
     document.querySelectorAll('.modal-backdrop').forEach(modal => {

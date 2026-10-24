@@ -19,4 +19,8 @@ const html=fs.readFileSync('index.html','utf8');assert.match(html,/<label for="m
 assert.doesNotMatch(html,/View Details →/,'Featured carousel must also use the compact info icon');
 assert.equal((html.match(/class="signature-inquire-btn" type="button" aria-label="View dish details"/g)||[]).length,4);
 assert.equal(html,fs.readFileSync('404.html','utf8'));
+const registered=[];const input={value:'',addEventListener(type,fn){registered.push(['input',type,fn]);}},clear={addEventListener(type,fn){registered.push(['clear',type,fn]);}};
+c.document.getElementById=id=>id==='menu-search-input'?input:id==='clear-search-btn'?clear:null;
+app.bindMenuSearchEvents();app.bindMenuSearchEvents();assert.equal(registered.filter(r=>r[0]==='input'&&r[1]==='input').length,1,'Early and late setup must not duplicate handlers');
+const source=fs.readFileSync('app.js','utf8');assert.ok(source.indexOf('try { this.bindMenuSearchEvents();')<source.indexOf('await this.loadMenuData()'),'Search must work before photo/menu hydration');
 console.log('PASS: complete subsection removal, no hidden dishes, safe search history, labelled search and live result count');

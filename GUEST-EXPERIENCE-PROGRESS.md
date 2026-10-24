@@ -87,3 +87,12 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 
 - Restores the matching item/price scroll inside grouped banners such as Artisan Sandwiches. Each item opens its exact dish option, and hidden options stay excluded.
 - Keeps the compact info-only action, redesigned search and removal of redundant Details wording. The unrelated category-filter strips remain removed; no menu data or prices are changed.
+
+## Release 21.94 — Culinary Collection troubleshooting and unified search surfaces
+
+- Corrects the Mains filter to include delivery thalis; adds visible collection counts and an empty-search message; resets list scroll when filtering or reopening.
+- Prevents stale category-navigation scroll callbacks after leaving Dining; category offsets use actual header height instead of a fixed guess.
+- Opens the drawer without automatically raising the mobile keyboard. Search remains explicitly available, and keyboard focus stays within the existing dialog lifecycle.
+- Drawer search uses a labelled field, clean vector icon, contained focus treatment and proper clear button. All five group filters are visible in a wrapping grid without clipped labels or horizontal overflow.
+- Main Menu search now uses a consistent stone/smoke glass panel; removes conflicting legacy dark-mode shadows and backgrounds. Existing light/dark palettes are unchanged.
+- Menu search handlers attach before asynchronous photo/menu loading, with an idempotent guard. Typing during startup no longer silently misses input handlers, and explicit early searches are not overwritten by a category deep link.
