@@ -22,6 +22,8 @@ assert.match(app.renderDishCard({...dish,image:'',isSoldOut:true}), /no-photo/);
 assert.match(app.renderDishCard({...dish,image:'',isSoldOut:true}), /sold-out/);
 const group={...dish,isGroupMaster:true,displayPriceRange:'₹1 – ₹2',variants:[{name:'Small',price:80},{name:'Large',price:140},{name:'Hidden option',price:900,hidden:true}]};
 assert.match(app.renderDishCard(group),/₹80 – ₹140/);
+assert.match(app.renderDishCard(group),/dish-card-variant-chips/);
+assert.match(app.renderDishCard(group),/openDishDetail\('test', 1\)/,'Item chips open the matching dish option');
 assert.doesNotMatch(app.renderDishCard(group),/₹1 – ₹2|Hidden option/);
 group.variants[1].price=190;
 assert.match(app.renderDishCard(group),/₹80 – ₹190/);

@@ -592,7 +592,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.92';
+    s.src = 'admin.js?v=21.93';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -2432,6 +2432,15 @@ class HotelPremierApp {
             </div>
           </div>
           <div class="dish-banner-bottom">
+            ${isMaster ? `
+              <div class="dish-card-variant-chips" role="group" aria-label="${dish.name} items" onclick="event.stopPropagation()">
+                ${visibleVariants.map(v => {
+                  const vIdx = dish.variants.indexOf(v);
+                  const label = this.currentLang === 'hi' && v.hindiName ? v.hindiName : this.currentLang === 'mr' && (v.marathiName || v.hindiName) ? (v.marathiName || v.hindiName) : v.name;
+                  return `<button type="button" class="dish-card-chip" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}', ${vIdx})" title="${v.name}"><span class="chip-name">${label}</span><span class="chip-price">${Number.isFinite(v.price) ? `₹${v.price}` : 'Price on request'}</span></button>`;
+                }).join('')}
+              </div>
+            ` : ''}
             <div class="dish-banner-action">
               ${dish.isSoldOut ? `
                 <span class="dish-soldout-label">${this.t('soldOut')}</span>
