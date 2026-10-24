@@ -420,6 +420,8 @@ body.theme-dark .celebrate-hero-banner {
 #section-dine #clear-search-btn:focus-visible { outline:2px solid var(--crystal-accent); outline-offset:-2px; }
 .menu-search-status { margin:0; font-size:.76rem; color:var(--crystal-muted); line-height:1.6; }
 .menu-search-status:empty { display:none; }
+#section-dine .signature-inquire-btn { display:inline-grid; place-items:center; width:44px; height:44px; padding:0; background:transparent; border:0; box-shadow:none; border-radius:50%; }
+#section-dine .signature-inquire-btn:focus-visible { outline:2px solid var(--crystal-accent); outline-offset:2px; }
 #section-dine .recent-searches-bar { flex-wrap:wrap; overflow:visible; padding:0; }
 #section-dine .recent-searches-list { flex-wrap:wrap; min-width:0; gap:6px; }
 #section-dine .recent-search-chip { max-width:100%; white-space:normal; overflow-wrap:anywhere; min-height:36px; border-color:var(--crystal-edge); background:transparent; color:var(--crystal-muted); box-shadow:none; }

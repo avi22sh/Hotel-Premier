@@ -15,5 +15,7 @@ let chosen;app.executeRecentSearch=q=>{chosen=q;};app.renderRecentSearches();
 assert.equal(nodes['recent-searches-list'].children[0].textContent,app.recentSearches[0]);
 nodes['recent-searches-list'].children[1].click();assert.equal(decodeURIComponent(chosen),"Chef's special");
 const html=fs.readFileSync('index.html','utf8');assert.match(html,/<label for="menu-search-input">Search the menu<\/label>/);assert.match(html,/enterkeyhint="search"/);assert.match(html,/id="menu-search-status"[^>]*aria-live="polite"/);
+assert.doesNotMatch(html,/View Details →/,'Featured carousel must also use the compact info icon');
+assert.equal((html.match(/class="signature-inquire-btn" type="button" aria-label="View dish details"/g)||[]).length,4);
 assert.equal(html,fs.readFileSync('404.html','utf8'));
 console.log('PASS: complete subsection removal, no hidden dishes, safe search history, labelled search and live result count');

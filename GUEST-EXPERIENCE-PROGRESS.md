@@ -80,3 +80,4 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 - Corrects the previous interpretation: removes the entire subcategory strip beneath each guest menu section, including its labels and counts, rather than wrapping its controls.
 - Clears obsolete subcategory selection when rendering so no dishes remain hidden behind removed controls. Categories, admin-editable taxonomy, dishes and dish-detail options are preserved.
 - Search area now has a visible label, vector search/clear controls, a quieter favourites action, consistent theme surfaces and a live result count. Recent queries wrap and render as literal text instead of HTML; search headings no longer interpolate untrusted query markup.
+- Follow-up 21.91 also removes the remaining View Details wording inside the featured-dish carousel, using the same contrast-safe info symbol and touch target.
