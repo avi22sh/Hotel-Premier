@@ -65,3 +65,12 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 - Text search resets stale group highlights; choosing a group clears the previous search, and reopening resets the drawer to All. Active filter states are exposed to assistive technology.
 - Navigating away from Dining closes the drawer, releases its scroll lock and avoids returning focus to the now-hidden Menu control.
 - Existing light/dark palettes and automatic device appearance are unchanged. No photos, guest records, router settings or POS configuration were modified.
+
+## Release 21.89 — compact dish controls, ratings and platform identities
+
+- Dish cards use an icon-only information control with a contrasting solid 22px symbol and a 44px touch target. The accessible detail label and dish action remain intact.
+- Selected favourite hearts use muted red in light mode and a brighter rose-red in dark mode. No favourites were added or removed during implementation.
+- Rating choices remain explicit 1–5 inputs. Gold glow increases with the chosen rating; five stars receives a brief two-cycle shimmer. Reduced-motion users receive static styling.
+- Subcategory controls wrap instead of scrolling horizontally; no sections or dishes were removed. Thali online-exclusive identification is placed below the content with compact authentic platform logos.
+- Official Google/Maps, MakeMyTrip, Goibibo, Swiggy and Zomato assets are stored locally and included in the offline shell. Unmodified source URLs are recorded in assets/brands/SOURCES.md. Zomato is removed only from public review links; dish ordering remains available.
+- Existing photo assets, prices, theme palettes, feedback delivery and network configuration remain unchanged.

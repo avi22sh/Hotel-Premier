@@ -587,7 +587,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.88';
+    s.src = 'admin.js?v=21.89';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -2446,7 +2446,6 @@ class HotelPremierApp {
         <div class="dish-banner-content">
           <div class="dish-banner-top">
             <div class="dish-banner-header">
-              ${dish.tags && dish.tags.includes('online-exclusive') ? `<div class="dish-badge-delivery-exclusive">🛵 Swiggy &amp; Zomato Exclusive</div>` : ''}
               <h4 class="dish-title">${dishTitleHtml}</h4>
             </div>
             <div class="dish-banner-price-stack">
@@ -2474,11 +2473,12 @@ class HotelPremierApp {
                 <span class="dish-soldout-label">${this.t('soldOut')}</span>
               ` : `
                 <button type="button" class="view-detail-link" onclick="event.stopPropagation(); window.app.openDishDetail('${detailId}'${detailVariant})" aria-label="View dish details">
-                  <span class="dish-info-symbol" aria-hidden="true">i</span><span>${this.t('detailsBtn')}</span>
+                  <span class="dish-info-symbol" aria-hidden="true">i</span>
                 </button>
               `}
             </div>
           </div>
+          ${dish.tags && dish.tags.includes('online-exclusive') ? `<div class="dish-badge-delivery-exclusive"><span>Online exclusive</span><span class="exclusive-platforms"><img src="assets/brands/swiggy.png" alt="Swiggy" width="54" height="18"><span aria-hidden="true">&amp;</span><span class="exclusive-zomato"><img src="assets/brands/zomato.png" alt="Zomato" width="54" height="16"></span></span></div>` : ''}
         </div>
       </div>
     `;
@@ -2813,7 +2813,7 @@ class HotelPremierApp {
     swiggyBtn.rel = 'noopener noreferrer';
     swiggyBtn.setAttribute('aria-label', `Order ${dish.name} on Swiggy`);
     swiggyBtn.innerHTML = `
-      <span class="delivery-btn-brand swiggy-brand">SWIGGY</span>
+      <span class="delivery-btn-brand swiggy-brand"><img class="partner-order-logo" src="assets/brands/swiggy.png" alt="Swiggy" width="92" height="30"></span>
       <span class="delivery-btn-text">Order Now &#x2197;</span>
     `;
 
@@ -2825,7 +2825,7 @@ class HotelPremierApp {
     zomatoBtn.rel = 'noopener noreferrer';
     zomatoBtn.setAttribute('aria-label', `Order ${dish.name} on Zomato`);
     zomatoBtn.innerHTML = `
-      <span class="delivery-btn-brand zomato-brand">zomato</span>
+      <span class="delivery-btn-brand zomato-brand"><img class="partner-order-logo" src="assets/brands/zomato.png" alt="Zomato" width="92" height="26"></span>
       <span class="delivery-btn-text">Order Now &#x2197;</span>
     `;
 
@@ -5033,6 +5033,8 @@ class HotelPremierApp {
     this.currentStarRating = rating;
     const input = document.getElementById('feedback-star-val');
     if (input) input.value = rating;
+    const control = document.getElementById('feedback-star-control');
+    if (control) control.setAttribute?.('data-rating', String(rating));
     document.querySelectorAll('#feedback-star-control input[type="radio"]').forEach(radio => {
       const value = Number(radio.value);
       radio.checked = value === rating;

@@ -4,7 +4,7 @@
 // Guarantees mobile users always see latest menu updates & sub-sections
 // ==========================================================================
 
-const CACHE_NAME = 'hotel-premier-v21.88';
+const CACHE_NAME = 'hotel-premier-v21.89';
 const CORE_ASSETS = [
   './',
   'index.html',
@@ -30,6 +30,12 @@ const CORE_ASSETS = [
   'data/translations.js',
   'manifest.json',
   'assets/premier-original-logo.png',
+  'assets/brands/google-g.png',
+  'assets/brands/google-maps.png',
+  'assets/brands/makemytrip.png',
+  'assets/brands/goibibo-sprite.png',
+  'assets/brands/swiggy.png',
+  'assets/brands/zomato.png',
   'assets/icon-192.png',
   'assets/icon-512.png'
 ];
