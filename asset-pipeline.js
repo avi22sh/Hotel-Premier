@@ -168,6 +168,23 @@
     }
 
     /**
+     * Clears cached processed canvas data for a specific asset source or dish identifier
+     */
+    clearCacheForAsset(imageOrDishId) {
+      if (!imageOrDishId) {
+        this.processedCache.clear();
+        return;
+      }
+      const searchKey = String(imageOrDishId);
+      for (const key of this.processedCache.keys()) {
+        if (key.includes(searchKey)) {
+          this.processedCache.delete(key);
+          try { sessionStorage.removeItem('hp_proc_' + key); } catch (_) {}
+        }
+      }
+    }
+
+    /**
      * Helper to load an image source into HTMLImageElement
      */
     loadImage(src) {

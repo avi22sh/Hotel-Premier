@@ -428,13 +428,13 @@ body.theme-dark .celebrate-hero-banner {
 #section-dine .recent-searches-bar { flex-wrap:wrap; overflow:visible; padding:0; }
 #section-dine .recent-searches-list { flex-wrap:wrap; min-width:0; gap:6px; }
 #section-dine .recent-search-chip { max-width:100%; white-space:normal; overflow-wrap:anywhere; min-height:36px; border-color:var(--crystal-edge); background:transparent; color:var(--crystal-muted); box-shadow:none; }
-/* A single, consistent search surface replaces conflicting legacy rules. */
-body #section-dine .dining-search-filter-bar { width:min(520px,calc(100% - 24px)); max-width:520px; margin-inline:auto; gap:8px; padding:12px; background:var(--crystal-surface),#e8e4df; border:1px solid var(--crystal-edge); border-radius:18px; box-shadow:0 5px 18px rgba(25,22,30,.045),inset 0 1px rgba(255,255,255,.3); }
-body.theme-dark #section-dine .dining-search-filter-bar { background:var(--crystal-surface),#242630; border:1px solid var(--crystal-edge); box-shadow:0 10px 30px rgba(0,0,0,.14),inset 0 1px rgba(255,255,255,.07); }
+/* Sleek, optimized search bar architecture with razor-thin borders and elegant inner shadows */
+body #section-dine .dining-search-filter-bar { width:min(440px,calc(100% - 24px)); max-width:440px; margin-inline:auto; gap:7px; padding:10px 12px; background:var(--crystal-surface),#e8e4df; border:1px solid rgba(181,148,103,.28); border-radius:14px; box-shadow:0 4px 16px rgba(25,22,30,.04),inset 0 1px 2px rgba(255,255,255,.35); }
+body.theme-dark #section-dine .dining-search-filter-bar { background:var(--crystal-surface),#242630; border:1px solid rgba(181,148,103,.32); box-shadow:0 8px 24px rgba(0,0,0,.18),inset 0 1px 1px rgba(255,255,255,.08); }
 body #section-dine .search-input-wrapper,
-body.theme-dark #section-dine .search-input-wrapper { background:rgba(139,126,113,.06); border:1px solid var(--crystal-edge); box-shadow:inset 0 1px 3px rgba(0,0,0,.04); border-radius:12px; }
+body.theme-dark #section-dine .search-input-wrapper { background:rgba(139,126,113,.05); border:1px solid rgba(181,148,103,.22); box-shadow:inset 0 1px 3px rgba(0,0,0,.06); border-radius:10px; transition:all 0.2s ease; }
 body #section-dine .search-input-wrapper:focus-within,
-body.theme-dark #section-dine .search-input-wrapper:focus-within { background:rgba(181,148,103,.08); border-color:var(--crystal-accent); box-shadow:0 0 0 3px rgba(181,148,103,.12); }
+body.theme-dark #section-dine .search-input-wrapper:focus-within { background:rgba(181,148,103,.08); border-color:var(--crystal-accent); box-shadow:inset 0 1px 2px rgba(0,0,0,.04),0 0 0 3px rgba(181,148,103,.16); }
 #menu-sections-drawer-modal .search-input-wrapper { display:flex; align-items:center; gap:10px; min-height:52px; padding:4px 5px 4px 14px; border-radius:14px; }
 #menu-sections-drawer-modal .search-input-wrapper:focus-within { border-color:var(--crystal-accent); box-shadow:0 0 0 3px rgba(181,148,103,.12); }
 #menu-sections-drawer-modal .menu-search-icon { flex-shrink:0; color:var(--crystal-muted); }
@@ -779,4 +779,374 @@ body.theme-dark .guest-utility-sheet .form-input { background:rgba(255,255,255,.
   .guest-utility-sheet { max-height:calc(100dvh - 16px); border-radius:22px; }
   .guest-utility-sheet .modal-body { padding:16px; }
   .guest-utility-sheet .modal-title { font-size:1rem; }
+}
+
+/* ==================== TRACK 1: FOOTER GLASSMORPHISM & PARTNER LOGOS ==================== */
+.footer-partners-glass-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 14px auto 18px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.footer-partners-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--brass-light);
+}
+.footer-partners-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.footer-partner-glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+.footer-partner-glass-btn:hover,
+.footer-partner-glass-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+  outline: 2px solid var(--brass-light);
+}
+.footer-partner-logo {
+  object-fit: contain;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+  transition: transform 0.2s ease;
+}
+.footer-partner-swiggy { width: 68px; height: 22px; }
+.footer-partner-zomato { width: 68px; height: 20px; }
+
+/* ==================== TRACK 1: DISH DETAILS TOP ICONS CONTRAST ENGINE ==================== */
+#dish-detail-modal :is(.modal-header-action-btn, .modal-close-btn) {
+  color: #FFFDF9 !important;
+  background: rgba(43, 20, 28, 0.90) !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.55) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  transition: all 0.2s ease !important;
+}
+#dish-detail-modal :is(.modal-header-action-btn, .modal-close-btn):hover,
+#dish-detail-modal :is(.modal-header-action-btn, .modal-close-btn):focus-visible {
+  background: rgba(139, 21, 56, 0.95) !important;
+  border-color: var(--royal-gold) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45) !important;
+}
+body.theme-light #dish-detail-modal :is(.modal-header-action-btn, .modal-close-btn) {
+  color: #FFFDF9 !important;
+  background: rgba(43, 20, 28, 0.92) !important;
+  border: 1.5px solid rgba(212, 175, 55, 0.6) !important;
+}
+.detail-photo-favorite {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1.5px solid rgba(212, 175, 55, 0.65) !important;
+  border-radius: 12px !important;
+  color: #FFFDF9 !important;
+  background: rgba(43, 20, 28, 0.88) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+  transition: all 0.2s ease;
+}
+.detail-photo-favorite.active {
+  color: #F87171 !important;
+  border-color: #EF4444 !important;
+  background: rgba(55, 15, 25, 0.94) !important;
+}
+
+/* ==================== TRACK 3: ROOM ESSENTIALS & AMENITIES CATEGORIZATION ==================== */
+.amenities-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+@media (max-width: 768px) {
+  .amenities-categories-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+.amenity-category-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(197, 168, 128, 0.25);
+  border-radius: 14px;
+  padding: 16px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.amenity-category-card:hover {
+  border-color: var(--brass-light);
+  transform: translateY(-2px);
+}
+.amenity-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--brass-light);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(197, 168, 128, 0.18);
+}
+.amenity-cat-icon { font-size: 1.1rem; }
+.amenity-cat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.amenity-cat-list li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.82rem;
+  color: #E2E8F0;
+  line-height: 1.45;
+}
+.amenity-cat-list li i {
+  color: var(--brass-primary);
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ==================== TRACK 3: MODERN REVIEWS CARD GRID ==================== */
+.modern-review-card {
+  background: rgba(20, 31, 45, 0.75);
+  border: 1px solid rgba(197, 168, 128, 0.3);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.modern-review-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--royal-gold);
+}
+.review-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.review-author-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.review-author-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #B58428 0%, #8B1538 100%);
+  color: #FFFDF9;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+.review-author-meta {
+  display: flex;
+  flex-direction: column;
+}
+.review-author-name {
+  font-size: 0.9rem;
+  color: #FFFDF9;
+  font-weight: 700;
+}
+.review-stay-type {
+  font-size: 0.72rem;
+  color: #A0B3C6;
+}
+.review-rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+.review-stars-text {
+  color: #FBBF24;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+.review-numeric-score {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #FFFDF9;
+}
+.review-quote-body {
+  font-size: 0.86rem;
+  line-height: 1.65;
+  color: #CBD5E1;
+  font-style: italic;
+  margin: 0;
+  border-left: 2px solid var(--royal-gold);
+  padding-left: 12px;
+}
+.review-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+}
+.review-source-tag {
+  color: var(--brass-light);
+  font-weight: 600;
+}
+.source-verified-icon {
+  color: #10B981;
+  font-weight: 800;
+}
+.review-verified-pill {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34D399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 7px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* ==================== TRACK 4: FRONT DESK LAST CALL VISUAL HIGHLIGHT ==================== */
+.last-call-front-desk-card {
+  margin-top: 16px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.08) 0%, rgba(181, 148, 103, 0.14) 100%);
+  border: 1.5px solid rgba(217, 119, 6, 0.45);
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(217, 119, 6, 0.08);
+}
+.last-call-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.last-call-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #D97706;
+  background: rgba(217, 119, 6, 0.12);
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(217, 119, 6, 0.35);
+}
+.last-call-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #D97706;
+  box-shadow: 0 0 8px #D97706;
+  animation: pulseAmber 2s infinite ease-in-out;
+}
+@keyframes pulseAmber {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+.last-call-support-note {
+  font-size: 0.72rem;
+  color: var(--crystal-muted);
+}
+.last-call-actions-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.btn-tariff-call-amber {
+  background: linear-gradient(135deg, #B58428 0%, #94681E 100%) !important;
+  color: #FFFDF9 !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(181, 132, 40, 0.3) !important;
+  font-weight: 800 !important;
+  text-decoration: none;
+}
+.btn-tariff-call-amber:hover,
+.btn-tariff-call-amber:focus-visible {
+  background: linear-gradient(135deg, #C79435 0%, #A67623 100%) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+.enquiry-capacity-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--royal-gold);
+  background: rgba(181, 148, 103, 0.12);
+  border: 1px solid rgba(181, 148, 103, 0.35);
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin: 6px 0 10px;
+  display: block;
+}
+
+/* ==================== TRACK 4: CORE VIEWPORT STABILITY & ZOOM RECTIFICATION ==================== */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+input, select, textarea {
+  font-size: 16px !important;
+}
+button, [role="button"], a {
+  touch-action: manipulation;
 }

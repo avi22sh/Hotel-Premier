@@ -946,6 +946,10 @@ class HotelPremierAdmin {
     if (!dish) return;
 
     if (confirm(`Remove the photo for "${dish.name}"?\n\nThe dish will be shown in Pure Veg mode without photo until you upload a new one.`)) {
+      if (window.AssetPipeline?.clearCacheForAsset) {
+        window.AssetPipeline.clearCacheForAsset(dish.id);
+        window.AssetPipeline.clearCacheForAsset(dish.image);
+      }
       dish.image = '';
       window.app.saveMenuData();
 
@@ -962,6 +966,7 @@ class HotelPremierAdmin {
       if (document.getElementById('studio-dishes-grid')) {
         this.renderAIStudioManager(document.getElementById('admin-tab-content'));
       }
+      window.dispatchEvent(new CustomEvent('hp-media-updated', { detail: { dishId: dish.id, image: '' } }));
       this.closeImageModal();
       window.app.showToast(`Photo removed for "${dish.name}". Showing in text-only mode!`, 'info');
     }
@@ -1417,6 +1422,10 @@ class HotelPremierAdmin {
           saveButton.disabled = Boolean(this.previewPending || this.isPreviewProcessing || this.previewFailed);
         }
       }
+      if (window.AssetPipeline?.clearCacheForAsset) {
+        window.AssetPipeline.clearCacheForAsset(dish.id);
+        window.AssetPipeline.clearCacheForAsset(dish.image);
+      }
       dish.image = image;
       window.app.saveMenuData();
 
@@ -1447,6 +1456,7 @@ class HotelPremierAdmin {
       if (document.getElementById('studio-dishes-grid')) {
         this.renderAIStudioManager(document.getElementById('admin-tab-content'));
       }
+      window.dispatchEvent(new CustomEvent('hp-media-updated', { detail: { dishId: dish.id, image } }));
       if (requestId === this.previewRequestId && this.activeImageDishId === dish.id) this.closeImageModal();
       window.app.showToast(`Photo ${status === 'approved' ? 'approved' : status === 'original' ? 'restored' : 'saved'} for "${dish.name}" in this browser.`, 'success');
       return true;

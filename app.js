@@ -3280,12 +3280,12 @@ class HotelPremierApp {
     // Always recalculate: stale previews must not bypass current policy limits.
     const q = this.calculateBulkQuote();
     if (!q?.valid || q.rooms>12 || q.guests>36) return;
-    const name = document.getElementById('calc-bulk-guest-name').value.trim();
-    const rawPhone = document.getElementById('calc-bulk-guest-phone').value.trim();
+    const name = document.getElementById('calc-bulk-guest-name')?.value?.trim() || '';
+    const rawPhone = document.getElementById('calc-bulk-guest-phone')?.value?.trim() || '';
     const phone = this.sanitizeIndianMobile(rawPhone);
     if (rawPhone && !this.isValidIndianMobile(phone)) {
       this.showToast('Please enter a valid organizer mobile number.','warning');
-      document.getElementById('calc-bulk-guest-phone').focus(); return;
+      document.getElementById('calc-bulk-guest-phone')?.focus(); return;
     }
     const message = [
       'HOTEL PREMIER — GROUP STAY ENQUIRY',
@@ -3300,7 +3300,11 @@ class HotelPremierApp {
       'Estimate: ₹'+q.finalPrice.toLocaleString('en-IN')+' using published double-occupancy room tariffs',
       'Please check availability, room allocation and final charges. This is an enquiry, not a confirmed booking.'
     ].filter(Boolean).join('\n');
-    window.open('https://wa.me/919325375802?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
+    const waUrl = 'https://wa.me/919325375802?text=' + encodeURIComponent(message);
+    const waWin = window.open(waUrl, '_blank', 'noopener,noreferrer');
+    if (!waWin || waWin.closed || typeof waWin.closed === 'undefined') {
+      window.location.href = waUrl;
+    }
     this.showToast('Review the enquiry in WhatsApp, then send it to reception.','info');
   }
 
@@ -4656,14 +4660,18 @@ class HotelPremierApp {
   sendRestaurantEventEnquiry() {
     const form = document.getElementById('restaurant-event-form');
     if (!form?.reportValidity()) return;
-    const value = id => document.getElementById('restaurant-event-'+id).value.trim();
+    const value = id => document.getElementById('restaurant-event-'+id)?.value?.trim() || '';
     if (value('date') < this.hotelToday()) { alert('Please choose today or a future date.'); return; }
     const phone = this.sanitizeIndianMobile(value('phone'));
     if (!this.isValidIndianMobile(phone)) { alert('Please enter a valid 10-digit mobile number.'); return; }
     const guests = Number(value('guests'));
     if (!Number.isInteger(guests) || guests < 1 || guests > 40 || !this.formatArrivalTime(value('time'))) { this.showToast('Please check the guest count and preferred time.','warning'); return; }
     const message = `HOTEL PREMIER — RESTAURANT EVENT ENQUIRY\nOccasion: ${value('type')}\nVenue: Inside Pride Pure Veg AC Restaurant only\nPreferred date: ${value('date')}\nPreferred time: ${this.formatArrivalTime(value('time'))}\nGuests: ${guests} (restaurant maximum: 40)\nName: ${value('name')}\nMobile: ${phone}\nFood preferences: ${value('food') || 'To be discussed'}\nRequests: ${value('notes') || 'None specified'}\nPlease confirm restaurant availability, menu, setup and final charges. This is an enquiry, not a confirmed booking.`;
-    window.open(`https://wa.me/919325375802?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+    const waUrl = `https://wa.me/919325375802?text=${encodeURIComponent(message)}`;
+    const waWin = window.open(waUrl, '_blank', 'noopener,noreferrer');
+    if (!waWin || waWin.closed || typeof waWin.closed === 'undefined') {
+      window.location.href = waUrl;
+    }
     this.showToast('Review the restaurant enquiry in WhatsApp, then send it to our team.','info');
   }
 
@@ -4737,12 +4745,31 @@ class HotelPremierApp {
     const roomsCount = Math.min(maxRooms, Math.max(1, Math.floor(Number(roomsField?.value) || 1)));
     if (roomsField) { roomsField.max=String(maxRooms); roomsField.value=String(roomsCount); }
     const guestsField = document.getElementById('booking-guests-count');
-    const guestsCount = Math.min(maxGroupGuests, Math.max(roomsCount, Math.floor(Number(guestsField?.value) || roomsCount)));
     const mealPlan = document.getElementById('booking-meal-plan')?.value || 'CP';
-    const extraBedsInput = document.getElementById('booking-extra-beds');
-    const extraBedLimit = Math.min((roomCategory?.maxExtraBeds || 1) * roomsCount, maxGroupGuests-roomsCount*2);
-    const maxGuests = Math.min(maxGroupGuests,roomsCount*2+extraBedLimit);
+
+    // Room Capacity Policy Matrix:
+    // Royale King: Can accommodate 2 to 3 extra persons (max 3/room)
+    // Twin Room: Can accommodate up to 2 extra persons (max 2/room)
+    // Queen Room: Restricted capacity; can accommodate only 1 extra person (max 1/room)
+    const roomCapacityMatrix = {
+      'ac-super-deluxe': { maxExtra: 3, label: 'Royale King: Accommodates 2 to 3 extra persons' },
+      'ac-deluxe-twin': { maxExtra: 2, label: 'Companion Twin: Accommodates up to 2 extra persons' },
+      'ac-deluxe-queen': { maxExtra: 1, label: 'Signature Queen: Restricted capacity; accommodates max 1 extra person' }
+    };
+    const roomPolicy = roomCapacityMatrix[roomType] || { maxExtra: 1, label: 'Accommodates 1 extra person' };
+    const maxExtraPerRoom = roomPolicy.maxExtra;
+    const extraBedLimit = Math.min(maxExtraPerRoom * roomsCount, Math.max(0, maxGroupGuests - roomsCount * 2));
+    const maxGuests = Math.min(maxGroupGuests, roomsCount * 2 + extraBedLimit);
+
+    const capacityBadge = document.getElementById('booking-room-capacity-badge');
+    if (capacityBadge) {
+      capacityBadge.textContent = `${roomPolicy.label} (${extraBedLimit} max extra guest limit for ${roomsCount} room${roomsCount > 1 ? 's' : ''})`;
+    }
+
+    const guestsCount = Math.min(maxGroupGuests, Math.max(roomsCount, Math.floor(Number(guestsField?.value) || roomsCount)));
     if (guestsField) { guestsField.min=String(roomsCount); guestsField.max=String(maxGuests); guestsField.value=String(guestsCount); }
+
+    const extraBedsInput = document.getElementById('booking-extra-beds');
     const childBedsInput = document.getElementById('booking-child-extra-beds');
     const childExtraBeds = Math.min(extraBedLimit, Math.max(0, Math.floor(Number(childBedsInput?.value) || 0)));
     if (childBedsInput) {
@@ -4751,9 +4778,9 @@ class HotelPremierApp {
     }
     const requestedExtraBeds = Number(extraBedsInput?.value) || 0;
     const extraBeds = Math.min(extraBedLimit - childExtraBeds, Math.max(0, Math.floor(requestedExtraBeds)));
-    const valid = guestsCount <= roomsCount*2+extraBeds+childExtraBeds;
+    const valid = guestsCount <= roomsCount * 2 + extraBeds + childExtraBeds;
     if (extraBedsInput) {
-      extraBedsInput.max = String(extraBedLimit - childExtraBeds);
+      extraBedsInput.max = String(Math.max(0, extraBedLimit - childExtraBeds));
       extraBedsInput.value = String(extraBeds);
     }
 
@@ -4912,7 +4939,10 @@ class HotelPremierApp {
 
     const encoded = encodeURIComponent(msg);
     const waUrl = `https://wa.me/919325375802?text=${encoded}`;
-    window.open(waUrl, '_blank', 'noopener,noreferrer');
+    const waWin = window.open(waUrl, '_blank', 'noopener,noreferrer');
+    if (!waWin || waWin.closed || typeof waWin.closed === 'undefined') {
+      window.location.href = waUrl;
+    }
 
     this.closeConciergeBookingModal();
   }
