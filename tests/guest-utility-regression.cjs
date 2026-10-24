@@ -7,6 +7,8 @@ function modal(id){
   return elements[id]={id,style:{},classList:{contains:k=>classes.has(k),add:k=>classes.add(k),remove:(...keys)=>keys.forEach(k=>classes.delete(k))},querySelector:()=>({focus(){focused='close';}})};
 }
 const drawer=modal('menu-sections-drawer-modal');
+let resetWhileOpen=false;
+elements['drawer-sections-list']={set scrollTop(value){resetWhileOpen=drawer.classList.contains('active')&&value===0;}};
 const profile=modal('guest-profile-modal');
 const route=modal('route-options-modal');
 elements['drawer-sections-search']={value:'old',focus(){focused='search';}};
@@ -20,6 +22,7 @@ let resetCount=0;
 const filterGroup=app.filterDrawerByGroup;
 app.filterDrawerByGroup=function(group){assert.equal(group,'all');resetCount++;return filterGroup.call(this,group);};
 app.openMenuSectionDrawer();assert.equal(doc.body.style.overflow,'hidden');
+assert.equal(resetWhileOpen,true,'Reopening must reset scroll after the hidden sheet becomes visible');
 assert.equal(resetCount,1,'Opening must reset the previous group filter');
 app.dismissGuestOverlay(drawer); // The Escape/backdrop path must use drawer-specific cleanup.
 assert.equal(doc.body.style.overflow,'auto');assert.equal(focused,'opener');

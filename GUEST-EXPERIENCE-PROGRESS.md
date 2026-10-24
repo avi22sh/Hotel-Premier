@@ -96,3 +96,4 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 - Drawer search uses a labelled field, clean vector icon, contained focus treatment and proper clear button. All five group filters are visible in a wrapping grid without clipped labels or horizontal overflow.
 - Main Menu search now uses a consistent stone/smoke glass panel; removes conflicting legacy dark-mode shadows and backgrounds. Existing light/dark palettes are unchanged.
 - Menu search handlers attach before asynchronous photo/menu loading, with an idempotent guard. Typing during startup no longer silently misses input handlers, and explicit early searches are not overwritten by a category deep link.
+- Live follow-up 21.95 resets drawer scrolling after the hidden sheet becomes visible and cancels pending category scrolling when the guest focuses Menu search.

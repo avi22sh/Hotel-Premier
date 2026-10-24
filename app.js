@@ -593,7 +593,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.94';
+    s.src = 'admin.js?v=21.95';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1894,6 +1894,8 @@ class HotelPremierApp {
     }
     modal.classList.add('active');
     modal.style.display = 'flex';
+    const list = document.getElementById('drawer-sections-list');
+    if (list) list.scrollTop = 0; // Reset only after the sheet participates in layout.
     document.getElementById('floating-menu-toggle-btn')?.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
     const searchInput = document.getElementById('drawer-sections-search');
@@ -4062,6 +4064,7 @@ class HotelPremierApp {
 
     if (searchInput) {
       searchInput.addEventListener('focus', () => {
+        clearTimeout(this.drawerNavigationTimer);
         if (!searchInput.value.trim()) {
           this.renderRecentSearches();
         }
