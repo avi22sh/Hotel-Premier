@@ -97,3 +97,9 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 - Main Menu search now uses a consistent stone/smoke glass panel; removes conflicting legacy dark-mode shadows and backgrounds. Existing light/dark palettes are unchanged.
 - Menu search handlers attach before asynchronous photo/menu loading, with an idempotent guard. Typing during startup no longer silently misses input handlers, and explicit early searches are not overwritten by a category deep link.
 - Live follow-up 21.95 resets drawer scrolling after the hidden sheet becomes visible and cancels pending category scrolling when the guest focuses Menu search.
+
+## Release 21.96 — narrower, compact Menu search
+
+- Reduces the search panel from a 760px maximum to a centred 520px maximum, with an additional 24px inset on narrow screens.
+- Uses tighter padding, softer shadows and a simpler 12px field radius. Field height remains at least 48px and the clear action retains its 44px target.
+- Search behaviour, grouped-item scrolling and light/dark palettes are unchanged.
