@@ -940,11 +940,12 @@ body.theme-light #dish-detail-modal :is(.modal-header-action-btn, .modal-close-b
   color: #E2E8F0;
   line-height: 1.45;
 }
-.amenity-cat-list li i {
-  color: var(--brass-primary);
-  width: 16px;
+.amenity-cat-list li .amenity-bullet-icon {
+  font-size: 1rem;
+  width: 20px;
   text-align: center;
   flex-shrink: 0;
+  display: inline-block;
 }
 
 /* ==================== TRACK 3: MODERN REVIEWS CARD GRID ==================== */
