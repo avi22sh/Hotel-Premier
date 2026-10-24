@@ -74,3 +74,9 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 - Subcategory controls wrap instead of scrolling horizontally; no sections or dishes were removed. Thali online-exclusive identification is placed below the content with compact authentic platform logos.
 - Official Google/Maps, MakeMyTrip, Goibibo, Swiggy and Zomato assets are stored locally and included in the offline shell. Unmodified source URLs are recorded in assets/brands/SOURCES.md. Zomato is removed only from public review links; dish ordering remains available.
 - Existing photo assets, prices, theme palettes, feedback delivery and network configuration remain unchanged.
+
+## Release 21.90 — remove the complete guest subcategory strip
+
+- Corrects the previous interpretation: removes the entire subcategory strip beneath each guest menu section, including its labels and counts, rather than wrapping its controls.
+- Clears obsolete subcategory selection when rendering so no dishes remain hidden behind removed controls. Categories, admin-editable taxonomy, dishes and dish-detail options are preserved.
+- Search area now has a visible label, vector search/clear controls, a quieter favourites action, consistent theme surfaces and a live result count. Recent queries wrap and render as literal text instead of HTML; search headings no longer interpolate untrusted query markup.

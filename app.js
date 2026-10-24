@@ -340,6 +340,7 @@ class HotelPremierApp {
     const badge = document.getElementById('favorites-count-badge');
     if (badge) {
       badge.innerText = count;
+      badge.hidden = count === 0;
     }
   }
 
@@ -508,7 +509,7 @@ class HotelPremierApp {
   saveRecentSearch(query) {
     if (!query || query.trim().length < 2) return;
     const cleanQ = query.trim();
-    this.recentSearches = this.recentSearches.filter(q => q.toLowerCase() !== cleanQ.toLowerCase());
+    this.recentSearches = this.recentSearches.filter(q => typeof q === 'string' && q.toLowerCase() !== cleanQ.toLowerCase());
     this.recentSearches.unshift(cleanQ);
     if (this.recentSearches.length > 5) {
       this.recentSearches = this.recentSearches.slice(0, 5);
@@ -527,11 +528,15 @@ class HotelPremierApp {
       bar.style.display = 'none';
       return;
     }
-    container.innerHTML = this.recentSearches.map(q => `
-      <button type="button" class="recent-search-chip" onclick="window.app.executeRecentSearch('${encodeURIComponent(q)}')">
-        ${q}
-      </button>
-    `).join('');
+    container.replaceChildren();
+    for (const q of this.recentSearches.filter(q => typeof q === 'string').slice(0,5)) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'recent-search-chip';
+      button.textContent = q;
+      button.addEventListener('click', () => this.executeRecentSearch(encodeURIComponent(q)));
+      container.appendChild(button);
+    }
     bar.style.display = 'flex';
   }
 
@@ -587,7 +592,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.89';
+    s.src = 'admin.js?v=21.90';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -2160,41 +2165,9 @@ class HotelPremierApp {
     return subCat.name;
   }
 
-  renderSubCategoryChips(catId, catDishes) {
-    const subCats = (window.HOTEL_PREMIER_SUB_CATEGORIES && window.HOTEL_PREMIER_SUB_CATEGORIES[catId]) || [];
-    if (!subCats || subCats.length <= 1) return '';
-
-    const activeSubId = this.activeSubCategories[catId] || 'all';
-
-    return `
-      <div class="subcat-nav-wrapper">
-        <div class="subcat-chips-scroll" id="subcat-chips-${catId}" role="tablist" aria-label="Sub categories">
-          ${subCats.map(sc => {
-            const isActive = (sc.id === activeSubId);
-            let count = 0;
-            if (sc.id === 'all') {
-              count = catDishes.length;
-            } else if (sc.dishIds) {
-              count = catDishes.filter(d => sc.dishIds.includes(d.id)).length;
-            }
-            if (count === 0 && sc.id !== 'all') return '';
-            const label = this.getSubCategoryLocalizedName(sc);
-            return `
-              <button type="button" 
-                      class="subcat-chip ${isActive ? 'active' : ''}" 
-                      data-cat-id="${catId}" 
-                      data-subcat-id="${sc.id}"
-                      role="tab"
-                      aria-selected="${isActive ? 'true' : 'false'}"
-                      onclick="window.app.setSubCategoryFilter('${catId}', '${sc.id}')">
-                <span class="subcat-chip-name">${label}</span>
-                <span class="subcat-chip-count">${count}</span>
-              </button>
-            `;
-          }).join('')}
-        </div>
-      </div>
-    `;
+  renderSubCategoryChips() {
+    // Guest section strips are intentionally removed; the admin taxonomy remains.
+    return '';
   }
 
   setSubCategoryFilter(catId, subCatId) {
@@ -2236,11 +2209,16 @@ class HotelPremierApp {
   }
 
   renderMenu() {
+    // Without guest subcategory controls, no stale selection may hide dishes.
+    this.activeSubCategories = {};
     const container = document.getElementById('menu-items-grid');
     if (!container) return;
 
     const filtered = this.getFilteredDishes();
     const itemsWord = this.t('itemsCount', 'Items');
+    const searchStatus = document.getElementById('menu-search-status');
+    if (searchStatus) searchStatus.textContent = this.searchQuery.trim()
+      ? `${filtered.length} ${filtered.length === 1 ? 'dish' : 'dishes'} found across the menu` : '';
 
     if (filtered.length === 0) {
       if (this.isFavoritesFilterActive) {
@@ -2353,7 +2331,7 @@ class HotelPremierApp {
 
         subCatChipsHtml = this.renderSubCategoryChips(catId, catDishes);
       } else if (this.searchQuery.trim() !== '') {
-        sectionTitle = `Search Results for "${this.searchQuery}"`;
+        sectionTitle = 'Search results';
       } else {
         sectionTitle = 'Culinary Selection';
       }

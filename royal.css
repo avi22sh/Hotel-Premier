@@ -402,6 +402,27 @@ body.theme-dark .celebrate-hero-banner {
 #floating-menu-toggle-btn:focus-visible { outline:2px solid var(--royal-gold); outline-offset:4px; }
 .floating-menu-icon { flex:none; display:block; }
 .appearance-status { font-size:.78rem; color:inherit; padding:8px 0; }
+#section-dine .dining-search-filter-bar { align-items:stretch; gap:10px; max-width:760px; padding:16px; border:1px solid var(--crystal-edge); border-radius:22px; background:var(--crystal-surface); box-shadow:inset 0 1px rgba(255,255,255,.12); }
+.menu-search-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; min-width:0; }
+.menu-search-heading > label { font-size:.78rem; color:var(--crystal-muted); letter-spacing:.02em; }
+#section-dine .menu-search-heading .btn-favorites-filter { min-height:44px; padding:6px 10px; background:transparent; border:1px solid transparent; box-shadow:none; color:var(--crystal-ink); font-size:.72rem; gap:6px; }
+#section-dine .menu-search-heading .btn-favorites-filter.active { border-color:rgba(180,68,87,.45); background:rgba(157,48,66,.1); }
+#section-dine .menu-search-heading .fav-filter-count { color:var(--crystal-muted); background:transparent; }
+#section-dine .menu-search-heading .fav-filter-count:empty { display:none; }
+#section-dine .menu-search-heading .fav-filter-count[hidden] { display:none; }
+#section-dine .search-input-wrapper { height:auto; min-height:54px; padding:4px 5px 4px 15px; border-radius:14px; border:1px solid var(--crystal-edge); background:rgba(139,126,113,.07); box-shadow:none; gap:10px; }
+#section-dine .search-input-wrapper:focus-within { background:rgba(181,148,103,.08); border-color:var(--crystal-accent); box-shadow:0 0 0 3px rgba(181,148,103,.12); }
+#section-dine .menu-search-icon { flex-shrink:0; color:var(--crystal-muted); }
+#section-dine #menu-search-input { min-width:0; font-size:16px; color:var(--crystal-ink); padding:10px 0; line-height:1.5; }
+#section-dine #menu-search-input::placeholder { color:var(--crystal-muted); opacity:.85; font-size:.8rem; }
+#section-dine #menu-search-input::-webkit-search-cancel-button { -webkit-appearance:none; }
+#section-dine #clear-search-btn { position:static; flex-shrink:0; align-items:center; justify-content:center; width:44px; height:44px; padding:0; border-radius:10px; color:var(--crystal-ink); background:transparent; }
+#section-dine #clear-search-btn:focus-visible { outline:2px solid var(--crystal-accent); outline-offset:-2px; }
+.menu-search-status { margin:0; font-size:.76rem; color:var(--crystal-muted); line-height:1.6; }
+.menu-search-status:empty { display:none; }
+#section-dine .recent-searches-bar { flex-wrap:wrap; overflow:visible; padding:0; }
+#section-dine .recent-searches-list { flex-wrap:wrap; min-width:0; gap:6px; }
+#section-dine .recent-search-chip { max-width:100%; white-space:normal; overflow-wrap:anywhere; min-height:36px; border-color:var(--crystal-edge); background:transparent; color:var(--crystal-muted); box-shadow:none; }
 body .btn-favorites-filter.active { background:rgba(157,48,66,.1); color:var(--crystal-ink); border-color:rgba(180,68,87,.45); box-shadow:none; }
 body .btn-favorites-filter.active .fav-filter-icon,
 body .dish-fav-btn.active .fav-icon { color:#bd4053; }

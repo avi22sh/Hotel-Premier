@@ -11,11 +11,11 @@ assert.ok(card.indexOf('dish-badge-delivery-exclusive')>card.indexOf('dish-banne
 for(const rating of [1,2,3,4,5]){app.setStarRating(rating);assert.equal(ratingAttribute,String(rating));assert.equal(radios.filter(r=>r.checked).length,1);}
 assert.match(css,/prefers-reduced-motion:reduce[\s\S]*premier|prefers-reduced-motion:reduce\) \{ #feedback-star-control/);
 assert.match(css,/animation:premier-star-shine 1\.6s ease-in-out 2/);
-assert.match(css,/#section-dine \.subcat-chips-scroll \{ flex-wrap:wrap; overflow:visible/);
+assert.equal(app.renderSubCategoryChips('morning-delights',[]),'','Guest subsection labels and counts are removed, not merely wrapped');
 const reviews=html.slice(html.indexOf('external-review-quiet-block'),html.indexOf('<!-- 7.',html.indexOf('external-review-quiet-block')));
 assert.doesNotMatch(reviews,/zomato\.com\/search/);
 for(const asset of ['google-g','google-maps','makemytrip','goibibo-sprite','swiggy','zomato']){
  const file=`assets/brands/${asset}.png`;assert.deepEqual([...fs.readFileSync(file).subarray(0,8)],[137,80,78,71,13,10,26,10]);assert.ok(fs.readFileSync('sw.js','utf8').includes(file));
 }
 assert.equal(html,fs.readFileSync('404.html','utf8'));
-console.log('PASS: icon-only details, thali footer, five rating intensities, reduced motion, wrapping categories and genuine local brand PNGs');
+console.log('PASS: icon-only details, thali footer, five rating intensities, reduced motion, removed subsection strips and genuine local brand PNGs');

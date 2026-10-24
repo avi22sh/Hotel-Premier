@@ -75,9 +75,9 @@
   <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.89">
-  <link rel="stylesheet" href="royal.css?v=21.89">
-  <script src="public-reviews.js?v=21.89" defer></script>
+  <link rel="stylesheet" href="styles.css?v=21.90">
+  <link rel="stylesheet" href="royal.css?v=21.90">
+  <script src="public-reviews.js?v=21.90" defer></script>
 </head>
 <body>
 
@@ -986,25 +986,23 @@
         </div>
       </div>
 
-      <!-- Category Navigation & Search Controls -->
+      <!-- Focused menu search: labelled field, saved dishes and quiet history. -->
       <div class="dining-view-controls">
-        <!-- Concierge Dish Search Console -->
         <div class="dining-search-filter-bar">
-          <div class="search-input-wrapper" role="search">
-            <span class="search-icon" aria-hidden="true">🔍</span>
-            <input type="search" id="menu-search-input" placeholder="Search dishes (e.g. Paneer, Biryani, Naan, Dal, Soup)..." autocomplete="off" spellcheck="false" aria-label="Search all pure veg dishes">
-            <button class="clear-search-btn" id="clear-search-btn" type="button" aria-label="Clear search query" style="display: none;">✕</button>
-          </div>
-          <div class="search-actions-row">
+          <div class="menu-search-heading">
+            <label for="menu-search-input">Search the menu</label>
             <button type="button" class="btn-favorites-filter" id="btn-favorites-filter" onclick="window.app ? window.app.toggleFavoritesFilter() : null" aria-label="View favorite dishes" aria-pressed="false">
-              <span class="fav-filter-icon">♥</span>
-              <span class="fav-filter-label" data-i18n="favoritesFilter">My Favorites</span>
-              <span class="fav-filter-count" id="favorites-count-badge">0</span>
+              <span class="fav-filter-icon" aria-hidden="true">♥</span><span class="fav-filter-label" data-i18n="favoritesFilter">My Favorites</span><span class="fav-filter-count" id="favorites-count-badge">0</span>
             </button>
-            <div class="recent-searches-bar" id="recent-searches-bar" style="display: none;">
-              <span class="recent-search-label">Recent:</span>
-              <div class="recent-searches-list" id="recent-searches-list"></div>
-            </div>
+          </div>
+          <div class="search-input-wrapper" role="search">
+            <svg class="menu-search-icon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+            <input type="search" id="menu-search-input" placeholder="Dish name, e.g. paneer or biryani" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Search all pure veg dishes" aria-describedby="menu-search-status">
+            <button class="clear-search-btn" id="clear-search-btn" type="button" aria-label="Clear search query" style="display:none;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+          </div>
+          <p id="menu-search-status" class="menu-search-status" role="status" aria-live="polite"></p>
+          <div class="recent-searches-bar" id="recent-searches-bar" style="display:none;">
+            <span class="recent-search-label">Recent</span><div class="recent-searches-list" id="recent-searches-list"></div>
           </div>
         </div>
       </div>
@@ -1894,7 +1892,7 @@
   </div>
 
   <!-- Load Application Scripts (v20.51) -->
-  <script src="storage.js?v=21.89"></script>
+  <script src="storage.js?v=21.90"></script>
   <script src="vault.js?v=21.82"></script>
   <script src="data/translations.js?v=21.73"></script>
   <script src="data/hotel-data.js?v=21.77"></script>
@@ -1903,7 +1901,7 @@
   <script src="menu-structure.js?v=21.75"></script>
   <script src="group-stays.js?v=21.77"></script>
   <script src="guest-network.js?v=21.82"></script>
-  <script src="app.js?v=21.89"></script>
+  <script src="app.js?v=21.90"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1938,7 +1936,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.89', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=21.90', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load
