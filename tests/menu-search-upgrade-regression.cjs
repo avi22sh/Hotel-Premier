@@ -7,6 +7,7 @@ Object.assign(app,{menuData:[{id:'one',categoryId:'breakfast'},{id:'two',categor
 app.getFilteredDishes=()=>app.menuData;
 app.renderMenu();assert.equal(Object.keys(app.activeSubCategories).length,0);
 assert.doesNotMatch(nodes['menu-items-grid'].innerHTML,/subcat-chip|subcat-nav-wrapper/);
+assert.doesNotMatch(fs.readFileSync('app.js','utf8'),/class="dish-card-variant-chips"/,'Scrolling option labels belong only inside dish details');
 assert.match(nodes['menu-items-grid'].innerHTML,/data-dish="one"/);assert.match(nodes['menu-items-grid'].innerHTML,/data-dish="two"/);
 app.searchQuery='<img src=x onerror=alert(1)>';app.renderMenu();
 assert.doesNotMatch(nodes['menu-items-grid'].innerHTML,/<img/);assert.match(nodes['menu-search-status'].textContent,/2 dishes found/);

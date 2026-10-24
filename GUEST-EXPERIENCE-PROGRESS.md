@@ -81,3 +81,4 @@ Final cross-section visual polish remains a follow-up stage. Actual numbered roo
 - Clears obsolete subcategory selection when rendering so no dishes remain hidden behind removed controls. Categories, admin-editable taxonomy, dishes and dish-detail options are preserved.
 - Search area now has a visible label, vector search/clear controls, a quieter favourites action, consistent theme surfaces and a live result count. Recent queries wrap and render as literal text instead of HTML; search headings no longer interpolate untrusted query markup.
 - Follow-up 21.91 also removes the remaining View Details wording inside the featured-dish carousel, using the same contrast-safe info symbol and touch target.
+- Follow-up 21.92 removes the scrolling option chips within dish banners as well; variants and portion choices remain in dish details. Search placeholders are shortened in all three languages.

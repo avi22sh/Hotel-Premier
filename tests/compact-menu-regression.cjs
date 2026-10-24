@@ -13,7 +13,7 @@ const card = app.renderDishCard(dish);
 assert.match(card, /compact-dish-card/);
 assert.match(card, /Paneer Tikka/);
 assert.match(card, /₹250/);
-assert.match(card, /Portion options available/);
+assert.doesNotMatch(card, /Portion options available|dish-card-variant-chips|dish-options-hint/);
 assert.doesNotMatch(card, /Original description|class="dish-desc"|class="variant-btn/);
 assert.match(source, /class="modal-dish-desc">\$\{initialDesc/);
 assert.match(source, /this.getDishDescription\(dish\)/);

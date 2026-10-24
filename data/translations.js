@@ -54,7 +54,7 @@ window.HOTEL_PREMIER_I18N = {
       heroBadge: 'PRIDE PURE VEG AC RESTAURANT',
       heroTitle: 'Culinary Delights of Hotel Premier',
       heroSubtitle: 'Prepared fresh in our Pride Pure Veg Kitchen in standard refined oil',
-      searchPlaceholder: 'Search dishes (e.g. Paneer, Biryani, Chai, Shev Bhaji, Pasta)...',
+      searchPlaceholder: 'Paneer, biryani, naan…',
       
       // Quick Filters
       dishOptionsHint: 'Portion options available',
@@ -276,7 +276,7 @@ window.HOTEL_PREMIER_I18N = {
       heroBadge: 'PRIDE PURE VEG AC RESTAURANT',
       heroTitle: 'Hotel Premier - Pure Veg Menu',
       heroSubtitle: 'Fresh & Tasty Pure Veg Food • Prepared Fresh in Refined Oil',
-      searchPlaceholder: 'Dishes search karein (Paneer, Biryani, Roti, Chai, Shev Bhaji)...',
+      searchPlaceholder: 'पनीर, बिरयानी, नान खोजें…',
 
       // Quick Filters
       dishOptionsHint: 'मात्रा के विकल्प उपलब्ध',
@@ -497,7 +497,7 @@ window.HOTEL_PREMIER_I18N = {
       heroBadge: 'PRIDE PURE VEG AC RESTAURANT',
       heroTitle: 'Hotel Premier - Pure Veg Menu',
       heroSubtitle: 'ताजे आणि चविष्ट Pure Veg जेवण • Fresh Cooking in Refined Oil',
-      searchPlaceholder: 'Dishes शोधा (Paneer, Biryani, Roti, Chai, Shev Bhaji)...',
+      searchPlaceholder: 'पनीर, बिर्याणी, नान शोधा…',
 
       // Quick Filters
       dishOptionsHint: 'प्रमाणाचे पर्याय उपलब्ध',
