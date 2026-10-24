@@ -587,7 +587,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.87';
+    s.src = 'admin.js?v=21.88';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -835,7 +835,6 @@ class HotelPremierApp {
 
     this.renderMenu();
     this.renderMenuSectionDrawer();
-    this.filterDrawerByGroup('all');
     this.calculateBulkQuote();
     this.renderRestaurantEventPackages();
     this.renderEventDecorations();
@@ -1879,6 +1878,7 @@ class HotelPremierApp {
     const modal = document.getElementById('menu-sections-drawer-modal');
     if (!modal) return;
     this.renderMenuSectionDrawer();
+    this.filterDrawerByGroup('all');
     if (!modal.classList.contains('active')) {
       this.menuDrawerOpener = document.activeElement;
       this.menuDrawerPreviousOverflow = document.body.style.overflow;

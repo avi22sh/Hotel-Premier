@@ -16,7 +16,11 @@ const doc={readyState:'loading',addEventListener(){},activeElement:opener,
 const c={window:{},document:doc,console,setTimeout:fn=>(timers.push(fn),timers.length),clearTimeout(){}};
 vm.createContext(c);vm.runInContext(fs.readFileSync('app.js','utf8')+';window.App=HotelPremierApp;',c);
 const app=Object.create(c.window.App.prototype); app.renderMenuSectionDrawer=()=>{};app.applyGuestProfileToAllForms=()=>{};
+let resetCount=0;
+const filterGroup=app.filterDrawerByGroup;
+app.filterDrawerByGroup=function(group){assert.equal(group,'all');resetCount++;return filterGroup.call(this,group);};
 app.openMenuSectionDrawer();assert.equal(doc.body.style.overflow,'hidden');
+assert.equal(resetCount,1,'Opening must reset the previous group filter');
 app.dismissGuestOverlay(drawer); // The Escape/backdrop path must use drawer-specific cleanup.
 assert.equal(doc.body.style.overflow,'auto');assert.equal(focused,'opener');
 timers[0]();assert.equal(focused,'opener','A closed drawer must not steal focus after its timer fires');
