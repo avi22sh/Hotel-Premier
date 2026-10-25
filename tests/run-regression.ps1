@@ -281,8 +281,8 @@ if (-not $html.Contains("Toothbrush, Toothpaste &amp; Shampoo") -or -not $hotelD
     exit 1
 }
 
-if (-not $html.Contains("footer-partners-glass-container") -or -not $royalCss.Contains("footer-partners-glass-container")) {
-    Write-Error "FAILED: Missing footer partner glassmorphism container in index.html or royal.css"
+if ($html.Contains("Order Online to Your Doorstep") -or $html.Contains("footer-partners-glass-container")) {
+    Write-Error "FAILED: Expected footer partner doorstep banner to be removed per user request"
     exit 1
 }
 
