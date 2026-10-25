@@ -2692,7 +2692,7 @@ class HotelPremierApp {
       `;
     } else {
       detailMediaHtml = `
-        <div class="modal-dish-photo-wrap no-photo" style="height: 180px;">
+        <div class="modal-dish-photo-wrap no-photo">
           <div class="dish-no-photo-placeholder" id="detail-modal-img">
             <div class="no-photo-icon">🌱</div>
             <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
@@ -2868,6 +2868,8 @@ class HotelPremierApp {
     orderActions.appendChild(swiggyBtn);
     orderActions.appendChild(zomatoBtn);
     body.appendChild(orderActions);
+    const detailContainer = body.querySelector('.modal-dish-detail-container');
+    if (detailContainer) detailContainer.scrollTop = 0;
     this.syncDetailFavorite();
     modal.classList.remove('closing');
     modal.style.display = 'flex';

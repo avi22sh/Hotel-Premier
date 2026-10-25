@@ -661,7 +661,7 @@
 
       if (!hasPhoto) {
         return `
-          <div class="modal-dish-photo-wrap no-photo" style="height: 180px;">
+          <div class="modal-dish-photo-wrap no-photo">
             <div class="dish-no-photo-placeholder">
               <div class="no-photo-icon">🌱</div>
               <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>

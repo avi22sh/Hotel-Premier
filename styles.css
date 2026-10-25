@@ -7868,14 +7868,14 @@ body.theme-dark {
 .dish-media:not(.no-photo) {
   height: clamp(200px, 42vw, 280px);
 }
-.modal-dish-photo-wrap:not(.no-photo) {
-  height: 280px;
-  max-height: 300px;
+.modal-dish-photo-wrap {
+  height: 220px;
+  max-height: 220px;
 }
 @media (max-width: 640px) {
-  .modal-dish-photo-wrap:not(.no-photo) {
-    height: 220px;
-    max-height: 240px;
+  .modal-dish-photo-wrap {
+    height: clamp(120px, 25dvh, 205px);
+    max-height: 205px;
   }
 }
 .dish-media .hp-dish-pedestal-backdrop,
