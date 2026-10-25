@@ -252,7 +252,12 @@ class HotelPremierStorageManager {
 
         items.forEach(item => {
           if (item && item.id) {
-            overrides[item.id] = { ...(overrides[item.id] || {}), ...item };
+            const resolvedImg = item.image || item.enhancedMasterImage || item.rawOriginalImage;
+            overrides[item.id] = {
+              ...(overrides[item.id] || {}),
+              ...item,
+              ...(resolvedImg ? { image: resolvedImg } : {})
+            };
           }
         });
       } catch (e) {}
@@ -281,9 +286,14 @@ class HotelPremierStorageManager {
     // 2. Save full gallery payload safely to IndexedDB
     if (this.db) {
       try {
-        const tx = this.db.transaction('room_galleries', 'readwrite');
-        const store = tx.objectStore('room_galleries');
-        store.put(payload);
+        await new Promise((resolve, reject) => {
+          const tx = this.db.transaction('room_galleries', 'readwrite');
+          tx.oncomplete = resolve;
+          tx.onabort = () => reject(tx.error || new Error('Room gallery save interrupted'));
+          tx.onerror = () => reject(tx.error || new Error('Room gallery save failed'));
+          const store = tx.objectStore('room_galleries');
+          store.put(payload);
+        });
       } catch (e) {
         console.warn('IndexedDB write error:', e);
       }
@@ -338,10 +348,17 @@ class HotelPremierStorageManager {
 
     if (this.db) {
       try {
-        const tx = this.db.transaction('section_slides', 'readwrite');
-        const store = tx.objectStore('section_slides');
-        store.put(payload);
-      } catch (e) {}
+        await new Promise((resolve, reject) => {
+          const tx = this.db.transaction('section_slides', 'readwrite');
+          tx.oncomplete = resolve;
+          tx.onabort = () => reject(tx.error || new Error('Section slides save interrupted'));
+          tx.onerror = () => reject(tx.error || new Error('Section slides save failed'));
+          const store = tx.objectStore('section_slides');
+          store.put(payload);
+        });
+      } catch (e) {
+        console.warn('IndexedDB write error:', e);
+      }
     }
   }
 

@@ -985,9 +985,14 @@ class HotelPremierApp {
       }
       if (overridesMap && overridesMap[dish.id]) {
         const ov = overridesMap[dish.id];
-        // Published asset paths are authoritative. Preserve private/new uploads,
-        // but do not let legacy device-local asset paths resurrect replaced files.
-        if (ov.image !== undefined && !(typeof ov.image === 'string' && ov.image.startsWith('assets/') && Object.prototype.hasOwnProperty.call(window.HOTEL_PREMIER_PHOTOS || {}, dish.id))) copy.image = ov.image;
+        // Published asset paths are authoritative baseline. Preserve user uploads,
+        // timestamps, and explicit image selections.
+        if (ov.image !== undefined && ov.image !== '') {
+          const isStaleBaseline = (typeof ov.image === 'string' && ov.image.startsWith('assets/') && !ov.updatedAt && !ov.lastEnhancedAt && window.HOTEL_PREMIER_PHOTOS && window.HOTEL_PREMIER_PHOTOS[dish.id] && ov.image !== window.HOTEL_PREMIER_PHOTOS[dish.id]);
+          if (!isStaleBaseline) copy.image = ov.image;
+        } else if (ov.image === '') {
+          copy.image = '';
+        }
         if (ov.price !== undefined) copy.price = ov.price;
         if (ov.isSoldOut !== undefined) copy.isSoldOut = ov.isSoldOut;
         if (ov.notAvailable !== undefined) copy.notAvailable = Boolean(ov.notAvailable);
@@ -2917,23 +2922,28 @@ class HotelPremierApp {
     const photoWrap = previousImg?.closest('.modal-dish-photo-wrap');
     if (targetImg && targetImg.trim() !== '' && photoWrap) {
       const versionedSrc = window.AssetPipeline?.versionedPhotoSource(targetImg) || targetImg;
-      const modalImg = document.createElement('img');
-      modalImg.id = 'detail-modal-img';
-      modalImg.className = 'modal-dish-img';
-      modalImg.alt = varName || '';
-      modalImg.loading = 'eager';
-      modalImg.onerror = () => {
-        if (!modalImg.isConnected) return;
-        const placeholder = document.createElement('div');
-        placeholder.id = 'detail-modal-img';
-        placeholder.className = 'dish-no-photo-placeholder';
-        placeholder.textContent = 'Photo coming soon';
-        photoWrap.classList.add('no-photo');
-        modalImg.replaceWith(placeholder);
-      };
-      photoWrap.classList.remove('no-photo');
-      previousImg.replaceWith(modalImg);
-      modalImg.src = versionedSrc;
+      if (previousImg && previousImg.tagName === 'IMG' && (previousImg.src === versionedSrc || previousImg.getAttribute('src') === versionedSrc)) {
+        previousImg.alt = varName || '';
+        photoWrap.classList.remove('no-photo');
+      } else {
+        const modalImg = document.createElement('img');
+        modalImg.id = 'detail-modal-img';
+        modalImg.className = 'modal-dish-img';
+        modalImg.alt = varName || '';
+        modalImg.loading = 'eager';
+        modalImg.src = versionedSrc;
+        modalImg.onerror = () => {
+          if (!modalImg.isConnected) return;
+          const placeholder = document.createElement('div');
+          placeholder.id = 'detail-modal-img';
+          placeholder.className = 'dish-no-photo-placeholder';
+          placeholder.textContent = 'Photo coming soon';
+          photoWrap.classList.add('no-photo');
+          modalImg.replaceWith(placeholder);
+        };
+        photoWrap.classList.remove('no-photo');
+        previousImg.replaceWith(modalImg);
+      }
     } else if (previousImg && photoWrap) {
       const placeholder = document.createElement('div');
       placeholder.id = 'detail-modal-img';

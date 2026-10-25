@@ -173,15 +173,28 @@
     clearCacheForAsset(imageOrDishId) {
       if (!imageOrDishId) {
         this.processedCache.clear();
+        try {
+          for (let i = sessionStorage.length - 1; i >= 0; i--) {
+            const k = sessionStorage.key(i);
+            if (k && k.startsWith('hp_proc_')) sessionStorage.removeItem(k);
+          }
+        } catch (_) {}
         return;
       }
       const searchKey = String(imageOrDishId);
       for (const key of this.processedCache.keys()) {
         if (key.includes(searchKey)) {
           this.processedCache.delete(key);
-          try { sessionStorage.removeItem('hp_proc_' + key); } catch (_) {}
         }
       }
+      try {
+        for (let i = sessionStorage.length - 1; i >= 0; i--) {
+          const k = sessionStorage.key(i);
+          if (k && k.startsWith('hp_proc_') && k.includes(searchKey)) {
+            sessionStorage.removeItem(k);
+          }
+        }
+      } catch (_) {}
     }
 
     /**
