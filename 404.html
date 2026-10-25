@@ -75,9 +75,9 @@
   <script src="asset-pipeline.js?v=21.65"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=21.99">
-  <link rel="stylesheet" href="royal.css?v=21.99">
-  <script src="public-reviews.js?v=21.99" defer></script>
+  <link rel="stylesheet" href="styles.css?v=22.00">
+  <link rel="stylesheet" href="royal.css?v=22.00">
+  <script src="public-reviews.js?v=22.00" defer></script>
 </head>
 <body>
 
@@ -1748,7 +1748,8 @@
     <div class="modal-sheet dish-detail-sheet" role="dialog" aria-modal="true" aria-labelledby="dish-detail-title" tabindex="-1">
       <div class="modal-header">
         <div class="modal-title" id="dish-detail-title">
-          <span>🍽️</span> <span>Dish Details</span>
+          <span class="dish-detail-heading-icon" aria-hidden="true"><svg class="cutlery-dish-icon" viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><circle cx="12" cy="12" r="5.2" stroke-dasharray="2 2" stroke-width="1.1" opacity="0.6"/><path d="M8 7v3.2a1 1 0 0 0 2 0V7"/><path d="M9 7v10"/><path d="M15 7v5.5a1.2 1.2 0 0 1-1.2-1.2V7c0-.5.6-.5 1.2 0z"/><path d="M14.4 12.5V17"/></svg></span>
+          <span class="dish-detail-heading-text">Dish Details</span>
         </div>
         <div class="modal-header-actions">
           <button type="button" class="modal-header-action-btn modal-header-share-btn" id="modal-dish-share-btn" onclick="window.app ? window.app.shareDish() : null" aria-label="Share Dish" title="Share Dish">
@@ -1917,16 +1918,16 @@
   </div>
 
   <!-- Load Application Scripts (v20.51) -->
-  <script src="storage.js?v=21.99"></script>
+  <script src="storage.js?v=22.00"></script>
   <script src="vault.js?v=21.82"></script>
-  <script src="data/translations.js?v=21.99"></script>
+  <script src="data/translations.js?v=22.00"></script>
   <script src="data/hotel-data.js?v=21.77"></script>
   <script src="data/menu-data.js?v=21.65"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
   <script src="menu-structure.js?v=21.75"></script>
   <script src="group-stays.js?v=21.77"></script>
   <script src="guest-network.js?v=21.82"></script>
-  <script src="app.js?v=21.99"></script>
+  <script src="app.js?v=22.00"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1961,7 +1962,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=21.99', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=22.00', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load
