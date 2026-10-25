@@ -3812,14 +3812,14 @@ body.theme-dark .dish-card-chip .chip-price {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.66rem;
+  font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.4px;
-  padding: 3px 8px;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  padding: 2.5px 8px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   text-transform: uppercase;
   white-space: nowrap;
   animation: badgePop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -3831,38 +3831,38 @@ body.theme-dark .dish-card-chip .chip-price {
 }
 
 .badge-tag.bestseller {
-  background: linear-gradient(135deg, #FF4B2B 0%, #FF416C 100%);
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.94) 0%, rgba(190, 18, 60, 0.98) 100%);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-.badge-tag.sweet {
-  background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 205, 210, 0.5);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-.badge-tag.spicy {
-  background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
+.badge-tag.sweet {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.94) 0%, rgba(146, 64, 14, 0.98) 100%);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 200, 200, 0.4);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(254, 243, 199, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.badge-tag.spicy {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.94) 0%, rgba(153, 27, 27, 0.98) 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(254, 202, 202, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .badge-tag.chef {
-  background: linear-gradient(135deg, #B45309 0%, #D97706 100%);
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.94) 0%, rgba(120, 53, 15, 0.98) 100%);
   color: #FFFDF8;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(254, 240, 138, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .badge-tag.khandeshi {
-  background: linear-gradient(135deg, #7C2D12 0%, #C2410C 100%);
+  background: linear-gradient(135deg, rgba(154, 52, 18, 0.94) 0%, rgba(108, 35, 12, 0.98) 100%);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(254, 215, 170, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .dish-card .dish-body,
@@ -5403,15 +5403,15 @@ body.theme-dark .tier-perks-list li {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 4px 10px !important;
-  border-radius: 8px !important;
+  padding: 2px 8px !important;
+  border-radius: 7px !important;
   text-decoration: none;
   font-weight: 800;
   letter-spacing: 0.2px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   box-sizing: border-box;
-  min-height: 35px !important;
-  height: 35px !important;
+  min-height: 28px !important;
+  height: 28px !important;
   overflow: hidden;
   text-align: center;
 }
@@ -5471,15 +5471,6 @@ body.theme-dark .tier-perks-list li {
   line-height: 1.1;
   display: inline-block !important;
   flex-shrink: 0;
-}
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.24);
-  padding: 2px 7px;
-  border-radius: 999px;
-  line-height: 1.2;
 }
 
 .modal-header {

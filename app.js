@@ -2810,7 +2810,7 @@ class HotelPremierApp {
     swiggyBtn.rel = 'noopener noreferrer';
     swiggyBtn.setAttribute('aria-label', `Order ${dish.name} on Swiggy`);
     swiggyBtn.innerHTML = `
-      <span class="delivery-btn-brand swiggy-brand"><img class="partner-order-logo" src="assets/brands/swiggy.png" alt="Swiggy" width="92" height="30"></span>
+      <span class="delivery-btn-brand swiggy-brand"><img class="partner-order-logo" src="assets/brands/swiggy.png" alt="Swiggy" width="48" height="15"></span>
       <span class="delivery-btn-text">Order Now &#x2197;</span>
     `;
 
@@ -2822,7 +2822,7 @@ class HotelPremierApp {
     zomatoBtn.rel = 'noopener noreferrer';
     zomatoBtn.setAttribute('aria-label', `Order ${dish.name} on Zomato`);
     zomatoBtn.innerHTML = `
-      <span class="delivery-btn-brand zomato-brand"><img class="partner-order-logo" src="assets/brands/zomato.png" alt="Zomato" width="92" height="26"></span>
+      <span class="delivery-btn-brand zomato-brand"><img class="partner-order-logo" src="assets/brands/zomato.png" alt="Zomato" width="48" height="14"></span>
       <span class="delivery-btn-text">Order Now &#x2197;</span>
     `;
 

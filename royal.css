@@ -3,9 +3,9 @@
 .dish-banner-action .dish-fav-btn { width:44px; height:44px; min-width:44px; min-height:44px; position:static; }
 .modal-header-share-btn .share-text { display:none; }
 .modal-header-share-btn { min-width:44px; min-height:44px; }
-#dish-detail-body > .delivery-buttons-container { flex:0 0 auto; margin:4px 0 0; padding:2px 0 max(6px,env(safe-area-inset-bottom)); box-sizing:border-box; border-top:none !important; background:transparent !important; box-shadow:none !important; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-block !important; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-text { white-space:normal; font-size:.76rem; font-weight:800; }
+#dish-detail-body > .delivery-buttons-container { flex:0 0 auto; margin:2px 0 0 !important; padding:4px 10px max(6px,env(safe-area-inset-bottom)) !important; box-sizing:border-box; border-top:none !important; background:transparent !important; box-shadow:none !important; gap:8px !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-flex !important; align-items:center; justify-content:center; padding:1px 4px !important; border-radius:4px; background:rgba(255,255,255,.95) !important; box-shadow:0 1px 2px rgba(0,0,0,.1); line-height:1; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-text { white-space:nowrap; font-size:.68rem !important; font-weight:800 !important; letter-spacing:.2px; color:#ffffff !important; line-height:1; display:inline-block !important; }
 .modal-dish-variant-btn { min-height:48px; align-items:flex-start; }
 .modal-dish-variant-btn .variant-btn-name { min-width:0; overflow-wrap:anywhere; }
 .modal-dish-variant-btn .variant-btn-price { flex-shrink:0; }
@@ -13,7 +13,7 @@
   #dish-detail-body .modal-dish-photo-wrap { height:205px !important; max-height:215px !important; border-radius:12px !important; }
   .modal-sheet.dish-detail-sheet { height:90dvh !important; max-height:90dvh !important; }
   .modal-dish-variant-btn { flex-direction:column; gap:4px; }
-  #dish-detail-body > .delivery-buttons-container .delivery-btn { padding:4px 8px !important; min-height:34px !important; height:34px !important; }
+  #dish-detail-body > .delivery-buttons-container .delivery-btn { padding:2px 8px !important; min-height:28px !important; height:28px !important; }
 }
 @media(prefers-reduced-motion:reduce) { #dish-detail-body .modal-dish-detail-container { scroll-behavior:auto !important; } }
 /* Warm stone, forest and champagne: consistent Stay/Tariff surfaces. */
@@ -122,7 +122,7 @@ body.theme-dark .dish-card:hover {
 body.theme-dark :is(.room-card-info-panel,.tariff-suite-card,.tariff-card-amenities,.tariff-card-action,.feedback-container,.modal-header) { background:transparent; color:var(--royal-ink); }
 body.theme-dark :is(.dish-title,.modal-dish-name,.room-suite-title,.tariff-suite-name,.tariff-suite-title,.feedback-title,.tier-name) { color:var(--royal-ink) !important; }
 body.theme-dark :is(.dish-tax-note,.modal-dish-desc,.room-suite-desc,.tariff-suite-desc,.tier-perks li) { color:var(--royal-muted); }
-body.theme-dark :is(.view-detail-link,.subcat-chip.active,.filter-pill.active,.floating-menu-toggle-btn,.badge-tag,.dish-soldout-label,.modal-dish-variant-btn.selected,.variant-btn.selected) {
+body.theme-dark :is(.view-detail-link,.subcat-chip.active,.filter-pill.active,.floating-menu-toggle-btn,.dish-soldout-label,.modal-dish-variant-btn.selected,.variant-btn.selected) {
   background:#D6BC87 !important; color:#121820 !important; border-color:#E0CCA4 !important; box-shadow:0 3px 12px rgba(0,0,0,.18) !important;
 }
 body.theme-dark :is(.modal-dish-price,.dish-price,.signature-dish-price,.room-starting-tariff .tariff-val,.rate-prices strong,.occ-price) { color:#DFC69A !important; }
@@ -130,9 +130,9 @@ body.theme-dark .modal-dish-variant-btn:hover { background:rgba(223, 198, 154, 0
 /* Partner identities stay independent of Hotel Premier's light/dark palette with authentic brand colors */
 body :is(.dish-pill-zomato, .platform-pill-btn[href*="zomato.com"]) { background:#E23744 !important; border-color:#E23744 !important; color:#ffffff !important; box-shadow:0 4px 14px rgba(226, 55, 68, 0.35) !important; }
 body :is(.dish-pill-swiggy, .platform-pill-btn[href*="swiggy.com"]) { background:#FC8019 !important; border-color:#FC8019 !important; color:#ffffff !important; box-shadow:0 4px 14px rgba(252, 128, 25, 0.35) !important; }
-body .modal-btn-zomato-order { background:linear-gradient(135deg, #E23744 0%, #CB1A27 100%) !important; border:1px solid rgba(226, 55, 68, 0.6) !important; color:#ffffff !important; box-shadow:0 2px 8px rgba(226, 55, 68, 0.35) !important; min-height:35px !important; height:35px !important; padding:4px 10px !important; border-radius:8px !important; }
+body .modal-btn-zomato-order { background:linear-gradient(135deg, #E23744 0%, #CB1A27 100%) !important; border:1px solid rgba(226, 55, 68, 0.6) !important; color:#ffffff !important; box-shadow:0 2px 6px rgba(226, 55, 68, 0.3) !important; min-height:28px !important; height:28px !important; padding:2px 8px !important; border-radius:7px !important; }
 body .modal-btn-zomato-order:hover { background:linear-gradient(135deg, #F04452 0%, #DC2635 100%) !important; color:#ffffff !important; }
-body .modal-btn-swiggy-order { background:linear-gradient(135deg, #FC8019 0%, #E66A02 100%) !important; border:1px solid rgba(252, 128, 25, 0.6) !important; color:#ffffff !important; box-shadow:0 2px 8px rgba(252, 128, 25, 0.35) !important; min-height:35px !important; height:35px !important; padding:4px 10px !important; border-radius:8px !important; }
+body .modal-btn-swiggy-order { background:linear-gradient(135deg, #FC8019 0%, #E66A02 100%) !important; border:1px solid rgba(252, 128, 25, 0.6) !important; color:#ffffff !important; box-shadow:0 2px 6px rgba(252, 128, 25, 0.3) !important; min-height:28px !important; height:28px !important; padding:2px 8px !important; border-radius:7px !important; }
 body .modal-btn-swiggy-order:hover { background:linear-gradient(135deg, #FF9030 0%, #F57409 100%) !important; color:#ffffff !important; }
 body.theme-dark .modal-dish-variants-box { background:linear-gradient(145deg, #1A2430 0%, #131B24 100%) !important; border-color:rgba(214, 188, 135, 0.28) !important; box-shadow:0 4px 20px rgba(0, 0, 0, 0.3) !important; }
 body.theme-dark .modal-dish-variants-header { border-bottom:1px dashed rgba(214, 188, 135, 0.2) !important; }
@@ -457,8 +457,9 @@ body.theme-dark .detail-photo-favorite.active { color:#f07b88; }
 .platform-brand-goibibo { display:inline-block; width:104px; height:30px; background:#fff url('assets/brands/goibibo-sprite.png') -2px -1px / 125px 200px no-repeat; border-radius:4px; flex-shrink:0; }
 .platform-pill-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; }
 .ota-booking-panel a { display:inline-flex; align-items:center; justify-content:center; gap:8px; }
-.partner-order-logo { display:block; width:92px; height:26px; object-fit:contain; filter:none!important; }
-body .modal-btn-swiggy-order .swiggy-brand { padding:1px 7px; border-radius:5px; background:#fff8f2; }
+.partner-order-logo { display:block; width:48px; height:15px; object-fit:contain; filter:none!important; }
+body .modal-btn-swiggy-order .swiggy-brand,
+body .modal-btn-zomato-order .zomato-brand { padding:1px 4px; border-radius:4px; background:rgba(255,255,255,.95); display:inline-flex; align-items:center; justify-content:center; }
 
 /* Premier glass keeps text solid and concentrates blur on navigation and dialogs. */
 body .modal-sheet { background:rgba(255,253,247,.97) !important; backdrop-filter:blur(20px) !important; -webkit-backdrop-filter:blur(20px) !important; }
@@ -476,7 +477,7 @@ body.theme-dark :is(.variant-btn-name,.modal-dish-title) { color:#eee8de !import
 #modal-dish-share-btn { width:40px; height:40px; min-width:40px; padding:10px; border-radius:50%; }
 #modal-dish-share-btn .share-icon { width:18px; height:18px; display:block; }
 #dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-flex !important; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-text { display:none !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-text { display:inline-block !important; font-size:.68rem !important; font-weight:800 !important; white-space:nowrap !important; }
 #dish-detail-modal .modal-header { display:flex !important; align-items:center; justify-content:space-between; flex-wrap:nowrap; gap:8px; padding:12px 14px; background:#1b2937 !important; color:#eee8de; }
 #dish-detail-modal .modal-title { color:#dfc69a !important; font-size:.9rem; min-width:0; letter-spacing:.08em; }
 body .modal-header { display:flex !important; align-items:center; justify-content:space-between; gap:10px; }
@@ -484,8 +485,8 @@ body .modal-title { min-width:0; }
 body .modal-close-btn { flex-shrink:0; }
 #dish-detail-modal .modal-header-actions { display:flex; flex:0 0 auto; gap:6px; width:auto; }
 #dish-detail-modal :is(.modal-header-action-btn,.modal-close-btn) { color:#eee8de; background:rgba(255,255,255,.08); border-color:#536474; }
-#dish-detail-body > .delivery-buttons-container { padding:10px 14px max(10px,env(safe-area-inset-bottom)) !important; margin:0 !important; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn { min-height:44px !important; height:auto !important; padding:10px 6px !important; }
+#dish-detail-body > .delivery-buttons-container { padding:4px 10px max(6px,env(safe-area-inset-bottom)) !important; margin:2px 0 0 !important; gap:8px !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn { min-height:28px !important; height:28px !important; padding:2px 8px !important; border-radius:7px !important; }
 #dish-detail-body .modal-dish-photo-wrap { flex-shrink:0 !important; }
 @media(max-width:640px) { #dish-detail-body .modal-dish-photo-wrap { height:clamp(120px,25dvh,205px) !important; } }
 .studio-card-item { content-visibility:auto; contain-intrinsic-size:auto 240px; }
@@ -1098,4 +1099,92 @@ input, select, textarea {
 }
 button, [role="button"], a {
   touch-action: manipulation;
+}
+
+/* ==================== TRACK 1: MODERNIZED COMPACT BADGES & MICRO-PILLS ==================== */
+.dish-badges {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 5;
+  pointer-events: none;
+}
+.dish-badges .badge-tag,
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.62rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.4px;
+  padding: 2.5px 8px !important;
+  border-radius: 999px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.32) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.badge-tag.bestseller {
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.94) 0%, rgba(190, 18, 60, 0.98) 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 205, 210, 0.5) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.badge-tag.chef {
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.94) 0%, rgba(120, 53, 15, 0.98) 100%) !important;
+  color: #fffdf7 !important;
+  border: 1px solid rgba(254, 240, 138, 0.5) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.badge-tag.khandeshi {
+  background: linear-gradient(135deg, rgba(154, 52, 18, 0.94) 0%, rgba(108, 35, 12, 0.98) 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(254, 215, 170, 0.5) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.badge-tag.spicy {
+  background: linear-gradient(135deg, rgba(220, 38, 38, 0.94) 0%, rgba(153, 27, 27, 0.98) 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(254, 202, 202, 0.5) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.badge-tag.sweet {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.94) 0%, rgba(146, 64, 14, 0.98) 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(254, 243, 199, 0.5) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.badge-tag.delivery-exclusive {
+  background: linear-gradient(135deg, rgba(234, 88, 12, 0.94) 0%, rgba(194, 65, 12, 0.98) 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 237, 213, 0.5) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Micro-pills for delivery partners in dish cards */
+.dish-pill-zomato,
+.dish-pill-swiggy {
+  font-size: 0.64rem !important;
+  font-weight: 800 !important;
+  padding: 2px 7px !important;
+  border-radius: 999px !important;
+  letter-spacing: 0.3px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Taste profile chips in dish details */
+.admin-tag-toggle-chip {
+  font-size: 0.68rem !important;
+  padding: 2.5px 7px !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px !important;
 }
