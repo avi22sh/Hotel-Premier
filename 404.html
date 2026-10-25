@@ -72,12 +72,12 @@
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
   <script src="data/menu-image-sizes.js?v=21.0"></script>
-  <script src="asset-pipeline.js?v=22.04"></script>
+  <script src="asset-pipeline.js?v=22.05"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=22.04">
-  <link rel="stylesheet" href="royal.css?v=22.04">
-  <script src="public-reviews.js?v=22.04" defer></script>
+  <link rel="stylesheet" href="styles.css?v=22.05">
+  <link rel="stylesheet" href="royal.css?v=22.05">
+  <script src="public-reviews.js?v=22.05" defer></script>
 </head>
 <body>
 
@@ -1638,7 +1638,7 @@
         <div class="enquiry-grid enquiry-counts">
           <div class="form-group"><label class="form-label" for="booking-nights">Nights</label><input id="booking-nights" type="number" class="form-input" value="1" min="1" step="1" required oninput="window.app ? window.app.updateBookingEstimate() : null" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
           <div class="form-group"><label class="form-label" for="booking-rooms-count">Rooms</label><input id="booking-rooms-count" type="number" class="form-input" value="1" min="1" max="12" step="1" required aria-describedby="booking-capacity-help" oninput="window.app ? window.app.updateBookingEstimate() : null" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
-          <div class="form-group"><label class="form-label" for="booking-guests-count">Total guests · including children</label><input id="booking-guests-count" type="number" class="form-input" value="2" min="1" max="36" step="1" required aria-describedby="booking-capacity-help" oninput="window.app ? window.app.updateBookingEstimate() : null" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
+          <div class="form-group"><label class="form-label" for="booking-guests-count">Guests · all ages</label><input id="booking-guests-count" type="number" class="form-input" value="2" min="1" max="36" step="1" required aria-describedby="booking-capacity-help" oninput="window.app ? window.app.updateBookingEstimate() : null" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
         </div>
         <p id="booking-capacity-help" class="enquiry-help" role="status" aria-live="polite"></p>
         <div class="form-group"><label class="form-label" for="booking-meal-plan">Your stay plan</label><select id="booking-meal-plan" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null"><option value="RO">Room only</option><option value="CP" selected>With breakfast · fixed menu</option></select></div>
@@ -1930,16 +1930,16 @@
   </div>
 
   <!-- Load Application Scripts (v20.51) -->
-  <script src="storage.js?v=22.04"></script>
+  <script src="storage.js?v=22.05"></script>
   <script src="vault.js?v=21.82"></script>
-  <script src="data/translations.js?v=22.04"></script>
+  <script src="data/translations.js?v=22.05"></script>
   <script src="data/hotel-data.js?v=21.77"></script>
-  <script src="data/menu-data.js?v=21.65"></script>
+  <script src="data/menu-data.js?v=22.05"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
   <script src="menu-structure.js?v=21.75"></script>
   <script src="group-stays.js?v=21.77"></script>
   <script src="guest-network.js?v=21.82"></script>
-  <script src="app.js?v=22.04"></script>
+  <script src="app.js?v=22.05"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1974,7 +1974,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=22.04', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=22.05', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load

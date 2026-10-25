@@ -575,7 +575,16 @@ body.theme-light #dish-detail-modal :is(.modal-header-action-btn,.modal-close-bt
 
 /* A short, precise room enquiry, with secondary requests progressively disclosed. */
 #concierge-booking-modal .enquiry-sheet { max-width:620px; max-height:calc(100dvh - 32px); overflow:hidden; color:var(--crystal-ink); }
-#concierge-booking-modal .modal-header { padding:14px 18px; border-bottom:1px solid var(--crystal-edge); }
+#concierge-booking-modal .modal-header { padding:14px 18px !important; background:rgba(255, 253, 247, 0.98) !important; border-bottom:1px solid var(--crystal-edge) !important; color:var(--crystal-ink) !important; }
+body.theme-dark #concierge-booking-modal .modal-header { background:rgba(20, 30, 42, 0.96) !important; border-bottom:1px solid rgba(220, 191, 136, 0.25) !important; color:#FFFDF9 !important; }
+#concierge-booking-modal .modal-title { color:var(--crystal-accent) !important; font-family:var(--font-royal); font-weight:800; font-size:1.05rem; letter-spacing:0.5px; }
+body.theme-dark #concierge-booking-modal .modal-title { color:var(--brass-light, #f0dfb8) !important; }
+#concierge-booking-modal .modal-close-btn { width:36px !important; height:36px !important; min-width:36px !important; min-height:36px !important; border-radius:50% !important; font-size:0.95rem !important; font-weight:700 !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; color:var(--burgundy-deep, #7b1828) !important; background:rgba(139, 21, 56, 0.08) !important; border:1px solid rgba(139, 21, 56, 0.25) !important; transition:all 0.2s ease; }
+#concierge-booking-modal .modal-close-btn:hover,
+#concierge-booking-modal .modal-close-btn:focus-visible { background:rgba(139, 21, 56, 0.16) !important; transform:scale(1.05); outline:none; }
+body.theme-dark #concierge-booking-modal .modal-close-btn { color:#FFFFFF !important; background:rgba(255, 255, 255, 0.09) !important; border:1px solid rgba(220, 191, 136, 0.35) !important; }
+body.theme-dark #concierge-booking-modal .modal-close-btn:hover,
+body.theme-dark #concierge-booking-modal .modal-close-btn:focus-visible { background:rgba(220, 191, 136, 0.22) !important; }
 #concierge-booking-modal .modal-body { overflow-y:auto; padding:20px 24px 24px; }
 #concierge-booking-modal .enquiry-intro { color:var(--crystal-muted); font-size:.9rem; line-height:1.6; margin:0 0 16px; }
 #concierge-booking-modal .enquiry-privilege { display:flex; flex-wrap:wrap; gap:4px 14px; justify-content:space-between; margin:0 0 20px; padding:12px 14px; border-radius:12px; font-size:.8rem; color:var(--crystal-accent); }
@@ -584,9 +593,13 @@ body #concierge-booking-modal .enquiry-privilege { background:rgba(147,126,96,.0
 .enquiry-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
 .enquiry-grid > * { min-width:0; }
 .enquiry-counts { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.enquiry-counts .form-group { display:flex !important; flex-direction:column !important; justify-content:flex-end !important; }
+.enquiry-counts .form-label { min-height:28px !important; display:flex !important; align-items:flex-end !important; line-height:1.2 !important; margin-bottom:6px !important; }
 #concierge-booking-modal .form-label { font-size:.78rem; text-transform:none; letter-spacing:.015em; color:var(--crystal-ink); margin-bottom:7px; }
-#concierge-booking-modal :is(.form-input,.form-select) { width:100%; min-width:0; min-height:48px; font-size:16px; border-radius:12px; padding:11px 12px; background:rgba(139,126,113,.09); color:var(--crystal-ink); border:1px solid rgba(142,127,109,.36); color-scheme:light; }
-body.theme-dark #concierge-booking-modal :is(.form-input,.form-select) { background:rgba(255,255,255,.055); border-color:rgba(230,208,175,.3); color-scheme:dark; }
+#concierge-booking-modal :is(.form-input,.form-select) { width:100%; min-width:0; min-height:48px; font-size:16px; border-radius:12px; padding:11px 12px; background:#FFFFFF !important; color:var(--crystal-ink) !important; border:1.5px solid rgba(180, 140, 75, 0.35) !important; box-shadow:0 1px 4px rgba(0, 0, 0, 0.03) !important; color-scheme:light; transition:border-color 0.2s ease, box-shadow 0.2s ease; }
+#concierge-booking-modal :is(.form-input,.form-select):focus { border-color:var(--crystal-accent, #937e60) !important; box-shadow:0 0 0 3px rgba(180, 140, 75, 0.18) !important; outline:none; }
+body.theme-dark #concierge-booking-modal :is(.form-input,.form-select) { background:rgba(18, 26, 38, 0.88) !important; border:1.5px solid rgba(220, 191, 136, 0.3) !important; color:#FFFDF9 !important; box-shadow:none !important; color-scheme:dark; }
+body.theme-dark #concierge-booking-modal :is(.form-input,.form-select):focus { border-color:var(--royal-gold, #f0dfb8) !important; box-shadow:0 0 0 3px rgba(220, 191, 136, 0.2) !important; }
 #concierge-booking-modal .form-input::placeholder { color:var(--crystal-muted); opacity:.85; }
 #concierge-booking-modal .form-group { margin-bottom:14px; }
 #concierge-booking-modal .enquiry-help { color:var(--crystal-muted); font-size:.76rem; line-height:1.6; margin:0 0 14px; }
