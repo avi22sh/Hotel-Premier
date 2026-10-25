@@ -144,15 +144,14 @@ class HotelPremierApp {
 
     const src = urlParams.get('src') || '';
     const hasTableParam = urlParams.has('table') || urlParams.has('t') || (src && /^table/i.test(src.trim()));
+    const entryParam = (urlParams.get('entry') || '').toLowerCase();
+    const isRestaurantEntry = entryParam === 'restaurant' || entryParam === 'menu' || entryParam === 'dine' || hasTableParam;
 
     let initialSection = window.HotelGuestNetwork ? window.HotelGuestNetwork.resolve(window.location) : 'section-home';
     if (window.HotelGuestNetwork) {
       if (initialSection !== 'section-dine') catParam = null;
       window.HotelGuestNetwork.load();
-    } else if (urlParams.get('entry') === 'menu' || hasTableParam) {
-      catParam = null;
-      initialSection = 'section-dine';
-    } else if (catParam || hasTableParam) {
+    } else if (isRestaurantEntry || catParam) {
       initialSection = 'section-dine';
     } else if (sectionParam && hashToSection[sectionParam.toLowerCase()]) {
       initialSection = hashToSection[sectionParam.toLowerCase()];
@@ -465,9 +464,9 @@ class HotelPremierApp {
 
   shareHotel() {
     this.haptic(10);
-    const title = 'Hotel Premier — A Home in Bhusawal';
-    const text = 'Discover Hotel Premier — 14 air-conditioned rooms, 24-hour checkout for direct bookings only, and Pride Pure Veg AC Restaurant in Bhusawal.';
-    const shareUrl = window.location.origin + window.location.pathname;
+    const title = 'Hotel Premier — A Sanctuary in Bhusawal';
+    const text = 'Discover Hotel Premier — 14 air-conditioned suites, 24-hour checkout for direct bookings only, and Pride Pure Veg AC Restaurant in Bhusawal.';
+    const shareUrl = window.location.origin + window.location.pathname + '#home';
 
     if (navigator.share) {
       navigator.share({

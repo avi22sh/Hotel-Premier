@@ -3159,7 +3159,7 @@ class HotelPremierAdmin {
           <a href="GUEST-NETWORK-SETUP.md" target="_blank" rel="noopener">Equipment checklist & secure activation plan</a>
         </div>
         <div class="qr-studio-fields">
-          <label>QR destination<select id="qr-table-select" class="form-select"><option value="reception">Reception → Home</option><option value="restaurant">Restaurant → Culinary Collection</option><option value="room">Room → Digital Concierge</option></select></label>
+          <label>QR destination<select id="qr-table-select" class="form-select"><option value="restaurant">Restaurant Table → Food Menu (Direct)</option><option value="room">Hotel Room → Home & Concierge</option><option value="reception">Reception / General → Home</option></select></label>
           <label>Verified room<select id="qr-room-select" class="form-select" disabled><option value="">Awaiting verified room register</option></select></label>
           <label>Public HTTPS PWA address<input id="qr-target-url" class="form-input" type="url" spellcheck="false"></label>
         </div>
@@ -3213,8 +3213,8 @@ class HotelPremierAdmin {
     const title = document.getElementById('qr-standee-label');
     const help = document.getElementById('qr-card-instructions');
     host.replaceChildren(); this.currentGuestQR = null;
-    if (title) title.textContent = type === 'restaurant' ? 'Pride Pure Veg AC Restaurant' : type === 'room' ? 'Your Room Concierge' : 'Welcome to Hotel Premier';
-    if (help) help.textContent = type === 'restaurant' ? 'Scan to explore our Culinary Collection.' : type === 'room' ? 'Scan for your room guide, dining and assistance.' : 'Scan to discover our hotel, dining and stays.';
+    if (title) title.textContent = type === 'restaurant' ? 'Pride Pure Veg AC Restaurant' : type === 'room' ? 'Hotel Premier · Room Guest' : 'Welcome to Hotel Premier';
+    if (help) help.textContent = type === 'restaurant' ? 'Scan to explore our complete Food Menu.' : type === 'room' ? 'Scan for room amenities, stays and dining.' : 'Scan to discover our hotel, dining and stays.';
     try {
       if (!window.HotelGuestNetwork) throw Error('Please reload the updated QR tools.');
       const url = window.HotelGuestNetwork.destination(document.getElementById('qr-target-url').value.trim(), type, room?.value);

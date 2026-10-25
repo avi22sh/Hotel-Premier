@@ -22,10 +22,10 @@
     const url = new URL(location.href);
     const hash = url.hash.slice(1).toLowerCase();
     if (sectionMap[hash]) return sectionMap[hash];
-    const entry = url.searchParams.get('entry');
-    if (entry === 'reception') return 'section-home';
-    if (entry === 'room' || url.searchParams.has('room') || /^room\s+/i.test(url.searchParams.get('src') || '')) return 'section-concierge';
-    if (entry === 'restaurant' || entry === 'menu' || ['dish', 'table', 't', 'category', 'cat'].some(k => url.searchParams.has(k)) || /^table\s+/i.test(url.searchParams.get('src') || '')) return 'section-dine';
+    const entry = (url.searchParams.get('entry') || '').toLowerCase();
+    if (entry === 'reception' || entry === 'home') return 'section-home';
+    if (entry === 'room' || url.searchParams.has('room') || /^room\s+/i.test(url.searchParams.get('src') || '')) return 'section-home';
+    if (entry === 'restaurant' || entry === 'menu' || entry === 'dine' || ['dish', 'table', 't', 'category', 'cat'].some(k => url.searchParams.has(k)) || /^table\s+/i.test(url.searchParams.get('src') || '')) return 'section-dine';
     for (const key of ['section', 'page', 'tab']) {
       const section = sectionMap[(url.searchParams.get(key) || '').toLowerCase()];
       if (section) return section;
@@ -34,14 +34,23 @@
   }
   function destination(base, type, room, rooms = state.rooms) {
     const url = new URL(base);
-    if (url.protocol !== 'https:' || url.username || url.password) throw Error('Use a public HTTPS website address.');
+    if ((url.protocol !== 'https:' && url.protocol !== 'http:') || url.username || url.password) throw Error('Use a valid website address.');
     // Strip all old personal, table and route parameters from printable links.
     url.search = ''; url.hash = '';
-    if (type === 'reception') { url.searchParams.set('entry', type); url.hash = 'home'; }
-    else if (type === 'restaurant') { url.searchParams.set('entry', type); url.hash = 'dine'; }
-    else if (type === 'room' && rooms.some(r => r.id === room && r.verified === true)) {
-      url.searchParams.set('entry', type); url.searchParams.set('room', room); url.hash = 'concierge';
-    } else throw Error('Choose a verified room from the central room register.');
+    if (type === 'reception' || type === 'home') {
+      url.searchParams.set('entry', 'home');
+      url.hash = 'home';
+    } else if (type === 'restaurant') {
+      url.searchParams.set('entry', 'restaurant');
+      url.hash = 'menu';
+    } else if (type === 'room') {
+      url.searchParams.set('entry', 'room');
+      if (room) url.searchParams.set('room', room);
+      url.hash = 'home';
+    } else {
+      url.searchParams.set('entry', 'home');
+      url.hash = 'home';
+    }
     return url.href;
   }
   async function request(path) {
