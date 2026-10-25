@@ -4,8 +4,8 @@
 .modal-header-share-btn .share-text { display:none; }
 .modal-header-share-btn { min-width:44px; min-height:44px; }
 #dish-detail-body > .delivery-buttons-container { flex:0 0 auto; margin:2px 0 0 !important; padding:4px 10px max(6px,env(safe-area-inset-bottom)) !important; box-sizing:border-box; border-top:none !important; background:transparent !important; box-shadow:none !important; gap:8px !important; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-flex !important; align-items:center; justify-content:center; padding:1px 4px !important; border-radius:4px; background:rgba(255,255,255,.95) !important; box-shadow:0 1px 2px rgba(0,0,0,.1); line-height:1; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-text { white-space:nowrap; font-size:.68rem !important; font-weight:800 !important; letter-spacing:.2px; color:#ffffff !important; line-height:1; display:inline-block !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-flex !important; align-items:center; justify-content:center; padding:0 !important; background:transparent !important; box-shadow:none !important; line-height:1; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-text { white-space:nowrap; font-size:.69rem !important; font-weight:800 !important; letter-spacing:.25px; color:#ffffff !important; line-height:1; display:inline-block !important; }
 .modal-dish-variant-btn { min-height:48px; align-items:flex-start; }
 .modal-dish-variant-btn .variant-btn-name { min-width:0; overflow-wrap:anywhere; }
 .modal-dish-variant-btn .variant-btn-price { flex-shrink:0; }
@@ -457,9 +457,13 @@ body.theme-dark .detail-photo-favorite.active { color:#f07b88; }
 .platform-brand-goibibo { display:inline-block; width:104px; height:30px; background:#fff url('assets/brands/goibibo-sprite.png') -2px -1px / 125px 200px no-repeat; border-radius:4px; flex-shrink:0; }
 .platform-pill-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:44px; }
 .ota-booking-panel a { display:inline-flex; align-items:center; justify-content:center; gap:8px; }
-.partner-order-logo { display:block; width:48px; height:15px; object-fit:contain; filter:none!important; }
+.partner-order-logo { display:block; object-fit:contain; filter:none; }
+.partner-logo-swiggy,
+body .modal-btn-swiggy-order .partner-order-logo { width:46px !important; height:15px !important; filter:brightness(0) invert(1) !important; }
+.partner-logo-zomato,
+body .modal-btn-zomato-order .partner-order-logo { width:54px !important; height:12px !important; filter:none !important; }
 body .modal-btn-swiggy-order .swiggy-brand,
-body .modal-btn-zomato-order .zomato-brand { padding:1px 4px; border-radius:4px; background:rgba(255,255,255,.95); display:inline-flex; align-items:center; justify-content:center; }
+body .modal-btn-zomato-order .zomato-brand { padding:0 !important; border-radius:0; background:transparent !important; box-shadow:none !important; display:inline-flex; align-items:center; justify-content:center; }
 
 /* Premier glass keeps text solid and concentrates blur on navigation and dialogs. */
 body .modal-sheet { background:rgba(255,253,247,.97) !important; backdrop-filter:blur(20px) !important; -webkit-backdrop-filter:blur(20px) !important; }
@@ -476,8 +480,8 @@ body.theme-dark :is(.variant-btn-name,.modal-dish-title) { color:#eee8de !import
 .enquiry-confirmation-note { color:var(--royal-ink); font-size:.85rem; line-height:1.65; padding:12px; border:1px solid var(--royal-edge); border-radius:10px; }
 #modal-dish-share-btn { width:40px; height:40px; min-width:40px; padding:10px; border-radius:50%; }
 #modal-dish-share-btn .share-icon { width:18px; height:18px; display:block; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-flex !important; }
-#dish-detail-body > .delivery-buttons-container .delivery-btn-text { display:inline-block !important; font-size:.68rem !important; font-weight:800 !important; white-space:nowrap !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-brand { display:inline-flex !important; background:transparent !important; box-shadow:none !important; }
+#dish-detail-body > .delivery-buttons-container .delivery-btn-text { display:inline-block !important; font-size:.69rem !important; font-weight:800 !important; white-space:nowrap !important; color:#ffffff !important; }
 #dish-detail-modal .modal-header { display:flex !important; align-items:center; justify-content:space-between; flex-wrap:nowrap; gap:8px; padding:12px 14px; background:#1b2937 !important; color:#eee8de; }
 #dish-detail-modal .modal-title { color:#dfc69a !important; font-size:.9rem; min-width:0; letter-spacing:.08em; }
 body .modal-header { display:flex !important; align-items:center; justify-content:space-between; gap:10px; }
@@ -1214,4 +1218,53 @@ button, [role="button"], a {
   border-radius: 6px !important;
   font-weight: 700 !important;
   letter-spacing: 0.2px !important;
+}
+
+/* ==================== THEME CHOICE SEGMENTED CONTROL ==================== */
+.theme-choice-group {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(147, 126, 96, 0.12);
+  border: 1px solid var(--royal-edge, rgba(197, 168, 128, 0.35));
+  border-radius: 999px;
+  padding: 3px;
+  gap: 3px;
+}
+.theme-choice-btn {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 9px;
+  min-height: 30px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--royal-muted, #786C5E);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  line-height: 1;
+}
+.theme-choice-btn:hover {
+  color: var(--royal-ink, #202C3A);
+}
+.theme-choice-btn.active {
+  background: var(--royal-gold, #D4AF37) !important;
+  color: #121820 !important;
+  border-color: #EADCC0 !important;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+body.theme-dark .theme-choice-group {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+body.theme-dark .theme-choice-btn {
+  color: #94A3B8;
+}
+body.theme-dark .theme-choice-btn:hover {
+  color: #F8FAFC;
+}
+body.theme-dark .theme-choice-btn.active {
+  background: #D4AF37 !important;
+  color: #0F172A !important;
 }

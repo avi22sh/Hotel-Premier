@@ -206,8 +206,8 @@ class HotelPremierApp {
   // ==================== USER PREFERENCES ====================
   loadPreferences() {
     try {
-      // Appearance follows the device; old manual choices no longer override it.
-      this.themeMode = 'system';
+      const userTheme = localStorage.getItem('hotel_premier_theme_choice');
+      this.themeMode = (userTheme === 'light' || userTheme === 'dark' || userTheme === 'system') ? userTheme : 'system';
       this.applyTheme();
 
       if (window.matchMedia) {
@@ -236,9 +236,25 @@ class HotelPremierApp {
     } catch (e) {}
   }
 
-  cycleTheme() {
-    this.themeMode = 'system';
+  setThemeMode(mode) {
+    if (mode !== 'light' && mode !== 'dark' && mode !== 'system') mode = 'system';
+    this.themeMode = mode;
+    try {
+      localStorage.setItem('hotel_premier_theme_choice', mode);
+      localStorage.setItem(this.storageKeyTheme, mode);
+    } catch (e) {}
     this.applyTheme();
+    this.haptic(15);
+  }
+
+  cycleTheme() {
+    if (this.themeMode === 'system') {
+      this.setThemeMode('light');
+    } else if (this.themeMode === 'light') {
+      this.setThemeMode('dark');
+    } else {
+      this.setThemeMode('system');
+    }
   }
 
   // ==================== HAPTIC TACTILE ENGINE ====================
@@ -610,7 +626,17 @@ class HotelPremierApp {
 
   applyTheme() {
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const resolvedTheme = prefersDark ? 'dark' : 'light';
+    let resolvedTheme;
+
+    if (this.themeMode === 'dark') {
+      resolvedTheme = 'dark';
+    } else if (this.themeMode === 'light') {
+      resolvedTheme = 'light';
+    } else {
+      this.themeMode = 'system';
+      resolvedTheme = prefersDark ? 'dark' : 'light';
+    }
+
     document.body.classList.toggle('theme-dark', resolvedTheme === 'dark');
     document.body.classList.toggle('theme-light', resolvedTheme === 'light');
     document.documentElement.style.colorScheme = resolvedTheme;
@@ -618,11 +644,24 @@ class HotelPremierApp {
     const themeMeta = document.querySelector('meta[name="theme-color"]');
     if (themeMeta) themeMeta.content = resolvedTheme === 'dark' ? '#131C26' : '#FAF7F0';
 
+    const btnSystem = document.getElementById('theme-choice-system');
+    const btnLight = document.getElementById('theme-choice-light');
+    const btnDark = document.getElementById('theme-choice-dark');
+    if (btnSystem) btnSystem.classList.toggle('active', this.themeMode === 'system');
+    if (btnLight) btnLight.classList.toggle('active', this.themeMode === 'light');
+    if (btnDark) btnDark.classList.toggle('active', this.themeMode === 'dark');
+
     const toggle = document.getElementById('theme-toggle-btn');
     if (toggle) {
-      toggle.title = 'Automatically follows your device appearance';
-      toggle.setAttribute('aria-label', `${resolvedTheme === 'dark' ? 'Dark' : 'Light'} mode, following your device`);
-      toggle.textContent = `${resolvedTheme === 'dark' ? 'Dark' : 'Light'} · Auto`;
+      if (this.themeMode === 'system') {
+        toggle.title = 'Automatically follows your device appearance';
+        toggle.setAttribute('aria-label', `${resolvedTheme === 'dark' ? 'Dark' : 'Light'} mode, following your device`);
+        toggle.textContent = `${resolvedTheme === 'dark' ? 'Dark' : 'Light'} · Auto`;
+      } else {
+        toggle.title = `Theme manually set to ${this.themeMode}`;
+        toggle.setAttribute('aria-label', `${this.themeMode === 'dark' ? 'Dark' : 'Light'} mode (Manual)`);
+        toggle.textContent = `${this.themeMode === 'dark' ? 'Dark' : 'Light'} · Manual`;
+      }
     }
   }
 
@@ -2810,8 +2849,8 @@ class HotelPremierApp {
     swiggyBtn.rel = 'noopener noreferrer';
     swiggyBtn.setAttribute('aria-label', `Order ${dish.name} on Swiggy`);
     swiggyBtn.innerHTML = `
-      <span class="delivery-btn-brand swiggy-brand"><img class="partner-order-logo" src="assets/brands/swiggy.png" alt="Swiggy" width="48" height="15"></span>
-      <span class="delivery-btn-text">Order Now &#x2197;</span>
+      <span class="delivery-btn-brand swiggy-brand"><img class="partner-order-logo partner-logo-swiggy" src="assets/brands/swiggy.png" alt="Swiggy" width="46" height="15"></span>
+      <span class="delivery-btn-text">Order &#x2197;</span>
     `;
 
     // Zomato button with authentic brand color & typography
@@ -2822,8 +2861,8 @@ class HotelPremierApp {
     zomatoBtn.rel = 'noopener noreferrer';
     zomatoBtn.setAttribute('aria-label', `Order ${dish.name} on Zomato`);
     zomatoBtn.innerHTML = `
-      <span class="delivery-btn-brand zomato-brand"><img class="partner-order-logo" src="assets/brands/zomato.png" alt="Zomato" width="48" height="14"></span>
-      <span class="delivery-btn-text">Order Now &#x2197;</span>
+      <span class="delivery-btn-brand zomato-brand"><img class="partner-order-logo partner-logo-zomato" src="assets/brands/zomato.png" alt="Zomato" width="54" height="12"></span>
+      <span class="delivery-btn-text">Order &#x2197;</span>
     `;
 
     orderActions.appendChild(swiggyBtn);
