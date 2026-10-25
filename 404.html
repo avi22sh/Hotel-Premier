@@ -72,12 +72,12 @@
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
   <script src="data/menu-image-sizes.js?v=21.0"></script>
-  <script src="asset-pipeline.js?v=22.02"></script>
+  <script src="asset-pipeline.js?v=22.03"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=22.02">
-  <link rel="stylesheet" href="royal.css?v=22.02">
-  <script src="public-reviews.js?v=22.02" defer></script>
+  <link rel="stylesheet" href="styles.css?v=22.03">
+  <link rel="stylesheet" href="royal.css?v=22.03">
+  <script src="public-reviews.js?v=22.03" defer></script>
 </head>
 <body>
 
@@ -1468,7 +1468,7 @@
             <img src="assets/brands/google-g.png" alt="" class="platform-brand-logo platform-brand-google" width="24" height="24"><span>Google Reviews</span>
           </a>
           <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <img src="assets/brands/makemytrip.png" alt="MakeMyTrip" class="platform-brand-logo platform-brand-mmt" width="94" height="32">
+            <img src="assets/brands/makemytrip.png" alt="MakeMyTrip" class="platform-brand-logo platform-brand-mmt" width="76" height="24">
           </a>
           <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
             <span role="img" aria-label="Goibibo" class="platform-brand-goibibo"></span>
@@ -1622,12 +1622,12 @@
   <div class="modal-backdrop" id="concierge-booking-modal">
     <div class="modal-sheet enquiry-sheet" role="dialog" aria-modal="true" aria-labelledby="enquiry-title" tabindex="-1">
       <div class="modal-header">
-        <div class="modal-title" id="enquiry-title">Your Premier Stay</div>
+        <div class="modal-title" id="enquiry-title"><span class="enquiry-title-icon" aria-hidden="true">🛏️</span> <span>Your Premier Stay</span></div>
         <button type="button" class="modal-close-btn" aria-label="Close room enquiry" onclick="window.app ? window.app.closeConciergeBookingModal() : null">✕</button>
       </div>
       <div class="modal-body">
         <p class="enquiry-intro">A few details, a thoughtful welcome. Send your request and our team will confirm availability and your final rate.</p>
-        <div class="direct-booking-privilege-card enquiry-privilege">Direct guest privilege <strong>₹200 off eligible stays</strong></div>
+        <div class="direct-booking-privilege-card enquiry-privilege"><span>✨ Direct Guest Privilege</span> <strong>₹200 off eligible stays</strong></div>
         <div class="form-group"><label class="form-label" for="booking-room-type">Choose your room</label><select id="booking-room-type" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null"><option value="ac-super-deluxe">Premier Royale King</option><option value="ac-deluxe-queen" selected>Premier Signature Queen</option><option value="ac-deluxe-twin">Premier Companion Twin</option></select></div>
         <div id="booking-room-capacity-badge" class="enquiry-capacity-badge">Signature Queen: Restricted capacity; accommodates max 1 extra person</div>
         <div class="enquiry-grid">
@@ -1636,9 +1636,9 @@
         </div>
         <p class="enquiry-help" id="enquiry-time-help">Choose your exact local arrival time. Direct stays include 24-hour checkout from check-in; availability is confirmed by the hotel.</p>
         <div class="enquiry-grid enquiry-counts">
-          <div class="form-group"><label class="form-label" for="booking-nights">Nights</label><input id="booking-nights" type="number" class="form-input" value="1" min="1"  step="1" required onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
-          <div class="form-group"><label class="form-label" for="booking-rooms-count">Rooms</label><input id="booking-rooms-count" type="number" class="form-input" value="1" min="1" max="12" step="1" required aria-describedby="booking-capacity-help" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
-          <div class="form-group"><label class="form-label" for="booking-guests-count">Total guests · including children</label><input id="booking-guests-count" type="number" class="form-input" value="2" min="1" max="36" step="1" required aria-describedby="booking-capacity-help" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
+          <div class="form-group"><label class="form-label" for="booking-nights">Nights</label><input id="booking-nights" type="number" class="form-input" value="1" min="1" step="1" required oninput="window.app ? window.app.updateBookingEstimate() : null" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
+          <div class="form-group"><label class="form-label" for="booking-rooms-count">Rooms</label><input id="booking-rooms-count" type="number" class="form-input" value="1" min="1" max="12" step="1" required aria-describedby="booking-capacity-help" oninput="window.app ? window.app.updateBookingEstimate() : null" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
+          <div class="form-group"><label class="form-label" for="booking-guests-count">Total guests · including children</label><input id="booking-guests-count" type="number" class="form-input" value="2" min="1" max="36" step="1" required aria-describedby="booking-capacity-help" oninput="window.app ? window.app.updateBookingEstimate() : null" onchange="window.app ? window.app.updateBookingEstimate() : null"></div>
         </div>
         <p id="booking-capacity-help" class="enquiry-help" role="status" aria-live="polite"></p>
         <div class="form-group"><label class="form-label" for="booking-meal-plan">Your stay plan</label><select id="booking-meal-plan" class="form-select" onchange="window.app ? window.app.updateBookingEstimate() : null"><option value="RO">Room only</option><option value="CP" selected>With breakfast · fixed menu</option></select></div>
@@ -1683,19 +1683,25 @@
             <strong id="booking-summary-grand-total">₹ 2,400/-</strong>
           </div>
 
-          <div style="display: flex; gap: 10px; margin-top: 14px;">
-            <button id="booking-send-enquiry" type="button" class="btn-tariff-book-wa" style="flex: 1;" onclick="window.app ? window.app.dispatchConciergeBooking() : null">
+          <div class="wizard-actions-row">
+            <button id="booking-send-enquiry" type="button" class="btn-tariff-book-wa" onclick="window.app ? window.app.dispatchConciergeBooking() : null">
               <span>📲 Send Enquiry via WhatsApp</span>
             </button>
-            <a href="tel:09325375802" class="btn-tariff-call" style="flex: 0.8;">
+            <a href="tel:09325375802" class="btn-tariff-call btn-tariff-call-amber">
               <span>📞 Call Front Desk</span>
             </a>
           </div>
           <div class="ota-booking-panel">
             <p>Prefer a booking partner? Check availability and rates directly. Partner offers and cancellation terms may differ.</p>
             <div class="ota-booking-links" aria-label="Check Hotel Premier availability through a partner">
-              <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer"><img src="assets/brands/makemytrip.png" alt="MakeMyTrip" class="platform-brand-logo platform-brand-mmt" width="94" height="32"><span aria-hidden="true">↗</span></a>
-              <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer"><span role="img" aria-label="Goibibo" class="platform-brand-goibibo"></span><span aria-hidden="true">↗</span></a>
+              <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer">
+                <img src="assets/brands/makemytrip.png" alt="MakeMyTrip" class="platform-brand-logo platform-brand-mmt" width="76" height="24">
+                <span>MakeMyTrip ↗</span>
+              </a>
+              <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer">
+                <span role="img" aria-label="Goibibo" class="platform-brand-goibibo"></span>
+                <span>Goibibo ↗</span>
+              </a>
             </div>
           </div>
         </div>
@@ -1924,16 +1930,16 @@
   </div>
 
   <!-- Load Application Scripts (v20.51) -->
-  <script src="storage.js?v=22.02"></script>
+  <script src="storage.js?v=22.03"></script>
   <script src="vault.js?v=21.82"></script>
-  <script src="data/translations.js?v=22.02"></script>
+  <script src="data/translations.js?v=22.03"></script>
   <script src="data/hotel-data.js?v=21.77"></script>
   <script src="data/menu-data.js?v=21.65"></script>
   <script src="data/menu-photos.js?v=21.40"></script>
   <script src="menu-structure.js?v=21.75"></script>
   <script src="group-stays.js?v=21.77"></script>
   <script src="guest-network.js?v=21.82"></script>
-  <script src="app.js?v=22.02"></script>
+  <script src="app.js?v=22.03"></script>
   <script src="content-studio.js?v=21.8"></script>
   <script src="property-gallery.js?v=21.11"></script>
 
@@ -1968,7 +1974,7 @@
       });
 
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=22.02', { updateViaCache: 'none' }).then(function(reg) {
+        navigator.serviceWorker.register('sw.js?v=22.03', { updateViaCache: 'none' }).then(function(reg) {
           window.hpServiceWorkerReg = reg;
 
           // Immediate update check on load
