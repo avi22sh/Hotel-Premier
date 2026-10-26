@@ -1,0 +1,97 @@
+{
+  "date": "2026-10-27",
+  "release": "22.23",
+  "deployment": "https://github.com/avi22sh/Hotel-Premier/actions/runs/40409546245",
+  "checks": [
+    {
+      "client": 305,
+      "fields": [
+        {
+          "right": 255.200008392334,
+          "width": 205.6000061035156,
+          "x": 49.60000228881836
+        },
+        {
+          "right": 255.200008392334,
+          "width": 205.6000061035156,
+          "x": 49.60000228881836
+        },
+        {
+          "right": 255.200008392334,
+          "width": 205.6000061035156,
+          "x": 49.60000228881836
+        }
+      ],
+      "quote": "₹ 17,800/-",
+      "screen": "custom group mix",
+      "scrollWidth": 305,
+      "version": "22.18",
+      "width": 320
+    },
+    {
+      "brandNotClipped": true,
+      "client": 305,
+      "headerShare": 44,
+      "oldBanner": false,
+      "oldShare": false,
+      "screen": "Home 320",
+      "scrollWidth": 305,
+      "version": "guest-forms.js?v=22.20",
+      "width": 320
+    },
+    {
+      "screen": "Room enquiry close",
+      "expectedY": 3048,
+      "restoredY": 3048,
+      "match": true
+    },
+    {
+      "client": 375,
+      "headerTop": 0,
+      "quote": "₹ 8,400/-",
+      "roomMix": [
+        {
+          "id": "calc-king-rooms",
+          "value": "1"
+        },
+        {
+          "id": "calc-queen-rooms",
+          "value": "1"
+        },
+        {
+          "id": "calc-twin-rooms",
+          "value": "1"
+        }
+      ],
+      "scale": 1,
+      "screen": "Final custom group mix",
+      "scrollWidth": 375,
+      "version": "22.22",
+      "width": 390
+    },
+    {
+      "activeSheets": 0,
+      "bodyPosition": "relative",
+      "client": 375,
+      "headerShareWidth": 44,
+      "oldBanner": false,
+      "oldShare": false,
+      "scale": 1,
+      "screen": "Final Home",
+      "scrollWidth": 375,
+      "shareColor": "rgb(234, 220, 192)",
+      "version": "guest-forms.js?v=22.23",
+      "width": 390
+    }
+  ],
+  "additionalChecks": [
+    "Live custom mix: 1 King + 1 Queen + 1 Twin, two nights CP, 1 paid and 1 child bed, 8 guests: ₹17,800.",
+    "Empty manual nights entry is retained and disables sending. Invalid King quantity 3 is retained with a 0–2 error and disables sending.",
+    "Queen preset count remains editable 2–4; returning to custom restores the selected room mix.",
+    "Celebration guest count 41 is rejected; correcting to 40 clears the error and immediately enables the enquiry action. A clean accessible group name is used for its controls.",
+    "Room enquiry steppers fit 320px and retain 16px fields/scale 1 in the test viewport; 2 Queen rooms and 3 guests CP display ₹4,800 after the existing direct benefit.",
+    "Reload without a page tap shows no active sheet/fixed-body lock, default custom estimator and initialized quantity controls.",
+    "English and Auto appearance restored. No enquiry, WhatsApp message or external share was sent."
+  ],
+  "limits": "In-app browser viewport checks at 320px and 390px, not physical Android/iOS keyboard or installed-PWA certification. Native share uses a mocked regression test; real device share-sheet app selection was not exercised."
+}
