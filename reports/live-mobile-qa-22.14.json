@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-26",
+  "deployment": "https://github.com/avi22sh/Hotel-Premier/actions/runs/40279033548",
+  "checks": [
+    {
+      "closeColor": "rgb(32, 38, 48)",
+      "detailScroll": "auto",
+      "ordering": [
+        {
+          "label": "Order Royal Vrat & Fasting Specialties (Upvas Delicacies) on Swiggy",
+          "width": 177.203125,
+          "x": 13,
+          "y": 782.203125
+        },
+        {
+          "label": "Order Royal Vrat & Fasting Specialties (Upvas Delicacies) on Zomato",
+          "width": 177.203125,
+          "x": 199.796875,
+          "y": 782.203125
+        }
+      ],
+      "photoHeight": 209,
+      "screen": "light dish details",
+      "scrollWidth": 390,
+      "version": "22.14",
+      "width": 390
+    },
+    {
+      "client": 320,
+      "detailScroll": "auto",
+      "image": "assets/menu-images/morning-delight/sabudana-wada.jpg?v=1df5c4e7ef91f249bc2c",
+      "orders": [
+        {
+          "height": 44,
+          "width": 142.203125,
+          "x": 13,
+          "y": 678.203125
+        },
+        {
+          "height": 44,
+          "width": 142.203125,
+          "x": 164.796875,
+          "y": 678.203125
+        }
+      ],
+      "screen": "dark dish details",
+      "scroll": 320,
+      "title": "Sabudana Wada with Curd",
+      "version": "22.14",
+      "width": 320
+    },
+    {
+      "client": 412,
+      "fields": [
+        {
+          "font": "16px",
+          "id": "booking-checkin-date",
+          "width": 167.5
+        },
+        {
+          "font": "16px",
+          "id": "booking-checkin-time",
+          "width": 167.5
+        }
+      ],
+      "screen": "dark enquiry",
+      "scroll": 412,
+      "version": "22.14",
+      "width": 412
+    },
+    {
+      "cards": 7,
+      "client": 305,
+      "screen": "dark menu",
+      "scroll": 305,
+      "version": "22.14",
+      "width": 320
+    },
+    {
+      "bodyClass": "theme-dark large-font-mode",
+      "client": 305,
+      "screen": "dark menu larger text",
+      "scroll": 305,
+      "version": "22.14",
+      "width": 320
+    }
+  ],
+  "additionalChecks": [
+    "Live stylesheet parsed as exactly three rules: layer order, complete base layer, complete priority layer.",
+    "Dark collection drawer displays 21 categories plus All Items; selecting Morning Delights returns 7 cards.",
+    "Dark Stay and Tariff inspected at 412px without document overflow.",
+    "Settings theme selection works; restored Auto and normal text size."
+  ],
+  "limits": "Browser viewport checks only; physical iOS/Android, installed PWA, full zoom matrix and Lighthouse remain unverified."
+}

@@ -125,3 +125,12 @@ The 54 source regression suites passed after these changes. Live browser checks 
 Browser verification of the published 22.10–22.12 builds exposed issues that source checks had missed: image intrinsic height overrode the photo box, dark dish and collection panels retained hardcoded light surfaces, and the sticky search covered Settings. These were corrected with explicit image sizing, semantic detail/drawer colours, a header stacking boundary, and a constrained dish-view flex layout. The photo and Swiggy/Zomato actions stay outside the internal detail scroller; options remain in two columns. Version-stamped scripts/styles/service worker now use 22.13. Preserve existing guest/admin device data when updating; use the in-app Refresh offer rather than clearing browser storage.
 
 These are live browser checks, not physical iOS/Android or installed-PWA certification. The comprehensive device/zoom/Lighthouse matrix remains incomplete.
+
+
+### Final published mobile verification — 22.14
+
+Published commit: `1fa18c7`; successful GitHub Pages run: https://github.com/avi22sh/Hotel-Premier/actions/runs/40279033548 . The browser loaded `theme-tokens.css?v=22.14`. The main stylesheet now parses as three top-level CSS rules (layer order, complete base layer, complete priority layer); a stray orphan declaration/closing brace had previously ended the base layer early and caused subsequent priority rules to be discarded. A new CSS structure regression prevents recurrence.
+
+Verified in the live in-app browser: light menu and light dish details at 390px; dark dish details at 320px with both ordering links on the same row, 44px tall; dark menu at 320px including enlarged text without document overflow; dark collection drawer with 21 collections plus All Items; Morning Delights selection yields 7 cards; variant selection changes title, photo and price; dark Stay, Tariff and enquiry at 412px without document overflow. Settings was restored to Auto and normal text size after testing. Screenshots were saved in the task visualization folder. Machine-readable measurements are in `reports/live-mobile-qa-22.14.json`.
+
+Validation: 55/55 JavaScript suites, including CSS structure and Git-index casing, passed locally and in the successful deployment. All 17 PowerShell source checks passed. This does not certify physical-device touch/keyboard behavior, installed-PWA lifecycle, every zoom combination or Lighthouse targets; those remain unverified.
