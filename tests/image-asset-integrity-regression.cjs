@@ -1,5 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os'),crypto=require('node:crypto'),vm=require('node:vm');
-const {audit}=require('../tools/verify-image-assets.cjs');
+const {audit,auditTrackedPaths}=require('../tools/verify-image-assets.cjs');
+assert.deepEqual(auditTrackedPaths(['assets/menu-images/desserts/curd.jpg'],['assets/menu-images/DESSERTS/CURD.jpg']).map(item=>item.cause),['git-case-mismatch']);
+assert.deepEqual(auditTrackedPaths(['assets/menu-images/desserts/curd.jpg'],['assets/menu-images/desserts/curd.jpg']),[]);
 assert.equal(audit().failures.length,0);
 const root=fs.mkdtempSync(path.join(os.tmpdir(),'premier-asset-test-'));
 fs.mkdirSync(path.join(root,'assets'));fs.mkdirSync(path.join(root,'data'));
