@@ -100,7 +100,7 @@ Lighthouse mobile targets remain **unmeasured**: Performance ≥90, Accessibilit
 
 ## Deployment boundary
 
-The public build is available in `dist` for review. The workflow change is prepared but no GitHub push or live deployment was performed in this pass. Before publishing, confirm Pages uses **GitHub Actions** as its source; a separate branch-based Pages source could bypass the public-only workflow. The live site has not been used as evidence for this local build.
+Publishing was corrected on 26 October 2026: GitHub Pages changed from legacy main/root to the public-only GitHub Actions build. An obsolete waiting deployment from 6 October was cancelled to release the queue. The public site now serves the refined mobile build. The initial Linux deployment caught 29 case-only Git asset paths that Windows had not recorded; these were corrected and the asset gate now verifies the Git index as well as the filesystem. Source regression checks run in the GitHub deployment before any public artifact is uploaded. See the mobile delivery notes below for browser verification and remaining limits.
 
 ## Owner decisions and missing photographs
 
@@ -118,3 +118,10 @@ Live mobile inspection at 390 × 844 confirmed that the public site remained on 
 The mobile layout now uses a shorter restaurant introduction, a compact sticky search panel with Collections and favourites, larger square dish photographs, full-width horizontally scrollable subsection choices without a visible scrollbar, clear ivory/gold dark text, and semantic light-mode surfaces. The collection button remains the existing accessible drawer trigger and sits inside the sticky controls rather than covering food. Recent searches appear while interacting with search. Room counts, policies, dish names and prices were retained.
 
 The 54 source regression suites passed after these changes. Live browser checks below must be recorded after successful deployment; source tests alone do not establish a working mobile rendering. Older 22.09 ZIP files are previous local review snapshots, not this mobile release.
+
+
+### Live mobile follow-up — 22.13
+
+Browser verification of the published 22.10–22.12 builds exposed issues that source checks had missed: image intrinsic height overrode the photo box, dark dish and collection panels retained hardcoded light surfaces, and the sticky search covered Settings. These were corrected with explicit image sizing, semantic detail/drawer colours, a header stacking boundary, and a constrained dish-view flex layout. The photo and Swiggy/Zomato actions stay outside the internal detail scroller; options remain in two columns. Version-stamped scripts/styles/service worker now use 22.13. Preserve existing guest/admin device data when updating; use the in-app Refresh offer rather than clearing browser storage.
+
+These are live browser checks, not physical iOS/Android or installed-PWA certification. The comprehensive device/zoom/Lighthouse matrix remains incomplete.

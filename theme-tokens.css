@@ -178,3 +178,7 @@ body.theme-dark { --on-accent:#171c25; }
 /* Settings must stay above the sticky menu tools in their own header stack. */
 .app-header { z-index:var(--z-settings,40); }
 .settings-panel .lang-btn { min-width:44px; min-height:44px; }
+
+.modal-backdrop .modal-title,.modal-backdrop .dish-detail-heading-text { color:var(--text); }
+.modal-backdrop .modal-close-btn,.modal-backdrop .modal-header-action-btn { background:var(--surface-secondary); color:var(--text); border:1px solid var(--border); box-shadow:none; }
+.modal-dish-photo-wrap .hp-dish-pedestal-backdrop,.modal-dish-photo-wrap .hp-glass-vignette { display:none; }

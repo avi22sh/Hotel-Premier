@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-26T06:04:47.543Z",
-  "passed": 54,
+  "createdAt": "2026-10-26T06:18:01.300Z",
+  "passed": 55,
   "failed": [],
   "results": [
     {
@@ -45,6 +45,10 @@
     },
     {
       "file": "crm-navigation-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "css-structure-regression.cjs",
       "passed": true
     },
     {
