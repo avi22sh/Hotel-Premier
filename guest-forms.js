@@ -34,9 +34,12 @@
  function wrapNumbers(){
   for(const root of document.querySelectorAll(scope))for(const input of root.querySelectorAll('input[type="number"]')){
    if(input.closest('.quantity-stepper'))continue;
-   const label=input.labels?.[0];if(label&&!label.id)label.id='quantity-label-'+input.id;
+   const label=input.labels?.[0],labelText=(label?.textContent||input.getAttribute('aria-label')||'Quantity').trim();if(label&&!label.id)label.id='quantity-label-'+input.id;
    const wrap=document.createElement('div');wrap.className='quantity-stepper';wrap.setAttribute('role','group');
-   if(label)wrap.setAttribute('aria-labelledby',label.id);
+   if(label?.contains(input)){
+    // An ancestor label would otherwise include both +/- button names in the input name.
+    wrap.setAttribute('aria-label',labelText);if(!input.hasAttribute('aria-label'))input.setAttribute('aria-label',labelText);
+   }else if(label)wrap.setAttribute('aria-labelledby',label.id);
    input.parentNode.insertBefore(wrap,input);wrap.append(input);input.inputMode='numeric';
    const status=document.createElement('small');status.className='quantity-error';status.id='quantity-error-'+input.id;status.setAttribute('aria-live','polite');
    input.dataset.quantityError=status.id;input.setAttribute('aria-describedby',[input.getAttribute('aria-describedby'),status.id].filter(Boolean).join(' '));wrap.after(status);
