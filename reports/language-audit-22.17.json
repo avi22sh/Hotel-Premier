@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-27",
+  "release": "22.17",
+  "totalSourceDishes": 272,
+  "guestVisibleEntries": 136,
+  "newDescriptionPairs": 80,
+  "categories": 21,
+  "missingGuestDescriptions": {
+    "hi": [],
+    "mr": []
+  },
+  "notes": [
+    "English menu/hotel source records, prices and policies preserved.",
+    "Guest form values and select-option submitted values are preserved.",
+    "Original public guest reviews and private Admin/CRM contents are excluded from text rewriting.",
+    "New owner-authored content without a supplied translation retains its source text.",
+    "Some legacy long-form property copy is outside the current translation catalogue and retains English."
+  ]
+}

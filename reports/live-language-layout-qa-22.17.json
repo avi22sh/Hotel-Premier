@@ -1,0 +1,200 @@
+{
+  "date": "2026-10-27",
+  "release": "22.17",
+  "deployment": "https://github.com/avi22sh/Hotel-Premier/actions/runs/40388610523",
+  "checks": [
+    {
+      "header": {
+        "bottom": 460.4499969482422,
+        "height": 107.0500030517578,
+        "top": 353.3999938964844
+      },
+      "lang": "hi",
+      "options": {
+        "bottom": 674.1500091552734,
+        "height": 197.6999969482422,
+        "top": 476.4500122070313
+      },
+      "screen": "Hindi dish details",
+      "scroll": 320,
+      "title": "साबुदाना खिचड़ी",
+      "titleBox": {
+        "bottom": 388.1999931335449,
+        "height": 34.79999923706055,
+        "top": 353.3999938964844
+      },
+      "width": 320
+    },
+    {
+      "description": "शेंगदाण्याचा कूट, हिरवी मिरची व बटाट्यासह बनवलेली सात्विक उपवासाची साबुदाणा खिचडी.",
+      "headerBottom": 460.4499969482422,
+      "lang": "mr",
+      "optionsTop": 476.4500122070313,
+      "overflow": 320,
+      "screen": "Marathi dish details",
+      "titleBottom": 388.1999931335449,
+      "width": 320
+    },
+    {
+      "capacity": "उपलब्धतेनुसार जास्तीत जास्त 4 प्रीमियर सिग्नेचर क्वीन खोल्या. सर्व प्रौढ आणि मुलांची गणना करा.",
+      "date": {
+        "bottom": 511.3250122070313,
+        "height": 48,
+        "width": 255.1999969482422,
+        "x": 24.80000114440918,
+        "y": 463.3250122070313
+      },
+      "dateLabel": "आगमनाची तारीख",
+      "lang": "mr",
+      "overflow": 320,
+      "screen": "Marathi enquiry",
+      "time": {
+        "bottom": 596.4375,
+        "height": 48,
+        "width": 255.1999969482422,
+        "x": 24.80000114440918,
+        "y": 548.4375
+      },
+      "timeLabel": "अपेक्षित आगमनाची वेळ · IST",
+      "width": 320
+    },
+    {
+      "date": "2026-10-28",
+      "label": "Arrival date",
+      "lang": "en",
+      "room": "ac-super-deluxe",
+      "screen": "English enquiry after Marathi",
+      "summary": "28 Oct 2026 · 2:35 PM IST",
+      "time": "14:35"
+    },
+    {
+      "headerBottom": 460.4499969482422,
+      "lang": "hi",
+      "noOverlap": true,
+      "optionsTop": 476.4500122070313,
+      "screen": "Hindi light dish",
+      "scrollWidth": 320,
+      "version": "22.16",
+      "width": 320
+    },
+    {
+      "date": {
+        "bottom": 447.0125122070313,
+        "width": 325.6000061035156,
+        "x": 24.80000114440918,
+        "y": 399.0125122070313
+      },
+      "lang": "mr",
+      "screen": "Marathi dark enquiry",
+      "scrollWidth": 390,
+      "stacked": true,
+      "time": {
+        "bottom": 532.125,
+        "width": 325.6000061035156,
+        "x": 24.80000114440918,
+        "y": 484.125
+      },
+      "version": "22.16",
+      "width": 390
+    },
+    {
+      "fields": [
+        {
+          "bottom": 447.0125122070313,
+          "height": 48,
+          "id": "booking-checkin-date",
+          "width": 325.6000061035156,
+          "x": 24.80000114440918,
+          "y": 399.0125122070313
+        },
+        {
+          "bottom": 532.125,
+          "height": 48,
+          "id": "booking-checkin-time",
+          "width": 325.6000061035156,
+          "x": 24.80000114440918,
+          "y": 484.125
+        },
+        {
+          "bottom": 691.1875,
+          "height": 48,
+          "id": "booking-nights",
+          "width": 325.6000061035156,
+          "x": 24.80000114440918,
+          "y": 643.1875
+        },
+        {
+          "bottom": 776.2999877929688,
+          "height": 48,
+          "id": "booking-rooms-count",
+          "width": 325.6000061035156,
+          "x": 24.80000114440918,
+          "y": 728.2999877929688
+        },
+        {
+          "bottom": 861.4125366210938,
+          "height": 48,
+          "id": "booking-guests-count",
+          "width": 325.6000061035156,
+          "x": 24.80000114440918,
+          "y": 813.4125366210938
+        }
+      ],
+      "lang": "mr",
+      "screen": "Marathi enquiry final",
+      "scrollWidth": 390,
+      "version": "22.17",
+      "width": 390
+    },
+    {
+      "client": 320,
+      "fields": [
+        {
+          "height": 48,
+          "id": "booking-checkin-date",
+          "width": 255.1999969482422,
+          "x": 24.80000114440918,
+          "y": 463.3250122070313
+        },
+        {
+          "height": 48,
+          "id": "booking-checkin-time",
+          "width": 255.1999969482422,
+          "x": 24.80000114440918,
+          "y": 548.4375
+        },
+        {
+          "height": 48,
+          "id": "booking-nights",
+          "width": 255.1999969482422,
+          "x": 24.80000114440918,
+          "y": 707.5
+        },
+        {
+          "height": 48,
+          "id": "booking-rooms-count",
+          "width": 255.1999969482422,
+          "x": 24.80000114440918,
+          "y": 792.6124877929688
+        },
+        {
+          "height": 48,
+          "id": "booking-guests-count",
+          "width": 255.1999969482422,
+          "x": 24.80000114440918,
+          "y": 877.7250366210938
+        }
+      ],
+      "screen": "Marathi narrow enquiry final",
+      "scrollWidth": 320,
+      "version": "22.17",
+      "width": 320
+    }
+  ],
+  "additionalChecks": [
+    "Final release language and accessible labels return from Marathi to English.",
+    "Theme restored to Auto; no room enquiry was submitted.",
+    "No browser console errors during final checks."
+  ],
+  "limits": "Browser viewport tests, not physical iOS/Android device, keyboard or Lighthouse certification."
+}
