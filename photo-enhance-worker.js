@@ -4,7 +4,7 @@ self.window=self;
 self.document={createElement(tag){if(tag!=='canvas')throw Error('Unsupported worker operation.');return new OffscreenCanvas(1,1);}};
 const bitmaps=[],urls=[];
 self.HotelPhotoWorkflow={createURL(blob){const url=URL.createObjectURL(blob);urls.push(url);return url;}};
-importScripts('asset-pipeline.js?v=22.22');
+importScripts('asset-pipeline.js?v=22.23');
 self.AssetPipeline.loadImage=async source=>{
  const response=await fetch(source);if(!response.ok)throw Error('Unable to load the selected photo.');
  const bitmap=await createImageBitmap(await response.blob(),{imageOrientation:'from-image'});bitmaps.push(bitmap);return bitmap;

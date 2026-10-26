@@ -205,7 +205,9 @@ html:is([lang="hi"],[lang="mr"]) :is(.form-label,.modal-dish-title,.section-titl
 }
 
 /* One consistent guest form system: room, group stay and restaurant celebration. */
-.header-share-btn { flex:0 0 44px; width:44px; height:44px; min-width:44px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:50%; background:transparent; color:var(--accent); cursor:pointer; margin-left:auto; }
+:root { --header-ink:#eadcc0; --header-edge:rgba(234,220,192,.45); }
+.header-share-btn { flex:0 0 44px; width:44px; height:44px; min-width:44px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--header-edge); border-radius:50%; background:transparent; color:var(--header-ink); cursor:pointer; margin-left:auto; }
+.header-share-btn:focus-visible { outline-color:var(--header-ink); }
 .header-top { gap:.65rem; }
 .guest-settings { flex:none; }
 @media(max-width:360px) { .brand-hotel-name { font-size:clamp(.9rem,4.5vw,1rem); letter-spacing:.04em; } }
