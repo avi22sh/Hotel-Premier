@@ -164,3 +164,13 @@ body.theme-dark { --on-accent:#171c25; }
  #menu-sections-drawer-modal .drawer-qf-chip { white-space:normal; min-width:0; }
  .home-pillar-body { background:var(--surface); padding:1.1rem; }
 }
+
+/* Keep the dish photo and ordering actions visible while details scroll. */
+#dish-detail-modal .dish-detail-sheet { display:flex; flex-direction:column; height:90vh; height:90dvh; max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom)); overflow:hidden; box-sizing:border-box; }
+#dish-detail-modal .modal-header { flex:0 0 auto; }
+#dish-detail-body { display:flex; flex-direction:column; flex:1 1 auto; min-height:0; overflow:hidden; padding:.75rem; gap:.5rem; }
+#dish-detail-body .modal-dish-photo-wrap { flex:0 0 auto; height:clamp(7rem,25dvh,14rem); max-height:none; width:100%; box-sizing:border-box; margin:0; }
+#dish-detail-body .modal-dish-img { object-fit:contain; }
+#dish-detail-body .modal-dish-detail-container { display:flex; flex-direction:column; flex:1 1 auto; min-height:0; overflow-y:auto; overscroll-behavior:contain; padding:.25rem; }
+#dish-detail-body > .delivery-buttons-container { display:flex; flex-direction:row; flex:0 0 auto; gap:.6rem; padding:.5rem 0 max(.3rem,env(safe-area-inset-bottom)); margin:0; background:var(--surface); }
+#dish-detail-body > .delivery-buttons-container .delivery-btn { flex:1; min-width:0; min-height:44px; height:auto; box-sizing:border-box; }
