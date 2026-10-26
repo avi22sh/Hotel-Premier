@@ -1,7 +1,7 @@
 // ==========================================================================
 // HOTEL PREMIER - UNIFIED SAFE STORAGE & PERSISTENCE ENGINE
-// Supports: IndexedDB (High Capacity >500MB) + Synchronous LocalStorage Cache
-// Guarantees: 100% Zero Data Loss, Multi-Photo Galleries, Backup & Restore
+// IndexedDB photo bytes, compact metadata, and explicit portable backups.
+// Browser storage can be cleared by the user or OS; export backups regularly.
 // ==========================================================================
 
 class HotelPremierStorageManager {
@@ -59,75 +59,92 @@ class HotelPremierStorageManager {
   }
 
   // ==================== DISH OVERRIDES, IMAGES & AI PHOTO LIFECYCLE ====================
-  async saveDishOverride(dishId, data) {
+  async persistPhotoRecord(storeName, id, data, options={}) {
     await this.initPromise;
-    let fullLocalSave = false;
-    // 1. Save to LocalStorage for instant sync access (pruning very large base64 if needed to avoid quota exception)
-    try {
-      let overrides = {};
-      const saved = localStorage.getItem('hotel_premier_user_overrides_v1');
-      if (saved) overrides = JSON.parse(saved);
-      overrides[dishId] = { ...(overrides[dishId] || {}), ...data };
-      
-      // Store compact representation in localStorage
-      try {
-        localStorage.setItem('hotel_premier_user_overrides_v1', JSON.stringify(overrides));
-        fullLocalSave = true;
-      } catch (quotaErr) {
-        // If quota exceeded, store without large original base64 in localStorage while preserving in IndexedDB
-        const compactOverrides = { ...overrides };
-        Object.keys(compactOverrides).forEach(k => {
-          if (compactOverrides[k] && compactOverrides[k].rawOriginalImage && compactOverrides[k].rawOriginalImage.length > 50000) {
-            compactOverrides[k] = { ...compactOverrides[k], rawOriginalImage: '[stored_in_indexeddb]' };
-          }
-        });
-        localStorage.setItem('hotel_premier_user_overrides_v1', JSON.stringify(compactOverrides));
-      }
-    } catch (e) {
-      console.warn('LocalStorage quota warning (Dish Override):', e);
+    const photos = window.HotelPhotoStorage;
+    if (!photos) throw Error('Photo storage is unavailable. Reload before saving.');
+    window.HotelDataValidation?.validate(data);
+    // Migrate only this record after a successful commit. Other legacy local photos stay intact.
+    let legacy={};
+    if(storeName==='dish_overrides') {
+      try { legacy=JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1')||'{}')[id]||{}; } catch (_) {}
     }
+    const existing=await this.readPhotoRecord(storeName,id);
+    const originals=storeName==='dish_overrides'?{}:await photos.originalUploads(data);
+    const initial=existing?{}:await photos.pack(legacy);
+    const packed = await photos.pack({...data,originalPhotos:{...(data.originalPhotos||{}),...originals}});
+    await photos.checkSpace({initial,packed});
+    if (!this.db) throw Error('IndexedDB is unavailable. Export a backup and enable device storage before saving photos.');
+    let written;
+    await new Promise((resolve,reject) => {
+      const tx=this.db.transaction(storeName,'readwrite');
+      tx.oncomplete=resolve;
+      let conflict;
+      tx.onabort=()=>reject(conflict||tx.error||Error('Photo save was interrupted. Your earlier photo is unchanged.'));
+      tx.onerror=()=>reject(tx.error||Error('Photo save failed. Export a backup and check device storage.'));
+      const store=tx.objectStore(storeName), request=store.get(id);
+      request.onsuccess=()=>{
+        const current=request.result||{};
+        if(options.expectedRevision!==undefined&&(current.revision||current.updatedAt||null)!==options.expectedRevision){conflict=Object.assign(Error('This photo changed while its preview was processing.'),{code:'PHOTO_CHANGED'});tx.abort();return;}
+        written={...initial,...current,...packed,originalPhotos:{...(initial.originalPhotos||{}),...(current.originalPhotos||{}),...(packed.originalPhotos||{})},id,updatedAt:Date.now(),revision:window.crypto?.randomUUID?.()||Date.now()+'-'+Math.random().toString(36).slice(2)};
+        store.put(written);
+      };
+    });
+    return written;
+  }
 
-    // 2. Save full high-res payload safely to IndexedDB
-    if (this.db) {
-      try {
-        await new Promise((resolve, reject) => {
-          const tx = this.db.transaction('dish_overrides', 'readwrite');
-          tx.oncomplete = resolve;
-          tx.onabort = () => reject(tx.error || new Error('Photo save was interrupted'));
-          tx.onerror = () => reject(tx.error || new Error('Photo save failed'));
-          const store = tx.objectStore('dish_overrides');
-          const getReq = store.get(dishId);
-          getReq.onsuccess = () => {
-            store.put({ ...(getReq.result || {}), ...data, id: dishId, updatedAt: Date.now() });
-          };
-        });
-        return;
-      } catch (e) {
-        console.warn('IndexedDB write error:', e);
-      }
-    }
-    if (!fullLocalSave) throw new Error('Unable to save the complete photo on this device. Free storage space and retry.');
+  async readPhotoRecord(storeName,id) {
+    await this.initPromise;
+    if (!this.db) return null;
+    return new Promise((resolve,reject)=>{
+      const tx=this.db.transaction(storeName,'readonly');
+      const request=tx.objectStore(storeName).get(id);
+      request.onsuccess=()=>resolve(request.result||null);
+      request.onerror=()=>reject(request.error||Error('Device photos could not be read.'));
+    });
+  }
+
+  hydratePhotoRecord(storeName,record) {
+    if (!record) return null;
+    return window.HotelPhotoStorage.normalizePaths(window.HotelPhotoStorage.hydrate(record,`${storeName}/${record.id}/${record.revision||record.updatedAt||0}`));
+  }
+  async originalForPhoto(storeName,id,source) {
+    const record=await this.readPhotoRecord(storeName,id);
+    if(!record?.originalPhotos)return null;
+    const response=await fetch(source);if(!response.ok)throw Error('The selected photo is unavailable.');
+    const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',await response.arrayBuffer()))].map(b=>b.toString(16).padStart(2,'0')).join('');
+    const original=record.originalPhotos[hash];
+    return original?window.HotelPhotoStorage.hydrate(original,`${storeName}/${id}/original/${hash}`):null;
+  }
+  async saveDishOverride(dishId,data,options={}) {
+    const record=await this.persistPhotoRecord('dish_overrides',dishId,data,options);
+    // Commit bytes before changing the small cache; never prune originals to hide a quota error.
+    try {
+      const saved=JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1')||'{}');
+      saved[dishId]=window.HotelPhotoStorage.compact(record);
+      localStorage.setItem('hotel_premier_user_overrides_v1',JSON.stringify(saved));
+    } catch (_) { /* IndexedDB is authoritative; a metadata-cache failure does not undo a committed photo. */ }
+    return this.hydratePhotoRecord('dish_overrides',record);
   }
 
   /**
    * Saves a dish photo with complete AI lifecycle tracking
    */
-  async saveDishPhotoLifecycle(dishId, photoRecord) {
+  async saveDishPhotoLifecycle(dishId, photoRecord, options={}) {
     const data = {
       image: photoRecord.image || photoRecord.enhancedMasterImage,
       enhancedMasterImage: photoRecord.enhancedMasterImage || photoRecord.image,
       rawOriginalImage: photoRecord.rawOriginalImage || photoRecord.image,
       enhancementStatus: photoRecord.enhancementStatus || 'enhanced', // 'original'|'processing'|'enhanced'|'approved'|'flagged_review'
       foodCategory: photoRecord.foodCategory || 'general',
-      qualityScore: photoRecord.qualityScore || 90,
+      qualityScore: photoRecord.qualityScore ?? 90,
       qualityFlags: photoRecord.qualityFlags || [],
       backgroundType: photoRecord.backgroundType || 'auto',
       imageOptions: photoRecord.imageOptions || null,
       styleVersion: photoRecord.styleVersion || 'hp-studio-v3.0',
       lastEnhancedAt: Date.now()
     };
-    await this.saveDishOverride(dishId, data);
-    return data;
+    return this.saveDishOverride(dishId, data, options);
   }
 
   /**
@@ -162,27 +179,13 @@ class HotelPremierStorageManager {
    * Retrieves single dish override with full high-res data from IndexedDB
    */
   async getDishOverride(dishId) {
-    await this.initPromise;
-    if (this.db) {
-      try {
-        const tx = this.db.transaction('dish_overrides', 'readonly');
-        const store = tx.objectStore('dish_overrides');
-        const req = store.get(dishId);
-        const res = await new Promise((resolve) => {
-          req.onsuccess = () => resolve(req.result);
-          req.onerror = () => resolve(null);
-        });
-        if (res) return res;
-      } catch (e) {}
-    }
-    try {
-      const saved = localStorage.getItem('hotel_premier_user_overrides_v1');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed[dishId]) return parsed[dishId];
-      }
-    } catch (e) {}
-    return null;
+    const record=await this.readPhotoRecord('dish_overrides',dishId);
+    if(record){window.HotelDataValidation?.validate(record);return this.hydratePhotoRecord('dish_overrides',record);}
+    let legacy;
+    try { legacy=JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1')||'{}')[dishId]||null; }
+    catch (_) { return null; }
+    if(legacy)window.HotelDataValidation?.validate(legacy);
+    return legacy&&window.HotelPhotoStorage?window.HotelPhotoStorage.normalizePaths(legacy):legacy;
   }
 
   // ==================== AI STUDIO SETTINGS PERSISTENCE ====================
@@ -229,7 +232,7 @@ class HotelPremierStorageManager {
     };
   }
 
-  async getAllDishOverrides() {
+  async getAllDishOverrides({forBackup=false,strict=false}={}) {
     await this.initPromise;
     let overrides = {};
 
@@ -245,14 +248,15 @@ class HotelPremierStorageManager {
         const tx = this.db.transaction('dish_overrides', 'readonly');
         const store = tx.objectStore('dish_overrides');
         const request = store.getAll();
-        const items = await new Promise((resolve) => {
+        const items = await new Promise((resolve,reject) => {
           request.onsuccess = () => resolve(request.result || []);
-          request.onerror = () => resolve([]);
+          request.onerror = () => reject(Error('Local photo records could not be read.'));
         });
 
-        items.forEach(item => {
+        items.forEach(stored => {
+          const item=this.hydratePhotoRecord('dish_overrides',forBackup?stored:this.dishDisplayRecord(stored));
           if (item && item.id) {
-            const resolvedImg = item.image || item.enhancedMasterImage || item.rawOriginalImage;
+            const resolvedImg = item.image !== undefined ? item.image : item.enhancedMasterImage || item.rawOriginalImage;
             overrides[item.id] = {
               ...(overrides[item.id] || {}),
               ...item,
@@ -260,201 +264,84 @@ class HotelPremierStorageManager {
             };
           }
         });
-      } catch (e) {}
+      } catch (e) { if(forBackup||strict)throw Error('Local photo records could not be read. Your saved photos are unchanged.'); }
     }
 
+    if(!forBackup)overrides=Object.fromEntries(Object.entries(overrides).map(([id,record])=>[id,this.dishDisplayRecord(record)]));
+    if(window.HotelPhotoStorage)overrides=window.HotelPhotoStorage.normalizePaths(overrides);
+    if(!forBackup&&window.HotelDataValidation)for(const [id,record]of Object.entries(overrides)) {
+      try{window.HotelDataValidation.validate(record);}catch(_){delete overrides[id];console.warn('A local menu record was not applied because its content is unsafe. It remains stored and is included in a full backup.');}
+    }
     return overrides;
   }
 
-  // ==================== ROOM GALLERIES (MULTI-PHOTO) ====================
-  async saveRoomGallery(roomId, imagesArray) {
-    const payload = { id: roomId, images: imagesArray, updatedAt: Date.now() };
-
-    // 1. Save to LocalStorage
-    try {
-      let roomOverrides = {};
-      const saved = localStorage.getItem('hotel_premier_room_overrides');
-      if (saved) roomOverrides = JSON.parse(saved);
-      if (!roomOverrides[roomId]) roomOverrides[roomId] = {};
-      roomOverrides[roomId].images = imagesArray;
-      if (imagesArray.length > 0) roomOverrides[roomId].image = imagesArray[0]; // cover photo
-      localStorage.setItem('hotel_premier_room_overrides', JSON.stringify(roomOverrides));
-    } catch (e) {
-      console.warn('LocalStorage quota warning (Room Gallery):', e);
-    }
-
-    // 2. Save full gallery payload safely to IndexedDB
-    if (this.db) {
-      try {
-        await new Promise((resolve, reject) => {
-          const tx = this.db.transaction('room_galleries', 'readwrite');
-          tx.oncomplete = resolve;
-          tx.onabort = () => reject(tx.error || new Error('Room gallery save interrupted'));
-          tx.onerror = () => reject(tx.error || new Error('Room gallery save failed'));
-          const store = tx.objectStore('room_galleries');
-          store.put(payload);
-        });
-      } catch (e) {
-        console.warn('IndexedDB write error:', e);
-      }
-    }
+  dishDisplayRecord(record) {
+    if(!record||typeof record!=='object')return {};
+    const {rawOriginalImage,enhancedMasterImage,originalPhotos,...display}=record;
+    const image=record.image!==undefined?record.image:enhancedMasterImage||rawOriginalImage;
+    if(image!==undefined)display.image=image;
+    return display;
   }
 
-  async getRoomGallery(roomId, defaultImages = []) {
-    await this.initPromise;
-
-    // Check IndexedDB first for full gallery
-    if (this.db) {
-      try {
-        const tx = this.db.transaction('room_galleries', 'readonly');
-        const store = tx.objectStore('room_galleries');
-        const request = store.get(roomId);
-        const res = await new Promise((resolve) => {
-          request.onsuccess = () => resolve(request.result);
-          request.onerror = () => resolve(null);
-        });
-        if (res && Array.isArray(res.images) && res.images.length > 0) {
-          return res.images;
-        }
-      } catch (e) {}
-    }
-
-    // Fallback to LocalStorage
+  // ==================== ROOM GALLERIES (MULTI-PHOTO) ====================
+  async saveRoomGallery(roomId,imagesArray) {
+    const record=await this.persistPhotoRecord('room_galleries',roomId,{images:imagesArray});
     try {
-      const saved = localStorage.getItem('hotel_premier_room_overrides');
-      if (saved) {
-        const roomOverrides = JSON.parse(saved);
-        if (roomOverrides[roomId]) {
-          if (Array.isArray(roomOverrides[roomId].images) && roomOverrides[roomId].images.length > 0) {
-            return roomOverrides[roomId].images;
-          }
-          if (roomOverrides[roomId].image) {
-            return [roomOverrides[roomId].image];
-          }
-        }
-      }
-    } catch (e) {}
+      const metadata=JSON.parse(localStorage.getItem('hotel_premier_room_overrides')||'{}');
+      if(metadata[roomId]){delete metadata[roomId].images;delete metadata[roomId].image;localStorage.setItem('hotel_premier_room_overrides',JSON.stringify(metadata));}
+    }catch(_){/* The committed gallery remains authoritative. */}
+    return record;
+  }
 
-    return defaultImages;
+  async getRoomGallery(roomId,defaultImages=[]) {
+    const record=await this.readPhotoRecord('room_galleries',roomId);
+    if(record&&Array.isArray(record.images)) {
+      const images=this.hydratePhotoRecord('room_galleries',record).images;
+      try {window.HotelDataValidation?.validate({images});return images;}catch(_){console.warn('An unsafe local room gallery was left stored but not displayed.');}
+    }
+    try {
+      const legacy=JSON.parse(localStorage.getItem('hotel_premier_room_overrides')||'{}')[roomId];
+      if(Array.isArray(legacy?.images))return legacy.images;
+      if(legacy?.image)return [legacy.image];
+    } catch (_) { /* Public fallback follows. */ }
+    return window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.roomGalleries?.[roomId]||defaultImages;
   }
 
   // ==================== RESTAURANT SECTION & HERO SLIDES ====================
-  async saveSectionSlides(sectionId, slidesArray) {
-    const payload = { id: sectionId, slides: slidesArray, updatedAt: Date.now() };
-
-    try {
-      localStorage.setItem(`hotel_premier_slides_${sectionId}`, JSON.stringify(slidesArray));
-    } catch (e) {}
-
-    if (this.db) {
-      try {
-        await new Promise((resolve, reject) => {
-          const tx = this.db.transaction('section_slides', 'readwrite');
-          tx.oncomplete = resolve;
-          tx.onabort = () => reject(tx.error || new Error('Section slides save interrupted'));
-          tx.onerror = () => reject(tx.error || new Error('Section slides save failed'));
-          const store = tx.objectStore('section_slides');
-          store.put(payload);
-        });
-      } catch (e) {
-        console.warn('IndexedDB write error:', e);
-      }
-    }
+  async saveSectionSlides(sectionId,slidesArray) {
+    const record=await this.persistPhotoRecord('section_slides',sectionId,{slides:slidesArray});
+    try{localStorage.removeItem('hotel_premier_slides_'+sectionId);}catch(_){}
+    return record;
   }
 
-  async getSectionSlides(sectionId, defaultSlides = []) {
-    await this.initPromise;
-
-    if (this.db) {
-      try {
-        const tx = this.db.transaction('section_slides', 'readonly');
-        const store = tx.objectStore('section_slides');
-        const request = store.get(sectionId);
-        const res = await new Promise((resolve) => {
-          request.onsuccess = () => resolve(request.result);
-          request.onerror = () => resolve(null);
-        });
-        if (res && Array.isArray(res.slides) && res.slides.length > 0) {
-          return res.slides;
-        }
-      } catch (e) {}
+  async getSectionSlides(sectionId,defaultSlides=[]) {
+    const record=await this.readPhotoRecord('section_slides',sectionId);
+    if(record&&Array.isArray(record.slides)) {
+      const slides=this.hydratePhotoRecord('section_slides',record).slides;
+      try {window.HotelDataValidation?.validate(slides);return slides;}catch(_){console.warn('Unsafe local slides were left stored but not displayed.');}
     }
-
-    try {
-      const saved = localStorage.getItem(`hotel_premier_slides_${sectionId}`);
-      if (saved) return JSON.parse(saved);
-    } catch (e) {}
-
-    return defaultSlides;
+    try { const legacy=JSON.parse(localStorage.getItem('hotel_premier_slides_'+sectionId)||'null');if(legacy)return legacy; }
+    catch (_) { /* Public fallback follows. */ }
+    return window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.sectionSlides?.[sectionId]||defaultSlides;
   }
 
-  // ==================== SECURE ADMIN PIN PERSISTENCE & SHA-256 HASHING ====================
-  async hashPin(pin) {
-    const cleanPin = String(pin || '').trim();
-    if (window.crypto && window.crypto.subtle) {
-      try {
-        const msgUint8 = new TextEncoder().encode(cleanPin);
-        const hashBuffer = await window.crypto.subtle.digest('SHA-256', msgUint8);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-      } catch (e) {
-        console.warn('[Storage] WebCrypto hash failed, using fallback:', e);
-      }
-    }
-    // Deterministic fallback hash if WebCrypto is unavailable in certain webview environments
-    let hash = 0x811c9dc5;
-    for (let i = 0; i < cleanPin.length; i++) {
-      hash ^= cleanPin.charCodeAt(i);
-      hash = (hash * 0x01000193) >>> 0;
-    }
-    return 'fallback_' + hash.toString(16);
-  }
-
-  getAdminPinHash() {
-    // Default SHA-256 hash for 'admin123'
-    const DEFAULT_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
-    return localStorage.getItem('hp_admin_pin_hash') || DEFAULT_HASH;
-  }
-
+  // Local UI lock only; no default credentials and no server-authentication claim.
   async setAdminPin(newPin) {
-    if (!newPin || String(newPin).trim().length < 4) {
-      return { success: false, message: 'PIN must be at least 4 characters long.' };
-    }
-    const cleanPin = String(newPin).trim();
-    const hashed = await this.hashPin(cleanPin);
-    localStorage.setItem('hp_admin_pin_hash', hashed);
-    return { success: true, message: 'PIN updated successfully.' };
+    if (!window.HotelLocalLock) return { success:false, message:'Local lock is unavailable. Reload and retry.' };
+    try { await window.HotelLocalLock.setPin(newPin); return { success:true, message:'Local PIN updated on this device.' }; }
+    catch (error) { return { success:false, message:error.message }; }
   }
 
-  async verifyAdminPin(enteredPin) {
-    if (!enteredPin) return false;
-    const clean = String(enteredPin).trim();
-    const storedHash = this.getAdminPinHash();
-    const enteredHash = await this.hashPin(clean);
-
-    if (enteredHash === storedHash) return true;
-
-    // Hardened developer/master fallbacks using SHA-256 matching
-    // '1234': 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
-    // '9325': 93994319c450a7d6ce98e255e92406ac20c7515d201a7a7038553594928ff99c
-    const ALLOWED_MASTER_HASHES = [
-      '03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4',
-      '93994319c450a7d6ce98e255e92406ac20c7515d201a7a7038553594928ff99c'
-    ];
-    if (ALLOWED_MASTER_HASHES.includes(enteredHash)) return true;
-
-    if (window.HOTEL_VAULT && typeof window.HOTEL_VAULT.verifyMasterPin === 'function') {
-      if (window.HOTEL_VAULT.verifyMasterPin(clean)) return true;
-    }
-
-    return false;
+  async verifyAdminPin(pin) {
+    if (!window.HotelLocalLock) throw Error('Local lock is unavailable. No fallback PIN is accepted.');
+    return window.HotelLocalLock.verify(pin);
   }
 
   // ==================== 1-CLICK COMPLETE BACKUP EXPORT & IMPORT ====================
   async exportFullBackup() {
     await this.initPromise;
 
-    const dishOverrides = await this.getAllDishOverrides();
+    const dishOverrides = await this.getAllDishOverrides({forBackup:true});
     const superDeluxeGallery = await this.getRoomGallery('ac-super-deluxe');
     const deluxeQueenGallery = await this.getRoomGallery('ac-deluxe-queen');
     const deluxeTwinGallery = await this.getRoomGallery('ac-deluxe-twin');
@@ -508,6 +395,11 @@ class HotelPremierStorageManager {
       if (savedRoomOverrides) roomOverrides = JSON.parse(savedRoomOverrides);
     } catch (e) {}
 
+    const originalPhotoArchives={};
+    if(this.db)for(const storeName of ['room_galleries','section_slides']) {
+      const records=await new Promise((resolve,reject)=>{const request=this.db.transaction(storeName,'readonly').objectStore(storeName).getAll();request.onsuccess=()=>resolve(request.result||[]);request.onerror=()=>reject(Error('Original photos could not be read for backup.'));});
+      originalPhotoArchives[storeName]=Object.fromEntries(records.filter(record=>record.originalPhotos).map(record=>[record.id,record.originalPhotos]));
+    }
     const backupPayload = {
       app: 'Hotel Premier Bhusawal',
       version: '2.1.0',
@@ -520,10 +412,11 @@ class HotelPremierStorageManager {
       },
       roomOverrides: roomOverrides,
       sectionSlides: sectionSlidesMap,
+      originalPhotoArchives,
       bulkDeals: bulkDeals
     };
 
-    const blob = new Blob([JSON.stringify(backupPayload, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(await window.HotelPhotoStorage.portable(backupPayload), null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -539,18 +432,22 @@ class HotelPremierStorageManager {
 
   async importFullBackup(jsonData) {
     if (!jsonData) throw new Error('Invalid backup file');
+    if(!window.HotelDataValidation)throw Error('Import validation is unavailable. Reload before restoring.');
+    window.HotelDataValidation.validate(jsonData);
+    for(const [name,records]of Object.entries(jsonData.originalPhotoArchives||{}))if(!['room_galleries','section_slides'].includes(name)||!records||typeof records!=='object'||Array.isArray(records))throw Error('Unsupported original-photo archive. Nothing has been restored.');
 
     // 1. Restore Dish Overrides
     if (jsonData.dishOverrides) {
-      localStorage.setItem('hotel_premier_user_overrides_v1', JSON.stringify(jsonData.dishOverrides));
       for (const [id, data] of Object.entries(jsonData.dishOverrides)) {
         await this.saveDishOverride(id, data);
       }
     }
 
     // 2. Restore Room Galleries & Overrides
-    if (jsonData.roomOverrides) {
-      localStorage.setItem('hotel_premier_room_overrides', JSON.stringify(jsonData.roomOverrides));
+    if(jsonData.roomOverrides)for(const [roomId,room]of Object.entries(jsonData.roomOverrides)) {
+      if(jsonData.roomGalleries?.[roomId])continue;
+      const legacy=Array.isArray(room.images)?room.images:room.image?[room.image]:null;
+      if(legacy)await this.saveRoomGallery(roomId,legacy);
     }
     if (jsonData.roomGalleries) {
       for (const [roomId, images] of Object.entries(jsonData.roomGalleries)) {
@@ -559,6 +456,7 @@ class HotelPremierStorageManager {
         }
       }
     }
+    if(jsonData.roomOverrides)localStorage.setItem('hotel_premier_room_overrides',JSON.stringify(window.HotelPhotoStorage.compact(jsonData.roomOverrides)));
 
     // 3. Restore Section Slides (Hero + Sub-Sections)
     if (jsonData.sectionSlides) {
@@ -570,6 +468,10 @@ class HotelPremierStorageManager {
     }
 
     // 4. Restore Bulk Deals
+    for(const [storeName,records]of Object.entries(jsonData.originalPhotoArchives||{})) {
+      if(!['room_galleries','section_slides'].includes(storeName))throw Error('Unsupported original-photo archive.');
+      for(const [id,originalPhotos]of Object.entries(records))await this.persistPhotoRecord(storeName,id,{originalPhotos});
+    }
     if (jsonData.bulkDeals && Array.isArray(jsonData.bulkDeals)) {
       localStorage.setItem('hotel_premier_bulk_deals_override', JSON.stringify(jsonData.bulkDeals));
     }

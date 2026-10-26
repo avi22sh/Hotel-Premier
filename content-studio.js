@@ -53,14 +53,14 @@
     const panel = el('div',undefined,'content-studio');
     const status = el('p','Changes are saved only in this browser. Export the content file for developer review and publishing. No guest records or credentials are included.','studio-notice');
     status.setAttribute('role','status');
-    const run = action => { try { action(); status.textContent = 'Saved locally. Export when ready to publish.'; } catch(error) { status.textContent = `Not saved: ${error.message}`; } };
+    const run = async action => { try { await action(); status.textContent = 'Saved locally. Export when ready to publish.'; } catch(error) { status.textContent = `Not saved: ${error.message}`; } };
     const button = (label,action) => {
       const node = el('button',label,'studio-button');
       node.type = 'button'; node.addEventListener('click',() => run(action)); return node;
     };
     panel.append(el('h3','Content Studio'),status);
     const toolbar = el('div',undefined,'studio-toolbar');
-    toolbar.append(button('Export content',() => {
+    toolbar.append(button('Export content',async () => {
       const url = URL.createObjectURL(new Blob([JSON.stringify(draft,null,2)],{type:'application/json'}));
       const link = el('a'); link.href=url; link.download='hotel-premier-content.json'; link.click();
       setTimeout(() => URL.revokeObjectURL(url),1000);
@@ -71,12 +71,12 @@
         const file=upload.files[0]; if (!file) return;
         if (file.size > 500000) throw Error('Content file exceeds 500 KB.');
         const next=valid(JSON.parse(await file.text()));
-        if (!confirm('Replace this browser’s content draft? Export it first if you need a backup.')) return;
+        if (!await window.HotelDialogs.confirm('Replace this browser’s content draft? Export it first if you need a backup.')) return;
         save(next); render(container);
       } catch(error) { status.textContent=`Import failed: ${error.message}`; }
     });
-    toolbar.append(upload,button('Restore original text & remove custom cards',() => {
-      if (!confirm('Restore original page text and remove all custom cards in this browser? Export a backup first.')) return;
+    toolbar.append(upload,button('Restore original text & remove custom cards',async () => {
+      if (!await window.HotelDialogs.confirm('Restore original page text and remove all custom cards in this browser? Export a backup first.')) return;
       save({version:1,text:{},cards:[]}); render(container);
     }));
     panel.append(toolbar,el('p','Use Menu, Rooms and Slides for prices, dishes and photos. This editor changes editorial copy and custom cards—not booking rules, navigation or customer reviews.'));
@@ -90,7 +90,7 @@
         const input=el('textarea'); input.rows=3; input.maxLength=3000;
         input.value=Object.hasOwn(draft.text,key) ? draft.text[key] : target.original;
         field.append(input);
-        details.append(field,button('Save text',() => save({...draft,text:{...draft.text,[key]:input.value}})),button('Restore text',() => {
+        details.append(field,button('Save text',() => save({...draft,text:{...draft.text,[key]:input.value}})),button('Restore text',async () => {
           const text={...draft.text}; delete text[key]; save({...draft,text}); input.value=target.original;
         }));
       }
@@ -100,18 +100,18 @@
         const title=el('input'); title.value=card.title; title.maxLength=120; title.setAttribute('aria-label','Card title');
         const body=el('textarea'); body.value=card.body; body.rows=3; body.maxLength=3000; body.setAttribute('aria-label','Card description');
         box.append(title,body,button('Save card',() => save({...draft,cards:draft.cards.map(item => item.id===card.id ? {...item,title:title.value.trim(),body:body.value} : item)})));
-        for (const [label,offset] of [['Move up',-1],['Move down',1]]) box.append(button(label,() => {
+        for (const [label,offset] of [['Move up',-1],['Move down',1]]) box.append(button(label,async () => {
           const next=draft.cards.slice(), peers=next.filter(item => item.section===section);
           const other=peers[peers.findIndex(item=>item.id===card.id)+offset]; if (!other) return;
           const a=next.findIndex(item=>item.id===card.id),b=next.findIndex(item=>item.id===other.id);
           [next[a],next[b]]=[next[b],next[a]]; save({...draft,cards:next}); render(container);
         }));
-        box.append(button('Remove card',() => {
-          if (!confirm(`Remove “${card.title}”? Export a backup first if needed.`)) return;
+        box.append(button('Remove card',async () => {
+          if (!await window.HotelDialogs.confirm(`Remove “${card.title}”? Export a backup first if needed.`)) return;
           save({...draft,cards:draft.cards.filter(item=>item.id!==card.id)}); render(container);
         })); cards.append(box);
       }
-      details.append(cards,button('Add content card',() => {
+      details.append(cards,button('Add content card',async () => {
         save({...draft,cards:[...draft.cards,{id:crypto.randomUUID(),section,title:'New information',body:'Edit this card in Content Studio.'}]}); render(container);
       })); panel.append(details);
     }

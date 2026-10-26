@@ -8,7 +8,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'नाश्ता एवं सैंडविच',
     marathiName: 'सकाळचा नाश्ता व सँडविच',
     icon: '🌅', 
-    image: 'assets/menu-images/MORNING DELIGHT/POORI BHAJI.jpg',
+    image: 'assets/menu-images/morning-delight/poori-bhaji.jpg',
     description: 'Poori Bhaji, Chole Bhature, Stuffed Parathas, Club Sandwiches & Poha'
   },
   { 
@@ -17,7 +17,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'गर्मागर्म चाय, कॉफ़ी व दूध',
     marathiName: 'गरमागरम चहा, कॉफी व दूध',
     icon: '☕', 
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
     description: 'Special Masala Tea, Filter Coffee, Bournvita & Hot Milk'
   },
   { 
@@ -26,7 +26,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'चटपटे स्नैक्स एवं पकोड़े',
     marathiName: 'चटपटीत स्नॅक्स व भजी',
     icon: '🍟', 
-    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/paneer-pakoda.jpg',
     description: 'Veg/Paneer/Cheese Pakoda, Finger Chips, Chana Garlic Roast & Chaat'
   },
   { 
@@ -35,7 +35,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'प्रीमियर सूप',
     marathiName: 'प्रीमियर सूप',
     icon: '🥣', 
-    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg',
+    image: 'assets/menu-images/soups/veg-manchow-soup.jpg',
     description: 'Manchow, Hot & Sour, Cream of Tomato, Sweetcorn & Lemon Coriander'
   },
   { 
@@ -44,7 +44,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'इंडो-चाइनीज़ स्टार्टर्स',
     marathiName: 'इंडो-चायनीज स्टार्टर्स',
     icon: '🥢', 
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/chinese-platter.jpg',
     description: 'Chinese Platter, Paneer Chilly, Spring Rolls, Manchurian & Crispy Corn'
   },
   { 
@@ -62,7 +62,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'तंदूरी कबाब एवं टिक्का',
     marathiName: 'तंदूर कबाब व टिक्का',
     icon: '🍢', 
-    image: 'assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg',
+    image: 'assets/menu-images/tandoor-classics/tandoori-platter.jpg',
     description: 'Tandoori Platter, Paneer Tikka, Reshmi Kabab, Hara Bhara & Shawarma'
   },
   { 
@@ -71,7 +71,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'फ्राइड राइस एवं नूडल्स',
     marathiName: 'फ्राईड राईस व नूडल्स',
     icon: '🍚', 
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg',
     description: 'Triple Schezwan Rice, Hakka Noodles, Manchurian Noodles & Fried Rice'
   },
   { 
@@ -80,7 +80,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'प्रीमियर रॉयल थालियाँ (स्विगी व ज़ोमैटो)',
     marathiName: 'प्रीमियर रॉयल थाळी (स्विगी व झोमॅटो)',
     icon: '🍱', 
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-pride-special.jpg',
     description: 'Swiggy & Zomato exclusive complete thali platters: Mini Thali, Pride Signature, Maharaja Grand Feast & Indo-Chinese Wok Thali'
   },
   { 
@@ -89,7 +89,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'स्वादिष्ट सब्ज़ियां',
     marathiName: 'चवदार भाज्या',
     icon: '🍛', 
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-pride-special.jpg',
     description: 'Khandeshi Shev Bhaji, Kaju Curry, Veg Kadai, Veg Handi & Kolhapuri'
   },
   { 
@@ -98,7 +98,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'लज़ीज़ कोफ़्ता',
     marathiName: 'चवदार कोफ्ता',
     icon: '🍲', 
-    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/malai-kofta.jpg',
     description: 'Malai Kofta, Nargisi Kofta, Veg Sunrise Kofta & Cheese Kofta'
   },
   { 
@@ -107,7 +107,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'शाही पनीर व्यंजन',
     marathiName: 'शाही पनीर डिशेस',
     icon: '🧀', 
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-butter-masala.jpg',
     description: 'Paneer Butter Masala, Paneer Tikka Masala, Paneer Angara & Bhurji'
   },
   { 
@@ -116,7 +116,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'दाल का ज़ायका',
     marathiName: 'डाळ व कढी',
     icon: '🥘', 
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-tadka.jpg',
     description: 'Dal Tadka in Pure Desi Ghee, Dal Fry, Dal Maharani & Kadhi Pakoda'
   },
   { 
@@ -125,7 +125,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'सलाद, रायता एवं पापड़',
     marathiName: 'सॅलड, रायता व पापड',
     icon: '🥗', 
-    image: 'assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/boondi-raita.jpg',
     description: 'Green Salad, Boondi Raita, Pineapple Raita, Nagli & Urad Papad'
   },
   { 
@@ -134,7 +134,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'तंदूरी रोटी एवं नान',
     marathiName: 'तंदूरी रोटी व नान',
     icon: '🫓', 
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-naan.jpg',
     description: 'Butter Naan, Garlic Naan, Cheese Naan, Laccha Paratha & Missi Roti'
   },
   { 
@@ -143,7 +143,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'बासमती राइस एवं बिरयानी',
     marathiName: 'बासमती राईस व बिर्याणी',
     icon: '🍲', 
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG HYDERABADI DUM BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg',
     description: 'Veg Dum Biryani, Hyderabadi Biryani, Paneer Tikka Biryani & Jeera Rice'
   },
   { 
@@ -152,7 +152,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'मीठी यादें (डेज़र्ट)',
     marathiName: 'मिष्टान्न (डेझर्ट)',
     icon: '🍨', 
-    image: 'assets/menu-images/DESSERTS/GULAB JAMUN.jpg',
+    image: 'assets/menu-images/desserts/gulab-jamun.jpg',
     description: 'Hot Chocolate Fudge, Honeymoon Surprise Sundae, Gulab Jamun & Rasgulla'
   },
   { 
@@ -161,7 +161,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'प्रीमियम आइसक्रीम',
     marathiName: 'प्रीमियम आईस्क्रीम',
     icon: '🍦', 
-    image: 'assets/menu-images/DESSERTS/HOT CHOCOLATE FUDGE.jpg',
+    image: 'assets/brand-placeholder.svg',
     description: 'Butterscotch, Vanilla Bean, Chocolate, Kaju Draksh & Afghan Dry Fruit'
   },
   { 
@@ -170,7 +170,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'मॉकटेल',
     marathiName: 'एक्झॉटिक मॉकतेल',
     icon: '🍹', 
-    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/malai-kofta.jpg',
     description: 'Blue Lagoon, Fruit Punch, Green Goddess, Sunrise & Pink Lady'
   },
   { 
@@ -179,7 +179,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'मिल्कशेक एवं मस्तानी',
     marathiName: 'मिल्कशेक व मस्तानी',
     icon: '🥤', 
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     description: 'Mango Mastani, Hotel Premier Special Mastani & Thick Milkshakes'
   },
   { 
@@ -188,7 +188,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'शीतल पेय एवं लस्सी',
     marathiName: 'थंड पेय व लस्सी',
     icon: '🧊', 
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-butter-masala.jpg',
     description: 'Special Punjabi Lassi, Masala Chaas, Fresh Lime Soda & Soft Drinks'
   }
 ];
@@ -325,7 +325,7 @@ const PARATHAS_VARIANTS = [
     hindiName: 'आलू पराठा (दही के साथ)',
     marathiName: 'आलू पराठा (दह्यासोबत)',
     price: 120,
-    image: 'assets/menu-images/MORNING DELIGHT/ALOO PARATHA WITH CURD 1.jpg',
+    image: 'assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg',
     description: 'Whole-wheat paratha filled with spiced potatoes and fragrant herbs, served with chilled creamy curd and pickle.',
     descriptionHi: 'मसालेदार उबले आलू और हरी मिर्च के चटपटे भरावन से बना तवा पराठा, ताज़ा गाढ़े दही और अचार के साथ।',
     descriptionMr: 'मसालेदार बटाट्याचे खमंग सारण भरून तव्यावर खरपूस भाजलेला पराठा, ताज्या घट्ट दह्यासोबत.'
@@ -335,7 +335,7 @@ const PARATHAS_VARIANTS = [
     hindiName: 'गोभी पराठा (दही के साथ)',
     marathiName: 'गोभी पराठा (दह्यासोबत)',
     price: 130,
-    image: 'assets/menu-images/MORNING DELIGHT/GOBHI PARATHA WITH CURD.jpg',
+    image: 'assets/menu-images/morning-delight/gobhi-paratha-with-curd.jpg',
     description: 'Crisp whole-wheat paratha stuffed with finely grated spiced cauliflower, served with fresh curd and pickle.',
     descriptionHi: 'कद्दूकस की हुई ताज़ी फूलगोभी और भुने मसालों के भरावन से तैयार कुरकुरा पराठा, ताज़ा दही के साथ।',
     descriptionMr: 'बारीक किसलेल्या ताज्या फ्लॉवरचे खमंग सारण भरलेला चवदार पराठा, ताज्या दह्यासोबत.'
@@ -345,7 +345,7 @@ const PARATHAS_VARIANTS = [
     hindiName: 'पनीर पराठा (दही के साथ)',
     marathiName: 'पनीर पराठा (दह्यासोबत)',
     price: 150,
-    image: 'assets/menu-images/MORNING DELIGHT/PANEER PARATHA WITH CURD.jpg',
+    image: 'assets/menu-images/morning-delight/paneer-paratha-with-curd.jpg',
     description: 'Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.',
     descriptionHi: 'ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।',
     descriptionMr: 'ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत.'
@@ -355,7 +355,7 @@ const PARATHAS_VARIANTS = [
     hindiName: 'मिक्स वेज पराठा',
     marathiName: 'मिक्स व्हेज पराठा',
     price: 140,
-    image: 'assets/menu-images/MORNING DELIGHT/ALOO PARATHA WITH CURD.jpg',
+    image: 'assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg',
     description: 'Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.',
     descriptionHi: 'बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।',
     descriptionMr: 'मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत.'
@@ -368,7 +368,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'ब्रेड बटर टोस्ट',
     marathiName: 'ब्रेड बटर टोस्ट',
     price: 80,
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
     description: 'Golden crispy toasted bread generously brushed with fresh creamy dairy butter.',
     descriptionHi: 'मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।',
     descriptionMr: 'ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड.'
@@ -378,7 +378,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'ब्रेड बटर जैम',
     marathiName: 'ब्रेड बटर जॅम',
     price: 80,
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER JAM.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-jam.jpg',
     description: 'Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.',
     descriptionHi: 'मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।',
     descriptionMr: 'मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन.'
@@ -388,7 +388,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'वेज सैंडविच',
     marathiName: 'व्हेज सँडविच',
     price: 100,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/veg-sandwich.jpg',
     description: 'Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.',
     descriptionHi: 'खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।',
     descriptionMr: 'काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच.'
@@ -398,7 +398,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'चीज़ चटनी सैंडविच',
     marathiName: 'चीज चटणी सँडविच',
     price: 90,
-    image: 'assets/menu-images/MORNING DELIGHT/CHEESE CHUTNEY SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg',
     description: 'Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.',
     descriptionHi: 'मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।',
     descriptionMr: 'मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच.'
@@ -408,7 +408,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'वेज ग्रिल्ड सैंडविच',
     marathiName: 'व्हेज ग्रील्ड सँडविच',
     price: 150,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG GRILLED SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/veg-grilled-sandwich.jpg',
     description: 'Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.',
     descriptionHi: 'ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।',
     descriptionMr: 'बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच.'
@@ -418,7 +418,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'चीज़ ग्रिल्ड सैंडविच',
     marathiName: 'चीज ग्रील्ड सँडविच',
     price: 160,
-    image: 'assets/menu-images/MORNING DELIGHT/CHEESE GRILLED SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg',
     description: 'Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.',
     descriptionHi: 'अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।',
     descriptionMr: 'आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच.'
@@ -428,7 +428,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'वेज चीज़ ग्रिल्ड सैंडविच',
     marathiName: 'व्हेज चीज ग्रील्ड सँडविच',
     price: 170,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG CHEESE GRILLED SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg',
     description: 'Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.',
     descriptionHi: 'ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।',
     descriptionMr: 'ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच.'
@@ -438,7 +438,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'वेज क्लब सैंडविच',
     marathiName: 'व्हेज क्लब सँडविच',
     price: 180,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG CLUB SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/veg-club-sandwich.jpg',
     description: 'Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.',
     descriptionHi: 'तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।',
     descriptionMr: 'तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण.'
@@ -448,7 +448,7 @@ const SANDWICHES_VARIANTS = [
     hindiName: 'प्राइड स्पेशल सैंडविच',
     marathiName: 'प्राईड स्पेशल सँडविच',
     price: 200,
-    image: 'assets/menu-images/MORNING DELIGHT/PRIDE SPECIAL SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/pride-special-sandwich.jpg',
     description: 'Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.',
     descriptionHi: 'शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।',
     descriptionMr: 'शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच.'
@@ -461,7 +461,7 @@ const NAAN_VARIANTS = [
     hindiName: 'प्लेन नान',
     marathiName: 'प्लेन नान',
     price: 50,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/naan.jpg',
     description: 'Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.',
     descriptionHi: 'तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।',
     descriptionMr: 'तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान.'
@@ -471,7 +471,7 @@ const NAAN_VARIANTS = [
     hindiName: 'बटर नान',
     marathiName: 'बटर नान',
     price: 55,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-naan.jpg',
     description: 'Classic soft tandoor naan glazed generously with golden melted butter.',
     descriptionHi: 'तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।',
     descriptionMr: 'तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला.'
@@ -481,7 +481,7 @@ const NAAN_VARIANTS = [
     hindiName: 'गार्लिक नान',
     marathiName: 'गार्लिक नान',
     price: 110,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/garlic-naan.jpg',
     description: 'Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.',
     descriptionHi: 'बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।',
     descriptionMr: 'बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान.'
@@ -491,7 +491,7 @@ const NAAN_VARIANTS = [
     hindiName: 'बटर गार्लिक नान',
     marathiName: 'बटर गार्लिक नान',
     price: 130,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER GARLIC NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg',
     description: 'Crisp aromatic garlic naan drenched generously in warm melted butter.',
     descriptionHi: 'लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।',
     descriptionMr: 'लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान.'
@@ -501,7 +501,7 @@ const NAAN_VARIANTS = [
     hindiName: 'चीज़ नान',
     marathiName: 'चीज नान',
     price: 120,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHEESE NAAN.avif',
+    image: 'assets/menu-images/signature-indian-breads/cheese-naan.avif',
     description: 'Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.',
     descriptionHi: 'अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।',
     descriptionMr: 'आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान.'
@@ -511,7 +511,7 @@ const NAAN_VARIANTS = [
     hindiName: 'बटर चीज़ नान',
     marathiName: 'बटर चीज नान',
     price: 150,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg',
     description: 'Cheese-stuffed tandoori naan finished with a rich layer of golden butter.',
     descriptionHi: 'चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।',
     descriptionMr: 'चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला.'
@@ -521,7 +521,7 @@ const NAAN_VARIANTS = [
     hindiName: 'चीज़ गार्लिक नान',
     marathiName: 'चीज गार्लिक नान',
     price: 140,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHEESE GARLIC NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/cheese-garlic-naan.jpg',
     description: 'Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.',
     descriptionHi: 'अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।',
     descriptionMr: 'आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान.'
@@ -531,7 +531,7 @@ const NAAN_VARIANTS = [
     hindiName: 'बटर चीज़ गार्लिक नान',
     marathiName: 'बटर चीज गार्लिक नान',
     price: 160,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE GARLIC NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg',
     description: 'Decadent chef special naan with melted cheese, roasted garlic and rich butter.',
     descriptionHi: 'चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।',
     descriptionMr: 'चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान.'
@@ -541,7 +541,7 @@ const NAAN_VARIANTS = [
     hindiName: 'कश्मीरी नान',
     marathiName: 'काश्मिरी नान',
     price: 60,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/KASHMIRI NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/kashmiri-naan.jpg',
     description: 'Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.',
     descriptionHi: 'काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।',
     descriptionMr: 'सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान.'
@@ -554,7 +554,7 @@ const ROTI_CHAPATI_VARIANTS = [
     hindiName: 'तंदूरी रोटी (सादा)',
     marathiName: 'तंदूरी रोटी (साधी)',
     price: 25,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/roti.jpg',
     description: 'Whole wheat flatbread baked crisp and tender inside the traditional clay tandoor.',
     descriptionHi: 'पारंपरिक मिट्टी के तंदूर में सिकी हुई गेहूं की गरमागरम सादी रोटी।',
     descriptionMr: 'मातीच्या तंदूरमध्ये भाजलेली गव्हाची साधी व खमंग तंदूरी रोटी.'
@@ -564,7 +564,7 @@ const ROTI_CHAPATI_VARIANTS = [
     hindiName: 'तंदूरी बटर रोटी',
     marathiName: 'तंदूरी बटर रोटी',
     price: 30,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-roti.jpg',
     description: 'Crisp whole wheat tandoori roti glazed with golden melted butter.',
     descriptionHi: 'तंदूर में सिकी कुरकुरी रोटी, ऊपर से पिघले हुए मक्खन के साथ।',
     descriptionMr: 'तंदूरमध्ये भाजलेली खरपूस रोटी, त्यावर ताजे वितळलेले बटर.'
@@ -574,7 +574,7 @@ const ROTI_CHAPATI_VARIANTS = [
     hindiName: 'तवा चपाती (सादा)',
     marathiName: 'तवा चपाती (साधी)',
     price: 25,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
     description: 'Home-style soft puffed whole-wheat flatbread freshly cooked on an iron griddle.',
     descriptionHi: 'लोहे के तवे पर सिकी हुई घर जैसी फूली हुई मुलायम गेहूं की चपाती।',
     descriptionMr: 'तव्यावर भाजलेली घरगुती पद्धतीची मऊ व लुसलुशीत गव्हाची चपाती.'
@@ -584,7 +584,7 @@ const ROTI_CHAPATI_VARIANTS = [
     hindiName: 'तवा बटर चपाती',
     marathiName: 'तवा बटर चपाती',
     price: 30,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHAPATI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-chapati.jpg',
     description: 'Soft home-style whole-wheat chapati generously brushed with dairy butter.',
     descriptionHi: 'ताज़े मक्खन से चुपड़ी हुई गरमागरम मुलायम तवा चपाती।',
     descriptionMr: 'ताजे बटर लावलेली गरमागरम मऊ तवा चपाती.'
@@ -594,7 +594,7 @@ const ROTI_CHAPATI_VARIANTS = [
     hindiName: 'मिस्सी रोटी',
     marathiName: 'मिस्सी रोटी',
     price: 40,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/MISSI ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/missi-roti.jpg',
     description: 'A spiced flatbread of gram flour (besan) and whole wheat with onions, carom seeds and green chillies.',
     descriptionHi: 'बेसन, अजवायन, प्याज और कस्तूरी मेथी से बनी पारंपरिक राजस्थानी मिस्सी रोटी।',
     descriptionMr: 'बेसन, ओवा, कांदा आणि मसाल्यांची खमंग चव असलेली पारंपरिक मिस्सी रोटी.'
@@ -604,7 +604,7 @@ const ROTI_CHAPATI_VARIANTS = [
     hindiName: 'मेथी रोटी',
     marathiName: 'मेथी रोटी',
     price: 40,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/METHI ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/methi-roti.jpg',
     description: 'Wholesome wheat flatbread kneaded with fresh chopped fenugreek leaves and mild spices.',
     descriptionHi: 'ताज़ी हरी मेथी और मसालों से गूंथी हुई पौष्टिक तंदूरी रोटी।',
     descriptionMr: 'ताजी मेथी आणि मसाल्यांनी मळलेली पौष्टिक व चवदार तंदूरी रोटी.'
@@ -617,7 +617,7 @@ const KULCHA_PARATHA_VARIANTS = [
     hindiName: 'प्लेन कुलचा',
     marathiName: 'प्लेन कुलचा',
     price: 50,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/KULCHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/kulcha.jpg',
     description: 'Soft leavened refined flour bread topped with nigella seeds and baked tender in the tandoor.',
     descriptionHi: 'कलौंजी और धनिए से सजा, तंदूर में सिका हुआ सादा मुलायम कुलचा।',
     descriptionMr: 'कलौंजी व कोथिंबीर लावून तंदूरमध्ये भाजलेला मऊ प्लेन कुलचा.'
@@ -627,7 +627,7 @@ const KULCHA_PARATHA_VARIANTS = [
     hindiName: 'बटर कुलचा',
     marathiName: 'बटर कुलचा',
     price: 60,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER KULCHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-kulcha.jpg',
     description: 'Fluffy tandoori kulcha generously brushed with melted dairy butter.',
     descriptionHi: 'मक्खन से तर-ब-तर किया हुआ फूला हुआ गरमागरम कुलचा।',
     descriptionMr: 'भरपूर बटर लावलेला तंदूरमधील गरमागरम मऊ कुलचा.'
@@ -637,7 +637,7 @@ const KULCHA_PARATHA_VARIANTS = [
     hindiName: 'लच्छा पराठा',
     marathiName: 'लच्छा पराठा',
     price: 60,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/LACHHA PARATHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/lachha-paratha.jpg',
     description: 'Multi-layered crispy flatbread made with whole wheat, laminated with ghee and roasted golden.',
     descriptionHi: 'कई परतों वाला खस्ता और कुरकुरा लच्छेदार तंदूरी पराठा।',
     descriptionMr: 'अनेक पदरांचा कुरकुरीत व खमंग तुपाचा लच्छा पराठा.'
@@ -647,7 +647,7 @@ const KULCHA_PARATHA_VARIANTS = [
     hindiName: 'तवा पराठा',
     marathiName: 'तवा पराठा',
     price: 50,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/TAWA PARATHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/tawa-paratha.jpg',
     description: 'Flaky layered whole-wheat flatbread cooked golden on a traditional flat tawa.',
     descriptionHi: 'तवे पर घी में सिका हुआ स्वादिष्ट और कुरकुरा गेहूं का पराठा।',
     descriptionMr: 'तव्यावर तुपात भाजलेला खरपूस व पदरदार गव्हाचा पराठा.'
@@ -657,7 +657,7 @@ const KULCHA_PARATHA_VARIANTS = [
     hindiName: 'स्टफ्ड कुलचा',
     marathiName: 'स्टफ्ड कुलचा',
     price: 70,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/STUFFED KULCHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/stuffed-kulcha.jpg',
     description: 'Soft tandoori kulcha stuffed with spiced cottage cheese, green chillies and fresh herbs.',
     descriptionHi: 'मसालेदार पनीर के स्वादिष्ट भरावन वाला तंदूरी कुलचा।',
     descriptionMr: 'चवदार पनीरचे सारण भरून तंदूरमध्ये भाजलेला गरमागरम पनीर कुलचा.'
@@ -670,7 +670,7 @@ const DAL_FRY_VARIANTS = [
     hindiName: 'दाल फ्राई',
     marathiName: 'डाळ फ्राय',
     price: 190,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL FRY.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-fry.jpg',
     description: 'Yellow lentils gently simmered and sautéed with onions, ripe tomatoes and aromatic spices.',
     descriptionHi: 'प्याज, टमाटर और हरी मिर्च के साथ भुनी हुई स्वादिष्ट पीली दाल।',
     descriptionMr: 'कांदा, टोमॅटो व मसाल्यांची खमंग फोडणी दिलेली चवदार डाळ फ्राय.'
@@ -680,7 +680,7 @@ const DAL_FRY_VARIANTS = [
     hindiName: 'दाल तड़का (देसी घी)',
     marathiName: 'डाळ तडका (साजूक तूप)',
     price: 210,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-tadka.jpg',
     description: 'Creamy yellow lentils tempered with pure desi ghee, cumin seeds, garlic, red chillies and hing.',
     descriptionHi: 'देसी घी, लहसुन, सूखी लाल मिर्च और जीरे के तड़के वाली होटल प्राइड की खास दाल तड़का।',
     descriptionMr: 'साजूक तूप, लसूण, जिरे व लाल मिरचीची झणझणीत फोडणी दिलेली डाळ तडका.'
@@ -693,7 +693,7 @@ const DAL_PALAK_VARIANTS = [
     hindiName: 'दाल पालक',
     marathiName: 'डाळ पालक',
     price: 150,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-palak.jpg',
     description: 'Wholesome yellow lentils cooked with fresh nutritious spinach leaves and mild spices.',
     descriptionHi: 'ताज़ी पालक और पीली दाल का पौष्टिक व स्वादिष्ट मेल।',
     descriptionMr: 'ताजी पालकाची पाने व डाळीचे पौष्टिक आणि खमंग मिश्रण.'
@@ -703,7 +703,7 @@ const DAL_PALAK_VARIANTS = [
     hindiName: 'दाल पालक तड़का',
     marathiName: 'डाळ पालक तडका',
     price: 165,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-palak-tadka.jpg',
     description: 'Nutritious dal palak finished with an aromatic tempering of garlic, cumin and ghee.',
     descriptionHi: 'देसी घी, भुने लहसुन और जीरे के तड़के वाली गरमागरम दाल पालक।',
     descriptionMr: 'लसूण, जिरे आणि साजूक तुपाची खमंग फोडणी दिलेली पौष्टिक डाळ पालक तडका.'
@@ -716,7 +716,7 @@ const DAL_METHI_VARIANTS = [
     hindiName: 'दाल मेथी',
     marathiName: 'डाळ मेथी',
     price: 150,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-methi.jpg',
     description: 'Healthy yellow lentils cooked with fresh earthy fenugreek leaves and ground spices.',
     descriptionHi: 'ताज़ी हरी मेथी और पीली दाल का स्वादिष्ट संगम।',
     descriptionMr: 'ताजी मेथीची पाने व डाळ एकत्र शिजवून तयार केलेली चवदार डाळ.'
@@ -726,7 +726,7 @@ const DAL_METHI_VARIANTS = [
     hindiName: 'दाल मेथी तड़का',
     marathiName: 'डाळ मेथी तडका',
     price: 165,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-methi-tadka.jpg',
     description: 'Flavorful dal methi tempered with sizzling garlic, cumin and whole red chillies in ghee.',
     descriptionHi: 'देसी घी, लहसुन और साबुत लाल मिर्च के तड़के वाली दाल मेथी।',
     descriptionMr: 'साजूक तूप, लसूण व लाल मिरचीची खमंग फोडणी दिलेली डाळ मेथी तडका.'
@@ -739,7 +739,7 @@ const DAL_KHICHADI_VARIANTS = [
     hindiName: 'दाल खिचड़ी',
     marathiName: 'डाळ खिचडी',
     price: 240,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/dal-khichadi.jpg',
     description: 'A comforting combination of aged basmati rice and yellow lentils cooked with mild spices and butter.',
     descriptionHi: 'बासमती चावल और दाल से बनी सुपाच्य एवं स्वादिष्ट पारंपरिक खिचड़ी।',
     descriptionMr: 'बासमती तांदूळ आणि डाळीपासून बनवलेली मऊ, पचनास हलकी व खमंग खिचडी.'
@@ -749,7 +749,7 @@ const DAL_KHICHADI_VARIANTS = [
     hindiName: 'दाल खिचड़ी तड़का',
     marathiName: 'डाळ खिचडी तडका',
     price: 245,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI WITH TADKA.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/dal-khichadi-with-tadka.jpg',
     description: 'Aromatic dal khichadi finished with a sizzling tempering of cumin, garlic, curry leaves and dry red chillies.',
     descriptionHi: 'लहसुन, जीरा, कढ़ी पत्ता और लाल मिर्च के कड़क तड़के वाली मशहूर दाल खिचड़ी।',
     descriptionMr: 'लसूण, जिरे, कढीपत्ता आणि लाल मिरचीचा गरमागरम तडका दिलेली लोकप्रिय डाळ खिचडी.'
@@ -762,7 +762,7 @@ const RICE_VARIANTS = [
     hindiName: 'स्टीम्ड राइस',
     marathiName: 'स्टीम्ड राईस',
     price: 180,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/STEAMED RICE.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/steamed-rice.jpg',
     description: 'Aromatic long-grain basmati rice, steamed tender and fluffy.',
     descriptionHi: 'खुशबूदार लंबे दाने वाला बासमती सादा उबला चावल।',
     descriptionMr: 'सुगंधी लांब दाण्यांचा मऊ व मोकळा शिजवलेला बासमती भात.'
@@ -772,7 +772,7 @@ const RICE_VARIANTS = [
     hindiName: 'जीरा राइस',
     marathiName: 'जिरा राईस',
     price: 190,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/JEERA RICE.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/jeera-rice.jpg',
     description: 'Fluffy basmati rice tossed with roasted cumin seeds and fresh coriander in pure ghee.',
     descriptionHi: 'देसी घी में भुने जीरे और हरी धनिया के साथ तड़का लगाया हुआ बासमती चावल।',
     descriptionMr: 'साजूक तुपात भाजलेले जिरे व कोथिंबिरीचा तडका दिलेला खमंग बासमती जिरा राईस.'
@@ -785,7 +785,7 @@ const RAITA_VARIANTS = [
     hindiName: 'मिक्स वेज रायता',
     marathiName: 'मिक्स व्हेज रायता',
     price: 80,
-    image: 'assets/menu-images/ACCOMPANIMENTS/MIX VEG RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/mix-veg-raita.jpg',
     description: 'Chilled creamy yogurt blended with diced cucumber, onions, tomatoes and subtle spices.',
     descriptionHi: 'बारीक कटे खीरे, प्याज, टमाटर और भुने मसालों से बना ताज़ा वेज रायता।',
     descriptionMr: 'बारीक चिरलेली काकडी, कांदा, टोमॅटो आणि जिरेपूड घातलेले ताजे व्हेज रायता.'
@@ -795,7 +795,7 @@ const RAITA_VARIANTS = [
     hindiName: 'बूंदी रायता',
     marathiName: 'बुंदी रायता',
     price: 90,
-    image: 'assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/boondi-raita.jpg',
     description: 'Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.',
     descriptionHi: 'भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।',
     descriptionMr: 'भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता.'
@@ -805,7 +805,7 @@ const RAITA_VARIANTS = [
     hindiName: 'पाइनएप्पल रायता',
     marathiName: 'अननस रायता',
     price: 120,
-    image: 'assets/menu-images/ACCOMPANIMENTS/PINEAPPLE RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/pineapple-raita.jpg',
     description: 'Sweet juicy pineapple titbits folded in velvety sweetened chilled yogurt.',
     descriptionHi: 'मीठे रसीले अनन्नास के टुकड़ों और ठंडे गाढ़े दही का लाजवाब संगम।',
     descriptionMr: 'गोड रसाळ अननसाचे तुकडे आणि थंडगार दाट दह्याचे स्वादिष्ट रायता.'
@@ -815,7 +815,7 @@ const RAITA_VARIANTS = [
     hindiName: 'मिक्स फ्रूट रायता',
     marathiName: 'मिक्स फ्रूट रायता',
     price: 130,
-    image: 'assets/menu-images/ACCOMPANIMENTS/MIX FRUIT RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/mix-fruit-raita.jpg',
     description: 'A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.',
     descriptionHi: 'ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।',
     descriptionMr: 'ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता.'
@@ -825,7 +825,7 @@ const RAITA_VARIANTS = [
     hindiName: 'ताज़ा दही',
     marathiName: 'ताजे दही',
     price: 60,
-    image: 'assets/menu-images/ACCOMPANIMENTS/CURD.jpg',
+    image: 'assets/menu-images/accompaniments/curd.jpg',
     description: 'Traditional thick, creamy and fresh home-set dairy yogurt.',
     descriptionHi: 'शुद्ध दूध से जमाया हुआ गाढ़ा, ताज़ा और मीठा सादा दही।',
     descriptionMr: 'घरगुती पद्धतीने लावलेले घट्ट, ताजे आणि चवदार साधे दही.'
@@ -838,7 +838,7 @@ const SOUPS_VARIANTS = [
     hindiName: 'वेज मंचाऊ सूप',
     marathiName: 'व्हेज मंचाव सूप',
     price: 140,
-    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg',
+    image: 'assets/menu-images/soups/veg-manchow-soup.jpg',
     description: 'A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.',
     descriptionHi: 'लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।',
     descriptionMr: 'लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप.'
@@ -848,7 +848,7 @@ const SOUPS_VARIANTS = [
     hindiName: 'हॉट एंड सोर सूप',
     marathiName: 'हॉट अँड सोर सूप',
     price: 140,
-    image: 'assets/menu-images/SOUPS/HOT & SOUR SOUP.jpg',
+    image: 'assets/menu-images/soups/hot-sour-soup.jpg',
     description: 'Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.',
     descriptionHi: 'तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।',
     descriptionMr: 'तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप.'
@@ -858,7 +858,7 @@ const SOUPS_VARIANTS = [
     hindiName: 'टमाटर सूप',
     marathiName: 'टोमॅटो सूप',
     price: 140,
-    image: 'assets/menu-images/SOUPS/TOMATO SOUP.jpg',
+    image: 'assets/menu-images/soups/tomato-soup.jpg',
     description: 'Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.',
     descriptionHi: 'ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।',
     descriptionMr: 'पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह.'
@@ -868,7 +868,7 @@ const SOUPS_VARIANTS = [
     hindiName: 'लेमन कोरिएंडर सूप',
     marathiName: 'लेमन कोथिंबीर सूप',
     price: 140,
-    image: 'assets/menu-images/SOUPS/LEMON CORIANDER SOUP.jpg',
+    image: 'assets/menu-images/soups/lemon-coriander-soup.jpg',
     description: 'Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.',
     descriptionHi: 'हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।',
     descriptionMr: 'ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप.'
@@ -878,7 +878,7 @@ const SOUPS_VARIANTS = [
     hindiName: 'वेज स्वीटकॉर्न सूप',
     marathiName: 'व्हेज स्वीटकॉर्न सूप',
     price: 140,
-    image: 'assets/menu-images/SOUPS/VEG SWEETCORN SOUP.jpg',
+    image: 'assets/menu-images/soups/veg-sweetcorn-soup.jpg',
     description: 'Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.',
     descriptionHi: 'मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।',
     descriptionMr: 'गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप.'
@@ -888,7 +888,7 @@ const SOUPS_VARIANTS = [
     hindiName: 'वेज क्लियर सूप',
     marathiName: 'व्हेज क्लिअर सूप',
     price: 120,
-    image: 'assets/menu-images/SOUPS/VEG CLEAR SOUP.jpg',
+    image: 'assets/menu-images/soups/veg-clear-soup.jpg',
     description: 'Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.',
     descriptionHi: 'गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।',
     descriptionMr: 'गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप.'
@@ -901,7 +901,7 @@ const BIRYANI_VARIANTS = [
     hindiName: 'वेज दम बिरयानी',
     marathiName: 'व्हेज दम बिर्याणी',
     price: 260,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg',
     description: 'Layered basmati rice slow-cooked on dum with vegetables, saffron, mint and roasted cashews.',
     descriptionHi: 'धीमी आंच पर दम देकर पकाई गई खुशबूदार केसर, पुदीना और काजू वाली खास वेज बिरयानी।',
     descriptionMr: 'दमवर शिजवलेला सुगंधी बासमती तांदूळ, भाज्या, केशर, पुदिना आणि काजू घातलेली शाही बिर्याणी.'
@@ -911,7 +911,7 @@ const BIRYANI_VARIANTS = [
     hindiName: 'वेज हैदराबादी बिरयानी',
     marathiName: 'व्हेज हैदराबादी बिर्याणी',
     price: 270,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG HYDERABADI BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg',
     description: 'Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.',
     descriptionHi: 'हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।',
     descriptionMr: 'हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी.'
@@ -921,7 +921,7 @@ const BIRYANI_VARIANTS = [
     hindiName: 'पनीर टिक्का बिरयानी',
     marathiName: 'पनीर टिक्का बिर्याणी',
     price: 275,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER TIKKA BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg',
     description: 'Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.',
     descriptionHi: 'तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।',
     descriptionMr: 'तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी.'
@@ -931,7 +931,7 @@ const BIRYANI_VARIANTS = [
     hindiName: 'काजू पनीर बिरयानी',
     marathiName: 'काजू पनीर बिर्याणी',
     price: 275,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/KAJU PANEER BIRYANI 1.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg',
     description: 'Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.',
     descriptionHi: 'घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।',
     descriptionMr: 'तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी.'
@@ -941,7 +941,7 @@ const BIRYANI_VARIANTS = [
     hindiName: 'पनीर पटाखा बिरयानी',
     marathiName: 'पनीर फटाका बिर्याणी',
     price: 285,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER PATAKHA BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg',
     description: 'Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.',
     descriptionHi: 'तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।',
     descriptionMr: 'झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका.'
@@ -954,7 +954,7 @@ const PULAO_VARIANTS = [
     hindiName: 'वेज पुलाव',
     marathiName: 'व्हेज पुलाव',
     price: 240,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG PULAO.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg',
     description: 'Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.',
     descriptionHi: 'ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।',
     descriptionMr: 'ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव.'
@@ -964,7 +964,7 @@ const PULAO_VARIANTS = [
     hindiName: 'मटर पनीर पुलाव',
     marathiName: 'मटार पनीर पुलाव',
     price: 245,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MUTTER PANEER PULAO.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg',
     description: 'Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.',
     descriptionHi: 'नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।',
     descriptionMr: 'मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव.'
@@ -974,7 +974,7 @@ const PULAO_VARIANTS = [
     hindiName: 'मसाला राइस',
     marathiName: 'मसाला राईस',
     price: 250,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MASALA RICE.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/masala-rice.jpg',
     description: 'Aromatic basmati rice cooked with authentic Khandeshi spices, onions, tomatoes and coriander.',
     descriptionHi: 'खानदेशी भुने मसालों, प्याज, टमाटर और हरी धनिया से तैयार चटपटा मसाला चावल।',
     descriptionMr: 'खानदेशी खमंग मसाले, कांदा, टोमॅटो व कोथिंबीर घालून परतलेला झणझणीत मसाला भात.'
@@ -984,7 +984,7 @@ const PULAO_VARIANTS = [
     hindiName: 'लेमन राइस',
     marathiName: 'लेमन राईस',
     price: 200,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/LEMON RICE 1.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg',
     description: 'Tangy South Indian-style basmati rice tempered with mustard seeds, curry leaves and lemon.',
     descriptionHi: 'राई, कढ़ी पत्ता, हरी मिर्च और ताज़े नींबू के रस के तड़के वाला खट्टा-नमकीन चावल।',
     descriptionMr: 'मोहरी, कढीपत्ता, हिरवी मिरची आणि ताज्या लिंबाचा रस घातलेला चवदार लेमन राईस.'
@@ -994,7 +994,7 @@ const PULAO_VARIANTS = [
     hindiName: 'कर्ड राइस',
     marathiName: 'कर्ड राईस',
     price: 230,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/CURD RICE 1.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg',
     description: 'Cool comforting basmati rice blended with fresh creamy curd and tempered with mustard and ginger.',
     descriptionHi: 'ताज़े गाढ़े दही और चावल का मेल, राई, अदरक और कढ़ी पत्ते के तड़के के साथ।',
     descriptionMr: 'थंडगार ताजे दही व मऊ भाताचे मिश्रण, मोहरी, आले आणि कढीपत्त्याची खमंग फोडणी.'
@@ -1007,7 +1007,7 @@ const PANEER_TIKKA_VARIANTS = [
     hindiName: 'पनीर टिक्का (क्लासिक)',
     marathiName: 'पनीर टिक्का (क्लासिक)',
     price: 295,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-tikka.jpg',
     description: 'Fresh cottage cheese cubes marinated in spiced hung curd, skewered with bell peppers and roasted in clay oven.',
     descriptionHi: 'ताज़े पनीर के टुकड़े, गाढ़े दही और पारंपरिक मसालों में मैरीनेट कर तंदूर में भूने हुए।',
     descriptionMr: 'ताज्या पनीरचे तुकडे, मसालेदार दही व खमंग मसाल्यांमध्ये घोळवून तंदूरमध्ये भाजलेले.'
@@ -1017,7 +1017,7 @@ const PANEER_TIKKA_VARIANTS = [
     hindiName: 'लहसुनी पनीर टिक्का',
     marathiName: 'लसुणी पनीर टिक्का',
     price: 300,
-    image: 'assets/menu-images/TANDOOR CLASSICS/LASOONI PANEER TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/lasooni-paneer-tikka.jpg',
     description: 'Charcoal grilled cottage cheese marinated with freshly roasted garlic and aromatic spices.',
     descriptionHi: 'भुने हुए ताज़े लहसुन और खुशबूदार मसालों के खास तंदूरी मैरिनेशन में तैयार पनीर टिक्का।',
     descriptionMr: 'खमंग भाजलेला लसूण आणि खास तंदूरी मसाल्यांच्या चवीचा मऊ लुसलुशीत पनीर टिक्का.'
@@ -1027,7 +1027,7 @@ const PANEER_TIKKA_VARIANTS = [
     hindiName: 'पनीर अचारी टिक्का',
     marathiName: 'पनीर अचारी टिक्का',
     price: 240,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-tikka.jpg',
     description: 'Paneer cubes marinated with tangy pickling spices and slow grilled in traditional tandoor.',
     descriptionHi: 'अचारी मसालों और कलौंजी के तीखे-चटपटे स्वाद में रंगा हुआ तंदूरी पनीर टिक्का।',
     descriptionMr: 'चटपटीत लोणच्याचे मसाले आणि मोहरीच्या चवीमध्ये मुरवलेला तंदूरी पनीर टिक्का.'
@@ -1037,7 +1037,7 @@ const PANEER_TIKKA_VARIANTS = [
     hindiName: 'पनीर रेशमी कबाब',
     marathiName: 'पनीर रेशमी कबाब',
     price: 300,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER RESHMI TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-reshmi-tikka.jpg',
     description: 'Silky smooth paneer tikka marinated in rich cashew cream and mild aromatic royal spices.',
     descriptionHi: 'काजू का पेस्ट, मलाई और खुशबूदार केसरिया मसालों में डूबा हुआ बेहद नरम व मखमली कबाब।',
     descriptionMr: 'काजूची पेस्ट, ताजी साय आणि सुगंधी मसाल्यात तयार केलेला मऊ रेशमी कबाब.'
@@ -1047,7 +1047,7 @@ const PANEER_TIKKA_VARIANTS = [
     hindiName: 'पनीर अफगानी टिक्का',
     marathiName: 'पनीर अफगाणी टिक्का',
     price: 285,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER AFGHANI TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-afghani-tikka.jpg',
     description: 'Mellow, rich paneer cubes infused with curd, cheese, black pepper and cardamom roasted to perfection.',
     descriptionHi: 'दही, चीज़, काली मिर्च और छोटी इलायची के सुगंधित अफ़गानी मिश्रण में भुना हुआ पनीर।',
     descriptionMr: 'दही, चीज, काळी मिरी आणि वेलचीच्या शाही चवीत भाजलेला अफगाणी पनीर टिक्का.'
@@ -1057,7 +1057,7 @@ const PANEER_TIKKA_VARIANTS = [
     hindiName: 'पनीर पटाखा टिक्का',
     marathiName: 'पनीर फटाका टिक्का',
     price: 300,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER PATAKHA TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpg',
     description: 'Extra fiery and spicy tandoori paneer marinated in red chilli flakes and Khandeshi herbs.',
     descriptionHi: 'तीखी लाल मिर्च, नींबू और भुने खड़े मसालों का धमाकेदार तीखा स्वाद।',
     descriptionMr: 'झणझणीत लाल मिरची आणि खानदेशी मसाल्यांचा धमाकेदार तडका असलेला तिखट टिक्का.'
@@ -1067,7 +1067,7 @@ const PANEER_TIKKA_VARIANTS = [
     hindiName: 'पनीर ज़ाफ़रानी टिक्का',
     marathiName: 'पनीर जाफरानी टिक्का',
     price: 315,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER ZAFRANI TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-zafrani-tikka.jpg',
     description: 'Regal paneer tikka scented with pure saffron strands, mace, cream and royal spices.',
     descriptionHi: 'शुद्ध कश्मीरी केसर, जावित्री और मलाई के शाही मिश्रण में पका हुआ ज़ाफ़रानी पनीर टिक्का।',
     descriptionMr: 'शुद्ध काश्मिरी केशर, जायपत्री आणि सायीच्या शाही मिश्रणात भाजलेला जाफरानी टिक्का.'
@@ -1077,7 +1077,7 @@ const PANEER_TIKKA_VARIANTS = [
     hindiName: 'जंगली पनीर टिक्का',
     marathiName: 'जंगली पनीर टिक्का',
     price: 295,
-    image: 'assets/menu-images/TANDOOR CLASSICS/JUNGLI PANEER TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/jungli-paneer-tikka.jpg',
     description: 'Rustic countryside spiced paneer tikka with crushed coriander seeds and cracked black pepper.',
     descriptionHi: 'साबुत कुटे धनिया, काली मिर्च और पुदीने के देहाती जंगली तड़के वाला पनीर टिक्का।',
     descriptionMr: 'धणे, काळी मिरी आणि पुदिन्याची गावरान खमंग चव असलेला जंगली पनीर टिक्का.'
@@ -1090,7 +1090,7 @@ const PAKODA_VARIANTS = [
     hindiName: 'वेज पकोड़ा',
     marathiName: 'व्हेज भजी',
     price: 130,
-    image: 'assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/veg-pakoda.jpg',
     description: 'Assorted seasonal vegetables coated in seasoned chickpea batter and deep-fried golden and crisp.',
     descriptionHi: 'बारीक कटी मौसमी सब्जियों और अजवाइन वाले बेसन का कुरकुरा गरमागरम पकोड़ा।',
     descriptionMr: 'बारीक चिरलेल्या ताज्या भाज्या आणि ओव्याच्या बेसनात तळलेली कुरकुरीत खमंग भजी.'
@@ -1100,7 +1100,7 @@ const PAKODA_VARIANTS = [
     hindiName: 'पनीर पकोड़ा',
     marathiName: 'पनीर भजी',
     price: 190,
-    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/paneer-pakoda.jpg',
     description: 'Thick soft cottage cheese cubes layered with mint chutney, dipped in gram flour batter and fried crisp.',
     descriptionHi: 'नरम पनीर के टुकड़े, हरी चटनी और खास मसालों में लिपटे हुए कुरकुरे पनीर पकोड़े।',
     descriptionMr: 'मऊ पनीरचे काप, पुदिना चटणी आणि खमंग बेसनात घोळवून तळलेले पनीर पकोडे.'
@@ -1110,7 +1110,7 @@ const PAKODA_VARIANTS = [
     hindiName: 'चीज़ पकोड़ा',
     marathiName: 'चीज भजी',
     price: 210,
-    image: 'assets/menu-images/TASTY TIDBITS/CHEESE PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/cheese-pakoda.jpg',
     description: 'Decadent melted cheese stuffed fritters with a crunchy golden crust, served with tangy dip.',
     descriptionHi: 'चीज़ के स्वादिष्ट भरावन वाले गरमागरम पकोड़े, जो मुंह में डालते ही घुल जाते हैं।',
     descriptionMr: 'चीजचे खमंग सारण भरलेली गरमागरम चीज भजी, अत्यंत चविष्ट व कुरकुरीत.'
@@ -1123,7 +1123,7 @@ const PAPAD_VARIANTS = [
     hindiName: 'उड़द पापड़ (रोस्टेड / फ्राइड)',
     marathiName: 'उडीद पापड (भाजलेला / तळलेला)',
     price: 30,
-    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg',
+    image: 'assets/menu-images/accompaniments/roasted-papad.jpg',
     description: 'Traditional crisp black-pepper urad dal papad, roasted on open flame or golden fried.',
     descriptionHi: 'काली मिर्च और हींग के पारंपरिक स्वाद वाला उड़द पापड़, भुना या तला हुआ।',
     descriptionMr: 'काळी मिरी आणि हिंगाची खमंग चव असलेला पारंपरिक उडीद पापड, भाजलेला किंवा तळलेला.'
@@ -1133,7 +1133,7 @@ const PAPAD_VARIANTS = [
     hindiName: 'नागली / रागी पापड़ (रोस्टेड / फ्राइड)',
     marathiName: 'नाचणी पापड (भाजलेला / तळलेला)',
     price: 30,
-    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED NAGALI PAPAD.jpg',
+    image: 'assets/menu-images/accompaniments/roasted-nagali-papad.jpg',
     description: 'Wholesome rustic finger millet (ragi/nagli) crisp papad, authentic Maharashtrian recipe.',
     descriptionHi: 'पौष्टिक रागी (नागली) से तैयार पारंपरिक कुरकुरा पापड़, सुपाच्य और स्वादिष्ट।',
     descriptionMr: 'पौष्टिक नाचणीपासून तयार केलेला पारंपरिक कुरकुरीत गावराण पापड.'
@@ -1143,7 +1143,7 @@ const PAPAD_VARIANTS = [
     hindiName: 'सिंधी पापड़',
     marathiName: 'सिंधी पापड',
     price: 70,
-    image: 'assets/menu-images/ACCOMPANIMENTS/SINDHI PAPAD.jpg',
+    image: 'assets/menu-images/accompaniments/sindhi-papad.jpg',
     description: 'Special spicy Sindhi seasoned papad packed with cracked black pepper and royal cumin.',
     descriptionHi: 'काली मिर्च और जीरे के तीखे-चटपटे स्वाद वाला खास बड़ा सिंधी पापड़।',
     descriptionMr: 'काळी मिरी व जिऱ्याचा झणझणीत स्वाद असलेला खास सिंधी पापड.'
@@ -1252,7 +1252,7 @@ const HOT_BEVERAGES_VARIANTS = [
     hindiName: 'स्पेशल मसाला चाय',
     marathiName: 'स्पेशल मसाला चहा',
     price: 25,
-    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/paneer-pakoda.jpg',
     description: 'Freshly brewed strong tea infused with cardamom, ginger, cinnamon and fresh whole milk.',
     descriptionHi: 'अदरक, इलायची और ताज़े दूध से पकाई गई कड़क स्पेशल मसाला चाय।',
     descriptionMr: 'आले, वेलची आणि खड्या मसाल्यांनी युक्त गरमागरम कडक स्पेशल चहा.'
@@ -1262,7 +1262,7 @@ const HOT_BEVERAGES_VARIANTS = [
     hindiName: 'हॉट कॉफ़ी',
     marathiName: 'गरम कॉफी',
     price: 35,
-    image: 'assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/veg-pakoda.jpg',
     description: 'Rich roasted aromatic coffee frothed with steaming hot milk.',
     descriptionHi: 'भुने हुए कॉफ़ी बीन्स और गर्मागर्म झागदार दूध से तैयार खुशबूदार कॉफ़ी।',
     descriptionMr: 'ताज्या भाजलेल्या कॉफीचा सुवास आणि फेसाळलेल्या दुधाची गरम कॉफी.'
@@ -1272,7 +1272,7 @@ const HOT_BEVERAGES_VARIANTS = [
     hindiName: 'गर्म दूध',
     marathiName: 'गरम दूध',
     price: 60,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Pure, steaming whole dairy milk served hot with sugar on the side.',
     descriptionHi: 'ताज़ा गाढ़ा उबला हुआ शुद्ध गर्म दूध।',
     descriptionMr: 'ताजे, उकळलेले पौष्टिक व शुद्ध गरम दूध.'
@@ -1282,7 +1282,7 @@ const HOT_BEVERAGES_VARIANTS = [
     hindiName: 'बोर्नविटा',
     marathiName: 'बोर्नव्हिटा',
     price: 80,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Nourishing malt chocolate beverage blended into steaming hot milk.',
     descriptionHi: 'चॉकलेट माल्ट और गर्म दूध का पौष्टिक व स्वादिष्ट ड्रिंक।',
     descriptionMr: 'चॉकलेट माल्ट आणि गरम दुधाचे पौष्टिक व चविष्ट पेय.'
@@ -1295,7 +1295,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'वैनिला आइसक्रीम',
     marathiName: 'व्हॅनिला आईस्क्रीम',
     price: 40,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Classic velvety vanilla bean ice cream scoop.',
     descriptionHi: 'पारंपरिक मखमली वैनिला आइसक्रीम का ठंडा स्कूप।',
     descriptionMr: 'अत्यंत मऊ, मलईदार आणि चविष्ट व्हॅनिला आईस्क्रीम.'
@@ -1305,7 +1305,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'बटरस्कॉच आइसक्रीम',
     marathiName: 'बटरस्कॉच आईस्क्रीम',
     price: 50,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Rich creamy butterscotch ice cream with crunchy praline nuts.',
     descriptionHi: 'कुरकुरे कैरेमल प्रालिन नट्स वाला गाढ़ा बटरस्कॉच आइसक्रीम।',
     descriptionMr: 'कुरकुरीत कॅरॅमल नट्स असलेला स्वादिष्ट बटरस्कॉच आईस्क्रीम.'
@@ -1315,7 +1315,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'चॉकलेट आइसक्रीम',
     marathiName: 'चॉकलेट आईस्क्रीम',
     price: 50,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Decadent deep cocoa chocolate ice cream scoop.',
     descriptionHi: 'रिच डार्क कोकोआ और मलाई से भरपूर चॉकलेट आइसक्रीम।',
     descriptionMr: 'डार्क कोको आणि सायीने भरलेला चॉकलेटी आईस्क्रीम.'
@@ -1325,7 +1325,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'काजू द्राक्ष आइसक्रीम',
     marathiName: 'काजू द्राक्ष आईस्क्रीम',
     price: 50,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Traditional royal ice cream loaded with cashew nuts and sweet raisins.',
     descriptionHi: 'कुरकुरे काजू और किशमिश के टुकड़ों से भरा स्वादिष्ट आइसक्रीम।',
     descriptionMr: 'काजूचे काप आणि मनुका घातलेला शाही चवीचा आईस्क्रीम.'
@@ -1335,7 +1335,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'अफ़गान ड्राई फ्रूट आइसक्रीम',
     marathiName: 'अफगाण ड्रायफ्रूट आईस्क्रीम',
     price: 40,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Exotic dried fruits and roasted nuts infused into chilled sweet cream.',
     descriptionHi: 'मेवों और भुने हुए बादाम-पिस्ते से सजा अफ़गानी ड्राई फ्रूट आइसक्रीम।',
     descriptionMr: 'बदाम, पिस्ता आणि सुकामेव्याने युक्त थंडगार अफगाणी आईस्क्रीम.'
@@ -1348,7 +1348,7 @@ const GREEN_DAL_VARIANTS = [
     hindiName: 'दाल पालक',
     marathiName: 'डाळ पालक',
     price: 150,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-palak.jpg',
     description: 'Yellow lentils gently simmered with fresh tender spinach leaves and mild garlic.',
     descriptionHi: 'ताज़ी पालक और पीली दाल का सुपाच्य एवं पौष्टिक हल्का मेल।',
     descriptionMr: 'ताजी हिरवीगार पालक आणि पिवळी डाळ एकत्र शिजवून लसणाची खमंग फोडणी.'
@@ -1358,7 +1358,7 @@ const GREEN_DAL_VARIANTS = [
     hindiName: 'दाल पालक तड़का',
     marathiName: 'डाळ पालक तडका',
     price: 165,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-palak-tadka.jpg',
     description: 'Nutritious spinach dal finished with a sizzling tempered garlic, cumin and ghee tadka.',
     descriptionHi: 'देसी घी, लहसुन, साबुत लाल मिर्च और जीरे के तेज़ तड़के वाली पालक दाल।',
     descriptionMr: 'साजूक तूप, लसूण आणि जिऱ्याची चमचमीत फोडणी दिलेली खमंग डाळ पालक.'
@@ -1368,7 +1368,7 @@ const GREEN_DAL_VARIANTS = [
     hindiName: 'दाल मेथी',
     marathiName: 'डाळ मेथी',
     price: 150,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-methi.jpg',
     description: 'Wholesome yellow lentils cooked with fresh aromatic fenugreek (methi) leaves.',
     descriptionHi: 'ताज़ी खुशबूदार मेथी की पत्तियों और पीली दाल की स्वादिष्ट पारंपरिक तैयारी।',
     descriptionMr: 'ताजी मेथीची पाने आणि डाळ एकत्र शिजवून तयार केलेली पौष्टिक डाळ.'
@@ -1378,7 +1378,7 @@ const GREEN_DAL_VARIANTS = [
     hindiName: 'दाल मेथी तड़का',
     marathiName: 'डाळ मेथी तडका',
     price: 165,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-methi-tadka.jpg',
     description: 'Fenugreek leaves simmered in dal, elevated with a fragrant cumin, garlic and chilli tadka.',
     descriptionHi: 'साबुत लाल मिर्च, लहसुन और हींग-जीरे के कड़क तड़के से सजी दाल मेथी।',
     descriptionMr: 'हिंग, जिरे, लसूण व लाल मिरचीची कडक फोडणी दिलेली झणझणीत डाळ मेथी.'
@@ -1392,7 +1392,7 @@ const UPVAS_FASTING_VARIANTS = [
     hindiName: 'साबुदाना खिचड़ी',
     marathiName: 'साबुदाणा खिचडी',
     price: 140,
-    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg',
+    image: 'assets/menu-images/morning-delight/sabudana-khichadi.jpg',
     description: 'Soaked tapioca pearls tossed with potatoes, roasted peanuts, green chillies, fresh coriander and rock salt.',
     descriptionHi: 'मूंगफली, हरी मिर्च और सेंधा नमक के साथ बनी पारंपरिक व्रत स्पेशल साबुदाना खिचड़ी।',
     descriptionMr: 'शेंगदाण्याचा कूट, हिरवी मिरची व बटाट्यासह बनवलेली सात्विक उपवासाची साबुदाणा खिचडी.'
@@ -1402,7 +1402,7 @@ const UPVAS_FASTING_VARIANTS = [
     hindiName: 'साबुदाना वड़ा (दही के साथ)',
     marathiName: 'साबुदाणा वडा (दह्यासोबत)',
     price: 150,
-    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA WADA.jpg',
+    image: 'assets/menu-images/morning-delight/sabudana-wada.jpg',
     description: 'Crisp golden deep-fried sago and potato patties, served hot with sweetened fresh curd.',
     descriptionHi: 'बाहर से कुरकुरे और अंदर से नर्म साबुदाना वड़े, ठंडे मीठे दही के साथ परोसे जाते हैं।',
     descriptionMr: 'कुरकुरीत गरमागरम साबुदाणा वडे, गोडसर ताज्या दह्यासोबत वाढलेले.'
@@ -1412,7 +1412,7 @@ const UPVAS_FASTING_VARIANTS = [
     hindiName: 'फ़िंगर चिप्स',
     marathiName: 'फिंगर चिप्स',
     price: 140,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Golden fried potato batons seasoned with mild salt, crisp on the outside and tender inside.',
     descriptionHi: 'गोल्डन फ्राइड कुरकुरे आलू फिंगर चिप्स, व्रत और स्नैक्स के लिए बेहतरीन।',
     descriptionMr: 'सोनेरी कुरकुरीत तळलेले बटाटा फिंगर चिप्स, उपवासासाठी व चवीसाठी अप्रतिम.'
@@ -1425,7 +1425,7 @@ const CHAAT_VARIANTS = [
     hindiName: 'आलू चाट',
     marathiName: 'आलू चाट',
     price: 110,
-    image: 'assets/menu-images/TASTY TIDBITS/ALOO CHAAT 1.jpg',
+    image: 'assets/menu-images/tasty-tidbits/aloo-chaat-1.jpg',
     description: 'Crisp potato cubes tossed with tangy tamarind chutney, mint spread, chaat masala and fresh coriander.',
     descriptionHi: 'कुरकुरे उबले आलू, खट्टी-मीठी इमली की चटनी और तीखे मसालों से बनी चटपटी आलू चाट।',
     descriptionMr: 'उकडलेले खमंग बटाटे, चिंचेची चटणी व चाट मसाल्याची खमंग चटपटीत आलू चाट.'
@@ -1435,7 +1435,7 @@ const CHAAT_VARIANTS = [
     hindiName: 'चना चाट',
     marathiName: 'चना चाट',
     price: 160,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-chaat.jpg',
     description: 'Tender chickpeas and finely chopped garden vegetables tossed with lemon juice, chaat spices and zesty chutney.',
     descriptionHi: 'उबले काबुली चने, बारीक कटी सब्जियाँ और नींबू-मसालों का चटपटा स्वास्थ्यवर्धक मेल।',
     descriptionMr: 'काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट.'
@@ -1445,7 +1445,7 @@ const CHAAT_VARIANTS = [
     hindiName: 'पीनट चाट',
     marathiName: 'पीनट चाट',
     price: 190,
-    image: 'assets/menu-images/TASTY TIDBITS/PEANUT CHAAT.jpg',
+    image: 'assets/menu-images/tasty-tidbits/peanut-chaat.jpg',
     description: 'Roasted crunchy peanuts tossed with diced onions, juicy tomatoes, green chillies and fresh lemon coriander.',
     descriptionHi: 'कुरकुरी भुनी मूंगफली, प्याज, टमाटर और हरी मिर्च की चटपटी चाट।',
     descriptionMr: 'खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट.'
@@ -1455,7 +1455,7 @@ const CHAAT_VARIANTS = [
     hindiName: 'चाइनीज़ भेल',
     marathiName: 'चायनीज भेळ',
     price: 200,
-    image: 'assets/menu-images/TASTY TIDBITS/CHINESE BHEL.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chinese-bhel.jpg',
     description: 'Crisp fried noodles tossed with wok-tossed cabbage, carrots and spicy tangy Indo-Chinese Schezwan sauce.',
     descriptionHi: 'कुरकुरी फ्राइड नूडल्स, शिमला मिर्च, पत्तागोभी और तीखी शेजवान सॉस से बनी लोकप्रिय चाइनीज़ भेल।',
     descriptionMr: 'कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ.'
@@ -1468,7 +1468,7 @@ const CHANA_ROAST_VARIANTS = [
     hindiName: 'चना रोस्ट',
     marathiName: 'चना रोस्ट',
     price: 170,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-roast.jpg',
     description: 'Whole chickpeas roasted golden-brown with dry roasted aromatic Indian spices, crispy and wholesome.',
     descriptionHi: 'विशेष मसालों में सुनहरा कुरकुरा भुना हुआ काबुली चना, शाम के नाश्ते के लिए उत्तम।',
     descriptionMr: 'खमंग भाजलेले चणे व मसाल्यांचा कुरकुरीत पारंपारिक चणा रोस्ट.'
@@ -1478,7 +1478,7 @@ const CHANA_ROAST_VARIANTS = [
     hindiName: 'चना लहसुन रोस्ट',
     marathiName: 'चना लसूण रोस्ट',
     price: 200,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA GARLIC ROAST 1.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-garlic-roast-1.jpg',
     description: 'Golden roasted chickpeas infused with intense burnt garlic, crushed pepper and savory house spices.',
     descriptionHi: 'भुने हुए चने में भुने लहसुन और तीखे मसालों का तीखा व लाजवाब स्वाद।',
     descriptionMr: 'तळलेला लसूण आणि खमंग मसाल्यांनी युक्त कुरकुरीत चणा लसूण रोस्ट.'
@@ -1491,7 +1491,7 @@ const SPRING_ROLLS_VARIANTS = [
     hindiName: 'वेज स्प्रिंग रोल',
     marathiName: 'व्हेज स्प्रिंग रोल',
     price: 300,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-spring-roll.jpg',
     description: 'Golden-fried crisp rolls stuffed with julienned seasonal vegetables and glass noodles, served with spicy Schezwan dip.',
     descriptionHi: 'पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, तीखी शेज़वान सॉस के साथ।',
     descriptionMr: 'कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, शेजवान चटणीसह.'
@@ -1501,7 +1501,7 @@ const SPRING_ROLLS_VARIANTS = [
     hindiName: 'नूडल्स स्प्रिंग रोल',
     marathiName: 'नूडल्स स्प्रिंग रोल',
     price: 280,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spider-roll.avif',
     description: 'Crispy fried rolls filled with wok-tossed Hakka noodles, spring onions and savory Chinese spices.',
     descriptionHi: 'चटपटे हक्का नूडल्स और हरी सब्जियों के कुरकुरे स्वादिष्ट स्प्रिंग रोल।',
     descriptionMr: 'हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स.'
@@ -1511,7 +1511,7 @@ const SPRING_ROLLS_VARIANTS = [
     hindiName: 'पनीर स्प्रिंग रोल',
     marathiName: 'पनीर स्प्रिंग रोल',
     price: 325,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg',
     description: 'Delicate pastry sheets packed with seasoned shredded cottage cheese, peppers and oriental spices.',
     descriptionHi: 'ताज़े पनीर के स्वादिष्ट भरावन और मसालों से बने क्रिस्पी पनीर स्प्रिंग रोल।',
     descriptionMr: 'मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स.'
@@ -1521,7 +1521,7 @@ const SPRING_ROLLS_VARIANTS = [
     hindiName: 'पनीर स्पाइडर रोल',
     marathiName: 'पनीर स्पायडर रोल',
     price: 300,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spider-roll.avif',
     description: 'Chef signature appetizer: crunchy noodle-web wrapped paneer batons tossed in a tangy glaze.',
     descriptionHi: 'नूडल्स की क्रिस्पी जाली में लिपटा हुआ स्पेशल पनीर, शेफ की खास रेसिपी।',
     descriptionMr: 'नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी.'
@@ -1534,7 +1534,7 @@ const PANEER_STARTERS_VARIANTS = [
     hindiName: 'पनीर चिली',
     marathiName: 'पनीर चिली',
     price: 265,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PAANEER CHILLI 1 (1).jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg',
     description: 'Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.',
     descriptionHi: 'शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।',
     descriptionMr: 'शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.'
@@ -1544,7 +1544,7 @@ const PANEER_STARTERS_VARIANTS = [
     hindiName: 'पनीर मंचूरियन',
     marathiName: 'पनीर मंचूरियन',
     price: 265,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER MANCHURIAN.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg',
     description: 'Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.',
     descriptionHi: 'अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।',
     descriptionMr: 'आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.'
@@ -1554,7 +1554,7 @@ const PANEER_STARTERS_VARIANTS = [
     hindiName: 'पनीर 65',
     marathiName: 'पनीर ६५',
     price: 275,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER 65.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-65.jpg',
     description: 'South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.',
     descriptionHi: 'कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।',
     descriptionMr: 'कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.'
@@ -1564,7 +1564,7 @@ const PANEER_STARTERS_VARIANTS = [
     hindiName: 'पनीर साते',
     marathiName: 'पनीर साते',
     price: 265,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SATAY 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-satay-1.jpg',
     description: 'Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.',
     descriptionHi: 'मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।',
     descriptionMr: 'शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.'
@@ -1574,7 +1574,7 @@ const PANEER_STARTERS_VARIANTS = [
     hindiName: 'थ्रेड पनीर',
     marathiName: 'थ्रेड पनीर',
     price: 275,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/THREAD PANEER.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg',
     description: 'Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.',
     descriptionHi: 'नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।',
     descriptionMr: 'बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.'
@@ -1584,7 +1584,7 @@ const PANEER_STARTERS_VARIANTS = [
     hindiName: 'पनीर इन हॉट गार्लिक सॉस',
     marathiName: 'पनीर इन हॉट गार्लिक सॉस',
     price: 265,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER IN HOT Garlic SAUCE.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-in-hot-garlic-sauce.jpg',
     description: 'Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.',
     descriptionHi: 'तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।',
     descriptionMr: 'झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.'
@@ -1594,7 +1594,7 @@ const PANEER_STARTERS_VARIANTS = [
     hindiName: 'पनीर सांचो',
     marathiName: 'पनीर सांचो',
     price: 315,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SANCHO 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg',
     description: 'Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.',
     descriptionHi: 'स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।',
     descriptionMr: 'सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.'
@@ -1604,7 +1604,7 @@ const PANEER_STARTERS_VARIANTS = [
     hindiName: 'पनीर साल्टन',
     marathiName: 'पनीर साल्टन',
     price: 270,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SALTON.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg',
     description: 'Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.',
     descriptionHi: 'चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।',
     descriptionMr: 'चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.'
@@ -1617,7 +1617,7 @@ const VEG_STARTERS_VARIANTS = [
     hindiName: 'वेज मंचूरियन',
     marathiName: 'व्हेज मंचूरियन',
     price: 240,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-manchurian.jpg',
     description: 'Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.',
     descriptionHi: 'बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।',
     descriptionMr: 'ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.'
@@ -1627,7 +1627,7 @@ const VEG_STARTERS_VARIANTS = [
     hindiName: 'वेज क्रिस्पी',
     marathiName: 'व्हेज क्रिस्पी',
     price: 240,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-crispy-1.jpg',
     description: 'Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.',
     descriptionHi: 'खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।',
     descriptionMr: 'चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.'
@@ -1637,7 +1637,7 @@ const VEG_STARTERS_VARIANTS = [
     hindiName: 'वेज 65',
     marathiName: 'व्हेज ६५',
     price: 240,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG 65.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-65.jpg',
     description: 'Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.',
     descriptionHi: 'कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।',
     descriptionMr: 'कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.'
@@ -1647,7 +1647,7 @@ const VEG_STARTERS_VARIANTS = [
     hindiName: 'वेज लॉलीपॉप',
     marathiName: 'व्हेज लॉलीपॉप',
     price: 260,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG LOLLIPOP.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-lollipop.jpg',
     description: 'Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.',
     descriptionHi: 'मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।',
     descriptionMr: 'भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.'
@@ -1657,7 +1657,7 @@ const VEG_STARTERS_VARIANTS = [
     hindiName: 'वेज बुलेट',
     marathiName: 'व्हेज बुलेट',
     price: 280,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BULLET 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg',
     description: 'Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.',
     descriptionHi: 'तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।',
     descriptionMr: 'तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.'
@@ -1667,7 +1667,7 @@ const VEG_STARTERS_VARIANTS = [
     hindiName: 'वेज हॉट पैन',
     marathiName: 'व्हेज हॉट पॅन',
     price: 270,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG HOT PAN 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg',
     description: 'Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.',
     descriptionHi: 'सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।',
     descriptionMr: 'गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.'
@@ -1677,7 +1677,7 @@ const VEG_STARTERS_VARIANTS = [
     hindiName: 'वेज कोठे',
     marathiName: 'व्हेज कोठे',
     price: 250,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-manchurian-1.jpg',
     description: 'Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.',
     descriptionHi: 'तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।',
     descriptionMr: 'तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.'
@@ -1687,7 +1687,7 @@ const VEG_STARTERS_VARIANTS = [
     hindiName: 'वेज बॉल इन हॉट गार्लिक सॉस',
     marathiName: 'व्हेज बॉल इन हॉट गार्लिक सॉस',
     price: 250,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BALL IN HOT GARLIC SAUCE.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg',
     description: 'Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.',
     descriptionHi: 'लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।',
     descriptionMr: 'लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.'
@@ -1700,7 +1700,7 @@ const CORN_POTATO_VARIANTS = [
     hindiName: 'क्रिस्पी कॉर्न चिली',
     marathiName: 'क्रिस्पी कॉर्न चिली',
     price: 210,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg',
     description: 'Golden fried sweet corn kernels tossed with crunchy capsicum, onions, spring onions and black pepper.',
     descriptionHi: 'कुरकुरे फ्राइड स्वीटकॉर्न, शिमला मिर्च और काली मिर्च का चटपटा स्वाद।',
     descriptionMr: 'कुरकुरीत तळलेले मक्याचे दाणे, शिमला मिरची आणि काळी मिरीचे चटकदार स्टार्टर.'
@@ -1710,7 +1710,7 @@ const CORN_POTATO_VARIANTS = [
     hindiName: 'हनी चिली पोटैटो',
     marathiName: 'हनी चिली पोटॅटो',
     price: 260,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/HONEY CHILLI POTATO.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg',
     description: 'Crisp golden potato batons tossed in a sweet and spicy honey, chilli and toasted sesame glaze.',
     descriptionHi: 'शहद, लाल मिर्च और भुने तिल की मीठी-तीखी चमक से सजे कुरकुरे आलू फिंगर्स।',
     descriptionMr: 'मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे.'
@@ -1720,7 +1720,7 @@ const CORN_POTATO_VARIANTS = [
     hindiName: 'मशरूम बेबीकॉर्न चिली',
     marathiName: 'मशरूम बेबीकॉर्न चिली',
     price: 270,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/MUSHROOM BABYCORN CHILLI.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpg',
     description: 'Button mushrooms and crisp baby corn stir-fried with capsicum, garlic and dark soya sauce.',
     descriptionHi: 'ताज़े मशरूम और बेबीकॉर्न को शिमला मिर्च व लहसुन के साथ फ्राई किया हुआ स्टार्टर।',
     descriptionMr: 'ताजे अळंबी (मशरूम) आणि कोवळी मका (बेबीकॉर्न) यांचे झणझणीत चायनीज स्टार्टर.'
@@ -1730,7 +1730,7 @@ const CORN_POTATO_VARIANTS = [
     hindiName: 'सोयाबीन चिली',
     marathiName: 'सोयाबीन चिली',
     price: 240,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/SOYABEAN CHILLI.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/soyabean-chilli.jpg',
     description: 'High-protein soya chunks coated and tossed with bell peppers in a spicy, savory garlic chilli glaze.',
     descriptionHi: 'प्रोटीन से भरपूर सोया चंक्स, शिमला मिर्च और तीखे मसालों से बना हेल्दी चिली स्टार्टर।',
     descriptionMr: 'पौष्टिक सोयाबीन वड्या आणि शिमला मिरचीचे चमचमीत चिली स्टार्टर.'
@@ -1743,7 +1743,7 @@ const FRIED_RICE_VARIANTS = [
     hindiName: 'वेज फ्राइड राइस',
     marathiName: 'व्हेज फ्राईड राईस',
     price: 230,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg',
     description: 'Aromatic long-grain basmati rice stir-fried in a hot wok with finely diced vegetables and mild soya seasoning.',
     descriptionHi: 'बारीक कटी सब्जियों और हल्के मसालों के साथ वोक में भुना हुआ क्लासिक फ्राइड राइस।',
     descriptionMr: 'बारीक चिरलेल्या भाज्या आणि सुगंधी बासमती तांदळाचा पारंपरिक फ्राईड राईस.'
@@ -1753,7 +1753,7 @@ const FRIED_RICE_VARIANTS = [
     hindiName: 'वेज शेज़वान राइस',
     marathiName: 'व्हेज शेजवान राईस',
     price: 240,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg',
     description: 'Wok-tossed basmati rice infused with fiery red Schezwan sauce, garlic, celery and garden vegetables.',
     descriptionHi: 'तीखी लाल शेज़वान सॉस, लहसुन और ताज़ी सब्जियों के मेल से बना स्पाइसी राइस।',
     descriptionMr: 'झणझणीत शेजवान सॉस आणि भाज्यांनी युक्त खमंग शेजवान राईस.'
@@ -1763,7 +1763,7 @@ const FRIED_RICE_VARIANTS = [
     hindiName: 'वेज कॉम्बिनेशन राइस',
     marathiName: 'व्हेज कॉम्बिनेशन राईस',
     price: 230,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG COMBINATION RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg',
     description: 'The best of both worlds: fragrant basmati rice and Hakka noodles stir-fried together with vegetables.',
     descriptionHi: 'चावल और नूडल्स का लाजवाब संगम, ताज़ी सब्जियों और चाइनीज़ मसालों के साथ।',
     descriptionMr: 'बासमती तांदूळ आणि नूडल्स एकत्र करून बनवलेला स्वादिष्ट कॉम्बिनेशन राईस.'
@@ -1773,7 +1773,7 @@ const FRIED_RICE_VARIANTS = [
     hindiName: 'मशरूम गार्लिक राइस',
     marathiName: 'मशरूम गार्लिक राईस',
     price: 260,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/MUSHROOM GARLIC FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg',
     description: 'Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.',
     descriptionHi: 'भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।',
     descriptionMr: 'परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात.'
@@ -1783,7 +1783,7 @@ const FRIED_RICE_VARIANTS = [
     hindiName: 'वेज ट्रिपल शेज़वान राइस',
     marathiName: 'व्हेज ट्रिपल शेजवान राईस',
     price: 290,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice.jpg',
     description: 'Hotel Pride blockbuster: Schezwan rice and noodles layered with crispy noodles and served with spicy Manchurian gravy.',
     descriptionHi: 'शेज़वान राइस, नूडल्स, क्रिस्पी फ्राइड नूडल्स और गरमागरम मंचूरियन ग्रेवी की रॉयल दावत।',
     descriptionMr: 'शेजवान राईस, नूडल्स, कुरकुरीत नूडल्स आणि गरमागरम मंचूरियन ग्रेव्हीचे भव्य कॉम्बिनेशन.'
@@ -1796,7 +1796,7 @@ const NOODLES_VARIANTS = [
     hindiName: 'वेज हक्का नूडल्स',
     marathiName: 'व्हेज हक्का नूडल्स',
     price: 230,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES 1.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-hakka-noodles-1.jpg',
     description: 'Wok-tossed thin noodles with shredded cabbage, carrots, bell peppers, spring onions and savory soya seasoning.',
     descriptionHi: 'पत्तागोभी, गाजर और शिमला मिर्च के साथ वोक में टॉस किए गए क्लासिक हक्का नूडल्स।',
     descriptionMr: 'शिमला मिरची, कोबी व गाजराच्या पातळ कापांसह टॉस केलेले प्रसिद्ध हक्का नूडल्स.'
@@ -1806,7 +1806,7 @@ const NOODLES_VARIANTS = [
     hindiName: 'वेज शेज़वान नूडल्स',
     marathiName: 'व्हेज शेजवान नूडल्स',
     price: 230,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN NOODLES 2.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg',
     description: 'Fiery wok-fried noodles tossed in our house-made Schezwan paste with crunchy vegetables and spring onions.',
     descriptionHi: 'तीखी शेज़वान सॉस और कटी सब्जियों से बने गरमागरम स्पाइसी नूडल्स।',
     descriptionMr: 'तिखट शेजवान सॉस आणि भाज्यांनी युक्त गरमागरम शेजवान नूडल्स.'
@@ -1816,7 +1816,7 @@ const NOODLES_VARIANTS = [
     hindiName: 'वेज सिंगापुरी नूडल्स',
     marathiName: 'व्हेज सिंगापुरी नूडल्स',
     price: 240,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SINGAPURI NOODLES.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg',
     description: 'Curry-seasoned yellow noodles stir-fried with vegetables and garnished with roasted cashew nuts.',
     descriptionHi: 'हल्की कढ़ी मसालों की खुशबू और काजू से सजे अनोखे सिंगापुरी नूडल्स।',
     descriptionMr: 'खमंग काजू आणि मसाल्यांच्या फोडणीत तयार केलेले पिवळसर सिंगापुरी नूडल्स.'
@@ -1826,7 +1826,7 @@ const NOODLES_VARIANTS = [
     hindiName: 'वेज मंचूरियन नूडल्स',
     marathiName: 'व्हेज मंचूरियन नूडल्स',
     price: 240,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG MANCHURIAN NOODLES.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-manchurian-noodles.jpg',
     description: 'Stir-fried noodles paired with succulent vegetable Manchurian dumplings in a savory, dark sauce.',
     descriptionHi: 'मंचूरियन कोफ्तों और स्वादिष्ट ग्रेवी के साथ वोक-टॉस्ड चाइनीज़ नूडल्स।',
     descriptionMr: 'मंचूरियन बॉल्स आणि खमंग ग्रेव्हीसह टॉस केलेले मंचूरियन नूडल्स.'
@@ -1836,7 +1836,7 @@ const NOODLES_VARIANTS = [
     hindiName: 'वेज ट्रिपल शेज़वान नूडल्स',
     marathiName: 'व्हेज ट्रिपल शेजवान नूडल्स',
     price: 280,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN NOODLES.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg',
     description: 'A lavish combo of spicy Schezwan noodles topped with crisp fried noodles and accompanied by vegetable Manchurian gravy.',
     descriptionHi: 'स्पाइसी शेज़वान नूडल्स, क्रिस्पी फ्राइड नूडल्स और मंचूरियन ग्रेवी का संपूर्ण भोजन।',
     descriptionMr: 'तिखट शेजवान नूडल्स, वरून कुरकुरीत नूडल्स आणि सोबत मंचूरियन ग्रेव्ही.'
@@ -1849,7 +1849,7 @@ const KOFTA_VARIANTS = [
     hindiName: 'मलाई कोफ्ता',
     marathiName: 'मलाई कोफ्ता',
     price: 290,
-    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/malai-kofta.jpg',
     description: 'Melt-in-mouth cottage cheese and mawa dumplings simmered in an opulent, velvety cashew nut and cream gravy.',
     descriptionHi: 'मुलायम पनीर और खोया के कोफ्ते, काजू और मलाई की शाही मखमली ग्रेवी में।',
     descriptionMr: 'काजू आणि मलईच्या शाही मऊशार ग्रेव्हीत भिजवलेले मखमली मलाई कोफ्ते.'
@@ -1859,7 +1859,7 @@ const KOFTA_VARIANTS = [
     hindiName: 'वेज सनराइज कोफ्ता',
     marathiName: 'व्हेज सनराईज कोफ्ता',
     price: 290,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG SUNRISE.jpg',
+    image: 'assets/menu-images/delicious-kofta/veg-sunrise.jpg',
     description: 'Two-toned stuffed vegetable and cottage cheese koftas served in a dual chef-curated royal yellow and red gravy.',
     descriptionHi: 'दो रंगों वाले स्वादिष्ट वेज कोफ्ते, शेफ की खास सुनहरी क्रीमी ग्रेवी के साथ।',
     descriptionMr: 'दोन रंगांचे भरलेले कोफ्ते, शेफच्या खास शाही पिवळ्या ग्रेव्हीत.'
@@ -1869,7 +1869,7 @@ const KOFTA_VARIANTS = [
     hindiName: 'वेज कोफ्ता',
     marathiName: 'व्हेज कोफ्ता',
     price: 290,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/veg-kofta.jpg',
     description: 'Spiced minced garden vegetable dumplings simmered in a homestyle onion, tomato and garam masala curry.',
     descriptionHi: 'सब्जियों के स्वादिष्ट कोफ्ते, प्याज और टमाटर की पारंपरिक मसालेदार ग्रेवी में।',
     descriptionMr: 'कांदा, टोमॅटो आणि मसाल्यांच्या पारंपरिक ग्रेव्हीत बनवलेले व्हेज कोफ्ते.'
@@ -1879,7 +1879,7 @@ const KOFTA_VARIANTS = [
     hindiName: 'नरगिसी कोफ्ता',
     marathiName: 'नरगिसी कोफ्ता',
     price: 300,
-    image: 'assets/menu-images/DELICIOUS KOFTA/NARGISI KOFTA 1.jpg',
+    image: 'assets/menu-images/delicious-kofta/nargisi-kofta-1.jpg',
     description: 'Royal stuffed cottage cheese and dry fruit dumplings cooked in a deeply aromatic, rich brown gravy.',
     descriptionHi: 'मेवों और पनीर से भरे शाही नरगिसी कोफ्ते, महकती मसालेदार ग्रेवी के साथ।',
     descriptionMr: 'ड्रायफ्रूट्स आणि पनीरचे भरलेले शाही कोफ्ते, सुगंधी मसालेदार ग्रेव्हीत.'
@@ -1889,7 +1889,7 @@ const KOFTA_VARIANTS = [
     hindiName: 'चीज़ कोफ्ता',
     marathiName: 'चीज कोफ्ता',
     price: 300,
-    image: 'assets/menu-images/DELICIOUS KOFTA/CHEESE KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/cheese-kofta.jpg',
     description: 'Gooey molten mozzarella and paneer balls cooked in a rich, buttery tomato velvet gravy.',
     descriptionHi: 'अंदर से पिघलते चीज़ वाले कोफ्ते, बटर और टमाटर की मखमली ग्रेवी में।',
     descriptionMr: 'आत वितळलेले चीज असलेले कोफ्ते, बटर आणि टोमॅटोच्या मऊशार ग्रेव्हीत.'
@@ -1899,7 +1899,7 @@ const KOFTA_VARIANTS = [
     hindiName: 'पनीर कोफ्ता',
     marathiName: 'पनीर कोफ्ता',
     price: 315,
-    image: 'assets/menu-images/DELICIOUS KOFTA/PANEER KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/paneer-kofta.jpg',
     description: 'Pure cottage cheese dumplings infused with green chillies and mint, simmered in a luscious cashew curry.',
     descriptionHi: 'हरी मिर्च और पुदीने से सुगंधित शुद्ध पनीर के कोफ्ते, गाढ़ी काजू ग्रेवी में।',
     descriptionMr: 'शुद्ध पनीरचे कोफ्ते, पुदिना आणि काजूच्या शाही दाट ग्रेव्हीत.'
@@ -1914,7 +1914,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'तंदूर में भुने ताज़े पनीर टिक्का के 8 शाही स्वाद: क्लासिक, लहसुनी, अचारी, रेशमी, अफगानी, पटाखा, ज़ाफ़रानी और जंगली।',
     descriptionMr: 'तंदूरमध्ये भाजलेल्या ताज्या पनीर टिक्काचे ८ शाही प्रकार: क्लासिक, लसुणी, अचारी, रेशमी, अफगाणी, फटाका, जाफरानी आणि जंगली.',
     price: 240, displayPriceRange: '₹240 – ₹315', isGroupMaster: true,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-tikka.jpg',
     tags: ['veg', 'chef-special', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '15-20 mins',
     variants: PANEER_TIKKA_VARIANTS
   },
@@ -1925,7 +1925,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'बेसन और खास मसालों में तले हुए कुरकुरे गरमागरम पकोड़े: मिक्स वेज, पनीर और स्वादिष्ट चीज़ पकोड़ा।',
     descriptionMr: 'खमंग बेसनात तळलेली गरमागरम कुरकुरीत भजी: मिक्स व्हेज, मऊ पनीर आणि चीज भजी.',
     price: 130, displayPriceRange: '₹130 – ₹210', isGroupMaster: true,
-    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/paneer-pakoda.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '10-15 mins',
     variants: PAKODA_VARIANTS
   },
@@ -1938,7 +1938,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'सात्विक उपवास थाली - साबुदाना खिचड़ी, कुरकुरे वड़े और फिंगर चिप्स का पवित्र व स्वादिष्ट संगम।',
     descriptionMr: 'शुद्ध सात्विक उपवासाचे पदार्थ - साबुदाणा खिचडी, कुरकुरीत वडे आणि फिंगर चिप्स.',
     price: 140, displayPriceRange: '₹140 – ₹150', isGroupMaster: true,
-    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg',
+    image: 'assets/menu-images/morning-delight/sabudana-khichadi.jpg',
     tags: ['veg', 'jain-available', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '12 mins',
     variants: UPVAS_FASTING_VARIANTS
   },
@@ -1951,7 +1951,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'चटपटी आलू चाट, चना चाट, पीनट चाट और क्रिस्पी चाइनीज़ भेल का स्वादिष्ट जायका।',
     descriptionMr: 'चटपटीत आलू चाट, चना चाट, पीनट चाट आणि कुरकुरीत चायनीज भेळ.',
     price: 110, displayPriceRange: '₹110 – ₹200', isGroupMaster: true,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-chaat.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '10 mins',
     variants: CHAAT_VARIANTS
   },
@@ -1964,7 +1964,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'पारंपरिक मसालों और भुने लहसुन के साथ कुरकुरा तैयार किया गया चना रोस्ट।',
     descriptionMr: 'खमंग मसाले व भाजलेल्या लसणासह कुरकुरीत भाजलेले चणे.',
     price: 170, displayPriceRange: '₹170 – ₹200', isGroupMaster: true,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-roast.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '10 mins',
     variants: CHANA_ROAST_VARIANTS
   },
@@ -1977,7 +1977,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'सब्जियों, पनीर और चीज से भरे क्रिस्पी स्प्रिंग रोल्स, शेजवान सॉस के साथ।',
     descriptionMr: 'भाज्या, पनीर आणि चीजने भरलेले कुरकुरीत स्प्रिंग रोल्स, शेजवान चटणीसोबत.',
     price: 280, displayPriceRange: '₹280 – ₹325', isGroupMaster: true,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '12-15 mins',
     variants: SPRING_ROLLS_VARIANTS
   },
@@ -1990,7 +1990,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'चिली, क्रिस्पी, शेजवान और गार्लिक सॉस में टॉस किए गए स्वादिष्ट पनीर स्टार्टर्स।',
     descriptionMr: 'चिली, क्रिस्पी, शेजवान आणि गार्लिक सॉसमध्ये टॉस केलेले चवदार पनीर स्टार्टर्स.',
     price: 265, displayPriceRange: '₹265 – ₹315', isGroupMaster: true,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PAANEER CHILLI 1 (1).jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg',
     tags: ['veg', 'bestseller', 'chef-special'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '12-15 mins',
     variants: PANEER_STARTERS_VARIANTS
   },
@@ -2003,7 +2003,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'वेज मंचूरियन, क्रिस्पी वेज, 65 और हॉट पैन के साथ तीखे और कुरकुरे वेज स्टार्टर्स।',
     descriptionMr: 'व्हेज मंचूरियन, क्रिस्पी व्हेज, 65 आणि हॉट पॅनसह मसालेदार व कुरकुरीत व्हेज स्टार्टर्स.',
     price: 240, displayPriceRange: '₹240 – ₹280', isGroupMaster: true,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-crispy-1.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '12-15 mins',
     variants: VEG_STARTERS_VARIANTS
   },
@@ -2016,7 +2016,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'क्रिस्पी कॉर्न चिली, बेबी कॉर्न चिली और हनी पोटैटो का लाजवाब क्रंच।',
     descriptionMr: 'क्रिस्पी कॉर्न चिली, बेबी कॉर्न चिली आणि हनी पोटॅटोचा कुरकुरीत स्वाद.',
     price: 210, displayPriceRange: '₹210 – ₹270', isGroupMaster: true,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '10-12 mins',
     variants: CORN_POTATO_VARIANTS
   },
@@ -2029,7 +2029,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'वेज फ्राइड राइस, शेजवान राइस, गार्लिक राइस और ट्रिपल राइस का स्वादिष्ट संगम।',
     descriptionMr: 'व्हेज फ्राईड राईस, शेजवान राईस, गार्लिक राईस आणि ट्रिपल राईसचा खमंग स्वाद.',
     price: 230, displayPriceRange: '₹230 – ₹290', isGroupMaster: true,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '12-15 mins',
     variants: FRIED_RICE_VARIANTS
   },
@@ -2042,7 +2042,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'वेज हक्का नूडल्स, शेजवान नूडल्स, गार्लिक नूडल्स और सिंगापुर नूडल्स।',
     descriptionMr: 'व्हेज हक्का नूडल्स, शेजवान नूडल्स, गार्लिक नूडल्स आणि सिंगापूर नूडल्स.',
     price: 230, displayPriceRange: '₹230 – ₹280', isGroupMaster: true,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES 1.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-hakka-noodles-1.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '12-15 mins',
     variants: NOODLES_VARIANTS
   },
@@ -2055,7 +2055,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'मलाई कोफ्ता, दिलबहार कोफ्ता, हरियाली कोफ्ता और शाही कश्मीरी कोफ्ता करी।',
     descriptionMr: 'मलाई कोफ्ता, दिलबहार कोफ्ता, हरियाली कोफ्ता आणि शाही कश्मीरी कोफ्ता करी.',
     price: 290, displayPriceRange: '₹290 – ₹315', isGroupMaster: true,
-    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/malai-kofta.jpg',
     tags: ['veg', 'bestseller', 'chef-special'], dietary: 'pure-veg', isSoldOut: false, rating: 4.9, prepTime: '15-20 mins',
     variants: KOFTA_VARIANTS
   },
@@ -2066,7 +2066,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'काली मिर्च वाले उड़द पापड़, पौष्टिक नागली (रागी) पापड़ और खास सिंधी पापड़, भुने या तले हुए।',
     descriptionMr: 'पारंपरिक उडीद पापड, पौष्टिक नाचणी पापड आणि खमंग सिंधी पापड, भाजलेले किंवा तळलेले.',
     price: 30, displayPriceRange: '₹30 – ₹70', isGroupMaster: true,
-    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg',
+    image: 'assets/menu-images/accompaniments/roasted-papad.jpg',
     tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.7, prepTime: '5 mins',
     variants: PAPAD_VARIANTS
   },
@@ -2099,7 +2099,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'अदरक-इलायची वाली कड़क मसाला चाय, झागदार फिल्टर कॉफ़ी, शुद्ध गर्म दूध और बोर्नविटा।',
     descriptionMr: 'आले-वेलचीयुक्त कडक मसाला चहा, फेसाळलेली फिल्टर कॉफी, गरम दूध आणि बोर्नव्हिटा.',
     price: 25, displayPriceRange: '₹25 – ₹80', isGroupMaster: true,
-    image: 'assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/veg-pakoda.jpg',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '5-10 mins',
     variants: HOT_BEVERAGES_VARIANTS
   },
@@ -2110,7 +2110,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'मलाईदार ठंडी आइसक्रीम के मनपसंद स्कूप: वैनिला, बटरस्कॉच, चॉकलेट, काजू द्राक्ष और अफ़गान ड्राई फ्रूट।',
     descriptionMr: 'मलईदार थंडगार आईस्क्रीमचे खास स्कूप: व्हॅनिला, बटरस्कॉच, चॉकलेट, काजू द्राक्ष आणि अफगाण ड्रायफ्रूट.',
     price: 40, displayPriceRange: '₹40 – ₹50', isGroupMaster: true,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: 'Instant',
     variants: ICE_CREAM_VARIANTS
   },
@@ -2121,7 +2121,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'ताज़ी हरी पालक और मेथी के पत्तों से बनी पौष्टिक दालें, सादी या कड़क देसी घी तड़के के साथ।',
     descriptionMr: 'ताजी हिरवी पालक आणि मेथी घालून शिजवलेली पौष्टिक डाळ, साधी किंवा साजूक तुपाच्या तडक्यासह.',
     price: 150, displayPriceRange: '₹150 – ₹165', isGroupMaster: true,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-palak.jpg',
     tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '15 mins',
     variants: GREEN_DAL_VARIANTS
   },
@@ -2129,7 +2129,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'md-mix-veg-paratha', categoryId: 'morning-delights',
     name: 'Mix Veg Paratha', hindiName: 'मिक्स वेज पराठा', marathiName: 'मिक्स व्हेज पराठा',
     description: 'A golden paratha stuffed with finely chopped seasonal vegetables, herbs and aromatic spices, crisp outside and soft within.',
-    price: 140, image: 'assets/menu-images/MORNING DELIGHT/ALOO PARATHA WITH CURD.jpg', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false,
+    price: 140, image: 'assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false,
     rating: 4.8, prepTime: '15 mins',
     variants: PARATHAS_VARIANTS,
     groupedUnder: 'md-parathas-group'
@@ -2138,14 +2138,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     id: 'tc-paneer-achari-tikka', categoryId: 'tandoor-classics', groupedUnder: 'tc-paneer-tikka-group',
     name: 'Paneer Achari Tikka', hindiName: 'पनीर अचारी टिक्का', marathiName: 'पनीर अचारी टिक्का',
     description: 'Paneer cubes marinated with tangy pickling spices and grilled for a bold achari flavour.',
-    price: 240, image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg', tags: ['veg', 'chef-special'], dietary: 'pure-veg', isSoldOut: false,
+    price: 240, image: 'assets/menu-images/tandoor-classics/paneer-tikka.jpg', tags: ['veg', 'chef-special'], dietary: 'pure-veg', isSoldOut: false,
     rating: 4.8, prepTime: '15 mins'
   },
   {
     id: 'fa-curd', categoryId: 'fresh-addons',
     name: 'Curd', hindiName: 'दही', marathiName: 'दही',
     description: 'Creamy, gently tangy plain yogurt to accompany your meal.',
-    price: 60, image: 'assets/menu-images/ACCOMPANIMENTS/CURD.jpg', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false,
+    price: 60, image: 'assets/menu-images/accompaniments/curd.jpg', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false,
     rating: 4.7, prepTime: '5 mins',
     variants: RAITA_VARIANTS,
     groupedUnder: 'fa-raita-group'
@@ -2195,7 +2195,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.2',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/POORI BHAJI.jpg',
+    image: 'assets/menu-images/morning-delight/poori-bhaji.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -2210,7 +2210,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/CHOLE BHATURE.jpg',
+    image: 'assets/menu-images/morning-delight/chole-bhature.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -2229,7 +2229,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/ALOO PARATHA WITH CURD.jpg',
+    image: 'assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: PARATHAS_VARIANTS
@@ -2245,7 +2245,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/ALOO PARATHA WITH CURD 1.jpg',
+    image: 'assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: PARATHAS_VARIANTS,
@@ -2262,7 +2262,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/GOBHI PARATHA WITH CURD.jpg',
+    image: 'assets/menu-images/morning-delight/gobhi-paratha-with-curd.jpg',
     rating: 4.6,
     prepTime: '15 mins',
     variants: PARATHAS_VARIANTS,
@@ -2279,7 +2279,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/PANEER PARATHA WITH CURD.jpg',
+    image: 'assets/menu-images/morning-delight/paneer-paratha-with-curd.jpg',
     rating: 4.9,
     prepTime: '15 mins',
     variants: PARATHAS_VARIANTS,
@@ -2296,7 +2296,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/POHA.jpg',
+    image: 'assets/menu-images/morning-delight/poha.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -2311,7 +2311,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG CUTLET 1.jpg',
+    image: 'assets/menu-images/morning-delight/veg-cutlet-1.jpg',
     rating: 4.5,
     prepTime: '15 mins'
   },
@@ -2326,7 +2326,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER JAM.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-jam.jpg',
     rating: 4.4,
     prepTime: '5 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2343,7 +2343,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
     rating: 4.3,
     prepTime: '5 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2364,7 +2364,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/dishes/pride_special_sandwich.jfif',
+    image: 'assets/dishes/pride-special-sandwich.jfif',
     rating: 4.9,
     prepTime: '12 mins',
     variants: SANDWICHES_VARIANTS
@@ -2380,7 +2380,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/PRIDE SPECIAL SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/pride-special-sandwich.jpg',
     rating: 5.0,
     prepTime: '15 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2397,7 +2397,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/CHEESE CHUTNEY SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg',
     rating: 4.7,
     prepTime: '10 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2414,7 +2414,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/CHEESE GRILLED SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg',
     rating: 4.8,
     prepTime: '12 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2431,7 +2431,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG CLUB SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/veg-club-sandwich.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2448,7 +2448,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG GRILLED SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/veg-grilled-sandwich.jpg',
     rating: 4.6,
     prepTime: '12 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2465,7 +2465,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG CHEESE GRILLED SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg',
     rating: 4.8,
     prepTime: '12 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2482,7 +2482,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/VEG SANDWICH.jpg',
+    image: 'assets/menu-images/morning-delight/veg-sandwich.jpg',
     rating: 4.5,
     prepTime: '8 mins',
     variants: SANDWICHES_VARIANTS,
@@ -2499,7 +2499,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'jain-available'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg',
+    image: 'assets/menu-images/morning-delight/sabudana-khichadi.jpg',
     rating: 4.9,
     prepTime: '12 mins',
     variants: UPVAS_FASTING_VARIANTS,
@@ -2516,7 +2516,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA WADA.jpg',
+    image: 'assets/menu-images/morning-delight/sabudana-wada.jpg',
     rating: 4.9,
     prepTime: '15 mins',
     variants: UPVAS_FASTING_VARIANTS,
@@ -2537,7 +2537,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -2554,7 +2554,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2571,7 +2571,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
     rating: 4.6,
     prepTime: '5 mins'
   },
@@ -2588,7 +2588,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/BREAD BUTTER TOAST.jpg',
+    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
     rating: 4.5,
     prepTime: '5 mins'
   },
@@ -2605,7 +2605,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/VEG PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/veg-pakoda.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -2620,7 +2620,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/PANEER PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/paneer-pakoda.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -2635,7 +2635,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHEESE PAKODA.jpg',
+    image: 'assets/menu-images/tasty-tidbits/cheese-pakoda.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -2650,7 +2650,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/FINGER CHIPS.jpg',
+    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     rating: 4.6,
     prepTime: '10 mins',
     variants: UPVAS_FASTING_VARIANTS,
@@ -2667,7 +2667,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-roast.jpg',
     rating: 4.4,
     prepTime: '10 mins',
     variants: CHANA_ROAST_VARIANTS,
@@ -2684,7 +2684,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA CHAAT.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-chaat.jpg',
     rating: 4.7,
     prepTime: '10 mins',
     variants: CHAAT_VARIANTS,
@@ -2701,7 +2701,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/PEANUT CHAAT.jpg',
+    image: 'assets/menu-images/tasty-tidbits/peanut-chaat.jpg',
     rating: 4.8,
     prepTime: '10 mins',
     variants: CHAAT_VARIANTS,
@@ -2718,7 +2718,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA GARLIC ROAST 1.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-garlic-roast-1.jpg',
     rating: 4.9,
     prepTime: '12 mins',
     variants: CHANA_ROAST_VARIANTS,
@@ -2735,7 +2735,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/ALOO CHAAT 1.jpg',
+    image: 'assets/menu-images/tasty-tidbits/aloo-chaat-1.jpg',
     rating: 4.6,
     prepTime: '10 mins',
     variants: CHAAT_VARIANTS,
@@ -2752,7 +2752,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHINESE BHEL.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chinese-bhel.jpg',
     rating: 4.8,
     prepTime: '12 mins',
     variants: CHAAT_VARIANTS,
@@ -2776,7 +2776,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg',
+    image: 'assets/menu-images/soups/veg-manchow-soup.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -2793,7 +2793,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/VEG MANCHOW SOUP.jpg',
+    image: 'assets/menu-images/soups/veg-manchow-soup.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -2810,7 +2810,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/HOT & SOUR SOUP.jpg',
+    image: 'assets/menu-images/soups/hot-sour-soup.jpg',
     rating: 4.7,
     prepTime: '12 mins'
   },
@@ -2827,7 +2827,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/TOMATO SOUP.jpg',
+    image: 'assets/menu-images/soups/tomato-soup.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -2844,7 +2844,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/LEMON CORIANDER SOUP.jpg',
+    image: 'assets/menu-images/soups/lemon-coriander-soup.jpg',
     rating: 4.8,
     prepTime: '12 mins'
   },
@@ -2861,7 +2861,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/VEG SWEETCORN SOUP.jpg',
+    image: 'assets/menu-images/soups/veg-sweetcorn-soup.jpg',
     rating: 4.7,
     prepTime: '12 mins'
   },
@@ -2878,7 +2878,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/VEG CLEAR SOUP.jpg',
+    image: 'assets/menu-images/soups/veg-clear-soup.jpg',
     rating: 4.5,
     prepTime: '10 mins'
   },
@@ -2895,7 +2895,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/chinese-platter.jpg',
     rating: 5.0,
     prepTime: '22 mins'
   },
@@ -2910,7 +2910,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PAANEER CHILLI 1 (1).jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg',
     rating: 4.9,
     prepTime: '15 mins',
     variants: PANEER_STARTERS_VARIANTS,
@@ -2927,7 +2927,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER MANCHURIAN.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: PANEER_STARTERS_VARIANTS,
@@ -2944,7 +2944,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SANCHO 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg',
     rating: 4.9,
     prepTime: '18 mins',
     variants: PANEER_STARTERS_VARIANTS,
@@ -2961,7 +2961,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SATAY 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-satay-1.jpg',
     rating: 4.7,
     prepTime: '18 mins',
     variants: PANEER_STARTERS_VARIANTS,
@@ -2978,7 +2978,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spider-roll.avif',
     rating: 4.9,
     prepTime: '20 mins',
     variants: SPRING_ROLLS_VARIANTS,
@@ -2995,7 +2995,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg',
     rating: 4.8,
     prepTime: '18 mins',
     variants: SPRING_ROLLS_VARIANTS,
@@ -3012,7 +3012,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/THREAD PANEER.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg',
     rating: 4.8,
     prepTime: '18 mins',
     variants: PANEER_STARTERS_VARIANTS,
@@ -3029,7 +3029,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SALTON.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: PANEER_STARTERS_VARIANTS,
@@ -3046,7 +3046,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER 65.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-65.jpg',
     rating: 4.9,
     prepTime: '15 mins',
     variants: PANEER_STARTERS_VARIANTS,
@@ -3063,7 +3063,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER IN HOT Garlic SAUCE.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-in-hot-garlic-sauce.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: PANEER_STARTERS_VARIANTS,
@@ -3082,7 +3082,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/chinese-platter.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3099,7 +3099,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPIDER ROLL.avif',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spider-roll.avif',
     rating: 4.8,
     prepTime: '16 mins',
     variants: SPRING_ROLLS_VARIANTS,
@@ -3117,7 +3117,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.3',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-manchurian.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: VEG_STARTERS_VARIANTS,
@@ -3134,7 +3134,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG LOLLIPOP.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-lollipop.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: VEG_STARTERS_VARIANTS,
@@ -3151,7 +3151,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG SPRING ROLL.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-spring-roll.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: SPRING_ROLLS_VARIANTS,
@@ -3168,7 +3168,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG 65.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-65.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: VEG_STARTERS_VARIANTS,
@@ -3185,7 +3185,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG CRISPY 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-crispy-1.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: VEG_STARTERS_VARIANTS,
@@ -3202,7 +3202,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BALL IN HOT GARLIC SAUCE.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: VEG_STARTERS_VARIANTS,
@@ -3219,7 +3219,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/MUSHROOM BABYCORN CHILLI.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: CORN_POTATO_VARIANTS,
@@ -3236,7 +3236,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG MANCHURIAN 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-manchurian-1.jpg',
     rating: 4.8,
     prepTime: '16 mins',
     variants: VEG_STARTERS_VARIANTS,
@@ -3253,7 +3253,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BULLET 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: VEG_STARTERS_VARIANTS,
@@ -3270,7 +3270,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG HOT PAN 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg',
     rating: 4.8,
     prepTime: '16 mins',
     variants: VEG_STARTERS_VARIANTS,
@@ -3287,7 +3287,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CRISPY CORN CHILLI.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg',
     rating: 4.8,
     prepTime: '12 mins',
     variants: CORN_POTATO_VARIANTS,
@@ -3304,7 +3304,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/HONEY CHILLI POTATO.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: CORN_POTATO_VARIANTS,
@@ -3321,7 +3321,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/SOYABEAN CHILLI.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/soyabean-chilli.jpg',
     rating: 4.6,
     prepTime: '15 mins',
     variants: CORN_POTATO_VARIANTS,
@@ -3341,7 +3341,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.5',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg',
+    image: 'assets/menu-images/tandoor-classics/tandoori-platter.jpg',
     rating: 5.0,
     prepTime: '25 mins'
   },
@@ -3356,7 +3356,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-tikka.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -3371,7 +3371,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/JUNGLI PANEER TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/jungli-paneer-tikka.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -3386,7 +3386,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER PATAKHA TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -3401,7 +3401,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER RESHMI TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-reshmi-tikka.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -3416,7 +3416,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER AFGHANI TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-afghani-tikka.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -3431,7 +3431,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/LASOONI PANEER TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/lasooni-paneer-tikka.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -3446,7 +3446,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER ZAFRANI TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-zafrani-tikka.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -3461,7 +3461,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER TIKKA SHAWARMA 1.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-tikka-shawarma-1.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -3476,7 +3476,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER COMBO TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-combo-tikka.jpg',
     rating: 5.0,
     prepTime: '22 mins'
   },
@@ -3491,7 +3491,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG HARA BHARA KABAB 1.jpg',
+    image: 'assets/menu-images/tandoor-classics/veg-hara-bhara-kabab-1.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -3506,7 +3506,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG SEEKH KEBAB.jpg',
+    image: 'assets/menu-images/tandoor-classics/veg-seekh-kebab.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -3521,7 +3521,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG MANCHRIAN TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/veg-manchrian-tikka.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -3536,7 +3536,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/MUSHROOM BABYCORN TIKKA 1.jpg',
+    image: 'assets/menu-images/tandoor-classics/mushroom-babycorn-tikka-1.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3551,7 +3551,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG CHILLI MILLI KABAB.jpg',
+    image: 'assets/menu-images/tandoor-classics/veg-chilli-milli-kabab.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3566,7 +3566,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/ALOO TIKKA 1.jpg',
+    image: 'assets/menu-images/tandoor-classics/aloo-tikka-1.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -3581,7 +3581,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG GULZARI KABAB.jpg',
+    image: 'assets/menu-images/tandoor-classics/veg-gulzari-kabab.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3596,7 +3596,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG UTTARANCHALI KABAB.jpg',
+    image: 'assets/menu-images/tandoor-classics/veg-uttaranchali-kabab.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3613,7 +3613,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN RICE 2.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg',
     rating: 4.9,
     prepTime: '18 mins',
     variants: FRIED_RICE_VARIANTS,
@@ -3630,7 +3630,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: FRIED_RICE_VARIANTS,
@@ -3647,7 +3647,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: FRIED_RICE_VARIANTS,
@@ -3664,7 +3664,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/MUSHROOM GARLIC FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: FRIED_RICE_VARIANTS,
@@ -3681,7 +3681,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG COMBINATION RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: FRIED_RICE_VARIANTS,
@@ -3698,7 +3698,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG TRIPLE SCHEZWAN NOODLES.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg',
     rating: 4.8,
     prepTime: '18 mins',
     variants: NOODLES_VARIANTS,
@@ -3715,7 +3715,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SCHEZWAN NOODLES 2.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: NOODLES_VARIANTS,
@@ -3732,7 +3732,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG HAKKA NOODLES 1.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-hakka-noodles-1.jpg',
     rating: 4.8,
     prepTime: '15 mins',
     variants: NOODLES_VARIANTS,
@@ -3749,7 +3749,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SINGAPURI NOODLES.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg',
     rating: 4.7,
     prepTime: '15 mins',
     variants: NOODLES_VARIANTS,
@@ -3766,7 +3766,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG MANCHURIAN NOODLES.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-manchurian-noodles.jpg',
     rating: 4.8,
     prepTime: '16 mins',
     variants: NOODLES_VARIANTS,
@@ -3787,7 +3787,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.4',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-pride-special.jpg',
     rating: 4.7,
     prepTime: '20 mins'
   },
@@ -3804,7 +3804,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.5',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-butter-masala.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -3821,7 +3821,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.6',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg',
+    image: 'assets/menu-images/tandoor-classics/tandoori-platter.jpg',
     rating: 4.9,
     prepTime: '25 mins'
   },
@@ -3838,7 +3838,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.3',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/chinese-platter.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -3855,7 +3855,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-pride-special-1.jpg',
     rating: 5.0,
     prepTime: '20 mins'
   },
@@ -3871,7 +3871,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.6',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/SHEV BHAJI.jpg',
+    image: 'assets/menu-images/veg-specialities/shev-bhaji.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -3884,14 +3884,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     description: "Whole cashews in a spicy red curry. For the creamy yellow-gravy preparation, choose Kaju Masala.",
     price: 290,
     variants: [
-      { name: 'Kaju Curry', price: 290, image: 'assets/menu-images/VEG SPECIALITIES/KAJU CURRY.jpg' },
-      { name: 'Kaju Masala', price: 290, image: 'assets/menu-images/VEG SPECIALITIES/KAJU MASALA.jpg' }
+      { name: 'Kaju Curry', price: 290, image: 'assets/menu-images/veg-specialities/kaju-curry.jpg' },
+      { name: 'Kaju Masala', price: 290, image: 'assets/menu-images/veg-specialities/kaju-masala.jpg' }
     ],
     tags: ['veg', 'bestseller', 'zomato-top'],
     zomatoRating: '4.3',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/KAJU CURRY.jpg',
+    image: 'assets/menu-images/veg-specialities/kaju-curry.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -3906,7 +3906,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG CHILLI MILLI.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-chilli-milli.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3921,7 +3921,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG KADHAI.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-kadhai.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -3936,7 +3936,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG HANDI.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-handi.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3951,7 +3951,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG KOLHAPURI 1.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-kolhapuri-1.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3966,7 +3966,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/MUSHROOM BABYCORN MASALA.jpg',
+    image: 'assets/menu-images/veg-specialities/mushroom-babycorn-masala.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -3983,7 +3983,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/MIX VEG.jpg',
+    image: 'assets/menu-images/veg-specialities/mix-veg.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -3998,7 +3998,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/CHOLE MASALA.jpg',
+    image: 'assets/menu-images/veg-specialities/chole-masala.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -4011,13 +4011,13 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     description: 'Fenugreek leaves in a rich, flavourful sauce, finished with crisp fried garlic. The Palak option uses spinach in place of fenugreek.',
     price: 250,
     variants: [
-      { name: 'Lasooni Methi', price: 250, image: 'assets/menu-images/VEG SPECIALITIES/LASOONI METHI.jpg' },
-      { name: 'Lasooni Palak', price: 250, image: 'assets/menu-images/VEG SPECIALITIES/LASOONI PALAK.jpg' }
+      { name: 'Lasooni Methi', price: 250, image: 'assets/menu-images/veg-specialities/lasooni-methi.jpg' },
+      { name: 'Lasooni Palak', price: 250, image: 'assets/menu-images/veg-specialities/lasooni-palak.jpg' }
     ],
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/LASOONI METHI.jpg',
+    image: 'assets/menu-images/veg-specialities/lasooni-methi.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4032,7 +4032,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG TOOFANI.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-toofani.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4047,7 +4047,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG JAIPURI.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-jaipuri.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -4062,7 +4062,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG ZATPAT.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-zatpat.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -4077,7 +4077,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG HARIYALI.jpg',
+    image: 'assets/menu-images/delicious-kofta/veg-hariyali.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4092,7 +4092,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/ALOO GOBI  BANARSI.jpg',
+    image: 'assets/menu-images/veg-specialities/aloo-gobi-banarsi.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -4107,7 +4107,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG BUKHARA 1.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-bukhara-1.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -4122,7 +4122,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/DUM ALOO PUNJABI.jpg',
+    image: 'assets/menu-images/veg-specialities/dum-aloo-punjabi.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -4137,7 +4137,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/GREEN PEAS MASALA.jpg',
+    image: 'assets/menu-images/veg-specialities/green-peas-masala.jpg',
     rating: 4.6,
     prepTime: '15 mins'
   },
@@ -4152,7 +4152,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/CORN PALAK.jpg',
+    image: 'assets/menu-images/veg-specialities/corn-palak.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4167,7 +4167,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG TAWA SPECIAL.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-tawa-special.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4182,7 +4182,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/MIX VEG.jpg',
+    image: 'assets/menu-images/veg-specialities/mix-veg.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -4200,7 +4200,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.3',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/malai-kofta.jpg',
     rating: 4.9,
     prepTime: '20 mins',
     variants: KOFTA_VARIANTS,
@@ -4217,7 +4217,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/NARGISI KOFTA 1.jpg',
+    image: 'assets/menu-images/delicious-kofta/nargisi-kofta-1.jpg',
     rating: 4.8,
     prepTime: '20 mins',
     variants: KOFTA_VARIANTS,
@@ -4234,7 +4234,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG SUNRISE.jpg',
+    image: 'assets/menu-images/delicious-kofta/veg-sunrise.jpg',
     rating: 4.8,
     prepTime: '20 mins',
     variants: KOFTA_VARIANTS,
@@ -4251,7 +4251,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/CHEESE KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/cheese-kofta.jpg',
     rating: 4.8,
     prepTime: '20 mins',
     variants: KOFTA_VARIANTS,
@@ -4268,7 +4268,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/veg-kofta.jpg',
     rating: 4.7,
     prepTime: '18 mins',
     variants: KOFTA_VARIANTS,
@@ -4285,7 +4285,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/PANEER KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/paneer-kofta.jpg',
     rating: 4.8,
     prepTime: '20 mins',
     variants: KOFTA_VARIANTS,
@@ -4304,7 +4304,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG FRIED RICE.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -4319,7 +4319,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER THREE STYLE 1.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-three-style-1.jpg',
     rating: 5.0,
     prepTime: '22 mins'
   },
@@ -4335,7 +4335,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.4',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER TIKKA MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-tikka-masala.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -4351,7 +4351,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.4',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-butter-masala.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -4366,7 +4366,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER PATAKHA MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-patakha-masala.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -4381,7 +4381,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER ANGARA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-angara.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -4396,7 +4396,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER HANDI.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-handi.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -4411,7 +4411,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER TOOFANI.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-toofani.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4426,7 +4426,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PALAK PANEER.jpg',
+    image: 'assets/menu-images/paneer-specialities/palak-paneer.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4441,7 +4441,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BHURJI.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-bhurji.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -4456,7 +4456,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER ADRAKI.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-adraki.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -4471,7 +4471,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER PATIALA 1.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-patiala-1.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -4486,7 +4486,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/KAJU PANEEER MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/kaju-paneeer-masala.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -4501,7 +4501,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/LACHHEDAR PANEER.jpg',
+    image: 'assets/menu-images/paneer-specialities/lachhedar-paneer.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -4516,7 +4516,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER CHANGEZI.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-changezi.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -4531,7 +4531,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER POWER.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-power.jpg',
     rating: 5.0,
     prepTime: '20 mins'
   },
@@ -4546,7 +4546,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER MIRCH MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-mirch-masala.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4561,7 +4561,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/MUTTER PANEER MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/mutter-paneer-masala.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4576,7 +4576,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER METHI CHAMAN.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-methi-chaman.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4591,7 +4591,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER KADHAI 1.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-kadhai-1.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4606,7 +4606,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER KOLHAPURI.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-kolhapuri.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -4621,7 +4621,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/MUSHROOM PANEER BABYCORN MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/mushroom-paneer-babycorn-masala.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -4643,7 +4643,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL FRY.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-fry.jpg',
     rating: 4.9,
     zomatoRating: '4.2',
     prepTime: '15 mins'
@@ -4661,7 +4661,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL FRY.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-fry.jpg',
     rating: 4.7,
     prepTime: '12 mins'
   },
@@ -4679,7 +4679,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     zomatoRating: '4.2',
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-tadka.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -4694,7 +4694,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL MAHARANI.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-maharani.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -4709,7 +4709,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/KADHI PAKODA.jpg',
+    image: 'assets/menu-images/flavorful-dal/kadhi-pakoda.jpg',
     rating: 4.7,
     prepTime: '18 mins'
   },
@@ -4726,7 +4726,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/GREEN SALAD.jpg',
+    image: 'assets/menu-images/accompaniments/green-salad.jpg',
     rating: 4.6,
     prepTime: '5 mins'
   },
@@ -4741,7 +4741,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/KACHUMBER SALAD.jpg',
+    image: 'assets/menu-images/accompaniments/kachumber-salad.jpg',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -4760,7 +4760,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/boondi-raita.jpg',
     rating: 4.8,
     prepTime: '5 mins',
     variants: RAITA_VARIANTS
@@ -4778,7 +4778,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/boondi-raita.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -4795,7 +4795,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/PINEAPPLE RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/pineapple-raita.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -4812,7 +4812,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/MIX FRUIT RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/mix-fruit-raita.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -4827,7 +4827,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/SINDHI PAPAD.jpg',
+    image: 'assets/menu-images/accompaniments/sindhi-papad.jpg',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -4847,7 +4847,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'रोस्टेड उड़द पापड़',
         marathiName: 'रोस्टेड उडीद पापड',
         price: 30,
-        image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg',
+        image: 'assets/menu-images/accompaniments/roasted-papad.jpg',
         description: 'Crisp char-roasted urad dal papad served with tangy mint chutney.',
         descriptionHi: 'आंच पर भुना हुआ कुरकुरा उड़द दाल पापड़, हरी चटनी के साथ।',
         descriptionMr: 'आचेवर भाजलेला कुरकुरीत उडीद पापड, पुदिना चटणीसोबत.'
@@ -4857,7 +4857,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'फ्राइड उड़द पापड़',
         marathiName: 'तळलेला उडीद पापड',
         price: 35,
-        image: 'assets/menu-images/ACCOMPANIMENTS/FRIED PAPAD.jpg',
+        image: 'assets/menu-images/accompaniments/fried-papad.jpg',
         description: 'Golden deep-fried crisp urad dal papad.',
         descriptionHi: 'तेल में तला हुआ एकदम कुरकुरा व खस्ता उड़द पापड़।',
         descriptionMr: 'तेलात तळून काढलेला खरपूस व कुरकुरीत उडीद पापड.'
@@ -4867,7 +4867,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'मसाला उड़द पापड़',
         marathiName: 'मसाला उडीद पापड',
         price: 40,
-        image: 'assets/menu-images/ACCOMPANIMENTS/MASALA PAPAD.jpg',
+        image: 'assets/menu-images/accompaniments/masala-papad.jpg',
         description: 'Crisp fried urad papad loaded with onion, tomato, coriander, sev and chaat masala.',
         descriptionHi: 'बारीक कटे प्याज, टमाटर, धनिया, बारीक सेव और चाट मसाले से सजा मसाला पापड़।',
         descriptionMr: 'बारीक कांदा, टोमॅटो, कोथिंबीर, बारीक शेव व चाट मसाल्याने सजवलेला चवदार मसाला पापड.'
@@ -4876,7 +4876,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg',
+    image: 'assets/menu-images/accompaniments/roasted-papad.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -4896,7 +4896,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'रोस्टेड नागली पापड़',
         marathiName: 'भाजलेला नाचणी पापड',
         price: 30,
-        image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED NAGALI PAPAD.jpg',
+        image: 'assets/menu-images/accompaniments/roasted-nagali-papad.jpg',
         description: 'Char-roasted wholesome finger millet (ragi/nagli) crisp papad.',
         descriptionHi: 'आंच पर भुना हुआ पौष्टिक नागली (रागी) का कुरकुरा पापड़।',
         descriptionMr: 'आचेवर भाजलेला पौष्टिक व कुरकुरीत नाचणी पापड.'
@@ -4906,7 +4906,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'फ्राइड नागली पापड़',
         marathiName: 'तळलेला नाचणी पापड',
         price: 35,
-        image: 'assets/menu-images/ACCOMPANIMENTS/NAGALI FRIED PAPAD.jpg',
+        image: 'assets/menu-images/accompaniments/nagali-fried-papad.jpg',
         description: 'Crisp golden deep-fried traditional nagli papad.',
         descriptionHi: 'तेल में तला हुआ कुरकुरा पारंपरिक नागली पापड़।',
         descriptionMr: 'तेलात तळलेला पारंपरिक कुरकुरीत नाचणी पापड.'
@@ -4916,7 +4916,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'मसाला नागली पापड़',
         marathiName: 'मसाला नाचणी पापड',
         price: 40,
-        image: 'assets/menu-images/ACCOMPANIMENTS/NAGALI MASALA PAPAD.jpg',
+        image: 'assets/menu-images/accompaniments/nagali-masala-papad.jpg',
         description: 'Crunchy nagli papad topped with fresh salad, chaat spices and fine sev.',
         descriptionHi: 'चटपटी कटी सब्जियों, चाट मसाले और सेव से भरपूर नागली मसाला पापड़।',
         descriptionMr: 'कांदा, टोमॅटो, कोथिंबीर आणि शेव घातलेला चटपटीत नाचणी मसाला पापड.'
@@ -4925,7 +4925,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED NAGALI PAPAD.jpg',
+    image: 'assets/menu-images/accompaniments/roasted-nagali-papad.jpg',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -4946,7 +4946,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-roti.jpg',
     rating: 4.8,
     prepTime: '5 mins',
     variants: ROTI_CHAPATI_VARIANTS
@@ -4966,7 +4966,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-naan.jpg',
     rating: 4.9,
     prepTime: '10 mins',
     variants: NAAN_VARIANTS
@@ -4986,7 +4986,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER KULCHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-kulcha.jpg',
     rating: 4.8,
     prepTime: '10 mins',
     variants: KULCHA_PARATHA_VARIANTS
@@ -5004,7 +5004,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/roti.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -5021,7 +5021,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER ROTI 1.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-roti-1.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -5038,7 +5038,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
     rating: 4.7,
     prepTime: '6 mins'
   },
@@ -5055,7 +5055,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/naan.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5072,7 +5072,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-naan.jpg',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -5089,7 +5089,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/GARLIC NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/garlic-naan.jpg',
     rating: 4.9,
     zomatoRating: '4.4',
     prepTime: '10 mins'
@@ -5109,7 +5109,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg',
     rating: 4.9,
     prepTime: '10 mins'
   },
@@ -5126,7 +5126,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER CHEESE GARLIC NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -5143,7 +5143,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/BUTTER KULCHA 1.jpg',
+    image: 'assets/menu-images/signature-indian-breads/butter-kulcha-1.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5160,7 +5160,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/STUFFED KULCHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/stuffed-kulcha.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -5177,7 +5177,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/LACHHA PARATHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/lachha-paratha.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5194,7 +5194,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/TAWA PARATHA.jpg',
+    image: 'assets/menu-images/signature-indian-breads/tawa-paratha.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -5211,7 +5211,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/MISSI ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/missi-roti.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -5228,7 +5228,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/METHI ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/methi-roti.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -5245,7 +5245,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/KASHMIRI NAAN.jpg',
+    image: 'assets/menu-images/signature-indian-breads/kashmiri-naan.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -5266,7 +5266,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
     rating: 5.0,
     prepTime: '15 mins'
   },// ==================== RICE & BIRYANI FIESTA ====================
@@ -5286,7 +5286,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'zomato-top', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg',
     rating: 4.9,
     zomatoRating: '4.4',
     prepTime: '20 mins'
@@ -5304,7 +5304,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg',
     rating: 4.9,
     zomatoRating: '4.4',
     prepTime: '20 mins'
@@ -5322,7 +5322,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG HYDERABADI BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg',
     rating: 4.8,
     prepTime: '20 mins'
   },
@@ -5339,7 +5339,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER TIKKA BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg',
     rating: 5.0,
     prepTime: '20 mins'
   },
@@ -5356,7 +5356,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/KAJU PANEER BIRYANI 1.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -5373,7 +5373,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/PANEER PATAKHA BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg',
     rating: 4.9,
     prepTime: '20 mins'
   },
@@ -5389,7 +5389,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'zomato-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/JEERA RICE.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/jeera-rice.jpg',
     rating: 4.7,
     zomatoRating: '4.2',
     prepTime: '12 mins'
@@ -5406,7 +5406,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/STEAMED RICE.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/steamed-rice.jpg',
     rating: 4.6,
     prepTime: '10 mins'
   },
@@ -5422,7 +5422,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/dal-khichadi.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -5438,7 +5438,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/DAL KHICHADI WITH TADKA.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/dal-khichadi-with-tadka.jpg',
     rating: 4.9,
     prepTime: '15 mins'
   },
@@ -5458,7 +5458,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG PULAO.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -5475,7 +5475,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG PULAO.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -5492,7 +5492,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MUTTER PANEER PULAO.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg',
     rating: 4.8,
     prepTime: '15 mins'
   },
@@ -5509,7 +5509,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/CURD RICE 1.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg',
     rating: 4.8,
     prepTime: '10 mins'
   },
@@ -5526,7 +5526,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/MASALA RICE.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/masala-rice.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -5543,7 +5543,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/LEMON RICE 1.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg',
     rating: 4.7,
     prepTime: '12 mins'
   },
@@ -5562,7 +5562,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-tadka.jpg',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -5579,7 +5579,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SOUPS/VEG CLEAR SOUP.jpg',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -5594,7 +5594,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DESSERTS/GULAB JAMUN.jpg',
+    image: 'assets/menu-images/desserts/gulab-jamun.jpg',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -5609,7 +5609,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DESSERTS/RASGULLA.jpg',
+    image: 'assets/menu-images/desserts/rasgulla.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -5626,7 +5626,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER KADHAI 1.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-kadhai-1.jpg',
     rating: 4.9,
     prepTime: '10 mins'
   },
@@ -5643,7 +5643,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/PANEER PATAKHA TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5660,7 +5660,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG SEEKH KEBAB.jpg',
+    image: 'assets/menu-images/tandoor-classics/veg-seekh-kebab.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5683,7 +5683,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TASTY TIDBITS/CHANA ROAST.jpg',
+    image: 'assets/menu-images/tasty-tidbits/chana-roast.jpg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -5704,7 +5704,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -5725,7 +5725,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/ROASTED PAPAD.jpg',
+    image: 'assets/menu-images/accompaniments/roasted-papad.jpg',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -5746,7 +5746,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER PATAKHA MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-patakha-masala.jpg',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -5767,7 +5767,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/CHAPATI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -5786,7 +5786,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG HYDERABADI BIRYANI.jpg',
+    image: 'assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -5803,7 +5803,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG SUNRISE.jpg',
+    image: 'assets/menu-images/delicious-kofta/veg-sunrise.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5820,7 +5820,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5837,7 +5837,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG 65.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-65.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5854,7 +5854,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/SHEV BHAJI.jpg',
+    image: 'assets/menu-images/veg-specialities/shev-bhaji.jpg',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -5873,7 +5873,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG TAWA SPECIAL.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-tawa-special.jpg',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -5890,7 +5890,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER SPRING ROLL.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -5907,7 +5907,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER TIKKA MASALA.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-tikka-masala.jpg',
     rating: 4.9,
     prepTime: '10 mins'
   },
@@ -5922,13 +5922,13 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionMr: 'दाट ताज्या दुधापासून बनवलेला थंडगार शेक, व्हॅनिला किंवा चॉकलेटच्या स्वादात.',
     price: 120,
     variants: [
-      { name: 'Vanilla Shake', price: 120, image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg' },
-      { name: 'Chocolate Shake', price: 130, image: 'assets/menu-images/DESSERTS/HOT CHOCOLATE FUDGE.jpg' }
+      { name: 'Vanilla Shake', price: 120, image: 'assets/brand-placeholder.svg' },
+      { name: 'Chocolate Shake', price: 130, image: 'assets/brand-placeholder.svg' }
     ],
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/MORNING DELIGHT/SABUDANA KHICHADI.jpg',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5945,7 +5945,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIGNATURE INDIAN BREADS/MISSI ROTI.jpg',
+    image: 'assets/menu-images/signature-indian-breads/missi-roti.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5962,7 +5962,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/BOONDI RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/boondi-raita.jpg',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -5979,7 +5979,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER 65.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-65.jpg',
     rating: 4.9,
     prepTime: '8 mins'
   },
@@ -5998,7 +5998,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG ZATPAT.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-zatpat.jpg',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -6020,7 +6020,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'सादा छाछ',
         marathiName: 'साधे ताक',
         price: 60,
-        image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+        image: 'assets/brand-placeholder.svg',
         description: 'Refreshing churned dairy buttermilk served chilled and lightly salted.',
         descriptionHi: 'ठंडी और ताज़ी सादी नमकीन छाछ।',
         descriptionMr: 'थंडगार आणि ताजे साधे ताक.'
@@ -6030,7 +6030,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'मसाला छाछ',
         marathiName: 'मसाला ताक',
         price: 70,
-        image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+        image: 'assets/brand-placeholder.svg',
         description: 'Refreshing churned buttermilk tempered with roasted cumin, rock salt, ginger and fresh coriander.',
         descriptionHi: 'भुने जीरे, अदरक, सेंधा नमक और हरी धनिया से भरपूर स्वादिष्ट मसाला छाछ।',
         descriptionMr: 'भाजलेले जिरे, आले, सैंधव मीठ आणि कोथिंबीर घातलेले खमंग मसाला ताक.'
@@ -6039,7 +6039,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -6061,7 +6061,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'जलजीरा पानी',
         marathiName: 'जलजिरा पाणी',
         price: 35,
-        image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&auto=format&fit=crop&q=80',
+        image: 'assets/brand-placeholder.svg',
         description: 'Cool digestive drink blended with mint, roasted cumin, black salt and fresh lemon juice in chilled water.',
         descriptionHi: 'पुदीना, भुना जीरा, काला नमक और नींबू के रस से बना ठंडा पाचक जलजीरा पानी।',
         descriptionMr: 'पुदिना, जिरे, काळे मीठ आणि लिंबाच्या रसाने बनवलेले थंड पाचक जलजिरा पाणी.'
@@ -6071,7 +6071,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'जलजीरा सोडा',
         marathiName: 'जलजिरा सोडा',
         price: 40,
-        image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&auto=format&fit=crop&q=80',
+        image: 'assets/brand-placeholder.svg',
         description: 'Sparkling effervescent cooler blended with cumin, mint, black salt and chilled club soda.',
         descriptionHi: 'फ़िज़ी क्लब सोडे और चटपटे जलजीरा मसालों का ताजगी भरा पेय।',
         descriptionMr: 'थंडगार क्लब सोडा आणि चटपटीत जलजिरा मसाल्यांचे फिजी पेय.'
@@ -6080,7 +6080,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1556881286-fc6915169721?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -6102,7 +6102,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'फ्रेश लाइम पानी',
         marathiName: 'फ्रेश लाईम पाणी',
         price: 35,
-        image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+        image: 'assets/brand-placeholder.svg',
         description: 'Fresh squeezed lime juice served chilled with purified water, sweet or salted as per your taste.',
         descriptionHi: 'ताज़े नींबू का रस और ठंडा पानी, मीठा या नमकीन आपकी पसंद अनुसार।',
         descriptionMr: 'ताज्या लिंबाचा रस व थंड पाणी, आपल्या आवडीनुसार गोड किंवा खारट.'
@@ -6112,7 +6112,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'फ्रेश लाइम सोडा',
         marathiName: 'फ्रेश लाईम सोडा',
         price: 40,
-        image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+        image: 'assets/brand-placeholder.svg',
         description: 'Fresh squeezed lime juice served with effervescent sparkling club soda, sweet or salted.',
         descriptionHi: 'ताज़े नींबू के रस और फ़िज़ी क्लब सोडे का ताजगी भरा शीतल पेय।',
         descriptionMr: 'ताज्या लिंबाचा रस आणि फिजी क्लब सोड्याचे खमंग थंडगार पेय.'
@@ -6121,7 +6121,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -6138,7 +6138,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/TANDOOR CLASSICS/VEG MANCHRIAN TIKKA.jpg',
+    image: 'assets/menu-images/tandoor-classics/veg-manchrian-tikka.jpg',
     rating: 4.9,
     prepTime: '1 min'
   },
@@ -6155,7 +6155,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.8,
     prepTime: '1 min'
   },
@@ -6172,7 +6172,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.8,
     prepTime: '1 min'
   },
@@ -6189,7 +6189,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/SIZZLING RICE AND NOODLES/VEG SINGAPURI NOODLES.jpg',
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg',
     rating: 4.8,
     prepTime: '1 min'
   },
@@ -6206,7 +6206,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/PANEER SPECIALITIES/PANEER CHANGEZI.jpg',
+    image: 'assets/menu-images/paneer-specialities/paneer-changezi.jpg',
     rating: 4.8,
     prepTime: '1 min'
   },
@@ -6223,7 +6223,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&auto=format&fit=crop&q=80',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.7,
     prepTime: '1 min'
   }
@@ -6240,7 +6240,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER IN HOT GARLIC SAUCE.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-in-hot-garlic-sauce.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -6255,7 +6255,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/PANEER BLACK PEPPER.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg',
     rating: 4.6,
     prepTime: '15 mins'
   },
@@ -6270,7 +6270,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/INDO CHINESE NIBBLES/VEG BLACK PEPPER 1.jpg',
+    image: 'assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg',
     rating: 4.6,
     prepTime: '15 mins'
   },
@@ -6285,7 +6285,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ITALIAN FUSION PASTA/CHILLI CHINESE PASTA.png',
+    image: 'assets/menu-images/italian-fusion-pasta/chilli-chinese-pasta.png',
     rating: 4.7,
     prepTime: '16 mins'
   },
@@ -6300,7 +6300,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'spicy'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ITALIAN FUSION PASTA/CHILLI CHINESE PASTA.png',
+    image: 'assets/menu-images/italian-fusion-pasta/chilli-chinese-pasta.png',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -6315,7 +6315,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/VEG ADRAKI.jpg',
+    image: 'assets/menu-images/veg-specialities/veg-adraki.jpg',
     rating: 4.6,
     prepTime: '18 mins'
   },
@@ -6330,7 +6330,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/KAJU MASALA.jpg',
+    image: 'assets/menu-images/veg-specialities/kaju-masala.jpg',
     rating: 4.9,
     prepTime: '18 mins'
   },
@@ -6345,7 +6345,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/VEG SPECIALITIES/LASOONI PALAK.jpg',
+    image: 'assets/menu-images/veg-specialities/lasooni-palak.jpg',
     rating: 4.7,
     prepTime: '16 mins'
   },
@@ -6360,7 +6360,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/VEG DIWANI HANDI.jpg',
+    image: 'assets/menu-images/delicious-kofta/veg-diwani-handi.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -6375,7 +6375,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/DELICIOUS KOFTA/MALAI KOFTA.jpg',
+    image: 'assets/menu-images/delicious-kofta/malai-kofta.jpg',
     rating: 4.8,
     prepTime: '18 mins'
   },
@@ -6391,7 +6391,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-palak.jpg',
     rating: 4.6,
     prepTime: '15 mins'
   },
@@ -6407,7 +6407,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL PALAK TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-palak-tadka.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -6423,7 +6423,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-methi.jpg',
     rating: 4.6,
     prepTime: '15 mins'
   },
@@ -6439,7 +6439,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/FLAVORFUL DAL/DAL METHI TADKA.jpg',
+    image: 'assets/menu-images/flavorful-dal/dal-methi-tadka.jpg',
     rating: 4.7,
     prepTime: '15 mins'
   },
@@ -6456,7 +6456,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/ACCOMPANIMENTS/MIX VEG RAITA.jpg',
+    image: 'assets/menu-images/accompaniments/mix-veg-raita.jpg',
     rating: 4.6,
     prepTime: '10 mins'
   }

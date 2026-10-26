@@ -1,6 +1,6 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const fields={},saved=new Map(),sent=[];
-const c={window:{open:(...args)=>sent.push(args)},console,URL,URLSearchParams,document:{readyState:'loading',addEventListener(){},getElementById:id=>fields[id]||null},localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)}};
+const c={window:{open:(...args)=>{sent.push(args);return {closed:false};},location:{set href(value){sent.push([value]);}}},console,URL,URLSearchParams,document:{readyState:'loading',addEventListener(){},getElementById:id=>fields[id]||null},localStorage:{getItem:k=>saved.get(k)||null,setItem:(k,v)=>saved.set(k,v)}};
 vm.createContext(c);
 for(const file of ['data/hotel-data.js','group-stays.js','app.js','admin.js'])vm.runInContext(fs.readFileSync(file,'utf8'),c);
 vm.runInContext('window.App=HotelPremierApp;window.Admin=HotelPremierAdmin;',c);
@@ -45,5 +45,5 @@ fields['calc-extra-beds'].value='12';app.calculateBulkQuote();assert.equal(app.l
 const html=fs.readFileSync('index.html','utf8');
 for(const label of ['Wedding Anniversary','Engagement / Roka','Corporate Gathering','Business Meeting','Group Dining','Kitty Party','Small Family Function','Special Occasion / Other'])assert.ok(html.includes(label));
 assert.match(html,/restaurant-event-guests[^>]+max="40"/);assert.doesNotMatch(html,/value="full-14"|Rooms Needed \(Max 14\)|EXCLUSIVE FULL BUYOUT/);
-assert.equal(html,fs.readFileSync('404.html','utf8'));
+assert.equal(html,require('./public-build-helper.cjs').fallbackHTML());
 console.log('PASS: group 12-room/36-guest limits, unchanged property/restaurant inventory, RO/CP pricing, child beds, exact nights, legacy offers and stale-enquiry protection');

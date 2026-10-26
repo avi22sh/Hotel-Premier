@@ -1,0 +1,21 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+let created=0;
+const records=[{id:'a',image:new Blob(['current']),rawOriginalImage:new Blob(['raw']),enhancedMasterImage:new Blob(['master']),originalPhotos:{archive:new Blob(['archive'])},price:80,enhancementStatus:'approved'},{id:'b',image:'',rawOriginalImage:new Blob(['hidden original'])}];
+const c={Blob,URL:{createObjectURL:()=> 'blob:test-'+(++created),revokeObjectURL(){}},window:{addEventListener(){},dispatchEvent(){}},console:{warn(){}},localStorage:{getItem:()=>null}};
+vm.createContext(c);for(const file of ['photo-storage.js','storage.js'])vm.runInContext(fs.readFileSync(file,'utf8'),c);
+(async()=>{
+ const store=c.window.HOTEL_STORAGE;await store.initPromise;
+ store.db={transaction(){return {objectStore(){return {getAll(){const request={};queueMicrotask(()=>{request.result=records;request.onsuccess();});return request;}};}};}};
+ const gallery=await store.getAllDishOverrides();assert.equal(created,1,'Only the displayed photo gets a URL');assert.equal(gallery.a.price,80);assert.equal(gallery.a.enhancementStatus,'approved');assert.equal(gallery.b.image,'','A hidden photo must stay hidden');
+ for(const key of ['rawOriginalImage','enhancedMasterImage','originalPhotos'])assert.ok(!(key in gallery.a));
+ assert.ok(records[0].rawOriginalImage instanceof Blob,'Stored originals remain intact');
+ const backup=await store.getAllDishOverrides({forBackup:true});assert.ok(backup.a.rawOriginalImage);assert.ok(backup.a.originalPhotos.archive);assert.ok(created>1);
+ store.db=null;c.localStorage.getItem=()=>JSON.stringify({bad:{image:'assets/photo.jpg',rawOriginalImage:'<img src=x onerror=alert(1)>'}});
+ c.window.HotelDataValidation={validate:record=>{if(record.rawOriginalImage.includes('<'))throw Error('Unsafe legacy photo');}};
+ await assert.rejects(store.getDishOverride('bad'),/Unsafe legacy/);
+ c.localStorage.getItem=()=>null;store.db={transaction(){return {objectStore(){return {getAll(){const request={};queueMicrotask(()=>request.onerror());return request;}};}};}};
+ await assert.rejects(store.getAllDishOverrides({strict:true}),/could not be read/);
+ await assert.rejects(store.getAllDishOverrides({forBackup:true}),/could not be read/);
+ assert.equal(Object.keys(await store.getAllDishOverrides()).length,0,'Public menu reads can fall back without pretending a full backup succeeded');
+ console.log('PASS: lightweight gallery projection avoids original URLs while full backups retain all photo lifecycle data');
+})().catch(error=>{console.error(error);process.exitCode=1;});

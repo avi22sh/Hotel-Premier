@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#131C26">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -48,36 +48,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest & App Icons -->
-  <link rel="manifest" href="manifest.json?v=20.36">
+  <link rel="manifest" href="manifest.json?v=22.10">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
   <!-- QRCode.js for Instant GPS & Table QR Standee Generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
-  <!-- Cache Invalidation & Old Service Worker Purge -->
-  <script>
-    (function() {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-          for (let reg of registrations) {
-            reg.update();
-          }
-        });
-      }
-      // The service worker owns cache versioning. Deleting caches here would
-      // discard the offline shell and local dish photos on every page visit.
-    })();
-  </script>
-
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="data/menu-image-sizes.js?v=21.0"></script>
-  <script src="asset-pipeline.js?v=22.06"></script>
+  <script src="data/menu-image-sizes.js?v=22.10"></script>
+  <script src="asset-pipeline.js?v=22.10"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=22.06">
-  <link rel="stylesheet" href="royal.css?v=22.06">
-  <script src="public-reviews.js?v=22.06" defer></script>
+  <link rel="stylesheet" href="styles.css?v=22.10">
+  <link rel="stylesheet" href="royal.css?v=22.10">
+  <link rel="stylesheet" href="inline-styles.css?v=22.10">
+  <link rel="stylesheet" href="local-admin.css?v=22.10">
+  <link rel="stylesheet" href="overlays.css?v=22.10">
+  <link rel="stylesheet" href="theme-tokens.css?v=22.10">
+  <script src="overlay-manager.js?v=22.10" defer></script>
+  <script src="image-safety.js?v=22.10" defer></script>
+  <script src="admin-layout.js?v=22.10" defer></script>
+  <script src="public-reviews.js?v=22.10" defer></script>
 </head>
 <body>
 
@@ -115,7 +107,7 @@
         <!-- Senior Mode Toggle -->
         <div class="settings-row"><span class="settings-label">Text size</span>
         <button class="icon-btn text-size-toggle" id="font-size-toggle-btn" onclick="window.app ? window.app.toggleElderlyFontSize() : null" title="Adjust Text Size" aria-label="Toggle larger text">
-          <span style="font-weight: 800; font-size: 0.85rem;">A+</span>
+          <span class="hp-inline-d88f59571365">A+</span>
         </button>
         </div>
 
@@ -126,12 +118,12 @@
             <button type="button" class="theme-choice-btn" id="theme-choice-light" onclick="window.app ? window.app.setThemeMode('light') : null" aria-label="Light mode" title="Always light theme">☀️ Light</button>
             <button type="button" class="theme-choice-btn" id="theme-choice-dark" onclick="window.app ? window.app.setThemeMode('dark') : null" aria-label="Dark mode" title="Always dark theme">🌙 Dark</button>
           </div>
-          <span id="theme-toggle-btn" class="appearance-status" style="display:none;" title="Automatically follows your device appearance">Light · Auto</span>
+          <span id="theme-toggle-btn" class="appearance-status hp-inline-d0466aa33fa8" title="Automatically follows your device appearance">Light · Auto</span>
         </div>
         <a href="tel:09325375802" class="settings-action settings-contact" data-i18n="btnCallHotel">Call Front Desk</a>
 
         <!-- CMS Settings Button (Visible only for staff via logo 5-tap or ?staff=1 / ?admin=1) -->
-        <button class="settings-action" id="cms-settings-admin-btn" style="display: none;" onclick="document.getElementById('guest-settings').open=false; window.app ? window.app.ensureAdminLoaded(() => window.admin.openAdminModal()) : null" title="Admin Studio & CRM">
+        <button class="settings-action hp-inline-6e22c58a7a6a" id="cms-settings-admin-btn" onclick="document.getElementById('guest-settings').open=false; window.app ? window.app.ensureAdminLoaded(() => window.admin.openAdminModal()) : null" title="Admin Studio & CRM">
           Staff studio
         </button>
         <a class="settings-developer" href="https://wa.me/918983703702?text=Hello,%20I%20am%20interested%20in%20a%20custom%20hotel%20digital%20concierge%20or%20QR%20web%20app%20like%20Hotel%20Premier." target="_blank" rel="noopener noreferrer">Digital experience · Contact developer ↗</a>
@@ -179,7 +171,7 @@
   <!-- ================================================================ -->
   <!-- 0. SANCTUARY HOME & VISUAL HOTEL STORY                            -->
   <!-- ================================================================ -->
-  <section class="section-wrapper" id="section-home" style="display: block;">
+  <section class="section-wrapper hp-inline-aa75644121bb" id="section-home">
     <div class="sanctuary-hero-section">
       <div class="sanctuary-hero-content">
         <div class="sanctuary-crest-emblem">
@@ -253,7 +245,7 @@
         <!-- Pillar 1: Stay -->
         <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-stay') : null">
           <div class="home-pillar-media">
-            <img src="assets/hotel-images/room-super-deluxe-window.jpg" alt="Premier Royale King at Hotel Premier" class="home-pillar-img" loading="lazy">
+            <img height="897" width="1348" src="assets/hotel-images/room-super-deluxe-window.jpg" alt="Premier Royale King at Hotel Premier" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Accommodations</span>
           </div>
           <div class="home-pillar-body">
@@ -271,7 +263,7 @@
         <!-- Pillar 2: Pride Dining -->
         <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-dine') : null">
           <div class="home-pillar-media">
-            <img src="assets/hotel-images/restaurant-dining-hall-1.jpg" alt="Pride Pure Veg AC Restaurant Dining Hall" class="home-pillar-img" loading="lazy">
+            <img height="897" width="1348" src="assets/hotel-images/restaurant-dining-hall-1.jpg" alt="Pride Pure Veg AC Restaurant Dining Hall" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Pure Veg Dining</span>
           </div>
           <div class="home-pillar-body">
@@ -289,7 +281,7 @@
         <!-- Pillar 3: Celebrations & Group Stays -->
         <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-celebrate') : null">
           <div class="home-pillar-media">
-            <img src="assets/hotel-images/restaurant-dining-hall-2.jpg" alt="Celebrations & Group Stays at Hotel Premier" class="home-pillar-img" loading="lazy">
+            <img height="897" width="1348" src="assets/hotel-images/restaurant-dining-hall-2.jpg" alt="Celebrations & Group Stays at Hotel Premier" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Group Hospitality</span>
           </div>
           <div class="home-pillar-body">
@@ -307,7 +299,7 @@
         <!-- Pillar 4: Arrival & Transit -->
         <article class="home-pillar-card" onclick="window.app ? window.app.switchSection('section-explore') : null">
           <div class="home-pillar-media">
-            <img src="assets/hotel-images/exterior-entrance-night.jpg" alt="Hotel Premier Entrance - 15 Mins from Railway Junction" class="home-pillar-img" loading="lazy">
+            <img height="897" width="1348" src="assets/hotel-images/exterior-entrance-night.jpg" alt="Hotel Premier Entrance - 15 Mins from Railway Junction" class="home-pillar-img" loading="lazy">
             <span class="home-pillar-tag">Transit Proximity</span>
           </div>
           <div class="home-pillar-body">
@@ -341,7 +333,7 @@
     <!-- Complimentary Amenities In Every Suite -->
     <div class="room-complimentary-amenities-banner">
       <div class="amenities-banner-header">
-        <span class="editorial-eyebrow" style="color: var(--brass-light); margin-bottom: 4px;">Standard Across All 14 Suites</span>
+        <span class="editorial-eyebrow hp-inline-b4b313288f3a">Standard Across All 14 Suites</span>
         <h3 class="amenities-banner-title">
           <span>Thoughtful Essentials &amp; Amenities</span>
         </h3>
@@ -440,7 +432,7 @@
                 <span class="rate-occ">Double Occupancy:</span>
                 <span class="rate-prices"><strong>₹2,600</strong> (Room Only) / <strong>₹3,000</strong> (CP)</span>
               </div>
-              <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
+              <div class="rate-row hp-inline-79f3823e3d52">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
                 <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (CP)</span>
               </div>
@@ -503,7 +495,7 @@
                 <span class="rate-occ">Double Occupancy:</span>
                 <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,700</strong> (CP)</span>
               </div>
-              <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
+              <div class="rate-row hp-inline-79f3823e3d52">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
                 <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (CP)</span>
               </div>
@@ -566,7 +558,7 @@
                 <span class="rate-occ">Double Occupancy:</span>
                 <span class="rate-prices"><strong>₹2,400</strong> (Room Only) / <strong>₹2,700</strong> (CP)</span>
               </div>
-              <div class="rate-row" style="color: var(--burgundy-primary); font-weight: 700;">
+              <div class="rate-row hp-inline-79f3823e3d52">
                 <span class="rate-occ">Extra Bed / Mattress:</span>
                 <span class="rate-prices"><strong>₹300/-</strong> (Room Only) / <strong>₹500/-</strong> (CP)</span>
               </div>
@@ -594,7 +586,7 @@
 
       <div class="atmosphere-grid">
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/exterior-facade-enhanced.jpg" alt="Hotel Premier Landmark Facade" class="atmosphere-img" loading="lazy">
+          <img height="1264" width="848" src="assets/hotel-images/exterior-facade-enhanced.jpg" alt="Hotel Premier Landmark Facade" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Landmark Facade</span>
             <div class="atmosphere-card-caption">Premier Multi-Story Property on Jamner Road</div>
@@ -602,7 +594,7 @@
         </div>
 
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/atrium-elevator-enhanced.jpg" alt="Modern Elevator & Atrium" class="atmosphere-img" loading="lazy">
+          <img height="768" width="1376" src="assets/hotel-images/atrium-elevator-enhanced.jpg" alt="Modern Elevator & Atrium" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Lift Access</span>
             <div class="atmosphere-card-caption">Spacious Elevator Access to All Room Floors</div>
@@ -610,7 +602,7 @@
         </div>
 
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/restaurant-dining-enhanced.jpg" alt="Pride Pure Veg AC Restaurant" class="atmosphere-img" loading="lazy">
+          <img height="768" width="1376" src="assets/hotel-images/restaurant-dining-enhanced.jpg" alt="Pride Pure Veg AC Restaurant" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Pride Dining</span>
             <div class="atmosphere-card-caption">Air-Conditioned Family Dining Hall</div>
@@ -618,7 +610,7 @@
         </div>
 
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/s-dlx-balcony-terrace-view.jpg" alt="Premier Royale King Balcony" class="atmosphere-img" loading="lazy">
+          <img height="1200" width="896" src="assets/hotel-images/s-dlx-balcony-terrace-view.jpg" alt="Premier Royale King Balcony" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Balcony & Sit-Out</span>
             <div class="atmosphere-card-caption">A Little Space to Pause</div>
@@ -626,7 +618,7 @@
         </div>
 
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/s-dlx-washroom-sanitized-1.jpg" alt="Pristine Sanitized Bathroom" class="atmosphere-img" loading="lazy">
+          <img height="1200" width="896" src="assets/hotel-images/s-dlx-washroom-sanitized-1.jpg" alt="Pristine Sanitized Bathroom" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">Hygiene Certified</span>
             <div class="atmosphere-card-caption">Sparkling Sanitized Modern Ensuite Bathroom</div>
@@ -634,7 +626,7 @@
         </div>
 
         <div class="atmosphere-card">
-          <img src="assets/hotel-images/exterior-entrance-night.jpg" alt="Grand Hotel Entrance at Night" class="atmosphere-img" loading="lazy">
+          <img height="897" width="1348" src="assets/hotel-images/exterior-entrance-night.jpg" alt="Grand Hotel Entrance at Night" class="atmosphere-img" loading="lazy">
           <div class="atmosphere-card-overlay">
             <span class="atmosphere-card-tag">24-Hour Welcome</span>
             <div class="atmosphere-card-caption">Illuminated Hotel Premier Entrance</div>
@@ -887,14 +879,14 @@
   <!-- ================================================================ -->
   <!-- 3. EDITORIAL DINING AT PRIDE PURE VEG (DINE)                      -->
   <!-- ================================================================ -->
-  <section class="section-wrapper" id="section-concierge" style="display:none;">
+  <section class="section-wrapper hp-inline-d0466aa33fa8" id="section-concierge">
     <div class="editorial-header-block">
       <div class="dining-brand-crest">HOTEL PREMIER · AT YOUR SERVICE</div>
       <h2 class="dining-main-heading">Your Room Concierge</h2>
       <p class="editorial-subtitle">A considered welcome. Dining, guest connectivity and assistance in one place.</p>
     </div>
     <div class="guest-network-card concierge-room-card">
-      <div id="room-concierge-content" aria-live="polite"><p>Checking the verified room register…</p></div>
+      <div id="room-concierge-content" aria-live="polite"><p>Room concierge and Guest Wi-Fi are not available here yet. Please contact reception for assistance.</p></div>
       <div class="guest-network-actions">
         <a class="btn-secondary" href="#dine">Culinary Collection</a>
         <a class="btn-secondary" href="#contact">Contact reception</a>
@@ -917,19 +909,19 @@
     <div class="editorial-dining-container">
       <!-- Signature Creations Editorial Showcase -->
       <div class="signature-creations-wrapper">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 16px;">
+        <div class="hp-inline-9e8c00b4b7ce">
           <div>
-            <h3 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--burgundy-deep);" data-i18n="signatureCreationsTitle">Chef's Signature Creations</h3>
-            <p style="font-size: 0.78rem; color: var(--text-muted-dark);" data-i18n="signatureCreationsSub">Prepared fresh to order in standard refined oil</p>
+            <h3 class="hp-inline-83d779b9bfd0" data-i18n="signatureCreationsTitle">Chef's Signature Creations</h3>
+            <p class="hp-inline-f6e3c5e9663f" data-i18n="signatureCreationsSub">Prepared fresh to order in standard refined oil</p>
           </div>
-          <span style="font-size: 0.70rem; color: var(--brass-antique); font-weight: 700;" data-i18n="signatureRatedBadge">★ 4.2+ Rated Favorites</span>
+          <span class="hp-inline-7b1c56a29085" data-i18n="signatureRatedBadge">★ 4.2+ Rated Favorites</span>
         </div>
 
         <div class="signature-grid">
           <!-- Signature 1: Veg Pride Special -->
           <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('vs-1') : null">
             <div class="signature-photo-wrap">
-              <img src="assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg" alt="Veg Pride Special" class="signature-dish-img" loading="lazy">
+              <img height="683" width="900" src="assets/menu-images/veg-specialities/veg-pride-special-1.jpg" alt="Veg Pride Special" class="signature-dish-img" loading="lazy">
               <span class="signature-badge-overlay">👑 Pride House Special</span>
             </div>
             <div class="signature-card-body">
@@ -952,7 +944,7 @@
           <!-- Signature 2: Paneer Butter Masala -->
           <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('ps-3') : null">
             <div class="signature-photo-wrap">
-              <img src="assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg" alt="Paneer Butter Masala" class="signature-dish-img" loading="lazy">
+              <img height="900" width="801" src="assets/menu-images/paneer-specialities/paneer-butter-masala.jpg" alt="Paneer Butter Masala" class="signature-dish-img" loading="lazy">
               <span class="signature-badge-overlay">🔥 House Favorite</span>
             </div>
             <div class="signature-card-body">
@@ -975,7 +967,7 @@
           <!-- Signature 3: Sizzling Tandoor Platter -->
           <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('tc-1') : null">
             <div class="signature-photo-wrap">
-              <img src="assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg" alt="Tandoor Platter" class="signature-dish-img" loading="lazy">
+              <img height="791" width="900" src="assets/menu-images/tandoor-classics/tandoori-platter.jpg" alt="Tandoor Platter" class="signature-dish-img" loading="lazy">
               <span class="signature-badge-overlay">🍢 Clay Oven Classic</span>
             </div>
             <div class="signature-card-body">
@@ -998,7 +990,7 @@
           <!-- Signature 4: Veg Dum Biryani -->
           <div class="signature-dish-card" onclick="window.app ? window.app.openDishDetail('rb-1') : null">
             <div class="signature-photo-wrap">
-              <img src="assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg" alt="Veg Dum Biryani" class="signature-dish-img" loading="lazy">
+              <img height="600" width="900" src="assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg" alt="Veg Dum Biryani" class="signature-dish-img" loading="lazy">
               <span class="signature-badge-overlay">🍚 Slow Cooked Dum</span>
             </div>
             <div class="signature-card-body">
@@ -1024,6 +1016,10 @@
       <div class="dining-view-controls">
         <div class="dining-search-filter-bar">
           <div class="menu-search-heading">
+  <button type="button" id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Culinary Menu Selection" aria-controls="menu-sections-drawer-modal" aria-expanded="false" title="Explore Menu Categories">
+    <svg class="floating-menu-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    <span class="floating-btn-text">Collections</span>
+  </button>
             <label for="menu-search-input">Search the menu</label>
             <button type="button" class="btn-favorites-filter" id="btn-favorites-filter" onclick="window.app ? window.app.toggleFavoritesFilter() : null" aria-label="View favorite dishes" aria-pressed="false">
               <span class="fav-filter-icon" aria-hidden="true">♥</span><span class="fav-filter-label" data-i18n="favoritesFilter">My Favorites</span><span class="fav-filter-count" id="favorites-count-badge">0</span>
@@ -1032,10 +1028,10 @@
           <div class="search-input-wrapper" role="search">
             <svg class="menu-search-icon" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
             <input type="search" id="menu-search-input" placeholder="Dish name, e.g. paneer or biryani" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-label="Search all pure veg dishes" aria-describedby="menu-search-status">
-            <button class="clear-search-btn" id="clear-search-btn" type="button" aria-label="Clear search query" style="display:none;"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+            <button class="clear-search-btn hp-inline-d0466aa33fa8" id="clear-search-btn" type="button" aria-label="Clear search query"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
           </div>
           <p id="menu-search-status" class="menu-search-status" role="status" aria-live="polite"></p>
-          <div class="recent-searches-bar" id="recent-searches-bar" style="display:none;">
+          <div class="recent-searches-bar hp-inline-d0466aa33fa8" id="recent-searches-bar">
             <span class="recent-search-label">Recent</span><div class="recent-searches-list" id="recent-searches-list"></div>
           </div>
         </div>
@@ -1088,15 +1084,11 @@
   <!-- ================================================================ -->
   <!-- 4. CELEBRATIONS & GROUP DINING / GROUP STAYS                      -->
   <!-- ================================================================ -->
-  <!-- Viewport-level control avoids clipping by dining glass containers. -->
-  <button type="button" id="floating-menu-toggle-btn" class="floating-menu-toggle-btn" onclick="window.app ? window.app.toggleMenuSectionDrawer() : null" aria-label="Open Culinary Menu Selection" aria-controls="menu-sections-drawer-modal" aria-expanded="false" title="Explore Menu Categories">
-    <svg class="floating-menu-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-    <span class="floating-btn-text">Menu</span>
-  </button>
+
 
   <section class="section-wrapper" id="section-celebrate">
     <div class="celebrate-hero-banner">
-      <span class="editorial-eyebrow" style="color: var(--brass-light);">Pride Pure Veg Dining & Stays</span>
+      <span class="editorial-eyebrow hp-inline-f8538cbd29f8">Pride Pure Veg Dining & Stays</span>
       <h2 class="celebrate-title">Gather, Celebrate &amp; Dine</h2>
       <p class="celebrate-subtitle">
         Welcome to Hotel Premier—Where Celebrations Come Alive. Bring your people together over exquisite vegetarian dining inside Pride Pure Veg AC Restaurant, for up to 40 guests. For overnight stays, enquire about our separate group allocation of up to 12 rooms and 36 guests.
@@ -1131,9 +1123,9 @@
 
 
     <!-- Advance Marriage & Group Blocks -->
-    <div class="editorial-header-block" style="margin-bottom: 24px;">
+    <div class="editorial-header-block hp-inline-fec3619ed0de">
       <span class="editorial-eyebrow">Curated Hospitality</span>
-      <h3 class="editorial-title" style="font-size: 1.5rem;">Group Stay Privileges</h3>
+      <h3 class="editorial-title hp-inline-0bcd9ceed044">Group Stay Privileges</h3>
       <div class="editorial-divider"></div>
       <p class="editorial-subtitle">Up to 12 rooms: 2 Premier Royale King rooms and 10 across Premier Signature Queen and Premier Companion Twin. Maximum 36 overnight guests, including children. Our 14-room property inventory is separate from this group allocation.</p>
     </div>
@@ -1143,17 +1135,17 @@
     </div>
 
     <!-- Group & Event Calculator -->
-    <div class="calculator-card" id="group-stay-enquiry" style="background: var(--royal-surface); border: 1.5px solid var(--royal-edge); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-ambient);">
-      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-        <span style="font-size: 1.6rem;">🧮</span>
+    <div class="calculator-card hp-inline-f8cd5ce2fe17" id="group-stay-enquiry">
+      <div class="hp-inline-b79be666f4fb">
+        <span class="hp-inline-3e105a6881d5">🧮</span>
         <div>
-          <h4 style="font-family: var(--font-royal); font-size: 1.10rem; color: var(--burgundy-deep);">Group Stay & Privilege Estimator</h4>
-          <p style="font-size: 0.78rem; color: var(--text-muted-dark);">Select your room requirements to calculate transparent published tariff and privileges</p>
+          <h4 class="hp-inline-5edf947e6d09">Group Stay & Privilege Estimator</h4>
+          <p class="hp-inline-f6e3c5e9663f">Select your room requirements to calculate transparent published tariff and privileges</p>
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+      <div class="hp-inline-7f4c2ac5e7ec">
+        <div class="hp-inline-a5bc55ff7b2e">
           <div class="form-group">
             <label class="form-label" for="calc-event-type">Occasion / Stay Purpose</label>
             <select id="calc-event-type" class="form-select" onchange="window.app.calculateBulkQuote()">
@@ -1177,15 +1169,15 @@
 
           <div class="form-group">
             <label class="form-label" for="calc-rooms-number">Rooms needed · maximum 12</label>
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <input type="range" id="calc-rooms-slider" aria-label="Rooms needed slider (Max 12)" min="2" max="12" value="12" style="flex-grow: 1; accent-color: var(--burgundy-primary);" oninput="document.getElementById('calc-rooms-number').value = this.value; window.app.calculateBulkQuote();">
-              <input type="number" id="calc-rooms-number" aria-label="Rooms needed count" value="12" min="2" max="12" step="1" class="form-input" style="width: 70px; text-align: center; font-weight: 800;" oninput="document.getElementById('calc-rooms-slider').value = this.value; window.app.calculateBulkQuote();">
+            <div class="hp-inline-0c1a7e49a031">
+              <input class="hp-inline-4dd90e63e961" type="range" id="calc-rooms-slider" aria-label="Rooms needed slider (Max 12)" min="2" max="12" value="12" oninput="document.getElementById('calc-rooms-number').value = this.value; window.app.calculateBulkQuote();">
+              <input type="number" id="calc-rooms-number" aria-label="Rooms needed count" value="12" min="2" max="12" step="1" class="form-input hp-inline-6386c3378eb1" oninput="document.getElementById('calc-rooms-slider').value = this.value; window.app.calculateBulkQuote();">
             </div>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="calc-extra-beds" id="calc-extra-bed-label">Chargeable extra beds (₹500/night)</label>
-            <input type="number" id="calc-extra-beds" aria-label="Chargeable extra beds" value="0" min="0" max="12" step="1" class="form-input" style="text-align: center; font-weight: 800;" oninput="window.app.calculateBulkQuote()">
+            <input type="number" id="calc-extra-beds" aria-label="Chargeable extra beds" value="0" min="0" max="12" step="1" class="form-input hp-inline-12b144682acc" oninput="window.app.calculateBulkQuote()">
             <small>Enter chargeable beds only. Complimentary beds for children aged 5–10 inclusive can be requested in your group inquiry, within room limits; confirm meals separately.</small>
           </div>
 
@@ -1208,7 +1200,7 @@
         </div>
 
         <!-- Organizer Contact for 1-Tap Bulk Dispatch -->
-        <div class="guest-details-panel" style="padding: 12px 14px; border-radius: var(--radius-sm);">
+        <div class="guest-details-panel hp-inline-71ca7e46cc22">
           <h4 class="group-organizer-title">Organizer details</h4>
           <div class="group-organizer-fields">
             <label for="calc-bulk-guest-name">Full name
@@ -1226,20 +1218,20 @@
           <p class="enquiry-help">Estimate uses published double-occupancy tariffs. Exact allocation, occupancy and final charges will be confirmed by reception.</p>
           <div class="summary-row">
             <span>Published Tariff Total:</span>
-            <span id="quote-regular-price" style="font-weight: 700; color: var(--text-dark);">—</span>
+            <span class="hp-inline-05d8e7c6df48" id="quote-regular-price">—</span>
           </div>
-          <div class="summary-row" id="quote-extra-bed-row" style="display: none; color: var(--burgundy-primary);">
+          <div class="summary-row hp-inline-4399c1870bce" id="quote-extra-bed-row">
             <span>Extra Beds (<span id="quote-extra-bed-count">0</span> Beds):</span>
             <span id="quote-extra-bed-amount">+ ₹ 0/-</span>
           </div>
-          <div class="summary-row" style="color: var(--burgundy-primary); font-weight: 700;">
+          <div class="summary-row hp-inline-79f3823e3d52">
             <span>Group Privileges:</span>
             <span id="quote-discount-tag">Published room tariffs</span>
           </div>
           <div class="summary-grand-row">
             <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep); text-transform: uppercase;">Estimated Group Stay Tariff</div>
-              <div style="font-size: 0.68rem; color: #16A34A; font-weight: 600;">✔ Transparent published rates • 24-Hour Check-Out (Direct Bookings Only)</div>
+              <div class="hp-inline-3ed01b32340f">Estimated Group Stay Tariff</div>
+              <div class="hp-inline-55a84b34c8ee">✔ Transparent published rates • 24-Hour Check-Out (Direct Bookings Only)</div>
             </div>
             <strong id="quote-final-price">—</strong>
           </div>
@@ -1251,10 +1243,10 @@
               <span class="last-call-support-note">Instant Assistance &amp; Custom Group Allocation</span>
             </div>
             <div class="last-call-actions-row">
-              <button id="group-stay-send" type="button" class="btn-tariff-book-wa" style="flex: 1.2;" onclick="window.app.sendBulkWhatsAppInquiry()">
+              <button id="group-stay-send" type="button" class="btn-tariff-book-wa hp-inline-dd777021bed8" onclick="window.app.sendBulkWhatsAppInquiry()">
                 <span>📲 Send Group Enquiry on WhatsApp</span>
               </button>
-              <a href="tel:09325375802" class="btn-tariff-call btn-tariff-call-amber" style="flex: 1;">
+              <a href="tel:09325375802" class="btn-tariff-call btn-tariff-call-amber hp-inline-126244f1351e">
                 <span>📞 Call Front Desk: 09325375802</span>
               </a>
             </div>
@@ -1341,19 +1333,19 @@
     </div>
 
     <!-- Landmark Property Facade -->
-    <div style="margin: 24px 0 20px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-ambient); border: 1px solid var(--ivory-border); position: relative; background: #0E1620;">
-      <img src="assets/hotel-images/exterior-facade-enhanced.jpg" alt="Hotel Premier Landmark Building on Jamner Road, Bhusawal" style="width: 100%; max-height: 280px; object-fit: cover; object-position: center 35%; display: block;" loading="lazy">
-      <div style="position: absolute; inset: auto 0 0 0; background: linear-gradient(to top, rgba(8, 13, 19, 0.90) 0%, rgba(8, 13, 19, 0.4) 70%, transparent 100%); padding: 14px 18px; color: #FFFDF9;">
-        <span style="font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase; color: var(--brass-light); font-weight: 700; display: block;">Landmark Property</span>
-        <div style="font-family: var(--font-royal); font-size: 1.05rem; font-weight: 700;">Hotel Premier — Jamner Road, Opposite Nahata College</div>
+    <div class="hp-inline-edcafd9ec31c">
+      <img class="hp-inline-77b2f9ade32a" height="1264" width="848" src="assets/hotel-images/exterior-facade-enhanced.jpg" alt="Hotel Premier Landmark Building on Jamner Road, Bhusawal" loading="lazy">
+      <div class="hp-inline-d2b09d6fa524">
+        <span class="hp-inline-6bb7a628fb55">Landmark Property</span>
+        <div class="hp-inline-97f391b7633e">Hotel Premier — Jamner Road, Opposite Nahata College</div>
       </div>
     </div>
 
     <div class="explore-concierge-card">
-      <div class="location-qr-box" style="max-width: 600px; margin: 0 auto 24px;">
-        <span style="font-size: 1.4rem;">🗺️</span>
-        <h3 style="font-family: var(--font-royal); font-size: 1.05rem; color: var(--burgundy-deep); margin: 6px 0;">Instant GPS Navigation</h3>
-        <p style="font-size: 0.76rem; color: var(--text-muted-dark); line-height: 1.4;">
+      <div class="location-qr-box hp-inline-61325a567153">
+        <span class="hp-inline-dc3d109f561d">🗺️</span>
+        <h3 class="hp-inline-8f1c92b523b1">Instant GPS Navigation</h3>
+        <p class="hp-inline-974286a0cbda">
           Scan with any phone camera to launch live Google Maps directions directly to Hotel Premier
         </p>
 
@@ -1374,11 +1366,11 @@
 
     <!-- Unified Signature Escapes & World Heritage Explore Feed -->
     <div class="attractions-section-wrapper">
-      <div class="editorial-header-block" style="text-align: left; margin-bottom: 8px;">
+      <div class="editorial-header-block hp-inline-67f78267ca88">
         <span class="editorial-eyebrow">Premier Concierge Excursions</span>
-        <h3 class="editorial-title" style="font-size: 1.45rem;">Signature Escapes & World Heritage</h3>
-        <div class="editorial-divider" style="margin: 8px 0;"></div>
-        <p class="editorial-subtitle" style="margin: 0;">
+        <h3 class="editorial-title hp-inline-5971f2f0934d">Signature Escapes & World Heritage</h3>
+        <div class="editorial-divider hp-inline-0f0082bb2ff9"></div>
+        <p class="editorial-subtitle hp-inline-02419cffd4a2">
           Curated UNESCO cave monoliths, Satpuda wilderness reserves, and premier family waterpark escapes within comfortable reach of Hotel Premier Bhusawal.
         </p>
       </div>
@@ -1413,7 +1405,7 @@
         <p class="review-status" id="public-review-status" role="status">Loading guest experiences…</p>
         <div class="review-grid" id="public-review-grid"></div>
       </section>
-      <div style="text-align: center;">
+      <div class="hp-inline-fb5ec070f2bf">
         <span class="feedback-badge">⭐ YOUR EXPERIENCE MATTERS</span>
         <h2 class="feedback-title">Write a Review</h2>
         <p class="feedback-subtitle">
@@ -1463,7 +1455,7 @@
           <p id="feedback-status" role="status" aria-live="polite"></p>
           <button type="submit" class="feedback-submit-btn"><span>Prepare feedback for the hotel</span></button>
         </form>
-        <div id="feedback-thankyou-card" class="review-handoff" style="display:none;" tabindex="-1" aria-labelledby="feedback-handoff-heading">
+        <div id="feedback-thankyou-card" class="review-handoff hp-inline-d0466aa33fa8" tabindex="-1" aria-labelledby="feedback-handoff-heading">
           <h3 id="feedback-handoff-heading">Your feedback is ready to share</h3>
           <p id="feedback-copy-status"></p>
           <p>Use WhatsApp below, review the message and tap Send. Opening WhatsApp does not send it automatically.</p>
@@ -1493,7 +1485,7 @@
   <!-- ================================================================ -->
   <!-- 7. CONTACT HOTEL PREMIER                                         -->
   <!-- ================================================================ -->
-  <section class="section-wrapper" id="section-contact" style="display: none;">
+  <section class="section-wrapper hp-inline-6e22c58a7a6a" id="section-contact">
     <div class="editorial-header-block">
       <span class="editorial-eyebrow">Front Desk & Concierge</span>
       <h2 class="editorial-title">Contact Hotel Premier</h2>
@@ -1511,13 +1503,13 @@
             <div class="contact-card-icon">📞</div>
             <div>
               <h3 class="contact-card-title">Call Hotel Front Desk</h3>
-              <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700;">● Available 24x7</span>
+              <span class="hp-inline-a0ef0d94405c">● Available 24x7</span>
             </div>
           </div>
           <div class="contact-card-body">
             <span class="contact-card-phone-highlight">09325375802</span>
             <p>Direct front desk assistance, suite availability, check-in queries, and corporate stay enquiries.</p>
-            <p style="margin-top: 6px; font-size: 0.78rem; color: var(--text-muted-dark);">Alternate: <strong>09370848917</strong> • Landline: <strong>(02582) 240422</strong></p>
+            <p class="hp-inline-08b03b884384">Alternate: <strong>09370848917</strong> • Landline: <strong>(02582) 240422</strong></p>
           </div>
         </div>
         <a href="tel:09325375802" class="contact-card-btn">
@@ -1529,14 +1521,14 @@
       <div class="contact-card">
         <div>
           <div class="contact-card-header">
-            <div class="contact-card-icon" style="color: #16A34A; background: rgba(22, 163, 74, 0.08); border-color: rgba(22, 163, 74, 0.2);">💬</div>
+            <div class="contact-card-icon hp-inline-c574cd2a6e77">💬</div>
             <div>
               <h3 class="contact-card-title">WhatsApp Concierge</h3>
-              <span style="font-size: 0.72rem; color: var(--crystal-muted); font-weight: 600;">Chat with our hotel team</span>
+              <span class="hp-inline-98e83ffa4c53">Chat with our hotel team</span>
             </div>
           </div>
           <div class="contact-card-body">
-            <span class="contact-card-phone-highlight" style="color: #16A34A;">+91 9325375802</span>
+            <span class="contact-card-phone-highlight hp-inline-5a6b179de476">+91 9325375802</span>
             <p>Ask our team about rooms, published tariffs, dining and group arrangements. We will check availability and confirm the details with you.</p>
           </div>
         </div>
@@ -1552,13 +1544,13 @@
             <div class="contact-card-icon">📍</div>
             <div>
               <h3 class="contact-card-title">Address & Property Location</h3>
-              <span style="font-size: 0.72rem; color: var(--brass-antique); font-weight: 700;">● Prime Jamner Road</span>
+              <span class="hp-inline-6f72bf74d9b6">● Prime Jamner Road</span>
             </div>
           </div>
           <div class="contact-card-body">
-            <strong style="color: var(--text-dark); display: block; margin-bottom: 4px;">Hotel Premier & Pride AC Restaurant</strong>
+            <strong class="hp-inline-65849259ade9">Hotel Premier & Pride AC Restaurant</strong>
             <p>Near Nahata College, Saket Society, Jamner Road, Bhusawal - 425 201, Maharashtra.</p>
-            <p style="margin-top: 6px; font-size: 0.78rem; color: var(--text-muted-dark);">15 Mins from Bhusawal Railway Junction • Free private parking on premises.</p>
+            <p class="hp-inline-08b03b884384">15 Mins from Bhusawal Railway Junction • Free private parking on premises.</p>
           </div>
         </div>
         <a href="https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal" target="_blank" rel="noopener noreferrer" class="contact-card-btn maps-btn">
@@ -1573,13 +1565,13 @@
             <div class="contact-card-icon">🍽️</div>
             <div>
               <h3 class="contact-card-title">Restaurant & Room Service</h3>
-              <span style="font-size: 0.72rem; color: #16A34A; font-weight: 700;">● 7:30 AM – 10:30 PM</span>
+              <span class="hp-inline-a0ef0d94405c">● 7:30 AM – 10:30 PM</span>
             </div>
           </div>
           <div class="contact-card-body">
-            <strong style="color: var(--text-dark); display: block; margin-bottom: 4px;">Pride Pure Veg AC Restaurant</strong>
+            <strong class="hp-inline-65849259ade9">Pride Pure Veg AC Restaurant</strong>
             <p>100% pure vegetarian dining, hot breakfast, pure ghee sweets, family dining tables & prompt in-room delivery.</p>
-            <p style="margin-top: 6px; font-size: 0.78rem; color: var(--text-muted-dark);">Call for table enquiries, family parcels, or room service orders.</p>
+            <p class="hp-inline-08b03b884384">Call for table enquiries, family parcels, or room service orders.</p>
           </div>
         </div>
         <a href="tel:09325375802" class="contact-card-btn">
@@ -1594,8 +1586,8 @@
     <div class="footer-inner">
       <div class="footer-crest-logo">
         <div class="footer-brand-wordmark" aria-label="Hotel Premier"><span aria-hidden="true">HOTEL PRE<span class="footer-brand-m">M<span class="footer-brand-birds"></span></span>IER</span></div>
-        <div style="font-size: 0.72rem; letter-spacing: 2px; color: #A0B3C6; text-transform: uppercase;">A HOME IN BHUSAWAL</div>
-        <div style="font-size: 0.82rem; font-weight: 700; color: #E2E8F0; margin-top: 4px;">Pride Pure Veg AC Restaurant</div>
+        <div class="hp-inline-02885d01dcd2">A HOME IN BHUSAWAL</div>
+        <div class="hp-inline-b5fb3812a503">Pride Pure Veg AC Restaurant</div>
       </div>
 
       <div class="footer-details-grid">
@@ -1613,7 +1605,7 @@
   </footer>
 
   <!-- ==================== MODAL: INTERACTIVE ROUTE SELECTION ==================== -->
-  <div class="modal-backdrop" id="route-options-modal" style="display: none;">
+  <div class="modal-backdrop hp-inline-6e22c58a7a6a" id="route-options-modal">
     <div class="modal-sheet route-picker-sheet guest-utility-sheet" role="dialog" aria-modal="true" aria-labelledby="route-options-modal-title" aria-describedby="route-options-modal-desc" tabindex="-1">
       <div class="modal-header">
         <div class="modal-title" id="route-options-modal-title">
@@ -1689,7 +1681,7 @@
           <p id="booking-summary-occupancy" class="enquiry-help"></p>
           <div class="summary-grand-row">
             <div>
-              <div style="font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep);">Estimated Tariff</div>
+              <div class="hp-inline-4b9b2df0b41b">Estimated Tariff</div>
               <div class="enquiry-help">✔ Inclusive of all taxes</div>
             </div>
             <strong id="booking-summary-grand-total">₹ 2,400/-</strong>
@@ -1723,7 +1715,7 @@
 
   <!-- ==================== MODAL: GUEST CONCIERGE PROFILE ==================== -->
   <div class="modal-backdrop" id="guest-profile-modal">
-    <div class="modal-sheet guest-utility-sheet" role="dialog" aria-modal="true" aria-labelledby="guest-profile-title" aria-describedby="guest-profile-help" tabindex="-1" style="max-width: 480px;">
+    <div class="modal-sheet guest-utility-sheet hp-inline-49ae2a9c061e" role="dialog" aria-modal="true" aria-labelledby="guest-profile-title" aria-describedby="guest-profile-help" tabindex="-1">
       <div class="modal-header">
         <div class="modal-title" id="guest-profile-title">
           <span>👤</span> <span>Your Concierge Profile</span>
@@ -1756,10 +1748,10 @@
         </div>
 
         <div class="guest-profile-actions">
-          <button class="feedback-submit-btn" style="flex: 1.2;" onclick="window.app ? window.app.saveGuestProfileFromModal() : null">
+          <button class="feedback-submit-btn hp-inline-dd777021bed8" onclick="window.app ? window.app.saveGuestProfileFromModal() : null">
             <span>Save details</span>
           </button>
-          <button class="btn-tariff-call" style="flex: 0.8;" onclick="window.app ? window.app.clearGuestProfile() : null">
+          <button class="btn-tariff-call hp-inline-62cd9e411387" onclick="window.app ? window.app.clearGuestProfile() : null">
             <span>Clear saved details</span>
           </button>
         </div>
@@ -1800,26 +1792,27 @@
       </div>
 
       <!-- View 1: Auth Screen -->
-      <div id="admin-auth-view" style="padding: 32px 18px; text-align: center;">
-        <div style="font-size: 2.5rem; margin-bottom: 10px;">🔐</div>
-        <h3 style="font-family: var(--font-royal); color: var(--burgundy-deep); margin-bottom: 8px;">Staff & Developer Authentication</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted-dark); margin-bottom: 16px;">
-          Enter Security PIN to access Customer CRM, edit prices, update room photos, or print table QR standees.
-        </p>
-        <div style="max-width: 280px; margin: 0 auto 16px;">
-          <input type="password" id="admin-pin-input" class="form-input" placeholder="Enter Security PIN" style="text-align: center; font-size: 1.1rem; letter-spacing: 2px;" onkeydown="if(event.key==='Enter') window.admin.verifyPin()">
-        </div>
-        <button class="btn-reserve-suite" style="max-width: 280px; margin: 0 auto;" onclick="window.admin.verifyPin()">
-          Unlock Admin Studio
-        </button>
+      <div id="admin-auth-view" class="local-lock-panel">
+        <h3>Local Admin Studio lock</h3>
+        <p class="local-lock-notice">This is a device-local lock, not server security. It does not encrypt CRM records or protect them from someone who controls this browser. Admin edits stay on this device until exported and published.</p>
+        <form id="admin-local-lock-form" novalidate onsubmit="event.preventDefault(); window.admin?.verifyPin()">
+          <label class="local-lock-field" for="admin-pin-input">Local PIN
+            <input type="password" id="admin-pin-input" class="form-input" inputmode="numeric" autocomplete="current-password" minlength="6" maxlength="64" pattern="[0-9]{6,64}" aria-describedby="admin-auth-status">
+          </label>
+          <label class="local-lock-field" id="admin-pin-confirm-row" for="admin-pin-confirm-input" hidden>Confirm new PIN
+            <input type="password" id="admin-pin-confirm-input" class="form-input" inputmode="numeric" autocomplete="new-password" minlength="6" maxlength="64" pattern="[0-9]{6,64}">
+          </label>
+          <p id="admin-auth-status" class="local-lock-status" role="status" aria-live="polite"></p>
+          <button type="submit" class="btn-reserve-suite" id="admin-unlock-btn">Unlock on this device</button>
+        </form>
       </div>
 
       <!-- View 2: Dashboard Tabs -->
-      <div id="admin-dashboard-view" style="display: none;">
+      <div class="hp-inline-6e22c58a7a6a" id="admin-dashboard-view">
         <div class="admin-nav-tabs">
           <button class="admin-tab-btn active" data-tab="crm">👥 Customer CRM</button>
           <button class="admin-tab-btn" data-tab="menu">🍔 Menu & Pricing</button>
-          <button class="admin-tab-btn" data-tab="ai-studio">✨ AI Photo Studio</button>
+          <button class="admin-tab-btn" data-tab="ai-studio">✨ Local Photo Studio</button>
           <button class="admin-tab-btn" data-tab="rooms">🏨 Room Photos & Deals</button>
           <button class="admin-tab-btn" data-tab="content">✏️ Page Content</button>
           <button class="admin-tab-btn" data-tab="slides">🖼️ Slides Editor</button>
@@ -1827,7 +1820,7 @@
           <button class="admin-tab-btn" data-tab="backup">💾 Master Data Backup</button>
         </div>
 
-        <div class="modal-body" id="admin-tab-content" style="padding: 16px;">
+        <div class="modal-body hp-inline-d8c94c16288b" id="admin-tab-content">
           <!-- Content rendered dynamically via admin.js -->
         </div>
       </div>
@@ -1836,7 +1829,7 @@
 
   <!-- ==================== MODAL: ADD NEW DISH MODAL ==================== -->
   <div class="modal-backdrop" id="add-dish-modal">
-    <div class="modal-sheet" style="max-width: 500px;">
+    <div class="modal-sheet hp-inline-0f6ba93d4aac">
       <div class="modal-header">
         <div class="modal-title">
           <span>➕</span> <span>Add New Dish to Menu</span>
@@ -1864,46 +1857,47 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="new-dish-image">Dish Image</label>
-          <input type="text" id="new-dish-image" class="form-input" placeholder="Image URL (or select file below)" style="margin-bottom: 6px;">
-          <input type="file" id="new-dish-file-input" aria-label="Upload dish photo" accept="image/*" class="form-input" style="padding: 6px;" onchange="window.admin.handleNewDishImageUpload(this)">
+          <input type="text" id="new-dish-image" class="form-input hp-inline-f3c131ddce19" placeholder="Image URL (or select file below)">
+          <input type="file" id="new-dish-file-input" aria-label="Upload dish photo" accept="image/*" class="form-input hp-inline-847ff70267ce" onchange="window.admin.handleNewDishImageUpload(this)">
         </div>
         <div class="form-group">
           <label class="form-label">Taste Profile & Special Badges</label>
-          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px;">
-            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #B45309; cursor: pointer;">
-              <input type="checkbox" id="new-dish-sweet" aria-label="Sweet taste profile" style="width: 16px; height: 16px;"> 🍯 Sweet (मीठा)
+          <div class="hp-inline-7b0e59f20c34">
+            <label class="hp-inline-889a0a06cdd0">
+              <input class="hp-inline-a5165eec3ad4" type="checkbox" id="new-dish-sweet" aria-label="Sweet taste profile"> 🍯 Sweet (मीठा)
             </label>
-            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #DC2626; cursor: pointer;">
-              <input type="checkbox" id="new-dish-spicy" aria-label="Spicy taste profile" style="width: 16px; height: 16px;"> 🌶️ Spicy (तीखा)
+            <label class="hp-inline-4a8eb4d8c203">
+              <input class="hp-inline-a5165eec3ad4" type="checkbox" id="new-dish-spicy" aria-label="Spicy taste profile"> 🌶️ Spicy (तीखा)
             </label>
-            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #92400E; cursor: pointer;">
-              <input type="checkbox" id="new-dish-special" aria-label="Chef's Special badge" style="width: 16px; height: 16px;"> 👑 Chef's Special
+            <label class="hp-inline-09c5bf31da2b">
+              <input class="hp-inline-a5165eec3ad4" type="checkbox" id="new-dish-special" aria-label="Chef's Special badge"> 👑 Chef's Special
             </label>
-            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #B91C1C; cursor: pointer;">
-              <input type="checkbox" id="new-dish-bestseller" aria-label="Bestseller badge" style="width: 16px; height: 16px;"> 🔥 Bestseller
+            <label class="hp-inline-4fc7c79d03dc">
+              <input class="hp-inline-a5165eec3ad4" type="checkbox" id="new-dish-bestseller" aria-label="Bestseller badge"> 🔥 Bestseller
             </label>
-            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 700; color: #7C2D12; cursor: pointer;">
-              <input type="checkbox" id="new-dish-khandeshi" aria-label="Khandeshi Special badge" style="width: 16px; height: 16px;"> 🫕 Khandeshi Special
+            <label class="hp-inline-c92d326003e0">
+              <input class="hp-inline-a5165eec3ad4" type="checkbox" id="new-dish-khandeshi" aria-label="Khandeshi Special badge"> 🫕 Khandeshi Special
             </label>
           </div>
         </div>
       </div>
-      <div style="padding: 14px 20px; display: flex; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--ivory-border);">
+      <div class="hp-inline-2d1e6dc6093a">
         <button class="btn-tariff-call" onclick="window.admin.closeAddDishModal()">Cancel</button>
-        <button class="btn-reserve-suite" onclick="window.admin.saveNewDish()">Save Dish to Menu</button>
+        <button id="save-new-dish-btn" class="btn-reserve-suite" onclick="window.admin.saveNewDish()">Save Dish to Menu</button>
       </div>
     </div>
   </div>
 
   <!-- ==================== MODAL: IMAGE REPLACEMENT MODAL ==================== -->
   <div class="modal-backdrop" id="image-replace-modal">
-    <div class="modal-sheet" style="max-width: 520px;">
+    <div class="modal-sheet hp-inline-688c77646024">
       <div class="modal-header">
         <div class="modal-title">
           <span>📷</span> <span id="image-modal-dish-name">Replace Dish Image</span>
         </div>
         <button class="modal-close-btn" aria-label="Close image replacement modal" onclick="window.admin ? window.admin.closeImageModal() : null">✕</button>
       </div>
+      <div class="photo-original-toolbar"><button type="button" class="studio-button" onclick="window.admin.restorePhotoPreview()">Restore original preview</button></div>
       <div class="modal-body" id="image-modal-body">
         <!-- Rendered dynamically by admin.js -->
       </div>
@@ -1924,7 +1918,7 @@
         <div class="search-input-wrapper">
           <svg class="menu-search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
           <input type="search" id="drawer-sections-search" placeholder="Find a collection…" aria-label="Search culinary collections" autocomplete="off" enterkeyhint="search" oninput="window.app ? window.app.filterDrawerSections(this.value) : null">
-          <button class="clear-search-btn" type="button" aria-label="Clear collection search" id="drawer-clear-search-btn" onclick="document.getElementById('drawer-sections-search').value=''; if (window.app) window.app.filterDrawerSections(''); this.style.display='none';" style="display: none;">✕</button>
+          <button class="clear-search-btn hp-inline-6e22c58a7a6a" type="button" aria-label="Clear collection search" id="drawer-clear-search-btn" onclick="document.getElementById('drawer-sections-search').value=''; if (window.app) window.app.filterDrawerSections(''); this.style.display='none';">✕</button>
         </div>
         <div class="drawer-quick-filter-chips" id="drawer-quick-filter-chips">
           <button type="button" class="drawer-qf-chip active" onclick="window.app ? window.app.filterDrawerByGroup('all') : null">All collections</button>
@@ -1942,96 +1936,28 @@
   </div>
 
   <!-- Load Application Scripts (v20.51) -->
-  <script src="storage.js?v=22.06"></script>
-  <script src="vault.js?v=21.82"></script>
-  <script src="data/translations.js?v=22.06"></script>
-  <script src="data/hotel-data.js?v=21.77"></script>
-  <script src="data/menu-data.js?v=22.06"></script>
-  <script src="data/menu-photos.js?v=21.40"></script>
-  <script src="menu-structure.js?v=21.75"></script>
-  <script src="group-stays.js?v=21.77"></script>
-  <script src="guest-network.js?v=22.06"></script>
-  <script src="app.js?v=22.06"></script>
-  <script src="content-studio.js?v=21.8"></script>
-  <script src="property-gallery.js?v=21.11"></script>
+  <script src="local-lock.js?v=22.10"></script>
+  <script src="photo-storage.js?v=22.10"></script>
+  <script src="data-validation.js?v=22.10"></script>
+  <script src="photo-workflow.js?v=22.10"></script>
+  <script src="ui-dialogs.js?v=22.10"></script>
+  <script src="publish-bundle.js?v=22.10"></script>
+  <script src="storage.js?v=22.10"></script>
+  <script src="vault.js?v=22.10"></script>
+  <script src="data/translations.js?v=22.10"></script>
+  <script src="data/hotel-data.js?v=22.10"></script>
+  <script src="data/menu-data.js?v=22.10"></script>
+  <script src="data/menu-photos.js?v=22.10"></script>
+  <script src="data/legacy-photo-paths.js?v=22.10"></script>
+  <script src="data/published-overrides.js?v=22.10"></script>
+  <script src="menu-structure.js?v=22.10"></script>
+  <script src="group-stays.js?v=22.10"></script>
+  <script src="guest-network.js?v=22.10"></script>
+  <script src="app.js?v=22.10"></script>
+  <script src="content-studio.js?v=22.10"></script>
+  <script src="property-gallery.js?v=22.10"></script>
 
-  <!-- PWA Service Worker Registration & Real-Time Sync Engine -->
-  <script>
-    if ('serviceWorker' in navigator && (window.location.protocol === 'http:' || window.location.protocol === 'https:')) {
-      let refreshing = false;
-      function refreshWhenIdle() {
-        if (refreshing) return;
-        refreshing = true;
-        function check() {
-          const editing = document.activeElement && document.activeElement.matches('input,textarea,select,[contenteditable="true"]');
-          if (document.hidden || editing || document.querySelector('.modal-backdrop.active') || window.admin?.isPreviewProcessing) {
-            window.setTimeout(check, 2000);
-            return;
-          }
-          window.location.reload();
-        }
-        check();
-      }
-
-      // Auto-reload when new service worker activates (instant developer sync)
-      navigator.serviceWorker.addEventListener('controllerchange', function() {
-        refreshWhenIdle();
-      });
-
-      // Handle direct update broadcasts from service worker
-      navigator.serviceWorker.addEventListener('message', function(event) {
-        if (event.data && (event.data.type === 'SW_UPDATED' || event.data.type === 'HOTEL_PREMIER_RELOAD')) {
-          refreshWhenIdle();
-        }
-      });
-
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=22.06', { updateViaCache: 'none' }).then(function(reg) {
-          window.hpServiceWorkerReg = reg;
-
-          // Immediate update check on load
-          reg.update().catch(function() {});
-
-          // Auto-trigger skipWaiting when new worker is installed
-          reg.addEventListener('updatefound', function() {
-            var newWorker = reg.installing;
-            if (newWorker) {
-              newWorker.addEventListener('statechange', function() {
-                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  newWorker.postMessage({ type: 'SKIP_WAITING' });
-                }
-              });
-            }
-          });
-
-          // Check on app resume / phone unlock
-          document.addEventListener('visibilitychange', function() {
-            if (document.visibilityState === 'visible' && reg) {
-              reg.update().catch(function() {});
-            }
-          });
-
-          // Check on window focus
-          window.addEventListener('focus', function() {
-            if (reg) reg.update().catch(function() {});
-          });
-
-          // Check when device reconnects to internet
-          window.addEventListener('online', function() {
-            if (reg) reg.update().catch(function() {});
-          });
-
-          // Background heartbeat check every 60 seconds
-          setInterval(function() {
-            if (navigator.onLine && reg) {
-              reg.update().catch(function() {});
-            }
-          }, 60000);
-        }).catch(function(err) {
-          console.warn('[SW Registration Error]', err);
-        });
-      });
-    }
-  </script>
+  <!-- Updates are offered only after an explicit guest action. -->
+  <script src="pwa-updates.js?v=22.10"></script>
 </body>
 </html>

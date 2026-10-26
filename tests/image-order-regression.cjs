@@ -16,10 +16,11 @@ const document = {
       putImageData(data) { pixels = data.data; }
     });
     canvas.toDataURL = () => { exported = { width: canvas.width, height: canvas.height, pixels }; return 'data:image/jpeg;base64,preview'; };
+    canvas.toBlob = (callback,type) => { exported = { width:canvas.width,height:canvas.height,pixels };callback(new Blob(['fixture'],{type})); };
     return canvas;
   }
 };
-const context = vm.createContext({ window: {}, document, console, URL, Uint8ClampedArray });
+const context = vm.createContext({ window: {HotelPhotoWorkflow:{createURL:()=> 'blob:fixture'}}, document, console, URL, Blob, Uint8ClampedArray });
 vm.runInContext(fs.readFileSync(path.join(root, 'asset-pipeline.js'), 'utf8'), context);
 vm.runInContext(fs.readFileSync(path.join(root, 'app.js'), 'utf8') + ';window.App = HotelPremierApp;', context);
 (async () => {

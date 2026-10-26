@@ -23,8 +23,8 @@ class HotelPremierDeveloperVault {
     this.storageKeyReviews = 'hp_crm_reviews';
     this.storageKeyEnquiries = 'hp_crm_enquiries';
 
-    this.defaultPin = '9325'; // Master Developer Secret PIN
     this.isVaultUnlocked = false;
+    window.HotelLocalLock?.onLock(() => { this.isVaultUnlocked = false; });
 
     this.sessionScanId = null;
     this.sessionStartTime = Date.now();
@@ -482,24 +482,16 @@ class HotelPremierDeveloperVault {
   // ========================================================================
   // DEVELOPER VAULT AUTHENTICATION & SECURITY
   // ========================================================================
-  getMasterPin() {
-    return localStorage.getItem(this.storageKeyMasterPin) || this.defaultPin;
+  async setMasterPin(pin) {
+    if (!window.HotelLocalLock) throw Error('Local lock is unavailable.');
+    return window.HotelLocalLock.setPin(pin);
   }
 
-  setMasterPin(newPin) {
-    if (newPin && newPin.length >= 4) {
-      localStorage.setItem(this.storageKeyMasterPin, newPin);
-      return true;
-    }
-    return false;
-  }
-
-  verifyMasterPin(enteredPin) {
-    if ((enteredPin || '').trim() === this.getMasterPin()) {
-      this.isVaultUnlocked = true;
-      return true;
-    }
-    return false;
+  async verifyMasterPin(pin) {
+    if (!window.HotelLocalLock) throw Error('Local lock is unavailable. No fallback PIN is accepted.');
+    const valid = await window.HotelLocalLock.verify(pin);
+    this.isVaultUnlocked = valid;
+    return valid;
   }
 
   // ========================================================================
@@ -865,7 +857,7 @@ class HotelPremierDeveloperVault {
     body += `2. Total Customer Leads / Reviews: ${leads.length}\n`;
     body += `3. Average Dining Star Rating: ${avgRating} / 5.0\n`;
     body += `4. Unique Searched Keywords: ${Object.keys(l3.searchQueries || {}).length}\n\n`;
-    body += `You can download full CSV/JSON datasets anytime using your Developer PIN (9325) inside the Developer Modal.\n\nBest regards,\nHotel Premier System Engine`;
+    body += `You can export CSV/JSON datasets from the locally unlocked Admin Studio on your device. Never share your PIN.\n\nBest regards,\nHotel Premier System Engine`;
 
     const mailto = `mailto:avinash.hedawoo@gmail.com?subject=${subject}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;

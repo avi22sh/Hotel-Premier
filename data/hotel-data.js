@@ -50,37 +50,37 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     },
     {
       id: 'slide-thali',
-      image: 'assets/menu-images/THALIS/MAHARAJA THALI.jpg',
+      image: 'assets/menu-images/thalis/maharaja-thali.jpg',
       title: 'Premier Maharaja Royal Thali',
       subtitle: 'Lavish Multi-Course Pure Veg Feast • Authentic Indian Hospitality'
     },
     {
       id: 'slide-paneer',
-      image: 'assets/menu-images/PANEER SPECIALITIES/PANEER BUTTER MASALA.jpg',
+      image: 'assets/menu-images/paneer-specialities/paneer-butter-masala.jpg',
       title: 'Royal Paneer & North Indian Gravies',
       subtitle: 'Prepared Fresh in Pride Kitchen with Pure Desi Spices & Butter'
     },
     {
       id: 'slide-tandoor',
-      image: 'assets/menu-images/TANDOOR CLASSICS/TANDOORI PLATTER.jpg',
+      image: 'assets/menu-images/tandoor-classics/tandoori-platter.jpg',
       title: 'Sizzling Tandoor Classics & Kababs',
       subtitle: 'Smoky Paneer Tikka, Reshmi Kabab & Hara Bhara from Clay Oven'
     },
     {
       id: 'slide-biryani',
-      image: 'assets/menu-images/RICE & BIRYANI FIESTA/VEG DUM BIRYANI.jpg',
+      image: 'assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg',
       title: 'Aromatic Veg Dum Biryani & Pulao',
       subtitle: 'Slow-Cooked Fragrant Basmati Rice with Rich Spices & Veg Raita'
     },
     {
       id: 'slide-breakfast',
-      image: 'assets/menu-images/MORNING DELIGHT/POORI BHAJI.jpg',
+      image: 'assets/menu-images/morning-delight/poori-bhaji.jpg',
       title: 'Morning Delights Breakfast',
       subtitle: 'Golden Crispy Poori Bhaji, Chole Bhature, Hot Parathas & Special Tea'
     },
     {
       id: 'slide-chinese',
-      image: 'assets/menu-images/INDO CHINESE NIBBLES/CHINESE PLATTER.jpg',
+      image: 'assets/menu-images/indo-chinese-nibbles/chinese-platter.jpg',
       title: 'Indo-Chinese Wok & Starters',
       subtitle: 'Crispy Manchurian, Paneer Chilly, Spring Rolls & Sizzling Noodles'
     }

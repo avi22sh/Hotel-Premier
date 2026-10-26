@@ -14,7 +14,7 @@ assert.throws(() => api.validateRooms({ rooms: [{ id: 'test', label: 'A', catego
 assert.throws(() => api.validateRooms({ rooms: [...rooms, ...rooms] }));
 const url = new URL(api.destination(base + '?phone=secret&name=private&room=old#stay', 'room', 'test-only', rooms));
 assert.equal(url.hash, '#concierge'); assert.equal(url.search, '?entry=room&room=test-only');
-assert.equal(new URL(api.destination(base, 'restaurant')).hash, '#dine');
+assert.equal(new URL(api.destination(base, 'restaurant')).hash, '#menu');
 assert.equal(new URL(api.destination(base, 'reception')).hash, '#home');
 assert.throws(() => api.destination(base, 'room', 'not-verified'));
 assert.throws(() => api.destination('http://example.com', 'reception'));

@@ -1,0 +1,6754 @@
+{
+  "files": 964,
+  "errors": [],
+  "records": [
+    {
+      "file": "assets/brands/goibibo-sprite.png",
+      "width": 250,
+      "height": 400,
+      "format": "png",
+      "bytes": 59027
+    },
+    {
+      "file": "assets/brands/google-g.png",
+      "width": 32,
+      "height": 32,
+      "format": "png",
+      "bytes": 867
+    },
+    {
+      "file": "assets/brands/google-maps.png",
+      "width": 32,
+      "height": 32,
+      "format": "png",
+      "bytes": 855
+    },
+    {
+      "file": "assets/brands/makemytrip.png",
+      "width": 1406,
+      "height": 440,
+      "format": "png",
+      "bytes": 14013
+    },
+    {
+      "file": "assets/brands/swiggy.png",
+      "width": 301,
+      "height": 98,
+      "format": "png",
+      "bytes": 6883
+    },
+    {
+      "file": "assets/brands/zomato.png",
+      "width": 908,
+      "height": 192,
+      "format": "png",
+      "bytes": 11584
+    },
+    {
+      "file": "assets/dishes/gobhi-paratha-with-curd.jpg",
+      "width": 1024,
+      "height": 559,
+      "format": "jpeg",
+      "bytes": 119241
+    },
+    {
+      "file": "assets/dishes/pride-special-sandwich.jfif",
+      "width": 1536,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 130094
+    },
+    {
+      "file": "assets/hotel-images/atrium-elevator-enhanced.jpg",
+      "width": 1376,
+      "height": 768,
+      "format": "jpeg",
+      "bytes": 124619
+    },
+    {
+      "file": "assets/hotel-images/bathroom-sanitized-teal.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 187202
+    },
+    {
+      "file": "assets/hotel-images/bathroom-sanitized-terracotta.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 163015
+    },
+    {
+      "file": "assets/hotel-images/dlx-queen-bed-plush-view.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 131841
+    },
+    {
+      "file": "assets/hotel-images/dlx-queen-corner-angle-2.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 147524
+    },
+    {
+      "file": "assets/hotel-images/dlx-queen-corner-angle-3.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 173718
+    },
+    {
+      "file": "assets/hotel-images/dlx-queen-corner-angle-4.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 155061
+    },
+    {
+      "file": "assets/hotel-images/dlx-queen-corner-wide.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 163972
+    },
+    {
+      "file": "assets/hotel-images/dlx-queen-room-warm-ambience.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 135464
+    },
+    {
+      "file": "assets/hotel-images/dlx-twin-beds-perspective.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 164398
+    },
+    {
+      "file": "assets/hotel-images/dlx-twin-beds-wide-angle.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 144561
+    },
+    {
+      "file": "assets/hotel-images/dlx-washroom-sanitized-1.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 173992
+    },
+    {
+      "file": "assets/hotel-images/dlx-washroom-sanitized-2.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 159065
+    },
+    {
+      "file": "assets/hotel-images/exterior-entrance-night.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 241632
+    },
+    {
+      "file": "assets/hotel-images/exterior-facade-enhanced.jpg",
+      "width": 848,
+      "height": 1264,
+      "format": "jpeg",
+      "bytes": 189133
+    },
+    {
+      "file": "assets/hotel-images/exterior-facade-twilight.jpg",
+      "width": 897,
+      "height": 1348,
+      "format": "jpeg",
+      "bytes": 196578
+    },
+    {
+      "file": "assets/hotel-images/hotel-balcony-terrace.jpg",
+      "width": 1348,
+      "height": 899,
+      "format": "jpeg",
+      "bytes": 212181
+    },
+    {
+      "file": "assets/hotel-images/restaurant-dining-enhanced.jpg",
+      "width": 1376,
+      "height": 768,
+      "format": "jpeg",
+      "bytes": 176517
+    },
+    {
+      "file": "assets/hotel-images/restaurant-dining-hall-1.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 189726
+    },
+    {
+      "file": "assets/hotel-images/restaurant-dining-hall-2.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 190269
+    },
+    {
+      "file": "assets/hotel-images/room-deluxe-angle.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 135837
+    },
+    {
+      "file": "assets/hotel-images/room-deluxe-main.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 147808
+    },
+    {
+      "file": "assets/hotel-images/room-super-deluxe-wardrobe.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 147024
+    },
+    {
+      "file": "assets/hotel-images/room-super-deluxe-window.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 159332
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-balcony-terrace-view.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 197085
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-bed-comfort-angle.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 114238
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-bed-king-luxury.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 173590
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-suite-full-view.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 142953
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-suite-headboard-detail.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 134249
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-suite-master-angle.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 166321
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-suite-mood-lighting.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 171142
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-suite-side-angle.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 153390
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-suite-wide-view.jpg",
+      "width": 1200,
+      "height": 896,
+      "format": "jpeg",
+      "bytes": 179534
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-washroom-sanitized-1.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 158244
+    },
+    {
+      "file": "assets/hotel-images/s-dlx-washroom-sanitized-2.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 133730
+    },
+    {
+      "file": "assets/hotel-images/suite-curved-sofa.jpg",
+      "width": 1348,
+      "height": 897,
+      "format": "jpeg",
+      "bytes": 128011
+    },
+    {
+      "file": "assets/hotel_premier_arch_crest.jpg",
+      "width": 1024,
+      "height": 656,
+      "format": "jpeg",
+      "bytes": 91589
+    },
+    {
+      "file": "assets/hotel_premier_gold_crest.jpg",
+      "width": 1024,
+      "height": 656,
+      "format": "jpeg",
+      "bytes": 88120
+    },
+    {
+      "file": "assets/icon-192.png",
+      "width": 192,
+      "height": 192,
+      "format": "png",
+      "bytes": 57596
+    },
+    {
+      "file": "assets/icon-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "bytes": 343332
+    },
+    {
+      "file": "assets/icon-maskable-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "bytes": 135577
+    },
+    {
+      "file": "assets/menu-images/accompaniments/boondi-raita.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 36910
+    },
+    {
+      "file": "assets/menu-images/accompaniments/boondi-raita.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 146541
+    },
+    {
+      "file": "assets/menu-images/accompaniments/cheese-masala-papad.jpg",
+      "width": 720,
+      "height": 1280,
+      "format": "jpeg",
+      "bytes": 143463
+    },
+    {
+      "file": "assets/menu-images/accompaniments/curd.avif",
+      "width": 1800,
+      "height": 1012,
+      "format": "heif",
+      "bytes": 48059
+    },
+    {
+      "file": "assets/menu-images/accompaniments/curd.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 87437
+    },
+    {
+      "file": "assets/menu-images/accompaniments/fried-papad.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 101957
+    },
+    {
+      "file": "assets/menu-images/accompaniments/green-salad.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 46546
+    },
+    {
+      "file": "assets/menu-images/accompaniments/green-salad.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 129571
+    },
+    {
+      "file": "assets/menu-images/accompaniments/kachumber-salad.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 19300
+    },
+    {
+      "file": "assets/menu-images/accompaniments/kachumber-salad.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 95594
+    },
+    {
+      "file": "assets/menu-images/accompaniments/masala-papad.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 139796
+    },
+    {
+      "file": "assets/menu-images/accompaniments/mix-fruit-raita.avif",
+      "width": 1248,
+      "height": 832,
+      "format": "heif",
+      "bytes": 13050
+    },
+    {
+      "file": "assets/menu-images/accompaniments/mix-fruit-raita.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 74619
+    },
+    {
+      "file": "assets/menu-images/accompaniments/mix-veg-raita.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 60471
+    },
+    {
+      "file": "assets/menu-images/accompaniments/mix-veg-raita.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 134769
+    },
+    {
+      "file": "assets/menu-images/accompaniments/nagali-fried-papad.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 132556
+    },
+    {
+      "file": "assets/menu-images/accompaniments/nagali-masala-papad.jpg",
+      "width": 769,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 204233
+    },
+    {
+      "file": "assets/menu-images/accompaniments/nagali-papad.avif",
+      "width": 1025,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 111775
+    },
+    {
+      "file": "assets/menu-images/accompaniments/pineapple-raita.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 212841
+    },
+    {
+      "file": "assets/menu-images/accompaniments/pineapple-raita.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 204298
+    },
+    {
+      "file": "assets/menu-images/accompaniments/roasted-nagali-papad.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 96861
+    },
+    {
+      "file": "assets/menu-images/accompaniments/roasted-papad.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 76379
+    },
+    {
+      "file": "assets/menu-images/accompaniments/sindhi-papad.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 116972
+    },
+    {
+      "file": "assets/menu-images/accompaniments/sindhi-papad.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 109354
+    },
+    {
+      "file": "assets/menu-images/accompaniments/urad-papad.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 68430
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/cheese-kofta.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 36992
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/cheese-kofta.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 145079
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/dilkhush-kofta-2.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 122042
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/dilkhush-kofta.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 111551
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/kilkhush-kofta.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 76104
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/malai-kofta.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 112343
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/nargisi-kofta-1.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 114390
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/nargisi-kofta.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 110460
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/paneer-kofta.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 53043
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/paneer-kofta.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 152231
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/veg-diwani-handi.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 86740
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/veg-hariyali-1.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 170000
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/veg-hariyali.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 46887
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/veg-hariyali.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 149740
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/veg-kofta.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 38032
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/veg-kofta.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 151830
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/veg-sunrise.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 36455
+    },
+    {
+      "file": "assets/menu-images/delicious-kofta/veg-sunrise.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 123623
+    },
+    {
+      "file": "assets/menu-images/desserts/gulab-jamun.avif",
+      "width": 1150,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 40256
+    },
+    {
+      "file": "assets/menu-images/desserts/gulab-jamun.jpg",
+      "width": 900,
+      "height": 801,
+      "format": "jpeg",
+      "bytes": 93043
+    },
+    {
+      "file": "assets/menu-images/desserts/rasgulla.avif",
+      "width": 1800,
+      "height": 1602,
+      "format": "heif",
+      "bytes": 18388
+    },
+    {
+      "file": "assets/menu-images/desserts/rasgulla.jpg",
+      "width": 900,
+      "height": 801,
+      "format": "jpeg",
+      "bytes": 74844
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-fry.avif",
+      "width": 1117,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 17604
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-fry.jpg",
+      "width": 838,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 109787
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-maharani.jfif",
+      "width": 1024,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 144793
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-maharani.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 184254
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-methi-tadka.avif",
+      "width": 1024,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 158068
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-methi-tadka.jpg",
+      "width": 768,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 135253
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-methi.avif",
+      "width": 1024,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 30969
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-methi.jpg",
+      "width": 768,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 141687
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-palak-tadka.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 165326
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-palak-tadka.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 145294
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-palak.jpeg",
+      "width": 1068,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 93534
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-palak.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 129194
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-tadka.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 26984
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/dal-tadka.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 141898
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/kadhi-pakoda.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 134321
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/punjabi-kadhi-pakoda.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 31260
+    },
+    {
+      "file": "assets/menu-images/flavorful-dal/punjabi-kadhi-pakoda.jpg",
+      "width": 1600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 155709
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/chana-chilli-1.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 81632
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/chana-chilli-2.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 119060
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/chana-chilli.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 102091
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/chinese-platter.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 50708
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/chinese-platter.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 195154
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 154605
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 88813
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/gobi-manchurian.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 103983
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 204628
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 83749
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpeg",
+      "width": 1800,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 163225
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 101727
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
+      "width": 900,
+      "height": 636,
+      "format": "jpeg",
+      "bytes": 98327
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-2.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 81215
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-3.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 82774
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 147683
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-65.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 32698
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-65.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 176175
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 45467
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 93328
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-chilli-og.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 88571
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-chilli.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 106311
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-chilly.jpg",
+      "width": 731,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 181102
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-in-hot-garlic-sauce-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 110649
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-in-hot-garlic-sauce.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 131833
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-machurian.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 35495
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 125663
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-salton.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 32370
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 79722
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 90622
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-sancho.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 32200
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-sancho.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 152485
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-satay-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 104964
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-satay.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 106738
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-satay.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 174059
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-spider-roll.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 27659
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 41749
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 99142
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/soyabean-chilli.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 201009
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/soyabean-chilli.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 87756
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/thread-paneer.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 48932
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 96216
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-65.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 81376
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 44555
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 98367
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 111128
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper.jfif",
+      "width": 1536,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 220420
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 131020
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 109215
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-bullet.jpeg",
+      "width": 1800,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 189746
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-bullet.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 67973
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-crispy-1.jpg",
+      "width": 900,
+      "height": 506,
+      "format": "jpeg",
+      "bytes": 90101
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-crispy-2.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 103938
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-crispy.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 78307
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-crispy.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 90779
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 179217
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 56057
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 194385
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-lollipop.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 36354
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-lollipop.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 135148
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-manchurian-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 98221
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-manchurian.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 52555
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-manchurian.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 92191
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-spring-roll.jpeg",
+      "width": 1800,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 167814
+    },
+    {
+      "file": "assets/menu-images/indo-chinese-nibbles/veg-spring-roll.jpg",
+      "width": 1600,
+      "height": 716,
+      "format": "jpeg",
+      "bytes": 132424
+    },
+    {
+      "file": "assets/menu-images/italian-fusion-pasta/chilli-chinese-pasta.png",
+      "width": 1672,
+      "height": 941,
+      "format": "png",
+      "bytes": 2102221
+    },
+    {
+      "file": "assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 108279
+    },
+    {
+      "file": "assets/menu-images/morning-delight/aloo-paratha-with-curd.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 18280
+    },
+    {
+      "file": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 72067
+    },
+    {
+      "file": "assets/menu-images/morning-delight/bread-butter-jam.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 128426
+    },
+    {
+      "file": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 88410
+    },
+    {
+      "file": "assets/menu-images/morning-delight/bread-butter-toast.avif",
+      "width": 600,
+      "height": 600,
+      "format": "heif",
+      "bytes": 11579
+    },
+    {
+      "file": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 70436
+    },
+    {
+      "file": "assets/menu-images/morning-delight/cheese-chutmey-sandwich.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 25303
+    },
+    {
+      "file": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 117032
+    },
+    {
+      "file": "assets/menu-images/morning-delight/cheese-grilled-sandwich.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 18332
+    },
+    {
+      "file": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 106977
+    },
+    {
+      "file": "assets/menu-images/morning-delight/chole-bhature.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 20714
+    },
+    {
+      "file": "assets/menu-images/morning-delight/chole-bhature.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 81222
+    },
+    {
+      "file": "assets/menu-images/morning-delight/gobhi-paratha-with-curd.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 127212
+    },
+    {
+      "file": "assets/menu-images/morning-delight/paneer-paratha-with-curd.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 26943
+    },
+    {
+      "file": "assets/menu-images/morning-delight/paneer-paratha-with-curd.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 132770
+    },
+    {
+      "file": "assets/menu-images/morning-delight/poha.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 100992
+    },
+    {
+      "file": "assets/menu-images/morning-delight/poha.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 74756
+    },
+    {
+      "file": "assets/menu-images/morning-delight/poori-bhaji.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 38962
+    },
+    {
+      "file": "assets/menu-images/morning-delight/poori-bhaji.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 161686
+    },
+    {
+      "file": "assets/menu-images/morning-delight/pride-special-sandwich-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 122894
+    },
+    {
+      "file": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
+      "width": 900,
+      "height": 753,
+      "format": "jpeg",
+      "bytes": 128019
+    },
+    {
+      "file": "assets/menu-images/morning-delight/sabudana-khichadi.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 47912
+    },
+    {
+      "file": "assets/menu-images/morning-delight/sabudana-khichadi.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 160248
+    },
+    {
+      "file": "assets/menu-images/morning-delight/sabudana-wada-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 85220
+    },
+    {
+      "file": "assets/menu-images/morning-delight/sabudana-wada.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 91791
+    },
+    {
+      "file": "assets/menu-images/morning-delight/sabudana-wada.png",
+      "width": 750,
+      "height": 500,
+      "format": "heif",
+      "bytes": 25368
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 35790
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 138206
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-club-sandwich.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 133412
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-club-sandwich.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 132143
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-cutlet-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 105869
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-cutlet.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 55051
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-cutlet.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 90172
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-grilled-sandwich.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 119047
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 113845
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-sandwich.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 31740
+    },
+    {
+      "file": "assets/menu-images/morning-delight/veg-sandwich.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 76131
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/kaju-paneeer-masala.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 137431
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/lacchedar-paneer.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 43339
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/lachhedar-paneer.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 164095
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/mushroom-paneer-babycorn-masala.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 20803
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/mushroom-paneer-babycorn-masala.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 117694
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/mutter-paneer-masala.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 70306
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/mutter-paneer-masala.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 150648
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/palak-paneer.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 94219
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/palak-paneer.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 159174
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-adraki.jpeg",
+      "width": 1068,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 126197
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-adraki.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 194588
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-angara.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 104043
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-angara.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 98381
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-bhurji.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 39469
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-bhurji.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 150216
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-butter-masala.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 29494
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-butter-masala.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 127875
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-changezi.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 130783
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-changezi.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 193202
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-chatpata.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 127758
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-handi.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 39098
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-handi.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 133304
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-kadai.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 75592
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-kadhai-1.jpg",
+      "width": 900,
+      "height": 709,
+      "format": "jpeg",
+      "bytes": 140615
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-kadhai.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 153340
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-kolhapuri.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 32601
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-kolhapuri.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 135151
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-lababdar.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 150588
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-masala.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 96566
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-methi-chaman.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 47993
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-methi-chaman.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 148154
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-mirch-masala.jfif",
+      "width": 1024,
+      "height": 1150,
+      "format": "jpeg",
+      "bytes": 131835
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-mirch-masala.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 141640
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-mumtaz.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 26786
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-patakha-masala.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 112496
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-patakha-masala.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 106971
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-patiala-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 109765
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-patiala.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 176163
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-patiyala.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 126100
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-power.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 92936
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-power.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 200427
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-three-style-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 92990
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-three-style-2.jpg",
+      "width": 900,
+      "height": 737,
+      "format": "jpeg",
+      "bytes": 120306
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-three-style.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 88249
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-three-style.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 151818
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-tikka-masala.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 38715
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-tikka-masala.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 129740
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-toofani.jfif",
+      "width": 1024,
+      "height": 1150,
+      "format": "jpeg",
+      "bytes": 120368
+    },
+    {
+      "file": "assets/menu-images/paneer-specialities/paneer-toofani.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 126598
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 149467
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/curd-rice.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 36024
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/curd-rice.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 147145
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/dal-khichadi-with-tadka.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 178415
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/dal-khichadi-with-tadka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 73135
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/dal-khichadi.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 24524
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/dal-khichadi.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 74886
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/jeera-rice.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 35372
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/jeera-rice.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 84912
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg",
+      "width": 900,
+      "height": 750,
+      "format": "jpeg",
+      "bytes": 128851
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani.avif",
+      "width": 1229,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 73161
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 107855
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 114489
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/lemon-rice.avif",
+      "width": 1800,
+      "height": 1391,
+      "format": "heif",
+      "bytes": 55156
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/lemon-rice.jpg",
+      "width": 900,
+      "height": 696,
+      "format": "jpeg",
+      "bytes": 144223
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/masala-rice.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 72189
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/masala-rice.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 156501
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 60973
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 158602
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jfif",
+      "width": 1536,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 171965
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 98090
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jfif",
+      "width": 1536,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 147160
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 89471
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/steamed-rice.avif",
+      "width": 1224,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 133476
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/steamed-rice.jpg",
+      "width": 900,
+      "height": 753,
+      "format": "jpeg",
+      "bytes": 94654
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 151875
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 99265
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 49882
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 98434
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/veg-pulao.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 22359
+    },
+    {
+      "file": "assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 118636
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-chapati-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 116313
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-chapati.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 101412
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 144744
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
+      "width": 900,
+      "height": 614,
+      "format": "jpeg",
+      "bytes": 115525
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 122968
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-kahmiri-naan.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 141134
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-kulcha-1.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 206850
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-kulcha.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 190627
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-lachha-paratha.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 164445
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-methi-roti.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 126450
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-missi-roti.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 120388
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 162164
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-roti-1.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 187541
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-roti.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 140792
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-stuffed-kulcha.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 202629
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/butter-tawa-paratha.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 122236
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/chapati.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 40811
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/chapati.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 112026
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/cheese-garlic-naan.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 131242
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/cheese-garlic-naan.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 84509
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/cheese-naan.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 40498
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/cheese.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 90876
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/garlic-naan.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 62869
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/garlic-naan.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 239457
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/kashmiri-naan.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 43046
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/kashmiri-naan.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 137729
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/kulcha.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 69953
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/kulcha.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 181543
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/laccha-paratha.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 27268
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/lachha-paratha.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 130563
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/methi-roti.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 56822
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/methi-roti.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 198247
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/missi-roti.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 32869
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/missi-roti.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 122938
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/naan.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 128200
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/naan.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 148453
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/roti.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 141709
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/stuffed-kulcha.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 50973
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/stuffed-kulcha.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 192605
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/tandoori-roti.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 63012
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/tawa-paratha.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 24386
+    },
+    {
+      "file": "assets/menu-images/signature-indian-breads/tawa-paratha.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 114394
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 147537
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-hakka-noodles.avif",
+      "width": 1024,
+      "height": 513,
+      "format": "heif",
+      "bytes": 28221
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-manchurian-noodles.avif",
+      "width": 1024,
+      "height": 900,
+      "format": "heif",
+      "bytes": 84383
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-schezwan-fried-noodles.avif",
+      "width": 1024,
+      "height": 920,
+      "format": "heif",
+      "bytes": 18481
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-singapuri-noodles.avif",
+      "width": 1800,
+      "height": 1617,
+      "format": "heif",
+      "bytes": 41753
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-triple-schezwan-fried-noodles.avif",
+      "width": 1800,
+      "height": 1582,
+      "format": "heif",
+      "bytes": 38520
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/rice/mushroom-garlic-fried-rice.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 41880
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/rice/veg-combination-fried-rice.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 119972
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/rice/veg-fried-rice.avif",
+      "width": 1800,
+      "height": 1536,
+      "format": "heif",
+      "bytes": 53740
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/rice/veg-schezwan-fried-rice.avif",
+      "width": 1200,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 164689
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/rice/veg-triple-schezwan-fried-rice.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 77100
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 180401
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
+      "width": 900,
+      "height": 768,
+      "format": "jpeg",
+      "bytes": 134786
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-hakka-noodles-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 66174
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-hakka-noodles.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 85336
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-manchurian-noodles.jpg",
+      "width": 900,
+      "height": 791,
+      "format": "jpeg",
+      "bytes": 197769
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-manchurian-rice.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 163751
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg",
+      "width": 900,
+      "height": 768,
+      "format": "jpeg",
+      "bytes": 154961
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg",
+      "width": 900,
+      "height": 809,
+      "format": "jpeg",
+      "bytes": 108721
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 101145
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg",
+      "width": 900,
+      "height": 809,
+      "format": "jpeg",
+      "bytes": 122931
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg",
+      "width": 900,
+      "height": 791,
+      "format": "jpeg",
+      "bytes": 119831
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 115715
+    },
+    {
+      "file": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 113807
+    },
+    {
+      "file": "assets/menu-images/soups/hot-sour-soup.avif",
+      "width": 853,
+      "height": 900,
+      "format": "heif",
+      "bytes": 36200
+    },
+    {
+      "file": "assets/menu-images/soups/hot-sour-soup.jpg",
+      "width": 853,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 125581
+    },
+    {
+      "file": "assets/menu-images/soups/lemon-coriander-soup.jpg",
+      "width": 900,
+      "height": 835,
+      "format": "jpeg",
+      "bytes": 108737
+    },
+    {
+      "file": "assets/menu-images/soups/lmon-oriander-soup.avif",
+      "width": 1800,
+      "height": 1669,
+      "format": "heif",
+      "bytes": 26879
+    },
+    {
+      "file": "assets/menu-images/soups/sweetcorn-soup.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 30588
+    },
+    {
+      "file": "assets/menu-images/soups/tomato-soup.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 184850
+    },
+    {
+      "file": "assets/menu-images/soups/tomato-soup.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 149986
+    },
+    {
+      "file": "assets/menu-images/soups/veg-clear-soup.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 49938
+    },
+    {
+      "file": "assets/menu-images/soups/veg-clear-soup.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 111542
+    },
+    {
+      "file": "assets/menu-images/soups/veg-manchow-soup.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 32094
+    },
+    {
+      "file": "assets/menu-images/soups/veg-manchow-soup.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 121132
+    },
+    {
+      "file": "assets/menu-images/soups/veg-sweetcorn-soup.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 103162
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/achari-paneer-tikka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 108943
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/aloo-tikka-1.jpg",
+      "width": 900,
+      "height": 683,
+      "format": "jpeg",
+      "bytes": 116907
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/aloo-tikka.jfif",
+      "width": 1350,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 147446
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/aloo-tikka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 99718
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/babycorn-tikka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 108181
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/jungli-paneer-tikka.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 56385
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/jungli-paneer-tikka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 92726
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/lasooni-paneer-tikka.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 148203
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/lehsuni-paneer-tikka.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 204189
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/mushroom-babycorn-tikka-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 131533
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/mushroom-babycorn-tikka.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 60360
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/mushroom-babycorn-tikka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 118621
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-achari-tikka.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 60744
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-afghani-tikka.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 70697
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-afghani-tikka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 122707
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-combo-tikka.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 33210
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-combo-tikka.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 131872
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpeg",
+      "width": 1200,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 140034
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 107717
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-reshmi-kabab.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 59908
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-reshmi-tikka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 80824
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-tikka-shawarma-1.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 137557
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-tikka-shawarma-1.png",
+      "width": 1672,
+      "height": 941,
+      "format": "png",
+      "bytes": 1991640
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-tikka-shawarma-2.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "png",
+      "bytes": 2153508
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-tikka-shawarma.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 45945
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-tikka.avif",
+      "width": 1024,
+      "height": 900,
+      "format": "heif",
+      "bytes": 104659
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-tikka.jpg",
+      "width": 900,
+      "height": 791,
+      "format": "jpeg",
+      "bytes": 149549
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-zafrani-tikka.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 25318
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/paneer-zafrani-tikka.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 76675
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/tandoor-platter.avif",
+      "width": 1024,
+      "height": 900,
+      "format": "heif",
+      "bytes": 112623
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/tandoori-platter.jpg",
+      "width": 900,
+      "height": 791,
+      "format": "jpeg",
+      "bytes": 192260
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-cheese-balls.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 97886
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-chilli-milli-kabab.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 60115
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-chilli-milli-kabab.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 170204
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-gulzari-kabab.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 33841
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-gulzari-kabab.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 134831
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-hara-bhara-kabab-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 118082
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-hara-bhara-kabab.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 83275
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-hara-bhara-kabab.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 100485
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-manchrian-tikka.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 167229
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-manchurian-tikka.jpeg",
+      "width": 1200,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 143943
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-seekh-kabab.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 120636
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-seekh-kabab.jpg",
+      "width": 1280,
+      "height": 573,
+      "format": "jpeg",
+      "bytes": 79911
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-seekh-kebab.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 160358
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-uttaranchali-kabab.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 146120
+    },
+    {
+      "file": "assets/menu-images/tandoor-classics/veg-uttaranchali-kabab.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 150072
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/aloo-chaat-1.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 123238
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/aloo-chaat.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 61707
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/aloo-chaat.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 220181
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chana-chaat.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 73428
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chana-chaat.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 111563
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chana-garlic-roast-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 115811
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chana-garlic-roast.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 100085
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chana-roast-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 90824
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chana-roast.jfif",
+      "width": 1024,
+      "height": 1150,
+      "format": "jpeg",
+      "bytes": 127491
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chana-roast.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 133998
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/cheese-pakoda.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 60462
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/cheese-pakoda.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 160450
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chinese-bhel.avif",
+      "width": 1800,
+      "height": 1474,
+      "format": "heif",
+      "bytes": 76979
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/chinese-bhel.jpg",
+      "width": 900,
+      "height": 737,
+      "format": "jpeg",
+      "bytes": 137554
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/finger-chips.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 32256
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/finger-chips.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 138778
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/mix-veg-pakoda.avif",
+      "width": 1800,
+      "height": 1505,
+      "format": "heif",
+      "bytes": 57401
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/paneer-pakoda.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 43029
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/paneer-pakoda.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 160851
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/peanut-chaat.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 67205
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/peanut-chaat.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 147399
+    },
+    {
+      "file": "assets/menu-images/tasty-tidbits/veg-pakoda.jpg",
+      "width": 900,
+      "height": 753,
+      "format": "jpeg",
+      "bytes": 139550
+    },
+    {
+      "file": "assets/menu-images/thalis/indo-chinese-combo-123.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 106589
+    },
+    {
+      "file": "assets/menu-images/thalis/indo-chinese-combo-2.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 93652
+    },
+    {
+      "file": "assets/menu-images/thalis/indo-chinese-combo-3.jpg",
+      "width": 750,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 108283
+    },
+    {
+      "file": "assets/menu-images/thalis/indo-chinese-combo.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 90389
+    },
+    {
+      "file": "assets/menu-images/thalis/indo-chinese-combo.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 102080
+    },
+    {
+      "file": "assets/menu-images/thalis/maharaja-thali-12.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 149595
+    },
+    {
+      "file": "assets/menu-images/thalis/maharaja-thali-edited.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 141390
+    },
+    {
+      "file": "assets/menu-images/thalis/maharaja-thali.jpg",
+      "width": 900,
+      "height": 658,
+      "format": "jpeg",
+      "bytes": 143653
+    },
+    {
+      "file": "assets/menu-images/thalis/mini-thali-1-190ea57e72aa.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 139028
+    },
+    {
+      "file": "assets/menu-images/thalis/mini-thali-1.jpg",
+      "width": 900,
+      "height": 658,
+      "format": "jpeg",
+      "bytes": 137867
+    },
+    {
+      "file": "assets/menu-images/thalis/mini-thali.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 170495
+    },
+    {
+      "file": "assets/menu-images/thalis/premier-maharaja-thali.jfif",
+      "width": 1536,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 251410
+    },
+    {
+      "file": "assets/menu-images/thalis/signature-thali-1.jpg",
+      "width": 900,
+      "height": 614,
+      "format": "jpeg",
+      "bytes": 127283
+    },
+    {
+      "file": "assets/menu-images/thalis/signature-thali-12.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 146243
+    },
+    {
+      "file": "assets/menu-images/thalis/signature-thali.avif",
+      "width": 1800,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 79541
+    },
+    {
+      "file": "assets/menu-images/thalis/signature-thali.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 121961
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/aloo-gobi-banarsi.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 188363
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/aloo-gobi-banarsi.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 170789
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/aloo-gobi-mutter.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 160677
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/aloo-palak.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 106473
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/chole-masala.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 20109
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/chole-masala.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 117898
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/corn-palak.jfif",
+      "width": 1024,
+      "height": 1150,
+      "format": "jpeg",
+      "bytes": 148258
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/corn-palak.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 160620
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/dum-aloo-punjabi.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 37870
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/dum-aloo-punjabi.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 133730
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/grean-peas-masala.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 78766
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/green-peas-masala.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 154356
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/kaju-curry.jpeg",
+      "width": 1200,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 119484
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/kaju-curry.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 141222
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/kaju-masala.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 36294
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/kaju-masala.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 176835
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/lasooni-methi.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 120800
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/lasooni-palak.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 153346
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/lehsuni-methi.avif",
+      "width": 1068,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 34224
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/lehsuni-palak.jpeg",
+      "width": 1200,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 141743
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/mix-veg.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 74133
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/mix-veg.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 99989
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/mushroom-babycorn-masala.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 46458
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/mushroom-babycorn-masala.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 153402
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/shev-bhaji.avif",
+      "width": 1024,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 24527
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/shev-bhaji.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 117149
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-adraki-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 93943
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-adraki.jfif",
+      "width": 1536,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 152300
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-adraki.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 94996
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-bukhara-1.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 124161
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-bukhara-2.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 112385
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-bukhara.jpeg",
+      "width": 1800,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 198398
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-bukhara.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 119499
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-chili-milli.jfif",
+      "width": 1024,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 118703
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-chilli-milli.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 155066
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-handi.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 97892
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-handi.jpg",
+      "width": 1600,
+      "height": 716,
+      "format": "jpeg",
+      "bytes": 164093
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-jaipuri.jfif",
+      "width": 1024,
+      "height": 1024,
+      "format": "jpeg",
+      "bytes": 116731
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-jaipuri.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 150998
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-kadai.avif",
+      "width": 1536,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 89442
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-kadhai.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 107073
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-kolhapuri-1.jpg",
+      "width": 600,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 105793
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-kolhapuri.avif",
+      "width": 1200,
+      "height": 1200,
+      "format": "heif",
+      "bytes": 36782
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-kolhapuri.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 197483
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-patiyala.jpg",
+      "width": 900,
+      "height": 600,
+      "format": "jpeg",
+      "bytes": 133379
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-pride-special-1.jpg",
+      "width": 900,
+      "height": 683,
+      "format": "jpeg",
+      "bytes": 148541
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-pride-special.avif",
+      "width": 1350,
+      "height": 1024,
+      "format": "heif",
+      "bytes": 105699
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-pride-special.jpg",
+      "width": 900,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 213535
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-tawa-special.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 151010
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-tawa-special.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 153031
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-toofani.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 127628
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-toofani.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 154999
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-zatpat.avif",
+      "width": 1024,
+      "height": 1150,
+      "format": "heif",
+      "bytes": 85665
+    },
+    {
+      "file": "assets/menu-images/veg-specialities/veg-zatpat.jpg",
+      "width": 801,
+      "height": 900,
+      "format": "jpeg",
+      "bytes": 122356
+    },
+    {
+      "file": "assets/menu-responsive/0137f2a900f1896fb7ed-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10532
+    },
+    {
+      "file": "assets/menu-responsive/0137f2a900f1896fb7ed-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 116330
+    },
+    {
+      "file": "assets/menu-responsive/023a01b484942d704a4d-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4412
+    },
+    {
+      "file": "assets/menu-responsive/023a01b484942d704a4d-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 49888
+    },
+    {
+      "file": "assets/menu-responsive/0b26de5cdaec31772743-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 11480
+    },
+    {
+      "file": "assets/menu-responsive/0b26de5cdaec31772743-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 155750
+    },
+    {
+      "file": "assets/menu-responsive/0c00b9c0ec79c683c515-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4140
+    },
+    {
+      "file": "assets/menu-responsive/0c00b9c0ec79c683c515-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 41118
+    },
+    {
+      "file": "assets/menu-responsive/0e6b768486c990844405-240.webp",
+      "width": 135,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5246
+    },
+    {
+      "file": "assets/menu-responsive/0e6b768486c990844405-960.webp",
+      "width": 540,
+      "height": 960,
+      "format": "webp",
+      "bytes": 42120
+    },
+    {
+      "file": "assets/menu-responsive/0fb90b5600d44bce748e-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9456
+    },
+    {
+      "file": "assets/menu-responsive/0fb90b5600d44bce748e-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 105904
+    },
+    {
+      "file": "assets/menu-responsive/0fc5205093d5985a018b-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6862
+    },
+    {
+      "file": "assets/menu-responsive/0fc5205093d5985a018b-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 95336
+    },
+    {
+      "file": "assets/menu-responsive/103eb9cec7a3e8fa538a-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6834
+    },
+    {
+      "file": "assets/menu-responsive/103eb9cec7a3e8fa538a-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 61522
+    },
+    {
+      "file": "assets/menu-responsive/10947b096cfb583c0d5c-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5376
+    },
+    {
+      "file": "assets/menu-responsive/10947b096cfb583c0d5c-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 61034
+    },
+    {
+      "file": "assets/menu-responsive/1161f5213a1ae19b8353-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6988
+    },
+    {
+      "file": "assets/menu-responsive/1161f5213a1ae19b8353-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 73384
+    },
+    {
+      "file": "assets/menu-responsive/12cb3be6cdb57138cbde-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10390
+    },
+    {
+      "file": "assets/menu-responsive/12cb3be6cdb57138cbde-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 105474
+    },
+    {
+      "file": "assets/menu-responsive/13b25ff9d3cf0551de0b-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5352
+    },
+    {
+      "file": "assets/menu-responsive/13b25ff9d3cf0551de0b-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 70868
+    },
+    {
+      "file": "assets/menu-responsive/13ebbe56730ab74dfee1-240.webp",
+      "width": 240,
+      "height": 211,
+      "format": "webp",
+      "bytes": 8462
+    },
+    {
+      "file": "assets/menu-responsive/13ebbe56730ab74dfee1-960.webp",
+      "width": 900,
+      "height": 791,
+      "format": "webp",
+      "bytes": 110826
+    },
+    {
+      "file": "assets/menu-responsive/147eeaef33443093a42c-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5546
+    },
+    {
+      "file": "assets/menu-responsive/147eeaef33443093a42c-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 61492
+    },
+    {
+      "file": "assets/menu-responsive/159001994ea59fbcf31c-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6722
+    },
+    {
+      "file": "assets/menu-responsive/159001994ea59fbcf31c-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 117854
+    },
+    {
+      "file": "assets/menu-responsive/175b423deee5e5f26f0a-240.webp",
+      "width": 135,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5474
+    },
+    {
+      "file": "assets/menu-responsive/175b423deee5e5f26f0a-960.webp",
+      "width": 540,
+      "height": 960,
+      "format": "webp",
+      "bytes": 48562
+    },
+    {
+      "file": "assets/menu-responsive/1a2df8d31f1f4cbe74ac-240.webp",
+      "width": 179,
+      "height": 240,
+      "format": "webp",
+      "bytes": 11928
+    },
+    {
+      "file": "assets/menu-responsive/1a2df8d31f1f4cbe74ac-960.webp",
+      "width": 717,
+      "height": 960,
+      "format": "webp",
+      "bytes": 164134
+    },
+    {
+      "file": "assets/menu-responsive/1b84c952d5a71fb370e4-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9098
+    },
+    {
+      "file": "assets/menu-responsive/1b84c952d5a71fb370e4-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 70796
+    },
+    {
+      "file": "assets/menu-responsive/1d09dba0011068bfeb1c-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8672
+    },
+    {
+      "file": "assets/menu-responsive/1d09dba0011068bfeb1c-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 145440
+    },
+    {
+      "file": "assets/menu-responsive/1df5c4e7ef91f249bc2c-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5186
+    },
+    {
+      "file": "assets/menu-responsive/1df5c4e7ef91f249bc2c-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 64702
+    },
+    {
+      "file": "assets/menu-responsive/2017b2275e27efb9a321-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5674
+    },
+    {
+      "file": "assets/menu-responsive/2017b2275e27efb9a321-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 89134
+    },
+    {
+      "file": "assets/menu-responsive/206272105eacfa8cc19f-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7752
+    },
+    {
+      "file": "assets/menu-responsive/206272105eacfa8cc19f-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 80208
+    },
+    {
+      "file": "assets/menu-responsive/21949172fcb071fb69fa-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8902
+    },
+    {
+      "file": "assets/menu-responsive/21949172fcb071fb69fa-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 86530
+    },
+    {
+      "file": "assets/menu-responsive/21c052e9b0de25767ad5-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8070
+    },
+    {
+      "file": "assets/menu-responsive/21c052e9b0de25767ad5-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 108510
+    },
+    {
+      "file": "assets/menu-responsive/21ccf757ba690e10219f-240.webp",
+      "width": 240,
+      "height": 222,
+      "format": "webp",
+      "bytes": 6972
+    },
+    {
+      "file": "assets/menu-responsive/21ccf757ba690e10219f-960.webp",
+      "width": 900,
+      "height": 835,
+      "format": "webp",
+      "bytes": 64116
+    },
+    {
+      "file": "assets/menu-responsive/225609e3c9b7e0452b97-240.webp",
+      "width": 240,
+      "height": 135,
+      "format": "webp",
+      "bytes": 7388
+    },
+    {
+      "file": "assets/menu-responsive/225609e3c9b7e0452b97-960.webp",
+      "width": 960,
+      "height": 540,
+      "format": "webp",
+      "bytes": 97550
+    },
+    {
+      "file": "assets/menu-responsive/234549c749c6f30f5610-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4438
+    },
+    {
+      "file": "assets/menu-responsive/234549c749c6f30f5610-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 47600
+    },
+    {
+      "file": "assets/menu-responsive/23c386ae9e8d33c3ee39-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8930
+    },
+    {
+      "file": "assets/menu-responsive/23c386ae9e8d33c3ee39-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 111790
+    },
+    {
+      "file": "assets/menu-responsive/268a9175e39ae7fed02e-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 4722
+    },
+    {
+      "file": "assets/menu-responsive/268a9175e39ae7fed02e-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 50970
+    },
+    {
+      "file": "assets/menu-responsive/26ee8c88594a757d6b55-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6056
+    },
+    {
+      "file": "assets/menu-responsive/26ee8c88594a757d6b55-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 66464
+    },
+    {
+      "file": "assets/menu-responsive/28d3a28a1fe2138bcfbe-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6980
+    },
+    {
+      "file": "assets/menu-responsive/28d3a28a1fe2138bcfbe-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 80032
+    },
+    {
+      "file": "assets/menu-responsive/2a1aa134fe8bd51e3e2a-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7446
+    },
+    {
+      "file": "assets/menu-responsive/2a1aa134fe8bd51e3e2a-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 92486
+    },
+    {
+      "file": "assets/menu-responsive/2aa6093e345171bf4c9d-240.webp",
+      "width": 240,
+      "height": 182,
+      "format": "webp",
+      "bytes": 7620
+    },
+    {
+      "file": "assets/menu-responsive/2aa6093e345171bf4c9d-960.webp",
+      "width": 900,
+      "height": 683,
+      "format": "webp",
+      "bytes": 82908
+    },
+    {
+      "file": "assets/menu-responsive/2b3ba9e2ebec89e2ff78-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7076
+    },
+    {
+      "file": "assets/menu-responsive/2b3ba9e2ebec89e2ff78-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 103436
+    },
+    {
+      "file": "assets/menu-responsive/2cb30dadc1855bf176f0-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 12384
+    },
+    {
+      "file": "assets/menu-responsive/2cb30dadc1855bf176f0-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 161360
+    },
+    {
+      "file": "assets/menu-responsive/2de1a9ed5bd8e2222f8a-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 12934
+    },
+    {
+      "file": "assets/menu-responsive/2de1a9ed5bd8e2222f8a-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 153638
+    },
+    {
+      "file": "assets/menu-responsive/2f2be9d1a7b746743c0d-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4368
+    },
+    {
+      "file": "assets/menu-responsive/2f2be9d1a7b746743c0d-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 51532
+    },
+    {
+      "file": "assets/menu-responsive/2fd01f941c67d71e5bb0-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8758
+    },
+    {
+      "file": "assets/menu-responsive/2fd01f941c67d71e5bb0-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 96328
+    },
+    {
+      "file": "assets/menu-responsive/31766b438557a244e9af-240.webp",
+      "width": 135,
+      "height": 240,
+      "format": "webp",
+      "bytes": 3680
+    },
+    {
+      "file": "assets/menu-responsive/31766b438557a244e9af-960.webp",
+      "width": 540,
+      "height": 960,
+      "format": "webp",
+      "bytes": 26110
+    },
+    {
+      "file": "assets/menu-responsive/3200a1348f17531c59f2-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10202
+    },
+    {
+      "file": "assets/menu-responsive/3200a1348f17531c59f2-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 118508
+    },
+    {
+      "file": "assets/menu-responsive/32e6247a77a329cb770c-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5586
+    },
+    {
+      "file": "assets/menu-responsive/32e6247a77a329cb770c-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 67052
+    },
+    {
+      "file": "assets/menu-responsive/3310b9dcbf4058dae44a-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7030
+    },
+    {
+      "file": "assets/menu-responsive/3310b9dcbf4058dae44a-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 95974
+    },
+    {
+      "file": "assets/menu-responsive/3355d05d4aceb3f898ec-240.webp",
+      "width": 240,
+      "height": 196,
+      "format": "webp",
+      "bytes": 8546
+    },
+    {
+      "file": "assets/menu-responsive/3355d05d4aceb3f898ec-960.webp",
+      "width": 900,
+      "height": 737,
+      "format": "webp",
+      "bytes": 96404
+    },
+    {
+      "file": "assets/menu-responsive/34af398e8fe6c3460787-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6842
+    },
+    {
+      "file": "assets/menu-responsive/34af398e8fe6c3460787-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 97692
+    },
+    {
+      "file": "assets/menu-responsive/36cceb907b366ecf7845-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8730
+    },
+    {
+      "file": "assets/menu-responsive/36cceb907b366ecf7845-960.webp",
+      "width": 960,
+      "height": 960,
+      "format": "webp",
+      "bytes": 73562
+    },
+    {
+      "file": "assets/menu-responsive/371b839c59df44d1cf44-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10608
+    },
+    {
+      "file": "assets/menu-responsive/371b839c59df44d1cf44-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 112008
+    },
+    {
+      "file": "assets/menu-responsive/3905c17a101ddaedd34a-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5732
+    },
+    {
+      "file": "assets/menu-responsive/3905c17a101ddaedd34a-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 53314
+    },
+    {
+      "file": "assets/menu-responsive/396d65ddb16d3a15ef2d-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8278
+    },
+    {
+      "file": "assets/menu-responsive/396d65ddb16d3a15ef2d-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 108452
+    },
+    {
+      "file": "assets/menu-responsive/39e264b272b1be5ccee7-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4382
+    },
+    {
+      "file": "assets/menu-responsive/39e264b272b1be5ccee7-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 36982
+    },
+    {
+      "file": "assets/menu-responsive/3b33c4d770e127cb79f8-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9830
+    },
+    {
+      "file": "assets/menu-responsive/3b33c4d770e127cb79f8-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 90416
+    },
+    {
+      "file": "assets/menu-responsive/3b8ab2658b7900aae738-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 12268
+    },
+    {
+      "file": "assets/menu-responsive/3b8ab2658b7900aae738-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 160990
+    },
+    {
+      "file": "assets/menu-responsive/3c737952ae3fbdd23bfa-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7822
+    },
+    {
+      "file": "assets/menu-responsive/3c737952ae3fbdd23bfa-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 99116
+    },
+    {
+      "file": "assets/menu-responsive/3dd8691efb8e3705c8f2-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4580
+    },
+    {
+      "file": "assets/menu-responsive/3dd8691efb8e3705c8f2-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 52886
+    },
+    {
+      "file": "assets/menu-responsive/3e17d0004882ebac2a7c-240.webp",
+      "width": 240,
+      "height": 135,
+      "format": "webp",
+      "bytes": 4568
+    },
+    {
+      "file": "assets/menu-responsive/3e17d0004882ebac2a7c-960.webp",
+      "width": 960,
+      "height": 540,
+      "format": "webp",
+      "bytes": 79110
+    },
+    {
+      "file": "assets/menu-responsive/3f5c1a75ab8c58206acf-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5148
+    },
+    {
+      "file": "assets/menu-responsive/3f5c1a75ab8c58206acf-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 47936
+    },
+    {
+      "file": "assets/menu-responsive/403d917cba9fd92aa7b6-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10484
+    },
+    {
+      "file": "assets/menu-responsive/403d917cba9fd92aa7b6-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 120292
+    },
+    {
+      "file": "assets/menu-responsive/408696a0f3c1e6925bde-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4818
+    },
+    {
+      "file": "assets/menu-responsive/408696a0f3c1e6925bde-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 51712
+    },
+    {
+      "file": "assets/menu-responsive/40e14d24678f95e775eb-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6700
+    },
+    {
+      "file": "assets/menu-responsive/40e14d24678f95e775eb-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 80814
+    },
+    {
+      "file": "assets/menu-responsive/4276cb155162ac4a95f8-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9674
+    },
+    {
+      "file": "assets/menu-responsive/4276cb155162ac4a95f8-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 100754
+    },
+    {
+      "file": "assets/menu-responsive/4474e11b3c0e29da6ac3-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9364
+    },
+    {
+      "file": "assets/menu-responsive/4474e11b3c0e29da6ac3-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 79842
+    },
+    {
+      "file": "assets/menu-responsive/44e4ac2f22a85c3da496-240.webp",
+      "width": 135,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5866
+    },
+    {
+      "file": "assets/menu-responsive/44e4ac2f22a85c3da496-960.webp",
+      "width": 540,
+      "height": 960,
+      "format": "webp",
+      "bytes": 48838
+    },
+    {
+      "file": "assets/menu-responsive/470a623cdef88f9eb689-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9224
+    },
+    {
+      "file": "assets/menu-responsive/470a623cdef88f9eb689-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 89644
+    },
+    {
+      "file": "assets/menu-responsive/48a87e5df48e8e1a6f03-240.webp",
+      "width": 240,
+      "height": 135,
+      "format": "webp",
+      "bytes": 7542
+    },
+    {
+      "file": "assets/menu-responsive/48a87e5df48e8e1a6f03-960.webp",
+      "width": 960,
+      "height": 540,
+      "format": "webp",
+      "bytes": 82254
+    },
+    {
+      "file": "assets/menu-responsive/4d28d23bce021df11982-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5866
+    },
+    {
+      "file": "assets/menu-responsive/4d28d23bce021df11982-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 62374
+    },
+    {
+      "file": "assets/menu-responsive/4ddfb719676069846247-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10448
+    },
+    {
+      "file": "assets/menu-responsive/4ddfb719676069846247-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 115496
+    },
+    {
+      "file": "assets/menu-responsive/4e36ba64deae0ede4008-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6948
+    },
+    {
+      "file": "assets/menu-responsive/4e36ba64deae0ede4008-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 88100
+    },
+    {
+      "file": "assets/menu-responsive/4efa33145462b1f11db4-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5418
+    },
+    {
+      "file": "assets/menu-responsive/4efa33145462b1f11db4-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 60558
+    },
+    {
+      "file": "assets/menu-responsive/4f84a3e2edca2e9eba48-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5918
+    },
+    {
+      "file": "assets/menu-responsive/4f84a3e2edca2e9eba48-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 82040
+    },
+    {
+      "file": "assets/menu-responsive/4ffdbc9b3a3df2e6ab9f-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9108
+    },
+    {
+      "file": "assets/menu-responsive/4ffdbc9b3a3df2e6ab9f-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 109840
+    },
+    {
+      "file": "assets/menu-responsive/50c7d1f57ee64b0955bb-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4762
+    },
+    {
+      "file": "assets/menu-responsive/50c7d1f57ee64b0955bb-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 55092
+    },
+    {
+      "file": "assets/menu-responsive/5173cc2259609ffda456-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5462
+    },
+    {
+      "file": "assets/menu-responsive/5173cc2259609ffda456-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 61504
+    },
+    {
+      "file": "assets/menu-responsive/53ee250ec76515b69469-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 13658
+    },
+    {
+      "file": "assets/menu-responsive/53ee250ec76515b69469-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 168070
+    },
+    {
+      "file": "assets/menu-responsive/54052b64ed93d13d63ae-240.webp",
+      "width": 240,
+      "height": 201,
+      "format": "webp",
+      "bytes": 3864
+    },
+    {
+      "file": "assets/menu-responsive/54052b64ed93d13d63ae-960.webp",
+      "width": 900,
+      "height": 753,
+      "format": "webp",
+      "bytes": 52708
+    },
+    {
+      "file": "assets/menu-responsive/546411d8af0195643bbf-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8032
+    },
+    {
+      "file": "assets/menu-responsive/546411d8af0195643bbf-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 89020
+    },
+    {
+      "file": "assets/menu-responsive/5493df45b504145e8a41-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10674
+    },
+    {
+      "file": "assets/menu-responsive/5493df45b504145e8a41-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 100112
+    },
+    {
+      "file": "assets/menu-responsive/551a97a0f57c7ffdda8e-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10362
+    },
+    {
+      "file": "assets/menu-responsive/551a97a0f57c7ffdda8e-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 88042
+    },
+    {
+      "file": "assets/menu-responsive/55ceeeff0b51aa3876ca-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7980
+    },
+    {
+      "file": "assets/menu-responsive/55ceeeff0b51aa3876ca-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 97358
+    },
+    {
+      "file": "assets/menu-responsive/59153f9e0b1962855c9c-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7800
+    },
+    {
+      "file": "assets/menu-responsive/59153f9e0b1962855c9c-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 85912
+    },
+    {
+      "file": "assets/menu-responsive/5a8ff26331a94b34c77a-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5468
+    },
+    {
+      "file": "assets/menu-responsive/5a8ff26331a94b34c77a-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 58196
+    },
+    {
+      "file": "assets/menu-responsive/5a9368533d02558dba42-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9472
+    },
+    {
+      "file": "assets/menu-responsive/5a9368533d02558dba42-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 85692
+    },
+    {
+      "file": "assets/menu-responsive/5ac6c4aa5956eefa3c2c-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9870
+    },
+    {
+      "file": "assets/menu-responsive/5ac6c4aa5956eefa3c2c-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 113476
+    },
+    {
+      "file": "assets/menu-responsive/5ac92276b76c271c3442-240.webp",
+      "width": 240,
+      "height": 201,
+      "format": "webp",
+      "bytes": 7324
+    },
+    {
+      "file": "assets/menu-responsive/5ac92276b76c271c3442-960.webp",
+      "width": 900,
+      "height": 753,
+      "format": "webp",
+      "bytes": 91644
+    },
+    {
+      "file": "assets/menu-responsive/5c573b0709762a11da86-240.webp",
+      "width": 240,
+      "height": 215,
+      "format": "webp",
+      "bytes": 8930
+    },
+    {
+      "file": "assets/menu-responsive/5c573b0709762a11da86-960.webp",
+      "width": 900,
+      "height": 809,
+      "format": "webp",
+      "bytes": 62124
+    },
+    {
+      "file": "assets/menu-responsive/5df5d8acd9cbbec0b3f2-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6556
+    },
+    {
+      "file": "assets/menu-responsive/5df5d8acd9cbbec0b3f2-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 86686
+    },
+    {
+      "file": "assets/menu-responsive/5e670a8f4415e7e00e0e-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4576
+    },
+    {
+      "file": "assets/menu-responsive/5e670a8f4415e7e00e0e-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 44834
+    },
+    {
+      "file": "assets/menu-responsive/5f19e7ebd8054af4c499-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6844
+    },
+    {
+      "file": "assets/menu-responsive/5f19e7ebd8054af4c499-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 58336
+    },
+    {
+      "file": "assets/menu-responsive/60767aca8a3bf56d2057-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 11206
+    },
+    {
+      "file": "assets/menu-responsive/60767aca8a3bf56d2057-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 117330
+    },
+    {
+      "file": "assets/menu-responsive/61e7aba453a689671f3e-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7900
+    },
+    {
+      "file": "assets/menu-responsive/61e7aba453a689671f3e-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 113346
+    },
+    {
+      "file": "assets/menu-responsive/6370e0778362192faaa4-240.webp",
+      "width": 240,
+      "height": 164,
+      "format": "webp",
+      "bytes": 7548
+    },
+    {
+      "file": "assets/menu-responsive/6370e0778362192faaa4-960.webp",
+      "width": 900,
+      "height": 614,
+      "format": "webp",
+      "bytes": 88056
+    },
+    {
+      "file": "assets/menu-responsive/63b70ed4b82eb7b72ab4-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5722
+    },
+    {
+      "file": "assets/menu-responsive/63b70ed4b82eb7b72ab4-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 70382
+    },
+    {
+      "file": "assets/menu-responsive/65ddb144ede648687852-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8932
+    },
+    {
+      "file": "assets/menu-responsive/65ddb144ede648687852-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 114940
+    },
+    {
+      "file": "assets/menu-responsive/6614df6c22e6c721c44c-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7370
+    },
+    {
+      "file": "assets/menu-responsive/6614df6c22e6c721c44c-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 103702
+    },
+    {
+      "file": "assets/menu-responsive/6a1e5d6d0a65982e59b4-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8274
+    },
+    {
+      "file": "assets/menu-responsive/6a1e5d6d0a65982e59b4-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 83036
+    },
+    {
+      "file": "assets/menu-responsive/6a4b27550c54405ba226-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10000
+    },
+    {
+      "file": "assets/menu-responsive/6a4b27550c54405ba226-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 89182
+    },
+    {
+      "file": "assets/menu-responsive/6a7f981f08bdaf5b5a71-240.webp",
+      "width": 240,
+      "height": 213,
+      "format": "webp",
+      "bytes": 3382
+    },
+    {
+      "file": "assets/menu-responsive/6a7f981f08bdaf5b5a71-960.webp",
+      "width": 900,
+      "height": 801,
+      "format": "webp",
+      "bytes": 38628
+    },
+    {
+      "file": "assets/menu-responsive/6a8372709b6c3ccebb2c-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10564
+    },
+    {
+      "file": "assets/menu-responsive/6a8372709b6c3ccebb2c-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 110134
+    },
+    {
+      "file": "assets/menu-responsive/6cb5eea5752d526573c5-240.webp",
+      "width": 240,
+      "height": 211,
+      "format": "webp",
+      "bytes": 12538
+    },
+    {
+      "file": "assets/menu-responsive/6cb5eea5752d526573c5-960.webp",
+      "width": 900,
+      "height": 791,
+      "format": "webp",
+      "bytes": 151790
+    },
+    {
+      "file": "assets/menu-responsive/6cbec81e13b44f29e5d0-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7050
+    },
+    {
+      "file": "assets/menu-responsive/6cbec81e13b44f29e5d0-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 87452
+    },
+    {
+      "file": "assets/menu-responsive/6d39794c9cea575e66a3-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6766
+    },
+    {
+      "file": "assets/menu-responsive/6d39794c9cea575e66a3-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 80684
+    },
+    {
+      "file": "assets/menu-responsive/6debfd13770546e7f701-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5610
+    },
+    {
+      "file": "assets/menu-responsive/6debfd13770546e7f701-960.webp",
+      "width": 960,
+      "height": 640,
+      "format": "webp",
+      "bytes": 55054
+    },
+    {
+      "file": "assets/menu-responsive/6e9c1153fcbbcaa58148-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8884
+    },
+    {
+      "file": "assets/menu-responsive/6e9c1153fcbbcaa58148-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 104240
+    },
+    {
+      "file": "assets/menu-responsive/6ef6ab8ddfb643ac2792-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9058
+    },
+    {
+      "file": "assets/menu-responsive/6ef6ab8ddfb643ac2792-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 105914
+    },
+    {
+      "file": "assets/menu-responsive/724053fc7fe75d4b56a0-240.webp",
+      "width": 160,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6878
+    },
+    {
+      "file": "assets/menu-responsive/724053fc7fe75d4b56a0-960.webp",
+      "width": 600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 75722
+    },
+    {
+      "file": "assets/menu-responsive/75243fabab8bde4b93cb-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9062
+    },
+    {
+      "file": "assets/menu-responsive/75243fabab8bde4b93cb-960.webp",
+      "width": 960,
+      "height": 960,
+      "format": "webp",
+      "bytes": 116454
+    },
+    {
+      "file": "assets/menu-responsive/754c817fa28a93c932da-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6778
+    },
+    {
+      "file": "assets/menu-responsive/754c817fa28a93c932da-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 83122
+    },
+    {
+      "file": "assets/menu-responsive/7792b097579c97a7c180-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8372
+    },
+    {
+      "file": "assets/menu-responsive/7792b097579c97a7c180-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 93434
+    },
+    {
+      "file": "assets/menu-responsive/787db9da7e2141e9d461-240.webp",
+      "width": 240,
+      "height": 205,
+      "format": "webp",
+      "bytes": 9406
+    },
+    {
+      "file": "assets/menu-responsive/787db9da7e2141e9d461-960.webp",
+      "width": 900,
+      "height": 768,
+      "format": "webp",
+      "bytes": 111930
+    },
+    {
+      "file": "assets/menu-responsive/78df96871c41afc602ca-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9328
+    },
+    {
+      "file": "assets/menu-responsive/78df96871c41afc602ca-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 131210
+    },
+    {
+      "file": "assets/menu-responsive/78fe7c16edd96e5593c2-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6018
+    },
+    {
+      "file": "assets/menu-responsive/78fe7c16edd96e5593c2-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 61982
+    },
+    {
+      "file": "assets/menu-responsive/7badecec141fc2b632ea-240.webp",
+      "width": 135,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5540
+    },
+    {
+      "file": "assets/menu-responsive/7badecec141fc2b632ea-960.webp",
+      "width": 540,
+      "height": 960,
+      "format": "webp",
+      "bytes": 46862
+    },
+    {
+      "file": "assets/menu-responsive/7bfc0cc91ede545a643c-240.webp",
+      "width": 227,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5934
+    },
+    {
+      "file": "assets/menu-responsive/7bfc0cc91ede545a643c-960.webp",
+      "width": 853,
+      "height": 900,
+      "format": "webp",
+      "bytes": 92676
+    },
+    {
+      "file": "assets/menu-responsive/7eeff3aff6d200be5a74-240.webp",
+      "width": 223,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6602
+    },
+    {
+      "file": "assets/menu-responsive/7eeff3aff6d200be5a74-960.webp",
+      "width": 838,
+      "height": 900,
+      "format": "webp",
+      "bytes": 60922
+    },
+    {
+      "file": "assets/menu-responsive/7f9cd3a888540a0d943e-240.webp",
+      "width": 240,
+      "height": 215,
+      "format": "webp",
+      "bytes": 7384
+    },
+    {
+      "file": "assets/menu-responsive/7f9cd3a888540a0d943e-960.webp",
+      "width": 900,
+      "height": 809,
+      "format": "webp",
+      "bytes": 79348
+    },
+    {
+      "file": "assets/menu-responsive/7fe3552e710259e97823-240.webp",
+      "width": 160,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7914
+    },
+    {
+      "file": "assets/menu-responsive/7fe3552e710259e97823-960.webp",
+      "width": 600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 70442
+    },
+    {
+      "file": "assets/menu-responsive/7ff54e1b8fdd2bf425bb-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7846
+    },
+    {
+      "file": "assets/menu-responsive/7ff54e1b8fdd2bf425bb-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 106866
+    },
+    {
+      "file": "assets/menu-responsive/80afa2f37b6d6239a913-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5536
+    },
+    {
+      "file": "assets/menu-responsive/80afa2f37b6d6239a913-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 68222
+    },
+    {
+      "file": "assets/menu-responsive/8153be4f7b62e537763d-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5162
+    },
+    {
+      "file": "assets/menu-responsive/8153be4f7b62e537763d-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 60432
+    },
+    {
+      "file": "assets/menu-responsive/822586fe61a9d3e2ed29-240.webp",
+      "width": 205,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7484
+    },
+    {
+      "file": "assets/menu-responsive/822586fe61a9d3e2ed29-960.webp",
+      "width": 768,
+      "height": 900,
+      "format": "webp",
+      "bytes": 101018
+    },
+    {
+      "file": "assets/menu-responsive/83f9f69dfc942c699f08-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 8408
+    },
+    {
+      "file": "assets/menu-responsive/83f9f69dfc942c699f08-960.webp",
+      "width": 960,
+      "height": 640,
+      "format": "webp",
+      "bytes": 120574
+    },
+    {
+      "file": "assets/menu-responsive/841c9e0dbdf5f1e77c41-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4708
+    },
+    {
+      "file": "assets/menu-responsive/841c9e0dbdf5f1e77c41-960.webp",
+      "width": 960,
+      "height": 640,
+      "format": "webp",
+      "bytes": 80786
+    },
+    {
+      "file": "assets/menu-responsive/84549d381293262bf990-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6894
+    },
+    {
+      "file": "assets/menu-responsive/84549d381293262bf990-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 101950
+    },
+    {
+      "file": "assets/menu-responsive/87db5aef2d851ab001ee-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9060
+    },
+    {
+      "file": "assets/menu-responsive/87db5aef2d851ab001ee-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 80532
+    },
+    {
+      "file": "assets/menu-responsive/8c0ee8c42c4571fc4eeb-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10264
+    },
+    {
+      "file": "assets/menu-responsive/8c0ee8c42c4571fc4eeb-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 141560
+    },
+    {
+      "file": "assets/menu-responsive/8d4b92d0fb21d8b081c5-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5398
+    },
+    {
+      "file": "assets/menu-responsive/8d4b92d0fb21d8b081c5-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 65038
+    },
+    {
+      "file": "assets/menu-responsive/936a26e03747cb827700-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 12680
+    },
+    {
+      "file": "assets/menu-responsive/936a26e03747cb827700-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 150006
+    },
+    {
+      "file": "assets/menu-responsive/94c0952de3a0e3913dc3-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7294
+    },
+    {
+      "file": "assets/menu-responsive/94c0952de3a0e3913dc3-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 90800
+    },
+    {
+      "file": "assets/menu-responsive/9684f2372102e6e8336c-240.webp",
+      "width": 160,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8012
+    },
+    {
+      "file": "assets/menu-responsive/9684f2372102e6e8336c-960.webp",
+      "width": 600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 94060
+    },
+    {
+      "file": "assets/menu-responsive/9714f1bcf2ae0f5d0f36-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7762
+    },
+    {
+      "file": "assets/menu-responsive/9714f1bcf2ae0f5d0f36-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 98080
+    },
+    {
+      "file": "assets/menu-responsive/979e1b81f61237ae3b33-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7034
+    },
+    {
+      "file": "assets/menu-responsive/979e1b81f61237ae3b33-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 85756
+    },
+    {
+      "file": "assets/menu-responsive/98d6402341abf58b8e0f-240.webp",
+      "width": 135,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5030
+    },
+    {
+      "file": "assets/menu-responsive/98d6402341abf58b8e0f-960.webp",
+      "width": 540,
+      "height": 960,
+      "format": "webp",
+      "bytes": 37282
+    },
+    {
+      "file": "assets/menu-responsive/9a3a5a97d683afe390bf-240.webp",
+      "width": 240,
+      "height": 213,
+      "format": "webp",
+      "bytes": 4206
+    },
+    {
+      "file": "assets/menu-responsive/9a3a5a97d683afe390bf-960.webp",
+      "width": 900,
+      "height": 801,
+      "format": "webp",
+      "bytes": 57894
+    },
+    {
+      "file": "assets/menu-responsive/9b3ac8bb7a78b5383dfe-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8952
+    },
+    {
+      "file": "assets/menu-responsive/9b3ac8bb7a78b5383dfe-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 93664
+    },
+    {
+      "file": "assets/menu-responsive/9b638fd7e3817e020e39-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7104
+    },
+    {
+      "file": "assets/menu-responsive/9b638fd7e3817e020e39-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 93482
+    },
+    {
+      "file": "assets/menu-responsive/9c764d6ab39124c04520-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8716
+    },
+    {
+      "file": "assets/menu-responsive/9c764d6ab39124c04520-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 112044
+    },
+    {
+      "file": "assets/menu-responsive/9d230927a6d10eeef59c-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6322
+    },
+    {
+      "file": "assets/menu-responsive/9d230927a6d10eeef59c-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 59080
+    },
+    {
+      "file": "assets/menu-responsive/9d3de6489cf0d52a2664-240.webp",
+      "width": 240,
+      "height": 135,
+      "format": "webp",
+      "bytes": 6766
+    },
+    {
+      "file": "assets/menu-responsive/9d3de6489cf0d52a2664-960.webp",
+      "width": 900,
+      "height": 506,
+      "format": "webp",
+      "bytes": 59702
+    },
+    {
+      "file": "assets/menu-responsive/9d4fa9abe90c54990ec8-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 8454
+    },
+    {
+      "file": "assets/menu-responsive/9d4fa9abe90c54990ec8-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 100594
+    },
+    {
+      "file": "assets/menu-responsive/a33e38594ad1010114f6-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6078
+    },
+    {
+      "file": "assets/menu-responsive/a33e38594ad1010114f6-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 78524
+    },
+    {
+      "file": "assets/menu-responsive/a352ddd426949b15f488-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8192
+    },
+    {
+      "file": "assets/menu-responsive/a352ddd426949b15f488-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 82330
+    },
+    {
+      "file": "assets/menu-responsive/a443efbfc4703128bd96-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5098
+    },
+    {
+      "file": "assets/menu-responsive/a443efbfc4703128bd96-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 57846
+    },
+    {
+      "file": "assets/menu-responsive/a636db5221eb5d83aa06-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9450
+    },
+    {
+      "file": "assets/menu-responsive/a636db5221eb5d83aa06-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 101876
+    },
+    {
+      "file": "assets/menu-responsive/a937bb8ae306c03ad9dd-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7030
+    },
+    {
+      "file": "assets/menu-responsive/a937bb8ae306c03ad9dd-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 68120
+    },
+    {
+      "file": "assets/menu-responsive/aaff4b8cf460f626279a-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7326
+    },
+    {
+      "file": "assets/menu-responsive/aaff4b8cf460f626279a-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 97520
+    },
+    {
+      "file": "assets/menu-responsive/acb35c6d277e457e4758-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9200
+    },
+    {
+      "file": "assets/menu-responsive/acb35c6d277e457e4758-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 90732
+    },
+    {
+      "file": "assets/menu-responsive/adf2ec68cc309b35047d-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 11724
+    },
+    {
+      "file": "assets/menu-responsive/adf2ec68cc309b35047d-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 119716
+    },
+    {
+      "file": "assets/menu-responsive/ae978360d034b7f81789-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4632
+    },
+    {
+      "file": "assets/menu-responsive/ae978360d034b7f81789-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 48470
+    },
+    {
+      "file": "assets/menu-responsive/af9cdea8a10a03147557-240.webp",
+      "width": 205,
+      "height": 240,
+      "format": "webp",
+      "bytes": 11798
+    },
+    {
+      "file": "assets/menu-responsive/af9cdea8a10a03147557-960.webp",
+      "width": 769,
+      "height": 900,
+      "format": "webp",
+      "bytes": 176110
+    },
+    {
+      "file": "assets/menu-responsive/afdb1b64f7859743c290-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6266
+    },
+    {
+      "file": "assets/menu-responsive/afdb1b64f7859743c290-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 88230
+    },
+    {
+      "file": "assets/menu-responsive/b1b15019f8469a104596-240.webp",
+      "width": 240,
+      "height": 107,
+      "format": "webp",
+      "bytes": 7136
+    },
+    {
+      "file": "assets/menu-responsive/b1b15019f8469a104596-960.webp",
+      "width": 960,
+      "height": 430,
+      "format": "webp",
+      "bytes": 86282
+    },
+    {
+      "file": "assets/menu-responsive/b29eef10876e7219edf3-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6620
+    },
+    {
+      "file": "assets/menu-responsive/b29eef10876e7219edf3-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 77420
+    },
+    {
+      "file": "assets/menu-responsive/b65c9871c4a5b2c1024a-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10718
+    },
+    {
+      "file": "assets/menu-responsive/b65c9871c4a5b2c1024a-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 117222
+    },
+    {
+      "file": "assets/menu-responsive/b70894a41b809b13fc4e-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7296
+    },
+    {
+      "file": "assets/menu-responsive/b70894a41b809b13fc4e-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 83118
+    },
+    {
+      "file": "assets/menu-responsive/b8082733466afd6a2b46-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9890
+    },
+    {
+      "file": "assets/menu-responsive/b8082733466afd6a2b46-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 108954
+    },
+    {
+      "file": "assets/menu-responsive/b81b479870e7e4018fe4-240.webp",
+      "width": 160,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6202
+    },
+    {
+      "file": "assets/menu-responsive/b81b479870e7e4018fe4-960.webp",
+      "width": 600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 90266
+    },
+    {
+      "file": "assets/menu-responsive/b856b9a830248e1fdbda-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6000
+    },
+    {
+      "file": "assets/menu-responsive/b856b9a830248e1fdbda-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 68976
+    },
+    {
+      "file": "assets/menu-responsive/ba3ed26c214469288d04-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10270
+    },
+    {
+      "file": "assets/menu-responsive/ba3ed26c214469288d04-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 105716
+    },
+    {
+      "file": "assets/menu-responsive/bb321a4dcec58d634d9b-240.webp",
+      "width": 160,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5836
+    },
+    {
+      "file": "assets/menu-responsive/bb321a4dcec58d634d9b-960.webp",
+      "width": 600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 68368
+    },
+    {
+      "file": "assets/menu-responsive/bb4953474c22c45b29fe-240.webp",
+      "width": 240,
+      "height": 211,
+      "format": "webp",
+      "bytes": 13356
+    },
+    {
+      "file": "assets/menu-responsive/bb4953474c22c45b29fe-960.webp",
+      "width": 900,
+      "height": 791,
+      "format": "webp",
+      "bytes": 159584
+    },
+    {
+      "file": "assets/menu-responsive/bdd72df886f5fdd5d95b-240.webp",
+      "width": 135,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7486
+    },
+    {
+      "file": "assets/menu-responsive/bdd72df886f5fdd5d95b-960.webp",
+      "width": 540,
+      "height": 960,
+      "format": "webp",
+      "bytes": 105734
+    },
+    {
+      "file": "assets/menu-responsive/c23046e36762d3f69ef3-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8380
+    },
+    {
+      "file": "assets/menu-responsive/c23046e36762d3f69ef3-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 102958
+    },
+    {
+      "file": "assets/menu-responsive/c3fe59f5bfc1127d469e-240.webp",
+      "width": 240,
+      "height": 182,
+      "format": "webp",
+      "bytes": 10018
+    },
+    {
+      "file": "assets/menu-responsive/c3fe59f5bfc1127d469e-960.webp",
+      "width": 900,
+      "height": 683,
+      "format": "webp",
+      "bytes": 113712
+    },
+    {
+      "file": "assets/menu-responsive/c40a0e67c2f8402fcadc-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 13440
+    },
+    {
+      "file": "assets/menu-responsive/c40a0e67c2f8402fcadc-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 142606
+    },
+    {
+      "file": "assets/menu-responsive/c5ad65888d30d3b7485f-240.webp",
+      "width": 205,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7500
+    },
+    {
+      "file": "assets/menu-responsive/c5ad65888d30d3b7485f-960.webp",
+      "width": 768,
+      "height": 900,
+      "format": "webp",
+      "bytes": 96050
+    },
+    {
+      "file": "assets/menu-responsive/c5b098a8338e8f904ad4-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5930
+    },
+    {
+      "file": "assets/menu-responsive/c5b098a8338e8f904ad4-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 116208
+    },
+    {
+      "file": "assets/menu-responsive/c6182f944408d8508bb5-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9474
+    },
+    {
+      "file": "assets/menu-responsive/c6182f944408d8508bb5-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 104250
+    },
+    {
+      "file": "assets/menu-responsive/c7b8d4cd12cfb56b456c-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8778
+    },
+    {
+      "file": "assets/menu-responsive/c7b8d4cd12cfb56b456c-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 111012
+    },
+    {
+      "file": "assets/menu-responsive/ca38f2be268484446ccc-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7912
+    },
+    {
+      "file": "assets/menu-responsive/ca38f2be268484446ccc-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 80336
+    },
+    {
+      "file": "assets/menu-responsive/ca89e5a077f613265458-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6350
+    },
+    {
+      "file": "assets/menu-responsive/ca89e5a077f613265458-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 87956
+    },
+    {
+      "file": "assets/menu-responsive/cb06663af017d99b22dd-240.webp",
+      "width": 135,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5096
+    },
+    {
+      "file": "assets/menu-responsive/cb06663af017d99b22dd-960.webp",
+      "width": 540,
+      "height": 960,
+      "format": "webp",
+      "bytes": 41508
+    },
+    {
+      "file": "assets/menu-responsive/cbd4a3107887f07cb4b5-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10010
+    },
+    {
+      "file": "assets/menu-responsive/cbd4a3107887f07cb4b5-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 148406
+    },
+    {
+      "file": "assets/menu-responsive/cc5d3952d6eca1c210bb-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9016
+    },
+    {
+      "file": "assets/menu-responsive/cc5d3952d6eca1c210bb-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 139186
+    },
+    {
+      "file": "assets/menu-responsive/cdcc75d5b5e0ac00fe8b-240.webp",
+      "width": 240,
+      "height": 170,
+      "format": "webp",
+      "bytes": 6752
+    },
+    {
+      "file": "assets/menu-responsive/cdcc75d5b5e0ac00fe8b-960.webp",
+      "width": 900,
+      "height": 636,
+      "format": "webp",
+      "bytes": 65110
+    },
+    {
+      "file": "assets/menu-responsive/cdd6d29042dd8a741db8-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9994
+    },
+    {
+      "file": "assets/menu-responsive/cdd6d29042dd8a741db8-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 152286
+    },
+    {
+      "file": "assets/menu-responsive/cde2db8d7e4eec6af1aa-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8990
+    },
+    {
+      "file": "assets/menu-responsive/cde2db8d7e4eec6af1aa-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 122292
+    },
+    {
+      "file": "assets/menu-responsive/d3085eb83e582e5dc115-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 8154
+    },
+    {
+      "file": "assets/menu-responsive/d3085eb83e582e5dc115-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 93524
+    },
+    {
+      "file": "assets/menu-responsive/d3a8e5edd4b5b4ef4ea0-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9162
+    },
+    {
+      "file": "assets/menu-responsive/d3a8e5edd4b5b4ef4ea0-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 70418
+    },
+    {
+      "file": "assets/menu-responsive/d3af4a89d129259a17b3-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7670
+    },
+    {
+      "file": "assets/menu-responsive/d3af4a89d129259a17b3-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 93910
+    },
+    {
+      "file": "assets/menu-responsive/d472b0acefd9c8705903-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 11528
+    },
+    {
+      "file": "assets/menu-responsive/d472b0acefd9c8705903-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 103734
+    },
+    {
+      "file": "assets/menu-responsive/d49a7b2da3a2e1ace831-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4514
+    },
+    {
+      "file": "assets/menu-responsive/d49a7b2da3a2e1ace831-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 44260
+    },
+    {
+      "file": "assets/menu-responsive/d5533e760d5a9256d3f3-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5092
+    },
+    {
+      "file": "assets/menu-responsive/d5533e760d5a9256d3f3-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 49492
+    },
+    {
+      "file": "assets/menu-responsive/d60218b29c83b5f03420-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7588
+    },
+    {
+      "file": "assets/menu-responsive/d60218b29c83b5f03420-960.webp",
+      "width": 960,
+      "height": 640,
+      "format": "webp",
+      "bytes": 79522
+    },
+    {
+      "file": "assets/menu-responsive/d9722cdf079be1304054-240.webp",
+      "width": 240,
+      "height": 107,
+      "format": "webp",
+      "bytes": 5778
+    },
+    {
+      "file": "assets/menu-responsive/d9722cdf079be1304054-960.webp",
+      "width": 960,
+      "height": 430,
+      "format": "webp",
+      "bytes": 63776
+    },
+    {
+      "file": "assets/menu-responsive/dc7b506e3d218eae23c0-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6710
+    },
+    {
+      "file": "assets/menu-responsive/dc7b506e3d218eae23c0-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 81936
+    },
+    {
+      "file": "assets/menu-responsive/de05c28728675b4aeeca-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8964
+    },
+    {
+      "file": "assets/menu-responsive/de05c28728675b4aeeca-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 67212
+    },
+    {
+      "file": "assets/menu-responsive/de07393129d561199e32-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 4696
+    },
+    {
+      "file": "assets/menu-responsive/de07393129d561199e32-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 61532
+    },
+    {
+      "file": "assets/menu-responsive/df0feef3d92685e70c72-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 5708
+    },
+    {
+      "file": "assets/menu-responsive/df0feef3d92685e70c72-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 69554
+    },
+    {
+      "file": "assets/menu-responsive/e0d4bda2b5e66ed65a11-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 8290
+    },
+    {
+      "file": "assets/menu-responsive/e0d4bda2b5e66ed65a11-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 102916
+    },
+    {
+      "file": "assets/menu-responsive/e33fba0f3f66d7357ed9-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 7772
+    },
+    {
+      "file": "assets/menu-responsive/e33fba0f3f66d7357ed9-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 83256
+    },
+    {
+      "file": "assets/menu-responsive/e54851671e367da03946-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6132
+    },
+    {
+      "file": "assets/menu-responsive/e54851671e367da03946-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 69508
+    },
+    {
+      "file": "assets/menu-responsive/e6610c3326534f874af6-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9718
+    },
+    {
+      "file": "assets/menu-responsive/e6610c3326534f874af6-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 71104
+    },
+    {
+      "file": "assets/menu-responsive/e6711a07325bf338f00c-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9174
+    },
+    {
+      "file": "assets/menu-responsive/e6711a07325bf338f00c-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 99472
+    },
+    {
+      "file": "assets/menu-responsive/e7da5d69e4b32acbf548-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9374
+    },
+    {
+      "file": "assets/menu-responsive/e7da5d69e4b32acbf548-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 92782
+    },
+    {
+      "file": "assets/menu-responsive/e91ab874bd3caf1dc431-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 4718
+    },
+    {
+      "file": "assets/menu-responsive/e91ab874bd3caf1dc431-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 59616
+    },
+    {
+      "file": "assets/menu-responsive/eb92be8d0ebab5761a6c-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6894
+    },
+    {
+      "file": "assets/menu-responsive/eb92be8d0ebab5761a6c-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 98654
+    },
+    {
+      "file": "assets/menu-responsive/ec75d270a62aa4a01c4e-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8542
+    },
+    {
+      "file": "assets/menu-responsive/ec75d270a62aa4a01c4e-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 116342
+    },
+    {
+      "file": "assets/menu-responsive/ed7fe5d12cc51d377c27-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 9714
+    },
+    {
+      "file": "assets/menu-responsive/ed7fe5d12cc51d377c27-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 143412
+    },
+    {
+      "file": "assets/menu-responsive/ee3421eb6a4d09851000-240.webp",
+      "width": 240,
+      "height": 189,
+      "format": "webp",
+      "bytes": 7630
+    },
+    {
+      "file": "assets/menu-responsive/ee3421eb6a4d09851000-960.webp",
+      "width": 900,
+      "height": 709,
+      "format": "webp",
+      "bytes": 106862
+    },
+    {
+      "file": "assets/menu-responsive/ee5e7106bb589c41453a-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10846
+    },
+    {
+      "file": "assets/menu-responsive/ee5e7106bb589c41453a-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 115360
+    },
+    {
+      "file": "assets/menu-responsive/ee6e4dd8076b66c1fe6e-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 11742
+    },
+    {
+      "file": "assets/menu-responsive/ee6e4dd8076b66c1fe6e-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 104078
+    },
+    {
+      "file": "assets/menu-responsive/ee9482b8f175763a2ffb-240.webp",
+      "width": 240,
+      "height": 205,
+      "format": "webp",
+      "bytes": 8888
+    },
+    {
+      "file": "assets/menu-responsive/ee9482b8f175763a2ffb-960.webp",
+      "width": 900,
+      "height": 768,
+      "format": "webp",
+      "bytes": 95900
+    },
+    {
+      "file": "assets/menu-responsive/f09f3bb2d88ae1583b07-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7806
+    },
+    {
+      "file": "assets/menu-responsive/f09f3bb2d88ae1583b07-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 87582
+    },
+    {
+      "file": "assets/menu-responsive/f69818e5ff54cf41893c-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6344
+    },
+    {
+      "file": "assets/menu-responsive/f69818e5ff54cf41893c-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 73942
+    },
+    {
+      "file": "assets/menu-responsive/f6d792b660e8026dfca5-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7286
+    },
+    {
+      "file": "assets/menu-responsive/f6d792b660e8026dfca5-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 111656
+    },
+    {
+      "file": "assets/menu-responsive/f81f512510d8d692ae24-240.webp",
+      "width": 240,
+      "height": 211,
+      "format": "webp",
+      "bytes": 9058
+    },
+    {
+      "file": "assets/menu-responsive/f81f512510d8d692ae24-960.webp",
+      "width": 900,
+      "height": 791,
+      "format": "webp",
+      "bytes": 79598
+    },
+    {
+      "file": "assets/menu-responsive/f8b3297651bddde540e7-240.webp",
+      "width": 240,
+      "height": 160,
+      "format": "webp",
+      "bytes": 6874
+    },
+    {
+      "file": "assets/menu-responsive/f8b3297651bddde540e7-960.webp",
+      "width": 900,
+      "height": 600,
+      "format": "webp",
+      "bytes": 85768
+    },
+    {
+      "file": "assets/menu-responsive/f906760fa3cf5d5ca628-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 7430
+    },
+    {
+      "file": "assets/menu-responsive/f906760fa3cf5d5ca628-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 70808
+    },
+    {
+      "file": "assets/menu-responsive/f951eb0822fae63987ac-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 6170
+    },
+    {
+      "file": "assets/menu-responsive/f951eb0822fae63987ac-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 78298
+    },
+    {
+      "file": "assets/menu-responsive/f995a753b5ba11fec2fb-240.webp",
+      "width": 240,
+      "height": 200,
+      "format": "webp",
+      "bytes": 8794
+    },
+    {
+      "file": "assets/menu-responsive/f995a753b5ba11fec2fb-960.webp",
+      "width": 900,
+      "height": 750,
+      "format": "webp",
+      "bytes": 86658
+    },
+    {
+      "file": "assets/menu-responsive/f9b8f55fb40d70962dcf-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5720
+    },
+    {
+      "file": "assets/menu-responsive/f9b8f55fb40d70962dcf-960.webp",
+      "width": 900,
+      "height": 900,
+      "format": "webp",
+      "bytes": 181036
+    },
+    {
+      "file": "assets/menu-responsive/faa40e4e7a4d0fc0a15e-240.webp",
+      "width": 160,
+      "height": 240,
+      "format": "webp",
+      "bytes": 5324
+    },
+    {
+      "file": "assets/menu-responsive/faa40e4e7a4d0fc0a15e-960.webp",
+      "width": 600,
+      "height": 900,
+      "format": "webp",
+      "bytes": 67620
+    },
+    {
+      "file": "assets/menu-responsive/fb1eca413cd809711d43-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10000
+    },
+    {
+      "file": "assets/menu-responsive/fb1eca413cd809711d43-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 167418
+    },
+    {
+      "file": "assets/menu-responsive/fb8372c808abc42848fd-240.webp",
+      "width": 240,
+      "height": 201,
+      "format": "webp",
+      "bytes": 8930
+    },
+    {
+      "file": "assets/menu-responsive/fb8372c808abc42848fd-960.webp",
+      "width": 900,
+      "height": 753,
+      "format": "webp",
+      "bytes": 103438
+    },
+    {
+      "file": "assets/menu-responsive/fe6977fc774d6825c04d-240.webp",
+      "width": 240,
+      "height": 240,
+      "format": "webp",
+      "bytes": 10010
+    },
+    {
+      "file": "assets/menu-responsive/fe6977fc774d6825c04d-960.webp",
+      "width": 960,
+      "height": 960,
+      "format": "webp",
+      "bytes": 126772
+    },
+    {
+      "file": "assets/menu-responsive/ff1a96724412bf774aa2-240.webp",
+      "width": 213,
+      "height": 240,
+      "format": "webp",
+      "bytes": 8912
+    },
+    {
+      "file": "assets/menu-responsive/ff1a96724412bf774aa2-960.webp",
+      "width": 801,
+      "height": 900,
+      "format": "webp",
+      "bytes": 134946
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/cb-1.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 82678
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/cb-10.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 113760
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/cb-5.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 115542
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/cb-6.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 126429
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/cb-7.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 122693
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/cb-8.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 105288
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/cb-9.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 129982
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/ic-10.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 180487
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/ic-11.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "png",
+      "bytes": 2792340
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/ic-12.jpg",
+      "width": 896,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 962529
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/ic-14.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "png",
+      "bytes": 2327982
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/ic-17.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 230792
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/ic-6.jpg",
+      "width": 1200,
+      "height": 1200,
+      "format": "jpeg",
+      "bytes": 258979
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/md-7.png",
+      "width": 1536,
+      "height": 1024,
+      "format": "png",
+      "bytes": 2964054
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/ms-7.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 103666
+    },
+    {
+      "file": "assets/menu-uploads/2026-10-15/ps-mumtaz.jpg",
+      "width": 900,
+      "height": 1600,
+      "format": "jpeg",
+      "bytes": 193713
+    },
+    {
+      "file": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
+      "width": 1254,
+      "height": 1254,
+      "format": "webp",
+      "bytes": 196748
+    },
+    {
+      "file": "assets/menu-uploads/approved/ic-10-v1-640.webp",
+      "width": 640,
+      "height": 640,
+      "format": "webp",
+      "bytes": 74002
+    },
+    {
+      "file": "assets/menu-uploads/approved/ms-7-v1-1280.webp",
+      "width": 1254,
+      "height": 1254,
+      "format": "webp",
+      "bytes": 202824
+    },
+    {
+      "file": "assets/menu-uploads/approved/ms-7-v1-640.webp",
+      "width": 640,
+      "height": 640,
+      "format": "webp",
+      "bytes": 72928
+    },
+    {
+      "file": "assets/premier-original-logo.png",
+      "width": 451,
+      "height": 207,
+      "format": "png",
+      "bytes": 75073
+    },
+    {
+      "file": "assets/screenshot-menu.png",
+      "width": 1080,
+      "height": 1920,
+      "format": "png",
+      "bytes": 2467491
+    },
+    {
+      "file": "assets/screenshot-stay.png",
+      "width": 1080,
+      "height": 1920,
+      "format": "png",
+      "bytes": 2373186
+    }
+  ]
+}

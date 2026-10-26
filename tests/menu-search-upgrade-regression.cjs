@@ -18,7 +18,7 @@ nodes['recent-searches-list'].children[1].click();assert.equal(decodeURIComponen
 const html=fs.readFileSync('index.html','utf8');assert.match(html,/<label for="menu-search-input">Search the menu<\/label>/);assert.match(html,/enterkeyhint="search"/);assert.match(html,/id="menu-search-status"[^>]*aria-live="polite"/);
 assert.doesNotMatch(html,/View Details →/,'Featured carousel must also use the compact info icon');
 assert.equal((html.match(/class="signature-inquire-btn" type="button" aria-label="View dish details"/g)||[]).length,4);
-assert.equal(html,fs.readFileSync('404.html','utf8'));
+assert.equal(html,require('./public-build-helper.cjs').fallbackHTML());
 const registered=[];const input={value:'',addEventListener(type,fn){registered.push(['input',type,fn]);}},clear={addEventListener(type,fn){registered.push(['clear',type,fn]);}};
 c.document.getElementById=id=>id==='menu-search-input'?input:id==='clear-search-btn'?clear:null;
 app.bindMenuSearchEvents();app.bindMenuSearchEvents();assert.equal(registered.filter(r=>r[0]==='input'&&r[1]==='input').length,1,'Early and late setup must not duplicate handlers');

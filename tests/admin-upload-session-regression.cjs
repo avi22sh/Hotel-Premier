@@ -1,0 +1,23 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+let unlocked=true;const fields={},uploads=[],previews=[],released=[],saves=[];
+function node(value=''){const classes=new Set(['active']);return {value,checked:false,disabled:false,style:{},classList:{contains:name=>classes.has(name),add:name=>classes.add(name),remove:name=>classes.delete(name)},replaceChildren(){}};}
+for(const id of ['add-dish-modal','image-replace-modal','save-new-dish-btn','new-dish-name','new-dish-category','new-dish-price','new-dish-desc','new-dish-image','new-dish-special','image-preview-element','image-url-input-field'])fields[id]=node();
+const c={AbortController,DOMException,console,clearTimeout(){},window:{HotelLocalLock:{isUnlocked:()=>unlocked},HotelPhotoWorkflow:{ingest:(file,options)=>new Promise(resolve=>uploads.push({resolve,options})),release:url=>{if(url)released.push(url);}},app:{categories:[{id:'test'}],menuData:[],showToast(){},saveMenuData(){},renderCategoryCards(){},renderMenu(){}}},document:{readyState:'loading',addEventListener(){},getElementById:id=>fields[id]||null}};
+vm.createContext(c);vm.runInContext(fs.readFileSync('admin.js','utf8')+';window.Admin=HotelPremierAdmin;',c);
+const admin=Object.create(c.window.Admin.prototype);admin.isAuthenticated=true;admin.filterAdminDishes=()=>{};
+c.window.AssetPipeline={processAutomaticStudioEnhancement:()=>new Promise(resolve=>previews.push(resolve))};
+const tick=async()=>{for(let i=0;i<10;i++)await Promise.resolve();};
+(async()=>{
+ admin.activeRoomId='room-a';const room=admin.handleRoomImageUpload({files:[{}]});assert.equal(admin.photoUploadPending,true);admin.closeImageModal();uploads.shift().resolve({originalUrl:'blob:raw-room',workingUrl:'blob:late-room'});await room;assert.notEqual(admin.tempImageSource,'blob:late-room');assert.ok(released.includes('blob:late-room'));
+ const first=admin.handleNewDishImageUpload({files:[{}]});uploads.shift().resolve({originalUrl:'blob:raw-dish',workingUrl:'blob:working-dish'});await tick();admin.closeAddDishModal();previews.shift()({enhancedDataUrl:'blob:late-dish'});await first;assert.notEqual(admin.newDishTempImage,'blob:late-dish');assert.ok(released.includes('blob:late-dish'));
+ let galleryDone;c.window.HOTEL_STORAGE={getRoomGallery:()=>new Promise(resolve=>galleryDone=resolve),saveRoomGallery:async()=>{throw Error('A closed room editor must not write');}};
+ admin.activeRoomId='fixture-room';admin.tempImageSource='blob:room-preview';const cancelledSave=admin.saveNewRoomPhoto();await tick();admin.closeImageModal();galleryDone([]);await cancelledSave;
+ fields['new-dish-name'].value='Fixture dish';fields['new-dish-category'].value='test';fields['new-dish-price'].value='';fields['new-dish-desc'].value='Plain description';fields['new-dish-image'].value='';
+ let complete;c.window.HOTEL_STORAGE={saveDishOverride:async(id,record)=>{saves.push(record);await new Promise(resolve=>complete=resolve);return {...record,image:'assets/confirmed.webp'};}};
+ const creating=admin.saveNewDish();await tick();assert.equal(c.window.app.menuData.length,0,'A new dish waits for its storage commit');await admin.saveNewDish();assert.equal(saves.length,1,'Repeated Save cannot add duplicate items');complete();await creating;assert.equal(c.window.app.menuData[0].name,'Fixture dish');assert.equal(c.window.app.menuData[0].price,null);assert.equal(c.window.app.menuData[0].image,'assets/confirmed.webp');assert.equal(saves[0].categoryId,'test');
+ fields['new-dish-name'].value='Failed draft';c.window.HOTEL_STORAGE.saveDishOverride=async()=>{throw Error('Quota');};await admin.saveNewDish();assert.equal(c.window.app.menuData.length,1);assert.equal(fields['new-dish-name'].value,'Failed draft');
+ c.window.HOTEL_STORAGE.saveDishOverride=async(id,record)=>{await new Promise(resolve=>complete=resolve);return {...record,image:'assets/confirmed.webp'};};
+ const olderDraft=admin.saveNewDish();await tick();admin.closeAddDishModal();fields['new-dish-name'].value='Newer draft';fields['add-dish-modal'].classList.add('active');complete();await olderDraft;assert.equal(fields['new-dish-name'].value,'Newer draft');assert.ok(fields['add-dish-modal'].classList.contains('active'));
+ fields['new-dish-category'].value='test';Object.defineProperty(fields['new-dish-category'],'innerHTML',{set(){this.value='reset';}});admin.openAddDishModal();assert.equal(fields['new-dish-category'].value,'test','Reopening keeps the draft category');
+ console.log('PASS: closed room/new-dish uploads cannot apply late previews; new items commit once with complete metadata and failed saves retain drafts');
+})().catch(error=>{console.error(error);process.exitCode=1;});

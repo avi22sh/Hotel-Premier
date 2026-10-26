@@ -17,5 +17,5 @@ assert.doesNotMatch(reviews,/zomato\.com\/search/);
 for(const asset of ['google-g','google-maps','makemytrip','goibibo-sprite','swiggy','zomato']){
  const file=`assets/brands/${asset}.png`;assert.deepEqual([...fs.readFileSync(file).subarray(0,8)],[137,80,78,71,13,10,26,10]);assert.ok(fs.readFileSync('sw.js','utf8').includes(file));
 }
-assert.equal(html,fs.readFileSync('404.html','utf8'));
+assert.equal(html,require('./public-build-helper.cjs').fallbackHTML());
 console.log('PASS: icon-only details, thali footer, five rating intensities, reduced motion, removed subsection strips and genuine local brand PNGs');

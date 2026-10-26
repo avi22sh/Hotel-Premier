@@ -3,46 +3,47 @@ document.addEventListener('DOMContentLoaded', async () => {
   const grid = document.getElementById('public-review-grid');
   const status = document.getElementById('public-review-status');
   if (!grid || !status) return;
+  const plain = (value, fallback = '') => typeof value === 'string' && value.trim() ? value.trim().slice(0,3000) : fallback;
+  const node = (tag, className, value) => {
+    const element = document.createElement(tag); element.className = className;
+    if (value !== undefined) element.textContent = value;
+    return element;
+  };
+  status.textContent = 'Loading guest experiences…';
   try {
-    const response = await fetch('data/public-reviews.json?v=21.63', { cache: 'no-cache' });
+    const response = await fetch('data/public-reviews.json?v=22.10', { cache: 'no-cache', signal:AbortSignal.timeout(10000) });
     if (!response.ok) throw new Error('Review feed unavailable');
     const data = await response.json();
     const reviews = Array.isArray(data.reviews)
-      ? data.reviews.filter(r => r.approved === true && Number.isFinite(r.rating) && r.rating >= 3 && r.rating <= 5 && typeof r.text === 'string' && r.text.trim())
+      ? data.reviews.filter(r => r && r.approved === true && Number.isFinite(r.rating) && r.rating >= 3 && r.rating <= 5 && plain(r.text))
       : [];
 
-    grid.innerHTML = '';
+    grid.replaceChildren();
     for (const review of reviews) {
       const card = document.createElement('article');
       card.className = 'review-card modern-review-card';
 
-      const initial = (review.author || 'G').trim().charAt(0).toUpperCase();
+      const initial = plain(review.author, 'G').charAt(0).toUpperCase();
       const stars = '★'.repeat(Math.round(review.rating)) + '☆'.repeat(5 - Math.round(review.rating));
 
-      card.innerHTML = `
-        <div class="review-card-top">
-          <div class="review-author-wrap">
-            <div class="review-author-avatar" aria-hidden="true">${initial}</div>
-            <div class="review-author-meta">
-              <strong class="review-author-name">${review.author || 'Hotel Guest'}</strong>
-              <div class="review-stay-type">${review.stayType || 'Verified Stay'} · ${review.date || 'Recent Visit'}</div>
-            </div>
-          </div>
-          <div class="review-rating-badge" aria-label="${review.rating} out of 5 stars">
-            <span class="review-stars-text" aria-hidden="true">${stars}</span>
-            <span class="review-numeric-score">${review.rating}.0</span>
-          </div>
-        </div>
-        <blockquote class="review-quote-body">
-          "${review.text}"
-        </blockquote>
-        <div class="review-card-footer">
-          <span class="review-source-tag review-source-${(review.source || 'google').toLowerCase()}">
-            <span class="source-verified-icon">✔</span> ${review.source || 'Google Reviews'}
-          </span>
-          <span class="review-verified-pill">${review.badge || 'Verified Guest'}</span>
-        </div>
-      `;
+      const top = node('div', 'review-card-top');
+      const authorWrap = node('div', 'review-author-wrap');
+      const avatar = node('div', 'review-author-avatar', initial); avatar.setAttribute('aria-hidden', 'true');
+      const meta = node('div', 'review-author-meta');
+      meta.append(node('strong', 'review-author-name', plain(review.author, 'Hotel Guest')),
+        node('div', 'review-stay-type', `${plain(review.stayType, 'Guest experience')} · ${plain(review.date, 'Recent Visit')}`));
+      authorWrap.append(avatar, meta);
+      const rating = node('div', 'review-rating-badge'); rating.setAttribute('aria-label', `${review.rating} out of 5 stars`);
+      const starText = node('span', 'review-stars-text', stars); starText.setAttribute('aria-hidden', 'true');
+      rating.append(starText, node('span', 'review-numeric-score', review.rating.toFixed(1)));
+      top.append(authorWrap, rating);
+      const footer = node('div', 'review-card-footer');
+      const source = plain(review.source, 'Source not specified');
+      const sourceClasses={Google:'google', 'Google Reviews':'google', MakeMyTrip:'makemytrip', Goibibo:'goibibo'};
+      const sourceClass = Object.hasOwn(sourceClasses,source) ? sourceClasses[source] : 'other';
+      footer.append(node('span', `review-source-tag review-source-${sourceClass}`, source));
+      if (plain(review.badge)) footer.append(node('span', 'review-verified-pill', plain(review.badge)));
+      card.append(top, node('blockquote', 'review-quote-body', plain(review.text)), footer);
       grid.appendChild(card);
     }
 
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const fresh = Number.isFinite(updated) && updated <= Date.now() && Date.now() - updated <= 7 * 24 * 60 * 60 * 1000;
     const dateLabel = Number.isFinite(updated) ? new Date(updated).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata' }) : '';
     status.textContent = reviews.length
-      ? `Verified guest experiences. ${dateLabel ? `Last updated ${dateLabel}.` : ''} ${fresh ? '' : 'Refresh pending.'}`
+      ? `Guest experience highlights. ${dateLabel ? `Last updated ${dateLabel}.` : ''} ${fresh ? '' : 'Refresh pending.'}`
       : 'Explore guest experiences on our verified hotel listings below.';
   } catch (_) {
     status.textContent = 'Reviews are temporarily unavailable. You can still visit our verified hotel review links below.';

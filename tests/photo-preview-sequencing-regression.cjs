@@ -1,6 +1,6 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const nodes={};let timers=[],reads=[],renders=[],saves=0;
-const c={window:{},console,setTimeout(fn){timers.push(fn);return timers.length;},clearTimeout(){},
+const c={window:{dispatchEvent(){}},CustomEvent:class {constructor(type,options){this.type=type;this.detail=options?.detail;}},AbortController,console,setTimeout(fn){timers.push(fn);return timers.length;},clearTimeout(){},
   FileReader:class {readAsDataURL(){reads.push(this);}},
   document:{readyState:'loading',addEventListener(){},getElementById:id=>nodes[id]||null}};
 vm.createContext(c);vm.runInContext(fs.readFileSync('admin.js','utf8')+';window.Admin=HotelPremierAdmin;',c);
@@ -9,13 +9,14 @@ vm.runInContext(fs.readFileSync('app.js','utf8')+';window.App=HotelPremierApp;',
 const admin=Object.create(c.window.Admin.prototype);
 nodes['apply-dish-photo-btn']={disabled:false};nodes['engine-adjust-colors']={checked:true};
 nodes['image-preview-element']={src:'saved.jpg'};
+c.window.HotelPhotoWorkflow={ingest(){return new Promise(resolve=>reads.push({onload:event=>resolve({originalUrl:event.target.result,workingUrl:event.target.result})}));},release(){}};
 c.window.app={menuData:[{id:'dish'}],showToast(){}};
 c.window.AssetPipeline={processAutomaticStudioEnhancement(source,dish,options){return new Promise(resolve=>renders.push({source,options,resolve}));}};
 admin.activeImageDishId='dish';admin.activeBackgroundMode='cream_marble';admin.tempImageSource='saved.jpg';
 (async()=>{
   const uploading=admin.handleImageFileUpload({files:[{type:'image/jpeg',size:12}]});
   assert.equal(nodes['apply-dish-photo-btn'].disabled,true);
-  reads[0].onload({target:{result:'raw.jpg'}});await Promise.resolve();await Promise.resolve();
+  reads[0].onload({target:{result:'raw.jpg'}});for(let i=0;i<10;i++)await Promise.resolve();
   assert.equal(renders[0].options.enhanceColors,false,'New upload must not inherit colour grading');
   assert.equal(admin.tempImageSource,'saved.jpg','Old preview cannot be presented as upload success');
   renders[0].resolve({enhancedDataUrl:'new.jpg',status:'enhanced',qualityScore:80});await uploading;
@@ -57,7 +58,7 @@ admin.activeImageDishId='dish';admin.activeBackgroundMode='cream_marble';admin.t
   c.window.HOTEL_STORAGE.saveDishPhotoLifecycle=async()=>{throw Error('Quota');};
   assert.equal(await admin.approveActiveDishPhoto(),false);
   assert.equal(admin.savingDishPhoto,false);assert.equal(c.window.app.menuData[0].image,'snapshot.jpg','Failed save must not publish the preview');
-  c.confirm=()=>true;
+  c.confirm=()=>true;c.window.HotelDialogs={confirm:async()=>true};
   c.window.HOTEL_STORAGE.saveDishPhotoLifecycle=async(id,record)=>{payload=record;};
   await admin.revertActiveDishToOriginal();
   assert.equal(payload.image,'raw.jpg');assert.equal(payload.enhancedMasterImage,'snapshot.jpg','Revert must preserve the enhanced master');

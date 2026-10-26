@@ -5,7 +5,7 @@ const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const css = fs.readFileSync(path.join(root, 'royal.css'), 'utf8');
 const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
-assert.equal((html.match(/class="guest-details-panel"/g) || []).length, 2);
+assert.equal((html.match(/class="[^\"]*\bguest-details-panel\b[^\"]*"/g) || []).length, 2);
 for (const name of ['booking-original-price', 'booking-final-price', 'booking-savings-note']) {
   assert.ok(app.includes(`class="${name}"`));
   assert.ok(css.includes(`.${name} {`));

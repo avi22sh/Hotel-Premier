@@ -230,7 +230,7 @@ class HotelPremierApp {
         this.isLargeFont = true;
         document.body.classList.add('large-font-mode');
         const btn = document.getElementById('font-size-toggle-btn');
-        if (btn) btn.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem;">A-</span>';
+        if (btn) btn.innerHTML = '<span class="hp-inline-d88f59571365">A-</span>';
       }
     } catch (e) {}
   }
@@ -608,7 +608,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=21.96';
+    s.src = 'admin.js?v=22.10';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -950,19 +950,22 @@ class HotelPremierApp {
     const btn = document.getElementById('font-size-toggle-btn');
     if (this.isLargeFont) {
       document.body.classList.add('large-font-mode');
-      if (btn) btn.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem;">A-</span>';
+      if (btn) btn.innerHTML = '<span class="hp-inline-d88f59571365">A-</span>';
       localStorage.setItem(this.storageKeyFontSize, 'large');
       this.showToast(this.t('textSizeLarge'), 'info');
     } else {
       document.body.classList.remove('large-font-mode');
-      if (btn) btn.innerHTML = '<span style="font-weight: 800; font-size: 0.85rem;">A+</span>';
+      if (btn) btn.innerHTML = '<span class="hp-inline-d88f59571365">A+</span>';
       localStorage.setItem(this.storageKeyFontSize, 'normal');
       this.showToast(this.t('textSizeNormal'), 'info');
     }
   }
 
   async loadMenuData() {
-    const initialMenu = window.HOTEL_PREMIER_INITIAL_MENU ? [...window.HOTEL_PREMIER_INITIAL_MENU] : [];
+    let initialMenu = window.HOTEL_PREMIER_INITIAL_MENU ? [...window.HOTEL_PREMIER_INITIAL_MENU] : [];
+    const publicMenu={menuData:initialMenu};
+    window.HotelMenuStructure?.applyPublished?.(publicMenu);
+    initialMenu=publicMenu.menuData;
     let overridesMap = {};
 
     // 1. Fetch from Unified Safe Storage Manager (IndexedDB + LocalStorage)
@@ -982,6 +985,8 @@ class HotelPremierApp {
       if (Object.prototype.hasOwnProperty.call(window.HOTEL_PREMIER_PHOTOS || {}, dish.id)) {
         copy.image = window.HOTEL_PREMIER_PHOTOS[dish.id];
       }
+      const published=window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.dishes?.[dish.id];
+      if(published)Object.assign(copy,published,{id:dish.id});
       if (overridesMap && overridesMap[dish.id]) {
         const ov = overridesMap[dish.id];
         // Published asset paths are authoritative baseline. Preserve user uploads,
@@ -1002,10 +1007,13 @@ class HotelPremierApp {
     });
 
     // 3. Add custom dishes created by admin that are not in initialMenu
+    for(const [id,published] of Object.entries(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.dishes||{})) {
+      if(!this.menuData.some(dish=>dish.id===id) && published.name)this.menuData.push({...published,id});
+    }
     if (overridesMap) {
       const initialIds = new Set(initialMenu.map(d => d.id));
       Object.keys(overridesMap).forEach(id => {
-        if (!initialIds.has(id) && overridesMap[id].name) {
+        if (!initialIds.has(id) && !this.menuData.some(d=>d.id===id) && overridesMap[id].name) {
           this.menuData.push(overridesMap[id]);
         }
       });
@@ -1048,8 +1056,7 @@ class HotelPremierApp {
       const existingOverrides = localStorage.getItem(this.storageKeyOverrides);
       let overridesMap = existingOverrides ? JSON.parse(existingOverrides) : {};
       this.menuData.forEach(dish => {
-        overridesMap[dish.id] = {
-          ...(overridesMap[dish.id] || {}),
+        const fields = {
           image: dish.image,
           price: dish.price,
           isSoldOut: dish.isSoldOut,
@@ -1057,6 +1064,7 @@ class HotelPremierApp {
           tags: dish.tags,
           variants: dish.variants
         };
+        overridesMap[dish.id] = { ...(overridesMap[dish.id] || {}), ...(window.HotelPhotoStorage ? window.HotelPhotoStorage.compact(fields) : fields) };
       });
       localStorage.setItem(this.storageKeyOverrides, JSON.stringify(overridesMap));
       try {
@@ -1104,7 +1112,6 @@ class HotelPremierApp {
         this.heroSlides = stored;
       } else {
         this.heroSlides = defaultSlides;
-        window.HOTEL_STORAGE.saveSectionSlides('restaurant_hero', defaultSlides);
       }
     } else {
       this.heroSlides = defaultSlides;
@@ -1125,7 +1132,7 @@ class HotelPremierApp {
       }
       return `
         <div class="hero-carousel-slide" data-slide-index="${idx}">
-          <img src="${slide.image}" alt="${slide.title || 'Hotel Premier'}" class="hero-carousel-img" loading="${idx === 0 ? 'eager' : 'lazy'}">
+          <img height="675" width="1200" src="${slide.image}" alt="${slide.title || 'Hotel Premier'}" class="hero-carousel-img" loading="${idx === 0 ? 'eager' : 'lazy'}">
           <div class="hero-carousel-overlay">
             <span class="hero-slide-badge" data-i18n="heroBadge">PRIDE PURE VEG AC RESTAURANT</span>
             <h2 class="hero-slide-title">${slide.title || 'Culinary Delights of Hotel Premier'}</h2>
@@ -1236,10 +1243,10 @@ class HotelPremierApp {
         title: d.name,
         price: d.price,
         image: d.image,
-        badge: (d.tags && d.tags.includes('chef-special')) 
-          ? this.t('badgeChefSpecial', "👑 Chef's Special") 
-          : ((d.tags && d.tags.includes('bestseller')) 
-            ? this.t('badgeBestseller', '🔥 Bestseller') 
+        badge: (d.tags && d.tags.includes('chef-special'))
+          ? this.t('badgeChefSpecial', "👑 Chef's Special")
+          : ((d.tags && d.tags.includes('bestseller'))
+            ? this.t('badgeBestseller', '🔥 Bestseller')
             : this.t('sectionHighlight', '👑 SECTION HIGHLIGHT')),
         subtitle: d.description || this.t('tapToViewDish', '👆 Tap to view dish details & options')
       }));
@@ -1264,7 +1271,7 @@ class HotelPremierApp {
             }
             return `
               <div class="section-slide-card" onclick="${slide.dishId ? `window.app.openDishDetail('${slide.dishId}')` : ''}">
-                <img src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.onerror=null; this.src='assets/premier-original-logo.png'">
+                <img height="900" width="1200" src="${slide.image}" alt="${slide.name || slide.title}" class="section-slide-img" loading="${idx === 0 ? 'eager' : 'lazy'}" onerror="this.onerror=null; this.src='assets/premier-original-logo.png'">
                 <div class="section-slide-overlay">
                   <div class="section-slide-badge-row">
                     <span class="section-slide-badge">${slide.badge || this.t('sectionHighlight', '👑 SECTION HIGHLIGHT')}</span>
@@ -1373,7 +1380,7 @@ class HotelPremierApp {
           return `
             <div class="room-carousel-slide hp-room-pedestal">
               <div class="hp-room-frame">
-                <img src="${imgUrl}" alt="${room.name} Photo ${idx + 1}" class="room-card-img" loading="lazy" onerror="this.onerror=null; this.src='${room.image}'">
+                <img height="900" width="1200" src="${imgUrl}" alt="${room.name} Photo ${idx + 1}" class="room-card-img" loading="lazy" onerror="this.onerror=null; this.src='${room.image}'">
                 <div class="hp-room-vignette"></div>
               </div>
             </div>
@@ -1514,11 +1521,11 @@ class HotelPremierApp {
             ? window.AssetPipeline.renderCategoryCardMedia(cat, count, itemsWord, localizedTitle)
             : `
             <div class="category-card-media">
-              <img 
-                src="${cat.image}" 
-                alt="${localizedTitle}" 
-                class="category-card-img" 
-                loading="lazy" 
+              <img height="900" width="1200"
+                src="${cat.image}"
+                alt="${localizedTitle}"
+                class="category-card-img"
+                loading="lazy"
                 onerror="this.onerror=null; this.src='assets/premier-original-logo.png'"
               >
               <div class="category-card-overlay" aria-hidden="true"></div>
@@ -1860,7 +1867,7 @@ class HotelPremierApp {
         name: this.t('filterAll', 'All Dishes'),
         subtitle: `Complete Pure Veg Menu • All ${allDishesCount} Curated Dishes`,
         icon: '🍽️',
-        image: 'assets/menu-images/VEG SPECIALITIES/VEG PRIDE SPECIAL 1.jpg',
+        image: 'assets/menu-images/veg-specialities/veg-pride-special-1.jpg',
         count: allDishesCount,
         isActive: isAllActive,
         isAll: true
@@ -1933,14 +1940,12 @@ class HotelPremierApp {
     this.filterDrawerByGroup('all');
     if (!modal.classList.contains('active')) {
       this.menuDrawerOpener = document.activeElement;
-      this.menuDrawerPreviousOverflow = document.body.style.overflow;
     }
     modal.classList.add('active');
     modal.style.display = 'flex';
     const list = document.getElementById('drawer-sections-list');
     if (list) list.scrollTop = 0; // Reset only after the sheet participates in layout.
     document.getElementById('floating-menu-toggle-btn')?.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
     const searchInput = document.getElementById('drawer-sections-search');
     if (searchInput) {
       searchInput.value = '';
@@ -1963,7 +1968,6 @@ class HotelPremierApp {
     if (!modal || !modal.classList.contains('active')) return;
     modal.classList.remove('active');
     modal.style.display = 'none';
-    document.body.style.overflow = this.menuDrawerPreviousOverflow || '';
     if (!restoreFocus && modal.contains?.(document.activeElement)) document.activeElement.blur?.();
     if (restoreFocus && this.menuDrawerOpener?.isConnected) this.menuDrawerOpener.focus({ preventScroll:true });
     this.menuDrawerOpener = null;
@@ -2294,17 +2298,17 @@ class HotelPremierApp {
             <span class="empty-fav-icon">♥</span>
             <h4 class="empty-fav-title">No Favorite Dishes Saved Yet</h4>
             <p class="empty-fav-sub">Open a dish and tap the small heart on its photo to save that individual item or option.</p>
-            <button class="btn-primary" style="margin: 12px auto 0; max-width: 220px;" onclick="window.app.toggleFavoritesFilter()">Explore Full Menu</button>
+            <button class="btn-primary hp-inline-03ff67f53e18" onclick="window.app.toggleFavoritesFilter()">Explore Full Menu</button>
           </div>
         `;
         return;
       }
       container.innerHTML = `
-        <div style="text-align: center; padding: 48px 16px; color: var(--text-muted); background: var(--cream-card); border-radius: var(--radius-md); border: 1.5px solid var(--cream-border); margin-top: 10px;">
-          <div style="font-size: 3rem; margin-bottom: 12px;">🍲</div>
-          <h3 style="font-family: var(--font-serif); color: var(--terracotta-dark); margin-bottom: 8px;">${this.t('noDishesFound')}</h3>
-          <p style="font-size: 0.85rem;">${this.t('noDishesSub')}</p>
-          <button class="btn-primary" style="margin: 16px auto 0; max-width: 220px;" onclick="window.app.showHomeCategories()">${this.t('viewAllCategoriesBtn')}</button>
+        <div class="hp-inline-1142771b813d">
+          <div class="hp-inline-1391c90b12fb">🍲</div>
+          <h3 class="hp-inline-49f768235d91">${this.t('noDishesFound')}</h3>
+          <p class="hp-inline-4908cb0a1366">${this.t('noDishesSub')}</p>
+          <button class="btn-primary hp-inline-5c6876484bae" onclick="window.app.showHomeCategories()">${this.t('viewAllCategoriesBtn')}</button>
         </div>
       `;
       return;
@@ -2468,7 +2472,7 @@ class HotelPremierApp {
 
     return `
       <div class="dish-card compact-dish-card dish-card-stagger ${isMaster ? 'group-master-card' : ''} ${dish.isSoldOut ? 'sold-out' : ''}"
-           id="dish-card-${dish.id}" 
+           id="dish-card-${dish.id}"
            onclick="window.app.openDishDetail('${detailId}'${detailVariant})"
            role="button"
            tabindex="0"
@@ -2477,7 +2481,7 @@ class HotelPremierApp {
         <div class="dish-banner-media ${hasPhoto ? '' : 'no-photo'}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
           ${hasPhoto ? `
-            <img src="${window.AssetPipeline?.versionedPhotoSource(displayImage) || displayImage}" ${window.AssetPipeline?.responsivePhotoAttributes(displayImage, false, true) || ''} alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" decoding="async" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
+            <img height="900" width="1200" src="${window.AssetPipeline?.versionedPhotoSource(displayImage) || displayImage}" ${window.AssetPipeline?.responsivePhotoAttributes(displayImage, false, true) || ''} alt="${dish.name}" class="dish-img" id="dish-img-el-${dish.id}" loading="lazy" decoding="async" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
             <div class="hp-glass-vignette" aria-hidden="true"></div>
           ` : `
             <div class="dish-no-photo-placeholder" id="dish-img-el-${dish.id}">
@@ -2634,9 +2638,9 @@ class HotelPremierApp {
 
     let dishTitleHtml = currentVariantName;
     if (this.currentLang === 'hi' && currentVariantHi) {
-      dishTitleHtml = `${currentVariantName} <span class="dish-title-sub" style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${currentVariantHi})</span>`;
+      dishTitleHtml = `${currentVariantName} <span class="dish-title-sub hp-inline-8c79846eb3a3">(${currentVariantHi})</span>`;
     } else if (this.currentLang === 'mr' && currentVariantMr) {
-      dishTitleHtml = `${currentVariantName} <span class="dish-title-sub" style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${currentVariantMr})</span>`;
+      dishTitleHtml = `${currentVariantName} <span class="dish-title-sub hp-inline-8c79846eb3a3">(${currentVariantMr})</span>`;
     }
 
     let initialDesc = this.getDishDescription(dish);
@@ -2664,7 +2668,7 @@ class HotelPremierApp {
         modalBadges.push(`<span class="badge-tag spicy">${this.t('badgeSpicy')}</span>`);
       }
       if (dish.tags.includes('online-exclusive')) {
-        modalBadges.push(`<span class="badge-tag delivery-exclusive" style="background: linear-gradient(135deg, #EF4444 0%, #F59E0B 100%); color: #FFF; font-weight: 800;">🛵 Online Exclusive</span>`);
+        modalBadges.push(`<span class="badge-tag delivery-exclusive hp-inline-2dba2d4bad11">🛵 Online Exclusive</span>`);
       }
     }
     const modalBadgesHtml = modalBadges.join('');
@@ -2684,7 +2688,7 @@ class HotelPremierApp {
       detailMediaHtml = `
         <div class="modal-dish-photo-wrap">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
-          <img src="${displayImage}" alt="${currentVariantName}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
+          <img height="900" width="1200" src="${displayImage}" alt="${currentVariantName}" id="detail-modal-img" class="modal-dish-img" loading="eager" onerror="this.onerror=null; this.hidden=true; this.parentElement.classList.add('no-photo')">
           <div class="hp-glass-vignette" aria-hidden="true"></div>
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${modalBadgesHtml ? `<div class="dish-badges">${modalBadgesHtml}</div>` : ''}
@@ -2699,8 +2703,8 @@ class HotelPremierApp {
         <div class="modal-dish-photo-wrap no-photo">
           <div class="dish-no-photo-placeholder" id="detail-modal-img">
             <div class="no-photo-icon">🌱</div>
-            <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
-            <div class="no-photo-sub" style="font-size: 0.75rem;">PRIDE PURE VEG AC RESTAURANT</div>
+            <div class="no-photo-crest hp-inline-2e72acd64782">HOTEL PREMIER</div>
+            <div class="no-photo-sub hp-inline-8b511f076fb1">PRIDE PURE VEG AC RESTAURANT</div>
           </div>
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
@@ -2733,14 +2737,14 @@ class HotelPremierApp {
               const nameHi = encodeURIComponent(v.hindiName || '');
               const nameMr = encodeURIComponent(v.marathiName || '');
               return `
-                <button type="button" 
-                        class="modal-dish-variant-btn ${isSelected ? 'selected' : ''}" 
+                <button type="button"
+                        class="modal-dish-variant-btn ${isSelected ? 'selected' : ''}"
                         role="radio"
                         aria-checked="${isSelected}"
-                        data-variant-name="${v.name}" 
-                        data-variant-name-hi="${nameHi}" 
-                        data-variant-name-mr="${nameMr}" 
-                        data-variant-price="${v.price}" 
+                        data-variant-name="${v.name}"
+                        data-variant-name-hi="${nameHi}"
+                        data-variant-name-mr="${nameMr}"
+                        data-variant-price="${v.price}"
                         data-variant-img="${v.image || dish.image || ''}"
                         data-variant-desc="${descEn}"
                         data-variant-desc-hi="${descHi}"
@@ -2755,23 +2759,23 @@ class HotelPremierApp {
         </div>
 
         <div class="modal-staff-variants-manager" id="staff-variants-mgr-${dish.id}">
-          <div style="font-size: 0.72rem; font-weight: 800; color: var(--brass-light); text-transform: uppercase; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center;">
+          <div class="hp-inline-6e72da60eeb7">
             <span>🛠️ Option Controls (Sequence, Hide &amp; Delete)</span>
-            <button type="button" class="staff-add-opt-btn" onclick="window.app.promptAddVariant('${dish.id}')" style="background: rgba(16, 185, 129, 0.2); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 4px; padding: 2px 7px; font-size: 0.70rem; cursor: pointer; font-weight: 700;">+ Add Option</button>
+            <button type="button" class="staff-add-opt-btn hp-inline-30c1d597b8b1" onclick="window.app.promptAddVariant('${dish.id}')">+ Add Option</button>
           </div>
-          <div class="staff-variants-list" style="display: flex; flex-direction: column; gap: 4px;">
+          <div class="staff-variants-list hp-inline-2befb59f42e9">
             ${dish.variants.map((v, i) => `
               <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 5px 8px; border-radius: 6px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.08); ${v.hidden ? 'opacity: 0.6;' : ''}">
-                <span style="display: flex; align-items: center; gap: 6px;">
-                  <strong style="color: var(--brass-light);">${i + 1}.</strong>
+                <span class="hp-inline-8da89a75a781">
+                  <strong class="hp-inline-f8538cbd29f8">${i + 1}.</strong>
                   <span>${v.name} (₹${v.price})</span>
-                  ${v.hidden ? '<span style="font-size: 0.62rem; background: #DC2626; color: #FFF; padding: 1px 4px; border-radius: 3px; font-weight: 800;">HIDDEN</span>' : ''}
+                  ${v.hidden ? '<span class="hp-inline-5767e4ab3ab2">HIDDEN</span>' : ''}
                 </span>
-                <div style="display: flex; gap: 3px;">
-                  <button type="button" onclick="window.app.moveVariant('${dish.id}', ${i}, ${i - 1})" ${i === 0 ? 'disabled style="opacity: 0.3;"' : ''} style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Move Up (Make Earlier)">▲</button>
-                  <button type="button" onclick="window.app.moveVariant('${dish.id}', ${i}, ${i + 1})" ${i === dish.variants.length - 1 ? 'disabled style="opacity: 0.3;"' : ''} style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Move Down">▼</button>
+                <div class="hp-inline-a714698963cb">
+                  <button class="hp-inline-235d73071662" type="button" onclick="window.app.moveVariant('${dish.id}', ${i}, ${i - 1})" ${i === 0 ? 'disabled' : ''} style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Move Up (Make Earlier)">▲</button>
+                  <button class="hp-inline-235d73071662" type="button" onclick="window.app.moveVariant('${dish.id}', ${i}, ${i + 1})" ${i === dish.variants.length - 1 ? 'disabled' : ''} style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Move Down">▼</button>
                   <button type="button" onclick="window.app.toggleVariantAvailability('${dish.id}', ${i})" style="background: ${v.hidden ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'}; border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="${v.hidden ? 'Show to customers' : 'Hide from customers'}">${v.hidden ? '👁️ Show' : '🚫 Hide'}</button>
-                  <button type="button" onclick="window.app.deleteVariant('${dish.id}', ${i})" style="background: rgba(220,38,38,0.2); border: 1px solid rgba(220,38,38,0.4); color: #EF4444; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Delete Option">🗑️</button>
+                  <button class="hp-inline-135bf246d594" type="button" onclick="window.app.deleteVariant('${dish.id}', ${i})" title="Delete Option">🗑️</button>
                 </div>
               </div>
             `).join('')}
@@ -2785,7 +2789,7 @@ class HotelPremierApp {
       <div class="modal-dish-detail-container">
         <div class="modal-dish-header">
           <div>
-            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <div class="hp-inline-674501151eb8">
               <h3 class="modal-dish-title">${dishTitleHtml}</h3>
               <button onclick="window.admin ? window.admin.openAdminModal('menu', '${dish.id}') : null" class="btn-staff-dish-edit-tag" title="Staff Taste & Price Editor">
                 ✏️ Edit Tags
@@ -2797,7 +2801,7 @@ class HotelPremierApp {
         </div>
 
         <div class="modal-staff-taste-modifier-bar" id="modal-staff-taste-bar-${dish.id}">
-          <span style="font-size: 0.70rem; font-weight: 800; color: var(--brass-light); text-transform: uppercase;">Taste Profile:</span>
+          <span class="hp-inline-1fd02deed669">Taste Profile:</span>
           <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('sweet') ? 'active-sweet' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'sweet') : null">
             🍯 Sweet
           </button>
@@ -2957,10 +2961,10 @@ class HotelPremierApp {
     if (titleEl && varName) {
       let subTitle = '';
       if (this.currentLang === 'hi' && varNameHi) {
-        subTitle = ` <span class="dish-title-sub" style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${varNameHi})</span>`;
+        subTitle = ` <span class="dish-title-sub hp-inline-8c79846eb3a3">(${varNameHi})</span>`;
       } else if (this.currentLang === 'mr' && (varNameMr || varNameHi)) {
         const sm = varNameMr || varNameHi;
-        subTitle = ` <span class="dish-title-sub" style="font-size: 0.95rem; font-weight: 600; color: #94A3B8; margin-left: 6px;">(${sm})</span>`;
+        subTitle = ` <span class="dish-title-sub hp-inline-8c79846eb3a3">(${sm})</span>`;
       }
       titleEl.innerHTML = `${varName}${subTitle}`;
     }
@@ -3045,8 +3049,8 @@ class HotelPremierApp {
     if (window.admin && typeof window.admin.filterAdminDishes === 'function') {
       window.admin.filterAdminDishes();
     }
-    const statusText = dish.notAvailable 
-      ? `"${dish.name}" is now marked Not Available and hidden from PWA!` 
+    const statusText = dish.notAvailable
+      ? `"${dish.name}" is now marked Not Available and hidden from PWA!`
       : `"${dish.name}" is now Available and restored to PWA!`;
     this.showToast(statusText, dish.notAvailable ? 'warning' : 'success');
 
@@ -3143,7 +3147,7 @@ class HotelPremierApp {
     if (idx === -1) return;
     const current = this.menuData[idx];
     const catId = current.categoryId;
-    
+
     if (direction === 'up') {
       let targetIdx = -1;
       for (let i = idx - 1; i >= 0; i--) {
@@ -3276,7 +3280,7 @@ class HotelPremierApp {
       <div class="bulk-tier-card ${idx === deals.length - 1 ? 'featured' : ''}">
         <div class="tier-tag">${escape(deal.badge || `${deal.minRooms}+ ROOMS`)}</div>
         <h4 class="tier-name">${escape(deal.name)}</h4>
-        <div class="tier-privilege-label" style="font-size: 0.86rem; color: var(--burgundy-primary); font-weight: 700; margin: 8px 0 12px; line-height: 1.4;">
+        <div class="tier-privilege-label hp-inline-799769be9495">
           ${escape(deal.privilege || 'Availability confirmed by our team')}
         </div>
         <ul class="tier-perks">
@@ -3553,7 +3557,7 @@ class HotelPremierApp {
       return `
         <div class="decor-card" id="card-${item.id}">
           <div class="decor-img-wrap">
-            <img src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.onerror=null; this.src='assets/premier-original-logo.png'">
+            <img height="900" width="1200" src="${item.image}" alt="${item.title}" loading="lazy" onerror="this.onerror=null; this.src='assets/premier-original-logo.png'">
             <span class="decor-badge">${item.badge}</span>
             <span class="decor-chargeable-pill">💰 Chargeable Add-on</span>
           </div>
@@ -3750,8 +3754,8 @@ class HotelPremierApp {
       this.calculateRestaurantEventQuote();
     }
     const q = this.latestEventQuote;
-    const addonsText = (q.chosenAddons && q.chosenAddons.length > 0) 
-      ? q.chosenAddons.join(', ') 
+    const addonsText = (q.chosenAddons && q.chosenAddons.length > 0)
+      ? q.chosenAddons.join(', ')
       : 'None selected';
 
     const eventName = document.getElementById('calc-event-guest-name')?.value.trim() || '';
@@ -3786,8 +3790,8 @@ class HotelPremierApp {
     const mount = document.getElementById('location-qr-mount');
     if (!mount) return;
 
-    const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo) 
-      ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl 
+    const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo)
+      ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl
       : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal';
 
     mount.innerHTML = '';
@@ -3802,17 +3806,17 @@ class HotelPremierApp {
           correctLevel: QRCode.CorrectLevel.H
         });
       } catch (e) {
-        mount.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(mapsUrl)}" alt="Location QR" style="width: 160px; height: 160px; border-radius: 8px;">`;
+        mount.innerHTML = `<img height="900" width="1200" class="hp-inline-0b224c744666" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(mapsUrl)}" alt="Location QR">`;
       }
     } else {
-      mount.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(mapsUrl)}" alt="Location QR" style="width: 160px; height: 160px; border-radius: 8px;">`;
+      mount.innerHTML = `<img height="900" width="1200" class="hp-inline-0b224c744666" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(mapsUrl)}" alt="Location QR">`;
     }
   }
 
 
   filterLocalAttractions(category) {
     this.currentAttractionFilter = category;
-    
+
     // Update active state on filter chips
     const filterContainer = document.getElementById('attraction-filter-chips');
     if (filterContainer) {
@@ -3847,7 +3851,7 @@ class HotelPremierApp {
 
       const slidesHtml = imgList.map((imgObj, sIdx) => `
         <div class="attraction-slide" data-slide-index="${sIdx}">
-          <img src="${imgObj.url}" alt="${imgObj.caption || item.title}" class="attraction-img" loading="lazy" onerror="this.onerror=null; this.src='assets/hotel-images/exterior-facade-twilight.jpg';">
+          <img height="900" width="1200" src="${imgObj.url}" alt="${imgObj.caption || item.title}" class="attraction-img" loading="lazy" onerror="this.onerror=null; this.src='assets/hotel-images/exterior-facade-twilight.jpg';">
           ${imgObj.caption ? `<span class="attraction-slide-caption">${imgObj.caption}</span>` : ''}
         </div>
       `).join('');
@@ -3882,7 +3886,7 @@ class HotelPremierApp {
             <div class="attraction-timing-row">
               <span class="timing-icon">&#128197;</span>
               <div>
-                <span style="font-size: 0.65rem; text-transform: uppercase; color: var(--burgundy-deep); display: block; font-weight: 800;">Best Time / Season:</span>
+                <span class="hp-inline-f6edf7b1c1b5">Best Time / Season:</span>
                 <span>${item.bestTime}</span>
               </div>
             </div>
@@ -3943,8 +3947,8 @@ class HotelPremierApp {
   }
 
   shareLocationOnWhatsApp() {
-    const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo) 
-      ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl 
+    const mapsUrl = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo)
+      ? window.HOTEL_PREMIER_HOTEL_DATA.hotelInfo.googleMapsUrl
       : 'https://www.google.com/maps/search/?api=1&query=Hotel+Premier+Jamner+Road+Bhusawal';
 
     const msg = `*HOTEL PREMIER BHUSAWAL - LOCATION & GPS DIRECTIONS*%0A` +
@@ -4071,26 +4075,7 @@ class HotelPremierApp {
     if (!toast) {
       toast = document.createElement('div');
       toast.id = 'app-toast';
-      toast.style.cssText = `
-        position: fixed;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #0E1D36;
-        color: #F7C860;
-        padding: 10px 20px;
-        border-radius: 30px;
-        font-family: 'Cinzel', serif;
-        font-size: 0.85rem;
-        font-weight: 800;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        border: 1.5px solid #D4901C;
-        z-index: 9999;
-        display: none;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s ease;
-      `;
+      toast.className = 'app-toast';
       document.body.appendChild(toast);
     }
 
@@ -4098,7 +4083,7 @@ class HotelPremierApp {
     if (type === 'success') icon = '✅';
     if (type === 'error') icon = '⚠️';
 
-    toast.innerHTML = `<span>${icon}</span> <span>${message}</span>`;
+    toast.textContent = `${icon} ${String(message)}`;
     toast.style.display = 'flex';
     toast.style.opacity = '1';
 
@@ -4738,7 +4723,7 @@ class HotelPremierApp {
     const viewport = document.querySelector?.('meta[name="viewport"]');
     if (viewport && !modal.classList.contains('active')) {
       this.enquiryViewportContent = viewport.getAttribute('content');
-      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover');
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
     }
 
     // Carry an explicit tariff plan into the inquiry without changing Stay defaults.
@@ -5092,7 +5077,7 @@ class HotelPremierApp {
   clearGuestPass() {
     if (confirm('Clear saved guest details? You can re-enter them anytime.')) {
       localStorage.removeItem('hp_guest_profile');
-      ['feedback-guest-name', 'feedback-guest-phone', 'calc-event-guest-name', 'calc-event-guest-phone', 
+      ['feedback-guest-name', 'feedback-guest-phone', 'calc-event-guest-name', 'calc-event-guest-phone',
        'calc-bulk-guest-name', 'calc-bulk-guest-phone', 'guest-pass-input-name', 'guest-pass-input-phone'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = '';
@@ -5190,10 +5175,18 @@ class HotelPremierApp {
   }
 
   // ==================== 7. MASTER DEVELOPER VAULT CONTROLS ====================
-  unlockDeveloperVault() {
+  async unlockDeveloperVault() {
     const input = document.getElementById('dev-vault-pin-input');
     const pin = input ? input.value : '';
-    if (window.HOTEL_VAULT && window.HOTEL_VAULT.verifyMasterPin(pin)) {
+    let valid = false;
+    try {
+      if (!window.HotelLocalLock?.status().configured) {
+        this.ensureAdminLoaded(() => window.admin.openAdminModal());
+        return;
+      }
+      valid = Boolean(window.HOTEL_VAULT && await window.HOTEL_VAULT.verifyMasterPin(pin));
+    } catch (error) { this.showToast(error.message, 'error'); return; }
+    if (valid) {
       const gate = document.getElementById('dev-vault-gate');
       const deck = document.getElementById('dev-vault-deck');
       if (gate) gate.style.display = 'none';
@@ -5201,7 +5194,7 @@ class HotelPremierApp {
       this.renderDeveloperVaultUI();
       this.showToast('Master Vault Unlocked 🔓', 'success');
     } else {
-      alert('Incorrect Developer PIN. Access denied.');
+      this.showToast('Incorrect local PIN. Repeated attempts are throttled.', 'error');
       if (input) {
         input.value = '';
         input.focus();
@@ -5227,18 +5220,7 @@ class HotelPremierApp {
   }
 
   promptChangeDeveloperPin() {
-    const currentPin = prompt('Enter Current Master Developer PIN:');
-    if (!window.HOTEL_VAULT || !window.HOTEL_VAULT.verifyMasterPin(currentPin)) {
-      alert('Authentication failed.');
-      return;
-    }
-    const newPin = prompt('Enter New Master Developer PIN (at least 4 digits):');
-    if (newPin && newPin.length >= 4) {
-      window.HOTEL_VAULT.setMasterPin(newPin);
-      alert('Master Developer PIN successfully updated!');
-    } else if (newPin) {
-      alert('PIN must be at least 4 digits.');
-    }
+    this.ensureAdminLoaded(() => window.admin.openAdminModal('backup'));
   }
 }
 

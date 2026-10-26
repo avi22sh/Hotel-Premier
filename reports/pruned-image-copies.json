@@ -1,0 +1,649 @@
+{
+  "recovery": "Restore the original paths from Git baseline b154ef4 or hotel-premier-qr-menu.zip. Retained copies have identical SHA-256 values.",
+  "files": [
+    {
+      "removed": "assets/dishes/chinese-platter.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/chinese-platter.avif",
+      "original": "assets/dishes/chinese_platter.avif",
+      "sha256": "6028820478de0a2ae4ba844b295d7688c47df239a13db298a439a2ff8b44c412",
+      "bytes": 50708
+    },
+    {
+      "removed": "assets/dishes/crispy-corn-chilli.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.avif",
+      "original": "assets/dishes/crispy_corn_chilli.avif",
+      "sha256": "969964e4bcae87292db1b3be2898705e13726d77db406112bdcce26236cebf54",
+      "bytes": 154605
+    },
+    {
+      "removed": "assets/dishes/honey-chilli-potato.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.avif",
+      "original": "assets/dishes/honey_chilli_potato.avif",
+      "sha256": "5ab70c5379f9aa2e8dd7c0facf1733376dbcf7bec332680207fff6b185043e7f",
+      "bytes": 204628
+    },
+    {
+      "removed": "assets/dishes/mushroom-babycorn-chilli.jpeg",
+      "retained": "assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpeg",
+      "original": "assets/dishes/mushroom_babycorn_chilli.jpeg",
+      "sha256": "e54685cedba09abdf0a27588bd45631952b94ffa0abdc3a750d2579d01549796",
+      "bytes": 163225
+    },
+    {
+      "removed": "assets/dishes/paneer-65.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-65.avif",
+      "original": "assets/dishes/paneer_65.avif",
+      "sha256": "0673027794cade4d3b055ca2e666a3fa52effecdc626bb2c0c08cc1b70a3b990",
+      "bytes": 32698
+    },
+    {
+      "removed": "assets/dishes/paneer-black-pepper.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.avif",
+      "original": "assets/dishes/paneer_black_pepper.avif",
+      "sha256": "f1ee2d37f140c7d03dcbc111482d7fa240188eb6d07e23aa7c5339de1063635b",
+      "bytes": 45467
+    },
+    {
+      "removed": "assets/dishes/paneer-chilli.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-chilli.avif",
+      "original": "assets/dishes/paneer_chilli.avif",
+      "sha256": "bbb62ab68d4999931334b80727ac55c914e92280acafee4ca5bfa168c6e1fa98",
+      "bytes": 106311
+    },
+    {
+      "removed": "assets/dishes/paneer-machurian.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-machurian.avif",
+      "original": "assets/dishes/paneer_machurian.avif",
+      "sha256": "ac7dc5b69e5f78e54dbe99986d4a238caddd5de92d5bc51408b2c1c0379d559b",
+      "bytes": 35495
+    },
+    {
+      "removed": "assets/dishes/paneer-salton.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-salton.avif",
+      "original": "assets/dishes/paneer_salton.avif",
+      "sha256": "00260ef9eb79a5e89435a79e831fe98604a3cabdf3fe1f5e3ec3c22aa572e807",
+      "bytes": 32370
+    },
+    {
+      "removed": "assets/dishes/paneer-sancho.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-sancho.avif",
+      "original": "assets/dishes/paneer_sancho.avif",
+      "sha256": "bdbe862bbf016a875aaae6c24bf56e9e038bfcd6f4f0475c98f07bd1a9e7a428",
+      "bytes": 32200
+    },
+    {
+      "removed": "assets/dishes/paneer-satay.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-satay.avif",
+      "original": "assets/dishes/paneer_satay.avif",
+      "sha256": "338480cd41fef184f10691ed261488a900a5e844616e956bbc20209598b93800",
+      "bytes": 106738
+    },
+    {
+      "removed": "assets/dishes/paneer-spider-roll.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-spider-roll.avif",
+      "original": "assets/dishes/paneer_spider_roll.avif",
+      "sha256": "ea470b848d39aa53d631b7103616cddc45dd44f5f6c46fe9a40111e3b0d02c36",
+      "bytes": 27659
+    },
+    {
+      "removed": "assets/dishes/paneer-spring-roll.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.avif",
+      "original": "assets/dishes/paneer_spring_roll.avif",
+      "sha256": "b9457c0c1a6c67c8800458035df0e739e61b53675dcb205d1edee3ea96b1bb53",
+      "bytes": 41749
+    },
+    {
+      "removed": "assets/dishes/soyabean-chilli.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/soyabean-chilli.avif",
+      "original": "assets/dishes/soyabean_chilli.avif",
+      "sha256": "27cd999a7887b721237456099098ec08d19c93e8ef072baf39a23128e3e40aa9",
+      "bytes": 201009
+    },
+    {
+      "removed": "assets/dishes/thread-paneer.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/thread-paneer.avif",
+      "original": "assets/dishes/thread_paneer.avif",
+      "sha256": "f3c80fde56ab5aff1b8ee90d75756df9bacc063248d077ce0c5d7a23da05d6bf",
+      "bytes": 48932
+    },
+    {
+      "removed": "assets/dishes/veg-ball-in-hot-garlic-sauce.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.avif",
+      "original": "assets/dishes/veg_ball_in_hot_garlic_sauce.avif",
+      "sha256": "8e7e706baf0f57c49fbd17ef8714bb8ff6866bf4ad323a8e0373eb2089675d29",
+      "bytes": 44555
+    },
+    {
+      "removed": "assets/dishes/veg-black-pepper.jfif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper.jfif",
+      "original": "assets/dishes/veg_black_pepper.jfif",
+      "sha256": "a9ba60abaefe280883cd3921a2631883ee638572e08a3ed59c8eaa01e0216727",
+      "bytes": 220420
+    },
+    {
+      "removed": "assets/dishes/veg-bullet.jpeg",
+      "retained": "assets/menu-images/indo-chinese-nibbles/veg-bullet.jpeg",
+      "original": "assets/dishes/veg_bullet.jpeg",
+      "sha256": "190fb1a2a3345e2d342e3ada90760433cdb9466f5ff165685f982ffb787b52fa",
+      "bytes": 189746
+    },
+    {
+      "removed": "assets/dishes/veg-crispy.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/veg-crispy.avif",
+      "original": "assets/dishes/veg_crispy.avif",
+      "sha256": "cd437000c6f0392a030a33e40cc4c23187d11e3e6f99f4f39b4a8a4b7b0d68eb",
+      "bytes": 78307
+    },
+    {
+      "removed": "assets/dishes/veg-hot-pan.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan.avif",
+      "original": "assets/dishes/veg_hot_pan.avif",
+      "sha256": "0f87d9a85d3a64fd14dc364a2f9695c919e42c45922fd2966326606a7f860fd0",
+      "bytes": 56057
+    },
+    {
+      "removed": "assets/dishes/veg-lollipop.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/veg-lollipop.avif",
+      "original": "assets/dishes/veg_lollipop.avif",
+      "sha256": "b96e787e5fdfbae380f24b3efbf4f553a09a76fb59fa4c5581c487f2aa1d2331",
+      "bytes": 36354
+    },
+    {
+      "removed": "assets/dishes/veg-manchurian.avif",
+      "retained": "assets/menu-images/indo-chinese-nibbles/veg-manchurian.avif",
+      "original": "assets/dishes/veg_manchurian.avif",
+      "sha256": "49739c199f60152408d867c4525a5fbc45e333b6e4ab15f31c090780512f1526",
+      "bytes": 52555
+    },
+    {
+      "removed": "assets/dishes/veg-spring-roll.jpeg",
+      "retained": "assets/menu-images/indo-chinese-nibbles/veg-spring-roll.jpeg",
+      "original": "assets/dishes/veg_spring_roll.jpeg",
+      "sha256": "9ec54b30bec05e342d57cb8bb3ae4050fc7cb348c59bef38f9d18b6b7ae8ed59",
+      "bytes": 167814
+    },
+    {
+      "removed": "assets/dishes/chilli-chinese-pasta.png",
+      "retained": "assets/menu-images/italian-fusion-pasta/chilli-chinese-pasta.png",
+      "original": "assets/dishes/chilli_chinese_pasta.png",
+      "sha256": "48a87e5df48e8e1a6f032fcd9afcd1d0b43f7667de3c80d34773b9f401f1bd07",
+      "bytes": 2102221
+    },
+    {
+      "removed": "assets/dishes/aloo-paratha-with-curd.avif",
+      "retained": "assets/menu-images/morning-delight/aloo-paratha-with-curd.avif",
+      "original": "assets/dishes/aloo_paratha_with_curd.avif",
+      "sha256": "fb4b8a54cabc46191a85022cf567d290290453d114ccca5f5e9ee9176b88f0ec",
+      "bytes": 18280
+    },
+    {
+      "removed": "assets/dishes/bread-butter-jam.avif",
+      "retained": "assets/menu-images/morning-delight/bread-butter-jam.avif",
+      "original": "assets/dishes/bread_butter_jam.avif",
+      "sha256": "56736b2568b88d6985cb90903b120b6a88cbee0f79abd26267cec3fe4ad9d26b",
+      "bytes": 128426
+    },
+    {
+      "removed": "assets/dishes/bread-butter-toast.avif",
+      "retained": "assets/menu-images/morning-delight/bread-butter-toast.avif",
+      "original": "assets/dishes/bread_butter_toast.avif",
+      "sha256": "5c68258b65b3dbcd9b4aaa093f62b427567bc1fb9e3c8e70878d00f20307e0e1",
+      "bytes": 11579
+    },
+    {
+      "removed": "assets/dishes/cheese-chutmey-sandwich.avif",
+      "retained": "assets/menu-images/morning-delight/cheese-chutmey-sandwich.avif",
+      "original": "assets/dishes/cheese_chutmey_sandwich.avif",
+      "sha256": "762278a674355c4a85949397ef0232d843d7ce75118fc5b39298ff2748487475",
+      "bytes": 25303
+    },
+    {
+      "removed": "assets/dishes/cheese-grilled-sandwich.avif",
+      "retained": "assets/menu-images/morning-delight/cheese-grilled-sandwich.avif",
+      "original": "assets/dishes/cheese_grilled_sandwich.avif",
+      "sha256": "3ed8194595427d73898d2c24a6e13173e10d905f57942c117e898d9db1b0f0c9",
+      "bytes": 18332
+    },
+    {
+      "removed": "assets/dishes/chole-bhature.avif",
+      "retained": "assets/menu-images/morning-delight/chole-bhature.avif",
+      "original": "assets/dishes/chole_bhature.avif",
+      "sha256": "c29fb7d0fdd4637950f845d1519d300b49ceef28a85a5ce6d79e2e06b6bf3fd4",
+      "bytes": 20714
+    },
+    {
+      "removed": "assets/dishes/paneer-paratha-with-curd.avif",
+      "retained": "assets/menu-images/morning-delight/paneer-paratha-with-curd.avif",
+      "original": "assets/dishes/paneer_paratha_with_curd.avif",
+      "sha256": "a502797e90959ef51b2731158c636a74e08e8b373c297904a55ae4fc6dd51fea",
+      "bytes": 26943
+    },
+    {
+      "removed": "assets/dishes/poha.avif",
+      "retained": "assets/menu-images/morning-delight/poha.avif",
+      "original": "assets/dishes/poha.avif",
+      "sha256": "46498bb30b2f94f561b76904926db2cc456d21b4a4d7f477be85b5c9834b724b",
+      "bytes": 100992
+    },
+    {
+      "removed": "assets/dishes/poori-bhaji.avif",
+      "retained": "assets/menu-images/morning-delight/poori-bhaji.avif",
+      "original": "assets/dishes/poori_bhaji.avif",
+      "sha256": "9671d6029f65548e1a7bb221fbd30a1bce07f11ca2e24cbc15d0bfdaf2c4fb3c",
+      "bytes": 38962
+    },
+    {
+      "removed": "assets/menu-images/morning-delight/pride-special-sandwich.jfif",
+      "retained": "assets/dishes/pride-special-sandwich.jfif",
+      "original": "assets/menu-images/MORNING DELIGHT/pride special sandwich.jfif",
+      "sha256": "a39cb9c3dad08a9fa7dafffecd19f3e0d1babaf714ae4d7eec5101bd281a75b6",
+      "bytes": 130094
+    },
+    {
+      "removed": "assets/dishes/sabudana-khichadi.avif",
+      "retained": "assets/menu-images/morning-delight/sabudana-khichadi.avif",
+      "original": "assets/dishes/sabudana_khichadi.avif",
+      "sha256": "fafda520f80560580b9de023de297a609fd22774376c4aa9fa1466a1be055248",
+      "bytes": 47912
+    },
+    {
+      "removed": "assets/dishes/sabudana-wada.png",
+      "retained": "assets/menu-images/morning-delight/sabudana-wada.png",
+      "original": "assets/dishes/sabudana_wada.png",
+      "sha256": "d2cde278e93139d4feef82a4b4e50b0bbb5567b331d97cd1618d98d1c3433858",
+      "bytes": 25368
+    },
+    {
+      "removed": "assets/dishes/veg-cheese-grilled-sandwich.avif",
+      "retained": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.avif",
+      "original": "assets/dishes/veg_cheese_grilled_sandwich.avif",
+      "sha256": "ec8126a772122db2ebb0166422c37a0a8702a88b3f967cddde60794bccdda923",
+      "bytes": 35790
+    },
+    {
+      "removed": "assets/dishes/veg-club-sandwich.avif",
+      "retained": "assets/menu-images/morning-delight/veg-club-sandwich.avif",
+      "original": "assets/dishes/veg_club_sandwich.avif",
+      "sha256": "becd4be56960d5662e4847dd5ea464cb4a11f5c7cc16c6bdcf0266b57c419b84",
+      "bytes": 133412
+    },
+    {
+      "removed": "assets/dishes/veg-cutlet.avif",
+      "retained": "assets/menu-images/morning-delight/veg-cutlet.avif",
+      "original": "assets/dishes/veg_cutlet.avif",
+      "sha256": "d81a423904346b3e6269878d571d1cf0bc7012e88fa8784100ee04a96780a6b3",
+      "bytes": 55051
+    },
+    {
+      "removed": "assets/dishes/veg-grilled-sandwich.avif",
+      "retained": "assets/menu-images/morning-delight/veg-grilled-sandwich.avif",
+      "original": "assets/dishes/veg_grilled_sandwich.avif",
+      "sha256": "1e8cfd87b97431b253e10326720693ccd3d84b0c7f1be5188a0c23083b2587a5",
+      "bytes": 119047
+    },
+    {
+      "removed": "assets/dishes/veg-sandwich.avif",
+      "retained": "assets/menu-images/morning-delight/veg-sandwich.avif",
+      "original": "assets/dishes/veg_sandwich.avif",
+      "sha256": "bbd74a3d4d2f29123eb0eab80f6d7990488c0b427db36d73b3180f4e45dd320c",
+      "bytes": 31740
+    },
+    {
+      "removed": "assets/dishes/veg-hakka-noodles.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-hakka-noodles.avif",
+      "original": "assets/dishes/veg_hakka_noodles.avif",
+      "sha256": "af4888f68784a510be6689398d535c39def68930c5a08848d96fd81402d71fec",
+      "bytes": 28221
+    },
+    {
+      "removed": "assets/dishes/veg-manchurian-noodles.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-manchurian-noodles.avif",
+      "original": "assets/dishes/veg_manchurian_noodles.avif",
+      "sha256": "85374a8e3b4578c1e59b015773174e86bb8ff95f8e6c2558511c4b215ae848aa",
+      "bytes": 84383
+    },
+    {
+      "removed": "assets/dishes/veg-schezwan-fried-noodles.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-schezwan-fried-noodles.avif",
+      "original": "assets/dishes/veg_schezwan_fried_noodles.avif",
+      "sha256": "71b5338432583353407c02be42f4fd08e5162da6c625b4fa8e93eea2783f7d87",
+      "bytes": 18481
+    },
+    {
+      "removed": "assets/dishes/veg-singapuri-noodles.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-singapuri-noodles.avif",
+      "original": "assets/dishes/veg_singapuri_noodles.avif",
+      "sha256": "29a09f4aa90d6d70aadeb7018728c3840d27ac7b9074763e92ed8f6f164522fe",
+      "bytes": 41753
+    },
+    {
+      "removed": "assets/dishes/veg-triple-schezwan-fried-noodles.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/noodles/veg-triple-schezwan-fried-noodles.avif",
+      "original": "assets/dishes/veg_triple_schezwan_fried_noodles.avif",
+      "sha256": "838a636a6abfcd24b7f0c35d86fb86d0128ef2e0704b70f541450d1e22115a06",
+      "bytes": 38520
+    },
+    {
+      "removed": "assets/dishes/mushroom-garlic-fried-rice.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/rice/mushroom-garlic-fried-rice.avif",
+      "original": "assets/dishes/mushroom_garlic_fried_rice.avif",
+      "sha256": "dea9fb881aa508168b146b7c7d197be9e69abe6a2f35674d8d56981e05ab5d86",
+      "bytes": 41880
+    },
+    {
+      "removed": "assets/dishes/veg-combination-fried-rice.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/rice/veg-combination-fried-rice.avif",
+      "original": "assets/dishes/veg_combination_fried_rice.avif",
+      "sha256": "14e4aa6204abeab31c772d8f5b3f54903dd58a9635612fefb94d46dd94f7a45d",
+      "bytes": 119972
+    },
+    {
+      "removed": "assets/dishes/veg-fried-rice.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/rice/veg-fried-rice.avif",
+      "original": "assets/dishes/veg_fried_rice.avif",
+      "sha256": "a0c2c64fa65c90b1b89eaef8aa1d29463364cc8b3e700394c61316762e09e0ba",
+      "bytes": 53740
+    },
+    {
+      "removed": "assets/dishes/veg-schezwan-fried-rice.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/rice/veg-schezwan-fried-rice.avif",
+      "original": "assets/dishes/veg_schezwan_fried_rice.avif",
+      "sha256": "6772c73f280f7648c9feae68c8a4cd6ec3c5521ab18fd324dff756c5e6aaef3c",
+      "bytes": 164689
+    },
+    {
+      "removed": "assets/dishes/veg-triple-schezwan-fried-rice.avif",
+      "retained": "assets/menu-images/sizzling-rice-and-noodles/rice/veg-triple-schezwan-fried-rice.avif",
+      "original": "assets/dishes/veg_triple_schezwan_fried_rice.avif",
+      "sha256": "f4f9daeecca771e18c61fc075c0dec45386c2b0eacf30b88c3726db9d082292d",
+      "bytes": 77100
+    },
+    {
+      "removed": "assets/dishes/hot-sour-soup.avif",
+      "retained": "assets/menu-images/soups/hot-sour-soup.avif",
+      "original": "assets/dishes/hot__sour_soup.avif",
+      "sha256": "7cbadb227474c1457664fbeb2f87f518e3934250f0e357542fff1866c2a96750",
+      "bytes": 36200
+    },
+    {
+      "removed": "assets/dishes/lmon-oriander-soup.avif",
+      "retained": "assets/menu-images/soups/lmon-oriander-soup.avif",
+      "original": "assets/dishes/lmon_oriander_soup.avif",
+      "sha256": "ea70cb117734c77a7330ddaf00dcd747b80595bb3e07f893f89dc0e6741b3b14",
+      "bytes": 26879
+    },
+    {
+      "removed": "assets/dishes/sweetcorn-soup.avif",
+      "retained": "assets/menu-images/soups/sweetcorn-soup.avif",
+      "original": "assets/dishes/sweetcorn_soup.avif",
+      "sha256": "e51eb2bb4744cd110a149e0398ee172827f725b02c595a5d8c78baf133dae84f",
+      "bytes": 30588
+    },
+    {
+      "removed": "assets/dishes/tomato-soup.avif",
+      "retained": "assets/menu-images/soups/tomato-soup.avif",
+      "original": "assets/dishes/tomato_soup.avif",
+      "sha256": "dfad363fbc7c9ea69a5c2d2ab6acc4607cd31e9a63b9f9893cbc3b17e25ae554",
+      "bytes": 184850
+    },
+    {
+      "removed": "assets/dishes/veg-clear-soup.avif",
+      "retained": "assets/menu-images/soups/veg-clear-soup.avif",
+      "original": "assets/dishes/veg_clear_soup.avif",
+      "sha256": "230737d5ef8cc2465876d8aa981bf6753cc76cb0c5806ab9aa010268bdb37bf6",
+      "bytes": 49938
+    },
+    {
+      "removed": "assets/dishes/veg-manchow-soup.avif",
+      "retained": "assets/menu-images/soups/veg-manchow-soup.avif",
+      "original": "assets/dishes/veg_manchow_soup.avif",
+      "sha256": "d8812291da7c9d75a41c3fdec9941ce94a9a6b50d9d75146da4c78d6283ad415",
+      "bytes": 32094
+    },
+    {
+      "removed": "assets/dishes/aloo-tikka.jfif",
+      "retained": "assets/menu-images/tandoor-classics/aloo-tikka.jfif",
+      "original": "assets/dishes/aloo_tikka.jfif",
+      "sha256": "936715e5dd00a83254e8f80d25fbd8745e260eddfc7e3a6c99c8aa888c87cd0c",
+      "bytes": 147446
+    },
+    {
+      "removed": "assets/dishes/jungli-paneer-tikka.avif",
+      "retained": "assets/menu-images/tandoor-classics/jungli-paneer-tikka.avif",
+      "original": "assets/dishes/jungli_paneer_tikka.avif",
+      "sha256": "48e0d53d775202fd74b70a60b1d1b99240851ef1506a00dd0ac748acdd489e9e",
+      "bytes": 56385
+    },
+    {
+      "removed": "assets/dishes/lehsuni-paneer-tikka.avif",
+      "retained": "assets/menu-images/tandoor-classics/lehsuni-paneer-tikka.avif",
+      "original": "assets/dishes/lehsuni_paneer_tikka.avif",
+      "sha256": "eb2cd2898ee5af391ffe917a87b77df0c8272d86c0e8d526699a3927d1af44fe",
+      "bytes": 204189
+    },
+    {
+      "removed": "assets/dishes/mushroom-babycorn-tikka.avif",
+      "retained": "assets/menu-images/tandoor-classics/mushroom-babycorn-tikka.avif",
+      "original": "assets/dishes/mushroom_babycorn_tikka.avif",
+      "sha256": "3f0c8e0d9870d48fcd643861cd6674516fb1ed6562344d4f437f0f6cc3fd6ad6",
+      "bytes": 60360
+    },
+    {
+      "removed": "assets/dishes/paneer-achari-tikka.avif",
+      "retained": "assets/menu-images/tandoor-classics/paneer-achari-tikka.avif",
+      "original": "assets/dishes/paneer_achari_tikka.avif",
+      "sha256": "cbdf98f0ff187f68d87a99612b778b6d9eb238c664c2718f3dbad01db731217b",
+      "bytes": 60744
+    },
+    {
+      "removed": "assets/dishes/paneer-afghani-tikka.avif",
+      "retained": "assets/menu-images/tandoor-classics/paneer-afghani-tikka.avif",
+      "original": "assets/dishes/paneer_afghani_tikka.avif",
+      "sha256": "a073520d892f6db123d82765db5fbf20dc4e98bdee5457cecb5f248579958d70",
+      "bytes": 70697
+    },
+    {
+      "removed": "assets/dishes/paneer-combo-tikka.avif",
+      "retained": "assets/menu-images/tandoor-classics/paneer-combo-tikka.avif",
+      "original": "assets/dishes/paneer_combo_tikka.avif",
+      "sha256": "2ecd471cbeae1cfa63ec2eb3c7f578062c6da1e1e8ebcad14254ec5659341d59",
+      "bytes": 33210
+    },
+    {
+      "removed": "assets/dishes/paneer-patakha-tikka.jpeg",
+      "retained": "assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpeg",
+      "original": "assets/dishes/paneer_patakha_tikka.jpeg",
+      "sha256": "d4e24fed6b6b40bbe4567c0897bd404d44edfcd10471b5e45c5aaee41f513675",
+      "bytes": 140034
+    },
+    {
+      "removed": "assets/dishes/paneer-reshmi-kabab.avif",
+      "retained": "assets/menu-images/tandoor-classics/paneer-reshmi-kabab.avif",
+      "original": "assets/dishes/paneer_reshmi_kabab.avif",
+      "sha256": "7eae1ff2df051153f6844725a823b4303cddda2e531a895909fa927850fcf2a6",
+      "bytes": 59908
+    },
+    {
+      "removed": "assets/dishes/paneer-tikka-shawarma-1.png",
+      "retained": "assets/menu-images/tandoor-classics/paneer-tikka-shawarma-1.png",
+      "original": "assets/dishes/paneer_tikka_shawarma_1.png",
+      "sha256": "019b133adea314f5a431b666183c020a9dd448a0169a506a088f953d157763ad",
+      "bytes": 1991640
+    },
+    {
+      "removed": "assets/dishes/paneer-tikka-shawarma-2.png",
+      "retained": "assets/menu-images/tandoor-classics/paneer-tikka-shawarma-2.png",
+      "original": "assets/dishes/paneer_tikka_shawarma_2.png",
+      "sha256": "5d745564fe37fcb78d62db649583ebce36e8b95d8b652b977c70d5394d48ac22",
+      "bytes": 2153508
+    },
+    {
+      "removed": "assets/dishes/paneer-tikka-shawarma.avif",
+      "retained": "assets/menu-images/tandoor-classics/paneer-tikka-shawarma.avif",
+      "original": "assets/dishes/paneer_tikka_shawarma.avif",
+      "sha256": "2aa50e173483492bbdf80f0fbccf03bfa787948ecf619f16162e32963919105f",
+      "bytes": 45945
+    },
+    {
+      "removed": "assets/dishes/paneer-tikka.avif",
+      "retained": "assets/menu-images/tandoor-classics/paneer-tikka.avif",
+      "original": "assets/dishes/paneer_tikka.avif",
+      "sha256": "05f4302d2464dc833a1e6e16502043e51a7b7a40e6da0f1676841238c0898b4b",
+      "bytes": 104659
+    },
+    {
+      "removed": "assets/dishes/paneer-zafrani-tikka.avif",
+      "retained": "assets/menu-images/tandoor-classics/paneer-zafrani-tikka.avif",
+      "original": "assets/dishes/paneer_zafrani_tikka.avif",
+      "sha256": "724a8dd987e8165798d981ab853814d7313c02d79716cbb3fcacf24e2a8a14a8",
+      "bytes": 25318
+    },
+    {
+      "removed": "assets/dishes/tandoor-platter.avif",
+      "retained": "assets/menu-images/tandoor-classics/tandoor-platter.avif",
+      "original": "assets/dishes/tandoor_platter.avif",
+      "sha256": "7d304f37074fd24ea9c827658def679761d2c64597f903283492a8a4c578dec8",
+      "bytes": 112623
+    },
+    {
+      "removed": "assets/dishes/veg-chilli-milli-kabab.avif",
+      "retained": "assets/menu-images/tandoor-classics/veg-chilli-milli-kabab.avif",
+      "original": "assets/dishes/veg_chilli_milli_kabab.avif",
+      "sha256": "3be38303ec60e098da9b36098b200426c9d99ec9d830b5ea5fe10f6dc8ad18a6",
+      "bytes": 60115
+    },
+    {
+      "removed": "assets/dishes/veg-gulzari-kabab.avif",
+      "retained": "assets/menu-images/tandoor-classics/veg-gulzari-kabab.avif",
+      "original": "assets/dishes/veg_gulzari_kabab.avif",
+      "sha256": "76a950454185a55be5b4f467427735568e0d0d7cdbf96b8db979578fd626f822",
+      "bytes": 33841
+    },
+    {
+      "removed": "assets/dishes/veg-hara-bhara-kabab.avif",
+      "retained": "assets/menu-images/tandoor-classics/veg-hara-bhara-kabab.avif",
+      "original": "assets/dishes/veg_hara_bhara_kabab.avif",
+      "sha256": "06615893f3cbbf463d0d5d2d30cfab2d189c396cedc80ba3a06b7916d2dcba94",
+      "bytes": 83275
+    },
+    {
+      "removed": "assets/dishes/veg-manchurian-tikka.jpeg",
+      "retained": "assets/menu-images/tandoor-classics/veg-manchurian-tikka.jpeg",
+      "original": "assets/dishes/veg_manchurian_tikka.jpeg",
+      "sha256": "6919292775d84935c8e305e71f518e319d5885621adfdde77a83e98bb39f1fd2",
+      "bytes": 143943
+    },
+    {
+      "removed": "assets/dishes/veg-seekh-kabab.avif",
+      "retained": "assets/menu-images/tandoor-classics/veg-seekh-kabab.avif",
+      "original": "assets/dishes/veg_seekh_kabab.avif",
+      "sha256": "2e902173148da86cff576b226458b9a1ce4a45f2a250361f4c9b474250816894",
+      "bytes": 120636
+    },
+    {
+      "removed": "assets/dishes/veg-uttaranchali-kabab.avif",
+      "retained": "assets/menu-images/tandoor-classics/veg-uttaranchali-kabab.avif",
+      "original": "assets/dishes/veg_uttaranchali_kabab.avif",
+      "sha256": "87eb3189046d0c03cd656aeceeda7cad117ef55b553c6c527262ee30c0533fbc",
+      "bytes": 146120
+    },
+    {
+      "removed": "assets/dishes/aloo-chaat.avif",
+      "retained": "assets/menu-images/tasty-tidbits/aloo-chaat.avif",
+      "original": "assets/dishes/aloo_chaat.avif",
+      "sha256": "4f1ce9a0542bf4b8af09ec4a0d09d4da22bf6c71d16f8ffeef0b79420e9dd09c",
+      "bytes": 61707
+    },
+    {
+      "removed": "assets/dishes/chana-chaat.avif",
+      "retained": "assets/menu-images/tasty-tidbits/chana-chaat.avif",
+      "original": "assets/dishes/chana_chaat.avif",
+      "sha256": "fceacabff22919a10aacb34d181af6adddf44555b7c9a2fb6dc39865ee24c50e",
+      "bytes": 73428
+    },
+    {
+      "removed": "assets/dishes/chana-roast.jfif",
+      "retained": "assets/menu-images/tasty-tidbits/chana-roast.jfif",
+      "original": "assets/dishes/chana_roast.jfif",
+      "sha256": "08876051ae6d253efffaeb2bc95c1b37fa4273c64de50ae38f1cce5c04f3f680",
+      "bytes": 127491
+    },
+    {
+      "removed": "assets/dishes/cheese-pakoda.avif",
+      "retained": "assets/menu-images/tasty-tidbits/cheese-pakoda.avif",
+      "original": "assets/dishes/cheese_pakoda.avif",
+      "sha256": "a134a1e98b2702c812686b30106031c49b3a05180ea4d6e6f601301b7042d6f7",
+      "bytes": 60462
+    },
+    {
+      "removed": "assets/dishes/chinese-bhel.avif",
+      "retained": "assets/menu-images/tasty-tidbits/chinese-bhel.avif",
+      "original": "assets/dishes/chinese_bhel.avif",
+      "sha256": "954cc4d51f41602eed450f8f149483fc5750a4146a0754dfcfa1486f27d43f75",
+      "bytes": 76979
+    },
+    {
+      "removed": "assets/dishes/finger-chips.avif",
+      "retained": "assets/menu-images/tasty-tidbits/finger-chips.avif",
+      "original": "assets/dishes/finger_chips.avif",
+      "sha256": "30e1fc6e6c7753b171dde3f44b845ee79cafcfb974235d31ac4753b9dbb43795",
+      "bytes": 32256
+    },
+    {
+      "removed": "assets/dishes/mix-veg-pakoda.avif",
+      "retained": "assets/menu-images/tasty-tidbits/mix-veg-pakoda.avif",
+      "original": "assets/dishes/mix_veg_pakoda.avif",
+      "sha256": "5514457ac5a0d06a582b7e7dd6b41b07596ac5e752876cc4e745bc110ca22798",
+      "bytes": 57401
+    },
+    {
+      "removed": "assets/dishes/paneer-pakoda.avif",
+      "retained": "assets/menu-images/tasty-tidbits/paneer-pakoda.avif",
+      "original": "assets/dishes/paneer_pakoda.avif",
+      "sha256": "17fbb10f895962451c41b1a1ce9dd3fbe14e32358cda317d251a0c144ca2fa38",
+      "bytes": 43029
+    },
+    {
+      "removed": "assets/dishes/peanut-chaat.avif",
+      "retained": "assets/menu-images/tasty-tidbits/peanut-chaat.avif",
+      "original": "assets/dishes/peanut_chaat.avif",
+      "sha256": "80cb88417fdcd7602aff428f320a1fcf26884f759a4287345f89f6a103e5af5c",
+      "bytes": 67205
+    },
+    {
+      "removed": "assets/dishes/indo-chinese-combo.avif",
+      "retained": "assets/menu-images/thalis/indo-chinese-combo.avif",
+      "original": "assets/dishes/indo_chinese_combo.avif",
+      "sha256": "93270fd5256495873ae763996a627ebb7fa0b5572c677b930f5a31e3f2b21b7e",
+      "bytes": 90389
+    },
+    {
+      "removed": "assets/menu-images/thalis/mini-thali.jpg",
+      "retained": "assets/menu-images/thalis/mini-thali-1-190ea57e72aa.jpg",
+      "original": "assets/menu-images/THALIS/MINI THALI.jpg",
+      "sha256": "190ea57e72aae22537da6a9b9d64983902629e900bd7769f9a472d70f40a3ff7",
+      "bytes": 139028
+    },
+    {
+      "removed": "assets/dishes/mini-thali.avif",
+      "retained": "assets/menu-images/thalis/mini-thali.avif",
+      "original": "assets/dishes/mini_thali.avif",
+      "sha256": "32452a0e1668834cabd9e225b2199fa0e875ac4ed76dbdb4989ebcad3de8c4c3",
+      "bytes": 170495
+    },
+    {
+      "removed": "assets/dishes/premier-maharaja-thali.jfif",
+      "retained": "assets/menu-images/thalis/premier-maharaja-thali.jfif",
+      "original": "assets/dishes/premier_maharaja_thali.jfif",
+      "sha256": "df05a2be1cad158d0aa83b86b937ee649d4d4858b7faa47cab8653d7cb178954",
+      "bytes": 251410
+    },
+    {
+      "removed": "assets/dishes/signature-thali.avif",
+      "retained": "assets/menu-images/thalis/signature-thali.avif",
+      "original": "assets/dishes/signature_thali.avif",
+      "sha256": "fd461e2f9db9c896d00e2e4f2ad27be14dadc5d10ddae0be6fe7735de87bc7e8",
+      "bytes": 79541
+    }
+  ]
+}

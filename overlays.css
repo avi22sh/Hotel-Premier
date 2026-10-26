@@ -1,0 +1,22 @@
+:root { --z-nav:20; --z-fab:30; --z-settings:40; --z-sheet:80; --z-notice:90; }
+.photo-crop-dialog { width:min(92%,42rem); padding:1.25rem; border-radius:1.25rem; background:var(--bg-card,#202833); color:var(--text-dark,#f4eddf); border:1px solid var(--border,#bba47e); overflow:auto; }
+.photo-crop-dialog canvas { width:100%; height:auto; display:block; border-radius:.75rem; }
+.photo-crop-controls { display:grid; gap:.75rem; margin-block:1rem; }
+.photo-crop-controls label { display:grid; gap:.25rem; }
+.photo-crop-actions { display:flex; justify-content:flex-end; gap:.75rem; position:sticky; bottom:0; padding:.75rem; background:inherit; }
+.photo-crop-actions button { font:inherit; padding:.75rem 1rem; border-radius:.75rem; cursor:pointer; }
+.hero-carousel-img { aspect-ratio:16/9; object-fit:cover; object-position:center; }
+.room-card-img { aspect-ratio:4/3; object-fit:cover; object-position:center; }
+.atmosphere-img,.home-pillar-img { aspect-ratio:4/3; object-fit:cover; object-position:center; }
+.dish-img,.signature-dish-img,.section-slide-img { aspect-ratio:4/3; object-fit:cover; object-position:center; }
+img[data-photo-unavailable] { object-fit:contain; background:var(--bg-card,#202833); }
+[data-overlay-suspended] { visibility:hidden; pointer-events:none; }
+.modal-backdrop, dialog { box-sizing:border-box; padding-top:env(safe-area-inset-top); padding-bottom:env(safe-area-inset-bottom); }
+.modal-backdrop { z-index:var(--z-sheet); top:var(--overlay-viewport-top,0px); bottom:auto; height:100vh; height:var(--overlay-viewport-height,100dvh); }
+.modal-backdrop > :is(.modal,.modal-sheet,.modal-content,.modal-container), dialog[open] { max-height:calc(100vh - 1rem); max-height:calc(var(--overlay-viewport-height,100dvh) - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 1rem); overscroll-behavior:contain; }
+.modal-backdrop :is(.modal-header,.modal-footer) { position:sticky; z-index:2; background:var(--crystal-surface,var(--bg-card)); }
+.modal-backdrop .modal-header { top:0; }
+.modal-backdrop .modal-footer { bottom:0; padding-bottom:max(.75rem,env(safe-area-inset-bottom)); }
+#admin-modal-backdrop :is(input,select,textarea), #image-replace-modal :is(input,select,textarea) { font-size:max(1rem,16px); max-width:100%; box-sizing:border-box; }
+:is(button,a,input,select,textarea,summary,[tabindex]):focus-visible { outline:3px solid var(--accent,#ae8045); outline-offset:3px; }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important; animation-iteration-count:1 !important; } }

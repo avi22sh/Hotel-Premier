@@ -24,7 +24,7 @@
     if (sectionMap[hash]) return sectionMap[hash];
     const entry = (url.searchParams.get('entry') || '').toLowerCase();
     if (entry === 'reception' || entry === 'home') return 'section-home';
-    if (entry === 'room' || url.searchParams.has('room') || /^room\s+/i.test(url.searchParams.get('src') || '')) return 'section-home';
+    if (entry === 'room' || url.searchParams.has('room') || /^room\s+/i.test(url.searchParams.get('src') || '')) return 'section-concierge';
     if (entry === 'restaurant' || entry === 'menu' || entry === 'dine' || ['dish', 'table', 't', 'category', 'cat'].some(k => url.searchParams.has(k)) || /^table\s+/i.test(url.searchParams.get('src') || '')) return 'section-dine';
     for (const key of ['section', 'page', 'tab']) {
       const section = sectionMap[(url.searchParams.get(key) || '').toLowerCase()];
@@ -34,7 +34,7 @@
   }
   function destination(base, type, room, rooms = state.rooms) {
     const url = new URL(base);
-    if ((url.protocol !== 'https:' && url.protocol !== 'http:') || url.username || url.password) throw Error('Use a valid website address.');
+    if (url.protocol !== 'https:' || url.username || url.password) throw Error('Use a secure HTTPS website address.');
     // Strip all old personal, table and route parameters from printable links.
     url.search = ''; url.hash = '';
     if (type === 'reception' || type === 'home') {
@@ -44,9 +44,10 @@
       url.searchParams.set('entry', 'restaurant');
       url.hash = 'menu';
     } else if (type === 'room') {
+      if (!roomId(room) || !rooms.some(record => record.id === room && record.verified === true)) throw Error('Choose a verified room before creating its QR.');
       url.searchParams.set('entry', 'room');
-      if (room) url.searchParams.set('room', room);
-      url.hash = 'home';
+      url.searchParams.set('room', room);
+      url.hash = 'concierge';
     } else {
       url.searchParams.set('entry', 'home');
       url.hash = 'home';
@@ -145,7 +146,7 @@
   function renderConcierge() {
     const host = document.getElementById('room-concierge-content'); if (!host) return;
     const room = state.rooms.find(r => r.id === currentRoom()); host.replaceChildren();
-    if (!room) { host.append(node('p', 'This room QR has not been verified. Please ask reception for your room’s concierge link. No room or network assignment is assumed.', 'guest-network-notice')); return; }
+    if (!room) { host.append(node('p', settings.apiBase ? 'This room QR has not been verified. Please ask reception for your room’s concierge link. No room or network assignment is assumed.' : 'Room concierge and Guest Wi-Fi are not available here yet. Please contact reception for assistance.', 'guest-network-notice')); return; }
     host.append(node('h3', room.label), node('p', room.category));
     const wifi = node('button', 'Guest Wi-Fi', 'btn-primary'); wifi.type = 'button'; wifi.addEventListener('click', () => showWifi('room', room.id)); host.append(wifi);
     host.append(node('p', 'Browse the culinary collection for dining, or contact reception for assistance. Requests remain subject to staff confirmation.'));

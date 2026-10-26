@@ -4,6 +4,8 @@
 # ==============================================================================
 
 Write-Host "`nRunning Hotel Premier PWA Comprehensive Regression Suite..." -ForegroundColor Cyan
+node tools/build-public-dist.cjs
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 $html = Get-Content -Raw "index.html"
 $royalCss = Get-Content -Raw "royal.css"
@@ -14,7 +16,7 @@ $hotelData = Get-Content -Raw "data/hotel-data.js"
 $menuData = Get-Content -Raw "data/menu-data.js"
 
 # 1. Check guest details panels
-$panels = ([regex]::Matches($html, 'class="guest-details-panel"')).Count
+$panels = ([regex]::Matches($html, 'class="[^"]*\bguest-details-panel\b[^"]*"')).Count
 if ($panels -ne 2) {
     Write-Error "FAILED: Expected 2 guest-details-panels in index.html, found $panels"
     exit 1
@@ -99,7 +101,7 @@ foreach ($cls in @('.tariff-plan-box', '.bulk-tier-card', '.tier-tag', '.tier-na
 Write-Host "PASS [7/17]: Glassmorphic tariff cards, group tiers, and explore routes verified" -ForegroundColor Green
  
 # 8. GitHub Pages SPA Routing Parity (404.html == index.html)
-$f404 = Get-Content -Raw "404.html"
+$f404 = Get-Content -Raw "dist/404.html"
 if ($html -ne $f404) {
     Write-Error "FAILED: 404.html is out of sync with index.html (GitHub Pages SPA fallback will serve stale assets)"
     exit 1
@@ -231,7 +233,7 @@ if ($missingCoreFiles.Count -gt 0) {
     exit 1
 }
 
-if (-not $sw.Contains("req.mode === 'navigate'") -or -not $sw.Contains("caches.match('./'")) {
+if (-not $sw.Contains("req.mode === 'navigate'") -or -not $sw.Contains("cache.match('index.html')") -or -not $sw.Contains("cache.match('offline.html')")) {
     Write-Error "FAILED: sw.js missing hardened offline navigation fallback"
     exit 1
 }
@@ -249,7 +251,7 @@ $adminJs = Get-Content -Raw "admin.js"
 
 if (-not $pipeline.Contains("applyItemViewTransform") -or 
     -not $pipeline.Contains("bgMode === 'cutout'") -or 
-    -not $pipeline.Contains("image/png")) {
+    -not $pipeline.Contains("image/webp")) {
     Write-Error "FAILED: asset-pipeline.js missing 2.5D view transformation engine or transparent cutout support"
     exit 1
 }
@@ -303,5 +305,5 @@ if (-not $html.Contains("last-call-front-desk-card")) {
 
 Write-Host "PASS [17/17]: UI/UX Refinements, Room Matrix & Phrasing Standards verified" -ForegroundColor Green
 
-Write-Host "`nAll 17 test suites PASSED with 100% compliance!" -ForegroundColor Cyan
+Write-Host "`nAll 17 source regression checks passed. Device, zoom, rendered contrast and Lighthouse checks are separate." -ForegroundColor Cyan
 

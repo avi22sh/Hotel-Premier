@@ -12,12 +12,17 @@ assert.match(css, /#admin-dashboard-view\s*\{[^}]*flex-direction:\s*column/);
 assert.match(css, /#admin-tab-content\s*\{[^}]*overflow-x:\s*auto/);
 const method = source.match(/closeAdminModal\(\)\s*\{([\s\S]*?)\n  \}/)[1];
 let closed = false;
-vm.runInNewContext(`(function(){${method}})()`, {
-  document: { getElementById(id) {
+const context={
+  window: {},
+  document: { readyState:'loading',addEventListener(){},getElementById(id) {
     assert.equal(id, 'admin-modal-backdrop');
     return {classList:{remove(value){assert.equal(value,'active'); closed=true;}}};
   }}
-});
+};
+vm.runInNewContext(source+';window.Admin=HotelPremierAdmin;',context);
+const admin=Object.create(context.window.Admin.prototype);
+admin.closeAdminModal();
 assert.equal(closed, true);
+assert.equal(admin.adminSessionGeneration,1,'Closing must invalidate pending renders');
 assert.doesNotMatch(method, /localStorage|indexedDB|reload|location/);
 console.log('PASS: accessible Back button closes CRM without reloading or clearing saved photos; stacked navigation and contained table overflow');

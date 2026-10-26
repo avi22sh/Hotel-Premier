@@ -1,0 +1,139 @@
+[
+  {
+    "id": "cb-packaged-fruit-juice-group",
+    "name": "Packaged Real Fruit Juices",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": [
+      "Orange Packaged Fruit Juice",
+      "Mango Packaged Fruit Juice",
+      "Pineapple Packaged Fruit Juice",
+      "Guava Packaged Fruit Juice"
+    ]
+  },
+  {
+    "id": "mm-1",
+    "name": "Honeymoon Surprise",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mm-2",
+    "name": "Hot Chocolate Fudge",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mm-5",
+    "name": "Sunday Special Sundae",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mm-6",
+    "name": "Tutti Fruitti Nutti",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mm-7",
+    "name": "X-mas Delight",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mc-1",
+    "name": "Blue Lagoon Mocktail",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mc-2",
+    "name": "Fruit Punch",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mc-3",
+    "name": "Green Godes Mocktail",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mc-4",
+    "name": "Sunrise Mocktail",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "mc-5",
+    "name": "Pink Lady",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "ms-1",
+    "name": "Mango Mastani",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "ms-2",
+    "name": "Special Mastani",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "ms-3",
+    "name": "Dry Fruit Mastani",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "ms-4",
+    "name": "Vanilla / Chocolate Milkshake",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": [
+      "Vanilla Shake",
+      "Chocolate Shake"
+    ]
+  },
+  {
+    "id": "ms-5",
+    "name": "Dry Fruit Milkshake",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "ms-6",
+    "name": "Milkshake with Ice-Cream",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": []
+  },
+  {
+    "id": "cb-2",
+    "name": "Butter Milk (Chhaas)",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": [
+      "Plain Butter Milk",
+      "Masala Butter Milk"
+    ]
+  },
+  {
+    "id": "cb-jaljeera",
+    "name": "Jaljeera",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": [
+      "Jaljeera Water",
+      "Jaljeera Soda"
+    ]
+  },
+  {
+    "id": "cb-freshlime",
+    "name": "Fresh Lime",
+    "missingGroupPhoto": true,
+    "optionsNeedingPhotos": [
+      "Fresh Lime Water",
+      "Fresh Lime Soda"
+    ]
+  }
+]

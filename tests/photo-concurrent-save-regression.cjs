@@ -1,0 +1,19 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+let current={id:'a',price:80,image:'old.jpg',revision:'before'},pause,packing;
+const c={window:{HotelPhotoStorage:{async pack(value){if(pause){packing=pause;pause=null;await packing;}return value;},checkSpace:async()=>{},hydrate:value=>value,compact:value=>value,normalizePaths:value=>value,originalUploads:async()=>({})}},console:{warn(){}},localStorage:{getItem:()=>null,setItem(){}}};
+vm.createContext(c);vm.runInContext(fs.readFileSync('storage.js','utf8'),c);
+(async()=>{
+ const storage=c.window.HOTEL_STORAGE;await storage.initPromise;
+ storage.db={transaction(name,mode){const tx={abort(){queueMicrotask(()=>tx.onabort());},objectStore(){return {get(){const request={};queueMicrotask(()=>{request.result={...current};request.onsuccess();});return request;},put(record){current=record;queueMicrotask(()=>tx.oncomplete());}};}};return tx;}};
+ const tick=async()=>{for(let i=0;i<20;i++)await Promise.resolve();};
+ let resume;pause=new Promise(resolve=>resume=resolve);
+ const saving=storage.saveDishOverride('a',{image:'new-photo.jpg'});await tick();assert.ok(packing);
+ current={...current,price:95,revision:'owner-price-change'};resume();await saving;
+ assert.equal(current.price,95,'Photo writes must not restore an outdated price snapshot');assert.equal(current.image,'new-photo.jpg');
+ const previousRevision=current.revision;
+ let finish;pause=new Promise(resolve=>finish=resolve);packing=null;
+ const stale=storage.saveDishPhotoLifecycle('a',{image:'stale-preview.jpg',rawOriginalImage:'raw.jpg'},{expectedRevision:previousRevision});await tick();
+ current={...current,image:'newer-owner-photo.jpg',revision:'newer-photo'};finish();await assert.rejects(stale,error=>error.code==='PHOTO_CHANGED');
+ assert.equal(current.image,'newer-owner-photo.jpg');assert.equal(current.price,95);
+ console.log('PASS: photo patches preserve concurrent price edits and transaction revision checks reject stale batch previews');
+})().catch(error=>{console.error(error);process.exitCode=1;});

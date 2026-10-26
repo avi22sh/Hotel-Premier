@@ -1,0 +1,35 @@
+/* Local-only admin lock; intentionally shares the hotel's existing tokens. */
+.local-publish-card { padding:1rem; margin-block:1rem; border:1px solid var(--cream-border); border-radius:1rem; color:var(--crystal-ink,var(--text-dark)); background:var(--crystal-surface,var(--bg-card)); }
+.pwa-update-notice { position:fixed; inset:auto 1rem calc(5rem + env(safe-area-inset-bottom)); z-index:90; margin-inline:auto; max-width:30rem; padding:1rem; display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; background:var(--surface, #202833); color:var(--text, #f4eddf); border:1px solid var(--border, #a18b65); border-radius:1rem; box-shadow:0 .5rem 2rem #0005; }
+.pwa-update-notice p { flex:1 1 100%; margin:0; }
+.pwa-update-notice button { font:inherit; padding:.6rem 1rem; border-radius:.6rem; cursor:pointer; }
+.offline-page { margin:0; min-height:100vh; min-height:100dvh; display:grid; place-items:center; background:#131c26; color:#f4eddf; font:1rem/1.6 system-ui,sans-serif; text-align:center; }
+.offline-page main { width:min(90%,30rem); padding:1rem; }
+.offline-page img { width:100%; height:auto; border-radius:1rem; }
+.offline-page a { color:#e4c68e; }
+.local-lock-panel { padding:clamp(1.25rem,4vw,2rem); max-width:36rem; margin-inline:auto; color:var(--crystal-ink,var(--text-dark)); }
+.local-lock-panel h3 { font-family:var(--font-royal); font-size:1.2rem; line-height:1.5; margin:0 0 1rem; }
+.local-lock-notice { font-size:.875rem; line-height:1.7; color:var(--crystal-muted,var(--text-muted)); margin:0 0 1.25rem; }
+.local-lock-panel form { display:grid; gap:1rem; }
+.local-lock-field { display:grid; gap:.5rem; text-align:left; font-size:.875rem; }
+.local-lock-panel .local-lock-field[hidden] { display:none; }
+.local-lock-panel .form-input { width:100%; min-width:0; min-height:3rem; font-size:1rem; padding:.75rem; letter-spacing:.1em; color:var(--crystal-ink); background:rgba(139,126,113,.08); border:1px solid var(--crystal-edge); border-radius:.75rem; }
+.local-lock-panel .form-input:focus-visible { outline:2px solid var(--crystal-accent); outline-offset:3px; }
+.local-lock-status { margin:0; font-size:.875rem; line-height:1.65; color:var(--crystal-ink); }
+.local-lock-status:empty { display:none; }
+.local-lock-panel button { min-height:3rem; width:100%; }
+.local-lock-panel button:disabled { opacity:.6; cursor:wait; }
+.crm-intro { margin-bottom:1.25rem; }
+.crm-intro h3,.crm-records-section h4 { font-family:var(--font-royal); font-size:1.1rem; line-height:1.5; color:var(--crystal-ink); margin:0 0 .75rem; }
+.crm-intro p,.crm-empty { color:var(--crystal-muted); font-size:.875rem; line-height:1.7; }
+.crm-records-section { padding:1rem; margin-block:1rem; border:1px solid var(--crystal-edge); border-radius:1rem; background:var(--crystal-surface); color:var(--crystal-ink); }
+.crm-records-table { width:100%; border-collapse:collapse; font-size:.875rem; table-layout:fixed; }
+.crm-records-table th,.crm-records-table td { padding:.65rem .5rem; text-align:left; vertical-align:top; overflow-wrap:anywhere; border-bottom:1px solid var(--crystal-edge); }
+.crm-records-table th { color:var(--crystal-muted); font-weight:600; }
+@media(max-width:639px) {
+  .crm-records-table,.crm-records-table tbody { display:block; }
+  .crm-records-table thead { position:absolute; width:1px; height:1px; clip-path:inset(50%); overflow:hidden; }
+  .crm-records-table tr { display:grid; gap:.5rem; border:1px solid var(--crystal-edge); border-radius:.75rem; padding:.75rem; margin-bottom:.75rem; }
+  .crm-records-table td { display:grid; grid-template-columns:minmax(5rem,.8fr) minmax(0,1.2fr); gap:.75rem; padding:.25rem 0; border:0; }
+  .crm-records-table td::before { content:attr(data-label); color:var(--crystal-muted); }
+}

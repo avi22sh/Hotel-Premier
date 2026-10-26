@@ -1,0 +1,223 @@
+{
+  "createdAt": "2026-10-26T05:55:30.005Z",
+  "passed": 54,
+  "failed": [],
+  "results": [
+    {
+      "file": "admin-crm-injection-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "admin-local-lock-ui-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "admin-render-race-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "admin-upload-session-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "appearance-menu-control-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "batch-photo-save-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "business-content-preservation-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "child-extra-beds-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "compact-menu-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "content-studio-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "crm-navigation-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "dark-booking-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "dish-storage-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "dish-view-layout-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "drawer-filter-layout-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "enquiry-interaction-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "feedback-experience-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "group-stay-policy-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "guest-network-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "guest-policy-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "guest-utility-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "image-asset-integrity-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "image-order-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "local-lock-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-controls-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-description-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-enquiry-audit-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-load-readonly-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-review-polish-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-search-upgrade-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-text-integrity-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "mobile-scale-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "overlay-manager-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "owner-update-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "packaged-juice-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "pasta-category-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "photo-backup-roundtrip-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "photo-blob-storage-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "photo-concurrent-save-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "photo-gallery-projection-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "photo-preview-sequencing-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "photo-publication-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "photo-worker-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "property-gallery-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "public-review-injection-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "public-review-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "publish-bundle-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "responsive-image-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "room-presentation-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "royal-release-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "service-worker-strategies-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "tariff-flow-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "theme-layer-contrast-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "unset-price-regression.cjs",
+      "passed": true
+    }
+  ]
+}

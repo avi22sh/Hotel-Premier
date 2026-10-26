@@ -21,7 +21,7 @@ const app=Object.create(c.window.App.prototype); app.renderMenuSectionDrawer=()=
 let resetCount=0;
 const filterGroup=app.filterDrawerByGroup;
 app.filterDrawerByGroup=function(group){assert.equal(group,'all');resetCount++;return filterGroup.call(this,group);};
-app.openMenuSectionDrawer();assert.equal(doc.body.style.overflow,'hidden');
+app.openMenuSectionDrawer();assert.equal(doc.body.style.overflow,'auto','Shared overlay utility owns the scroll lock');
 assert.equal(resetWhileOpen,true,'Reopening must reset scroll after the hidden sheet becomes visible');
 assert.equal(resetCount,1,'Opening must reset the previous group filter');
 app.dismissGuestOverlay(drawer); // The Escape/backdrop path must use drawer-specific cleanup.
@@ -33,5 +33,5 @@ app.openGuestDialog(route);assert.equal(locked,true);
 app.dismissGuestOverlay(route);assert.equal(locked,false);assert.equal(route.style.display,'none');
 const html=fs.readFileSync('index.html','utf8');
 assert.match(html,/aria-labelledby="guest-profile-title"/);assert.match(html,/aria-labelledby="route-options-modal-title"/);
-assert.equal(html,fs.readFileSync('404.html','utf8'));
+assert.equal(html,require('./public-build-helper.cjs').fallbackHTML());
 console.log('PASS: drawer Escape scroll restoration, stale focus guard, profile and route dialog lifecycle');

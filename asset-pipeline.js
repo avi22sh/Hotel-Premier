@@ -1,6 +1,6 @@
 /**
  * HOTEL PREMIER - INTELLIGENT ASSET PIPELINE & IMAGE MANAGEMENT ENGINE (v7.0)
- * 
+ *
  * Automated Image Processing & Asset Pipeline:
  * 1. Dynamic Background Removal:
  *    Canvas-based chroma and luminance segmentation, edge-sampling border isolation,
@@ -379,8 +379,8 @@
           }
         }
 
-        // 5. Output pure transparent PNG of isolated subject
-        const resultDataUrl = finalCanvas.toDataURL('image/png');
+        // Keep alpha without a large PNG/base64 allocation.
+        const resultDataUrl = await this.encodePhotoCanvas(finalCanvas,true,.9);
         if (cacheKey) {
           this.processedCache.set(cacheKey, resultDataUrl);
           try {
@@ -470,7 +470,7 @@
     }
 
     /**
-     * Automatically processes an <img> tag in real time
+     * Automatically processes an <img height="900" width="1200"> tag in real time
      * Safe mode: preserves authentic high-resolution food photography without destructive canvas cutout
      */
     async autoProcessImage(imgElement, type = 'food') {
@@ -503,7 +503,7 @@
       if (typeof source !== 'string' || !source.startsWith('assets/')) return source || '';
       const clean = source.split('?')[0];
       const hash = window.HOTEL_PREMIER_IMAGE_SIZES?.[clean]?.[0]?.src?.match(/\/([a-f0-9]+)-\d+\.webp$/)?.[1];
-      return `${clean}?v=${hash || '21.0'}`;
+      return `${clean}?v=${hash || '22.10'}`;
     }
 
     responsivePhotoAttributes(source, detail = false, compact = false) {
@@ -541,12 +541,12 @@
       return `
         <div class="dish-media" id="dish-media-${dish.id}">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
-          <img 
+          <img height="900" width="1200"
             src="${this.versionedPhotoSource(dish.image)}"
             ${this.responsivePhotoAttributes(dish.image)}
-            alt="${dish.name}" 
-            class="dish-img" 
-            id="dish-img-el-${dish.id}" 
+            alt="${dish.name}"
+            class="dish-img"
+            id="dish-img-el-${dish.id}"
             loading="lazy"
             decoding="async"
             onerror="window.AssetPipeline.handleImageError(this)"
@@ -571,10 +571,10 @@
 
       return `
         <div class="section-slide-card" ${clickAttr}>
-          <img 
-            src="${slide.image}" 
-            alt="${slideTitle}" 
-            class="section-slide-img" 
+          <img height="900" width="1200"
+            src="${slide.image}"
+            alt="${slideTitle}"
+            class="section-slide-img"
             loading="${idx === 0 ? 'eager' : 'lazy'}"
             decoding="async"
             onerror="window.AssetPipeline.handleImageError(this)"
@@ -604,10 +604,10 @@
 
       return `
         <div class="hero-carousel-slide" data-slide-index="${idx}">
-          <img 
-            src="${slide.image}" 
-            alt="${slideTitle}" 
-            class="hero-carousel-img" 
+          <img height="675" width="1200"
+            src="${slide.image}"
+            alt="${slideTitle}"
+            class="hero-carousel-img"
             loading="${idx === 0 ? 'eager' : 'lazy'}"
             onerror="window.AssetPipeline.handleImageError(this)"
           >
@@ -626,11 +626,11 @@
     renderCategoryCardMedia(cat, count, itemsWord, localizedTitle) {
       return `
         <div class="category-card-media">
-          <img 
-            src="${cat.image}" 
-            alt="${localizedTitle}" 
-            class="category-card-img" 
-            loading="lazy" 
+          <img height="900" width="1200"
+            src="${cat.image}"
+            alt="${localizedTitle}"
+            class="category-card-img"
+            loading="lazy"
             onerror="window.AssetPipeline.handleImageError(this)"
           >
           <div class="category-card-overlay" aria-hidden="true"></div>
@@ -647,11 +647,11 @@
       return `
         <div class="room-carousel-slide hp-room-pedestal">
           <div class="hp-room-frame">
-            <img 
-              src="${imgUrl}" 
-              alt="${room.name} Photo ${idx + 1}" 
-              class="room-card-img hp-room-asset" 
-              loading="lazy" 
+            <img height="900" width="1200"
+              src="${imgUrl}"
+              alt="${room.name} Photo ${idx + 1}"
+              class="room-card-img hp-room-asset"
+              loading="lazy"
               onerror="this.src='${room.image}'"
             >
             <div class="hp-room-vignette" aria-hidden="true"></div>
@@ -677,8 +677,8 @@
           <div class="modal-dish-photo-wrap no-photo">
             <div class="dish-no-photo-placeholder">
               <div class="no-photo-icon">🌱</div>
-              <div class="no-photo-crest" style="font-size: 1rem;">HOTEL PREMIER</div>
-              <div class="no-photo-sub" style="font-size: 0.75rem;">PRIDE PURE VEG AC RESTAURANT</div>
+              <div class="no-photo-crest hp-inline-2e72acd64782">HOTEL PREMIER</div>
+              <div class="no-photo-sub hp-inline-8b511f076fb1">PRIDE PURE VEG AC RESTAURANT</div>
             </div>
             <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
             ${badgesHtml ? `<div class="dish-badges">${badgesHtml}</div>` : ''}
@@ -693,12 +693,12 @@
       return `
         <div class="modal-dish-photo-wrap">
           <div class="hp-dish-pedestal-backdrop" aria-hidden="true"></div>
-          <img 
+          <img height="900" width="1200"
             src="${this.versionedPhotoSource(dish.image)}"
-            alt="${dish.name}" 
-            id="detail-modal-img" 
+            alt="${dish.name}"
+            id="detail-modal-img"
             ${this.responsivePhotoAttributes(dish.image, true)}
-            class="modal-dish-img" 
+            class="modal-dish-img"
             loading="eager"
             onerror="window.AssetPipeline.handleImageError(this)"
           >
@@ -715,7 +715,7 @@
 
     /**
      * Auto Adaptive Food & Background Engine (v8.0)
-     * 
+     *
      * Key Capabilities:
      * 1. Auto Background Replacement:
      *    - Automatically detects background (studio white, flat tabletop, checkered, neutral).
@@ -1387,6 +1387,17 @@
      * 6. Calibrates gourmet warmth (3200K) and 4K clarity
      * 7. Returns { enhancedDataUrl, qualityScore, category, status, flags }
      */
+    async encodePhotoCanvas(canvas,alpha=false,quality=.9) {
+      const encode=type=>canvas.convertToBlob?canvas.convertToBlob({type,quality}):new Promise(resolve=>canvas.toBlob(resolve,type,quality));
+      let blob=await encode('image/webp');
+      if(blob?.type!=='image/webp') {
+        if(alpha)throw Error('Transparent WebP is not supported in this browser. Keep the original or update your browser.');
+        blob=await encode('image/jpeg');
+      }
+      if(!blob||!window.HotelPhotoWorkflow)throw Error('Photo encoding is unavailable. Reload and retry.');
+      return window.HotelPhotoWorkflow.createURL(blob);
+    }
+
     async processAutomaticStudioEnhancement(imageSource, dishMeta = {}, options = {}) {
       options = { backgroundMode: 'natural', ...options };
       let img;
@@ -1667,7 +1678,7 @@
       }
 
       const quality = options.quality || 0.90;
-      const enhancedDataUrl = isCutout ? canvas.toDataURL('image/png') : canvas.toDataURL('image/jpeg', quality);
+      const enhancedDataUrl=await this.encodePhotoCanvas(canvas,isCutout,quality);
 
       return {
         enhancedDataUrl,

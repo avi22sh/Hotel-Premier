@@ -9,6 +9,11 @@ Thumbs.db
 # Scratch scripts and temporary manifests
 scratch/
 *.csv
+!reports/menu-image-renames.csv
+!reports/qa-matrix.csv
+dist/
+publish-import/
+.public-build-*/
 
 # Never commit provider credentials or local environment secrets
 .env

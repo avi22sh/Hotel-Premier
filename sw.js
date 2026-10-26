@@ -1,139 +1,72 @@
-// ==========================================================================
-// HOTEL PREMIER - OFFLINE SERVICE WORKER (PWA)
-// Network-First with Offline Cache Fallback
-// Guarantees mobile users always see latest menu updates & sub-sections
-// ==========================================================================
-
-const CACHE_NAME = 'hotel-premier-v22.06';
+// Public shell only. Guest records and private API responses never enter these caches.
+const CACHE_NAME = 'hotel-premier-v22.10';
 const CORE_ASSETS = [
-  './',
-  'index.html',
-  'admin.html',
-  'styles.css',
-  'royal.css',
-  'public-reviews.js',
-  'data/public-reviews.json',
-  'asset-pipeline.js',
-  'app.js',
-  'guest-network.js',
-  'group-stays.js',
-  'admin.js',
-  'content-studio.js',
-  'menu-structure.js',
-  'property-gallery.js',
-  'storage.js',
-  'vault.js',
-  'data/hotel-data.js',
-  'data/menu-data.js',
-  'data/menu-photos.js',
-  'data/menu-image-sizes.js',
-  'data/translations.js',
-  'manifest.json',
-  'assets/premier-original-logo.png',
-  'assets/brands/google-g.png',
-  'assets/brands/google-maps.png',
-  'assets/brands/makemytrip.png',
-  'assets/brands/goibibo-sprite.png',
-  'assets/brands/swiggy.png',
-  'assets/brands/zomato.png',
-  'assets/icon-192.png',
-  'assets/icon-512.png'
+ './', 'index.html', 'offline.html', 'admin.html', 'styles.css', 'royal.css', 'inline-styles.css', 'theme-tokens.css',
+ 'local-admin.css', 'local-lock.js', 'photo-storage.js', 'photo-workflow.js', 'photo-worker.js', 'photo-enhance-worker.js', 'ui-dialogs.js', 'pwa-updates.js', 'overlay-manager.js', 'overlays.css', 'public-reviews.js',
+ 'asset-pipeline.js', 'data-validation.js', 'image-safety.js', 'admin-layout.js', 'app.js', 'guest-network.js', 'group-stays.js', 'admin.js', 'publish-bundle.js','data/published-overrides.js',
+ 'content-studio.js', 'menu-structure.js', 'property-gallery.js', 'storage.js', 'vault.js',
+ 'data/hotel-data.js', 'data/menu-data.js', 'data/menu-photos.js',
+ 'data/menu-image-sizes.js', 'data/translations.js', 'data/public-reviews.json',
+ 'manifest.json', 'data/legacy-photo-paths.js', 'assets/brand-placeholder.svg', 'assets/premier-original-logo.png',
+ 'assets/icon-192.png', 'assets/icon-512.png', 'assets/icon-maskable-512.png',
+ 'assets/brands/google-g.png', 'assets/brands/google-maps.png',
+ 'assets/brands/makemytrip.png', 'assets/brands/goibibo-sprite.png',
+ 'assets/brands/swiggy.png', 'assets/brands/zomato.png'
 ];
-
-// Install Event - Pre-cache core shell assets & immediately take control
-self.addEventListener('install', (event) => {
-  self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(CORE_ASSETS).catch((err) => {
-        console.warn('[SW] Pre-cache warning:', err);
-      });
-    })
-  );
+const mayCache = response => response && response.ok && response.type !== 'opaque'
+ && !/no-store|private/i.test(response.headers.get('cache-control') || '');
+self.addEventListener('install', event => {
+ // One unavailable asset must not prevent the rest of the offline shell installing.
+ event.waitUntil(caches.open(CACHE_NAME).then(cache => Promise.allSettled(
+  CORE_ASSETS.map(async asset => {
+   const response = await fetch(new Request(new URL(asset, self.registration.scope), { cache: 'no-cache' }));
+   if (mayCache(response)) await cache.put(asset, response);
+  })
+ )));
 });
-
-// Activate Event - Clean up all stale cache versions & claim clients immediately
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.map((key) => {
-          if (key.startsWith('hotel-premier-') && key !== CACHE_NAME) {
-            console.log('[SW] Purging old cache:', key);
-            return caches.delete(key);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
-      .then(() => {
-        // Broadcast update to all open windows so they immediately sync without manual reload
-        return self.clients.matchAll({ type: 'window' }).then((clients) => {
-          clients.forEach((client) => {
-            client.postMessage({ type: 'SW_UPDATED', version: CACHE_NAME });
-          });
-        });
-      })
-  );
+self.addEventListener('activate', event => {
+ // Natural activation after old tabs close, or after the guest chooses Refresh.
+ event.waitUntil((async()=>{
+  // Other tabs may still have an unsaved form and an older controller. Keep their offline shell.
+  const windows=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+  if(windows.length)return;
+  const keys=await caches.keys();
+  await Promise.all(keys.filter(key=>key.startsWith('hotel-premier-')&&key!==CACHE_NAME).map(key=>caches.delete(key)));
+ })());
 });
-
-// Support SKIP_WAITING message
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+self.addEventListener('message', event => {
+ if (event.data?.type === 'SKIP_WAITING') self.skipWaiting();
 });
-
-// Fetch Event - keep the app shell fresh without caching third-party food photos.
-self.addEventListener('fetch', (event) => {
-  const req = event.request;
-  if (req.method !== 'GET') return;
-
-  const url = new URL(req.url);
-  // Credential-bearing API responses must never enter offline/browser caches.
-  // External APIs also bypass this worker; request cache:no-store is mandatory.
-  if (req.cache === 'no-store' || /\/(?:guest-access|guest-network-admin)(?:\/|$)/.test(url.pathname)) return;
-  if (url.origin !== self.location.origin) return;
-
-  // A cached local image makes repeat menu visits near-instant, while the first
-  // visit still downloads normally. Scripts and data remain network-first below.
-  if (req.destination === 'image') {
-    event.respondWith(
-      caches.open(CACHE_NAME).then(async (cache) => {
-        const cachedResponse = await cache.match(req);
-        // Content-hashed derivatives are immutable; original filenames may be replaced.
-        if (cachedResponse && /\/menu-responsive\/[a-f0-9]+-\d+\.webp$/.test(url.pathname)) return cachedResponse;
-        return fetch(req, { cache: 'reload' }).then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            const imageCopy = networkResponse.clone();
-            cache.put(req, imageCopy).catch(() => {});
-          }
-          return networkResponse;
-        }).catch(() => cachedResponse || Response.error());
-      })
-    );
-    return;
-  }
-
-  // Network-First strategy: fetch newest version from network, fallback to cache if offline
-  event.respondWith(
-    fetch(req, { cache: 'no-cache' }).then((networkResponse) => {
-      if (networkResponse && networkResponse.status === 200 && !/no-store|private/i.test(networkResponse.headers.get('cache-control') || '')) {
-        const responseToCache = networkResponse.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(req, responseToCache);
-        }).catch(() => {});
-      }
-      return networkResponse;
-    }).catch(() => {
-      // Offline fallback: serve from cache (ignoring version query parameters like ?v=18.1)
-      return caches.match(req, { ignoreSearch: true }).then((cachedResponse) => {
-        if (cachedResponse) return cachedResponse;
-        if (req.mode === 'navigate' || (req.headers.get('accept') && req.headers.get('accept').includes('text/html'))) {
-          return caches.match('index.html', { ignoreSearch: true }).then((htmlResponse) => {
-            return htmlResponse || caches.match('./', { ignoreSearch: true });
-          });
-        }
-      });
-    })
-  );
+self.addEventListener('fetch', event => {
+ const req = event.request;
+ const url = new URL(req.url);
+ if (req.method !== 'GET' || url.origin !== self.location.origin || req.cache === 'no-store'
+  || req.headers.has('authorization') || /\/(?:guest-access|guest-network-admin)(?:\/|$)/.test(url.pathname)) return;
+ const cacheNetwork = async cache => {
+  const response = await fetch(req);
+  if (mayCache(response)) await cache.put(req, response.clone()).catch(() => {});
+  return response;
+ };
+ if (req.destination === 'image') {
+  const cacheReady = caches.open(CACHE_NAME);
+  const cachedReady = cacheReady.then(cache => cache.match(req));
+  const immutable = /\/menu-responsive\/[a-f0-9]+-\d+\.webp$/.test(url.pathname);
+  const network = Promise.all([cacheReady, cachedReady]).then(([cache, cached]) =>
+   cached && immutable ? cached : cacheNetwork(cache));
+  event.waitUntil(network.catch(() => {}));
+  event.respondWith(cachedReady.then(cached => cached || network).catch(async () =>
+   (await cacheReady).match('assets/brand-placeholder.svg')).then(response => response || Response.error()));
+  return;
+ }
+ event.respondWith(caches.open(CACHE_NAME).then(async cache => {
+  try {
+   const response = await cacheNetwork(cache);
+   if (response.ok || req.mode !== 'navigate') return response;
+  } catch (_) { /* Use the public offline shell below. */ }
+  const cached = await cache.match(req, { ignoreSearch: true });
+  if (cached) return cached;
+  if (req.mode === 'navigate') return (await cache.match('index.html'))
+   || (await cache.match('offline.html')) || new Response('Hotel Premier is offline.', { status: 503 });
+  return Response.error();
+ }));
 });

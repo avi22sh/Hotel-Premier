@@ -31,5 +31,5 @@ const html=fs.readFileSync('index.html','utf8');
 assert.match(html, /type="time" id="booking-checkin-time"/);
 assert.doesNotMatch(html, /4\+ Nights<\/option>|12:00 PM \(Standard\)/);
 assert.match(html, /footer-brand-m">M<span class="footer-brand-birds"/);
-assert.equal(html,fs.readFileSync('404.html','utf8'), 'Fallback document must match published entry');
+assert.equal(html,require('./public-build-helper.cjs').fallbackHTML(), 'Fallback document must match published entry');
 console.log('PASS: IST midnight, exact arrival times, overlay dismissal, occupancy-aware estimates and matching fallback');

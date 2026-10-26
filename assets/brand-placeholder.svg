@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Hotel Premier photo coming soon">
+  <defs><linearGradient id="surface" x2="1" y2="1"><stop stop-color="#353640"/><stop offset="1" stop-color="#1c202b"/></linearGradient></defs>
+  <path fill="url(#surface)" d="M0 0h1200v900H0z"/>
+  <rect x="72" y="72" width="1056" height="756" rx="32" fill="none" stroke="#d8c29f" stroke-opacity=".35" stroke-width="2"/>
+  <circle cx="600" cy="380" r="108" fill="none" stroke="#d8c29f" stroke-width="2"/>
+  <text x="600" y="407" fill="#eadfc9" text-anchor="middle" font-family="Georgia,serif" font-size="72">HP</text>
+  <text x="600" y="575" fill="#eadfc9" text-anchor="middle" font-family="Georgia,serif" font-size="42" letter-spacing="7">HOTEL PREMIER</text>
+  <text x="600" y="640" fill="#d0c5b6" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" letter-spacing="3">PHOTO COMING SOON</text>
+</svg>
