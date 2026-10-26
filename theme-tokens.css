@@ -112,3 +112,55 @@ body.theme-light,body.theme-dark {
  .home-pillar-title { color:var(--text); font-size:1.2rem; }
  .home-pillar-desc { color:var(--muted); font-size:.9rem; line-height:1.7; }
 }
+
+/* Explicit image boxes override intrinsic width/height hints across cascade layers. */
+.dish-banner-media .dish-img,.dish-media .dish-img,.modal-dish-photo-wrap .modal-dish-img { width:100%; height:100%; object-fit:cover; object-position:center; filter:none; }
+.hero-carousel-img,.home-pillar-img,.room-card-img,.atmosphere-img { width:100%; height:auto; object-fit:cover; }
+@media(max-width:639px) {
+ #section-dine { padding-top:.75rem; }
+ #section-dine .dining-hero-header { padding:.5rem .5rem .65rem; }
+ #section-dine .dining-main-heading { font-size:1.25rem; }
+ #section-dine .dining-hero-header .editorial-subtitle { margin:.35rem 0 0; font-size:.75rem; line-height:1.45; }
+ #section-dine .dining-search-filter-bar:not(:focus-within) .recent-searches-bar { display:none !important; }
+ #section-dine #menu-search-input { border:0; box-shadow:none; outline:0; border-radius:0; }
+ #section-dine .compact-dish-card:not(.group-master-card) .dish-banner-bottom { grid-row:1; align-self:end; margin:0; }
+ #section-dine .compact-dish-card:not(.group-master-card) .dish-banner-top { align-self:start; padding-bottom:2.5rem; }
+}
+
+/* Detail sheets and collection drawer share the active guest theme. */
+body.theme-light { --on-accent:#fff9ef; }
+body.theme-dark { --on-accent:#171c25; }
+#dish-detail-modal .modal-dish-detail-container,
+#dish-detail-modal .modal-dish-title,
+#dish-detail-modal .modal-dish-variants-title { color:var(--text); }
+#dish-detail-modal .modal-dish-desc,
+#dish-detail-modal .modal-dish-subtitle,
+#dish-detail-modal .modal-dish-variants-hint { color:var(--muted); }
+#dish-detail-modal .modal-dish-price { color:var(--accent); }
+#dish-detail-modal .modal-dish-variants-box { background:var(--surface-secondary); color:var(--text); border-color:var(--border); box-shadow:none; }
+#dish-detail-modal .modal-dish-variant-btn { background:var(--surface); color:var(--text); border-color:var(--border); min-height:44px; }
+#dish-detail-modal .modal-dish-variant-btn .variant-btn-name { color:inherit; }
+#dish-detail-modal .modal-dish-variant-btn .variant-btn-price { background:var(--surface-secondary); color:var(--accent); }
+#dish-detail-modal .modal-dish-variant-btn.selected { background:var(--accent); color:var(--on-accent); border-color:var(--accent); box-shadow:none; }
+#dish-detail-modal .modal-dish-variant-btn.selected .variant-btn-price { background:transparent; color:inherit; }
+#dish-detail-modal .modal-dish-veg-guarantee { background:var(--surface-secondary); color:var(--text); border:1px solid var(--border); }
+#dish-detail-modal .modal-dish-veg-guarantee p { color:var(--muted); }
+#menu-sections-drawer-modal .culinary-drawer-sheet,
+#menu-sections-drawer-modal .culinary-drawer-search-wrap,
+#menu-sections-drawer-modal .drawer-sections-grid { background:var(--surface); color:var(--text); box-sizing:border-box; }
+#menu-sections-drawer-modal .culinary-drawer-sheet { max-width:100%; }
+#menu-sections-drawer-modal .search-input-wrapper,
+#menu-sections-drawer-modal .drawer-section-item { background:var(--surface-secondary); color:var(--text); border-color:var(--border); box-shadow:none; }
+#menu-sections-drawer-modal .drawer-item-title { color:var(--text); white-space:normal; overflow:visible; text-overflow:clip; font-size:.85rem; line-height:1.4; }
+#menu-sections-drawer-modal .drawer-item-sub { color:var(--muted); }
+#menu-sections-drawer-modal .drawer-qf-chip { background:var(--surface-secondary); color:var(--text); border-color:var(--border); }
+#menu-sections-drawer-modal .drawer-qf-chip.active,
+#menu-sections-drawer-modal .drawer-item-count { background:var(--accent); color:var(--on-accent); }
+#menu-sections-drawer-modal .drawer-section-item.active { border-color:var(--accent); }
+#menu-sections-drawer-modal #drawer-sections-search { color:var(--text); border:0; background:transparent; }
+#menu-sections-drawer-modal #drawer-sections-search::placeholder { color:var(--muted); opacity:1; }
+@media(max-width:639px) {
+ #menu-sections-drawer-modal .drawer-quick-filter-chips { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); overflow:visible; }
+ #menu-sections-drawer-modal .drawer-qf-chip { white-space:normal; min-width:0; }
+ .home-pillar-body { background:var(--surface); padding:1.1rem; }
+}
