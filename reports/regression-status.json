@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-26T06:18:01.300Z",
-  "passed": 55,
+  "createdAt": "2026-10-26T13:08:55.439Z",
+  "passed": 56,
   "failed": [],
   "results": [
     {
@@ -77,6 +77,10 @@
     },
     {
       "file": "group-stay-policy-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "guest-language-regression.cjs",
       "passed": true
     },
     {

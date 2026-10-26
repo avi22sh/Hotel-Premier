@@ -608,7 +608,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.14';
+    s.src = 'admin.js?v=22.15';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -841,6 +841,7 @@ class HotelPremierApp {
       localStorage.setItem(this.storageKeyLang, lang);
     } catch (e) {}
 
+    document.documentElement.lang = lang;
     this.updateLangButtons();
     this.updateUILanguage();
     this.renderQuickFilters();
@@ -886,6 +887,14 @@ class HotelPremierApp {
     this.renderRestaurantEventPackages();
     this.renderEventDecorations();
     this.calculateRestaurantEventQuote();
+    const detail = document.getElementById('dish-detail-modal');
+    if (detail?.classList.contains('active') && this.currentDetailDishId) {
+      const scroll = detail.querySelector('.modal-dish-detail-container')?.scrollTop || 0;
+      this.openDishDetail(this.currentDetailDishId, this.currentDetailVariantIndex);
+      const content = detail.querySelector('.modal-dish-detail-container');
+      if (content) content.scrollTop = scroll;
+    }
+    window.HotelGuestLanguage?.sync();
   }
 
   updateLangButtons() {
@@ -912,7 +921,8 @@ class HotelPremierApp {
   getCategoryLocalizedSubtitle(catId) {
     if (this.currentLang === 'en') return '';
     if (window.HOTEL_PREMIER_I18N) {
-      return window.HOTEL_PREMIER_I18N.getCategorySubtitle(catId);
+      const subtitle = window.HOTEL_PREMIER_I18N.getCategorySubtitle(catId);
+      return subtitle === this.getCategoryLocalizedName(catId) ? '' : subtitle;
     }
     return '';
   }
@@ -926,6 +936,7 @@ class HotelPremierApp {
   }
 
   updateUILanguage() {
+    document.documentElement.lang = this.currentLang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const text = this.t(key);
@@ -942,6 +953,7 @@ class HotelPremierApp {
     if (searchInput) {
       searchInput.placeholder = this.t('searchPlaceholder');
     }
+    window.HotelGuestLanguage?.sync();
   }
 
   // ==================== ACCESSIBILITY & FONT ZOOM ====================
@@ -2433,13 +2445,13 @@ class HotelPremierApp {
   getDishDescription(dish) {
     if (this.currentLang === 'hi' && dish.descriptionHi) return dish.descriptionHi;
     if (this.currentLang === 'mr' && dish.descriptionMr) return dish.descriptionMr;
-    return dish.description;
+    return window.HotelGuestLanguage?.menuDescription(dish, this.currentLang) || dish.description;
   }
 
   getVariantDescription(variant) {
     if (!variant) return '';
     if (this.currentLang === 'hi' && variant.descriptionHi) return variant.descriptionHi;
-    if (this.currentLang === 'mr' && (variant.descriptionMr || variant.descriptionHi)) return variant.descriptionMr || variant.descriptionHi;
+    if (this.currentLang === 'mr' && variant.descriptionMr) return variant.descriptionMr;
     return variant.description || '';
   }
 
@@ -2460,10 +2472,10 @@ class HotelPremierApp {
 
     let dishTitleHtml = dish.name;
     if (this.currentLang === 'hi' && dish.hindiName) {
-      dishTitleHtml = `${dish.name} <span class="dish-title-sub">(${dish.hindiName})</span>`;
-    } else if (this.currentLang === 'mr' && (dish.marathiName || dish.hindiName)) {
-      const subName = dish.marathiName || dish.hindiName;
-      dishTitleHtml = `${dish.name} <span class="dish-title-sub">(${subName})</span>`;
+      dishTitleHtml = dish.hindiName;
+    } else if (this.currentLang === 'mr' && dish.marathiName) {
+      const subName = dish.marathiName;
+      dishTitleHtml = subName;
     }
 
     if (this.searchQuery && this.searchQuery.trim() !== '') {
@@ -2507,7 +2519,7 @@ class HotelPremierApp {
               <div class="dish-card-variant-chips" role="group" aria-label="${dish.name} items" onclick="event.stopPropagation()">
                 ${visibleVariants.map(v => {
                   const vIdx = dish.variants.indexOf(v);
-                  const label = this.currentLang === 'hi' && v.hindiName ? v.hindiName : this.currentLang === 'mr' && (v.marathiName || v.hindiName) ? (v.marathiName || v.hindiName) : v.name;
+                  const label = this.currentLang === 'hi' && v.hindiName ? v.hindiName : this.currentLang === 'mr' && v.marathiName ? v.marathiName : v.name;
                   return `<button type="button" class="dish-card-chip" onclick="event.stopPropagation(); window.app.openDishDetail('${dish.id}', ${vIdx})" title="${v.name}"><span class="chip-name">${label}</span><span class="chip-price">${Number.isFinite(v.price) ? `₹${v.price}` : 'Price on request'}</span></button>`;
                 }).join('')}
               </div>
@@ -2634,13 +2646,13 @@ class HotelPremierApp {
 
     const currentVariantName = activeVariant ? activeVariant.name : dish.name;
     const currentVariantHi = activeVariant ? (activeVariant.hindiName || dish.hindiName) : dish.hindiName;
-    const currentVariantMr = activeVariant ? (activeVariant.marathiName || dish.marathiName || dish.hindiName) : (dish.marathiName || dish.hindiName);
+    const currentVariantMr = activeVariant ? (activeVariant.marathiName || dish.marathiName) : dish.marathiName;
 
     let dishTitleHtml = currentVariantName;
     if (this.currentLang === 'hi' && currentVariantHi) {
-      dishTitleHtml = `${currentVariantName} <span class="dish-title-sub hp-inline-8c79846eb3a3">(${currentVariantHi})</span>`;
+      dishTitleHtml = currentVariantHi;
     } else if (this.currentLang === 'mr' && currentVariantMr) {
-      dishTitleHtml = `${currentVariantName} <span class="dish-title-sub hp-inline-8c79846eb3a3">(${currentVariantMr})</span>`;
+      dishTitleHtml = currentVariantMr;
     }
 
     let initialDesc = this.getDishDescription(dish);
@@ -2730,10 +2742,10 @@ class HotelPremierApp {
           <div class="modal-dish-variants-list" id="modal-variants-list-${dish.id}" role="radiogroup" aria-label="Available Dish Variations">
             ${variantsToDisplay.map((v, i) => {
               const isSelected = (v === activeVariant);
-              const displayName = (this.currentLang === 'hi' && v.hindiName) ? v.hindiName : ((this.currentLang === 'mr' && (v.marathiName || v.hindiName)) ? (v.marathiName || v.hindiName) : v.name);
+              const displayName = (this.currentLang === 'hi' && v.hindiName) ? v.hindiName : ((this.currentLang === 'mr' && v.marathiName) ? v.marathiName : v.name);
               const descEn = encodeURIComponent(v.description || '');
               const descHi = encodeURIComponent(v.descriptionHi || v.description || '');
-              const descMr = encodeURIComponent(v.descriptionMr || v.descriptionHi || v.description || '');
+              const descMr = encodeURIComponent(v.descriptionMr || v.description || '');
               const nameHi = encodeURIComponent(v.hindiName || '');
               const nameMr = encodeURIComponent(v.marathiName || '');
               return `
@@ -2959,20 +2971,13 @@ class HotelPremierApp {
     // 3. Update title
     const titleEl = document.querySelector('.modal-dish-title');
     if (titleEl && varName) {
-      let subTitle = '';
-      if (this.currentLang === 'hi' && varNameHi) {
-        subTitle = ` <span class="dish-title-sub hp-inline-8c79846eb3a3">(${varNameHi})</span>`;
-      } else if (this.currentLang === 'mr' && (varNameMr || varNameHi)) {
-        const sm = varNameMr || varNameHi;
-        subTitle = ` <span class="dish-title-sub hp-inline-8c79846eb3a3">(${sm})</span>`;
-      }
-      titleEl.innerHTML = `${varName}${subTitle}`;
+      titleEl.textContent = this.currentLang === 'hi' && varNameHi ? varNameHi : this.currentLang === 'mr' && varNameMr ? varNameMr : varName;
     }
 
     // 4. Update description
     let activeDesc = descEn;
     if (this.currentLang === 'hi' && descHi) activeDesc = descHi;
-    else if (this.currentLang === 'mr' && (descMr || descHi)) activeDesc = descMr || descHi;
+    else if (this.currentLang === 'mr' && descMr) activeDesc = descMr;
     const descEl = document.querySelector('.modal-dish-desc');
     if (descEl) descEl.textContent = activeDesc || (dishObj ? this.getDishDescription(dishObj) : '');
 
@@ -4852,7 +4857,7 @@ class HotelPremierApp {
     if (arrivalEl) {
       const date = document.getElementById('booking-checkin-date')?.value;
       const time = this.formatArrivalTime(document.getElementById('booking-checkin-time')?.value);
-      const formattedDate = date ? new Intl.DateTimeFormat('en-IN', { day:'numeric', month:'short', year:'numeric', timeZone:'Asia/Kolkata' }).format(new Date(`${date}T12:00:00+05:30`)) : 'Choose a date';
+      const formattedDate = date ? new Intl.DateTimeFormat(({hi:'hi-IN',mr:'mr-IN'})[this.currentLang] || 'en-IN', { day:'numeric', month:'short', year:'numeric', timeZone:'Asia/Kolkata' }).format(new Date(`${date}T12:00:00+05:30`)) : 'Choose a date';
       arrivalEl.textContent = `${formattedDate} · ${time || 'Choose arrival time'}`;
     }
     if (totalEl) {

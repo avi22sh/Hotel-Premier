@@ -182,3 +182,24 @@ body.theme-dark { --on-accent:#171c25; }
 .modal-backdrop .modal-title,.modal-backdrop .dish-detail-heading-text { color:var(--text); }
 .modal-backdrop .modal-close-btn,.modal-backdrop .modal-header-action-btn { background:var(--surface-secondary); color:var(--text); border:1px solid var(--border); box-shadow:none; }
 .modal-dish-photo-wrap .hp-dish-pedestal-backdrop,.modal-dish-photo-wrap .hp-glass-vignette { display:none; }
+/* Scroll the complete detail content, never compress the title under its options. */
+#dish-detail-body .modal-dish-detail-container > * { flex-shrink:0; }
+#dish-detail-body .modal-dish-header { contain:none; min-height:0; display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; }
+#dish-detail-body .modal-dish-header > div { min-width:0; }
+#dish-detail-body .modal-dish-title { overflow-wrap:anywhere; line-height:1.5; }
+#dish-detail-body .modal-dish-variants-box { contain:none; }
+#dish-detail-body .modal-dish-variants-header-text { min-width:0; }
+#dish-detail-body .modal-dish-variants-title,#dish-detail-body .modal-dish-variants-hint { line-height:1.5; }
+html:is([lang="hi"],[lang="mr"]) body { --font-royal: 'Tiro Devanagari Marathi',serif; }
+html:is([lang="hi"],[lang="mr"]) :is(.form-label,.modal-dish-title,.section-title) { letter-spacing:normal; text-transform:none; }
+@media(max-width:639px) {
+ #concierge-booking-modal .enquiry-grid { grid-template-columns:minmax(0,1fr); gap:.75rem; }
+ #concierge-booking-modal .enquiry-grid .form-group { display:grid; gap:.4rem; margin:0; min-width:0; }
+ #concierge-booking-modal .enquiry-grid .form-label { min-height:0; margin:0; line-height:1.5; }
+ #concierge-booking-modal :is(input,select) { width:100%; max-width:100%; min-width:0; min-height:3rem; box-sizing:border-box; }
+ #concierge-booking-modal .enquiry-grid { margin-bottom:.85rem; }
+}
+@media(max-width:380px) {
+ #dish-detail-body .modal-dish-header { grid-template-columns:minmax(0,1fr); gap:.25rem; }
+ #dish-detail-body .modal-dish-price { justify-self:start; }
+}

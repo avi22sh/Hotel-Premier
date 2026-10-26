@@ -11,7 +11,7 @@ const publicFiles = [
  'admin.js','data-validation.js','admin-layout.js','image-safety.js','publish-bundle.js','content-studio.js','guest-network.js','group-stays.js','menu-structure.js',
  'property-gallery.js','storage.js','vault.js','sw.js','manifest.json','robots.txt','sitemap.xml',
  'data/hotel-data.js','data/menu-data.js','data/menu-photos.js','data/menu-image-sizes.js',
- 'data/translations.js','data/public-reviews.json','data/published-overrides.js','data/legacy-photo-paths.js'
+ 'data/translations.js','data/guest-localization.js','data/public-reviews.json','data/published-overrides.js','data/legacy-photo-paths.js'
 ];
 const normalize = value => value.replaceAll('\\', '/');
 function verifyPublicPath(file) {
