@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
   status.textContent = 'Loading guest experiences…';
   try {
-    const response = await fetch('data/public-reviews.json?v=22.17', { cache: 'no-cache', signal:AbortSignal.timeout(10000) });
+    const response = await fetch('data/public-reviews.json?v=22.18', { cache: 'no-cache', signal:AbortSignal.timeout(10000) });
     if (!response.ok) throw new Error('Review feed unavailable');
     const data = await response.json();
     const reviews = Array.isArray(data.reviews)

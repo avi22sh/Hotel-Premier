@@ -7,7 +7,7 @@ const dist = path.join(root, 'dist');
 const marker = '.hotel-premier-generated';
 const publicFiles = [
  'index.html','admin.html','offline.html','styles.css','royal.css','inline-styles.css','theme-tokens.css','local-admin.css',
- 'local-lock.js','photo-storage.js','photo-workflow.js','photo-worker.js','photo-enhance-worker.js','ui-dialogs.js','pwa-updates.js','overlay-manager.js','overlays.css','asset-pipeline.js','public-reviews.js','app.js',
+ 'local-lock.js','photo-storage.js','photo-workflow.js','photo-worker.js','photo-enhance-worker.js','ui-dialogs.js','pwa-updates.js','overlay-manager.js','guest-forms.js','overlays.css','asset-pipeline.js','public-reviews.js','app.js',
  'admin.js','data-validation.js','admin-layout.js','image-safety.js','publish-bundle.js','content-studio.js','guest-network.js','group-stays.js','menu-structure.js',
  'property-gallery.js','storage.js','vault.js','sw.js','manifest.json','robots.txt','sitemap.xml',
  'data/hotel-data.js','data/menu-data.js','data/menu-photos.js','data/menu-image-sizes.js',

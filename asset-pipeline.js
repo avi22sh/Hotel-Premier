@@ -503,7 +503,7 @@
       if (typeof source !== 'string' || !source.startsWith('assets/')) return source || '';
       const clean = source.split('?')[0];
       const hash = window.HOTEL_PREMIER_IMAGE_SIZES?.[clean]?.[0]?.src?.match(/\/([a-f0-9]+)-\d+\.webp$/)?.[1];
-      return `${clean}?v=${hash || '22.17'}`;
+      return `${clean}?v=${hash || '22.18'}`;
     }
 
     responsivePhotoAttributes(source, detail = false, compact = false) {

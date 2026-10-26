@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-26T13:22:05.536Z",
-  "passed": 56,
+  "createdAt": "2026-10-26T21:40:48.084Z",
+  "passed": 58,
   "failed": [],
   "results": [
     {
@@ -52,6 +52,10 @@
       "passed": true
     },
     {
+      "file": "custom-group-estimator-regression.cjs",
+      "passed": true
+    },
+    {
       "file": "dark-booking-regression.cjs",
       "passed": true
     },
@@ -85,6 +89,10 @@
     },
     {
       "file": "guest-network-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "guest-number-share-regression.cjs",
       "passed": true
     },
     {

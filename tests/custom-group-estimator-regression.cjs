@@ -1,0 +1,15 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const c={window:{}};vm.createContext(c);for(const file of ['data/hotel-data.js','group-stays.js'])vm.runInContext(fs.readFileSync(file,'utf8'),c);
+const categories=c.window.HOTEL_PREMIER_HOTEL_DATA.roomCategories,engine=c.window.HotelGroupStays;
+const base={type:'custom',king:1,queen:2,twin:3,guests:12,nights:1,plan:'CP',paidBeds:0,childBeds:0};
+const q=patch=>engine.estimate({...base,...patch},categories);
+assert.equal(q({}).rooms,6);assert.equal(q({}).finalPrice,16500);assert.equal(q({plan:'RO'}).finalPrice,14600);
+assert.equal(q({guests:18,paidBeds:3,childBeds:3,nights:2}).finalPrice,36000);
+assert.equal(q({king:2,queen:4,twin:6,guests:24}).finalPrice,33000);
+for(const invalid of [{king:3},{queen:5},{twin:9},{king:2,queen:4,twin:8},{king:0,queen:0,twin:1},{king:'1.5'},{queen:''}])assert.equal(q(invalid).valid,false,JSON.stringify(invalid));
+assert.equal(q({guests:24}).valid,false,'Unrequested extra beds must not be promised');
+assert.equal(q({king:2,queen:4,twin:6,guests:36,childBeds:12}).finalPrice,33000,'Complimentary beds do not add charges');
+assert.equal(q({king:2,queen:4,twin:6,guests:36,paidBeds:12,childBeds:12}).childBeds,0,'Paid/child beds share capacity');
+const changed=JSON.parse(JSON.stringify(categories));changed.find(r=>r.id==='ac-deluxe-twin').tariff.double.withBreakfast=2800;
+assert.equal(engine.estimate({...base,king:0,queen:1,twin:1,guests:4},changed).finalPrice,5500,'Explicit mixes price each category independently');
+console.log('PASS: custom inventory, exact RO/CP mix pricing, multiple nights, child beds and impossible-allocation rejection');

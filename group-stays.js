@@ -4,32 +4,42 @@
   const limits = Object.freeze({ rooms: 12, guests: 36, royale: 2, otherRooms: 10 });
   function estimate(input, categories) {
     const integer = value => /^\d+$/.test(String(value)) && Number.isSafeInteger(Number(value));
-    const types = { 'group-12': [12,12], 'super-2': [2,2], 'queen-4': [2,4], 'twin-8': [2,8], 'deluxe-mixed': [2,10] };
+    const types = { custom:[2,12], 'group-12': [12,12], 'super-2': [2,2], 'queen-4': [2,4], 'twin-8': [2,8], 'deluxe-mixed': [2,10] };
     const type = input.type === 'full-14' ? 'group-12' : input.type;
     if (!types[type]) throw Error('Please choose a room collection.');
     const [minRooms,maxRooms] = types[type];
-    const rooms = Math.min(maxRooms,Math.max(minRooms,integer(input.rooms) ? Number(input.rooms) : minRooms));
+    let rooms = Math.min(maxRooms,Math.max(minRooms,integer(input.rooms) ? Number(input.rooms) : minRooms));
     const nights = integer(input.nights) && Number(input.nights) > 0 ? Number(input.nights) : 0;
     const plan = input.plan === 'RO' ? 'RO' : 'CP';
     const category = id => categories.find(r => r.id === id);
     const king = category('ac-super-deluxe'), queen = category('ac-deluxe-queen'), twin = category('ac-deluxe-twin');
     const rate = room => room?.tariff?.double?.[plan === 'CP' ? 'withBreakfast' : 'roomOnly'];
-    let baseRate, physicalBeds;
-    if (type === 'group-12') {
+    let baseRate, physicalBeds, allocation, allocationError='';
+    if(type==='custom'){
+      const amounts=['king','queen','twin'].map(key=>integer(input[key])?Number(input[key]):0);
+      allocation={king:amounts[0],queen:amounts[1],twin:amounts[2]};
+      rooms=amounts.reduce((a,b)=>a+b,0);
+      if(['king','queen','twin'].some(key=>!integer(input[key]))||amounts.some((n,i)=>n>[2,4,8][i])||rooms<minRooms||rooms>maxRooms)allocationError='Choose 2–12 rooms in total, within 2 Royale King, 4 Signature Queen and 8 Companion Twin rooms.';
+      baseRate=amounts.reduce((sum,n,i)=>sum+n*rate([king,queen,twin][i]),0);
+      physicalBeds=amounts.reduce((sum,n,i)=>sum+n*[king,queen,twin][i].maxExtraBeds,0);
+    } else if (type === 'group-12') {
       if (rate(queen) !== rate(twin)) throw Error('Mixed-room rates need staff confirmation.');
       baseRate = limits.royale * rate(king) + limits.otherRooms * rate(queen);
       // Exact Queen/Twin allocation remains subject to staff confirmation. Use the
       // conservative capacity of 4 Queen + 6 Twin, never promise a room assignment.
       physicalBeds = 2 * king.maxExtraBeds + 4 * queen.maxExtraBeds + 6 * twin.maxExtraBeds;
+      allocation={king:2,queen:4,twin:6};
     } else if (type === 'deluxe-mixed') {
       if (rate(queen) !== rate(twin)) throw Error('Mixed-room rates need staff confirmation.');
       baseRate = rooms * rate(queen);
       physicalBeds = Math.min(rooms,4) * queen.maxExtraBeds + Math.max(0,rooms-4) * twin.maxExtraBeds;
+      allocation={king:0,queen:Math.min(rooms,4),twin:Math.max(0,rooms-4)};
     } else {
       const room = type === 'super-2' ? king : type === 'queen-4' ? queen : twin;
       baseRate = rooms * rate(room); physicalBeds = rooms * room.maxExtraBeds;
+      allocation={king:type==='super-2'?rooms:0,queen:type==='queen-4'?rooms:0,twin:type==='twin-8'?rooms:0};
     }
-    const maxBeds = Math.min(physicalBeds, limits.guests - rooms * 2);
+    const maxBeds = Math.max(0,Math.min(physicalBeds, limits.guests - rooms * 2));
     const paidBeds = Math.min(maxBeds, Math.max(0, integer(input.paidBeds) ? Number(input.paidBeds) : 0));
     const childBeds = Math.min(maxBeds-paidBeds, Math.max(0, integer(input.childBeds) ? Number(input.childBeds) : 0));
     const guests = Math.min(limits.guests,Math.max(rooms,integer(input.guests) ? Number(input.guests) : rooms * 2));
@@ -37,10 +47,10 @@
     const extraBedRate = plan === 'CP' ? 500 : 300;
     const extraBedCost = paidBeds * extraBedRate * nights;
     const baseRoomPrice = baseRate * nights, finalPrice = baseRoomPrice + extraBedCost;
-    let error = '';
-    if (!nights || !Number.isSafeInteger(finalPrice) || finalPrice <= 0) error = 'Enter a valid whole number of nights.';
+    let error = allocationError;
+    if (!error && (!nights || !Number.isSafeInteger(finalPrice) || finalPrice <= 0)) error = 'Enter a valid whole number of nights.';
     else if (guests > capacity) error = 'Add the required extra beds, reduce the guest count or request more rooms. Children are included in the guest total.';
-    return { type, rooms, minRooms, maxRooms, guests, maxGuests: Math.min(limits.guests, rooms*2+physicalBeds), nights, plan, paidBeds, childBeds, maxBeds, extraBedRate, extraBedCost, baseRoomPrice, finalPrice, valid: !error, error };
+    return { type, allocation, rooms, minRooms, maxRooms, guests, maxGuests: Math.min(limits.guests, rooms*2+physicalBeds), nights, plan, paidBeds, childBeds, maxBeds, extraBedRate, extraBedCost, baseRoomPrice, finalPrice, valid: !error, error };
   }
   function deals(saved, defaults) {
     if (!Array.isArray(saved)) return defaults;

@@ -20,8 +20,12 @@
     if (!locks.delete(owner) || locks.size || !saved) return;
     const { y, x, ...styles } = saved;
     saved = null;
+    const rootStyle = document.documentElement.style;
+    const previousBehavior = rootStyle.scrollBehavior;
+    rootStyle.scrollBehavior = 'auto';
     Object.assign(document.body.style, styles);
     window.scrollTo(x, y);
+    rootStyle.scrollBehavior = previousBehavior || '';
   }
   function close(element) {
     if (element.tagName === 'DIALOG') element.close();
@@ -91,6 +95,10 @@
     window.visualViewport?.addEventListener('resize', keyboard);
     window.addEventListener('resize', keyboard);
     keyboard(); sync();
+    window.addEventListener('pageshow',()=>{
+      sync();
+      if(!top&&!locks.size)document.body.classList.remove('modal-open');
+    });
   }
   window.HotelOverlays = Object.freeze({ acquire, release, sync, get count() { return locks.size; } });
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

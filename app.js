@@ -462,22 +462,16 @@ class HotelPremierApp {
     }
   }
 
-  shareHotel() {
+  async shareHotel() {
     this.haptic(10);
-    const title = 'Hotel Premier — A Sanctuary in Bhusawal';
-    const text = 'Discover Hotel Premier — 14 air-conditioned suites, 24-hour checkout for direct bookings only, and Pride Pure Veg AC Restaurant in Bhusawal.';
-    const shareUrl = window.location.origin + window.location.pathname + '#home';
-
+    const title = 'Hotel Premier — A Home in Bhusawal';
+    const text = 'Discover Hotel Premier — rooms, Pride Pure Veg dining and guest enquiries in Bhusawal.';
+    const shareUrl = document.querySelector('link[rel="canonical"]')?.href || (window.location.origin + window.location.pathname + '#home');
     if (navigator.share) {
-      navigator.share({
-        title: title,
-        text: text,
-        url: shareUrl
-      }).catch(() => {});
-    } else {
-      const waUrl = `https://wa.me/?text=${encodeURIComponent(text + '\n' + shareUrl)}`;
-      window.open(waUrl, '_blank', 'noopener,noreferrer');
+      try { await navigator.share({ title, text, url:shareUrl }); return; }
+      catch(error) { if(error.name==='AbortError')return; }
     }
+    await window.HotelGuestForms?.shareLink(shareUrl);
   }
 
   // ==================== ENHANCED FUZZY SEARCH & RECENT SEARCHES ====================
@@ -579,24 +573,11 @@ class HotelPremierApp {
 
   // ==================== STAGGERED CARD ANIMATIONS ====================
   observeStaggeredCards() {
-    if (typeof IntersectionObserver === 'undefined') {
-      document.querySelectorAll('.dish-card-stagger').forEach(card => card.classList.add('in-view'));
-      return;
-    }
-    if (!this._cardObserver) {
-      this._cardObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const card = entry.target;
-            card.classList.add('in-view');
-            this._cardObserver.unobserve(card);
-          }
-        });
-      }, { threshold: 0.05, rootMargin: '40px' });
-    }
-    document.querySelectorAll('.dish-card-stagger:not(.in-view)').forEach((card, index) => {
-      card.style.transitionDelay = `${(index % 8) * 40}ms`;
-      this._cardObserver.observe(card);
+    // Content is visible without an observer callback or a first touch/scroll.
+    this._cardObserver?.disconnect();
+    document.querySelectorAll('.dish-card-stagger').forEach(card => {
+      card.classList.add('in-view');
+      card.style.transitionDelay = '';
     });
   }
 
@@ -608,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.17';
+    s.src = 'admin.js?v=22.18';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -770,7 +751,7 @@ class HotelPremierApp {
       const activeTab = document.getElementById(activeTabId);
       if (activeTab) {
         activeTab.classList.add('active');
-        activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        activeTab.scrollIntoView({ behavior: updateHash ? 'smooth' : 'instant', inline: 'center', block: 'nearest' });
       }
     }
 
@@ -797,8 +778,8 @@ class HotelPremierApp {
       } catch (e) {}
     }
 
-    // Smooth scroll to top of selected page view
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Startup must settle immediately rather than animate the initial viewport.
+    window.scrollTo({ top: 0, behavior: updateHash ? 'smooth' : 'instant' });
   }
 
   scrollToSection(sectionId) {
@@ -3305,14 +3286,20 @@ class HotelPremierApp {
         type:get('calc-room-type').value, rooms:get('calc-rooms-number').value,
         guests:get('calc-guests').value, nights:get('calc-num-nights').value,
         plan:get('calc-plan-select').value, paidBeds:get('calc-extra-beds').value,
-        childBeds:get('calc-child-beds').value
+        childBeds:get('calc-child-beds').value,
+        king:get('calc-king-rooms')?.value, queen:get('calc-queen-rooms')?.value, twin:get('calc-twin-rooms')?.value
       }, window.HOTEL_PREMIER_HOTEL_DATA.roomCategories);
+      const custom = q.type === 'custom';
+      if(get('group-custom-allocation')) get('group-custom-allocation').hidden = !custom;
+      if(get('group-preset-room-count')) get('group-preset-room-count').hidden = custom;
+      if(get('calc-custom-total')) get('calc-custom-total').textContent = q.rooms+' rooms selected · maximum 12';
+      const write = (id,value) => { const el=get(id); if(el && document.activeElement!==el)el.value=value; };
       for (const id of ['calc-rooms-number','calc-rooms-slider']) {
-        const el = get(id); el.min=q.minRooms; el.max=q.maxRooms; el.value=q.rooms; el.disabled=q.minRooms===q.maxRooms;
+        const el = get(id); el.min=q.minRooms; el.max=q.maxRooms; if(document.activeElement!==el)el.value=q.rooms; el.disabled=custom||q.minRooms===q.maxRooms;
       }
-      get('calc-guests').min=q.rooms; get('calc-guests').max=q.maxGuests; get('calc-guests').value=q.guests;
-      get('calc-extra-beds').max=q.maxBeds-q.childBeds; get('calc-extra-beds').value=q.paidBeds;
-      get('calc-child-beds').max=q.maxBeds-q.paidBeds; get('calc-child-beds').value=q.childBeds;
+      get('calc-guests').min=q.rooms; get('calc-guests').max=q.maxGuests; write('calc-guests',q.guests);
+      get('calc-extra-beds').max=q.maxBeds-q.childBeds; write('calc-extra-beds',q.paidBeds);
+      get('calc-child-beds').max=q.maxBeds-q.paidBeds; write('calc-child-beds',q.childBeds);
       if (get('calc-extra-bed-label')) get('calc-extra-bed-label').textContent='Chargeable extra beds (₹'+q.extraBedRate+'/night)';
       const money = amount => '₹ '+amount.toLocaleString('en-IN')+'/-';
       get('quote-regular-price').innerText = q.valid ? money(q.baseRoomPrice) : '—';
@@ -3337,6 +3324,12 @@ class HotelPremierApp {
   }
 
   sendBulkWhatsAppInquiry() {
+    if(window.HotelGuestForms && !window.HotelGuestForms.validateNumbers(document.getElementById('group-stay-enquiry')))return;
+    const arrivalDate=document.getElementById('calc-arrival-date'),arrivalTime=document.getElementById('calc-arrival-time');
+    if(arrivalDate&&(!/^\d{4}-\d{2}-\d{2}$/.test(arrivalDate.value)||arrivalDate.value<this.hotelToday()||!this.formatArrivalTime(arrivalTime?.value))){
+      this.showToast('Please choose a valid arrival date and time.','warning');
+      (!arrivalDate.value||arrivalDate.value<this.hotelToday()?arrivalDate:arrivalTime)?.focus();return;
+    }
     // Always recalculate: stale previews must not bypass current policy limits.
     const q = this.calculateBulkQuote();
     if (!q?.valid || q.rooms>12 || q.guests>36) return;
@@ -3352,8 +3345,10 @@ class HotelPremierApp {
       name ? 'Organizer: '+name : '', phone ? 'Mobile: '+phone : '',
       'Purpose: '+q.eventType, 'Collection: '+q.roomType,
       'Rooms: '+q.rooms+' (maximum group allocation: 12)',
+      q.allocation ? 'Requested mix: '+q.allocation.king+' Royale King, '+q.allocation.queen+' Signature Queen, '+q.allocation.twin+' Companion Twin' : '',
       'Guests including children: '+q.guests+' (maximum: 36)',
       'Nights: '+q.nights,
+      arrivalDate ? 'Arrival: '+arrivalDate.value+' · '+this.formatArrivalTime(arrivalTime?.value) : '',
       'Meal plan: '+(q.plan==='CP' ? 'CP — fixed-menu breakfast. Terms & conditions apply. Speak to our staff for details.' : 'Room only (RO)'),
       'Chargeable extra beds: '+q.paidBeds+' at ₹'+q.extraBedRate+'/bed/night',
       'Complimentary child beds (ages 5–10 inclusive): '+q.childBeds+'; meals to be confirmed separately',
@@ -4726,12 +4721,6 @@ class HotelPremierApp {
   openConciergeBookingModal(preselectedRoomId) {
     const modal = document.getElementById('concierge-booking-modal');
     if (!modal) return;
-    const viewport = document.querySelector?.('meta[name="viewport"]');
-    if (viewport && !modal.classList.contains('active')) {
-      this.enquiryViewportContent = viewport.getAttribute('content');
-      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, viewport-fit=cover');
-    }
-
     // Carry an explicit tariff plan into the inquiry without changing Stay defaults.
     if (this.activeSection === 'section-tariffs' && ['ro','cp'].includes(this.currentTariffPlan)) {
       const planSelect = document.getElementById('booking-meal-plan');
@@ -4886,6 +4875,7 @@ class HotelPremierApp {
   }
 
   dispatchConciergeBooking() {
+    if(window.HotelGuestForms && !window.HotelGuestForms.validateNumbers(document.getElementById('concierge-booking-modal')))return;
     const estimate = this.updateBookingEstimate();
     if (!estimate.valid) { this.showToast('Please check the guest count and extra beds before sending an enquiry.','warning'); document.getElementById('booking-guests-count')?.focus(); return; }
     const guestNameInput = document.getElementById('booking-guest-name');
