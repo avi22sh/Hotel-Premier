@@ -589,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.19';
+    s.src = 'admin.js?v=22.20';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -751,7 +751,7 @@ class HotelPremierApp {
       const activeTab = document.getElementById(activeTabId);
       if (activeTab) {
         activeTab.classList.add('active');
-        activeTab.scrollIntoView({ behavior: updateHash ? 'smooth' : 'instant', inline: 'center', block: 'nearest' });
+        activeTab.scrollIntoView({ behavior: updateHash ? 'smooth' : 'auto', inline: 'center', block: 'nearest' });
       }
     }
 
@@ -778,8 +778,12 @@ class HotelPremierApp {
       } catch (e) {}
     }
 
-    // Startup must settle immediately rather than animate the initial viewport.
-    window.scrollTo({ top: 0, behavior: updateHash ? 'smooth' : 'instant' });
+    // Settle startup without relying on newer ScrollBehavior enum values.
+    const rootStyle = document.documentElement?.style;
+    const oldBehavior = rootStyle?.scrollBehavior;
+    if (!updateHash && rootStyle) rootStyle.scrollBehavior = 'auto';
+    window.scrollTo({ top: 0, behavior: updateHash ? 'smooth' : 'auto' });
+    if (!updateHash && rootStyle) rootStyle.scrollBehavior = oldBehavior || '';
   }
 
   scrollToSection(sectionId) {
