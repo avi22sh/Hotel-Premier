@@ -28,6 +28,8 @@
    wrap.querySelector('[data-quantity-minus]').disabled=input.disabled||input.value!==''&&value<=min;
    wrap.querySelector('[data-quantity-plus]').disabled=input.disabled||input.value!==''&&value>=max;
   }
+  const form=document.getElementById('restaurant-event-form');
+  if(form){const submit=form.querySelector('button[type="submit"]');if(submit)submit.disabled=[...form.querySelectorAll('input[type="number"]')].some(input=>Boolean(error(input)));}
  }
  function wrapNumbers(){
   for(const root of document.querySelectorAll(scope))for(const input of root.querySelectorAll('input[type="number"]')){
@@ -66,7 +68,7 @@
    }
    queueMicrotask(refresh);
   },true);
-  document.addEventListener('change',()=>queueMicrotask(()=>{refresh();for(const input of document.querySelectorAll('.quantity-stepper input[aria-invalid="true"]'))showError(input);const form=document.getElementById('restaurant-event-form');if(form){const submit=form.querySelector('button[type="submit"]');if(submit)submit.disabled=[...form.querySelectorAll('input[type="number"]')].some(i=>Boolean(error(i)));}}));
+  document.addEventListener('change',()=>queueMicrotask(()=>{refresh();for(const input of document.querySelectorAll('.quantity-stepper input[aria-invalid="true"]'))showError(input);}));
   document.addEventListener('change',event=>{
    if(event.target.matches?.('.quantity-stepper input')&&!showError(event.target))event.stopImmediatePropagation();
   },true);

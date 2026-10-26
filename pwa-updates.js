@@ -36,7 +36,7 @@
   });
   window.addEventListener('load', async () => {
     try {
-      registration = await navigator.serviceWorker.register('sw.js?v=22.20', { updateViaCache: 'none' });
+      registration = await navigator.serviceWorker.register('sw.js?v=22.21', { updateViaCache: 'none' });
       window.hpServiceWorkerReg = registration;
       showUpdate();
       registration.addEventListener('updatefound', () => {
