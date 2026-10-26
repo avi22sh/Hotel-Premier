@@ -208,6 +208,12 @@ html:is([lang="hi"],[lang="mr"]) :is(.form-label,.modal-dish-title,.section-titl
 .header-share-btn { flex:0 0 44px; width:44px; height:44px; min-width:44px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:50%; background:transparent; color:var(--accent); cursor:pointer; margin-left:auto; }
 .header-top { gap:.65rem; }
 .guest-settings { flex:none; }
+@media(max-width:360px) { .brand-hotel-name { font-size:clamp(.9rem,4.5vw,1rem); letter-spacing:.04em; } }
+/* Clip sideways overflow without creating a second scroll container around the header. */
+@supports(overflow:clip) {
+ html { overflow-x:clip; overflow-y:visible; }
+ body:not(.modal-open) { overflow-x:clip; overflow-y:visible; }
+}
 .quantity-stepper { display:grid; grid-template-columns:44px minmax(0,1fr) 44px; gap:.4rem; align-items:center; width:100%; min-width:0; }
 .quantity-stepper > button { width:44px; min-width:44px; height:48px; min-height:48px; padding:0; display:flex; align-items:center; justify-content:center; font:600 1.4rem/1 system-ui; border:1px solid var(--border); border-radius:.7rem; color:var(--text); background:var(--surface-secondary); touch-action:manipulation; cursor:pointer; }
 .quantity-stepper > button:disabled { opacity:.4; cursor:default; }
