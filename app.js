@@ -608,7 +608,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.15';
+    s.src = 'admin.js?v=22.16';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -894,6 +894,7 @@ class HotelPremierApp {
       const content = detail.querySelector('.modal-dish-detail-container');
       if (content) content.scrollTop = scroll;
     }
+    if (document.getElementById('concierge-booking-modal')?.classList.contains('active')) this.updateBookingEstimate();
     window.HotelGuestLanguage?.sync();
   }
 

@@ -2,6 +2,12 @@
 (() => {
  'use strict';
  const i18n=window.HOTEL_PREMIER_I18N;
+ if(i18n){
+  Object.assign(i18n.translations.hi,{badgeBestseller:'🔥 लोकप्रिय',badgeChefSpecial:'👑 शेफ की खास पेशकश',badgeSpicy:'🌶️ तीखा',badgeSweet:'🍯 मीठा',badgeKhandeshi:'🌶️ खान्देशी'});
+  Object.assign(i18n.translations.mr,{badgeBestseller:'🔥 लोकप्रिय',badgeChefSpecial:'👑 शेफची खास निवड',badgeSpicy:'🌶️ तिखट',badgeSweet:'🍯 गोड',badgeKhandeshi:'🌶️ खान्देशी'});
+  Object.assign(i18n.translations.hi,{brandTagline:'भुसावल में आपका घर',itemsCount:'व्यंजन',detailsBtn:'विवरण ➔',filterTopRated:'4.2★+ उच्च रेटिंग',tariffExtraBedHeader:'🛏️ अतिरिक्त बिस्तर / गद्दे का किराया',tariffExtraBedSub:'प्रति व्यक्ति / प्रति रात',roomsSectionSub:'2 प्रीमियर रॉयल किंग + 4 प्रीमियर सिग्नेचर क्वीन + 8 प्रीमियर कम्पैनियन ट्विन',roomSuperDeluxeTitle:'प्रीमियर रॉयल किंग',roomQueenTitle:'प्रीमियर सिग्नेचर क्वीन',roomTwinTitle:'प्रीमियर कम्पैनियन ट्विन',roomOnly:'केवल कमरा',singleOccupancy:'एक व्यक्ति',doubleOccupancy:'दो व्यक्ति',kingBedTag:'👑 किंग साइज़ बिस्तर',queenTwinTag:'🛏️ क्वीन / ट्विन बिस्तर',footerGstRate:'5% GST लागू',feedbackTitle:'भोजन के अनुभव की रेटिंग दें',rateOnGoogle:'Google Reviews पर रेटिंग दें'});
+  Object.assign(i18n.translations.mr,{brandTagline:'भुसावळमधील आपले घर',itemsCount:'पदार्थ',detailsBtn:'तपशील ➔',filterTopRated:'4.2★+ उच्च मानांकन',tariffExtraBedHeader:'🛏️ अतिरिक्त बेड / गादीचे भाडे',tariffExtraBedSub:'प्रति व्यक्ती / प्रति रात्र',roomsSectionSub:'2 प्रीमियर रॉयल किंग + 4 प्रीमियर सिग्नेचर क्वीन + 8 प्रीमियर कम्पॅनियन ट्विन',roomSuperDeluxeTitle:'प्रीमियर रॉयल किंग',roomQueenTitle:'प्रीमियर सिग्नेचर क्वीन',roomTwinTitle:'प्रीमियर कम्पॅनियन ट्विन',roomOnly:'फक्त खोली',singleOccupancy:'एक व्यक्ती',doubleOccupancy:'दोन व्यक्ती',kingBedTag:'👑 किंग साईज बेड',queenTwinTag:'🛏️ क्वीन / ट्विन बेड',footerGstRate:'5% GST लागू',feedbackTitle:'जेवणाच्या अनुभवाला गुण द्या',rateOnGoogle:'Google Reviews वर गुण द्या'});
+ }
  const categories={
   'morning-delights':['सुबह का नाश्ता','सकाळचा नाश्ता'], 'hot-hearty':['चाय, कॉफी और गरम पेय','चहा, कॉफी आणि गरम पेये'],
   'tasty-tidbits':['चटपटे नाश्ते','चटपटीत खाऊ'], 'premier-soups':['गरमागरम सूप','गरमागरम सूप'],
@@ -16,6 +22,30 @@
   'milkshake-mastani':['मिल्कशेक और मस्तानी','मिल्कशेक आणि मस्तानी'], 'chilled-beverages':['ठंडे पेय, लस्सी और छाछ','थंड पेये, लस्सी आणि ताक']
  };
  for(const [id,[hi,mr]] of Object.entries(categories))if(i18n?.categories[id])Object.assign(i18n.categories[id],{hi,mr});
+ const categoryDescriptions={
+  'morning-delights':['पूरी भाजी, छोले भटूरे, भरवाँ पराठे, क्लब सैंडविच और पोहा','पुरी भाजी, छोले भटुरे, भरलेले पराठे, क्लब सँडविच आणि पोहे'],
+  'hot-hearty':['खास मसाला चाय, फ़िल्टर कॉफी, बॉर्नविटा और गरम दूध','खास मसाला चहा, फिल्टर कॉफी, बॉर्नविटा आणि गरम दूध'],
+  'tasty-tidbits':['पनीर/चीज़ पकौड़े, फ्रेंच फ्राइज़, चना गार्लिक रोस्ट और चाट','पनीर/चीज भजी, फ्रेंच फ्राईज, चणा गार्लिक रोस्ट आणि चाट'],
+  'premier-soups':['मंचाउ, हॉट ऐंड सॉर, क्रीम ऑफ़ टोमॅटो, स्वीटकॉर्न और लेमन कोरिएंडर','मंचाऊ, हॉट अँड सॉर, क्रीम ऑफ टोमॅटो, स्वीटकॉर्न आणि लेमन कोरिएंडर'],
+  'indo-chinese':['चाइनीज़ प्लेटर, पनीर चिली, स्प्रिंग रोल, मंचूरियन और क्रिस्पी कॉर्न','चायनीज प्लॅटर, पनीर चिली, स्प्रिंग रोल, मंचुरियन आणि क्रिस्पी कॉर्न'],
+  'pasta-section':['चिली चाइनीज़ पास्ता और देसी मसाला पास्ता','चिली चायनीज पास्ता आणि देसी मसाला पास्ता'],
+  'tandoor-classics':['तंदूरी प्लेटर, पनीर टिक्का, रेशमी कबाब, हरा भरा कबाब और शावरमा','तंदुरी प्लॅटर, पनीर टिक्का, रेशमी कबाब, हरा भरा कबाब आणि शावरमा'],
+  'sizzling-rice-noodles':['ट्रिपल शेज़वान राइस, हक्का नूडल्स, फ्राइड राइस और कॉम्बिनेशन राइस','ट्रिपल शेजवान राईस, हक्का नूडल्स, फ्राइड राईस आणि कॉम्बिनेशन राईस'],
+  'delivery-thalis':['Swiggy और Zomato पर खास पूर्ण थालियाँ: मिनी थाली, प्राइड सिग्नेचर, महाराजा ग्रैंड फ़ीस्ट और इंडो-चाइनीज़ वॉक थाली','Swiggy आणि Zomato वरील खास पूर्ण थाळ्या: मिनी थाळी, प्राइड सिग्नेचर, महाराजा ग्रँड फीस्ट आणि इंडो-चायनीज वॉक थाळी'],
+  'vegetable-specialties':['वेज प्राइड स्पेशल, खान्देशी शेव भाजी, काजू करी और कोल्हापुरी','वेज प्राइड स्पेशल, खान्देशी शेव भाजी, काजू करी आणि कोल्हापुरी'],
+  'kofta-delights':['मलाई कोफ्ता, नरगिसी कोफ्ता, चीज़ कोफ्ता और पनीर कोफ्ता','मलाई कोफ्ता, नर्गिसी कोफ्ता, चीज कोफ्ता आणि पनीर कोफ्ता'],
+  'paneer-specialties':['पनीर टिक्का मसाला, बटर मसाला, अंगारा, हांडी और भुर्जी','पनीर टिक्का मसाला, बटर मसाला, अंगारा, हंडी आणि भुर्जी'],
+  'flavorful-dals':['दाल फ्राइ, देसी घी की दाल तड़का और पंजाबी कढ़ी','डाळ फ्राय, देशी तुपाची डाळ तडका आणि पंजाबी कढी'],
+  'fresh-addons':['ग्रीन और कचुंबर सलाद, बूंदी रायता और भुना पापड़','ग्रीन आणि कचुंबर कोशिंबीर, बुंदी रायते आणि भाजलेले पापड'],
+  'signature-breads':['तंदूरी रोटी, बटर नान, गार्लिक नान और रोटी बास्केट','तंदुरी रोटी, बटर नान, गार्लिक नान आणि रोटी बास्केट'],
+  'rice-biryani':['वेज दम बिरयानी, हैदराबादी बिरयानी, पनीर बिरयानी और जीरा राइस','वेज दम बिर्याणी, हैदराबादी बिर्याणी, पनीर बिर्याणी आणि जिरा राईस'],
+  'mithai-magic':['हॉट चॉकलेट फ़ज, गुलाब जामुन और रसगुल्ला','हॉट चॉकलेट फज, गुलाबजाम आणि रसगुल्ले'],
+  'frozen-fantasies':['बटरस्कॉच, काजू द्राक्ष, चॉकलेट और वनीला','बटरस्कॉच, काजू द्राक्ष, चॉकलेट आणि व्हॅनिला'],
+  'mocktails':['ब्लू लगून, फ्रूट पंच, सनराइज़ और ठंडे पेय','ब्लू लगून, फ्रूट पंच, सनराईज आणि थंड पेये'],
+  'milkshake-mastani':['मैंगो मस्तानी, प्रीमियर स्पेशल मस्तानी और गाढ़े शेक','मँगो मस्तानी, प्रीमियर स्पेशल मस्तानी आणि दाट शेक'],
+  'chilled-beverages':['खास पंजाबी लस्सी, मसाला छाछ, फ्रेश लाइम सोडा और शीतल पेय','खास पंजाबी लस्सी, मसाला ताक, फ्रेश लाईम सोडा आणि शीतपेये']
+ };
+ for(const [id,[desc_hi,desc_mr]] of Object.entries(categoryDescriptions))if(i18n?.categories[id])Object.assign(i18n.categories[id],{desc_hi,desc_mr});
  const descriptions={
  'md-1':['चार फूली हुई सुनहरी पूरियाँ, मसालेदार आलू भाजी के साथ।','चार टम्म फुगलेल्या सोनेरी पुऱ्या, मसालेदार बटाट्याच्या भाजीसोबत.'],
  'md-2':['नरम, तले हुए भटूरे और मसालेदार छोले।','मऊ, तळलेले भटुरे आणि मसालेदार छोले.'],
@@ -113,6 +143,7 @@
  add('The Premier Way to Stay','प्रीमियर में सुकून भरा प्रवास','प्रीमियरमध्ये निवांत मुक्काम');add('A Home in Bhusawal','भुसावल में आपका घर','भुसावळमधील आपले घर');add('Standard Across All 14 Suites','सभी 14 कमरों में उपलब्ध','सर्व 14 खोल्यांमध्ये उपलब्ध');add('Thoughtful Essentials & Amenities','आपके आराम की सुविधाएँ','तुमच्या आरामासाठी सुविधा');add('Media & Comfort','मनोरंजन और आराम','मनोरंजन आणि आराम');add('Personal Care','व्यक्तिगत देखभाल','वैयक्तिक निगा');add('Split Air Conditioning (Split AC)','स्प्लिट एयर कंडीशनिंग (स्प्लिट AC)','स्प्लिट वातानुकूलन (स्प्लिट AC)');add('Large Screen LED TV with Cable Connection','केबल कनेक्शन वाला बड़ी स्क्रीन LED टीवी','केबल कनेक्शनसह मोठ्या स्क्रीनचा LED टीव्ही');add('High-Speed Wireless Internet (Wi-Fi)','तेज़ वायरलेस इंटरनेट (Wi-Fi)','वेगवान वायरलेस इंटरनेट (Wi-Fi)');add('24-Hour Geyser Hot Water & Fresh Towels','24 घंटे गीज़र का गरम पानी और साफ़ तौलिए','24 तास गिझरचे गरम पाणी आणि स्वच्छ टॉवेल');add('Toothbrush, Toothpaste & Shampoo','टूथब्रश, टूथपेस्ट और शैम्पू','टूथब्रश, टूथपेस्ट आणि शॅम्पू');add('Complimentary Luxury Guest Toiletries','अतिथियों के लिए निःशुल्क प्रसाधन सामग्री','पाहुण्यांसाठी मोफत प्रसाधन साहित्य');add('Suites Tariff & Plans','कमरों का किराया और योजनाएँ','खोल्यांचे भाडे आणि पर्याय');add('Transparent Published Tariff','प्रकाशित स्पष्ट किराया','प्रकाशित स्पष्ट भाडे');add('Room Only (RO)','केवल कमरा (RO)','फक्त खोली (RO)');add('With Breakfast (CP)','नाश्ते सहित (CP)','नाश्त्यासह (CP)');add('Single','एक व्यक्ति','एक व्यक्ती');add('Double','दो व्यक्ति','दोन व्यक्ती');add('/ night','/ रात','/ रात्र');add('Enquire with reception →','रिसेप्शन से पूछें →','रिसेप्शनकडे चौकशी करा →');
  add('Close Dish Details','व्यंजन विवरण बंद करें','पदार्थाचा तपशील बंद करा');add('Close room enquiry','कमरे की पूछताछ बंद करें','खोलीची चौकशी बंद करा');add('Close Drawer','संग्रह बंद करें','संग्रह बंद करा');add('Open Culinary Menu Selection','व्यंजन संग्रह खोलें','पदार्थ संग्रह उघडा');add('Open settings and guest profile','सेटिंग्स और अतिथि प्रोफ़ाइल खोलें','सेटिंग्ज आणि पाहुण्यांची माहिती उघडा');
  add('Auto','अपने आप','आपोआप');add('☀️ Light','☀️ उजला','☀️ उजळ');add('🌙 Dark','🌙 गहरा','🌙 गडद');
+ add('An update is available. Save your work before refreshing.','अपडेट उपलब्ध है। रीफ़्रेश करने से पहले अपना काम सुरक्षित कर लें।','अद्यतन उपलब्ध आहे. रीफ्रेश करण्यापूर्वी तुमचे काम जतन करा.');add('Refresh','रीफ़्रेश करें','रीफ्रेश करा');add('Later','बाद में','नंतर');add('View favorite dishes','पसंदीदा व्यंजन देखें','आवडते पदार्थ पाहा');add('Open guest profile','अतिथि प्रोफ़ाइल खोलें','पाहुण्यांची माहिती उघडा');add('Toggle larger text','अक्षरों का आकार बदलें','अक्षरांचा आकार बदला');add('Auto (Device theme)','अपने आप (डिवाइस के अनुसार)','आपोआप (उपकरणानुसार)');add('Light mode','उजला रंग रूप','उजळ रंगरूप');add('Dark mode','गहरा रंग रूप','गडद रंगरूप');
  add('Available Dish Variations','उपलब्ध व्यंजन विकल्प','उपलब्ध पदार्थांचे पर्याय');add('Conveniences','अन्य सुविधाएँ','इतर सोयी');add('2 Packaged Mineral Water Bottles','पैक किए मिनरल वाटर की 2 बोतलें','पॅकबंद मिनरल वॉटरच्या 2 बाटल्या');add('Welcome Snacks Basket, 2 Premix Teas & Kettle','स्वागत स्नैक्स बास्केट, 2 प्रीमिक्स चाय और केतली','स्वागतासाठी स्नॅक्स बास्केट, 2 प्रीमिक्स चहा आणि किटली');add('Intercom to Front Desk & Room Service','रिसेप्शन और रूम सर्विस से इंटरकॉम संपर्क','रिसेप्शन आणि रूम सर्व्हिससाठी इंटरकॉम');
  add('A Little More, When You Enquire Direct','सीधे पूछने पर कुछ खास लाभ','थेट चौकशी केल्यावर खास लाभ');add('Direct Guest Benefit','सीधे संपर्क का लाभ','थेट संपर्काचा लाभ');add('₹200 on eligible direct stays','पात्र सीधे प्रवास पर ₹200 का लाभ','पात्र थेट मुक्कामावर ₹200 लाभ');add('Eligible direct stays receive a ₹200 benefit. Ask reception about availability, applicable terms and your final rate.','पात्र सीधे प्रवास पर ₹200 का लाभ मिलता है। उपलब्धता, लागू शर्तों और अंतिम दर के लिए रिसेप्शन से पूछें।','पात्र थेट मुक्कामावर ₹200 लाभ मिळतो. उपलब्धता, लागू अटी आणि अंतिम दरासाठी रिसेप्शनकडे चौकशी करा.');
  add('Arrive to a warm welcome, unpack at your own pace, and make yourself at home. Our 14 air-conditioned rooms offer three ways to settle in: Royale King, Signature Queen and Companion Twin—with thoughtful essentials ready for your stay.','आत्मीय स्वागत के साथ आराम से अपना सामान रखें और घर जैसा महसूस करें। हमारे 14 वातानुकूलित कमरे—रॉयल किंग, सिग्नेचर क्वीन और कम्पैनियन ट्विन—आपके आराम की ज़रूरी सुविधाओं के साथ उपलब्ध हैं।','आपुलकीच्या स्वागतानंतर निवांत सामान ठेवा आणि घरच्यासारखे राहा. आमच्या 14 वातानुकूलित खोल्या—रॉयल किंग, सिग्नेचर क्वीन आणि कम्पॅनियन ट्विन—तुमच्या आरामासाठी आवश्यक सोयींसह सज्ज आहेत.');
@@ -139,6 +170,8 @@
   if(count)return lang==='hi'?`${count[1]} ${count[2].toLowerCase()==='items'?'व्यंजन':'संग्रह'}`:lang==='mr'?`${count[1]} ${count[2].toLowerCase()==='items'?'पदार्थ':'संग्रह'}`:value;
   if(lang==='en')return value;
   const hi=lang==='hi';let match;
+  if((match=key.match(/^Share (.+)$/)))return hi?`${text(match[1],lang)} साझा करें`:`${text(match[1],lang)} शेअर करा`;
+  if((match=key.match(/^Order (.+) on (Swiggy|Zomato)$/)))return hi?`${match[2]} पर ${text(match[1],lang)} ऑर्डर करें`:`${match[2]} वर ${text(match[1],lang)} ऑर्डर करा`;
   if((match=key.match(/^Up to (\d+) (.+) room\(s\), subject to availability\. Count all adults and children\.$/)))return hi?`उपलब्धता के अनुसार अधिकतम ${match[1]} ${text(match[2],lang)} कमरे। सभी वयस्कों और बच्चों की गिनती करें।`:`उपलब्धतेनुसार जास्तीत जास्त ${match[1]} ${text(match[2],lang)} खोल्या. सर्व प्रौढ आणि मुलांची गणना करा.`;
   if((match=key.match(/^Estimate: (\d+) single-occupancy \+ (\d+) double-occupancy room\(s\)\. Maximum (\d+) rooms in this category\. Include children in the guest count; exact allocation and final charges require staff confirmation\.$/)))return hi?`अनुमान: ${match[1]} एकल और ${match[2]} दोहरे उपयोग के कमरे। इस श्रेणी में अधिकतम ${match[3]} कमरे। बच्चों को भी गिनें; कमरे का आवंटन और अंतिम शुल्क कर्मचारियों की पुष्टि के अधीन हैं।`:`अंदाज: ${match[1]} एकेरी आणि ${match[2]} दुहेरी वापराच्या खोल्या. या प्रकारात जास्तीत जास्त ${match[3]} खोल्या. मुलांनाही मोजा; खोल्यांचे वाटप आणि अंतिम शुल्कासाठी कर्मचाऱ्यांची खात्री आवश्यक आहे.`;
   if((match=key.match(/^(.+) \((\d+) max extra guest limit for (\d+) rooms?\)$/))){const labels={'Royale King: Accommodates 2 to 3 extra persons':['रॉयल किंग: 2 से 3 अतिरिक्त अतिथियों की सुविधा','रॉयल किंग: 2 ते 3 अतिरिक्त पाहुण्यांची सोय'],'Companion Twin: Accommodates up to 2 extra persons':['कम्पैनियन ट्विन: अधिकतम 2 अतिरिक्त अतिथियों की सुविधा','कम्पॅनियन ट्विन: जास्तीत जास्त 2 अतिरिक्त पाहुण्यांची सोय'],'Signature Queen: Restricted capacity; accommodates max 1 extra person':['सिग्नेचर क्वीन: अधिकतम 1 अतिरिक्त अतिथि की सुविधा','सिग्नेचर क्वीन: जास्तीत जास्त 1 अतिरिक्त पाहुण्याची सोय']};return (labels[match[1]]?.[hi?0:1]||match[1])+(hi?` (${match[3]} कमरों में कुल अधिकतम ${match[2]} अतिरिक्त अतिथि)`:` (${match[3]} खोल्यांत एकूण जास्तीत जास्त ${match[2]} अतिरिक्त पाहुणे)`);}
@@ -147,7 +180,7 @@
   if((match=key.match(/^🎁 Flat ₹200 Direct Guest Discount Applied \(You Save ₹([\d,]+)\)$/)))return hi?`🎁 सीधे संपर्क की ₹200 छूट लागू (आपकी बचत ₹${match[1]})`:`🎁 थेट संपर्काची ₹200 सूट लागू (तुमची बचत ₹${match[1]})`;
   return value;
  }
- const originals=new WeakMap();let observer=null,scheduled=false;
+ const originals=new WeakMap(),attributeOriginals=new WeakMap();let observer=null,scheduled=false;
  const excluded='script,style,textarea,input,[contenteditable],#admin-modal-backdrop,#new-dish-modal,#image-replace-modal,#public-review-grid';
  function sync(root=document.body){
   if(!root||!document.createTreeWalker)return;
@@ -160,6 +193,8 @@
    const source=previous&&value===previous.applied?previous.source:value;
    const translated=text(source,lang);
    if(translated!==source||previous){
+    const parent=node.parentElement;
+    if(parent?.tagName==='OPTION'&&!parent.hasAttribute('value')&&translated!==source)parent.setAttribute('value',parent.value);
     const leading=source.match(/^\s*/)[0],trailing=source.match(/\s*$/)[0];
     const applied=leading+translated.trim()+trailing;
     originals.set(node,{source,applied});if(value!==applied)node.nodeValue=applied;
@@ -167,9 +202,13 @@
   }
   for(const el of root.querySelectorAll('[placeholder],[aria-label]')){
    if(el.closest('#admin-modal-backdrop,#new-dish-modal,#image-replace-modal'))continue;
+   const attributes=attributeOriginals.get(el)||{};
    for(const attr of ['placeholder','aria-label'])if(el.hasAttribute(attr)){
-    const value=el.getAttribute(attr),translated=text(value,lang);if(value!==translated)el.setAttribute(attr,translated);
+    const value=el.getAttribute(attr),previous=attributes[attr];
+    const source=previous&&value===previous.applied?previous.source:value;
+    const translated=text(source,lang);attributes[attr]={source,applied:translated};if(value!==translated)el.setAttribute(attr,translated);
    }
+   attributeOriginals.set(el,attributes);
   }
  }
  function init(){
@@ -180,7 +219,7 @@
    for(const values of [row,name])if(values.every(v=>typeof v==='string'&&v.trim())&&!table.has(normalize(values[0]))){table.set(normalize(values[0]),values);for(const value of values)reverse.set(normalize(value),values[0]);}
   }
   sync();if(!window.MutationObserver)return;
-  observer=new MutationObserver(()=>{if(scheduled)return;scheduled=true;queueMicrotask(()=>{scheduled=false;observer.disconnect();try{sync();}finally{observer.observe(document.body,{childList:true,subtree:true,characterData:true});}});});
+  observer=new MutationObserver(records=>{if(scheduled||!records.some(record=>!(record.target.nodeType===1?record.target:record.target.parentElement)?.closest(excluded)))return;scheduled=true;queueMicrotask(()=>{scheduled=false;observer.disconnect();try{sync();}finally{observer.observe(document.body,{childList:true,subtree:true,characterData:true});}});});
   observer.observe(document.body,{childList:true,subtree:true,characterData:true});
  }
  window.HotelGuestLanguage=Object.freeze({sync,text,menuDescription(dish,lang){return descriptions[dish.id]?.[lang==='hi'?0:lang==='mr'?1:-1]||'';},descriptionIds:Object.freeze(Object.keys(descriptions))});
