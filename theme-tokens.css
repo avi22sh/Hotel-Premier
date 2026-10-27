@@ -491,6 +491,13 @@ body.theme-light .property-viewer::backdrop { background:#231c14b3; backdrop-fil
 body.theme-light .property-viewer img { background:#f8f1e3; border:1px solid #c7a66866; box-sizing:border-box; }
 body.theme-light .property-viewer p { color:var(--text); line-height:1.6; }
 body.theme-light .property-viewer-controls button { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); min-height:44px; }
+body.theme-light #section-home .sanctuary-hero-section,
+body.theme-light .last-call-front-desk-card { background:var(--pearl-polish); color:var(--text); border:1px solid var(--gold-edge); box-shadow:var(--pearl-relief); border-radius:1rem; }
+body.theme-light #section-home .sanctuary-hero-section::before { opacity:.15; }
+body.theme-light #section-home .sanctuary-hero-title { color:#6b111d; text-shadow:0 1px #fff8; }
+body.theme-light #section-home .sanctuary-hero-statement,
+body.theme-light :is(.last-call-support-note,.last-call-flag) { color:var(--text); }
+body.theme-light #section-home :is(.sanctuary-crest-emblem,.sanctuary-pill) { background:var(--pearl-polish); color:var(--text); border-color:var(--gold-edge); box-shadow:var(--pearl-relief); }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
  body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
