@@ -6,7 +6,7 @@ const optionNode={nodeValue:'Room only',parentElement:option};nodes.push(optionN
 const root={querySelectorAll:()=>[field]};
 const doc={readyState:'loading',documentElement:{lang:'en'},body:root,addEventListener(){},createTreeWalker(){let index=0;return {nextNode:()=>nodes[index++]||null};}};
 const context={window:{},document:doc,console,queueMicrotask};vm.createContext(context);
-for(const file of ['data/translations.js','data/menu-data.js','data/guest-localization.js'])vm.runInContext(fs.readFileSync(file,'utf8'),context);
+for(const file of ['data/translations.js','data/menu-data.js','data/interface-copy.js','data/guest-localization.js'])vm.runInContext(fs.readFileSync(file,'utf8'),context);
 const i18n=context.window.HOTEL_PREMIER_I18N,language=context.window.HotelGuestLanguage;
 for(const lang of ['hi','mr']){
  i18n.currentLang=lang;language.sync();assert.equal(doc.documentElement.lang,lang);assert.match(nodes[0].nodeValue,/[\u0900-\u097f]/);assert.match(nodes[1].nodeValue,/[\u0900-\u097f]/);assert.match(field.attrs.placeholder,/[\u0900-\u097f]/);assert.equal(field.value,'Guest-entered name');assert.equal(nodes[2].nodeValue,'Arrival date','Admin text is excluded');

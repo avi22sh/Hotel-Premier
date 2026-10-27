@@ -170,22 +170,40 @@
  add('Visit our hotel listings to read or share a public review.','सार्वजनिक समीक्षा पढ़ने या साझा करने के लिए हमारे होटल की लिस्टिंग देखें।','सार्वजनिक अभिप्राय वाचण्यासाठी किंवा लिहिण्यासाठी आमच्या हॉटेलची लिस्टिंग पाहा.');
  add('Read guest experiences on Google, MakeMyTrip and Goibibo using the links below.','नीचे दिए लिंक से Google, MakeMyTrip और Goibibo पर अतिथियों के अनुभव पढ़ें।','खालील लिंक वापरून Google, MakeMyTrip आणि Goibibo वरील पाहुण्यांचे अनुभव वाचा.');
  add('Guest reviews are unavailable here for now. Explore our hotel listings below.','अभी यहाँ अतिथियों की समीक्षाएँ उपलब्ध नहीं हैं। नीचे हमारे होटल की लिस्टिंग देखें।','सध्या येथे पाहुण्यांचे अभिप्राय उपलब्ध नाहीत. खाली आमच्या हॉटेलची लिस्टिंग पाहा.');
+ for(const row of window.HOTEL_PREMIER_INTERFACE_COPY||[])if(row.length===3)add(...row);
+ // Use the same reviewed copy for data-i18n renderers and text-node renderers.
+ if(i18n){const lookup=new Map(copy.map(row=>[normalize(row[0]).toLowerCase(),row]));for(const [key,value] of Object.entries(i18n.translations.en)){
+  const match=value.match(/^([^\p{L}\p{N}₹]+)([\p{L}\p{N}].*)$/u),row=lookup.get(normalize(value).toLowerCase())||lookup.get(normalize(match?.[2]||'').toLowerCase());
+  if(row){const prefix=lookup.has(normalize(value).toLowerCase())?'':match?.[1]||'';i18n.translations.hi[key]=prefix+row[1];i18n.translations.mr[key]=prefix+row[2];}
+ }}
  const table=new Map();
  for(const row of copy)table.set(normalize(row[0]),row);
  for(const key of Object.keys(i18n?.translations.en||{})){
   const row=['en','hi','mr'].map(lang=>i18n.translations[lang]?.[key]);
   if(row.every(v=>typeof v==='string')&&row[0].trim()&&!row[0].includes('<')&&!table.has(normalize(row[0])))table.set(normalize(row[0]),row);
  }
+ for(const dish of window.HOTEL_PREMIER_INITIAL_MENU||[])for(const item of [dish,...(dish.variants||[])]){
+  for(const row of [[item.name,item.hindiName,item.marathiName],[item.description,item.descriptionHi||descriptions[item.id]?.[0],item.descriptionMr||descriptions[item.id]?.[1]]])if(row.every(v=>typeof v==='string'&&v.trim())&&!table.has(normalize(row[0])))table.set(normalize(row[0]),row);
+ }
+ const folded=new Map([...table].map(([key,row])=>[key.toLowerCase(),row]));
  const reverse=new Map();for(const row of table.values())for(const value of row)if(value)reverse.set(normalize(value),row[0]);
  const index=lang=>lang==='hi'?1:lang==='mr'?2:0;
  function text(value,lang=i18n?.currentLang||'en'){
-  const key=normalize(value),source=reverse.get(key)||key,row=table.get(source);
+  const key=normalize(value),source=table.has(key)||folded.has(key.toLowerCase())?key:reverse.get(key)||key,row=table.get(source)||folded.get(source.toLowerCase());
   if(row)return row[index(lang)]||row[0];
+  const icon=key.match(/^([^\p{L}\p{N}₹]+)([\p{L}\p{N}].*)$/u);
+  if(icon){const translated=text(icon[2],lang);if(translated!==icon[2])return icon[1]+translated;}
   // Counts are dynamic; keep prices and other numbers intact.
   const count=key.match(/^(\d+) (Items|collections)$/i);
   if(count)return lang==='hi'?`${count[1]} ${count[2].toLowerCase()==='items'?'व्यंजन':'संग्रह'}`:lang==='mr'?`${count[1]} ${count[2].toLowerCase()==='items'?'पदार्थ':'संग्रह'}`:value;
   if(lang==='en')return value;
   const hi=lang==='hi';let match;
+  if((match=key.match(/^(\d+) stars?$/)))return hi?`${match[1]} सितारे`:`${match[1]} तारे`;
+  if((match=key.match(/^(\d+(?:\.\d+)?) sq\.ft$/i)))return hi?`${match[1]} वर्ग फुट`:`${match[1]} चौ.फूट`;
+  if((match=key.match(/^Chargeable extra beds \(₹([\d,]+)\/night\)$/)))return hi?`शुल्क वाले अतिरिक्त बिस्तर (₹${match[1]}/रात)`:`शुल्क असलेले अतिरिक्त बेड (₹${match[1]}/रात्र)`;
+  if((match=key.match(/^Call(?: Front Desk:)? ([\d ()/+–-]+)$/)))return hi?`कॉल करें ${match[1]}`:`फोन करा ${match[1]}`;
+  if((match=key.match(/^Front Desk: (.+)$/)))return hi?`रिसेप्शन: ${match[1]}`:`रिसेप्शन: ${match[1]}`;
+  if((match=key.match(/^(\d+) Night • 24-Hr Check-Out \(Direct Bookings Only\)$/)))return hi?`${match[1]} रात • 24 घंटे चेकआउट (केवल सीधे आरक्षण पर)`:`${match[1]} रात्र • 24 तास चेकआउट (फक्त थेट आरक्षणासाठी)`;
   if((match=key.match(/^(\d+) rooms selected · maximum 12$/)))return hi?`${match[1]} कमरे चुने · अधिकतम 12`:`${match[1]} खोल्या निवडल्या · जास्तीत जास्त 12`;
   if((match=key.match(/^Choose a number from (\d+) to (.+)\.$/)))return hi?`${match[1]} से ${match[2]} तक की संख्या चुनें।`:`${match[1]} ते ${match[2]} पर्यंतची संख्या निवडा.`;
   if((match=key.match(/^(\d+) rooms · (\d+) guests including children · (\d+) night\(s\)\. Availability and exact room allocation require staff confirmation\.$/)))return hi?`${match[1]} कमरे · बच्चों सहित ${match[2]} अतिथि · ${match[3]} रातें। उपलब्धता और कमरे का आवंटन कर्मचारियों की पुष्टि के अधीन है।`:`${match[1]} खोल्या · मुलांसह ${match[2]} पाहुणे · ${match[3]} रात्री. उपलब्धता आणि खोल्यांच्या वाटपासाठी कर्मचाऱ्यांची खात्री आवश्यक आहे.`;
@@ -200,7 +218,7 @@
   return value;
  }
  const originals=new WeakMap(),attributeOriginals=new WeakMap();let observer=null,scheduled=false;
- const excluded='script,style,textarea,input,[contenteditable],#admin-modal-backdrop,#new-dish-modal,#image-replace-modal,#public-review-grid';
+ const excluded='script,style,textarea,input,[contenteditable],#admin-modal-backdrop,#new-dish-modal,#add-dish-modal,#image-replace-modal,#public-review-grid';
  function sync(root=document.body){
   if(!root||!document.createTreeWalker)return;
   const lang=i18n?.currentLang||'en';document.documentElement.lang=lang;
@@ -220,7 +238,7 @@
    }
   }
   for(const el of root.querySelectorAll('[placeholder],[aria-label]')){
-   if(el.closest('#admin-modal-backdrop,#new-dish-modal,#image-replace-modal'))continue;
+   if(el.closest('#admin-modal-backdrop,#new-dish-modal,#add-dish-modal,#image-replace-modal'))continue;
    const attributes=attributeOriginals.get(el)||{};
    for(const attr of ['placeholder','aria-label'])if(el.hasAttribute(attr)){
     const value=el.getAttribute(attr),previous=attributes[attr];

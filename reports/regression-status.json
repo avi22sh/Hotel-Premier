@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-27T12:13:53.431Z",
-  "passed": 64,
+  "createdAt": "2026-10-27T13:05:25.003Z",
+  "passed": 65,
   "failed": [],
   "results": [
     {
@@ -117,6 +117,10 @@
     },
     {
       "file": "image-asset-integrity-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "interface-language-regression.cjs",
       "passed": true
     },
     {

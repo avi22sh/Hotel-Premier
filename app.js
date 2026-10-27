@@ -589,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.31';
+    s.src = 'admin.js?v=22.32';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -3097,7 +3097,7 @@ class HotelPremierApp {
     const dish = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
     if (!dish || !dish.variants || variantIdx < 0 || variantIdx >= dish.variants.length) return;
     if (dish.variants.length <= 1) {
-      alert('A dish must have at least one option. To hide this dish entirely, use the Hide button.');
+      this.guestAlert('A dish must have at least one option. To hide this dish entirely, use the Hide button.');
       return;
     }
     const vName = dish.variants[variantIdx].name;
@@ -3121,7 +3121,7 @@ class HotelPremierApp {
     const priceStr = prompt(`Enter Price (₹) for "${name.trim()}":`, String(dish.price || ''));
     const price = Number(priceStr);
     if (!Number.isFinite(price) || price < 0) {
-      alert('Please enter a valid numeric price.');
+      this.guestAlert('Please enter a valid numeric price.');
       return;
     }
     const desc = prompt(`Optional short description for "${name.trim()}" (leave blank to inherit dish description):`, '');
@@ -4084,7 +4084,12 @@ class HotelPremierApp {
     this.closeGuestDialog(document.getElementById('route-options-modal'));
   }
 
+  guestAlert(message) {
+    alert(window.HotelGuestLanguage?.text(message) || message);
+  }
+
   showToast(message, type = 'info') {
+    message = window.HotelGuestLanguage?.text(message) || message;
     let toast = document.getElementById('app-toast');
     if (!toast) {
       toast = document.createElement('div');
@@ -4710,9 +4715,9 @@ class HotelPremierApp {
     const form = document.getElementById('restaurant-event-form');
     if (!form?.reportValidity()) return;
     const value = id => document.getElementById('restaurant-event-'+id)?.value?.trim() || '';
-    if (value('date') < this.hotelToday()) { alert('Please choose today or a future date.'); return; }
+    if (value('date') < this.hotelToday()) { this.guestAlert('Please choose today or a future date.'); return; }
     const phone = this.sanitizeIndianMobile(value('phone'));
-    if (!this.isValidIndianMobile(phone)) { alert('Please enter a valid 10-digit mobile number.'); return; }
+    if (!this.isValidIndianMobile(phone)) { this.guestAlert('Please enter a valid 10-digit mobile number.'); return; }
     const guests = Number(value('guests'));
     if (!Number.isInteger(guests) || guests < 1 || guests > 40 || !this.formatArrivalTime(value('time'))) { this.showToast('Please check the guest count and preferred time.','warning'); return; }
     const message = `HOTEL PREMIER — RESTAURANT EVENT ENQUIRY\nOccasion: ${value('type')}\nVenue: Inside Pride Pure Veg AC Restaurant only\nPreferred date: ${value('date')}\nPreferred time: ${this.formatArrivalTime(value('time'))}\nGuests: ${guests} (restaurant maximum: 40)\nName: ${value('name')}\nMobile: ${phone}\nFood preferences: ${value('food') || 'To be discussed'}\nRequests: ${value('notes') || 'None specified'}\nPlease confirm restaurant availability, menu, setup and final charges. This is an enquiry, not a confirmed booking.`;
@@ -4905,13 +4910,13 @@ class HotelPremierApp {
     const today = this.hotelToday();
 
     if (!guestName) {
-      alert('Please enter your name so Hotel Premier Concierge can assist you.');
+      this.guestAlert('Please enter your name so Hotel Premier Concierge can assist you.');
       guestNameInput?.focus();
       return;
     }
 
     if (!cleanGuestPhone || !this.isValidIndianMobile(cleanGuestPhone)) {
-      alert('Please enter a valid 10-digit WhatsApp/mobile number (e.g., 9876543210).');
+      this.guestAlert('Please enter a valid 10-digit WhatsApp/mobile number (e.g., 9876543210).');
       if (guestPhoneInput) {
         guestPhoneInput.value = cleanGuestPhone;
         guestPhoneInput.focus();
@@ -4920,7 +4925,7 @@ class HotelPremierApp {
     }
 
     if (!checkInDate || checkInDate < today || !checkInDateInput.checkValidity()) {
-      alert('Check-in date cannot be in the past. Please select today or a future date.');
+      this.guestAlert('Check-in date cannot be in the past. Please select today or a future date.');
       if (checkInDateInput) {
         checkInDateInput.value = today;
         checkInDateInput.focus();
@@ -4929,7 +4934,7 @@ class HotelPremierApp {
     }
 
     if (!checkInTime) {
-      alert('Please choose your expected arrival time. All times are local to Hotel Premier (IST).');
+      this.guestAlert('Please choose your expected arrival time. All times are local to Hotel Premier (IST).');
       timeInput?.focus();
       return;
     }
@@ -5013,7 +5018,7 @@ class HotelPremierApp {
     const tableOrRoom = document.getElementById('profile-modal-room-table')?.value.trim() || '';
 
     if (rawPhone && !this.isValidIndianMobile(cleanPhone)) {
-      alert('Please enter a valid 10-digit WhatsApp/mobile number (e.g., 9876543210).');
+      this.guestAlert('Please enter a valid 10-digit WhatsApp/mobile number (e.g., 9876543210).');
       if (phoneEl) {
         phoneEl.value = cleanPhone;
         phoneEl.focus();
@@ -5041,7 +5046,7 @@ class HotelPremierApp {
       });
       this.updateHeaderGuestBadge({ name: '', phone: '', tableOrRoom: '', region: 'Bhusawal Local' });
       this.closeGuestProfileModal();
-      alert('Guest profile cleared.');
+      this.guestAlert('Guest profile cleared.');
     }
   }
 
@@ -5067,11 +5072,11 @@ class HotelPremierApp {
     const region = document.getElementById('guest-pass-input-region')?.value || 'Bhusawal Local';
 
     if (!name) {
-      alert('Please enter your name.');
+      this.guestAlert('Please enter your name.');
       return false;
     }
     if (!phone || phone.length < 10) {
-      alert('Please enter a valid 10-digit WhatsApp number.');
+      this.guestAlert('Please enter a valid 10-digit WhatsApp number.');
       return false;
     }
 
