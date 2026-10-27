@@ -198,6 +198,7 @@
   if(count)return lang==='hi'?`${count[1]} ${count[2].toLowerCase()==='items'?'व्यंजन':'संग्रह'}`:lang==='mr'?`${count[1]} ${count[2].toLowerCase()==='items'?'पदार्थ':'संग्रह'}`:value;
   if(lang==='en')return value;
   const hi=lang==='hi';let match;
+  if((match=key.match(/^(Save|Remove) (.+) (?:to|from) favourites$/)))return hi?`${text(match[2],lang)} ${match[1]==='Save'?'पसंदीदा सूची में जोड़ें':'पसंदीदा सूची से हटाएँ'}`:`${text(match[2],lang)} ${match[1]==='Save'?'आवडत्या यादीत जतन करा':'आवडत्या यादीतून काढा'}`;
   if((match=key.match(/^(.+), (₹[\d,]+(?: – ₹[\d,]+)?)$/)))return `${text(match[1],lang)}, ${match[2]}`;
   if((match=key.match(/^(.+) items$/)))return hi?`${text(match[1],lang)} के विकल्प`:`${text(match[1],lang)}चे पर्याय`;
   if((match=key.match(/^(\d+) stars?$/)))return hi?`${match[1]} सितारे`:`${match[1]} तारे`;
