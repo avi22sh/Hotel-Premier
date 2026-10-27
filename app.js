@@ -589,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.28';
+    s.src = 'admin.js?v=22.29';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1084,6 +1084,8 @@ class HotelPremierApp {
         this.broadcast = new BroadcastChannel('hotel_premier_sync_channel');
         this.broadcast.onmessage = async (event) => {
           if (event.data && event.data.type === 'MENU_UPDATED') {
+            if(event.data.scope==='rooms'){await this.renderRoomCarousels();return;}
+            if(event.data.scope==='slides'){await this.initHeroCarousel();if(this.currentCategory&&this.currentCategory!=='all')await this.renderSectionSlideshow(this.currentCategory);return;}
             await this.loadMenuData();
             this.renderCategoryCards();
             this.renderMenu();
@@ -1096,11 +1098,11 @@ class HotelPremierApp {
     } catch (e) {}
   }
 
-  notifyMenuUpdate() {
+  notifyMenuUpdate(scope='menu') {
     if(typeof CustomEvent==='function')window.dispatchEvent?.(new CustomEvent('hp-content-saved'));
     if (this.broadcast) {
       try {
-        this.broadcast.postMessage({ type: 'MENU_UPDATED', timestamp: Date.now() });
+        this.broadcast.postMessage({ type: 'MENU_UPDATED', scope, timestamp: Date.now() });
       } catch (e) {}
     }
   }

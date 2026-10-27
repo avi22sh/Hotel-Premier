@@ -292,6 +292,7 @@ class HotelPremierStorageManager {
       const metadata=JSON.parse(localStorage.getItem('hotel_premier_room_overrides')||'{}');
       if(metadata[roomId]){delete metadata[roomId].images;delete metadata[roomId].image;localStorage.setItem('hotel_premier_room_overrides',JSON.stringify(metadata));}
     }catch(_){/* The committed gallery remains authoritative. */}
+    window.app?.notifyMenuUpdate?.('rooms');
     return record;
   }
 
@@ -313,6 +314,7 @@ class HotelPremierStorageManager {
   async saveSectionSlides(sectionId,slidesArray) {
     const record=await this.persistPhotoRecord('section_slides',sectionId,{slides:slidesArray});
     try{localStorage.removeItem('hotel_premier_slides_'+sectionId);}catch(_){}
+    window.app?.notifyMenuUpdate?.('slides');
     return record;
   }
 
