@@ -142,6 +142,7 @@ class HotelPremierAdmin {
 
     const contentContainer = document.getElementById('admin-tab-content');
     if (!contentContainer) return;
+    contentContainer.scrollTop=0;
 
     if (tabName === 'content') {
       window.HotelContentStudio?.render(contentContainer);
@@ -286,15 +287,13 @@ class HotelPremierAdmin {
     const categories = window.app.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
 
     container.innerHTML = `
-      <div class="hp-inline-7c9898758083">
-        <div class="hp-inline-f0d06bb1c7e8">
-          <input type="text" id="admin-search-dish" placeholder="Search dish name to edit price, photo, or status..." class="form-input hp-inline-0482bc3dc754">
+      <div class="hp-inline-7c9898758083 admin-menu-toolbar">
+        <div class="hp-inline-f0d06bb1c7e8 admin-menu-filters">
+          <input type="search" id="admin-search-dish" aria-label="Search menu items" placeholder="Search dishes or descriptions…" class="form-input hp-inline-0482bc3dc754">
           <select id="admin-category-filter" class="form-select hp-inline-45db39f3253b">
             <option value="all">All Categories</option>
             ${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
           </select>
-          <button type="button" class="studio-button" onclick="document.getElementById('admin-category-filter').value='indo-chinese'; window.admin.filterAdminDishes()">Indo-Chinese</button>
-          <button type="button" class="studio-button" onclick="document.getElementById('admin-category-filter').value='pasta-section'; window.admin.filterAdminDishes()">Pastas</button>
           <select id="admin-status-filter" class="form-select hp-inline-45db39f3253b">
             <option value="all">All Items</option>
             <option value="active">Active Only (Visible)</option>
@@ -308,19 +307,7 @@ class HotelPremierAdmin {
 
       <div class="hp-inline-84220f1ea983">
         <table class="admin-table">
-          <thead>
-            <tr>
-              <th class="hp-inline-e34b7515c2af">Photo</th>
-              <th>Dish Name & Description</th>
-              <th>Category</th>
-              <th class="hp-inline-2612b3574623">Price (₹)</th>
-              <th class="hp-inline-903a4fafb52d">Taste & Badges</th>
-              <th class="hp-inline-4876e9236501">Sold Out</th>
-              <th class="hp-inline-9b53fdfd2692">PWA Visibility</th>
-              <th class="hp-inline-7ec424f60ba1">Order</th>
-              <th class="hp-inline-88acb3aa6426">Delete</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Photo</th><th>Item & description</th><th>Price & availability</th><th>Actions</th></tr></thead>
           <tbody id="admin-dish-tbody">
             ${this.generateDishTableRows(menu.slice(0,this.adminVisibleCount))}
           </tbody>
@@ -338,104 +325,18 @@ class HotelPremierAdmin {
   }
 
   generateDishTableRows(dishes) {
-    return dishes.map(dish => {
-      const isSoldOut = !!dish.isSoldOut;
-      const hasPhoto = dish.image && dish.image.trim() !== '';
-      const tags = dish.tags || [];
-      const isSweet = tags.includes('sweet');
-      const isSpicy = tags.includes('spicy');
-      const isChef = tags.includes('chef-special');
-      const isBestseller = tags.includes('bestseller');
-      const isKhandeshi = tags.includes('khandeshi-special');
-
-      return `
-        <tr id="admin-row-${dish.id}">
-          <td class="hp-inline-fb5ec070f2bf">
-            ${hasPhoto ? `
-              <div class="hp-inline-1ee020b90672">
-                <div class="hp-inline-cac5954f1be6" onclick="window.admin.openImageModal('${dish.id}')" title="Click to replace photo">
-                  <img height="900" width="1200" class="hp-inline-059ba7fa4870" id="admin-dish-thumb-${dish.id}" src="${dish.image}" onerror="this.src='assets/brand-placeholder.svg'">
-                  <div class="hp-inline-ce113b7e3400">📷</div>
-                </div>
-                <button class="hp-inline-c0c0f9190cfa" onclick="window.admin.deleteDishPhoto('${dish.id}')" title="Remove photo (switch to Pure Veg text mode)">
-                  🗑️ Remove
-                </button>
-              </div>
-            ` : `
-              <div class="admin-no-photo-badge" onclick="window.admin.openImageModal('${dish.id}')" title="Click to upload or assign photo">
-                <span>➕</span>
-                <span>Photo</span>
-              </div>
-            `}
-          </td>
-          <td>
-            <div class="hp-inline-fe673e261995">${dish.name}</div>
-            <div class="hp-inline-ec98a14b02ca">${dish.description || ''}</div>
-            ${dish.variants && dish.variants.length > 0 ? `
-              <div class="hp-inline-273c6fc681ac">
-                <button class="hp-inline-adfedf133787" type="button" onclick="window.app.openDishDetail('${dish.id}')">
-                  🛠️ ${dish.variants.length} Options (Reorder / Manage)
-                </button>
-              </div>
-            ` : ''}
-          </td>
-          <td>
-            <span class="hp-inline-8a158b991469">${dish.categoryId}</span>
-          </td>
-          <td>
-            <div class="hp-inline-c82cd24e1a2e">
-              <span class="hp-inline-20ebd756b734">₹</span>
-              <input class="hp-inline-fc0e22029128" type="number" value="${dish.price ?? ''}" placeholder="Unset" min="0" onchange="window.admin.updatePrice('${dish.id}', this.value)">
-            </div>
-          </td>
-          <td>
-            <details class="admin-taste-details"><summary>Taste & badges</summary><div class="admin-taste-tags-wrap">
-              <button type="button" class="admin-tag-toggle-chip ${isSweet ? 'active-sweet' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'sweet')" title="Toggle Sweet (मीठा) Profile">
-                🍯 Sweet
-              </button>
-              <button type="button" class="admin-tag-toggle-chip ${isSpicy ? 'active-spicy' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'spicy')" title="Toggle Spicy (तीखा) Profile">
-                🌶️ Spicy
-              </button>
-              <button type="button" class="admin-tag-toggle-chip ${isChef ? 'active-chef' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'chef-special')" title="Toggle Chef's Special">
-                👑 Chef
-              </button>
-              <button type="button" class="admin-tag-toggle-chip ${isBestseller ? 'active-bestseller' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'bestseller')" title="Toggle Bestseller">
-                🔥 Hot
-              </button>
-              <button type="button" class="admin-tag-toggle-chip ${isKhandeshi ? 'active-khandeshi' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'khandeshi-special')" title="Toggle Khandeshi Special">
-                🫕 Khandeshi
-              </button>
-            </div></details>
-          </td>
-          <td class="hp-inline-fb5ec070f2bf">
-            <label class="toggle-switch" title="Mark dish Sold Out (shows Sold Out banner in PWA)">
-              <input type="checkbox" ${!isSoldOut ? 'checked' : ''} onchange="window.admin.toggleAvailability('${dish.id}', this.checked)">
-              <span class="toggle-slider"></span>
-            </label>
-            <div class="hp-inline-18434dccac85">${isSoldOut ? 'Sold Out' : 'In Stock'}</div>
-          </td>
-          <td class="hp-inline-fb5ec070f2bf">
-            <label class="toggle-switch" title="Check to make invisible from customer PWA">
-              <input type="checkbox" ${dish.notAvailable ? 'checked' : ''} onchange="window.admin.toggleNotAvailable('${dish.id}', this.checked)">
-              <span class="toggle-slider toggle-slider-danger"></span>
-            </label>
-            <div class="admin-availability ${dish.notAvailable?'not-available':'available'}">
-              ${dish.notAvailable ? '🚫 Hidden' : 'Active'}
-            </div>
-          </td>
-          <td class="hp-inline-fb5ec070f2bf">
-            <div class="hp-inline-09e6a15531c4">
-              <button class="hp-inline-ed1c30c63caa" type="button" onclick="window.app.moveDish('${dish.id}', 'up')" title="Move Up in Category">▲</button>
-              <button class="hp-inline-ed1c30c63caa" type="button" onclick="window.app.moveDish('${dish.id}', 'down')" title="Move Down in Category">▼</button>
-            </div>
-          </td>
-          <td class="hp-inline-fb5ec070f2bf">
-            <button class="hp-inline-3e03f20d9a66" onclick="window.admin.deleteDish('${dish.id}')" title="Delete Dish">🗑️</button>
-          </td>
-        </tr>
-      `;
-    }).join('');
-  }
+  const escape=value=>String(value??'').replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  return dishes.map(dish=>{
+    const id=escape(dish.id),arg=escape(JSON.stringify(dish.id)),tags=dish.tags||[];
+    const category=window.app.categories.find(item=>item.id===dish.categoryId)?.name||dish.categoryId;
+    return `<tr id="admin-row-${id}">
+      <td><button type="button" class="admin-photo-button" onclick="window.admin.openImageModal(${arg})" aria-label="Edit photo for ${escape(dish.name)}"><img width="80" height="80" loading="lazy" src="${escape(dish.image||'assets/brand-placeholder.svg')}" alt="${escape(dish.name)}"><span>Photo</span></button></td>
+      <td><strong class="admin-item-name">${escape(dish.name)}</strong><p class="admin-item-description">${escape(dish.description)}</p><span class="admin-item-category">${escape(category)}</span>${dish.variants?.length?`<button type="button" class="studio-button" onclick="window.app.openDishDetail(${arg})">${dish.variants.length} item options</button>`:''}</td>
+      <td><label class="studio-field">Price (₹)<input type="number" min="0" value="${dish.price??''}" placeholder="On request" onchange="window.admin.updatePrice(${arg},this.value)"></label><label class="admin-check"><input type="checkbox" ${dish.isSoldOut?'checked':''} onchange="window.admin.toggleAvailability(${arg},!this.checked)"> Sold out</label><label class="admin-check"><input type="checkbox" ${dish.notAvailable?'checked':''} onchange="window.admin.toggleNotAvailable(${arg},this.checked)"> Hide from menu</label></td>
+      <td><details class="admin-item-actions"><summary>Manage item</summary><div class="admin-taste-tags-wrap">${[['sweet','Sweet'],['spicy','Spicy'],['chef-special','Chef special'],['bestseller','Bestseller'],['khandeshi-special','Khandeshi']].map(([tag,label])=>`<button type="button" class="studio-button" aria-pressed="${tags.includes(tag)}" onclick="window.admin.toggleDishTag(${arg},'${tag}')">${label}</button>`).join('')}</div><div class="studio-action-row"><button type="button" class="studio-button" onclick="window.app.moveDish(${arg},'up')">↑ Move up</button><button type="button" class="studio-button" onclick="window.app.moveDish(${arg},'down')">↓ Move down</button></div><button type="button" class="studio-button admin-delete-button" onclick="window.admin.deleteDish(${arg})">Remove item</button></details></td>
+    </tr>`;
+  }).join('');
+}
 
   filterAdminDishes() {
     const q = (document.getElementById('admin-search-dish')?.value || '').toLowerCase();

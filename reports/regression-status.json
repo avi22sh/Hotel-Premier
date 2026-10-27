@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-27T10:57:54.947Z",
-  "passed": 63,
+  "createdAt": "2026-10-27T12:13:53.431Z",
+  "passed": 64,
   "failed": [],
   "results": [
     {
@@ -17,6 +17,10 @@
     },
     {
       "file": "admin-render-race-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "admin-table-layout-regression.cjs",
       "passed": true
     },
     {
