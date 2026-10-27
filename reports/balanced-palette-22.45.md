@@ -1,0 +1,5 @@
+# Balanced navy, gold and heritage red — v22.45
+
+Restored navy framing to the light-mode header, navigation, footer and welcome feature, with warm gold branding and readable ivory supporting text. Heritage red remains on headings, names and prices. Removed the broad gold heading plates and strong diagonal card sheen; content uses quieter ivory surfaces. Retained gold on primary actions, selected navigation/options, CP badges and the direct-stay benefit. Partner colours, the property gallery/form refinements and all functional work are retained. Existing dark-mode rules are unchanged.
+
+Checks: CSS structure, theme and language regressions passed; all 17 source checks passed. Explicit navy/text colour pairs and heritage red on ivory exceed 4.5:1 against the specified palette. Published release confirmed; desktop Stay and Home inspected and mobile menu verified at 390px with no horizontal overflow. Screenshots saved. Temporary viewport reset; preview left on Stay. These checks do not replace physical-device testing or a complete composited contrast audit.
