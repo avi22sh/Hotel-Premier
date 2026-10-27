@@ -1,10 +1,14 @@
 {
-  "createdAt": "2026-10-27T10:45:46.382Z",
-  "passed": 61,
+  "createdAt": "2026-10-27T10:57:54.947Z",
+  "passed": 63,
   "failed": [],
   "results": [
     {
       "file": "admin-crm-injection-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "admin-item-commit-regression.cjs",
       "passed": true
     },
     {
@@ -117,6 +121,10 @@
     },
     {
       "file": "local-lock-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "local-update-scope-regression.cjs",
       "passed": true
     },
     {

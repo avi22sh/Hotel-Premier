@@ -22,6 +22,7 @@
     const input=document.createElement('input');input.type='range';input.min=min;input.max=max;input.step=name==='zoom'?'.01':'1';input.value=value;input.setAttribute('aria-label',label);input.addEventListener('input',draw);fields[name]=input;wrap.append(input);controls.append(wrap);
    }
    function draw(){
+    for(const input of Object.values(fields))input.disabled=fit.checked;
     const width=(fit.checked?Math.max(bitmap.width,bitmap.height*aspect):Math.min(bitmap.width,bitmap.height*aspect))/Number(fields.zoom.value),height=width/aspect;
     rect={x:(bitmap.width-width)*Number(fields.x.value)/100,y:(bitmap.height-height)*Number(fields.y.value)/100,width,height};
     const context=canvas.getContext('2d');context.clearRect(0,0,canvas.width,canvas.height);context.drawImage(bitmap,rect.x,rect.y,width,height,0,0,canvas.width,canvas.height);
@@ -38,7 +39,7 @@
  async function optimize(file,crop,options) {
   if(typeof Worker!=='undefined' && typeof OffscreenCanvas!=='undefined') {
    return new Promise((resolve,reject)=>{
-    const worker=new Worker('photo-worker.js?v=22.29');
+    const worker=new Worker('photo-worker.js?v=22.30');
     const cleanup=()=>{clearTimeout(timer);options.signal?.removeEventListener('abort',abort);worker.terminate();};
     const abort=()=>{cleanup();reject(new DOMException('Photo selection cancelled.','AbortError'));};
     const timer=setTimeout(()=>{cleanup();reject(Error('Photo optimization took too long. Try a smaller photo.'));},90000);

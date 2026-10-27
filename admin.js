@@ -464,11 +464,10 @@ class HotelPremierAdmin {
     if (dish) {
       const parsedPrice = newPrice.trim() === '' ? null : Number(newPrice);
       if (parsedPrice !== null && (!Number.isFinite(parsedPrice) || parsedPrice < 0)) return;
+      try { await window.HOTEL_STORAGE.saveDishOverride(dishId, { price: parsedPrice }); }
+      catch(error){window.app.showToast('Price not saved. The previous price has been kept.','error');return false;}
       dish.price = parsedPrice;
       window.app.saveMenuData();
-      if (window.HOTEL_STORAGE) {
-        await window.HOTEL_STORAGE.saveDishOverride(dishId, { price: dish.price });
-      }
       window.app.renderMenu();
       window.app.showToast(`Updated price for "${dish.name}" to ${dish.price === null ? 'Price on request' : `₹${dish.price}`}`, 'success');
     }
@@ -478,19 +477,18 @@ class HotelPremierAdmin {
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (!dish) return;
 
-    if (!dish.tags) dish.tags = [];
-
-    const index = dish.tags.indexOf(tagName);
+    const tags=[...(dish.tags||[])];
+    const index = tags.indexOf(tagName);
     if (index > -1) {
-      dish.tags.splice(index, 1);
+      tags.splice(index, 1);
     } else {
-      dish.tags.push(tagName);
+      tags.push(tagName);
     }
 
+    try { await window.HOTEL_STORAGE.saveDishOverride(dishId, { tags }); }
+    catch(error){window.app.showToast('Tags not saved. The previous selection has been kept.','error');return false;}
+    dish.tags=tags;
     window.app.saveMenuData();
-    if (window.HOTEL_STORAGE) {
-      await window.HOTEL_STORAGE.saveDishOverride(dishId, { tags: dish.tags });
-    }
 
     // Refresh UI smoothly
     this.filterAdminDishes();
@@ -520,11 +518,10 @@ class HotelPremierAdmin {
   async toggleAvailability(dishId, isAvailable) {
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (dish) {
+      try { await window.HOTEL_STORAGE.saveDishOverride(dishId, { isSoldOut: !isAvailable }); }
+      catch(error){window.app.showToast('Availability not saved. The previous state has been kept.','error');return false;}
       dish.isSoldOut = !isAvailable;
       window.app.saveMenuData();
-      if (window.HOTEL_STORAGE) {
-        await window.HOTEL_STORAGE.saveDishOverride(dishId, { isSoldOut: dish.isSoldOut });
-      }
       window.app.renderMenu();
       const statusText = isAvailable ? 'Available' : 'Marked Sold Out';
       window.app.showToast(`"${dish.name}" is now ${statusText}!`, 'info');
@@ -539,12 +536,18 @@ class HotelPremierAdmin {
   }
 
   async deleteDish(dishId) {
+    if(!this.isAuthenticated)return;
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (!dish) return;
 
     if (await window.HotelDialogs.confirm(`Are you sure you want to remove "${dish.name}" from the menu?`)) {
-      window.app.menuData = window.app.menuData.filter(d => d.id !== dishId);
-      window.app.saveMenuData();
+      try{
+        const next=window.HotelMenuStructure.snapshot(window.app);
+        const ids=new Set([dishId,...window.app.menuData.filter(item=>item.groupedUnder===dishId).map(item=>item.id)]);
+        for(const id of ids)next.items[id]={_deleted:true};
+        next.order=next.order.filter(id=>!ids.has(id));
+        window.HotelMenuStructure.saveDraft(next,window.app);
+      }catch(error){window.app.showToast('Item not removed. The saved menu is unchanged.','error');return false;}
       window.app.renderCategoryCards();
       window.app.renderMenu();
       this.filterAdminDishes();
