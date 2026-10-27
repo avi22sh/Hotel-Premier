@@ -508,12 +508,12 @@ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-hom
  }
 }
 body:is(.theme-light,.theme-dark) .footer-brand-birds { color:#e7c47c; background-image:var(--brand-gold-polish); }
-/* Stay title: reflected highlights within its existing heritage-red colour. */
-@supports ((background-clip:text) or (-webkit-background-clip:text)) {
- body.theme-light #section-stay > .editorial-header-block > .editorial-title {
-  background-image:linear-gradient(110deg,currentColor 0%,#82313c 30%,currentColor 44%,#97464f 48%,currentColor 55%,#82313c 76%,currentColor 100%);
-  background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:none;
- }
+/* Stay title: the CP badge's glossy gold plate with heritage-red lettering. */
+body.theme-light #section-stay > .editorial-header-block > .editorial-title {
+ background:var(--gold-polish); color:var(--heading-accent); -webkit-text-fill-color:currentColor;
+ background-clip:border-box; -webkit-background-clip:border-box;
+ border:1px solid var(--gold-edge); border-radius:.65rem; box-shadow:var(--gold-relief);
+ padding:.3em .7em; width:fit-content; max-width:100%; box-sizing:border-box; margin-inline:auto; text-shadow:none;
 }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
