@@ -254,7 +254,8 @@ html:is([lang="hi"],[lang="mr"]) :is(.form-label,.modal-dish-title,.section-titl
  --gold-relief:inset 0 1px 0 #fff8df, inset 0 -1px 0 #805c2870,0 4px 14px #61421426;
 }
 body.theme-dark { --gold-edge:#e0bf83; }
-body :is(.btn-primary,.feedback-submit-btn,.plan-badge-label.gold-badge,.premium-suite-badge),#guest-feedback-section .feedback-submit-btn {
+body :is(.btn-primary,.feedback-submit-btn,.plan-badge-label.gold-badge,.premium-suite-badge,.hotel-nav-reserve-btn,.btn-tariff-call-amber),#guest-feedback-section .feedback-submit-btn,
+body.theme-dark :is(.modal-dish-variant-btn.selected,.variant-btn.selected),body.theme-light :is(.modal-dish-variant-btn.selected,.variant-btn.selected) {
  background:var(--gold-polish); color:var(--gold-ink); border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); text-shadow:0 1px #fff4;
 }
 body :is(.editorial-divider,.section-divider) { background:var(--gold-polish); }
