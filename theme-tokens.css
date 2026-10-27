@@ -413,7 +413,7 @@ body.theme-light #section-tariffs .tariff-plan-btn.active {
 body.theme-light #dish-detail-modal .modal-dish-variant-btn.selected .variant-btn-price { color:inherit; }
 body.theme-light #menu-sections-drawer-modal :is(.drawer-qf-chip.active,.drawer-section-item.active) { background:#f0e5ce; color:#6b111d; border-color:var(--gold-edge); }
 /* Reuse the actual CP breakfast badge finish, with solid readable lettering. */
-body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.feedback-title,.celebrate-title) {
+body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.feedback-title,.celebrate-title,.experience-intro h2) {
  background:var(--gold-polish); color:var(--gold-ink); -webkit-text-fill-color:currentColor;
  border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); border-radius:.65rem;
  padding:.3em .7em; width:fit-content; max-width:100%; box-sizing:border-box; margin-inline:auto;
@@ -425,7 +425,7 @@ body.theme-light {
  --pearl-polish:linear-gradient(165deg,#fffdf8f5 0%,#f8f0def0 43%,#eee3cced 44%,#fcf7edf5 100%);
  --pearl-relief:inset 0 1px 0 #fffef8,inset 0 -1px 0 #bea06b55,0 5px 18px #61421416;
 }
-body.theme-light :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#section-reviews) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
+body.theme-light :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
  background:var(--pearl-polish); border-color:var(--gold-edge); box-shadow:var(--pearl-relief);
 }
 body.theme-light :is(.home-pillar-body,.signature-card-body,.room-card-info-panel) { background:transparent; }
@@ -481,11 +481,12 @@ body.theme-light .modal-backdrop:not(#admin-modal-backdrop):not(#add-dish-modal)
 body.theme-light #section-explore :is(.attraction-title,.route-name,.route-option-name) { color:#6b111d; }
 body.theme-light #section-explore :is(.attraction-category-badge,.attraction-distance-badge,.route-time-badge,.route-icon-badge) { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); }
 body.theme-light #section-explore :is(.attraction-card-content,.attraction-card-footer) { background:transparent; }
-body.theme-light :is(.section-wrapper,#concierge-booking-modal,#guest-profile-modal) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="file"]),select,textarea) {
+body.theme-light #guest-feedback-section :is(.feedback-container,.review-composer-card,.review-extra-details) { background:var(--pearl-polish); border-color:var(--gold-edge); box-shadow:var(--pearl-relief); }
+body.theme-light :is(.section-wrapper,#guest-feedback-section,#concierge-booking-modal,#guest-profile-modal) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="file"]),select,textarea) {
  background:var(--pearl-polish); color:var(--text); border-color:var(--gold-edge); box-shadow:inset 0 1px 3px #6b4a1c12,0 1px #fff; color-scheme:light;
 }
-body.theme-light :is(.section-wrapper,#concierge-booking-modal,#guest-profile-modal) :is(input,select,textarea):disabled { background:#eee7dc; color:var(--muted); box-shadow:none; }
-body.theme-light :is(.section-wrapper,#concierge-booking-modal,#guest-profile-modal) :is(input,select,textarea)[aria-invalid="true"] { border-color:var(--danger); }
+body.theme-light :is(.section-wrapper,#guest-feedback-section,#concierge-booking-modal,#guest-profile-modal) :is(input,select,textarea):disabled { background:#eee7dc; color:var(--muted); box-shadow:none; }
+body.theme-light :is(.section-wrapper,#guest-feedback-section,#concierge-booking-modal,#guest-profile-modal) :is(input,select,textarea)[aria-invalid="true"] { border-color:var(--danger); }
 body.theme-light .property-viewer { background:var(--pearl-polish); color:var(--text); border:1px solid var(--gold-edge); box-shadow:var(--pearl-relief),0 24px 80px #20150d55; }
 body.theme-light .property-viewer::backdrop { background:#231c14b3; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 body.theme-light .property-viewer img { background:#f8f1e3; border:1px solid #c7a66866; box-sizing:border-box; }
@@ -500,5 +501,5 @@ body.theme-light :is(.last-call-support-note,.last-call-flag) { color:var(--text
 body.theme-light #section-home :is(.sanctuary-crest-emblem,.sanctuary-pill) { background:var(--pearl-polish); color:var(--text); border-color:var(--gold-edge); box-shadow:var(--pearl-relief); }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
- body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
+ body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title,.experience-intro h2) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
 }
