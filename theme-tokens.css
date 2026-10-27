@@ -414,7 +414,7 @@ body.theme-light #dish-detail-modal .modal-dish-variant-btn.selected .variant-bt
 body.theme-light #menu-sections-drawer-modal :is(.drawer-qf-chip.active,.drawer-section-item.active) { background:#f0e5ce; color:#6b111d; border-color:var(--gold-edge); }
 /* Reuse the actual CP breakfast badge finish, with solid readable lettering. */
 body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.feedback-title,.celebrate-title) {
- background:var(--gold-polish); color:var(--heading-accent); -webkit-text-fill-color:currentColor;
+ background:var(--gold-polish); color:var(--gold-ink); -webkit-text-fill-color:currentColor;
  border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); border-radius:.65rem;
  padding:.3em .7em; width:fit-content; max-width:100%; box-sizing:border-box; margin-inline:auto;
  text-shadow:0 1px #fff8; line-height:1.4;
