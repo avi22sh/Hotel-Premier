@@ -283,7 +283,7 @@ body.theme-dark :is(input[type="date"],input[type="time"]) { color-scheme:dark; 
 #section-dine :is(.view-detail-link,.signature-inquire-btn) { width:44px; height:44px; min-width:44px; min-height:44px; background:transparent; border:0; box-shadow:none; }
 
 /* Guest journal: editorial introduction, calm cards and a purposeful composer. */
-#guest-feedback-section .feedback-container { width:min(100%,1080px); margin-inline:auto; padding:clamp(1rem,4vw,2.5rem); box-sizing:border-box; }
+#guest-feedback-section .feedback-container { width:100%; max-width:1080px; margin-inline:auto; padding:clamp(1rem,4vw,2.5rem); box-sizing:border-box; border:0; background:transparent; box-shadow:none; }
 .experience-intro { padding:clamp(1.5rem,5vw,3rem); border:1px solid var(--border); border-radius:1.6rem; background:linear-gradient(130deg,#c7a6681c,transparent 70%),var(--surface); box-shadow:inset 0 1px #fff3,0 12px 35px #0000000c; text-align:left; }
 .experience-intro h2 { font:500 clamp(1.8rem,5vw,3rem)/1.25 var(--font-royal,Georgia),serif; color:var(--text); margin:.65rem 0 1rem; }
 .experience-intro p { color:var(--muted); max-width:42rem; line-height:1.7; }
@@ -314,6 +314,8 @@ body.theme-dark #guest-feedback-section .star-choice.active .star-btn { color:#6
 #dining-feedback-form,#review-platforms { scroll-margin-top:calc(var(--app-header-height,8rem) + 1rem); }
 @media(max-width:479px) {
  .enquiry-schedule { grid-template-columns:minmax(0,1fr); gap:.8rem; }
+ #guest-feedback-section .feedback-container { padding:0; border:0; background:transparent; box-shadow:none; }
+ #guest-feedback-section .star-rating-control { gap:4px; }
  #guest-feedback-section .review-grid { grid-template-columns:minmax(0,1fr); }
  #guest-feedback-section .external-platforms-quiet-row { grid-template-columns:minmax(0,1fr); }
  #guest-feedback-section .experience-actions { display:grid; grid-template-columns:minmax(0,1fr); }

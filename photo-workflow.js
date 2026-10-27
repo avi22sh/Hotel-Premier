@@ -38,7 +38,7 @@
  async function optimize(file,crop,options) {
   if(typeof Worker!=='undefined' && typeof OffscreenCanvas!=='undefined') {
    return new Promise((resolve,reject)=>{
-    const worker=new Worker('photo-worker.js?v=22.24');
+    const worker=new Worker('photo-worker.js?v=22.25');
     const cleanup=()=>{clearTimeout(timer);options.signal?.removeEventListener('abort',abort);worker.terminate();};
     const abort=()=>{cleanup();reject(new DOMException('Photo selection cancelled.','AbortError'));};
     const timer=setTimeout(()=>{cleanup();reject(Error('Photo optimization took too long. Try a smaller photo.'));},90000);
@@ -100,7 +100,7 @@
   window.AssetPipeline.processAutomaticStudioEnhancement=async(source,dish={},options={})=>{
    const settings=await window.HOTEL_STORAGE?.getAISettings?.()||{};
    return new Promise((resolve,reject)=>{
-    const worker=new Worker('photo-enhance-worker.js?v=22.24');
+    const worker=new Worker('photo-enhance-worker.js?v=22.25');
     const timer=setTimeout(()=>{worker.terminate();reject(Error('Photo enhancement took too long. Try a smaller photo.'));},90000);
     worker.onmessage=event=>{clearTimeout(timer);worker.terminate();const result=event.data;if(result.error){reject(Error(result.error));return;}const {blob,...metadata}=result;resolve({...metadata,enhancedDataUrl:makeURL(blob)});};
     worker.onerror=()=>{clearTimeout(timer);worker.terminate();reject(Error('Local photo tools could not start. Reload and retry.'));};
