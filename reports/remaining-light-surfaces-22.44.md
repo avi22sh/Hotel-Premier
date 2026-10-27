@@ -1,0 +1,8 @@
+# Remaining light surfaces — v22.44
+
+Completed the light-mode shell: pearl/gold header, heritage-red wordmark, gold selected navigation and share/settings controls; matching footer with the original bird placement preserved. Updated the native Property Moments dialog, photo surround, captions and gallery controls, while retaining full-image display, swipe/arrow navigation, Escape and focus restoration. Applied matching surfaces to Explore attractions/routes/badges, guest form fields and modal headers, policy/feedback panels, Home welcome and group-assistance panels. Field sizes, validation, disabled states, input types, personal data and partner identity remain intact. All additions are scoped to light mode.
+
+Checks: CSS structure, semantic contrast, language, accessible mobile sizing and Property Moments navigation/focus regressions passed. All 17 source regression checks passed for v22.44. Rendered device-width checks are separate from physical-device testing.
+
+
+Live checks: final v22.44 confirmed. All eight main guest sections inspected for old dark content panels; the remaining Explore dark region is the intentional photographic caption/contrast overlay. Native gallery photo loaded, navigation and close worked; at 390px its 352px dialog and three controls fit. Room/event date and time fields ended at their parent boundaries. Review card and textarea showed the matching pearl gradient. Header and footer rendered with readable details and original bird position. Mobile page width stayed within the viewport; override reset and Home preview restored. Screenshots saved for header/Home, Property Moments, enquiry and footer. No fields submitted or guest records changed.
