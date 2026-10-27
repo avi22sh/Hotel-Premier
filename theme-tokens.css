@@ -499,7 +499,18 @@ body.theme-light #section-home .sanctuary-hero-title { color:#eadcc0; text-shado
 body.theme-light #section-home .sanctuary-hero-statement { color:#d8d9da; }
 body.theme-light :is(.last-call-support-note,.last-call-flag) { color:var(--text); }
 body.theme-light #section-home :is(.sanctuary-crest-emblem,.sanctuary-pill) { background:#ffffff0c; color:#eadcc0; border-color:#c7a66880; box-shadow:inset 0 1px #ffffff12; }
+/* Hotel wordmarks use gold foil on the navy brand surfaces in either theme. */
+:root { --brand-gold-polish:linear-gradient(110deg,#c79d51 0%,#e8c780 28%,#fff1c9 45%,#d4ac5f 53%,#f8d990 76%,#c79d51 100%); }
+body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span,.footer-brand-m) { color:#e7c47c; text-shadow:0 1px 1px #0008; }
+@supports ((background-clip:text) or (-webkit-background-clip:text)) {
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span,.footer-brand-m) {
+  background-image:var(--brand-gold-polish); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:none;
+ }
+}
+body:is(.theme-light,.theme-dark) .footer-brand-birds { color:#e7c47c; background-image:var(--brand-gold-polish); }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
  body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title,.experience-intro h2) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span,.footer-brand-m) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
+ body:is(.theme-light,.theme-dark) .footer-brand-birds { background:CanvasText; }
 }
