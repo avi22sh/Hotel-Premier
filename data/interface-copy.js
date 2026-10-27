@@ -475,6 +475,9 @@ Review~अतिथि अनुभव~पाहुण्यांचे अन�
 Room Enquiry~कमरे की पूछताछ~खोलीची चौकशी
 Call Front Desk~रिसेप्शन पर कॉल करें~रिसेप्शनला फोन करा
 "A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."~"सुविधापूर्ण निवास और खानदेश के आत्मीय आतिथ्य का सुंदर संगम। 14 सुसज्जित वातानुकूलित कमरे और 100% शुद्ध शाकाहारी भोजन, भुसावल रेलवे जंक्शन से कुछ ही मिनटों की दूरी पर।"~"आरामदायी निवास आणि खानदेशच्या आपुलकीच्या आदरातिथ्याचा सुंदर संगम. 14 सुसज्ज वातानुकूलित खोल्या आणि 100% शुद्ध शाकाहारी भोजन, भुसावळ रेल्वे जंक्शनपासून काही मिनिटांच्या अंतरावर."
+100% Pure Vegetarian~100% शुद्ध शाकाहारी~100% शुद्ध शाकाहारी
+Favorites~पसंदीदा व्यंजन~आवडते पदार्थ
+Favourites~पसंदीदा व्यंजन~आवडते पदार्थ
 Save changes~बदलाव सहेजें~बदल जतन करा
 Back~वापस~मागे
 ← Back~← वापस~← मागे

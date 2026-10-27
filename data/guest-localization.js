@@ -198,6 +198,8 @@
   if(count)return lang==='hi'?`${count[1]} ${count[2].toLowerCase()==='items'?'व्यंजन':'संग्रह'}`:lang==='mr'?`${count[1]} ${count[2].toLowerCase()==='items'?'पदार्थ':'संग्रह'}`:value;
   if(lang==='en')return value;
   const hi=lang==='hi';let match;
+  if((match=key.match(/^(.+), (₹[\d,]+(?: – ₹[\d,]+)?)$/)))return `${text(match[1],lang)}, ${match[2]}`;
+  if((match=key.match(/^(.+) items$/)))return hi?`${text(match[1],lang)} के विकल्प`:`${text(match[1],lang)}चे पर्याय`;
   if((match=key.match(/^(\d+) stars?$/)))return hi?`${match[1]} सितारे`:`${match[1]} तारे`;
   if((match=key.match(/^(\d+(?:\.\d+)?) sq\.ft$/i)))return hi?`${match[1]} वर्ग फुट`:`${match[1]} चौ.फूट`;
   if((match=key.match(/^Chargeable extra beds \(₹([\d,]+)\/night\)$/)))return hi?`शुल्क वाले अतिरिक्त बिस्तर (₹${match[1]}/रात)`:`शुल्क असलेले अतिरिक्त बेड (₹${match[1]}/रात्र)`;
@@ -237,10 +239,10 @@
     originals.set(node,{source,applied});if(value!==applied)node.nodeValue=applied;
    }
   }
-  for(const el of root.querySelectorAll('[placeholder],[aria-label]')){
+  for(const el of root.querySelectorAll('[placeholder],[aria-label],[alt],[title]')){
    if(el.closest('#admin-modal-backdrop,#new-dish-modal,#add-dish-modal,#image-replace-modal'))continue;
    const attributes=attributeOriginals.get(el)||{};
-   for(const attr of ['placeholder','aria-label'])if(el.hasAttribute(attr)){
+   for(const attr of ['placeholder','aria-label','alt','title'])if(el.hasAttribute(attr)){
     const value=el.getAttribute(attr),previous=attributes[attr];
     const source=previous&&value===previous.applied?previous.source:value;
     const translated=text(source,lang);attributes[attr]={source,applied:translated};if(value!==translated)el.setAttribute(attr,translated);
