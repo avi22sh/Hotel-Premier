@@ -48,7 +48,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest & App Icons -->
-  <link rel="manifest" href="manifest.json?v=22.23">
+  <link rel="manifest" href="manifest.json?v=22.24">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
@@ -56,21 +56,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="data/menu-image-sizes.js?v=22.23"></script>
-  <script src="asset-pipeline.js?v=22.23"></script>
+  <script src="data/menu-image-sizes.js?v=22.24"></script>
+  <script src="asset-pipeline.js?v=22.24"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=22.23">
-  <link rel="stylesheet" href="royal.css?v=22.23">
-  <link rel="stylesheet" href="inline-styles.css?v=22.23">
-  <link rel="stylesheet" href="local-admin.css?v=22.23">
-  <link rel="stylesheet" href="overlays.css?v=22.23">
-  <link rel="stylesheet" href="theme-tokens.css?v=22.23">
-  <script src="overlay-manager.js?v=22.23" defer></script>
-  <script src="guest-forms.js?v=22.23" defer></script>
-  <script src="image-safety.js?v=22.23" defer></script>
-  <script src="admin-layout.js?v=22.23" defer></script>
-  <script src="public-reviews.js?v=22.23" defer></script>
+  <link rel="stylesheet" href="styles.css?v=22.24">
+  <link rel="stylesheet" href="royal.css?v=22.24">
+  <link rel="stylesheet" href="inline-styles.css?v=22.24">
+  <link rel="stylesheet" href="local-admin.css?v=22.24">
+  <link rel="stylesheet" href="overlays.css?v=22.24">
+  <link rel="stylesheet" href="theme-tokens.css?v=22.24">
+  <script src="overlay-manager.js?v=22.24" defer></script>
+  <script src="guest-forms.js?v=22.24" defer></script>
+  <script src="image-safety.js?v=22.24" defer></script>
+  <script src="admin-layout.js?v=22.24" defer></script>
+  <script src="public-reviews.js?v=22.24" defer></script>
 </head>
 <body>
 
@@ -1095,8 +1095,10 @@
         <div class="enquiry-grid">
 <label for="restaurant-event-type">Occasion<select id="restaurant-event-type" required><option>Birthday Celebration</option><option>Wedding Anniversary</option><option>Engagement / Roka</option><option>Family Get-Together</option><option>Corporate Gathering</option><option>Business Meeting</option><option>Group Dining</option><option>Kitty Party</option><option>Small Family Function</option><option>Special Occasion / Other</option></select></label>
 <label for="restaurant-event-guests">Number of guests<input id="restaurant-event-guests" type="number" min="1" max="40" step="1" required></label>
+<div class="enquiry-schedule">
 <label for="restaurant-event-date">Preferred date<input id="restaurant-event-date" type="date" required></label>
 <label for="restaurant-event-time">Preferred time · IST<input id="restaurant-event-time" type="time" required></label>
+</div>
 <label for="restaurant-event-name">Your name<input id="restaurant-event-name" autocomplete="name" required></label>
 <label for="restaurant-event-phone">WhatsApp / mobile<input id="restaurant-event-phone" type="tel" inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" autocomplete="tel-national" required></label>
         </div>
@@ -1144,8 +1146,10 @@
             </select>
           </div>
 
+          <div class="enquiry-schedule">
           <div class="form-group"><label class="form-label" for="calc-arrival-date">Arrival date</label><input id="calc-arrival-date" class="form-input" type="date" required></div>
           <div class="form-group"><label class="form-label" for="calc-arrival-time">Expected arrival · IST</label><input id="calc-arrival-time" class="form-input" type="time" step="60" required></div>
+          </div>
 
           <div class="form-group">
             <label class="form-label" for="calc-room-type">Room Category</label>
@@ -1399,14 +1403,20 @@
   <!-- ================================================================ -->
   <section class="guest-feedback-section" id="guest-feedback-section">
     <div class="feedback-container">
+      <header class="experience-intro">
+        <span class="editorial-eyebrow">The Premier experience</span>
+        <h2>Every stay has a story.</h2>
+        <p>Discover guest experiences, share a memorable moment, or tell us how we can make your next visit better.</p>
+        <nav class="experience-actions" aria-label="Review page shortcuts"><button type="button" onclick="document.getElementById('review-platforms').scrollIntoView({behavior:'smooth',block:'start'})">Explore guest reviews <span aria-hidden="true">↗</span></button><button type="button" onclick="document.getElementById('dining-feedback-form').scrollIntoView({behavior:'smooth',block:'start'})">Share your experience <span aria-hidden="true">↓</span></button></nav>
+      </header>
       <section class="public-reviews" aria-labelledby="public-review-heading">
-        <h2 id="public-review-heading">Guest Experiences</h2>
+        <h3 id="public-review-heading">Voices of our guests</h3>
         <p class="review-status" id="public-review-status" role="status">Loading guest experiences…</p>
         <div class="review-grid" id="public-review-grid"></div>
       </section>
       <div class="hp-inline-fb5ec070f2bf">
-        <span class="feedback-badge">⭐ YOUR EXPERIENCE MATTERS</span>
-        <h2 class="feedback-title">Write a Review</h2>
+        <span class="feedback-badge">A note to Hotel Premier</span>
+        <h2 class="feedback-title">Your experience, in your words.</h2>
         <p class="feedback-subtitle">
           Tell us what you enjoyed and where we can do better. Your feedback helps us care for every guest.
         </p>
@@ -1464,8 +1474,9 @@
       </div>
 
       <!-- Secondary Understated External Review Platforms -->
-      <div class="external-review-quiet-block">
-        <div class="external-review-quiet-title">Or share your review publicly on:</div>
+      <div class="external-review-quiet-block" id="review-platforms">
+        <h3 class="external-review-quiet-title">Discover more guest perspectives</h3>
+        <p>Visit our hotel listings to read or share a public review.</p>
         <div class="external-platforms-quiet-row">
           <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
             <img src="assets/brands/google-g.png" alt="" class="platform-brand-logo platform-brand-google" width="24" height="24"><span>Google Reviews</span>
@@ -1935,29 +1946,29 @@
   </div>
 
   <!-- Load Application Scripts (v20.51) -->
-  <script src="local-lock.js?v=22.23"></script>
-  <script src="photo-storage.js?v=22.23"></script>
-  <script src="data-validation.js?v=22.23"></script>
-  <script src="photo-workflow.js?v=22.23"></script>
-  <script src="ui-dialogs.js?v=22.23"></script>
-  <script src="publish-bundle.js?v=22.23"></script>
-  <script src="storage.js?v=22.23"></script>
-  <script src="vault.js?v=22.23"></script>
-  <script src="data/translations.js?v=22.23"></script>
-  <script src="data/guest-localization.js?v=22.23"></script>
-  <script src="data/hotel-data.js?v=22.23"></script>
-  <script src="data/menu-data.js?v=22.23"></script>
-  <script src="data/menu-photos.js?v=22.23"></script>
-  <script src="data/legacy-photo-paths.js?v=22.23"></script>
-  <script src="data/published-overrides.js?v=22.23"></script>
-  <script src="menu-structure.js?v=22.23"></script>
-  <script src="group-stays.js?v=22.23"></script>
-  <script src="guest-network.js?v=22.23"></script>
-  <script src="app.js?v=22.23"></script>
-  <script src="content-studio.js?v=22.23"></script>
-  <script src="property-gallery.js?v=22.23"></script>
+  <script src="local-lock.js?v=22.24"></script>
+  <script src="photo-storage.js?v=22.24"></script>
+  <script src="data-validation.js?v=22.24"></script>
+  <script src="photo-workflow.js?v=22.24"></script>
+  <script src="ui-dialogs.js?v=22.24"></script>
+  <script src="publish-bundle.js?v=22.24"></script>
+  <script src="storage.js?v=22.24"></script>
+  <script src="vault.js?v=22.24"></script>
+  <script src="data/translations.js?v=22.24"></script>
+  <script src="data/guest-localization.js?v=22.24"></script>
+  <script src="data/hotel-data.js?v=22.24"></script>
+  <script src="data/menu-data.js?v=22.24"></script>
+  <script src="data/menu-photos.js?v=22.24"></script>
+  <script src="data/legacy-photo-paths.js?v=22.24"></script>
+  <script src="data/published-overrides.js?v=22.24"></script>
+  <script src="menu-structure.js?v=22.24"></script>
+  <script src="group-stays.js?v=22.24"></script>
+  <script src="guest-network.js?v=22.24"></script>
+  <script src="app.js?v=22.24"></script>
+  <script src="content-studio.js?v=22.24"></script>
+  <script src="property-gallery.js?v=22.24"></script>
 
   <!-- Updates are offered only after an explicit guest action. -->
-  <script src="pwa-updates.js?v=22.23"></script>
+  <script src="pwa-updates.js?v=22.24"></script>
 </body>
 </html>

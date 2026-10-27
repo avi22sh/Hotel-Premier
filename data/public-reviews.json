@@ -1,45 +1,4 @@
 {
-  "updatedAt": "2026-10-24T12:00:00.000Z",
-  "reviews": [
-    {
-      "author": "Dr. Rajesh Kulkarni",
-      "stayType": "Family Suite Stay",
-      "rating": 5,
-      "source": "Google",
-      "date": "October 2026",
-      "badge": "Verified Guest",
-      "approved": true,
-      "text": "Exceptional stay at Hotel Premier. The Royale King room was impeccably clean, spacious and quiet. Pride Restaurant food is 100% pure veg and deliciously authentic—their Paneer Butter Masala and Dal Tadka are outstanding. 24-hour checkout gave us complete peace of mind."
-    },
-    {
-      "author": "Sunil Agrawal & Family",
-      "stayType": "Wedding Group Stay",
-      "rating": 5,
-      "source": "MakeMyTrip",
-      "date": "September 2026",
-      "badge": "Verified Booking",
-      "approved": true,
-      "text": "Booked 8 rooms for a family marriage event. The reception team managed our luggage and check-in smoothly. Clean linens, excellent split AC, and the complimentary snacks basket with tea premixes in the room was a very thoughtful touch."
-    },
-    {
-      "author": "Pooja Deshmukh",
-      "stayType": "Transit Railway Stay",
-      "rating": 5,
-      "source": "Google",
-      "date": "October 2026",
-      "badge": "Verified Guest",
-      "approved": true,
-      "text": "Just 15 minutes from Bhusawal Railway Junction. Very safe for solo women travellers and families. The room amenities including dental kits and toiletries were prompt, and the pure veg breakfast thali was piping hot and fresh."
-    },
-    {
-      "author": "Amitabh Sharma",
-      "stayType": "Corporate Business Stay",
-      "rating": 5,
-      "source": "Goibibo",
-      "date": "October 2026",
-      "badge": "Verified Stay",
-      "approved": true,
-      "text": "Best business stay in Bhusawal. High-speed Wi-Fi worked flawlessly, power backup is 100% reliable, and the Front Desk assisted with early morning station drop guidance. Highly recommended!"
-    }
-  ]
+  "updatedAt": null,
+  "reviews": []
 }

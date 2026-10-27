@@ -160,6 +160,16 @@
  add('Group Stay & Privilege Estimator','समूह प्रवास और लाभ का अनुमान','समूह मुक्काम आणि लाभांचा अंदाज');add('Select your room requirements to calculate transparent published tariff and privileges','अपनी ज़रूरत के कमरे चुनकर प्रकाशित किराया और लाभ देखें','आवश्यक खोल्या निवडून प्रकाशित भाडे आणि लाभ पाहा');add('Number of nights','रातों की संख्या','रात्रींची संख्या');add('Meal Plan','भोजन योजना','जेवणाचा पर्याय');add('Organizer details','आयोजक का विवरण','आयोजकाची माहिती');add('Total overnight guests · maximum 36','रुकने वाले कुल अतिथि · अधिकतम 36','मुक्काम करणारे एकूण पाहुणे · जास्तीत जास्त 36');add('Complimentary child extra beds · ages 5–10','निःशुल्क बाल अतिरिक्त बिस्तर · आयु 5–10','मुलांचे मोफत अतिरिक्त बेड · वय 5–10');
  add('Share Hotel Premier website','होटल प्रीमियर की वेबसाइट साझा करें','हॉटेल प्रीमियरची वेबसाइट शेअर करा');add('Website link','वेबसाइट लिंक','वेबसाइट लिंक');add('Link copied. Share it in any app.','लिंक कॉपी हो गई। किसी भी ऐप में साझा करें।','लिंक कॉपी झाली. कोणत्याही ॲपमध्ये शेअर करा.');add('Select and copy this link to share it.','साझा करने के लिए यह लिंक चुनकर कॉपी करें।','शेअर करण्यासाठी ही लिंक निवडून कॉपी करा.');add('Please choose a valid arrival date and time.','आगमन की वैध तारीख और समय चुनें।','आगमनाची वैध तारीख आणि वेळ निवडा.');
  const normalize=value=>String(value).replace(/\s+/g,' ').trim();
+ add('The Premier experience','प्रीमियर का अनुभव','प्रीमियरचा अनुभव');
+ add('Every stay has a story.','हर प्रवास की अपनी कहानी है।','प्रत्येक मुक्कामाची एक गोष्ट असते.');
+ add('Discover guest experiences, share a memorable moment, or tell us how we can make your next visit better.','अतिथियों के अनुभव पढ़ें, यादगार पल साझा करें या बताएँ कि हम आपका अगला प्रवास कैसे बेहतर बना सकते हैं।','पाहुण्यांचे अनुभव वाचा, आठवणीतील क्षण सांगा किंवा तुमची पुढील भेट आणखी चांगली करण्यासाठी सूचना द्या.');
+ add('Explore guest reviews','अतिथियों की समीक्षाएँ पढ़ें','पाहुण्यांचे अभिप्राय वाचा');add('Share your experience','अपना अनुभव साझा करें','तुमचा अनुभव सांगा');
+ add('Voices of our guests','हमारे अतिथियों की राय','आमच्या पाहुण्यांचे मनोगत');add('A note to Hotel Premier','होटल प्रीमियर के लिए संदेश','हॉटेल प्रीमियरसाठी संदेश');
+ add('Your experience, in your words.','आपका अनुभव, आपके शब्दों में।','तुमचा अनुभव, तुमच्या शब्दांत.');
+ add('Discover more guest perspectives','अतिथियों की और राय जानें','पाहुण्यांचे आणखी अनुभव जाणून घ्या');
+ add('Visit our hotel listings to read or share a public review.','सार्वजनिक समीक्षा पढ़ने या साझा करने के लिए हमारे होटल की लिस्टिंग देखें।','सार्वजनिक अभिप्राय वाचण्यासाठी किंवा लिहिण्यासाठी आमच्या हॉटेलची लिस्टिंग पाहा.');
+ add('Read guest experiences on Google, MakeMyTrip and Goibibo using the links below.','नीचे दिए लिंक से Google, MakeMyTrip और Goibibo पर अतिथियों के अनुभव पढ़ें।','खालील लिंक वापरून Google, MakeMyTrip आणि Goibibo वरील पाहुण्यांचे अनुभव वाचा.');
+ add('Guest reviews are unavailable here for now. Explore our hotel listings below.','अभी यहाँ अतिथियों की समीक्षाएँ उपलब्ध नहीं हैं। नीचे हमारे होटल की लिस्टिंग देखें।','सध्या येथे पाहुण्यांचे अभिप्राय उपलब्ध नाहीत. खाली आमच्या हॉटेलची लिस्टिंग पाहा.');
  const table=new Map();
  for(const row of copy)table.set(normalize(row[0]),row);
  for(const key of Object.keys(i18n?.translations.en||{})){

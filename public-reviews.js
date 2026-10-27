@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
   status.textContent = 'Loading guest experiences…';
   try {
-    const response = await fetch('data/public-reviews.json?v=22.23', { cache: 'no-cache', signal:AbortSignal.timeout(10000) });
+    const response = await fetch('data/public-reviews.json?v=22.24', { cache: 'no-cache', signal:AbortSignal.timeout(10000) });
     if (!response.ok) throw new Error('Review feed unavailable');
     const data = await response.json();
     const reviews = Array.isArray(data.reviews)
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       const sourceClasses={Google:'google', 'Google Reviews':'google', MakeMyTrip:'makemytrip', Goibibo:'goibibo'};
       const sourceClass = Object.hasOwn(sourceClasses,source) ? sourceClasses[source] : 'other';
       footer.append(node('span', `review-source-tag review-source-${sourceClass}`, source));
-      if (plain(review.badge)) footer.append(node('span', 'review-verified-pill', plain(review.badge)));
+      // A local approval flag does not establish a verified booking or source.
       card.append(top, node('blockquote', 'review-quote-body', plain(review.text)), footer);
       grid.appendChild(card);
     }
@@ -52,8 +52,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const dateLabel = Number.isFinite(updated) ? new Date(updated).toLocaleDateString('en-IN', { timeZone: 'Asia/Kolkata' }) : '';
     status.textContent = reviews.length
       ? `Guest experience highlights. ${dateLabel ? `Last updated ${dateLabel}.` : ''} ${fresh ? '' : 'Refresh pending.'}`
-      : 'Explore guest experiences on our verified hotel listings below.';
+      : 'Read guest experiences on Google, MakeMyTrip and Goibibo using the links below.';
   } catch (_) {
-    status.textContent = 'Reviews are temporarily unavailable. You can still visit our verified hotel review links below.';
+    status.textContent = 'Guest reviews are unavailable here for now. Explore our hotel listings below.';
   }
 });
