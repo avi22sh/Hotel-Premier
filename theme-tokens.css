@@ -412,17 +412,17 @@ body.theme-light #section-tariffs .tariff-plan-btn.active {
 }
 body.theme-light #dish-detail-modal .modal-dish-variant-btn.selected .variant-btn-price { color:inherit; }
 body.theme-light #menu-sections-drawer-modal :is(.drawer-qf-chip.active,.drawer-section-item.active) { background:#f0e5ce; color:#6b111d; border-color:var(--gold-edge); }
-/* Reuse the actual CP breakfast badge finish, with solid readable lettering. */
+/* Reserve metallic gold for actions and selection; let heritage-red headings breathe. */
 body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.feedback-title,.celebrate-title,.experience-intro h2) {
- background:var(--gold-polish); color:var(--gold-ink); -webkit-text-fill-color:currentColor;
- border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); border-radius:.65rem;
- padding:.3em .7em; width:fit-content; max-width:100%; box-sizing:border-box; margin-inline:auto;
- text-shadow:0 1px #fff8; line-height:1.4;
+ background:none; color:var(--heading-accent); -webkit-text-fill-color:currentColor;
+ border:0; box-shadow:none; border-radius:0; padding:0; max-width:100%; box-sizing:border-box;
+ text-shadow:none; line-height:1.4;
 }
 body.theme-light #section-stay .atmosphere-gallery-title { color:var(--heading-accent); }
 /* One light-mode finish for guest cards, enquiry actions and branded partner tiles. */
 body.theme-light {
- --pearl-polish:linear-gradient(165deg,#fffdf8f5 0%,#f8f0def0 43%,#eee3cced 44%,#fcf7edf5 100%);
+ --pearl-polish:linear-gradient(145deg,#fffdf9f5 0%,#f5f0e8f5 100%);
+ --navy-polish:linear-gradient(155deg,#233143 0%,#172334 48%,#101a27 100%);
  --pearl-relief:inset 0 1px 0 #fffef8,inset 0 -1px 0 #bea06b55,0 5px 18px #61421416;
 }
 body.theme-light :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
@@ -458,19 +458,19 @@ body.theme-light #guest-feedback-section .platform-pill-btn[href*="google"] { ba
 body.theme-light .contact-card-btn.wa-btn { background:linear-gradient(165deg,#ffffff35,transparent 44%,#00000012 45%,transparent),#126139; color:#fff; }
 body.theme-light :is(.home-pillar-tag,.room-amenity-tag,.tariff-card-amenities span,.dish-card-chip,.privilege-pill) { box-shadow:inset 0 1px #fff8; border-color:var(--gold-edge); }
 /* Complete the light shell, guest forms, Explore and native property gallery. */
-body.theme-light .app-header { background:var(--pearl-polish); color:var(--text); border-bottom:1px solid var(--gold-edge); box-shadow:var(--pearl-relief); --header-ink:#6b111d; --header-edge:var(--gold-edge); }
-body.theme-light .header-top { background:var(--pearl-polish); }
-body.theme-light .app-header .brand-hotel-name { color:#6b111d; text-shadow:0 1px #fff9; }
-body.theme-light .app-header .brand-tagline { color:#694c2c; }
-body.theme-light .hotel-nav-bar { background:var(--pearl-polish); border-top:1px solid #c7a66855; }
-body.theme-light .hotel-nav-tab { color:#6b111d; }
+body.theme-light .app-header { background:var(--navy-polish); color:#f3eee4; border-bottom:1px solid #c7a66880; box-shadow:0 4px 18px #101a2729; --header-ink:#eadcc0; --header-edge:#c7a66880; }
+body.theme-light .header-top { background:transparent; }
+body.theme-light .app-header .brand-hotel-name { color:#eadcc0; text-shadow:0 1px #0004; }
+body.theme-light .app-header .brand-tagline { color:#c5b58e; }
+body.theme-light .hotel-nav-bar { background:#121c29; border-top:1px solid #c7a66840; }
+body.theme-light .hotel-nav-tab { color:#d5dbe5; }
 body.theme-light .hotel-nav-tab.active { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); }
 body.theme-light :is(.header-share-btn,.settings-trigger) { color:#6b111d; background:var(--gold-polish); border-color:var(--gold-edge); box-shadow:var(--gold-relief); }
 body.theme-light .settings-panel { background:var(--pearl-polish); color:var(--text); border-color:var(--gold-edge); box-shadow:var(--pearl-relief); }
 body.theme-light :is(.lang-btn.active,.theme-choice-btn.active,.attraction-filter-btn.active) { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); }
-body.theme-light .app-footer { background:var(--pearl-polish); color:var(--text); border-top:2px solid var(--gold-edge); box-shadow:inset 0 1px #fff; }
-body.theme-light .app-footer .footer-brand-wordmark { color:#6b111d; text-shadow:0 1px #fff8; }
-body.theme-light .app-footer :is(.footer-details-grid,.footer-copyright,.footer-crest-logo > div:not(.footer-brand-wordmark)) { color:var(--muted); }
+body.theme-light .app-footer { background:var(--navy-polish); color:#f3eee4; border-top:2px solid var(--gold-edge); box-shadow:inset 0 1px #ffffff12; }
+body.theme-light .app-footer .footer-brand-wordmark { color:#eadcc0; text-shadow:0 1px #0004; }
+body.theme-light .app-footer :is(.footer-details-grid,.footer-copyright,.footer-crest-logo > div:not(.footer-brand-wordmark)) { color:#c5cad2; }
 body.theme-light .app-footer .footer-bottom-bar { border-color:var(--gold-edge); }
 body.theme-light #section-explore :is(.attraction-card,.explore-concierge-card,.route-start-card),
 body.theme-light .section-wrapper :is(.guest-policy-panel,.guest-policy-note,.review-extra-details,.feedback-container,.summary-grand-row),
@@ -492,13 +492,13 @@ body.theme-light .property-viewer::backdrop { background:#231c14b3; backdrop-fil
 body.theme-light .property-viewer img { background:#f8f1e3; border:1px solid #c7a66866; box-sizing:border-box; }
 body.theme-light .property-viewer p { color:var(--text); line-height:1.6; }
 body.theme-light .property-viewer-controls button { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); min-height:44px; }
-body.theme-light #section-home .sanctuary-hero-section,
 body.theme-light .last-call-front-desk-card { background:var(--pearl-polish); color:var(--text); border:1px solid var(--gold-edge); box-shadow:var(--pearl-relief); border-radius:1rem; }
 body.theme-light #section-home .sanctuary-hero-section::before { opacity:.15; }
-body.theme-light #section-home .sanctuary-hero-title { color:#6b111d; text-shadow:0 1px #fff8; }
-body.theme-light #section-home .sanctuary-hero-statement,
+body.theme-light #section-home .sanctuary-hero-section { background:var(--navy-polish); color:#f3eee4; border:1px solid #c7a66880; border-radius:1rem; box-shadow:0 8px 28px #101a271c; }
+body.theme-light #section-home .sanctuary-hero-title { color:#eadcc0; text-shadow:0 1px #0004; }
+body.theme-light #section-home .sanctuary-hero-statement { color:#d8d9da; }
 body.theme-light :is(.last-call-support-note,.last-call-flag) { color:var(--text); }
-body.theme-light #section-home :is(.sanctuary-crest-emblem,.sanctuary-pill) { background:var(--pearl-polish); color:var(--text); border-color:var(--gold-edge); box-shadow:var(--pearl-relief); }
+body.theme-light #section-home :is(.sanctuary-crest-emblem,.sanctuary-pill) { background:#ffffff0c; color:#eadcc0; border-color:#c7a66880; box-shadow:inset 0 1px #ffffff12; }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
  body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title,.experience-intro h2) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
