@@ -1,0 +1,7 @@
+# Unified guest gloss — v22.41
+
+Extended the existing CP gold plating to Home pillar links, quick actions, room enquiry/room tariff buttons, directions and contact actions. Applied a related pearl/gold reflective surface to guest cards and menu items. The eligible ₹200 direct-stay benefit uses the gold plate with dark readable copy. Partner tiles retain authentic logos and brand colours with gloss, gold edges and relief; Google and Goibibo use pearl surfaces and MakeMyTrip keeps its navy base. Swiggy/Zomato keep orange/red. WhatsApp remains green. Dark styling is unchanged.
+
+CSS structure, theme contrast, interface-language and menu/brand regression checks passed; all 17 source checks passed. Live Home card buttons were inspected. During rendered QA, legacy rules were found masking menu card/partner surfaces; the final release resolves these with scoped selectors. No content, pricing, navigation destinations, photos or guest records were modified.
+
+Final live verification: v22.41 loaded. Mobile menu card computed pearl gradient confirmed; 390px viewport had no horizontal overflow. Google/Goibibo pearl gloss and MakeMyTrip navy gloss confirmed. The ₹200 benefit computed gradient matches CP gold plating. Swiggy/Zomato glossy finishes and gold borders inspected in dish details. Home suite/menu links visually inspected and screenshots saved. Temporary viewport reset; Home preview restored.
