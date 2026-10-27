@@ -45,7 +45,7 @@
     next = valid(next);
     localStorage.setItem(KEY,JSON.stringify(next)); // Commit before changing the visible draft.
     draft = next;
-    apply();
+    apply();if(typeof CustomEvent==='function')window.dispatchEvent?.(new CustomEvent('hp-content-saved'));
   }
   function render(container) {
     if (!window.admin?.isAuthenticated) return;
@@ -125,10 +125,14 @@
         targets.set(`${section}-${index}`,{node,section,original:node.textContent.trim()});
       });
     }
-    try { const saved=localStorage.getItem(KEY); if(saved) draft=valid(JSON.parse(saved)); }
+    try { const saved=localStorage.getItem(KEY); if(saved) draft=valid(JSON.parse(saved)); else if(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.editorial)draft=valid(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES.editorial); }
     catch(error) { console.warn('Content draft not loaded:',error.message); }
     apply();
   }
-  window.HotelContentStudio={render,validate:valid};
+  window.addEventListener?.('storage',event=>{
+    if(event.key!==KEY)return;
+    try{draft=event.newValue?valid(JSON.parse(event.newValue)):valid(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.editorial||{version:1,text:{},cards:[]});apply();}catch(error){console.warn('Content update not applied:',error.message);}
+  });
+  window.HotelContentStudio={render,validate:valid,snapshot:()=>JSON.parse(JSON.stringify(draft))};
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();

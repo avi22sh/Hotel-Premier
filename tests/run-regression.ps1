@@ -245,32 +245,11 @@ if (-not $storage.Contains("HotelPremierStorageManager") -or -not $storage.Conta
 }
 Write-Host "PASS [15/17]: Offline Drill (All $($coreFiles.Count) CORE_ASSETS verified on disk, navigation fallback & dual storage engine active)" -ForegroundColor Green
 
-# 16. Image Engine, Luxury Surfaces & 2.5D Angle/Perspective Studio Verification
+# 16. Photo display only; generation and enhancement removed
 $pipeline = Get-Content -Raw "asset-pipeline.js"
 $adminJs = Get-Content -Raw "admin.js"
-
-if (-not $pipeline.Contains("applyItemViewTransform") -or 
-    -not $pipeline.Contains("bgMode === 'cutout'") -or 
-    -not $pipeline.Contains("image/webp")) {
-    Write-Error "FAILED: asset-pipeline.js missing 2.5D view transformation engine or transparent cutout support"
-    exit 1
-}
-
-if (-not $adminJs.Contains("updateAngleOption") -or 
-    -not $adminJs.Contains("adjustRotation") -or 
-    -not $adminJs.Contains("downloadEnhancedAsset") -or 
-    -not $adminJs.Contains("param-rotation") -or 
-    -not $adminJs.Contains("param-tilt") -or 
-    -not $adminJs.Contains("param-yaw")) {
-    Write-Error "FAILED: admin.js missing Angle/Tilt/View or Asset Download developer controls"
-    exit 1
-}
-
-if (-not $storage.Contains("imageOptions")) {
-    Write-Error "FAILED: storage.js missing imageOptions persistence"
-    exit 1
-}
-Write-Host "PASS [16/17]: Image Engine & 2.5D Camera Angle/View Studio capabilities verified" -ForegroundColor Green
+if ($pipeline.Contains("processAutomaticStudioEnhancement") -or $adminJs.Contains("batchCalibrateAllDishes") -or (Test-Path "photo-enhance-worker.js")) { Write-Error "FAILED: retired image engine remains active"; exit 1 }
+Write-Host "PASS [16/17]: Display-only images and upload optimization; image engine removed" -ForegroundColor Green
 
 # 17. UI/UX Refinement, Localization Phrasing & Capacity Matrix Engine Verification
 if ($html.Contains("Ji Aayan Nu") -or $f404.Contains("Ji Aayan Nu")) {

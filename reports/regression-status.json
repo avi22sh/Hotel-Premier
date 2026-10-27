@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-27T06:02:25.064Z",
-  "passed": 60,
+  "createdAt": "2026-10-27T10:45:46.382Z",
+  "passed": 61,
   "failed": [],
   "results": [
     {
@@ -21,10 +21,6 @@
     },
     {
       "file": "appearance-menu-control-regression.cjs",
-      "passed": true
-    },
-    {
-      "file": "batch-photo-save-regression.cjs",
       "passed": true
     },
     {
@@ -60,6 +56,10 @@
       "passed": true
     },
     {
+      "file": "delivery-routing-regression.cjs",
+      "passed": true
+    },
+    {
       "file": "dish-storage-regression.cjs",
       "passed": true
     },
@@ -69,6 +69,10 @@
     },
     {
       "file": "drawer-filter-layout-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "engine-removal-regression.cjs",
       "passed": true
     },
     {
@@ -108,7 +112,7 @@
       "passed": true
     },
     {
-      "file": "image-order-regression.cjs",
+      "file": "local-edit-roundtrip-regression.cjs",
       "passed": true
     },
     {
@@ -176,11 +180,11 @@
       "passed": true
     },
     {
-      "file": "photo-gallery-projection-regression.cjs",
+      "file": "photo-editor-transaction-regression.cjs",
       "passed": true
     },
     {
-      "file": "photo-preview-sequencing-regression.cjs",
+      "file": "photo-gallery-projection-regression.cjs",
       "passed": true
     },
     {

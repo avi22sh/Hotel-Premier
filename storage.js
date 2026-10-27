@@ -124,7 +124,9 @@ class HotelPremierStorageManager {
       saved[dishId]=window.HotelPhotoStorage.compact(record);
       localStorage.setItem('hotel_premier_user_overrides_v1',JSON.stringify(saved));
     } catch (_) { /* IndexedDB is authoritative; a metadata-cache failure does not undo a committed photo. */ }
-    return this.hydratePhotoRecord('dish_overrides',record);
+    const hydrated=await this.hydratePhotoRecord('dish_overrides',record);
+    window.app?.notifyMenuUpdate?.(); // Receivers re-read only after bytes and metadata commit.
+    return hydrated;
   }
 
   /**

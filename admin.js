@@ -149,8 +149,8 @@ class HotelPremierAdmin {
       this.renderCRMManager(contentContainer);
     } else if (tabName === 'menu') {
       this.renderMenuManager(contentContainer);
-    } else if (tabName === 'ai-studio') {
-      this.renderAIStudioManager(contentContainer);
+    } else if (tabName === 'photos') {
+      this.renderPhotoLibrary(contentContainer);
     } else if (tabName === 'rooms') {
       this.renderRoomsManager(contentContainer);
     } else if (tabName === 'slides') {
@@ -213,9 +213,9 @@ class HotelPremierAdmin {
       const button=node('button','btn-crm-export',label);button.type='button';
       button.addEventListener('click',()=>{if(this.isAuthenticated)vault[method]();});actions.append(button);
     }
-    container.append(actions);
+    const exports=node('details','crm-export-drawer');exports.append(node('summary','','Export & backup records'),actions);container.append(exports);
     const table = (title, headers, rows, empty) => {
-      const section=node('section','crm-records-section');section.append(node('h4','',title));
+      const section=node('details','crm-records-section');section.open=title.startsWith('Recent Room');section.append(node('summary','',title));
       if (!rows.length) {section.append(node('p','crm-empty',empty));container.append(section);return;}
       const grid=node('table','crm-records-table'),head=node('thead',''),headRow=node('tr','');
       for(const label of headers){const cell=node('th','',label);cell.scope='col';headRow.append(cell);}
@@ -282,6 +282,7 @@ class HotelPremierAdmin {
   // ==================== 1. MENU CMS TABLE & PRICING ====================
   renderMenuManager(container) {
     const menu = window.app.menuData;
+    this.adminVisibleCount=40;
     const categories = window.app.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
 
     container.innerHTML = `
@@ -321,9 +322,10 @@ class HotelPremierAdmin {
             </tr>
           </thead>
           <tbody id="admin-dish-tbody">
-            ${this.generateDishTableRows(menu)}
+            ${this.generateDishTableRows(menu.slice(0,this.adminVisibleCount))}
           </tbody>
         </table>
+        <div class="admin-list-footer"><p id="admin-menu-count" role="status">Showing ${Math.min(menu.length,this.adminVisibleCount)} of ${menu.length} items</p><button type="button" class="studio-button" id="admin-show-more" onclick="window.admin.adminVisibleCount+=40; window.admin.filterAdminDishes()">Show more items</button></div>
       </div>
     `;
 
@@ -387,7 +389,7 @@ class HotelPremierAdmin {
             </div>
           </td>
           <td>
-            <div class="admin-taste-tags-wrap">
+            <details class="admin-taste-details"><summary>Taste & badges</summary><div class="admin-taste-tags-wrap">
               <button type="button" class="admin-tag-toggle-chip ${isSweet ? 'active-sweet' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'sweet')" title="Toggle Sweet (मीठा) Profile">
                 🍯 Sweet
               </button>
@@ -403,7 +405,7 @@ class HotelPremierAdmin {
               <button type="button" class="admin-tag-toggle-chip ${isKhandeshi ? 'active-khandeshi' : ''}" onclick="window.admin.toggleDishTag('${dish.id}', 'khandeshi-special')" title="Toggle Khandeshi Special">
                 🫕 Khandeshi
               </button>
-            </div>
+            </div></details>
           </td>
           <td class="hp-inline-fb5ec070f2bf">
             <label class="toggle-switch" title="Mark dish Sold Out (shows Sold Out banner in PWA)">
@@ -451,7 +453,9 @@ class HotelPremierAdmin {
     });
 
     if (tbody) {
-      tbody.innerHTML = this.generateDishTableRows(filtered);
+      tbody.innerHTML = this.generateDishTableRows(filtered.slice(0,this.adminVisibleCount||40));
+      const count=document.getElementById('admin-menu-count');if(count)count.textContent=`Showing ${Math.min(filtered.length,this.adminVisibleCount||40)} of ${filtered.length} items`;
+      const more=document.getElementById('admin-show-more');if(more)more.hidden=filtered.length<=(this.adminVisibleCount||40);
     }
   }
 
@@ -550,357 +554,39 @@ class HotelPremierAdmin {
 
   // ==================== DISH PHOTO REPLACEMENT & DELETION MODAL ====================
   async openImageModal(dishId) {
-    if(!this.isAuthenticated){window.app?.showToast('Unlock Admin Studio to edit photographs.','info');return;}
-    clearTimeout(this.previewDebounceTimer);
-    this.previewPending = false;
-    this.previewRequestId = (this.previewRequestId || 0) + 1;
-    const openingRequest = this.previewRequestId;
-    const openingSession=this.adminSessionGeneration||0,openingView=this.adminViewGeneration||0;
-    this.isPreviewProcessing = false;
-    this.previewFailed = false;
-    this.activeImageDishId = dishId;
-    const dish = window.app.menuData.find(d => d.id === dishId);
-    if (!dish) return;
-
-    // Load any existing photo lifecycle override record from IndexedDB
-    let lifecycle = null;
-    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.getDishOverride === 'function') {
-      try { lifecycle = await window.HOTEL_STORAGE.getDishOverride(dishId); }
-      catch (_) { window.app.showToast('This photo record could not be opened safely. Export a backup before repairing it.','error');return; }
-    }
-    if (openingRequest !== this.previewRequestId || this.activeImageDishId !== dishId || !this.isAuthenticated || openingSession!==(this.adminSessionGeneration||0) || openingView!==(this.adminViewGeneration||0)) return;
-
-    const savedOpts = (lifecycle && lifecycle.imageOptions) || {};
-    this.activeImageOptions = {
-      backgroundMode: (lifecycle && lifecycle.backgroundType) || 'original',
-      tolerance: savedOpts.tolerance !== undefined ? savedOpts.tolerance : 42,
-      feather: 26,
-      rotation: savedOpts.rotation !== undefined ? savedOpts.rotation : 0,
-      tilt: savedOpts.tilt !== undefined ? savedOpts.tilt : 0,
-      yaw: savedOpts.yaw !== undefined ? savedOpts.yaw : 0,
-      scale: savedOpts.scale !== undefined ? savedOpts.scale : 1.0,
-      panX: savedOpts.panX !== undefined ? savedOpts.panX : 0,
-      panY: savedOpts.panY !== undefined ? savedOpts.panY : 0,
-      flipH: !!savedOpts.flipH,
-      flipV: !!savedOpts.flipV
-    };
-    this.activeBackgroundMode = this.activeImageOptions.backgroundMode;
-    this.activeFramingMode = 'smart';
-    const hasPhoto = dish.image && dish.image.trim() !== '';
-
-    this.rawOriginalSource = (lifecycle && lifecycle.rawOriginalImage) ? lifecycle.rawOriginalImage : (dish.image || '');
-    this.enhanced4KSource = (lifecycle && lifecycle.enhancedMasterImage) ? lifecycle.enhancedMasterImage : (dish.image || '');
-    // Reopening must select the saved current photo, not a previously enhanced
-    // master after the owner has explicitly restored the original.
-    this.tempImageSource = lifecycle?.image ?? dish.image ?? '';
-    this.currentEnhancementStatus = (lifecycle && lifecycle.enhancementStatus) || (hasPhoto ? 'enhanced' : 'original');
-    this.currentQualityScore = (lifecycle && lifecycle.qualityScore) || 92;
-
-    const titleEl = document.getElementById('image-modal-dish-name');
-    if (titleEl) titleEl.innerText = `${hasPhoto ? 'Culinary Photography Studio' : 'Upload Food Photo'}: ${dish.name}`;
-
-    const body = document.getElementById('image-modal-body');
-    if (body) {
-      body.innerHTML = `
-        <div class="hp-inline-ff69c307f153">
-          <!-- Current Photo Status or Delete Option -->
-          ${hasPhoto ? `
-            <div class="hp-inline-aa27b27cabc1">
-              <div>
-                <div class="hp-inline-c8709ea6b52d">Want to remove this photo?</div>
-                <div class="hp-inline-8bdb9af2323b">The dish will be displayed in elegant Pure Veg text mode until you upload a new photo.</div>
-              </div>
-              <button class="slide-action-btn delete hp-inline-6138abc8e5cd" onclick="window.admin.deleteDishPhoto('${dish.id}')">
-                🗑️ Delete Photo
-              </button>
-            </div>
-          ` : `
-            <div class="hp-inline-3e82af662b2a">
-              <div class="hp-inline-0cee4e0ca5cb">🌱</div>
-              <div class="hp-inline-8abbf8312220">No photo currently assigned</div>
-              <div class="hp-inline-8bdb9af2323b">Your original photo stays protected. Choose an optional studio treatment only after checking the preview.</div>
-            </div>
-          `}
-
-          <!-- Interactive Before/After Studio Slider (Always in DOM for instant seamless upload preview) -->
-          <div class="hp-inline-fb5ec070f2bf">
-            <div class="hp-inline-afe7b8278545">
-              <div class="hp-inline-a369aa7d8b48">
-                <span class="hp-inline-45a770d78926">
-                  ✨ <span>Studio Comparison</span>
-                </span>
-                <span id="lifecycle-status-badge" class="hp-status-pill hp-status-${this.currentEnhancementStatus}">
-                  ${this.currentEnhancementStatus.toUpperCase()} (${this.currentQualityScore}%)
-                </span>
-              </div>
-              <div class="hp-inline-008dae371a89">
-                <button type="button" id="preview-tab-split" class="btn-preview-toggle active hp-inline-8c8b98d4fc6a" onclick="window.admin.toggleComparisonMode('split')">Split View</button>
-                <button type="button" id="preview-tab-enhanced" class="btn-preview-toggle hp-inline-18a6d45e17f3" onclick="window.admin.toggleComparisonMode('enhanced')">Studio Master</button>
-                <button type="button" id="preview-tab-original" class="btn-preview-toggle hp-inline-18a6d45e17f3" onclick="window.admin.toggleComparisonMode('original')">Raw Original</button>
-              </div>
-            </div>
-
-            <!-- Dual Layer Split Slider Container -->
-            <div class="hp-before-after-container" id="hp-slider-container">
-              <!-- Underlayer: Raw Original Image -->
-              <img height="900" width="1200" id="image-original-element" class="hp-slider-original-img" src="${this.rawOriginalSource || 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='}">
-              <span class="hp-slider-label hp-slider-label-left">BEFORE (RAW)</span>
-
-              <!-- Overlayer: Enhanced Studio Master (Clipped) -->
-              <div class="hp-slider-enhanced-wrap hp-inline-a2dbdad5feb0" id="hp-enhanced-wrap">
-                <img height="900" width="1200" id="image-preview-element" class="hp-slider-enhanced-img" src="${this.enhanced4KSource || 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='}">
-                <span class="hp-slider-label hp-slider-label-right">AFTER (STUDIO)</span>
-              </div>
-
-              <!-- Draggable Divider Handle -->
-              <div class="hp-slider-handle hp-inline-87ef736ccdbf" id="hp-slider-handle">
-                <div class="hp-slider-handle-circle">‹ ›</div>
-              </div>
-
-              <!-- 4K Studio Quality Badge -->
-              <div class="hp-inline-d1f46bc1e953" id="preview-4k-badge">
-                LOCAL PHOTO PREVIEW
-              </div>
-            </div>
-
-            <!-- Interactive Range Bar to adjust split -->
-            <input type="range" min="0" max="100" value="50" class="hp-split-range-input" id="hp-split-range" oninput="window.admin.setSplitSliderPosition(this.value)">
-
-            <div class="hp-inline-a5b10e156b8f">
-              <span>Drag slider above or tap tabs to compare raw vs studio master</span>
-              <span class="hp-inline-3e2bea1b64ec" id="preview-engine-status">● Studio Engine Active</span>
-            </div>
-
-            <!-- Revert / Approve / Download Action Bar -->
-            <div class="hp-inline-2f9e06ea8cef">
-              <button type="button" class="btn-theme-engine-chip" onclick="window.admin.revertActiveDishToOriginal()" title="Revert dish to untouched raw camera photo">
-                &#x23EE;&#xFE0F; Revert to Raw Original
-              </button>
-              <button type="button" class="btn-theme-engine-chip" onclick="window.admin.downloadEnhancedAsset()" title="Download high-resolution image directly to disk">
-                &#x1F4BE; Download Asset
-              </button>
-              <button type="button" class="btn-theme-engine-chip active" onclick="window.admin.approveActiveDishPhoto()" title="Mark enhanced photo as approved master">
-                &#x2705; Approve Enhanced Master
-              </button>
-            </div>
-          </div>
-          <!-- 1. Background Removal & Luxury Surfaces Panel -->
-          <div class="hp-inline-526432ad9145">
-            <div class="hp-inline-cbaf771049d8">
-              <span>&#x1F3A8; Background Removal & Surface Engine</span>
-              <span class="hp-inline-6f3676152b73">Automatic plate segmentation</span>
-            </div>
-            <div class="hp-inline-4c9a8390658e" id="bg-engine-chips">
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'natural' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'natural', this)" title="Preserves original framing with subtle warmth and clarity">
-                &#x1F33F; Natural Polish
-              </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'cutout' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'cutout', this)" title="Cuts out dish with 100% transparent PNG background">
-                &#x2702;&#xFE0F; Transparent Cutout (Remove BG)
-              </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'slate_gold' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'slate_gold', this)" title="Midnight Slate & Imperial Gold luxury table surface">
-                &#x1F30C; Midnight Slate & Gold
-              </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'teak_wood' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'teak_wood', this)" title="Warm Teak & Walnut dining table with fine grain">
-                &#x1FAB5; Warm Teak Wood
-              </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'cream_marble' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'cream_marble', this)" title="Italian Cream Marble with delicate veining">
-                &#x1F3DB;&#xFE0F; Italian Cream Marble
-              </button>
-              <button type="button" class="btn-theme-engine-chip ${this.activeBackgroundMode === 'pedestal' ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'pedestal', this)" title="Unified 3D Gold Pedestal Mount">
-                &#x1FA84; 3D Gold Pedestal
-              </button>
-              <button type="button" class="btn-theme-engine-chip ${(!this.activeBackgroundMode || this.activeBackgroundMode === 'original') ? 'active' : ''}" onclick="window.admin.setImageEngineOption('backgroundMode', 'original', this)" title="Original untouched photo">
-                &#x1F4F7; Raw Original
-              </button>
-            </div>
-
-            <!-- Edge Sensitivity / Tolerance Slider for Cutout & Surfaces -->
-            <div id="cutout-tolerance-panel" class="cutout-controls ${['cutout', 'slate_gold', 'teak_wood', 'cream_marble', 'pedestal'].includes(this.activeBackgroundMode)?'':'is-hidden'}">
-              <div class="hp-inline-6373eefbfece">
-                <span>Edge Detection Sensitivity (Cutout Tolerance)</span>
-                <span class="hp-inline-3bba3d8d303f" id="lbl-tolerance">${this.activeImageOptions.tolerance || 42}</span>
-              </div>
-              <input class="hp-inline-37ab52c9d67a" type="range" id="param-cutout-tolerance" min="15" max="90" value="${this.activeImageOptions.tolerance || 42}" oninput="window.admin.updateCutoutTolerance(this.value)">
-              <div class="hp-inline-ed3e68e3d913">Slide right if background still shows; slide left if plate edges get clipped.</div>
-            </div>
-          </div>
-
-          <!-- 2. Camera Angle, Tilt & View Engine Panel -->
-          <div class="hp-inline-526432ad9145">
-            <div class="hp-inline-cbaf771049d8">
-              <span>&#x1F4D0; Camera Angle, Tilt & View Engine</span>
-              <button type="button" class="slide-action-btn hp-inline-5d6f023a45b9" onclick="window.admin.resetAngleAndView()">&#x21BA; Reset View</button>
-            </div>
-
-            <!-- Rotation & Quick Turn -->
-            <div class="hp-inline-50812c083b15">
-              <div>
-                <div class="hp-inline-1381aa38aeee">
-                  <span>Plate Rotation</span>
-                  <span class="hp-inline-3bba3d8d303f" id="lbl-angle-rotation">${this.activeImageOptions.rotation || 0}&deg;</span>
-                </div>
-                <input class="hp-inline-37ab52c9d67a" type="range" id="param-rotation" min="-45" max="45" value="${this.activeImageOptions.rotation || 0}" oninput="window.admin.updateAngleOption('rotation', this.value)">
-              </div>
-              <div class="hp-inline-3204b1d0bf89">
-                <button type="button" class="btn-theme-engine-chip hp-inline-8f7d2c8525dd" onclick="window.admin.adjustRotation(-90)" title="Rotate 90 counter-clockwise">&#x27F2; -90&deg;</button>
-                <button type="button" class="btn-theme-engine-chip hp-inline-8f7d2c8525dd" onclick="window.admin.adjustRotation(90)" title="Rotate 90 clockwise">&#x27F3; +90&deg;</button>
-              </div>
-            </div>
-
-            <!-- 2.5D Camera Pitch (Tilt) & Yaw (Perspective) -->
-            <div class="hp-inline-1dab30a14d80">
-              <div>
-                <div class="hp-inline-1381aa38aeee">
-                  <span>Camera Pitch (Tilt)</span>
-                  <span class="hp-inline-3bba3d8d303f" id="lbl-angle-tilt">${this.activeImageOptions.tilt || 0}&deg;</span>
-                </div>
-                <input class="hp-inline-37ab52c9d67a" type="range" id="param-tilt" min="-30" max="30" value="${this.activeImageOptions.tilt || 0}" oninput="window.admin.updateAngleOption('tilt', this.value)" title="Simulates overhead (flat) vs eye-level perspective angle">
-              </div>
-              <div>
-                <div class="hp-inline-1381aa38aeee">
-                  <span>Perspective (Yaw)</span>
-                  <span class="hp-inline-3bba3d8d303f" id="lbl-angle-yaw">${this.activeImageOptions.yaw || 0}&deg;</span>
-                </div>
-                <input class="hp-inline-37ab52c9d67a" type="range" id="param-yaw" min="-30" max="30" value="${this.activeImageOptions.yaw || 0}" oninput="window.admin.updateAngleOption('yaw', this.value)" title="Simulates viewing the dish from left or right">
-              </div>
-            </div>
-
-            <!-- Scale (Zoom) & Pan Position -->
-            <div class="hp-inline-5f3e9e78ec66">
-              <div>
-                <div class="hp-inline-1381aa38aeee">
-                  <span>Zoom</span>
-                  <span class="hp-inline-3bba3d8d303f" id="lbl-angle-scale">${Number(this.activeImageOptions.scale || 1.0).toFixed(2)}x</span>
-                </div>
-                <input class="hp-inline-37ab52c9d67a" type="range" id="param-scale" min="0.5" max="1.8" step="0.05" value="${this.activeImageOptions.scale || 1.0}" oninput="window.admin.updateAngleOption('scale', this.value)">
-              </div>
-              <div>
-                <div class="hp-inline-1381aa38aeee">
-                  <span>Pan X</span>
-                  <span class="hp-inline-3bba3d8d303f" id="lbl-angle-panX">${this.activeImageOptions.panX || 0}px</span>
-                </div>
-                <input class="hp-inline-37ab52c9d67a" type="range" id="param-pan-x" min="-120" max="120" value="${this.activeImageOptions.panX || 0}" oninput="window.admin.updateAngleOption('panX', this.value)">
-              </div>
-              <div>
-                <div class="hp-inline-1381aa38aeee">
-                  <span>Pan Y</span>
-                  <span class="hp-inline-3bba3d8d303f" id="lbl-angle-panY">${this.activeImageOptions.panY || 0}px</span>
-                </div>
-                <input class="hp-inline-37ab52c9d67a" type="range" id="param-pan-y" min="-120" max="120" value="${this.activeImageOptions.panY || 0}" oninput="window.admin.updateAngleOption('panY', this.value)">
-              </div>
-            </div>
-
-            <!-- Flip Buttons -->
-            <div class="hp-inline-3633e433a162">
-              <button type="button" id="btn-flip-h" class="btn-theme-engine-chip ${this.activeImageOptions.flipH ? 'active' : ''} hp-inline-126244f1351e" onclick="window.admin.toggleFlip('h', this)">
-                &#x21C6; Flip Horizontal
-              </button>
-              <button type="button" id="btn-flip-v" class="btn-theme-engine-chip ${this.activeImageOptions.flipV ? 'active' : ''} hp-inline-126244f1351e" onclick="window.admin.toggleFlip('v', this)">
-                &#x21C5; Flip Vertical
-              </button>
-            </div>
-          </div>          <!-- Auto 4K Fine-Tuning Drawer / Sliders -->
-          <div class="hp-inline-76da34c70e93">
-            <div class="hp-inline-4e39d7201489" onclick="const d = document.getElementById('engine-fine-tuning-box'); d.style.display = d.style.display === 'none' ? 'block' : 'none';">
-              <span class="hp-inline-992bc7e7b9de">⚙️ Photo tone & light controls</span>
-              <span class="hp-inline-c72ba1f0c731">Toggle Adjustments ▼</span>
-            </div>
-            <div class="hp-inline-bd2072158c3f" id="engine-fine-tuning-box">
-              <label class="hp-inline-73172889f7c7"><input type="checkbox" id="engine-adjust-colors" onchange="window.admin.recalculate4KLive()"> Adjust dish colors (optional). Leave off to preserve the original food colors.</label>
-              <div class="hp-inline-61b90e9aec87">
-                <div>
-                  <label class="hp-inline-bee2e02a5dda">Warmth (Kelvin)</label>
-                  <input class="hp-inline-37ab52c9d67a" type="range" id="param-warmth" min="0" max="20" value="8" oninput="window.admin.recalculate4KLive()">
-                </div>
-                <div>
-                  <label class="hp-inline-bee2e02a5dda">Clarity (Sharpness)</label>
-                  <input class="hp-inline-37ab52c9d67a" type="range" id="param-sharpness" min="0" max="50" value="28" oninput="window.admin.recalculate4KLive()">
-                </div>
-              </div>
-              <div class="hp-inline-e4638dd958a7">
-                <div>
-                  <label class="hp-inline-bee2e02a5dda">Contrast & Depth</label>
-                  <input class="hp-inline-37ab52c9d67a" type="range" id="param-contrast" min="95" max="125" value="108" oninput="window.admin.recalculate4KLive()">
-                </div>
-                <div>
-                  <label class="hp-inline-bee2e02a5dda">Studio Vignette</label>
-                  <input class="hp-inline-37ab52c9d67a" type="range" id="param-vignette" min="0" max="70" value="38" oninput="window.admin.recalculate4KLive()">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <label class="form-label">Option 1: Upload Raw Photo from Phone / Camera</label>
-            <input type="file" accept="image/*" class="form-input hp-inline-847ff70267ce" onchange="window.admin.handleImageFileUpload(this)">
-            <label class="studio-button">Take a photo<input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" class="camera-photo-input" onchange="window.admin.handleImageFileUpload(this)"></label>
-          </div>
-
-          <div>
-            <label class="form-label">Option 2: Paste Web Image URL</label>
-            <input type="text" id="image-url-input-field" value="${hasPhoto && !dish.image.startsWith('data:') ? dish.image : ''}" class="form-input" placeholder="https://..." oninput="window.admin.updatePreviewFromUrl(this.value)">
-          </div>
-
-          <div>
-            <label class="form-label">Option 3: Reuse This Dish’s Saved Photos</label>
-            <p class="hp-inline-cce8e0fdaf9d">Only photos already assigned to this dish are shown; verify they depict the correct food. Upload a real dish photo if none matches.</p>
-            <div id="dish-saved-photo-options" class="preset-image-grid hp-inline-59348a7fd19a"></div>
-            <p class="hp-inline-cce8e0fdaf9d">Natural Polish adjusts lighting. Studio modes create local surface treatments, not AI-generated scenes. Saves stay on this device; cloud generation and publishing are not connected.</p>
-          </div>
-
-          <div class="hp-inline-4ad9f1568ce9">
-            <button class="btn-secondary" onclick="window.admin.closeImageModal()">Cancel</button>
-            <button class="btn-primary" id="apply-dish-photo-btn" onclick="window.admin.saveReplacedImage()">Save selected photo</button>
-          </div>
-        </div>
-      `;
-    }
-
-    const presetGrid = document.getElementById('dish-saved-photo-options');
-    if (presetGrid) {
-      const seen = new Set();
-      const candidates = [
-        ['Saved original', lifecycle?.rawOriginalImage],
-        ['Current dish photo', dish.image]
-      ];
-      for (const [label, source] of candidates) {
-        if (typeof source !== 'string' || !/^(https?:\/\/|data:image\/|\.?\/?assets\/)/i.test(source) || seen.has(source)) continue;
-        seen.add(source);
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'preset-image-item';
-        button.title = label;
-        button.onclick = () => this.selectPresetImage(source);
-        const img = document.createElement('img');
-        img.src = source;
-        img.alt = `${dish.name}: ${label}`;
-        const caption = document.createElement('div');
-        caption.className = 'preset-label';
-        caption.textContent = label;
-        button.append(img, caption);
-        presetGrid.append(button);
-      }
-      if (!seen.size) presetGrid.textContent = 'No saved photo for this dish. Use Upload Photo above.';
-    }
-    const modal = document.getElementById('image-replace-modal');
-    if (modal) modal.classList.add('active');
+    if(!this.isAuthenticated)return;
+    const request=this.previewRequestId=(this.previewRequestId||0)+1,session=this.adminSessionGeneration||0;
+    this.photoUploadController?.abort();this.activeImageDishId=dishId;this.activeRoomId=null;this.editingSlideContext=null;
+    const dish=window.app.menuData.find(item=>item.id===dishId);if(!dish)return;
+    let saved;try{saved=await window.HOTEL_STORAGE.getDishOverride(dishId);}catch(error){window.app.showToast('Photo could not be opened. Your saved image is unchanged.','error');return;}
+    if(!this.isAuthenticated||request!==this.previewRequestId||session!==(this.adminSessionGeneration||0))return;
+    this.tempImageSource=saved?.image??dish.image??'';this.rawOriginalSource=saved?.rawOriginalImage||this.tempImageSource;
+    this.previewFailed=false;this.photoUploadPending=false;
+    document.getElementById('image-modal-dish-name').textContent='Photo · '+dish.name;
+    const body=document.getElementById('image-modal-body');body.replaceChildren();
+    const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
+    const preview=node('div','','photo-editor-preview'),image=node('img');image.id='image-preview-element';image.alt=dish.name;image.src=this.tempImageSource||'assets/brand-placeholder.svg';preview.append(image);
+    const hint=node('p','Upload your own photo. Framing and file-size optimization preserve the food and colours. Saving updates this device; use a publish bundle for the public site.','studio-notice');
+    const label=node('label','Upload or replace photo','studio-field'),upload=node('input');upload.type='file';upload.accept='image/jpeg,image/png,image/webp';upload.addEventListener('change',()=>this.handleImageFileUpload(upload));label.append(upload);
+    const actions=node('div','','studio-action-row');
+    for(const [text,run] of [['Cancel',()=>this.closeImageModal()],['Save photo',()=>this.saveReplacedImage()],['Remove photo',()=>this.deleteDishPhoto(dishId)]]){const button=node('button',text,'studio-button');button.type='button';if(text==='Save photo')button.id='apply-dish-photo-btn';if(text==='Remove photo')button.disabled=!this.tempImageSource;button.addEventListener('click',run);actions.append(button);}
+    body.append(preview,hint,label,actions);document.getElementById('image-replace-modal').classList.add('active');
   }
 
   async deleteDishPhoto(dishId) {
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (!dish) return;
 
+    if (!this.isAuthenticated) return;
     if (await window.HotelDialogs.confirm(`Remove the photo for "${dish.name}"?\n\nThe dish will be shown in Pure Veg mode without photo until you upload a new one.`)) {
+      try { await window.HOTEL_STORAGE.saveDishOverride(dish.id, { image: '' }); }
+      catch(error) { window.app.showToast('Photo could not be removed. Your saved photo is unchanged.','error');return false; }
       if (window.AssetPipeline?.clearCacheForAsset) {
         window.AssetPipeline.clearCacheForAsset(dish.id);
         window.AssetPipeline.clearCacheForAsset(dish.image);
       }
       dish.image = '';
       window.app.saveMenuData();
-
-      if (window.HOTEL_STORAGE) {
-        await window.HOTEL_STORAGE.saveDishOverride(dish.id, { image: '' });
-      }
 
       window.app.renderCategoryCards();
       if (window.app.currentCategory && window.app.currentCategory !== 'all') {
@@ -909,7 +595,7 @@ class HotelPremierAdmin {
       window.app.renderMenu();
       this.filterAdminDishes();
       if (document.getElementById('studio-dishes-grid')) {
-        this.renderAIStudioManager(document.getElementById('admin-tab-content'));
+        this.renderPhotoLibrary(document.getElementById('admin-tab-content'));
       }
       window.dispatchEvent(new CustomEvent('hp-media-updated', { detail: { dishId: dish.id, image: '' } }));
       this.closeImageModal();
@@ -940,723 +626,60 @@ class HotelPremierAdmin {
     this.enhanced4KSource = null;
   }
 
-  setSplitSliderPosition(percent) {
-    const wrap = document.getElementById('hp-enhanced-wrap');
-    const handle = document.getElementById('hp-slider-handle');
-    const pct = Math.max(0, Math.min(100, percent));
-    if (wrap) wrap.style.width = `${pct}%`;
-    if (handle) handle.style.left = `${pct}%`;
-  }
 
-  toggleComparisonMode(mode) {
-    const origImg = document.getElementById('image-original-element');
-    const wrap = document.getElementById('hp-enhanced-wrap');
-    const handle = document.getElementById('hp-slider-handle');
-    const range = document.getElementById('hp-split-range');
-    const badge = document.getElementById('preview-4k-badge');
-
-    const btnSplit = document.getElementById('preview-tab-split');
-    const btnEnhanced = document.getElementById('preview-tab-enhanced');
-    const btnOriginal = document.getElementById('preview-tab-original');
-
-    [btnSplit, btnEnhanced, btnOriginal].forEach(b => {
-      if (b) {
-        b.classList.remove('active');
-      }
-    });
-
-    if (mode === 'original') {
-      if (wrap) wrap.style.width = '0%';
-      if (handle) handle.style.display = 'none';
-      if (range) range.style.display = 'none';
-      if (badge) badge.style.display = 'none';
-      if (btnOriginal) {
-        btnOriginal.classList.add('active');
-      }
-    } else if (mode === 'enhanced') {
-      if (wrap) wrap.style.width = '100%';
-      if (handle) handle.style.display = 'none';
-      if (range) range.style.display = 'none';
-      if (badge) badge.style.display = 'block';
-      if (btnEnhanced) {
-        btnEnhanced.classList.add('active');
-      }
-    } else {
-      // Split view
-      if (wrap) wrap.style.width = '50%';
-      if (handle) {
-        handle.style.display = 'block';
-        handle.style.left = '50%';
-      }
-      if (range) {
-        range.style.display = 'block';
-        range.value = 50;
-      }
-      if (badge) badge.style.display = 'block';
-      if (btnSplit) {
-        btnSplit.classList.add('active');
-      }
-    }
-  }
-
-  async revertActiveDishToOriginal() {
-    if (!this.activeImageDishId || this.previewPending || this.isPreviewProcessing || this.previewFailed || this.savingDishPhoto) return;
-    if (!this.rawOriginalSource) {
-      window.app.showToast('No original photo is available for this dish.', 'error');
-      return;
-    }
-    if (await window.HotelDialogs.confirm('Revert this dish to its untouched original photo?')) {
-      return this.saveReplacedImage({ image: this.rawOriginalSource, status: 'original', backgroundMode: 'original' });
-    }
-  }
-
-  async approveActiveDishPhoto() {
-    return this.saveReplacedImage({ status: 'approved' });
-  }
-
-  setImageEngineOption(key, val, btn) {
-    if (!this.activeImageOptions) this.activeImageOptions = {};
-    this.activeImageOptions[key] = val;
-    if (key === 'backgroundMode') {
-      this.activeBackgroundMode = val;
-      const tolPanel = document.getElementById('cutout-tolerance-panel');
-      if (tolPanel) {
-        tolPanel.style.display = ['cutout', 'slate_gold', 'teak_wood', 'cream_marble', 'pedestal'].includes(val) ? 'block' : 'none';
-      }
-    }
-    if (key === 'framingMode') this.activeFramingMode = val;
-    if (btn && btn.parentElement) {
-      btn.parentElement.querySelectorAll('.btn-theme-engine-chip').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
-    this.recalculate4KLive();
-  }
-
-  updateCutoutTolerance(val) {
-    if (!this.activeImageOptions) this.activeImageOptions = {};
-    this.activeImageOptions.tolerance = parseInt(val, 10);
-    const lbl = document.getElementById('lbl-tolerance');
-    if (lbl) lbl.innerText = val;
-    this.recalculate4KLive();
-  }
-
-  updateAngleOption(key, val) {
-    if (!this.activeImageOptions) this.activeImageOptions = {};
-    this.activeImageOptions[key] = parseFloat(val);
-    const lbl = document.getElementById(`lbl-angle-${key}`);
-    if (lbl) {
-      if (key === 'scale') lbl.innerText = `${parseFloat(val).toFixed(2)}x`;
-      else if (key === 'rotation' || key === 'tilt' || key === 'yaw') lbl.innerText = `${parseInt(val, 10)}\u00B0`;
-      else if (key === 'panX' || key === 'panY') lbl.innerText = `${parseInt(val, 10)}px`;
-    }
-    this.recalculate4KLive();
-  }
-
-  adjustRotation(delta) {
-    if (!this.activeImageOptions) this.activeImageOptions = {};
-    let cur = parseInt(this.activeImageOptions.rotation || 0, 10);
-    let next = cur + delta;
-    if (next > 180) next -= 360;
-    if (next < -180) next += 360;
-    this.activeImageOptions.rotation = next;
-    const input = document.getElementById('param-rotation');
-    if (input) input.value = next;
-    const lbl = document.getElementById('lbl-angle-rotation');
-    if (lbl) lbl.innerText = `${next}\u00B0`;
-    this.recalculate4KLive();
-  }
-
-  toggleFlip(axis, btn) {
-    if (!this.activeImageOptions) this.activeImageOptions = {};
-    if (axis === 'h') {
-      this.activeImageOptions.flipH = !this.activeImageOptions.flipH;
-      if (btn) btn.classList.toggle('active', !!this.activeImageOptions.flipH);
-    } else if (axis === 'v') {
-      this.activeImageOptions.flipV = !this.activeImageOptions.flipV;
-      if (btn) btn.classList.toggle('active', !!this.activeImageOptions.flipV);
-    }
-    this.recalculate4KLive();
-  }
-
-  resetAngleAndView() {
-    if (!this.activeImageOptions) this.activeImageOptions = {};
-    this.activeImageOptions.rotation = 0;
-    this.activeImageOptions.tilt = 0;
-    this.activeImageOptions.yaw = 0;
-    this.activeImageOptions.scale = 1.0;
-    this.activeImageOptions.panX = 0;
-    this.activeImageOptions.panY = 0;
-    this.activeImageOptions.flipH = false;
-    this.activeImageOptions.flipV = false;
-
-    const rotEl = document.getElementById('param-rotation');
-    if (rotEl) rotEl.value = 0;
-    const tiltEl = document.getElementById('param-tilt');
-    if (tiltEl) tiltEl.value = 0;
-    const yawEl = document.getElementById('param-yaw');
-    if (yawEl) yawEl.value = 0;
-    const scaleEl = document.getElementById('param-scale');
-    if (scaleEl) scaleEl.value = 1.0;
-    const panXEl = document.getElementById('param-pan-x');
-    if (panXEl) panXEl.value = 0;
-    const panYEl = document.getElementById('param-pan-y');
-    if (panYEl) panYEl.value = 0;
-
-    const lblRot = document.getElementById('lbl-angle-rotation');
-    if (lblRot) lblRot.innerText = '0\u00B0';
-    const lblTilt = document.getElementById('lbl-angle-tilt');
-    if (lblTilt) lblTilt.innerText = '0\u00B0';
-    const lblYaw = document.getElementById('lbl-angle-yaw');
-    if (lblYaw) lblYaw.innerText = '0\u00B0';
-    const lblScale = document.getElementById('lbl-angle-scale');
-    if (lblScale) lblScale.innerText = '1.00x';
-    const lblPanX = document.getElementById('lbl-angle-panX');
-    if (lblPanX) lblPanX.innerText = '0px';
-    const lblPanY = document.getElementById('lbl-angle-panY');
-    if (lblPanY) lblPanY.innerText = '0px';
-
-    const flipHBtn = document.getElementById('btn-flip-h');
-    if (flipHBtn) flipHBtn.classList.remove('active');
-    const flipVBtn = document.getElementById('btn-flip-v');
-    if (flipVBtn) flipVBtn.classList.remove('active');
-
-    this.recalculate4KLive();
-  }
-
-  async downloadEnhancedAsset() {
-    if (this.previewPending || this.isPreviewProcessing || this.previewFailed) {
-      window.app?.showToast?.('Wait for a successful preview before downloading.', 'info');
-      return;
-    }
-    if (!this.tempImageSource) {
-      window.app?.showToast?.('No processed asset available to download.', 'warning');
-      return;
-    }
-    const dish = window.app?.menuData?.find(d => d.id === this.activeImageDishId) || { name: 'dish' };
-    let ext;
-    try { const response=await fetch(this.tempImageSource);if(!response.ok)throw Error();ext=({'image/webp':'webp','image/png':'png','image/jpeg':'jpg'})[(await response.blob()).type]||'jpg'; }
-    catch (_) { window.app?.showToast('The preview could not be downloaded. Retry after it finishes.','error');return; }
-    const safeName = (dish.name || 'dish').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-    const mode = this.activeBackgroundMode || 'enhanced';
-    const filename = `${safeName}-${mode.replaceAll('_','-')}.${ext}`;
-
-    const a = document.createElement('a');
-    a.href = this.tempImageSource;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.app?.showToast?.(`Downloaded ${filename}`, 'success');
-  }
-
-  recalculate4KLive() {
-    clearTimeout(this.previewDebounceTimer);
-    // Invalidate the previous render immediately, not after the debounce delay.
-    this.previewRequestId = (this.previewRequestId || 0) + 1;
-    this.previewPending = true;
-    const saveButton = document.getElementById('apply-dish-photo-btn');
-    if (saveButton) saveButton.disabled = true;
-    this.previewDebounceTimer = setTimeout(() => {
-      this.runImagePreview();
-    }, 180);
-  }
-
-  async runImagePreview() {
-    if (!this.rawOriginalSource) return;
-    this.previewPending = false;
-    const requestId = this.previewRequestId = (this.previewRequestId || 0) + 1;
-    const source = this.workingPhotoSource || this.rawOriginalSource;
-    const dishId = this.activeImageDishId;
-    this.isPreviewProcessing = true;
-    this.previewFailed = false;
-    const saveButton = document.getElementById('apply-dish-photo-btn');
-    if (saveButton) saveButton.disabled = true;
-    const warmth = parseInt(document.getElementById('param-warmth')?.value || '8', 10);
-    const sharpness = parseInt(document.getElementById('param-sharpness')?.value || '28', 10) / 100;
-    const contrast = parseInt(document.getElementById('param-contrast')?.value || '108', 10) / 100;
-    const vignetteStrength = parseInt(document.getElementById('param-vignette')?.value || '38', 10) / 100;
-
-    const status = document.getElementById('preview-engine-status');
-    if (status) status.innerText = this.activeBackgroundMode === 'original'
-      ? '\u25CF Original photo preserved'
-      : (this.activeBackgroundMode === 'cutout' ? '\u2702 Cutting out transparent background...' : '\u2699 Preparing studio preview...');
-
-    const dish = window.app.menuData.find(d => d.id === this.activeImageDishId) || {};
-
-    if (window.AssetPipeline && typeof window.AssetPipeline.processAutomaticStudioEnhancement === 'function') {
-      try {
-        const opts = this.activeImageOptions || {};
-        const result = await window.AssetPipeline.processAutomaticStudioEnhancement(source, dish, {
-          backgroundMode: this.activeBackgroundMode || 'original',
-          enhanceColors: document.getElementById('engine-adjust-colors')?.checked === true,
-          framingMode: this.activeFramingMode || 'smart',
-          tolerance: opts.tolerance !== undefined ? opts.tolerance : 42,
-          feather: opts.feather !== undefined ? opts.feather : 26,
-          rotation: opts.rotation !== undefined ? opts.rotation : 0,
-          tilt: opts.tilt !== undefined ? opts.tilt : 0,
-          yaw: opts.yaw !== undefined ? opts.yaw : 0,
-          scale: opts.scale !== undefined ? opts.scale : 1.0,
-          panX: opts.panX !== undefined ? opts.panX : 0,
-          panY: opts.panY !== undefined ? opts.panY : 0,
-          flipH: !!opts.flipH,
-          flipV: !!opts.flipV,
-          warmth: warmth,
-          sharpness: sharpness,
-          contrast: contrast,
-          vignetteStrength: vignetteStrength
-        });
-        if (requestId !== this.previewRequestId || source !== (this.workingPhotoSource || this.rawOriginalSource) || dishId !== this.activeImageDishId) { window.HotelPhotoWorkflow?.release(result.enhancedDataUrl); return; }
-        if(this.enhanced4KSource!==this.workingPhotoSource && this.enhanced4KSource!==this.rawOriginalSource)window.HotelPhotoWorkflow?.release(this.enhanced4KSource);
-        this.enhanced4KSource = result.enhancedDataUrl;
-        this.tempImageSource = result.enhancedDataUrl;
-        this.currentEnhancementStatus = result.status;
-        const lifecycleBadge = document.getElementById('lifecycle-status-badge');
-        if (lifecycleBadge) {
-          lifecycleBadge.className = `hp-status-pill hp-status-${result.status}`;
-          lifecycleBadge.innerText = result.status === 'natural' ? 'NATURAL POLISH' : result.status.toUpperCase();
-        }
-        this.currentQualityScore = result.qualityScore || 90;
-
-        const preview = document.getElementById('image-preview-element');
-        if (preview) preview.src = result.enhancedDataUrl;
-        if (status) status.innerText = result.status === 'original'
-          ? '● Original photo preserved'
-          : result.status === 'natural'
-            ? `● Natural Polish V3 ready (${this.currentQualityScore}%)`
-            : `● Studio preview ready (${this.currentQualityScore}%)`;
-        return result;
-      } catch (e) {
-        if (requestId === this.previewRequestId) this.previewFailed = true;
-        if (requestId === this.previewRequestId && status) status.innerText = 'Preview failed. Try uploading the photo directly.';
-      } finally {
-        if (requestId === this.previewRequestId) {
-          this.isPreviewProcessing = false;
-          if (saveButton) saveButton.disabled = Boolean(this.previewFailed || this.savingDishPhoto);
-        }
-      }
-    } else {
-      this.isPreviewProcessing = false;
-      this.previewFailed = true;
-      if (status) status.innerText = 'Photo tools are unavailable. Reload and retry; your original has not been replaced.';
-    }
-  }
 
   async handleImageFileUpload(input) {
-    const file = input && input.files ? input.files[0] : null;
-    if (!file) return;
-    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
-      window.app.showToast('Please choose a JPG, PNG or WebP photo.');
-      return;
-    }
-    if (file.size > 20 * 1024 * 1024) {
-      window.app.showToast('Please choose a photo smaller than 20 MB.');
-      return;
-    }
-    this.previewFailed = false;
-    clearTimeout(this.previewDebounceTimer);
-    const uploadRequest = this.previewRequestId = (this.previewRequestId || 0) + 1;
-    const uploadDishId = this.activeImageDishId;
-    this.isPreviewProcessing = true;
-    const saveButton = document.getElementById('apply-dish-photo-btn');
-    if (saveButton) saveButton.disabled = true;
-    try {
-      if (window.app && typeof window.app.showToast === 'function') {
-        window.app.showToast('Studio Engine: Ingesting raw photo...', 'info');
-      }
-      const status = document.getElementById('preview-engine-status');
-      if (status) status.innerText = 'Reading your original photo…';
-
-      if(!window.HotelPhotoWorkflow)throw Error('Photo editor is unavailable. Reload and retry.');
-      this.photoUploadController?.abort();
-      this.photoUploadController=new AbortController();
-      const upload=await window.HotelPhotoWorkflow.ingest(file,{aspect:4/3,signal:this.photoUploadController.signal,onProgress:message=>{if(status)status.textContent=message;}});
-      if(uploadRequest!==this.previewRequestId || uploadDishId!==this.activeImageDishId){window.HotelPhotoWorkflow.release(upload.originalUrl);window.HotelPhotoWorkflow.release(upload.workingUrl);return;}
-      window.HotelPhotoWorkflow.release(this.workingPhotoSource);
-      this.workingPhotoSource=upload.workingUrl;
-      const rawDataUrl=upload.originalUrl;
-      this.rawOriginalSource=rawDataUrl;
-      // A new upload never inherits colour correction from the previous photo.
-      const colorControl = document.getElementById('engine-adjust-colors');
-      if (colorControl) colorControl.checked = false;
-
-      const origEl = document.getElementById('image-original-element');
-      if (origEl) origEl.src = this.workingPhotoSource || rawDataUrl;
-
-      // Run live calibration with active image options (background, angle, tilt, tolerance, etc.)
-      const result = await this.runImagePreview();
-      if (!result || uploadDishId !== this.activeImageDishId || this.rawOriginalSource !== rawDataUrl) return;
-
-      const urlInput = document.getElementById('image-url-input-field');
-      if (urlInput) urlInput.value = '(Uploaded from device)';
-      if (typeof this.toggleComparisonMode === 'function') {
-        this.toggleComparisonMode('split');
-      }
-      window.app?.showToast(result.status === 'original'
-        ? 'Original photo ready. Nothing is saved until you apply it.'
-        : 'Preview ready. Check the dish and plate edges before applying.', 'success');
-    } catch (err) {
-      if (uploadRequest !== this.previewRequestId || uploadDishId !== this.activeImageDishId) return;
-      console.error('handleImageFileUpload error:', err);
-      this.isPreviewProcessing = false;
-      this.previewFailed = err.name!=='AbortError';
-      if(saveButton)saveButton.disabled=this.previewFailed;
-      window.app?.showToast(err.name==='AbortError'?'Photo selection cancelled. The saved photo is unchanged.':err.message||'Photo could not be read. Please retry; the saved photo is unchanged.', err.name==='AbortError'?'info':'error');
-    }
+    const file=input?.files?.[0];if(!file||!this.isAuthenticated||!this.activeImageDishId)return;
+    const id=this.activeImageDishId,request=this.previewRequestId=(this.previewRequestId||0)+1,session=this.adminSessionGeneration||0;
+    this.photoUploadController?.abort();const controller=new AbortController();this.photoUploadController=controller;
+    const current=()=>this.isAuthenticated&&!controller.signal.aborted&&id===this.activeImageDishId&&request===this.previewRequestId&&session===(this.adminSessionGeneration||0);
+    this.photoUploadPending=true;const save=document.getElementById('apply-dish-photo-btn');if(save)save.disabled=true;
+    let result,accepted=false;
+    try{
+      result=await window.HotelPhotoWorkflow.ingest(file,{aspect:4/3,signal:controller.signal});if(!current())return;
+      window.HotelPhotoWorkflow.release(this.tempImageSource);window.HotelPhotoWorkflow.release(this.rawOriginalSource);
+      this.tempImageSource=result.workingUrl;this.rawOriginalSource=result.originalUrl;this.previewFailed=false;accepted=true;
+      const preview=document.getElementById('image-preview-element');if(preview)preview.src=this.tempImageSource;
+      window.app.showToast('Photo ready. Save to apply it.','info');
+    }catch(error){if(current()&&error.name!=='AbortError')window.app.showToast(error.message||'Photo could not be read. The saved photo is unchanged.','error');}
+    finally{if(!accepted){window.HotelPhotoWorkflow?.release(result?.workingUrl);window.HotelPhotoWorkflow?.release(result?.originalUrl);}if(current()){this.photoUploadPending=false;if(save)save.disabled=false;}}
   }
 
   async updatePreviewFromUrl(url) {
-    const trimmed = url.trim();
-    if (!trimmed) return;
-    try {
-      const parsed = new URL(trimmed);
-      if (parsed.protocol!=='https:') return;
-    } catch (e) { return; }
-    window.HotelPhotoWorkflow?.release(this.workingPhotoSource);this.workingPhotoSource=null;
-    this.rawOriginalSource = trimmed;
-    this.tempImageSource = trimmed;
-    const preview = document.getElementById('image-preview-element');
-    const origEl = document.getElementById('image-original-element');
-    if (preview) preview.src = trimmed;
-    if (origEl) origEl.src = trimmed;
-
-    await this.recalculate4KLive();
+    if(!this.isAuthenticated||! /^(?:https:\/\/|assets\/)/.test(url))return;
+    this.tempImageSource=url;const preview=document.getElementById('image-preview-element');if(preview)preview.src=url;
   }
 
-  async selectPresetImage(url) {
-    window.HotelPhotoWorkflow?.release(this.workingPhotoSource);this.workingPhotoSource=null;
-    this.rawOriginalSource = url;
-    this.tempImageSource = url;
-    const preview = document.getElementById('image-preview-element');
-    const origEl = document.getElementById('image-original-element');
-    const urlInput = document.getElementById('image-url-input-field');
-    if (preview) preview.src = url;
-    if (origEl) origEl.src = url;
-    if (urlInput) urlInput.value = url;
+  async selectPresetImage(url) { return this.updatePreviewFromUrl(url); }
 
-    await this.recalculate4KLive();
+  async saveReplacedImage() {
+    if(!this.isAuthenticated||this.photoUploadPending||this.savingDishPhoto||!this.activeImageDishId||!this.tempImageSource)return false;
+    const dish=window.app.menuData.find(item=>item.id===this.activeImageDishId);if(!dish)return false;
+    const request=this.previewRequestId;this.savingDishPhoto=true;
+    const save=document.getElementById('apply-dish-photo-btn');if(save)save.disabled=true;
+    try{
+      const record=await window.HOTEL_STORAGE.saveDishOverride(dish.id,{image:this.tempImageSource,rawOriginalImage:this.rawOriginalSource||this.tempImageSource,enhancementStatus:'original'});
+      dish.image=record.image;window.app.saveMenuData();window.app.renderCategoryCards();window.app.renderMenu();
+      if(window.app.currentCategory&&window.app.currentCategory!=='all')await window.app.renderSectionSlideshow(window.app.currentCategory);
+      window.dispatchEvent(new CustomEvent('hp-media-updated',{detail:{dishId:dish.id,image:dish.image}}));
+      if(request===this.previewRequestId){this.closeImageModal();if(this.currentTab==='photos')this.renderPhotoLibrary(document.getElementById('admin-tab-content'));else this.filterAdminDishes();}
+      window.app.showToast('Photo saved on this device. Export reviewed changes to publish.','success');return true;
+    }catch(error){window.app.showToast(error.message||'Not saved. The earlier photo has been kept.','error');return false;}
+    finally{this.savingDishPhoto=false;if(save)save.disabled=false;}
   }
 
-  async saveReplacedImage(selection = {}) {
-    if (this.previewPending || this.isPreviewProcessing || this.previewFailed || this.savingDishPhoto) return false;
-    if (!this.activeImageDishId || !this.tempImageSource) return;
-
-    const dish = window.app.menuData.find(d => d.id === this.activeImageDishId);
-    if (dish) {
-      let image = selection.image || this.tempImageSource;
-      const status = selection.status || this.currentEnhancementStatus || 'enhanced';
-      const requestId = this.previewRequestId;
-      const saveButton = document.getElementById('apply-dish-photo-btn');
-      this.savingDishPhoto = true;
-      if (saveButton) saveButton.disabled = true;
-      // Permanent Dual Photo Preservation in Storage with Lifecycle tracking
-      try {
-      if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishPhotoLifecycle === 'function') {
-        const persisted=await window.HOTEL_STORAGE.saveDishPhotoLifecycle(dish.id, {
-          enhancedMasterImage: status === 'original' ? (this.enhanced4KSource || image) : image,
-          image,
-          rawOriginalImage: this.rawOriginalSource || this.tempImageSource,
-          enhancementStatus: status,
-          qualityScore: this.currentQualityScore || 90,
-          backgroundType: selection.backgroundMode || this.activeBackgroundMode || 'original',
-          imageOptions: { ...(this.activeImageOptions || {}) },
-          styleVersion: 'hp-studio-v3.0'
-        });
-        if(persisted?.image)image=persisted.image;
-      } else if (window.HOTEL_STORAGE) {
-        await window.HOTEL_STORAGE.saveDishOverride(dish.id, { image });
-      } else {
-        throw new Error('Photo storage is not ready. Reload and retry.');
-      }
-      } catch (error) {
-        window.app.showToast(error.message || 'Photo could not be saved. Please retry.', 'error');
-        return false;
-      } finally {
-        this.savingDishPhoto = false;
-        if (saveButton && requestId === this.previewRequestId && this.activeImageDishId === dish.id) {
-          saveButton.disabled = Boolean(this.previewPending || this.isPreviewProcessing || this.previewFailed);
-        }
-      }
-      if (window.AssetPipeline?.clearCacheForAsset) {
-        window.AssetPipeline.clearCacheForAsset(dish.id);
-        window.AssetPipeline.clearCacheForAsset(dish.image);
-      }
-      dish.image = image;
-      window.app.saveMenuData();
-
-      // Direct live DOM updates so changes reflect immediately without needing reload
-      const cardImg = document.getElementById(`dish-img-el-${dish.id}`);
-      if (cardImg) {
-        if (cardImg.tagName === 'IMG') {
-          cardImg.src = image;
-        } else {
-          window.app.renderMenu();
-        }
-      }
-
-      const modalImg = document.getElementById('detail-modal-img');
-      if (modalImg && modalImg.tagName === 'IMG' && window.app.currentDetailDishId === dish.id && !(window.app.currentDetailVariantIndex >= 0)) {
-        modalImg.src = image;
-      }
-
-      const thumbImg = document.getElementById(`admin-dish-thumb-${dish.id}`);
-      if (thumbImg) thumbImg.src = image;
-
-      window.app.renderCategoryCards();
-      if (window.app.currentCategory && window.app.currentCategory !== 'all') {
-        window.app.renderSectionSlideshow(window.app.currentCategory);
-      }
-      window.app.renderMenu();
-      this.filterAdminDishes();
-      if (document.getElementById('studio-dishes-grid')) {
-        this.renderAIStudioManager(document.getElementById('admin-tab-content'));
-      }
-      window.dispatchEvent(new CustomEvent('hp-media-updated', { detail: { dishId: dish.id, image } }));
-      if (requestId === this.previewRequestId && this.activeImageDishId === dish.id) this.closeImageModal();
-      window.app.showToast(`Photo ${status === 'approved' ? 'approved' : status === 'original' ? 'restored' : 'saved'} for "${dish.name}" in this browser.`, 'success');
-      return true;
-    }
+  async renderPhotoLibrary(container) {
+    if(!this.isAuthenticated||this.currentTab!=='photos')return;
+    const previousScroll=container.scrollTop;
+    container.replaceChildren();
+    const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
+    const header=node('header','','studio-section-header');header.append(node('h3','Dish photo library'),node('p','Your uploaded photos only. Upload, replace or remove an image; no generation or colour changes.','studio-notice'));
+    const search=node('input');search.type='search';search.placeholder='Search photos by dish name';search.setAttribute('aria-label','Search dish photos');
+    const grid=node('div','','photo-library-grid');grid.id='studio-dishes-grid';
+    for(const dish of window.app.menuData){const card=node('article','','photo-library-card');card.dataset.name=dish.name.toLowerCase();const image=node('img');image.src=dish.image||'assets/brand-placeholder.svg';image.alt=dish.name;image.loading='lazy';const title=node('h4',dish.name);const edit=node('button',dish.image?'Replace photo':'Upload photo','studio-button');edit.type='button';edit.addEventListener('click',()=>this.openImageModal(dish.id));card.append(image,title,edit);grid.append(card);}
+    search.addEventListener('input',()=>{const query=search.value.trim().toLowerCase();for(const card of grid.children)card.hidden=!card.dataset.name.includes(query);});container.append(header,search,grid);container.scrollTop=previousScroll;
   }
 
-  // ==================== 1B. AI PHOTO STUDIO & BATCH PHOTOGRAPHY HUB ====================
-  async renderAIStudioManager(container) {
-    const view=this.beginAdminRender('ai-studio',container,'Loading your photo gallery…');if(!view)return;
-    const renderId = this.studioRenderId = (this.studioRenderId || 0) + 1;
-    const dishes = window.app.menuData || [];
-    const withPhotos = dishes.filter(d => d.image && d.image.trim() !== '');
-    const withoutPhotos = dishes.filter(d => !d.image || d.image.trim() === '');
-
-    let settings = {
-      autoEnhanceEnabled: true,
-      defaultStyle: 'slate_gold',
-      autoReplaceClutteredBg: true
-    };
-    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.getAISettings === 'function') {
-      try{settings = await window.HOTEL_STORAGE.getAISettings() || settings;}catch(_){this.showAdminRenderStatus(view,'Photo settings could not be loaded. Your saved photos are unchanged.',true);return;}
-    }
-    // Collect overrides from storage
-    if(!this.canRenderAdmin(view))return;
-    let overrides={};
-    try{if(window.HOTEL_STORAGE?.getAllDishOverrides)overrides=await window.HOTEL_STORAGE.getAllDishOverrides({strict:true});}catch(_){this.showAdminRenderStatus(view,'The photo gallery could not be loaded. Your saved photos are unchanged.',true);return;}
-
-    let approvedCount = 0;
-    if (renderId !== this.studioRenderId || !this.canRenderAdmin(view)) return;
-    let studioMasterCount = 0;
-    let rawOriginalCount = 0;
-
-    dishes.forEach(d => {
-      const rec = overrides[d.id];
-      if (rec) {
-        if (rec.enhancementStatus === 'approved') approvedCount++;
-        else if (['enhanced', 'natural'].includes(rec.enhancementStatus)) studioMasterCount++;
-        else if (rec.enhancementStatus === 'original') rawOriginalCount++;
-      } else if (d.image) {
-        studioMasterCount++;
-      }
-    });
-
-    container.innerHTML = `
-      <div class="hp-inline-31cc15eda300">
-        <div class="hp-inline-5b25aaafec70">
-          <div class="hp-inline-48e15f2022cb">
-            <div>
-              <div class="hp-inline-1cecbf93fb57">
-                ✨ HOTEL PREMIER CULINARY PHOTOGRAPHY ENGINE
-              </div>
-              <h3 class="hp-inline-76156c7b9d6c">
-                Local Photo Enhancement
-              </h3>
-              <p class="hp-inline-8116afbbd360">
-                Refine your own photographs on this device. Compare the preview, preserve the dish colours, and save only the results you approve. Background treatments are local effects; cloud image generation is disabled.
-              </p>
-            </div>
-            <div class="hp-inline-a5afbd001684">
-              <button type="button" id="batch-photo-start" class="btn-theme-engine-chip active hp-inline-64b3127e963e" ${this.batchRun?'disabled':''} onclick="window.admin.batchCalibrateAllDishes()">
-                ⚡ Auto-Enhance All Dishes (${withPhotos.length})
-              </button>
-              <button type="button" id="batch-photo-stop" class="btn-theme-engine-chip" ${this.batchRun?'':'hidden'} onclick="window.admin.cancelBatchCalibration()">Stop batch</button>
-              <p id="batch-photo-status" role="status" aria-live="polite">${this.batchRun?'Photo processing is running.':'Photos are saved only after each preview is successfully stored.'}</p>
-            </div>
-          </div>
-
-          <!-- Studio KPI Statistics -->
-          <div class="hp-inline-752a2434d948">
-            <div class="hp-inline-5a2097e5172c">
-              <div class="hp-inline-5ba4e2cfc529">${withPhotos.length} / ${dishes.length}</div>
-              <div class="hp-inline-df830d40a623">Photos Assigned</div>
-            </div>
-            <div class="hp-inline-9f31e974b24e">
-              <div class="hp-inline-5ba4e2cfc529">${studioMasterCount}</div>
-              <div class="hp-inline-df830d40a623">Studio Masters</div>
-            </div>
-            <div class="hp-inline-9eb77b2a92bb">
-              <div class="hp-inline-5ba4e2cfc529">${approvedCount}</div>
-              <div class="hp-inline-df830d40a623">Approved Masters</div>
-            </div>
-            <div class="hp-inline-a8904a177abe">
-              <div class="hp-inline-5ba4e2cfc529">${withoutPhotos.length}</div>
-              <div class="hp-inline-df830d40a623">Awaiting Photos</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Studio Global Brand Surface Policy -->
-        <div class="hp-inline-8c4dcb1fa279">
-          <div class="hp-inline-91f70b3c0af0">
-            <div>
-              <div class="hp-inline-974e4b5f1ab3">
-                <span>&#x2699;&#xFE0F;</span> <span>Signature Default Studio Surface</span>
-              </div>
-              <div class="hp-inline-8bdb9af2323b">New food uploads and batch calibrations will default to this luxury surface backdrop.</div>
-            </div>
-            <div class="hp-inline-d8c16219b6c4">
-              <select id="ai-setting-surface" class="form-select hp-inline-8d19c5bdc9c7" onchange="window.admin.saveAIStudioSettings()">
-                <option value="slate_gold" ${settings.defaultStyle === 'slate_gold' ? 'selected' : ''}>Midnight Slate & Imperial Gold (Brand Signature)</option>
-                <option value="teak_wood" ${settings.defaultStyle === 'teak_wood' ? 'selected' : ''}>Warm Teak & Walnut Wood (Breads & Snacks)</option>
-                <option value="cream_marble" ${settings.defaultStyle === 'cream_marble' ? 'selected' : ''}>Refined Italian Cream Marble (Beverages & Desserts)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <!-- Filter Controls -->
-        <div class="hp-inline-91f70b3c0af0">
-          <div class="hp-inline-a5afbd001684">
-            <button class="btn-theme-engine-chip active" id="studio-filter-all" onclick="window.admin.filterStudioGallery('all', this)">All Dishes (${dishes.length})</button>
-            <button class="btn-theme-engine-chip" id="studio-filter-photos" onclick="window.admin.filterStudioGallery('with-photos', this)">With Photos (${withPhotos.length})</button>
-            <button class="btn-theme-engine-chip" id="studio-filter-missing" onclick="window.admin.filterStudioGallery('missing-photos', this)">Needs Photo (${withoutPhotos.length})</button>
-          </div>
-          <button type="button" class="studio-button" onclick="window.admin.switchTab('slides')">Section photos & captions</button>
-          <input type="text" placeholder="Search dishes..." class="form-input hp-inline-98d204a2469b" oninput="window.admin.searchStudioGallery(this.value)">
-        </div>
-
-        <!-- Gallery Grid -->
-        <div class="hp-inline-4906e552c7c7" id="studio-dishes-grid">
-          ${dishes.filter(dish => !dish.groupedUnder).map(dish => {
-            const hasPhoto = dish.image && dish.image.trim() !== '';
-            const rec = overrides[dish.id];
-            const status = rec ? rec.enhancementStatus : (hasPhoto ? 'enhanced' : 'none');
-            const score = rec ? rec.qualityScore : (hasPhoto ? 92 : null);
-
-            return `
-              <div class="studio-card-item hp-inline-4c736bb27469" data-has-photo="${hasPhoto ? '1' : '0'}" data-name="${dish.name.toLowerCase()}">
-                <div class="hp-inline-ae1dc0da875b" onclick="window.admin.openImageModal('${dish.id}')">
-                  ${hasPhoto ? `
-                    <img height="900" width="1200" class="hp-inline-059ba7fa4870" src="${dish.image}" loading="lazy" decoding="async" alt="${dish.name}">
-                    <span class="hp-status-pill hp-status-${status} hp-inline-26e0eee5872e">
-                      ${status.toUpperCase()}${score ? ` (${score}%)` : ''}
-                    </span>
-                  ` : `
-                    <div class="hp-inline-43948df75e15">
-                      <span class="hp-inline-2319a2f6b70f">🌱</span>
-                      <span class="hp-inline-e4892ccc9e68">No Photo</span>
-                      <span class="hp-inline-f4d2f8fd9709">Tap to upload & calibrate</span>
-                    </div>
-                  `}
-                  <button type="button" class="btn-detail-photo-action hp-inline-d33b2c980050" onclick="event.stopPropagation(); window.admin.openImageModal('${dish.id}')">
-                    ${hasPhoto ? '✨ Studio A/B' : '📷 Upload'}
-                  </button>
-                </div>
-                <div class="hp-inline-b67bd2e3f7d8">
-                  <div>
-                    <div class="hp-inline-0642912a45ab">${dish.categoryId}</div>
-                    <div class="hp-inline-e7053b285727">${dish.name}</div>
-                  </div>
-                  <div class="hp-inline-177dffe40709">
-                    <span class="hp-inline-df839eb48ba8">${dish.price === null ? 'Price on request' : `₹${dish.price}`}</span>
-                    <button class="slide-action-btn hp-inline-a0c14f726dbd" onclick="window.admin.openImageModal('${dish.id}')">Calibrate ⚙️</button>
-                  </div>
-                </div>
-              </div>
-            `;
-          }).join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  filterStudioGallery(filterType, btn) {
-    if (btn && btn.parentElement) {
-      btn.parentElement.querySelectorAll('.btn-theme-engine-chip').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    }
-    const cards = document.querySelectorAll('.studio-card-item');
-    cards.forEach(c => {
-      const hasPhoto = c.getAttribute('data-has-photo') === '1';
-      if (filterType === 'all') c.style.display = 'flex';
-      else if (filterType === 'with-photos') c.style.display = hasPhoto ? 'flex' : 'none';
-      else if (filterType === 'missing-photos') c.style.display = !hasPhoto ? 'flex' : 'none';
-    });
-  }
-
-  searchStudioGallery(query) {
-    const q = query.trim().toLowerCase();
-    const cards = document.querySelectorAll('.studio-card-item');
-    cards.forEach(c => {
-      const name = c.getAttribute('data-name') || '';
-      c.style.display = name.includes(q) ? 'flex' : 'none';
-    });
-  }
-
-  updateBatchStatus(run,message='') {
-    const status=document.getElementById('batch-photo-status');
-    if(status)status.textContent=message || (run.cancelled?'Stopping after the current preview. ':'')+run.processed+' saved, '+run.failed+' failed, '+run.skipped+' skipped, '+run.total+' total.';
-    const start=document.getElementById('batch-photo-start'),stop=document.getElementById('batch-photo-stop');
-    if(start)start.disabled=Boolean(this.batchRun);
-    if(stop){stop.hidden=!this.batchRun;stop.disabled=Boolean(run.cancelled);}
-  }
-
-  cancelBatchCalibration() {
-    if(!this.batchRun)return;
-    this.batchRun.cancelled=true;
-    this.updateBatchStatus(this.batchRun);
-  }
-
-  async batchCalibrateAllDishes() {
-    if(!this.isAuthenticated || this.batchRun || this.batchConfirming)return;
-    const dishes=(window.app.menuData||[]).filter(d=>d.image&&d.image.trim());
-    if(!dishes.length){window.app.showToast('No dishes currently have photos to refine.','info');return;}
-    const storage=window.HOTEL_STORAGE,engine=window.AssetPipeline;
-    if(!storage?.saveDishPhotoLifecycle||!engine?.processAutomaticStudioEnhancement){window.app.showToast('Photo tools are unavailable. Reload and retry.','error');return;}
-    this.batchConfirming=true;
-    let approved=false;
-    try{approved=await window.HotelDialogs.confirm('Prepare local previews for '+dishes.length+' dishes? Original photos and colours are preserved. Each result is saved only after storage confirms it. You can stop the remaining work.');}
-    finally{this.batchConfirming=false;}
-    if(!approved || !this.isAuthenticated)return;
-    const run={processed:0,failed:0,skipped:0,total:dishes.length,cancelled:false};this.batchRun=run;
-    this.updateBatchStatus(run);
-    try {
-      for(const dish of dishes) {
-        if(run.cancelled || !this.isAuthenticated){run.cancelled=true;break;}
-        let preview;
-        const imageBefore=dish.image;
-        try {
-          const record=await storage.getDishOverride(dish.id);
-          if(run.cancelled || !this.isAuthenticated){run.cancelled=true;break;}
-          const rawOriginalImage=record?.rawOriginalImage||dish.image;
-          preview=await engine.processAutomaticStudioEnhancement(rawOriginalImage,dish,{backgroundMode:'natural',framingMode:'smart',enhanceColors:false});
-          if(run.cancelled || !this.isAuthenticated){run.cancelled=true;break;}
-          if(!preview?.enhancedDataUrl)throw Error('No preview was produced.');
-          const current=window.app.menuData.find(item=>item.id===dish.id);
-          if(current!==dish || current.image!==imageBefore){run.skipped++;this.updateBatchStatus(run);continue;}
-          const saved=await storage.saveDishPhotoLifecycle(dish.id,{image:preview.enhancedDataUrl,enhancedMasterImage:preview.enhancedDataUrl,rawOriginalImage,enhancementStatus:preview.status||'natural',qualityScore:preview.qualityScore??0,backgroundType:'natural',styleVersion:'hp-studio-v3.0'},{expectedRevision:record?.revision||record?.updatedAt||null});
-          if(!saved?.image)throw Error('Photo storage did not confirm the saved image.');
-          dish.image=saved.image;
-          run.processed++;
-        }catch(error){if(error.code==='PHOTO_CHANGED')run.skipped++;else run.failed++;console.warn('A batch photo could not be saved:',error.message);}
-        finally{if(preview?.enhancedDataUrl&&preview.enhancedDataUrl!==dish.image)window.HotelPhotoWorkflow?.release(preview.enhancedDataUrl);}
-        this.updateBatchStatus(run);
-      }
-      if(run.processed){window.app.saveMenuData();window.app.renderCategoryCards();window.app.renderMenu();}
-    }finally{
-      if(this.batchRun===run)this.batchRun=null;
-      if(this.isAuthenticated&&this.currentTab==='ai-studio')try{await this.renderAIStudioManager(document.getElementById('admin-tab-content'));}catch(error){console.warn('The gallery could not refresh:',error.message);}
-      const message=(run.cancelled?'Batch stopped. ':'Batch finished. ')+run.processed+' photos saved; '+run.failed+' failed; '+run.skipped+' skipped. Earlier saved photos are kept.';
-      this.updateBatchStatus(run,message);
-      window.app.showToast(message,run.failed?'warning':'info');
-    }
-  }
-
-  // ==================== 2. ROOMS & TARIFF CMS & MULTI-PHOTO GALLERIES ====================
   async renderRoomsManager(container) {
     const view=this.beginAdminRender('rooms',container,'Loading room photographs…');if(!view)return;
     const rooms = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories) 
@@ -3002,22 +2025,21 @@ class HotelPremierAdmin {
     this.newDishUploadController?.abort();const controller=new AbortController();this.newDishUploadController=controller;
     const current=()=>this.isAuthenticated&&!controller.signal.aborted&&this.newDishUploadRequest===request&&session===(this.adminSessionGeneration||0)&&modal.classList.contains('active');
     this.newDishPhotoPending=true;const save=document.getElementById('save-new-dish-btn');if(save)save.disabled=true;
-    let upload,preview,accepted=false;
+    let upload,accepted=false;
     try {
       if(!window.HotelPhotoWorkflow)throw Error('Photo editor is unavailable. Reload and retry.');
       upload=await window.HotelPhotoWorkflow.ingest(file,{aspect:4/3,signal:controller.signal,onProgress:message=>{if(current())window.app.showToast(message,'info');}});
       if(!current())return;
       const dish={name:document.getElementById('new-dish-name')?.value?.trim()||'',categoryId:document.getElementById('new-dish-category')?.value||''};
-      preview=window.AssetPipeline?.processAutomaticStudioEnhancement?await window.AssetPipeline.processAutomaticStudioEnhancement(upload.workingUrl,dish,{backgroundMode:'natural',enhanceColors:false}):null;
       if(!current())return;
       window.HotelPhotoWorkflow.release(this.newDishTempImage);window.HotelPhotoWorkflow.release(this.newDishRawOriginal);
-      this.newDishRawOriginal=upload.originalUrl;this.newDishTempImage=preview?.enhancedDataUrl||upload.workingUrl;accepted=true;
+      this.newDishRawOriginal=upload.originalUrl;this.newDishTempImage=upload.workingUrl;accepted=true;
       if(this.newDishTempImage!==upload.workingUrl)window.HotelPhotoWorkflow.release(upload.workingUrl);
       const field=document.getElementById('new-dish-image');if(field)field.value='(Photo preview ready — save to apply)';
       window.app.showToast('Photo preview ready. Nothing is saved until you save the dish.','info');
     }catch(error){if(current()&&error.name!=='AbortError')window.app.showToast(error.message||'Photo processing failed. The existing draft photo is unchanged.','error');}
     finally {
-      if(!accepted){window.HotelPhotoWorkflow?.release(upload?.originalUrl);window.HotelPhotoWorkflow?.release(upload?.workingUrl);window.HotelPhotoWorkflow?.release(preview?.enhancedDataUrl);}
+      if(!accepted){window.HotelPhotoWorkflow?.release(upload?.originalUrl);window.HotelPhotoWorkflow?.release(upload?.workingUrl);}
       if(this.newDishUploadRequest===request){this.newDishPhotoPending=false;if(save)save.disabled=Boolean(this.savingNewDish);}
     }
   }
@@ -3307,31 +2329,7 @@ class HotelPremierAdmin {
   }
 
   // ==================== 7. AI STUDIO GLOBAL POLICIES ====================
-  async saveAIStudioSettings() {
-    const surface = document.getElementById('ai-setting-surface')?.value || 'slate_gold';
-    const clutter = document.getElementById('ai-setting-clutter')?.value === 'auto';
 
-    const settings = {
-      autoEnhanceEnabled: true,
-      defaultStyle: surface,
-      autoReplaceClutteredBg: clutter,
-      qualityThreshold: 60
-    };
-
-    if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveAISettings === 'function') {
-      await window.HOTEL_STORAGE.saveAISettings(settings);
-    }
-    window.app.showToast('Local photo settings saved!', 'success');
-  }
-
-  filterStudioDishes(q) {
-    const term = (q || '').toLowerCase().trim();
-    const items = document.querySelectorAll('.ai-studio-grid-item');
-    items.forEach(el => {
-      const txt = (el.innerText || '').toLowerCase();
-      el.style.display = (!term || txt.includes(term)) ? 'block' : 'none';
-    });
-  }
 
   async updateManagerPin() {
     const input = document.getElementById('admin-new-pin-input');

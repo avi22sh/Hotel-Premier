@@ -36,7 +36,7 @@
    const slides=await window.HOTEL_STORAGE.getSectionSlides(id,null);
    if(slides)sectionSlides[id]=await publicData(slides);
   }
-  const overrides={version:1,dishes,roomGalleries,sectionSlides,layout:await publicData(window.HotelMenuStructure?.snapshot?.(window.app)||null)};
+  const overrides={version:1,dishes,roomGalleries,sectionSlides,editorial:window.HotelContentStudio?.snapshot?.()||null,layout:await publicData(window.HotelMenuStructure?.snapshot?.(window.app)||null)};
   const bundle={format:'hotel-premier-public-bundle',version:1,createdAt:new Date().toISOString(),overrides,images:[...images.values()],instructions:[
    'Keep your full local backup separately. This bundle intentionally excludes guest and lock data.',
    'Run: node tools/unpack-publish-bundle.cjs <downloaded-bundle.json>',

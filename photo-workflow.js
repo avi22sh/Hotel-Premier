@@ -16,7 +16,7 @@
    let rect;
    const fields={};
    const controls=document.createElement('div');controls.className='photo-crop-controls';
-   const fitLabel=document.createElement('label'),fit=document.createElement('input');fit.type='checkbox';fit.checked=true;fit.addEventListener('change',draw);fitLabel.append(fit,document.createTextNode('Keep the entire photo, with transparent margins where needed'));controls.append(fitLabel);
+   const fitLabel=document.createElement('label'),fit=document.createElement('input');fit.type='checkbox';fit.checked=true;fit.addEventListener('change',draw);fitLabel.append(fit,document.createTextNode('Keep the entire photo without adding blank margins'));controls.append(fitLabel);
    for(const [name,label,min,max,value]of[['zoom','Zoom',1,2,1],['x','Horizontal position',0,100,50],['y','Vertical position',0,100,50]]) {
     const wrap=document.createElement('label');wrap.textContent=label;
     const input=document.createElement('input');input.type='range';input.min=min;input.max=max;input.step=name==='zoom'?'.01':'1';input.value=value;input.setAttribute('aria-label',label);input.addEventListener('input',draw);fields[name]=input;wrap.append(input);controls.append(wrap);
@@ -30,7 +30,7 @@
    let finished=false;
    const finish=value=>{if(finished)return;finished=true;signal?.removeEventListener('abort',abort);dialog.close();dialog.remove();value?resolve(value):reject(new DOMException('Photo selection cancelled.','AbortError'));};
    const abort=()=>finish(null);
-   for(const [label,action]of[['Cancel',abort],['Use this framing',()=>finish(rect)]]){const button=document.createElement('button');button.type='button';button.textContent=label;button.addEventListener('click',action);actions.append(button);}
+   for(const [label,action]of[['Cancel',abort],['Use this framing',()=>finish(fit.checked?{x:0,y:0,width:bitmap.width,height:bitmap.height}:rect)]]){const button=document.createElement('button');button.type='button';button.textContent=label;button.addEventListener('click',action);actions.append(button);}
    dialog.addEventListener('cancel',event=>{event.preventDefault();abort();});dialog.addEventListener('close',()=>{if(!finished)abort();});
    dialog.append(title,hint,canvas,controls,actions);document.body.append(dialog);signal?.addEventListener('abort',abort,{once:true});dialog.showModal();draw();
   });
@@ -38,7 +38,7 @@
  async function optimize(file,crop,options) {
   if(typeof Worker!=='undefined' && typeof OffscreenCanvas!=='undefined') {
    return new Promise((resolve,reject)=>{
-    const worker=new Worker('photo-worker.js?v=22.27');
+    const worker=new Worker('photo-worker.js?v=22.28');
     const cleanup=()=>{clearTimeout(timer);options.signal?.removeEventListener('abort',abort);worker.terminate();};
     const abort=()=>{cleanup();reject(new DOMException('Photo selection cancelled.','AbortError'));};
     const timer=setTimeout(()=>{cleanup();reject(Error('Photo optimization took too long. Try a smaller photo.'));},90000);
@@ -96,16 +96,4 @@
   return (await optimize(blob,{x:0,y:0,width,height},{maxDimension:1600})).blob;
  }
  window.HotelPhotoWorkflow=Object.freeze({ingest,validate,release,createURL:makeURL,getOriginal:source=>originals.get(source),optimizeForPublish});
- if(typeof Worker!=='undefined'&&typeof OffscreenCanvas!=='undefined'&&window.AssetPipeline) {
-  window.AssetPipeline.processAutomaticStudioEnhancement=async(source,dish={},options={})=>{
-   const settings=await window.HOTEL_STORAGE?.getAISettings?.()||{};
-   return new Promise((resolve,reject)=>{
-    const worker=new Worker('photo-enhance-worker.js?v=22.27');
-    const timer=setTimeout(()=>{worker.terminate();reject(Error('Photo enhancement took too long. Try a smaller photo.'));},90000);
-    worker.onmessage=event=>{clearTimeout(timer);worker.terminate();const result=event.data;if(result.error){reject(Error(result.error));return;}const {blob,...metadata}=result;resolve({...metadata,enhancedDataUrl:makeURL(blob)});};
-    worker.onerror=()=>{clearTimeout(timer);worker.terminate();reject(Error('Local photo tools could not start. Reload and retry.'));};
-    worker.postMessage({source,dish:{id:dish.id,name:dish.name,categoryId:dish.categoryId},options,settings});
-   });
-  };
- }
 })();

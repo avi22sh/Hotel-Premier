@@ -15,6 +15,10 @@
  }
  function init(){
   const host=document.getElementById('admin-tab-content');if(!host)return;
+  window.addEventListener('hp-content-saved',()=>{
+   const status=document.querySelector('.admin-save-scope');
+   if(status)status.textContent='Saved on this device · Public site changes after reviewed GitHub publishing.';
+  });
   new MutationObserver(()=>{if(!scheduled){scheduled=true;requestAnimationFrame(enhance);}}).observe(host,{subtree:true,childList:true});
   enhance();
   window.addEventListener('hp-storage-pressure',()=>{

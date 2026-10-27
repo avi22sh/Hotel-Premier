@@ -589,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.27';
+    s.src = 'admin.js?v=22.28';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1000,6 +1000,7 @@ class HotelPremierApp {
         if (ov.notAvailable !== undefined) copy.notAvailable = Boolean(ov.notAvailable);
         if (ov.tags !== undefined) copy.tags = ov.tags;
         if (ov.variants !== undefined) copy.variants = ov.variants;
+        for (const key of ['name','hindiName','marathiName','description','descriptionHi','descriptionMr','categoryId','groupedUnder','isGroupMaster']) if(ov[key]!==undefined)copy[key]=ov[key];
       }
       return copy;
     });
@@ -1055,6 +1056,8 @@ class HotelPremierApp {
       let overridesMap = existingOverrides ? JSON.parse(existingOverrides) : {};
       this.menuData.forEach(dish => {
         const fields = {
+          name:dish.name, description:dish.description, hindiName:dish.hindiName, marathiName:dish.marathiName,
+          descriptionHi:dish.descriptionHi, descriptionMr:dish.descriptionMr, categoryId:dish.categoryId,
           image: dish.image,
           price: dish.price,
           isSoldOut: dish.isSoldOut,
@@ -1084,6 +1087,9 @@ class HotelPremierApp {
             await this.loadMenuData();
             this.renderCategoryCards();
             this.renderMenu();
+            if(this.currentCategory&&this.currentCategory!=='all')await this.renderSectionSlideshow(this.currentCategory);
+            const detail=document.getElementById('dish-detail-modal');
+            if(detail?.classList.contains('active')&&this.currentDetailDishId)this.openDishDetail(this.currentDetailDishId,this.currentDetailVariantIndex);
           }
         };
       }
@@ -1091,6 +1097,7 @@ class HotelPremierApp {
   }
 
   notifyMenuUpdate() {
+    if(typeof CustomEvent==='function')window.dispatchEvent?.(new CustomEvent('hp-content-saved'));
     if (this.broadcast) {
       try {
         this.broadcast.postMessage({ type: 'MENU_UPDATED', timestamp: Date.now() });

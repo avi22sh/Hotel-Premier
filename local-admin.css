@@ -1,4 +1,31 @@
 /* Local-only admin lock; intentionally shares the hotel's existing tokens. */
+#admin-modal-backdrop .admin-modal-sheet { display:flex; flex-direction:column; height:94dvh; max-height:calc(var(--overlay-viewport-height,100dvh) - 1rem); overflow:hidden; min-height:0; }
+#admin-dashboard-view { flex:1 1 auto; min-height:0; min-width:0; overflow:hidden; }
+#admin-tab-content { flex:1 1 auto; min-height:0; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; -webkit-overflow-scrolling:touch; scroll-behavior:auto; }
+#admin-auth-view { overflow-y:auto; min-height:0; }
+.admin-save-scope { flex:none; margin:0; padding:.65rem 1rem; border-bottom:1px solid var(--border); background:var(--surface-secondary); color:var(--muted); font-size:.8rem; line-height:1.5; }
+.admin-nav-tabs { padding:.5rem; gap:.4rem; }
+.admin-tab-btn { font-size:.85rem; padding:.6rem .8rem; }
+#admin-tab-content :is(.content-studio,.menu-structure-studio,.backup-panel-card) { max-width:100%; min-width:0; }
+#admin-tab-content details { border:1px solid var(--border); border-radius:.8rem; padding:.8rem; margin-block:.65rem; }
+#admin-tab-content summary { cursor:pointer; min-height:32px; line-height:1.6; color:var(--text); font-weight:600; }
+#admin-tab-content .studio-field { display:grid; gap:.5rem; margin-block:1rem; }
+#admin-tab-content :is(button,input,select) { min-height:44px; }
+#admin-tab-content .studio-button { white-space:normal; padding:.6rem .85rem; }
+.crm-kpi-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.75rem; }
+.crm-kpi-card { min-width:0; padding:1rem; border:1px solid var(--border); border-radius:.8rem; background:var(--surface-secondary); }
+.crm-kpi-card .kpi-num { color:var(--accent); font-weight:700; font-size:1.5rem; }
+.crm-kpi-card .kpi-label { color:var(--muted); line-height:1.5; font-size:.8rem; }
+.crm-export-actions-bar { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr)); gap:.75rem; padding-top:1rem; }
+.admin-list-footer { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.75rem; padding:1rem; }
+#admin-tab-content .admin-taste-details { padding:.4rem; margin:0; border:0; }
+#admin-tab-content .admin-table th { background:var(--surface-secondary); color:var(--text); }
+#admin-tab-content .admin-table td { vertical-align:top; }
+#admin-tab-content .admin-table input[type="number"] { min-width:6rem; max-width:100%; }
+#admin-tab-content .hp-inline-ec98a14b02ca { line-height:1.6; max-width:32rem; color:var(--muted); }
+#image-replace-modal > .modal-sheet { display:flex; flex-direction:column; height:90dvh; overflow:hidden; }
+#image-modal-body { overflow-y:auto; flex:1 1 auto; min-height:0; }
+@media(max-width:639px) { .crm-kpi-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } #admin-tab-content { padding:1rem; } .admin-nav-tabs { max-height:64px; } }
 .local-publish-card { padding:1rem; margin-block:1rem; border:1px solid var(--cream-border); border-radius:1rem; color:var(--crystal-ink,var(--text-dark)); background:var(--crystal-surface,var(--bg-card)); }
 .pwa-update-notice { position:fixed; inset:auto 1rem calc(5rem + env(safe-area-inset-bottom)); z-index:90; margin-inline:auto; max-width:30rem; padding:1rem; display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; background:var(--surface, #202833); color:var(--text, #f4eddf); border:1px solid var(--border, #a18b65); border-radius:1rem; box-shadow:0 .5rem 2rem #0005; }
 .pwa-update-notice p { flex:1 1 100%; margin:0; }
