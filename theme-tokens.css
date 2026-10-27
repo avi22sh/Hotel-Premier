@@ -377,49 +377,49 @@ body.theme-dark #guest-feedback-section .star-choice.active .star-btn { color:#6
  #group-stay-enquiry .custom-room-mix .form-label { min-height:0; }
 }
 
-/* Champagne glass and polished burgundy typography: light mode only. */
+/* Champagne glass and tariff-matched bronze and gold plating: light mode only. */
 body.theme-light {
- --heading-accent:#7b1635;
- --enamel-polish:linear-gradient(165deg,#a63a59 0%,#8c2545 42%,#70152f 48%,#811d3c 100%);
- --enamel-relief:inset 0 1px 0 #ffffff5c,inset 0 -1px 0 #490b23,0 4px 12px #70152f22;
- --heading-polish:linear-gradient(110deg,#61122a 0%,#9b2948 28%,#70122f 48%,#a83050 68%,#61122a 100%);
+ --heading-accent:#694c2c;
  background-color:#f5f1ef;
- background-image:radial-gradient(ellipse at 10% 0%,#fffaf6 0%,transparent 52%),radial-gradient(ellipse at 95% 35%,#e9dfe280 0%,transparent 60%);
+ background-image:radial-gradient(ellipse at 10% 0%,#fffaf6 0%,transparent 52%),radial-gradient(ellipse at 95% 35%,#e9e0cf80 0%,transparent 60%);
 }
 body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title) {
  color:var(--heading-accent); text-shadow:none; overflow-wrap:anywhere;
 }
-@supports ((background-clip:text) or (-webkit-background-clip:text)) {
- body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title) {
-  background-image:var(--heading-polish); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;
- }
-}
-body.theme-light :is(.dish-title,.modal-dish-title,.signature-dish-title) { color:#7b1635; text-shadow:0 1px 0 #fff9; }
-body.theme-light :is(.dish-price,.modal-dish-price,.tariff-val,.occ-price,.rate-prices strong) { color:#841d3c; text-shadow:0 1px 0 #fff; font-variant-numeric:tabular-nums; }
+body.theme-light :is(.dish-title,.modal-dish-title,.signature-dish-title) { color:#694c2c; text-shadow:0 1px 0 #fff9; }
+body.theme-light :is(.dish-price,.modal-dish-price,.tariff-val,.occ-price,.rate-prices strong) { color:#694c2c; text-shadow:0 1px 0 #fff; font-variant-numeric:tabular-nums; }
 body.theme-light :is(.boutique-room-card,.home-pillar-card,.tariff-suite-card,.hotel-atmosphere-gallery,.feedback-container,.celebrate-hero-banner,.group-estimator,.compact-dish-card,.category-card,.room-complimentary-amenities-banner) {
- background:linear-gradient(145deg,#fffdf9ed,#f3eeeceb); border-color:#ba9da6;
- box-shadow:inset 0 1px 0 #fffdf7,0 8px 28px #5f203b10;
+ background:linear-gradient(145deg,#fffdf9ed,#f3eeeceb); border-color:#bda781;
+ box-shadow:inset 0 1px 0 #fffdf7,0 8px 28px #61421410;
  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
 }
 body.theme-light #section-stay .hotel-atmosphere-gallery { background:linear-gradient(145deg,#fffdf9ed,#f3eeeceb); }
-body.theme-light :is(.amenity-category-card,.room-card-info-panel) { background:#f8f3f0; color:var(--text); border-color:#ba9da6; }
+body.theme-light :is(.amenity-category-card,.room-card-info-panel) { background:#f8f3f0; color:var(--text); border-color:#bda781; }
 body.theme-light :is(.amenities-banner-title,.amenity-cat-header,.home-pillar-title,.privilege-title) { color:var(--heading-accent); }
 body.theme-light :is(.amenity-cat-list li,.room-suite-desc,.home-pillar-desc) { color:var(--muted); }
 body.theme-light .section-wrapper .editorial-eyebrow { color:var(--accent); }
-body.theme-light :is(.section-wrapper,.modal-backdrop) { --accent:#841d3c; --focus:#841d3c; }
+body.theme-light :is(.section-wrapper,.modal-backdrop) { --accent:#694c2c; --focus:#694c2c; }
 body.theme-light #section-dine .compact-dish-card .dish-title,
 body.theme-light #dish-detail-modal .modal-dish-title { color:var(--heading-accent); }
 body.theme-light #dish-detail-modal .modal-dish-price,
 body.theme-light #section-stay .rate-prices strong,
-body.theme-light #section-tariffs .occ-price { color:#841d3c; }
-body.theme-light :is(.section-wrapper .editorial-divider,.section-wrapper .section-divider) { background:linear-gradient(90deg,transparent,#a83050,#70152f,transparent); }
+body.theme-light #section-tariffs .occ-price { color:#694c2c; }
+body.theme-light :is(.section-wrapper .editorial-divider,.section-wrapper .section-divider) { background:var(--gold-polish); }
 body.theme-light #dish-detail-modal .modal-dish-variant-btn.selected,
 body.theme-light :is(.variant-btn.selected,.filter-pill.active),
 body.theme-light #section-tariffs .tariff-plan-btn.active {
- background:var(--enamel-polish); color:#fff9f5; border-color:#7b1635; box-shadow:var(--enamel-relief); text-shadow:none;
+ background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); text-shadow:none;
 }
 body.theme-light #dish-detail-modal .modal-dish-variant-btn.selected .variant-btn-price { color:inherit; }
-body.theme-light #menu-sections-drawer-modal :is(.drawer-qf-chip.active,.drawer-section-item.active) { background:#f2e3e8; color:#7b1635; border-color:#9b2948; }
+body.theme-light #menu-sections-drawer-modal :is(.drawer-qf-chip.active,.drawer-section-item.active) { background:#f0e5ce; color:#694c2c; border-color:var(--gold-edge); }
+/* Reuse the actual CP breakfast badge finish, with solid readable lettering. */
+body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.feedback-title,.celebrate-title) {
+ background:var(--gold-polish); color:var(--gold-ink); -webkit-text-fill-color:currentColor;
+ border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); border-radius:.65rem;
+ padding:.3em .7em; width:fit-content; max-width:100%; box-sizing:border-box; margin-inline:auto;
+ text-shadow:0 1px #fff8; line-height:1.4;
+}
+body.theme-light #section-stay .atmosphere-gallery-title { color:var(--heading-accent); }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
  body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
