@@ -1,0 +1,7 @@
+# Light-mode burgundy finish — v22.36
+
+Replaced the previous bronze heading gradient with burgundy/ruby enamel typography. Dish and room names and prices use deeper wine tones, with pearl and warm ivory cards. Selected dish variants and tariff plan controls use a glossy burgundy gradient and readable warm-white labels. The header Room Enquiry badge retains its gold finish. Partner branding, food photography and dark palette are preserved.
+
+Validation: theme contrast, CSS structure, interface language, Stay surfaces and tariff flow checks passed, plus all 17 source regression checks. All text-gradient stops exceed 4.5:1 against the specified pearl surface; all enamel-button stops exceed 4.5:1 with the specified warm-white label. Shared/dark CSS before the light-only appearance block is unchanged after normalizing line endings. Rendered browser checks are recorded separately; these checks do not establish every composited contrast pair or replace physical-device testing.
+
+Live verification completed: v22.36 deployed successfully. Stay dark heading/card/name computed colours matched the pre-update baseline. Light Stay and mobile dish detail inspected; burgundy names/prices and glossy selected variant rendered correctly. At 390px, Menu/Tariff did not overflow; room enquiry opened and date/time fields ended at their parent boundaries. Gold header enquiry gradient retained. Temporary viewport reset. Screenshots saved in the chat artifact directory.
