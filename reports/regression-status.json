@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-27T05:33:20.476Z",
-  "passed": 59,
+  "createdAt": "2026-10-27T06:02:25.064Z",
+  "passed": 60,
   "failed": [],
   "results": [
     {
@@ -225,6 +225,10 @@
     },
     {
       "file": "service-worker-strategies-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "stay-surface-regression.cjs",
       "passed": true
     },
     {

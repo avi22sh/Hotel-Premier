@@ -1082,9 +1082,9 @@ a {
 }
 
 .room-editorial-desc {
-  font-size: 0.86rem;
-  color: #4A5568;
-  line-height: 1.55;
+  font-size: 0.95rem;
+  color: var(--muted, #4A5568);
+  line-height: 1.75;
   margin-bottom: 16px;
 }
 
@@ -1107,8 +1107,9 @@ a {
 
 /* Rate Card Pill Breakdown */
 .room-rate-breakdown {
-  background: #FDFBF7;
-  border: 1px solid rgba(197, 168, 128, 0.30);
+  background: var(--surface-secondary, #eee8de);
+  color: var(--text, #202630);
+  border: 1px solid var(--border, #9b8a70);
   border-radius: var(--radius-md);
   padding: 12px 14px;
   margin-bottom: 20px;
@@ -1127,7 +1128,7 @@ a {
 }
 .rate-occ {
   font-weight: 700;
-  color: var(--burgundy-deep);
+  color: var(--text, #202630);
 }
 .rate-prices strong {
   color: var(--text-dark);
@@ -1272,8 +1273,9 @@ a {
 /* ==================== HOTEL PREMIER ATMOSPHERE & PROPERTY GALLERY ==================== */
 .hotel-atmosphere-gallery {
   margin-top: 36px;
-  background: #FFFFFF;
-  border: 1px solid var(--ivory-border);
+  background: var(--surface, #faf7f0);
+  color: var(--text, #202630);
+  border: 1px solid var(--border, #9b8a70);
   border-radius: var(--radius-lg);
   padding: 26px 20px;
   box-shadow: var(--shadow-ambient);
