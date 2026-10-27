@@ -39,7 +39,7 @@
  async function optimize(file,crop,options) {
   if(typeof Worker!=='undefined' && typeof OffscreenCanvas!=='undefined') {
    return new Promise((resolve,reject)=>{
-    const worker=new Worker('photo-worker.js?v=22.35');
+    const worker=new Worker('photo-worker.js?v=22.36');
     const cleanup=()=>{clearTimeout(timer);options.signal?.removeEventListener('abort',abort);worker.terminate();};
     const abort=()=>{cleanup();reject(new DOMException('Photo selection cancelled.','AbortError'));};
     const timer=setTimeout(()=>{cleanup();reject(Error('Photo optimization took too long. Try a smaller photo.'));},90000);
