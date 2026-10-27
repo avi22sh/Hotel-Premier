@@ -425,10 +425,11 @@ body.theme-light {
  --pearl-polish:linear-gradient(165deg,#fffdf8f5 0%,#f8f0def0 43%,#eee3cced 44%,#fcf7edf5 100%);
  --pearl-relief:inset 0 1px 0 #fffef8,inset 0 -1px 0 #bea06b55,0 5px 18px #61421416;
 }
-body.theme-light :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
+body.theme-light :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#section-reviews) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
  background:var(--pearl-polish); border-color:var(--gold-edge); box-shadow:var(--pearl-relief);
 }
 body.theme-light :is(.home-pillar-body,.signature-card-body,.room-card-info-panel) { background:transparent; }
+body.theme-light #section-dine .compact-dish-card .dish-banner-content { background:transparent; }
 body.theme-light :is(.home-pillar-btn,.btn-claim-privilege,.btn-reserve-suite,.btn-tariff-card-reserve,.btn-tariff-primary,.btn-tariff-phone,.route-directions-btn,.attraction-directions-btn,.btn-open-maps,.btn-share-driver,.contact-card-btn:not(.wa-btn),.signature-inquire-btn,.experience-actions button,.concierge-quick-card),
 body.theme-light #section-stay .btn-reserve-suite {
  background:var(--gold-polish); color:var(--gold-ink); border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); text-shadow:0 1px #fff6;
@@ -449,8 +450,10 @@ body.theme-light #dish-detail-body > .delivery-buttons-container .delivery-btn {
 }
 body.theme-light #dish-detail-body > .delivery-buttons-container .modal-btn-swiggy-order { background:linear-gradient(165deg,#ffffff35,transparent 44%,#00000012 45%,transparent),#fc8019; }
 body.theme-light #dish-detail-body > .delivery-buttons-container .modal-btn-zomato-order { background:linear-gradient(165deg,#ffffff35,transparent 44%,#00000012 45%,transparent),#e23744; }
-body.theme-light :is(.ota-booking-links a,.platform-pill-btn)[href*="makemytrip.com"] { background:linear-gradient(165deg,#ffffff35,transparent 44%,#00000012 45%,transparent),#091d34; color:#fff; }
+body.theme-light :is(.ota-booking-links a,.platform-pill-btn)[href*="makemytrip.com"],
+body.theme-light #guest-feedback-section .platform-pill-btn[href*="makemytrip.com"] { background:linear-gradient(165deg,#ffffff35,transparent 44%,#00000012 45%,transparent),#091d34; color:#fff; }
 body.theme-light :is(.ota-booking-links a,.platform-pill-btn)[href*="goibibo.com"],
+body.theme-light #guest-feedback-section .platform-pill-btn[href*="goibibo.com"],
 body.theme-light #guest-feedback-section .platform-pill-btn[href*="google"] { background:var(--pearl-polish); color:#202630; }
 body.theme-light .contact-card-btn.wa-btn { background:linear-gradient(165deg,#ffffff35,transparent 44%,#00000012 45%,transparent),#126139; color:#fff; }
 body.theme-light :is(.home-pillar-tag,.room-amenity-tag,.tariff-card-amenities span,.dish-card-chip,.privilege-pill) { box-shadow:inset 0 1px #fff8; border-color:var(--gold-edge); }
