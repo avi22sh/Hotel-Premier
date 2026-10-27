@@ -469,6 +469,12 @@ Close guest concierge profile modal~अतिथि सहायता प्र
 Enter your 10-digit mobile number~अपना 10 अंकों का मोबाइल नंबर भरें~तुमचा 10 अंकी मोबाइल क्रमांक भरा
 Your city~आपका शहर~तुमचे शहर
 Room number or table (optional)~कमरा या टेबल नंबर (वैकल्पिक)~खोली किंवा टेबल क्रमांक (ऐच्छिक)
+Stay~निवास~निवास
+Group & Events~समूह और समारोह~समूह आणि समारंभ
+Review~अतिथि अनुभव~पाहुण्यांचे अनुभव
+Room Enquiry~कमरे की पूछताछ~खोलीची चौकशी
+Call Front Desk~रिसेप्शन पर कॉल करें~रिसेप्शनला फोन करा
+"A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."~"सुविधापूर्ण निवास और खानदेश के आत्मीय आतिथ्य का सुंदर संगम। 14 सुसज्जित वातानुकूलित कमरे और 100% शुद्ध शाकाहारी भोजन, भुसावल रेलवे जंक्शन से कुछ ही मिनटों की दूरी पर।"~"आरामदायी निवास आणि खानदेशच्या आपुलकीच्या आदरातिथ्याचा सुंदर संगम. 14 सुसज्ज वातानुकूलित खोल्या आणि 100% शुद्ध शाकाहारी भोजन, भुसावळ रेल्वे जंक्शनपासून काही मिनिटांच्या अंतरावर."
 Save changes~बदलाव सहेजें~बदल जतन करा
 Back~वापस~मागे
 ← Back~← वापस~← मागे

@@ -394,12 +394,16 @@ body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-
 }
 body.theme-light :is(.dish-title,.modal-dish-title,.signature-dish-title) { color:#694716; text-shadow:0 1px 0 #fff9; }
 body.theme-light :is(.dish-price,.modal-dish-price,.tariff-val,.occ-price,.rate-prices strong) { color:#76521f; text-shadow:0 1px 0 #fff; font-variant-numeric:tabular-nums; }
-body.theme-light :is(.room-suite-card,.tariff-suite-card,.hotel-atmosphere-gallery,.feedback-container,.celebrate-hero,.group-estimator,.compact-dish-card,.category-card) {
+body.theme-light :is(.boutique-room-card,.home-pillar-card,.tariff-suite-card,.hotel-atmosphere-gallery,.feedback-container,.celebrate-hero-banner,.group-estimator,.compact-dish-card,.category-card,.room-complimentary-amenities-banner) {
  background:linear-gradient(145deg,#fffaf0e8,#f3ecdfeb); border-color:#bba886;
  box-shadow:inset 0 1px 0 #fffdf7,0 8px 28px #5c432810;
  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
 }
 body.theme-light #section-stay .hotel-atmosphere-gallery { background:linear-gradient(145deg,#fffaf0e8,#f3ecdfeb); }
+body.theme-light :is(.amenity-category-card,.room-card-info-panel) { background:#f6f0e5; color:var(--text); border-color:#bba886; }
+body.theme-light :is(.amenities-banner-title,.amenity-cat-header,.home-pillar-title,.privilege-title) { color:var(--heading-gold); }
+body.theme-light :is(.amenity-cat-list li,.room-suite-desc,.home-pillar-desc) { color:var(--muted); }
+body.theme-light .section-wrapper .editorial-eyebrow { color:var(--accent); }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
  body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
