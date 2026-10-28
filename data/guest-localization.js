@@ -219,6 +219,7 @@
   if((match=key.match(/^(\d+)x ([^()]+)$/)))return `${match[1]} × ${text(match[2],lang)}`;
   if((match=key.match(/^(\d+)x (.+) \((CP: fixed-menu breakfast; Terms & conditions apply\. Speak to our staff for details\.|Room Only)\)$/)))return `${match[1]} × ${text(match[2],lang)} (${match[3]==='Room Only'?text('Room only',lang):hi?'CP: तय मेन्यू का नाश्ता; नियम व शर्तें लागू। जानकारी के लिए कर्मचारियों से पूछें।':'CP: ठरावीक मेन्यूचा नाश्ता; अटी व शर्ती लागू. माहितीसाठी कर्मचाऱ्यांना विचारा.'})`;
   if((match=key.match(/^(\d+) Night\(s\) • 24-Hr Check-Out \(Direct Bookings Only\)(.*)$/)))return (hi?`${match[1]} रातें • 24 घंटे चेकआउट (केवल सीधे आरक्षण पर)`:`${match[1]} रात्री • 24 तास चेकआउट (फक्त थेट आरक्षणासाठी)`)+match[2].replace(/(\d+) Paid Extra Bed\(s\)/g,hi?'$1 सशुल्क अतिरिक्त बिस्तर':'$1 सशुल्क अतिरिक्त बेड').replace(/(\d+) Complimentary Child Extra Bed\(s\), ages 5–10/g,hi?'$1 निःशुल्क बाल अतिरिक्त बिस्तर, आयु 5–10':'$1 मोफत मुलांचे अतिरिक्त बेड, वय 5–10');
+  if((match=key.match(/^₹([\d,]+) direct-stay benefit$/)))return hi?`सीधे संपर्क पर ₹${match[1]} का लाभ`:`थेट संपर्कावर ₹${match[1]} लाभ`;
   if((match=key.match(/^🎁 Flat ₹200 Direct Guest Discount Applied \(You Save ₹([\d,]+)\)$/)))return hi?`🎁 सीधे संपर्क की ₹200 छूट लागू (आपकी बचत ₹${match[1]})`:`🎁 थेट संपर्काची ₹200 सूट लागू (तुमची बचत ₹${match[1]})`;
   return value;
  }

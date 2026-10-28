@@ -309,6 +309,12 @@ BHUSAWAL · THOUGHTFUL HOSPITALITY~भुसावल · आत्मीय आ�
 Jamner Road · Near Nahata College~जामनेर रोड · नाहटा कॉलेज के पास~जामनेर रोड · नाहटा कॉलेजजवळ
 Fixed-menu breakfast included.~तय मेन्यू का नाश्ता शामिल है।~ठरावीक मेन्यूचा नाश्ता समाविष्ट.
 Breakfast with your CP plan~आपकी CP योजना में नाश्ता~तुमच्या CP योजनेतील नाश्ता
+Enquiry only · Subject to hotel confirmation.~केवल पूछताछ · होटल की पुष्टि आवश्यक है।~केवळ चौकशी · हॉटेलची पुष्टी आवश्यक आहे.
+Paid extra beds~सशुल्क अतिरिक्त बिस्तर~सशुल्क अतिरिक्त बेड
+Complimentary child beds · ages 5–10~निःशुल्क बाल बिस्तर · आयु 5–10~मोफत मुलांचे बेड · वय 5–10
+Adjust guests or extra beds to fit the selected rooms.~चुने गए कमरों की क्षमता के अनुसार अतिथि या अतिरिक्त बिस्तर बदलें।~निवडलेल्या खोल्यांच्या क्षमतेनुसार पाहुणे किंवा अतिरिक्त बेड बदला.
+Partner rates and terms may differ.~पार्टनर की दरें और शर्तें अलग हो सकती हैं।~भागीदारांच्या दरांत आणि अटींमध्ये फरक असू शकतो.
+View hotel~होटल देखें~हॉटेल पाहा
 `.trim().split('\n').map(line=>line.split('~'));
 window.HOTEL_PREMIER_INTERFACE_COPY.push(...`
 PURE VEG~शुद्ध शाकाहारी~शुद्ध शाकाहारी

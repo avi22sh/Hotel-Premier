@@ -544,6 +544,11 @@ class HotelPremierApp {
       button.type = 'button';
       button.className = 'recent-search-chip';
       button.textContent = q;
+      // Keep the search field focused until click, including on touch browsers
+      // that do not focus buttons. Otherwise the collapsing row can swallow taps.
+      button.addEventListener('pointerdown', event => {
+        if (event.button === 0) event.preventDefault();
+      });
       button.addEventListener('click', () => this.executeRecentSearch(encodeURIComponent(q)));
       container.appendChild(button);
     }
@@ -589,7 +594,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.72';
+    s.src = 'admin.js?v=22.74';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -4776,13 +4781,23 @@ class HotelPremierApp {
     if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name}`;
     const planEl = document.getElementById('booking-summary-plan');
     if (planEl) planEl.textContent = mealPlan === 'CP' ? 'CP — Fixed-menu breakfast' : 'Room Only (RO)';
-    if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out (Direct Bookings Only) ${extraBeds > 0 ? `• ${extraBeds} Paid Extra Bed(s)` : ''}${childExtraBeds > 0 ? ` • ${childExtraBeds} Complimentary Child Extra Bed(s), ages 5–10` : ''}`;
+    if (durationEl) durationEl.textContent = String(nights);
+    const guestSummary = document.getElementById('booking-summary-guests');
+    if (guestSummary) guestSummary.textContent = String(guestsCount);
+    for (const [kind,count] of [['paid',extraBeds],['child',childExtraBeds]]) {
+      const row = document.getElementById('booking-summary-'+kind+'-row');
+      const value = document.getElementById('booking-summary-'+kind+'-beds');
+      if (row) row.hidden = count === 0;
+      if (value) value.textContent = count > 0 ? String(count) : '';
+    }
     const arrivalEl = document.getElementById('booking-summary-arrival');
     if (arrivalEl) {
       const date = document.getElementById('booking-checkin-date')?.value;
       const time = this.formatArrivalTime(document.getElementById('booking-checkin-time')?.value);
-      const formattedDate = date ? new Intl.DateTimeFormat(({hi:'hi-IN',mr:'mr-IN'})[this.currentLang] || 'en-IN', { day:'numeric', month:'short', year:'numeric', timeZone:'Asia/Kolkata' }).format(new Date(`${date}T12:00:00+05:30`)) : 'Choose a date';
-      arrivalEl.textContent = `${formattedDate} · ${time || 'Choose arrival time'}`;
+      const formattedDate = date ? new Intl.DateTimeFormat(({hi:'hi-IN',mr:'mr-IN'})[this.currentLang] || 'en-IN', { day:'numeric', month:'short', year:'numeric', timeZone:'Asia/Kolkata' }).format(new Date(`${date}T12:00:00+05:30`)) : ''; 
+      arrivalEl.textContent = [formattedDate,time].filter(Boolean).join(' · ');
+      const arrivalRow=document.getElementById('booking-summary-arrival-row');
+      if (arrivalRow) arrivalRow.hidden=!date;
     }
     if (totalEl) {
       totalEl.innerHTML = `
@@ -4792,18 +4807,24 @@ class HotelPremierApp {
             <span class="booking-final-price">₹ ${totalEstimate.toLocaleString('en-IN')}/-</span>
           </div>
           <span class="booking-savings-note">
-            🎁 Flat ₹200 Direct Guest Discount Applied (You Save ₹${directDiscount.toLocaleString('en-IN')})
+            ₹${directDiscount.toLocaleString('en-IN')} direct-stay benefit
           </span>
         </div>
       `;
     }
 
     const occupancyEl = document.getElementById('booking-summary-occupancy');
-    if (occupancyEl) occupancyEl.textContent = valid ? `Estimate: ${roomsCount - doubleRooms} single-occupancy + ${doubleRooms} double-occupancy room(s). Maximum ${maxRooms} rooms in this category. Include children in the guest count; exact allocation and final charges require staff confirmation.` : 'The guest count exceeds the selected beds. Add extra beds within the room limit, choose more rooms or reduce the guest count. Include children in your total.';
+    if (occupancyEl) {
+      occupancyEl.textContent = valid ? '' : 'Adjust guests or extra beds to fit the selected rooms.';
+      occupancyEl.hidden = valid;
+    }
     const sendButton=document.getElementById('booking-send-enquiry');
     if (sendButton) sendButton.disabled=!valid;
     const capacityHelp=document.getElementById('booking-capacity-help');
-    if (capacityHelp) capacityHelp.textContent=valid ? `Up to ${maxRooms} ${selected.name} room(s), subject to availability. Count all adults and children.` : 'Please adjust the guest count or extra beds to stay within the selected room capacity.';
+    if (capacityHelp) {
+      capacityHelp.textContent=valid ? '' : 'Adjust guests or extra beds to fit the selected rooms.';
+      capacityHelp.hidden=valid;
+    }
 
     return { totalEstimate, grossEstimate, directDiscount, selected, nights, roomsCount, guestsCount, maxRooms, maxGuests, valid, mealPlan, extraBeds, childExtraBeds };
   }

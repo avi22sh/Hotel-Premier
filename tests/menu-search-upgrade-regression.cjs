@@ -1,6 +1,6 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const nodes={'menu-items-grid':{},'menu-search-status':{},'recent-searches-bar':{style:{}},'recent-searches-list':{children:[],replaceChildren(){this.children=[];},appendChild(n){this.children.push(n);}}};
-const c={window:{},console,document:{readyState:'loading',addEventListener(){},getElementById:id=>nodes[id]||null,createElement(){return {addEventListener(type,fn){this.click=fn;}};}}};
+const c={window:{},console,document:{readyState:'loading',addEventListener(){},getElementById:id=>nodes[id]||null,createElement(){return {addEventListener(type,fn){this[type]=fn;}};}}};
 vm.createContext(c);vm.runInContext(fs.readFileSync('app.js','utf8')+';window.App=HotelPremierApp;',c);
 const app=Object.create(c.window.App.prototype);
 Object.assign(app,{menuData:[{id:'one',categoryId:'breakfast'},{id:'two',categoryId:'breakfast'}],categories:[{id:'breakfast'}],activeSubCategories:{breakfast:'old-hidden-filter'},currentCategory:'all',currentFilter:'all',searchQuery:'',t:(k,f)=>f||k,getCategoryLocalizedName:()=> 'Morning Delights',getCategoryLocalizedSubtitle:()=>'',renderDishCard:d=>`<div data-dish="${d.id}"></div>`,bindDishActions(){},observeStaggeredCards(){}});
@@ -14,6 +14,7 @@ assert.doesNotMatch(nodes['menu-items-grid'].innerHTML,/<img/);assert.match(node
 app.recentSearches=['<img src=x onerror=alert(1)>',"Chef's special"];
 let chosen;app.executeRecentSearch=q=>{chosen=q;};app.renderRecentSearches();
 assert.equal(nodes['recent-searches-list'].children[0].textContent,app.recentSearches[0]);
+let keptFocus=false;nodes['recent-searches-list'].children[1].pointerdown({button:0,preventDefault(){keptFocus=true;}});assert.equal(keptFocus,true,'Recent-search taps must keep focus until click');
 nodes['recent-searches-list'].children[1].click();assert.equal(decodeURIComponent(chosen),"Chef's special");
 const html=fs.readFileSync('index.html','utf8');assert.match(html,/<label for="menu-search-input">Search the menu<\/label>/);assert.match(html,/enterkeyhint="search"/);assert.match(html,/id="menu-search-status"[^>]*aria-live="polite"/);
 assert.doesNotMatch(html,/View Details →/,'Featured carousel must also use the compact info icon');

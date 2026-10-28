@@ -536,6 +536,19 @@ body:is(.theme-light,.theme-dark) #section-explore .location-action-btns > :is(a
  #section-dine .dining-search-filter-bar:not(:has(.search-input-wrapper:focus-within,.recent-searches-bar:focus-within)) .recent-searches-bar { display:none !important; }
 }
 
+/* Selected enquiry details and readable, authentic partner cards. */
+#concierge-booking-modal .wizard-summary-card > .summary-row[hidden] { display:none; }
+#concierge-booking-modal .ota-booking-panel .ota-booking-links { grid-template-columns:minmax(0,1fr); }
+#concierge-booking-modal .ota-booking-panel .ota-booking-links a { display:flex; justify-content:space-between; align-items:center; min-height:68px; padding:.8rem 1rem; border:1px solid var(--gold-edge); border-radius:.8rem; gap:.75rem; text-decoration:none; }
+#concierge-booking-modal .ota-booking-panel .ota-booking-links a:first-child { background:linear-gradient(145deg,#21374e,#0c2034); color:#fff1d0; }
+#concierge-booking-modal .ota-booking-panel .ota-booking-links a:last-child { background:linear-gradient(145deg,#fffdf7,#eee8de); color:#202630; }
+#concierge-booking-modal .ota-booking-links .platform-brand-mmt { width:112px; height:32px; max-width:50%; padding:0; background:transparent; border:0; }
+#concierge-booking-modal .ota-booking-links .platform-brand-goibibo { flex:none; width:104px; height:30px; background:transparent url('assets/brands/goibibo-sprite.png') -2px -1px / 125px 200px no-repeat; }
+#concierge-booking-modal .partner-link-action { font:600 .8rem/1.4 var(--font-sans); color:inherit; white-space:normal; text-align:right; }
+#admin-modal-backdrop .admin-back-btn { background:var(--gold-polish); color:#49101b; border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); font-weight:700; }
+body.theme-dark #admin-modal-backdrop .admin-back-btn { background:#202b3a; color:#f0d49c; border-color:#c7a668; }
+#admin-modal-backdrop .admin-back-btn:focus-visible { outline:2px solid var(--focus); outline-offset:3px; }
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;
