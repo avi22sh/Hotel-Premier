@@ -413,6 +413,45 @@ body:is(.theme-light,.theme-dark) .footer-brand-m { color:#f0cd83; -webkit-text-
  body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,.footer-brand-wordmark > span) { animation:none; }
 }
 
+/* Events and guest voices: one hierarchy, comfortable forms and restrained metallic actions. */
+body:is(.theme-light,.theme-dark) #section-celebrate :is(.celebration-options article,.bulk-tier-card,.restaurant-event-panel) { border:1px solid color-mix(in srgb,var(--accent) 40%,transparent); background:var(--surface); box-shadow:inset 0 1px #ffffff18,0 8px 24px #101a2710; }
+body:is(.theme-light,.theme-dark) #section-celebrate .celebration-options article { padding:clamp(1rem,2vw,1.5rem); gap:.8rem; }
+body:is(.theme-light,.theme-dark) #section-celebrate .celebration-options h3 { font-family:var(--font-editorial); font-weight:800; color:var(--heading-accent,var(--accent)); }
+body:is(.theme-light,.theme-dark) #section-celebrate .celebration-options button { background:var(--gold-polish,linear-gradient(115deg,#b28a48,#fff1d0,#ae813c)); color:#282014; border:1px solid #c7a668; box-shadow:inset 0 1px #fff9,0 3px 10px #101a2718; font-weight:700; }
+body:is(.theme-light,.theme-dark) #section-celebrate .tier-tag { align-self:flex-start; background:linear-gradient(115deg,#b28a48,#fff1d0,#d8b675); color:#382611; border:1px solid #c7a668; box-shadow:inset 0 1px #fff9; padding:.35rem .65rem; border-radius:.5rem; font-weight:750; }
+body:is(.theme-light,.theme-dark) #section-celebrate .bulk-tier-card { gap:1rem; justify-content:flex-start; }
+body:is(.theme-light,.theme-dark) #section-celebrate .tier-name { margin:0; line-height:1.4; }
+body:is(.theme-light,.theme-dark) #section-celebrate .tier-perks { margin-top:auto; line-height:1.8; }
+body:is(.theme-light,.theme-dark) #group-stay-enquiry { padding:clamp(1rem,3vw,2rem); border-radius:1.5rem; }
+#group-stay-enquiry .enquiry-step-title { grid-column:1/-1; margin:0; padding:.6rem 0; border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent); color:var(--accent); font:800 1rem/1.5 var(--font-sans); letter-spacing:.01em; }
+body:is(.theme-light,.theme-dark) #group-stay-enquiry .form-label { text-transform:none; font-size:.85rem; letter-spacing:0; line-height:1.5; }
+#group-stay-enquiry .group-meal-plan { grid-column:1/-1; }
+body:is(.theme-light,.theme-dark) #group-stay-enquiry .guest-details-panel { padding:1rem; border-style:solid; border-color:color-mix(in srgb,var(--accent) 35%,transparent); border-radius:1rem; }
+body:is(.theme-light,.theme-dark) #restaurant-event-form > button[type=submit] { display:block; width:100%; min-height:48px; padding:.8rem 1rem; background:linear-gradient(135deg,#187c47,#126139); color:#fff; border:1px solid #3f9c69; font-weight:750; box-shadow:inset 0 1px #ffffff35,0 4px 12px #12613925; }
+body:is(.theme-light,.theme-dark) #restaurant-event-form > button[type=submit]:disabled { background:#294e3a; color:#e4eee7; border-color:#728c7b; cursor:not-allowed; opacity:1; box-shadow:none; }
+body:is(.theme-light,.theme-dark) #guest-feedback-section .feedback-container { background:transparent; border:0; box-shadow:none; padding:0; }
+body:is(.theme-light,.theme-dark) #guest-feedback-section .experience-intro { background:linear-gradient(145deg,#233143,#101a27); border:1px solid #b5965b; padding:clamp(1.4rem,4vw,3rem); box-shadow:inset 0 1px #ffffff25,0 12px 28px #101a2720; }
+body:is(.theme-light,.theme-dark) #guest-feedback-section .experience-intro h2 { color:#f0d49c; -webkit-text-fill-color:currentColor; font-size:clamp(1.7rem,4vw,2.8rem); line-height:1.25; background:none; }
+body:is(.theme-light,.theme-dark) #guest-feedback-section .experience-intro :is(p,.editorial-eyebrow) { color:#e0dfdc; }
+body:is(.theme-light,.theme-dark) #guest-feedback-section .experience-actions button { background:linear-gradient(115deg,#b28a48,#fff1d0,#ae813c); color:#282014; font-weight:750; border-color:#c7a668; min-height:48px; }
+body:is(.theme-light,.theme-dark) #guest-feedback-section .experience-actions button + button { background:#ffffff09; color:#f0d49c; border:1px solid #c7a668; box-shadow:inset 0 1px #ffffff18; text-shadow:none; }
+#guest-feedback-section .public-reviews { margin:1.5rem 0 2.5rem; padding:clamp(1rem,3vw,1.5rem); border:1px solid color-mix(in srgb,var(--accent) 35%,transparent); border-radius:1.25rem; background:var(--surface); }
+#guest-feedback-section #public-review-heading { margin:0 0 .8rem; color:var(--heading-accent,var(--accent)); font-family:var(--font-editorial); }
+#guest-feedback-section .public-reviews .external-review-quiet-block { margin:1rem 0 0; padding:0; border:0; }
+#guest-feedback-section .public-reviews .external-review-quiet-title { font:700 1rem/1.5 var(--font-sans); color:var(--text); margin:.5rem 0; }
+#guest-feedback-section .review-grid:empty { display:none; }
+#guest-feedback-section .feedback-rating-field { padding:1rem; border:1px solid color-mix(in srgb,var(--accent) 35%,transparent); border-radius:1rem; background:var(--surface-secondary); text-align:center; }
+#guest-feedback-section .feedback-rating-field legend { float:none; margin-inline:auto; padding:0 .5rem; font-weight:750; }
+#guest-feedback-section .feedback-rating-field .star-rating-control { justify-content:center; }
+#guest-feedback-section .feedback-rating-field .rating-verdict { margin:.75rem 0 0; min-height:1.5em; font-size:.85rem; text-align:center; }
+#guest-feedback-section :is(.public-reviews,.review-composer-card,#dining-feedback-form) { scroll-margin-top:calc(var(--app-header-height,8rem) + 1rem); }
+@media(max-width:639px) {
+ #section-celebrate .bulk-tiers-grid { gap:1rem; }
+ #guest-feedback-section .feedback-rating-field { padding:.8rem .4rem; }
+ #guest-feedback-section .star-choice { min-width:40px; }
+ #guest-feedback-section .star-choice .star-btn { width:40px; }
+}
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;

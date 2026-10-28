@@ -288,6 +288,8 @@ City / Region~शहर / क्षेत्र~शहर / परिसर
 Room or table · optional~कमरा या टेबल · वैकल्पिक~खोली किंवा टेबल · ऐच्छिक
 Save details~विवरण सहेजें~तपशील जतन करा
 Clear saved details~सहेजे विवरण हटाएँ~जतन केलेले तपशील हटवा
+01 · Stay details~01 · ठहरने का विवरण~01 · मुक्कामाचा तपशील
+02 · Rooms & guests~02 · कमरे और अतिथि~02 · खोल्या व पाहुणे
 `.trim().split('\n').map(line=>line.split('~'));
 window.HOTEL_PREMIER_INTERFACE_COPY.push(...`
 PURE VEG~शुद्ध शाकाहारी~शुद्ध शाकाहारी

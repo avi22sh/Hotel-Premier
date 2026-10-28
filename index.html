@@ -48,7 +48,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Tiro+Devanagari+Marathi&display=swap" rel="stylesheet">
 
   <!-- PWA Manifest & App Icons -->
-  <link rel="manifest" href="manifest.json?v=22.65">
+  <link rel="manifest" href="manifest.json?v=22.66">
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
   <link rel="apple-touch-icon" href="assets/icon-192.png">
 
@@ -56,21 +56,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 
   <!-- Intelligent Asset Pipeline & Image Processing Engine -->
-  <script src="data/menu-image-sizes.js?v=22.65"></script>
-  <script src="asset-pipeline.js?v=22.65"></script>
+  <script src="data/menu-image-sizes.js?v=22.66"></script>
+  <script src="asset-pipeline.js?v=22.66"></script>
 
   <!-- Application Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=22.65">
-  <link rel="stylesheet" href="royal.css?v=22.65">
-  <link rel="stylesheet" href="inline-styles.css?v=22.65">
-  <link rel="stylesheet" href="local-admin.css?v=22.65">
-  <link rel="stylesheet" href="overlays.css?v=22.65">
-  <link rel="stylesheet" href="theme-tokens.css?v=22.65">
-  <script src="overlay-manager.js?v=22.65" defer></script>
-  <script src="guest-forms.js?v=22.65" defer></script>
-  <script src="image-safety.js?v=22.65" defer></script>
-  <script src="admin-layout.js?v=22.65" defer></script>
-  <script src="public-reviews.js?v=22.65" defer></script>
+  <link rel="stylesheet" href="styles.css?v=22.66">
+  <link rel="stylesheet" href="royal.css?v=22.66">
+  <link rel="stylesheet" href="inline-styles.css?v=22.66">
+  <link rel="stylesheet" href="local-admin.css?v=22.66">
+  <link rel="stylesheet" href="overlays.css?v=22.66">
+  <link rel="stylesheet" href="theme-tokens.css?v=22.66">
+  <script src="overlay-manager.js?v=22.66" defer></script>
+  <script src="guest-forms.js?v=22.66" defer></script>
+  <script src="image-safety.js?v=22.66" defer></script>
+  <script src="admin-layout.js?v=22.66" defer></script>
+  <script src="public-reviews.js?v=22.66" defer></script>
 </head>
 <body>
 
@@ -1138,6 +1138,7 @@
 
       <div class="hp-inline-7f4c2ac5e7ec group-estimator-layout">
         <div class="hp-inline-a5bc55ff7b2e group-fields-grid">
+          <h5 class="enquiry-step-title">01 · Stay details</h5>
           <div class="form-group">
             <label class="form-label" for="calc-event-type">Occasion / Stay Purpose</label>
             <select id="calc-event-type" class="form-select" onchange="window.app.calculateBulkQuote()">
@@ -1146,11 +1147,6 @@
               <option value="Corporate / Business Delegation">💼 Corporate / Business Delegation</option>
               <option value="Tour / Pilgrimage Group">🚌 Tour / Pilgrimage Group</option>
             </select>
-          </div>
-
-          <div class="enquiry-schedule">
-          <div class="form-group"><label class="form-label" for="calc-arrival-date">Arrival date</label><input id="calc-arrival-date" class="form-input" type="date" required></div>
-          <div class="form-group"><label class="form-label" for="calc-arrival-time">Expected arrival · IST</label><input id="calc-arrival-time" class="form-input" type="time" step="60" required></div>
           </div>
 
           <div class="form-group">
@@ -1165,6 +1161,14 @@
             </select>
           </div>
 
+          <div class="enquiry-schedule">
+          <div class="form-group"><label class="form-label" for="calc-arrival-date">Arrival date</label><input id="calc-arrival-date" class="form-input" type="date" required></div>
+          <div class="form-group"><label class="form-label" for="calc-arrival-time">Expected arrival · IST</label><input id="calc-arrival-time" class="form-input" type="time" step="60" required></div>
+          </div>
+
+
+
+          <h5 class="enquiry-step-title">02 · Rooms & guests</h5>
           <div id="group-custom-allocation" class="custom-room-mix">
             <p class="enquiry-help">Choose your room mix. Group enquiries cover 2–12 rooms and up to 36 guests, subject to availability.</p>
             <div class="form-group"><label class="form-label" for="calc-king-rooms">Premier Royale King · maximum 2</label><input id="calc-king-rooms" class="form-input" type="number" min="0" max="2" step="1" value="0" required oninput="window.app.calculateBulkQuote()"></div>
@@ -1194,7 +1198,7 @@
           <div class="form-group"><label class="form-label" for="calc-guests">Total overnight guests · maximum 36</label><input id="calc-guests" class="form-input" type="number" min="2" max="36" step="1" value="4" inputmode="numeric" aria-describedby="group-occupancy-help" oninput="window.app.calculateBulkQuote()"><small id="group-occupancy-help">Include every adult and child. Room capacity and extra-bed limits also apply.</small></div>
           <div class="form-group"><label class="form-label" for="calc-child-beds">Complimentary child extra beds · ages 5–10</label><input id="calc-child-beds" class="form-input" type="number" min="0" max="12" step="1" value="0" inputmode="numeric" oninput="window.app.calculateBulkQuote()"><small>Shared with the room’s extra-bed limit. Children’s meals require separate confirmation.</small></div>
 
-          <div class="form-group">
+          <div class="form-group group-meal-plan">
             <label class="form-label" for="calc-plan-select">Meal Plan</label>
             <select id="calc-plan-select" class="form-select" aria-describedby="group-breakfast-terms" onchange="window.app.calculateBulkQuote()">
               <option value="CP" selected>CP — Fixed-menu breakfast</option>
@@ -1415,6 +1419,23 @@
         <h3 id="public-review-heading">Voices of our guests</h3>
         <p class="review-status" id="public-review-status" role="status">Loading guest experiences…</p>
         <div class="review-grid" id="public-review-grid"></div>
+      <!-- Secondary Understated External Review Platforms -->
+      <div class="external-review-quiet-block" id="review-platforms">
+        <h3 class="external-review-quiet-title">Discover more guest perspectives</h3>
+        <p>Visit our hotel listings to read or share a public review.</p>
+        <div class="external-platforms-quiet-row">
+          <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <img src="assets/brands/google-g.png" alt="" class="platform-brand-logo platform-brand-google" width="24" height="24"><span>Google Reviews</span>
+          </a>
+          <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <img src="assets/brands/makemytrip.png" alt="MakeMyTrip" class="platform-brand-logo platform-brand-mmt" width="76" height="24">
+          </a>
+          <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
+            <span role="img" aria-label="Goibibo" class="platform-brand-goibibo"></span>
+          </a>
+        </div>
+      </div>
+
       </section>
       <div class="hp-inline-fb5ec070f2bf">
         <span class="feedback-badge">A note to Hotel Premier</span>
@@ -1475,22 +1496,6 @@
         </div>
       </div>
 
-      <!-- Secondary Understated External Review Platforms -->
-      <div class="external-review-quiet-block" id="review-platforms">
-        <h3 class="external-review-quiet-title">Discover more guest perspectives</h3>
-        <p>Visit our hotel listings to read or share a public review.</p>
-        <div class="external-platforms-quiet-row">
-          <a href="https://www.google.com/search?q=Hotel+Premier+Jamner+Road+Bhusawal+reviews" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <img src="assets/brands/google-g.png" alt="" class="platform-brand-logo platform-brand-google" width="24" height="24"><span>Google Reviews</span>
-          </a>
-          <a href="https://www.makemytrip.com/hotels/hotel_premier-details-bhusawal.html" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <img src="assets/brands/makemytrip.png" alt="MakeMyTrip" class="platform-brand-logo platform-brand-mmt" width="76" height="24">
-          </a>
-          <a href="https://www.goibibo.com/hotels/premier-hotel-in-bhusawal-8559568898096275433/" target="_blank" rel="noopener noreferrer" class="platform-pill-btn">
-            <span role="img" aria-label="Goibibo" class="platform-brand-goibibo"></span>
-          </a>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1949,32 +1954,32 @@
   </div>
 
   <!-- Load Application Scripts (v20.51) -->
-  <script src="local-lock.js?v=22.65"></script>
-  <script src="photo-storage.js?v=22.65"></script>
-  <script src="data-validation.js?v=22.65"></script>
-  <script src="photo-workflow.js?v=22.65"></script>
-  <script src="ui-dialogs.js?v=22.65"></script>
-  <script src="publish-bundle.js?v=22.65"></script>
-  <script src="storage.js?v=22.65"></script>
-  <script src="vault.js?v=22.65"></script>
-  <script src="data/translations.js?v=22.65"></script>
-  <script src="data/interface-copy.js?v=22.65"></script>
-  <script src="data/hotel-data.js?v=22.65"></script>
-  <script src="data/menu-data.js?v=22.65"></script>
-  <script src="data/menu-photos.js?v=22.65"></script>
-  <script src="data/legacy-photo-paths.js?v=22.65"></script>
-  <script src="data/published-overrides.js?v=22.65"></script>
-  <script src="data/guest-localization.js?v=22.65"></script>
-  <script src="admin-localization.js?v=22.65" defer></script>
-  <script src="menu-structure.js?v=22.65"></script>
-  <script src="group-stays.js?v=22.65"></script>
-  <script src="guest-network.js?v=22.65"></script>
-  <script src="section-navigation.js?v=22.65"></script>
-  <script src="app.js?v=22.65"></script>
-  <script src="content-studio.js?v=22.65"></script>
-  <script src="property-gallery.js?v=22.65"></script>
+  <script src="local-lock.js?v=22.66"></script>
+  <script src="photo-storage.js?v=22.66"></script>
+  <script src="data-validation.js?v=22.66"></script>
+  <script src="photo-workflow.js?v=22.66"></script>
+  <script src="ui-dialogs.js?v=22.66"></script>
+  <script src="publish-bundle.js?v=22.66"></script>
+  <script src="storage.js?v=22.66"></script>
+  <script src="vault.js?v=22.66"></script>
+  <script src="data/translations.js?v=22.66"></script>
+  <script src="data/interface-copy.js?v=22.66"></script>
+  <script src="data/hotel-data.js?v=22.66"></script>
+  <script src="data/menu-data.js?v=22.66"></script>
+  <script src="data/menu-photos.js?v=22.66"></script>
+  <script src="data/legacy-photo-paths.js?v=22.66"></script>
+  <script src="data/published-overrides.js?v=22.66"></script>
+  <script src="data/guest-localization.js?v=22.66"></script>
+  <script src="admin-localization.js?v=22.66" defer></script>
+  <script src="menu-structure.js?v=22.66"></script>
+  <script src="group-stays.js?v=22.66"></script>
+  <script src="guest-network.js?v=22.66"></script>
+  <script src="section-navigation.js?v=22.66"></script>
+  <script src="app.js?v=22.66"></script>
+  <script src="content-studio.js?v=22.66"></script>
+  <script src="property-gallery.js?v=22.66"></script>
 
   <!-- Updates are offered only after an explicit guest action. -->
-  <script src="pwa-updates.js?v=22.65"></script>
+  <script src="pwa-updates.js?v=22.66"></script>
 </body>
 </html>
