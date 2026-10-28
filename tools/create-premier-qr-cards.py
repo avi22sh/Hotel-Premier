@@ -3,6 +3,8 @@ from pathlib import Path
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor, white
 from reportlab.lib.units import mm
+from reportlab.lib.utils import ImageReader
+from PIL import Image
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.graphics.shapes import Drawing
@@ -24,10 +26,10 @@ def centered(c, text, y, font='Helvetica', size=8, color=NAVY):
 
 CARDS = [
     ('Restaurant', 'https://avi22sh.github.io/Hotel-Premier/?entry=restaurant#menu',
-     'PRIDE PURE VEG AC RESTAURANT', ['Your table.', 'Our collection.'],
+     'RESTAURANT MENU', ['Pride Pure Veg', 'AC Restaurant'],
      ['Scan to explore the', 'culinary collection.']),
     ('Lobby', 'https://avi22sh.github.io/Hotel-Premier/?entry=home#home',
-     'WELCOME TO HOTEL PREMIER', ['Your Premier stay', 'begins here.'],
+     'WELCOME', ['Welcome to', 'Hotel Premier'],
      ['Scan for rooms, dining', 'and hotel enquiries.']),
 ]
 
@@ -43,11 +45,11 @@ for name, url, eyebrow, title, instruction in CARDS:
     c.roundRect(3 * mm, 3 * mm, 94 * mm, 174 * mm, 3 * mm, fill=0, stroke=1)
     c.setFillColor(NAVY)
     c.rect(3 * mm, 132 * mm, 94 * mm, 45 * mm, fill=1, stroke=0)
-    c.setFillColor(IVORY)
-    c.roundRect(12 * mm, 139 * mm, 76 * mm, 35 * mm, 2 * mm, fill=1, stroke=1)
-    c.drawImage(str(ROOT / 'assets' / 'premier-original-logo.png'),
-                20 * mm, 142.7 * mm, width=60 * mm, height=27.54 * mm, mask='auto')
-    centered(c, 'BHUSAWAL  /  THOUGHTFUL HOSPITALITY', 134.2, size=5.5, color=HexColor('#edd4a0'))
+    # Tint the existing transparent brand mark for the navy print masthead.
+    source = Image.open(ROOT / 'assets' / 'premier-original-logo.png').convert('RGBA')
+    logo = Image.new('RGBA', source.size, '#e4c889')
+    logo.putalpha(source.getchannel('A'))
+    c.drawImage(ImageReader(logo), 20 * mm, 140 * mm, width=60 * mm, height=27.54 * mm, mask='auto')
     c.setLineWidth(.7)
     c.line(3 * mm, 132 * mm, 97 * mm, 132 * mm)
     centered(c, eyebrow, 124, size=6.8, color=RED)
@@ -67,16 +69,10 @@ for name, url, eyebrow, title, instruction in CARDS:
     for i, line in enumerate(instruction):
         centered(c, line, 33 - 4 * i, size=8.5)
     centered(c, 'Open your phone camera. Scan. Explore.', 23.5, size=6.3, color=HexColor('#62616a'))
-    c.setStrokeColor(GOLD)
-    c.line(28 * mm, 20 * mm, 46 * mm, 20 * mm)
-    c.line(54 * mm, 20 * mm, 72 * mm, 20 * mm)
-    c.setFillColor(GOLD)
-    p=c.beginPath();p.moveTo(50*mm,21*mm);p.lineTo(51*mm,20*mm);p.lineTo(50*mm,19*mm);p.lineTo(49*mm,20*mm);p.close();c.drawPath(p,fill=1,stroke=0)
-    centered(c, 'Jamner Road / Near Nahata College', 15.7, size=6.1, color=HexColor('#565b66'))
-    c.setFillColor(NAVY)
-    c.rect(3 * mm, 3 * mm, 94 * mm, 10 * mm, fill=1, stroke=0)
-    centered(c, 'A HOME IN BHUSAWAL', 8.9, font='PremierSerif', size=7.2, color=HexColor('#edd4a0'))
-    centered(c, 'Dining / Stays / Hospitality', 5.4, size=5.8, color=HexColor('#d0d6df'))
+    c.setFillColor(HexColor('#e4c889'))
+    c.rect(3 * mm, 3 * mm, 94 * mm, 14 * mm, fill=1, stroke=0)
+    centered(c, 'HOTEL PREMIER', 10.8, font='PremierSerif', size=9, color=NAVY)
+    centered(c, 'Dining / Stays / Hospitality', 6.3, size=6.5, color=NAVY)
     c.showPage();c.save()
     page=PdfReader(path).pages[0]
     assert len(PdfReader(path).pages)==1

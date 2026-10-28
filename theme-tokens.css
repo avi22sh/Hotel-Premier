@@ -555,6 +555,24 @@ body.theme-dark #admin-modal-backdrop .admin-back-btn { background:#202b3a; colo
 #guest-feedback-section .external-platforms-quiet-row .platform-brand-goibibo { width:104px; height:30px; background:transparent url('assets/brands/goibibo-sprite.png') -2px -1px / 125px 200px no-repeat; box-shadow:none; }
 body.theme-dark #guest-feedback-section .external-platforms-quiet-row .platform-pill-btn[href*="goibibo.com"] { background:linear-gradient(145deg,#fffdf7,#eee8de); border-color:var(--gold-edge); }
 
+/* Bare outlined rating stars: the selected score controls their colour. */
+body:is(.theme-light,.theme-dark) #guest-feedback-section #feedback-star-control .star-choice .star-btn { width:44px; min-height:48px; padding:0; border:0; border-radius:0; background:none; box-shadow:none; text-shadow:none; animation:none; color:var(--muted); }
+#feedback-star-control .rating-star { display:block; width:36px; height:36px; overflow:visible; }
+#feedback-star-control .star-shape { fill:transparent; stroke:currentColor; stroke-width:1.25; stroke-linejoin:round; transition:fill .2s,stroke .2s,filter .2s; }
+body:is(.theme-light,.theme-dark) #guest-feedback-section #feedback-star-control .active .star-btn { color:#e1ae36; }
+#feedback-star-control .active .star-shape { fill:currentColor; filter:drop-shadow(0 0 3px #e1ae3655); }
+body:is(.theme-light,.theme-dark) #guest-feedback-section #feedback-star-control:is([data-rating="1"],[data-rating="2"]) .active .star-btn { color:#921e36; }
+#feedback-star-control:is([data-rating="1"],[data-rating="2"]) .active .star-shape { filter:drop-shadow(0 0 5px #921e3666); }
+#feedback-star-control[data-rating="3"] .active .star-shape { fill:url(#feedback-rating-mix); stroke:#b57c36; }
+#feedback-star-control[data-rating="5"] .active .rating-star { animation:premier-rating-sparkle 1.8s ease-in-out 2; }
+#feedback-star-control[data-rating="5"] .star-choice:nth-child(2) .rating-star { animation-delay:.08s; }
+#feedback-star-control[data-rating="5"] .star-choice:nth-child(3) .rating-star { animation-delay:.16s; }
+#feedback-star-control[data-rating="5"] .star-choice:nth-child(4) .rating-star { animation-delay:.24s; }
+#feedback-star-control[data-rating="5"] .star-choice:nth-child(5) .rating-star { animation-delay:.32s; }
+@keyframes premier-rating-sparkle { 0%,100% { transform:scale(1); filter:drop-shadow(0 0 2px #e1ae3640); } 50% { transform:scale(1.12); filter:drop-shadow(0 0 8px #ffd567bb) brightness(1.22); } }
+@media(prefers-reduced-motion:reduce) { #feedback-star-control[data-rating="5"] .active .rating-star { animation:none; } #feedback-star-control .star-shape { transition:none; } }
+@media(forced-colors:active) { #feedback-star-control .star-shape { stroke:CanvasText; } #feedback-star-control .active .star-shape { fill:Highlight; stroke:Highlight; filter:none; } }
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;
@@ -739,16 +757,12 @@ body.theme-light #section-celebrate .celebrate-subtitle { color:var(--muted); op
 .qr-print-card p.qr-card-footnote { color:#62616a; font-size:11px; }
 .qr-card-footer { padding:15px; border-top:1px solid #c8a569; background:linear-gradient(115deg,#b28a48,#fff1d0 46%,#d8b675); color:#322514; font:700 13px/1.5 var(--font-editorial,Georgia); letter-spacing:.12em; }
 .qr-card-footer span { display:block; font:500 10px/1.6 var(--font-sans,system-ui); letter-spacing:.04em; }
-.qr-print-card { border-radius:10px; border-color:#b79961; box-shadow:0 12px 32px #101a2726,inset 0 0 0 5px #e9d7b5; }
-.qr-card-masthead { gap:14px; padding:24px 24px 20px; }
-.qr-logo-plate { padding:14px 18px; border:1px solid #d6bd86; border-radius:8px; background:#fbf7ef; box-shadow:0 4px 16px #0003; }
-.qr-print-card .qr-logo-plate img.qr-brand { width:220px; filter:none; }
-.qr-card-content { padding:22px 20px 18px; }
-.qr-print-card #qr-standee-label { font-size:24px; line-height:1.35; margin:10px 0 20px; }
-.qr-print-card .qr-card-rule { display:block; color:#ac8548; font-size:10px; letter-spacing:.2em; margin-top:18px; }
-.qr-print-card p.qr-card-address { font-size:10px; color:#565b66; margin:8px 0 0; }
-.qr-card-footer { background:#182638; color:#edd4a0; font-size:11px; letter-spacing:.16em; padding:16px; }
-.qr-card-footer span { color:#d0d6df; margin-top:4px; }
+.qr-print-card { border-radius:16px; border-width:1px; box-shadow:0 10px 28px #101a271c; }
+.qr-card-masthead { padding:28px 22px; border-bottom-width:1px; }
+.qr-card-content { padding:24px 22px 20px; }
+.qr-print-card #qr-standee-label { font-size:22px; line-height:1.4; margin:8px 0 18px; }
+.qr-card-footer { background:linear-gradient(115deg,#b28a48,#fff1d0 46%,#d8b675); color:#322514; }
+.qr-card-footer span { color:#44351f; margin-top:4px; }
 .qr-studio-layout .guest-network-actions { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); width:100%; max-width:560px; justify-self:center; }
 .qr-studio-layout .guest-network-actions button { padding:.8rem 1rem; border-radius:12px; font:600 .875rem/1.5 var(--font-sans,system-ui); }
 #qr-print-host { display:none; }
