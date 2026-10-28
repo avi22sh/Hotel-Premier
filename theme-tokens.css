@@ -391,6 +391,8 @@ body:is(.theme-light,.theme-dark) :is(.app-header .brand-tagline,.app-footer .fo
  body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,.footer-brand-wordmark > span) { animation:premier-brand-sheen 12s ease-in-out 1; }
 }
 body:is(.theme-light,.theme-dark) .footer-brand-birds { color:#f0cd83; background-image:var(--brand-gold-polish); filter:drop-shadow(0 1px 0 #0009); }
+/* The positioned M is its own paint box: do not inherit the parent's transparent text fill. */
+body:is(.theme-light,.theme-dark) .footer-brand-m { color:#f0cd83; -webkit-text-fill-color:currentColor; }
 @keyframes premier-brand-sheen { 0%,75% { background-position:160% 0,0 0; } 100% { background-position:-160% 0,0 0; } }
 @media(prefers-reduced-motion:reduce),print {
  body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,.footer-brand-wordmark > span) { animation:none; }
