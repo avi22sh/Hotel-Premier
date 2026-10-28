@@ -524,6 +524,10 @@ body.theme-dark #section-explore :is(.route-directions-btn,.attraction-direction
 body:is(.theme-light,.theme-dark) #section-contact .contact-card .contact-frontdesk-action { background:linear-gradient(145deg,#842536,#5e101d); color:#ffe5b2; border:1px solid #b89660; box-shadow:inset 0 1px #ffffff30,0 4px 12px #5e101d20; }
 body:is(.theme-light,.theme-dark) #section-contact .contact-card .maps-btn { background:linear-gradient(145deg,#244d79,#143455); color:#fff3dc; border:1px solid #8da5bf; box-shadow:inset 0 1px #ffffff25; }
 body:is(.theme-light,.theme-dark) #section-contact .contact-card .contact-dining-action { background:var(--surface-secondary); color:var(--accent); border:1px solid var(--gold-edge); box-shadow:inset 0 1px #ffffff20; }
+body:is(.theme-light,.theme-dark) #section-explore .location-action-btns { display:grid; grid-template-columns:minmax(0,1fr); gap:.7rem; }
+body:is(.theme-light,.theme-dark) #section-explore .location-action-btns .btn-open-maps { color:#fff3dc; background:linear-gradient(145deg,#244d79,#143455); border:1px solid #8da5bf; box-shadow:inset 0 1px #ffffff25; }
+body:is(.theme-light,.theme-dark) #section-explore .location-action-btns .btn-share-driver { color:#fff; background:linear-gradient(145deg,#187c47,#126139); border:1px solid #6fb08c; box-shadow:inset 0 1px #ffffff25; }
+body:is(.theme-light,.theme-dark) #section-explore .location-action-btns > :is(a,button) { width:100%; min-width:0; min-height:48px; padding:.75rem; box-sizing:border-box; line-height:1.5; }
 #menu-sections-drawer-modal .culinary-drawer-sheet { width:min(760px,calc(100% - 2rem)); }
 #menu-sections-drawer-modal #drawer-sections-search:focus-visible { outline:0; }
 #menu-sections-drawer-modal .search-input-wrapper:focus-within { outline:2px solid var(--focus); outline-offset:2px; }
