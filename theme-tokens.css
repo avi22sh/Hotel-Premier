@@ -377,6 +377,25 @@ body.theme-dark #guest-feedback-section .star-choice.active .star-btn { color:#6
  #group-stay-enquiry .custom-room-mix .form-label { min-height:0; }
 }
 
+/* Engraved gold branding: the same finish on both navy brand surfaces. */
+:root { --brand-gold-polish:linear-gradient(115deg,#c99b43 0%,#f5cd79 19%,#fff2c3 34%,#d8a446 43%,#ffe7a2 51%,#fff8dc 56%,#e3b85e 68%,#c18e36 83%,#f6d58c 100%); }
+body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span) { color:#f0cd83; text-shadow:0 1px 1px #0009; }
+body:is(.theme-light,.theme-dark) :is(.app-header .brand-tagline,.app-footer .footer-brand-tagline) { color:#e8ce98; text-shadow:0 1px 1px #0009; font-weight:600; }
+@supports ((background-clip:text) or (-webkit-background-clip:text)) {
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span) {
+  background-image:linear-gradient(112deg,transparent 38%,#fff9dd00 44%,#fff9ddaa 49%,transparent 55%),var(--brand-gold-polish);
+  background-size:240% 100%,100% 100%; background-position:160% 0,0 0; background-repeat:no-repeat;
+  background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:none;
+  filter:drop-shadow(0 1px 0 #0009) drop-shadow(0 0 5px #edc46e24);
+ }
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,.footer-brand-wordmark > span) { animation:premier-brand-sheen 12s ease-in-out 1; }
+}
+body:is(.theme-light,.theme-dark) .footer-brand-birds { color:#f0cd83; background-image:var(--brand-gold-polish); filter:drop-shadow(0 1px 0 #0009); }
+@keyframes premier-brand-sheen { 0%,75% { background-position:160% 0,0 0; } 100% { background-position:-160% 0,0 0; } }
+@media(prefers-reduced-motion:reduce),print {
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,.footer-brand-wordmark > span) { animation:none; }
+}
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;
@@ -461,7 +480,6 @@ body.theme-light :is(.home-pillar-tag,.room-amenity-tag,.tariff-card-amenities s
 body.theme-light .app-header { background:var(--navy-polish); color:#f3eee4; border-bottom:1px solid #c7a66880; box-shadow:0 4px 18px #101a2729; --header-ink:#eadcc0; --header-edge:#c7a66880; }
 body.theme-light .header-top { background:transparent; }
 body.theme-light .app-header .brand-hotel-name { color:#eadcc0; text-shadow:0 1px #0004; }
-body.theme-light .app-header .brand-tagline { color:#c5b58e; }
 body.theme-light .hotel-nav-bar { background:#121c29; border-top:1px solid #c7a66840; }
 body.theme-light .hotel-nav-tab { color:#d5dbe5; }
 body.theme-light .hotel-nav-tab.active { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); }
@@ -470,7 +488,7 @@ body.theme-light .settings-panel { background:var(--pearl-polish); color:var(--t
 body.theme-light :is(.lang-btn.active,.theme-choice-btn.active,.attraction-filter-btn.active) { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); }
 body.theme-light .app-footer { background:var(--navy-polish); color:#f3eee4; border-top:2px solid var(--gold-edge); box-shadow:inset 0 1px #ffffff12; }
 body.theme-light .app-footer .footer-brand-wordmark { color:#eadcc0; text-shadow:0 1px #0004; }
-body.theme-light .app-footer :is(.footer-details-grid,.footer-copyright,.footer-crest-logo > div:not(.footer-brand-wordmark)) { color:#c5cad2; }
+body.theme-light .app-footer :is(.footer-details-grid,.footer-copyright,.footer-crest-logo > div:not(.footer-brand-wordmark):not(.footer-brand-tagline)) { color:#c5cad2; }
 body.theme-light .app-footer .footer-bottom-bar { border-color:var(--gold-edge); }
 body.theme-light #section-explore :is(.attraction-card,.explore-concierge-card,.route-start-card),
 body.theme-light .section-wrapper :is(.guest-policy-panel,.guest-policy-note,.review-extra-details,.feedback-container,.summary-grand-row),
@@ -499,15 +517,6 @@ body.theme-light #section-home .sanctuary-hero-title { color:#eadcc0; text-shado
 body.theme-light #section-home .sanctuary-hero-statement { color:#d8d9da; }
 body.theme-light :is(.last-call-support-note,.last-call-flag) { color:var(--text); }
 body.theme-light #section-home :is(.sanctuary-crest-emblem,.sanctuary-pill) { background:#ffffff0c; color:#eadcc0; border-color:#c7a66880; box-shadow:inset 0 1px #ffffff12; }
-/* Hotel wordmarks use gold foil on the navy brand surfaces in either theme. */
-:root { --brand-gold-polish:linear-gradient(110deg,#c79d51 0%,#e8c780 28%,#fff1c9 45%,#d4ac5f 53%,#f8d990 76%,#c79d51 100%); }
-body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span,.footer-brand-m) { color:#e7c47c; text-shadow:0 1px 1px #0008; }
-@supports ((background-clip:text) or (-webkit-background-clip:text)) {
- body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span,.footer-brand-m) {
-  background-image:var(--brand-gold-polish); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:none;
- }
-}
-body:is(.theme-light,.theme-dark) .footer-brand-birds { color:#e7c47c; background-image:var(--brand-gold-polish); }
 /* Plain heritage-red headings; red/gold finish stays on benefit badges. */
 body.theme-light {
  --red-polish:linear-gradient(160deg,#8a2636 0%,#731727 42%,#590c18 47%,#6b111d 100%);
@@ -583,7 +592,7 @@ body.theme-light #section-celebrate .celebrate-subtitle { color:var(--muted); op
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
  body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title,.experience-intro h2) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
- body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span,.footer-brand-m) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span,.footer-brand-m) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; filter:none; animation-name:none; }
  body:is(.theme-light,.theme-dark) .footer-brand-birds { background:CanvasText; }
  body.theme-light #section-stay > .editorial-header-block > .editorial-title { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; }
  body.theme-light :is(#section-home,#section-stay,#section-tariffs,#section-dine,#section-concierge,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-story-title,.editorial-title,.section-title,.dining-main-heading,.celebrate-title,.feedback-title,.atmosphere-gallery-title,.amenities-banner-title,.experience-intro h2),
