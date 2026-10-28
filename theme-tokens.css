@@ -549,7 +549,7 @@ html:is([lang="hi"],[lang="mr"]) body { --font-menu:'Noto Sans Devanagari','Nirm
 #section-explore .location-action-btns > * { min-width:0; white-space:normal; }
 /* Give each enquiry step its own space, without a narrow room-mix sidebar. */
 #section-celebrate :is(.celebration-options,.bulk-tiers-grid) { align-items:stretch; }
-body.theme-light #section-celebrate .celebrate-subtitle { color:var(--text-secondary); opacity:1; }
+body.theme-light #section-celebrate .celebrate-subtitle { color:var(--muted); opacity:1; }
 #section-celebrate .celebration-options article { display:flex; flex-direction:column; gap:.6rem; }
 #section-celebrate .celebration-options article p { flex:1; margin:0; line-height:1.65; }
 #section-celebrate .celebration-options article button { min-height:46px; margin-top:.5rem; white-space:normal; }
