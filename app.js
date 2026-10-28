@@ -589,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.68';
+    s.src = 'admin.js?v=22.69';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -4773,7 +4773,9 @@ class HotelPremierApp {
     const durationEl = document.getElementById('booking-summary-duration');
     const totalEl = document.getElementById('booking-summary-grand-total');
 
-    if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name} (${mealPlan === 'CP' ? 'CP: fixed-menu breakfast; Terms & conditions apply. Speak to our staff for details.' : 'Room Only'})`;
+    if (roomNameEl) roomNameEl.textContent = `${roomsCount}x ${selected.name}`;
+    const planEl = document.getElementById('booking-summary-plan');
+    if (planEl) planEl.textContent = mealPlan === 'CP' ? 'CP — Fixed-menu breakfast' : 'Room Only (RO)';
     if (durationEl) durationEl.textContent = `${nights} Night(s) • 24-Hr Check-Out (Direct Bookings Only) ${extraBeds > 0 ? `• ${extraBeds} Paid Extra Bed(s)` : ''}${childExtraBeds > 0 ? ` • ${childExtraBeds} Complimentary Child Extra Bed(s), ages 5–10` : ''}`;
     const arrivalEl = document.getElementById('booking-summary-arrival');
     if (arrivalEl) {

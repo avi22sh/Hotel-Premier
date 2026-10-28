@@ -22,7 +22,12 @@ const modal = { id:'test-modal', style:{display:'flex'}, classList:{remove(){act
 app.dismissGuestOverlay(modal);
 assert.equal(active, false); assert.equal(modal.style.display,'none'); assert.equal(locked,false);
 for(const [id,value] of Object.entries({'booking-room-type':'ac-deluxe-queen','booking-nights':'2','booking-rooms-count':'1','booking-guests-count':'2','booking-meal-plan':'CP'})) fields[id]={value};
+fields['booking-summary-room-name']={};fields['booking-summary-plan']={};
 assert.equal(app.updateBookingEstimate().grossEstimate, 5400, 'Two guests must use double occupancy, not the single CP rate');
+assert.equal(fields['booking-summary-room-name'].textContent,'1x Premier Signature Queen');
+assert.equal(fields['booking-summary-plan'].textContent,'CP — Fixed-menu breakfast');
+fields['booking-meal-plan'].value='RO';app.updateBookingEstimate();assert.equal(fields['booking-summary-plan'].textContent,'Room Only (RO)');
+fields['booking-meal-plan'].value='CP';
 fields['booking-guests-count'].value='1';
 assert.equal(app.updateBookingEstimate().grossEstimate, 4600);
 fields['booking-guests-count'].value='3'; fields['booking-rooms-count'].value='2';

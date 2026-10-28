@@ -14,7 +14,7 @@ for(const lang of ['hi','mr']){
   assert.match(language.text(dish.name,lang),/[\u0900-\u097f]/,dish.name+' on first render');
   assert.match(dish[lang==='hi'?'descriptionHi':'descriptionMr']||language.menuDescription(dish,lang),/[\u0900-\u097f]/);
  }
- for(const text of ['All Categories','No Dishes Found','Your Premier Stay','Birthday Parties','Please choose today or a future date.','172 sq.ft','Guest Wi-Fi','Choose your area','Third floor','1 room · Up to 1 extra guest in total','3 rooms · Up to 6 extra guests in total'])assert.match(language.text(text,lang),/[\u0900-\u097f]/,text);
+ for(const text of ['All Categories','No Dishes Found','Your Premier Stay','Birthday Parties','Please choose today or a future date.','172 sq.ft','Guest Wi-Fi','Choose your area','Third floor','1 room · Up to 1 extra guest in total','3 rooms · Up to 6 extra guests in total','2x Premier Signature Queen'])assert.match(language.text(text,lang),/[\u0900-\u097f]/,text);
  assert.match(language.text('📅 Arrival date',lang),/^📅 [\u0900-\u097f]/);
  i18n.currentLang=lang;c.window.HotelAdminLanguage.sync(root);
  assert.match(nodes[0].nodeValue,/[\u0900-\u097f]/);assert.equal(nodes[1].nodeValue,'Arrival date');assert.equal(field.value,'Private guest name');assert.equal(nodes[2].parentElement.attrs.value,'Room only');

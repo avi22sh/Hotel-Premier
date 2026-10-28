@@ -296,6 +296,9 @@ Approx. 3 km from Bhusawal Railway Junction • Free private parking on premises
 Approximately 3 km from Railway Station, 5 mins from Luxury Bus Hub (Pune, Mumbai, Nagpur, Indore, Gujarat) & 5 mins from NH-53.~रेलवे स्टेशन से लगभग 3 किमी, लग्ज़री बस केंद्र से 5 मिनट और NH-53 से 5 मिनट की सुविधाजनक दूरी पर।~रेल्वे स्थानकापासून सुमारे 3 किमी, लक्झरी बस केंद्रापासून 5 मिनिटे आणि NH-53 पासून 5 मिनिटांच्या सोयीस्कर अंतरावर.
 Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201 (Approx. 3 km from Railway Junction)~नाहटा कॉलेज के पास, साकेत सोसायटी, जामनेर रोड, भुसावल - 425 201 (रेलवे जंक्शन से लगभग 3 किमी)~नाहटा कॉलेजजवळ, साकेत सोसायटी, जामनेर रोड, भुसावळ - 425 201 (रेल्वे जंक्शनपासून सुमारे 3 किमी)
 Close photo gallery~फोटो गैलरी बंद करें~छायाचित्र संग्रह बंद करा
+Room Only (RO)~केवल कमरा (RO)~फक्त खोली (RO)
+Check availability on MakeMyTrip~MakeMyTrip पर उपलब्धता देखें~MakeMyTrip वर उपलब्धता तपासा
+Check availability on Goibibo~Goibibo पर उपलब्धता देखें~Goibibo वर उपलब्धता तपासा
 `.trim().split('\n').map(line=>line.split('~'));
 window.HOTEL_PREMIER_INTERFACE_COPY.push(...`
 PURE VEG~शुद्ध शाकाहारी~शुद्ध शाकाहारी

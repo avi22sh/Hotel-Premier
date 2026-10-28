@@ -489,6 +489,17 @@ body.theme-dark #section-contact .contact-card-btn span { color:inherit; }
 body.theme-dark #section-contact .contact-card-icon { background:#ffffff09; border:1px solid #c7a66870; color:var(--accent); }
 body.theme-dark #section-contact .hp-inline-a0ef0d94405c { color:var(--positive); }
 
+/* Heritage-red dish highlights replace the remaining fluorescent dark badge. */
+body.theme-dark .dish-badges .badge-tag.bestseller { background:linear-gradient(145deg,#842536,#5e101d); color:#ffe3a8; border-color:#c7a668; box-shadow:inset 0 1px #ffffff35,0 3px 10px #0003; }
+#concierge-booking-modal .wizard-summary-card > .summary-row { padding-block:.65rem; border-bottom:1px solid color-mix(in srgb,var(--accent) 24%,transparent); gap:.5rem; }
+#concierge-booking-modal .wizard-summary-card > .summary-row > :last-child { color:var(--text); line-height:1.6; }
+#concierge-booking-modal #booking-summary-room-name { font-family:var(--font-editorial); font-size:1.05rem; }
+#concierge-booking-modal .ota-booking-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem; }
+#concierge-booking-modal .ota-booking-links a { min-width:0; min-height:52px; height:auto; padding:.5rem; gap:.4rem; box-sizing:border-box; white-space:nowrap; }
+#concierge-booking-modal .ota-booking-links .platform-brand-logo { flex:none; max-width:calc(100% - 1.2rem); object-fit:contain; }
+#concierge-booking-modal .ota-booking-links .partner-link-arrow { flex:none; font:700 .85rem/1 var(--font-sans); }
+@media(max-width:359px) { #concierge-booking-modal .ota-booking-links .partner-link-arrow { display:none; } }
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;
