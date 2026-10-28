@@ -40,8 +40,17 @@ const editable=app.getBulkDeals();editable[0].name='Draft only';assert.notEqual(
 app.calculateBulkQuote();assert.equal(app.latestQuote.finalPrice,33000);
 fields['calc-plan-select'].value='RO';app.calculateBulkQuote();assert.equal(app.latestQuote.finalPrice,29200,'Actual dropdown must control the displayed estimate');
 app.sendBulkWhatsAppInquiry();assert.equal(sent.length,1);assert.match(decodeURIComponent(sent[0][0]),/maximum group allocation: 12/);assert.match(decodeURIComponent(sent[0][0]),/Guests including children: 24/);assert.doesNotMatch(decodeURIComponent(sent[0][0]),/Total 14 Available/);
+assert.doesNotMatch(decodeURIComponent(sent[0][0]),/Chargeable extra beds: 0|Complimentary child beds[^\n]*: 0/);
 fields['calc-guests'].value='36';app.sendBulkWhatsAppInquiry();assert.equal(sent.length,1,'Invalid latest inputs must not reuse a stale valid quote');assert.equal(app.latestQuote,null);assert.equal(fields['group-stay-send'].disabled,true);
 fields['calc-extra-beds'].value='12';app.calculateBulkQuote();assert.equal(app.latestQuote.guests,36);assert.equal(fields['group-stay-send'].disabled,false);
+const calculate=app.calculateBulkQuote;
+app.calculateBulkQuote=()=>({...app.latestQuote,valid:true,allocation:{king:0,queen:1,twin:1},rooms:2,guests:5,paidBeds:1,childBeds:0});
+app.sendBulkWhatsAppInquiry();
+const selectedOnly=decodeURIComponent(sent.at(-1)[0]);
+assert.match(selectedOnly,/Requested mix: 1 Signature Queen, 1 Companion Twin/);
+assert.doesNotMatch(selectedOnly,/0 Royale King|Complimentary child beds/);
+assert.match(selectedOnly,/Chargeable extra beds: 1 at ₹300/);
+app.calculateBulkQuote=calculate;
 const html=fs.readFileSync('index.html','utf8');
 for(const label of ['Wedding Anniversary','Engagement / Roka','Corporate Gathering','Business Meeting','Group Dining','Kitty Party','Small Family Function','Special Occasion / Other'])assert.ok(html.includes(label));
 assert.match(html,/restaurant-event-guests[^>]+max="40"/);assert.doesNotMatch(html,/value="full-14"|Rooms Needed \(Max 14\)|EXCLUSIVE FULL BUYOUT/);

@@ -549,6 +549,12 @@ body:is(.theme-light,.theme-dark) #section-explore .location-action-btns > :is(a
 body.theme-dark #admin-modal-backdrop .admin-back-btn { background:#202b3a; color:#f0d49c; border-color:#c7a668; }
 #admin-modal-backdrop .admin-back-btn:focus-visible { outline:2px solid var(--focus); outline-offset:3px; }
 
+/* Review partners share the authentic, readable branding of the enquiry cards. */
+#guest-feedback-section .external-platforms-quiet-row .platform-pill-btn { min-height:64px; }
+#guest-feedback-section .external-platforms-quiet-row .platform-brand-mmt { width:112px; height:32px; max-width:100%; }
+#guest-feedback-section .external-platforms-quiet-row .platform-brand-goibibo { width:104px; height:30px; background:transparent url('assets/brands/goibibo-sprite.png') -2px -1px / 125px 200px no-repeat; box-shadow:none; }
+body.theme-dark #guest-feedback-section .external-platforms-quiet-row .platform-pill-btn[href*="goibibo.com"] { background:linear-gradient(145deg,#fffdf7,#eee8de); border-color:var(--gold-edge); }
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;

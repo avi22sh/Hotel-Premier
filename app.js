@@ -594,7 +594,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.74';
+    s.src = 'admin.js?v=22.75';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -3307,13 +3307,13 @@ class HotelPremierApp {
       name ? 'Organizer: '+name : '', phone ? 'Mobile: '+phone : '',
       'Purpose: '+q.eventType, 'Collection: '+q.roomType,
       'Rooms: '+q.rooms+' (maximum group allocation: 12)',
-      q.allocation ? 'Requested mix: '+q.allocation.king+' Royale King, '+q.allocation.queen+' Signature Queen, '+q.allocation.twin+' Companion Twin' : '',
+      q.allocation ? 'Requested mix: '+[['king','Royale King'],['queen','Signature Queen'],['twin','Companion Twin']].filter(([key])=>q.allocation[key]>0).map(([key,label])=>q.allocation[key]+' '+label).join(', ') : '',
       'Guests including children: '+q.guests+' (maximum: 36)',
       'Nights: '+q.nights,
       arrivalDate ? 'Arrival: '+arrivalDate.value+' · '+this.formatArrivalTime(arrivalTime?.value) : '',
       'Meal plan: '+(q.plan==='CP' ? 'CP — fixed-menu breakfast. Terms & conditions apply. Speak to our staff for details.' : 'Room only (RO)'),
-      'Chargeable extra beds: '+q.paidBeds+' at ₹'+q.extraBedRate+'/bed/night',
-      'Complimentary child beds (ages 5–10 inclusive): '+q.childBeds+'; meals to be confirmed separately',
+      q.paidBeds > 0 ? 'Chargeable extra beds: '+q.paidBeds+' at ₹'+q.extraBedRate+'/bed/night' : '',
+      q.childBeds > 0 ? 'Complimentary child beds (ages 5–10 inclusive): '+q.childBeds+'; meals to be confirmed separately' : '',
       'Estimate: ₹'+q.finalPrice.toLocaleString('en-IN')+' using published double-occupancy room tariffs',
       'Please check availability, room allocation and final charges. This is an enquiry, not a confirmed booking.'
     ].filter(Boolean).join('\n');
