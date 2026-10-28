@@ -2045,9 +2045,12 @@ class HotelPremierAdmin {
         </div>
         <p id="qr-studio-status" role="status"></p>
         <div id="standee-print-card" class="qr-print-card">
-          <img height="207" width="451" class="qr-brand" src="assets/premier-original-logo.png" alt="Hotel Premier">
+          <div class="qr-card-masthead"><img height="207" width="451" class="qr-brand" src="assets/premier-original-logo.png" alt="Hotel Premier"><span>A HOME IN BHUSAWAL</span></div>
+          <div class="qr-card-content"><span class="qr-card-eyebrow">YOUR PREMIER EXPERIENCE</span>
           <h4 id="qr-standee-label"></h4><div id="qr-canvas-holder"></div>
-          <p id="qr-card-instructions">Scan to discover Hotel Premier.</p><p>Hotel Premier · Bhusawal</p>
+          <p id="qr-card-instructions">Scan to discover Hotel Premier.</p>
+          <p class="qr-card-footnote">Open your phone camera · Scan · Explore</p></div>
+          <div class="qr-card-footer">HOTEL PREMIER <span>Dining · Stays · Hospitality</span></div>
         </div>
         <div class="guest-network-actions"><button type="button" class="btn-secondary" id="qr-download">Download QR (PNG)</button><button type="button" class="btn-primary" id="qr-print">Print branded card</button></div>
         <p>Wi-Fi connection QR codes are separate from website links and require verified guest-network information. Opening a page cannot connect a phone automatically.</p>
@@ -2145,9 +2148,21 @@ class HotelPremierAdmin {
 
   printStandee() {
     if (!this.currentGuestQR) return;
+    const source = document.getElementById('standee-print-card');
+    const canvas = source?.querySelector('canvas');
+    if (!source || !canvas) return;
+    document.getElementById('qr-print-host')?.remove();
+    const host = document.createElement('div'); host.id = 'qr-print-host';
+    const card = source.cloneNode(true); card.removeAttribute('id');
+    // Canvas pixels are not copied by cloneNode. Freeze the verified QR as an image.
+    const image = document.createElement('img'); image.src = canvas.toDataURL('image/png');
+    image.alt = 'Scan to open Hotel Premier'; image.width = canvas.width; image.height = canvas.height;
+    card.querySelector('canvas').replaceWith(image);
+    host.append(card); document.body.append(host);
+    const cleanup = () => { host.remove(); document.body.classList.remove('hp-qr-print'); };
     document.body.classList.add('hp-qr-print');
-    window.addEventListener('afterprint', () => document.body.classList.remove('hp-qr-print'), { once: true });
-    window.print();
+    window.addEventListener('afterprint', cleanup, { once: true });
+    try { window.print(); } catch (error) { cleanup(); throw error; }
   }
 
   // ==================== 6. 100% SAFE BACKUP & RESTORE PANEL ====================

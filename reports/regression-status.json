@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-28T05:50:17.670Z",
-  "passed": 66,
+  "createdAt": "2026-10-28T06:19:21.296Z",
+  "passed": 67,
   "failed": [],
   "results": [
     {
@@ -225,6 +225,10 @@
     },
     {
       "file": "publish-bundle-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "qr-print-regression.cjs",
       "passed": true
     },
     {

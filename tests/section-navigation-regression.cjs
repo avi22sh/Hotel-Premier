@@ -22,9 +22,9 @@ function target(token=''){const e=new Element('',token);e.root=new Element(windo
 function fire(type,event){for(const fn of listeners[type]||[])fn(event);}
 function begin(e,x=220,y=200){fire('touchstart',{target:e,touches:[{clientX:x,clientY:y}]});}
 function end(e,x=100,y=205,elapsed=150){time+=elapsed;const event={target:e,touches:[],changedTouches:[{clientX:x,clientY:y}],cancelable:true,preventDefault(){this.prevented=true;}};fire('touchend',event);return event;}
-assert.equal(elements['section-previous'].disabled,true);assert.equal(elements['section-next'].disabled,false);
-elements['section-next'].events.click();assert.deepEqual(calls,['section-stay']);assert.equal(elements['section-navigation-status'].textContent,'Stay');assert.equal(elements['section-previous'].attrs['aria-label'],'Previous section: Hotel');
-at(7);assert.equal(elements['section-next'].disabled,true);assert.equal(nav.move(1),false);assert.equal(nav.move(-1),true);assert.equal(window.app.activeSection,'guest-feedback-section');
+assert.doesNotMatch(fs.readFileSync('index.html','utf8'),/class="section-step-button"/);
+nav.move(1);assert.deepEqual(calls,['section-stay']);assert.equal(elements['section-navigation-status'].textContent,'Stay');
+at(7);assert.equal(nav.move(1),false);assert.equal(nav.move(-1),true);assert.equal(window.app.activeSection,'guest-feedback-section');
 at(0);let e=target();begin(e);assert.equal(end(e).prevented,true);assert.equal(window.app.activeSection,'section-stay');
 const click={target:e,detail:1,preventDefault(){this.prevented=true;},stopImmediatePropagation(){this.stopped=true;}};fire('click',click);assert.equal(click.prevented,true);assert.equal(click.stopped,true);
 e=target();begin(e,120);end(e,250);assert.equal(window.app.activeSection,'section-home');
@@ -36,7 +36,13 @@ for(const [x,y,elapsed] of [[190,205,100],[100,350,100],[100,275,100],[100,205,9
 at(0);e=target();begin(e);window.scrollY=40;end(e);assert.equal(calls.length,0,'Vertical page movement cancels section navigation');
 at(0);e=target();begin(e,10);end(e,200);assert.equal(calls.length,0,'Browser edge gestures remain available');
 for(const mode of ['multitouch','cancel','removed','changedSection']){at(0);e=target();begin(e);if(mode==='multitouch')fire('touchmove',{touches:[{},{}]});if(mode==='cancel')fire('touchcancel',{});if(mode==='removed')e.isConnected=false;if(mode==='changedSection')window.app.activeSection='section-dine';end(e);assert.equal(calls.length,0,mode);}
-at(1);lang='mr';nav.sync();assert.equal(elements['section-next'].attrs['aria-label'],'पुढील विभाग: Tariff');
+at(1);lang='mr';nav.sync();
 track.clientWidth=287;windowListeners.resize();assert.equal(elements['tab-nav-stay'].scrolled.inline,'center');assert.equal(window.app.activeSection,'section-stay','Resizing must keep the selected section');
 const app=fs.readFileSync('app.js','utf8');assert.match(app,/HotelSectionNavigation\?\.sync\(sectionId\)/);assert.match(app,/HotelSectionNavigation\?\.sync\(this.activeSection\)/);
-console.log('PASS: section button order/boundaries, guarded swipes, ghost-click suppression, protected galleries/forms/Admin, cancellation, native edge gestures and localized labels');
+let animated=0,cancelled=0,reduced=false;
+window.matchMedia=()=>({matches:reduced});
+elements['section-stay']=new Element();elements['section-stay'].animate=(frames,options)=>{animated++;assert.equal(frames[0].transform,'translateX(14px)');assert.equal(options.duration,220);};
+elements['section-stay'].getAnimations=()=>[{cancel(){cancelled++;}}];
+at(0);nav.move(1);assert.equal(animated,1);assert.equal(cancelled,1);
+reduced=true;at(0);nav.move(1);assert.equal(animated,1,'Reduced motion disables section animations');
+console.log('PASS: arrow-free navigation, smooth/reduced-motion entry, guarded swipes, boundaries, ghost clicks, galleries/forms/Admin, cancellation and native edge gestures');
