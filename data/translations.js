@@ -25,9 +25,9 @@ window.HOTEL_PREMIER_I18N = {
 
       // Sanctuary Home
       sanctuaryBadge: 'A Sanctuary in Bhusawal',
-      sanctuaryStatement: '"A boutique haven of refined comfort and authentic Khandeshi warmth. 14 meticulously appointed air-conditioned suites and 100% pure vegetarian culinary excellence, minutes from Bhusawal Railway Junction."',
+      sanctuaryStatement: 'Refined comfort, a warm Khandeshi welcome and pure-vegetarian dining. Discover 14 air-conditioned rooms, thoughtful essentials and a quieter place to unwind in Bhusawal.',
       pill24hr: '⏰ 24-Hour Flexible Check-Out (Direct Bookings Only)',
-      pill5min: '🚆 15 Mins / 2 KM from Railway Junction',
+      pill5min: '🚆 Approx. 3 km from Railway Junction',
       pillVeg: '🌱 Pride Pure Veg AC Dining',
       pillParking: '🚗 Free Private Bus & Car Parking',
       quickBookRoom: 'Room Enquiry',
@@ -247,9 +247,9 @@ window.HOTEL_PREMIER_I18N = {
 
       // Sanctuary Home Content
       sanctuaryBadge: 'भुसावल में आपका अपना घर',
-      sanctuaryStatement: '"विश्राम और शुद्ध शाकाहारी खानपान का उत्तम संगम। 14 वातानुकूलित लक्ज़री कमरे, 24 घंटे चेक-आउट और भुसावल जंक्शन से मात्र 15 मिनट की दूरी."',
+      sanctuaryStatement: 'सुकून भरा ठहराव, खानदेश का आत्मीय आतिथ्य और शुद्ध शाकाहारी भोजन। भुसावल में 14 वातानुकूलित कमरों और आपकी सुविधा के लिए तैयार ज़रूरी सुविधाओं का आनंद लें।',
       pill24hr: '⏰ 24 घंटे चेक-आउट सुविधा • Direct Bookings Only',
-      pill5min: '🚆 रेलवे स्टेशन से 15 मिनट / 2 किमी',
+      pill5min: '🚆 रेलवे जंक्शन से लगभग 3 किमी',
       pillVeg: '🌱 प्राइड शुद्ध शाकाहारी एसी रेस्तरां',
       pillParking: '🚗 निःशुल्क बस एवं कार पार्किंग',
       quickBookRoom: 'कमरे की पूछताछ',
@@ -468,9 +468,9 @@ window.HOTEL_PREMIER_I18N = {
 
       // Sanctuary Home Content
       sanctuaryBadge: 'भुसावळमध्ये आपले हक्काचे घर',
-      sanctuaryStatement: '"उत्कृष्ट आदरातिथ्य आणि अस्सल चव यांचा संगम. 14 वातानुकूलित लक्झरी खोल्या, 24 तास चेक-आउट आणि भुसावळ रेल्वे स्थानकापासून फक्त 15 मिनिटांवर."',
+      sanctuaryStatement: 'निवांत मुक्काम, खानदेशचे आपुलकीचे आदरातिथ्य आणि शुद्ध शाकाहारी भोजन. भुसावळमधील 14 वातानुकूलित खोल्या आणि विचारपूर्वक दिलेल्या सुविधांचा आनंद घ्या.',
       pill24hr: '⏰ 24 तास चेक-आउट सुविधा • Direct Bookings Only',
-      pill5min: '🚆 रेल्वे स्टेशनपासून 15 मिनिटे / 2 किमी',
+      pill5min: '🚆 रेल्वे जंक्शनपासून सुमारे 3 किमी',
       pillVeg: '🌱 प्राईड शुद्ध शाकाहारी एसी रेस्टॉरंट',
       pillParking: '🚗 मोफत बस व कार पार्किंग',
       quickBookRoom: 'खोलीची चौकशी',

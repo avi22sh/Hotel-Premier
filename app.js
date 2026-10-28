@@ -589,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.66';
+    s.src = 'admin.js?v=22.67';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -2632,7 +2632,7 @@ class HotelPremierApp {
     }
 
     // A hidden option must never become the guest-facing default or shift selection indices.
-    if (hasModalVariants && !document.body.classList.contains('staff-mode-active') && dish.variants[initialVariantIndex]?.hidden) {
+    if (hasModalVariants && dish.variants[initialVariantIndex]?.hidden) {
       initialVariantIndex = dish.variants.findIndex(v => !v.hidden);
     }
     const activeVariant = hasModalVariants ? dish.variants[initialVariantIndex] : null;
@@ -2702,9 +2702,6 @@ class HotelPremierApp {
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${modalBadgesHtml ? `<div class="dish-badges">${modalBadgesHtml}</div>` : ''}
           ${dish.isSoldOut ? `<div class="sold-out-overlay">${this.t('soldOut')}</div>` : ''}
-          <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
-            📷 Change Photo
-          </button>
         </div>
       `;
     } else {
@@ -2716,17 +2713,13 @@ class HotelPremierApp {
             <div class="no-photo-sub hp-inline-8b511f076fb1">PRIDE PURE VEG AC RESTAURANT</div>
           </div>
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
-          <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
-            ➕ Add Authentic Photo
-          </button>
         </div>
       `;
     }
 
     let modalVariantsHtml = '';
-    const isStaff = document.body.classList.contains('staff-mode-active');
     if (hasModalVariants) {
-      const variantsToDisplay = isStaff ? dish.variants : dish.variants.filter(v => !v.hidden);
+      const variantsToDisplay = dish.variants.filter(v => !v.hidden);
       modalVariantsHtml = `
         <div class="modal-dish-variants-box">
           <div class="modal-dish-variants-header">
@@ -2767,29 +2760,6 @@ class HotelPremierApp {
           </div>
         </div>
 
-        <div class="modal-staff-variants-manager" id="staff-variants-mgr-${dish.id}">
-          <div class="hp-inline-6e72da60eeb7">
-            <span>🛠️ Option Controls (Sequence, Hide &amp; Delete)</span>
-            <button type="button" class="staff-add-opt-btn hp-inline-30c1d597b8b1" onclick="window.app.promptAddVariant('${dish.id}')">+ Add Option</button>
-          </div>
-          <div class="staff-variants-list hp-inline-2befb59f42e9">
-            ${dish.variants.map((v, i) => `
-              <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.3); padding: 5px 8px; border-radius: 6px; font-size: 0.75rem; border: 1px solid rgba(255,255,255,0.08); ${v.hidden ? 'opacity: 0.6;' : ''}">
-                <span class="hp-inline-8da89a75a781">
-                  <strong class="hp-inline-f8538cbd29f8">${i + 1}.</strong>
-                  <span>${v.name} (₹${v.price})</span>
-                  ${v.hidden ? '<span class="hp-inline-5767e4ab3ab2">HIDDEN</span>' : ''}
-                </span>
-                <div class="hp-inline-a714698963cb">
-                  <button class="hp-inline-235d73071662" type="button" onclick="window.app.moveVariant('${dish.id}', ${i}, ${i - 1})" ${i === 0 ? 'disabled' : ''} style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Move Up (Make Earlier)">▲</button>
-                  <button class="hp-inline-235d73071662" type="button" onclick="window.app.moveVariant('${dish.id}', ${i}, ${i + 1})" ${i === dish.variants.length - 1 ? 'disabled' : ''} style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="Move Down">▼</button>
-                  <button type="button" onclick="window.app.toggleVariantAvailability('${dish.id}', ${i})" style="background: ${v.hidden ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'}; border: 1px solid rgba(255,255,255,0.2); color: #FFF; border-radius: 3px; padding: 1px 6px; cursor: pointer;" title="${v.hidden ? 'Show to customers' : 'Hide from customers'}">${v.hidden ? '👁️ Show' : '🚫 Hide'}</button>
-                  <button class="hp-inline-135bf246d594" type="button" onclick="window.app.deleteVariant('${dish.id}', ${i})" title="Delete Option">🗑️</button>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
       `;
     }
 
@@ -2800,38 +2770,10 @@ class HotelPremierApp {
           <div>
             <div class="hp-inline-674501151eb8">
               <h3 class="modal-dish-title">${dishTitleHtml}</h3>
-              <button onclick="window.admin ? window.admin.openAdminModal('menu', '${dish.id}') : null" class="btn-staff-dish-edit-tag" title="Staff Taste & Price Editor">
-                ✏️ Edit Tags
-              </button>
             </div>
             <div class="modal-dish-subtitle">Pride Restaurant • Chef Curated</div>
           </div>
           <span class="modal-dish-price" id="modal-dish-price-${dish.id}">${Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request'}</span>
-        </div>
-
-        <div class="modal-staff-taste-modifier-bar" id="modal-staff-taste-bar-${dish.id}">
-          <span class="hp-inline-1fd02deed669">Taste Profile:</span>
-          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('sweet') ? 'active-sweet' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'sweet') : null">
-            🍯 Sweet
-          </button>
-          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('spicy') ? 'active-spicy' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'spicy') : null">
-            🌶️ Spicy
-          </button>
-          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('chef-special') ? 'active-chef' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'chef-special') : null">
-            👑 Chef
-          </button>
-          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('bestseller') ? 'active-bestseller' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'bestseller') : null">
-            🔥 Hot
-          </button>
-          <button type="button" class="admin-tag-toggle-chip ${dish.tags && dish.tags.includes('khandeshi-special') ? 'active-khandeshi' : ''}" onclick="window.admin ? window.admin.toggleDishTag('${dish.id}', 'khandeshi-special') : null">
-            🫕 Khandeshi
-          </button>
-          <button type="button" class="admin-tag-toggle-chip ${dish.notAvailable ? 'active-not-available' : ''}" onclick="window.app.toggleDishNotAvailable('${dish.id}', !${Boolean(dish.notAvailable)})" title="Toggle visibility in customer PWA">
-            ${dish.notAvailable ? '🚫 Hidden from PWA' : '👁️ Hide (Not Available)'}
-          </button>
-          <button type="button" class="admin-tag-toggle-chip" onclick="window.app.promptAddVariant('${dish.id}')" title="Add portion/style options to this dish">
-            ➕ Add Option
-          </button>
         </div>
 
         ${modalVariantsHtml}
@@ -3970,7 +3912,7 @@ class HotelPremierApp {
     const msg = `*HOTEL PREMIER BHUSAWAL - LOCATION & GPS DIRECTIONS*%0A` +
       `---------------------------------------%0A` +
       `📍 *Address:* Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201%0A` +
-      `🚆 *Landmark:* 15 Mins (2 KM) from Bhusawal Railway Junction%0A` +
+      `🚆 *Landmark:* Approx. 3 km from Bhusawal Railway Junction%0A` +
       `📞 *Contact:* 09325375802 (Primary) / 09370848917 / (02582) 240422%0A` +
       `🗺️ *Live Google Maps Directions Link:*%0A${encodeURIComponent(mapsUrl)}%0A` +
       `---------------------------------------%0A` +
@@ -4384,51 +4326,21 @@ class HotelPremierApp {
 
   // ==================== 5. STAFF ACCESS CONTROL (HIDDEN FROM GUESTS) ====================
   checkStaffModeAccess() {
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const isStaffUrl = params.has('staff') || params.has('admin') || params.has('manage') || params.has('cms') || window.location.hash === '#admin';
-      const isStaff = isStaffUrl || sessionStorage.getItem('hp_staff_mode_active') === 'true';
-      if (isStaff) {
-        document.body.classList.add('staff-mode-active');
-        this.ensureAdminLoaded();
-      } else {
-        document.body.classList.remove('staff-mode-active');
-      }
-      const settingsBtn = document.getElementById('cms-settings-admin-btn');
-      if (settingsBtn) {
-        settingsBtn.style.display = isStaff ? 'inline-flex' : 'none';
-      }
-    } catch (e) {}
+    // Public pages never become editors through a URL or a remembered staff flag.
+    document.body.classList.remove('staff-mode-active');
+    const settingsBtn = document.getElementById('cms-settings-admin-btn');
+    if (settingsBtn) settingsBtn.style.display = 'none';
+    if (window.location.hash === '#admin') this.ensureAdminLoaded();
   }
 
   handleBrandLogoTap(e) {
-    if (!this.brandLogoTapCount) {
-      this.brandLogoTapCount = 0;
-      this.brandLogoTapTimer = null;
-    }
-    this.brandLogoTapCount++;
-    if (this.brandLogoTapTimer) clearTimeout(this.brandLogoTapTimer);
-
+    this.brandLogoTapCount = (this.brandLogoTapCount || 0) + 1;
+    clearTimeout(this.brandLogoTapTimer);
     if (this.brandLogoTapCount >= 5) {
       this.brandLogoTapCount = 0;
-      const settingsBtn = document.getElementById('cms-settings-admin-btn');
-      if (settingsBtn) {
-        const isCurrentlyVisible = settingsBtn.style.display !== 'none';
-        if (isCurrentlyVisible) {
-          settingsBtn.style.display = 'none';
-          sessionStorage.removeItem('hp_staff_mode_active');
-          this.showToast('Staff Settings Hidden', 'info');
-        } else {
-          settingsBtn.style.display = 'inline-flex';
-          sessionStorage.setItem('hp_staff_mode_active', 'true');
-          this.showToast('Staff Mode Activated ⚙️', 'success');
-          this.ensureAdminLoaded();
-        }
-      }
+      this.ensureAdminLoaded(() => window.admin.openAdminModal());
     } else {
-      this.brandLogoTapTimer = setTimeout(() => {
-        this.brandLogoTapCount = 0;
-      }, 2500);
+      this.brandLogoTapTimer = setTimeout(() => { this.brandLogoTapCount = 0; }, 2500);
     }
   }
 

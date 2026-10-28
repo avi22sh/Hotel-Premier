@@ -452,9 +452,26 @@ body:is(.theme-light,.theme-dark) #guest-feedback-section .experience-actions bu
  #guest-feedback-section .star-choice .star-btn { width:40px; }
 }
 
+/* Group invitations echo the navy brand frame in both appearances. */
+body:is(.theme-light,.theme-dark) #section-celebrate #bulk-deals-tiers-container .bulk-tier-card { background:linear-gradient(145deg,#263347,#172334 65%,#101a27); color:#f3eee4; border:1px solid #b89a62; border-radius:1.25rem; padding:clamp(1.2rem,2.3vw,1.75rem); box-shadow:inset 0 1px #ffffff24,0 8px 24px #101a2720; gap:.85rem; }
+body:is(.theme-light,.theme-dark) #section-celebrate #bulk-deals-tiers-container .tier-name { color:#f1d39a; font-family:var(--font-editorial); font-size:1.25rem; font-weight:750; text-transform:none; letter-spacing:0; }
+body:is(.theme-light,.theme-dark) #section-celebrate #bulk-deals-tiers-container .tier-privilege-label { color:#e8ddc6; font-size:.82rem; font-weight:650; margin:0; padding-bottom:.85rem; border-bottom:1px solid #c7a66850; }
+body:is(.theme-light,.theme-dark) #section-celebrate #bulk-deals-tiers-container .tier-perks { padding:0; margin:0; gap:.65rem; }
+body:is(.theme-light,.theme-dark) #section-celebrate #bulk-deals-tiers-container .tier-perks li { color:#e0e3e9; font-size:.85rem; line-height:1.65; }
+body:is(.theme-light,.theme-dark) #section-celebrate #bulk-deals-tiers-container .tier-tag { margin:0; letter-spacing:.02em; font-size:.7rem; }
+/* Guest pages have no inline content editors, even on legacy staff links. */
+#dish-detail-modal :is(.btn-detail-photo-action,.btn-staff-dish-edit-tag,.modal-staff-taste-modifier-bar,.modal-staff-variants-manager),#cms-settings-admin-btn { display:none; }
+body:is(.theme-light,.theme-dark) #section-home .sanctuary-hero-section { border:1px solid #b99b64; border-radius:1.25rem; padding:clamp(2rem,5vw,3.5rem) clamp(1rem,3vw,2rem); }
+body:is(.theme-light,.theme-dark) #section-home .sanctuary-hero-content .sanctuary-hero-statement { color:#f0ece5; font-family:var(--font-sans); font-style:normal; font-weight:500; font-size:clamp(.95rem,2vw,1.1rem); line-height:1.85; max-width:42rem; }
+body:is(.theme-light,.theme-dark) #section-home .sanctuary-hero-highlights { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.65rem; max-width:44rem; margin:0 auto 1.8rem; }
+body:is(.theme-light,.theme-dark) #section-home .sanctuary-pill { display:flex; align-items:center; justify-content:center; border-radius:.75rem; padding:.75rem; color:#f6e8c7; font-weight:650; line-height:1.6; background:#ffffff0a; border-color:#c7a66870; }
+#guest-feedback-section .review-composer-card { margin-top:1.5rem; }
+@media(max-width:479px) { body:is(.theme-light,.theme-dark) #section-home .sanctuary-hero-highlights { grid-template-columns:minmax(0,1fr); } }
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;
+ --muted:#454d5b;
  background-color:#f5f1ef;
  background-image:radial-gradient(ellipse at 10% 0%,#fffaf6 0%,transparent 52%),radial-gradient(ellipse at 95% 35%,#e9e0cf80 0%,transparent 60%);
 }

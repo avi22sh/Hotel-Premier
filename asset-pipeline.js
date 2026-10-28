@@ -49,7 +49,7 @@ constructor(){this.processedCache=new Map();}
       if (typeof source !== 'string' || !source.startsWith('assets/')) return source || '';
       const clean = source.split('?')[0];
       const hash = window.HOTEL_PREMIER_IMAGE_SIZES?.[clean]?.[0]?.src?.match(/\/([a-f0-9]+)-\d+\.webp$/)?.[1];
-      return `${clean}?v=${hash || '22.66'}`;
+      return `${clean}?v=${hash || '22.67'}`;
     }
 
     responsivePhotoAttributes(source, detail = false, compact = false) {
@@ -229,9 +229,6 @@ constructor(){this.processedCache=new Map();}
             <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
             ${badgesHtml ? `<div class="dish-badges">${badgesHtml}</div>` : ''}
             ${soldOutHtml}
-            <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
-              📷 Upload Photo
-            </button>
           </div>
         `;
       }
@@ -252,9 +249,6 @@ constructor(){this.processedCache=new Map();}
           <div class="dish-veg-symbol" title="100% Pure Vegetarian"><div class="dish-veg-dot"></div></div>
           ${badgesHtml ? `<div class="dish-badges">${badgesHtml}</div>` : ''}
           ${soldOutHtml}
-          <button onclick="window.admin ? window.admin.openImageModal('${dish.id}') : null" class="btn-detail-photo-action">
-            📷 Change / Upload Photo
-          </button>
         </div>
       `;
     }

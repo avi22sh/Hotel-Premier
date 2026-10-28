@@ -1,0 +1,13 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const removed=[],shortcut={style:{}},loads=[];
+const context={console,window:{location:{search:'?staff=1&admin=1&manage=1&cms=1',hash:'#dine'}},document:{readyState:'loading',addEventListener(){},body:{classList:{remove:name=>removed.push(name)}},getElementById:id=>id==='cms-settings-admin-btn'?shortcut:null},sessionStorage:{getItem:()=> 'true'}};
+vm.createContext(context);const source=fs.readFileSync('app.js','utf8');vm.runInContext(source+';window.App=HotelPremierApp;',context);
+const app=Object.create(context.window.App.prototype);app.ensureAdminLoaded=()=>loads.push(true);
+app.checkStaffModeAccess();assert.equal(shortcut.style.display,'none');assert.deepEqual(removed,['staff-mode-active']);assert.equal(loads.length,0,'Legacy staff query and stored flag must not load editors on guest pages');
+context.window.location.hash='#admin';app.checkStaffModeAccess();assert.equal(loads.length,1,'Explicit Admin route must remain available behind its existing PIN');
+const detail=source.slice(source.indexOf('  openDishDetail('),source.indexOf('  switchModalVariant('));
+assert.doesNotMatch(detail,/btn-detail-photo-action|btn-staff-dish-edit-tag|modal-staff-taste-modifier-bar|modal-staff-variants-manager/);
+assert.doesNotMatch(fs.readFileSync('asset-pipeline.js','utf8'),/btn-detail-photo-action/);
+const html=fs.readFileSync('index.html','utf8');assert.ok(html.indexOf('id="dining-feedback-form"')<html.indexOf('id="review-platforms"'),'Feedback form precedes public review links for every guest');
+assert.match(html,/Approx\. 3 km from Railway Junction/);assert.doesNotMatch(html,/2 KM from Railway|2\.0 KM/);
+console.log('PASS: guest pages ignore legacy staff URL/session flags, no inline dish editors, explicit Admin remains, feedback precedes public links and station distance is updated');

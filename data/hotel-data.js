@@ -9,7 +9,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     tagline: 'A Home in Bhusawal',
     restaurantName: 'Pride Pure Veg AC Restaurant',
     fullAddress: 'Near Nahata College, Saket Soc, Jamner Road, Bhusawal - 425 201',
-    landmark: 'Near Nahata College & Saket Society (15 Mins / 2 KM from Bhusawal Railway Junction)',
+    landmark: 'Near Nahata College & Saket Society (Approx. 3 km from Bhusawal Railway Junction)',
     phones: ['09325375802', '09370848917', '(02582) 240422', '(02582) 240396'],
     whatsapp: '919325375802',
     alternateWhatsapp: '919370848917',
@@ -232,7 +232,7 @@ window.HOTEL_PREMIER_HOTEL_DATA = {
     { icon: '', title: 'High-Speed Wi-Fi', desc: 'Seamless wireless internet access across all rooms and common areas.' },
     { icon: '', title: 'Elevator / Lift Access', desc: 'Senior-citizen and luggage friendly lift access to all room floors.' },
     { icon: '', title: '100% Power Generator Backup', desc: 'Uninterrupted power supply for continuous AC, lighting and hot water.' },
-    { icon: '', title: 'Prime Location Connectivity', desc: 'Just 15 mins from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
+    { icon: '', title: 'Prime Location Connectivity', desc: 'Approximately 3 km from Bhusawal Railway Junction on Jamner Road near Nahata College.' }
   ],
 
   // Group allocation is 12 rooms / 36 guests, separate from the 14-room property.
