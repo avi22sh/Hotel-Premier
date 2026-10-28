@@ -5,10 +5,25 @@
  document.addEventListener('error',event=>{
   const image=event.target;
   if(image?.tagName!=='IMG'||image.getAttribute('src')===fallback)return;
+  const qr=image.closest('#location-qr-mount,#qr-canvas-holder,.guest-network-qr');
+  if(qr){
+   const canvas=qr.querySelector('canvas');
+   image.hidden=true;
+   if(canvas)canvas.style.display='block';
+   return;
+  }
   image.onerror=null;image.removeAttribute('srcset');image.removeAttribute('sizes');
   image.hidden=false;image.src=fallback;image.dataset.photoUnavailable='true';
  },true);
  function prepare(image){
+  const qr=image.closest('#location-qr-mount,#qr-canvas-holder,.guest-network-qr');
+  if(qr){
+   const size=qr.querySelector('canvas')?.width||220;
+   image.setAttribute('width',String(size)); image.setAttribute('height',String(size));
+   if(!image.hasAttribute('alt'))image.alt='Scan QR code';
+   image.setAttribute('decoding','sync');
+   return;
+  }
   if(!image.hasAttribute('width'))image.setAttribute('width','1200');
   if(!image.hasAttribute('height'))image.setAttribute('height','900');
   if(!image.hasAttribute('decoding'))image.setAttribute('decoding','async');

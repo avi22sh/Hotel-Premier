@@ -570,6 +570,8 @@ body.theme-light #section-celebrate .celebrate-subtitle { color:var(--muted); op
 .qr-print-card p.qr-card-footnote { color:#62616a; font-size:11px; }
 .qr-card-footer { padding:15px; border-top:1px solid #c8a569; background:linear-gradient(115deg,#b28a48,#fff1d0 46%,#d8b675); color:#322514; font:700 13px/1.5 var(--font-editorial,Georgia); letter-spacing:.12em; }
 .qr-card-footer span { display:block; font:500 10px/1.6 var(--font-sans,system-ui); letter-spacing:.04em; }
+.qr-studio-layout .guest-network-actions { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); width:100%; max-width:560px; justify-self:center; }
+.qr-studio-layout .guest-network-actions button { padding:.8rem 1rem; border-radius:12px; font:600 .875rem/1.5 var(--font-sans,system-ui); }
 #qr-print-host { display:none; }
 @media print {
  body.hp-qr-print > :not(#qr-print-host) { display:none !important; }
