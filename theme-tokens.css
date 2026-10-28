@@ -468,6 +468,27 @@ body:is(.theme-light,.theme-dark) #section-home .sanctuary-pill { display:flex; 
 #guest-feedback-section .review-composer-card { margin-top:1.5rem; }
 @media(max-width:479px) { body:is(.theme-light,.theme-dark) #section-home .sanctuary-hero-highlights { grid-template-columns:minmax(0,1fr); } }
 
+/* Gallery sheet: centered photography, persistent close action, paired navigation. */
+body:is(.theme-light,.theme-dark) dialog.property-viewer { inset:0; margin:auto; width:min(960px,calc(100% - 2rem)); max-height:calc(100dvh - 2rem); padding:clamp(.85rem,2vw,1.25rem); border-radius:1.25rem; color:var(--text); background:var(--surface); border-color:var(--gold-edge); }
+body:is(.theme-light,.theme-dark) dialog.property-viewer .property-viewer-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 .85rem; }
+body:is(.theme-light,.theme-dark) dialog.property-viewer .property-viewer-header h2 { color:var(--accent); font:700 clamp(1rem,3vw,1.3rem)/1.4 var(--font-editorial); margin:0; }
+body:is(.theme-light,.theme-dark) dialog.property-viewer .property-viewer-close { display:grid; place-items:center; width:44px; height:44px; flex:none; padding:0; font:400 1.5rem/1 var(--font-sans); border:1px solid var(--gold-edge); border-radius:50%; background:var(--surface-secondary); color:var(--text); cursor:pointer; }
+body:is(.theme-light,.theme-dark) dialog.property-viewer > img { height:clamp(180px,54dvh,620px); width:100%; object-fit:contain; background:var(--surface-secondary); }
+body:is(.theme-light,.theme-dark) dialog.property-viewer > p { margin:.85rem 0; font-size:.9rem; color:var(--text); line-height:1.6; }
+body:is(.theme-light,.theme-dark) dialog.property-viewer .property-viewer-controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.75rem; }
+body:is(.theme-light,.theme-dark) dialog.property-viewer .property-viewer-controls button { min-width:0; min-height:48px; padding:.65rem; font-size:.85rem; font-weight:700; background:var(--gold-polish); border-color:var(--gold-edge); color:var(--gold-ink); box-shadow:var(--gold-relief); }
+
+/* Contact must pair its text and surfaces when appearance changes. */
+body.theme-dark #section-contact .contact-card { background:var(--surface); color:var(--text); border:1px solid color-mix(in srgb,var(--accent) 40%,transparent); box-shadow:inset 0 1px #ffffff18,0 8px 24px #0002; }
+body.theme-dark #section-contact :is(.contact-card-title,.contact-card-phone-highlight) { color:var(--accent); }
+body.theme-dark #section-contact .contact-card-body { color:var(--muted); }
+body.theme-dark #section-contact .contact-card-body strong { color:var(--text); }
+body.theme-dark #section-contact .contact-card-btn:not(.wa-btn) { background:var(--gold-polish); color:var(--gold-ink); border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); }
+body.theme-dark #section-contact .contact-card-btn.wa-btn { background:linear-gradient(145deg,#187c47,#126139); color:#fff; border:1px solid #6fb08c; }
+body.theme-dark #section-contact .contact-card-btn span { color:inherit; }
+body.theme-dark #section-contact .contact-card-icon { background:#ffffff09; border:1px solid #c7a66870; color:var(--accent); }
+body.theme-dark #section-contact .hp-inline-a0ef0d94405c { color:var(--positive); }
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;

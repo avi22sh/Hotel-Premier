@@ -589,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.67';
+    s.src = 'admin.js?v=22.68';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -4725,7 +4725,7 @@ class HotelPremierApp {
 
     const capacityBadge = document.getElementById('booking-room-capacity-badge');
     if (capacityBadge) {
-      capacityBadge.textContent = `${roomPolicy.label} (${extraBedLimit} max extra guest limit for ${roomsCount} room${roomsCount > 1 ? 's' : ''})`;
+      capacityBadge.textContent = `${roomsCount} room${roomsCount > 1 ? 's' : ''} · Up to ${extraBedLimit} extra guest${extraBedLimit !== 1 ? 's' : ''} in total`;
     }
 
     const guestsCount = Math.min(maxGroupGuests, Math.max(roomsCount, Math.floor(Number(guestsField?.value) || roomsCount)));

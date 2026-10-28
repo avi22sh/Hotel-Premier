@@ -10,8 +10,12 @@
     let current=0,opener=null,start=null;
     function show(index){current=(index+cards.length)%cards.length;const source=cards[current].querySelector('img');image.src=source.currentSrc||source.src;image.alt=source.alt;caption.textContent=`${current+1} / ${cards.length} · ${cards[current].querySelector('.atmosphere-card-caption')?.textContent||source.alt}`;}
     function button(label,action){const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',action);return b;}
-    controls.append(button('← Previous',()=>show(current-1)),button('Next →',()=>show(current+1)),button('Close ×',()=>dialog.close()));
-    dialog.append(image,caption,controls);document.body.append(dialog);
+    const header=document.createElement('header'),title=document.createElement('h2');
+    header.className='property-viewer-header';title.textContent='Property Moments';
+    const close=button('×',()=>dialog.close());close.className='property-viewer-close';close.setAttribute('aria-label','Close photo gallery');
+    header.append(title,close);
+    controls.append(button('Previous Photo',()=>show(current-1)),button('Next Photo',()=>show(current+1)));
+    dialog.append(header,image,caption,controls);document.body.append(dialog);
     dialog.addEventListener('close',()=>{opener?.focus();});
     dialog.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();show(current-1);}if(e.key==='ArrowRight'){e.preventDefault();show(current+1);}});
     image.addEventListener('touchstart',e=>{start=e.touches.length===1?{x:e.touches[0].clientX,y:e.touches[0].clientY}:null;},{passive:true});
