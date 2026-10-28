@@ -12,7 +12,11 @@
     if (!locks.size) {
       const style = document.body.style;
       saved = { y: window.scrollY, x: window.scrollX, position: style.position, top: style.top, left: style.left, width: style.width, overflow: style.overflow };
-      Object.assign(style, { position: 'fixed', top: `-${saved.y}px`, left: `-${saved.x}px`, width: '100%', overflow: 'hidden' });
+      const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+      const contentWidth = document.body.getBoundingClientRect?.().width || document.documentElement.clientWidth || viewportWidth;
+      const gutter = Math.max(0, viewportWidth - contentWidth);
+      // Keep the underlying layout at its pre-lock width when the scrollbar disappears.
+      Object.assign(style, { position: 'fixed', top: `-${saved.y}px`, left: `-${saved.x}px`, width: `calc(100% - ${gutter}px)`, overflow: 'hidden' });
     }
     locks.add(owner);
   }

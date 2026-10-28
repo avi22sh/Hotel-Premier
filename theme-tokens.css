@@ -500,6 +500,35 @@ body.theme-dark .dish-badges .badge-tag.bestseller { background:linear-gradient(
 #concierge-booking-modal .ota-booking-links .partner-link-arrow { flex:none; font:700 .85rem/1 var(--font-sans); }
 @media(max-width:359px) { #concierge-booking-modal .ota-booking-links .partner-link-arrow { display:none; } }
 
+/* A shared navy invitation for direct guests, with restrained gold and heritage red. */
+body:is(.theme-light,.theme-dark) :is(#section-stay.section-wrapper,#section-tariffs.section-wrapper,#concierge-booking-modal.modal-backdrop) .direct-booking-privilege-card { background:linear-gradient(145deg,#253449,#142132); color:#f3eee4; border:1px solid #b99a63; border-radius:1.1rem; padding:clamp(1rem,2.5vw,1.6rem); box-shadow:inset 0 1px #ffffff20,0 8px 24px #101a2718; }
+body:is(.theme-light,.theme-dark) :is(#section-stay.section-wrapper,#section-tariffs.section-wrapper) .direct-booking-privilege-card .privilege-header { display:flex; align-items:center; justify-content:space-between; gap:.75rem; flex-wrap:wrap; }
+body:is(.theme-light,.theme-dark) :is(#section-stay.section-wrapper,#section-tariffs.section-wrapper) .direct-booking-privilege-card .privilege-pill { color:#ead5ac; background:transparent; padding:0; border:0; border-radius:0; box-shadow:none; font-weight:700; }
+body:is(.theme-light,.theme-dark) :is(#section-stay.section-wrapper,#section-tariffs.section-wrapper) .direct-booking-privilege-card .privilege-saving,
+body:is(.theme-light,.theme-dark) #concierge-booking-modal.modal-backdrop .enquiry-privilege strong { color:#ffe5ad; background:linear-gradient(145deg,#842536,#5e101d); border:1px solid #c7a668; border-radius:.5rem; padding:.4rem .65rem; box-shadow:inset 0 1px #ffffff25; }
+body:is(.theme-light,.theme-dark) :is(#section-stay.section-wrapper,#section-tariffs.section-wrapper) .direct-booking-privilege-card .privilege-title { color:#f0d49c; font-family:var(--font-editorial); font-weight:700; line-height:1.45; margin:.75rem 0 .5rem; }
+body:is(.theme-light,.theme-dark) :is(#section-stay.section-wrapper,#section-tariffs.section-wrapper) .direct-booking-privilege-card .privilege-desc { color:#e0e4eb; font-size:.9rem; line-height:1.75; }
+body:is(.theme-light,.theme-dark) :is(#section-stay.section-wrapper,#section-tariffs.section-wrapper) .direct-booking-privilege-card .btn-claim-privilege { color:#282014; background:var(--gold-polish); border:1px solid var(--gold-edge); box-shadow:var(--gold-relief); }
+body:is(.theme-light,.theme-dark) #concierge-booking-modal.modal-backdrop .enquiry-privilege { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.7rem; }
+body:is(.theme-light,.theme-dark) #concierge-booking-modal.modal-backdrop .enquiry-privilege > span { color:#ead5ac; background:transparent; border:0; padding:0; box-shadow:none; }
+/* Navigation and Explore use the same navy, without a green cast. */
+body.theme-dark .app-header { background:linear-gradient(145deg,#1e2c40,#101b2b); border-color:#c7a66870; }
+body.theme-dark .hotel-nav-bar { background:#101a29; border-top:1px solid #c7a66830; }
+body.theme-dark .hotel-nav-tab { color:#d7dce5; }
+body.theme-dark .hotel-nav-tab.active { color:#f4d69e; background:#ffffff09; border-bottom-color:#d3b070; box-shadow:inset 0 -2px #d3b070; }
+body.theme-dark #section-explore :is(.route-start-card,.explore-concierge-card,.attraction-card) { background:linear-gradient(145deg,#202e42,#142031); color:var(--text); border-color:#c7a66865; }
+body.theme-dark #section-explore :is(.route-icon-badge,.route-time-badge,.attraction-distance-badge) { background:#ffffff08; color:#f0d49c; border:1px solid #c7a66870; box-shadow:inset 0 1px #ffffff16; }
+body.theme-dark #section-explore :is(.route-name,.attraction-title) { color:#f0d49c; }
+body.theme-dark #section-explore :is(.route-directions-btn,.attraction-directions-btn) { color:#f0d49c; background:#ffffff08; border:1px solid #c7a668; box-shadow:inset 0 1px #ffffff16; }
+/* Purpose-led Contact actions: calls, messaging, maps and dining each have a place. */
+body:is(.theme-light,.theme-dark) #section-contact .contact-card .contact-frontdesk-action { background:linear-gradient(145deg,#842536,#5e101d); color:#ffe5b2; border:1px solid #b89660; box-shadow:inset 0 1px #ffffff30,0 4px 12px #5e101d20; }
+body:is(.theme-light,.theme-dark) #section-contact .contact-card .maps-btn { background:linear-gradient(145deg,#244d79,#143455); color:#fff3dc; border:1px solid #8da5bf; box-shadow:inset 0 1px #ffffff25; }
+body:is(.theme-light,.theme-dark) #section-contact .contact-card .contact-dining-action { background:var(--surface-secondary); color:var(--accent); border:1px solid var(--gold-edge); box-shadow:inset 0 1px #ffffff20; }
+#menu-sections-drawer-modal .culinary-drawer-sheet { width:min(760px,calc(100% - 2rem)); }
+#menu-sections-drawer-modal #drawer-sections-search:focus-visible { outline:0; }
+#menu-sections-drawer-modal .search-input-wrapper:focus-within { outline:2px solid var(--focus); outline-offset:2px; }
+#menu-sections-drawer-modal .drawer-item-count { display:inline-block; min-width:2.5rem; padding:.25rem .45rem; border-radius:.5rem; line-height:1.4; background:var(--surface-secondary); color:var(--muted); white-space:nowrap; }
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;
@@ -684,6 +713,16 @@ body.theme-light #section-celebrate .celebrate-subtitle { color:var(--muted); op
 .qr-print-card p.qr-card-footnote { color:#62616a; font-size:11px; }
 .qr-card-footer { padding:15px; border-top:1px solid #c8a569; background:linear-gradient(115deg,#b28a48,#fff1d0 46%,#d8b675); color:#322514; font:700 13px/1.5 var(--font-editorial,Georgia); letter-spacing:.12em; }
 .qr-card-footer span { display:block; font:500 10px/1.6 var(--font-sans,system-ui); letter-spacing:.04em; }
+.qr-print-card { border-radius:10px; border-color:#b79961; box-shadow:0 12px 32px #101a2726,inset 0 0 0 5px #e9d7b5; }
+.qr-card-masthead { gap:14px; padding:24px 24px 20px; }
+.qr-logo-plate { padding:14px 18px; border:1px solid #d6bd86; border-radius:8px; background:#fbf7ef; box-shadow:0 4px 16px #0003; }
+.qr-print-card .qr-logo-plate img.qr-brand { width:220px; filter:none; }
+.qr-card-content { padding:22px 20px 18px; }
+.qr-print-card #qr-standee-label { font-size:24px; line-height:1.35; margin:10px 0 20px; }
+.qr-print-card .qr-card-rule { display:block; color:#ac8548; font-size:10px; letter-spacing:.2em; margin-top:18px; }
+.qr-print-card p.qr-card-address { font-size:10px; color:#565b66; margin:8px 0 0; }
+.qr-card-footer { background:#182638; color:#edd4a0; font-size:11px; letter-spacing:.16em; padding:16px; }
+.qr-card-footer span { color:#d0d6df; margin-top:4px; }
 .qr-studio-layout .guest-network-actions { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr)); width:100%; max-width:560px; justify-self:center; }
 .qr-studio-layout .guest-network-actions button { padding:.8rem 1rem; border-radius:12px; font:600 .875rem/1.5 var(--font-sans,system-ui); }
 #qr-print-host { display:none; }

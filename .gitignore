@@ -8,6 +8,7 @@ Thumbs.db
 
 # Scratch scripts and temporary manifests
 scratch/
+tmp/
 *.csv
 !reports/menu-image-renames.csv
 !reports/qa-matrix.csv

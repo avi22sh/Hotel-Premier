@@ -299,6 +299,14 @@ Close photo gallery~फोटो गैलरी बंद करें~छा�
 Room Only (RO)~केवल कमरा (RO)~फक्त खोली (RO)
 Check availability on MakeMyTrip~MakeMyTrip पर उपलब्धता देखें~MakeMyTrip वर उपलब्धता तपासा
 Check availability on Goibibo~Goibibo पर उपलब्धता देखें~Goibibo वर उपलब्धता तपासा
+Choose your room, then your rhythm: room-only simplicity or a stay with breakfast. Compare the plans below; rates are per room, per night, inclusive of taxes.~अपना कमरा और अपनी पसंद की योजना चुनें—केवल कमरा या नाश्ते के साथ ठहराव। नीचे दी गई दरें प्रति कमरा, प्रति रात हैं और इनमें कर शामिल हैं।~तुमची खोली आणि योग्य योजना निवडा—फक्त खोली किंवा नाश्त्यासह मुक्काम. खालील दर प्रति खोली, प्रति रात्र असून त्यात कर समाविष्ट आहेत.
+Your table. Our collection.~आपकी मेज़। हमारा व्यंजन संग्रह।~तुमचे टेबल. आमचा खाद्यसंग्रह.
+Your Premier stay begins here.~प्रीमियर में आपका ठहराव यहीं से शुरू होता है।~तुमचा प्रीमियर मुक्काम इथून सुरू होतो.
+Make yourself at home.~अपने घर जैसा महसूस करें।~घरच्यासारखे निवांत राहा.
+Scan to explore the culinary collection.~व्यंजन संग्रह देखने के लिए स्कैन करें।~खाद्यसंग्रह पाहण्यासाठी स्कॅन करा.
+Scan for rooms, dining and hotel enquiries.~कमरों, भोजन और होटल की पूछताछ के लिए स्कैन करें।~खोल्या, भोजन आणि हॉटेलच्या चौकशीसाठी स्कॅन करा.
+BHUSAWAL · THOUGHTFUL HOSPITALITY~भुसावल · आत्मीय आतिथ्य~भुसावळ · आपुलकीचे आदरातिथ्य
+Jamner Road · Near Nahata College~जामनेर रोड · नाहटा कॉलेज के पास~जामनेर रोड · नाहटा कॉलेजजवळ
 `.trim().split('\n').map(line=>line.split('~'));
 window.HOTEL_PREMIER_INTERFACE_COPY.push(...`
 PURE VEG~शुद्ध शाकाहारी~शुद्ध शाकाहारी

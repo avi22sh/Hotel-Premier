@@ -2045,12 +2045,12 @@ class HotelPremierAdmin {
         </div>
         <p id="qr-studio-status" role="status"></p>
         <div id="standee-print-card" class="qr-print-card">
-          <div class="qr-card-masthead"><img height="207" width="451" class="qr-brand" src="assets/premier-original-logo.png" alt="Hotel Premier · A home in Bhusawal"></div>
-          <div class="qr-card-content"><span class="qr-card-eyebrow">YOUR PREMIER EXPERIENCE</span>
+          <div class="qr-card-masthead"><div class="qr-logo-plate"><img height="207" width="451" class="qr-brand" src="assets/premier-original-logo.png" alt="Hotel Premier · A home in Bhusawal"></div><span>BHUSAWAL · THOUGHTFUL HOSPITALITY</span></div>
+          <div class="qr-card-content"><span class="qr-card-eyebrow" id="qr-card-place">YOUR PREMIER EXPERIENCE</span>
           <h4 id="qr-standee-label"></h4><div id="qr-canvas-holder"></div>
           <p id="qr-card-instructions">Scan to discover Hotel Premier.</p>
-          <p class="qr-card-footnote">Open your phone camera · Scan · Explore</p></div>
-          <div class="qr-card-footer">HOTEL PREMIER <span>Dining · Stays · Hospitality</span></div>
+          <p class="qr-card-footnote">Open your phone camera · Scan · Explore</p><span class="qr-card-rule" aria-hidden="true">◆</span><p class="qr-card-address">Jamner Road · Near Nahata College</p></div>
+          <div class="qr-card-footer">A HOME IN BHUSAWAL <span>Dining · Stays · Hospitality</span></div>
         </div>
         <div class="guest-network-actions"><button type="button" class="btn-secondary" id="qr-download">Download QR (PNG)</button><button type="button" class="btn-primary" id="qr-print">Print branded card</button></div>
         <p>Wi-Fi connection QR codes are separate from website links and require verified guest-network information. Opening a page cannot connect a phone automatically.</p>
@@ -2099,9 +2099,11 @@ class HotelPremierAdmin {
     const status = document.getElementById('qr-studio-status');
     const title = document.getElementById('qr-standee-label');
     const help = document.getElementById('qr-card-instructions');
+    const place = document.getElementById('qr-card-place');
+    if (place) place.textContent = type === 'restaurant' ? 'PRIDE PURE VEG AC RESTAURANT' : type === 'room' ? 'YOUR ROOM CONCIERGE' : 'WELCOME TO HOTEL PREMIER';
     host.replaceChildren(); this.currentGuestQR = null;
-    if (title) title.textContent = type === 'restaurant' ? 'Pride Pure Veg AC Restaurant' : type === 'room' ? 'Hotel Premier · Room Guest' : 'Welcome to Hotel Premier';
-    if (help) help.textContent = type === 'restaurant' ? 'Scan to explore our complete Food Menu.' : type === 'room' ? 'Scan for room amenities, stays and dining.' : 'Scan to discover our hotel, dining and stays.';
+    if (title) title.textContent = type === 'restaurant' ? 'Your table. Our collection.' : type === 'room' ? 'Make yourself at home.' : 'Your Premier stay begins here.';
+    if (help) help.textContent = type === 'restaurant' ? 'Scan to explore the culinary collection.' : type === 'room' ? 'Scan for room amenities, stays and dining.' : 'Scan for rooms, dining and hotel enquiries.';
     try {
       if (!window.HotelGuestNetwork) throw Error('Please reload the updated QR tools.');
       const url = window.HotelGuestNetwork.destination(document.getElementById('qr-target-url').value.trim(), type, room?.value);
