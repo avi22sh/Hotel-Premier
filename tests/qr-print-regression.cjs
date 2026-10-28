@@ -4,12 +4,13 @@ const method=source.slice(source.indexOf('  printStandee() {'),source.indexOf(' 
 const listeners={},children=[],classes=new Set();let printed=0,fail=false;
 const canvas={width:220,height:220,toDataURL:()=> 'data:image/png;base64,fixture'};
 let frozen;
-const card={removeAttribute(){},querySelector:()=>({replaceWith(image){frozen=image;}})};
+let qrChildren=['old canvas','old image'];
+const card={removeAttribute(){},querySelector:selector=>{assert.equal(selector,'#qr-canvas-holder');return {replaceChildren(image){frozen=image;qrChildren=[image];}};}};
 const original={querySelector:()=>canvas,cloneNode:()=>card};
 const document={getElementById:id=>id==='standee-print-card'?original:children.find(c=>c.id===id),createElement:tag=>({tag,append(c){this.child=c;},remove(){children.splice(children.indexOf(this),1);}}),body:{append(c){children.push(c);},classList:{add:c=>classes.add(c),remove:c=>classes.delete(c)}}};
 const window={addEventListener:(type,fn)=>listeners[type]=fn,print(){printed++;assert.equal(children.length,1);assert.equal(children[0].child,card);assert.equal(frozen.src,canvas.toDataURL());assert.ok(classes.has('hp-qr-print'));if(fail)throw Error('print unavailable');}};
 const context={window,document};vm.createContext(context);vm.runInContext('this.printCard=({'+method+'}).printStandee',context);
 context.printCard.call({currentGuestQR:null});assert.equal(printed,0);
-context.printCard.call({currentGuestQR:'https://example.com/#dine'});assert.equal(printed,1);assert.equal(frozen.width,frozen.height);listeners.afterprint();assert.equal(children.length,0);assert.equal(classes.size,0);
+context.printCard.call({currentGuestQR:'https://example.com/#dine'});assert.equal(printed,1);assert.equal(frozen.width,frozen.height);assert.deepEqual(qrChildren,[frozen],'One QR only, no canvas/image sibling duplication');listeners.afterprint();assert.equal(children.length,0);assert.equal(classes.size,0);
 fail=true;assert.throws(()=>context.printCard.call({currentGuestQR:'https://example.com/#home'}),/unavailable/);assert.equal(children.length,0);assert.equal(classes.size,0);
 console.log('PASS: verified QR required, canvas pixels preserved in standalone print host, close/failure cleanup');

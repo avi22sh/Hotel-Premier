@@ -2157,7 +2157,8 @@ class HotelPremierAdmin {
     // Canvas pixels are not copied by cloneNode. Freeze the verified QR as an image.
     const image = document.createElement('img'); image.src = canvas.toDataURL('image/png');
     image.alt = 'Scan to open Hotel Premier'; image.width = canvas.width; image.height = canvas.height;
-    card.querySelector('canvas').replaceWith(image);
+    // QRCode.js also creates an image sibling; print exactly one QR, never both.
+    card.querySelector('#qr-canvas-holder').replaceChildren(image);
     host.append(card); document.body.append(host);
     const cleanup = () => { host.remove(); document.body.classList.remove('hp-qr-print'); };
     document.body.classList.add('hp-qr-print');

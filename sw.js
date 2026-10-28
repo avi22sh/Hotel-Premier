@@ -1,5 +1,5 @@
 // Public shell only. Guest records and private API responses never enter these caches.
-const CACHE_NAME = 'hotel-premier-v22.56';
+const CACHE_NAME = 'hotel-premier-v22.57';
 const CORE_ASSETS = [
  './', 'index.html', 'offline.html', 'admin.html', 'styles.css', 'royal.css', 'inline-styles.css', 'theme-tokens.css',
  'local-admin.css', 'local-lock.js', 'photo-storage.js', 'photo-workflow.js', 'photo-worker.js',  'ui-dialogs.js', 'pwa-updates.js', 'overlay-manager.js', 'guest-forms.js', 'overlays.css', 'public-reviews.js',
