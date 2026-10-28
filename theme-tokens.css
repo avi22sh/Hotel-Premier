@@ -555,7 +555,7 @@ body.theme-light .modal-backdrop:not(#admin-modal-backdrop):not(#add-dish-modal)
 body.theme-light #section-explore :is(.attraction-title,.route-name,.route-option-name) { color:#6b111d; }
 body.theme-light #section-explore :is(.attraction-category-badge,.attraction-distance-badge,.route-time-badge,.route-icon-badge) { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); }
 body.theme-light #section-explore :is(.attraction-card-content,.attraction-card-footer) { background:transparent; }
-body.theme-light #guest-feedback-section :is(.feedback-container,.review-composer-card,.review-extra-details) { background:var(--pearl-polish); border-color:var(--gold-edge); box-shadow:var(--pearl-relief); }
+body.theme-light #guest-feedback-section :is(.review-composer-card,.review-extra-details) { background:var(--pearl-polish); border-color:var(--gold-edge); box-shadow:var(--pearl-relief); }
 body.theme-light :is(.section-wrapper,#guest-feedback-section,#concierge-booking-modal,#guest-profile-modal) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="file"]),select,textarea) {
  background:var(--pearl-polish); color:var(--text); border-color:var(--gold-edge); box-shadow:inset 0 1px 3px #6b4a1c12,0 1px #fff; color-scheme:light;
 }
@@ -579,7 +579,7 @@ body.theme-light {
  --red-ink:#ffe6ad;
  --red-relief:inset 0 1px 0 #efb5a85c,inset 0 -1px 0 #38040d,0 4px 14px #6b111d26;
 }
-body.theme-light :is(#section-home,#section-stay,#section-tariffs,#section-dine,#section-concierge,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-story-title,.editorial-title,.section-title,.dining-main-heading,.celebrate-title,.feedback-title,.atmosphere-gallery-title,.amenities-banner-title,.experience-intro h2) {
+body.theme-light :is(#section-home,#section-stay,#section-tariffs,#section-dine,#section-concierge,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-story-title,.editorial-title,.section-title,.dining-main-heading,.celebrate-title,.feedback-title,.atmosphere-gallery-title,.amenities-banner-title) {
  background:none; color:var(--heading-accent); -webkit-text-fill-color:currentColor;
  background-clip:border-box; -webkit-background-clip:border-box;
  border:0; border-radius:0; box-shadow:none; font-weight:700;
@@ -677,11 +677,12 @@ html:is([lang="hi"],[lang="mr"]) #section-home .quick-card-title { letter-spacin
 @media(max-width:359px) { #section-home .concierge-quick-card { padding:16px 8px; } #section-home .quick-card-title { font-size:.82rem; } }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
+ body:is(.theme-light,.theme-dark) #guest-feedback-section .experience-intro h2 { color:CanvasText; -webkit-text-fill-color:currentColor; background:none; }
  body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title,.experience-intro h2) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
  body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span,.footer-brand-m) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; filter:none; animation-name:none; }
  body:is(.theme-light,.theme-dark) .footer-brand-birds { background:CanvasText; }
  body.theme-light #section-stay > .editorial-header-block > .editorial-title { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; }
- body.theme-light :is(#section-home,#section-stay,#section-tariffs,#section-dine,#section-concierge,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-story-title,.editorial-title,.section-title,.dining-main-heading,.celebrate-title,.feedback-title,.atmosphere-gallery-title,.amenities-banner-title,.experience-intro h2),
+ body.theme-light :is(#section-home,#section-stay,#section-tariffs,#section-dine,#section-concierge,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-story-title,.editorial-title,.section-title,.dining-main-heading,.celebrate-title,.feedback-title,.atmosphere-gallery-title,.amenities-banner-title),
  body.theme-light :is(#section-stay,#section-tariffs) .direct-booking-privilege-card :is(.privilege-pill,.privilege-saving),
  body.theme-light #concierge-booking-modal .enquiry-privilege > :is(span,strong) { background:none; color:CanvasText; border-color:CanvasText; box-shadow:none; -webkit-text-fill-color:currentColor; }
 }
