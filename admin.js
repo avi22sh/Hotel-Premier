@@ -2036,7 +2036,7 @@ class HotelPremierAdmin {
         <div class="guest-network-notice"><strong>Network activation pending</strong>
           <p>No routers or POS settings have been changed. The five-router survey, actual room register, secure backend and isolation tests are required before guest access is enabled.</p>
           <p>HOTEL PREMIER GUEST is a proposed identity, not a verified network. The local Admin PIN cannot authorize server-side credential changes.</p>
-          <details><summary>Equipment checklist & secure activation plan</summary><p>Record each router’s model, operating mode, SSIDs, LAN address and DHCP role; map verified room and restaurant coverage. Back up the existing configuration, document POS connectivity and prepare a rollback plan. Test guest isolation and POS communication on one noncritical network before requesting approval for any live router change. Keep administrator passwords outside this PWA.</p></details>
+          <details><summary>Equipment checklist & secure activation plan</summary><p>Record each router’s model, operating mode, SSIDs, LAN address and DHCP role; map verified room and restaurant coverage. Back up the existing configuration, document POS connectivity and prepare a rollback plan. Test guest isolation and POS communication on one noncritical network before requesting approval for any live router change. Keep administrator passwords outside this PWA.</p><ul id="qr-network-area-checklist"></ul><p>These are coverage areas, not activated guest networks. Verify each guest assignment before issuing its separate Wi-Fi connection QR. Website cards continue to open the PWA without connecting a phone to Wi-Fi.</p></details>
         </div>
         <div class="qr-studio-fields">
           <label>QR destination<select id="qr-table-select" class="form-select"><option value="restaurant">Restaurant Table → Food Menu (Direct)</option><option value="room">Hotel Room → Home & Concierge</option><option value="reception">Reception / General → Home</option></select></label>
@@ -2055,6 +2055,10 @@ class HotelPremierAdmin {
         <div class="guest-network-actions"><button type="button" class="btn-secondary" id="qr-download">Download QR (PNG)</button><button type="button" class="btn-primary" id="qr-print">Print branded card</button></div>
         <p>Wi-Fi connection QR codes are separate from website links and require verified guest-network information. Opening a page cannot connect a phone automatically.</p>
       </div>`;
+    const areaChecklist = document.getElementById('qr-network-area-checklist');
+    (window.HotelGuestNetwork?.getAreas() || []).forEach(area => {
+      const row = document.createElement('li'); row.textContent = area.label + ' · Awaiting verification'; areaChecklist.append(row);
+    });
     document.getElementById('qr-target-url').value = localStorage.getItem('hotel_premier_custom_qr_domain') || 'https://avi22sh.github.io/Hotel-Premier/';
     const roomSelect = document.getElementById('qr-room-select');
     const refreshRooms = () => {

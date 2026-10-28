@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-28T06:32:09.227Z",
-  "passed": 68,
+  "createdAt": "2026-10-28T08:44:14.457Z",
+  "passed": 69,
   "failed": [],
   "results": [
     {
@@ -97,6 +97,10 @@
     },
     {
       "file": "guest-language-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "guest-network-race-regression.cjs",
       "passed": true
     },
     {

@@ -221,7 +221,7 @@
   return value;
  }
  const originals=new WeakMap(),attributeOriginals=new WeakMap();let observer=null,scheduled=false;
- const excluded='script,style,textarea,input,[contenteditable],#admin-modal-backdrop,#new-dish-modal,#add-dish-modal,#image-replace-modal,#public-review-grid';
+ const excluded='script,style,textarea,input,[contenteditable],#admin-modal-backdrop,#new-dish-modal,#add-dish-modal,#image-replace-modal,#public-review-grid,.guest-network-ssid,.guest-network-secret';
  function sync(root=document.body){
   if(!root||!document.createTreeWalker)return;
   const lang=i18n?.currentLang||'en';document.documentElement.lang=lang;

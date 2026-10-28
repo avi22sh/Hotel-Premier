@@ -2,6 +2,24 @@
 window.HOTEL_PREMIER_INTERFACE_COPY = `
 Light · Auto~हल्का · स्वतः~हलका · स्वयंचलित
 Staff studio~कर्मचारी स्टूडियो~कर्मचारी स्टुडिओ
+Guest Wi-Fi~अतिथि वाई-फाई~पाहुण्यांसाठी वाय-फाय
+Choose your area~अपना क्षेत्र चुनें~तुमचा परिसर निवडा
+Lobby / reception~लॉबी / रिसेप्शन~लॉबी / रिसेप्शन
+Pride Restaurant~प्राइड रेस्तरां~प्राईड रेस्टॉरंट
+First floor~पहली मंज़िल~पहिला मजला
+Second floor~दूसरी मंज़िल~दुसरा मजला
+Third floor~तीसरी मंज़िल~तिसरा मजला
+Your room~आपका कमरा~तुमची खोली
+Opening this page does not connect your phone to Wi-Fi. No personal details are needed.~यह पेज खोलने से आपका फ़ोन वाई-फाई से नहीं जुड़ता। व्यक्तिगत जानकारी की आवश्यकता नहीं है।~हे पान उघडल्याने तुमचा फोन वाय-फायला जोडला जात नाही. वैयक्तिक माहितीची गरज नाही.
+Checking guest access…~अतिथि वाई-फाई की जानकारी जाँची जा रही है…~पाहुण्यांसाठी वाय-फायची माहिती तपासत आहोत…
+Guest Wi-Fi details are not available here yet. Please ask reception for the verified guest network. Hotel and POS networks are not displayed.~अतिथि वाई-फाई की जानकारी यहाँ अभी उपलब्ध नहीं है। सत्यापित अतिथि नेटवर्क के लिए रिसेप्शन से पूछें। होटल के आंतरिक और पीओएस नेटवर्क नहीं दिखाए जाते।~पाहुण्यांसाठी वाय-फायची माहिती येथे अद्याप उपलब्ध नाही. पडताळलेल्या पाहुणे नेटवर्कसाठी रिसेप्शनशी संपर्क साधा. हॉटेलची अंतर्गत आणि पीओएस नेटवर्क दाखवली जात नाहीत.
+Preferred guest network~प्राथमिक अतिथि नेटवर्क~प्राधान्याचे पाहुणे नेटवर्क
+Fallback guest network~वैकल्पिक अतिथि नेटवर्क~पर्यायी पाहुणे नेटवर्क
+Guest password:~अतिथि पासवर्ड:~पाहुण्यांसाठी पासवर्ड:
+Copy password~पासवर्ड कॉपी करें~पासवर्ड कॉपी करा
+Password copied~पासवर्ड कॉपी हो गया~पासवर्ड कॉपी केला
+Select the displayed password to copy~कॉपी करने के लिए दिखाया गया पासवर्ड चुनें~कॉपी करण्यासाठी दाखवलेला पासवर्ड निवडा
+On this phone: open Settings → Wi-Fi, select the network above, then enter the password. To scan this QR, use another device.~इस फ़ोन पर: सेटिंग्स → वाई-फाई खोलें, ऊपर दिया नेटवर्क चुनें और पासवर्ड भरें। इस क्यूआर को स्कैन करने के लिए दूसरे उपकरण का उपयोग करें।~या फोनवर: सेटिंग्ज → वाय-फाय उघडा, वरील नेटवर्क निवडा आणि पासवर्ड भरा. हा क्यूआर स्कॅन करण्यासाठी दुसरे उपकरण वापरा.
 Digital experience · Contact developer ↗~डिजिटल सेवा · डेवलपर से संपर्क ↗~डिजिटल सेवा · डेव्हलपरशी संपर्क ↗
 Pride Pure Veg Menu~प्राइड शुद्ध शाकाहारी मेन्यू~प्राइड शुद्ध शाकाहारी मेनू
 15 Mins from Station~स्टेशन से 15 मिनट~स्थानकापासून 15 मिनिटे

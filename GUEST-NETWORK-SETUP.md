@@ -45,6 +45,16 @@ Before activation, self-host/review the QR library and review third-party script
 
 ## Separate QR functions
 
+### Five-area PWA provision
+
+Settings now has a discreet Guest Wi-Fi action, without a Home/Menu banner. The central frontend area catalogue contains only `lobby`, `restaurant`, `floor-1`, `floor-2`, and `floor-3` plus public display labels. It contains no SSIDs, credentials, IP addresses or claimed coverage. The owner has reported locations for five wired routers; equipment capabilities, guest isolation, exact floor SSIDs and room assignments remain unverified. Keep the actual survey and reported network identities outside the public repository.
+
+The secure service contract additionally supports `GET guest-access?location=lobby`, `?location=floor-1`, `?location=floor-2`, and `?location=floor-3`, with the same approval, no-store and response validation requirements as restaurant access. A floor is a manually selected coverage area, not an automatic network scan or a verified room assignment. Unknown area codes are rejected. Room access still requires the verified room register. Pending/unconfigured areas never fall back to operations credentials.
+
+Opening Wi-Fi from a room QR retains that room context; the Menu defaults to Restaurant, and other pages default to Lobby. Guests can choose another public area manually. The UI clears the prior response as soon as an area changes and ignores stale replies after selection changes or dialog closure. Network names and credential strings are excluded from language rewriting. Admin QR Studio lists the same five areas as awaiting verification; this checklist cannot activate a network or authorize router changes.
+
+Activation remains pending. There is no backend deployment, paid service, router access, SSID merge or Wi-Fi auto-connect in this change. Printed website and Wi-Fi connection QR codes remain separate functions.
+
 Reception: `?entry=reception#home`. Restaurant: `?entry=restaurant#dine`. Room: `?entry=room&room=<verified-id>#concierge`. These website QR codes contain no Wi-Fi secrets. Changing guest credentials must not require reprinting these cards.
 
 The separate Wi-Fi QR is generated on-device from verified guest connection information. Opening the website cannot automatically connect a phone. Manual Settings → Wi-Fi instructions are always available because the guest may be viewing the QR on the same phone. A separate printed Wi-Fi card must be generated from the secured system only after activation; treat the printed credential as intentionally shared guest information. Do not advertise “Guest Wi-Fi Available” on cards before network activation.

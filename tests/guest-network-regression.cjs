@@ -3,6 +3,12 @@ const listeners = {};
 const c = { URL, URLSearchParams, TextEncoder, Date, console, window: { addEventListener: (name, fn) => { listeners[name] = fn; } }, document: { addEventListener() {} } };
 vm.createContext(c); vm.runInContext(fs.readFileSync('guest-network.js', 'utf8'), c);
 const api = c.window.HotelGuestNetwork, base = 'https://avi22sh.github.io/Hotel-Premier/';
+assert.equal(api.getAreas().length,5);
+for(const area of api.getAreas())assert.equal(api.accessPath(area.id),'guest-access?location='+area.id);
+assert.throws(()=>api.accessPath('accounts'));assert.throws(()=>api.accessPath('floor-99'));
+assert.throws(()=>api.accessPath('room','unknown'));
+assert.equal(api.accessPath('room','fixture',[{id:'fixture',verified:true}]),'guest-access?location=room&room=fixture');
+const mutableAreas=api.getAreas();mutableAreas[0].id='unsafe';assert.equal(api.getAreas()[0].id,'lobby');
 assert.equal(api.resolve({href:base+'?dish=fixture-only'}),'section-dine');
 assert.equal(api.configured(), false); assert.equal(api.getRooms().length, 0);
 for (const [suffix, section] of [['', 'home'], ['?entry=reception#home', 'home'], ['?entry=restaurant#dine', 'dine'], ['?entry=room&room=fixture#concierge', 'concierge'], ['?src=Room%20fixture', 'concierge'], ['?table=fixture', 'dine'], ['?entry=restaurant#stay', 'stay'], ['#menu', 'dine'], ['?room=fixture#contact', 'contact'], ['?src=arbitrary', 'home']]) {
@@ -57,6 +63,12 @@ let networkCalls = 0; c.fetch = () => { networkCalls++; throw Error('Unexpected 
   assert.equal(dialog.open, true);
   assert.match(dialog.children.at(-1).children[0].textContent, /not available here yet/);
   assert.equal(networkCalls, 0, 'Unconfigured UI must never make a request');
+  const areaSelect=dialog.children[3].children[0];assert.equal(areaSelect.value,'restaurant');
+  for(const area of api.getAreas()){
+    areaSelect.value=area.id;await areaSelect.events.change();
+    assert.match(dialog.children.at(-1).children[0].textContent,/not available here yet/);
+  }
+  assert.equal(networkCalls,0,'Selecting a reported area must never activate or contact a network');
   api.closeWifi(); assert.equal(dialog.open, false); assert.equal(dialog.children.length, 0);
   await api.showWifi('room', 'unknown'); assert.equal(dialog.open, true);
   assert.match(dialog.children.at(-1).children[0].textContent, /not available here yet/);

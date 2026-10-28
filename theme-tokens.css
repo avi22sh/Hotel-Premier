@@ -377,6 +377,14 @@ body.theme-dark #guest-feedback-section .star-choice.active .star-btn { color:#6
  #group-stay-enquiry .custom-room-mix .form-label { min-height:0; }
 }
 
+/* Guest access uses the existing readable surfaces in either appearance. */
+.guest-network-dialog { box-sizing:border-box; background:var(--surface); color:var(--text); border-color:var(--border); }
+body.theme-dark .guest-network-dialog { background:var(--surface); }
+.guest-network-area { display:grid; gap:.5rem; margin:1.25rem 0; font-weight:600; color:var(--text); }
+.guest-network-area select { width:100%; max-width:100%; min-height:48px; padding:.75rem; border:1px solid var(--border); border-radius:12px; font:500 16px/1.5 var(--font-sans,system-ui); box-sizing:border-box; }
+.guest-network-secret { font:inherit; color:inherit; overflow-wrap:anywhere; }
+#qr-network-area-checklist { display:grid; gap:.65rem; padding-inline-start:1.25rem; }
+
 /* Engraved gold branding: the same finish on both navy brand surfaces. */
 :root { --brand-gold-polish:linear-gradient(115deg,#c99b43 0%,#f5cd79 19%,#fff2c3 34%,#d8a446 43%,#ffe7a2 51%,#fff8dc 56%,#e3b85e 68%,#c18e36 83%,#f6d58c 100%); }
 body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span) { color:#f0cd83; text-shadow:0 1px 1px #0009; }

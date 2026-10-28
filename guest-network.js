@@ -5,6 +5,14 @@
   'use strict';
   const settings = Object.freeze({ apiBase: '' }); // Unconfigured intentionally; no paid service is enabled.
   const state = { rooms: [], loaded: false, generation: 0 };
+  // Public area labels only. Network identities and approved assignments stay on the service.
+  const areas = Object.freeze([
+    { id: 'lobby', label: 'Lobby / reception' },
+    { id: 'restaurant', label: 'Pride Restaurant' },
+    { id: 'floor-1', label: 'First floor' },
+    { id: 'floor-2', label: 'Second floor' },
+    { id: 'floor-3', label: 'Third floor' }
+  ]);
   const sectionMap = {
     home: 'section-home', sanctuary: 'section-home', reception: 'section-home',
     dine: 'section-dine', dining: 'section-dine', menu: 'section-dine', food: 'section-dine',
@@ -103,7 +111,20 @@
     const dialog = document.getElementById('guest-wifi-dialog');
     if (dialog) { if (dialog.open) dialog.close(); dialog.replaceChildren(); }
   }
-  async function showWifi(context, id) {
+  function accessPath(context, id, rooms = state.rooms) {
+    if (context === 'room') {
+      if (!roomId(id) || !rooms.some(room => room.id === id && room.verified === true)) throw Error('Unverified location.');
+      return 'guest-access?location=room&room=' + encodeURIComponent(id);
+    }
+    if (!areas.some(area => area.id === context)) throw Error('Unverified location.');
+    return 'guest-access?location=' + context;
+  }
+  function openWifi() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.has('room') || params.get('entry') === 'room' || /^room\s+/i.test(params.get('src') || '')) return showWifi('room', currentRoom());
+    return showWifi(window.app?.activeSection === 'section-dine' ? 'restaurant' : 'lobby');
+  }
+  async function showWifi(context = 'lobby', id) {
     let dialog = document.getElementById('guest-wifi-dialog');
     if (!dialog) {
       dialog = node('dialog', '', 'guest-network-dialog'); dialog.id = 'guest-wifi-dialog';
@@ -111,33 +132,49 @@
       dialog.addEventListener('close', () => { if (!dialog.open) closeWifi(); });
       dialog.addEventListener('click', e => { if (e.target === dialog) { const r = dialog.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeWifi(); } });
     }
-    const generation = ++state.generation;
     dialog.replaceChildren();
     const close = node('button', 'Close', 'btn-secondary'); close.type = 'button'; close.addEventListener('click', closeWifi);
     const title = node('h2', 'Guest Wi-Fi'); title.id = 'guest-wifi-title';
-    const content = node('div', '', 'guest-network-content'); content.setAttribute('aria-live', 'polite');
-    dialog.append(close, title, node('p', 'Opening this page does not connect your phone to Wi-Fi. No personal details are needed.'), content);
-    dialog.showModal(); content.append(node('p', 'Checking guest access…'));
-    try {
-      if (!['restaurant', 'room'].includes(context) || (context === 'room' && !state.rooms.some(r => r.id === id))) throw Error('Unverified location.');
-      const data = await request(`guest-access?location=${context}${context === 'room' ? '&room=' + encodeURIComponent(id) : ''}`);
-      if (generation !== state.generation || !dialog.open) return;
-      const networks = validateAccess(data); content.replaceChildren();
-      networks.forEach((n, index) => {
-        const card = node('section', '', 'guest-network-card');
-        card.append(node('h3', index === 0 ? 'Preferred guest network' : 'Fallback guest network'), node('p', n.ssid, 'guest-network-ssid'), node('p', n.security === 'WPA' ? 'WPA / WPA2 Personal' : 'Open network — traffic is not encrypted'));
-        const qr = node('div', '', 'guest-network-qr'); qr.setAttribute('role', 'img'); qr.setAttribute('aria-label', 'Wi-Fi connection QR for ' + n.ssid); renderQR(qr, wifiPayload(n)); card.append(qr);
-        card.append(node('p', 'On this phone: open Settings → Wi-Fi, select the network above, then enter the password. To scan this QR, use another device.'));
-        if (n.security === 'WPA') {
-          card.append(node('p', 'Guest password: ' + n.password, 'guest-network-password'));
-          if (n.allowCopy) { const copy = node('button', 'Copy password', 'btn-secondary'); copy.type = 'button'; copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(n.password); copy.textContent = 'Password copied'; } catch (_) { copy.textContent = 'Select the displayed password to copy'; } }); card.append(copy); }
-        }
-        content.append(card);
-      });
-    } catch (_) {
-      if (generation !== state.generation || !dialog.open) return;
-      content.replaceChildren(node('p', 'Guest Wi-Fi details are not available here yet. Please ask reception for the verified guest network. Hotel and POS networks are not displayed.', 'guest-network-notice'));
+    const areaLabel = node('label', 'Choose your area', 'guest-network-area');
+    const areaSelect = node('select'); areaSelect.id = 'guest-wifi-area'; areaLabel.htmlFor = areaSelect.id;
+    const available = areas.map(area => ({ ...area }));
+    if (state.rooms.some(room => room.id === id && room.verified === true)) available.push({ id: 'room', label: 'Your room' });
+    if (!available.some(area => area.id === context)) {
+      const blank = node('option', 'Choose your area'); blank.value = ''; blank.disabled = true; areaSelect.append(blank);
     }
+    available.forEach(area => { const option = node('option', area.label); option.value = area.id; areaSelect.append(option); });
+    areaSelect.value = available.some(area => area.id === context) ? context : '';
+    areaLabel.append(areaSelect);
+    const content = node('div', '', 'guest-network-content'); content.setAttribute('aria-live', 'polite');
+    dialog.append(close, title, node('p', 'Opening this page does not connect your phone to Wi-Fi. No personal details are needed.'), areaLabel, content);
+    dialog.showModal();
+    const refresh = () => loadArea(areaSelect.value);
+    areaSelect.addEventListener('change', refresh);
+    async function loadArea(selected) {
+      const generation = ++state.generation;
+      content.replaceChildren(node('p', 'Checking guest access…'));
+      try {
+        const data = await request(accessPath(selected, id));
+        if (generation !== state.generation || !dialog.open) return;
+        const networks = validateAccess(data); content.replaceChildren();
+        networks.forEach((n, index) => {
+          const card = node('section', '', 'guest-network-card');
+          card.append(node('h3', index === 0 ? 'Preferred guest network' : 'Fallback guest network'), node('p', n.ssid, 'guest-network-ssid'), node('p', n.security === 'WPA' ? 'WPA / WPA2 Personal' : 'Open network — traffic is not encrypted'));
+          const qr = node('div', '', 'guest-network-qr'); qr.setAttribute('role', 'img'); qr.setAttribute('aria-label', 'Wi-Fi connection QR for ' + n.ssid); renderQR(qr, wifiPayload(n)); card.append(qr);
+          card.append(node('p', 'On this phone: open Settings → Wi-Fi, select the network above, then enter the password. To scan this QR, use another device.'));
+          if (n.security === 'WPA') {
+            const password = node('p', '', 'guest-network-password');
+            password.append(node('span', 'Guest password: '), node('code', n.password, 'guest-network-secret')); card.append(password);
+            if (n.allowCopy) { const copy = node('button', 'Copy password', 'btn-secondary'); copy.type = 'button'; copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(n.password); copy.textContent = 'Password copied'; } catch (_) { copy.textContent = 'Select the displayed password to copy'; } }); card.append(copy); }
+          }
+          content.append(card);
+        });
+      } catch (_) {
+        if (generation !== state.generation || !dialog.open) return;
+        content.replaceChildren(node('p', 'Guest Wi-Fi details are not available here yet. Please ask reception for the verified guest network. Hotel and POS networks are not displayed.', 'guest-network-notice'));
+      }
+    }
+    await refresh();
   }
   function currentRoom() {
     const params = new URLSearchParams(window.location.search);
@@ -158,5 +195,5 @@
   }
   document.addEventListener('visibilitychange', () => { if (document.hidden) closeWifi(); });
   window.addEventListener('pagehide', closeWifi);
-  window.HotelGuestNetwork = Object.freeze({ resolve, destination, validateRooms, validateAccess, wifiPayload, renderQR, showWifi, closeWifi, renderConcierge, load, getRooms: () => state.rooms.map(r => ({ ...r })), configured: () => Boolean(settings.apiBase) });
+  window.HotelGuestNetwork = Object.freeze({ resolve, destination, validateRooms, validateAccess, wifiPayload, renderQR, showWifi, openWifi, closeWifi, accessPath, renderConcierge, load, getAreas: () => areas.map(area => ({ ...area })), getRooms: () => state.rooms.map(r => ({ ...r })), configured: () => Boolean(settings.apiBase) });
 })();
