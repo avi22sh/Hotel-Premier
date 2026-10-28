@@ -558,7 +558,7 @@ html:is([lang="hi"],[lang="mr"]) body { --font-menu:'Noto Sans Devanagari','Nirm
 /* A framed tabletop invitation. QR quiet zones always remain plain white. */
 .qr-print-card { width:360px; max-width:100%; padding:0; overflow:hidden; background:#faf6ee; color:#202a39; border:2px solid #c8a569; border-radius:18px; box-shadow:0 12px 32px #101a2726,inset 0 0 0 5px #e9d7b5; text-align:center; box-sizing:border-box; }
 .qr-card-masthead { display:grid; justify-items:center; gap:.4rem; padding:24px 16px 20px; background:linear-gradient(145deg,#233143,#101a27); border-bottom:2px solid #c8a569; }
-.qr-print-card img.qr-brand { display:block; width:190px; max-width:100%; height:auto; margin:0; border-radius:4px; }
+.qr-print-card img.qr-brand { display:block; width:220px; max-width:100%; height:auto; margin:0; filter:brightness(0) saturate(100%) invert(85%) sepia(26%) saturate(595%) hue-rotate(354deg) brightness(99%) contrast(88%); }
 .qr-card-masthead > span { font:600 9px/1.5 var(--font-sans,system-ui); letter-spacing:.22em; color:#eddbb8; }
 .qr-card-content { padding:24px 16px 16px; }
 .qr-card-eyebrow { display:block; font:700 9px/1.6 var(--font-sans,system-ui); letter-spacing:.16em; color:#793044; }

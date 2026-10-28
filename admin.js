@@ -2045,7 +2045,7 @@ class HotelPremierAdmin {
         </div>
         <p id="qr-studio-status" role="status"></p>
         <div id="standee-print-card" class="qr-print-card">
-          <div class="qr-card-masthead"><img height="207" width="451" class="qr-brand" src="assets/premier-original-logo.png" alt="Hotel Premier"><span>A HOME IN BHUSAWAL</span></div>
+          <div class="qr-card-masthead"><img height="207" width="451" class="qr-brand" src="assets/premier-original-logo.png" alt="Hotel Premier · A home in Bhusawal"></div>
           <div class="qr-card-content"><span class="qr-card-eyebrow">YOUR PREMIER EXPERIENCE</span>
           <h4 id="qr-standee-label"></h4><div id="qr-canvas-holder"></div>
           <p id="qr-card-instructions">Scan to discover Hotel Premier.</p>
