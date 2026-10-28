@@ -65,6 +65,15 @@
   document.addEventListener('click',event=>{
    if(ghost&&Date.now()<ghost.until&&event.detail!==0&&(event.target===ghost.target||ghost.target.contains?.(event.target))){event.preventDefault();event.stopImmediatePropagation();ghost=null;}
   },true);
+  let width=document.querySelector('.hotel-nav-inner')?.clientWidth||0,queued=false;
+  window.addEventListener('resize',()=>{
+   if(queued)return;queued=true;
+   requestAnimationFrame(()=>{
+    queued=false;const nextWidth=document.querySelector('.hotel-nav-inner')?.clientWidth||0;
+    if(nextWidth===width)return;width=nextWidth;
+    const row=sections[index()];if(row&&!blocked())document.getElementById('tab-nav-'+row[1])?.scrollIntoView({inline:'center',block:'nearest',behavior:'auto'});
+   });
+  });
   sync();
  }
  window.HotelSectionNavigation=Object.freeze({sync,move,direction});
