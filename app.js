@@ -4794,7 +4794,7 @@ class HotelPremierApp {
     if (arrivalEl) {
       const date = document.getElementById('booking-checkin-date')?.value;
       const time = this.formatArrivalTime(document.getElementById('booking-checkin-time')?.value);
-      const formattedDate = date ? new Intl.DateTimeFormat(({hi:'hi-IN',mr:'mr-IN'})[this.currentLang] || 'en-IN', { day:'numeric', month:'short', year:'numeric', timeZone:'Asia/Kolkata' }).format(new Date(`${date}T12:00:00+05:30`)) : ''; 
+      const formattedDate = date ? new Intl.DateTimeFormat(({hi:'hi-IN',mr:'mr-IN'})[this.currentLang] || 'en-IN', { day:'numeric', month:'short', year:'numeric', timeZone:'Asia/Kolkata' }).format(new Date(`${date}T12:00:00+05:30`)) : '';
       arrivalEl.textContent = [formattedDate,time].filter(Boolean).join(' · ');
       const arrivalRow=document.getElementById('booking-summary-arrival-row');
       if (arrivalRow) arrivalRow.hidden=!date;
