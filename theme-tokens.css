@@ -383,6 +383,13 @@ body.theme-dark .guest-network-dialog { background:var(--surface); }
 .guest-network-area { display:grid; gap:.5rem; margin:1.25rem 0; font-weight:600; color:var(--text); }
 .guest-network-area select { width:100%; max-width:100%; min-height:48px; padding:.75rem; border:1px solid var(--border); border-radius:12px; font:500 16px/1.5 var(--font-sans,system-ui); box-sizing:border-box; }
 .guest-network-secret { font:inherit; color:inherit; overflow-wrap:anywhere; }
+.guest-network-connect-qr { margin-block:1rem; border:1px solid var(--border); border-radius:12px; padding:.75rem; }
+.guest-network-connect-qr summary { cursor:pointer; min-height:32px; font-weight:700; line-height:1.6; color:var(--text); }
+.guest-network-join-btn { display:block; width:100%; min-height:48px; padding:.85rem 1rem; border:1px solid #bc9856; border-radius:12px; background:linear-gradient(115deg,#d4b16b,#ffedbc 48%,#c9a35c); color:#282014; font:700 .9rem/1.5 var(--font-sans,system-ui); cursor:pointer; }
+.guest-network-join-feedback:empty { display:none; }
+.guest-network-join-steps { padding-inline-start:1.3rem; line-height:1.7; color:var(--text); }
+.guest-network-join-steps li { margin-block:.65rem; }
+.guest-network-join-steps[hidden] { display:none; }
 #qr-network-area-checklist { display:grid; gap:.65rem; padding-inline-start:1.25rem; }
 
 /* Engraved gold branding: the same finish on both navy brand surfaces. */
@@ -600,6 +607,22 @@ body.theme-light #section-celebrate .celebrate-subtitle { color:var(--muted); op
  #qr-print-host .qr-card-masthead { background:#152132; }
 }
 /* Home actions: legible lettering and consistent, crisp icons in either theme. */
+@media(min-width:640px) {
+ body #section-dine .dining-view-controls .dining-search-filter-bar { width:min(760px,calc(100% - 32px)); max-width:760px; padding:12px 16px; margin-inline:auto; background:var(--surface); box-sizing:border-box; }
+ #section-dine #floating-menu-toggle-btn { position:static; inset:auto; transform:none; min-height:46px; max-width:none; margin:0; padding:.7rem 1rem; border-radius:12px; border:1px solid var(--border); color:var(--text); background:var(--surface-secondary); box-shadow:inset 0 1px #ffffff20; font-size:.85rem; font-weight:700; gap:.6rem; }
+ #section-dine .floating-btn-text { display:inline; }
+ #section-dine .menu-search-heading > label { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+ #section-dine .menu-search-heading .btn-favorites-filter { min-height:46px; font-size:.8rem; }
+}
+@media(min-width:900px) {
+ body #section-dine .dining-view-controls .dining-search-filter-bar { display:grid; grid-template-columns:minmax(150px,auto) minmax(220px,420px) minmax(140px,auto); align-items:center; gap:10px 18px; width:min(960px,calc(100% - 32px)); max-width:960px; }
+ #section-dine .menu-search-heading { display:contents; }
+ #section-dine #floating-menu-toggle-btn { grid-column:1; grid-row:1; }
+ #section-dine .dining-search-filter-bar > .search-input-wrapper { grid-column:2; grid-row:1; width:100%; min-width:0; margin:0; box-sizing:border-box; }
+ #section-dine .menu-search-heading .btn-favorites-filter { grid-column:3; grid-row:1; justify-self:end; white-space:normal; }
+ #section-dine .menu-search-status { grid-column:2/-1; }
+ #section-dine .recent-searches-bar { grid-column:2/-1; min-width:0; }
+}
 #section-home .concierge-quick-grid { max-width:760px; grid-auto-rows:1fr; gap:12px; }
 #section-home .concierge-quick-card { display:grid; justify-items:center; align-content:start; grid-template-rows:48px auto auto; gap:8px; min-width:0; width:100%; padding:18px 12px; box-sizing:border-box; font:inherit; text-align:center; }
 #section-home .quick-card-title { display:block; font-family:var(--font-royal),serif; font-size:.9rem; font-weight:800; line-height:1.5; letter-spacing:.025em; min-height:3em; overflow-wrap:anywhere; }

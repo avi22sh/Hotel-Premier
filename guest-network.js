@@ -160,13 +160,42 @@
         networks.forEach((n, index) => {
           const card = node('section', '', 'guest-network-card');
           card.append(node('h3', index === 0 ? 'Preferred guest network' : 'Fallback guest network'), node('p', n.ssid, 'guest-network-ssid'), node('p', n.security === 'WPA' ? 'WPA / WPA2 Personal' : 'Open network — traffic is not encrypted'));
-          const qr = node('div', '', 'guest-network-qr'); qr.setAttribute('role', 'img'); qr.setAttribute('aria-label', 'Wi-Fi connection QR for ' + n.ssid); renderQR(qr, wifiPayload(n)); card.append(qr);
-          card.append(node('p', 'On this phone: open Settings → Wi-Fi, select the network above, then enter the password. To scan this QR, use another device.'));
+          const qrDetails = node('details', '', 'guest-network-connect-qr');
+          qrDetails.append(node('summary', 'Show Wi-Fi connection QR'));
+          const qr = node('div', '', 'guest-network-qr'); qr.setAttribute('role', 'img'); qr.setAttribute('aria-label', 'Wi-Fi connection QR for ' + n.ssid); renderQR(qr, wifiPayload(n));
+          qrDetails.append(qr, node('p', 'Scan with another phone’s camera and confirm Join. Opening the PWA does not connect a phone to Wi-Fi.')); card.append(qrDetails);
+          const steps = node('ol', '', 'guest-network-join-steps');
+          steps.append(node('li', 'Open your phone’s Settings → Wi-Fi.'));
+          const networkStep = node('li'); networkStep.append(node('span', 'Select this network: '), node('strong', n.ssid, 'guest-network-ssid')); steps.append(networkStep);
+          const finish = node('li', 'Enter the displayed password and confirm Join.'); steps.append(finish);
           if (n.security === 'WPA') {
             const password = node('p', '', 'guest-network-password');
             password.append(node('span', 'Guest password: '), node('code', n.password, 'guest-network-secret')); card.append(password);
-            if (n.allowCopy) { const copy = node('button', 'Copy password', 'btn-secondary'); copy.type = 'button'; copy.addEventListener('click', async () => { try { await navigator.clipboard.writeText(n.password); copy.textContent = 'Password copied'; } catch (_) { copy.textContent = 'Select the displayed password to copy'; } }); card.append(copy); }
+            if (n.allowCopy) {
+              steps.hidden = true;
+              const feedback = node('p', '', 'guest-network-join-feedback'); feedback.setAttribute('role', 'status');
+              const copy = node('button', 'Copy password & show steps', 'guest-network-join-btn'); copy.type = 'button';
+              copy.addEventListener('click', async () => {
+                if (generation !== state.generation || !dialog.open) return;
+                copy.disabled = true;
+                try {
+                  await navigator.clipboard.writeText(n.password);
+                  if (generation !== state.generation || !dialog.open) return;
+                  feedback.textContent = 'Password copied. Finish joining in your phone’s Wi-Fi settings.';
+                  finish.textContent = 'Paste the copied password and confirm Join.';
+                } catch (_) {
+                  if (generation !== state.generation || !dialog.open) return;
+                  feedback.textContent = 'Copy is unavailable. Enter the displayed password in Wi-Fi settings.';
+                  finish.textContent = 'Enter the displayed password and confirm Join.';
+                } finally { copy.disabled = false; }
+                steps.hidden = false;
+              });
+              card.append(copy, feedback);
+            }
+          } else {
+            finish.textContent = 'Confirm Join on your phone.';
           }
+          card.append(steps);
           content.append(card);
         });
       } catch (_) {

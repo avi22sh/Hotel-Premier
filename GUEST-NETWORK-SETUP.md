@@ -55,6 +55,8 @@ Opening Wi-Fi from a room QR retains that room context; the Menu defaults to Res
 
 Activation remains pending. There is no backend deployment, paid service, router access, SSID merge or Wi-Fi auto-connect in this change. Printed website and Wi-Fi connection QR codes remain separate functions.
 
+Verified network cards provide a one-tap **Copy password & show steps** action when the service permits copying. It copies only after a guest click and explains the remaining Settings → Wi-Fi → select network → Join steps. Clipboard failure reveals manual-entry instructions instead. The separate **Show Wi-Fi connection QR** disclosure is for scanning with another device and confirming the operating system's Join prompt. Neither control can join a network directly from a browser. Unsupported Wi-Fi URL schemes and Settings deep links are not used. No connection control or QR is offered for an unconfigured/unverified network.
+
 Reception: `?entry=reception#home`. Restaurant: `?entry=restaurant#dine`. Room: `?entry=room&room=<verified-id>#concierge`. These website QR codes contain no Wi-Fi secrets. Changing guest credentials must not require reprinting these cards.
 
 The separate Wi-Fi QR is generated on-device from verified guest connection information. Opening the website cannot automatically connect a phone. Manual Settings → Wi-Fi instructions are always available because the guest may be viewing the QR on the same phone. A separate printed Wi-Fi card must be generated from the secured system only after activation; treat the printed credential as intentionally shared guest information. Do not advertise “Guest Wi-Fi Available” on cards before network activation.
