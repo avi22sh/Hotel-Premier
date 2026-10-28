@@ -479,6 +479,8 @@ Call Front Desk~रिसेप्शन पर कॉल करें~रिस
 Favorites~पसंदीदा व्यंजन~आवडते पदार्थ
 Favourites~पसंदीदा व्यंजन~आवडते पदार्थ
 Save changes~बदलाव सहेजें~बदल जतन करा
+Previous section~पिछला अनुभाग~मागील विभाग
+Next section~अगला अनुभाग~पुढील विभाग
 Back~वापस~मागे
 ← Back~← वापस~← मागे
 Hotel Premier Admin & CRM Studio~होटल प्रीमियर एडमिन और CRM स्टूडियो~हॉटेल प्रीमियर अॅडमिन व CRM स्टुडिओ

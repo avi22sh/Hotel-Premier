@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-27T13:13:36.986Z",
-  "passed": 65,
+  "createdAt": "2026-10-28T05:50:17.670Z",
+  "passed": 66,
   "failed": [],
   "results": [
     {
@@ -241,6 +241,10 @@
     },
     {
       "file": "royal-release-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "section-navigation-regression.cjs",
       "passed": true
     },
     {

@@ -589,7 +589,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.49';
+    s.src = 'admin.js?v=22.50';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -784,6 +784,7 @@ class HotelPremierApp {
     if (!updateHash && rootStyle) rootStyle.scrollBehavior = 'auto';
     window.scrollTo({ top: 0, behavior: updateHash ? 'smooth' : 'auto' });
     if (!updateHash && rootStyle) rootStyle.scrollBehavior = oldBehavior || '';
+    window.HotelSectionNavigation?.sync(sectionId);
   }
 
   scrollToSection(sectionId) {
@@ -881,6 +882,7 @@ class HotelPremierApp {
     }
     if (document.getElementById('concierge-booking-modal')?.classList.contains('active')) this.updateBookingEstimate();
     window.HotelGuestLanguage?.sync();
+    window.HotelSectionNavigation?.sync(this.activeSection);
   }
 
   updateLangButtons() {

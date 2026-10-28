@@ -508,17 +508,17 @@ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-hom
  }
 }
 body:is(.theme-light,.theme-dark) .footer-brand-birds { color:#e7c47c; background-image:var(--brand-gold-polish); }
-/* Glossy heritage-red title plates, with readable warm-gold lettering. */
+/* Plain heritage-red headings; red/gold finish stays on benefit badges. */
 body.theme-light {
  --red-polish:linear-gradient(160deg,#8a2636 0%,#731727 42%,#590c18 47%,#6b111d 100%);
  --red-ink:#ffe6ad;
  --red-relief:inset 0 1px 0 #efb5a85c,inset 0 -1px 0 #38040d,0 4px 14px #6b111d26;
 }
 body.theme-light :is(#section-home,#section-stay,#section-tariffs,#section-dine,#section-concierge,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-story-title,.editorial-title,.section-title,.dining-main-heading,.celebrate-title,.feedback-title,.atmosphere-gallery-title,.amenities-banner-title,.experience-intro h2) {
- background:var(--red-polish); color:var(--red-ink); -webkit-text-fill-color:currentColor;
+ background:none; color:var(--heading-accent); -webkit-text-fill-color:currentColor;
  background-clip:border-box; -webkit-background-clip:border-box;
- border:1px solid var(--gold-edge); border-radius:.65rem; box-shadow:var(--red-relief);
- padding:.3em .7em; width:fit-content; max-width:100%; box-sizing:border-box; margin-inline:auto; text-shadow:none;
+ border:0; border-radius:0; box-shadow:none; font-weight:700;
+ padding:0; width:auto; max-width:100%; box-sizing:border-box; margin-inline:auto; text-shadow:none;
 }
 body.theme-light .direct-booking-privilege-card .privilege-header { flex-wrap:wrap; }
 body.theme-light :is(#section-stay,#section-tariffs) .direct-booking-privilege-card :is(.privilege-pill,.privilege-saving),
@@ -527,6 +527,23 @@ body.theme-light #concierge-booking-modal .enquiry-privilege > :is(span,strong) 
  border:1px solid var(--gold-edge); border-radius:.5rem; box-shadow:var(--red-relief);
  padding:.35em .7em; width:fit-content; max-width:100%; box-sizing:border-box;
 }
+/* A single readable item-name face in cards, options and the detail sheet. */
+body:is(.theme-light,.theme-dark) { --font-menu:var(--font-sans); }
+html:is([lang="hi"],[lang="mr"]) body { --font-menu:'Noto Sans Devanagari','Nirmala UI',system-ui,sans-serif; }
+#section-dine :is(.compact-dish-card .dish-title,.signature-dish-title,.dish-card-chip),
+#dish-detail-modal :is(.modal-dish-title,.modal-dish-variant-btn .variant-btn-name) {
+ font-family:var(--font-menu,var(--font-sans)); font-weight:600; font-variant:normal; letter-spacing:normal; text-transform:none;
+}
+/* Arrows live inside the existing header, beside the horizontally scrollable tabs. */
+.hotel-nav-bar { display:grid; grid-template-columns:44px minmax(0,1fr) 44px; align-items:stretch; overflow:visible; padding-inline:max(0px,calc((100% - 1288px)/2)); box-sizing:border-box; }
+.hotel-nav-inner { width:100%; max-width:none; min-width:0; margin:0; padding:0; overflow-x:auto; scrollbar-width:none; box-sizing:border-box; scroll-padding-inline:.25rem; }
+.hotel-nav-inner::-webkit-scrollbar { display:none; }
+.hotel-nav-inner :is(.hotel-nav-tab,.hotel-nav-reserve-btn) { flex:0 0 auto; }
+.section-step-button { display:grid; place-items:center; min-width:44px; min-height:44px; padding:0; border:0; border-inline:1px solid #c7a66833; background:#ffffff08; color:#eadcc0; font:600 1.8rem/1 var(--font-sans,system-ui); cursor:pointer; box-sizing:border-box; }
+.section-step-button:hover:not(:disabled) { background:#ffffff16; }
+.section-step-button:disabled { color:#929aa7; background:transparent; cursor:default; opacity:1; }
+.section-step-button:focus-visible { outline:2px solid #f0d8a9; outline-offset:-4px; }
+.section-navigation-status { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite-name,.editorial-title,.dining-main-heading,.admin-tab-btn) { letter-spacing:normal; text-transform:none; line-height:1.55; }
 @media(forced-colors:active) {
  body.theme-light :is(.editorial-title,.section-title,.dining-main-heading,.room-suite-title,.tariff-suite-name,.feedback-title,.atmosphere-gallery-title,.celebrate-title,.experience-intro h2) { background:none; color:CanvasText; -webkit-text-fill-color:currentColor; text-shadow:none; }
