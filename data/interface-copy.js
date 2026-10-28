@@ -307,6 +307,8 @@ Scan to explore the culinary collection.~व्यंजन संग्रह �
 Scan for rooms, dining and hotel enquiries.~कमरों, भोजन और होटल की पूछताछ के लिए स्कैन करें।~खोल्या, भोजन आणि हॉटेलच्या चौकशीसाठी स्कॅन करा.
 BHUSAWAL · THOUGHTFUL HOSPITALITY~भुसावल · आत्मीय आतिथ्य~भुसावळ · आपुलकीचे आदरातिथ्य
 Jamner Road · Near Nahata College~जामनेर रोड · नाहटा कॉलेज के पास~जामनेर रोड · नाहटा कॉलेजजवळ
+Fixed-menu breakfast included.~तय मेन्यू का नाश्ता शामिल है।~ठरावीक मेन्यूचा नाश्ता समाविष्ट.
+Breakfast with your CP plan~आपकी CP योजना में नाश्ता~तुमच्या CP योजनेतील नाश्ता
 `.trim().split('\n').map(line=>line.split('~'));
 window.HOTEL_PREMIER_INTERFACE_COPY.push(...`
 PURE VEG~शुद्ध शाकाहारी~शुद्ध शाकाहारी
