@@ -2,12 +2,13 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 let download;
 const source=URL.createObjectURL(new Blob(['photo'],{type:'image/webp'}));
 const c={Blob,fetch,crypto:crypto.webcrypto,URL:{createObjectURL:blob=>{download=blob;return 'blob:download';},revokeObjectURL(){}},FileReader:class{async readAsDataURL(blob){this.result='data:'+blob.type+';base64,'+Buffer.from(await blob.arrayBuffer()).toString('base64');this.onload();}},setTimeout:fn=>fn(),
- document:{createElement:()=>({click(){},remove(){}}),body:{append(){}}},window:{admin:{isAuthenticated:true},app:{menuData:[{id:'fixture',name:'Fixture dish',image:source,rawOriginalImage:source}],categories:[],showToast(){}},HOTEL_PREMIER_HOTEL_DATA:{roomCategories:[]},HOTEL_STORAGE:{getSectionSlides:async()=>null},HotelMenuStructure:{snapshot:()=>null}}};
+ document:{createElement:()=>({click(){},remove(){}}),body:{append(){}}},window:{admin:{isAuthenticated:true},app:{menuData:[{id:'fixture',name:'Fixture dish',image:source,rawOriginalImage:source,_activeVariantImage:source,_activeVariantPrice:80,_activeVariantName:'Preview only'}],categories:[],showToast(){}},HOTEL_PREMIER_HOTEL_DATA:{roomCategories:[]},HOTEL_STORAGE:{getSectionSlides:async()=>null},HotelMenuStructure:{snapshot:()=>null}}};
 vm.runInNewContext(fs.readFileSync('publish-bundle.js','utf8'),c);
 (async()=>{
  await c.window.HotelPublishBundle.export();const bundle=JSON.parse(await download.text());
  assert.equal(bundle.images.length,1);assert.match(bundle.overrides.dishes.fixture.image,/^assets\/menu-uploads\/published-[a-f0-9]{24}\.webp$/);
  assert.ok(!('rawOriginalImage'in bundle.overrides.dishes.fixture));
+ for(const key of ['_activeVariantImage','_activeVariantPrice','_activeVariantName'])assert.ok(!(key in bundle.overrides.dishes.fixture),'Preview selection must not become published content');
  assert.equal(bundle.images[0].sha256,crypto.createHash('sha256').update('photo').digest('hex'));
  assert.ok(!/guestRecords|pinHash|cloudAiApiKey/.test(await download.text()));
  c.window.admin.isAuthenticated=false;await assert.rejects(c.window.HotelPublishBundle.export(),/Unlock/);URL.revokeObjectURL(source);

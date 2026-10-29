@@ -21,7 +21,7 @@
    return path;
   }
   async function publicData(value,key='') {
-   if(['rawOriginalImage','enhancedMasterImage','originalPhotos','imageOptions','qualityScore','qualityFlags','foodCategory','styleVersion','lastEnhancedAt','updatedAt','mediaRevision','revision'].includes(key))return undefined;
+   if(['rawOriginalImage','enhancedMasterImage','originalPhotos','imageOptions','qualityScore','qualityFlags','foodCategory','styleVersion','lastEnhancedAt','updatedAt','mediaRevision','revision','_activeVariantImage','_activeVariantPrice','_activeVariantName'].includes(key))return undefined;
    if(typeof value==='string')return imagePath(value);
    if(Array.isArray(value))return Promise.all(value.map(item=>publicData(item)));
    if(value&&typeof value==='object')return Object.fromEntries((await Promise.all(Object.entries(value).map(async([name,item])=>[name,await publicData(item,name)]))).filter(([,item])=>item!==undefined));

@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-29T06:10:36.624Z",
-  "passed": 70,
+  "createdAt": "2026-10-29T13:19:53.073Z",
+  "passed": 71,
   "failed": [],
   "results": [
     {
@@ -177,6 +177,10 @@
     },
     {
       "file": "overlay-manager-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "owner-publication-sync-regression.cjs",
       "passed": true
     },
     {
