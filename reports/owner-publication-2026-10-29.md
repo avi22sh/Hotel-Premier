@@ -19,3 +19,5 @@ Safety review:
 Verification: 72/72 JavaScript suites, 17/17 source checks, case-sensitive asset gate and public-dist boundary passed. Live post-deployment checks follow.
 
 Sync follow-up: a reviewed publication timestamp resolves older local dish fields, galleries and hero slides without erasing their saved drafts. Per-field edit times preserve newer local uploads and prevent unrelated price edits from reviving an older photo. Untimestamped local uploads are retained. Conflict, field-timestamp and public-only export tests pass.
+
+Live 22.84 verification: Poori Bhaji renders the new digest photo over the older local record; selecting Sprite loads its new digest photo successfully; Queen Photo 1 is the warm-ambience image and Photo 2 the corner-wide image; Mix Veg Paratha is absent from menu options. At 375px there is no horizontal page overflow. The original editing tab was not reloaded or cleared.
