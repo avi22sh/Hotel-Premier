@@ -87,6 +87,15 @@ class HotelPremierStorageManager {
         const current=request.result||{};
         if(options.expectedRevision!==undefined&&(current.revision||current.updatedAt||null)!==options.expectedRevision){conflict=Object.assign(Error('This photo changed while its preview was processing.'),{code:'PHOTO_CHANGED'});tx.abort();return;}
         written={...initial,...current,...packed,originalPhotos:{...(initial.originalPhotos||{}),...(current.originalPhotos||{}),...(packed.originalPhotos||{})},id,updatedAt:Date.now(),revision:window.crypto?.randomUUID?.()||Date.now()+'-'+Math.random().toString(36).slice(2)};
+        if(storeName==='dish_overrides'){
+          const previous={...initial,...current};
+          const fieldUpdatedAt={...(initial.fieldUpdatedAt||{}),...(current.fieldUpdatedAt||{})};
+          for(const key of ['image','price','tags','variants','isSoldOut','notAvailable','name','hindiName','marathiName','description','descriptionHi','descriptionMr','categoryId','groupedUnder','isGroupMaster']){
+            if(previous[key]!==undefined&&fieldUpdatedAt[key]===undefined)fieldUpdatedAt[key]=Number(previous.updatedAt||previous.lastEnhancedAt)||0;
+            if(Object.prototype.hasOwnProperty.call(packed,key))fieldUpdatedAt[key]=written.updatedAt;
+          }
+          written.fieldUpdatedAt=fieldUpdatedAt;
+        }
         store.put(written);
       };
     });
@@ -297,15 +306,19 @@ class HotelPremierStorageManager {
   }
 
   async getRoomGallery(roomId,defaultImages=[]) {
+    const release=window.HOTEL_PREMIER_PUBLISHED_OVERRIDES;
+    const published=release?.roomGalleries?.[roomId],publishedAt=Number(release?.publishedAt)||0;
+    const untrackedUpload=image=>image&&typeof image!=='string'||/^(?:blob:|data:image\/)/.test(image||'');
     const record=await this.readPhotoRecord('room_galleries',roomId);
     if(record&&Array.isArray(record.images)) {
+      if(published&&publishedAt>0&&Number(record.updatedAt||0)<=publishedAt&&(record.updatedAt||!record.images.some(untrackedUpload)))return published;
       const images=this.hydratePhotoRecord('room_galleries',record).images;
       try {window.HotelDataValidation?.validate({images});return images;}catch(_){console.warn('An unsafe local room gallery was left stored but not displayed.');}
     }
     try {
       const legacy=JSON.parse(localStorage.getItem('hotel_premier_room_overrides')||'{}')[roomId];
-      if(Array.isArray(legacy?.images))return legacy.images;
-      if(legacy?.image)return [legacy.image];
+      if(Array.isArray(legacy?.images))return published&&publishedAt>0&&!legacy.images.some(untrackedUpload)?published:legacy.images;
+      if(legacy?.image)return published&&publishedAt>0&&!untrackedUpload(legacy.image)?published:[legacy.image];
     } catch (_) { /* Public fallback follows. */ }
     return window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.roomGalleries?.[roomId]||defaultImages;
   }
@@ -319,12 +332,16 @@ class HotelPremierStorageManager {
   }
 
   async getSectionSlides(sectionId,defaultSlides=[]) {
+    const release=window.HOTEL_PREMIER_PUBLISHED_OVERRIDES;
+    const published=release?.sectionSlides?.[sectionId],publishedAt=Number(release?.publishedAt)||0;
+    const hasUpload=slides=>slides.some(slide=>slide?.image&&typeof slide.image!=='string'||/^(?:blob:|data:image\/)/.test(slide?.image||''));
     const record=await this.readPhotoRecord('section_slides',sectionId);
     if(record&&Array.isArray(record.slides)) {
+      if(published&&publishedAt>0&&Number(record.updatedAt||0)<=publishedAt&&(record.updatedAt||!hasUpload(record.slides)))return published;
       const slides=this.hydratePhotoRecord('section_slides',record).slides;
       try {window.HotelDataValidation?.validate(slides);return slides;}catch(_){console.warn('Unsafe local slides were left stored but not displayed.');}
     }
-    try { const legacy=JSON.parse(localStorage.getItem('hotel_premier_slides_'+sectionId)||'null');if(legacy)return legacy; }
+    try { const legacy=JSON.parse(localStorage.getItem('hotel_premier_slides_'+sectionId)||'null');if(legacy)return published&&publishedAt>0&&Array.isArray(legacy)&&!hasUpload(legacy)?published:legacy; }
     catch (_) { /* Public fallback follows. */ }
     return window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.sectionSlides?.[sectionId]||defaultSlides;
   }

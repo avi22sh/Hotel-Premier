@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-29T13:19:53.073Z",
-  "passed": 71,
+  "createdAt": "2026-10-29T13:32:00.001Z",
+  "passed": 72,
   "failed": [],
   "results": [
     {
@@ -233,6 +233,10 @@
     },
     {
       "file": "public-review-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "publication-conflict-regression.cjs",
       "passed": true
     },
     {

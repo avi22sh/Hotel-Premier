@@ -1,6 +1,7 @@
 // Reviewed owner publish bundle, exported 2026-10-29. Only public content; stale fallback photos excluded.
 window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
   "version": 1,
+  "publishedAt": 1793279083803,
   "dishes": {
     "upvas-fasting-group": {
       "tags": [

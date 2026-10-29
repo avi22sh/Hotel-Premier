@@ -594,7 +594,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.83';
+    s.src = 'admin.js?v=22.84';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1008,6 +1008,14 @@ class HotelPremierApp {
         if (ov.tags !== undefined) copy.tags = ov.tags;
         if (ov.variants !== undefined) copy.variants = ov.variants;
         for (const key of ['name','hindiName','marathiName','description','descriptionHi','descriptionMr','categoryId','groupedUnder','isGroupMaster']) if(ov[key]!==undefined)copy[key]=ov[key];
+        // A newer reviewed release wins over an older local field, without deleting the draft.
+        const publishedAt=Number(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.publishedAt)||0;
+        if(published&&publishedAt>0)for(const [key,value]of Object.entries(published)){
+          if(key==='id')continue;
+          const editedAt=Number(ov.fieldUpdatedAt?.[key]??ov.updatedAt??ov.lastEnhancedAt)||0;
+          const untrackedUpload=key==='image'&&!editedAt&&/^(?:blob:|data:image\/)/.test(ov.image||'');
+          if(!untrackedUpload&&editedAt<=publishedAt)copy[key]=value;
+        }
       }
       return copy;
     });
