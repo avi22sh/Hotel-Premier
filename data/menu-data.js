@@ -351,9 +351,9 @@ const PARATHAS_VARIANTS = [
     descriptionMr: 'ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत.'
   },
   {
-    name: 'Mix Veg Paratha',
-    hindiName: 'मिक्स वेज पराठा',
-    marathiName: 'मिक्स व्हेज पराठा',
+    name: 'Mix Veg Paratha with Curd',
+    hindiName: 'मिक्स वेज पराठा (दही के साथ)',
+    marathiName: 'मिक्स व्हेज पराठा (दह्यासोबत)',
     price: 140,
     image: 'assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg',
     description: 'Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.',
@@ -2127,7 +2127,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
   {
     id: 'md-mix-veg-paratha', categoryId: 'morning-delights',
-    name: 'Mix Veg Paratha', hindiName: 'मिक्स वेज पराठा', marathiName: 'मिक्स व्हेज पराठा',
+    name: 'Mix Veg Paratha with Curd', hindiName: 'मिक्स वेज पराठा (दही के साथ)', marathiName: 'मिक्स व्हेज पराठा (दह्यासोबत)',
     description: 'A golden paratha stuffed with finely chopped seasonal vegetables, herbs and aromatic spices, crisp outside and soft within.',
     price: 140, image: 'assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg', tags: ['veg'], dietary: 'pure-veg', isSoldOut: false,
     rating: 4.8, prepTime: '15 mins',

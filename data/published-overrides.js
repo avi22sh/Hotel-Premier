@@ -1,4 +1,4 @@
-// Reviewed owner publish bundle, exported 2026-10-29. Only public content; stale fallback photos excluded.
+// Reviewed owner publication, exported 2026-10-29; Mix Veg Paratha with Curd restored by owner request 2026-10-30.
 window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
   "version": 1,
   "publishedAt": 1793279083803,
@@ -104,6 +104,16 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
           "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
           "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
+        },
+        {
+          "name": "Mix Veg Paratha with Curd",
+          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
+          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
+          "price": 140,
+          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
+          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
+          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
+          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
         }
       ]
     },
@@ -371,8 +381,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
           "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
           "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
+        },
+        {
+          "name": "Mix Veg Paratha with Curd",
+          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
+          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
+          "price": 140,
+          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
+          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
+          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
+          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
         }
-      ]
+      ],
+      "name": "Mix Veg Paratha with Curd",
+      "hindiName": "मिक्स वेज पराठा (दही के साथ)",
+      "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)"
     },
     "md-parathas-group": {
       "variants": [
@@ -405,6 +428,16 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
           "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
           "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
+        },
+        {
+          "name": "Mix Veg Paratha with Curd",
+          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
+          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
+          "price": 140,
+          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
+          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
+          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
+          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
         }
       ]
     },
@@ -439,6 +472,16 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
           "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
           "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
+        },
+        {
+          "name": "Mix Veg Paratha with Curd",
+          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
+          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
+          "price": 140,
+          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
+          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
+          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
+          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
         }
       ]
     },
@@ -473,6 +516,16 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
           "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
           "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
+        },
+        {
+          "name": "Mix Veg Paratha with Curd",
+          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
+          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
+          "price": 140,
+          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
+          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
+          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
+          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
         }
       ]
     },
@@ -894,7 +947,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "md-parathas-group",
             "md-3",
             "md-4",
-            "md-5"
+            "md-5",
+            "md-mix-veg-paratha"
           ]
         },
         {
@@ -1768,11 +1822,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         }
       ]
     },
-    "items": {
-      "md-mix-veg-paratha": {
-        "_deleted": true
-      }
-    },
+    "items": {},
     "order": [
       "tc-paneer-tikka-group",
       "tt-pakoda-group",
@@ -1804,6 +1854,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "md-3",
       "md-4",
       "md-5",
+      "md-mix-veg-paratha",
       "md-6",
       "md-7",
       "md-8",

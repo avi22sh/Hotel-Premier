@@ -4,6 +4,18 @@ for(const file of ['data/menu-data.js','data/hotel-data.js']){
  const before={window:{}},after={window:{}};
  vm.runInNewContext(cp.execFileSync('git',['show',(process.env.PREMIER_BUSINESS_BASE_REF||'b154ef4')+':'+file],{encoding:'utf8'}),before);
  vm.runInNewContext(fs.readFileSync(file,'utf8'),after);
+ // Owner-approved restoration and rename; prices and descriptions remain unchanged.
+ if(file==='data/menu-data.js') {
+  const rename=item=>{
+   if(item.name==='Mix Veg Paratha') {
+    item.name='Mix Veg Paratha with Curd';
+    item.hindiName='मिक्स वेज पराठा (दही के साथ)';
+    item.marathiName='मिक्स व्हेज पराठा (दह्यासोबत)';
+   }
+   for(const variant of item.variants||[])rename(variant);
+  };
+  for(const item of before.window.HOTEL_PREMIER_INITIAL_MENU)rename(item);
+ }
  // Owner-approved correction: railway-station distance is approximately 3 km.
  if(file==='data/hotel-data.js') {
   const expected=before.window.HOTEL_PREMIER_HOTEL_DATA;

@@ -7,6 +7,12 @@ for(const file of ['data/menu-data.js','data/menu-photos.js','data/published-ove
  const photos=[...new Set(JSON.stringify(o).match(/assets\/menu-uploads\/published-[a-f0-9]{24}\.webp/g)||[])];assert.ok(photos.length>0);
  for(const path of photos){assert.ok(fs.existsSync(path),path);assert.ok(path.includes(crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex').slice(0,24)));}
  const app=Object.create(c.window.App.prototype);await app.loadMenuData();
+ const paratha=app.menuData.find(d=>d.id==='md-mix-veg-paratha');
+ assert.equal(paratha?.name,'Mix Veg Paratha with Curd');assert.equal(paratha.price,140);
+ assert.equal(app.menuData[app.menuData.findIndex(d=>d.id==='md-5')+1].id,paratha.id);
+ const parathas=app.menuData.find(d=>d.id==='md-parathas-group').variants;
+ assert.equal(parathas.length,4);assert.equal(parathas.at(-1).name,paratha.name);assert.equal(parathas.at(-1).price,140);
+ assert.ok(c.window.HOTEL_PREMIER_SUB_CATEGORIES['morning-delights'].find(s=>s.id==='parathas').dishIds.includes(paratha.id));
  const deleted=Object.entries(o.layout.items).filter(([,p])=>p._deleted).map(([id])=>id);
  for(const id of deleted){assert.ok(!app.menuData.some(d=>d.id===id));const original=c.window.HOTEL_PREMIER_INITIAL_MENU.find(d=>d.id===id);if(original?.groupedUnder){const group=app.menuData.find(d=>d.id===original.groupedUnder);assert.ok(!group?.variants?.some(v=>v.name===original.name),'Deleted child must not survive as an ordering option');}}
  for(const child of app.menuData.filter(d=>d.groupedUnder&&d.image?.includes('/published-'))){const group=app.menuData.find(d=>d.id===child.groupedUnder);const v=group?.variants?.find(v=>v.name===child.name);if(v)assert.equal(v.image,child.image,'Grouped options must use the saved child photo');}
