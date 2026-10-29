@@ -276,7 +276,7 @@ body :is(.btn-tariff-book-wa,#restaurant-event-form > button[type="submit"]):dis
  margin:0; padding:.7rem .85rem; border:1px solid var(--border); border-radius:.8rem; font:400 16px/1.4 var(--font-sans,system-ui);
  background:var(--surface-secondary); color:var(--text); color-scheme:light;
 }
-body.theme-dark :is(input[type="date"],input[type="time"]) { color-scheme:dark; }
+body.theme-dark :is(#group-stay-enquiry,#restaurant-event-form,#concierge-booking-modal) :is(input[type="date"],input[type="time"]) { color-scheme:dark; }
 :is(#group-stay-enquiry,#restaurant-event-form,#concierge-booking-modal) input::-webkit-date-and-time-value { text-align:start; min-height:1.4em; width:100%; min-width:0; }
 :is(#group-stay-enquiry,#restaurant-event-form,#concierge-booking-modal) input::-webkit-datetime-edit { min-width:0; padding:0; display:inline-flex; }
 :is(#group-stay-enquiry,#restaurant-event-form,#concierge-booking-modal) input::-webkit-calendar-picker-indicator { flex:none; margin:0; padding:.15rem; }
