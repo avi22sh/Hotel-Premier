@@ -138,6 +138,46 @@ class HotelPremierStorageManager {
     return hydrated;
   }
 
+  // Commit linked dish text and option labels together, preserving concurrent photo/price edits.
+  async saveDishTextEdits(changes) {
+    await this.initPromise;
+    if(!this.db)throw Error('Device storage is unavailable. Your text has not been changed.');
+    const fields=['name','hindiName','marathiName','description','descriptionHi','descriptionMr','variants'];
+    const photos=window.HotelPhotoStorage;
+    let legacy={};try{legacy=JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1')||'{}');}catch(_){}
+    const prepared=[];
+    for(const [id,patch] of Object.entries(changes)) {
+      if(!/^[a-zA-Z0-9_-]+$/.test(id)||Object.keys(patch).some(key=>!fields.includes(key)))throw Error('Invalid dish text edit.');
+      window.HotelDataValidation?.validate(patch);
+      prepared.push({id,patch:await photos.pack(patch),initial:await photos.pack(legacy[id]||{})});
+    }
+    await photos.checkSpace(prepared);
+    const written=[];
+    await new Promise((resolve,reject)=>{
+      const tx=this.db.transaction('dish_overrides','readwrite'),store=tx.objectStore('dish_overrides');
+      tx.oncomplete=resolve;tx.onabort=()=>reject(tx.error||Error('Text save was interrupted. Your earlier details are unchanged.'));tx.onerror=()=>reject(tx.error||Error('Text could not be saved.'));
+      for(const {id,patch,initial} of prepared) {
+        const read=store.get(id);
+        read.onsuccess=()=>{
+          const current=read.result||{},updatedAt=Date.now();
+          const record={...initial,...current,...patch,id,updatedAt,revision:window.crypto?.randomUUID?.()||updatedAt+'-'+Math.random().toString(36).slice(2)};
+          const fieldUpdatedAt={...(initial.fieldUpdatedAt||{}),...(current.fieldUpdatedAt||{})};
+          for(const key of ['image','price','tags','variants','isSoldOut','notAvailable',...fields]) {
+            if(record[key]!==undefined&&fieldUpdatedAt[key]===undefined)fieldUpdatedAt[key]=Number(current.updatedAt||initial.updatedAt)||0;
+            if(Object.prototype.hasOwnProperty.call(patch,key))fieldUpdatedAt[key]=updatedAt;
+          }
+          record.fieldUpdatedAt=fieldUpdatedAt;store.put(record);written.push(record);
+        };
+      }
+    });
+    try {
+      const cache=JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1')||'{}');
+      for(const record of written)cache[record.id]=photos.compact(record);
+      localStorage.setItem('hotel_premier_user_overrides_v1',JSON.stringify(cache));
+    }catch(_){} // The committed IndexedDB records remain authoritative.
+    window.app?.notifyMenuUpdate?.();
+  }
+
   /**
    * Saves a dish photo with complete AI lifecycle tracking
    */

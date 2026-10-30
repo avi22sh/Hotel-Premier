@@ -1,6 +1,12 @@
 /* Consolidated cascade: component styles, extracted inline styles, then legacy priority rules. */
 @layer premier-base, premier-inline, premier-priority;
 @layer premier-base {
+/* Owner-controlled new-dish label: restrained burgundy/champagne in both themes. */
+.menu-arrival-label { display:inline-flex; align-items:center; font-family:var(--font-body, sans-serif); font-size:.64rem; font-weight:700; line-height:1.3; color:#861f36; background:linear-gradient(125deg,#f7ebd6,#eed7a6,#fff5df); border:1px solid #c6a265; border-radius:.35rem; padding:.2rem .4rem; margin-top:.25rem; }
+[data-theme="dark"] .menu-arrival-label { color:#f3d99e; background:linear-gradient(125deg,#39232b,#582c35,#32232a); border-color:#aa8250; }
+.badge-tag.new-arrival { color:#f6dca8; background:linear-gradient(120deg,#612435,#8a3044,#4a2030); border:1px solid #b89258; }
+.badge-tag.new-arrival[hidden] { display:none!important; }
+
 /* Royal presentation layer. Loaded last to unify legacy component styles with true glassmorphism. */
 /* Premier dish viewer: unobstructed photography and quiet, separate actions. */
 .dish-banner-action .dish-fav-btn { width:44px; height:44px; min-width:44px; min-height:44px; position:static; }

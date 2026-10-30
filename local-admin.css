@@ -72,6 +72,14 @@
 .local-lock-panel button { min-height:3rem; width:100%; }
 .local-lock-panel button:disabled { opacity:.6; cursor:wait; }
 .crm-intro { margin-bottom:1.25rem; }
+.admin-text-editor { margin-block:.75rem; text-align:left; }
+.admin-text-editor summary { cursor:pointer; font-weight:700; color:var(--crystal-accent); padding-block:.6rem; }
+.admin-text-editor form { display:grid; gap:.8rem; margin-top:.65rem; min-width:0; }
+.admin-text-editor input,.admin-text-editor textarea { box-sizing:border-box; width:100%; min-width:0; padding:.7rem; border:1px solid var(--crystal-edge); border-radius:.65rem; background:var(--crystal-surface); color:var(--crystal-ink); font:inherit; font-size:16px; }
+.admin-text-editor textarea { resize:vertical; min-height:6rem; }
+.admin-text-editor input:focus-visible,.admin-text-editor textarea:focus-visible { outline:2px solid var(--crystal-accent); outline-offset:2px; }
+.admin-text-hint,.admin-text-status { font-size:.8rem; line-height:1.5; color:var(--crystal-muted); margin:0; }
+.admin-text-status:empty { display:none; }
 .crm-intro h3,.crm-records-section h4 { font-family:var(--font-royal); font-size:1.1rem; line-height:1.5; color:var(--crystal-ink); margin:0 0 .75rem; }
 .crm-intro p,.crm-empty { color:var(--crystal-muted); font-size:.875rem; line-height:1.7; }
 .crm-records-section { padding:1rem; margin-block:1rem; border:1px solid var(--crystal-edge); border-radius:1rem; background:var(--crystal-surface); color:var(--crystal-ink); }

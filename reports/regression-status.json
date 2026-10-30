@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-10-29T13:32:00.001Z",
-  "passed": 72,
+  "createdAt": "2026-10-30T06:22:49.696Z",
+  "passed": 74,
   "failed": [],
   "results": [
     {
@@ -21,6 +21,10 @@
     },
     {
       "file": "admin-table-layout-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "admin-text-edit-regression.cjs",
       "passed": true
     },
     {
@@ -281,6 +285,10 @@
     },
     {
       "file": "tariff-flow-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "text-batch-storage-regression.cjs",
       "passed": true
     },
     {

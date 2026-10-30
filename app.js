@@ -594,7 +594,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.85';
+    s.src = 'admin.js?v=22.86';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1027,8 +1027,8 @@ class HotelPremierApp {
     if (overridesMap) {
       const initialIds = new Set(initialMenu.map(d => d.id));
       Object.keys(overridesMap).forEach(id => {
-        if (!initialIds.has(id) && !this.menuData.some(d=>d.id===id) && overridesMap[id].name) {
-          this.menuData.push(overridesMap[id]);
+        if (/^[A-Za-z0-9_-]+$/.test(id) && !['undefined','null'].includes(id) && !initialIds.has(id) && !this.menuData.some(d=>d.id===id) && overridesMap[id].name) {
+          this.menuData.push({...overridesMap[id],id});
         }
       });
     }
@@ -2518,6 +2518,7 @@ class HotelPremierApp {
           <div class="dish-banner-top">
             <div class="dish-banner-header">
               <h4 class="dish-title">${dishTitleHtml}</h4>
+              ${this.newArrivalLabel(dish)?`<span class="menu-arrival-label">${this.newArrivalLabel(dish)}</span>`:''}
             </div>
             <div class="dish-banner-price-stack">
               <span class="dish-price" id="price-display-${dish.id}">${priceRangeText}</span>
@@ -2588,6 +2589,12 @@ class HotelPremierApp {
   }
 
   // Dish Details Modal
+  newArrivalLabel(dish, variant = null) {
+    const children=(this.menuData||[]).filter(item=>item.groupedUnder===dish.id);
+    const fresh=dish.tags?.includes('new-arrival') || children.some(item=>item.tags?.includes('new-arrival')&&(!variant||item.id===variant.id||item.name===variant.name));
+    return fresh ? ({hi:'मेन्यू में नया',mr:'मेनूमध्ये नवीन'}[this.currentLang]||'Fresh to the Menu') : '';
+  }
+
   openDishDetail(dishId, targetVariantIndex = null) {
     if (!dishId) return;
     this.haptic(5);
@@ -2673,6 +2680,8 @@ class HotelPremierApp {
 
     // Badges on modal photo per user request
     const modalBadges = [];
+    const arrivalLabel=this.newArrivalLabel(dish,activeVariant);
+    modalBadges.push(`<span class="badge-tag new-arrival" id="detail-new-arrival" ${arrivalLabel?'':'hidden'}>${arrivalLabel}</span>`);
     if (dish.tags) {
       if (dish.tags.includes('bestseller')) {
         modalBadges.push(`<span class="badge-tag bestseller">${this.t('badgeBestseller')}</span>`);
@@ -2875,6 +2884,8 @@ class HotelPremierApp {
     const descHi = decodeURIComponent(btn.getAttribute('data-variant-desc-hi') || '');
     const descMr = decodeURIComponent(btn.getAttribute('data-variant-desc-mr') || '');
     const dishObj = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+    const arrivalBadge=document.getElementById('detail-new-arrival');
+    if(arrivalBadge&&dishObj){const label=this.newArrivalLabel(dishObj,dishObj.variants?.find(v=>v.name===varName));arrivalBadge.textContent=label;arrivalBadge.hidden=!label;}
     this.currentDetailVariantIndex = dishObj?.variants?.findIndex(v => v.name === varName) ?? -1;
     this.syncDetailFavorite();
 

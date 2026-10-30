@@ -331,9 +331,20 @@ class HotelPremierAdmin {
     const category=window.app.categories.find(item=>item.id===dish.categoryId)?.name||dish.categoryId;
     return `<tr id="admin-row-${id}">
       <td><button type="button" class="admin-photo-button" onclick="window.admin.openImageModal(${arg})" aria-label="Edit photo for ${escape(dish.name)}"><img width="80" height="80" loading="lazy" src="${escape(dish.image||'assets/brand-placeholder.svg')}" alt="${escape(dish.name)}"><span>Photo</span></button></td>
-      <td><strong class="admin-item-name">${escape(dish.name)}</strong><p class="admin-item-description">${escape(dish.description)}</p><span class="admin-item-category">${escape(category)}</span>${dish.variants?.length?`<button type="button" class="studio-button" onclick="window.app.openDishDetail(${arg})">${dish.variants.length} item options</button>`:''}</td>
+      <td><strong class="admin-item-name">${escape(dish.name)}</strong><p class="admin-item-description">${escape(dish.description)}</p><span class="admin-item-category">${escape(category)}</span>
+        <details class="admin-text-editor"><summary>Edit name & description</summary>
+          <form onsubmit="event.preventDefault(); window.admin.saveDishText(${arg},this)">
+            <label class="studio-field">Item name · English<input name="name" value="${escape(dish.name)}" maxlength="160" required></label>
+            <label class="studio-field">Description · English<textarea name="description" rows="3" maxlength="2000">${escape(dish.description)}</textarea></label>
+            <details><summary>Hindi & Marathi</summary>
+              ${[['hindiName','Name · Hindi'],['marathiName','Name · Marathi'],['descriptionHi','Description · Hindi'],['descriptionMr','Description · Marathi']].map(([key,label])=>`<label class="studio-field">${label}${key.startsWith('description')?`<textarea name="${key}" rows="3" maxlength="2000">${escape(dish[key])}</textarea>`:`<input name="${key}" value="${escape(dish[key])}" maxlength="160">`}</label>`).join('')}
+            </details>
+            <p class="admin-text-hint">Saved on this device. Export a publish bundle to update every guest's phone.</p>
+            <button type="submit" class="studio-button">Save item text</button><p role="status" class="admin-text-status"></p>
+          </form>
+        </details>${dish.variants?.length?`<button type="button" class="studio-button" onclick="window.app.openDishDetail(${arg})">${dish.variants.length} item options</button>`:''}</td>
       <td><label class="studio-field">Price (₹)<input type="number" min="0" value="${dish.price??''}" placeholder="On request" onchange="window.admin.updatePrice(${arg},this.value)"></label><label class="admin-check"><input type="checkbox" ${dish.isSoldOut?'checked':''} onchange="window.admin.toggleAvailability(${arg},!this.checked)"> Sold out</label><label class="admin-check"><input type="checkbox" ${dish.notAvailable?'checked':''} onchange="window.admin.toggleNotAvailable(${arg},this.checked)"> Hide from menu</label></td>
-      <td><details class="admin-item-actions"><summary>Manage item</summary><div class="admin-taste-tags-wrap">${[['sweet','Sweet'],['spicy','Spicy'],['chef-special','Chef special'],['bestseller','Bestseller'],['khandeshi-special','Khandeshi']].map(([tag,label])=>`<button type="button" class="studio-button" aria-pressed="${tags.includes(tag)}" onclick="window.admin.toggleDishTag(${arg},'${tag}')">${label}</button>`).join('')}</div><div class="studio-action-row"><button type="button" class="studio-button" onclick="window.app.moveDish(${arg},'up')">↑ Move up</button><button type="button" class="studio-button" onclick="window.app.moveDish(${arg},'down')">↓ Move down</button></div><button type="button" class="studio-button admin-delete-button" onclick="window.admin.deleteDish(${arg})">Remove item</button></details></td>
+      <td><details class="admin-item-actions"><summary>Manage item</summary><div class="admin-taste-tags-wrap">${[['new-arrival','Fresh to the Menu'],['sweet','Sweet'],['spicy','Spicy'],['chef-special','Chef special'],['bestseller','Bestseller'],['khandeshi-special','Khandeshi']].map(([tag,label])=>`<button type="button" class="studio-button" aria-pressed="${tags.includes(tag)}" onclick="window.admin.toggleDishTag(${arg},'${tag}')">${label}</button>`).join('')}</div><div class="studio-action-row"><button type="button" class="studio-button" onclick="window.app.moveDish(${arg},'up')">↑ Move up</button><button type="button" class="studio-button" onclick="window.app.moveDish(${arg},'down')">↓ Move down</button></div><button type="button" class="studio-button admin-delete-button" onclick="window.admin.deleteDish(${arg})">Remove item</button></details></td>
     </tr>`;
   }).join('');
 }
@@ -358,6 +369,40 @@ class HotelPremierAdmin {
       const count=document.getElementById('admin-menu-count');if(count)count.textContent=`Showing ${Math.min(filtered.length,this.adminVisibleCount||40)} of ${filtered.length} items`;
       const more=document.getElementById('admin-show-more');if(more)more.hidden=filtered.length<=(this.adminVisibleCount||40);
     }
+  }
+
+  async saveDishText(dishId, form) {
+    if(!this.isAuthenticated||!window.HotelLocalLock?.isUnlocked()||form.dataset.saving)return;
+    const dish=window.app.menuData.find(d=>d.id===dishId);if(!dish)return;
+    const status=form.querySelector('[role="status"]'),button=form.querySelector('[type="submit"]');
+    const patch={};
+    for(const key of ['name','description','hindiName','marathiName','descriptionHi','descriptionMr'])patch[key]=form.elements.namedItem(key).value.trim();
+    try {
+      if(!patch.name||patch.name.length>160||Object.entries(patch).some(([key,value])=>value.length>(key.startsWith('description')?2000:160)))throw Error('Enter an item name (up to 160 characters) and descriptions up to 2,000 characters.');
+      if(Object.values(patch).some(value=>/[<>"`]/.test(value)))throw Error('Use plain text without markup or double quotation marks.');
+      window.HotelDataValidation?.validate(patch);
+    }catch(error){status.textContent=error.message;return false;}
+    const changes={[dishId]:patch};
+    // Shared option arrays are updated by stable child ID or the previous option name.
+    for(const peer of window.app.menuData) {
+      if(peer.id!==dishId&&(!dish.groupedUnder||(peer.id!==dish.groupedUnder&&peer.groupedUnder!==dish.groupedUnder)))continue;
+      if(!peer.variants?.some(v=>v.id===dishId||v.name===dish.name))continue;
+      changes[peer.id]={...(changes[peer.id]||{}),variants:peer.variants.map(v=>v.id===dishId||v.name===dish.name?{...v,...patch}:v)};
+    }
+    form.dataset.saving='true';button.disabled=true;status.textContent='Saving…';
+    const inputs=[...form.querySelectorAll('input,textarea')];inputs.forEach(input=>input.readOnly=true);
+    try {
+      await window.HOTEL_STORAGE.saveDishTextEdits(changes);
+      for(const [id,edit] of Object.entries(changes)){const item=window.app.menuData.find(d=>d.id===id);if(item)Object.assign(item,edit);}
+      window.app.saveMenuData();window.app.renderMenu();window.app.renderCategoryCards();
+      status.textContent='Saved on this device. Export to publish for all guests.';
+      const row=form.closest('tr');
+      const name=row?.querySelector('.admin-item-name'),description=row?.querySelector('.admin-item-description');
+      if(name)name.textContent=patch.name;if(description)description.textContent=patch.description;
+      window.app.showToast('Item text saved, including linked dish options.','success');
+      return true;
+    }catch(error){status.textContent=error.message||'Not saved. Your draft is still here.';return false;}
+    finally{delete form.dataset.saving;button.disabled=false;inputs.forEach(input=>input.readOnly=false);}
   }
 
   async updatePrice(dishId, newPrice) {
@@ -1961,6 +2006,7 @@ class HotelPremierAdmin {
     const isSweet = document.getElementById('new-dish-sweet') ? document.getElementById('new-dish-sweet').checked : false;
     const isSpicy = document.getElementById('new-dish-spicy') ? document.getElementById('new-dish-spicy').checked : false;
     const isBestseller = document.getElementById('new-dish-bestseller') ? document.getElementById('new-dish-bestseller').checked : false;
+    const isNewArrival = Boolean(document.getElementById('new-dish-arrival')?.checked);
     const isKhandeshi = document.getElementById('new-dish-khandeshi') ? document.getElementById('new-dish-khandeshi').checked : false;
 
     if (!name || price!==null&&(!Number.isFinite(price)||price<0)) {
@@ -1978,6 +2024,7 @@ class HotelPremierAdmin {
     if (isSpicy) newTags.push('spicy');
     if (isSpecial) newTags.push('chef-special');
     if (isBestseller) newTags.push('bestseller');
+    if (isNewArrival) newTags.push('new-arrival');
     if (isKhandeshi) newTags.push('khandeshi-special');
 
     const newDish = {
@@ -2003,7 +2050,7 @@ class HotelPremierAdmin {
     }catch(error){window.app.showToast(error.message||'The dish could not be saved. Your draft is unchanged.','error');return;}
     finally{this.savingNewDish=false;if(saveButton)saveButton.disabled=Boolean(this.newDishPhotoPending);}
 
-    const flagsMatch=[['new-dish-special',isSpecial],['new-dish-sweet',isSweet],['new-dish-spicy',isSpicy],['new-dish-bestseller',isBestseller],['new-dish-khandeshi',isKhandeshi]].every(([id,value])=>Boolean(document.getElementById(id)?.checked)===value);
+    const flagsMatch=[['new-dish-arrival',isNewArrival],['new-dish-special',isSpecial],['new-dish-sweet',isSweet],['new-dish-spicy',isSpicy],['new-dish-bestseller',isBestseller],['new-dish-khandeshi',isKhandeshi]].every(([id,value])=>Boolean(document.getElementById(id)?.checked)===value);
     const sameDraft=flagsMatch&&this.isAuthenticated&&session===(this.adminSessionGeneration||0)&&view===(this.adminViewGeneration||0)&&draftRequest===(this.newDishUploadRequest||0)&&document.getElementById('new-dish-name').value.trim()===name&&document.getElementById('new-dish-category').value===categoryId&&document.getElementById('new-dish-price').value.trim()===priceText&&document.getElementById('new-dish-desc').value.trim()===desc&&document.getElementById('new-dish-image').value.trim()===urlInput;
     window.app.renderCategoryCards();
     if (window.app.currentCategory && window.app.currentCategory !== 'all') {
@@ -2021,6 +2068,7 @@ class HotelPremierAdmin {
     document.getElementById('new-dish-desc').value = '';
     document.getElementById('new-dish-image').value = '';
     document.getElementById('new-dish-special').checked = false;
+    for(const id of ['new-dish-arrival','new-dish-sweet','new-dish-spicy','new-dish-bestseller','new-dish-khandeshi']){const field=document.getElementById(id);if(field)field.checked=false;}
     this.newDishTempImage = '';
 
     window.app.showToast(`Added "${name}" to menu!`, 'success');

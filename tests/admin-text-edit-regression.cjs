@@ -1,0 +1,23 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const old={name:'Old name',description:'Old description',price:140,image:'assets/photo.jpg'};
+const child={...old,id:'child',groupedUnder:'group'},group={id:'group',name:'Parathas',variants:[{...old}]},peer={id:'peer',groupedUnder:'group',variants:[{...old}]},unrelated={id:'other',name:'Other',variants:[{...old}]};
+let writes=0,fail=false,authenticated=true,committed;
+const c={window:{HotelLocalLock:{isUnlocked:()=>authenticated},HotelDataValidation:require('../data-validation.js'),HOTEL_STORAGE:{async saveDishTextEdits(changes){writes++;if(fail)throw Error('Storage full');committed=changes;}},app:{menuData:[child,group,peer,unrelated],categories:[],saveMenuData(){},renderMenu(){},renderCategoryCards(){},showToast(){}}},document:{readyState:'loading',addEventListener(){}},console};
+vm.runInNewContext(fs.readFileSync('admin.js','utf8')+';window.Admin=HotelPremierAdmin;',c);
+const admin=Object.create(c.window.Admin.prototype);admin.isAuthenticated=true;
+const values={name:'Updated paratha',description:'Served fresh with curd.',hindiName:'पराठा',marathiName:'पराठा',descriptionHi:'दही के साथ',descriptionMr:'दह्यासोबत'};
+const inputs=Object.fromEntries(Object.entries(values).map(([k,value])=>[k,{value,readOnly:false}]));
+const status={},button={},form={dataset:{},elements:{namedItem:key=>inputs[key]},querySelector:s=>s==='[role="status"]'?status:button,querySelectorAll:()=>Object.values(inputs),closest:()=>null};
+(async()=>{
+ authenticated=false;await admin.saveDishText('child',form);assert.equal(writes,0);authenticated=true;
+ inputs.name.value='<img onerror=x>';await admin.saveDishText('child',form);assert.equal(writes,0);inputs.name.value=values.name;
+ fail=true;await admin.saveDishText('child',form);assert.equal(child.name,'Old name');assert.equal(group.variants[0].name,'Old name');assert.equal(inputs.name.value,values.name);assert.equal(button.disabled,false);
+ fail=false;assert.equal(await admin.saveDishText('child',form),true);
+ assert.equal(child.name,values.name);assert.equal(group.variants[0].name,values.name);assert.equal(peer.variants[0].description,values.description);assert.equal(group.variants[0].price,140);assert.equal(group.variants[0].image,old.image);assert.equal(unrelated.variants[0].name,'Old name');assert.ok(!committed.other);assert.equal(inputs.name.readOnly,false);
+ const markup=admin.generateDishTableRows([child]);assert.match(markup,/Edit name &amp; description|Edit name & description/);assert.match(markup,/name="descriptionMr"/);assert.match(markup,/Fresh to the Menu/);
+ vm.runInNewContext(fs.readFileSync('app.js','utf8')+';window.App=HotelPremierApp;',c);
+ const app=Object.create(c.window.App.prototype);app.menuData=[{...child,tags:['new-arrival']},group];
+ app.currentLang='en';assert.equal(app.newArrivalLabel(group),'Fresh to the Menu');assert.equal(app.newArrivalLabel(group,{name:values.name}),'Fresh to the Menu');assert.equal(app.newArrivalLabel(group,{name:'Different'}),'');
+ app.currentLang='hi';assert.equal(app.newArrivalLabel(group),'मेन्यू में नया');app.currentLang='mr';assert.equal(app.newArrivalLabel(group),'मेनूमध्ये नवीन');
+ console.log('PASS: authenticated multilingual text editing, failed-save draft retention, grouped option sync without changing photos/prices, and new arrival labels');
+})().catch(e=>{console.error(e);process.exitCode=1;});

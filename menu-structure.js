@@ -49,6 +49,7 @@
     }
     const map=new Map(app.menuData.map(d=>[d.id,d]));
     for(const [id,patch] of Object.entries(layout.items)) {
+      if(['undefined','null'].includes(id))continue; // Keep malformed legacy records in the backup, outside the guest menu.
       if(patch._deleted){map.delete(id);continue;}
       const existing=map.get(id)||{};
       const merged={...existing,...clone(patch),id};

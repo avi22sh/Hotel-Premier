@@ -13,6 +13,10 @@ for(const file of ['data/menu-data.js','data/menu-photos.js','data/published-ove
  const parathas=app.menuData.find(d=>d.id==='md-parathas-group').variants;
  assert.equal(parathas.length,4);assert.equal(parathas.at(-1).name,paratha.name);assert.equal(parathas.at(-1).price,140);
  assert.ok(c.window.HOTEL_PREMIER_SUB_CATEGORIES['morning-delights'].find(s=>s.id==='parathas').dishIds.includes(paratha.id));
+ assert.ok(!app.menuData.some(d=>!d.id||d.id==='undefined'||d.id==='null'));
+ const drinks=app.menuData.find(d=>d.id==='hh-beverages-group');
+ for(const v of drinks.variants)assert.doesNotMatch(v.image||'',/pakoda|finger-chips/);
+ assert.equal(drinks.variants.find(v=>v.name==='Hot Milk').image,app.menuData.find(d=>d.id==='hh-4').image);
  const deleted=Object.entries(o.layout.items).filter(([,p])=>p._deleted).map(([id])=>id);
  for(const id of deleted){assert.ok(!app.menuData.some(d=>d.id===id));const original=c.window.HOTEL_PREMIER_INITIAL_MENU.find(d=>d.id===id);if(original?.groupedUnder){const group=app.menuData.find(d=>d.id===original.groupedUnder);assert.ok(!group?.variants?.some(v=>v.name===original.name),'Deleted child must not survive as an ordering option');}}
  for(const child of app.menuData.filter(d=>d.groupedUnder&&d.image?.includes('/published-'))){const group=app.menuData.find(d=>d.id===child.groupedUnder);const v=group?.variants?.find(v=>v.name===child.name);if(v)assert.equal(v.image,child.image,'Grouped options must use the saved child photo');}
