@@ -1799,6 +1799,7 @@
         <div class="modal-title">
           <span>⚙️</span> <span>Hotel Premier Admin & CRM Studio</span>
         </div>
+        <button type="button" class="btn-direct-publish-header" id="btn-direct-publish-header" onclick="window.HotelDirectPublisher ? window.HotelDirectPublisher.publish() : null" title="Publish all edits and photos directly to the live website without an agent">🚀 1-Click Publish</button>
         <button type="button" class="modal-close-btn" aria-label="Close CRM Studio" onclick="window.admin ? window.admin.closeAdminModal() : null">✕</button>
       </div>
 
@@ -1831,7 +1832,10 @@
           <button class="admin-tab-btn" data-tab="backup">💾 Backup & Publish</button>
         </div>
 
-        <p class="admin-save-scope" role="status">Editing this device · Save locally, then export reviewed changes for GitHub publishing.</p>
+        <div class="admin-publish-bar">
+          <span class="admin-save-scope" role="status">Live CMS &amp; CRM · Edits save locally instantly.</span>
+          <button type="button" class="btn-publish-pill" onclick="window.HotelDirectPublisher ? window.HotelDirectPublisher.publish() : null" title="Publish all edits directly to the live website">🚀 1-Click Publish to Live Website</button>
+        </div>
         <div class="modal-body hp-inline-d8c94c16288b" id="admin-tab-content">
           <!-- Content rendered dynamically via admin.js -->
         </div>

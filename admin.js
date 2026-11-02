@@ -2266,12 +2266,20 @@ class HotelPremierAdmin {
           </div>
         </div>
 
-        <!-- Security & PIN Management Section -->
-        <section class="local-publish-card">
-          <h4>Publish reviewed changes</h4>
-          <p>Edits are saved on this device only. Export optimized photos and public overrides for developer review. Guest records and the local PIN are excluded.</p>
-          <button type="button" class="btn-primary" onclick="window.HotelPublishBundle.export().catch(error=>window.app.showToast(error.message,'error'))">Export publish bundle</button>
-          <p>After export: unpack with the included tool, review the files, commit to GitHub, then verify the deployed guest site.</p>
+        <!-- 1-Click Live Publish Section -->
+        <section class="local-publish-card direct-publish-featured-card">
+          <div class="direct-publish-card-header">
+            <div>
+              <span class="direct-publish-badge">⚡ Automated · No Agent Required</span>
+              <h4 style="margin: 6px 0 4px; font-size: 1.15rem; color: var(--accent);">🚀 1-Click Live Website Publish</h4>
+            </div>
+          </div>
+          <p>Publishes all your modified dish prices, names, photos, room rates, and slides directly to GitHub Pages for all guests with a single tap. No need to download files or run manual scripts.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;">
+            <button type="button" class="btn-primary" style="padding:10px 18px; font-weight:700; font-size:0.95rem;" onclick="window.HotelDirectPublisher.publish()">🚀 Publish All Changes to Live Website Now</button>
+            <button type="button" class="btn-secondary" style="padding:10px 14px;" onclick="window.HotelDirectPublisher.openSettings()">⚙️ Remote Settings & Token</button>
+            <button type="button" class="btn-secondary" style="padding:10px 14px;" onclick="window.HotelPublishBundle.export().catch(error=>window.app.showToast(error.message,'error'))">📥 Download File Backup</button>
+          </div>
         </section>
         <div class="hp-inline-36b44b106533">
           <div class="hp-inline-5642aa0c3bb8">

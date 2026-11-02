@@ -1,0 +1,14 @@
+{
+  "source": {
+    "file": "reports/Hotel-Premier-22.09-source-review.zip",
+    "files": 1098,
+    "bytes": 101088537,
+    "sha256": "809d087a6f6f5a3e7bce33b58dad746962b36bd5ecb3f5a1d7bc7bdd91b86ab6"
+  },
+  "public": {
+    "file": "reports/Hotel-Premier-22.09-public.zip",
+    "files": 711,
+    "bytes": 69675572,
+    "sha256": "f9685036bffb3699c738846614940375d040f23184fde6350d98c1ee05fef52e"
+  }
+}

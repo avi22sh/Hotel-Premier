@@ -61,6 +61,78 @@ public class HotelPremierServer {
         var context = (HttpListenerContext)state;
         try {
             string rawPath = context.Request.Url.AbsolutePath;
+
+            // Handle CORS preflight
+            if (context.Request.HttpMethod == "OPTIONS") {
+                context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+                context.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+                context.Response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                context.Response.StatusCode = 200;
+                context.Response.OutputStream.Close();
+                return;
+            }
+
+            // Handle 1-Click Live Publish API
+            if (rawPath == "/api/publish-direct") {
+                context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+                context.Response.ContentType = "application/json; charset=utf-8";
+
+                if (context.Request.HttpMethod == "POST") {
+                    try {
+                        string body;
+                        using (var reader = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding)) {
+                            body = reader.ReadToEnd();
+                        }
+
+                        string tempFile = Path.Combine(rootDir, "tools", "temp-bundle-" + Guid.NewGuid().ToString("N") + ".json");
+                        File.WriteAllText(tempFile, body, System.Text.Encoding.UTF8);
+
+                        string scriptPath = Path.Combine(rootDir, "tools", "publish-direct.ps1");
+                        var startInfo = new System.Diagnostics.ProcessStartInfo {
+                            FileName = "powershell.exe",
+                            Arguments = "-ExecutionPolicy Bypass -NoProfile -File \"" + scriptPath + "\" -InputFile \"" + tempFile + "\"",
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            UseShellExecute = false,
+                            CreateNoWindow = true,
+                            WorkingDirectory = rootDir
+                        };
+
+                        using (var process = System.Diagnostics.Process.Start(startInfo)) {
+                            string output = process.StandardOutput.ReadToEnd();
+                            string err = process.StandardError.ReadToEnd();
+                            process.WaitForExit(90000);
+
+                            try { if (File.Exists(tempFile)) File.Delete(tempFile); } catch { }
+
+                            if (process.ExitCode == 0 && !string.IsNullOrWhiteSpace(output)) {
+                                byte[] resBytes = System.Text.Encoding.UTF8.GetBytes(output.Trim());
+                                context.Response.StatusCode = 200;
+                                context.Response.OutputStream.Write(resBytes, 0, resBytes.Length);
+                            } else {
+                                context.Response.StatusCode = 500;
+                                string cleanErr = (err + " " + output).Replace("\"", "\\\"").Replace("\r", "").Replace("\n", " ");
+                                string errJson = "{\"success\":false,\"error\":\"" + cleanErr + "\"}";
+                                byte[] errBytes = System.Text.Encoding.UTF8.GetBytes(errJson);
+                                context.Response.OutputStream.Write(errBytes, 0, errBytes.Length);
+                            }
+                        }
+                    } catch (Exception ex) {
+                        context.Response.StatusCode = 500;
+                        string exJson = "{\"success\":false,\"error\":\"" + ex.Message.Replace("\"", "\\\"") + "\"}";
+                        byte[] errBytes = System.Text.Encoding.UTF8.GetBytes(exJson);
+                        context.Response.OutputStream.Write(errBytes, 0, errBytes.Length);
+                    }
+                } else {
+                    string statusJson = "{\"status\":\"ready\",\"endpoint\":\"/api/publish-direct\"}";
+                    byte[] statusBytes = System.Text.Encoding.UTF8.GetBytes(statusJson);
+                    context.Response.StatusCode = 200;
+                    context.Response.OutputStream.Write(statusBytes, 0, statusBytes.Length);
+                }
+                context.Response.OutputStream.Close();
+                return;
+            }
+
             if (rawPath == "/" || string.IsNullOrEmpty(rawPath)) rawPath = "/index.html";
             string filePath = Path.Combine(rootDir, rawPath.TrimStart('/').Replace('/', '\\'));
 

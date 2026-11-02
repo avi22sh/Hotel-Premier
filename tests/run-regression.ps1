@@ -4,8 +4,10 @@
 # ==============================================================================
 
 Write-Host "`nRunning Hotel Premier PWA Comprehensive Regression Suite..." -ForegroundColor Cyan
-node tools/build-public-dist.cjs
-if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+if (Get-Command node -ErrorAction SilentlyContinue) {
+    node tools/build-public-dist.cjs
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 
 $html = Get-Content -Raw "index.html"
 $royalCss = Get-Content -Raw "royal.css"
