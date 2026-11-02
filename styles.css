@@ -17,12 +17,12 @@
   --midnight-border: rgba(197, 168, 128, 0.22);
 
   /* Warm Ivory Silk Parchment (Daytime Warmth & Tactile Surfaces) */
-  --ivory-canvas: #FAF7F0;
-  --ivory-surface: #FFFFFF;
-  --ivory-card: #FDFCF9;
-  --ivory-warm: #F4EFE6;
-  --ivory-muted: #E9E1D2;
-  --ivory-border: rgba(197, 168, 128, 0.28);
+  --ivory-canvas: #EBE3D5;
+  --ivory-surface: #F6F2EB;
+  --ivory-card: #FAF7F0;
+  --ivory-warm: #DFD6C5;
+  --ivory-muted: #D5CAB7;
+  --ivory-border: rgba(186, 169, 144, 0.38);
 
   /* Champagne Brass & Antique Gold (Understated Metal Accents) */
   --brass-primary: #C5A880;
@@ -138,12 +138,12 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: #FAF7F2;
+  background-color: #EBE3D5;
   background-image:
-    radial-gradient(circle at 12% 15%, rgba(197, 168, 128, 0.16) 0%, transparent 45%),
-    radial-gradient(circle at 88% 25%, rgba(139, 21, 56, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 50% 75%, rgba(197, 168, 128, 0.10) 0%, transparent 50%),
-    radial-gradient(circle at 15% 90%, rgba(139, 21, 56, 0.06) 0%, transparent 45%);
+    radial-gradient(circle at 12% 15%, rgba(197, 168, 128, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 88% 25%, rgba(107, 17, 29, 0.08) 0%, transparent 42%),
+    radial-gradient(circle at 50% 75%, rgba(197, 168, 128, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 15% 90%, rgba(107, 17, 29, 0.06) 0%, transparent 45%);
   background-attachment: fixed;
   color: var(--text-dark);
   line-height: 1.6;
@@ -2416,7 +2416,7 @@ body.theme-dark .chip-period {
 }
 
 .star-chip {
-  background: #FAF7F2;
+  background: #EBE3D5;
   border: 1px solid rgba(197, 168, 128, 0.35);
   color: var(--burgundy-primary);
   font-size: 0.64rem;

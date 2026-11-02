@@ -627,7 +627,7 @@ class HotelPremierApp {
     document.documentElement.style.colorScheme = resolvedTheme;
 
     const themeMeta = document.querySelector('meta[name="theme-color"]');
-    if (themeMeta) themeMeta.content = resolvedTheme === 'dark' ? '#131C26' : '#FAF7F0';
+    if (themeMeta) themeMeta.content = resolvedTheme === 'dark' ? '#131C26' : '#EBE3D5';
 
     const btnSystem = document.getElementById('theme-choice-system');
     const btnLight = document.getElementById('theme-choice-light');
