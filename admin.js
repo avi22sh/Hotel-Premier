@@ -342,7 +342,52 @@ class HotelPremierAdmin {
             <p class="admin-text-hint">Saved on this device. Export a publish bundle to update every guest's phone.</p>
             <button type="submit" class="studio-button">Save item text</button><p role="status" class="admin-text-status"></p>
           </form>
-        </details>${dish.variants?.length?`<button type="button" class="studio-button" onclick="window.app.openDishDetail(${arg})">${dish.variants.length} item options</button>`:''}</td>
+        </details>${dish.variants?.length ? `
+          <details class="admin-variant-editor-drawer" id="admin-variants-${id}">
+            <summary class="admin-variant-summary">⚙️ Manage ${dish.variants.length} Options &amp; Photos</summary>
+            <div class="admin-variant-list">
+              ${dish.variants.map((v, vIdx) => {
+                const vPhoto = escape(v.image || dish.image || 'assets/brand-placeholder.svg');
+                return `
+                <div class="admin-variant-card" id="admin-variant-row-${id}-${vIdx}">
+                  <div class="admin-variant-card-head">
+                    <button type="button" class="admin-variant-photo-btn" onclick="window.admin.openImageModal(${arg}, ${vIdx})" aria-label="Edit photo for option ${escape(v.name)}">
+                      <img width="52" height="52" loading="lazy" src="${vPhoto}" alt="${escape(v.name)}">
+                      <span>Change Photo</span>
+                    </button>
+                    <div class="admin-variant-title-wrap">
+                      <strong>${escape(v.name)}</strong>
+                      <span class="admin-variant-price-tag">₹${v.price ?? 'On request'}</span>
+                    </div>
+                  </div>
+                  <details class="admin-variant-edit-details">
+                    <summary>Edit option details &amp; price</summary>
+                    <form onsubmit="event.preventDefault(); window.admin.saveVariantText(${arg}, ${vIdx}, this)">
+                      <div class="admin-variant-inputs-grid">
+                        <label class="studio-field">Option Name
+                          <input name="name" value="${escape(v.name)}" maxlength="160" required>
+                        </label>
+                        <label class="studio-field">Price (₹)
+                          <input name="price" type="number" min="0" value="${v.price ?? ''}" placeholder="On request">
+                        </label>
+                      </div>
+                      <label class="studio-field">Description · English
+                        <textarea name="description" rows="2" maxlength="1000">${escape(v.description || '')}</textarea>
+                      </label>
+                      <details><summary>Hindi &amp; Marathi</summary>
+                        <label class="studio-field">Name · Hindi<input name="hindiName" value="${escape(v.hindiName || '')}" maxlength="160"></label>
+                        <label class="studio-field">Name · Marathi<input name="marathiName" value="${escape(v.marathiName || '')}" maxlength="160"></label>
+                        <label class="studio-field">Description · Hindi<textarea name="descriptionHi" rows="2" maxlength="1000">${escape(v.descriptionHi || '')}</textarea></label>
+                        <label class="studio-field">Description · Marathi<textarea name="descriptionMr" rows="2" maxlength="1000">${escape(v.descriptionMr || '')}</textarea></label>
+                      </details>
+                      <button type="submit" class="studio-button" style="margin-top:8px;">Save Option</button>
+                      <p role="status" class="admin-text-status"></p>
+                    </form>
+                  </details>
+                </div>`;
+              }).join('')}
+            </div>
+          </details>` : ''}</td>
       <td><label class="studio-field">Price (₹)<input type="number" min="0" value="${dish.price??''}" placeholder="On request" onchange="window.admin.updatePrice(${arg},this.value)"></label><label class="admin-check"><input type="checkbox" ${dish.isSoldOut?'checked':''} onchange="window.admin.toggleAvailability(${arg},!this.checked)"> Sold out</label><label class="admin-check"><input type="checkbox" ${dish.notAvailable?'checked':''} onchange="window.admin.toggleNotAvailable(${arg},this.checked)"> Hide from menu</label></td>
       <td><details class="admin-item-actions"><summary>Manage item</summary><div class="admin-taste-tags-wrap">${[['new-arrival','Fresh to the Menu'],['sweet','Sweet'],['spicy','Spicy'],['chef-special','Chef special'],['bestseller','Bestseller'],['khandeshi-special','Khandeshi']].map(([tag,label])=>`<button type="button" class="studio-button" aria-pressed="${tags.includes(tag)}" onclick="window.admin.toggleDishTag(${arg},'${tag}')">${label}</button>`).join('')}</div><div class="studio-action-row"><button type="button" class="studio-button" onclick="window.app.moveDish(${arg},'up')">↑ Move up</button><button type="button" class="studio-button" onclick="window.app.moveDish(${arg},'down')">↓ Move down</button></div><button type="button" class="studio-button admin-delete-button" onclick="window.admin.deleteDish(${arg})">Remove item</button></details></td>
     </tr>`;
@@ -350,24 +395,95 @@ class HotelPremierAdmin {
 }
 
   filterAdminDishes() {
-    const q = (document.getElementById('admin-search-dish')?.value || '').toLowerCase();
+    const q = (document.getElementById('admin-search-dish')?.value || '').toLowerCase().trim();
     const cat = document.getElementById('admin-category-filter')?.value || 'all';
     const status = document.getElementById('admin-status-filter')?.value || 'all';
     const tbody = document.getElementById('admin-dish-tbody');
 
     const filtered = window.app.menuData.filter(d => {
-      const matchesQ = d.name.toLowerCase().includes(q) || (d.description && d.description.toLowerCase().includes(q));
+      const matchesQ = !q || d.name.toLowerCase().includes(q) || (d.description && d.description.toLowerCase().includes(q));
+      const matchesVariant = !q || (d.variants && d.variants.some(v =>
+        (v.name && v.name.toLowerCase().includes(q)) || (v.description && v.description.toLowerCase().includes(q))
+      ));
       const matchesCat = (cat === 'all') || (d.categoryId === cat);
       let matchesStatus = true;
       if (status === 'active') matchesStatus = !d.notAvailable;
       if (status === 'notAvailable') matchesStatus = Boolean(d.notAvailable);
-      return matchesQ && matchesCat && matchesStatus;
+      return (matchesQ || matchesVariant) && matchesCat && matchesStatus;
     });
 
     if (tbody) {
       tbody.innerHTML = this.generateDishTableRows(filtered.slice(0,this.adminVisibleCount||40));
       const count=document.getElementById('admin-menu-count');if(count)count.textContent=`Showing ${Math.min(filtered.length,this.adminVisibleCount||40)} of ${filtered.length} items`;
       const more=document.getElementById('admin-show-more');if(more)more.hidden=filtered.length<=(this.adminVisibleCount||40);
+    }
+  }
+
+  async saveVariantText(dishId, variantIndex, form) {
+    if (!this.isAuthenticated || !window.HotelLocalLock?.isUnlocked() || form.dataset.saving) return false;
+    const dish = window.app.menuData.find(d => d.id === dishId);
+    if (!dish || !dish.variants || !dish.variants[variantIndex]) return false;
+    const variant = dish.variants[variantIndex];
+    const status = form.querySelector('[role="status"]'), button = form.querySelector('[type="submit"]');
+
+    const name = form.elements.namedItem('name')?.value.trim();
+    const priceStr = form.elements.namedItem('price')?.value.trim();
+    const description = form.elements.namedItem('description')?.value.trim() || '';
+    const hindiName = form.elements.namedItem('hindiName')?.value.trim() || '';
+    const marathiName = form.elements.namedItem('marathiName')?.value.trim() || '';
+    const descriptionHi = form.elements.namedItem('descriptionHi')?.value.trim() || '';
+    const descriptionMr = form.elements.namedItem('descriptionMr')?.value.trim() || '';
+
+    if (!name || name.length > 160) {
+      if (status) status.textContent = 'Enter an option name (up to 160 characters).';
+      return false;
+    }
+    const price = priceStr === '' ? null : Number(priceStr);
+    if (price !== null && (!Number.isFinite(price) || price < 0)) {
+      if (status) status.textContent = 'Enter a valid price.';
+      return false;
+    }
+
+    form.dataset.saving = 'true';
+    if (button) button.disabled = true;
+    if (status) status.textContent = 'Saving…';
+
+    try {
+      variant.name = name;
+      variant.price = price;
+      variant.description = description;
+      if (hindiName) variant.hindiName = hindiName;
+      if (marathiName) variant.marathiName = marathiName;
+      if (descriptionHi) variant.descriptionHi = descriptionHi;
+      if (descriptionMr) variant.descriptionMr = descriptionMr;
+
+      // Update child dish in menuData if exists (e.g. grouped dishes)
+      const childDish = window.app.menuData.find(d => (d.groupedUnder === dish.id || d.id === variant.id) && (d.name === name || d.name === variant.name));
+      if (childDish) {
+        childDish.name = name;
+        childDish.price = price;
+        childDish.description = description;
+        if (hindiName) childDish.hindiName = hindiName;
+        if (marathiName) childDish.marathiName = marathiName;
+        if (descriptionHi) childDish.descriptionHi = descriptionHi;
+        if (descriptionMr) childDish.descriptionMr = descriptionMr;
+        await window.HOTEL_STORAGE.saveDishOverride(childDish.id, { name, price, description, hindiName, marathiName, descriptionHi, descriptionMr });
+      }
+
+      await window.HOTEL_STORAGE.saveDishOverride(dish.id, { variants: dish.variants });
+      window.app.saveMenuData();
+      window.app.renderCategoryCards();
+      window.app.renderMenu();
+
+      if (status) status.textContent = 'Saved locally. Tap "Publish" to update live.';
+      window.app.showToast(`Saved option "${name}".`, 'success');
+      return true;
+    } catch (err) {
+      if (status) status.textContent = err.message || 'Error saving option.';
+      return false;
+    } finally {
+      delete form.dataset.saving;
+      if (button) button.disabled = false;
     }
   }
 
@@ -502,20 +618,33 @@ class HotelPremierAdmin {
   }
 
   // ==================== DISH PHOTO REPLACEMENT & DELETION MODAL ====================
-  async openImageModal(dishId) {
+  async openImageModal(dishId, variantIndex = null) {
     if(!this.isAuthenticated)return;
     const request=this.previewRequestId=(this.previewRequestId||0)+1,session=this.adminSessionGeneration||0;
-    this.photoUploadController?.abort();this.activeImageDishId=dishId;this.activeRoomId=null;this.editingSlideContext=null;
+    this.photoUploadController?.abort();
+    this.activeImageDishId=dishId;
+    this.activeVariantIndex=(typeof variantIndex === 'number' && Number.isInteger(variantIndex) && variantIndex >= 0) ? variantIndex : null;
+    this.activeRoomId=null;
+    this.editingSlideContext=null;
     const dish=window.app.menuData.find(item=>item.id===dishId);if(!dish)return;
     let saved;try{saved=await window.HOTEL_STORAGE.getDishOverride(dishId);}catch(error){window.app.showToast('Photo could not be opened. Your saved image is unchanged.','error');return;}
     if(!this.isAuthenticated||request!==this.previewRequestId||session!==(this.adminSessionGeneration||0))return;
-    this.tempImageSource=saved?.image??dish.image??'';this.rawOriginalSource=saved?.rawOriginalImage||this.tempImageSource;
+
+    let optName = '';
+    if (this.activeVariantIndex !== null && dish.variants && dish.variants[this.activeVariantIndex]) {
+      const v = dish.variants[this.activeVariantIndex];
+      optName = v.name || `Option ${this.activeVariantIndex + 1}`;
+      this.tempImageSource = v.image || dish.image || '';
+    } else {
+      this.tempImageSource = saved?.image ?? dish.image ?? '';
+    }
+    this.rawOriginalSource=saved?.rawOriginalImage||this.tempImageSource;
     this.previewFailed=false;this.photoUploadPending=false;
-    document.getElementById('image-modal-dish-name').textContent='Photo · '+dish.name;
+    document.getElementById('image-modal-dish-name').textContent = optName ? `Photo · ${dish.name} → ${optName}` : `Photo · ${dish.name}`;
     const body=document.getElementById('image-modal-body');body.replaceChildren();
     const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text)e.textContent=text;if(cls)e.className=cls;return e;};
     const preview=node('div','','photo-editor-preview'),image=node('img');image.id='image-preview-element';image.alt=dish.name;image.src=this.tempImageSource||'assets/brand-placeholder.svg';preview.append(image);
-    const hint=node('p','Upload your own photo. Framing and file-size optimization preserve the food and colours. Saving updates this device; use a publish bundle for the public site.','studio-notice');
+    const hint=node('p','Upload your own photo. Framing and file-size optimization preserve the food and colours. Saving updates this device; use 1-Click Publish to go live.','studio-notice');
     const label=node('label','Upload or replace photo','studio-field'),upload=node('input');upload.type='file';upload.accept='image/jpeg,image/png,image/webp';upload.addEventListener('change',()=>this.handleImageFileUpload(upload));label.append(upload);
     const actions=node('div','','studio-action-row');
     for(const [text,run] of [['Cancel',()=>this.closeImageModal()],['Save photo',()=>this.saveReplacedImage()],['Remove photo',()=>this.deleteDishPhoto(dishId)]]){const button=node('button',text,'studio-button');button.type='button';if(text==='Save photo')button.id='apply-dish-photo-btn';if(text==='Remove photo')button.disabled=!this.tempImageSource;button.addEventListener('click',run);actions.append(button);}
@@ -607,12 +736,35 @@ class HotelPremierAdmin {
     const request=this.previewRequestId;this.savingDishPhoto=true;
     const save=document.getElementById('apply-dish-photo-btn');if(save)save.disabled=true;
     try{
+      if (this.activeVariantIndex !== null && dish.variants && dish.variants[this.activeVariantIndex]) {
+        const variant = dish.variants[this.activeVariantIndex];
+        variant.image = this.tempImageSource;
+
+        // Update matching child dish if present
+        const childDish = window.app.menuData.find(d => (d.groupedUnder === dish.id || d.id === variant.id) && (d.name === variant.name));
+        if (childDish) {
+          childDish.image = this.tempImageSource;
+          await window.HOTEL_STORAGE.saveDishOverride(childDish.id, { image: this.tempImageSource, rawOriginalImage: this.rawOriginalSource || this.tempImageSource });
+        }
+        await window.HOTEL_STORAGE.saveDishOverride(dish.id, { variants: dish.variants });
+        window.app.saveMenuData();
+        window.app.renderCategoryCards();
+        window.app.renderMenu();
+        if (request === this.previewRequestId) {
+          this.closeImageModal();
+          if (this.currentTab === 'photos') this.renderPhotoLibrary(document.getElementById('admin-tab-content'));
+          else this.filterAdminDishes();
+        }
+        window.app.showToast(`Photo saved for "${variant.name}". Tap "Publish" to go live.`, 'success');
+        return true;
+      }
+
       const record=await window.HOTEL_STORAGE.saveDishOverride(dish.id,{image:this.tempImageSource,rawOriginalImage:this.rawOriginalSource||this.tempImageSource,enhancementStatus:'original'});
       dish.image=record.image;window.app.saveMenuData();window.app.renderCategoryCards();window.app.renderMenu();
       if(window.app.currentCategory&&window.app.currentCategory!=='all')await window.app.renderSectionSlideshow(window.app.currentCategory);
       window.dispatchEvent(new CustomEvent('hp-media-updated',{detail:{dishId:dish.id,image:dish.image}}));
       if(request===this.previewRequestId){this.closeImageModal();if(this.currentTab==='photos')this.renderPhotoLibrary(document.getElementById('admin-tab-content'));else this.filterAdminDishes();}
-      window.app.showToast('Photo saved on this device. Export reviewed changes to publish.','success');return true;
+      window.app.showToast('Photo saved. Tap "Publish to Live Site" to go live.','success');return true;
     }catch(error){window.app.showToast(error.message||'Not saved. The earlier photo has been kept.','error');return false;}
     finally{this.savingDishPhoto=false;if(save)save.disabled=false;}
   }

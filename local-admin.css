@@ -213,3 +213,82 @@ body.theme-dark .direct-publish-badge {
   text-align: left;
   width: 100%;
 }
+
+/* Variant & Option Editor in Admin Table */
+.admin-variant-editor-drawer {
+  margin-top: 10px;
+  border: 1px solid var(--border, rgba(147, 126, 96, 0.25));
+  border-radius: 10px;
+  background: var(--surface-secondary, rgba(147, 126, 96, 0.05));
+  padding: 8px 12px;
+}
+.admin-variant-summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--accent, #8b1538);
+  padding: 4px 0;
+}
+.admin-variant-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border, rgba(147, 126, 96, 0.2));
+}
+.admin-variant-card {
+  border: 1px solid var(--border, rgba(147, 126, 96, 0.2));
+  border-radius: 8px;
+  padding: 10px;
+  background: var(--surface, #fff);
+}
+body.theme-dark .admin-variant-card {
+  background: rgba(255, 255, 255, 0.04);
+}
+.admin-variant-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.admin-variant-photo-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: transparent;
+  border: 1px solid var(--border, rgba(147, 126, 96, 0.2));
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.68rem;
+  color: var(--text, #1E293B);
+}
+.admin-variant-photo-btn img {
+  border-radius: 4px;
+  object-fit: cover;
+}
+.admin-variant-title-wrap {
+  flex: 1;
+}
+.admin-variant-price-tag {
+  display: inline-block;
+  margin-left: 8px;
+  font-weight: 700;
+  color: var(--accent, #8b1538);
+  font-size: 0.9rem;
+}
+.admin-variant-edit-details {
+  margin-top: 8px;
+  border-top: 1px solid var(--border, rgba(147, 126, 96, 0.15));
+  padding-top: 6px;
+}
+.admin-variant-edit-details summary {
+  font-size: 0.78rem;
+  color: var(--muted, #64748B);
+  cursor: pointer;
+}
+.admin-variant-inputs-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 8px;
+}

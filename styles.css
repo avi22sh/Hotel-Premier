@@ -3197,10 +3197,10 @@ body.theme-dark #section-dine .dish-banner-price-stack .dish-price { color: #DFC
 
 .dish-banner-header .dish-title {
   font-family: var(--font-royal), var(--font-serif);
-  font-size: 0.98rem;
+  font-size: 1.10rem;
   font-weight: 700;
   color: #1E293B;
-  line-height: 1.25;
+  line-height: 1.28;
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -3365,7 +3365,7 @@ body.theme-dark .dish-banner-action .dish-fav-btn.active {
 }
 #section-dine .compact-dish-card .dish-title {
   font-family: var(--font-sans);
-  font-size: .94rem;
+  font-size: 1.10rem;
   line-height: 1.35;
   display: block;
   overflow: visible;
@@ -3787,7 +3787,7 @@ body.theme-dark .dish-card-chip .chip-price {
 
 .dish-title {
   font-family: var(--font-royal), var(--font-serif);
-  font-size: 1.08rem;
+  font-size: 1.14rem;
   font-weight: 700;
   color: #1E293B;
   line-height: 1.35;
@@ -3795,7 +3795,7 @@ body.theme-dark .dish-card-chip .chip-price {
 }
 
 .dish-title-sub {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: #64748B;
   margin-left: 4px;

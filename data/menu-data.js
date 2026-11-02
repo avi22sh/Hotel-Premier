@@ -279,9 +279,10 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "signature-breads": [
     { "id": "all", "name": "All Breads", "hindiName": "सभी रोटियां", "marathiName": "सर्व रोट्या" },
-    { "id": "roti-chapati", "name": "Tandoori Roti & Tawa Chapati", "hindiName": "रोटी एवं चपाती", "marathiName": "रोटी व चपाती", "dishIds": ["sb-roti-group", "sb-1", "sb-2", "sb-3", "sb-13", "sb-14"] },
-    { "id": "naan", "name": "Butter, Garlic & Cheese Naan", "hindiName": "तंदूरी नान", "marathiName": "तंदूरी नान", "dishIds": ["sb-naan-group", "sb-4", "sb-5", "sb-6", "sb-7", "sb-8", "sb-15"] },
-    { "id": "paratha-kulcha", "name": "Laccha Paratha & Kulcha", "hindiName": "पराठा एवं कुलचा", "marathiName": "पराठा व कुलचा", "dishIds": ["sb-kulcha-group", "sb-9", "sb-10", "sb-11", "sb-12", "sb-16"] }
+    { "id": "tawa-breads", "name": "Tawa Chapatis & Parathas", "hindiName": "तवा चपाती एवं पराठा", "marathiName": "तवा चपाती व पराठा", "dishIds": ["sb-tawa-group", "sb-3", "sb-tawa-butter-chapati", "sb-12", "sb-tawa-butter-paratha"] },
+    { "id": "tandoori-roti", "name": "Tandoori Roti Specialties", "hindiName": "तंदूरी रोटी स्पेशल", "marathiName": "तंदूरी रोटी स्पेशल", "dishIds": ["sb-roti-group", "sb-1", "sb-2", "sb-13", "sb-missi-butter", "sb-14", "sb-methi-butter"] },
+    { "id": "naan-breads", "name": "Tandoor Naan Specialties", "hindiName": "तंदूरी नान स्पेशल", "marathiName": "तंदूरी नान स्पेशल", "dishIds": ["sb-naan-group", "sb-4", "sb-5", "sb-6", "sb-butter-garlic-naan", "sb-7", "sb-butter-cheese-naan", "sb-8", "sb-butter-cheese-garlic-naan", "sb-15"] },
+    { "id": "kulcha-paratha", "name": "Kulchas & Laccha Paratha", "hindiName": "कुलचा एवं लच्छा पराठा", "marathiName": "कुलचा व लच्छा पराठा", "dishIds": ["sb-kulcha-group", "sb-9", "sb-butter-kulcha", "sb-10", "sb-11", "sb-butter-laccha-paratha", "sb-16"] }
   ],
   "rice-biryani": [
     { "id": "all", "name": "All Biryani & Rice", "hindiName": "सभी बिरयानी व राइस", "marathiName": "सर्व बिर्याणी व राईस" },
@@ -455,6 +456,305 @@ const SANDWICHES_VARIANTS = [
   }
 ];
 
+const TAWA_CHAPATI_VARIANTS = [
+  {
+    name: 'Plain Tawa Chapati',
+    hindiName: 'प्लेन तवा चपाती',
+    marathiName: 'प्लेन तवा चपाती',
+    price: 20,
+    image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
+    description: 'Soft home-style whole-wheat flatbread freshly cooked on an iron griddle.',
+    descriptionHi: 'लोहे के तवे पर सिकी हुई घर जैसी फूली हुई मुलायम गेहूं की चपाती।',
+    descriptionMr: 'तव्यावर भाजलेली घरगुती पद्धतीची मऊ व लुसलुशीत गव्हाची चपाती.'
+  },
+  {
+    name: 'Butter Tawa Chapati',
+    hindiName: 'बटर तवा चपाती',
+    marathiName: 'बटर तवा चपाती',
+    price: 25,
+    image: 'assets/menu-images/signature-indian-breads/butter-chapati.jpg',
+    description: 'Soft home-style whole-wheat chapati generously brushed with dairy butter.',
+    descriptionHi: 'ताज़े मक्खन से चुपड़ी हुई गरमागरम मुलायम तवा चपाती।',
+    descriptionMr: 'ताजे बटर लावलेली गरमागरम मऊ तवा चपाती.'
+  }
+];
+
+const TAWA_PARATHA_VARIANTS = [
+  {
+    name: 'Plain Tawa Paratha',
+    hindiName: 'प्लेन तवा पराठा',
+    marathiName: 'प्लेन तवा पराठा',
+    price: 40,
+    image: 'assets/menu-images/signature-indian-breads/tawa-paratha.jpg',
+    description: 'Flaky layered whole-wheat flatbread cooked golden on a flat tawa.',
+    descriptionHi: 'तवे पर सिका हुआ स्वादिष्ट और कुरकुरा गेहूं का पराठा।',
+    descriptionMr: 'तव्यावर भाजलेला खरपूस व पदरदार गव्हाचा पराठा.'
+  },
+  {
+    name: 'Butter Tawa Paratha',
+    hindiName: 'बटर तवा पराठा',
+    marathiName: 'बटर तवा पराठा',
+    price: 50,
+    image: 'assets/menu-images/signature-indian-breads/butter-tawa-paratha.jpg',
+    description: 'Flaky layered whole-wheat flatbread roasted with pure dairy butter.',
+    descriptionHi: 'भरपूर मक्खन में सिका हुआ खस्ता परतदार तवा पराठा।',
+    descriptionMr: 'भरपूर बटरमध्ये भाजलेला खमंग पदरदार तवा पराठा.'
+  }
+];
+
+const TANDOORI_ROTI_VARIANTS = [
+  {
+    name: 'Tandoori Roti (Plain)',
+    hindiName: 'तंदूरी रोटी (सादा)',
+    marathiName: 'तंदूरी रोटी (साधी)',
+    price: 20,
+    image: 'assets/menu-images/signature-indian-breads/roti.jpg',
+    description: 'Whole wheat flatbread baked crisp and tender inside the traditional clay tandoor.',
+    descriptionHi: 'पारंपरिक मिट्टी के तंदूर में सिकी हुई गेहूं की गरमागरम सादी रोटी।',
+    descriptionMr: 'मातीच्या तंदूरमध्ये भाजलेली गव्हाची साधी व खमंग तंदूरी रोटी.'
+  },
+  {
+    name: 'Tandoori Butter Roti',
+    hindiName: 'तंदूरी बटर रोटी',
+    marathiName: 'तंदूरी बटर रोटी',
+    price: 25,
+    image: 'assets/menu-images/signature-indian-breads/butter-roti.jpg',
+    description: 'Crisp whole wheat tandoori roti glazed with golden melted butter.',
+    descriptionHi: 'तंदूर में सिकी कुरकुरी रोटी, ऊपर से पिघले हुए मक्खन के साथ।',
+    descriptionMr: 'तंदूरमध्ये भाजलेली खरपूस रोटी, त्यावर ताजे वितळलेले बटर.'
+  }
+];
+
+const MISSI_ROTI_VARIANTS = [
+  {
+    name: 'Missi Roti (Plain)',
+    hindiName: 'मिस्सी रोटी (सादा)',
+    marathiName: 'मिस्सी रोटी (साधी)',
+    price: 40,
+    image: 'assets/menu-images/signature-indian-breads/missi-roti.jpg',
+    description: 'A spiced flatbread of gram flour (besan) and whole wheat with onions, carom seeds and green chillies.',
+    descriptionHi: 'बेसन, अजवायन, प्याज और कस्तूरी मेथी से बनी पारंपरिक राजस्थानी मिस्सी रोटी।',
+    descriptionMr: 'बेसन, ओवा, कांदा आणि मसाल्यांची खमंग चव असलेली पारंपरिक मिस्सी रोटी.'
+  },
+  {
+    name: 'Butter Missi Roti',
+    hindiName: 'बटर मिस्सी रोटी',
+    marathiName: 'बटर मिस्सी रोटी',
+    price: 45,
+    image: 'assets/menu-images/signature-indian-breads/butter-missi-roti.jpg',
+    description: 'Spiced gram flour flatbread baked in tandoor and glazed with pure dairy butter.',
+    descriptionHi: 'मक्खन से चुपड़ी हुई स्वादिष्ट और खमंग तंदूरी मिस्सी रोटी।',
+    descriptionMr: 'भरपूर बटर लावलेली खमंग व चवदार तंदूरी मिस्सी रोटी.'
+  }
+];
+
+const METHI_ROTI_VARIANTS = [
+  {
+    name: 'Methi Roti (Plain)',
+    hindiName: 'मेथी रोटी (सादा)',
+    marathiName: 'मेथी रोटी (साधी)',
+    price: 40,
+    image: 'assets/menu-images/signature-indian-breads/methi-roti.jpg',
+    description: 'Wholesome wheat flatbread kneaded with fresh chopped fenugreek leaves and mild spices.',
+    descriptionHi: 'ताज़ी हरी मेथी और मसालों से गूंथी हुई पौष्टिक तंदूरी रोटी।',
+    descriptionMr: 'ताजी मेथी आणि मसाल्यांनी मळलेली पौष्टिक व चवदार तंदूरी रोटी.'
+  },
+  {
+    name: 'Butter Methi Roti',
+    hindiName: 'बटर मेथी रोटी',
+    marathiName: 'बटर मेथी रोटी',
+    price: 45,
+    image: 'assets/menu-images/signature-indian-breads/butter-methi-roti.jpg',
+    description: 'Fresh fenugreek leaves wheat flatbread baked in tandoor and glazed with golden butter.',
+    descriptionHi: 'ताज़ी मेथी से बनी तंदूरी रोटी, ऊपर से पिघले हुए मक्खन की चमक के साथ।',
+    descriptionMr: 'ताजी मेथीची तंदूरी रोटी, त्यावर ताजे वितळलेले बटर.'
+  }
+];
+
+const NAAN_PLAIN_BUTTER_VARIANTS = [
+  {
+    name: 'Plain Naan',
+    hindiName: 'प्लेन नान',
+    marathiName: 'प्लेन नान',
+    price: 50,
+    image: 'assets/menu-images/signature-indian-breads/naan.jpg',
+    description: 'Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.',
+    descriptionHi: 'तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।',
+    descriptionMr: 'तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान.'
+  },
+  {
+    name: 'Butter Naan',
+    hindiName: 'बटर नान',
+    marathiName: 'बटर नान',
+    price: 55,
+    image: 'assets/menu-images/signature-indian-breads/butter-naan.jpg',
+    description: 'Classic soft tandoor naan glazed generously with golden melted butter.',
+    descriptionHi: 'तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।',
+    descriptionMr: 'तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला.'
+  }
+];
+
+const GARLIC_NAAN_VARIANTS = [
+  {
+    name: 'Garlic Naan (Plain)',
+    hindiName: 'गार्लिक नान (सादा)',
+    marathiName: 'गार्लिक नान (साधा)',
+    price: 110,
+    image: 'assets/menu-images/signature-indian-breads/garlic-naan.jpg',
+    description: 'Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.',
+    descriptionHi: 'बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।',
+    descriptionMr: 'बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान.'
+  },
+  {
+    name: 'Butter Garlic Naan',
+    hindiName: 'बटर गार्लिक नान',
+    marathiName: 'बटर गार्लिक नान',
+    price: 130,
+    image: 'assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg',
+    description: 'Crisp aromatic garlic naan drenched generously in warm melted butter.',
+    descriptionHi: 'लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।',
+    descriptionMr: 'लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान.'
+  }
+];
+
+const CHEESE_NAAN_VARIANTS = [
+  {
+    name: 'Cheese Naan (Plain)',
+    hindiName: 'चीज़ नान (सादा)',
+    marathiName: 'चीज नान (साधा)',
+    price: 120,
+    image: 'assets/menu-images/signature-indian-breads/cheese-naan.avif',
+    description: 'Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.',
+    descriptionHi: 'अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।',
+    descriptionMr: 'आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान.'
+  },
+  {
+    name: 'Butter Cheese Naan',
+    hindiName: 'बटर चीज़ नान',
+    marathiName: 'बटर चीज नान',
+    price: 150,
+    image: 'assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg',
+    description: 'Cheese-stuffed tandoori naan finished with a rich layer of golden butter.',
+    descriptionHi: 'चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।',
+    descriptionMr: 'चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला.'
+  }
+];
+
+const CHEESE_GARLIC_NAAN_VARIANTS = [
+  {
+    name: 'Cheese Garlic Naan (Plain)',
+    hindiName: 'चीज़ गार्लिक नान (सादा)',
+    marathiName: 'चीज गार्लिक नान (साधा)',
+    price: 140,
+    image: 'assets/menu-images/signature-indian-breads/cheese-garlic-naan.jpg',
+    description: 'Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.',
+    descriptionHi: 'अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।',
+    descriptionMr: 'आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान.'
+  },
+  {
+    name: 'Butter Cheese Garlic Naan',
+    hindiName: 'बटर चीज़ गार्लिक नान',
+    marathiName: 'बटर चीज गार्लिक नान',
+    price: 160,
+    image: 'assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg',
+    description: 'Decadent chef special naan with melted cheese, roasted garlic and rich butter.',
+    descriptionHi: 'चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।',
+    descriptionMr: 'चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान.'
+  }
+];
+
+const KASHMIRI_NAAN_VARIANTS = [
+  {
+    name: 'Kashmiri Naan (Plain)',
+    hindiName: 'कश्मीरी नान (सादा)',
+    marathiName: 'काश्मिरी नान (साधा)',
+    price: 60,
+    image: 'assets/menu-images/signature-indian-breads/kashmiri-naan.jpg',
+    description: 'Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.',
+    descriptionHi: 'काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।',
+    descriptionMr: 'सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान.'
+  },
+  {
+    name: 'Butter Kashmiri Naan',
+    hindiName: 'बटर कश्मीरी नान',
+    marathiName: 'बटर काश्मिरी नान',
+    price: 70,
+    image: 'assets/menu-images/signature-indian-breads/butter-kahmiri-naan.jpg',
+    description: 'Rich royal sweet Kashmiri naan glazed with warm melted dairy butter.',
+    descriptionHi: 'मक्खन से चुपड़ा हुआ काजू-किशमिश भरा शाही कश्मीरी नान।',
+    descriptionMr: 'बटर लावलेला सुकामेवा व वेलचीचा गोड शाही काश्मिरी नान.'
+  }
+];
+
+const KULCHA_VARIANTS = [
+  {
+    name: 'Plain Kulcha',
+    hindiName: 'प्लेन कुलचा',
+    marathiName: 'प्लेन कुलचा',
+    price: 50,
+    image: 'assets/menu-images/signature-indian-breads/kulcha.jpg',
+    description: 'Soft leavened refined flour bread topped with nigella seeds and baked tender in the tandoor.',
+    descriptionHi: 'कलौंजी और धनिए से सजा, तंदूर में सिका हुआ सादा मुलायम कुलचा।',
+    descriptionMr: 'कलौंजी व कोथिंबीर लावून तंदूरमध्ये भाजलेला मऊ प्लेन कुलचा.'
+  },
+  {
+    name: 'Butter Kulcha',
+    hindiName: 'बटर कुलचा',
+    marathiName: 'बटर कुलचा',
+    price: 60,
+    image: 'assets/menu-images/signature-indian-breads/butter-kulcha.jpg',
+    description: 'Fluffy tandoori kulcha generously brushed with melted dairy butter.',
+    descriptionHi: 'मक्खन से तर-ब-तर किया हुआ फूला हुआ गरमागरम कुलचा।',
+    descriptionMr: 'भरपूर बटर लावलेला तंदूरमधील गरमागरम मऊ कुलचा.'
+  }
+];
+
+const STUFFED_KULCHA_VARIANTS = [
+  {
+    name: 'Stuffed Kulcha (Plain)',
+    hindiName: 'स्टफ्ड कुलचा (सादा)',
+    marathiName: 'स्टफ्ड कुलचा (साधा)',
+    price: 110,
+    image: 'assets/menu-images/signature-indian-breads/stuffed-kulcha.jpg',
+    description: 'Tandoor-baked maida bread stuffed with potatoes, paneer, cauliflower, beans and carrots.',
+    descriptionHi: 'मसालेदार पनीर और सब्जियों के स्वादिष्ट भरावन वाला तंदूरी कुलचा।',
+    descriptionMr: 'चवदार पनीर व भाज्यांचे सारण भरून तंदूरमध्ये भाजलेला गरमागरम कुलचा.'
+  },
+  {
+    name: 'Butter Stuffed Kulcha',
+    hindiName: 'बटर स्टफ्ड कुलचा',
+    marathiName: 'बटर स्टफ्ड कुलचा',
+    price: 120,
+    image: 'assets/menu-images/signature-indian-breads/butter-stuffed-kulcha.jpg',
+    description: 'Tandoor-baked stuffed vegetable and paneer kulcha finished with rich dairy butter.',
+    descriptionHi: 'मक्खन की परत वाला भरवां पनीर व सब्जी कुलचा।',
+    descriptionMr: 'भरपूर बटर लावलेला खमंग भरलेला पनीर कुलचा.'
+  }
+];
+
+const LACCHA_PARATHA_VARIANTS = [
+  {
+    name: 'Laccha Paratha (Plain)',
+    hindiName: 'लच्छा पराठा (सादा)',
+    marathiName: 'लच्छा पराठा (साधा)',
+    price: 70,
+    image: 'assets/menu-images/signature-indian-breads/lachha-paratha.jpg',
+    description: 'Multi-layered crispy flatbread made with whole wheat, laminated and roasted golden.',
+    descriptionHi: 'कई परतों वाला खस्ता और कुरकुरा लच्छेदार तंदूरी पराठा।',
+    descriptionMr: 'अनेक पदरांचा कुरकुरीत व खमंग लच्छा पराठा.'
+  },
+  {
+    name: 'Butter Laccha Paratha',
+    hindiName: 'बटर लच्छा पराठा',
+    marathiName: 'बटर लच्छा पराठा',
+    price: 80,
+    image: 'assets/menu-images/signature-indian-breads/butter-lachha-paratha.jpg',
+    description: 'Multi-layered crispy tandoori flatbread finished with pure dairy butter.',
+    descriptionHi: 'मक्खन से भरपूर कुरकुरा परतदार लच्छा पराठा।',
+    descriptionMr: 'भरपूर बटर घातलेला खमंग पदरदार लच्छा पराठा.'
+  }
+];
+
 const NAAN_VARIANTS = [
   {
     name: 'Plain Naan',
@@ -553,7 +853,7 @@ const ROTI_CHAPATI_VARIANTS = [
     name: 'Tandoori Roti (Plain)',
     hindiName: 'तंदूरी रोटी (सादा)',
     marathiName: 'तंदूरी रोटी (साधी)',
-    price: 25,
+    price: 20,
     image: 'assets/menu-images/signature-indian-breads/roti.jpg',
     description: 'Whole wheat flatbread baked crisp and tender inside the traditional clay tandoor.',
     descriptionHi: 'पारंपरिक मिट्टी के तंदूर में सिकी हुई गेहूं की गरमागरम सादी रोटी।',
@@ -563,7 +863,7 @@ const ROTI_CHAPATI_VARIANTS = [
     name: 'Tandoori Butter Roti',
     hindiName: 'तंदूरी बटर रोटी',
     marathiName: 'तंदूरी बटर रोटी',
-    price: 30,
+    price: 25,
     image: 'assets/menu-images/signature-indian-breads/butter-roti.jpg',
     description: 'Crisp whole wheat tandoori roti glazed with golden melted butter.',
     descriptionHi: 'तंदूर में सिकी कुरकुरी रोटी, ऊपर से पिघले हुए मक्खन के साथ।',
@@ -573,7 +873,7 @@ const ROTI_CHAPATI_VARIANTS = [
     name: 'Tawa Chapati (Plain)',
     hindiName: 'तवा चपाती (सादा)',
     marathiName: 'तवा चपाती (साधी)',
-    price: 25,
+    price: 20,
     image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
     description: 'Home-style soft puffed whole-wheat flatbread freshly cooked on an iron griddle.',
     descriptionHi: 'लोहे के तवे पर सिकी हुई घर जैसी फूली हुई मुलायम गेहूं की चपाती।',
@@ -583,7 +883,7 @@ const ROTI_CHAPATI_VARIANTS = [
     name: 'Tawa Butter Chapati',
     hindiName: 'तवा बटर चपाती',
     marathiName: 'तवा बटर चपाती',
-    price: 30,
+    price: 25,
     image: 'assets/menu-images/signature-indian-breads/butter-chapati.jpg',
     description: 'Soft home-style whole-wheat chapati generously brushed with dairy butter.',
     descriptionHi: 'ताज़े मक्खन से चुपड़ी हुई गरमागरम मुलायम तवा चपाती।',
@@ -1119,24 +1419,44 @@ const PAKODA_VARIANTS = [
 
 const PAPAD_VARIANTS = [
   {
-    name: 'Urad Papad (Roasted / Fried)',
-    hindiName: 'उड़द पापड़ (रोस्टेड / फ्राइड)',
-    marathiName: 'उडीद पापड (भाजलेला / तळलेला)',
+    name: 'Roasted Papad',
+    hindiName: 'रोस्टेड पापड़',
+    marathiName: 'भाजलेला पापड',
     price: 30,
     image: 'assets/menu-images/accompaniments/roasted-papad.jpg',
-    description: 'Traditional crisp black-pepper urad dal papad, roasted on open flame or golden fried.',
-    descriptionHi: 'काली मिर्च और हींग के पारंपरिक स्वाद वाला उड़द पापड़, भुना या तला हुआ।',
-    descriptionMr: 'काळी मिरी आणि हिंगाची खमंग चव असलेला पारंपरिक उडीद पापड, भाजलेला किंवा तळलेला.'
+    description: 'Crisp char-roasted urad dal papad served with tangy mint chutney.',
+    descriptionHi: 'आंच पर भुना हुआ कुरकुरा उड़द दाल पापड़, हरी चटनी के साथ।',
+    descriptionMr: 'आचेवर भाजलेला कुरकुरीत उडीद पापड, पुदिना चटणीसोबत.'
   },
   {
-    name: 'Nagli Papad (Roasted / Fried)',
-    hindiName: 'नागली / रागी पापड़ (रोस्टेड / फ्राइड)',
-    marathiName: 'नाचणी पापड (भाजलेला / तळलेला)',
-    price: 30,
-    image: 'assets/menu-images/accompaniments/roasted-nagali-papad.jpg',
-    description: 'Wholesome rustic finger millet (ragi/nagli) crisp papad, authentic Maharashtrian recipe.',
-    descriptionHi: 'पौष्टिक रागी (नागली) से तैयार पारंपरिक कुरकुरा पापड़, सुपाच्य और स्वादिष्ट।',
-    descriptionMr: 'पौष्टिक नाचणीपासून तयार केलेला पारंपरिक कुरकुरीत गावराण पापड.'
+    name: 'Fried Papad',
+    hindiName: 'फ्राइड पापड़',
+    marathiName: 'तळलेला पापड',
+    price: 35,
+    image: 'assets/menu-images/accompaniments/fried-papad.jpg',
+    description: 'Golden deep-fried crisp urad dal papad.',
+    descriptionHi: 'तेल में तला हुआ एकदम कुरकुरा व खस्ता उड़द पापड़।',
+    descriptionMr: 'तेलात तळून काढलेला खरपूस व कुरकुरीत उडीद पापड.'
+  },
+  {
+    name: 'Masala Papad',
+    hindiName: 'मसाला पापड़',
+    marathiName: 'मसाला पापड',
+    price: 50,
+    image: 'assets/menu-images/accompaniments/masala-papad.jpg',
+    description: 'Crisp fried papad loaded with diced onions, tomatoes, fresh coriander, sev and chaat masala.',
+    descriptionHi: 'बारीक कटे प्याज, टमाटर, धनिया, बारीक सेव और चाट मसाले से सजा मसाला पापड़।',
+    descriptionMr: 'बारीक कांदा, टोमॅटो, कोथिंबीर, बारीक शेव व चाट मसाल्याने सजवलेला चवदार मसाला पापड.'
+  },
+  {
+    name: 'Cheese Masala Papad',
+    hindiName: 'चीज़ मसाला पापड़',
+    marathiName: 'चीज मसाला पापड',
+    price: 80,
+    image: 'assets/menu-images/accompaniments/cheese-masala-papad.jpg',
+    description: 'Crunchy masala papad generously loaded with fresh salad, spices and finely grated melted cheese.',
+    descriptionHi: 'चटपटी कटी सब्जियों, चाट मसाले और ढेर सारे कद्दूकस किए हुए चीज़ से सजा शाही मसाला पापड़।',
+    descriptionMr: 'कांदा, टोमॅटो, कोथिंबीर आणि भरपूर किसलेले चीज घातलेला लज्जतदार चीज मसाला पापड.'
   },
   {
     name: 'Sindhi Papad',
@@ -2062,10 +2382,10 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'fa-papad-group', categoryId: 'fresh-addons',
     name: 'Crispy Indian Papads', hindiName: 'कुरकुरे भारतीय पापड़', marathiName: 'कुरकुरीत भारतीय पापड',
-    description: 'Traditional crisp accompaniment papads in Roasted and Fried variations: Spiced Urad Dal, Rustic Nagli (Ragi), and Spicy Sindhi Papad.',
-    descriptionHi: 'काली मिर्च वाले उड़द पापड़, पौष्टिक नागली (रागी) पापड़ और खास सिंधी पापड़, भुने या तले हुए।',
-    descriptionMr: 'पारंपरिक उडीद पापड, पौष्टिक नाचणी पापड आणि खमंग सिंधी पापड, भाजलेले किंवा तळलेले.',
-    price: 30, displayPriceRange: '₹30 – ₹70', isGroupMaster: true,
+    description: 'Traditional crisp accompaniment papads in Roasted, Fried, Masala, and Cheese Masala variations: Spiced Urad Dal, Rustic Nagli (Ragi), and Spicy Sindhi Papad.',
+    descriptionHi: 'काली मिर्च वाले उड़द पापड़, पौष्टिक नागली (रागी) पापड़ और खास सिंधी पापड़ - रोस्टेड, फ्राइड, मसाला और चीज़ मसाला।',
+    descriptionMr: 'पारंपरिक उडीद पापड, पौष्टिक नाचणी पापड आणि खमंग सिंधी पापड - भाजलेले, तळलेले, मसाला व चीज मसाला.',
+    price: 30, displayPriceRange: '₹30 – ₹80', isGroupMaster: true,
     image: 'assets/menu-images/accompaniments/roasted-papad.jpg',
     tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.7, prepTime: '5 mins',
     variants: PAPAD_VARIANTS
@@ -2191,6 +2511,33 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'पुरी भाजी',
     description: "Four golden, puffed pooris served with a warmly spiced potato bhaji.",
     price: 190,
+    displayPriceRange: '₹190 (Extra Poori: ₹25 – ₹45)',
+    variants: [
+      {
+        name: 'Poori Bhaji (Full Plate - 4 Pooris)',
+        hindiName: 'पूरी भाजी (4 पूरी)',
+        marathiName: 'पुरी भाजी (4 पुरी)',
+        price: 190,
+        image: 'assets/menu-images/morning-delight/poori-bhaji.jpg',
+        description: 'Four golden, puffed pooris served with freshly spiced potato bhaji.'
+      },
+      {
+        name: 'Extra Poori (1 pc)',
+        hindiName: 'अतिरिक्त पूरी (1 नग)',
+        marathiName: 'अतिरिक्त पुरी (1 नग)',
+        price: 25,
+        image: 'assets/menu-images/morning-delight/poori-bhaji.jpg',
+        description: 'One fresh, piping-hot golden puffed poori.'
+      },
+      {
+        name: 'Extra Poori (2 pcs)',
+        hindiName: 'अतिरिक्त पूरी (2 नग)',
+        marathiName: 'अतिरिक्त पुरी (2 नग)',
+        price: 45,
+        image: 'assets/menu-images/morning-delight/poori-bhaji.jpg',
+        description: 'Two fresh, piping-hot golden puffed pooris.'
+      }
+    ],
     tags: ['veg', 'bestseller', 'zomato-top'],
     zomatoRating: '4.2',
     dietary: 'pure-veg',
@@ -2207,6 +2554,33 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     marathiName: 'छोले भटूरे',
     description: "Fluffy, deep-fried bhature paired with a spicy chickpea curry.",
     price: 190,
+    displayPriceRange: '₹190 (Extra Bhatura: ₹45 – ₹85)',
+    variants: [
+      {
+        name: 'Chole Bhature (Full Plate - 2 Bhaturas)',
+        hindiName: 'छोले भटूरे (2 भटूरे)',
+        marathiName: 'छोले भटूरे (2 भटूरे)',
+        price: 190,
+        image: 'assets/menu-images/morning-delight/chole-bhature.jpg',
+        description: 'Two large fluffy deep-fried bhaturas paired with authentic Punjabi spicy chickpea curry.'
+      },
+      {
+        name: 'Extra Bhatura (1 pc)',
+        hindiName: 'अतिरिक्त भटूरा (1 नग)',
+        marathiName: 'अतिरिक्त भटूरा (1 नग)',
+        price: 45,
+        image: 'assets/menu-images/morning-delight/chole-bhature.jpg',
+        description: 'One freshly fried large, fluffy Punjabi bhatura.'
+      },
+      {
+        name: 'Extra Bhatura (2 pcs)',
+        hindiName: 'अतिरिक्त भटूरा (2 नग)',
+        marathiName: 'अतिरिक्त भटूरा (2 नग)',
+        price: 85,
+        image: 'assets/menu-images/morning-delight/chole-bhature.jpg',
+        description: 'Two freshly fried large, fluffy Punjabi bhaturas.'
+      }
+    ],
     tags: ['veg', 'bestseller', 'swiggy-top'],
     dietary: 'pure-veg',
     isSoldOut: false,
@@ -4837,9 +5211,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Urad Papad',
     hindiName: 'उड़द पापड़',
     marathiName: 'उडीद पापड',
-    description: "Crisp traditional urad dal papad, served roasted, fried or with spicy masala topping.",
+    description: "Crisp traditional urad dal papad: roasted, fried, spicy masala or rich cheese masala.",
     price: 30,
-    displayPriceRange: '₹30 – ₹40',
+    displayPriceRange: '₹30 – ₹80',
     isGroupMaster: true,
     variants: [
       {
@@ -4866,11 +5240,21 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         name: 'Masala Papad',
         hindiName: 'मसाला उड़द पापड़',
         marathiName: 'मसाला उडीद पापड',
-        price: 40,
+        price: 50,
         image: 'assets/menu-images/accompaniments/masala-papad.jpg',
         description: 'Crisp fried urad papad loaded with onion, tomato, coriander, sev and chaat masala.',
         descriptionHi: 'बारीक कटे प्याज, टमाटर, धनिया, बारीक सेव और चाट मसाले से सजा मसाला पापड़।',
         descriptionMr: 'बारीक कांदा, टोमॅटो, कोथिंबीर, बारीक शेव व चाट मसाल्याने सजवलेला चवदार मसाला पापड.'
+      },
+      {
+        name: 'Cheese Masala Papad',
+        hindiName: 'चीज़ मसाला उड़द पापड़',
+        marathiName: 'चीज मसाला उडीद पापड',
+        price: 80,
+        image: 'assets/menu-images/accompaniments/cheese-masala-papad.jpg',
+        description: 'Crunchy masala papad generously loaded with fresh salad, spices and finely grated melted cheese.',
+        descriptionHi: 'चटपटी कटी सब्जियों, चाट मसाले और ढेर सारे कद्दूकस किए हुए चीज़ से सजा शाही मसाला पापड़।',
+        descriptionMr: 'कांदा, टोमॅटो, कोथिंबीर आणि भरपूर किसलेले चीज घातलेला लज्जतदार चीज मसाला पापड.'
       }
     ],
     tags: ['veg', 'bestseller'],
@@ -4886,9 +5270,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Nagli Papad',
     hindiName: 'नागली पापड़',
     marathiName: 'नाचणी पापड',
-    description: "Crisp healthy finger millet (ragi/nagli) papad, available roasted, fried or with chatpata masala.",
+    description: "Crisp healthy finger millet (ragi/nagli) papad: roasted, fried, chatpata masala or cheese masala.",
     price: 30,
-    displayPriceRange: '₹30 – ₹40',
+    displayPriceRange: '₹30 – ₹80',
     isGroupMaster: true,
     variants: [
       {
@@ -4915,11 +5299,21 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         name: 'Masala Nagli Papad',
         hindiName: 'मसाला नागली पापड़',
         marathiName: 'मसाला नाचणी पापड',
-        price: 40,
+        price: 50,
         image: 'assets/menu-images/accompaniments/nagali-masala-papad.jpg',
         description: 'Crunchy nagli papad topped with fresh salad, chaat spices and fine sev.',
         descriptionHi: 'चटपटी कटी सब्जियों, चाट मसाले और सेव से भरपूर नागली मसाला पापड़।',
         descriptionMr: 'कांदा, टोमॅटो, कोथिंबीर आणि शेव घातलेला चटपटीत नाचणी मसाला पापड.'
+      },
+      {
+        name: 'Cheese Masala Nagli Papad',
+        hindiName: 'चीज़ मसाला नागली पापड़',
+        marathiName: 'चीज मसाला नाचणी पापड',
+        price: 80,
+        image: 'assets/menu-images/accompaniments/cheese-masala-papad.jpg',
+        description: 'Wholesome crunchy nagli papad topped with chopped fresh salad, chaat spices and abundant grated cheese.',
+        descriptionHi: 'पौष्टिक नागली पापड़ पर ताज़ा सलाद, चाट मसाला और भरपूर कद्दूकस किया चीज़।',
+        descriptionMr: 'पौष्टिक नाचणी पापडावर कांदा, टोमॅटो आणि भरपूर किसलेले चीज घातलेला चवदार पापड.'
       }
     ],
     tags: ['veg'],
@@ -4931,17 +5325,111 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   },
 
   // ==================== SIGNATURE INDIAN BREADS ====================
+  // --- TAWA BREADS ---
+  {
+    id: 'sb-tawa-group',
+    categoryId: 'signature-breads',
+    name: 'Tawa Chapatis & Parathas',
+    hindiName: 'तवा चपाती एवं पराठा',
+    marathiName: 'तवा चपाती व पराठा',
+    description: 'Home-style soft puffed whole-wheat chapatis and layered flaky parathas freshly cooked on an iron griddle, plain or with rich butter.',
+    descriptionHi: 'लोहे के तवे पर सिकी घर जैसी फूली हुई गेहूं की चपाती और परतदार पराठा, सादा या ताज़ा मक्खन के साथ।',
+    descriptionMr: 'तव्यावर भाजलेली घरगुती पद्धतीची मऊ चपाती आणि पदरदार खमंग पराठा, साधी अथवा भरपूर बटरसह.',
+    price: 20,
+    displayPriceRange: '₹20 – ₹50',
+    isGroupMaster: true,
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
+    rating: 4.8,
+    prepTime: '6 mins',
+    variants: [
+      ...TAWA_CHAPATI_VARIANTS,
+      ...TAWA_PARATHA_VARIANTS
+    ]
+  },
+  {
+    id: 'sb-3',
+    categoryId: 'signature-breads',
+    name: 'Plain Tawa Chapati',
+    hindiName: 'प्लेन तवा चपाती',
+    marathiName: 'प्लेन तवा चपाती',
+    description: "Home-style soft puffed whole-wheat flatbread freshly cooked on an iron griddle.",
+    price: 20,
+    variants: TAWA_CHAPATI_VARIANTS,
+    groupedUnder: 'sb-tawa-group',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
+    rating: 4.8,
+    prepTime: '6 mins'
+  },
+  {
+    id: 'sb-tawa-butter-chapati',
+    categoryId: 'signature-breads',
+    name: 'Butter Tawa Chapati',
+    hindiName: 'बटर तवा चपाती',
+    marathiName: 'बटर तवा चपाती',
+    description: "Soft home-style whole-wheat chapati generously brushed with golden dairy butter.",
+    price: 25,
+    variants: TAWA_CHAPATI_VARIANTS,
+    groupedUnder: 'sb-tawa-group',
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-chapati.jpg',
+    rating: 4.8,
+    prepTime: '6 mins'
+  },
+  {
+    id: 'sb-12',
+    categoryId: 'signature-breads',
+    name: 'Plain Tawa Paratha',
+    hindiName: 'प्लेन तवा पराठा',
+    marathiName: 'प्लेन तवा पराठा',
+    description: "Flaky layered whole-wheat flatbread pan-fried golden crisp on the tawa.",
+    price: 40,
+    variants: TAWA_PARATHA_VARIANTS,
+    groupedUnder: 'sb-tawa-group',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/tawa-paratha.jpg',
+    rating: 4.7,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'sb-tawa-butter-paratha',
+    categoryId: 'signature-breads',
+    name: 'Butter Tawa Paratha',
+    hindiName: 'बटर तवा पराठा',
+    marathiName: 'बटर तवा पराठा',
+    description: "Flaky layered whole-wheat flatbread roasted with pure golden dairy butter.",
+    price: 50,
+    variants: TAWA_PARATHA_VARIANTS,
+    groupedUnder: 'sb-tawa-group',
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-tawa-paratha.jpg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+
+  // --- TANDOORI ROTI SPECIALTIES ---
   {
     id: 'sb-roti-group',
     categoryId: 'signature-breads',
-    name: 'Traditional Rotis & Chapatis',
-    hindiName: 'तंदूरी रोटी एवं चपाती',
-    marathiName: 'तंदूरी रोटी व चपाती',
-    description: 'Freshly baked clay-oven tandoori rotis and home-style soft tawa chapatis, plain or glazed with pure butter.',
-    descriptionHi: 'तंदूर में सिकी गेहूं की रोटियां, मिस्सी, मेथी रोटी और घर जैसी तवा चपाती, सादा या बटर के साथ।',
-    descriptionMr: 'तंदूरमध्ये भाजलेली गव्हाची रोटी, मिस्सी, मेथी रोटी आणि मऊ तवा चपाती, साधी अथवा बटरसह.',
+    name: 'Tandoori Roti Specialties',
+    hindiName: 'तंदूरी रोटी स्पेशल',
+    marathiName: 'तंदूरी रोटी स्पेशल',
+    description: 'Clay-oven baked whole wheat rotis, spiced missi roti and fenugreek methi roti, plain or with rich butter.',
+    descriptionHi: 'तंदूर में सिकी गेहूं की रोटियां, मिस्सी और मेथी रोटी, सादा या पिघले मक्खन के साथ।',
+    descriptionMr: 'तंदूरमध्ये भाजलेली गव्हाची रोटी, मिस्सी आणि मेथी रोटी, साधी अथवा भरपूर बटरसह.',
     price: 20,
-    displayPriceRange: '₹20 – ₹40',
+    displayPriceRange: '₹20 – ₹45',
     isGroupMaster: true,
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
@@ -4949,8 +5437,116 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     image: 'assets/menu-images/signature-indian-breads/butter-roti.jpg',
     rating: 4.8,
     prepTime: '5 mins',
-    variants: ROTI_CHAPATI_VARIANTS
+    variants: [
+      ...TANDOORI_ROTI_VARIANTS,
+      ...MISSI_ROTI_VARIANTS,
+      ...METHI_ROTI_VARIANTS
+    ]
   },
+  {
+    id: 'sb-1',
+    categoryId: 'signature-breads',
+    name: 'Plain Tandoori Roti',
+    hindiName: 'तंदूरी रोटी (सादा)',
+    marathiName: 'तंदूरी रोटी (साधी)',
+    description: "Crisp and tender whole-wheat flatbread baked inside the traditional clay tandoor.",
+    price: 20,
+    variants: TANDOORI_ROTI_VARIANTS,
+    groupedUnder: 'sb-roti-group',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/roti.jpg',
+    rating: 4.8,
+    prepTime: '5 mins'
+  },
+  {
+    id: 'sb-2',
+    categoryId: 'signature-breads',
+    name: 'Butter Tandoori Roti',
+    hindiName: 'बटर तंदूरी रोटी',
+    marathiName: 'बटर तंदूरी रोटी',
+    description: "Tandoor-baked whole wheat roti glazed generously with golden melted butter.",
+    price: 25,
+    variants: TANDOORI_ROTI_VARIANTS,
+    groupedUnder: 'sb-roti-group',
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-roti-1.jpg',
+    rating: 4.8,
+    prepTime: '5 mins'
+  },
+  {
+    id: 'sb-13',
+    categoryId: 'signature-breads',
+    name: 'Plain Missi Roti',
+    hindiName: 'प्लेन मिस्सी रोटी',
+    marathiName: 'प्लेन मिस्सी रोटी',
+    description: "A spiced flatbread of gram flour (besan) and whole wheat with onions, carom seeds and green chillies.",
+    price: 40,
+    variants: MISSI_ROTI_VARIANTS,
+    groupedUnder: 'sb-roti-group',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/missi-roti.jpg',
+    rating: 4.7,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'sb-missi-butter',
+    categoryId: 'signature-breads',
+    name: 'Butter Missi Roti',
+    hindiName: 'बटर मिस्सी रोटी',
+    marathiName: 'बटर मिस्सी रोटी',
+    description: "Spiced gram flour and whole-wheat tandoori flatbread finished with pure dairy butter.",
+    price: 45,
+    variants: MISSI_ROTI_VARIANTS,
+    groupedUnder: 'sb-roti-group',
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-missi-roti.jpg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'sb-14',
+    categoryId: 'signature-breads',
+    name: 'Plain Methi Roti',
+    hindiName: 'प्लेन मेथी रोटी',
+    marathiName: 'प्लेन मेथी रोटी',
+    description: "Soft whole-wheat flatbread kneaded with fresh fenugreek leaves and mild aromatic spices.",
+    price: 40,
+    variants: METHI_ROTI_VARIANTS,
+    groupedUnder: 'sb-roti-group',
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/methi-roti.jpg',
+    rating: 4.7,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'sb-methi-butter',
+    categoryId: 'signature-breads',
+    name: 'Butter Methi Roti',
+    hindiName: 'बटर मेथी रोटी',
+    marathiName: 'बटर मेथी रोटी',
+    description: "Wholesome fresh fenugreek wheat flatbread baked in tandoor and brushed with melted butter.",
+    price: 45,
+    variants: METHI_ROTI_VARIANTS,
+    groupedUnder: 'sb-roti-group',
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-methi-roti.jpg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+
+  // --- TANDOOR NAAN SPECIALTIES ---
   {
     id: 'sb-naan-group',
     categoryId: 'signature-breads',
@@ -4972,85 +5568,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     variants: NAAN_VARIANTS
   },
   {
-    id: 'sb-kulcha-group',
-    categoryId: 'signature-breads',
-    name: 'Kulchas & Tandoori Parathas',
-    hindiName: 'कुलचा एवं लच्छा पराठा',
-    marathiName: 'कुलचा व लच्छा पराठा',
-    description: 'Fluffy tandoori kulchas and flaky multi-layered laccha parathas laminated with pure desi ghee.',
-    descriptionHi: 'मक्खन लगा कुलचा, पनीर कुलचा और देसी घी में सिका परतदार लच्छा व तवा पराठा।',
-    descriptionMr: 'बटर कुलचा, पनीर कुलचा आणि साजूक तुपातील पदरदार लच्छा व तवा पराठा.',
-    price: 50,
-    displayPriceRange: '₹50 – ₹70',
-    isGroupMaster: true,
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/butter-kulcha.jpg',
-    rating: 4.8,
-    prepTime: '10 mins',
-    variants: KULCHA_PARATHA_VARIANTS
-  },
-  {
-    id: 'sb-1',
-    categoryId: 'signature-breads',
-    name: 'Tandoori Roti',
-    hindiName: 'तंदूरी रोटी',
-    marathiName: 'तंदूरी रोटी',
-    description: "Tandoor-baked flatbread made with whole wheat flour.",
-    price: 20,
-    variants: ROTI_CHAPATI_VARIANTS,
-    groupedUnder: 'sb-roti-group',
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/roti.jpg',
-    rating: 4.8,
-    prepTime: '5 mins'
-  },
-  {
-    id: 'sb-2',
-    categoryId: 'signature-breads',
-    name: 'Butter Tandoori Roti',
-    hindiName: 'बटर तंदूरी रोटी',
-    marathiName: 'बटर तंदूरी रोटी',
-    description: "Tandoor-baked whole wheat roti finished with rich golden butter.",
-    price: 30,
-    variants: ROTI_CHAPATI_VARIANTS,
-    groupedUnder: 'sb-roti-group',
-    tags: ['veg', 'bestseller'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/butter-roti-1.jpg',
-    rating: 4.8,
-    prepTime: '5 mins'
-  },
-  {
-    id: 'sb-3',
-    categoryId: 'signature-breads',
-    name: 'Tawa Chapati',
-    hindiName: 'तवा चपाती',
-    marathiName: 'तवा चपाती',
-    description: "A wheat flatbread cooked on a traditional tawa.",
-    price: 20,
-    variants: ROTI_CHAPATI_VARIANTS,
-    groupedUnder: 'sb-roti-group',
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/chapati.jpg',
-    rating: 4.7,
-    prepTime: '6 mins'
-  },
-  {
     id: 'sb-4',
     categoryId: 'signature-breads',
     name: 'Plain Naan',
     hindiName: 'प्लेन नान',
     marathiName: 'प्लेन नान',
-    description: "Soft, fluffy maida flatbread baked in the tandoor.",
+    description: "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
     price: 50,
-    variants: NAAN_VARIANTS,
+    variants: NAAN_PLAIN_BUTTER_VARIANTS,
     groupedUnder: 'sb-naan-group',
     tags: ['veg'],
     dietary: 'pure-veg',
@@ -5065,9 +5590,9 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Butter Naan',
     hindiName: 'बटर नान',
     marathiName: 'बटर नान',
-    description: "Soft, tandoor-baked maida naan finished with butter.",
+    description: "Classic soft tandoor naan glazed generously with golden melted butter.",
     price: 55,
-    variants: NAAN_VARIANTS,
+    variants: NAAN_PLAIN_BUTTER_VARIANTS,
     groupedUnder: 'sb-naan-group',
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
@@ -5079,38 +5604,69 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'sb-6',
     categoryId: 'signature-breads',
-    name: 'Garlic Naan',
-    hindiName: 'गार्लिक नान',
-    marathiName: 'गार्लिक नान',
-    description: "Soft naan with garlic and coriander, baked in the tandoor.",
+    name: 'Plain Garlic Naan',
+    hindiName: 'प्लेन गार्लिक नान',
+    marathiName: 'प्लेन गार्लिक नान',
+    description: "Soft tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
     price: 110,
-    variants: NAAN_VARIANTS,
+    variants: GARLIC_NAAN_VARIANTS,
     groupedUnder: 'sb-naan-group',
-    tags: ['veg', 'chef-special', 'zomato-top'],
+    tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
     image: 'assets/menu-images/signature-indian-breads/garlic-naan.jpg',
     rating: 4.9,
-    zomatoRating: '4.4',
+    prepTime: '10 mins'
+  },
+  {
+    id: 'sb-butter-garlic-naan',
+    categoryId: 'signature-breads',
+    name: 'Butter Garlic Naan',
+    hindiName: 'बटर गार्लिक नान',
+    marathiName: 'बटर गार्लिक नान',
+    description: "Crisp aromatic garlic naan drenched generously in warm melted butter.",
+    price: 130,
+    variants: GARLIC_NAAN_VARIANTS,
+    groupedUnder: 'sb-naan-group',
+    tags: ['veg', 'chef-special', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg',
+    rating: 5.0,
     prepTime: '10 mins'
   },
   {
     id: 'sb-7',
     categoryId: 'signature-breads',
-    name: 'Cheese Naan',
-    hindiName: 'चीज़ नान',
-    marathiName: 'चीज नान',
-    description: 'Soft leavened tandoor flatbread generously stuffed with gooey melted cheese.',
-    descriptionHi: 'अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।',
-    descriptionMr: 'आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान.',
+    name: 'Plain Cheese Naan',
+    hindiName: 'प्लेन चीज़ नान',
+    marathiName: 'प्लेन चीज नान',
+    description: "Soft leavened tandoor flatbread generously stuffed with gooey molten cheese.",
     price: 120,
-    variants: NAAN_VARIANTS,
+    variants: CHEESE_NAAN_VARIANTS,
     groupedUnder: 'sb-naan-group',
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg',
+    image: 'assets/menu-images/signature-indian-breads/cheese-naan.avif',
     rating: 4.9,
+    prepTime: '10 mins'
+  },
+  {
+    id: 'sb-butter-cheese-naan',
+    categoryId: 'signature-breads',
+    name: 'Butter Cheese Naan',
+    hindiName: 'बटर चीज़ नान',
+    marathiName: 'बटर चीज नान',
+    description: "Cheese-stuffed tandoori naan finished with a rich layer of golden melted butter.",
+    price: 150,
+    variants: CHEESE_NAAN_VARIANTS,
+    groupedUnder: 'sb-naan-group',
+    tags: ['veg', 'chef-special', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg',
+    rating: 5.0,
     prepTime: '10 mins'
   },
   {
@@ -5119,9 +5675,26 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Cheese Garlic Naan',
     hindiName: 'चीज़ गार्लिक नान',
     marathiName: 'चीज गार्लिक नान',
-    description: "Tandoor-baked maida naan topped with melted cheese and garlic.",
+    description: "Tandoor-baked maida naan stuffed with molten cheese and topped with roasted garlic.",
     price: 140,
-    variants: NAAN_VARIANTS,
+    variants: CHEESE_GARLIC_NAAN_VARIANTS,
+    groupedUnder: 'sb-naan-group',
+    tags: ['veg', 'chef-special', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/cheese-garlic-naan.jpg',
+    rating: 5.0,
+    prepTime: '10 mins'
+  },
+  {
+    id: 'sb-butter-cheese-garlic-naan',
+    categoryId: 'signature-breads',
+    name: 'Butter Cheese Garlic Naan',
+    hindiName: 'बटर चीज़ गार्लिक नान',
+    marathiName: 'बटर चीज गार्लिक नान',
+    description: "Decadent chef special naan with melted cheese, roasted garlic and rich melted butter.",
+    price: 160,
+    variants: CHEESE_GARLIC_NAAN_VARIANTS,
     groupedUnder: 'sb-naan-group',
     tags: ['veg', 'chef-special', 'bestseller'],
     dietary: 'pure-veg',
@@ -5131,19 +5704,80 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '10 mins'
   },
   {
+    id: 'sb-15',
+    categoryId: 'signature-breads',
+    name: 'Kashmiri Naan',
+    hindiName: 'कश्मीरी नान',
+    marathiName: 'काश्मिरी नान',
+    description: "A softly sweet naan stuffed with dry fruits, nuts and fragrant cardamom.",
+    price: 60,
+    displayPriceRange: '₹60 – ₹70',
+    variants: KASHMIRI_NAAN_VARIANTS,
+    groupedUnder: 'sb-naan-group',
+    tags: ['veg', 'chef-special'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/kashmiri-naan.jpg',
+    rating: 4.8,
+    prepTime: '10 mins'
+  },
+
+  // --- KULCHAS & LACCHA PARATHA ---
+  {
+    id: 'sb-kulcha-group',
+    categoryId: 'signature-breads',
+    name: 'Kulchas & Laccha Paratha',
+    hindiName: 'कुलचा एवं लच्छा पराठा',
+    marathiName: 'कुलचा व लच्छा पराठा',
+    description: 'Fluffy tandoori kulchas and flaky multi-layered laccha parathas laminated with pure butter and ghee.',
+    descriptionHi: 'मक्खन लगा कुलचा, भरवां पनीर कुलचा और परतदार लच्छा पराठा, सादा या बटर के साथ।',
+    descriptionMr: 'बटर कुलचा, भरलेला पनीर कुलचा आणि पदरदार लच्छा पराठा, साधी अथवा बटरसह.',
+    price: 50,
+    displayPriceRange: '₹50 – ₹120',
+    isGroupMaster: true,
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-kulcha.jpg',
+    rating: 4.8,
+    prepTime: '10 mins',
+    variants: [
+      ...KULCHA_VARIANTS,
+      ...STUFFED_KULCHA_VARIANTS,
+      ...LACCHA_PARATHA_VARIANTS
+    ]
+  },
+  {
     id: 'sb-9',
     categoryId: 'signature-breads',
-    name: 'Kulcha',
-    hindiName: 'कुलचा',
-    marathiName: 'कुलचा',
+    name: 'Plain Kulcha',
+    hindiName: 'प्लेन कुलचा',
+    marathiName: 'प्लेन कुलचा',
     description: "Soft maida flatbread flavoured with black sesame and coriander, baked in the tandoor.",
-    price: 60,
-    variants: KULCHA_PARATHA_VARIANTS,
+    price: 50,
+    variants: KULCHA_VARIANTS,
     groupedUnder: 'sb-kulcha-group',
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/butter-kulcha-1.jpg',
+    image: 'assets/menu-images/signature-indian-breads/kulcha.jpg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'sb-butter-kulcha',
+    categoryId: 'signature-breads',
+    name: 'Butter Kulcha',
+    hindiName: 'बटर कुलचा',
+    marathiName: 'बटर कुलचा',
+    description: "Fluffy tandoori kulcha generously brushed with warm melted dairy butter.",
+    price: 60,
+    variants: KULCHA_VARIANTS,
+    groupedUnder: 'sb-kulcha-group',
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/signature-indian-breads/butter-kulcha.jpg',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -5153,11 +5787,12 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Stuffed Kulcha',
     hindiName: 'स्टफ्ड कुलचा',
     marathiName: 'स्टफ्ड कुलचा',
-    description: "Tandoor-baked maida bread stuffed with potatoes, paneer, cauliflower, beans and carrots.",
+    description: "Tandoor-baked maida bread stuffed with spiced potatoes, cottage cheese and fresh herbs.",
     price: 110,
-    variants: KULCHA_PARATHA_VARIANTS,
+    displayPriceRange: '₹110 – ₹120',
+    variants: STUFFED_KULCHA_VARIANTS,
     groupedUnder: 'sb-kulcha-group',
-    tags: ['veg'],
+    tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
     image: 'assets/menu-images/signature-indian-breads/stuffed-kulcha.jpg',
@@ -5167,12 +5802,12 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
   {
     id: 'sb-11',
     categoryId: 'signature-breads',
-    name: 'Laccha Paratha',
-    hindiName: 'लच्छा पराठा',
-    marathiName: 'लच्छा पराठा',
-    description: "Crisp, layered whole-wheat flatbread to pair with your favourite curry.",
-    price: 80,
-    variants: KULCHA_PARATHA_VARIANTS,
+    name: 'Plain Laccha Paratha',
+    hindiName: 'प्लेन लच्छा पराठा',
+    marathiName: 'प्लेन लच्छा पराठा',
+    description: "Crisp, multi-layered whole-wheat flatbread roasted golden to pair with rich curries.",
+    price: 70,
+    variants: LACCHA_PARATHA_VARIANTS,
     groupedUnder: 'sb-kulcha-group',
     tags: ['veg'],
     dietary: 'pure-veg',
@@ -5182,72 +5817,21 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '8 mins'
   },
   {
-    id: 'sb-12',
+    id: 'sb-butter-laccha-paratha',
     categoryId: 'signature-breads',
-    name: 'Tawa Paratha',
-    hindiName: 'तवा पराठा',
-    marathiName: 'तवा पराठा',
-    description: "Whole-wheat flatbread pan-fried on the tawa until crisp.",
-    price: 40,
-    variants: KULCHA_PARATHA_VARIANTS,
+    name: 'Butter Laccha Paratha',
+    hindiName: 'बटर लच्छा पराठा',
+    marathiName: 'बटर लच्छा पराठा',
+    description: "Crisp multi-layered tandoori flatbread finished generously with melted dairy butter.",
+    price: 80,
+    variants: LACCHA_PARATHA_VARIANTS,
     groupedUnder: 'sb-kulcha-group',
-    tags: ['veg'],
+    tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/tawa-paratha.jpg',
-    rating: 4.7,
+    image: 'assets/menu-images/signature-indian-breads/butter-lachha-paratha.jpg',
+    rating: 4.9,
     prepTime: '8 mins'
-  },
-  {
-    id: 'sb-13',
-    categoryId: 'signature-breads',
-    name: 'Missi Roti',
-    hindiName: 'मिस्सी रोटी',
-    marathiName: 'मिस्सी रोटी',
-    description: "A Punjabi flatbread made with wheat flour, gram flour and spices.",
-    price: 45,
-    variants: ROTI_CHAPATI_VARIANTS,
-    groupedUnder: 'sb-roti-group',
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/missi-roti.jpg',
-    rating: 4.7,
-    prepTime: '8 mins'
-  },
-  {
-    id: 'sb-14',
-    categoryId: 'signature-breads',
-    name: 'Methi Roti',
-    hindiName: 'मेथी रोटी',
-    marathiName: 'मेथी रोटी',
-    description: "Soft whole-wheat flatbread flavoured with fenugreek leaves.",
-    price: 45,
-    variants: ROTI_CHAPATI_VARIANTS,
-    groupedUnder: 'sb-roti-group',
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/methi-roti.jpg',
-    rating: 4.7,
-    prepTime: '8 mins'
-  },
-  {
-    id: 'sb-15',
-    categoryId: 'signature-breads',
-    name: 'Kashmiri Naan',
-    hindiName: 'कश्मीरी नान',
-    marathiName: 'काश्मिरी नान',
-    description: "A softly sweet naan stuffed with dry fruits and flavoured with cardamom.",
-    price: 60,
-    variants: NAAN_VARIANTS,
-    groupedUnder: 'sb-naan-group',
-    tags: ['veg', 'chef-special'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/kashmiri-naan.jpg',
-    rating: 4.8,
-    prepTime: '10 mins'
   },
   {
     id: 'sb-16',
@@ -5260,8 +5844,8 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     displayPriceRange: '₹480 – ₹520',
     isGroupMaster: true,
     variants: [
-      { name: 'Plain Roti Basket', price: 480 },
-      { name: 'Butter Roti Basket', price: 520 }
+      { name: 'Plain Roti Basket', hindiName: 'प्लेन रोटी बास्केट', marathiName: 'प्लेन रोटी बास्केट', price: 480, image: 'assets/menu-images/signature-indian-breads/chapati.jpg', description: 'Nine assorted plain breads: tandoori roti, naan, missi roti, pudina roti, kulcha, laccha paratha, garlic naan, methi paratha and aloo paratha.' },
+      { name: 'Butter Roti Basket', hindiName: 'बटर रोटी बास्केट', marathiName: 'बटर रोटी बास्केट', price: 520, image: 'assets/menu-images/signature-indian-breads/butter-naan.jpg', description: 'Nine assorted breads glazed with golden butter: butter roti, butter naan, butter kulcha, butter laccha paratha and specialties.' }
     ],
     tags: ['veg', 'chef-special', 'bestseller'],
     dietary: 'pure-veg',
@@ -5676,9 +6260,10 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'कुरकुरे कैरेमल क्रंच और मक्खनी स्वाद से भरपूर क्रीमी बटरस्कॉच आइसक्रीम।',
     descriptionMr: 'कुरकुरीत कॅरॅमल क्रंच आणि लोणीच्या चवीने युक्त मलईदार बटरस्कॉच आईस्क्रीम.',
     price: 50,
+    displayPriceRange: '₹50 – ₹130',
     variants: [
-      { name: 'Single Scoop', price: 50 },
-      { name: 'Double Scoop', price: 80 }
+      { name: '1 Scoop', hindiName: '1 स्कूप', marathiName: '1 स्कूप', price: 50 },
+      { name: '3 Scoops', hindiName: '3 स्कूप', marathiName: '3 स्कूप', price: 130 }
     ],
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
@@ -5697,9 +6282,10 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'शुद्ध दूध और प्राकृतिक वैनिला की खुशबू से बना क्लासिक मखमली आइसक्रीम स्कूप।',
     descriptionMr: 'शुद्ध दूध आणि नैसर्गिक व्हॅनिलाच्या सुवासाने तयार केलेला क्लासिक आईस्क्रीम स्कूप.',
     price: 40,
+    displayPriceRange: '₹40 – ₹110',
     variants: [
-      { name: 'Single Scoop', price: 40 },
-      { name: 'Double Scoop', price: 65 }
+      { name: '1 Scoop', hindiName: '1 स्कूप', marathiName: '1 स्कूप', price: 40 },
+      { name: '3 Scoops', hindiName: '3 स्कूप', marathiName: '3 स्कूप', price: 110 }
     ],
     tags: ['veg'],
     dietary: 'pure-veg',
@@ -5718,9 +6304,10 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'भुने हुए काजू और मीठी काली किशमिश से भरपूर गाढ़ी और शाही मलाईदार आइसक्रीम।',
     descriptionMr: 'भाजलेले काजू आणि गोड काळ्या मनुकांनी भरलेले दाट आणि शाही आईस्क्रीम.',
     price: 50,
+    displayPriceRange: '₹50 – ₹130',
     variants: [
-      { name: 'Single Scoop', price: 50 },
-      { name: 'Double Scoop', price: 80 }
+      { name: '1 Scoop', hindiName: '1 स्कूप', marathiName: '1 स्कूप', price: 50 },
+      { name: '3 Scoops', hindiName: '3 स्कूप', marathiName: '3 स्कूप', price: 130 }
     ],
     tags: ['veg'],
     dietary: 'pure-veg',
@@ -5739,9 +6326,10 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'गाढ़े डच कोको और शुद्ध दूध से बनी बेहद स्वादिष्ट और क्रीमी चॉकलेट आइसक्रीम।',
     descriptionMr: 'दाट डच कोको आणि दुधापासून बनवलेले मखमली आणि चवदार चॉकलेट आईस्क्रीम.',
     price: 50,
+    displayPriceRange: '₹50 – ₹130',
     variants: [
-      { name: 'Single Scoop', price: 50 },
-      { name: 'Double Scoop', price: 80 }
+      { name: '1 Scoop', hindiName: '1 स्कूप', marathiName: '1 स्कूप', price: 50 },
+      { name: '3 Scoops', hindiName: '3 स्कूप', marathiName: '3 स्कूप', price: 130 }
     ],
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
@@ -5759,10 +6347,11 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     description: 'Authentic Afghani dry-fruit infused ice cream with pistachios, almonds, and dried figs.',
     descriptionHi: 'पिस्ता, बादाम, अंजीर और शाही मेवों से भरपूर पारंपरिक अफगानी आइसक्रीम।',
     descriptionMr: 'पिस्ता, बदाम, अंजीर आणि सुक्या मेव्याने समृद्ध असलेले पारंपरिक अफगाणी आईस्क्रीम.',
-    price: 40,
+    price: 50,
+    displayPriceRange: '₹50 – ₹130',
     variants: [
-      { name: 'Single Scoop', price: 40 },
-      { name: 'Double Scoop', price: 80 }
+      { name: '1 Scoop', hindiName: '1 स्कूप', marathiName: '1 स्कूप', price: 50 },
+      { name: '3 Scoops', hindiName: '3 स्कूप', marathiName: '3 स्कूप', price: 130 }
     ],
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
@@ -5991,10 +6580,29 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     name: 'Special Punjabi Lassi',
     hindiName: 'स्पेशल पंजाबी लस्सी',
     marathiName: 'स्पेशल पंजाबी लस्सी',
-    description: 'Thick sweet churned curd served in traditional style, topped with rich malai and cardamom.',
-    descriptionHi: 'गाढ़े मीठे दही को मथकर बनाई गई पारंपरिक लस्सी, ऊपर गाढ़ी मलाई और इलायची के साथ।',
-    descriptionMr: 'दाट गोड दही घुसळून बनवलेली पारंपरिक लस्सी, वरून जाड मलई आणि वेलची पूड घातलेली.',
+    description: 'Thick sweet churned curd served in traditional style, plain or topped with a luscious ice cream scoop.',
+    descriptionHi: 'गाढ़े मीठे दही को मथकर बनाई गई पारंपरिक लस्सी - सादा या वैनिला आइसक्रीम के साथ।',
+    descriptionMr: 'दाट गोड दही घुसळून बनवलेली पारंपरिक लस्सी - साधी अथवा व्हॅनिला आईस्क्रीमसह.',
     price: 80,
+    displayPriceRange: '₹80 – ₹110',
+    variants: [
+      {
+        name: 'Special Punjabi Sweet Lassi (Plain)',
+        hindiName: 'स्पेशल पंजाबी लस्सी (सादा)',
+        marathiName: 'स्पेशल पंजाबी लस्सी (साधी)',
+        price: 80,
+        image: 'assets/menu-images/veg-specialities/veg-zatpat.jpg',
+        description: 'Thick sweet churned curd served in traditional style, topped with rich malai and cardamom.'
+      },
+      {
+        name: 'Special Punjabi Lassi with Ice Cream',
+        hindiName: 'स्पेशल पंजाबी लस्सी (आइसक्रीम के साथ)',
+        marathiName: 'स्पेशल पंजाबी लस्सी (आईस्क्रीमसोबत)',
+        price: 110,
+        image: 'assets/menu-images/veg-specialities/veg-zatpat.jpg',
+        description: 'Rich creamy Punjabi sweet lassi topped with a luscious scoop of vanilla ice cream and dry fruits.'
+      }
+    ],
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
