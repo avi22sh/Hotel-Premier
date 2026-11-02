@@ -811,21 +811,51 @@ a {
 }
 
 .sanctuary-hero-highlights {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+  max-width: 920px;
+  margin: 0 auto 30px;
 }
 
 .sanctuary-pill {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(197, 168, 128, 0.22);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(197, 168, 128, 0.32);
+  padding: 9px 14px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  backdrop-filter: blur(8px);
+  transition: var(--transition-fast);
+}
+.sanctuary-pill .pill-main {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FFFDF9;
+  line-height: 1.25;
+}
+.sanctuary-pill .pill-sub {
+  font-size: 0.72rem;
   font-weight: 600;
-  color: #D3DEEB;
+  color: #E2B961;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+}
+
+body:not(.theme-dark) .sanctuary-pill {
+  background: rgba(246, 242, 235, 0.85);
+  border-color: rgba(186, 169, 144, 0.45);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+body:not(.theme-dark) .sanctuary-pill .pill-main {
+  color: #161D26;
+}
+body:not(.theme-dark) .sanctuary-pill .pill-sub {
+  color: #8A5D1E;
 }
 
 /* Concierge Fast Action Cards */
@@ -1568,12 +1598,27 @@ a {
 }
 
 .plan-inclusions-note {
-  font-size: 0.70rem;
-  color: #718096;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  color: #64748B;
   text-align: center;
   margin-top: 8px;
   padding-top: 6px;
-  border-top: 1px dashed rgba(197, 168, 128, 0.25);
+  border-top: 1px dashed rgba(197, 168, 128, 0.28);
+  line-height: 1.35;
+}
+.plan-inclusions-note .inclusion-tag {
+  font-weight: 600;
+}
+.plan-inclusions-note .inclusion-sep {
+  display: none;
+}
+body.theme-dark .plan-inclusions-note {
+  color: #CBD5E1;
 }
 
 .tariff-card-amenities {
@@ -1581,13 +1626,24 @@ a {
   flex-wrap: wrap;
   gap: 6px;
   padding: 0 20px 14px;
+  justify-content: flex-start;
 }
 .tariff-card-amenities span {
-  background: #FAF7F0;
-  border: 1px solid rgba(197, 168, 128, 0.25);
-  padding: 4px 8px;
-  border-radius: var(--radius-sm);
-  font-size: 0.70rem;
+  background: rgba(186, 169, 144, 0.16);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+body.theme-dark .tariff-card-amenities span {
+  background: rgba(255, 255, 255, 0.08);
+  color: #F1F5F9;
+}
   font-weight: 600;
   color: #4A5568;
 }
@@ -1834,24 +1890,54 @@ body.theme-dark .chip-period {
 
 .btn-tariff-phone {
   flex: 1;
-  background: #1E2734;
-  color: var(--brass-light);
-  border: 1px solid var(--brass-primary);
+  background: linear-gradient(135deg, #6B111D 0%, #8A1726 50%, #520C15 100%);
+  color: #FFFDF9;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  box-shadow: 0 4px 16px rgba(107, 17, 29, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.22);
   padding: 13px 16px;
   border-radius: var(--radius-md);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 800;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 8px;
   transition: var(--transition-fast);
   text-decoration: none;
+  letter-spacing: 0.3px;
 }
 .btn-tariff-phone:hover {
-  background: #253344;
+  background: linear-gradient(135deg, #7E1523 0%, #9C1B2C 50%, #5E0D18 100%);
+  box-shadow: 0 6px 20px rgba(107, 17, 29, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
   color: #FFFDF9;
+  transform: translateY(-1px);
+}
+
+.btn-tariff-call-crimson-gloss {
+  flex: 1;
+  background: linear-gradient(135deg, #6B111D 0%, #8A1726 50%, #520C15 100%);
+  color: #FFFDF9 !important;
+  border: 1px solid rgba(212, 175, 55, 0.65) !important;
+  box-shadow: 0 4px 16px rgba(107, 17, 29, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition-fast);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+.btn-tariff-call-crimson-gloss:hover {
+  background: linear-gradient(135deg, #7E1523 0%, #9C1B2C 50%, #5E0D18 100%);
+  box-shadow: 0 6px 20px rgba(107, 17, 29, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: #FFFDF9 !important;
+  transform: translateY(-1px);
 }
 
 /* ==================== 3. EDITORIAL DINING EXPERIENCE (DINE) ==================== */
@@ -8533,4 +8619,140 @@ body.theme-dark .dish-media .dish-img {
   .skeleton-shimmer {
     animation: none ;
     background: rgba(220,215,205,0.5) ;}}
+
+/* ==================== REVIEWS GUEST TYPE & MEDIA ATTACH ==================== */
+.guest-type-selector-field {
+  margin-bottom: 20px;
+}
+.guest-type-chips-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.guest-type-chip {
+  flex: 1 1 160px;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  position: relative;
+}
+.guest-type-chip input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.guest-type-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1.5px solid rgba(186, 169, 144, 0.45);
+  color: var(--text-dark);
+  transition: var(--transition-fast);
+  text-align: center;
+}
+.guest-type-chip input[type="radio"]:checked + .guest-type-btn {
+  background: linear-gradient(135deg, rgba(107, 17, 29, 0.12), rgba(166, 107, 21, 0.14));
+  border-color: #6B111D;
+  color: #6B111D;
+  box-shadow: 0 2px 8px rgba(107, 17, 29, 0.15);
+}
+body.theme-dark .guest-type-btn {
+  background: rgba(20, 31, 45, 0.8);
+  border-color: rgba(197, 168, 128, 0.3);
+  color: #E2E8F0;
+}
+body.theme-dark .guest-type-chip input[type="radio"]:checked + .guest-type-btn {
+  background: rgba(107, 17, 29, 0.45);
+  border-color: #E8CA85;
+  color: #FFFDF9;
+}
+
+.feedback-media-attach-field {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.feedback-media-attach-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.feedback-media-file-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+}
+.btn-attach-media {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px dashed #A66B15;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+.btn-attach-media:hover {
+  background: rgba(166, 107, 21, 0.08);
+  border-style: solid;
+}
+body.theme-dark .btn-attach-media {
+  background: rgba(20, 31, 45, 0.85);
+  color: #E2E8F0;
+  border-color: #D6A23B;
+}
+.feedback-media-preview-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: rgba(186, 169, 144, 0.2);
+  border-radius: var(--radius-md);
+}
+.media-preview-thumb-wrap img, .media-preview-thumb-wrap video {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+.btn-remove-attached-media {
+  background: none;
+  border: none;
+  color: #C0392B;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+/* ==================== SMOOTH HARDWARE-ACCELERATED SECTION TRANSITIONS ==================== */
+@keyframes sectionFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.section-wrapper {
+  animation: sectionFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.category-section {
+  animation: sectionFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

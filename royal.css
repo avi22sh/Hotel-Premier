@@ -1050,8 +1050,20 @@ body.theme-dark .guest-utility-sheet .form-input { background:rgba(255,255,255,.
 }
 .last-call-actions-row {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
+  align-items: stretch;
+}
+.last-call-actions-row > * {
+  flex: 1 1 240px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
 }
 .enquiry-title-icon {
   display: inline-flex;

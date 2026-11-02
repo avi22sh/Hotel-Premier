@@ -467,10 +467,10 @@ class HotelPremierAdmin {
         if (marathiName) childDish.marathiName = marathiName;
         if (descriptionHi) childDish.descriptionHi = descriptionHi;
         if (descriptionMr) childDish.descriptionMr = descriptionMr;
-        await window.HOTEL_STORAGE.saveDishOverride(childDish.id, { name, price, description, hindiName, marathiName, descriptionHi, descriptionMr });
+        await window.HOTEL_STORAGE.saveDishOverride(childDish.id, { name, price, description, hindiName, marathiName, descriptionHi, descriptionMr, fieldUpdatedAt: { name: Date.now(), price: Date.now(), description: Date.now() }, updatedAt: Date.now() });
       }
 
-      await window.HOTEL_STORAGE.saveDishOverride(dish.id, { variants: dish.variants });
+      await window.HOTEL_STORAGE.saveDishOverride(dish.id, { variants: dish.variants, fieldUpdatedAt: { variants: Date.now() }, updatedAt: Date.now() });
       window.app.saveMenuData();
       window.app.renderCategoryCards();
       window.app.renderMenu();
@@ -744,9 +744,9 @@ class HotelPremierAdmin {
         const childDish = window.app.menuData.find(d => (d.groupedUnder === dish.id || d.id === variant.id) && (d.name === variant.name));
         if (childDish) {
           childDish.image = this.tempImageSource;
-          await window.HOTEL_STORAGE.saveDishOverride(childDish.id, { image: this.tempImageSource, rawOriginalImage: this.rawOriginalSource || this.tempImageSource });
+          await window.HOTEL_STORAGE.saveDishOverride(childDish.id, { image: this.tempImageSource, rawOriginalImage: this.rawOriginalSource || this.tempImageSource, fieldUpdatedAt: { image: Date.now() }, updatedAt: Date.now() });
         }
-        await window.HOTEL_STORAGE.saveDishOverride(dish.id, { variants: dish.variants });
+        await window.HOTEL_STORAGE.saveDishOverride(dish.id, { variants: dish.variants, fieldUpdatedAt: { variants: Date.now() }, updatedAt: Date.now() });
         window.app.saveMenuData();
         window.app.renderCategoryCards();
         window.app.renderMenu();
@@ -759,7 +759,7 @@ class HotelPremierAdmin {
         return true;
       }
 
-      const record=await window.HOTEL_STORAGE.saveDishOverride(dish.id,{image:this.tempImageSource,rawOriginalImage:this.rawOriginalSource||this.tempImageSource,enhancementStatus:'original'});
+      const record=await window.HOTEL_STORAGE.saveDishOverride(dish.id,{image:this.tempImageSource,rawOriginalImage:this.rawOriginalSource||this.tempImageSource,enhancementStatus:'original',fieldUpdatedAt: { image: Date.now() }, updatedAt: Date.now()});
       dish.image=record.image;window.app.saveMenuData();window.app.renderCategoryCards();window.app.renderMenu();
       if(window.app.currentCategory&&window.app.currentCategory!=='all')await window.app.renderSectionSlideshow(window.app.currentCategory);
       window.dispatchEvent(new CustomEvent('hp-media-updated',{detail:{dishId:dish.id,image:dish.image}}));

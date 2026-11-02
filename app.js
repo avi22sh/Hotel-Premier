@@ -1013,8 +1013,20 @@ class HotelPremierApp {
         if(published&&publishedAt>0)for(const [key,value]of Object.entries(published)){
           if(key==='id')continue;
           const editedAt=Number(ov.fieldUpdatedAt?.[key]??ov.updatedAt??ov.lastEnhancedAt)||0;
-          const untrackedUpload=key==='image'&&!editedAt&&/^(?:blob:|data:image\/)/.test(ov.image||'');
-          if(!untrackedUpload&&editedAt<=publishedAt)copy[key]=value;
+          const hasVariantUploads = key === 'variants' && Array.isArray(ov.variants) && ov.variants.some(v => v && v.image && /^(?:blob:|data:image\/)/.test(v.image));
+          const untrackedUpload=(key==='image'&&!editedAt&&/^(?:blob:|data:image\/)/.test(ov.image||'')) || hasVariantUploads;
+          if(!untrackedUpload&&editedAt<=publishedAt) {
+            copy[key]=value;
+          } else if (hasVariantUploads && Array.isArray(value)) {
+            // Preserve local variant photo uploads while keeping published pricing/text
+            copy.variants = value.map((pubV, idx) => {
+              const localV = (ov.variants && (ov.variants[idx] || ov.variants.find(v => v.name === pubV.name))) || null;
+              if (localV && localV.image && /^(?:blob:|data:image\/)/.test(localV.image)) {
+                return { ...pubV, image: localV.image };
+              }
+              return pubV;
+            });
+          }
         }
       }
       return copy;
@@ -2229,13 +2241,33 @@ class HotelPremierApp {
 
       if (hasSearch) {
         const q = this.searchQuery.toLowerCase().trim();
-        const matchName = [item.name,item.hindiName,item.marathiName].some(name=>typeof name==='string' && name.toLowerCase().includes(q));
-        const matchDesc = (item.description && item.description.toLowerCase().includes(q)) || (item.descriptionHi && item.descriptionHi.toLowerCase().includes(q)) || (item.descriptionMr && item.descriptionMr.toLowerCase().includes(q));
-        const matchTag = item.tags && item.tags.some(t => t.toLowerCase().includes(q));
+        const tokens = q.split(/\s+/).filter(Boolean);
+
+        // Smart string matcher: matches exact substring, word boundary, word prefix, or initial acronyms
+        const matchString = (str) => {
+          if (!str || typeof str !== 'string') return false;
+          const s = str.toLowerCase();
+          if (s.includes(q)) return true;
+          const words = s.split(/[\s,–—\-\/]+/).filter(Boolean);
+          // 1. Initial acronym match: e.g. "bn" for "Butter Naan", "mp" for "Masala Papad"
+          if (q.length >= 2 && words.length >= 2) {
+            const initials = words.map(w => w[0]).join('');
+            if (initials.startsWith(q) || initials.includes(q)) return true;
+          }
+          // 2. First name, last name, or any individual word matching / prefix
+          if (words.some(w => w.startsWith(q) || w === q)) return true;
+          // 3. Multi-token match: all tokens present across words
+          if (tokens.length > 1 && tokens.every(tok => words.some(w => w.includes(tok) || w.startsWith(tok)))) return true;
+          return false;
+        };
+
+        const matchName = [item.name, item.hindiName, item.marathiName].some(matchString);
+        const matchDesc = [item.description, item.descriptionHi, item.descriptionMr].some(d => typeof d === 'string' && (d.toLowerCase().includes(q) || (tokens.length > 1 && tokens.every(tok => d.toLowerCase().includes(tok)))));
+        const matchTag = item.tags && item.tags.some(t => typeof t === 'string' && (t.toLowerCase().includes(q) || matchString(t)));
         const matchVariant = visibleVariants.some(v =>
-          (v.name && v.name.toLowerCase().includes(q)) ||
-          (v.hindiName && v.hindiName.toLowerCase().includes(q)) ||
-          (v.marathiName && v.marathiName.toLowerCase().includes(q)) ||
+          matchString(v.name) ||
+          matchString(v.hindiName) ||
+          matchString(v.marathiName) ||
           (v.description && v.description.toLowerCase().includes(q))
         );
 
@@ -5109,11 +5141,13 @@ class HotelPremierApp {
     if (!comments || comments.length>2000) return fail('Please add your feedback, up to 2,000 characters.','feedback-guest-comments');
     if (!name || name.length>100) return fail('Please enter your name, up to 100 characters.','feedback-guest-name');
     if (rawPhone && !this.isValidIndianMobile(phone)) return fail('Please check your mobile number, or leave it blank.','feedback-guest-phone');
+    const guestType = document.querySelector('input[name="guest-experience-type"]:checked')?.value || 'Room Guest';
     const entry = {
-      name, phone, comments, rating,
+      name, phone, comments, rating, guestType,
       region:get('feedback-guest-region').value,
       tableOrRoom:get('feedback-table-num').value.trim(),
-      tags:Array.from(document.querySelectorAll('#feedback-tags-container .feedback-chip.active')).map(chip=>chip.innerText.trim())
+      tags:Array.from(document.querySelectorAll('#feedback-tags-container .feedback-chip.active')).map(chip=>chip.innerText.trim()),
+      attachedMedia: this.attachedFeedbackMedia ? { name: this.attachedFeedbackMedia.name, type: this.attachedFeedbackMedia.type } : null
     };
     let copyMessage = 'No new feedback copy was saved in this step.';
     if (get('feedback-keep-copy').checked) {
@@ -5126,12 +5160,16 @@ class HotelPremierApp {
       }
     }
     const message = [
-      'HOTEL PREMIER — GUEST FEEDBACK', 'Rating: '+rating+' / 5',
-      'Feedback: '+comments, 'Name: '+name,
+      'HOTEL PREMIER — GUEST FEEDBACK',
+      'Guest Type: ' + (guestType === 'Room Guest' ? 'Room Stay' : 'Pride Pure Veg Dining'),
+      'Rating: '+rating+' / 5',
+      'Feedback: '+comments,
+      'Name: '+name,
       phone ? 'Reply number: '+phone : '',
       entry.region ? 'City / region: '+entry.region : '',
       entry.tableOrRoom ? 'Room / table: '+entry.tableOrRoom : '',
-      entry.tags.length ? 'Highlights: '+entry.tags.join(', ') : ''
+      entry.tags.length ? 'Highlights: '+entry.tags.join(', ') : '',
+      this.attachedFeedbackMedia ? 'Attachment: ' + this.attachedFeedbackMedia.name + ' (Sharing in WhatsApp)' : ''
     ].filter(Boolean).join('\n');
     const link = get('feedback-whatsapp-link');
     link.href='https://wa.me/919325375802?text='+encodeURIComponent(message);
@@ -5142,6 +5180,60 @@ class HotelPremierApp {
     handoff.style.display='block'; handoff.focus();
     handoff.scrollIntoView({behavior:'smooth',block:'center'});
     return false;
+  }
+
+  setGuestExperienceType(type) {
+    this.guestExperienceType = type;
+  }
+
+  handleFeedbackMediaAttach(input) {
+    const file = input?.files?.[0];
+    if (!file) return;
+    if (file.size > 50 * 1024 * 1024) {
+      this.showToast('Please select a file under 50MB.', 'error');
+      input.value = '';
+      return;
+    }
+    const isVideo = file.type.startsWith('video/');
+    const isImage = file.type.startsWith('image/');
+    if (!isVideo && !isImage) {
+      this.showToast('Please select an image or video file.', 'error');
+      input.value = '';
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      this.attachedFeedbackMedia = {
+        name: file.name,
+        type: file.type,
+        dataUrl: e.target.result
+      };
+      const previewBox = document.getElementById('feedback-media-preview-box');
+      const thumbWrap = document.getElementById('media-preview-thumb-wrap');
+      const labelText = document.getElementById('attach-btn-text');
+      if (thumbWrap) {
+        thumbWrap.innerHTML = isVideo
+          ? `<video src="${e.target.result}" muted playsinline></video>`
+          : `<img src="${e.target.result}" alt="Attached media preview">`;
+      }
+      if (previewBox) previewBox.hidden = false;
+      if (labelText) labelText.textContent = file.name.length > 20 ? file.name.slice(0, 17) + '...' : file.name;
+      this.showToast('Media attached! You can also share it directly when WhatsApp opens.', 'info');
+    };
+    reader.readAsDataURL(file);
+  }
+
+  removeAttachedFeedbackMedia() {
+    this.attachedFeedbackMedia = null;
+    const input = document.getElementById('feedback-media-upload');
+    if (input) input.value = '';
+    const previewBox = document.getElementById('feedback-media-preview-box');
+    const thumbWrap = document.getElementById('media-preview-thumb-wrap');
+    const labelText = document.getElementById('attach-btn-text');
+    if (previewBox) previewBox.hidden = true;
+    if (thumbWrap) thumbWrap.innerHTML = '';
+    if (labelText) labelText.textContent = 'Add Photo / Short Video';
   }
 
   // ==================== 7. MASTER DEVELOPER VAULT CONTROLS ====================
