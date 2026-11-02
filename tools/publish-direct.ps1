@@ -94,17 +94,24 @@ try {
     if (-not (Test-Path $distDir)) { New-Item -ItemType Directory -Path $distDir -Force | Out-Null }
     Copy-Item $indexFile (Join-Path $distDir "index.html") -Force
     Copy-Item $indexFile (Join-Path $distDir "404.html") -Force
+    Copy-Item $swFile (Join-Path $distDir "sw.js") -Force
+    $distDataDir = Join-Path $distDir "data"
+    if (-not (Test-Path $distDataDir)) { New-Item -ItemType Directory -Path $distDataDir -Force | Out-Null }
+    Copy-Item $overridesFile (Join-Path $distDataDir "published-overrides.js") -Force
 
     # If node is available, run build-public-dist
     if (Get-Command node -ErrorAction SilentlyContinue) {
         node (Join-Path $rootDir "tools\build-public-dist.cjs") | Out-Null
     }
 
-    # 6. Execute Git Commit & Push
+    # 6. Execute Git Commit & Push (if changes exist)
     git add assets/menu-uploads data/published-overrides.js sw.js index.html dist/
-    $commitMsg = "feat(crm): 1-click live publish from Admin Studio (v$newVer)"
-    git commit -m $commitMsg | Out-Null
-    git push origin main | Out-Null
+    $hasChanges = (git status --porcelain).Trim().Length -gt 0
+    if ($hasChanges) {
+        $commitMsg = "feat(crm): 1-click live publish from Admin Studio (v$newVer)"
+        git commit -m $commitMsg | Out-Null
+        git push origin main | Out-Null
+    }
 
     $commitHash = (git rev-parse --short HEAD).Trim()
 
