@@ -29,7 +29,7 @@
 .hp-inline-4399c1870bce { display: none; color: var(--burgundy-primary); }
 .hp-inline-3ed01b32340f { font-size: 0.75rem; font-weight: 800; color: var(--burgundy-deep); text-transform: uppercase; }
 .hp-inline-55a84b34c8ee { font-size: 0.68rem; color: #16A34A; font-weight: 600; }
-.hp-inline-dd777021bed8 { flex: 1.2; }
+.hp-inline-dd777021bed8 { flex: 1; }
 .hp-inline-126244f1351e { flex: 1; }
 .hp-inline-edcafd9ec31c { margin: 24px 0 20px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-ambient); border: 1px solid var(--ivory-border); position: relative; background: #0E1620; }
 .hp-inline-77b2f9ade32a { width: 100%; max-height: 280px; object-fit: cover; object-position: center 35%; display: block; }

@@ -8781,5 +8781,10 @@ body.theme-dark .btn-attach-media {
 }
 #home-categories-view,
 #dishes-section-view {
-  animation: menuViewFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: menuViewFadeIn 0.16s ease-out;
+  will-change: opacity, transform;
+  transform: translateZ(0);
+}
+.recent-searches-bar {
+  display: none !important;
 }

@@ -26,7 +26,7 @@ window.HOTEL_PREMIER_I18N = {
       // Sanctuary Home
       sanctuaryBadge: 'A Sanctuary in Bhusawal',
       sanctuaryStatement: 'Refined comfort, a warm Khandeshi welcome and pure-vegetarian dining. Discover 14 air-conditioned rooms, thoughtful essentials and a quieter place to unwind in Bhusawal.',
-      pill24hr: '<span class="pill-main">⏰ 24-Hour Flexible Check-Out</span><span class="pill-sub">(Direct Bookings Only)</span>',
+      pill24hr: '<span class="pill-main">⏰ 24 Hours C/Out</span><span class="pill-sub">(Direct Bookings Only)</span>',
       pill5min: '<span class="pill-main">🚆 Approx. 3 km</span><span class="pill-sub">from Railway Junction</span>',
       pillVeg: '<span class="pill-main">🌱 Pride Pure Veg</span><span class="pill-sub">AC Restaurant Dining</span>',
       pillParking: '<span class="pill-main">🚗 Free Private</span><span class="pill-sub">Bus &amp; Car Parking</span>',

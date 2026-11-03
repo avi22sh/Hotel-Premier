@@ -531,6 +531,7 @@ class HotelPremierApp {
   }
 
   renderRecentSearches() {
+    return; // Recent searches disabled per UI refinement
     const container = document.getElementById('recent-searches-list');
     const bar = document.getElementById('recent-searches-bar');
     if (!container || !bar) return;
@@ -1691,8 +1692,10 @@ class HotelPremierApp {
     this.renderSectionSlideshow(catId);
     this.renderMenu();
 
-    // Smoothly scroll directly into category heading so user immediately sees dishes!
-    this.scrollCategoryToView();
+    // Smoothly scroll directly into category heading with RAF to prevent layout thrashing
+    requestAnimationFrame(() => {
+      this.scrollCategoryToView();
+    });
   }
 
   showHomeCategories() {
@@ -2258,8 +2261,9 @@ class HotelPremierApp {
             const initials = words.map(w => w[0]).join('');
             if (initials.startsWith(q) || initials.includes(q)) return true;
           }
-          // 2. First name, last name, or any individual word matching / prefix
-          if (words.some(w => w.startsWith(q) || w === q)) return true;
+          // 2. Initial name search: matches first word, last word, or any individual word prefix
+          if (words.some(w => w.startsWith(q))) return true;
+          if (words.length > 0 && (words[0].startsWith(q) || words[words.length - 1].startsWith(q))) return true;
           // 3. Multi-token match: all tokens present across words
           if (tokens.length > 1 && tokens.every(tok => words.some(w => w.includes(tok) || w.startsWith(tok)))) return true;
           return false;
@@ -4191,6 +4195,42 @@ class HotelPremierApp {
   }
 
   bindEvents() {
+    // Real-time photo & menu sync listener
+    window.addEventListener('hp-media-updated', (e) => {
+      const { dishId, image } = e.detail || {};
+      if (!dishId) return;
+      const dish = this.menuData ? this.menuData.find(d => d.id === dishId) : null;
+      if (dish) {
+        dish.image = image;
+        const cardImg = document.getElementById(`dish-img-el-${dishId}`);
+        if (cardImg && cardImg.tagName === 'IMG') {
+          if (image && image.trim() !== '') {
+            cardImg.removeAttribute('srcset');
+            cardImg.removeAttribute('sizes');
+            cardImg.src = image;
+            cardImg.hidden = false;
+          } else {
+            cardImg.hidden = true;
+          }
+        }
+        const modalImg = document.getElementById('detail-modal-img');
+        if (modalImg && this.currentDetailDishId === dishId) {
+          modalImg.removeAttribute('srcset');
+          modalImg.removeAttribute('sizes');
+          modalImg.src = image;
+        }
+        this.renderCategoryCards();
+        this.renderMenu();
+      }
+    });
+
+    window.addEventListener('hp-menu-updated', () => {
+      this.initMenuData().then(() => {
+        this.renderCategoryCards();
+        this.renderMenu();
+      });
+    });
+
     this.bindMenuSearchEvents();
 
     // Modal backdrop click-to-close & body scroll unlock
