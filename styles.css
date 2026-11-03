@@ -208,6 +208,8 @@ body.theme-dark .boutique-room-card,
 body.theme-dark .signature-dish-card,
 body.theme-dark .category-card,
 body.theme-dark .dish-card,
+body.theme-dark .compact-dish-card,
+body.theme-dark .home-pillar-card,
 body.theme-dark .tariff-suite-card,
 body.theme-dark .bulk-tier-card,
 body.theme-dark .calculator-card,
@@ -2460,7 +2462,7 @@ body.theme-dark .chip-period {
   flex-direction: column;
   flex: 1;
   justify-content: space-between;
-  background: #FFFFFF;
+  background: transparent;
 }
 
 .category-card-header-row {
@@ -2514,6 +2516,11 @@ body.theme-dark .chip-period {
   white-space: nowrap;
   line-height: 1.2;
 }
+body.theme-dark .star-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(223, 198, 154, 0.25);
+  color: #DFC69A;
+}
 
 .category-card-footer {
   margin-top: 6px;
@@ -2552,6 +2559,25 @@ body.theme-dark .chip-period {
   padding: 10px 14px;
   margin-bottom: 16px;
   box-shadow: var(--shadow-subtle);
+}
+body.theme-dark .section-nav-bar {
+  background: var(--glass-bg-card);
+  border-color: var(--glass-border);
+  color: #F8F6F0;
+}
+body.theme-dark .back-to-categories-btn {
+  background: rgba(223, 198, 154, 0.12);
+  border-color: rgba(223, 198, 154, 0.35);
+  color: #DFC69A;
+}
+body.theme-dark .culinary-drawer-search-wrap .search-input-wrapper {
+  background: var(--glass-bg-subtle);
+  border-color: var(--glass-border);
+}
+body.theme-dark .drawer-qf-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #CBD5E1;
 }
 
 .back-to-categories-btn {

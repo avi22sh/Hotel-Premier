@@ -205,7 +205,7 @@ class HotelPremierApp {
   // ==================== USER PREFERENCES ====================
   loadPreferences() {
     try {
-      const userTheme = localStorage.getItem('hotel_premier_theme_choice');
+      const userTheme = localStorage.getItem('hotel_premier_theme_choice') || localStorage.getItem(this.storageKeyTheme);
       this.themeMode = (userTheme === 'light' || userTheme === 'dark' || userTheme === 'system') ? userTheme : 'system';
       this.applyTheme();
 
@@ -622,6 +622,10 @@ class HotelPremierApp {
       resolvedTheme = prefersDark ? 'dark' : 'light';
     }
 
+    document.documentElement.dataset.theme = resolvedTheme;
+    document.body.dataset.theme = resolvedTheme;
+    document.documentElement.classList.toggle('theme-dark', resolvedTheme === 'dark');
+    document.documentElement.classList.toggle('theme-light', resolvedTheme === 'light');
     document.body.classList.toggle('theme-dark', resolvedTheme === 'dark');
     document.body.classList.toggle('theme-light', resolvedTheme === 'light');
     document.documentElement.style.colorScheme = resolvedTheme;

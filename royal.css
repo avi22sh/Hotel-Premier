@@ -96,7 +96,7 @@ body.theme-dark {
   background-attachment: fixed;
   color: var(--royal-ink);
 }
-body :is(.dish-card, .boutique-room-card, .tariff-suite-card, .modal-sheet, .settings-panel, .feedback-container, .review-card, .ota-booking-panel, .attraction-card, .route-start-card) {
+body :is(.dish-card, .compact-dish-card, .category-card, .boutique-room-card, .tariff-suite-card, .modal-sheet, .settings-panel, .feedback-container, .review-card, .ota-booking-panel, .attraction-card, .route-start-card) {
   background: var(--royal-surface); 
   border: 1px solid var(--royal-edge); 
   color: var(--royal-ink);
