@@ -232,7 +232,7 @@ class HotelPremierApp {
         const btn = document.getElementById('font-size-toggle-btn');
         if (btn) btn.innerHTML = '<span class="hp-inline-d88f59571365">A-</span>';
       }
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
   }
 
   setThemeMode(mode) {
@@ -241,7 +241,7 @@ class HotelPremierApp {
     try {
       localStorage.setItem('hotel_premier_theme_choice', mode);
       localStorage.setItem(this.storageKeyTheme, mode);
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
     this.applyTheme();
     this.haptic(15);
   }
@@ -262,7 +262,7 @@ class HotelPremierApp {
       if (typeof navigator !== 'undefined' && 'vibrate' in navigator) {
         navigator.vibrate(ms);
       }
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
   }
 
   // ==================== FAVORITES & BOOKMARKS SYSTEM ====================
@@ -323,7 +323,7 @@ class HotelPremierApp {
     }
     try {
       localStorage.setItem(this.storageKeyFavorites, JSON.stringify(this.favorites));
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
 
     this.updateFavoritesBadges();
 
@@ -526,12 +526,11 @@ class HotelPremierApp {
     }
     try {
       localStorage.setItem(this.storageKeyRecentSearches, JSON.stringify(this.recentSearches));
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
     this.renderRecentSearches();
   }
 
   renderRecentSearches() {
-    return; // Recent searches disabled per UI refinement
     const container = document.getElementById('recent-searches-list');
     const bar = document.getElementById('recent-searches-bar');
     if (!container || !bar) return;
@@ -623,12 +622,16 @@ class HotelPremierApp {
       resolvedTheme = prefersDark ? 'dark' : 'light';
     }
 
-    document.documentElement.dataset.theme = resolvedTheme;
-    document.body.dataset.theme = resolvedTheme;
-    document.documentElement.classList.toggle('theme-dark', resolvedTheme === 'dark');
-    document.documentElement.classList.toggle('theme-light', resolvedTheme === 'light');
-    document.body.classList.toggle('theme-dark', resolvedTheme === 'dark');
-    document.body.classList.toggle('theme-light', resolvedTheme === 'light');
+    if (document.documentElement?.dataset) document.documentElement.dataset.theme = resolvedTheme;
+    if (document.body?.dataset) document.body.dataset.theme = resolvedTheme;
+    if (document.documentElement.classList) {
+      document.documentElement.classList.toggle('theme-dark', resolvedTheme === 'dark');
+      document.documentElement.classList.toggle('theme-light', resolvedTheme === 'light');
+    }
+    if (document.body && document.body.classList) {
+      document.body.classList.toggle('theme-dark', resolvedTheme === 'dark');
+      document.body.classList.toggle('theme-light', resolvedTheme === 'light');
+    }
     document.documentElement.style.colorScheme = resolvedTheme;
 
     const themeMeta = document.querySelector('meta[name="theme-color"]');
@@ -785,7 +788,7 @@ class HotelPremierApp {
         } else {
           window.location.hash = hashName;
         }
-      } catch (e) {}
+      } catch (e) { console.error('loadPreferences error:', e); }
     }
 
     // Settle startup without relying on newer ScrollBehavior enum values.
@@ -835,7 +838,7 @@ class HotelPremierApp {
     }
     try {
       localStorage.setItem(this.storageKeyLang, lang);
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
 
     document.documentElement.lang = lang;
     this.updateLangButtons();
@@ -985,7 +988,7 @@ class HotelPremierApp {
       try {
         const savedOverrides = localStorage.getItem(this.storageKeyOverrides);
         if (savedOverrides) overridesMap = JSON.parse(savedOverrides);
-      } catch (e) {}
+      } catch (e) { console.error('loadPreferences error:', e); }
     }
 
     // 2. Base on fresh initial menu so new dish photos/updates always load
@@ -1067,7 +1070,7 @@ class HotelPremierApp {
           this.menuData = reordered;
         }
       }
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
 
     if (!this.menuData || this.menuData.length === 0) {
       this.menuData = initialMenu;
@@ -1103,7 +1106,7 @@ class HotelPremierApp {
       try {
         const idOrder = this.menuData.map(d => d.id);
         localStorage.setItem('hp_menu_dish_order', JSON.stringify(idOrder));
-      } catch (e) {}
+      } catch (e) { console.error('loadPreferences error:', e); }
       this.notifyMenuUpdate();
     } catch (e) {
       console.warn('Could not save to localStorage cache:', e);
@@ -1127,7 +1130,7 @@ class HotelPremierApp {
           }
         };
       }
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
   }
 
   notifyMenuUpdate(scope='menu') {
@@ -1135,7 +1138,7 @@ class HotelPremierApp {
     if (this.broadcast) {
       try {
         this.broadcast.postMessage({ type: 'MENU_UPDATED', scope, timestamp: Date.now() });
-      } catch (e) {}
+      } catch (e) { console.error('loadPreferences error:', e); }
     }
   }
 
@@ -3264,7 +3267,7 @@ class HotelPremierApp {
         const url = new URL(candidate);
         const domain = `${platform}.com`;
         if (url.protocol === 'https:' && (url.hostname === domain || url.hostname.endsWith(`.${domain}`))) return url.href;
-      } catch (e) {}
+      } catch (e) { console.error('loadPreferences error:', e); }
     }
     return restaurants[platform];
   }
@@ -4505,7 +4508,7 @@ class HotelPremierApp {
     try {
       const saved = localStorage.getItem('hp_guest_profile');
       if (saved) return JSON.parse(saved);
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
     return { name: '', phone: '', tableOrRoom: '', region: 'Bhusawal Local' };
   }
 
@@ -5139,7 +5142,7 @@ class HotelPremierApp {
     if (banner) banner.style.display = 'none';
     try {
       sessionStorage.setItem('hp_dismiss_welcome_banner', 'true');
-    } catch (e) {}
+    } catch (e) { console.error('loadPreferences error:', e); }
   }
 
   // ==================== 6. GUEST FEEDBACK & DINING RATINGS ====================
@@ -5185,7 +5188,7 @@ class HotelPremierApp {
     if (!comments || comments.length>2000) return fail('Please add your feedback, up to 2,000 characters.','feedback-guest-comments');
     if (!name || name.length>100) return fail('Please enter your name, up to 100 characters.','feedback-guest-name');
     if (rawPhone && !this.isValidIndianMobile(phone)) return fail('Please check your mobile number, or leave it blank.','feedback-guest-phone');
-    const guestType = document.querySelector('input[name="guest-experience-type"]:checked')?.value || 'Room Guest';
+    const guestType = (typeof document.querySelector === 'function' ? document.querySelector('input[name="guest-experience-type"]:checked')?.value : null) || this.currentGuestExperienceType || 'Room Guest';
     const entry = {
       name, phone, comments, rating, guestType,
       region:get('feedback-guest-region').value,
@@ -5259,7 +5262,7 @@ class HotelPremierApp {
       if (thumbWrap) {
         thumbWrap.innerHTML = isVideo
           ? `<video src="${e.target.result}" muted playsinline></video>`
-          : `<img src="${e.target.result}" alt="Attached media preview">`;
+          : `<img src="${e.target.result}" alt="Attached media preview" width="44" height="44">`;
       }
       if (previewBox) previewBox.hidden = false;
       if (labelText) labelText.textContent = file.name.length > 20 ? file.name.slice(0, 17) + '...' : file.name;

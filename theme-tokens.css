@@ -1,8 +1,8 @@
-/* Theme authority: semantic tokens resolve after the preserved component cascade. */
+﻿/* Theme authority: semantic tokens resolve after the preserved component cascade. */
 :root,body.theme-light {
  --surface:rgba(246,242,235,.94); --surface-secondary:#DFD6C5;
- --text:#161D26; --muted:#4F5665; --border:#BAA990; --accent:#7A531C;
- --danger:#a32435; --focus:#7A531C; --positive:#23603d;
+ --text:#161d26; --muted:#4f5665; --border:#9b8a70; --accent:#7a531c;
+ --danger:#a32435; --focus:#7a531c; --positive:#23603d;
 }
 body.theme-dark {
  --surface:rgba(24,32,44,.94); --surface-secondary:#202b3a;
@@ -616,6 +616,15 @@ body.theme-dark :is(input,select,textarea) { color-scheme:dark; }
 #admin-modal-backdrop input[type="file"]::file-selector-button,#image-replace-modal input[type="file"]::file-selector-button { padding:.5rem .75rem; margin-inline-end:.75rem; border:1px solid var(--gold-edge); border-radius:.5rem; background:var(--gold-polish); color:var(--gold-ink); font:600 .85rem/1.5 var(--font-sans,system-ui); cursor:pointer; }
 @media(max-width:639px) { #admin-modal-backdrop .admin-nav-tabs { max-height:none; overflow-y:hidden; flex:0 0 auto; } #admin-tab-content :is(.hp-inline-501b92e084e0,.hp-inline-141f9279a48d) { width:44px; height:44px; min-height:44px; } }
 
+body.theme-dark :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
+ background:rgba(24, 35, 50, 0.78); border-color:rgba(223, 198, 154, 0.22);
+ box-shadow:0 10px 36px rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
+ color:#F8F6F0;
+}
+body.theme-dark :is(.section-wrapper,#guest-feedback-section,#concierge-booking-modal,#guest-profile-modal) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="file"]),select,textarea) {
+ background:rgba(18, 26, 38, 0.85); color:#F8F6F0; border-color:rgba(223, 198, 154, 0.25); color-scheme:dark;
+}
+
 /* Champagne glass and tariff-matched heritage red and gold plating: light mode only. */
 body.theme-light {
  --heading-accent:#6b111d;
@@ -857,13 +866,4 @@ html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite
  body.theme-light :is(#section-home,#section-stay,#section-tariffs,#section-dine,#section-concierge,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-story-title,.editorial-title,.section-title,.dining-main-heading,.celebrate-title,.feedback-title,.atmosphere-gallery-title,.amenities-banner-title),
  body.theme-light :is(#section-stay,#section-tariffs) .direct-booking-privilege-card :is(.privilege-pill,.privilege-saving),
  body.theme-light #concierge-booking-modal .enquiry-privilege > :is(span,strong) { background:none; color:CanvasText; border-color:CanvasText; box-shadow:none; -webkit-text-fill-color:currentColor; }
-}
-
-body.theme-dark :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
- background:rgba(24, 35, 50, 0.78); border-color:rgba(223, 198, 154, 0.22);
- box-shadow:0 10px 36px rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
- color:#F8F6F0;
-}
-body.theme-dark :is(.section-wrapper,#guest-feedback-section,#concierge-booking-modal,#guest-profile-modal) :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"]):not([type="file"]),select,textarea) {
- background:rgba(18, 26, 38, 0.85); color:#F8F6F0; border-color:rgba(223, 198, 154, 0.25); color-scheme:dark;
 }

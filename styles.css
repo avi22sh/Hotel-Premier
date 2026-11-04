@@ -8647,7 +8647,6 @@ body.theme-dark .dish-media .dish-img {
   .skeleton-shimmer {
     animation: none ;
     background: rgba(220,215,205,0.5) ;}}
-}
 
 /* ==================== REVIEWS GUEST TYPE & MEDIA ATTACH ==================== */
 .guest-type-selector-field {
@@ -8787,4 +8786,5 @@ body.theme-dark .btn-attach-media {
 }
 .recent-searches-bar {
   display: none !important;
+}
 }
