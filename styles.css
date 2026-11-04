@@ -5798,6 +5798,30 @@ body.theme-dark .tier-perks-list li {
   margin: 20px 0;
 }
 
+.footer-email-link {
+  color: var(--accent, #e5c07b);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+.footer-email-link:hover,
+.footer-email-link:focus-visible {
+  color: #ffffff;
+}
+
+.contact-email-link {
+  color: var(--accent, #c5a880);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 600;
+  transition: color var(--transition-fast, 0.2s ease);
+}
+.contact-email-link:hover,
+.contact-email-link:focus-visible {
+  color: var(--primary, #8B1E28);
+}
+
 .footer-bottom-bar {
   margin-top: 32px;
   padding-top: 22px;
