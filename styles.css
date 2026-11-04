@@ -854,15 +854,15 @@ a {
 }
 
 body:not(.theme-dark) .sanctuary-pill {
-  background: rgba(246, 242, 235, 0.85);
-  border-color: rgba(186, 169, 144, 0.45);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(197, 168, 128, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 body:not(.theme-dark) .sanctuary-pill .pill-main {
-  color: #161D26;
+  color: #FFFDF9;
 }
 body:not(.theme-dark) .sanctuary-pill .pill-sub {
-  color: #8A5D1E;
+  color: #E2B961;
 }
 
 /* Concierge Fast Action Cards */
