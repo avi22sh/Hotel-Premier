@@ -750,6 +750,7 @@ class HotelPremierAdmin {
         window.app.saveMenuData();
         window.app.renderCategoryCards();
         window.app.renderMenu();
+        window.dispatchEvent(new CustomEvent('hp-media-updated', { detail: { dishId: dish.id, image: this.tempImageSource } }));
         if (request === this.previewRequestId) {
           this.closeImageModal();
           if (this.currentTab === 'photos') this.renderPhotoLibrary(document.getElementById('admin-tab-content'));
