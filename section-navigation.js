@@ -2,7 +2,7 @@
 (() => {
  'use strict';
  const sections=[['section-home','home'],['section-stay','stay'],['section-tariffs','tariffs'],['section-dine','dine'],['section-celebrate','celebrate'],['section-explore','explore'],['guest-feedback-section','reviews'],['section-contact','contact']];
- const protectedSelector='button,a,input,select,textarea,summary,label,[contenteditable],[role="slider"],form,.form-group,.quantity-stepper,.calculator-card,.wizard-summary-card,#group-stay-enquiry,.dish-card-variant-chips,.dish-card-chip,.room-carousel-container,.attraction-img-wrap,.atmosphere-card,#restaurant-hero-carousel,#section-slideshow-container,.hero-carousel-wrapper,.section-slideshow-container,.section-carousel-container,.section-slides-container,.app-header,.app-footer,img,video,canvas,svg';
+ const protectedSelector='button,a,input,select,textarea,summary,label,[contenteditable],[role="slider"],[role="button"],form,.form-group,.quantity-stepper,.calculator-card,.wizard-summary-card,#group-stay-enquiry,.dish-card,.compact-dish-card,.dish-grid,#menu-items-grid,.menu-search-wrapper,.category-chips-container,.dish-card-variant-chips,.dish-card-chip,.room-carousel-container,.attraction-img-wrap,.atmosphere-card,#restaurant-hero-carousel,#section-slideshow-container,.hero-carousel-wrapper,.section-slideshow-container,.section-carousel-container,.section-slides-container,.app-header,.app-footer,img,video,canvas,svg';
  let current='section-home',start=null,ghost=null;
  const index=()=>sections.findIndex(([id])=>id===current);
  const label=id=>{const row=sections.find(([key])=>key===id);return row?(document.getElementById('tab-nav-'+row[1])?.textContent||'').replace(/\s+/g,' ').trim().replace(/^[^\p{L}\p{N}]+/u,''):'';};

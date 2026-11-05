@@ -825,6 +825,30 @@ window.HOTEL_PREMIER_I18N = {
       desc_hi: 'Blue Lagoon, Fruit Punch, Virgin Mojito, Sunrise',
       desc_mr: 'Blue Lagoon, Fruit Punch, Virgin Mojito, Sunrise'
     },
+    'milkshakes': {
+      en: 'Milkshakes',
+      hi: 'मिल्कशेक',
+      mr: 'मिल्कशेक',
+      desc_en: 'Vanilla, Chocolate, Mango & Dryfruit Milkshakes',
+      desc_hi: 'वैनिला, चॉकलेट, मैंगो एवं ड्राईफ्रूट मिल्कशेक',
+      desc_mr: 'व्हॅनिला, चॉकलेट, मँगो व ड्रायफ्रूट मिल्कशेक'
+    },
+    'mastani': {
+      en: 'Mastani',
+      hi: 'मस्तानी',
+      mr: 'मस्तानी',
+      desc_en: 'Royal Pune Mango & Dryfruit Mastani',
+      desc_hi: 'शाही मैंगो एवं ड्राईफ्रूट मस्तानी',
+      desc_mr: 'शाही मँगो व ड्रायफ्रूट मस्तानी'
+    },
+    'cold-coffee': {
+      en: 'Cold Coffee',
+      hi: 'कोल्ड कॉफी',
+      mr: 'कोल्ड कॉफी',
+      desc_en: 'Rich Blended Cold Coffee & Cold Coffee with Ice Cream',
+      desc_hi: 'रिच ब्लेन्डेड कोल्ड कॉफी एवं आइसक्रीम के साथ',
+      desc_mr: 'रिच ब्लेन्डेड कोल्ड कॉफी व आईस्क्रीमसह'
+    },
     'milkshake-mastani': {
       en: 'Milkshake & Mastani',
       hi: 'Milkshake & Mastani',

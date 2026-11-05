@@ -15,8 +15,8 @@ for(const row of csv){const values=[...row.matchAll(/"((?:[^"]|"")*)"/g)].map(m=
 const c={window:{}};vm.runInNewContext(fs.readFileSync('data/menu-data.js','utf8'),c);
 const fudge=c.window.HOTEL_PREMIER_INITIAL_MENU.find(d=>d.id==='mm-2');
 assert.equal(fudge.image,'assets/brand-placeholder.svg','Fudge must never use a soup photo');
-const shake=c.window.HOTEL_PREMIER_INITIAL_MENU.find(d=>d.id==='ms-4');
-assert.equal(shake.image,'assets/brand-placeholder.svg');assert.ok(shake.variants.every(v=>v.image==='assets/brand-placeholder.svg'));
+const shakes=c.window.HOTEL_PREMIER_INITIAL_MENU.filter(d=>d.categoryId==='milkshakes');
+assert.ok(shakes.length >= 8);assert.ok(shakes.every(s=>s.image==='assets/brand-placeholder.svg'));
 assert.doesNotMatch(fs.readFileSync('data/menu-data.js','utf8'),/images\.unsplash\.com/);
 for(const file of ['index.html','app.js','admin.js','asset-pipeline.js'])for(const [tag]of fs.readFileSync(file,'utf8').matchAll(/<img\b(?:\s+(?:"[^"]*"|'[^']*'|[^'">])*)?>/g)) {
  assert.match(tag,/\swidth="[\d]+"/,file);assert.match(tag,/\sheight="[\d]+"/,file);

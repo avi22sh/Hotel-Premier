@@ -1851,6 +1851,186 @@ body.theme-dark .chip-period {
   line-height: 1.45;
 }
 
+/* Direct Action & Royal Concierge Showcase */
+.tariff-concierge-showcase {
+  margin: 32px auto 16px auto;
+  max-width: 880px;
+  background: var(--surface-card, #FFFFFF);
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  border-radius: var(--radius-lg, 16px);
+  padding: 24px 20px 20px 20px;
+  box-shadow: 0 10px 32px rgba(107, 17, 29, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.concierge-showcase-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.concierge-crown-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold-primary, #B8860B);
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.concierge-showcase-title {
+  font-family: var(--font-serif, 'Playfair Display', serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary, #1A1A1A);
+  margin: 0 0 6px 0;
+}
+.concierge-showcase-sub {
+  font-size: 0.84rem;
+  color: var(--text-secondary, #666);
+  margin: 0 auto;
+  max-width: 650px;
+  line-height: 1.45;
+}
+.concierge-email-link {
+  color: var(--gold-primary, #B8860B);
+  text-decoration: underline;
+  font-weight: 600;
+}
+.tariff-action-banners-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+@media (min-width: 680px) {
+  .tariff-action-banners-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.tariff-royal-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md, 12px);
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.tariff-royal-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+}
+.tariff-royal-banner:hover {
+  transform: translateY(-2px);
+}
+.tariff-royal-banner.banner-whatsapp {
+  background: linear-gradient(135deg, #0d5c2e 0%, #15803d 50%, #0a4622 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.45);
+  box-shadow: 0 6px 20px rgba(21, 128, 61, 0.3);
+  color: #FFFFFF;
+}
+.tariff-royal-banner.banner-whatsapp:hover {
+  box-shadow: 0 8px 24px rgba(21, 128, 61, 0.45);
+}
+.tariff-royal-banner.banner-phone {
+  background: linear-gradient(135deg, #6B111D 0%, #8E1727 45%, #B32035 60%, #520C15 100%);
+  border: 1.5px solid rgba(212, 175, 55, 0.65);
+  box-shadow: 0 6px 20px rgba(107, 17, 29, 0.38);
+  color: #FFFDF9;
+}
+.tariff-royal-banner.banner-phone:hover {
+  box-shadow: 0 8px 26px rgba(107, 17, 29, 0.55);
+}
+.royal-banner-icon-badge {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.royal-action-svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+.royal-banner-content {
+  flex: 1;
+  min-width: 0;
+}
+.royal-banner-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  opacity: 0.92;
+  margin-bottom: 2px;
+}
+.status-indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-emerald { background: #4ADE80; box-shadow: 0 0 6px #4ADE80; }
+.dot-gold { background: #FDE047; box-shadow: 0 0 6px #FDE047; }
+.royal-banner-headline {
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  line-height: 1.25;
+}
+.royal-banner-sub {
+  font-size: 0.76rem;
+  opacity: 0.88;
+  line-height: 1.3;
+  margin-top: 3px;
+}
+.royal-banner-action-pill {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+}
+.action-arrow {
+  font-size: 0.86rem;
+  transition: transform 0.2s ease;
+}
+.tariff-royal-banner:hover .action-arrow {
+  transform: translateX(3px);
+}
+
+[data-theme="dark"] .tariff-concierge-showcase {
+  background: rgba(28, 20, 22, 0.85);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+}
+[data-theme="dark"] .concierge-showcase-title {
+  color: #F8F5EE;
+}
+[data-theme="dark"] .concierge-showcase-sub {
+  color: rgba(248, 245, 238, 0.72);
+}
+
 /* Direct Action Bar */
 .tariff-direct-actions-bar {
   display: flex;

@@ -481,11 +481,19 @@ class HotelPremierApp {
     pattern = pattern.toLowerCase();
     if (text.includes(pattern)) return true;
 
+    const patLen = pattern.length;
+    const maxLenDiff = Math.floor(patLen * (1 - threshold) / threshold) + 2;
+
     const words = text.split(/\s+/);
     for (const word of words) {
-      if (this.calculateSimilarity(word, pattern) >= threshold) return true;
+      if (Math.abs(word.length - patLen) <= maxLenDiff) {
+        if (this.calculateSimilarity(word, pattern) >= threshold) return true;
+      }
     }
-    return this.calculateSimilarity(text, pattern) >= threshold;
+    if (Math.abs(text.length - patLen) <= maxLenDiff) {
+      return this.calculateSimilarity(text, pattern) >= threshold;
+    }
+    return false;
   }
 
   calculateSimilarity(s1, s2) {
@@ -495,6 +503,8 @@ class HotelPremierApp {
     const shorter = s1.length > s2.length ? s2 : s1;
     const longerLength = longer.length;
     if (longerLength === 0) return 1.0;
+    const shorterLength = shorter.length;
+    if (shorterLength / longerLength < 0.5) return 0;
 
     const costs = [];
     for (let i = 0; i <= s1.length; i++) {
@@ -1227,6 +1237,7 @@ class HotelPremierApp {
   startHeroAutoSlide() {
     if (this.heroAutoInterval) clearInterval(this.heroAutoInterval);
     this.heroAutoInterval = setInterval(() => {
+      if (document.hidden || this.activeSection !== 'section-dine' || document.body.classList.contains('modal-open')) return;
       this.nextHeroSlide();
     }, 4500);
   }
@@ -1385,7 +1396,7 @@ class HotelPremierApp {
   startSectionAutoSlide() {
     if (this.sectionAutoInterval) clearInterval(this.sectionAutoInterval);
     this.sectionAutoInterval = setInterval(() => {
-      if (document.hidden || document.body.classList.contains('modal-open')) return;
+      if (document.hidden || this.activeSection !== 'section-dine' || document.body.classList.contains('modal-open')) return;
       this.nextSectionSlide();
     }, 4000);
   }
@@ -1530,7 +1541,7 @@ class HotelPremierApp {
       'starters': ['tandoor-classics', 'indo-chinese', 'tasty-tidbits', 'premier-soups'],
       'curries': ['paneer-specialties', 'vegetable-specialties', 'kofta-delights', 'flavorful-dals', 'delivery-thalis'],
       'grains': ['rice-biryani', 'signature-breads', 'sizzling-rice-noodles', 'pasta-section'],
-      'desserts': ['mithai-magic', 'frozen-fantasies', 'mocktails', 'milkshake-mastani', 'chilled-beverages', 'fresh-addons']
+      'desserts': ['mithai-magic', 'frozen-fantasies', 'mocktails', 'milkshakes', 'mastani', 'cold-coffee', 'chilled-beverages', 'fresh-addons']
     };
 
     let displayCats = allCategories;
@@ -2105,7 +2116,7 @@ class HotelPremierApp {
       breakfast: ['morning-delights', 'hot-hearty', 'tasty-tidbits', 'premier-soups', 'indo-chinese', 'tandoor-classics', 'pasta-section'],
       main: ['vegetable-specialties', 'veg-specialties', 'kofta-delights', 'paneer-specialties', 'signature-breads', 'tandoor-rotis', 'khandeshi-specialties', 'thali-combos', 'delivery-thalis'],
       rice: ['flavorful-dals', 'rice-biryani', 'fresh-addons', 'sizzling-rice-noodles', 'sides-accompaniments'],
-      beverages: ['mithai-magic', 'frozen-fantasies', 'desserts', 'mocktails', 'milkshake-mastani', 'chilled-beverages']
+      beverages: ['mithai-magic', 'frozen-fantasies', 'desserts', 'mocktails', 'milkshakes', 'mastani', 'cold-coffee', 'chilled-beverages']
     };
 
     const allowed = groupMap[groupKey];
@@ -2536,7 +2547,7 @@ class HotelPremierApp {
     }
 
     return `
-      <div class="dish-card compact-dish-card dish-card-stagger ${isMaster ? 'group-master-card' : ''} ${dish.isSoldOut ? 'sold-out' : ''}"
+      <div class="dish-card compact-dish-card dish-card-stagger in-view ${isMaster ? 'group-master-card' : ''} ${dish.isSoldOut ? 'sold-out' : ''}"
            id="dish-card-${dish.id}"
            onclick="window.app.openDishDetail('${detailId}'${detailVariant})"
            role="button"
@@ -4141,50 +4152,57 @@ class HotelPremierApp {
 
       searchInput.addEventListener('input', (e) => {
         clearTimeout(this._searchLogTimer);
+        clearTimeout(this._searchRenderTimer);
         this.setMenuSearch(e.target.value);
         if (clearBtn) {
           clearBtn.style.display = this.searchQuery.length > 0 ? 'flex' : 'none';
         }
 
-        if (this.searchQuery.trim().length > 0) {
-          if (this.searchQuery.trim().length >= 2) {
-            clearTimeout(this._searchLogTimer);
-            this._searchLogTimer = setTimeout(() => {
-              if (window.HOTEL_VAULT) {
-                window.HOTEL_VAULT.recordSearchQuery(this.searchQuery);
-              }
-              this.saveRecentSearch(this.searchQuery);
-            }, 1000);
+        const runSearchRender = () => {
+          if (this.searchQuery.trim().length > 0) {
+            if (this.searchQuery.trim().length >= 2) {
+              clearTimeout(this._searchLogTimer);
+              this._searchLogTimer = setTimeout(() => {
+                if (window.HOTEL_VAULT) {
+                  window.HOTEL_VAULT.recordSearchQuery(this.searchQuery);
+                }
+                this.saveRecentSearch(this.searchQuery);
+              }, 1000);
+            }
+            this.viewMode = 'section';
+            const homeView = document.getElementById('home-categories-view');
+            const dishesView = document.getElementById('dishes-section-view');
+            if (homeView) homeView.style.display = 'none';
+            if (dishesView) dishesView.style.display = 'block';
+
+            const titleEl = document.getElementById('active-category-title');
+            const hindiEl = document.getElementById('active-category-hindi');
+            const countEl = document.getElementById('active-category-count');
+            if (titleEl) titleEl.innerText = `Search: "${this.searchQuery}"`;
+            if (hindiEl) hindiEl.innerText = this.t('filterAll', 'Search Results');
+
+            const filtered = this.getFilteredDishes();
+            const itemsWord = this.t('itemsCount', 'Items');
+            if (countEl) countEl.innerText = `${filtered.length} ${itemsWord}`;
+
+            this.renderSectionSlideshow(null);
+            this.renderMenu();
+          } else if (this.viewMode === 'home') {
+            this.showHomeCategories();
+          } else {
+            this.renderMenu();
           }
-          this.viewMode = 'section';
-          const homeView = document.getElementById('home-categories-view');
-          const dishesView = document.getElementById('dishes-section-view');
-          if (homeView) homeView.style.display = 'none';
-          if (dishesView) dishesView.style.display = 'block';
+        };
 
-          const titleEl = document.getElementById('active-category-title');
-          const hindiEl = document.getElementById('active-category-hindi');
-          const countEl = document.getElementById('active-category-count');
-          if (titleEl) titleEl.innerText = `Search: "${this.searchQuery}"`;
-          if (hindiEl) hindiEl.innerText = this.t('filterAll', 'Search Results');
-
-          const filtered = this.getFilteredDishes();
-          const itemsWord = this.t('itemsCount', 'Items');
-          if (countEl) countEl.innerText = `${filtered.length} ${itemsWord}`;
-
-          this.renderSectionSlideshow(null);
-          this.renderMenu();
-        } else if (this.viewMode === 'home') {
-          this.showHomeCategories();
-        } else {
-          this.renderMenu();
-        }
+        // 35ms micro-debounce prevents stuttering/freezing on rapid keystrokes or mobile text swipes
+        this._searchRenderTimer = setTimeout(runSearchRender, 35);
       });
     }
 
     if (clearBtn) {
       clearBtn.addEventListener('click', () => {
         this.haptic(5);
+        clearTimeout(this._searchRenderTimer);
         if (searchInput) searchInput.value = '';
         this.searchQuery = '';
         clearBtn.style.display = 'none';

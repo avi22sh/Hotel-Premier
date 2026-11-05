@@ -174,13 +174,31 @@ window.HOTEL_PREMIER_CATEGORIES = [
     description: 'Blue Lagoon, Fruit Punch, Green Goddess, Sunrise & Pink Lady'
   },
   { 
-    id: 'milkshake-mastani', 
-    name: 'Milkshake & Mastani', 
-    hindiName: 'मिल्कशेक एवं मस्तानी',
-    marathiName: 'मिल्कशेक व मस्तानी',
+    id: 'milkshakes', 
+    name: 'Milkshakes', 
+    hindiName: 'मिल्कशेक',
+    marathiName: 'मिल्कशेक',
     icon: '🥤', 
     image: 'assets/brand-placeholder.svg',
-    description: 'Mango Mastani, Hotel Premier Special Mastani & Thick Milkshakes'
+    description: 'Vanilla, Chocolate, Mango & Dryfruit Milkshakes (With or Without Ice Cream)'
+  },
+  { 
+    id: 'mastani', 
+    name: 'Mastani', 
+    hindiName: 'मस्तानी',
+    marathiName: 'मस्तानी',
+    icon: '🍧', 
+    image: 'assets/brand-placeholder.svg',
+    description: 'Rich royal Pune-style thick Mango & Dryfruit Mastani garnished with dry fruits'
+  },
+  { 
+    id: 'cold-coffee', 
+    name: 'Cold Coffee', 
+    hindiName: 'कोल्ड कॉफी',
+    marathiName: 'कोल्ड कॉफी',
+    icon: '🧋', 
+    image: 'assets/brand-placeholder.svg',
+    description: 'Chilled rich blended coffee with or without velvety ice cream scoop'
   },
   { 
     id: 'chilled-beverages', 
@@ -238,7 +256,7 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "sizzling-rice-noodles": [
     { "id": "all", "name": "All Rice & Noodles", "hindiName": "सभी राइस व नूडल्स", "marathiName": "सर्व राईस व नूडल्स" },
-    { "id": "fried-rice", "name": "Fried Rice Varieties", "hindiName": "फ्राइड राइस", "marathiName": "फ्राईड राईस", "dishIds": ["rn-fried-rice-group", "rn-1", "rn-2", "rn-3", "rn-4", "rn-5"] },
+    { "id": "fried-rice", "name": "Fried Rice Varieties", "hindiName": "फ्राइड राइस", "marathiName": "फ्राईड राईस", "dishIds": ["rn-fried-rice-group", "rn-1", "rn-2", "rn-3", "rn-4", "rn-5", "rn-11"] },
     { "id": "noodles", "name": "Hakka & Schezwan Noodles", "hindiName": "नूडल्स", "marathiName": "नूडल्स", "dishIds": ["rn-noodles-group", "rn-6", "rn-7", "rn-8", "rn-9", "rn-10"] }
   ],
   "delivery-thalis": [
@@ -248,7 +266,7 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
   ],
   "vegetable-specialties": [
     { "id": "all", "name": "All Sabzi", "hindiName": "सभी सब्ज़ियां", "marathiName": "सर्व भाज्या" },
-    { "id": "khandeshi-special", "name": "Khandeshi Shev Bhaji & Pride Special", "hindiName": "खानदेशी एवं प्राइड स्पेशल", "marathiName": "खानदेशी व प्राईड स्पेशल", "dishIds": ["vs-1", "vs-2"] },
+    { "id": "khandeshi-special", "name": "Khandeshi Shev Bhaji & Pride Special", "hindiName": "खानदेशी एवं प्राइड स्पेशल", "marathiName": "खानदेशी व प्राईड स्पेशल", "dishIds": ["vs-1", "vs-2", "vs-doodh-shev", "vs-shev-latpat"] },
     { "id": "kaju-gravy", "name": "Kaju Curry & Masala", "hindiName": "काजू करी एवं मसाला", "marathiName": "काजू करी व मसाला", "dishIds": ["vs-3", "vs-24"] },
     { "id": "handi-kadai", "name": "Handi & Kadai Curries", "hindiName": "हांडी एवं कड़ाही", "marathiName": "हांडी व कढाई", "dishIds": ["vs-5", "vs-6", "vs-7", "vs-12", "vs-13", "vs-14", "vs-17", "vs-21"] },
     { "id": "greens-homestyle", "name": "Palak, Methi & Homestyle", "hindiName": "हरी सब्ज़ियां व दाल", "marathiName": "पालक, मेथी व सुक्या भाज्या", "dishIds": ["vs-4", "vs-8", "vs-9", "vs-10", "vs-11", "vs-15", "vs-16", "vs-18", "vs-19", "vs-20", "vs-22", "vs-23", "vs-25"] }
@@ -305,10 +323,18 @@ window.HOTEL_PREMIER_SUB_CATEGORIES = {
     { "id": "coolers", "name": "Citrus & Sparkling Coolers", "hindiName": "स्पार्कलिंग ड्रिंक्स", "marathiName": "स्पार्कलिंग ड्रिंक्स", "dishIds": ["mc-1", "mc-3", "mc-4", "mc-5"] },
     { "id": "fruit-punch", "name": "Signature Fruit Punch", "hindiName": "फ्रूट पंच", "marathiName": "फ्रूट पंच", "dishIds": ["mc-2"] }
   ],
-  "milkshake-mastani": [
-    { "id": "all", "name": "All Shakes", "hindiName": "सभी मस्तानी व शेक्स", "marathiName": "सर्व मस्तानी व शेक्स" },
-    { "id": "mastani", "name": "Pune Special Mastani", "hindiName": "स्पेशल मस्तानी", "marathiName": "स्पेशल मस्तानी", "dishIds": ["ms-1", "ms-2", "ms-3"] },
-    { "id": "shakes", "name": "Thick Milkshakes & Cold Coffee", "hindiName": "मिल्कशेक व कोल्ड कॉफी", "marathiName": "मिल्कशेक व कोल्ड कॉफी", "dishIds": ["ms-4", "ms-5", "ms-6", "ms-7"] }
+  "milkshakes": [
+    { "id": "all", "name": "All Milkshakes", "hindiName": "सभी मिल्कशेक", "marathiName": "सर्व मिल्कशेक" },
+    { "id": "classic-shakes", "name": "Classic & Flavoured Shakes", "hindiName": "क्लासिक शेक्स", "marathiName": "क्लासिक शेक्स", "dishIds": ["ms-vanilla", "ms-vanilla-icecream", "ms-chocolate", "ms-chocolate-icecream", "ms-mango", "ms-mango-icecream"] },
+    { "id": "dryfruit-shakes", "name": "Dryfruit Shakes", "hindiName": "ड्राई फ्रूट शेक्स", "marathiName": "ड्रायफ्रूट शेक्स", "dishIds": ["ms-dryfruit", "ms-dryfruit-icecream"] }
+  ],
+  "mastani": [
+    { "id": "all", "name": "All Mastani", "hindiName": "सभी मस्तानी", "marathiName": "सर्व मस्तानी" },
+    { "id": "pune-mastani", "name": "Royal Pune Mastani", "hindiName": "शाही मस्तानी", "marathiName": "शाही मस्तानी", "dishIds": ["ms-1", "ms-3"] }
+  ],
+  "cold-coffee": [
+    { "id": "all", "name": "All Cold Coffee", "hindiName": "सभी कोल्ड कॉफी", "marathiName": "सर्व कोल्ड कॉफी" },
+    { "id": "blended-coffee", "name": "Blended Cold Coffee", "hindiName": "ब्लेन्डेड कॉफी", "marathiName": "ब्लेन्डेड कॉफी", "dishIds": ["ms-cold-coffee", "ms-7"] }
   ],
   "chilled-beverages": [
     { "id": "all", "name": "All Drinks", "hindiName": "सभी शीतल पेय", "marathiName": "सर्व थंड पेये" },
@@ -1648,7 +1674,9 @@ const ICE_CREAM_VARIANTS = [
     image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
     description: 'Traditional royal ice cream loaded with cashew nuts and sweet raisins.',
     descriptionHi: 'कुरकुरे काजू और किशमिश के टुकड़ों से भरा स्वादिष्ट आइसक्रीम।',
-    descriptionMr: 'काजूचे काप आणि मनुका घातलेला शाही चवीचा आईस्क्रीम.'
+    descriptionMr: 'काजूचे काप आणि मनुका घातलेला शाही चवीचा आईस्क्रीम.',
+    hidden: true,
+    notAvailable: true
   },
   {
     name: 'Afghan Dry Fruit Ice Cream',
@@ -2097,6 +2125,16 @@ const FRIED_RICE_VARIANTS = [
     description: 'Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.',
     descriptionHi: 'भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।',
     descriptionMr: 'परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात.'
+  },
+  {
+    name: 'Veg Manchurian Rice',
+    hindiName: 'वेज मंचूरियन राइस',
+    marathiName: 'व्हेज मंचूरियन राईस',
+    price: 240,
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg',
+    description: 'Aromatic wok-tossed basmati rice blended with savoury golden vegetable Manchurian balls in rich oriental seasonings.',
+    descriptionHi: 'खस्ता वेज मंचूरियन बॉल्स और ताज़ी सब्जियों के साथ वोक में भुना हुआ स्वादिष्ट राइस।',
+    descriptionMr: 'चवदार व्हेज मंचूरियन बॉल्स आणि भाज्यांसोबत परतून तयार केलेला खास मंचूरियन राईस.'
   },
   {
     name: 'Veg Triple Schezwan Rice',
@@ -4062,6 +4100,25 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     groupedUnder: 'rn-fried-rice-group'
   },
   {
+    id: 'rn-11',
+    categoryId: 'sizzling-rice-noodles',
+    name: 'Veg Manchurian Rice',
+    hindiName: 'वेज मंचूरियन राइस',
+    marathiName: 'व्हेज मंचूरियन राईस',
+    description: "Aromatic wok-tossed basmati rice blended with savoury golden vegetable Manchurian balls in rich oriental seasonings.",
+    descriptionHi: 'खस्ता वेज मंचूरियन बॉल्स और ताज़ी सब्जियों के साथ वोक में भुना हुआ स्वादिष्ट राइस।',
+    descriptionMr: 'चवदार व्हेज मंचूरियन बॉल्स आणि भाज्यांसोबत परतून तयार केलेला खास मंचूरियन राईस.',
+    price: 240,
+    tags: ['veg', 'chef-special'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg',
+    rating: 4.8,
+    prepTime: '15 mins',
+    variants: FRIED_RICE_VARIANTS,
+    groupedUnder: 'rn-fried-rice-group'
+  },
+  {
     id: 'rn-6',
     categoryId: 'sizzling-rice-noodles',
     name: 'Veg Triple Schezwan Noodles',
@@ -4247,6 +4304,40 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     isSoldOut: false,
     image: 'assets/menu-images/veg-specialities/shev-bhaji.jpg',
     rating: 4.9,
+    prepTime: '15 mins'
+  },
+  {
+    id: 'vs-doodh-shev',
+    categoryId: 'vegetable-specialties',
+    name: 'Doodh Shev Bhaji',
+    hindiName: 'दूध शेव भाजी',
+    marathiName: 'दूध शेव भाजी',
+    description: "A rich Khandeshi delicacy of crisp sev simmered in a mildly spiced, creamy milk and aromatic onion gravy.",
+    descriptionHi: 'ताज़ा दूध और हल्के मसालों की समृद्ध ग्रेवी में बनी स्वादिष्ट खानदेशी दूध शेव भाजी।',
+    descriptionMr: 'ताजे दूध आणि खमंग मसाल्यांच्या चवदार रश्श्यात बनवलेली प्रसिद्ध दूध शेव भाजी.',
+    price: 180,
+    tags: ['veg', 'khandeshi-special'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/veg-specialities/shev-bhaji.jpg',
+    rating: 4.8,
+    prepTime: '15 mins'
+  },
+  {
+    id: 'vs-shev-latpat',
+    categoryId: 'vegetable-specialties',
+    name: 'Shev Latpat',
+    hindiName: 'शेव लटपट',
+    marathiName: 'शेव लटपट',
+    description: "Authentic Khandeshi semi-dry thick spicy masala gravy enveloping crisp golden sev.",
+    descriptionHi: 'गाढ़ी और चटपटी खानदेशी मसालेदार ग्रेवी में लिपटी हुई कुरकुरी शेव लटपट।',
+    descriptionMr: 'झणझणीत खानदेशी मसाल्यात लटपटलेली अस्सल चवीची कुरकुरीत शेव लटपट.',
+    price: 180,
+    tags: ['veg', 'khandeshi-special', 'spicy'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/menu-images/veg-specialities/shev-bhaji.jpg',
+    rating: 4.8,
     prepTime: '15 mins'
   },
   {
@@ -6295,8 +6386,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '5 mins'
   },
   {
-    id: 'ff-3',
-    categoryId: 'frozen-fantasies', groupedUnder: 'ff-ice-cream-group',
+    id: 'ff-3', categoryId: 'frozen-fantasies', groupedUnder: 'ff-ice-cream-group', notAvailable: true, hidden: true,
     name: 'Kaju Draksh Ice Cream',
     hindiName: 'काजू द्राक्ष आइसक्रीम',
     marathiName: 'काजू द्राक्ष आईस्क्रीम',
@@ -6448,10 +6538,165 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     prepTime: '8 mins'
   },
 
-  // ==================== MILKSHAKE & MASTANI ====================
+  // ==================== MILKSHAKES ====================
+  {
+    id: 'ms-vanilla',
+    categoryId: 'milkshakes',
+    name: 'Vanilla Milkshake',
+    hindiName: 'वैनिला मिल्कशेक',
+    marathiName: 'व्हॅनिला मिल्कशेक',
+    description: 'Chilled rich dairy milkshake flavored with aromatic natural vanilla bean extract.',
+    descriptionHi: 'ताज़ा ठंडे दूध और प्राकृतिक वैनिला बीन से बना मलाईदार क्लासिक मिल्कशेक।',
+    descriptionMr: 'थंडगार ताजे दूध आणि नैसर्गिक व्हॅनिलाच्या सुवासाने तयार केलेला मऊ मिल्कशेक.',
+    price: 120,
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'ms-vanilla-icecream',
+    categoryId: 'milkshakes',
+    name: 'Vanilla Milkshake with Ice Cream',
+    hindiName: 'वैनिला मिल्कशेक विथ आइसक्रीम',
+    marathiName: 'व्हॅनिला मिल्कशेक विथ आईस्क्रीम',
+    description: 'Smooth chilled vanilla milkshake served with a generous scoop of rich vanilla ice cream.',
+    descriptionHi: 'स्वादिष्ट वैनिला शेक के ऊपर भरपूर वैनिला आइसक्रीम का ठंडा मलाईदार स्कूप।',
+    descriptionMr: 'चवदार व्हॅनिला मिल्कशेकवर थंडगार व्हॅनिला आईस्क्रीमचा मोठा स्कूप.',
+    price: 150,
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.9,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'ms-chocolate',
+    categoryId: 'milkshakes',
+    name: 'Chocolate Milkshake',
+    hindiName: 'चॉकलेट मिल्कशेक',
+    marathiName: 'चॉकलेट मिल्कशेक',
+    description: 'Rich thick milkshake blended with pure Dutch cocoa and chocolate fudge.',
+    descriptionHi: 'डच कोको और चॉकलेट फज के साथ मिलाया गया गाढ़ा और स्वादिष्ट चॉकलेट शेक।',
+    descriptionMr: 'डच कोको आणि चॉकलेट फज एकत्र करून बनवलेला दाट व स्वादिष्ट चॉकलेट शेक.',
+    price: 130,
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'ms-chocolate-icecream',
+    categoryId: 'milkshakes',
+    name: 'Chocolate Milkshake with Ice Cream',
+    hindiName: 'चॉकलेट मिल्कशेक विथ आइसक्रीम',
+    marathiName: 'चॉकलेट मिल्कशेक विथ आईस्क्रीम',
+    description: 'Decadent chocolate milkshake crowned with a large scoop of chocolate dairy ice cream.',
+    descriptionHi: 'गाढ़े चॉकलेट शेक के ऊपर मलाईदार चॉकलेट आइसक्रीम का भरपूर स्कूप।',
+    descriptionMr: 'दाट चॉकलेट शेकवर रिच चॉकलेट आईस्क्रीमचा मखमली स्कूप.',
+    price: 160,
+    tags: ['veg', 'bestseller'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.9,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'ms-mango',
+    categoryId: 'milkshakes',
+    name: 'Mango Milkshake',
+    hindiName: 'मैंगो मिल्कशेक',
+    marathiName: 'मँगो मिल्कशेक',
+    description: 'Luscious tropical milkshake blended with sweet golden Alphonso mango pulp.',
+    descriptionHi: 'रसीले हापुस आम के पल्प और ठंडे दूध से बना मनपसंद मीठा मैंगो शेक।',
+    descriptionMr: 'हापूस आंब्याचा गोड गर आणि थंड दुधाचा अप्रतिम संगमाचा मँगो शेक.',
+    price: 130,
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'ms-mango-icecream',
+    categoryId: 'milkshakes',
+    name: 'Mango Milkshake with Ice Cream',
+    hindiName: 'मैंगो मिल्कशेक विथ आइसक्रीम',
+    marathiName: 'मँगो मिल्कशेक विथ आईस्क्रीम',
+    description: 'Thick mango milkshake topped with a rich velvety scoop of mango or vanilla ice cream.',
+    descriptionHi: 'गाढ़े मैंगो शेक के ऊपर ठंडी मखमली वैनिला या मैंगो आइसक्रीम का स्कूप।',
+    descriptionMr: 'दाट मँगो शेकवर थंडगार व्हॅनिला अथवा मँगो आईस्क्रीमचा मऊ स्कूप.',
+    price: 160,
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.9,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'ms-dryfruit',
+    categoryId: 'milkshakes',
+    name: 'Dryfruit Milkshake',
+    hindiName: 'ड्राई फ्रूट मिल्कशेक',
+    marathiName: 'ड्रायफ्रूट मिल्कशेक',
+    description: 'Wholesome power blend of soaked almonds, cashews, and pistachios in chilled milk.',
+    descriptionHi: 'भीगे हुए बादाम, काजू और पिस्ते को ठंडे गाढ़े दूध के साथ पीसकर बना पौष्टिक शेक।',
+    descriptionMr: 'भिजवलेले बदाम, काजू आणि पिस्ते थंड दुधात एकत्र फिरवून बनवलेला पौष्टिक शेक.',
+    price: 140,
+    tags: ['veg'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.8,
+    prepTime: '8 mins'
+  },
+  {
+    id: 'ms-dryfruit-icecream',
+    categoryId: 'milkshakes',
+    name: 'Dryfruit Milkshake with Ice Cream',
+    hindiName: 'ड्राई फ्रूट मिल्कशेक विथ आइसक्रीम',
+    marathiName: 'ड्रायफ्रूट मिल्कशेक विथ आईस्क्रीम',
+    description: 'Nutritious dry fruit shake topped with a rich dairy ice cream scoop and nut slivers.',
+    descriptionHi: 'ड्राई फ्रूट शेक के ऊपर मलाईदार आइसक्रीम का स्कूप और भुने मेवों की कतरन।',
+    descriptionMr: 'ड्रायफ्रूट शेकवर मखमली आईस्क्रीमचा स्कूप आणि सुका मेव्याचे खमंग काप.',
+    price: 170,
+    tags: ['veg', 'chef-special'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.9,
+    prepTime: '8 mins'
+  },
+
+  // ==================== MASTANI ====================
+  {
+    id: 'ms-3',
+    categoryId: 'mastani',
+    name: 'Dry Fruit Mastani',
+    hindiName: 'ड्राई फ्रूट मस्तानी',
+    marathiName: 'ड्रायफ्रूट मस्तानी',
+    description: 'Thick rich dry-fruit shake garnished with sliced almonds, pistachios, cashews, and ice cream.',
+    descriptionHi: 'काजू, बादाम और पिस्ता से बना गाढ़ा मिल्कशेक, ऊपर आइसक्रीम और मेवों की सजावट।',
+    descriptionMr: 'काजू, बदाम आणि पिस्त्याचा दाट मिल्कशेकमध्ये आईस्क्रीम आणि सुका मेव्याची भरपूर सजावट.',
+    price: 180,
+    tags: ['veg', 'chef-special'],
+    dietary: 'pure-veg',
+    isSoldOut: false,
+    image: 'assets/brand-placeholder.svg',
+    rating: 4.9,
+    prepTime: '10 mins'
+  },
   {
     id: 'ms-1',
-    categoryId: 'milkshake-mastani',
+    categoryId: 'mastani',
     name: 'Mango Mastani',
     hindiName: 'मैंगो मस्तानी',
     marathiName: 'मँगो मस्तानी',
@@ -6462,13 +6707,13 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/veg-specialities/veg-tawa-special.jpg',
+    image: 'assets/brand-placeholder.svg',
     rating: 5.0,
     prepTime: '10 mins'
   },
   {
     id: 'ms-2',
-    categoryId: 'milkshake-mastani',
+    categoryId: 'mastani',
     name: 'Special Mastani',
     hindiName: 'स्पेशल मस्तानी',
     marathiName: 'स्पेशल मस्तानी',
@@ -6479,86 +6724,35 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg',
+    notAvailable: true,
+    hidden: true,
+    image: 'assets/brand-placeholder.svg',
     rating: 5.0,
     prepTime: '10 mins'
   },
+
+  // ==================== COLD COFFEE ====================
   {
-    id: 'ms-3',
-    categoryId: 'milkshake-mastani',
-    name: 'Dry Fruit Mastani',
-    hindiName: 'ड्राई फ्रूट मस्तानी',
-    marathiName: 'ड्रायफ्रूट मस्तानी',
-    description: 'Thick rich dry-fruit shake garnished with sliced almonds, pistachios, cashews, and ice cream.',
-    descriptionHi: 'काजू, बादाम और पिस्ता से बना गाढ़ा मिल्कशेक, ऊपर आइसक्रीम और मेवों की सजावट।',
-    descriptionMr: 'काजू, बदाम आणि पिस्त्याचा दाट मिल्कशेकमध्ये आईस्क्रीम आणि सुका मेव्याची भरपूर सजावट.',
-    price: 180,
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/paneer-specialities/paneer-tikka-masala.jpg',
-    rating: 4.9,
-    prepTime: '10 mins'
-  },
-  {
-    id: 'ms-4',
-    categoryId: 'milkshake-mastani',
-    name: 'Vanilla / Chocolate Milkshake',
-    hindiName: 'वैनिला / चॉकलेट मिल्कशेक',
-    marathiName: 'व्हॅनिला / चॉकलेट मिल्कशेक',
-    description: 'Rich creamy chilled milkshake with choice of vanilla bean or Dutch chocolate.',
-    descriptionHi: 'गाढ़े ताज़ा दूध से बना ठंडा मलाईदार शेक, वैनिला या डच चॉकलेट के स्वाद में।',
-    descriptionMr: 'दाट ताज्या दुधापासून बनवलेला थंडगार शेक, व्हॅनिला किंवा चॉकलेटच्या स्वादात.',
-    price: 120,
-    variants: [
-      { name: 'Vanilla Shake', price: 120, image: 'assets/brand-placeholder.svg' },
-      { name: 'Chocolate Shake', price: 130, image: 'assets/brand-placeholder.svg' }
-    ],
-    tags: ['veg'],
+    id: 'ms-cold-coffee',
+    categoryId: 'cold-coffee',
+    name: 'Cold Coffee',
+    hindiName: 'कोल्ड कॉफी',
+    marathiName: 'कोल्ड कॉफी',
+    description: 'Chilled creamy frothy cold coffee blended with espresso and cold milk.',
+    descriptionHi: 'एस्प्रेसो और ठंडे दूध से झागदार व मलाईदार तैयार की गई क्लासिक कोल्ड कॉफी।',
+    descriptionMr: 'एस्प्रेसो आणि थंड दुधापासून फेसळलेली, दाट आणि चवदार क्लासिक कोल्ड कॉफी.',
+    price: 100,
+    tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
     image: 'assets/brand-placeholder.svg',
     rating: 4.8,
-    prepTime: '8 mins'
-  },
-  {
-    id: 'ms-5',
-    categoryId: 'milkshake-mastani',
-    name: 'Dry Fruit Milkshake',
-    hindiName: 'ड्राई फ्रूट मिल्कशेक',
-    marathiName: 'ड्रायफ्रूट मिल्कशेक',
-    description: 'Wholesome blend of soaked almonds, cashews, pistachios, and chilled whole milk.',
-    descriptionHi: 'भीगे हुए बादाम, काजू और पिस्ते को ठंडे गाढ़े दूध के साथ पीसकर बना पौष्टिक शेक।',
-    descriptionMr: 'भिजवलेले बदाम, काजू आणि पिस्ते थंड दुधात एकत्र फिरवून बनवलेला पौष्टिक शेक.',
-    price: 130,
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/signature-indian-breads/missi-roti.jpg',
-    rating: 4.8,
-    prepTime: '8 mins'
-  },
-  {
-    id: 'ms-6',
-    categoryId: 'milkshake-mastani',
-    name: 'Milkshake with Ice-Cream',
-    hindiName: 'मिल्कशेक विथ आइसक्रीम',
-    marathiName: 'मिल्कशेक विथ आईस्क्रीम',
-    description: 'Thick flavored milkshake topped with a large scoop of rich dairy ice cream.',
-    descriptionHi: 'गाढ़ा मनपसंद मिल्कशेक, जिसके ऊपर भरपूर मलाईदार आइसक्रीम का स्कूप परोसा जाता है।',
-    descriptionMr: 'दाट चवदार मिल्कशेक, ज्यावर आईस्क्रीमचा मोठा मऊ स्कूप दिला जातो.',
-    price: 150,
-    tags: ['veg'],
-    dietary: 'pure-veg',
-    isSoldOut: false,
-    image: 'assets/menu-images/accompaniments/boondi-raita.jpg',
-    rating: 4.9,
-    prepTime: '8 mins'
+    prepTime: '5 mins'
   },
   {
     id: 'ms-7',
-    categoryId: 'milkshake-mastani',
-    name: 'Cold Coffee with Ice-Cream',
+    categoryId: 'cold-coffee',
+    name: 'Cold Coffee with Ice Cream',
     hindiName: 'कोल्ड कॉफी विथ आइसक्रीम',
     marathiName: 'कोल्ड कॉफी विथ आईस्क्रीम',
     description: 'Rich blended creamy espresso cold coffee topped with dark chocolate drizzle and vanilla ice cream.',
@@ -6568,11 +6762,10 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/indo-chinese-nibbles/paneer-65.jpg',
+    image: 'assets/brand-placeholder.svg',
     rating: 4.9,
     prepTime: '8 mins'
   },
-
   // ==================== CHILLED & AERATED DRINKS ====================
   {
     id: 'cb-1',
