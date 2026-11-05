@@ -1166,18 +1166,29 @@ body:not(.theme-dark) .sanctuary-pill .pill-sub {
 .room-amenity-curation {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 7px;
   margin-bottom: 20px;
 }
 
 .room-amenity-tag {
-  background: #F7F5EE;
-  border: 1px solid rgba(197, 168, 128, 0.25);
-  padding: 4px 10px;
+  background: rgba(186, 169, 144, 0.14);
+  border: 1px solid rgba(197, 168, 128, 0.35);
+  padding: 5px 11px;
   border-radius: var(--radius-sm);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  color: #2D3748;
+  color: var(--text-dark, #2D3748);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: var(--transition-fast);
+}
+
+body.theme-dark .room-amenity-tag,
+[data-theme="dark"] .room-amenity-tag {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.3);
+  color: #F1F5F9;
 }
 
 /* Rate Card Pill Breakdown */
@@ -1689,9 +1700,25 @@ body.theme-dark .plan-inclusions-note {
   align-items: center;
   gap: 4px;
 }
-body.theme-dark .tariff-card-amenities span {
+body.theme-dark .tariff-card-amenities span,
+[data-theme="dark"] .tariff-card-amenities span {
   background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 175, 55, 0.3);
   color: #F1F5F9;
+}
+
+.tariff-room-choices {
+  display: flex;
+  gap: 10px;
+}
+.tariff-room-choices .btn-tariff-card-reserve {
+  flex: 1;
+}
+@media (max-width: 480px) {
+  .tariff-room-choices {
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 
 .tariff-card-action {
