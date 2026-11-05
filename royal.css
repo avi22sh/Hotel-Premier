@@ -1009,6 +1009,12 @@ body.theme-dark .guest-utility-sheet .form-input { background:rgba(255,255,255,.
   border-radius: 14px;
   box-shadow: 0 4px 18px rgba(217, 119, 6, 0.08);
 }
+body.theme-dark .last-call-front-desk-card,
+[data-theme="dark"] .last-call-front-desk-card {
+  background: linear-gradient(135deg, rgba(45, 28, 12, 0.78) 0%, rgba(30, 20, 10, 0.85) 100%);
+  border-color: rgba(217, 119, 6, 0.45);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
 .last-call-badge-row {
   display: flex;
   align-items: center;
