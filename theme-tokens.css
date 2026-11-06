@@ -528,7 +528,8 @@ body.theme-dark #section-explore :is(.route-directions-btn,.attraction-direction
 /* Purpose-led Contact actions: calls, messaging, maps and dining each have a place. */
 body:is(.theme-light,.theme-dark) #section-contact .contact-card .contact-frontdesk-action { background:linear-gradient(145deg,#842536,#5e101d); color:#ffe5b2; border:1px solid #b89660; box-shadow:inset 0 1px #ffffff30,0 4px 12px #5e101d20; }
 body:is(.theme-light,.theme-dark) #section-contact .contact-card .maps-btn { background:linear-gradient(145deg,#244d79,#143455); color:#fff3dc; border:1px solid #8da5bf; box-shadow:inset 0 1px #ffffff25; }
-body:is(.theme-light,.theme-dark) #section-contact .contact-card .contact-dining-action { background:var(--surface-secondary); color:var(--accent); border:1px solid var(--gold-edge); box-shadow:inset 0 1px #ffffff20; }
+body:is(.theme-light,.theme-dark) #section-contact .contact-card .contact-dining-action { background:linear-gradient(145deg,#842536,#5e101d); color:#ffe5b2; border:1px solid #b89660; box-shadow:inset 0 1px #ffffff30,0 4px 12px #5e101d20; }
+body:is(.theme-light,.theme-dark) #section-contact .contact-card .contact-dining-action:hover { background:linear-gradient(145deg,#962c3f,#6d1423); color:#fff; border-color:#d4af37; box-shadow:inset 0 1px #ffffff45,0 6px 16px #5e101d35; }
 body:is(.theme-light,.theme-dark) #section-explore .location-action-btns { display:grid; grid-template-columns:minmax(0,1fr); gap:.7rem; }
 body:is(.theme-light,.theme-dark) #section-explore .location-action-btns .btn-open-maps { color:#fff3dc; background:linear-gradient(145deg,#244d79,#143455); border:1px solid #8da5bf; box-shadow:inset 0 1px #ffffff25; }
 body:is(.theme-light,.theme-dark) #section-explore .location-action-btns .btn-share-driver { color:#fff; background:linear-gradient(145deg,#187c47,#126139); border:1px solid #6fb08c; box-shadow:inset 0 1px #ffffff25; }
@@ -616,7 +617,7 @@ body.theme-dark :is(input,select,textarea) { color-scheme:dark; }
 #admin-modal-backdrop input[type="file"]::file-selector-button,#image-replace-modal input[type="file"]::file-selector-button { padding:.5rem .75rem; margin-inline-end:.75rem; border:1px solid var(--gold-edge); border-radius:.5rem; background:var(--gold-polish); color:var(--gold-ink); font:600 .85rem/1.5 var(--font-sans,system-ui); cursor:pointer; }
 @media(max-width:639px) { #admin-modal-backdrop .admin-nav-tabs { max-height:none; overflow-y:hidden; flex:0 0 auto; } #admin-tab-content :is(.hp-inline-501b92e084e0,.hp-inline-141f9279a48d) { width:44px; height:44px; min-height:44px; } }
 
-body.theme-dark :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
+body.theme-dark :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery,.tariff-concierge-showcase) {
  background:rgba(24, 35, 50, 0.78); border-color:rgba(223, 198, 154, 0.22);
  box-shadow:0 10px 36px rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.35);
  color:#F8F6F0;
@@ -675,7 +676,7 @@ body.theme-light {
  --navy-polish:linear-gradient(155deg,#233143 0%,#172334 48%,#101a27 100%);
  --pearl-relief:inset 0 1px 0 #fffef8,inset 0 -1px 0 #bea06b55,0 5px 18px #61421416;
 }
-body.theme-light :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery) {
+body.theme-light :is(#section-home,#section-dine,#section-stay,#section-tariffs,#section-celebrate,#section-explore,#section-contact,#guest-feedback-section) :is(.home-pillar-card,.boutique-room-card,.tariff-suite-card,.compact-dish-card,.signature-dish-card,.category-card,.contact-card,.route-start-card,.explore-concierge-card,.calculator-card,.wizard-summary-card,.celebrate-hero-banner,.guarantee-card,.review-composer-card,.room-complimentary-amenities-banner,.hotel-atmosphere-gallery,.tariff-concierge-showcase) {
  background:var(--pearl-polish); border-color:var(--gold-edge); box-shadow:var(--pearl-relief);
 }
 body.theme-light :is(.home-pillar-body,.signature-card-body,.room-card-info-panel) { background:transparent; }

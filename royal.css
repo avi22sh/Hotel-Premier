@@ -207,7 +207,36 @@ body.theme-dark .wizard-summary-card .summary-row { color:var(--royal-muted); ga
 body.theme-dark .summary-grand-row strong { color:var(--royal-gold); }
 .wizard-summary-card :is(.btn-tariff-book-wa,.btn-tariff-call) { display:flex; align-items:center; justify-content:center; min-height:44px; padding:12px; border-radius:10px; font:inherit; font-size:.82rem; font-weight:700; text-align:center; text-decoration:none; white-space:normal; }
 .wizard-summary-card .btn-tariff-book-wa { background:linear-gradient(135deg, #1E8449 0%, #166534 100%); color:#fff; border:1px solid #2ECC71; box-shadow:0 4px 14px rgba(22,101,52,.25); }
-.wizard-summary-card .btn-tariff-call { background:var(--royal-surface); color:var(--royal-ink); border:1px solid var(--royal-edge); }
+.wizard-summary-card .btn-tariff-call:not(.btn-tariff-call-crimson-gloss) { background:var(--royal-surface); color:var(--royal-ink); border:1px solid var(--royal-edge); }
+.wizard-summary-card .btn-tariff-call.btn-tariff-call-crimson-gloss,
+.wizard-actions-row .btn-tariff-call.btn-tariff-call-crimson-gloss,
+.last-call-actions-row .btn-tariff-call.btn-tariff-call-crimson-gloss,
+.btn-tariff-call.btn-tariff-call-crimson-gloss {
+  background: linear-gradient(135deg, #6B111D 0%, #8A1726 50%, #520C15 100%) !important;
+  color: #FFFDF9 !important;
+  border: 1px solid rgba(212, 175, 55, 0.65) !important;
+  box-shadow: 0 4px 16px rgba(107, 17, 29, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  font-weight: 800 !important;
+}
+.wizard-summary-card .btn-tariff-call.btn-tariff-call-crimson-gloss span,
+.wizard-actions-row .btn-tariff-call.btn-tariff-call-crimson-gloss span,
+.last-call-actions-row .btn-tariff-call.btn-tariff-call-crimson-gloss span,
+.btn-tariff-call.btn-tariff-call-crimson-gloss span {
+  color: #FFFDF9 !important;
+}
+.wizard-summary-card .btn-tariff-call.btn-tariff-call-crimson-gloss:hover,
+.wizard-actions-row .btn-tariff-call.btn-tariff-call-crimson-gloss:hover,
+.last-call-actions-row .btn-tariff-call.btn-tariff-call-crimson-gloss:hover,
+.btn-tariff-call.btn-tariff-call-crimson-gloss:hover {
+  background: linear-gradient(135deg, #7E1523 0%, #9C1B2C 50%, #5E0D18 100%) !important;
+  color: #FFFDF9 !important;
+  box-shadow: 0 6px 20px rgba(107, 17, 29, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+  transform: translateY(-1px);
+}
 @media(max-width:640px) { .wizard-summary-card .summary-grand-row { flex-direction:column; align-items:flex-start; gap:12px; } }
 .booking-price-summary { display:flex; flex-direction:column; align-items:flex-end; gap:6px; min-width:0; }
 .booking-original-price { text-decoration:line-through; color:var(--royal-muted); font-size:.9rem; margin-right:6px; }

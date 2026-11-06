@@ -2161,6 +2161,19 @@ body.theme-dark .guarantee-desc,
 .tariff-royal-banner:hover .action-arrow {
   transform: translateX(3px);
 }
+@media (max-width: 540px) {
+  .tariff-royal-banner {
+    flex-wrap: wrap;
+    padding: 14px;
+    gap: 12px;
+  }
+  .tariff-royal-banner .royal-banner-action-pill {
+    width: 100%;
+    justify-content: center;
+    margin-top: 4px;
+    padding: 8px 14px;
+  }
+}
 
 [data-theme="dark"] .tariff-concierge-showcase {
   background: rgba(28, 20, 22, 0.85);
