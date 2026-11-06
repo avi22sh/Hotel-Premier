@@ -75,7 +75,7 @@ body.theme-light,body.theme-dark {
  .hotel-nav-bar { scroll-padding-inline:1rem; }
  .hotel-nav-tab { font-size:.72rem; padding-inline:.85rem; }
  #section-dine .dining-hero-header { padding:1rem .5rem .65rem; margin:0; }
- #section-dine .dining-main-heading { font-size:clamp(1.25rem,5.6vw,1.7rem); line-height:1.3; margin:0; }
+ #section-dine .dining-main-heading { font-size:clamp(1.55rem,5.2vw,2.35rem); line-height:1.18; margin:0 auto .4rem; }
  #section-dine .editorial-divider { margin:.5rem auto; }
  #section-dine .editorial-subtitle { font-size:.78rem; line-height:1.5; margin:.4rem auto 0; }
  #section-dine .dining-view-controls { position:sticky; top:var(--app-header-height,7rem); z-index:var(--z-nav,20); margin:0 0 1rem; padding:.35rem 0; }
@@ -122,7 +122,7 @@ body.theme-light,body.theme-dark {
 @media(max-width:639px) {
  #section-dine { padding-top:.75rem; }
  #section-dine .dining-hero-header { padding:.5rem .5rem .65rem; }
- #section-dine .dining-main-heading { font-size:1.25rem; }
+ #section-dine .dining-main-heading { font-size:clamp(1.45rem,6.2vw,1.95rem); }
  #section-dine .dining-hero-header .editorial-subtitle { margin:.35rem 0 0; font-size:.75rem; line-height:1.45; }
  #section-dine .dining-search-filter-bar:not(:focus-within) .recent-searches-bar { display:none !important; }
  #section-dine #menu-search-input { border:0; box-shadow:none; outline:0; border-radius:0; }
@@ -397,23 +397,23 @@ body.theme-dark .guest-network-dialog { background:var(--surface); }
 
 /* Engraved gold branding: the same finish on both navy brand surfaces. */
 :root { --brand-gold-polish:linear-gradient(115deg,#c99b43 0%,#f5cd79 19%,#fff2c3 34%,#d8a446 43%,#ffe7a2 51%,#fff8dc 56%,#e3b85e 68%,#c18e36 83%,#f6d58c 100%); }
-body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span) { color:#f0cd83; text-shadow:0 1px 1px #0009; }
+body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span),body.theme-dark #section-dine .dining-main-heading { color:#f0cd83; text-shadow:0 1px 1px #0009; }
 body:is(.theme-light,.theme-dark) :is(.app-header .brand-tagline,.app-footer .footer-brand-tagline) { color:#e8ce98; text-shadow:0 1px 1px #0009; font-weight:600; }
 @supports ((background-clip:text) or (-webkit-background-clip:text)) {
- body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span) {
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span),body.theme-dark #section-dine .dining-main-heading {
   background-image:linear-gradient(112deg,transparent 38%,#fff9dd00 44%,#fff9ddaa 49%,transparent 55%),var(--brand-gold-polish);
   background-size:240% 100%,100% 100%; background-position:160% 0,0 0; background-repeat:no-repeat;
   background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:none;
   filter:drop-shadow(0 2px 4px rgba(0,0,0,0.75)) drop-shadow(0 0 16px rgba(237,196,110,0.35));
  }
- body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span) { animation:premier-brand-sheen 12s ease-in-out 1; }
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span),body.theme-dark #section-dine .dining-main-heading { animation:premier-brand-sheen 12s ease-in-out 1; }
 }
 body:is(.theme-light,.theme-dark) .footer-brand-birds { color:#f0cd83; background-image:var(--brand-gold-polish); filter:drop-shadow(0 1px 0 #0009); }
 /* The positioned M is its own paint box: do not inherit the parent's transparent text fill. */
 body:is(.theme-light,.theme-dark) .footer-brand-m { color:#f0cd83; -webkit-text-fill-color:currentColor; }
 @keyframes premier-brand-sheen { 0%,75% { background-position:160% 0,0 0; } 100% { background-position:-160% 0,0 0; } }
 @media(prefers-reduced-motion:reduce),print {
- body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span) { animation:none; }
+ body:is(.theme-light,.theme-dark) :is(.app-header .brand-hotel-name,#section-home .sanctuary-hero-title,.footer-brand-wordmark > span),body.theme-dark #section-dine .dining-main-heading { animation:none; }
 }
 
 /* Events and guest voices: one hierarchy, comfortable forms and restrained metallic actions. */

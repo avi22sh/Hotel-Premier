@@ -678,12 +678,12 @@ a {
 }
 
 .editorial-divider.pride-underline {
-  width: 76px;
+  width: 74px;
   height: 2.5px;
-  background: var(--brass-shimmer);
-  margin: 4px auto 8px auto;
+  background: linear-gradient(90deg, transparent, #e3b85e 25%, #fff6d9 50%, #e3b85e 75%, transparent);
+  margin: 6px auto 10px auto;
   border-radius: var(--radius-full);
-  box-shadow: 0 1px 4px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 1px 6px rgba(212, 175, 55, 0.35);
 }
 
 .pride-hero-branding {
@@ -3081,14 +3081,17 @@ body.theme-dark .drawer-qf-chip {
 
 .dining-main-heading {
   font-family: var(--font-royal);
-  font-size: clamp(1.22rem, 3.8vw, 1.85rem);
-  font-weight: 800;
+  font-size: clamp(1.85rem, 5.2vw, 2.85rem);
+  font-weight: 900;
   color: var(--burgundy-deep);
-  letter-spacing: 0.5px;
-  margin: 8px 0 6px 0;
+  letter-spacing: clamp(1.5px, 0.35vw, 4px);
+  line-height: 1.15;
+  margin: 6px auto 10px auto;
   text-align: center;
+  text-transform: uppercase;
   max-width: 100%;
   word-wrap: break-word;
+  text-shadow: 0 1px 2px rgba(122, 12, 46, 0.16);
 }
 
 /* ==================== REFINED DINING & MENU ARCHITECTURE ==================== */
@@ -3232,9 +3235,21 @@ body.theme-dark .drawer-qf-chip {
 }
 
 /* Compact menu controls: one search field and three primary filters. */
-#section-dine .dining-hero-header { padding-block: 18px; margin-bottom: 16px; }
-#section-dine .dining-hero-header .editorial-subtitle { margin: 8px auto 0; max-width: 620px; }
-#section-dine .dining-brand-crest { display: none; }
+#section-dine .dining-hero-header { padding-block: 20px 14px; margin-bottom: 16px; }
+#section-dine .dining-hero-header .editorial-subtitle { margin: 8px auto 0; max-width: 640px; }
+#section-dine .dining-brand-crest {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-royal);
+  font-size: clamp(0.70rem, 2vw, 0.78rem);
+  font-weight: 800;
+  letter-spacing: 2.6px;
+  text-transform: uppercase;
+  color: var(--brass-antique);
+  margin: 0 auto 6px;
+}
 #section-dine .dining-search-filter-bar {
   display: flex;
   justify-content: center;
@@ -3351,8 +3366,8 @@ body.theme-dark #section-dine .filter-pill.active { background: #DFC69A; color: 
 body.theme-dark .more-menu-filters summary { color: #DFC69A; }
 body.theme-dark #section-dine .dish-banner-price-stack .dish-price { color: #DFC69A; }
 @media (max-width: 639px) {
-  #section-dine .dining-hero-header { padding-block: 10px; margin-bottom: 12px; }
-  #section-dine .dining-main-heading { font-size: 1.35rem; }
+  #section-dine .dining-hero-header { padding-block: 12px; margin-bottom: 12px; }
+  #section-dine .dining-main-heading { font-size: clamp(1.45rem, 6.2vw, 2.05rem); }
   #section-dine .dining-hero-header .editorial-subtitle { font-size: .82rem; line-height: 1.45; }
   #section-dine .search-input-wrapper { height: 46px; padding: 0 14px 0 16px; }
   #section-dine .filter-pill { padding-inline: 10px; }
@@ -6889,7 +6904,9 @@ body.theme-dark .location-qr-box p,
 
   /* Dining View Controls on Mobile */
   .dining-main-heading {
-    font-size: 1.25rem;
+    font-size: clamp(1.45rem, 6.2vw, 2.05rem);
+    letter-spacing: 1.5px;
+    line-height: 1.18;
   }
 
   .dining-brand-crest {
