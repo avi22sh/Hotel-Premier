@@ -7461,6 +7461,15 @@ body.theme-dark .room-complimentary-amenities-banner {
   font-size: 1.1rem;
   font-weight: 700;
 }
+body.theme-dark .route-option-arrow,
+[data-theme="dark"] .route-option-arrow {
+  color: var(--royal-gold, #DFBA73);
+}
+body.theme-dark .route-option-icon,
+[data-theme="dark"] .route-option-icon {
+  background: rgba(223, 198, 154, 0.12);
+  color: var(--royal-gold, #DFBA73);
+}
 
 /* ==================== CONTACT SECTION STYLES ==================== */
 .contact-cards-grid {
