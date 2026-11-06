@@ -795,13 +795,15 @@ a {
 
 .sanctuary-hero-title {
   font-family: var(--font-royal);
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: 3px;
-  line-height: 1.15;
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+  font-weight: 900;
+  letter-spacing: clamp(3px, 0.45vw, 6px);
+  line-height: 1.12;
   color: #FFFDF9;
-  margin-bottom: 12px;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+  margin: 6px auto 14px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
 }
 
 .sanctuary-hero-statement {
@@ -6824,9 +6826,10 @@ body.theme-dark .location-qr-box p,
   }
 
   .sanctuary-hero-title {
-    font-size: 1.55rem;
-    letter-spacing: 1.5px;
-    line-height: 1.2;
+    font-size: clamp(1.75rem, 7.2vw, 2.35rem);
+    letter-spacing: 2.2px;
+    line-height: 1.15;
+    margin-bottom: 10px;
   }
 
   .sanctuary-hero-statement {
