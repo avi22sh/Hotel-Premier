@@ -315,6 +315,10 @@ class HotelPremierAdmin {
     } catch (_) {}
     const modCount = Object.keys(localDishOverrides).length;
 
+    const hasValidPhoto = d => Boolean(d.image && d.image.trim() !== '' && !d.image.includes('brand-placeholder') && !d.image.includes('premier-original-logo'));
+    const missingPhotosCount = menu.filter(d => !hasValidPhoto(d)).length;
+    const withPhotosCount = menu.length - missingPhotosCount;
+
     const hubWrap = document.createElement('div');
     hubWrap.className = 'quick-edit-hub';
 
@@ -336,6 +340,29 @@ class HotelPremierAdmin {
       </div>
     `;
     hubWrap.append(topBar);
+
+    // 1.5 Interactive KPI Stats Strip
+    const kpiBar = document.createElement('div');
+    kpiBar.className = 'quick-kpi-grid';
+    kpiBar.innerHTML = `
+      <div class="quick-kpi-card active" data-filter="all" onclick="window.admin.setQuickStatusFilter('all')">
+        <div class="quick-kpi-num">${menu.length}</div>
+        <div class="quick-kpi-label">All Dishes</div>
+      </div>
+      <div class="quick-kpi-card" data-filter="withPhoto" onclick="window.admin.setQuickStatusFilter('withPhoto')">
+        <div class="quick-kpi-num" style="color:#2e7d32;">${withPhotosCount}</div>
+        <div class="quick-kpi-label">📸 With Photo</div>
+      </div>
+      <div class="quick-kpi-card" data-filter="missingPhoto" onclick="window.admin.setQuickStatusFilter('missingPhoto')">
+        <div class="quick-kpi-num" style="color:var(--accent);">${missingPhotosCount}</div>
+        <div class="quick-kpi-label">📷 Missing Photo</div>
+      </div>
+      <div class="quick-kpi-card" data-filter="modified" onclick="window.admin.setQuickStatusFilter('modified')">
+        <div class="quick-kpi-num" style="color:#b26a00;">${modCount}</div>
+        <div class="quick-kpi-label">✏️ Local Edits</div>
+      </div>
+    `;
+    hubWrap.append(kpiBar);
 
     // 2. Active Modifications Summary Card
     const modCard = document.createElement('div');
@@ -384,9 +411,11 @@ class HotelPremierAdmin {
           <option value="all">All Categories (${menu.length})</option>
           ${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
         </select>
-        <select id="quick-edit-status-filter" class="form-select" style="flex:0 1 150px;">
-          <option value="all">All Items</option>
-          <option value="modified">Modified Only (${modCount})</option>
+        <select id="quick-edit-status-filter" class="form-select" style="flex:0 1 180px;">
+          <option value="all">All Items (${menu.length})</option>
+          <option value="missingPhoto">📷 Missing Photo (${missingPhotosCount})</option>
+          <option value="withPhoto">📸 With Photo (${withPhotosCount})</option>
+          <option value="modified">✏️ Modified Only (${modCount})</option>
           <option value="active">Active Only</option>
           <option value="soldOut">Sold Out Only</option>
           <option value="hidden">Hidden Only</option>
@@ -395,6 +424,7 @@ class HotelPremierAdmin {
       </div>
       <div class="quick-filter-chips" id="quick-edit-category-chips">
         <button type="button" class="quick-filter-chip active" data-cat="all">All Dishes</button>
+        <button type="button" class="quick-filter-chip" data-status="missingPhoto" style="border-color:rgba(212,175,55,0.6); color:var(--accent);">📷 Missing Photos</button>
         <button type="button" class="quick-filter-chip" data-cat="house-specialities">👑 House Specials</button>
         <button type="button" class="quick-filter-chip" data-cat="paneer-specialities">🧀 Paneer</button>
         <button type="button" class="quick-filter-chip" data-cat="khandeshi-specialities">🌶️ Khandeshi</button>
@@ -450,11 +480,25 @@ class HotelPremierAdmin {
       btn.addEventListener('click', () => {
         document.querySelectorAll('#quick-edit-category-chips .quick-filter-chip').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        const st = btn.getAttribute('data-status');
+        if (st) {
+          this.setQuickStatusFilter(st);
+          return;
+        }
         const cat = btn.getAttribute('data-cat');
         if (catSelect) catSelect.value = cat;
         this.filterQuickEditDishes();
       });
     });
+  }
+
+  setQuickStatusFilter(status) {
+    const sel = document.getElementById('quick-edit-status-filter');
+    if (sel) sel.value = status;
+    document.querySelectorAll('.quick-kpi-card').forEach(c => {
+      c.classList.toggle('active', c.getAttribute('data-filter') === status);
+    });
+    this.filterQuickEditDishes();
   }
 
   generateQuickEditRows(dishes) {
@@ -467,13 +511,21 @@ class HotelPremierAdmin {
       const arg = escape(JSON.stringify(dish.id));
       const category = window.app.categories.find(item => item.id === dish.categoryId)?.name || dish.categoryId;
       const isModified = Boolean(localOverrides[dish.id]);
+      const hasPhoto = Boolean(dish.image && dish.image.trim() !== '' && !dish.image.includes('brand-placeholder') && !dish.image.includes('premier-original-logo'));
 
       return `<tr id="quick-row-${id}" class="${isModified ? 'quick-edit-row-modified' : ''}">
         <td>
-          <button type="button" class="admin-photo-button" onclick="window.admin.openImageModal(${arg})" aria-label="Edit photo for ${escape(dish.name)}">
-            <img width="60" height="60" loading="lazy" src="${escape(dish.image || 'assets/brand-placeholder.svg')}" alt="${escape(dish.name)}">
-            <span>Photo</span>
-          </button>
+          ${hasPhoto ? `
+            <button type="button" class="admin-photo-button" onclick="window.admin.openImageModal(${arg})" aria-label="Change photo for ${escape(dish.name)}" title="Change photo">
+              <img width="60" height="60" loading="lazy" src="${escape(dish.image)}" alt="${escape(dish.name)}">
+              <span>Change</span>
+            </button>
+          ` : `
+            <button type="button" class="missing-photo-btn" onclick="window.admin.openImageModal(${arg})" aria-label="Upload photo for ${escape(dish.name)}" title="Upload photo">
+              <span class="missing-photo-icon">📷</span>
+              <span class="missing-photo-label">+ Photo</span>
+            </button>
+          `}
         </td>
         <td>
           <div style="display:flex; align-items:center; gap:6px;">
@@ -511,6 +563,11 @@ class HotelPremierAdmin {
     const status = document.getElementById('quick-edit-status-filter')?.value || 'all';
     const tbody = document.getElementById('quick-edit-tbody');
 
+    // Sync active KPI card
+    document.querySelectorAll('.quick-kpi-card').forEach(c => {
+      c.classList.toggle('active', c.getAttribute('data-filter') === status);
+    });
+
     let localOverrides = {};
     try { localOverrides = JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1') || '{}'); } catch (_) {}
 
@@ -525,6 +582,14 @@ class HotelPremierAdmin {
       if (status === 'active') matchesStatus = !d.notAvailable && !d.isSoldOut;
       if (status === 'soldOut') matchesStatus = Boolean(d.isSoldOut);
       if (status === 'hidden') matchesStatus = Boolean(d.notAvailable);
+      if (status === 'missingPhoto') {
+        const hasPhoto = Boolean(d.image && d.image.trim() !== '' && !d.image.includes('brand-placeholder') && !d.image.includes('premier-original-logo'));
+        matchesStatus = !hasPhoto;
+      }
+      if (status === 'withPhoto') {
+        const hasPhoto = Boolean(d.image && d.image.trim() !== '' && !d.image.includes('brand-placeholder') && !d.image.includes('premier-original-logo'));
+        matchesStatus = hasPhoto;
+      }
       return (matchesQ || matchesVariant) && matchesCat && matchesStatus;
     });
 
@@ -654,7 +719,7 @@ class HotelPremierAdmin {
             <summary class="admin-variant-summary">⚙️ Manage ${dish.variants.length} Options &amp; Photos</summary>
             <div class="admin-variant-list">
               ${dish.variants.map((v, vIdx) => {
-                const vPhoto = escape(v.image || dish.image || 'assets/brand-placeholder.svg');
+                const vPhoto = escape((v.image !== undefined ? v.image : dish.image) || 'assets/brand-placeholder.svg');
                 return `
                 <div class="admin-variant-card" id="admin-variant-row-${id}-${vIdx}">
                   <div class="admin-variant-card-head">

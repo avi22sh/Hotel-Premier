@@ -2527,12 +2527,12 @@ class HotelPremierApp {
     const isMaster = Boolean(dish.isGroupMaster && hasVariants);
     const visibleVariants = hasVariants ? dish.variants.filter(v => !v.hidden) : [];
     const selectedVariant = visibleVariants.find(v => v.name === dish._activeVariantName);
-    const displayImage = selectedVariant ? (selectedVariant.image || dish.image) : (dish._activeVariantImage || dish.image);
+    const displayImage = selectedVariant ? (selectedVariant.image !== undefined ? selectedVariant.image : dish.image) : (dish._activeVariantImage !== undefined ? dish._activeVariantImage : dish.image);
     const displayPrice = selectedVariant ? selectedVariant.price : (isMaster ? dish.price : (dish._activeVariantPrice ?? dish.price));
     const visiblePrices = visibleVariants.filter(v => Number.isFinite(v.price)).map(v => v.price);
     const variantRange = !visiblePrices.length ? 'Price on request' : visiblePrices.length < visibleVariants.length ? `From ₹${Math.min(...visiblePrices)}` : (Math.min(...visiblePrices) === Math.max(...visiblePrices) ? `₹${Math.min(...visiblePrices)}` : `₹${Math.min(...visiblePrices)} – ₹${Math.max(...visiblePrices)}`);
     const priceRangeText = isMaster && !selectedVariant ? variantRange : (Number.isFinite(displayPrice) ? `₹${displayPrice}` : 'Price on request');
-    const hasPhoto = displayImage && displayImage.trim() !== '';
+    const hasPhoto = Boolean(displayImage && displayImage.trim() !== '' && !displayImage.includes('brand-placeholder'));
 
     let dishTitleHtml = dish.name;
     if (this.currentLang === 'hi' && dish.hindiName) {
@@ -2711,9 +2711,9 @@ class HotelPremierApp {
     }
     const activeVariant = hasModalVariants ? dish.variants[initialVariantIndex] : null;
     this.currentDetailVariantIndex = initialVariantIndex;
-    const displayImage = activeVariant ? (activeVariant.image || dish.image) : (dish.image);
+    const displayImage = activeVariant ? (activeVariant.image !== undefined ? activeVariant.image : dish.image) : (dish.image);
     const displayPrice = activeVariant ? (activeVariant.price === undefined ? dish.price : activeVariant.price) : dish.price;
-    const hasPhoto = displayImage && displayImage.trim() !== '';
+    const hasPhoto = Boolean(displayImage && displayImage.trim() !== '' && !displayImage.includes('brand-placeholder'));
 
     const currentVariantName = activeVariant ? activeVariant.name : dish.name;
     const currentVariantHi = activeVariant ? (activeVariant.hindiName || dish.hindiName) : dish.hindiName;

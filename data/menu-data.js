@@ -161,7 +161,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'प्रीमियम आइसक्रीम',
     marathiName: 'प्रीमियम आईस्क्रीम',
     icon: '🍦', 
-    image: 'assets/brand-placeholder.svg',
+    image: 'assets/menu-uploads/published-2d9ca7870b605d674ff97e85.webp',
     description: 'Butterscotch, Vanilla Bean, Chocolate, Kaju Draksh & Afghan Dry Fruit'
   },
   { 
@@ -170,7 +170,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'मॉकटेल',
     marathiName: 'एक्झॉटिक मॉकतेल',
     icon: '🍹', 
-    image: 'assets/menu-images/delicious-kofta/malai-kofta.jpg',
+    image: 'assets/menu-uploads/published-3623d6a414c56c840865534f.webp',
     description: 'Blue Lagoon, Fruit Punch, Green Goddess, Sunrise & Pink Lady'
   },
   { 
@@ -188,7 +188,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'मस्तानी',
     marathiName: 'मस्तानी',
     icon: '🍧', 
-    image: 'assets/brand-placeholder.svg',
+    image: 'assets/menu-uploads/published-e4aea82ee7a483926fac73ba.webp',
     description: 'Rich royal Pune-style thick Mango & Dryfruit Mastani garnished with dry fruits'
   },
   { 
@@ -197,7 +197,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'कोल्ड कॉफी',
     marathiName: 'कोल्ड कॉफी',
     icon: '🧋', 
-    image: 'assets/brand-placeholder.svg',
+    image: 'assets/menu-uploads/approved/ms-7-v1-1280.webp',
     description: 'Chilled rich blended coffee with or without velvety ice cream scoop'
   },
   { 
@@ -206,7 +206,7 @@ window.HOTEL_PREMIER_CATEGORIES = [
     hindiName: 'शीतल पेय एवं लस्सी',
     marathiName: 'थंड पेय व लस्सी',
     icon: '🧊', 
-    image: 'assets/menu-images/paneer-specialities/paneer-butter-masala.jpg',
+    image: 'assets/menu-uploads/published-ba07008ece95981e36d54d36.webp',
     description: 'Special Punjabi Lassi, Masala Chaas, Fresh Lime Soda & Soft Drinks'
   }
 ];
@@ -1598,7 +1598,7 @@ const HOT_BEVERAGES_VARIANTS = [
     hindiName: 'स्पेशल मसाला चाय',
     marathiName: 'स्पेशल मसाला चहा',
     price: 25,
-    image: 'assets/menu-images/tasty-tidbits/paneer-pakoda.jpg',
+    image: '',
     description: 'Freshly brewed strong tea infused with cardamom, ginger, cinnamon and fresh whole milk.',
     descriptionHi: 'अदरक, इलायची और ताज़े दूध से पकाई गई कड़क स्पेशल मसाला चाय।',
     descriptionMr: 'आले, वेलची आणि खड्या मसाल्यांनी युक्त गरमागरम कडक स्पेशल चहा.'
@@ -1608,7 +1608,7 @@ const HOT_BEVERAGES_VARIANTS = [
     hindiName: 'हॉट कॉफ़ी',
     marathiName: 'गरम कॉफी',
     price: 35,
-    image: 'assets/menu-images/tasty-tidbits/veg-pakoda.jpg',
+    image: '',
     description: 'Rich roasted aromatic coffee frothed with steaming hot milk.',
     descriptionHi: 'भुने हुए कॉफ़ी बीन्स और गर्मागर्म झागदार दूध से तैयार खुशबूदार कॉफ़ी।',
     descriptionMr: 'ताज्या भाजलेल्या कॉफीचा सुवास आणि फेसाळलेल्या दुधाची गरम कॉफी.'
@@ -1618,7 +1618,7 @@ const HOT_BEVERAGES_VARIANTS = [
     hindiName: 'गर्म दूध',
     marathiName: 'गरम दूध',
     price: 60,
-    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
+    image: '',
     description: 'Pure, steaming whole dairy milk served hot with sugar on the side.',
     descriptionHi: 'ताज़ा गाढ़ा उबला हुआ शुद्ध गर्म दूध।',
     descriptionMr: 'ताजे, उकळलेले पौष्टिक व शुद्ध गरम दूध.'
@@ -1628,7 +1628,7 @@ const HOT_BEVERAGES_VARIANTS = [
     hindiName: 'बोर्नविटा',
     marathiName: 'बोर्नव्हिटा',
     price: 80,
-    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
+    image: '',
     description: 'Nourishing malt chocolate beverage blended into steaming hot milk.',
     descriptionHi: 'चॉकलेट माल्ट और गर्म दूध का पौष्टिक व स्वादिष्ट ड्रिंक।',
     descriptionMr: 'चॉकलेट माल्ट आणि गरम दुधाचे पौष्टिक व चविष्ट पेय.'
@@ -1641,7 +1641,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'वैनिला आइसक्रीम',
     marathiName: 'व्हॅनिला आईस्क्रीम',
     price: 40,
-    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
+    image: 'assets/menu-uploads/published-2d9ca7870b605d674ff97e85.webp',
     description: 'Classic velvety vanilla bean ice cream scoop.',
     descriptionHi: 'पारंपरिक मखमली वैनिला आइसक्रीम का ठंडा स्कूप।',
     descriptionMr: 'अत्यंत मऊ, मलईदार आणि चविष्ट व्हॅनिला आईस्क्रीम.'
@@ -1651,7 +1651,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'बटरस्कॉच आइसक्रीम',
     marathiName: 'बटरस्कॉच आईस्क्रीम',
     price: 50,
-    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
+    image: 'assets/menu-uploads/published-10ba49c1d54b1d4b4d91005d.webp',
     description: 'Rich creamy butterscotch ice cream with crunchy praline nuts.',
     descriptionHi: 'कुरकुरे कैरेमल प्रालिन नट्स वाला गाढ़ा बटरस्कॉच आइसक्रीम।',
     descriptionMr: 'कुरकुरीत कॅरॅमल नट्स असलेला स्वादिष्ट बटरस्कॉच आईस्क्रीम.'
@@ -1661,7 +1661,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'चॉकलेट आइसक्रीम',
     marathiName: 'चॉकलेट आईस्क्रीम',
     price: 50,
-    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
+    image: 'assets/menu-uploads/published-36585ac248c131d159575d6d.webp',
     description: 'Decadent deep cocoa chocolate ice cream scoop.',
     descriptionHi: 'रिच डार्क कोकोआ और मलाई से भरपूर चॉकलेट आइसक्रीम।',
     descriptionMr: 'डार्क कोको आणि सायीने भरलेला चॉकलेटी आईस्क्रीम.'
@@ -1671,7 +1671,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'काजू द्राक्ष आइसक्रीम',
     marathiName: 'काजू द्राक्ष आईस्क्रीम',
     price: 50,
-    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
+    image: '',
     description: 'Traditional royal ice cream loaded with cashew nuts and sweet raisins.',
     descriptionHi: 'कुरकुरे काजू और किशमिश के टुकड़ों से भरा स्वादिष्ट आइसक्रीम।',
     descriptionMr: 'काजूचे काप आणि मनुका घातलेला शाही चवीचा आईस्क्रीम.',
@@ -1683,7 +1683,7 @@ const ICE_CREAM_VARIANTS = [
     hindiName: 'अफ़गान ड्राई फ्रूट आइसक्रीम',
     marathiName: 'अफगाण ड्रायफ्रूट आईस्क्रीम',
     price: 40,
-    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
+    image: 'assets/menu-uploads/published-c65f9f6523843a9e432a011a.webp',
     description: 'Exotic dried fruits and roasted nuts infused into chilled sweet cream.',
     descriptionHi: 'मेवों और भुने हुए बादाम-पिस्ते से सजा अफ़गानी ड्राई फ्रूट आइसक्रीम।',
     descriptionMr: 'बदाम, पिस्ता आणि सुकामेव्याने युक्त थंडगार अफगाणी आईस्क्रीम.'
@@ -2457,7 +2457,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'अदरक-इलायची वाली कड़क मसाला चाय, झागदार फिल्टर कॉफ़ी, शुद्ध गर्म दूध और बोर्नविटा।',
     descriptionMr: 'आले-वेलचीयुक्त कडक मसाला चहा, फेसाळलेली फिल्टर कॉफी, गरम दूध आणि बोर्नव्हिटा.',
     price: 25, displayPriceRange: '₹25 – ₹80', isGroupMaster: true,
-    image: 'assets/menu-images/tasty-tidbits/veg-pakoda.jpg',
+    image: '',
     tags: ['veg', 'bestseller'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: '5-10 mins',
     variants: HOT_BEVERAGES_VARIANTS
   },
@@ -2468,7 +2468,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     descriptionHi: 'मलाईदार ठंडी आइसक्रीम के मनपसंद स्कूप: वैनिला, बटरस्कॉच, चॉकलेट, काजू द्राक्ष और अफ़गान ड्राई फ्रूट।',
     descriptionMr: 'मलईदार थंडगार आईस्क्रीमचे खास स्कूप: व्हॅनिला, बटरस्कॉच, चॉकलेट, काजू द्राक्ष आणि अफगाण ड्रायफ्रूट.',
     price: 40, displayPriceRange: '₹40 – ₹50', isGroupMaster: true,
-    image: 'assets/menu-images/tasty-tidbits/finger-chips.jpg',
+    image: 'assets/menu-uploads/published-2d9ca7870b605d674ff97e85.webp',
     tags: ['veg'], dietary: 'pure-veg', isSoldOut: false, rating: 4.8, prepTime: 'Instant',
     variants: ICE_CREAM_VARIANTS
   },
@@ -2564,7 +2564,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'अतिरिक्त पूरी (1 नग)',
         marathiName: 'अतिरिक्त पुरी (1 नग)',
         price: 25,
-        image: 'assets/menu-images/morning-delight/poori-bhaji.jpg',
+        image: '',
         description: 'One fresh, piping-hot golden puffed poori.'
       },
       {
@@ -2572,7 +2572,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'अतिरिक्त पूरी (2 नग)',
         marathiName: 'अतिरिक्त पुरी (2 नग)',
         price: 45,
-        image: 'assets/menu-images/morning-delight/poori-bhaji.jpg',
+        image: '',
         description: 'Two fresh, piping-hot golden puffed pooris.'
       }
     ],
@@ -2949,7 +2949,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
+    image: '',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -2966,7 +2966,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
+    image: '',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -2983,7 +2983,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
+    image: '',
     rating: 4.6,
     prepTime: '5 mins'
   },
@@ -3000,7 +3000,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/morning-delight/bread-butter-toast.jpg',
+    image: '',
     rating: 4.5,
     prepTime: '5 mins'
   },
@@ -6237,7 +6237,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/flavorful-dal/dal-tadka.jpg',
+    image: '',
     rating: 5.0,
     prepTime: '10 mins'
   },
@@ -6301,7 +6301,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'chef-special'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/paneer-specialities/paneer-kadhai-1.jpg',
+    image: '',
     rating: 4.9,
     prepTime: '10 mins'
   },
@@ -6318,7 +6318,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpg',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -6335,7 +6335,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/tandoor-classics/veg-seekh-kebab.jpg',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -6359,7 +6359,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/tasty-tidbits/chana-roast.jpg',
+    image: 'assets/menu-uploads/published-10ba49c1d54b1d4b4d91005d.webp',
     rating: 4.8,
     prepTime: '5 mins'
   },
@@ -6381,7 +6381,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/brand-placeholder.svg',
+    image: 'assets/menu-uploads/published-2d9ca7870b605d674ff97e85.webp',
     rating: 4.7,
     prepTime: '5 mins'
   },
@@ -6402,7 +6402,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/accompaniments/roasted-papad.jpg',
+    image: '',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -6424,7 +6424,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/paneer-specialities/paneer-patakha-masala.jpg',
+    image: 'assets/menu-uploads/published-36585ac248c131d159575d6d.webp',
     rating: 4.9,
     prepTime: '5 mins'
   },
@@ -6482,7 +6482,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/delicious-kofta/veg-sunrise.jpg',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -6516,7 +6516,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/indo-chinese-nibbles/veg-65.jpg',
+    image: '',
     rating: 4.8,
     prepTime: '8 mins'
   },
@@ -6533,7 +6533,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
     tags: ['veg'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/veg-specialities/shev-bhaji.jpg',
+    image: '',
     rating: 4.7,
     prepTime: '8 mins'
   },
@@ -6784,7 +6784,7 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'स्पेशल पंजाबी लस्सी (सादा)',
         marathiName: 'स्पेशल पंजाबी लस्सी (साधी)',
         price: 80,
-        image: 'assets/menu-images/veg-specialities/veg-zatpat.jpg',
+        image: 'assets/menu-uploads/published-ba07008ece95981e36d54d36.webp',
         description: 'Thick sweet churned curd served in traditional style, topped with rich malai and cardamom.'
       },
       {
@@ -6792,14 +6792,14 @@ window.HOTEL_PREMIER_INITIAL_MENU = [
         hindiName: 'स्पेशल पंजाबी लस्सी (आइसक्रीम के साथ)',
         marathiName: 'स्पेशल पंजाबी लस्सी (आईस्क्रीमसोबत)',
         price: 110,
-        image: 'assets/menu-images/veg-specialities/veg-zatpat.jpg',
+        image: '',
         description: 'Rich creamy Punjabi sweet lassi topped with a luscious scoop of vanilla ice cream and dry fruits.'
       }
     ],
     tags: ['veg', 'bestseller'],
     dietary: 'pure-veg',
     isSoldOut: false,
-    image: 'assets/menu-images/veg-specialities/veg-zatpat.jpg',
+    image: 'assets/menu-uploads/published-ba07008ece95981e36d54d36.webp',
     rating: 4.9,
     prepTime: '5 mins'
   },
