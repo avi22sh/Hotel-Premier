@@ -120,15 +120,39 @@
             <p id="direct-pub-desc">Preparing your latest dish prices, photos, and room updates...</p>
             <div id="direct-pub-progress" class="direct-pub-progress-bar"><div class="direct-pub-progress-fill"></div></div>
             <div id="direct-pub-token-prompt" class="direct-pub-token-box" style="display:none;">
-              <p>To publish directly from this remote browser/phone to GitHub Pages, enter your GitHub Token once:</p>
-              <label class="form-label" for="direct-pub-gh-token-input">GitHub Personal Access Token (repo scope)
-                <input type="password" id="direct-pub-gh-token-input" class="form-input" placeholder="ghp_..." autocomplete="off">
+              <div style="display:flex; align-items:flex-start; gap:10px; margin-bottom:10px;">
+                <span style="font-size:1.5rem; line-height:1;">🔑</span>
+                <div>
+                  <h5 style="margin:0 0 4px; font-size:1rem; color:var(--accent);">Connect Free GitHub Security Token (One-Time Setup)</h5>
+                  <p style="margin:0; font-size:0.83rem; line-height:1.45; color:var(--muted);">
+                    To publish directly from your phone or remote browser to GitHub Pages, GitHub requires a security access key.
+                    <strong>This is 100% free</strong> (a standard GitHub developer key, NOT a paid coin or crypto) and only needs to be entered once.
+                  </p>
+                </div>
+              </div>
+
+              <div style="background:rgba(197, 168, 128, 0.12); border:1px solid rgba(197, 168, 128, 0.35); border-radius:8px; padding:10px 12px; margin:10px 0;">
+                <p style="margin:0 0 6px; font-weight:700; font-size:0.86rem; color:var(--text);">How to get your free token in 3 easy steps:</p>
+                <ol style="margin:0; padding-left:18px; font-size:0.82rem; line-height:1.55; color:var(--text);">
+                  <li><a href="https://github.com/settings/tokens/new?scopes=repo&amp;description=Hotel+Premier+Live+Publish" target="_blank" rel="noopener" style="color:var(--accent); font-weight:700; text-decoration:underline;">👉 Tap here to open GitHub Token Generator</a> (sign in if asked).</li>
+                  <li>Scroll to the bottom of that page and click the green <strong>"Generate token"</strong> button.</li>
+                  <li>Copy your new token (starts with <code>ghp_...</code>) and paste it into the box below. It saves permanently on this device!</li>
+                </ol>
+              </div>
+
+              <label class="form-label" for="direct-pub-gh-token-input" style="font-size:0.85rem; font-weight:700;">
+                Paste GitHub Token (starts with ghp_...):
+                <input type="password" id="direct-pub-gh-token-input" class="form-input" placeholder="ghp_..." autocomplete="off" style="margin-top:4px;">
               </label>
-              <div style="display:flex; gap:8px; margin-top:10px;">
-                <button type="button" class="btn-primary" id="direct-pub-token-submit" onclick="window.HotelDirectPublisher.submitToken()">Save & Publish</button>
+
+              <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;">
+                <button type="button" class="btn-primary" id="direct-pub-token-submit" onclick="window.HotelDirectPublisher.submitToken()">Save &amp; Publish</button>
+                <button type="button" class="btn-secondary" onclick="window.HotelPublishBundle.export().catch(e=>window.app.showToast(e.message,'error'))">📥 Download Backup File Instead</button>
                 <button type="button" class="btn-secondary" onclick="window.HotelDirectPublisher.closeModal()">Cancel</button>
               </div>
-              <p class="admin-text-hint" style="margin-top:8px;">Tip: When running locally on PC with Start-QR-Menu-Server.bat, no token is needed!</p>
+              <p class="admin-text-hint" style="margin-top:10px; font-size:0.78rem;">
+                💻 <strong>On your PC:</strong> Double-click <code>Start-QR-Menu-Server.bat</code> and open <code>http://localhost:8080</code> to publish with zero tokens required!
+              </p>
             </div>
             <div id="direct-pub-actions" style="margin-top:18px; display:none;">
               <button type="button" class="btn-primary" onclick="window.HotelDirectPublisher.closeModal()">Done</button>

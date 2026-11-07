@@ -292,3 +292,129 @@ body.theme-dark .admin-variant-card {
   grid-template-columns: 2fr 1fr;
   gap: 8px;
 }
+
+/* Quick Edit Hub & CRM Navigation Banner */
+.crm-quick-hub-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: var(--surface-secondary, #f4efe6);
+  border: 1.5px solid var(--accent, #c5a880);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+body.theme-dark .crm-quick-hub-banner {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(223, 198, 154, 0.35);
+}
+.crm-quick-hub-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent, #8b1538);
+  margin-bottom: 4px;
+}
+.crm-quick-hub-info h4 {
+  margin: 0 0 6px;
+  font-size: 1.15rem;
+  color: var(--text);
+}
+.crm-quick-hub-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 620px;
+}
+.crm-quick-hub-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Quick Edit Hub Content */
+.quick-edit-hub {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+.quick-edit-summary-card {
+  background: var(--surface-secondary, #f8f6f0);
+  border: 1px solid var(--border, rgba(147, 126, 96, 0.25));
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.quick-edit-summary-card h4 {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.quick-edit-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.quick-edit-mod-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.quick-edit-mod-pill button {
+  background: none;
+  border: none;
+  color: var(--danger, #a32435);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0 2px;
+}
+.quick-filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+.quick-filter-chip {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 34px !important;
+}
+.quick-filter-chip.active {
+  background: var(--accent);
+  color: var(--surface-secondary);
+  border-color: var(--accent);
+}
+.quick-edit-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.quick-edit-inline-input {
+  width: 90px;
+  min-height: 38px !important;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-align: right;
+  padding: 4px 8px;
+}

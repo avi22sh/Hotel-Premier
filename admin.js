@@ -148,6 +148,8 @@ class HotelPremierAdmin {
       window.HotelContentStudio?.render(contentContainer);
     } else if (tabName === 'crm') {
       this.renderCRMManager(contentContainer);
+    } else if (tabName === 'quick-edit') {
+      this.renderQuickEditHub(contentContainer);
     } else if (tabName === 'menu') {
       this.renderMenuManager(contentContainer);
     } else if (tabName === 'photos') {
@@ -204,6 +206,23 @@ class HotelPremierAdmin {
     const intro=node('header','crm-intro');
     intro.append(node('h3','','Hotel Premier Customer Relationship Management'),node('p','','Device-local guest records. This is not a private server database. Export a backup before changing device or clearing browser data.'));
     container.append(intro);
+    const hubBanner = node('div', 'crm-quick-hub-banner');
+    const hubInfo = node('div', 'crm-quick-hub-info');
+    hubInfo.append(
+      node('span', 'crm-quick-hub-tag', '⚡ All-In-One Quick Edit Hub'),
+      node('h4', '', 'Edit Dish Prices, Photos, Room Deals & Page Content All at Once'),
+      node('p', '', 'Quickly modify menu prices, swap photos, update room rates, and review all pending edits in one consolidated place without hopping between tabs.')
+    );
+    const hubActions = node('div', 'crm-quick-hub-actions');
+    const btnOpen = node('button', 'btn-primary', '⚡ Open Quick Edit Hub');
+    btnOpen.type = 'button';
+    btnOpen.addEventListener('click', () => this.switchTab('quick-edit'));
+    const btnPub = node('button', 'btn-secondary', '🚀 1-Click Live Publish');
+    btnPub.type = 'button';
+    btnPub.addEventListener('click', () => window.HotelDirectPublisher?.publish());
+    hubActions.append(btnOpen, btnPub);
+    hubBanner.append(hubInfo, hubActions);
+    container.append(hubBanner);
     const kpis=node('div','crm-kpi-grid');
     for (const [label,value] of [['Registered Guests',stats.totalGuests],['Room Bookings',stats.totalBookings],['Guest Reviews',stats.totalReviews],['Banquet Enquiries',stats.totalEnquiries]]) {
       const card=node('div','crm-kpi-card');card.append(node('div','kpi-num',Number.isFinite(value)?value:0),node('div','kpi-label',label));kpis.append(card);
@@ -278,6 +297,294 @@ class HotelPremierAdmin {
       const save=document.getElementById('apply-dish-photo-btn');if(save)save.disabled=false;
       window.app.showToast('Original preview restored. Save or apply it only when ready.','info');
     }catch(error){if(current())window.app.showToast(error.message||'The original could not be read.','error');}
+  }
+
+  // ==================== 0. UNIFIED QUICK EDIT HUB ====================
+  renderQuickEditHub(container) {
+    const token = this.beginAdminRender('quick-edit', container);
+    if (!token) return;
+    container.replaceChildren();
+
+    const menu = window.app.menuData;
+    this.quickEditVisibleCount = 40;
+    const categories = window.app.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
+
+    let localDishOverrides = {};
+    try {
+      localDishOverrides = JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1') || '{}');
+    } catch (_) {}
+    const modCount = Object.keys(localDishOverrides).length;
+
+    const hubWrap = document.createElement('div');
+    hubWrap.className = 'quick-edit-hub';
+
+    // 1. Top Header & Control Strip
+    const topBar = document.createElement('div');
+    topBar.className = 'backup-panel-header';
+    topBar.style.marginBottom = '12px';
+    topBar.innerHTML = `
+      <div>
+        <h4 style="margin:0 0 4px; font-size:1.2rem; color:var(--text);">⚡ Quick Edit Hub — Modify Everything at Once</h4>
+        <p style="margin:0; font-size:0.85rem; color:var(--muted); line-height:1.5;">
+          Search, update prices, change photos, adjust availability, and review all pending edits across all 291 dishes and rooms in one place.
+        </p>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:8px;">
+        <button type="button" class="btn-primary" style="padding:8px 14px; font-size:0.85rem; font-weight:700;" onclick="window.HotelDirectPublisher ? window.HotelDirectPublisher.publish() : null">🚀 1-Click Live Publish</button>
+        <button type="button" class="btn-secondary" style="padding:8px 12px; font-size:0.85rem;" onclick="window.HotelDirectPublisher ? window.HotelDirectPublisher.openSettings() : null">⚙️ GitHub Token &amp; Settings</button>
+        <button type="button" class="btn-secondary" style="padding:8px 12px; font-size:0.85rem;" onclick="window.HotelPublishBundle ? window.HotelPublishBundle.export().catch(e=>window.app.showToast(e.message,'error')) : null">📥 Download Backup</button>
+      </div>
+    `;
+    hubWrap.append(topBar);
+
+    // 2. Active Modifications Summary Card
+    const modCard = document.createElement('div');
+    modCard.className = 'quick-edit-summary-card';
+    if (modCount > 0) {
+      const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+      const itemsList = Object.keys(localDishOverrides).map(id => {
+        const dish = menu.find(d => d.id === id);
+        const name = dish ? dish.name : id;
+        const price = localDishOverrides[id].price !== undefined ? `₹${localDishOverrides[id].price}` : '';
+        const arg = escape(JSON.stringify(id));
+        return `<span class="quick-edit-mod-pill"><span>${escape(name)} ${price}</span> <button type="button" title="Revert this item to live default" onclick="window.admin.revertSingleDish(${arg})">✕</button></span>`;
+      }).join('');
+
+      modCard.innerHTML = `
+        <h4><span>✨</span> <strong>${modCount} Custom Edits Stored on this Device</strong></h4>
+        <p style="margin:0 0 6px; font-size:0.82rem; color:var(--muted);">These modifications are currently saved in your browser and ready to be published live:</p>
+        <div class="quick-edit-pills-row">${itemsList}</div>
+        <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;">
+          <button type="button" class="btn-primary" style="padding:6px 12px; font-size:0.8rem;" onclick="window.HotelDirectPublisher ? window.HotelDirectPublisher.publish() : null">🚀 Publish These ${modCount} Edits Live</button>
+          <button type="button" class="btn-secondary" style="padding:6px 10px; font-size:0.8rem;" onclick="window.admin.resetAllToDefaults()">🔄 Revert All to Defaults</button>
+        </div>
+      `;
+    } else {
+      modCard.innerHTML = `
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="font-size:1.4rem;">✅</span>
+          <div>
+            <strong style="color:var(--text); font-size:0.95rem;">All Items in Sync with Official Live Defaults</strong>
+            <p style="margin:2px 0 0; font-size:0.82rem; color:var(--muted);">
+              Use the fast-edit table below to change any price, photo, name, or availability. Edits save to this device instantly!
+            </p>
+          </div>
+        </div>
+      `;
+    }
+    hubWrap.append(modCard);
+
+    // 3. Fast Filter Toolbar
+    const toolbar = document.createElement('div');
+    toolbar.className = 'admin-menu-toolbar';
+    toolbar.innerHTML = `
+      <div class="admin-menu-filters" style="width:100%; display:flex; flex-wrap:wrap; gap:8px;">
+        <input type="search" id="quick-edit-search" aria-label="Search all items" placeholder="🔍 Instant search 291 dishes, categories, or descriptions…" class="form-input" style="flex:1 1 240px;">
+        <select id="quick-edit-category-filter" class="form-select" style="flex:0 1 180px;">
+          <option value="all">All Categories (${menu.length})</option>
+          ${categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('')}
+        </select>
+        <select id="quick-edit-status-filter" class="form-select" style="flex:0 1 150px;">
+          <option value="all">All Items</option>
+          <option value="modified">Modified Only (${modCount})</option>
+          <option value="active">Active Only</option>
+          <option value="soldOut">Sold Out Only</option>
+          <option value="hidden">Hidden Only</option>
+        </select>
+        <button class="btn-primary" type="button" style="padding:8px 14px; white-space:nowrap;" onclick="window.admin.openAddDishModal()">+ Add New Dish</button>
+      </div>
+      <div class="quick-filter-chips" id="quick-edit-category-chips">
+        <button type="button" class="quick-filter-chip active" data-cat="all">All Dishes</button>
+        <button type="button" class="quick-filter-chip" data-cat="house-specialities">👑 House Specials</button>
+        <button type="button" class="quick-filter-chip" data-cat="paneer-specialities">🧀 Paneer</button>
+        <button type="button" class="quick-filter-chip" data-cat="khandeshi-specialities">🌶️ Khandeshi</button>
+        <button type="button" class="quick-filter-chip" data-cat="shev-bhaji-specialities">🍲 Shev Bhaji</button>
+        <button type="button" class="quick-filter-chip" data-cat="tandoor-starters">🍢 Tandoor</button>
+        <button type="button" class="quick-filter-chip" data-cat="stuffed-parathas">🫓 Parathas</button>
+        <button type="button" class="quick-filter-chip" data-cat="rice-biryani">🍚 Rice &amp; Biryani</button>
+        <button type="button" class="quick-filter-chip" data-cat="milkshakes">🥤 Shakes</button>
+        <button type="button" class="quick-filter-chip" data-cat="mastani">🍧 Mastani</button>
+        <button type="button" class="quick-filter-chip" data-cat="cold-coffee">☕ Cold Coffee</button>
+        <button type="button" class="quick-filter-chip" data-cat="ice-creams">🍨 Ice Cream</button>
+      </div>
+    `;
+    hubWrap.append(toolbar);
+
+    // 4. Bulk Table Container
+    const tableContainer = document.createElement('div');
+    tableContainer.style.overflowX = 'auto';
+    tableContainer.innerHTML = `
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th style="width:70px;">Photo</th>
+            <th>Item &amp; Category</th>
+            <th style="width:130px;">Price (₹)</th>
+            <th style="width:150px;">Availability</th>
+            <th style="width:140px;">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="quick-edit-tbody">
+          ${this.generateQuickEditRows(menu.slice(0, 40))}
+        </tbody>
+      </table>
+      <div class="admin-list-footer">
+        <p id="quick-edit-count" role="status">Showing ${Math.min(menu.length, 40)} of ${menu.length} items</p>
+        <button type="button" class="studio-button" id="quick-edit-show-more" onclick="window.admin.quickEditVisibleCount = (window.admin.quickEditVisibleCount || 40) + 40; window.admin.filterQuickEditDishes();">Show more items</button>
+      </div>
+    `;
+    hubWrap.append(tableContainer);
+
+    container.append(hubWrap);
+
+    // Event listeners
+    const searchInput = document.getElementById('quick-edit-search');
+    if (searchInput) searchInput.addEventListener('input', () => this.filterQuickEditDishes());
+    const catSelect = document.getElementById('quick-edit-category-filter');
+    if (catSelect) catSelect.addEventListener('change', () => this.filterQuickEditDishes());
+    const statusSelect = document.getElementById('quick-edit-status-filter');
+    if (statusSelect) statusSelect.addEventListener('change', () => this.filterQuickEditDishes());
+
+    // Chip listeners
+    document.querySelectorAll('#quick-edit-category-chips .quick-filter-chip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#quick-edit-category-chips .quick-filter-chip').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-cat');
+        if (catSelect) catSelect.value = cat;
+        this.filterQuickEditDishes();
+      });
+    });
+  }
+
+  generateQuickEditRows(dishes) {
+    const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+    let localOverrides = {};
+    try { localOverrides = JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1') || '{}'); } catch (_) {}
+
+    return dishes.map(dish => {
+      const id = escape(dish.id);
+      const arg = escape(JSON.stringify(dish.id));
+      const category = window.app.categories.find(item => item.id === dish.categoryId)?.name || dish.categoryId;
+      const isModified = Boolean(localOverrides[dish.id]);
+
+      return `<tr id="quick-row-${id}" class="${isModified ? 'quick-edit-row-modified' : ''}">
+        <td>
+          <button type="button" class="admin-photo-button" onclick="window.admin.openImageModal(${arg})" aria-label="Edit photo for ${escape(dish.name)}">
+            <img width="60" height="60" loading="lazy" src="${escape(dish.image || 'assets/brand-placeholder.svg')}" alt="${escape(dish.name)}">
+            <span>Photo</span>
+          </button>
+        </td>
+        <td>
+          <div style="display:flex; align-items:center; gap:6px;">
+            <strong class="admin-item-name" style="font-size:0.95rem;">${escape(dish.name)}</strong>
+            ${isModified ? '<span style="font-size:0.7rem; background:rgba(197,168,128,0.3); color:var(--accent); padding:1px 6px; border-radius:4px; font-weight:700;">Edited</span>' : ''}
+          </div>
+          <span class="admin-item-category" style="font-size:0.75rem; color:var(--muted);">${escape(category)}</span>
+          <p class="admin-item-description" style="font-size:0.8rem; margin:2px 0 0; color:var(--muted); max-height:2.6em; overflow:hidden;">${escape(dish.description || '')}</p>
+          ${dish.variants?.length ? `<span style="font-size:0.75rem; color:var(--accent); font-weight:700; display:inline-block; margin-top:2px;">⚙️ ${dish.variants.length} Variants</span>` : ''}
+        </td>
+        <td>
+          <label class="studio-field" style="margin:0;">
+            <input type="number" min="0" class="form-input quick-edit-inline-input" value="${dish.price ?? ''}" placeholder="On req" onchange="window.admin.updatePrice(${arg}, this.value)" title="Change price instantly">
+          </label>
+        </td>
+        <td>
+          <div style="display:flex; flex-direction:column; gap:4px;">
+            <label class="admin-check" style="font-size:0.8rem;"><input type="checkbox" ${dish.isSoldOut ? 'checked' : ''} onchange="window.admin.toggleAvailability(${arg}, !this.checked)"> Sold Out</label>
+            <label class="admin-check" style="font-size:0.8rem;"><input type="checkbox" ${dish.notAvailable ? 'checked' : ''} onchange="window.admin.toggleNotAvailable(${arg}, this.checked)"> Hide</label>
+          </div>
+        </td>
+        <td>
+          <div style="display:flex; flex-direction:column; gap:4px;">
+            <button type="button" class="studio-button" style="padding:4px 8px; font-size:0.78rem;" onclick="window.admin.openFullDishEditor(${arg})">✏️ Edit Details</button>
+            ${isModified ? `<button type="button" class="studio-button" style="padding:3px 6px; font-size:0.72rem; color:var(--danger);" onclick="window.admin.revertSingleDish(${arg})">✕ Revert</button>` : ''}
+          </div>
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  filterQuickEditDishes() {
+    const q = (document.getElementById('quick-edit-search')?.value || '').toLowerCase().trim();
+    const cat = document.getElementById('quick-edit-category-filter')?.value || 'all';
+    const status = document.getElementById('quick-edit-status-filter')?.value || 'all';
+    const tbody = document.getElementById('quick-edit-tbody');
+
+    let localOverrides = {};
+    try { localOverrides = JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1') || '{}'); } catch (_) {}
+
+    const filtered = window.app.menuData.filter(d => {
+      const matchesQ = !q || d.name.toLowerCase().includes(q) || (d.description && d.description.toLowerCase().includes(q));
+      const matchesVariant = !q || (d.variants && d.variants.some(v =>
+        (v.name && v.name.toLowerCase().includes(q)) || (v.description && v.description.toLowerCase().includes(q))
+      ));
+      const matchesCat = (cat === 'all') || (d.categoryId === cat);
+      let matchesStatus = true;
+      if (status === 'modified') matchesStatus = Boolean(localOverrides[d.id]);
+      if (status === 'active') matchesStatus = !d.notAvailable && !d.isSoldOut;
+      if (status === 'soldOut') matchesStatus = Boolean(d.isSoldOut);
+      if (status === 'hidden') matchesStatus = Boolean(d.notAvailable);
+      return (matchesQ || matchesVariant) && matchesCat && matchesStatus;
+    });
+
+    if (tbody) {
+      const count = window.admin.quickEditVisibleCount || 40;
+      tbody.innerHTML = this.generateQuickEditRows(filtered.slice(0, count));
+      const countEl = document.getElementById('quick-edit-count');
+      if (countEl) countEl.textContent = `Showing ${Math.min(filtered.length, count)} of ${filtered.length} items`;
+      const more = document.getElementById('quick-edit-show-more');
+      if (more) more.hidden = filtered.length <= count;
+    }
+  }
+
+  async revertSingleDish(dishId) {
+    if (!this.isAuthenticated || !window.HotelLocalLock?.isUnlocked()) return;
+    try {
+      const saved = JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1') || '{}');
+      if (saved[dishId]) {
+        delete saved[dishId];
+        localStorage.setItem('hotel_premier_user_overrides_v1', JSON.stringify(saved));
+      }
+      if (window.HOTEL_STORAGE && typeof window.HOTEL_STORAGE.saveDishOverride === 'function') {
+        try {
+          if (window.HOTEL_STORAGE.db) {
+            const tx = window.HOTEL_STORAGE.db.transaction('dish_overrides', 'readwrite');
+            tx.objectStore('dish_overrides').delete(dishId);
+          }
+        } catch (_) {}
+      }
+      if (window.app && typeof window.app.loadCustomMenuData === 'function') {
+        await window.app.loadCustomMenuData();
+        window.app.renderMenu();
+      }
+      window.app.showToast('Item reverted to default settings.', 'info');
+      const container = document.getElementById('admin-tab-content');
+      if (container && this.currentTab === 'quick-edit') {
+        this.renderQuickEditHub(container);
+      }
+    } catch (err) {
+      console.error('Revert dish error:', err);
+      window.app.showToast('Could not revert item: ' + err.message, 'error');
+    }
+  }
+
+  openFullDishEditor(dishId) {
+    const dish = window.app.menuData.find(d => d.id === dishId);
+    this.switchTab('menu');
+    setTimeout(() => {
+      const searchInput = document.getElementById('admin-search-dish');
+      if (searchInput && dish) {
+        searchInput.value = dish.name;
+        this.filterAdminDishes();
+      }
+      const row = document.getElementById(`admin-row-${dishId}`);
+      if (row) {
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        const details = row.querySelector('.admin-text-editor');
+        if (details) details.open = true;
+      }
+    }, 50);
   }
 
   // ==================== 1. MENU CMS TABLE & PRICING ====================
