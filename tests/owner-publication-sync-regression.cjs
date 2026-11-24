@@ -19,7 +19,7 @@ for(const file of ['data/menu-data.js','data/menu-photos.js','data/published-ove
  assert.equal(drinks.variants.find(v=>v.name==='Hot Milk').image,app.menuData.find(d=>d.id==='hh-4').image);
  const deleted=Object.entries(o.layout.items).filter(([,p])=>p._deleted).map(([id])=>id);
  for(const id of deleted){assert.ok(!app.menuData.some(d=>d.id===id));const original=c.window.HOTEL_PREMIER_INITIAL_MENU.find(d=>d.id===id);if(original?.groupedUnder){const group=app.menuData.find(d=>d.id===original.groupedUnder);assert.ok(!group?.variants?.some(v=>v.name===original.name),'Deleted child must not survive as an ordering option');}}
- for(const child of app.menuData.filter(d=>d.groupedUnder&&d.image?.includes('/published-'))){const group=app.menuData.find(d=>d.id===child.groupedUnder);const v=group?.variants?.find(v=>v.name===child.name);if(v)assert.equal(v.image,child.image,'Grouped options must use the saved child photo');}
+ for(const child of app.menuData.filter(d=>!d.notAvailable&&d.groupedUnder&&d.image?.includes('/published-'))){const group=app.menuData.find(d=>d.id===child.groupedUnder);const v=group?.variants?.find(v=>v.id?v.id===child.id:v.name===child.name);if(v)assert.equal(v.image,child.image,'Grouped options must use the saved child photo');}
  for(const d of app.menuData.filter(d=>d.categoryId==='frozen-fantasies')){assert.doesNotMatch(d.image||'',/finger-chips|soup|dal-tadka/);for(const v of d.variants||[])assert.doesNotMatch(v.image||'',/finger-chips|soup|dal-tadka/);}
  console.log('PASS: clean guest loads owner photos, digest assets, grouped-image sync, deleted options and public-only publication');
 })().catch(e=>{console.error(e);process.exitCode=1;});

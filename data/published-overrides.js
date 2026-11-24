@@ -1,7 +1,7 @@
-// Reviewed compact menu; water sizes added 2026-11-25. Existing IDs retained.
+// Reviewed menu release 22.104, preserving newer owner photo updates.
 window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
   "version": 1,
-  "publishedAt": 1795548131195,
+  "publishedAt": 1795548338043,
   "dishes": {
     "tc-paneer-tikka-group": {
       "image": "assets/menu-uploads/published-43aa467daf6104ee091e35f2.webp",
@@ -825,7 +825,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "हॉट कॉफ़ी",
           "marathiName": "गरम कॉफी",
           "price": 35,
-          "image": "",
+          "image": "assets/menu-uploads/published-f4ced7d9b1b62dc7c630d712.webp",
           "description": "Rich roasted aromatic coffee frothed with steaming hot milk.",
           "descriptionHi": "भुने हुए कॉफ़ी बीन्स और गर्मागर्म झागदार दूध से तैयार खुशबूदार कॉफ़ी।",
           "descriptionMr": "ताज्या भाजलेल्या कॉफीचा सुवास आणि फेसाळलेल्या दुधाची गरम कॉफी."
@@ -853,7 +853,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       ]
     },
     "ff-ice-cream-group": {
-      "image": "",
+      "image": "assets/menu-uploads/published-b384d9f42602666014bf780b.webp",
       "variants": [
         {
           "name": "Vanilla Ice Cream",
@@ -1283,7 +1283,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-737b30f0f452daffead89c81.webp"
     },
     "hh-2": {
-      "image": ""
+      "image": "assets/menu-uploads/published-f4ced7d9b1b62dc7c630d712.webp"
     },
     "hh-3": {
       "image": "assets/menu-uploads/published-3641b1373cd48f1e178c9c17.webp"
@@ -4642,7 +4642,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन नान",
           "marathiName": "प्लेन नान",
           "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/naan.jpg",
+          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
           "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
           "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
@@ -4652,7 +4652,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "बटर नान",
           "marathiName": "बटर नान",
           "price": 55,
-          "image": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
           "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
           "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
@@ -4727,7 +4727,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
           "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
         }
-      ]
+      ],
+      "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp"
     },
     "sb-4": {
       "variants": [
@@ -4736,7 +4737,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन नान",
           "marathiName": "प्लेन नान",
           "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/naan.jpg",
+          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
           "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
           "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
@@ -4746,7 +4747,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "बटर नान",
           "marathiName": "बटर नान",
           "price": 55,
-          "image": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
           "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
           "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
@@ -4821,7 +4822,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
           "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
         }
-      ]
+      ],
+      "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp"
     },
     "sb-5": {
       "variants": [
@@ -4830,7 +4832,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन नान",
           "marathiName": "प्लेन नान",
           "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/naan.jpg",
+          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
           "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
           "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
@@ -4840,7 +4842,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "बटर नान",
           "marathiName": "बटर नान",
           "price": 55,
-          "image": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
           "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
           "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
@@ -4915,7 +4917,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
           "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
         }
-      ]
+      ],
+      "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp"
     },
     "sb-6": {
       "variants": [
@@ -4924,7 +4927,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन नान",
           "marathiName": "प्लेन नान",
           "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/naan.jpg",
+          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
           "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
           "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
@@ -4934,7 +4937,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "बटर नान",
           "marathiName": "बटर नान",
           "price": 55,
-          "image": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
           "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
           "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
@@ -5019,7 +5022,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन नान",
           "marathiName": "प्लेन नान",
           "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/naan.jpg",
+          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
           "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
           "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
@@ -5029,7 +5032,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "बटर नान",
           "marathiName": "बटर नान",
           "price": 55,
-          "image": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
           "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
           "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
@@ -5113,7 +5116,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन नान",
           "marathiName": "प्लेन नान",
           "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/naan.jpg",
+          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
           "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
           "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
@@ -5123,7 +5126,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "बटर नान",
           "marathiName": "बटर नान",
           "price": 55,
-          "image": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
           "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
           "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
@@ -5207,7 +5210,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन नान",
           "marathiName": "प्लेन नान",
           "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/naan.jpg",
+          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
           "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
           "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
@@ -5217,7 +5220,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "बटर नान",
           "marathiName": "बटर नान",
           "price": 55,
-          "image": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
           "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
           "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
           "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
@@ -8037,7 +8040,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
     "mc-2": {
       "categoryId": "chilled-beverages",
       "groupedUnder": "cb-mocktails-group",
-      "variants": []
+      "variants": [],
+      "image": "assets/menu-uploads/published-28d16d8229b27e604c44c9a0.webp"
     },
     "ms-7": {
       "categoryId": "chilled-beverages",
@@ -8046,15 +8050,18 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "कोल्ड कॉफी"
     },
     "cb-jaljeera": {
-      "categoryId": "chilled-beverages"
+      "categoryId": "chilled-beverages",
+      "image": "assets/menu-uploads/published-02525db15f5956a22c27f5bf.webp"
     },
     "cb-freshlime": {
-      "categoryId": "chilled-beverages"
+      "categoryId": "chilled-beverages",
+      "image": "assets/menu-uploads/published-d6651e96cb3f92d429b8c597.webp"
     },
     "ms-vanilla": {
       "categoryId": "chilled-beverages",
       "notAvailable": true,
-      "groupedUnder": "cb-milkshakes-group"
+      "groupedUnder": "cb-milkshakes-group",
+      "image": "assets/menu-uploads/published-8b2168339c11458daa1cbe86.webp"
     },
     "ms-vanilla-icecream": {
       "categoryId": "chilled-beverages",
@@ -8062,7 +8069,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "hindiName": "वैनिला मिल्कशेक",
       "marathiName": "व्हॅनिला मिल्कशेक",
       "groupedUnder": "cb-milkshakes-group",
-      "variants": []
+      "variants": [],
+      "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp"
     },
     "ms-chocolate": {
       "categoryId": "chilled-beverages",
@@ -8075,7 +8083,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "hindiName": "चॉकलेट मिल्कशेक",
       "marathiName": "चॉकलेट मिल्कशेक",
       "groupedUnder": "cb-milkshakes-group",
-      "variants": []
+      "variants": [],
+      "image": "assets/menu-uploads/published-2cb32e8cd1e340c5d4c89db0.webp"
     },
     "ms-mango": {
       "categoryId": "chilled-beverages",
@@ -8114,7 +8123,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "मिल्कशेक",
       "categoryId": "chilled-beverages",
       "price": 150,
-      "image": "assets/brand-placeholder.svg",
+      "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
       "description": "",
       "descriptionHi": "",
       "descriptionMr": "",
@@ -8126,7 +8135,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "वैनिला मिल्कशेक",
           "marathiName": "व्हॅनिला मिल्कशेक",
           "price": 150,
-          "image": "assets/brand-placeholder.svg",
+          "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
           "description": "Smooth chilled vanilla milkshake served with a generous scoop of rich vanilla ice cream.",
           "descriptionHi": "स्वादिष्ट वैनिला शेक के ऊपर भरपूर वैनिला आइसक्रीम का ठंडा मलाईदार स्कूप।",
           "descriptionMr": "चवदार व्हॅनिला मिल्कशेकवर थंडगार व्हॅनिला आईस्क्रीमचा मोठा स्कूप."
@@ -8137,7 +8146,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "चॉकलेट मिल्कशेक",
           "marathiName": "चॉकलेट मिल्कशेक",
           "price": 160,
-          "image": "assets/brand-placeholder.svg",
+          "image": "assets/menu-uploads/published-2cb32e8cd1e340c5d4c89db0.webp",
           "description": "Decadent chocolate milkshake crowned with a large scoop of chocolate dairy ice cream.",
           "descriptionHi": "गाढ़े चॉकलेट शेक के ऊपर मलाईदार चॉकलेट आइसक्रीम का भरपूर स्कूप।",
           "descriptionMr": "दाट चॉकलेट शेकवर रिच चॉकलेट आईस्क्रीमचा मखमली स्कूप."
@@ -8231,7 +8240,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "फ्रूट पंच",
           "marathiName": "फ्रूट पंच",
           "price": 120,
-          "image": "",
+          "image": "assets/menu-uploads/published-28d16d8229b27e604c44c9a0.webp",
           "description": "Tropical medley of mango, guava, pineapple, and orange juices crowned with vanilla ice cream.",
           "descriptionHi": "आम, अमरूद, अनानास और संतरे के रस का मिश्रण, ऊपर वैनिला आइसक्रीम के साथ।",
           "descriptionMr": "आंबा, पेरू, अननस आणि संत्र्याच्या रसाचे मिश्रण, वर व्हॅनिला आईस्क्रीमसह."
@@ -8259,9 +8268,25 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "descriptionMr": "संत्र्याचा ताजा रस आणि डाळिंब सिरपचे दोन आकर्षक रंगांचे थंडगार पेय."
         }
       ]
+    },
+    "sb-16": {
+      "image": ""
     }
   },
   "roomGalleries": {
+    "ac-super-deluxe": [
+      "assets/hotel-images/s-dlx-suite-master-angle.jpg",
+      "assets/hotel-images/s-dlx-suite-wide-view.jpg",
+      "assets/hotel-images/s-dlx-bed-king-luxury.jpg",
+      "assets/hotel-images/s-dlx-suite-full-view.jpg",
+      "assets/hotel-images/s-dlx-suite-side-angle.jpg",
+      "assets/hotel-images/s-dlx-suite-mood-lighting.jpg",
+      "assets/hotel-images/s-dlx-bed-comfort-angle.jpg",
+      "assets/hotel-images/s-dlx-suite-headboard-detail.jpg",
+      "assets/hotel-images/s-dlx-balcony-terrace-view.jpg",
+      "assets/hotel-images/s-dlx-washroom-sanitized-1.jpg",
+      "assets/hotel-images/s-dlx-washroom-sanitized-2.jpg"
+    ],
     "ac-deluxe-queen": [
       "assets/hotel-images/dlx-queen-room-warm-ambience.jpg",
       "assets/hotel-images/dlx-queen-corner-wide.jpg",
@@ -8269,6 +8294,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "assets/hotel-images/dlx-queen-corner-angle-2.jpg",
       "assets/hotel-images/dlx-queen-corner-angle-3.jpg",
       "assets/hotel-images/dlx-queen-corner-angle-4.jpg",
+      "assets/hotel-images/dlx-washroom-sanitized-1.jpg",
+      "assets/hotel-images/dlx-washroom-sanitized-2.jpg"
+    ],
+    "ac-deluxe-twin": [
+      "assets/hotel-images/dlx-twin-beds-wide-angle.jpg",
+      "assets/hotel-images/dlx-twin-beds-perspective.jpg",
       "assets/hotel-images/dlx-washroom-sanitized-1.jpg",
       "assets/hotel-images/dlx-washroom-sanitized-2.jpg"
     ]
@@ -9359,7 +9390,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         "marathiName": "मिल्कशेक",
         "categoryId": "chilled-beverages",
         "price": 150,
-        "image": "assets/brand-placeholder.svg",
+        "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
         "description": "",
         "descriptionHi": "",
         "descriptionMr": "",
@@ -9371,7 +9402,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "hindiName": "वैनिला मिल्कशेक",
             "marathiName": "व्हॅनिला मिल्कशेक",
             "price": 150,
-            "image": "assets/brand-placeholder.svg",
+            "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
             "description": "Smooth chilled vanilla milkshake served with a generous scoop of rich vanilla ice cream.",
             "descriptionHi": "स्वादिष्ट वैनिला शेक के ऊपर भरपूर वैनिला आइसक्रीम का ठंडा मलाईदार स्कूप।",
             "descriptionMr": "चवदार व्हॅनिला मिल्कशेकवर थंडगार व्हॅनिला आईस्क्रीमचा मोठा स्कूप."
@@ -9382,7 +9413,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "hindiName": "चॉकलेट मिल्कशेक",
             "marathiName": "चॉकलेट मिल्कशेक",
             "price": 160,
-            "image": "assets/brand-placeholder.svg",
+            "image": "assets/menu-uploads/published-2cb32e8cd1e340c5d4c89db0.webp",
             "description": "Decadent chocolate milkshake crowned with a large scoop of chocolate dairy ice cream.",
             "descriptionHi": "गाढ़े चॉकलेट शेक के ऊपर मलाईदार चॉकलेट आइसक्रीम का भरपूर स्कूप।",
             "descriptionMr": "दाट चॉकलेट शेकवर रिच चॉकलेट आईस्क्रीमचा मखमली स्कूप."
@@ -9476,7 +9507,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "hindiName": "फ्रूट पंच",
             "marathiName": "फ्रूट पंच",
             "price": 120,
-            "image": "",
+            "image": "assets/menu-uploads/published-28d16d8229b27e604c44c9a0.webp",
             "description": "Tropical medley of mango, guava, pineapple, and orange juices crowned with vanilla ice cream.",
             "descriptionHi": "आम, अमरूद, अनानास और संतरे के रस का मिश्रण, ऊपर वैनिला आइसक्रीम के साथ।",
             "descriptionMr": "आंबा, पेरू, अननस आणि संत्र्याच्या रसाचे मिश्रण, वर व्हॅनिला आईस्क्रीमसह."
