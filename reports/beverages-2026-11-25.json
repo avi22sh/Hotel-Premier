@@ -1,0 +1,31 @@
+{
+  "release": "22.103",
+  "status": "Local build verified; not published to GitHub",
+  "backup": "backups/before-beverage-adjust-2026-11-25",
+  "changes": {
+    "coldSectionsBefore": 5,
+    "coldSectionsAfter": 1,
+    "section": "Cold Beverages & Shakes",
+    "compactCards": 11,
+    "milkshakeOptions": {"Vanilla":150,"Chocolate":160,"Mango":160,"Dryfruit":170},
+    "Cold Coffee": 130,
+    "Special Punjabi Lassi": 110,
+    "Mango Mastani": 180,
+    "Dry Fruit Mastani": 180,
+    "serving": "Ice cream included for milkshakes, mastani, cold coffee and Punjabi Lassi. Short display names; original ice-cream preparation descriptions retained. Plain duplicates hidden, original records retained for recovery.",
+    "otherOptions": "Water/soda and plain/masala choices remain unchanged; hot drinks remain beside breakfast.",
+    "languages": "English, Hindi and Marathi names and descriptions; Lassi translations updated to explicitly include ice cream."
+  },
+  "checks": {
+    "javascriptRegressionSuites": "77/77 passed",
+    "sourceChecks": "17/17 passed before final translation-label correction; affected language tests rerun afterward",
+    "assets": "1528 exact-case image references verified",
+    "build": "798 public files built",
+    "mobileViewport": "375x812",
+    "mobileHorizontalOverflow": false,
+    "mobileCards": 11,
+    "optionInteraction": "Mango Milkshake 160 opens with ice-cream description; Dryfruit Milkshake 170 selectable; no separate plain/ice-cream choices",
+    "allMenuSectionsRemain": 17
+  },
+  "screenshot": "output/beverages-22.103-mobile.jpg"
+}

@@ -1,0 +1,38 @@
+{
+  "reviewedImagePaths": 259,
+  "reviewedReferences": 1098,
+  "cleared": [
+    {
+      "id": "ic-21",
+      "reason": "Veg Kothe used a Hakka Noodles photograph."
+    },
+    {
+      "id": "ic-13",
+      "reason": "Noodles Spring Roll used a Veg Crispy photograph."
+    },
+    {
+      "id": "vs-9",
+      "reason": "Bhindi Do Pyaza used the Mix Veg photograph, showing paneer and no identifiable bhindi."
+    },
+    {
+      "id": "md-13",
+      "reason": "Veg Club Sandwich photograph shows garnished toast rather than a layered club sandwich."
+    },
+    {
+      "id": "fd-3",
+      "reason": "Dal Maharani photograph shows a green-pea gravy; no verified replacement available."
+    },
+    {
+      "id": "vs-shev-latpat",
+      "reason": "Inherited the Regular Shev Bhaji photograph; no verified variant-specific photo supplied."
+    },
+    {
+      "id": "vs-doodh-shev",
+      "reason": "Inherited the Regular Shev Bhaji photograph; no verified variant-specific photo supplied."
+    }
+  ],
+  "notes": [
+    "All referenced paths existed. The SVG brand placeholder is intentionally used for missing photos.",
+    "Plating and recipe authenticity cannot be established from appearance alone; no replacement photos were invented."
+  ]
+}

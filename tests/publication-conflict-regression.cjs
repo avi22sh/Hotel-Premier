@@ -5,6 +5,9 @@ local={image:'assets/new-local.webp',tags:['new-local'],updatedAt:200};await app
 local={image:'assets/old.jpg',price:95,updatedAt:200,fieldUpdatedAt:{image:50,price:200}};await app.loadMenuData();assert.equal(app.menuData[0].image,'assets/published.webp','A price edit must not resurrect an older photo');assert.equal(app.menuData[0].price,95);
 local={image:'',updatedAt:200,fieldUpdatedAt:{image:200}};await app.loadMenuData();assert.equal(app.menuData[0].image,'','New intentional removal stays local');
 local={image:'data:image/png;base64,fixture'};await app.loadMenuData();assert.equal(app.menuData[0].image,local.image,'Untracked user uploads must be preserved');assert.equal(writes,0);assert.equal(local.image,'data:image/png;base64,fixture');
+ c.window.HOTEL_PREMIER_PUBLISHED_OVERRIDES.dishes.dish.variants=[{id:'second',name:'Second',price:20},{id:'first',name:'First',price:10}];
+ local={variants:[{id:'first',name:'First',image:'blob:first-photo'},{id:'second',name:'Second',image:'blob:second-photo'}]};
+ await app.loadMenuData();assert.equal(app.menuData[0].variants[0].image,'blob:second-photo');assert.equal(app.menuData[0].variants[1].image,'blob:first-photo','Reordering cannot swap uploaded option photos');
 c.window.HotelPhotoStorage={hydrate:r=>r,normalizePaths:r=>r};vm.runInContext(fs.readFileSync('storage.js','utf8'),c);const store=c.window.HOTEL_STORAGE;await store.initPromise;
  c.window.HOTEL_PREMIER_PUBLISHED_OVERRIDES.roomGalleries={queen:['assets/published-room.webp']};c.window.HOTEL_PREMIER_PUBLISHED_OVERRIDES.sectionSlides={hero:[{image:'assets/published-slide.webp'}]};
  let record={updatedAt:50,images:['assets/old-room.jpg'],slides:[{image:'assets/old-slide.jpg'}]};store.readPhotoRecord=async()=>record;

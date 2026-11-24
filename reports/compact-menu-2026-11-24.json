@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-24",
+  "release": "22.100",
+  "status": "Local build ready. No GitHub publication performed.",
+  "backup": "backups/before-compact-22-99-2026-11-24",
+  "architecture": {
+    "baseMenu": "data/menu-data.js",
+    "reviewedChanges": "data/published-overrides.js",
+    "localDraftMerge": "menu-structure.js",
+    "renderingAndNavigation": "app.js",
+    "theme": "theme-tokens.css",
+    "cache": "sw.js: hotel-premier-v22.100"
+  },
+  "visibleCardsBefore": 138,
+  "visibleCardsAfter": 86,
+  "menuSections": 21,
+  "highLevelCollectionChoices": 14,
+  "compactCardCounts": {
+    "tandoor-classics": 3,
+    "vegetable-specialties": 5,
+    "paneer-specialties": 3,
+    "mithai-magic": 4
+  },
+  "preservation": "All 291 original IDs, item prices and description fields pass fixture checks. Hidden child and duplicate compatibility records retain old links; parent cards own flat selectable variants.",
+  "newPrices": {
+    "French Fries Salted": 140,
+    "French Fries Masala": 150,
+    "Chana Koliwada": null,
+    "Butter Dal Khichadi": null,
+    "Butter Dal Khichadi Tadka": null
+  },
+  "starterClassification": {
+    "basis": "Existing dish preparation descriptions, rather than the previous category assignment",
+    "tandooriVeg": ["tc-12", "tc-13", "tc-14", "tc-16", "tc-17"],
+    "crispyFriedVeg": ["tc-11", "tc-15", "tc-18"],
+    "rollMovedToSnacks": "tc-9",
+    "paneerComboOption": "tc-10",
+    "standalonePlatter": "tc-1"
+  },
+  "imageAudit": {
+    "knownUnverifiedAssignmentsCleared": ["ic-21", "ic-13", "vs-9", "md-13", "fd-3", "vs-shev-latpat", "vs-doodh-shev"],
+    "behavior": "Blank option images remain placeholders; no unrelated parent photo is substituted.",
+    "limitation": "Asset existence and known mismatches were checked; dish identity cannot be guaranteed for every owner-uploaded photo.",
+    "existingPriceConflictRetained": "Afghan Dry Fruit Ice Cream has an existing item price of 50 and grouped option price of 40; preserved for owner review."
+  },
+  "navigationFix": "Collections clears search/favourites/category filters, closes its drawer, keeps the full menu rendered, and smooth-scrolls with sticky-bar offsets. Actual section layout replaces off-screen placeholder geometry to prevent displaced scroll targets. Reduced-motion preference is respected.",
+  "verification": {
+    "javascriptSuites": "76/76 passed",
+    "sourceChecks": "17/17 passed",
+    "imageReferences": "1530 exact-case references verified across 1044 asset files",
+    "build": "798 public files built; private backups/tests/tools excluded",
+    "syntaxAndWhitespace": "app.js and published overrides syntax checks and git diff whitespace check passed",
+    "mobile": {
+      "viewport": "375x812",
+      "allSectionsRemain": 21,
+      "allCardsRemain": 86,
+      "paneerHeadingTop": 237.69,
+      "stickyToolbarBottom": 231.20,
+      "horizontalOverflow": false,
+      "searchToCollection": "Search cleared, full menu restored and Veg Main's five cards visible",
+      "fries": "Salted 140 and Masala 150 selectable in light and dark mode; unknown Masala photo uses placeholder"
+    },
+    "desktop": {
+      "viewport": "1280x900",
+      "allSectionsRemain": 21,
+      "horizontalOverflow": false,
+      "dessertHeadingTop": 187.28,
+      "stickyToolbarBottom": 183.60
+    },
+    "browserConsoleErrors": 0,
+    "physicalPhoneTesting": "Not performed; browser viewport verification only"
+  },
+  "screenshots": [
+    "output/menu-22.100-mobile-paneer.jpg",
+    "output/menu-22.100-mobile-collections.jpg",
+    "output/menu-22.100-mobile-dark-options.jpg"
+  ]
+}

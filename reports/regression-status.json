@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-11-07T10:20:44.378Z",
-  "passed": 74,
+  "createdAt": "2026-11-24T19:24:12.592Z",
+  "passed": 77,
   "failed": [],
   "results": [
     {
@@ -36,11 +36,19 @@
       "passed": true
     },
     {
+      "file": "beverage-consolidation-regression.cjs",
+      "passed": true
+    },
+    {
       "file": "business-content-preservation-regression.cjs",
       "passed": true
     },
     {
       "file": "child-extra-beds-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "compact-collections-regression.cjs",
       "passed": true
     },
     {
@@ -161,6 +169,10 @@
     },
     {
       "file": "menu-load-readonly-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-restructure-regression.cjs",
       "passed": true
     },
     {

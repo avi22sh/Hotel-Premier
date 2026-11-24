@@ -858,12 +858,12 @@ window.HOTEL_PREMIER_I18N = {
       desc_mr: 'Mango Mastani, Premier Special Mastani, Thick Shakes'
     },
     'chilled-beverages': {
-      en: 'Chilled & Aerated Drinks',
-      hi: 'Cold Drinks, Lassi & Chaas',
-      mr: 'Cold Drinks, Lassi & Taak',
-      desc_en: 'Special Punjabi Lassi, Masala Chaas, Fresh Lime Soda & Soft Drinks',
-      desc_hi: 'Punjabi Lassi, Masala Chaas, Fresh Lime Soda, Cold Drinks',
-      desc_mr: 'Punjabi Lassi, Masala Taak, Fresh Lime Soda, Cold Drinks'
+      en: 'Cold Beverages & Shakes',
+      hi: 'ठंडे पेय एवं शेक',
+      mr: 'थंड पेये व शेक',
+      desc_en: 'Milkshakes, mastani, cold coffee, mocktails, lassi, juices & refreshments',
+      desc_hi: 'मिल्कशेक, मस्तानी, कोल्ड कॉफ़ी, मॉकटेल, लस्सी, जूस एवं ताज़गी भरे पेय',
+      desc_mr: 'मिल्कशेक, मस्तानी, कोल्ड कॉफी, मॉकटेल, लस्सी, ज्यूस व ताजेतवाने पेये'
     }
   },
 

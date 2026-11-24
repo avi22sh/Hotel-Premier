@@ -604,7 +604,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.86';
+    s.src = 'admin.js?v=22.104';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1037,8 +1037,10 @@ class HotelPremierApp {
             copy[key]=value;
           } else if (hasVariantUploads && Array.isArray(value)) {
             // Preserve local variant photo uploads while keeping published pricing/text
-            copy.variants = value.map((pubV, idx) => {
-              const localV = (ov.variants && (ov.variants[idx] || ov.variants.find(v => v.name === pubV.name))) || null;
+            copy.variants = value.map(pubV => {
+              // A menu reorder must never attach a saved upload to another dish.
+              const localV = ov.variants.find(v => pubV.id && v.id === pubV.id)
+                || ov.variants.find(v => v.name === pubV.name) || null;
               if (localV && localV.image && /^(?:blob:|data:image\/)/.test(localV.image)) {
                 return { ...pubV, image: localV.image };
               }
@@ -1897,6 +1899,32 @@ class HotelPremierApp {
   }
 
   // ==================== FULL MENU SUB-SECTIONS SWITCHER DRAWER ====================
+  getMenuCollections() {
+    const groups=[
+      [['morning-delights','hot-hearty'],'Breakfast & Hot Drinks','नाश्ता एवं गर्म पेय','नाश्ता व गरम पेये'],
+      [['tasty-tidbits'],'Indian Starters','भारतीय स्टार्टर्स','भारतीय स्टार्टर्स'],
+      [['premier-soups','indo-chinese'],'Soups & Indo-Chinese','सूप एवं इंडो-चाइनीज़','सूप व इंडो-चायनीज'],
+      [['pasta-section'],'Pastas','पास्ता','पास्ता'],
+      [['tandoor-classics'],'Tandoor Classics','तंदूरी व्यंजन','तंदूरी पदार्थ'],
+      [['sizzling-rice-noodles'],'Rice & Noodles','राइस एवं नूडल्स','राईस व नूडल्स'],
+      [['vegetable-specialties'],'Veg Main','मुख्य सब्ज़ियाँ','मुख्य भाज्या'],
+      [['paneer-specialties'],'Paneer Main','मुख्य पनीर व्यंजन','मुख्य पनीर पदार्थ'],
+      [['flavorful-dals','rice-biryani'],'Dal & Biryani','दाल एवं बिरयानी','डाळ व बिर्याणी'],
+      [['fresh-addons'],'Sides & Papad','सलाद, रायता एवं पापड़','सॅलड, रायते व पापड'],
+      [['signature-breads'],'Indian Breads','रोटी एवं नान','पोळी, रोटी व नान'],
+      [['delivery-thalis'],'Royal Thalis','शाही थालियाँ','शाही थाळी'],
+      [['mithai-magic','frozen-fantasies'],'Desserts','मिठाइयाँ','गोड पदार्थ'],
+      [['mocktails','chilled-beverages','mastani','milkshakes','milkshake-mastani','cold-coffee'],'Drinks & Shakes','ठंडे पेय एवं शेक','थंड पेये व शेक']
+    ];
+    const visible=this.getVisibleMenuItems(),covered=new Set(groups.flatMap(g=>g[0]));
+    const collections=groups.flatMap(([ids,en,hi,mr])=>{
+      const id=ids.find(id=>this.categories.some(c=>c.id===id)&&visible.some(d=>d.categoryId===id));
+      return id?[{id,name:this.currentLang==='hi'?hi:this.currentLang==='mr'?mr:en}]:[];
+    });
+    for(const category of this.categories)if(!covered.has(category.id)&&!['all','chef-specials'].includes(category.id)&&visible.some(d=>d.categoryId===category.id))collections.push({id:category.id,name:this.getCategoryLocalizedName(category.id)});
+    return collections;
+  }
+
   renderMenuSectionDrawer() {
     const list = document.getElementById('drawer-sections-list');
     if (!list) return;
@@ -1905,74 +1933,21 @@ class HotelPremierApp {
       this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
     }
 
-    const validCategories = this.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
+    const collections=this.getMenuCollections();
     const floatBadge = document.getElementById('floating-sections-count');
     if (floatBadge) {
-      floatBadge.innerText = validCategories.length;
+      floatBadge.innerText = collections.length;
     }
 
-    const visibleMenu=this.getVisibleMenuItems();
-    const allDishesCount = visibleMenu.length;
-    const isAllActive = (this.currentCategory === 'all' && this.viewMode === 'all');
-    const dishesWord = this.t('itemsCount', 'Items');
-
-    const items = [
-      {
-        id: 'all',
-        name: this.t('filterAll', 'All Dishes'),
-        subtitle: `Complete Pure Veg Menu • All ${allDishesCount} Curated Dishes`,
-        icon: '🍽️',
-        image: 'assets/menu-images/veg-specialities/veg-pride-special-1.jpg',
-        count: allDishesCount,
-        isActive: isAllActive,
-        isAll: true
-      },
-      ...validCategories.map(cat => {
-        const catDishes = visibleMenu.filter(d => d.categoryId === cat.id);
-        const localizedTitle = this.getCategoryLocalizedName(cat.id);
-        const localizedSubtitle = this.getCategoryLocalizedSubtitle(cat.id);
-        const localizedDesc = this.getCategoryLocalizedDesc(cat.id);
-        const isActive = (this.currentCategory === cat.id && this.viewMode === 'section');
-
-        let displaySub = localizedSubtitle;
-        if (displaySub && cat.description) {
-          displaySub += ` • ${cat.description}`;
-        } else if (!displaySub) {
-          displaySub = localizedDesc || 'Fresh & pure veg delicacies';
-        }
-
-        return {
-          id: cat.id,
-          name: localizedTitle,
-          subtitle: displaySub,
-          icon: cat.icon || '🍽️',
-          image: cat.image,
-          count: catDishes.length,
-          isActive: isActive,
-          isAll: false
-        };
-      })
-    ];
+    const items=[{id:'all',name:({hi:'पूरा मेन्यू',mr:'संपूर्ण मेनू'}[this.currentLang]||'Full menu')},...collections];
+    const escape=text=>String(text).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
     list.innerHTML = items.map(item => `
-      <button type="button" class="drawer-section-item ${item.isActive ? 'active' : ''} ${item.isAll ? 'all-items-row' : ''}"
-           aria-current="${item.isActive ? 'true' : 'false'}"
+      <button type="button" class="drawer-section-item ${this.collectionAnchor===item.id?'active':''} ${item.id==='all'?'all-items-row':''}"
+           aria-current="${this.collectionAnchor===item.id?'location':'false'}"
            data-section-id="${item.id}"
            onclick="window.app.selectCategoryFromDrawer('${item.id}')">
-        <div class="drawer-item-icon-emblem">
-          <span class="drawer-emblem-glyph">${item.icon}</span>
-        </div>
-        <div class="drawer-item-content">
-          <div class="drawer-item-title-row">
-            <h4 class="drawer-item-title">${item.name}</h4>
-            ${item.isActive ? '<span class="drawer-active-pill">✓ CURRENT</span>' : ''}
-          </div>
-          <p class="drawer-item-sub">${item.subtitle}</p>
-        </div>
-        <div class="drawer-item-meta">
-          <span class="drawer-item-count">${item.count} ${dishesWord}</span>
-          <span class="drawer-item-arrow">→</span>
-        </div>
+        <span class="drawer-item-title">${escape(item.name)}</span>
       </button>
     `).join('');
   }
@@ -2030,7 +2005,15 @@ class HotelPremierApp {
 
   selectCategoryFromDrawer(catId) {
     clearTimeout(this.drawerNavigationTimer);
-    this.closeMenuSectionDrawer();
+    clearTimeout(this._searchRenderTimer);
+    this.closeMenuSectionDrawer({restoreFocus:false});
+    window.HotelOverlays?.sync(); // Restore the page's scroll position before measuring its new target.
+    this.clearMenuFavoritesScope();
+    if(this.activeSection!=='section-dine')this.switchSection('section-dine',false);
+    this.collectionAnchor=catId;
+    this.currentCategory='all';
+    this.viewMode='all';
+    this.activeSubCategories={};
     this.currentFilter = 'all';
     this.searchQuery = '';
     const searchInput = document.getElementById('menu-search-input');
@@ -2038,11 +2021,9 @@ class HotelPremierApp {
     if (searchInput) searchInput.value = '';
     if (clearSearch) clearSearch.style.display = 'none';
 
-    if (catId === 'all') {
-      this.showAllDishesView();
-    } else {
-      this.openCategorySection(catId);
-    }
+    const home=document.getElementById('home-categories-view'),dishes=document.getElementById('dishes-section-view');
+    if(home)home.style.display='none';if(dishes)dishes.style.display='block';
+    this.renderQuickFilters();this.renderCategories();this.renderSectionSlideshow(null);this.renderMenu();
 
     this.drawerNavigationTimer = setTimeout(() => {
       if (this.activeSection !== 'section-dine') return;
@@ -2051,18 +2032,19 @@ class HotelPremierApp {
         target = document.getElementById(`section-${catId}`);
       }
       if (!target) {
-        target = document.getElementById('category-nav-bar') || document.getElementById('menu-container');
+        target = document.getElementById('menu-items-grid') || document.getElementById('menu-container');
       }
       if (target) {
-        const headerOffset = (document.querySelector('.app-header')?.getBoundingClientRect().height || 118) + 12;
+        const headerOffset = (document.querySelector('.app-header')?.getBoundingClientRect().height || 0)
+          + (document.querySelector('.dining-search-filter-bar')?.getBoundingClientRect().height || 0) + 16;
         const rect = target.getBoundingClientRect();
         const targetScrollY = rect.top + window.pageYOffset - headerOffset;
         window.scrollTo({
           top: Math.max(0, targetScrollY),
-          behavior: 'smooth'
+          behavior: window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'
         });
       }
-    }, 120);
+    }, 0);
   }
 
   filterDrawerSections(query) {
@@ -2317,6 +2299,11 @@ class HotelPremierApp {
     return '';
   }
 
+  renderOrganizedDishes(categoryId, dishes) {
+    // Taxonomy remains editable in Admin; guests browse one compact card per option family.
+    return dishes.map(dish=>this.renderDishCard(dish)).join('');
+  }
+
   setSubCategoryFilter(catId, subCatId) {
     this.activeSubCategories[catId] = subCatId;
     if (this.currentCategory === catId) this.renderSectionSlideshow(catId);
@@ -2347,7 +2334,7 @@ class HotelPremierApp {
       grid.style.opacity = '0.35';
       grid.style.transform = 'translateY(4px)';
       setTimeout(() => {
-        grid.innerHTML = displayed.map(dish => this.renderDishCard(dish)).join('');
+        grid.innerHTML = this.renderOrganizedDishes(catId,displayed);
         this.bindDishActions();
         grid.style.opacity = '1';
         grid.style.transform = 'translateY(0)';
@@ -2449,7 +2436,7 @@ class HotelPremierApp {
               </div>
               ${this.renderSubCategoryChips(cat.id, catDishes)}
               <div class="dish-grid" id="dish-grid-${cat.id}">
-                ${displayedDishes.map(dish => this.renderDishCard(dish)).join('')}
+                ${this.renderOrganizedDishes(cat.id,displayedDishes)}
               </div>
             </div>
           `;
@@ -2496,7 +2483,7 @@ class HotelPremierApp {
           </div>
           ${subCatChipsHtml}
           <div class="dish-grid" id="dish-grid-${activeCatId}">
-            ${displayedDishes.map(dish => this.renderDishCard(dish)).join('')}
+            ${this.renderOrganizedDishes(activeCatId,displayedDishes)}
           </div>
         </div>
       `;
@@ -2823,7 +2810,7 @@ class HotelPremierApp {
                         data-variant-name-hi="${nameHi}"
                         data-variant-name-mr="${nameMr}"
                         data-variant-price="${v.price}"
-                        data-variant-img="${v.image || dish.image || ''}"
+                        data-variant-img="${(v.image !== undefined ? v.image : dish.image) || ''}"
                         data-variant-desc="${descEn}"
                         data-variant-desc-hi="${descHi}"
                         data-variant-desc-mr="${descMr}"
@@ -2949,7 +2936,7 @@ class HotelPremierApp {
     if (priceEl) priceEl.innerText = Number.isFinite(parsedVariantPrice) ? `₹${parsedVariantPrice}` : 'Price on request';
 
     // 2. Update image with smooth crossfade and clear responsive srcset so browser loads variant photo
-    const targetImg = (newImg && newImg.trim() !== '') ? newImg : (dishObj?.image || '');
+    const targetImg = newImg !== null ? newImg : (dishObj?.image || '');
     const previousImg = document.getElementById('detail-modal-img') || document.querySelector('#dish-detail-body .dish-no-photo-placeholder');
     const photoWrap = previousImg?.closest('.modal-dish-photo-wrap');
     if (targetImg && targetImg.trim() !== '' && photoWrap) {
@@ -3013,8 +3000,8 @@ class HotelPremierApp {
     if (cardPrice) cardPrice.innerText = Number.isFinite(parsedVariantPrice) ? `₹${parsedVariantPrice}` : 'Price on request';
 
     const cardImg = document.getElementById(`dish-img-el-${dishId}`);
-    if (cardImg && cardImg.tagName === 'IMG' && targetImg && targetImg.trim() !== '') {
-      const versionedCardSrc = window.AssetPipeline?.versionedPhotoSource(targetImg) || targetImg;
+    if (cardImg && cardImg.tagName === 'IMG') {
+      const versionedCardSrc = targetImg ? (window.AssetPipeline?.versionedPhotoSource(targetImg) || targetImg) : 'assets/brand-placeholder.svg';
       cardImg.removeAttribute('srcset');
       cardImg.removeAttribute('sizes');
       cardImg.src = versionedCardSrc;

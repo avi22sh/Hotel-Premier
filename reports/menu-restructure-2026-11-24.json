@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-24",
+  "release": "22.98",
+  "status": "Local implementation and public build verified; no GitHub deployment performed in this task",
+  "architecture": {
+    "stack": "Plain HTML/CSS/JavaScript; no TypeScript/package lint configuration",
+    "base": "data/menu-data.js",
+    "photoAssignments": "data/menu-photos.js",
+    "publishedMenuAndLayout": "data/published-overrides.js",
+    "localDraftLayout": "menu-structure.js",
+    "rendering": "app.js",
+    "photoDelivery": "asset-pipeline.js",
+    "serviceWorker": "sw.js",
+    "build": "tools/build-public-dist.cjs",
+    "schema": {
+      "category": [
+        "id",
+        "name",
+        "hindiName",
+        "marathiName",
+        "image",
+        "description"
+      ],
+      "subcategory": [
+        "id",
+        "name",
+        "hindiName",
+        "marathiName",
+        "dishIds"
+      ],
+      "item": [
+        "id",
+        "categoryId",
+        "name",
+        "price",
+        "description",
+        "image",
+        "groupedUnder",
+        "isGroupMaster",
+        "variants"
+      ],
+      "variant": [
+        "id",
+        "name",
+        "price",
+        "description",
+        "image"
+      ],
+      "unsetPrice": "null renders as Price on request",
+      "unsetImage": "empty string renders as a placeholder"
+    }
+  },
+  "before": {
+    "records": 291,
+    "categories": 21
+  },
+  "after": {
+    "records": 292,
+    "categories": 21,
+    "visibleCards": 138
+  },
+  "preservation": "All 291 pre-existing item IDs, item prices and description fields verified against the pre-edit fixture. Duplicate and obsolete parent records retained as hidden compatibility records.",
+  "changes": [
+    "Added Chana Koliwada to Chana Specialities with price unset",
+    "Moved Paneer Black Pepper and Basket Sauce into the paneer group and Veg Black Pepper into the veg group",
+    "Retained ic-11; hid duplicate ic-27 while preserving its ID and price",
+    "Kept Tandoori Platter at top level; Paneer Combo Tikka under Paneer Starters; veg kebabs under Chargrilled Veg Delights",
+    "Grouped three Shev Bhaji variants",
+    "Split Papad into Urad and Nagali with four preparations each, followed by standalone Sindhi",
+    "Grouped four Dal Khichadi options; new butter prices unset",
+    "Organized Veg Main, Paneer Main and Mithai Magic; moved koftas and ice creams into their matching subcategories",
+    "Removed overlapping Kaju Masala, Lasooni Palak and Steamed/Jeera Rice card-option duplication while retaining item IDs and prices",
+    "Restored reachability of Milkshakes, Mastani and Cold Coffee missing from the older layout",
+    "Replaced removed horizontal subcategory controls with readable subsection headings",
+    "Matched local uploaded option photos by stable identity instead of array position",
+    "Honoured empty image values when switching options instead of displaying the parent photo"
+  ],
+  "pendingPrices": [
+    "Chana Koliwada",
+    "Butter Dal Khichadi",
+    "Butter Dal Khichadi Tadka"
+  ],
+  "existingPriceDiscrepancies": [
+    {
+      "id": "ff-5",
+      "name": "Afghan Dry Fruit Ice Cream",
+      "itemPrice": 50,
+      "groupOptionPrice": 40,
+      "action": "Preserved for owner review"
+    }
+  ],
+  "validation": {
+    "javascriptRegressionSuites": 75,
+    "sourceChecks": 17,
+    "sourceSyntaxFiles": 35,
+    "imageReferences": 1474,
+    "missingAssetPaths": 0,
+    "buildFiles": 798,
+    "serviceWorkerVersion": "22.98",
+    "browserChecks": [
+      "375 px dark-mode Shev Bhaji and Papad options without horizontal overflow",
+      "Four Khichadi options with explicit unknown-price labels",
+      "Photo-to-placeholder switching",
+      "1280 px light-mode Tandoor hierarchy and grid without horizontal overflow"
+    ],
+    "limits": "Browser viewport checks are not physical iPhone/Android device certification. Image review establishes visible assignment problems, not recipe authenticity."
+  },
+  "backup": "backups/before-menu-22-98-2026-11-24",
+  "screenshots": [
+    "output/menu-22.98-desktop-light.jpg",
+    "output/menu-22.98-mobile-dark.jpg"
+  ]
+}

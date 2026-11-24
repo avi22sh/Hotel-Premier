@@ -1,0 +1,1627 @@
+[
+  {
+    "id": "tc-paneer-tikka-group",
+    "price": 240,
+    "description": "Clay-oven charcoal roasted fresh cottage cheese cubes in 8 royal culinary preparations: Classic, Lehsuni, Achari, Reshmi, Afghani, Patakha, Jafrani and Jungli.",
+    "descriptionHi": "तंदूर में भुने ताज़े पनीर टिक्का के 8 शाही स्वाद: क्लासिक, लहसुनी, अचारी, रेशमी, अफगानी, पटाखा, ज़ाफ़रानी और जंगली।",
+    "descriptionMr": "तंदूरमध्ये भाजलेल्या ताज्या पनीर टिक्काचे ८ शाही प्रकार: क्लासिक, लसुणी, अचारी, रेशमी, अफगाणी, फटाका, जाफरानी आणि जंगली."
+  },
+  {
+    "id": "tt-pakoda-group",
+    "price": 130,
+    "description": "Crisp deep-fried golden fritters prepared fresh to order: Assorted Seasonal Vegetables, Soft Cottage Cheese, and Molten Cheese.",
+    "descriptionHi": "बेसन और खास मसालों में तले हुए कुरकुरे गरमागरम पकोड़े: मिक्स वेज, पनीर और स्वादिष्ट चीज़ पकोड़ा।",
+    "descriptionMr": "खमंग बेसनात तळलेली गरमागरम कुरकुरीत भजी: मिक्स व्हेज, मऊ पनीर आणि चीज भजी."
+  },
+  {
+    "id": "upvas-fasting-group",
+    "price": 140,
+    "description": "Pure satvik fasting delicacies made with premium tapioca pearls, roasted peanuts, golden potatoes and rock salt.",
+    "descriptionHi": "सात्विक उपवास थाली - साबुदाना खिचड़ी, कुरकुरे वड़े और फिंगर चिप्स का पवित्र व स्वादिष्ट संगम।",
+    "descriptionMr": "शुद्ध सात्विक उपवासाचे पदार्थ - साबुदाणा खिचडी, कुरकुरीत वडे आणि फिंगर चिप्स."
+  },
+  {
+    "id": "tt-chaat-group",
+    "price": 110,
+    "description": "Tangy, crunchy and spicy street-style chaats tossed with zesty chutneys, fresh herbs, sev and roasted spices.",
+    "descriptionHi": "चटपटी आलू चाट, चना चाट, पीनट चाट और क्रिस्पी चाइनीज़ भेल का स्वादिष्ट जायका।",
+    "descriptionMr": "चटपटीत आलू चाट, चना चाट, पीनट चाट आणि कुरकुरीत चायनीज भेळ."
+  },
+  {
+    "id": "tt-chana-roast-group",
+    "price": 170,
+    "description": "Golden roasted chickpeas tossed with aromatic Indian spices, sea salt and golden-fried garlic cloves.",
+    "descriptionHi": "पारंपरिक मसालों और भुने लहसुन के साथ कुरकुरा तैयार किया गया चना रोस्ट।",
+    "descriptionMr": "खमंग मसाले व भाजलेल्या लसणासह कुरकुरीत भाजलेले चणे."
+  },
+  {
+    "id": "ic-spring-rolls-group",
+    "price": 280,
+    "description": "Golden hand-rolled crispy sheets stuffed with gourmet seasonal vegetables, paneer or cheese, served piping hot with fiery Schezwan chutney.",
+    "descriptionHi": "सब्जियों, पनीर और चीज से भरे क्रिस्पी स्प्रिंग रोल्स, शेजवान सॉस के साथ।",
+    "descriptionMr": "भाज्या, पनीर आणि चीजने भरलेले कुरकुरीत स्प्रिंग रोल्स, शेजवान चटणीसोबत."
+  },
+  {
+    "id": "ic-paneer-starters-group",
+    "price": 265,
+    "description": "Succulent malai paneer cubes wok-tossed in authentic oriental sauces: Chilli, Crispy, Schezwan, Garlic, Ginger, 65, and signature Hot Pan.",
+    "descriptionHi": "चिली, क्रिस्पी, शेजवान और गार्लिक सॉस में टॉस किए गए स्वादिष्ट पनीर स्टार्टर्स।",
+    "descriptionMr": "चिली, क्रिस्पी, शेजवान आणि गार्लिक सॉसमध्ये टॉस केलेले चवदार पनीर स्टार्टर्स."
+  },
+  {
+    "id": "ic-veg-starters-group",
+    "price": 240,
+    "description": "Fresh farm-fresh vegetables and crispy fritters wok-tossed in zesty Chinese gravies and dry glazes: Manchurian, Crispy, 65, Schezwan, and Hot Pan.",
+    "descriptionHi": "वेज मंचूरियन, क्रिस्पी वेज, 65 और हॉट पैन के साथ तीखे और कुरकुरे वेज स्टार्टर्स।",
+    "descriptionMr": "व्हेज मंचूरियन, क्रिस्पी व्हेज, 65 आणि हॉट पॅनसह मसालेदार व कुरकुरीत व्हेज स्टार्टर्स."
+  },
+  {
+    "id": "ic-corn-potato-group",
+    "price": 210,
+    "description": "Tender sweet corn, tender baby corn and golden potato batons crackled crisp and tossed in fiery Schezwan, Chilli and pepper aromatics.",
+    "descriptionHi": "क्रिस्पी कॉर्न चिली, बेबी कॉर्न चिली और हनी पोटैटो का लाजवाब क्रंच।",
+    "descriptionMr": "क्रिस्पी कॉर्न चिली, बेबी कॉर्न चिली आणि हनी पोटॅटोचा कुरकुरीत स्वाद."
+  },
+  {
+    "id": "rn-fried-rice-group",
+    "price": 230,
+    "description": "Fragrant long-grain basmati rice wok-tossed on high flame with farm vegetables, golden garlic, fiery Schezwan, mushroom, and triple combination.",
+    "descriptionHi": "वेज फ्राइड राइस, शेजवान राइस, गार्लिक राइस और ट्रिपल राइस का स्वादिष्ट संगम।",
+    "descriptionMr": "व्हेज फ्राईड राईस, शेजवान राईस, गार्लिक राईस आणि ट्रिपल राईसचा खमंग स्वाद."
+  },
+  {
+    "id": "rn-noodles-group",
+    "price": 230,
+    "description": "Steamed thin noodles wok-tossed with crunchy julienned vegetables, roasted garlic, fiery red chillies, and savory soy sauces.",
+    "descriptionHi": "वेज हक्का नूडल्स, शेजवान नूडल्स, गार्लिक नूडल्स और सिंगापुर नूडल्स।",
+    "descriptionMr": "व्हेज हक्का नूडल्स, शेजवान नूडल्स, गार्लिक नूडल्स आणि सिंगापूर नूडल्स."
+  },
+  {
+    "id": "kd-kofta-group",
+    "price": 290,
+    "description": "Delicate handcrafted vegetable and cottage cheese dumplings simmered in rich, creamy royal gravies: Malai, Dilbahar, Hariyali, and Nargisi.",
+    "descriptionHi": "मलाई कोफ्ता, दिलबहार कोफ्ता, हरियाली कोफ्ता और शाही कश्मीरी कोफ्ता करी।",
+    "descriptionMr": "मलाई कोफ्ता, दिलबहार कोफ्ता, हरियाली कोफ्ता आणि शाही कश्मीरी कोफ्ता करी."
+  },
+  {
+    "id": "fa-papad-group",
+    "price": 30,
+    "description": "Traditional crisp accompaniment papads in Roasted, Fried, Masala, and Cheese Masala variations: Spiced Urad Dal, Rustic Nagli (Ragi), and Spicy Sindhi Papad.",
+    "descriptionHi": "काली मिर्च वाले उड़द पापड़, पौष्टिक नागली (रागी) पापड़ और खास सिंधी पापड़ - रोस्टेड, फ्राइड, मसाला और चीज़ मसाला।",
+    "descriptionMr": "पारंपरिक उडीद पापड, पौष्टिक नाचणी पापड आणि खमंग सिंधी पापड - भाजलेले, तळलेले, मसाला व चीज मसाला."
+  },
+  {
+    "id": "cb-packaged-fruit-juice-group",
+    "price": 80,
+    "description": "Chilled sealed packaged real fruit juices: Refreshing Orange, Rich Mango Nectar, Tropical Pineapple, and Sweet Pink Guava.",
+    "descriptionHi": "सील पैक ठंडे स्वादिष्ट फ्रूट जूस: संतरा, आम, अनानास और गुलाबी अमरूद।",
+    "descriptionMr": "थंडगार सीलबंद पॅकबंद फ्रूट ज्यूस: संत्रा, आंबा, अननस आणि पेरू."
+  },
+  {
+    "id": "cb-soft-drinks-group",
+    "price": 15,
+    "description": "Popular ice-chilled bottled sparkling sodas and fruit beverages: Thums Up, Sprite, Fanta, Maaza, and Kinley Club Soda.",
+    "descriptionHi": "बर्फ जैसे ठंडे लोकप्रिय कोल्ड ड्रिंक्स: थम्स अप, स्प्राइट, फैंटा, माज़ा और क्लब सोडा।",
+    "descriptionMr": "बर्फासारखे थंडगार लोकप्रिय कोल्ड्रिंक्स: थम्स अप, स्प्राइट, फँटा, माझा आणि क्लब सोडा."
+  },
+  {
+    "id": "hh-beverages-group",
+    "price": 25,
+    "description": "Freshly brewed aromatic morning drinks: Cardamom Ginger Masala Tea, Frothy Filter Coffee, Steaming Pure Milk, and Nutritious Bournvita.",
+    "descriptionHi": "अदरक-इलायची वाली कड़क मसाला चाय, झागदार फिल्टर कॉफ़ी, शुद्ध गर्म दूध और बोर्नविटा।",
+    "descriptionMr": "आले-वेलचीयुक्त कडक मसाला चहा, फेसाळलेली फिल्टर कॉफी, गरम दूध आणि बोर्नव्हिटा."
+  },
+  {
+    "id": "ff-ice-cream-group",
+    "price": 40,
+    "description": "Creamy chilled dessert scoops: Classic Vanilla, Crunchy Butterscotch, Rich Chocolate, Royal Kaju Draksh, and Afghan Dry Fruit.",
+    "descriptionHi": "मलाईदार ठंडी आइसक्रीम के मनपसंद स्कूप: वैनिला, बटरस्कॉच, चॉकलेट, काजू द्राक्ष और अफ़गान ड्राई फ्रूट।",
+    "descriptionMr": "मलईदार थंडगार आईस्क्रीमचे खास स्कूप: व्हॅनिला, बटरस्कॉच, चॉकलेट, काजू द्राक्ष आणि अफगाण ड्रायफ्रूट."
+  },
+  {
+    "id": "fd-leaf-dal-group",
+    "price": 150,
+    "description": "Wholesome nutritious yellow lentils cooked with fresh greens: Dal Palak, Dal Palak Tadka, Dal Methi, and Dal Methi Tadka.",
+    "descriptionHi": "ताज़ी हरी पालक और मेथी के पत्तों से बनी पौष्टिक दालें, सादी या कड़क देसी घी तड़के के साथ।",
+    "descriptionMr": "ताजी हिरवी पालक आणि मेथी घालून शिजवलेली पौष्टिक डाळ, साधी किंवा साजूक तुपाच्या तडक्यासह."
+  },
+  {
+    "id": "tc-paneer-achari-tikka",
+    "price": 240,
+    "description": "Paneer cubes marinated with tangy pickling spices and grilled for a bold achari flavour."
+  },
+  {
+    "id": "fa-curd",
+    "price": 60,
+    "description": "Creamy, gently tangy plain yogurt to accompany your meal."
+  },
+  {
+    "id": "cb-juice-orange",
+    "price": 80,
+    "description": "Packaged orange fruit juice. Ask our team for the available brand and pack size.",
+    "descriptionHi": "पैक्ड ऑरेंज फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।",
+    "descriptionMr": "पॅकबंद संत्रा फ्रूट ज्यूस. उपलब्ध ब्रँड आणि पॅकच्या आकारासाठी कर्मचाऱ्यांना विचारा."
+  },
+  {
+    "id": "cb-juice-mango",
+    "price": 80,
+    "description": "Packaged mango fruit juice. Ask our team for the available brand and pack size.",
+    "descriptionHi": "पैक्ड मैंगो फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।",
+    "descriptionMr": "पॅकबंद आंबा फ्रूट ज्यूस. उपलब्ध ब्रँड आणि पॅकच्या आकारासाठी कर्मचाऱ्यांना विचारा."
+  },
+  {
+    "id": "cb-juice-pineapple",
+    "price": 80,
+    "description": "Packaged pineapple fruit juice. Ask our team for the available brand and pack size.",
+    "descriptionHi": "पैक्ड पाइनएप्पल फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।",
+    "descriptionMr": "पॅकबंद अननस फ्रूट ज्यूस. उपलब्ध ब्रँड आणि पॅकच्या आकारासाठी कर्मचाऱ्यांना विचारा."
+  },
+  {
+    "id": "cb-juice-guava",
+    "price": 80,
+    "description": "Packaged guava fruit juice. Ask our team for the available brand and pack size.",
+    "descriptionHi": "पैक्ड गुआवा फ्रूट जूस। उपलब्ध ब्रांड और पैक साइज के लिए स्टाफ से पूछें।",
+    "descriptionMr": "पॅकबंद पेरू फ्रूट ज्यूस. उपलब्ध ब्रँड आणि पॅकच्या आकारासाठी कर्मचाऱ्यांना विचारा."
+  },
+  {
+    "id": "md-1",
+    "price": 190,
+    "description": "Four golden, puffed pooris served with a warmly spiced potato bhaji."
+  },
+  {
+    "id": "md-2",
+    "price": 190,
+    "description": "Fluffy, deep-fried bhature paired with a spicy chickpea curry."
+  },
+  {
+    "id": "md-parathas-group",
+    "price": 120,
+    "description": "Golden tandoori and tawa whole-wheat parathas, stuffed with seasoned fillings and served with fresh curd and pickle.",
+    "descriptionHi": "आलू, गोभी, पनीर और मिक्स वेज के स्वादिष्ट भरावन वाले गरमागरम पराठे, ताज़ी दही और अचार के साथ।",
+    "descriptionMr": "बटाटा, फ्लॉवर, पनीर आणि मिक्स व्हेजचे खमंग सारण भरलेले गरमागरम पराठे, ताजे दही आणि लोणच्यासह."
+  },
+  {
+    "id": "md-3",
+    "price": 120,
+    "description": "Whole-wheat paratha filled with spiced potatoes and fragrant herbs, served with chilled creamy curd and pickle."
+  },
+  {
+    "id": "md-4",
+    "price": 130,
+    "description": "Crisp whole-wheat paratha stuffed with finely grated spiced cauliflower, served with fresh curd and pickle."
+  },
+  {
+    "id": "md-5",
+    "price": 150,
+    "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd."
+  },
+  {
+    "id": "md-mix-veg-paratha",
+    "price": 140,
+    "description": "A golden paratha stuffed with finely chopped seasonal vegetables, herbs and aromatic spices, crisp outside and soft within."
+  },
+  {
+    "id": "md-6",
+    "price": 75,
+    "description": "Flattened rice gently cooked with onions, peanuts and spices."
+  },
+  {
+    "id": "md-7",
+    "price": 150,
+    "description": "Crisp vegetable cutlets made with mashed potatoes, mixed vegetables, herbs and spices."
+  },
+  {
+    "id": "md-8",
+    "price": 80,
+    "description": "Soft bread layered with creamy butter and sweet jam."
+  },
+  {
+    "id": "md-9",
+    "price": 80,
+    "description": "Golden toasted bread finished with a layer of butter."
+  },
+  {
+    "id": "md-sandwiches-group",
+    "price": 80,
+    "description": "Freshly prepared cold, toasted and jumbo grilled sandwiches, layered with garden veggies, cheese and mint chutney.",
+    "descriptionHi": "ताज़ी सब्जियों, पिघलते चीज़ और हरी चटनी से बने प्लेन, टोस्ट और जंबो ग्रिल्ड सैंडविच।",
+    "descriptionMr": "भाज्या, भरपूर चीज आणि हिरव्या चटणीचे प्लेन, टोस्ट व जंबो ग्रील्ड सँडविच."
+  },
+  {
+    "id": "md-10",
+    "price": 200,
+    "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry."
+  },
+  {
+    "id": "md-11",
+    "price": 90,
+    "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney."
+  },
+  {
+    "id": "md-12",
+    "price": 160,
+    "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs."
+  },
+  {
+    "id": "md-13",
+    "price": 180,
+    "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices."
+  },
+  {
+    "id": "md-14",
+    "price": 150,
+    "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices."
+  },
+  {
+    "id": "md-15",
+    "price": 170,
+    "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp."
+  },
+  {
+    "id": "md-16",
+    "price": 100,
+    "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney."
+  },
+  {
+    "id": "md-17",
+    "price": 140,
+    "description": "Soaked tapioca pearls tossed with potatoes, roasted peanuts, green chilli and spices."
+  },
+  {
+    "id": "md-18",
+    "price": 150,
+    "description": "Crisp sabudana fritters served with refreshing yogurt."
+  },
+  {
+    "id": "hh-1",
+    "price": 25,
+    "description": "Freshly brewed Assam tea simmered with milk, crushed ginger, cardamom, and aromatic warming spices.",
+    "descriptionHi": "अदरक, इलायची और चुनिंदा खड़े मसालों के साथ उबाली गई कड़क स्पेशल चाय।",
+    "descriptionMr": "आले, वेलची आणि मसाल्यांनी युक्त ताजी उकळलेली कडक स्पेशल चहा."
+  },
+  {
+    "id": "hh-2",
+    "price": 35,
+    "description": "Piping hot farm-fresh milk served with sugar on the side.",
+    "descriptionHi": "ताज़ा उबला हुआ शुद्ध गर्म दूध।",
+    "descriptionMr": "ताजे, उकळलेले शुद्ध गरम दूध."
+  },
+  {
+    "id": "hh-3",
+    "price": 80,
+    "description": "Hot creamy milk stirred with chocolate Bournvita or malted Horlicks nutrition.",
+    "descriptionHi": "गर्म गाढ़े दूध में तैयार बॉर्नविटा या हॉर्लिक्स ड्रिंक।",
+    "descriptionMr": "गरम दुधात बनवलेले बॉर्नव्हिटा किंवा हॉर्लिक्स पेय."
+  },
+  {
+    "id": "hh-4",
+    "price": 60,
+    "description": "Aromatic South Indian style filter coffee brewed rich with frothed milk.",
+    "descriptionHi": "ताज़े भुने कॉफी बीन्स के काढ़े और झागदार गर्म दूध से बनी फिल्टर कॉफी।",
+    "descriptionMr": "ताजी ब्रू केलेली, फेसळलेली सुगंधी स्पेशल फिल्टर कॉफी."
+  },
+  {
+    "id": "tt-1",
+    "price": 130,
+    "description": "Potato, onion, cauliflower, green chilli and peas coated in spiced gram-flour batter and fried crisp."
+  },
+  {
+    "id": "tt-2",
+    "price": 190,
+    "description": "Tender paneer coated with spices and fried to a crisp finish."
+  },
+  {
+    "id": "tt-3",
+    "price": 210,
+    "description": "Cheese wrapped in a spicy gram-flour coating and fried until crisp."
+  },
+  {
+    "id": "tt-4",
+    "price": 140,
+    "description": "Golden potato strips with a crisp bite."
+  },
+  {
+    "id": "tt-5",
+    "price": 170,
+    "description": "Chickpeas roasted until golden and tossed with spices."
+  },
+  {
+    "id": "tt-6",
+    "price": 160,
+    "description": "Chickpeas and vegetables tossed with tangy chutneys and a lively blend of spices."
+  },
+  {
+    "id": "tt-7",
+    "price": 190,
+    "description": "Crunchy peanuts tossed with fresh vegetables, tangy chutney and spices."
+  },
+  {
+    "id": "tt-8",
+    "price": 200,
+    "description": "Crisp roasted chickpeas seasoned with garlic and spices."
+  },
+  {
+    "id": "tt-9",
+    "price": 110,
+    "description": "Potato cubes tossed with tangy chutneys and a blend of spices."
+  },
+  {
+    "id": "tt-10",
+    "price": 200,
+    "description": "Crisp fried noodles tossed with sauteed vegetables and a tangy, spicy Indo-Chinese sauce, finished with spring onions."
+  },
+  {
+    "id": "sp-soups-group",
+    "price": 120,
+    "description": "Warm, soothing bowls of handcrafted broths ranging from spicy Manchow and tangy Hot & Sour to rich Tomato and fresh Sweetcorn.",
+    "descriptionHi": "गरमागरम स्वादिष्ट मंचाऊ, हॉट एंड सोर, क्रीमी टोमॅटो और स्वीटकॉर्न सूप का शाही चयन।",
+    "descriptionMr": "गरमागरम खमंग मंचाव, हॉट अँड सोर, टोमॅटो आणि स्वीटकॉर्न सूपचा उत्कृष्ट संग्रह."
+  },
+  {
+    "id": "sp-1",
+    "price": 140,
+    "description": "A spicy, tangy vegetable soup with garlic, soy sauce and chilli, finished with crisp fried noodles."
+  },
+  {
+    "id": "sp-2",
+    "price": 140,
+    "description": "Vegetable soup with the warmth of chilli and black pepper, balanced by a tangy splash of vinegar."
+  },
+  {
+    "id": "sp-3",
+    "price": 140,
+    "description": "Smooth tomato soup with a gently tangy finish."
+  },
+  {
+    "id": "sp-4",
+    "price": 140,
+    "description": "A light, clear soup brightened with fresh coriander and lemon juice."
+  },
+  {
+    "id": "sp-5",
+    "price": 140,
+    "description": "A comforting sweetcorn soup with aromatic seasoning."
+  },
+  {
+    "id": "sp-6",
+    "price": 120,
+    "description": "A light broth with carrots, beans, button mushrooms and onions, topped with spring onions."
+  },
+  {
+    "id": "ic-1",
+    "price": 580,
+    "description": "An Indo-Chinese selection of Paneer Chilli, Paneer Lemon, Paneer Manchurian, Veg Manchurian and Mushroom Chilli (5 pieces each), accompanied by Veg Crispy."
+  },
+  {
+    "id": "ic-2",
+    "price": 265,
+    "description": "Paneer tossed with bell peppers and onions in a spicy, tangy Indo-Chinese sauce."
+  },
+  {
+    "id": "ic-3",
+    "price": 265,
+    "description": "Crisp fried paneer cubes coated in a tangy, spicy Indo-Chinese sauce."
+  },
+  {
+    "id": "ic-4",
+    "price": 315,
+    "description": "Stuffed paneer triangles coated and fried crisp, tossed in tangy, spicy salsa and finished with fresh herbs."
+  },
+  {
+    "id": "ic-5",
+    "price": 265,
+    "description": "Paneer fingers flavoured with creamy peanut butter."
+  },
+  {
+    "id": "ic-6",
+    "price": 300,
+    "description": "Crisp noodle-wrapped paneer tossed in a tangy sauce."
+  },
+  {
+    "id": "ic-7",
+    "price": 325,
+    "description": "Crisp rolls filled with seasoned paneer and vegetables."
+  },
+  {
+    "id": "ic-8",
+    "price": 275,
+    "description": "Triangle-cut paneer coated in a spicy red ginger-garlic sauce."
+  },
+  {
+    "id": "ic-9",
+    "price": 270,
+    "description": "Paneer fingers tossed in a yellow cheese sauce with ginger and garlic."
+  },
+  {
+    "id": "ic-10",
+    "price": 275,
+    "description": "Spicy paneer fingers tossed with curd, mustard, curry leaves and red tadka masala."
+  },
+  {
+    "id": "ic-11",
+    "price": 265,
+    "description": "Tender paneer cubes in a spicy, aromatic garlic sauce."
+  },
+  {
+    "id": "ic-12",
+    "price": 260,
+    "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
+    "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
+    "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात."
+  },
+  {
+    "id": "ic-13",
+    "price": 280,
+    "description": "Crispy batter-fried garden vegetables tempered with curry leaves, mustard seeds, and yogurt.",
+    "descriptionHi": "राई और करी पत्ते के तड़के में तैयार की गई कुरकुरी तली हुई मसालेदार सब्जियां।",
+    "descriptionMr": "मोहरी आणि कढीपत्त्याच्या खमंग फोडणीत तळलेल्या कुरकुरीत तिखट भाज्या."
+  },
+  {
+    "id": "ic-14",
+    "price": 240,
+    "description": "Deep-fried mixed-vegetable balls coated in a tangy Indo-Chinese sauce."
+  },
+  {
+    "id": "ic-15",
+    "price": 260,
+    "description": "Crisp, seasoned vegetable bites with a savoury crunch."
+  },
+  {
+    "id": "ic-16",
+    "price": 300,
+    "description": "Crisp rolls filled with mixed vegetables, served with a dipping sauce."
+  },
+  {
+    "id": "ic-17",
+    "price": 240,
+    "description": "Crisp fried vegetables tossed with curd, mustard, curry leaves and red tadka masala for a spicy, tangy finish."
+  },
+  {
+    "id": "ic-18",
+    "price": 240,
+    "description": "Assorted vegetables coated in a spicy, garlic-flavoured batter and fried crisp."
+  },
+  {
+    "id": "ic-19",
+    "price": 250,
+    "description": "Crisp vegetable balls coated in a zesty, spicy garlic sauce."
+  },
+  {
+    "id": "ic-20",
+    "price": 270,
+    "description": "Deep-fried baby corn and button mushrooms coated with soy sauce and seasoned with salt and pepper."
+  },
+  {
+    "id": "ic-21",
+    "price": 250,
+    "description": "Crisp vegetable dumplings tossed with vegetables, herbs and spices in a savoury Indo-Chinese sauce."
+  },
+  {
+    "id": "ic-22",
+    "price": 280,
+    "description": "Crisp, spiced vegetable balls served with a tangy dipping sauce."
+  },
+  {
+    "id": "ic-23",
+    "price": 270,
+    "description": "Deep-fried vegetable dumplings tossed in a tangy Indo-Chinese sauce and served on a sizzling platter."
+  },
+  {
+    "id": "ic-24",
+    "price": 210,
+    "description": "Crisp corn tossed in a spicy, tangy chilli sauce."
+  },
+  {
+    "id": "ic-25",
+    "price": 260,
+    "description": "Crisp potato slices glazed with sweet honey and spicy chilli sauce."
+  },
+  {
+    "id": "ic-26",
+    "price": 240,
+    "description": "Crisp soyabean chunks tossed with vegetables in a spicy, tangy sauce."
+  },
+  {
+    "id": "tc-1",
+    "price": 600,
+    "description": "Paneer Tikka, Jungli Paneer, Paneer Zafrani Tikka and Mushroom Babycorn Tikka (4 pieces each), with Hara Bhara Kabab (2 pieces) and Veg Chilli Milli Kabab."
+  },
+  {
+    "id": "tc-2",
+    "price": 295,
+    "description": "Spice-marinated paneer and capsicum grilled in the tandoor, served with mint chutney and onion salad."
+  },
+  {
+    "id": "tc-3",
+    "price": 295,
+    "description": "Paneer marinated with fresh green herbs and spices, then grilled for a spicy, tangy finish."
+  },
+  {
+    "id": "tc-4",
+    "price": 300,
+    "description": "Boldly spiced paneer cubes marinated and grilled in the tandoor."
+  },
+  {
+    "id": "tc-5",
+    "price": 300,
+    "description": "Paneer cubes in a creamy spice marinade, gently grilled in the tandoor."
+  },
+  {
+    "id": "tc-6",
+    "price": 285,
+    "description": "Tender paneer marinated in rich, spiced yogurt and char-grilled."
+  },
+  {
+    "id": "tc-7",
+    "price": 300,
+    "description": "Garlic-marinated paneer grilled with a warming blend of spices."
+  },
+  {
+    "id": "tc-8",
+    "price": 315,
+    "description": "Paneer marinated with saffron-infused spices and char-grilled in the tandoor."
+  },
+  {
+    "id": "tc-9",
+    "price": 170,
+    "description": "Smoky, spiced paneer tikka wrapped in a warm roll with fresh vegetables and creamy sauces."
+  },
+  {
+    "id": "tc-10",
+    "price": 425,
+    "description": "A trio of Paneer Tikka, Jungli Paneer Tikka and Paneer Zafrani Tikka, with 4 pieces of each."
+  },
+  {
+    "id": "tc-11",
+    "price": 270,
+    "description": "Crisp, spiced vegetable patties served with tangy mint chutney."
+  },
+  {
+    "id": "tc-12",
+    "price": 270,
+    "description": "Seasoned mixed vegetables shaped around skewers and grilled."
+  },
+  {
+    "id": "tc-13",
+    "price": 260,
+    "description": "Skewered vegetable balls grilled with spicy, tangy Indo-Chinese flavours."
+  },
+  {
+    "id": "tc-14",
+    "price": 290,
+    "description": "Mushrooms and baby corn marinated with aromatic spices and grilled in the tandoor."
+  },
+  {
+    "id": "tc-15",
+    "price": 280,
+    "description": "Cheese-filled vegetable kabab balls coated with sesame seeds."
+  },
+  {
+    "id": "tc-16",
+    "price": 240,
+    "description": "Potato cubes marinated with herbs and spices, then grilled in the tandoor."
+  },
+  {
+    "id": "tc-17",
+    "price": 280,
+    "description": "Mixed vegetables shaped around skewers, coated with sesame seeds and grilled."
+  },
+  {
+    "id": "tc-18",
+    "price": 280,
+    "description": "Heart-shaped vegetable patties coated with sesame seeds, cooked crisp and served with tangy mint chutney."
+  },
+  {
+    "id": "rn-1",
+    "price": 290,
+    "description": "Spicy, tangy Schezwan fried rice with mixed vegetables, served with Manchurian gravy."
+  },
+  {
+    "id": "rn-2",
+    "price": 240,
+    "description": "Rice stir-fried with vegetables and spicy Schezwan sauce."
+  },
+  {
+    "id": "rn-3",
+    "price": 230,
+    "description": "Rice stir-fried with mixed vegetables, onions, carrots and capsicum."
+  },
+  {
+    "id": "rn-4",
+    "price": 260,
+    "description": "Fragrant rice stir-fried with mushrooms and aromatic garlic."
+  },
+  {
+    "id": "rn-5",
+    "price": 230,
+    "description": "A savoury combination of rice, noodles, Manchurian and mixed vegetables."
+  },
+  {
+    "id": "rn-6",
+    "price": 280,
+    "description": "Spicy, tangy Schezwan noodles with mixed vegetables, served with Manchurian gravy."
+  },
+  {
+    "id": "rn-7",
+    "price": 230,
+    "description": "Noodles tossed with stir-fried vegetables in spicy Schezwan sauce."
+  },
+  {
+    "id": "rn-8",
+    "price": 230,
+    "description": "Noodles tossed with shredded vegetables and savoury Chinese-style sauces."
+  },
+  {
+    "id": "rn-9",
+    "price": 240,
+    "description": "Yellow-coloured noodles stir-fried with vegetables and finished with chopped cashews."
+  },
+  {
+    "id": "rn-10",
+    "price": 240,
+    "description": "Stir-fried noodles with crisp vegetable balls in a savoury, spicy Manchurian sauce."
+  },
+  {
+    "id": "thali-mini",
+    "price": 160,
+    "description": "Authentic homestyle meal: Veg Tawa, Dal Fry, Jeera Rice, 4 Fresh Chapatis, Koshimbir Salad (Onion, Cucumber, Tomato & Lemon), and Pickle Packet. Exclusively on Zomato & Swiggy.",
+    "descriptionHi": "स्वादिष्ट घरेलू भोजन: वेज तवा, दाल फ्राई, जीरा राइस, 4 ताज़ा चपाती, कोशिंबीर सलाद [प्याज / खीरा / टमाटर / नींबू] एवं अचार का पैकेट। स्विगी व ज़ोमैटो पर उपलब्ध।",
+    "descriptionMr": "घरगुती चवीचे परिपूर्ण जेवण: व्हेज तवा, डाळ फ्राय, जिरा राईस, ४ ताज्या चपात्या, कोशिंबीर [कांदा / काकडी / टोमॅटो / लिंबू] आणि लोणच्याचं पाकिट. झोमॅटो व स्विगीवर उपलब्ध."
+  },
+  {
+    "id": "thali-signature",
+    "price": 240,
+    "description": "Chef's signature feast: Paneer Tikka Masala, Batata Matar Dry, comforting Dal Khichdi, 2 Chapatis, 2 Tawa Parathas, Koshimbir Salad (Onion, Cucumber, Tomato & Lemon), Pickle Packet, and Hot Gulab Jamun (1 pc). Exclusively on Zomato & Swiggy.",
+    "descriptionHi": "होटल प्रीमियर सिग्नेचर थाली: पनीर टिक्का मसाला, आलू मटर ड्राई, दाल खिचड़ी, 2 चपाती, 2 तवा पराठा, कोशिंबीर [प्याज / खीरा / टमाटर / नींबू], अचार का पैकेट एवं 1 पीस गुलाब जामुन। स्विगी व ज़ोमैटो पर उपलब्ध।",
+    "descriptionMr": "हॉटेल प्रीमियर सिग्नेचर थाळी: पनीर टिक्का मसाला, बटाटा मटार ड्राय, डाळ खिचडी, २ चपात्या, २ तवा पराठे, कोशिंबीर [कांदा / काकडी / टोमॅटो / लिंबू], लोणच्याचं पाकिट आणि १ पीस गुलाबजाम. झोमॅटो व स्विगीवर उपलब्ध."
+  },
+  {
+    "id": "thali-maharaja",
+    "price": 320,
+    "description": "Grand royal banquet feast: Paneer Butter Masala, Kaju Masala, Mix Veg Dry, aromatic Veg Pulao, 3 Tawa Parathas, Boondi Raita, Koshimbir Salad (Onion, Cucumber, Tomato & Lemon), Pickle Packet, Gulab Jamun (1 pc), and Rasgulla (1 pc). Exclusively on Zomato & Swiggy.",
+    "descriptionHi": "शाही महाराजा दावत थाली: पनीर बटर मसाला, काजू मसाला, मिक्स वेज ड्राई, वेज पुलाव, 3 तवा पराठा, बूंदी रायता, कोशिंबीर [प्याज / खीरा / टमाटर / नींबू], अचार का पैकेट, 1 पीस गुलाब जामुन एवं 1 पीस रसगुल्ला। स्विगी व ज़ोमैटो पर उपलब्ध।",
+    "descriptionMr": "महाराजा थाळीचा शाही थाट: पनीर बटर मसाला, काजू मसाला, मिक्स व्हेज ड्राय, सुगंधी व्हेज पुलाव, ३ तवा पराठे, बूंदी रायता, कोशिंबीर [कांदा / काकडी / टोमॅटो / लिंबू], लोणच्याचं पाकिट, १ पीस गुलाबजाम आणि १ पीस रसगुल्ला. झोमॅटो व स्विगीवर उपलब्ध."
+  },
+  {
+    "id": "thali-chinese",
+    "price": 220,
+    "description": "Crisp oriental sizzler combo: Veg Hakka Noodles, Veg Schezwan Fried Rice, Veg Manchurian (3 pcs), and 1 Chilled Soft Drink (Thums Up / Sprite). Exclusively on Zomato & Swiggy.",
+    "descriptionHi": "चटपटा इंडो-चाइनीज कॉम्बो: वेज हक्का नूडल्स, वेज शेजवान फ्राइड राइस, वेज मंचूरियन (3 पीस) एवं 1 कोल्ड ड्रिंक (थम्स अप / स्प्राइट)। स्विगी व ज़ोमैटो पर उपलब्ध।",
+    "descriptionMr": "झणझणीत इंडो-चायनीज कॉम्बो: व्हेज हक्का नूडल्स, व्हेज शेझवान फ्राईड राईस, व्हेज मंच्युरियन (३ पीस) आणि १ थंड पेय (थम्प्स अप / स्प्राइट). झोमॅटो व स्विगीवर उपलब्ध."
+  },
+  {
+    "id": "vs-1",
+    "price": 340,
+    "description": "Three contrasting gravies: tangy red with chopped vegetables, green with mushrooms and baby corn, and sweet yellow with mixed fruit."
+  },
+  {
+    "id": "vs-2",
+    "price": 180,
+    "description": "A spicy onion and tomato curry topped with crisp sev."
+  },
+  {
+    "id": "vs-3",
+    "price": 290,
+    "description": "Whole cashews in a spicy red curry. For the creamy yellow-gravy preparation, choose Kaju Masala."
+  },
+  {
+    "id": "vs-4",
+    "price": 290,
+    "description": "A pairing of tangy red vegetable gravy and green gravy with mushrooms and baby corn."
+  },
+  {
+    "id": "vs-5",
+    "price": 270,
+    "description": "Mixed vegetables cooked in a tangy, spiced gravy and served in a traditional kadai."
+  },
+  {
+    "id": "vs-6",
+    "price": 290,
+    "description": "A medley of vegetables simmered in a rich, spiced gravy."
+  },
+  {
+    "id": "vs-7",
+    "price": 270,
+    "description": "Vegetables in a Kolhapuri-spiced gravy with cashews, onions, ginger, garlic and tomatoes."
+  },
+  {
+    "id": "vs-8",
+    "price": 290,
+    "description": "Mushrooms and baby corn in a rich, spiced tomato gravy."
+  },
+  {
+    "id": "vs-9",
+    "price": 210,
+    "description": "Fresh tender ladyfingers sautéed with double portion of caramelized onions and aromatic spices.",
+    "descriptionHi": "नरम भिंडी और भुने हुए प्याज़ के लच्छों से बनी, खड़े मसालों से भरपूर स्वादिष्ट सूखी सब्ज़ी।",
+    "descriptionMr": "ताजी भेंडी आणि भरपूर कांद्यासोबत खमंग मसाल्यांमध्ये परतलेली चवदार सुकी भाजी."
+  },
+  {
+    "id": "vs-10",
+    "price": 230,
+    "description": "Chickpeas simmered in a spicy, tangy gravy with aromatic spices."
+  },
+  {
+    "id": "vs-11",
+    "price": 250,
+    "description": "Fenugreek leaves in a rich, flavourful sauce, finished with crisp fried garlic. The Palak option uses spinach in place of fenugreek."
+  },
+  {
+    "id": "vs-12",
+    "price": 290,
+    "description": "Crisp vegetable fritters in a spicy red gravy, served on a sizzling platter."
+  },
+  {
+    "id": "vs-13",
+    "price": 270,
+    "description": "Mixed vegetables cooked with aromatic spices in a rich, creamy gravy."
+  },
+  {
+    "id": "vs-14",
+    "price": 300,
+    "description": "Mixed vegetables tossed in a rich yellow cheese gravy and finished with a cheese cube."
+  },
+  {
+    "id": "vs-15",
+    "price": 300,
+    "description": "Mixed vegetables in a rich green gravy flavoured with herbs."
+  },
+  {
+    "id": "vs-16",
+    "price": 240,
+    "description": "Potatoes and cauliflower cooked with aromatic spices in a rich, tangy gravy."
+  },
+  {
+    "id": "vs-17",
+    "price": 300,
+    "description": "Bread topped with chopped vegetables and white sesame, fried golden and cooked in a mildly spiced yellow gravy."
+  },
+  {
+    "id": "vs-18",
+    "price": 210,
+    "description": "Baby potatoes simmered in a rich, spicy and tangy tomato gravy."
+  },
+  {
+    "id": "vs-19",
+    "price": 210,
+    "description": "Green peas simmered in a spiced tomato gravy."
+  },
+  {
+    "id": "vs-20",
+    "price": 280,
+    "description": "Crisp corn and spinach cooked in a rich, spiced gravy."
+  },
+  {
+    "id": "vs-21",
+    "price": 290,
+    "description": "Mixed vegetables, mushrooms and paneer sauteed with aromatic spices on a hot tawa."
+  },
+  {
+    "id": "vs-22",
+    "price": 270,
+    "description": "A colourful medley of seasonal vegetables cooked with aromatic spices."
+  },
+  {
+    "id": "kf-1",
+    "price": 290,
+    "description": "Soft fried dumplings in a rich, creamy white gravy with a gentle sweetness."
+  },
+  {
+    "id": "kf-2",
+    "price": 300,
+    "description": "Deep-fried vegetable dumplings in a rich, creamy tomato gravy."
+  },
+  {
+    "id": "kf-3",
+    "price": 290,
+    "description": "Vegetable and paneer koftas served in a rich yellow cheese gravy."
+  },
+  {
+    "id": "kf-4",
+    "price": 300,
+    "description": "Soft cheese balls in a richly spiced tomato gravy."
+  },
+  {
+    "id": "kf-5",
+    "price": 290,
+    "description": "Vegetable koftas in a medium-spiced onion and tomato gravy."
+  },
+  {
+    "id": "kf-6",
+    "price": 315,
+    "description": "Soft paneer dumplings simmered in a rich, flavourful gravy."
+  },
+  {
+    "id": "ps-mumtaz",
+    "price": 300,
+    "description": "Stuffed paneer slices, coated and fried, then simmered in a rich gravy."
+  },
+  {
+    "id": "ps-1",
+    "price": 345,
+    "description": "Paneer slices with three-colour stuffing, fried and simmered in a rich yellow gravy."
+  },
+  {
+    "id": "ps-2",
+    "price": 320,
+    "description": "Tandoor-cooked paneer cubes in a rich, creamy tomato gravy with aromatic spices."
+  },
+  {
+    "id": "ps-3",
+    "price": 300,
+    "description": "Paneer simmered in a creamy tomato gravy enriched with butter and aromatic spices."
+  },
+  {
+    "id": "ps-4",
+    "price": 325,
+    "description": "Marinated paneer cooked in the tandoor and served in a richly spiced gravy."
+  },
+  {
+    "id": "ps-5",
+    "price": 310,
+    "description": "Paneer finished with a charcoal-smoking technique for a distinctive smoky flavour."
+  },
+  {
+    "id": "ps-6",
+    "price": 310,
+    "description": "Paneer simmered in a rich, creamy handi-style gravy."
+  },
+  {
+    "id": "ps-7",
+    "price": 315,
+    "description": "Crisp paneer fritters in a spicy red gravy, served on a sizzling platter."
+  },
+  {
+    "id": "ps-8",
+    "price": 310,
+    "description": "Soft paneer in a smooth, creamy spinach gravy."
+  },
+  {
+    "id": "ps-9",
+    "price": 300,
+    "description": "Scrambled paneer cooked with onions, tomatoes and aromatic spices."
+  },
+  {
+    "id": "ps-10",
+    "price": 290,
+    "description": "Paneer cooked with aromatic spices and finished with crisp fried ginger juliennes."
+  },
+  {
+    "id": "ps-11",
+    "price": 310,
+    "description": "Scrambled paneer wrapped in urad papad, fried and simmered in a flavourful yellow gravy."
+  },
+  {
+    "id": "ps-12",
+    "price": 310,
+    "description": "Paneer cubes and cashews simmered in a rich onion and tomato gravy."
+  },
+  {
+    "id": "ps-13",
+    "price": 315,
+    "description": "Shredded paneer with capsicum and onion in a spiced yellow gravy."
+  },
+  {
+    "id": "ps-14",
+    "price": 310,
+    "description": "Tandoor-roasted paneer tikka in a rich, spicy red gravy."
+  },
+  {
+    "id": "ps-15",
+    "price": 325,
+    "description": "Fried paneer triangles tossed in a rich, spicy red gravy."
+  },
+  {
+    "id": "ps-16",
+    "price": 295,
+    "description": "Paneer and capsicum cooked in a spicy, chilli-flavoured gravy."
+  },
+  {
+    "id": "ps-17",
+    "price": 295,
+    "description": "Paneer and green peas simmered in a tomato and onion gravy with aromatic spices."
+  },
+  {
+    "id": "ps-18",
+    "price": 305,
+    "description": "Paneer in a rich, creamy gravy of spinach and fenugreek."
+  },
+  {
+    "id": "ps-19",
+    "price": 305,
+    "description": "A semi-dry preparation of paneer, bell peppers and Indian spices."
+  },
+  {
+    "id": "ps-20",
+    "price": 285,
+    "description": "Paneer simmered in a rich, tangy and spicy Kolhapuri-style gravy."
+  },
+  {
+    "id": "ps-21",
+    "price": 305,
+    "description": "Mushrooms, paneer and baby corn in a spiced yellow gravy."
+  },
+  {
+    "id": "fd-dal-fry-group",
+    "price": 190,
+    "description": "Slow-simmered golden lentils cooked with aromatics and finished with rich butter or sizzling desi ghee tempering.",
+    "descriptionHi": "धीमी आंच पर पकी पीली दाल, ताज़े मसालों और शुद्ध देसी घी के खमंग तड़के के साथ।",
+    "descriptionMr": "मंद आचेवर शिजवलेली पिवळी डाळ, कांदा-टोमॅटो आणि अस्सल साजूक तुपाच्या तडक्यासह."
+  },
+  {
+    "id": "fd-1",
+    "price": 190,
+    "description": "Yellow lentils gently simmered and sautéed with onions, ripe tomatoes and aromatic spices."
+  },
+  {
+    "id": "fd-2",
+    "price": 210,
+    "description": "Lentils finished with a fragrant ghee tadka of cumin, garlic, curry leaves and coriander."
+  },
+  {
+    "id": "fd-3",
+    "price": 220,
+    "description": "Creamy lentils in spinach gravy with aromatic spices, topped with green peas and capsicum."
+  },
+  {
+    "id": "fd-4",
+    "price": 220,
+    "description": "Tangy yogurt curry with fried gram-flour dumplings, finished with a cumin, chilli and garlic tadka."
+  },
+  {
+    "id": "fa-1",
+    "price": 90,
+    "description": "Fresh cucumber, tomato, carrot and beetroot, served with a lemon slice."
+  },
+  {
+    "id": "fa-2",
+    "price": 100,
+    "description": "Julienned cucumber, tomato, capsicum and onion with coriander, lemon juice and chaat masala."
+  },
+  {
+    "id": "fa-raita-group",
+    "price": 60,
+    "description": "Chilled creamy dairy yogurt blended with fresh boondi, crunchy garden vegetables, or sweet pineapple.",
+    "descriptionHi": "ताज़ा गाढ़ा दही, बूंदी रायता, मिक्स वेज रायता, पाइनएप्पल रायता और शाही मिक्स फ्रूट रायता।",
+    "descriptionMr": "ताजे घट्ट दही, बुंदी रायता, मिक्स व्हेज रायता, अननस रायता आणि मिक्स फ्रूट रायता."
+  },
+  {
+    "id": "fa-3",
+    "price": 90,
+    "description": "Creamy yogurt blended with lightly spiced boondi."
+  },
+  {
+    "id": "fa-4",
+    "price": 120,
+    "description": "Creamy yogurt with sweet pineapple chunks and a light touch of spice."
+  },
+  {
+    "id": "fa-5",
+    "price": 130,
+    "description": "Creamy yogurt folded with a medley of juicy fruits."
+  },
+  {
+    "id": "fa-6",
+    "price": 70,
+    "description": "Spice-coated urad papad, deep-fried and served with Schezwan chutney."
+  },
+  {
+    "id": "fa-7",
+    "price": 30,
+    "description": "Crisp traditional urad dal papad: roasted, fried, spicy masala or rich cheese masala."
+  },
+  {
+    "id": "fa-8",
+    "price": 30,
+    "description": "Crisp healthy finger millet (ragi/nagli) papad: roasted, fried, chatpata masala or cheese masala."
+  },
+  {
+    "id": "sb-tawa-group",
+    "price": 20,
+    "description": "Home-style soft puffed whole-wheat chapatis and layered flaky parathas freshly cooked on an iron griddle, plain or with rich butter.",
+    "descriptionHi": "लोहे के तवे पर सिकी घर जैसी फूली हुई गेहूं की चपाती और परतदार पराठा, सादा या ताज़ा मक्खन के साथ।",
+    "descriptionMr": "तव्यावर भाजलेली घरगुती पद्धतीची मऊ चपाती आणि पदरदार खमंग पराठा, साधी अथवा भरपूर बटरसह."
+  },
+  {
+    "id": "sb-3",
+    "price": 20,
+    "description": "Home-style soft puffed whole-wheat flatbread freshly cooked on an iron griddle."
+  },
+  {
+    "id": "sb-tawa-butter-chapati",
+    "price": 25,
+    "description": "Soft home-style whole-wheat chapati generously brushed with golden dairy butter."
+  },
+  {
+    "id": "sb-12",
+    "price": 40,
+    "description": "Flaky layered whole-wheat flatbread pan-fried golden crisp on the tawa."
+  },
+  {
+    "id": "sb-tawa-butter-paratha",
+    "price": 50,
+    "description": "Flaky layered whole-wheat flatbread roasted with pure golden dairy butter."
+  },
+  {
+    "id": "sb-roti-group",
+    "price": 20,
+    "description": "Clay-oven baked whole wheat rotis, spiced missi roti and fenugreek methi roti, plain or with rich butter.",
+    "descriptionHi": "तंदूर में सिकी गेहूं की रोटियां, मिस्सी और मेथी रोटी, सादा या पिघले मक्खन के साथ।",
+    "descriptionMr": "तंदूरमध्ये भाजलेली गव्हाची रोटी, मिस्सी आणि मेथी रोटी, साधी अथवा भरपूर बटरसह."
+  },
+  {
+    "id": "sb-1",
+    "price": 20,
+    "description": "Crisp and tender whole-wheat flatbread baked inside the traditional clay tandoor."
+  },
+  {
+    "id": "sb-2",
+    "price": 25,
+    "description": "Tandoor-baked whole wheat roti glazed generously with golden melted butter."
+  },
+  {
+    "id": "sb-13",
+    "price": 40,
+    "description": "A spiced flatbread of gram flour (besan) and whole wheat with onions, carom seeds and green chillies."
+  },
+  {
+    "id": "sb-missi-butter",
+    "price": 45,
+    "description": "Spiced gram flour and whole-wheat tandoori flatbread finished with pure dairy butter."
+  },
+  {
+    "id": "sb-14",
+    "price": 40,
+    "description": "Soft whole-wheat flatbread kneaded with fresh fenugreek leaves and mild aromatic spices."
+  },
+  {
+    "id": "sb-methi-butter",
+    "price": 45,
+    "description": "Wholesome fresh fenugreek wheat flatbread baked in tandoor and brushed with melted butter."
+  },
+  {
+    "id": "sb-naan-group",
+    "price": 50,
+    "description": "Pillowy leavened flatbreads baked in the tandoor, available plain, with golden butter, crushed garlic, or molten cheese.",
+    "descriptionHi": "तंदूर में सिका मुलायम नान - प्लेन, बटर, गार्लिक, चीज़, चीज़ गार्लिक और शाही कश्मीरी नान।",
+    "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान - प्लेन, बटर, गार्लिक, चीज, चीज गार्लिक आणि शाही काश्मिरी नान."
+  },
+  {
+    "id": "sb-4",
+    "price": 50,
+    "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor."
+  },
+  {
+    "id": "sb-5",
+    "price": 55,
+    "description": "Classic soft tandoor naan glazed generously with golden melted butter."
+  },
+  {
+    "id": "sb-6",
+    "price": 110,
+    "description": "Soft tandoor naan topped with crushed garlic cloves and fresh coriander leaves."
+  },
+  {
+    "id": "sb-butter-garlic-naan",
+    "price": 130,
+    "description": "Crisp aromatic garlic naan drenched generously in warm melted butter."
+  },
+  {
+    "id": "sb-7",
+    "price": 120,
+    "description": "Soft leavened tandoor flatbread generously stuffed with gooey molten cheese."
+  },
+  {
+    "id": "sb-butter-cheese-naan",
+    "price": 150,
+    "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden melted butter."
+  },
+  {
+    "id": "sb-8",
+    "price": 140,
+    "description": "Tandoor-baked maida naan stuffed with molten cheese and topped with roasted garlic."
+  },
+  {
+    "id": "sb-butter-cheese-garlic-naan",
+    "price": 160,
+    "description": "Decadent chef special naan with melted cheese, roasted garlic and rich melted butter."
+  },
+  {
+    "id": "sb-15",
+    "price": 60,
+    "description": "A softly sweet naan stuffed with dry fruits, nuts and fragrant cardamom."
+  },
+  {
+    "id": "sb-kulcha-group",
+    "price": 50,
+    "description": "Fluffy tandoori kulchas and flaky multi-layered laccha parathas laminated with pure butter and ghee.",
+    "descriptionHi": "मक्खन लगा कुलचा, भरवां पनीर कुलचा और परतदार लच्छा पराठा, सादा या बटर के साथ।",
+    "descriptionMr": "बटर कुलचा, भरलेला पनीर कुलचा आणि पदरदार लच्छा पराठा, साधी अथवा बटरसह."
+  },
+  {
+    "id": "sb-9",
+    "price": 50,
+    "description": "Soft maida flatbread flavoured with black sesame and coriander, baked in the tandoor."
+  },
+  {
+    "id": "sb-butter-kulcha",
+    "price": 60,
+    "description": "Fluffy tandoori kulcha generously brushed with warm melted dairy butter."
+  },
+  {
+    "id": "sb-10",
+    "price": 110,
+    "description": "Tandoor-baked maida bread stuffed with spiced potatoes, cottage cheese and fresh herbs."
+  },
+  {
+    "id": "sb-11",
+    "price": 70,
+    "description": "Crisp, multi-layered whole-wheat flatbread roasted golden to pair with rich curries."
+  },
+  {
+    "id": "sb-butter-laccha-paratha",
+    "price": 80,
+    "description": "Crisp multi-layered tandoori flatbread finished generously with melted dairy butter."
+  },
+  {
+    "id": "sb-16",
+    "price": 480,
+    "description": "Nine breads: one each of tandoori roti, naan, missi roti, pudina roti, kulcha, laccha paratha, garlic naan, methi paratha and aloo paratha."
+  },
+  {
+    "id": "rb-biryani-group",
+    "price": 260,
+    "description": "Slow-cooked royal basmati biryanis infused with fragrant whole spices, saffron, fresh herbs, and served with cooling raita.",
+    "descriptionHi": "धीमी आंच पर पकी सुगंधित बासमती बिरयानी, शाही मसालों और ताज़े पुदीने के साथ, रायते के साथ परोसी जाती है।",
+    "descriptionMr": "दमवर शिजवलेली सुगंधी बासमती बिर्याणी, अस्सल मसाले आणि ताज्या पुदिन्यासह, थंडगार रायत्यासोबत."
+  },
+  {
+    "id": "rb-1",
+    "price": 260,
+    "description": "Vegetable biryani with crunchy cashews, saffron, coriander and mint."
+  },
+  {
+    "id": "rb-2",
+    "price": 270,
+    "description": "Fragrant, spiced vegetable biryani prepared in a green Hyderabadi style."
+  },
+  {
+    "id": "rb-3",
+    "price": 275,
+    "description": "Grilled paneer paired with aromatic, spiced biryani rice."
+  },
+  {
+    "id": "rb-4",
+    "price": 275,
+    "description": "Fragrant rice cooked with paneer, cashews and aromatic spices."
+  },
+  {
+    "id": "rb-5",
+    "price": 285,
+    "description": "Spicy paneer tikka roasted in the tandoor and cooked with fragrant basmati rice."
+  },
+  {
+    "id": "rb-6",
+    "price": 190,
+    "description": "Fluffy basmati rice tossed with roasted cumin seeds and fresh coriander in pure ghee."
+  },
+  {
+    "id": "rb-7",
+    "price": 180,
+    "description": "Aromatic long-grain basmati rice, steamed tender and fluffy."
+  },
+  {
+    "id": "rb-8",
+    "price": 240,
+    "description": "A comforting combination of aged basmati rice and yellow lentils cooked with mild spices and butter."
+  },
+  {
+    "id": "rb-9",
+    "price": 245,
+    "description": "Aromatic dal khichadi finished with a sizzling tempering of cumin, garlic, curry leaves and dry red chillies."
+  },
+  {
+    "id": "rb-pulao-group",
+    "price": 200,
+    "description": "Long-grain basmati rice gently simmered with farm-fresh garden vegetables, cottage cheese, tempered spices, or cooling curd.",
+    "descriptionHi": "ताज़ी हरी सब्ज़ियों, पनीर, हल्के मसालों और कर्ड के साथ पकाया गया सुगंधित बासमती पुलाव।",
+    "descriptionMr": "ताज्या भाज्या, पनीर आणि खमंग मसाल्यांनी तयार केलेला सुगंधी बासमती पुलाव व राईस."
+  },
+  {
+    "id": "rb-10",
+    "price": 240,
+    "description": "Rice cooked with a medley of vegetables and spices."
+  },
+  {
+    "id": "rb-11",
+    "price": 245,
+    "description": "Fragrant rice with green peas, soft paneer and aromatic spices."
+  },
+  {
+    "id": "rb-12",
+    "price": 230,
+    "description": "Rice mixed with yogurt and seasoned with mustard, curry leaves and spices."
+  },
+  {
+    "id": "rb-13",
+    "price": 250,
+    "description": "Basmati rice seasoned with aromatic herbs and spices."
+  },
+  {
+    "id": "rb-14",
+    "price": 200,
+    "description": "Tangy South Indian-style rice with lemon juice, mustard seeds and curry leaves."
+  },
+  {
+    "id": "mm-1",
+    "price": 550,
+    "description": "Grand signature sundae loaded with gourmet ice cream scoops, assorted nuts, and chocolate drizzle.",
+    "descriptionHi": "आइसक्रीम स्कूप्स, मेवों, चॉकलेट सिरप और ताज़े फलों से सजा हमारा सबसे खास शाही संडे।",
+    "descriptionMr": "विविध आईस्क्रीम स्कूप्स, सुका मेवा, चॉकलेट सॉस आणि ताज्या फळांनी सजवलेला खास संडे."
+  },
+  {
+    "id": "mm-2",
+    "price": 200,
+    "description": "Warm dark chocolate fudge poured over velvety vanilla ice cream and topped with roasted cashews.",
+    "descriptionHi": "ठंडी वैनिला आइसक्रीम पर गरमागरम गाढ़ा चॉकलेट फज और भुने हुए काजू डालकर परोसा जाता है।",
+    "descriptionMr": "थंड व्हॅनिला आईस्क्रीमवर गरमागरम चॉकलेट फज सॉस आणि भाजलेले काजू घालून दिलेला खास पदार्थ."
+  },
+  {
+    "id": "mm-3",
+    "price": 55,
+    "description": "Two soft milk-solid dumplings soaked in fragrant sugar syrup."
+  },
+  {
+    "id": "mm-4",
+    "price": 60,
+    "description": "Two soft, spongy rasgullas soaked in sweet syrup."
+  },
+  {
+    "id": "mm-5",
+    "price": 500,
+    "description": "Special weekend extravaganza with multi-flavored ice creams, dry fruits, and rich berry syrup.",
+    "descriptionHi": "अलग-अलग फ्लेवर वाली आइसक्रीम, सूखे मेवों और बेरी सिरप से तैयार किया गया खास संडे।",
+    "descriptionMr": "विविध फ्लेवर्सचे आईस्क्रीम, सुका मेवा आणि बेरी सॉसने सजवलेला वीकेंड स्पेशल संडे."
+  },
+  {
+    "id": "mm-6",
+    "price": 220,
+    "description": "Delightful sundae with candied tutti-frutti, roasted cashew pralines, and strawberry swirl.",
+    "descriptionHi": "रंग-बिरंगी टूटी-फ्रूटी, कुरकुरे भुने काजू और स्ट्रॉबेरी सिरप से सजा स्वादिष्ट आइसक्रीम संडे।",
+    "descriptionMr": "रंगीबेरंगी टुटी-फ्रुटी, भाजलेले काजू आणि स्ट्रॉबेरी सॉसने सजवलेला चवदार आईस्क्रीम संडे."
+  },
+  {
+    "id": "mm-7",
+    "price": 220,
+    "description": "Festive dessert specialty combining rich chocolate cake, ice cream, and dark cherry compote.",
+    "descriptionHi": "चॉकलेट केक, क्रीमी आइसक्रीम और चेरी के रसीले स्वाद से भरपूर खास फेस्टिव डेज़र्ट।",
+    "descriptionMr": "चॉकलेट केक, मखमली आईस्क्रीम आणि चेरीच्या रसाळ स्वादाने भरलेला खास मिष्टान्न."
+  },
+  {
+    "id": "ff-1",
+    "price": 50,
+    "description": "Creamy golden butterscotch ice cream loaded with crunchy caramelized praline nuggets.",
+    "descriptionHi": "कुरकुरे कैरेमल क्रंच और मक्खनी स्वाद से भरपूर क्रीमी बटरस्कॉच आइसक्रीम।",
+    "descriptionMr": "कुरकुरीत कॅरॅमल क्रंच आणि लोणीच्या चवीने युक्त मलईदार बटरस्कॉच आईस्क्रीम."
+  },
+  {
+    "id": "ff-2",
+    "price": 40,
+    "description": "Classic velvety dairy ice cream flavored with aromatic natural vanilla bean.",
+    "descriptionHi": "शुद्ध दूध और प्राकृतिक वैनिला की खुशबू से बना क्लासिक मखमली आइसक्रीम स्कूप।",
+    "descriptionMr": "शुद्ध दूध आणि नैसर्गिक व्हॅनिलाच्या सुवासाने तयार केलेला क्लासिक आईस्क्रीम स्कूप."
+  },
+  {
+    "id": "ff-3",
+    "price": 50,
+    "description": "Rich royal ice cream loaded with crunchy roasted cashews and sweet juicy black raisins.",
+    "descriptionHi": "भुने हुए काजू और मीठी काली किशमिश से भरपूर गाढ़ी और शाही मलाईदार आइसक्रीम।",
+    "descriptionMr": "भाजलेले काजू आणि गोड काळ्या मनुकांनी भरलेले दाट आणि शाही आईस्क्रीम."
+  },
+  {
+    "id": "ff-4",
+    "price": 50,
+    "description": "Decadent scoop of rich dark Dutch chocolate dairy ice cream.",
+    "descriptionHi": "गाढ़े डच कोको और शुद्ध दूध से बनी बेहद स्वादिष्ट और क्रीमी चॉकलेट आइसक्रीम।",
+    "descriptionMr": "दाट डच कोको आणि दुधापासून बनवलेले मखमली आणि चवदार चॉकलेट आईस्क्रीम."
+  },
+  {
+    "id": "ff-5",
+    "price": 50,
+    "description": "Authentic Afghani dry-fruit infused ice cream with pistachios, almonds, and dried figs.",
+    "descriptionHi": "पिस्ता, बादाम, अंजीर और शाही मेवों से भरपूर पारंपरिक अफगानी आइसक्रीम।",
+    "descriptionMr": "पिस्ता, बदाम, अंजीर आणि सुक्या मेव्याने समृद्ध असलेले पारंपरिक अफगाणी आईस्क्रीम."
+  },
+  {
+    "id": "mc-1",
+    "price": 110,
+    "description": "Vibrant blue curaçao blended with zesty lime juice, sugar syrup, and sparkling lemon soda.",
+    "descriptionHi": "नीला कुरासाओ सिरप, ताज़ा नींबू का रस और फ़िज़ी लेमन सोडा का ठंडा ताज़गी भरा ड्रिंक।",
+    "descriptionMr": "ब्लू कुरासाओ सिरप, लिंबाचा रस आणि सोडा यांचे थंडगार ताजेतवाने पेय."
+  },
+  {
+    "id": "mc-2",
+    "price": 120,
+    "description": "Tropical medley of mango, guava, pineapple, and orange juices crowned with vanilla ice cream.",
+    "descriptionHi": "आम, अमरूद, अनानास और संतरे के रस का मिश्रण, ऊपर वैनिला आइसक्रीम के साथ।",
+    "descriptionMr": "आंबा, पेरू, अननस आणि संत्र्याच्या रसाचे मिश्रण, वर व्हॅनिला आईस्क्रीमसह."
+  },
+  {
+    "id": "mc-3",
+    "price": 110,
+    "description": "Refreshing kiwi, green apple, and mint cooler served with sparkling fizz.",
+    "descriptionHi": "कीवी, हरे सेब और ताज़े पुदीने के स्वाद से बना ठंडा और ताज़गी भरा स्पार्कलिंग ड्रिंक।",
+    "descriptionMr": "किवी, हिरवे सफरचंद आणि पुदिन्याच्या स्वादाने बनवलेले थंडगार ताजेतवाने पेय."
+  },
+  {
+    "id": "mc-4",
+    "price": 110,
+    "description": "Layered fresh orange juice and sweet grenadine syrup served over crushed ice with mint.",
+    "descriptionHi": "संतरे के ताज़े रस और अनार सिरप की दो रंगों वाली खूबसूरत और स्वादिष्ट ड्रिंक।",
+    "descriptionMr": "संत्र्याचा ताजा रस आणि डाळिंब सिरपचे दोन आकर्षक रंगांचे थंडगार पेय."
+  },
+  {
+    "id": "mc-5",
+    "price": 110,
+    "description": "Delicate strawberry cream mocktail shaken with crushed ice and sparkling fizz.",
+    "descriptionHi": "स्ट्रॉबेरी और हल्की क्रीम का ठंडा, झागदार और स्वादिष्ट मॉकटेल ड्रिंक।",
+    "descriptionMr": "स्ट्रॉबेरी आणि हलक्या मलईचे थंडगार, फेसळलेले आणि चवदार मॉकतेल पेय."
+  },
+  {
+    "id": "ms-1",
+    "price": 180,
+    "description": "Famous thick Alphonso mango milkshake topped with a generous scoop of ice cream and nuts.",
+    "descriptionHi": "हापुस आम का गाढ़ा शेक, ऊपर से वैनिला आइसक्रीम, टूटी-फ्रूटी और भुने मेवों से सजा।",
+    "descriptionMr": "हापूस आंब्याचा दाट शेक, वरून व्हॅनिला आईस्क्रीम, टुटी-फ्रुटी आणि सुका मेवा घातलेली मस्तानी."
+  },
+  {
+    "id": "ms-2",
+    "price": 200,
+    "description": "Hotel Premier signature royal mastani with mixed dry fruits, saffron cream, and double ice cream.",
+    "descriptionHi": "होटल प्रीमियर की खास शाही मस्तानी, मेवों, रबड़ी, केसर और डबल आइसक्रीम के साथ।",
+    "descriptionMr": "हॉटेल प्रीमियरची खास शाही मस्तानी, सुका मेवा, रबडी, केशर आणि डबल आईस्क्रीमसह."
+  },
+  {
+    "id": "ms-3",
+    "price": 180,
+    "description": "Thick rich dry-fruit shake garnished with sliced almonds, pistachios, cashews, and ice cream.",
+    "descriptionHi": "काजू, बादाम और पिस्ता से बना गाढ़ा मिल्कशेक, ऊपर आइसक्रीम और मेवों की सजावट।",
+    "descriptionMr": "काजू, बदाम आणि पिस्त्याचा दाट मिल्कशेकमध्ये आईस्क्रीम आणि सुका मेव्याची भरपूर सजावट."
+  },
+  {
+    "id": "ms-7",
+    "price": 130,
+    "description": "Rich blended creamy espresso cold coffee topped with dark chocolate drizzle and vanilla ice cream.",
+    "descriptionHi": "झागदार गाढ़ी एस्प्रेसो कोल्ड कॉफी, चॉकलेट सिरप और ठंडी वैनिला आइसक्रीम के साथ।",
+    "descriptionMr": "फेसळलेली दाट एस्प्रेसो कोल्ड कॉफी, चॉकलेट सॉस आणि थंडगार व्हॅनिला आईस्क्रीमसह."
+  },
+  {
+    "id": "cb-1",
+    "price": 80,
+    "description": "Thick sweet churned curd served in traditional style, plain or topped with a luscious ice cream scoop.",
+    "descriptionHi": "गाढ़े मीठे दही को मथकर बनाई गई पारंपरिक लस्सी - सादा या वैनिला आइसक्रीम के साथ।",
+    "descriptionMr": "दाट गोड दही घुसळून बनवलेली पारंपरिक लस्सी - साधी अथवा व्हॅनिला आईस्क्रीमसह."
+  },
+  {
+    "id": "cb-2",
+    "price": 60,
+    "description": "Refreshing churned dairy buttermilk served chilled, plain or tempered with roasted cumin.",
+    "descriptionHi": "भुने जीरे, सेंधा नमक और हरी धनिया से तड़की हुई ठंडी और पाचक पारंपरिक छाछ।",
+    "descriptionMr": "भाजलेले जिरे, सैंधव मीठ आणि कोथिंबिरीची फोडणी दिलेले थंडगार व पाचक ताक."
+  },
+  {
+    "id": "cb-jaljeera",
+    "price": 35,
+    "description": "Tangy digestive cooler infused with roasted cumin, mint, rock salt, and lemon.",
+    "descriptionHi": "भुना जीरा, पुदीना, काला नमक और नींबू के चटपटे मसालों से बना पाचक शीतल पेय।",
+    "descriptionMr": "भाजलेले जिरे, पुदिना, काळे मीठ आणि लिंबाच्या चटपटीत चवीचे थंड पाचक पेय."
+  },
+  {
+    "id": "cb-freshlime",
+    "price": 35,
+    "description": "Freshly squeezed lemon juice served chilled with purified water or sparkling club soda.",
+    "descriptionHi": "ताज़े नींबू का रस, ठंडे पानी या फ़िज़ी सोडे के साथ, मीठा या नमकीन परोसा जाता है।",
+    "descriptionMr": "ताज्या लिंबाचा रस, थंड पाणी किंवा सोड्यासोबत, गोड अथवा खारट चवीत दिला जातो."
+  },
+  {
+    "id": "cb-5",
+    "price": 20,
+    "description": "Sealed purified packaged drinking water bottle (served at MRP).",
+    "descriptionHi": "सीलबंद शुद्ध पैकेज्ड मिनरल वॉटर की बोतल (एमआरपी पर उपलब्ध)।",
+    "descriptionMr": "सील केलेले शुद्ध पॅकेज्ड पिण्याचे पाणी (एमआरपीनुसार उपलब्ध)."
+  },
+  {
+    "id": "cb-6",
+    "price": 20,
+    "description": "Refreshing chilled bottled carbonated cola soft drink.",
+    "descriptionHi": "तेज़ और दमदार स्वाद वाली ठंडी बोतल कार्बोनेटेड कोला ड्रिंक।",
+    "descriptionMr": "कडक आणि झणझणीत चवीचे थंडगार बाटलीबंद कोला पेय."
+  },
+  {
+    "id": "cb-7",
+    "price": 20,
+    "description": "Crisp and refreshing lemon-lime carbonated soft drink served ice-cold.",
+    "descriptionHi": "नींबू के ताज़ा स्वाद वाला ठंडा फ़िज़ी कार्बोनेटेड सॉफ्ट ड्रिंक।",
+    "descriptionMr": "लिंबाच्या ताजेतवान्या चवीचे बर्फासारखे थंडगार कार्बोनेटेड पेय."
+  },
+  {
+    "id": "cb-8",
+    "price": 20,
+    "description": "Fruity vibrant orange sparkling soft drink served ice-cold.",
+    "descriptionHi": "संतरे के मीठे और चुलबुले स्वाद वाला ठंडा स्पार्कलिंग ड्रिंक।",
+    "descriptionMr": "संत्र्याच्या गोड आणि फसफसणाऱ्या चवीचे थंडगार शीतपेय."
+  },
+  {
+    "id": "cb-9",
+    "price": 20,
+    "description": "Rich and thick Alphonso mango fruit beverage served chilled.",
+    "descriptionHi": "रसीले आम के गूदे से बना गाढ़ा और मीठा ठंडा फ्रूट बेवरेज।",
+    "descriptionMr": "रसाळ आंब्याच्या गरापासून बनवलेले दाट आणि गोड थंडगार पेय."
+  },
+  {
+    "id": "cb-10",
+    "price": 15,
+    "description": "Chilled sparkling soda water bottle.",
+    "descriptionHi": "तेज़ बबल्स वाली ठंडी बोतल कार्बोनेटेड क्लब सोडा।",
+    "descriptionMr": "कडक फसफसणारा थंडगार बाटलीबंद क्लब सोडा."
+  },
+  {
+    "id": "ic-27",
+    "price": 210,
+    "description": "Tender paneer cubes in a spicy, aromatic garlic sauce."
+  },
+  {
+    "id": "ic-28",
+    "price": 210,
+    "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce."
+  },
+  {
+    "id": "ic-29",
+    "price": 190,
+    "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce."
+  },
+  {
+    "id": "ic-30",
+    "price": 200,
+    "description": "Vegetarian pasta stir-fried with garlic, green chilli, mixed vegetables and bold Indo-Chinese sauces."
+  },
+  {
+    "id": "tt-11",
+    "price": 190,
+    "description": "Pasta tossed in a rich desi masala with onions, tomatoes, capsicum and Indian spices."
+  },
+  {
+    "id": "vs-23",
+    "price": 190,
+    "description": "Seasonal vegetables cooked with aromatic spices and finished with crisp fried ginger juliennes."
+  },
+  {
+    "id": "vs-24",
+    "price": 240,
+    "description": "Whole cashews simmered in a rich, creamy yellow gravy."
+  },
+  {
+    "id": "vs-25",
+    "price": 180,
+    "description": "Spinach in a rich sauce, finished with crisp fried garlic."
+  },
+  {
+    "id": "kf-7",
+    "price": 220,
+    "description": "Vegetable koftas simmered in a creamy, mildly spiced handi-style gravy."
+  },
+  {
+    "id": "kf-8",
+    "price": 230,
+    "description": "Heart-shaped koftas in a velvety yellow gravy enriched with cashews and paneer."
+  },
+  {
+    "id": "fd-5",
+    "price": 150,
+    "description": "Wholesome yellow lentils cooked with fresh nutritious spinach leaves and mild spices."
+  },
+  {
+    "id": "fd-6",
+    "price": 165,
+    "description": "Nutritious dal palak finished with an aromatic tempering of garlic, cumin and ghee."
+  },
+  {
+    "id": "fd-7",
+    "price": 150,
+    "description": "Healthy yellow lentils cooked with fresh earthy fenugreek leaves and ground spices."
+  },
+  {
+    "id": "fd-8",
+    "price": 165,
+    "description": "Flavorful dal methi tempered with sizzling garlic, cumin and whole red chillies in ghee."
+  },
+  {
+    "id": "fa-9",
+    "price": 80,
+    "description": "Chilled yogurt blended with mixed vegetables and subtle spices."
+  },
+  {
+    "id": "rn-11",
+    "price": 240,
+    "description": "Aromatic wok-tossed basmati rice blended with savoury golden vegetable Manchurian balls in rich oriental seasonings.",
+    "descriptionHi": "खस्ता वेज मंचूरियन बॉल्स और ताज़ी सब्जियों के साथ वोक में भुना हुआ स्वादिष्ट राइस।",
+    "descriptionMr": "चवदार व्हेज मंचूरियन बॉल्स आणि भाज्यांसोबत परतून तयार केलेला खास मंचूरियन राईस."
+  },
+  {
+    "id": "vs-doodh-shev",
+    "price": 180,
+    "description": "A rich Khandeshi delicacy of crisp sev simmered in a mildly spiced, creamy milk and aromatic onion gravy.",
+    "descriptionHi": "ताज़ा दूध और हल्के मसालों की समृद्ध ग्रेवी में बनी स्वादिष्ट खानदेशी दूध शेव भाजी।",
+    "descriptionMr": "ताजे दूध आणि खमंग मसाल्यांच्या चवदार रश्श्यात बनवलेली प्रसिद्ध दूध शेव भाजी."
+  },
+  {
+    "id": "vs-shev-latpat",
+    "price": 180,
+    "description": "Authentic Khandeshi semi-dry thick spicy masala gravy enveloping crisp golden sev.",
+    "descriptionHi": "गाढ़ी और चटपटी खानदेशी मसालेदार ग्रेवी में लिपटी हुई कुरकुरी शेव लटपट।",
+    "descriptionMr": "झणझणीत खानदेशी मसाल्यात लटपटलेली अस्सल चवीची कुरकुरीत शेव लटपट."
+  },
+  {
+    "id": "ms-vanilla",
+    "price": 120,
+    "description": "Chilled rich dairy milkshake flavored with aromatic natural vanilla bean extract.",
+    "descriptionHi": "ताज़ा ठंडे दूध और प्राकृतिक वैनिला बीन से बना मलाईदार क्लासिक मिल्कशेक।",
+    "descriptionMr": "थंडगार ताजे दूध आणि नैसर्गिक व्हॅनिलाच्या सुवासाने तयार केलेला मऊ मिल्कशेक."
+  },
+  {
+    "id": "ms-vanilla-icecream",
+    "price": 150,
+    "description": "Smooth chilled vanilla milkshake served with a generous scoop of rich vanilla ice cream.",
+    "descriptionHi": "स्वादिष्ट वैनिला शेक के ऊपर भरपूर वैनिला आइसक्रीम का ठंडा मलाईदार स्कूप।",
+    "descriptionMr": "चवदार व्हॅनिला मिल्कशेकवर थंडगार व्हॅनिला आईस्क्रीमचा मोठा स्कूप."
+  },
+  {
+    "id": "ms-chocolate",
+    "price": 130,
+    "description": "Rich thick milkshake blended with pure Dutch cocoa and chocolate fudge.",
+    "descriptionHi": "डच कोको और चॉकलेट फज के साथ मिलाया गया गाढ़ा और स्वादिष्ट चॉकलेट शेक।",
+    "descriptionMr": "डच कोको आणि चॉकलेट फज एकत्र करून बनवलेला दाट व स्वादिष्ट चॉकलेट शेक."
+  },
+  {
+    "id": "ms-chocolate-icecream",
+    "price": 160,
+    "description": "Decadent chocolate milkshake crowned with a large scoop of chocolate dairy ice cream.",
+    "descriptionHi": "गाढ़े चॉकलेट शेक के ऊपर मलाईदार चॉकलेट आइसक्रीम का भरपूर स्कूप।",
+    "descriptionMr": "दाट चॉकलेट शेकवर रिच चॉकलेट आईस्क्रीमचा मखमली स्कूप."
+  },
+  {
+    "id": "ms-mango",
+    "price": 130,
+    "description": "Luscious tropical milkshake blended with sweet golden Alphonso mango pulp.",
+    "descriptionHi": "रसीले हापुस आम के पल्प और ठंडे दूध से बना मनपसंद मीठा मैंगो शेक।",
+    "descriptionMr": "हापूस आंब्याचा गोड गर आणि थंड दुधाचा अप्रतिम संगमाचा मँगो शेक."
+  },
+  {
+    "id": "ms-mango-icecream",
+    "price": 160,
+    "description": "Thick mango milkshake topped with a rich velvety scoop of mango or vanilla ice cream.",
+    "descriptionHi": "गाढ़े मैंगो शेक के ऊपर ठंडी मखमली वैनिला या मैंगो आइसक्रीम का स्कूप।",
+    "descriptionMr": "दाट मँगो शेकवर थंडगार व्हॅनिला अथवा मँगो आईस्क्रीमचा मऊ स्कूप."
+  },
+  {
+    "id": "ms-dryfruit",
+    "price": 140,
+    "description": "Wholesome power blend of soaked almonds, cashews, and pistachios in chilled milk.",
+    "descriptionHi": "भीगे हुए बादाम, काजू और पिस्ते को ठंडे गाढ़े दूध के साथ पीसकर बना पौष्टिक शेक।",
+    "descriptionMr": "भिजवलेले बदाम, काजू आणि पिस्ते थंड दुधात एकत्र फिरवून बनवलेला पौष्टिक शेक."
+  },
+  {
+    "id": "ms-dryfruit-icecream",
+    "price": 170,
+    "description": "Nutritious dry fruit shake topped with a rich dairy ice cream scoop and nut slivers.",
+    "descriptionHi": "ड्राई फ्रूट शेक के ऊपर मलाईदार आइसक्रीम का स्कूप और भुने मेवों की कतरन।",
+    "descriptionMr": "ड्रायफ्रूट शेकवर मखमली आईस्क्रीमचा स्कूप आणि सुका मेव्याचे खमंग काप."
+  },
+  {
+    "id": "ms-cold-coffee",
+    "price": 100,
+    "description": "Chilled creamy frothy cold coffee blended with espresso and cold milk.",
+    "descriptionHi": "एस्प्रेसो और ठंडे दूध से झागदार व मलाईदार तैयार की गई क्लासिक कोल्ड कॉफी।",
+    "descriptionMr": "एस्प्रेसो आणि थंड दुधापासून फेसळलेली, दाट आणि चवदार क्लासिक कोल्ड कॉफी."
+  }
+]
