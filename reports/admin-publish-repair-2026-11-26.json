@@ -1,0 +1,22 @@
+{
+  "release": "22.105",
+  "ownerPublication": "38f32944dddd6e5b4c7fa462ae15811954cfcb95",
+  "failedDeployment": "https://github.com/avi22sh/Hotel-Premier/actions/runs/45706097687",
+  "findings": [
+    "The owner uploads and public content commit reached GitHub successfully; Pages was blocked by regression failures.",
+    "Three historical menu checks incorrectly required fixed item order and subsection metadata in current owner-editable data.",
+    "Ten grouped options retained stale photos after their child item photos were updated.",
+    "The Admin publisher reported live success immediately after committing, before checking deployment.",
+    "The previous uploader made a separate branch commit for each photo."
+  ],
+  "repairs": [
+    "Historical restructuring tests now run against the reviewed 22.104 fixture. A separate test validates the actual current owner data, prices, category/parent reachability, IDs and public-data safety.",
+    "Current grouped photos were synchronized with their matching child IDs/names. The publisher now performs this synchronization in exports without mutating local drafts.",
+    "Direct GitHub publication stages missing immutable photos and menu content in one tree and commit, then updates the branch without force. Concurrent changes are rejected safely.",
+    "The publish dialog distinguishes saved from live, verifies exact public content, checks failed deployments, and retains local edits while pending.",
+    "Duplicate concurrent publish clicks are ignored while a publish is running.",
+    "Service worker and public asset URLs advanced to 22.105."
+  ],
+  "verification": "79/79 JavaScript regression suites passed; public distribution built successfully with 824 files.",
+  "backup": "backups/before-admin-publish-repair-2026-11-26.bundle and backups/admin-publish-repair-2026-11-26/published-overrides.js"
+}

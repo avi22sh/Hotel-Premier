@@ -1,4 +1,4 @@
-// Reviewed owner public export, 2026-11-25T21:37:44.797Z.
+// Owner uploads preserved; grouped photo sync repaired 2026-11-26.
 window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
   "version": 1,
   "dishes": {
@@ -335,7 +335,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "descriptionHi": "",
           "descriptionMr": "",
           "price": null,
-          "image": ""
+          "image": "assets/menu-uploads/published-50df8a456ad3ff814a906d9d.webp"
         }
       ],
       "notAvailable": false
@@ -444,7 +444,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "पनीर मंचूरियन",
           "marathiName": "पनीर मंचूरियन",
           "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
+          "image": "assets/menu-uploads/published-6e6d0267d4057cc488fc318b.webp",
           "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
           "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
           "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
@@ -2287,7 +2287,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "ब्रेड बटर जैम",
           "marathiName": "ब्रेड बटर जॅम",
           "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
+          "image": "assets/menu-uploads/published-dea7a277128e01c1c57ce863.webp",
           "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
           "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
           "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
@@ -2347,7 +2347,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "वेज क्लब सैंडविच",
           "marathiName": "व्हेज क्लब सँडविच",
           "price": 180,
-          "image": "",
+          "image": "assets/menu-uploads/published-3adff2d1dc318b7faa5f962c.webp",
           "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
           "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
           "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
@@ -2357,7 +2357,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्राइड स्पेशल सैंडविच",
           "marathiName": "प्राईड स्पेशल सँडविच",
           "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
+          "image": "assets/menu-uploads/published-bf5200e777f3bb4ec3d88768.webp",
           "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
           "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
           "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
@@ -10544,7 +10544,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "कश्मीरी नान",
           "marathiName": "काश्मिरी नान",
           "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/kashmiri-naan.jpg",
+          "image": "assets/menu-uploads/published-f3cfda6684bac859da1b5a11.webp",
           "description": "Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.",
           "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
           "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
@@ -11380,7 +11380,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन कुलचा",
           "marathiName": "प्लेन कुलचा",
           "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/kulcha.jpg",
+          "image": "assets/menu-images/signature-indian-breads/butter-kulcha-1.jpg",
           "description": "Soft leavened refined flour bread topped with nigella seeds and baked tender in the tandoor.",
           "descriptionHi": "कलौंजी और धनिए से सजा, तंदूर में सिका हुआ सादा मुलायम कुलचा।",
           "descriptionMr": "कलौंजी व कोथिंबीर लावून तंदूरमध्ये भाजलेला मऊ प्लेन कुलचा."
@@ -14686,7 +14686,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "मैंगो मिल्कशेक",
           "marathiName": "मँगो मिल्कशेक",
           "price": 160,
-          "image": "assets/brand-placeholder.svg",
+          "image": "assets/menu-uploads/published-3cbfedfec96a3a17a11d93e2.webp",
           "description": "Thick mango milkshake topped with a rich velvety scoop of mango or vanilla ice cream.",
           "descriptionHi": "गाढ़े मैंगो शेक के ऊपर ठंडी मखमली वैनिला या मैंगो आइसक्रीम का स्कूप।",
           "descriptionMr": "दाट मँगो शेकवर थंडगार व्हॅनिला अथवा मँगो आईस्क्रीमचा मऊ स्कूप."
@@ -14697,7 +14697,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "ड्राई फ्रूट मिल्कशेक",
           "marathiName": "ड्रायफ्रूट मिल्कशेक",
           "price": 170,
-          "image": "assets/brand-placeholder.svg",
+          "image": "assets/menu-uploads/published-b6ddd5da0bd225d18a4ce770.webp",
           "description": "Nutritious dry fruit shake topped with a rich dairy ice cream scoop and nut slivers.",
           "descriptionHi": "ड्राई फ्रूट शेक के ऊपर मलाईदार आइसक्रीम का स्कूप और भुने मेवों की कतरन।",
           "descriptionMr": "ड्रायफ्रूट शेकवर मखमली आईस्क्रीमचा स्कूप आणि सुका मेव्याचे खमंग काप."
@@ -14997,7 +14997,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "भिंडी दो प्याज़ा",
           "marathiName": "भेंडी दो प्याजा",
           "price": 210,
-          "image": "",
+          "image": "assets/menu-uploads/published-9070a404ef8a4ce750998287.webp",
           "description": "Fresh tender ladyfingers sautéed with double portion of caramelized onions and aromatic spices.",
           "descriptionHi": "नरम भिंडी और भुने हुए प्याज़ के लच्छों से बनी, खड़े मसालों से भरपूर स्वादिष्ट सूखी सब्ज़ी।",
           "descriptionMr": "ताजी भेंडी आणि भरपूर कांद्यासोबत खमंग मसाल्यांमध्ये परतलेली चवदार सुकी भाजी."
@@ -18286,5 +18286,5 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "mm-sundae-group"
     ]
   },
-  "publishedAt": 1795642664797
+  "publishedAt": 1795643454187
 };

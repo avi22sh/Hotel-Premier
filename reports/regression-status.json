@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-11-24T19:27:16.456Z",
-  "passed": 77,
+  "createdAt": "2026-11-25T21:52:32.736Z",
+  "passed": 79,
   "failed": [],
   "results": [
     {
@@ -77,6 +77,10 @@
     },
     {
       "file": "delivery-routing-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "direct-publish-regression.cjs",
       "passed": true
     },
     {
@@ -257,6 +261,10 @@
     },
     {
       "file": "publish-bundle-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "published-menu-validity-regression.cjs",
       "passed": true
     },
     {

@@ -47,7 +47,17 @@
     }
 
     const dishes = {};
-    for (const dish of window.app.menuData) dishes[dish.id] = await publicData(dish);
+    for (const dish of window.app.menuData) {
+      // Individual child edits must reach their selectable option too. Match identity,
+      // never array position; explicit option uploads remain selected.
+      const variants=dish.variants?.map(variant=>{
+        const matches=window.app.menuData.filter(child=>!child.notAvailable&&child.groupedUnder===dish.id&&(variant.id?child.id===variant.id:child.name===variant.name));
+        const child=matches.length===1?matches[0]:null;
+        if(child&&child.image!==undefined&&!/^(blob:|data:image\/)/.test(variant.image||''))return {...variant,image:child.image};
+        return variant;
+      });
+      dishes[dish.id] = await publicData(variants?{...dish,variants}:dish);
+    }
 
     const roomGalleries = {};
     for (const room of window.HOTEL_PREMIER_HOTEL_DATA.roomCategories) {
@@ -198,32 +208,26 @@
       'Content-Type': 'application/json'
     };
 
-    // Upload any new images
+    // Stage blobs without changing the live branch. Photos and content land together.
+    const api = `https://api.github.com/repos/${repoOwner}/${repoName}`;
+    async function github(path, body) {
+      const response = await fetch(api + path, { headers, ...(body ? { method:'POST', body:JSON.stringify(body) } : {}), signal:AbortSignal.timeout(30000) });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw Error(`GitHub could not save this release (HTTP ${response.status}): ${data.message || 'Please try again.'}`);
+      return data;
+    }
+    const head = await github(`/git/ref/heads/${branch}`);
+    const parent = await github(`/git/commits/${head.object.sha}`);
+    const existingTree = await github(`/git/trees/${parent.tree.sha}?recursive=1`);
+    if (existingTree.truncated) throw Error('The repository listing is incomplete. Download a backup and ask your developer to publish.');
+    const existingPaths = new Set(existingTree.tree.filter(entry=>entry.type==='blob').map(entry=>entry.path));
+    const treeEntries = [];
     let uploadedCount = 0;
     for (const img of bundle.images) {
       setPublishStage('📷', 'Uploading Photos', `Saving photo ${uploadedCount + 1} of ${bundle.images.length}...`, 40 + Math.round((uploadedCount / bundle.images.length) * 30));
-      const getUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${img.path}?ref=${branch}`;
-      let existingSha = null;
-      try {
-        const checkRes = await fetch(getUrl, { headers });
-        if (checkRes.ok) {
-          const checkData = await checkRes.json();
-          existingSha = checkData.sha;
-        }
-      } catch (_) {}
-
-      const putRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${img.path}`, {
-        method: 'PUT',
-        headers,
-        body: JSON.stringify({
-          message: `chore(photos): publish ${img.path.split('/').pop()}`,
-          content: img.base64,
-          branch,
-          ...(existingSha ? { sha: existingSha } : {})
-        })
-      });
-      if (!putRes.ok && putRes.status !== 422) {
-        throw Error(`Failed to upload ${img.path}: HTTP ${putRes.status}`);
+      if (!existingPaths.has(img.path)) {
+        const blob = await github('/git/blobs', { content:img.base64, encoding:'base64' });
+        treeEntries.push({ path:img.path, mode:'100644', type:'blob', sha:blob.sha });
       }
       uploadedCount++;
     }
@@ -231,50 +235,75 @@
     // Update data/published-overrides.js
     setPublishStage('📜', 'Publishing Overrides', 'Updating published overrides file on GitHub...', 85);
     const overridesPath = 'data/published-overrides.js';
-    const getOverridesUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${overridesPath}?ref=${branch}`;
-    let overridesSha = null;
-    const checkOverrides = await fetch(getOverridesUrl, { headers });
-    if (checkOverrides.ok) {
-      const data = await checkOverrides.json();
-      overridesSha = data.sha;
-    } else {
-      throw Error('Could not find published-overrides.js on repository.');
-    }
-
     bundle.overrides.publishedAt = Date.now();
     const code = `// Reviewed owner public export, ${new Date().toISOString()}.\nwindow.HOTEL_PREMIER_PUBLISHED_OVERRIDES = ${JSON.stringify(bundle.overrides, null, 2)};\n`;
-    const encodedContent = btoa(unescape(encodeURIComponent(code)));
-
-    const updateRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${overridesPath}`, {
-      method: 'PUT',
-      headers,
-      body: JSON.stringify({
-        message: 'feat(crm): 1-click live publish from Admin Studio',
-        content: encodedContent,
-        sha: overridesSha,
-        branch
-      })
+    const contentBlob = await github('/git/blobs', { content:code, encoding:'utf-8' });
+    treeEntries.push({ path:overridesPath, mode:'100644', type:'blob', sha:contentBlob.sha });
+    const tree = await github('/git/trees', { base_tree:parent.tree.sha, tree:treeEntries });
+    const commit = await github('/git/commits', { message:'Publish Hotel Premier owner updates', tree:tree.sha, parents:[head.object.sha] });
+    const updateRes = await fetch(`${api}/git/refs/heads/${branch}`, {
+      method:'PATCH', headers, body:JSON.stringify({sha:commit.sha,force:false}), signal:AbortSignal.timeout(30000)
     });
-
-    if (!updateRes.ok) {
-      const errData = await updateRes.json().catch(() => ({}));
-      throw Error(`GitHub API update failed: ${errData.message || updateRes.status}`);
-    }
-
-    const resData = await updateRes.json();
+    if (!updateRes.ok) throw Error('Another update reached GitHub while this release was saving. Nothing was overwritten. Refresh after backing up your edits, then publish again.');
     return {
       success: true,
-      commit: resData.commit?.sha?.slice(0, 7) || 'latest',
+      commit: commit.sha,
       version: 'live-github',
       imagesSaved: uploadedCount,
-      message: 'Published directly to GitHub Pages! Deployment in progress (~60s).'
+      publishedAt:bundle.overrides.publishedAt,
+      expectedContent:code,
+      message: 'Saved to GitHub. Waiting for website deployment.'
     };
+  }
+
+  async function verifyLivePublication(result, bundle) {
+    const publishedAt = result.publishedAt || bundle.overrides.publishedAt;
+    const liveBase = 'https://avi22sh.github.io/Hotel-Premier/';
+    for (let attempt=0; attempt<36; attempt++) {
+      setPublishStage('⏳', 'Saved to GitHub · Checking Website', 'Your edits are saved. Waiting for GitHub Pages to make them visible to guests. Keep this page open.', 90);
+      try {
+        const response=await fetch(`${liveBase}data/published-overrides.js?publication=${publishedAt}&check=${attempt}`,{cache:'no-store',signal:AbortSignal.timeout(10000)});
+        if(response.ok){
+          const code=await response.text();
+          const version=Number(code.match(/"publishedAt"\s*:\s*(\d+)/)?.[1]);
+          if(publishedAt && version===publishedAt && (!result.expectedContent || code.replace(/\r\n/g,'\n')===result.expectedContent.replace(/\r\n/g,'\n')))return true;
+        }
+      } catch (_) { /* A temporary offline response is not a successful deployment. */ }
+      if(result.commit && attempt%3===0){
+        try{
+          // Public status only; never send the publishing token to the guest website.
+          const response=await fetch(`https://api.github.com/repos/avi22sh/Hotel-Premier/actions/runs?head_sha=${encodeURIComponent(result.commit)}&per_page=10`,{headers:{Accept:'application/vnd.github+json'},signal:AbortSignal.timeout(10000)});
+          if(response.ok){
+            const runs=(await response.json()).workflow_runs||[];
+            const deployment=runs.find(run=>run.path==='.github/workflows/deploy-pages.yml'||run.name==='Deploy Hotel Premier to GitHub Pages');
+            if(deployment?.status==='completed' && ['failure','cancelled','timed_out','action_required'].includes(deployment.conclusion))return false;
+          }
+        }catch(_){ /* Live content verification still works if status lookup is unavailable. */ }
+      }
+      if(attempt<35)await new Promise(resolve=>setTimeout(resolve,5000));
+    }
+    return false;
+  }
+
+  async function showPublishOutcome(result, bundle) {
+    window.HOTEL_PREMIER_PUBLISHED_OVERRIDES=bundle.overrides;
+    const live=await verifyLivePublication(result,bundle);
+    if(live){
+      setPublishStage('🎉','Published and Verified Live',`Your updates (${result.imagesSaved||0} photos and saved menu changes) are now visible on the guest website. Guests with the app already open can refresh to see them.`,100,true);
+      window.app.showToast('Published and verified on the guest website.','success');
+    }else{
+      setPublishStage('⏳','Saved · Website Update Not Yet Verified','Your edits are safely saved to GitHub, but the guest website has not updated yet. Check GitHub Actions for a deployment failure or wait and check again. Your local edits are retained.',100,true);
+      window.app.showToast('Saved to GitHub; live deployment is not yet verified.','info');
+    }
   }
 
   // 5. Direct Live Publishing Orchestrator
   let pendingBundle = null;
+  let publishing = false;
 
   async function publish() {
+    if (publishing) return;
+    publishing = true;
     try {
       if (!window.admin?.isAuthenticated) {
         window.app.showToast('Please unlock Admin Studio before publishing.', 'error');
@@ -338,24 +367,18 @@
         result = await publishViaGitHubApi(bundle, ghToken);
       }
 
-      // Success Display
-      window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = bundle.overrides;
-      setPublishStage(
-        '🎉',
-        'Published Successfully!',
-        `Your updates (${result.imagesSaved || 0} photos, all dish & room changes) are live on GitHub! Cache version: ${result.version || 'v22'}. Guest devices will refresh automatically.`,
-        100,
-        true
-      );
-      window.app.showToast('Published to live site successfully!', 'success');
+      await showPublishOutcome(result,bundle);
     } catch (error) {
       console.error('Publish error:', error);
       setPublishStage('❌', 'Publish Failed', error.message || 'An error occurred during publish.', 100, true);
       window.app.showToast('Publish failed: ' + error.message, 'error');
+    } finally {
+      publishing = false;
     }
   }
 
   async function submitToken() {
+    if (publishing) return;
     const input = document.getElementById('direct-pub-gh-token-input');
     const token = input ? input.value.trim() : '';
     if (!token) {
@@ -366,22 +389,17 @@
     const tokenBox = document.getElementById('direct-pub-token-prompt');
     if (tokenBox) tokenBox.style.display = 'none';
 
+    publishing = true;
     try {
       setPublishStage('🚀', 'Pushing to GitHub', 'Committing updates directly to GitHub Pages repository...', 60);
       const result = await publishViaGitHubApi(pendingBundle, token);
-      window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = pendingBundle.overrides;
-      setPublishStage(
-        '🎉',
-        'Published Successfully!',
-        `Your updates (${result.imagesSaved || 0} photos, all dish & room changes) are live on GitHub! Guest devices will refresh automatically.`,
-        100,
-        true
-      );
-      window.app.showToast('Published to live site successfully!', 'success');
+      await showPublishOutcome(result,pendingBundle);
     } catch (error) {
       console.error('GitHub API Publish error:', error);
       setPublishStage('❌', 'Publish Failed', error.message || 'An error occurred during publish.', 100, true);
       window.app.showToast('Publish failed: ' + error.message, 'error');
+    } finally {
+      publishing = false;
     }
   }
 

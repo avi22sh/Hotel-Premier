@@ -5,7 +5,10 @@ const c={Blob,fetch,crypto:crypto.webcrypto,URL:{createObjectURL:blob=>{download
  document:{createElement:()=>({click(){},remove(){}}),body:{append(){}}},window:{admin:{isAuthenticated:true},app:{menuData:[{id:'fixture',name:'Fixture dish',image:source,rawOriginalImage:source,_activeVariantImage:source,_activeVariantPrice:80,_activeVariantName:'Preview only',fieldUpdatedAt:{image:123}}],categories:[],showToast(){}},HOTEL_PREMIER_HOTEL_DATA:{roomCategories:[]},HOTEL_STORAGE:{getSectionSlides:async()=>null},HotelMenuStructure:{snapshot:()=>null}}};
 vm.runInNewContext(fs.readFileSync('publish-bundle.js','utf8'),c);
 (async()=>{
+ c.window.app.menuData.push({id:'parent',name:'Parent',variants:[{id:'child',name:'Child',price:10,image:'assets/old.webp'}]},{id:'child',name:'Child',groupedUnder:'parent',image:source});
  await c.window.HotelPublishBundle.export();const bundle=JSON.parse(await download.text());
+ assert.equal(bundle.overrides.dishes.parent.variants[0].image,bundle.overrides.dishes.child.image,'Individual child upload reaches its parent option');
+ assert.equal(c.window.app.menuData[1].variants[0].image,'assets/old.webp','Export does not mutate the editable draft');
  assert.equal(bundle.images.length,1);assert.match(bundle.overrides.dishes.fixture.image,/^assets\/menu-uploads\/published-[a-f0-9]{24}\.webp$/);
  assert.ok(!('rawOriginalImage'in bundle.overrides.dishes.fixture));
  for(const key of ['_activeVariantImage','_activeVariantPrice','_activeVariantName','fieldUpdatedAt'])assert.ok(!(key in bundle.overrides.dishes.fixture),'Preview selection must not become published content');

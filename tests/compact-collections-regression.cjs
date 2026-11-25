@@ -1,7 +1,7 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const {loadMenu}=require('../tools/menu-runtime.cjs');
 (async()=>{
- const {app,window:w}=await loadMenu(),get=id=>app.menuData.find(d=>d.id===id),visible=app.getVisibleMenuItems();
+ const {app,window:w}=await loadMenu(undefined,'tests/fixtures/menu-release-22.104.js'),get=id=>app.menuData.find(d=>d.id===id),visible=app.getVisibleMenuItems();
  for(const [cat,count]of [['tandoor-classics',3],['vegetable-specialties',5],['paneer-specialties',3],['mithai-magic',3]])assert.equal(visible.filter(d=>d.categoryId===cat).length,count,cat+' is compact');
  assert.equal(get('vs-15').groupedUnder,'kd-kofta-group');
  assert.equal(get('kd-kofta-group').variants.filter(v=>v.id==='vs-15').length,1);

@@ -2,7 +2,7 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs'),vm=require('node:vm');
 const {loadMenu}=require('../tools/menu-runtime.cjs');
 (async()=>{
- const {app}=await loadMenu(),get=id=>app.menuData.find(d=>d.id===id),visible=app.getVisibleMenuItems();
+ const {app}=await loadMenu(undefined,'tests/fixtures/menu-release-22.104.js'),get=id=>app.menuData.find(d=>d.id===id),visible=app.getVisibleMenuItems();
  // Compare against the original authoritative base, not generated implementation values.
  const base={window:{}};vm.runInNewContext(fs.readFileSync('data/menu-data.js','utf8'),base);
  const initial=id=>base.window.HOTEL_PREMIER_INITIAL_MENU.find(d=>d.id===id);

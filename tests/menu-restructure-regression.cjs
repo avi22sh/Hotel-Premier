@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const {loadMenu}=require('../tools/menu-runtime.cjs');
 (async()=>{
- const {app,window:w}=await loadMenu(),items=app.menuData,get=id=>items.find(d=>d.id===id);
+ const {app,window:w}=await loadMenu(undefined,'tests/fixtures/menu-release-22.104.js'),items=app.menuData,get=id=>items.find(d=>d.id===id);
  const before=JSON.parse(fs.readFileSync('tests/fixtures/menu-business-before-22-98.json','utf8'));
  // Owner requested the ice-cream Lassi preparation and price on 2026-11-25.
  for(const old of before){const now=get(old.id);assert.ok(now,'Preserved ID '+old.id);for(const key of ['price','description','descriptionHi','descriptionMr'])if(old.id!=='cb-1')assert.equal(now[key],old[key],old.id+' preserves '+key);}
