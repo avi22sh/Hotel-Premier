@@ -38,10 +38,17 @@ jobs:
         run: node tools/run-tests.cjs
 
       - name: Upload artifact
+        id: pages-artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/github-script@v8
+        env:
+          PAGES_ARTIFACT_ID: ${{ steps.pages-artifact.outputs.artifact_id }}
+        with:
+          script: |
+            const deployPages = require('./tools/deploy-pages.cjs');
+            await deployPages({ github, context, core, artifactId: process.env.PAGES_ARTIFACT_ID });
