@@ -24,18 +24,15 @@
     meta.className='dish-photo-meta';stage.className='dish-photo-stage';controls.className='dish-photo-controls';counter.setAttribute('aria-live','polite');error.hidden=true;
     const control=(label,symbol,action)=>{const b=document.createElement('button');b.type='button';b.textContent=symbol;b.setAttribute('aria-label',label);b.addEventListener('click',action);return b;};
     close.type='button';close.textContent='×';close.setAttribute('aria-label','Close expanded photo');close.className='dish-photo-viewer-close';
-    const previous=control('Previous dish photo','←',()=>move(-1)),next=control('Next dish photo','→',()=>move(1)),zoom=control('Zoom dish photo','＋',()=>toggleZoom());
-    zoom.className='dish-photo-viewer-zoom';zoom.setAttribute('aria-pressed','false');
-    heading.append(title,meta);header.append(heading,zoom,close);image.alt='';image.decoding='async';image.draggable=false;stage.append(image,error);controls.append(previous,counter,next);note.className='photo-reference-note';dialog.append(header,stage,controls,note);document.body.append(dialog);
+    const previous=control('Previous dish photo','←',()=>move(-1)),next=control('Next dish photo','→',()=>move(1));
+    heading.append(title,meta);header.append(heading,close);image.alt='';image.decoding='async';image.draggable=false;stage.append(image,error);controls.append(previous,counter,next);note.className='photo-reference-note';dialog.append(header,stage,controls,note);document.body.append(dialog);
     let opener,photos=[],current=0,initial,gesture=null;
     function show(index){
-      stage.classList.remove('is-zoomed');zoom.setAttribute('aria-pressed','false');zoom.textContent='＋';
       current=(index+photos.length)%photos.length;const item=photos[current];title.textContent=item.name;meta.textContent=[item.category,Number.isFinite(item.price)?'₹'+item.price:''].filter(Boolean).join(' · ');
       image.src=window.AssetPipeline?.versionedPhotoSource(item.source)||item.source;image.alt=item.name;image.hidden=false;error.hidden=true;stage.scrollTo(0,0);
       counter.textContent=(current+1)+' / '+photos.length;previous.disabled=next.disabled=photos.length<2;note.textContent=copy(imageNote);
     }
     function move(delta){if(photos.length>1)show(current+delta);}
-    function toggleZoom(){if(image.hidden)return;const expanded=stage.classList.toggle('is-zoomed');zoom.setAttribute('aria-pressed',String(expanded));zoom.textContent=expanded?'−':'＋';requestAnimationFrame(()=>stage.scrollTo(expanded?(stage.scrollWidth-stage.clientWidth)/2:0,expanded?(stage.scrollHeight-stage.clientHeight)/2:0));}
     function open(button){const source=body.querySelector('img#detail-modal-img');if(!source||source.hidden||source.closest('.no-photo'))return;
       opener=button;photos=collectDishPhotos(window.app);current=photos.findIndex(item=>item.dishId===window.app.currentDetailDishId&&(item.variantIndex===window.app.currentDetailVariantIndex||item.variantIndex===null));
       if(current<0)current=photos.findIndex(item=>item.source.split('?')[0]===source.getAttribute('src').split('?')[0]&&item.name===source.alt);
@@ -43,10 +40,9 @@
       previous.setAttribute('aria-label',copy('Previous dish photo'));next.setAttribute('aria-label',copy('Next dish photo'));initial=photos[current];show(current);dialog.showModal();
     }
     image.addEventListener('error',()=>{image.hidden=true;error.hidden=false;error.textContent=copy('Photo unavailable. Use the arrows to continue.');});
-    image.addEventListener('click',toggleZoom);
     close.addEventListener('click',()=>dialog.close());
     dialog.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();event.stopPropagation();move(event.key==='ArrowLeft'?-1:1);}});
-    stage.addEventListener('touchstart',event=>{gesture=!stage.classList.contains('is-zoomed')&&event.touches.length===1?{x:event.touches[0].clientX,y:event.touches[0].clientY}:null;},{passive:true});
+    stage.addEventListener('touchstart',event=>{gesture=event.touches.length===1?{x:event.touches[0].clientX,y:event.touches[0].clientY}:null;},{passive:true});
     stage.addEventListener('touchmove',event=>{if(event.touches.length!==1)gesture=null;},{passive:true});
     stage.addEventListener('touchend',event=>{if(!gesture)return;const point=event.changedTouches[0],dx=point.clientX-gesture.x,dy=point.clientY-gesture.y;gesture=null;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3)move(dx<0?1:-1);},{passive:true});
     stage.addEventListener('touchcancel',()=>gesture=null,{passive:true});

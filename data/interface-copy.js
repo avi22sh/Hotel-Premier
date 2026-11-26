@@ -1,5 +1,13 @@
 /* Reviewed interface copy. Columns: English ~ Hindi ~ Marathi. Brand names and guest records are not rewritten. */
 window.HOTEL_PREMIER_INTERFACE_COPY = `
+Menu~मेन्यू~मेनू
+All dishes~सभी व्यंजन~सर्व पदार्थ
+Search menu~मेन्यू में खोजें~मेनूमध्ये शोधा
+Close menu~मेन्यू बंद करें~मेनू बंद करा
+View full menu~पूरा मेन्यू देखें~संपूर्ण मेनू पहा
+Find a dish or ingredient~व्यंजन या सामग्री खोजें~पदार्थ किंवा साहित्य शोधा
+View all results~सभी परिणाम देखें~सर्व परिणाम पहा
+No quick matches. Try another word or view all results.~कोई परिणाम नहीं मिला। दूसरा शब्द खोजें या सभी परिणाम देखें।~जुळणारे पदार्थ आढळले नाहीत. दुसरा शब्द शोधा किंवा सर्व परिणाम पहा.
 Images are for reference. Actual presentation may vary.~चित्र केवल संदर्भ के लिए हैं। वास्तविक प्रस्तुति भिन्न हो सकती है।~छायाचित्रे संदर्भासाठी आहेत. प्रत्यक्ष सादरीकरण वेगळे असू शकते.
 Expand dish photo~व्यंजन का चित्र बड़ा करें~पदार्थाचे छायाचित्र मोठे पहा
 Previous dish photo~पिछले व्यंजन का चित्र~मागील पदार्थाचे छायाचित्र
