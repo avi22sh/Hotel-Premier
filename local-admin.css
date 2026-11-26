@@ -127,6 +127,39 @@
   background: var(--surface-secondary, rgba(147, 126, 96, 0.08));
   border-bottom: 1px solid var(--border, rgba(147, 126, 96, 0.2));
 }
+.admin-publish-bar .admin-save-scope {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 480px) {
+  #admin-modal-backdrop .admin-modal-sheet > .modal-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 44px;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  #admin-modal-backdrop .modal-title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+  #admin-modal-backdrop .modal-header > :is(.admin-back-btn,.btn-direct-publish-header,.modal-close-btn) {
+    grid-row: 2;
+    min-height: 44px;
+    width: auto;
+    margin: 0;
+  }
+  #admin-modal-backdrop .admin-back-btn { justify-self: start; }
+  #admin-modal-backdrop .admin-nav-tabs { scrollbar-width: none; }
+  #admin-modal-backdrop .admin-nav-tabs::-webkit-scrollbar { display: none; }
+}
 .btn-publish-pill {
   background: var(--accent, #8b1538);
   color: #fff !important;

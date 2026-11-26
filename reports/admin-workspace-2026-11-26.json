@@ -20,6 +20,19 @@
     "protectedAdmin": "Initial old Admin view audited. Final protected-session validation remains pending re-unlock after cache/server refresh; no PIN or private CRM records were changed.",
     "businessData": "No published menu/photo/room values were changed by this redesign. Existing owner uploads remain intact."
   },
-  "screenshots": ["output/menu-tools-22.106-mobile.jpg", "output/admin-workspace-22.106-desktop.jpg"],
-  "backup": "backups/before-admin-workspace-22.106.bundle and backups/admin-workspace-22.106.patch"
+  "screenshots": [
+    "output/menu-tools-22.106-mobile.jpg",
+    "output/admin-workspace-22.106-desktop.jpg"
+  ],
+  "backup": "backups/before-admin-workspace-22.106.bundle and backups/admin-workspace-22.106.patch",
+  "finalUnlockedCheck": {
+    "release": "22.107",
+    "verified": [
+      "Actual unlocked Admin: grouped option search opens photo, name, price, description, visibility and labels",
+      "Actual unlocked Room studio: gallery and room details/tariffs available",
+      "Phone viewport: editor scroll reaches Save without horizontal field overflow"
+    ],
+    "refinement": "Compact mobile header controls and wrapping publication status",
+    "contentChanged": false
+  }
 }
