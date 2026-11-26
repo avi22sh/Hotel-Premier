@@ -972,7 +972,8 @@ dialog.dish-photo-viewer { inset:0; margin:auto; box-sizing:border-box; width:mi
 .dish-photo-viewer::backdrop { background:#080d16d9; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 .dish-photo-viewer > header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
 .dish-photo-viewer h2 { margin:0; font:700 clamp(1rem,3vw,1.4rem)/1.35 var(--font-editorial); color:var(--accent); }
-.dish-photo-viewer-close { display:grid; place-items:center; flex:0 0 44px; width:44px; height:44px; padding:0; border:1px solid var(--gold-edge); border-radius:50%; background:var(--gold-polish); color:var(--gold-ink); font-size:28px; cursor:pointer; }
+.dish-photo-viewer-close { display:grid; place-items:center; flex:0 0 48px; width:48px; height:48px; min-width:48px; min-height:48px; padding:0; margin:0; border:1px solid var(--gold-edge); border-radius:50%; background:var(--gold-polish); color:var(--gold-ink); box-shadow:var(--gold-relief); cursor:pointer; }
+.dish-photo-viewer-close svg,.dish-photo-controls svg { display:block; pointer-events:none; }
 .dish-photo-viewer > img { display:block; width:100%; height:auto; max-height:calc(var(--overlay-viewport-height,100dvh) - 155px); object-fit:contain; border-radius:12px; background:var(--surface-secondary); }
 .photo-reference-note { color:var(--muted); font-size:.78rem; line-height:1.5; margin:10px 0; }
 dialog.dish-photo-viewer[open] { display:grid; grid-template-rows:auto minmax(0,1fr) auto auto; width:min(1440px,calc(100% - 24px)); height:calc(var(--overlay-viewport-height,100dvh) - 24px); max-height:none; gap:10px; overflow:hidden; }
@@ -980,13 +981,14 @@ dialog.dish-photo-viewer[open] { display:grid; grid-template-rows:auto minmax(0,
 .dish-photo-viewer > header > div { min-width:0; }
 .dish-photo-viewer > header > div { flex:1; }
 .dish-photo-meta { margin:4px 0 0; color:var(--muted); font-size:.8rem; line-height:1.4; }
-.dish-photo-stage { min-height:0; overflow:auto; display:flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:14px; background:var(--surface-secondary); overscroll-behavior:contain; touch-action:pan-y pinch-zoom; }
+.dish-photo-stage { position:relative; min-height:0; overflow:hidden; display:flex; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:14px; background:var(--surface-secondary); overscroll-behavior:contain; touch-action:pan-y pinch-zoom; }
 .dish-photo-stage img { display:block; width:100%; height:100%; min-height:0; object-fit:contain; }
 .dish-photo-stage img[hidden],.dish-photo-stage p[hidden] { display:none; }
 .dish-photo-stage p { padding:20px; color:var(--text); text-align:center; }
-.dish-photo-controls { display:grid; grid-template-columns:52px minmax(0,1fr) 52px; align-items:center; gap:12px; }
-.dish-photo-controls > span { text-align:center; font:600 .85rem/1.4 var(--font-sans); color:var(--muted); }
-.dish-photo-controls button { min-height:44px; border:1px solid var(--gold-edge); border-radius:12px; background:var(--gold-polish); color:var(--gold-ink); box-shadow:var(--gold-relief); font-size:24px; cursor:pointer; }
+.dish-photo-controls { position:absolute; inset:50% 8px auto; transform:translateY(-50%); z-index:2; display:flex; align-items:center; justify-content:space-between; pointer-events:none; }
+.dish-photo-counter { text-align:center; font:600 .85rem/1.4 var(--font-sans); color:var(--muted); }
+.dish-photo-controls button { display:grid; place-items:center; pointer-events:auto; width:46px; height:46px; min-width:46px; min-height:46px; padding:0; border:1px solid #f0d399aa; border-radius:50%; background:#101c2dd9; color:#ffe5ae; box-shadow:0 3px 16px #0005; backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); cursor:pointer; }
+.dish-photo-controls button:disabled { opacity:.4; cursor:default; }
 .dish-photo-controls button:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
 .dish-photo-viewer .photo-reference-note { text-align:center; margin:0; }
 @media(max-width:600px) { dialog.dish-photo-viewer[open] { width:100%; height:var(--overlay-viewport-height,100dvh); border-radius:0; padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); } }

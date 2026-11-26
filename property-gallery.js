@@ -21,11 +21,12 @@
     const dialog=document.createElement('dialog');dialog.className='dish-photo-viewer';dialog.setAttribute('aria-label','Expanded dish photo');
     const header=document.createElement('header'),heading=document.createElement('div'),title=document.createElement('h2'),meta=document.createElement('p'),close=document.createElement('button');
     const stage=document.createElement('div'),image=document.createElement('img'),error=document.createElement('p'),controls=document.createElement('nav'),counter=document.createElement('span'),note=document.createElement('p');
-    meta.className='dish-photo-meta';stage.className='dish-photo-stage';controls.className='dish-photo-controls';counter.setAttribute('aria-live','polite');error.hidden=true;
+    meta.className='dish-photo-meta';stage.className='dish-photo-stage';controls.className='dish-photo-controls';controls.setAttribute('aria-label','Photo navigation');counter.className='dish-photo-counter';counter.setAttribute('aria-live','polite');error.hidden=true;
     const control=(label,symbol,action)=>{const b=document.createElement('button');b.type='button';b.textContent=symbol;b.setAttribute('aria-label',label);b.addEventListener('click',action);return b;};
-    close.type='button';close.textContent='×';close.setAttribute('aria-label','Close expanded photo');close.className='dish-photo-viewer-close';
-    const previous=control('Previous dish photo','←',()=>move(-1)),next=control('Next dish photo','→',()=>move(1));
-    heading.append(title,meta);header.append(heading,close);image.alt='';image.decoding='async';image.draggable=false;stage.append(image,error);controls.append(previous,counter,next);note.className='photo-reference-note';dialog.append(header,stage,controls,note);document.body.append(dialog);
+    const icon=path=>{const svg=document.createElementNS('http://www.w3.org/2000/svg','svg'),line=document.createElementNS('http://www.w3.org/2000/svg','path');for(const [key,value]of Object.entries({viewBox:'0 0 24 24',width:'22',height:'22',fill:'none',stroke:'currentColor','stroke-width':'2','stroke-linecap':'round','stroke-linejoin':'round','aria-hidden':'true',focusable:'false'}))svg.setAttribute(key,value);line.setAttribute('d',path);svg.append(line);return svg;};
+    close.type='button';close.append(icon('M6 6l12 12M18 6L6 18'));close.setAttribute('aria-label','Close expanded photo');close.className='dish-photo-viewer-close';
+    const previous=control('Previous dish photo','',()=>move(-1)),next=control('Next dish photo','',()=>move(1));previous.append(icon('M15 5l-7 7 7 7'));next.append(icon('M9 5l7 7-7 7'));
+    heading.append(title,meta);header.append(heading,close);image.alt='';image.decoding='async';image.draggable=false;stage.append(image,error,controls);controls.append(previous,next);note.className='photo-reference-note';dialog.append(header,stage,counter,note);document.body.append(dialog);
     let opener,photos=[],current=0,initial,gesture=null;
     function show(index){
       current=(index+photos.length)%photos.length;const item=photos[current];title.textContent=item.name;meta.textContent=[item.category,Number.isFinite(item.price)?'₹'+item.price:''].filter(Boolean).join(' · ');
