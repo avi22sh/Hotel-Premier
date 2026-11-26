@@ -879,3 +879,69 @@ html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite
  body.theme-light :is(#section-stay,#section-tariffs) .direct-booking-privilege-card :is(.privilege-pill,.privilege-saving),
  body.theme-light #concierge-booking-modal .enquiry-privilege > :is(span,strong) { background:none; color:CanvasText; border-color:CanvasText; box-shadow:none; -webkit-text-fill-color:currentColor; }
 }
+
+/* Focused owner workspace and compact guest menu tools. */
+.workspace-host { display:block; padding:16px; min-width:0; overflow:visible; }
+.workspace-heading h2 { margin:0 0 8px; }
+.workspace-heading p,.workspace-status { color:var(--muted); margin:8px 0 16px; }
+.workspace-actions { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.workspace-filters { display:grid; grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr)); gap:12px; margin:18px 0; }
+.workspace-host .studio-field { display:flex; flex-direction:column; gap:6px; min-width:0; color:var(--text); font-size:.85rem; font-weight:600; }
+.workspace-host input,.workspace-host textarea,.workspace-host select { box-sizing:border-box; width:100%; max-width:100%; min-width:0; border:1px solid var(--border); border-radius:10px; padding:11px; background:var(--surface); color:var(--text); font:inherit; font-size:16px; }
+.workspace-layout { display:grid; grid-template-columns:minmax(220px,.85fr) minmax(0,1.5fr); gap:22px; align-items:start; }
+.workspace-list { min-width:0; max-height:65dvh; overflow-y:auto; overscroll-behavior:contain; padding:3px; }
+.workspace-section-title { margin:22px 0 10px; color:var(--accent); font-size:1rem; }
+.workspace-result { width:100%; display:flex; align-items:center; gap:12px; text-align:left; padding:10px; margin:0 0 7px; border:1px solid var(--border); border-radius:12px; background:var(--surface); color:var(--text); cursor:pointer; }
+.workspace-result[aria-pressed=true] { border-color:var(--accent); box-shadow:0 0 0 2px var(--accent); }
+.workspace-result img { width:52px; height:52px; object-fit:contain; border-radius:9px; background:var(--surface-secondary); flex:0 0 auto; }
+.workspace-result small { display:block; margin-top:5px; color:var(--muted); }
+.workspace-editor { position:static; min-width:0; padding:20px; border:1px solid var(--border); border-radius:18px; background:var(--surface); scroll-margin-top:15px; }
+.workspace-editor-head { display:flex; align-items:center; gap:16px; }
+.workspace-editor-head img { width:110px; height:110px; object-fit:contain; border-radius:12px; background:var(--surface-secondary); }
+.workspace-edit-form,.workspace-room-form { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.workspace-edit-form > details,.workspace-edit-form > .workspace-save-status,.workspace-edit-form > .studio-field:has(textarea) { grid-column:1/-1; }
+.workspace-host details > summary { cursor:pointer; padding:14px 0; font-weight:700; color:var(--text); }
+.workspace-host details .studio-field { margin-bottom:12px; }
+.workspace-options { margin-top:20px; }
+.workspace-option { display:flex; align-items:center; gap:10px; width:100%; margin:6px 0; padding:10px; border:1px solid var(--border); border-radius:10px; background:var(--surface-secondary); color:var(--text); text-align:left; }
+.workspace-option img { width:44px; height:44px; object-fit:contain; border-radius:8px; }
+.workspace-room { border:1px solid var(--border); border-radius:16px; margin:16px 0; padding:8px 18px 18px; background:var(--surface); }
+.workspace-room-photos { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:14px; }
+.workspace-room-photos img { width:100%; height:145px; object-fit:contain; border-radius:10px; background:var(--surface-secondary); }
+.workspace-room-photos .studio-button { padding:7px 10px; font-size:.8rem; }
+.workspace-room-form { margin-top:20px; }
+.workspace-room-form > .studio-field:has(textarea),.workspace-room-form > p { grid-column:1/-1; }
+.admin-tab-btn[hidden] { display:none!important; }
+body #section-dine .dining-view-controls { position:static; padding:0; margin:0; }
+#section-dine .menu-tools-dock { position:fixed; z-index:45; right:max(18px,env(safe-area-inset-right)); bottom:calc(18px + env(safe-area-inset-bottom)); display:flex; align-items:center; gap:9px; min-height:46px; padding:12px 18px; border:1px solid #e3c48c; border-radius:999px; background:linear-gradient(115deg,#987037,#f4dda6,#b48640); color:#17202c; box-shadow:0 8px 24px #0004,inset 0 1px #fff8; font-weight:750; cursor:pointer; }
+#menu-tools-dialog { position:fixed; inset:auto 12px calc(12px + env(safe-area-inset-bottom)); margin:0 auto; box-sizing:border-box; width:min(480px,calc(100% - 24px)); max-height:80dvh; overflow-y:auto; padding:20px; border:1px solid var(--border); border-radius:22px; background:var(--surface); color:var(--text); box-shadow:0 20px 80px #0005; }
+#menu-tools-dialog::backdrop { background:#07101c99; backdrop-filter:blur(8px); }
+.menu-tools-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.menu-tools-heading h3 { margin:0; }
+body #section-dine #menu-tools-dialog .dining-search-filter-bar { display:flex; flex-direction:column; align-items:stretch; width:100%; max-width:100%; margin:12px 0; padding:0; border:0; box-shadow:none; background:transparent; }
+body #section-dine #menu-tools-dialog .menu-search-heading { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+body #section-dine #menu-tools-dialog .menu-search-heading > label { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+body #section-dine #menu-tools-dialog .search-input-wrapper { width:100%; margin:0; }
+body #section-dine #menu-tools-dialog #floating-menu-toggle-btn { position:static; transform:none; display:flex; }
+.menu-tools-view { width:100%; min-height:44px; }
+#section-dine #menu-items-grid { padding-bottom:85px; }
+@media(max-width:799px) {
+ .workspace-layout { grid-template-columns:minmax(0,1fr); }
+ .workspace-filters { grid-template-columns:minmax(0,1fr); }
+ .workspace-editor { position:static; padding:14px; }
+ .workspace-edit-form,.workspace-room-form { grid-template-columns:minmax(0,1fr); }
+ .workspace-editor-head { flex-direction:column; align-items:flex-start; }
+ .workspace-list { max-height:48dvh; overflow-y:auto; overscroll-behavior:contain; padding:3px; }
+ .workspace-host { padding:10px; }
+}
+
+.tariff-suites-grid[hidden] { display:none!important; }
+
+.workspace-room-cover { width:150px; height:110px; object-fit:contain; border-radius:12px; background:var(--surface-secondary); }
+.workspace-gallery-drawer .workspace-room-photos { max-height:360px; overflow-y:auto; padding:8px; }
+
+.workspace-labels { grid-column:1/-1; border:1px solid var(--border); border-radius:10px; padding:12px; }
+.workspace-labels label { display:inline-flex; gap:8px; align-items:center; margin:6px 12px 6px 0; }
+.workspace-host .workspace-labels input { width:18px; height:18px; min-height:18px; }
+
+#admin-tab-content .workspace-labels input { min-height:18px; }

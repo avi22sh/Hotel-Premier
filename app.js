@@ -604,7 +604,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.105';
+    s.src = 'admin.js?v=22.106';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -905,6 +905,7 @@ class HotelPremierApp {
     }
     if (document.getElementById('concierge-booking-modal')?.classList.contains('active')) this.updateBookingEstimate();
     window.HotelGuestLanguage?.sync();
+    window.HotelAdminWorkspace?.syncRoomViews();
     window.HotelSectionNavigation?.sync(this.activeSection);
   }
 
@@ -1410,6 +1411,7 @@ class HotelPremierApp {
 
   // ==================== HOTEL ROOMS MULTI-PHOTO CAROUSELS ====================
   async renderRoomCarousels() {
+    window.HotelAdminWorkspace?.applyRooms();
     const rooms = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories)
       ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories
       : [];
@@ -1456,6 +1458,7 @@ class HotelPremierApp {
 
       this.updateRoomSlidePosition(room.id);
     }
+    window.HotelAdminWorkspace?.syncRoomViews();
   }
 
   updateRoomSlidePosition(roomId) {
@@ -2632,7 +2635,7 @@ class HotelPremierApp {
   // Dish Details Modal
   newArrivalLabel(dish, variant = null) {
     const children=(this.menuData||[]).filter(item=>item.groupedUnder===dish.id);
-    const fresh=dish.tags?.includes('new-arrival') || children.some(item=>item.tags?.includes('new-arrival')&&(!variant||item.id===variant.id||item.name===variant.name));
+    const fresh=dish.tags?.includes('new-arrival') || variant?.tags?.includes('new-arrival') || children.some(item=>item.tags?.includes('new-arrival')&&(!variant||item.id===variant.id||item.name===variant.name));
     return fresh ? ({hi:'मेन्यू में नया',mr:'मेनूमध्ये नवीन'}[this.currentLang]||'Fresh to the Menu') : '';
   }
 

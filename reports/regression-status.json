@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-11-25T21:52:32.736Z",
-  "passed": 79,
+  "createdAt": "2026-11-26T06:32:25.883Z",
+  "passed": 81,
   "failed": [],
   "results": [
     {
@@ -29,6 +29,10 @@
     },
     {
       "file": "admin-upload-session-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "admin-workspace-regression.cjs",
       "passed": true
     },
     {
@@ -209,6 +213,10 @@
     },
     {
       "file": "packaged-juice-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "pages-deployment-regression.cjs",
       "passed": true
     },
     {

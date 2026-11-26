@@ -74,6 +74,7 @@
       version: 1,
       dishes,
       roomGalleries,
+      roomDetails: window.HotelAdminWorkspace?.publicRooms?.() || window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.roomDetails || {},
       sectionSlides,
       editorial: window.HotelContentStudio?.snapshot?.() || null,
       layout: await publicData(window.HotelMenuStructure?.snapshot?.(window.app) || null)

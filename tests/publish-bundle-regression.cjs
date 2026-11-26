@@ -6,8 +6,12 @@ const c={Blob,fetch,crypto:crypto.webcrypto,URL:{createObjectURL:blob=>{download
 vm.runInNewContext(fs.readFileSync('publish-bundle.js','utf8'),c);
 (async()=>{
  c.window.app.menuData.push({id:'parent',name:'Parent',variants:[{id:'child',name:'Child',price:10,image:'assets/old.webp'}]},{id:'child',name:'Child',groupedUnder:'parent',image:source});
+ c.window.HOTEL_PREMIER_HOTEL_DATA.roomCategories=[{id:'queen',name:'Updated queen room',tariff:{single:{roomOnly:2222}}}];
+ c.window.HOTEL_STORAGE.getRoomGallery=async()=>['assets/room.webp'];
+ c.window.HotelAdminWorkspace={publicRooms:()=>({queen:{name:'Updated queen room',tariff:{single:{roomOnly:2222}}}})};
  await c.window.HotelPublishBundle.export();const bundle=JSON.parse(await download.text());
  assert.equal(bundle.overrides.dishes.parent.variants[0].image,bundle.overrides.dishes.child.image,'Individual child upload reaches its parent option');
+ assert.equal(bundle.overrides.roomDetails.queen.name,'Updated queen room');assert.equal(bundle.overrides.roomDetails.queen.tariff.single.roomOnly,2222,'Room tariffs are included in the public bundle');
  assert.equal(c.window.app.menuData[1].variants[0].image,'assets/old.webp','Export does not mutate the editable draft');
  assert.equal(bundle.images.length,1);assert.match(bundle.overrides.dishes.fixture.image,/^assets\/menu-uploads\/published-[a-f0-9]{24}\.webp$/);
  assert.ok(!('rawOriginalImage'in bundle.overrides.dishes.fixture));

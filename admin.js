@@ -124,7 +124,7 @@ class HotelPremierAdmin {
       input.value = ''; if (confirmation) confirmation.value='';
       document.getElementById('admin-auth-view').style.display = 'none';
       document.getElementById('admin-dashboard-view').style.display = 'flex';
-      this.switchTab('crm');
+      this.switchTab('menu');
       window.app?.showToast('Admin Studio unlocked locally. Edits remain on this device.', 'success');
     } catch (error) {
       if (status) status.textContent = error.message;
@@ -142,6 +142,7 @@ class HotelPremierAdmin {
 
     const contentContainer = document.getElementById('admin-tab-content');
     if (!contentContainer) return;
+    contentContainer.classList?.remove('workspace-host');
     contentContainer.scrollTop=0;
 
     if (tabName === 'content') {
@@ -222,7 +223,7 @@ class HotelPremierAdmin {
     btnPub.addEventListener('click', () => window.HotelDirectPublisher?.publish());
     hubActions.append(btnOpen, btnPub);
     hubBanner.append(hubInfo, hubActions);
-    container.append(hubBanner);
+    if(!window.HotelAdminWorkspace)container.append(hubBanner);
     const kpis=node('div','crm-kpi-grid');
     for (const [label,value] of [['Registered Guests',stats.totalGuests],['Room Bookings',stats.totalBookings],['Guest Reviews',stats.totalReviews],['Banquet Enquiries',stats.totalEnquiries]]) {
       const card=node('div','crm-kpi-card');card.append(node('div','kpi-num',Number.isFinite(value)?value:0),node('div','kpi-label',label));kpis.append(card);
@@ -301,6 +302,7 @@ class HotelPremierAdmin {
 
   // ==================== 0. UNIFIED QUICK EDIT HUB ====================
   renderQuickEditHub(container) {
+    if(window.HotelAdminWorkspace)return window.HotelAdminWorkspace.renderMenu(container);
     const token = this.beginAdminRender('quick-edit', container);
     if (!token) return;
     container.replaceChildren();
@@ -654,6 +656,7 @@ class HotelPremierAdmin {
 
   // ==================== 1. MENU CMS TABLE & PRICING ====================
   renderMenuManager(container) {
+    if(window.HotelAdminWorkspace)return window.HotelAdminWorkspace.renderMenu(container);
     const menu = window.app.menuData;
     this.adminVisibleCount=40;
     const categories = window.app.categories.filter(c => c.id !== 'all' && c.id !== 'chef-specials');
@@ -767,6 +770,7 @@ class HotelPremierAdmin {
 }
 
   filterAdminDishes() {
+    if(window.HotelAdminWorkspace&&document.querySelector('.workspace-host .workspace-layout'))return window.HotelAdminWorkspace.refresh();
     const q = (document.getElementById('admin-search-dish')?.value || '').toLowerCase().trim();
     const cat = document.getElementById('admin-category-filter')?.value || 'all';
     const status = document.getElementById('admin-status-filter')?.value || 'all';
@@ -1026,6 +1030,12 @@ class HotelPremierAdmin {
   async deleteDishPhoto(dishId) {
     const dish = window.app.menuData.find(d => d.id === dishId);
     if (!dish) return;
+    if(this.isAuthenticated&&Number.isInteger(this.activeVariantIndex)&&dish.variants?.[this.activeVariantIndex]&&window.HotelAdminWorkspace){
+      if(!await window.HotelDialogs.confirm('Remove this option photo? Other photos will stay unchanged.'))return;
+      const entry=window.HotelAdminWorkspace.entries(window.app).find(e=>e.dish.id===dishId&&e.index===this.activeVariantIndex);
+      const patch={};for(const key of ['name','description','hindiName','marathiName','descriptionHi','descriptionMr'])patch[key]=entry.value[key]||'';patch.price=entry.value.price??null;patch.image='';
+      try{await window.HotelAdminWorkspace.saveEntry(entry,patch);this.closeImageModal();window.HotelAdminWorkspace.refresh();}catch(error){window.app.showToast(error.message,'error');}return;
+    }
 
     if (!this.isAuthenticated) return;
     if (await window.HotelDialogs.confirm(`Remove the photo for "${dish.name}"?\n\nThe dish will be shown in Pure Veg mode without photo until you upload a new one.`)) {
@@ -1113,7 +1123,7 @@ class HotelPremierAdmin {
         variant.image = this.tempImageSource;
 
         // Update matching child dish if present
-        const childDish = window.app.menuData.find(d => (d.groupedUnder === dish.id || d.id === variant.id) && (d.name === variant.name));
+        const childDish = window.app.menuData.find(d => d.groupedUnder === dish.id && (variant.id ? d.id === variant.id : d.name === variant.name));
         if (childDish) {
           childDish.image = this.tempImageSource;
           await window.HOTEL_STORAGE.saveDishOverride(childDish.id, { image: this.tempImageSource, rawOriginalImage: this.rawOriginalSource || this.tempImageSource, fieldUpdatedAt: { image: Date.now() }, updatedAt: Date.now() });
@@ -1155,6 +1165,7 @@ class HotelPremierAdmin {
   }
 
   async renderRoomsManager(container) {
+    if(window.HotelAdminWorkspace)return window.HotelAdminWorkspace.renderRooms(container);
     const view=this.beginAdminRender('rooms',container,'Loading room photographs…');if(!view)return;
     const rooms = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories) 
       ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories 

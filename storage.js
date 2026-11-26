@@ -140,9 +140,13 @@ class HotelPremierStorageManager {
 
   // Commit linked dish text and option labels together, preserving concurrent photo/price edits.
   async saveDishTextEdits(changes) {
+    return this.saveDishEdits(changes,true);
+  }
+
+  async saveDishEdits(changes,textOnly=false) {
     await this.initPromise;
     if(!this.db)throw Error('Device storage is unavailable. Your text has not been changed.');
-    const fields=['name','hindiName','marathiName','description','descriptionHi','descriptionMr','variants'];
+    const fields=['name','hindiName','marathiName','description','descriptionHi','descriptionMr','variants',...(textOnly?[]:['price','image','isSoldOut','notAvailable','hidden','categoryId','tags'])];
     const photos=window.HotelPhotoStorage;
     let legacy={};try{legacy=JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1')||'{}');}catch(_){}
     const prepared=[];

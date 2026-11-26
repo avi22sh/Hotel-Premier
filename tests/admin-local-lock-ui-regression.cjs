@@ -8,7 +8,7 @@ const admin=Object.create(c.window.Admin.prototype);admin.switchTab=name=>{rende
 (async()=>{
  admin.configureAuthView();assert.equal(fields['admin-pin-confirm-row'].hidden,false);assert.equal(fields['admin-unlock-btn'].textContent,'Create local PIN');
  fields['admin-pin-input'].value='482619';fields['admin-pin-confirm-input'].value='wrong';await admin.verifyPin();assert.equal(createCalls,0);assert.match(fields['admin-auth-status'].textContent,/must match/);
- fields['admin-pin-confirm-input'].value='482619';await admin.verifyPin();assert.equal(createCalls,1);assert.equal(admin.isAuthenticated,true);assert.equal(rendered,'crm');assert.equal(fields['admin-pin-input'].value,'');
+ fields['admin-pin-confirm-input'].value='482619';await admin.verifyPin();assert.equal(createCalls,1);assert.equal(admin.isAuthenticated,true);assert.equal(rendered,'menu');assert.equal(fields['admin-pin-input'].value,'');
  unlocked=false;admin.lockAdminSession('Session expired');assert.equal(admin.isAuthenticated,false);assert.equal(fields['admin-dashboard-view'].style.display,'none');assert.equal(fields['admin-tab-content'].cleared,true);
  fields['admin-pin-input'].value='482619';await admin.verifyPin();assert.equal(verifyCalls,1);
  delete c.window.HotelLocalLock;await admin.verifyPin();assert.match(fields['admin-auth-status'].textContent,/unavailable/);assert.equal(admin.isAuthenticated,false);

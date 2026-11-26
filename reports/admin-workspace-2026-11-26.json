@@ -1,0 +1,25 @@
+{
+  "release": "22.106",
+  "changes": [
+    "Replaced the main menu and duplicate quick-edit routes with a section-ordered list and focused editor.",
+    "Search indexes parent items, individual options, hidden source records, multilingual text and IDs. Searches reset limiting section/status filters.",
+    "One item panel contains photo replacement/removal, name, price, description, translations, visibility and menu labels.",
+    "Stable option identity links parent/child edits. Changes commit in one IndexedDB transaction; failed saves leave the draft intact.",
+    "Options can be added, removed or reordered. Hidden source items can be restored to their parent options. Section/order management stays collapsed until needed.",
+    "Room studio combines a cover photo, collapsible gallery controls, details, amenities and tariffs. Form drafts survive gallery re-renders.",
+    "Room metadata is now included in publishing and applied to guest room cards, enquiries and tariff displays. Existing untouched room presentations retain their original layout.",
+    "Guest search, Collections and favourites are inside one compact bottom Menu tools drawer. Collections keeps the full menu available and scrolls below the header.",
+    "Reduced duplicate Admin tabs, CRM promotions and repeated publish buttons. Menu studio opens after unlock."
+  ],
+  "verification": {
+    "javascriptSuites": "81/81 passed",
+    "sourceChecks": "17/17 passed",
+    "publicBuildFiles": 826,
+    "guestMobile": "375x812: drawer, search results, Collections navigation, full menu retained, no horizontal overflow",
+    "editorPreview": "Isolated public-catalog component preview: option search, edit fields, photo-action identity, Save flow, desktop/mobile layout and room gallery/details rendering",
+    "protectedAdmin": "Initial old Admin view audited. Final protected-session validation remains pending re-unlock after cache/server refresh; no PIN or private CRM records were changed.",
+    "businessData": "No published menu/photo/room values were changed by this redesign. Existing owner uploads remain intact."
+  },
+  "screenshots": ["output/menu-tools-22.106-mobile.jpg", "output/admin-workspace-22.106-desktop.jpg"],
+  "backup": "backups/before-admin-workspace-22.106.bundle and backups/admin-workspace-22.106.patch"
+}
