@@ -1,12 +1,13 @@
 {
-  "release": "22.108",
+  "release": "22.109",
   "date": "2026-11-26",
   "fixes": [
     "Committed item fields survive old layout snapshots",
     "Newer variant text with uploaded photos survives publication merge",
     "Atomic parent/source photo save uses storage-owned URLs",
     "Save all flushes pending menu, room and page-text drafts; publish waits for saving",
-    "Local publisher rejects failed commits/pushes and does not claim deployment success"
+    "Local publisher rejects failed commits/pushes and does not claim deployment success",
+    "Live verification compares exact public content and verifies uploaded photo availability/digests"
   ],
   "verification": {
     "regressionSuites": 82,

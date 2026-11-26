@@ -261,6 +261,19 @@
   async function verifyLivePublication(result, bundle) {
     const publishedAt = result.publishedAt || bundle.overrides.publishedAt;
     const liveBase = 'https://avi22sh.github.io/Hotel-Premier/';
+    const canonical=value=>JSON.stringify(value,(_,item)=>item&&typeof item==='object'&&!Array.isArray(item)?Object.fromEntries(Object.entries(item).sort(([a],[b])=>a.localeCompare(b))):item);
+    function matchesContent(code){
+      if(result.expectedContent)return code.replace(/^\uFEFF/,'').replace(/\r\n/g,'\n')===result.expectedContent.replace(/^\uFEFF/,'').replace(/\r\n/g,'\n');
+      try{const json=code.slice(code.indexOf('=')+1).trim().replace(/;\s*$/,'');return canonical(JSON.parse(json))===canonical({...bundle.overrides,publishedAt});}catch(_){return false;}
+    }
+    async function photosAvailable(){
+      for(const photo of bundle.images||[]){
+        const response=await fetch(liveBase+photo.path+'?publication='+publishedAt,{cache:'no-store',signal:AbortSignal.timeout(15000)});
+        if(!response.ok)return false;
+        if(photo.sha256){const bytes=await response.arrayBuffer();const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(n=>n.toString(16).padStart(2,'0')).join('');if(hash!==photo.sha256)return false;}
+      }
+      return true;
+    }
     for (let attempt=0; attempt<36; attempt++) {
       setPublishStage('⏳', 'Saved to GitHub · Checking Website', 'Your edits are saved. Waiting for GitHub Pages to make them visible to guests. Keep this page open.', 90);
       try {
@@ -268,7 +281,7 @@
         if(response.ok){
           const code=await response.text();
           const version=Number(code.match(/"publishedAt"\s*:\s*(\d+)/)?.[1]);
-          if(publishedAt && version===publishedAt && (!result.expectedContent || code.replace(/\r\n/g,'\n')===result.expectedContent.replace(/\r\n/g,'\n')))return true;
+          if(publishedAt && version===publishedAt && matchesContent(code) && await photosAvailable())return true;
         }
       } catch (_) { /* A temporary offline response is not a successful deployment. */ }
       if(result.commit && attempt%3===0){
@@ -288,9 +301,9 @@
   }
 
   async function showPublishOutcome(result, bundle) {
-    window.HOTEL_PREMIER_PUBLISHED_OVERRIDES=bundle.overrides;
     const live=await verifyLivePublication(result,bundle);
     if(live){
+      window.HOTEL_PREMIER_PUBLISHED_OVERRIDES={...bundle.overrides,publishedAt:result.publishedAt||bundle.overrides.publishedAt};
       setPublishStage('🎉','Published and Verified Live',`Your updates (${result.imagesSaved||0} photos and saved menu changes) are now visible on the guest website. Guests with the app already open can refresh to see them.`,100,true);
       window.app.showToast('Published and verified on the guest website.','success');
     }else{

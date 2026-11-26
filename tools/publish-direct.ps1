@@ -133,6 +133,7 @@ try {
         imagesSaved = $savedImagesCount
         timestamp = $timestamp
         publishedAt = $nowMs
+        expectedContent = ($fileHeader + $overridesJson + $fileFooter)
         message = "Saved to GitHub. Website deployment must still be verified."
     }
 

@@ -32,5 +32,9 @@ function setup(fetch){const element={classList:{add(){}},style:{}};const c={cons
  assert.equal(await failed.verifyLivePublication({publishedAt:123,commit:'abc'},pendingBundle),false,'Saved commit is not falsely reported live after failed deployment');
  const wrong=setup(async(url)=>url.includes('api.github.com')?ok({workflow_runs:[{name:'Deploy Hotel Premier to GitHub Pages',status:'completed',conclusion:'failure'}]}):{ok:true,text:async()=>'"publishedAt":123, "other":"content"'});
  assert.equal(await wrong.verifyLivePublication({publishedAt:123,expectedContent:'expected',commit:'abc'},pendingBundle),false,'Same timestamp alone does not verify different content');
+ const timestampOnly=setup(async url=>url.includes('api.github.com')?ok({workflow_runs:[{name:'Deploy Hotel Premier to GitHub Pages',status:'completed',conclusion:'failure'}]}):{ok:true,text:async()=>'window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {"publishedAt":123,"dishes":{"wrong":{}}};'});
+ assert.equal(await timestampOnly.verifyLivePublication({publishedAt:123,commit:'abc'},pendingBundle),false,'Timestamp alone cannot verify different owner data');
+ const missingPhoto=setup(async url=>url.includes('api.github.com')?ok({workflow_runs:[{name:'Deploy Hotel Premier to GitHub Pages',status:'completed',conclusion:'failure'}]}):url.includes('assets/')?{ok:false,status:404}:{ok:true,text:async()=>'window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {"publishedAt":123};'});
+ assert.equal(await missingPhoto.verifyLivePublication({publishedAt:123,commit:'abc'},{...pendingBundle,images:[{path:'assets/missing.webp'}]}),false,'Missing owner uploads must not be reported live');
  console.log('PASS: atomic photo/content release, safe non-force branch update, upload deduplication, concurrent-update rejection, exact live verification and failed-deployment handling');
 })().catch(e=>{console.error(e);process.exitCode=1});
