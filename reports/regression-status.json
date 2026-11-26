@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-11-26T13:52:50.197Z",
-  "passed": 82,
+  "createdAt": "2026-11-26T14:34:09.530Z",
+  "passed": 83,
   "failed": [],
   "results": [
     {
@@ -89,6 +89,10 @@
     },
     {
       "file": "direct-publish-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "dish-photo-browser-regression.cjs",
       "passed": true
     },
     {

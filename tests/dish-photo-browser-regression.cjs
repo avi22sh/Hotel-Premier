@@ -1,0 +1,7 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const c={window:{},document:{readyState:'loading',addEventListener(){}}};vm.runInNewContext(fs.readFileSync('property-gallery.js','utf8'),c);
+const app={currentLang:'en',categories:[{id:'c',name:'Collection'}],getVisibleMenuItems:()=>[{id:'p',categoryId:'c',name:'Group',image:'assets/cover.jpg',price:99,variants:[{id:'a',name:'A',image:'assets/a.jpg',price:10},{id:'hidden',name:'Hidden',hidden:true,image:'assets/hidden.jpg'},{id:'blank',name:'No photo',image:''},{id:'d',name:'D',image:'assets/d.jpg',price:null},{name:'Placeholder',image:'assets/brand-placeholder.svg'}]},{id:'single',categoryId:'c',name:'Single',image:'assets/single.jpg',price:20}]};
+const photos=c.window.HotelDishPhotoBrowser.collect(app);
+assert.deepEqual(Array.from(photos,p=>p.name),['A','D','Single']);assert.equal(photos[1].variantIndex,3,'Hidden and photo-less options must not shift source option indices');assert.equal(photos[1].price,null,'On-request price must not inherit parent price');assert.equal(photos[2].variantIndex,null);assert.equal(photos[0].category,'Collection');
+app.currentLang='hi';app.getVisibleMenuItems=()=>[{id:'s',name:'Dish',hindiName:'व्यंजन',image:'assets/d.jpg'}];assert.equal(c.window.HotelDishPhotoBrowser.collect(app)[0].name,'व्यंजन');
+console.log('PASS: expanded gallery preserves menu order and option identity, excludes hidden/missing photos, retains on-request prices and localized names');

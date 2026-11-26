@@ -1,4 +1,4 @@
-// Owner uploads preserved; grouped photo sync repaired 2026-11-26.
+// Reviewed owner public export; image audit corrections, 2026-11-26.
 window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
   "version": 1,
   "dishes": {
@@ -50,7 +50,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "पनीर अचारी टिक्का",
           "marathiName": "पनीर अचारी टिक्का",
           "price": 240,
-          "image": "assets/menu-images/tandoor-classics/paneer-tikka.jpg",
+          "image": "assets/menu-images/tandoor-classics/achari-paneer-tikka.jpg",
           "description": "Paneer cubes marinated with tangy pickling spices and slow grilled in traditional tandoor.",
           "descriptionHi": "अचारी मसालों और कलौंजी के तीखे-चटपटे स्वाद में रंगा हुआ तंदूरी पनीर टिक्का।",
           "descriptionMr": "चटपटीत लोणच्याचे मसाले आणि मोहरीच्या चवीमध्ये मुरवलेला तंदूरी पनीर टिक्का."
@@ -1427,7 +1427,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "पनीर अचारी टिक्का",
       "description": "Paneer cubes marinated with tangy pickling spices and grilled for a bold achari flavour.",
       "price": 240,
-      "image": "assets/menu-images/tandoor-classics/paneer-tikka.jpg",
+      "image": "assets/menu-images/tandoor-classics/achari-paneer-tikka.jpg",
       "tags": [
         "veg",
         "chef-special"
@@ -1657,7 +1657,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "अतिरिक्त भटूरा (1 नग)",
           "marathiName": "अतिरिक्त भटूरा (1 नग)",
           "price": 45,
-          "image": "assets/menu-images/morning-delight/chole-bhature.jpg",
+          "image": "",
           "description": "One freshly fried large, fluffy Punjabi bhatura."
         },
         {
@@ -1665,7 +1665,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "अतिरिक्त भटूरा (2 नग)",
           "marathiName": "अतिरिक्त भटूरा (2 नग)",
           "price": 85,
-          "image": "assets/menu-images/morning-delight/chole-bhature.jpg",
+          "image": "",
           "description": "Two freshly fried large, fluffy Punjabi bhaturas."
         }
       ],
@@ -9854,7 +9854,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "चीज़ मसाला नागली पापड़",
           "marathiName": "चीज मसाला नाचणी पापड",
           "price": 80,
-          "image": "assets/menu-images/accompaniments/cheese-masala-papad.jpg",
+          "image": "",
           "description": "Wholesome crunchy nagli papad topped with chopped fresh salad, chaat spices and abundant grated cheese.",
           "descriptionHi": "पौष्टिक नागली पापड़ पर ताज़ा सलाद, चाट मसाला और भरपूर कद्दूकस किया चीज़।",
           "descriptionMr": "पौष्टिक नाचणी पापडावर कांदा, टोमॅटो आणि भरपूर किसलेले चीज घातलेला चवदार पापड.",
@@ -11663,7 +11663,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "प्लेन रोटी बास्केट",
           "marathiName": "प्लेन रोटी बास्केट",
           "price": 480,
-          "image": "assets/menu-images/signature-indian-breads/chapati.jpg",
+          "image": "",
           "description": "Nine assorted plain breads: tandoori roti, naan, missi roti, pudina roti, kulcha, laccha paratha, garlic naan, methi paratha and aloo paratha."
         },
         {
@@ -11671,7 +11671,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "बटर रोटी बास्केट",
           "marathiName": "बटर रोटी बास्केट",
           "price": 520,
-          "image": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+          "image": "",
           "description": "Nine assorted breads glazed with golden butter: butter roti, butter naan, butter kulcha, butter laccha paratha and specialties."
         }
       ],
@@ -14486,7 +14486,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
+      "image": "",
       "rating": 4.9,
       "prepTime": "8 mins",
       "groupedUnder": "cb-milkshakes-group",
@@ -14652,7 +14652,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "मिल्कशेक",
       "categoryId": "chilled-beverages",
       "price": 150,
-      "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
+      "image": "assets/menu-uploads/published-2cb32e8cd1e340c5d4c89db0.webp",
       "description": "",
       "descriptionHi": "",
       "descriptionMr": "",
@@ -14664,7 +14664,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "वैनिला मिल्कशेक",
           "marathiName": "व्हॅनिला मिल्कशेक",
           "price": 150,
-          "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
+          "image": "",
           "description": "Smooth chilled vanilla milkshake served with a generous scoop of rich vanilla ice cream.",
           "descriptionHi": "स्वादिष्ट वैनिला शेक के ऊपर भरपूर वैनिला आइसक्रीम का ठंडा मलाईदार स्कूप।",
           "descriptionMr": "चवदार व्हॅनिला मिल्कशेकवर थंडगार व्हॅनिला आईस्क्रीमचा मोठा स्कूप."
@@ -16920,7 +16920,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         "marathiName": "मिल्कशेक",
         "categoryId": "chilled-beverages",
         "price": 150,
-        "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
+        "image": "assets/menu-uploads/published-2cb32e8cd1e340c5d4c89db0.webp",
         "description": "",
         "descriptionHi": "",
         "descriptionMr": "",
@@ -16932,7 +16932,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "hindiName": "वैनिला मिल्कशेक",
             "marathiName": "व्हॅनिला मिल्कशेक",
             "price": 150,
-            "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
+            "image": "",
             "description": "Smooth chilled vanilla milkshake served with a generous scoop of rich vanilla ice cream.",
             "descriptionHi": "स्वादिष्ट वैनिला शेक के ऊपर भरपूर वैनिला आइसक्रीम का ठंडा मलाईदार स्कूप।",
             "descriptionMr": "चवदार व्हॅनिला मिल्कशेकवर थंडगार व्हॅनिला आईस्क्रीमचा मोठा स्कूप."

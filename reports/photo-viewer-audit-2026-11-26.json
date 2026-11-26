@@ -1,0 +1,64 @@
+{
+  "release": "22.111",
+  "changes": [
+    {
+      "parent": "tc-paneer-tikka-group",
+      "name": "Paneer Achari Tikka",
+      "previous": "assets/menu-images/tandoor-classics/paneer-tikka.jpg",
+      "replacement": "assets/menu-images/tandoor-classics/achari-paneer-tikka.jpg"
+    },
+    {
+      "parent": "sb-16",
+      "name": "Plain Roti Basket",
+      "previous": "assets/menu-images/signature-indian-breads/chapati.jpg",
+      "replacement": ""
+    },
+    {
+      "parent": "sb-16",
+      "name": "Butter Roti Basket",
+      "previous": "assets/menu-images/signature-indian-breads/butter-naan.jpg",
+      "replacement": ""
+    },
+    {
+      "parent": "cb-milkshakes-group",
+      "name": "Vanilla Milkshake",
+      "previous": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
+      "replacement": ""
+    },
+    {
+      "parent": "fa-8",
+      "name": "Nagali Papad · Cheese Masala",
+      "previous": "assets/menu-images/accompaniments/cheese-masala-papad.jpg",
+      "replacement": ""
+    },
+    {
+      "parent": "md-2",
+      "name": "Extra Bhatura (1 pc)",
+      "previous": "assets/menu-images/morning-delight/chole-bhature.jpg",
+      "replacement": ""
+    },
+    {
+      "parent": "md-2",
+      "name": "Extra Bhatura (2 pcs)",
+      "previous": "assets/menu-images/morning-delight/chole-bhature.jpg",
+      "replacement": ""
+    }
+  ],
+  "notes": [
+    "Original image files and previous published data retained in backup",
+    "Related preparation variants may intentionally share a photo",
+    "No unpublished browser/phone uploads were accessed"
+  ],
+  "viewer": [
+    "Viewport-sized themed photo viewer",
+    "Previous/next buttons, keyboard navigation and horizontal touch gestures",
+    "Zoom with panning; changing photo restores full view",
+    "Closing returns to the browsed dish and option"
+  ],
+  "verification": {
+    "regressionSuites": 83,
+    "failed": 0,
+    "browser": "Mobile light and dark: next/previous, zoom/reset, close-to-selected-item verified",
+    "imageReferences": 1623
+  }
+}
