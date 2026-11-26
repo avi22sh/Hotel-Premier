@@ -945,3 +945,13 @@ body #section-dine #menu-tools-dialog #floating-menu-toggle-btn { position:stati
 .workspace-host .workspace-labels input { width:18px; height:18px; min-height:18px; }
 
 #admin-tab-content .workspace-labels input { min-height:18px; }
+.dish-photo-expand { position:absolute; right:12px; bottom:12px; z-index:8; display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid var(--gold-edge); border-radius:12px; background:var(--gold-polish); color:var(--gold-ink); box-shadow:var(--gold-relief); font-size:25px; cursor:pointer; }
+.dish-photo-expand[hidden] { display:none; }
+.dish-photo-expand:focus-visible,.dish-photo-viewer-close:focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
+dialog.dish-photo-viewer { inset:0; margin:auto; box-sizing:border-box; width:min(1200px,calc(100% - 20px)); max-width:none; max-height:calc(var(--overlay-viewport-height,100dvh) - 20px); padding:12px; border:1px solid var(--gold-edge); border-radius:20px; color:var(--text); background:var(--surface); box-shadow:0 24px 80px #0008; overflow:auto; }
+.dish-photo-viewer::backdrop { background:#080d16d9; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
+.dish-photo-viewer > header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.dish-photo-viewer h2 { margin:0; font:700 clamp(1rem,3vw,1.4rem)/1.35 var(--font-editorial); color:var(--accent); }
+.dish-photo-viewer-close { display:grid; place-items:center; flex:0 0 44px; width:44px; height:44px; padding:0; border:1px solid var(--gold-edge); border-radius:50%; background:var(--gold-polish); color:var(--gold-ink); font-size:28px; cursor:pointer; }
+.dish-photo-viewer > img { display:block; width:100%; height:auto; max-height:calc(var(--overlay-viewport-height,100dvh) - 155px); object-fit:contain; border-radius:12px; background:var(--surface-secondary); }
+.photo-reference-note { color:var(--muted); font-size:.78rem; line-height:1.5; margin:10px 0; }

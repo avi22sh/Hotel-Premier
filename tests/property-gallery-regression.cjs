@@ -10,7 +10,7 @@ class Node {
 }
 const cards=[0,1].map(i=>{const n=new Node();n.querySelector=s=>s==='img'?{src:`photo${i}.jpg`,alt:`Photo ${i}`}:{textContent:`Caption ${i}`};return n;});
 const body=new Node();body.style.overflow='auto';
-vm.runInNewContext(fs.readFileSync('property-gallery.js','utf8'),{document:{readyState:'complete',body,createElement:()=>new Node(),querySelectorAll:()=>cards}});
+vm.runInNewContext(fs.readFileSync('property-gallery.js','utf8'),{window:{},document:{getElementById:()=>null,readyState:'complete',body,createElement:()=>new Node(),querySelectorAll:()=>cards}});
 cards[0].events.click();
 const dialog=body.children[0],header=dialog.children[0],image=dialog.children[1];
 assert.equal(dialog.open,true);assert.equal(image.src,'photo0.jpg');

@@ -604,7 +604,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.109';
+    s.src = 'admin.js?v=22.110';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -2845,6 +2845,7 @@ class HotelPremierApp {
         ${modalVariantsHtml}
 
         <p class="modal-dish-desc">${initialDesc || 'Prepared fresh with finest ingredients and authentic culinary care.'}</p>
+        <p class="photo-reference-note">Images are for reference. Actual presentation may vary.</p>
 
         <div class="modal-dish-veg-guarantee">
           <span class="veg-guarantee-icon" aria-hidden="true">🌱</span>

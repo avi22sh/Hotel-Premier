@@ -1,5 +1,7 @@
 /* Reviewed interface copy. Columns: English ~ Hindi ~ Marathi. Brand names and guest records are not rewritten. */
 window.HOTEL_PREMIER_INTERFACE_COPY = `
+Images are for reference. Actual presentation may vary.~चित्र केवल संदर्भ के लिए हैं। वास्तविक प्रस्तुति भिन्न हो सकती है।~छायाचित्रे संदर्भासाठी आहेत. प्रत्यक्ष सादरीकरण वेगळे असू शकते.
+Expand dish photo~व्यंजन का चित्र बड़ा करें~पदार्थाचे छायाचित्र मोठे पहा
 Light · Auto~हल्का · स्वतः~हलका · स्वयंचलित
 Staff studio~कर्मचारी स्टूडियो~कर्मचारी स्टुडिओ
 Guest Wi-Fi~अतिथि वाई-फाई~पाहुण्यांसाठी वाय-फाय
