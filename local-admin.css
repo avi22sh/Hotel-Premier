@@ -139,7 +139,7 @@
 @media (max-width: 480px) {
   #admin-modal-backdrop .admin-modal-sheet > .modal-header {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto 44px;
+    grid-template-columns: minmax(0, 1fr) auto auto 40px;
     gap: 8px;
     padding: 12px 16px;
   }
@@ -157,6 +157,10 @@
     margin: 0;
   }
   #admin-modal-backdrop .admin-back-btn { justify-self: start; }
+  #admin-modal-backdrop .admin-save-all-btn { grid-column:2; }
+  #admin-modal-backdrop .btn-direct-publish-header { grid-column:3; }
+  #admin-modal-backdrop .modal-close-btn { grid-column:4; }
+  #admin-modal-backdrop .modal-header > :is(.admin-back-btn,.btn-direct-publish-header) { padding:8px; font-size:13px; }
   #admin-modal-backdrop .admin-nav-tabs { scrollbar-width: none; }
   #admin-modal-backdrop .admin-nav-tabs::-webkit-scrollbar { display: none; }
 }

@@ -74,7 +74,14 @@ public class HotelPremierServer {
 
             // Handle 1-Click Live Publish API
             if (rawPath == "/api/publish-direct") {
-                context.Response.AddHeader("Access-Control-Allow-Origin", "*");
+                string origin = context.Request.Headers["Origin"];
+                string[] publishOrigins = { "http://localhost:8080", "http://127.0.0.1:8080", "http://127.0.0.1:8765", "https://avi22sh.github.io" };
+                if (!String.IsNullOrEmpty(origin) && Array.IndexOf(publishOrigins, origin) < 0) {
+                    context.Response.StatusCode = 403;
+                    context.Response.OutputStream.Close();
+                    return;
+                }
+                if (!String.IsNullOrEmpty(origin)) context.Response.AddHeader("Access-Control-Allow-Origin", origin);
                 context.Response.ContentType = "application/json; charset=utf-8";
 
                 if (context.Request.HttpMethod == "POST") {

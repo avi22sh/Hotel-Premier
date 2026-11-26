@@ -1116,19 +1116,20 @@ class HotelPremierAdmin {
     if(!this.isAuthenticated||this.photoUploadPending||this.savingDishPhoto||!this.activeImageDishId||!this.tempImageSource)return false;
     const dish=window.app.menuData.find(item=>item.id===this.activeImageDishId);if(!dish)return false;
     const request=this.previewRequestId;this.savingDishPhoto=true;
+    const selectedSource=this.tempImageSource,selectedOriginal=this.rawOriginalSource||selectedSource;
     const save=document.getElementById('apply-dish-photo-btn');if(save)save.disabled=true;
     try{
       if (this.activeVariantIndex !== null && dish.variants && dish.variants[this.activeVariantIndex]) {
         const variant = dish.variants[this.activeVariantIndex];
-        variant.image = this.tempImageSource;
-
-        // Update matching child dish if present
+        // Commit parent option and matching source together before touching the preview.
         const childDish = window.app.menuData.find(d => d.groupedUnder === dish.id && (variant.id ? d.id === variant.id : d.name === variant.name));
-        if (childDish) {
-          childDish.image = this.tempImageSource;
-          await window.HOTEL_STORAGE.saveDishOverride(childDish.id, { image: this.tempImageSource, rawOriginalImage: this.rawOriginalSource || this.tempImageSource, fieldUpdatedAt: { image: Date.now() }, updatedAt: Date.now() });
-        }
-        await window.HOTEL_STORAGE.saveDishOverride(dish.id, { variants: dish.variants, fieldUpdatedAt: { variants: Date.now() }, updatedAt: Date.now() });
+        const variants=dish.variants.map((v,i)=>i===this.activeVariantIndex?{...v,image:selectedSource}:v);
+        const changes={[dish.id]:{variants}};
+        if(childDish)changes[childDish.id]={image:selectedSource,rawOriginalImage:selectedOriginal};
+        const committed=await window.HOTEL_STORAGE.saveDishEdits(changes);
+        // Use storage-owned URLs; closing the upload preview revokes its temporary URL.
+        dish.variants=committed?.[dish.id]?.variants||variants;
+        if(childDish)childDish.image=committed?.[childDish.id]?.image||selectedSource;
         window.app.saveMenuData();
         window.app.renderCategoryCards();
         window.app.renderMenu();
@@ -2028,7 +2029,7 @@ class HotelPremierAdmin {
         await window.HOTEL_STORAGE.saveSectionSlides('restaurant_hero', slides);
       }
       if (window.app) {
-        window.app.heroSlides = slides;
+        window.app.heroSlides = window.HOTEL_STORAGE?.getSectionSlides ? await window.HOTEL_STORAGE.getSectionSlides('restaurant_hero',slides) : slides;
         window.app.renderHeroCarousel();
       }
     } else if (type === 'category') {
@@ -2092,7 +2093,7 @@ class HotelPremierAdmin {
       await window.HOTEL_STORAGE.saveSectionSlides('restaurant_hero', slides);
     }
     if (window.app) {
-      window.app.heroSlides = slides;
+      window.app.heroSlides = window.HOTEL_STORAGE?.getSectionSlides ? await window.HOTEL_STORAGE.getSectionSlides('restaurant_hero',slides) : slides;
       window.app.renderHeroCarousel();
     }
     if (this.currentTab === 'slides') {
@@ -2118,7 +2119,7 @@ class HotelPremierAdmin {
         await window.HOTEL_STORAGE.saveSectionSlides('restaurant_hero', updated);
       }
       if (window.app) {
-        window.app.heroSlides = updated;
+        window.app.heroSlides = window.HOTEL_STORAGE?.getSectionSlides ? await window.HOTEL_STORAGE.getSectionSlides('restaurant_hero',updated) : updated;
         window.app.renderHeroCarousel();
       }
       if (this.currentTab === 'slides') {
@@ -2237,7 +2238,7 @@ class HotelPremierAdmin {
       await window.HOTEL_STORAGE.saveSectionSlides('restaurant_hero', updated);
     }
     if (window.app) {
-      window.app.heroSlides = updated;
+      window.app.heroSlides = window.HOTEL_STORAGE?.getSectionSlides ? await window.HOTEL_STORAGE.getSectionSlides('restaurant_hero',updated) : updated;
       window.app.renderHeroCarousel();
     }
 

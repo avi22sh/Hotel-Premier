@@ -8,7 +8,9 @@ local={image:'data:image/png;base64,fixture'};await app.loadMenuData();assert.eq
  c.window.HOTEL_PREMIER_PUBLISHED_OVERRIDES.dishes.dish.variants=[{id:'second',name:'Second',price:20},{id:'first',name:'First',price:10}];
  local={variants:[{id:'first',name:'First',image:'blob:first-photo'},{id:'second',name:'Second',image:'blob:second-photo'}]};
  await app.loadMenuData();assert.equal(app.menuData[0].variants[0].image,'blob:second-photo');assert.equal(app.menuData[0].variants[1].image,'blob:first-photo','Reordering cannot swap uploaded option photos');
-c.window.HotelPhotoStorage={hydrate:r=>r,normalizePaths:r=>r};vm.runInContext(fs.readFileSync('storage.js','utf8'),c);const store=c.window.HOTEL_STORAGE;await store.initPromise;
+local={variants:[{id:'first',name:'Owner rename',price:91,description:'Owner description',image:'blob:owner-photo'}],updatedAt:200,fieldUpdatedAt:{variants:200}};
+ await app.loadMenuData();assert.equal(app.menuData[0].variants[0].name,'Owner rename','A saved variant edit with an uploaded photo must survive reload');assert.equal(app.menuData[0].variants[0].price,91);
+ c.window.HotelPhotoStorage={hydrate:r=>r,normalizePaths:r=>r};vm.runInContext(fs.readFileSync('storage.js','utf8'),c);const store=c.window.HOTEL_STORAGE;await store.initPromise;
  c.window.HOTEL_PREMIER_PUBLISHED_OVERRIDES.roomGalleries={queen:['assets/published-room.webp']};c.window.HOTEL_PREMIER_PUBLISHED_OVERRIDES.sectionSlides={hero:[{image:'assets/published-slide.webp'}]};
  let record={updatedAt:50,images:['assets/old-room.jpg'],slides:[{image:'assets/old-slide.jpg'}]};store.readPhotoRecord=async()=>record;
  assert.equal((await store.getRoomGallery('queen'))[0],'assets/published-room.webp');assert.equal((await store.getSectionSlides('hero'))[0].image,'assets/published-slide.webp');

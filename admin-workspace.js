@@ -6,6 +6,56 @@
  const state={query:'',category:'all',status:'all',selected:null,limit:35};
  const editedRooms=new Set();
  const menuDrafts=new Map(),roomDrafts=new Map();
+ let savingAll=null;
+ const valuesOf=form=>Object.fromEntries([...form.elements].filter(e=>e.name).map(e=>[e.name,e.type==='checkbox'?e.checked:e.value]));
+ function menuPatch(entry,values){
+  const patch={};for(const key of textFields)patch[key]=String(values[key]??'').trim();
+  patch.price=values.price===''?null:Number(values.price);
+  if(values.categoryId)patch.categoryId=values.categoryId;
+  const choices=['new-arrival','bestseller','chef-special'];
+  patch.tags=[...(entry.value.tags||entry.child?.tags||[]).filter(tag=>!choices.includes(tag)),...choices.filter(tag=>values['tag-'+tag])];
+  patch.isSoldOut=values.visibility==='soldout';patch[entry.index===null?'notAvailable':'hidden']=values.visibility==='hidden';return patch;
+ }
+ async function saveMenuDraft(key,values){
+  const entry=entries(window.app).find(e=>e.key===key);if(!entry)throw Error('This item changed. Search for it again before saving.');
+  const patch=menuPatch(entry,values);await saveEntry(entry,patch);menuDrafts.delete(key);
+  const fresh=entries(window.app).find(e=>e.dish.id===entry.dish.id&&e.index===entry.index);
+  if(fresh&&state.selected===key)state.selected=fresh.key;
+  return fresh;
+ }
+ async function saveRoomDraft(id,values){
+  if(!allowed())throw Error('Unlock Admin to save.');
+  const room=window.HOTEL_PREMIER_HOTEL_DATA.roomCategories.find(r=>r.id===id);if(!room)throw Error('Room not found.');
+  const patch={};for(const key of ['name','description','bedType','hindiName','marathiName','descriptionHi','descriptionMr'])patch[key]=String(values[key]??'').trim();
+  if(!patch.name)throw Error('Enter a room name.');for(const key of ['areaSqFt','maxExtraBeds'])patch[key]=Number(values[key]);
+  patch.features=String(values.features||'').split('\n').map(s=>s.trim()).filter(Boolean);
+  patch.tariff={single:{},double:{},extraBed:Number(values.extraBed)};for(const occupancy of ['single','double'])for(const plan of ['roomOnly','withBreakfast'])patch.tariff[occupancy][plan]=Number(values[occupancy+'-'+plan]);
+  if([patch.areaSqFt,patch.maxExtraBeds,patch.tariff.extraBed,...Object.values(patch.tariff.single),...Object.values(patch.tariff.double)].some(n=>!Number.isFinite(n)||n<0))throw Error('Use valid room sizes and prices.');
+  window.HotelDataValidation.validate(patch);const saved=JSON.parse(localStorage.getItem('hotel_premier_room_overrides')||'{}');saved[id]={...saved[id],...patch,updatedAt:Date.now()};localStorage.setItem('hotel_premier_room_overrides',JSON.stringify(saved));
+  Object.assign(room,patch);editedRooms.add(id);roomDrafts.delete(id);window.app.notifyMenuUpdate?.('rooms');await window.app.renderRoomCarousels();
+ }
+ async function saveAll({notify=true}={}){
+  if(savingAll)return savingAll;
+  savingAll=(async()=>{
+   if(!allowed())throw Error('Unlock Admin to save.');
+   if(window.admin.photoUploadPending||window.admin.savingDishPhoto)throw Error('Wait for the selected photo to finish processing, then save again.');
+   // Snapshot all changed editors, including drafts retained while switching items/tabs.
+   for(const [key,values]of [...menuDrafts])await saveMenuDraft(key,values);
+   for(const [id,values]of [...roomDrafts])await saveRoomDraft(id,values);
+   await window.HotelContentStudio?.savePending?.();
+   const modal=document.getElementById('image-replace-modal');
+   if(modal?.classList.contains('active')){
+    const admin=window.admin;
+    if(admin.activeImageDishId){if(!await admin.saveReplacedImage())throw Error('Photo was not saved. Keep the editor open and try again.');}
+    else if(admin.activeRoomId){if(Number.isInteger(admin.activeRoomPhotoIndex))await admin.saveReplacedRoomPhoto();else await admin.saveNewRoomPhoto();}
+    else if(admin.editingSlideContext)await admin.saveEditedSlide();
+    if(modal.classList.contains('active'))throw Error('Finish the open photo editor before publishing.');
+   }
+   refreshPhotos();renderList();const selected=entries(window.app).find(e=>e.key===state.selected);if(selected&&detail?.isConnected)openEntry(selected);
+   for(const message of document.querySelectorAll('.workspace-save-status'))message.textContent='All changes saved on this device. Publish to update guests.';
+   if(notify)window.app.showToast('All changes saved on this device. Publish to update guests.','success');
+  })();try{return await savingAll;}finally{savingAll=null;}
+ }
  let host,detail,list,status;
  const allowed=()=>Boolean(window.admin?.isAuthenticated&&window.HotelLocalLock?.isUnlocked());
  const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
@@ -24,7 +74,7 @@
    for(const [index,v]of(dish.variants||[]).entries()){
     const child=app.menuData.find(c=>c.groupedUnder===dish.id&&(v.id?c.id===v.id:c.name===v.name));
     if(child)represented.add(child.id);
-    result.push({key:dish.id+'::'+(v.id||v.name),dish,value:v,index,child});
+    result.push({key:dish.id+'::'+(v.id||child?.id||v.name),dish,value:v,index,child});
    }
   }
   for(const dish of app.menuData)if(dish.groupedUnder&&!represented.has(dish.id))result.push({key:dish.id,dish,value:dish,index:null,unlisted:true});
@@ -39,6 +89,7 @@
  function image(entry){const e=node('img');e.src=photo(entry)||'assets/brand-placeholder.svg';e.alt=entry.value.name||'';e.loading='lazy';e.dataset.workspaceKey=entry.key;return e;}
  async function saveEntry(entry,patch){
   if(!allowed())throw Error('Unlock Admin to edit.');window.HotelDataValidation?.validate(patch);
+  entry=entries(window.app).find(e=>e.key===entry.key);if(!entry)throw Error('This item changed. Search for it again before saving.');
   if(!patch.name?.trim())throw Error('Enter an item name.');
   if(patch.price!==null&&(!Number.isFinite(patch.price)||patch.price<0))throw Error('Enter a valid price or leave it blank.');
   const changes={};
@@ -106,10 +157,10 @@
   const message=node('p','Save on this device, then Publish to update all guests.','workspace-save-status');message.setAttribute('role','status');
   const save=node('button','Save changes','btn-primary');save.type='submit';form.append(save,message);
   for(const input of form.elements)if(menuDrafts.get(entry.key)?.[input.name]!==undefined){if(input.type==='checkbox')input.checked=menuDrafts.get(entry.key)[input.name];else input.value=menuDrafts.get(entry.key)[input.name];}
-  form.addEventListener('input',()=>menuDrafts.set(entry.key,Object.fromEntries([...form.elements].filter(e=>e.name).map(e=>[e.name,e.type==='checkbox'?e.checked:e.value]))));
+  form.addEventListener('input',()=>{menuDrafts.set(entry.key,valuesOf(form));message.textContent='Unsaved edits · choose Save changes or Save all.';});
   form.addEventListener('submit',async event=>{
    event.preventDefault();if(save.disabled)return;save.disabled=true;
-   try{const patch={};for(const key of textFields)patch[key]=form.elements.namedItem(key).value.trim();patch.price=form.elements.namedItem('price').value===''?null:Number(form.elements.namedItem('price').value);if(section)patch.categoryId=section.value;patch.tags=[...(entry.value.tags||entry.child?.tags||[]).filter(tag=>!tagChoices.some(([key])=>key===tag)),...tagChoices.filter(([tag])=>form.elements.namedItem('tag-'+tag).checked).map(([tag])=>tag)];patch.isSoldOut=visibility.value==='soldout';patch[entry.index===null?'notAvailable':'hidden']=visibility.value==='hidden';await saveEntry(entry,patch);Object.assign(entry.value,patch);menuDrafts.delete(entry.key);message.textContent='Saved on this device. Publish when ready.';renderList();}catch(err){message.textContent='Not saved: '+err.message;}finally{save.disabled=false;}
+   try{const fresh=await saveMenuDraft(entry.key,valuesOf(form));if(fresh)openEntry(fresh);detail.querySelector('.workspace-save-status').textContent='Saved on this device. Publish when ready.';}catch(err){message.textContent='Not saved: '+err.message;}finally{save.disabled=false;}
   });
   if(entry.index===null&&!entry.dish.groupedUnder){
    const options=node('section',undefined,'workspace-options');options.append(node('h4','Options · select to edit everything'));
@@ -168,15 +219,15 @@
    const form=node('form',undefined,'workspace-room-form');field(form,'Room name','name',room.name);field(form,'Description','description',room.description,'textarea');field(form,'Bed type','bedType',room.bedType);field(form,'Area · sq ft','areaSqFt',room.areaSqFt,'number');field(form,'Maximum extra beds','maxExtraBeds',room.maxExtraBeds,'number');field(form,'Amenities · one per line','features',(room.features||[]).join('\n'),'textarea');
    for(const [key,label]of [['hindiName','Name · Hindi'],['marathiName','Name · Marathi'],['descriptionHi','Description · Hindi'],['descriptionMr','Description · Marathi']])field(form,label,key,room[key],key.startsWith('description')?'textarea':'text');
    for(const occupancy of ['single','double'])for(const plan of ['roomOnly','withBreakfast'])field(form,`${occupancy==='single'?'Single':'Double'} · ${plan==='roomOnly'?'Room only':'Breakfast'} · ₹`,occupancy+'-'+plan,room.tariff[occupancy][plan],'number');field(form,'Extra bed · ₹','extraBed',room.tariff.extraBed,'number');
-   const save=node('button','Save room details','btn-primary');save.type='submit';const message=node('p');message.setAttribute('role','status');form.append(save,message);card.append(form);container.append(card);
+   const save=node('button','Save room details','btn-primary');save.type='submit';const message=node('p',undefined,'workspace-save-status');message.setAttribute('role','status');form.append(save,message);card.append(form);container.append(card);
    for(const input of form.elements)if(roomDrafts.get(room.id)?.[input.name]!==undefined)input.value=roomDrafts.get(room.id)[input.name];
-   form.addEventListener('input',()=>roomDrafts.set(room.id,Object.fromEntries([...form.elements].filter(e=>e.name).map(e=>[e.name,e.value]))));
+   form.addEventListener('input',()=>{roomDrafts.set(room.id,valuesOf(form));message.textContent='Unsaved edits · choose Save room details or Save all.';});
    form.addEventListener('submit',async e=>{e.preventDefault();if(!allowed()||save.disabled)return;save.disabled=true;try{
-    const patch={};for(const key of ['name','description','bedType','hindiName','marathiName','descriptionHi','descriptionMr'])patch[key]=form.elements.namedItem(key).value.trim();if(!patch.name)throw Error('Enter a room name.');for(const key of ['areaSqFt','maxExtraBeds'])patch[key]=Number(form.elements.namedItem(key).value);patch.features=form.elements.namedItem('features').value.split('\n').map(s=>s.trim()).filter(Boolean);patch.tariff={single:{},double:{},extraBed:Number(form.elements.namedItem('extraBed').value)};for(const occupancy of ['single','double'])for(const plan of ['roomOnly','withBreakfast'])patch.tariff[occupancy][plan]=Number(form.elements.namedItem(occupancy+'-'+plan).value);if([patch.areaSqFt,patch.maxExtraBeds,patch.tariff.extraBed,...Object.values(patch.tariff.single),...Object.values(patch.tariff.double)].some(n=>!Number.isFinite(n)||n<0))throw Error('Use valid positive room sizes and prices.');window.HotelDataValidation.validate(patch);const saved=JSON.parse(localStorage.getItem('hotel_premier_room_overrides')||'{}');saved[room.id]={...saved[room.id],...patch,updatedAt:Date.now()};localStorage.setItem('hotel_premier_room_overrides',JSON.stringify(saved));Object.assign(room,patch);editedRooms.add(room.id);roomDrafts.delete(room.id);card.querySelector('summary').textContent=room.name;window.app.notifyMenuUpdate?.('rooms');await window.app.renderRoomCarousels();message.textContent='Saved on this device. Publish to update guests.';
+    await saveRoomDraft(room.id,valuesOf(form));card.querySelector('summary').textContent=room.name;message.textContent='Saved on this device. Publish to update guests.';
    }catch(err){message.textContent='Not saved: '+err.message;}finally{save.disabled=false;}});
   }
  }
  function publicRooms(){return Object.fromEntries((window.HOTEL_PREMIER_HOTEL_DATA?.roomCategories||[]).filter(room=>editedRooms.has(room.id)).map(room=>[room.id,roomPatch(room)]));}
- window.HotelAdminWorkspace={renderMenu,renderRooms,refresh:refreshPhotos,entries,matches,saveEntry,applyRooms,roomPatch,syncRoomViews,publicRooms};
+ window.HotelAdminWorkspace={renderMenu,renderRooms,saveAll,refresh:refreshPhotos,entries,matches,saveEntry,applyRooms,roomPatch,syncRoomViews,publicRooms};
  applyRooms();window.addEventListener('hp-media-updated',refreshPhotos);
 })();

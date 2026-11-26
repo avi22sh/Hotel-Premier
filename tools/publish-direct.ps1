@@ -38,7 +38,7 @@ try {
             if (-not $img.path -or -not $img.base64) { continue }
             # Security check: path must be inside assets/menu-uploads/
             $relPath = ($img.path -replace '/', '\').TrimStart('\')
-            if (-not $relPath.StartsWith("assets\menu-uploads")) { continue }
+            if (-not ($img.path -match '^assets/menu-uploads/published-[a-f0-9]{24}\.(webp|jpg|png|avif)$')) { throw "Invalid photo publish path." }
 
             $targetPath = Join-Path $rootDir $relPath
             $targetDir = Split-Path $targetPath -Parent
@@ -88,6 +88,11 @@ try {
     $indexContent = Get-Content -Raw -Encoding UTF8 $indexFile
     $indexContent = [regex]::Replace($indexContent, "(\?v=)[0-9\.]+", "`${1}$newVer")
     [IO.File]::WriteAllText($indexFile, $indexContent, [System.Text.Encoding]::UTF8)
+    foreach ($releaseFile in @('app.js','asset-pipeline.js','photo-workflow.js','public-reviews.js','pwa-updates.js')) {
+        $releasePath = Join-Path $rootDir $releaseFile
+        $releaseText = [IO.File]::ReadAllText($releasePath).Replace($currentVer,$newVer)
+        [IO.File]::WriteAllText($releasePath,$releaseText,[System.Text.UTF8Encoding]::new($false))
+    }
 
     # 5. Maintain dist/ and 404.html parity
     $distDir = Join-Path $rootDir "dist"
@@ -102,15 +107,21 @@ try {
     # If node is available, run build-public-dist
     if (Get-Command node -ErrorAction SilentlyContinue) {
         node (Join-Path $rootDir "tools\build-public-dist.cjs") | Out-Null
+        if ($LASTEXITCODE -ne 0) { throw "Publish build failed. Your browser edits are still saved locally." }
     }
 
     # 6. Execute Git Commit & Push (if changes exist)
-    git add assets/menu-uploads data/published-overrides.js sw.js index.html dist/
-    $hasChanges = (git status --porcelain).Trim().Length -gt 0
+    git add assets/menu-uploads data/published-overrides.js sw.js index.html app.js asset-pipeline.js photo-workflow.js public-reviews.js pwa-updates.js
+    if ($LASTEXITCODE -ne 0) { throw "Could not stage the publication. Your browser edits are still saved locally." }
+    git diff --cached --quiet
+    if ($LASTEXITCODE -gt 1) { throw "Could not inspect the publication changes." }
+    $hasChanges = $LASTEXITCODE -eq 1
     if ($hasChanges) {
         $commitMsg = "feat(crm): 1-click live publish from Admin Studio (v$newVer)"
         git commit -m $commitMsg | Out-Null
+        if ($LASTEXITCODE -ne 0) { throw "Could not commit the publication. No live update was completed." }
         git push origin main | Out-Null
+        if ($LASTEXITCODE -ne 0) { throw "GitHub did not accept the publication. No live update was completed. Export a backup and retry." }
     }
 
     $commitHash = (git rev-parse --short HEAD).Trim()
@@ -121,7 +132,8 @@ try {
         commit = $commitHash
         imagesSaved = $savedImagesCount
         timestamp = $timestamp
-        message = "Published successfully to live site! All guest phones will update shortly."
+        publishedAt = $nowMs
+        message = "Saved to GitHub. Website deployment must still be verified."
     }
 
     $result | ConvertTo-Json

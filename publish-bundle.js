@@ -6,6 +6,7 @@
   // 1. Core Bundle Construction (shared by direct publish & backup export)
   async function buildBundle() {
     if (!window.admin?.isAuthenticated) throw Error('Unlock Admin Studio before publishing.');
+    await window.HotelAdminWorkspace?.saveAll?.({notify:false});
     const images = new Map();
 
     async function imagePath(source) {

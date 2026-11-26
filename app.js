@@ -604,7 +604,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.107';
+    s.src = 'admin.js?v=22.108';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1036,7 +1036,7 @@ class HotelPremierApp {
           const untrackedUpload=(key==='image'&&!editedAt&&/^(?:blob:|data:image\/)/.test(ov.image||'')) || hasVariantUploads;
           if(!untrackedUpload&&editedAt<=publishedAt) {
             copy[key]=value;
-          } else if (hasVariantUploads && Array.isArray(value)) {
+          } else if (hasVariantUploads && editedAt<=publishedAt && Array.isArray(value)) {
             // Preserve local variant photo uploads while keeping published pricing/text
             copy.variants = value.map(pubV => {
               // A menu reorder must never attach a saved upload to another dish.
@@ -1090,7 +1090,7 @@ class HotelPremierApp {
     }
 
     this.categories = window.HOTEL_PREMIER_CATEGORIES ? [...window.HOTEL_PREMIER_CATEGORIES] : [];
-    window.HotelMenuStructure?.apply(this);
+    window.HotelMenuStructure?.apply(this,overridesMap);
     // Reading is not an edit. Re-saving here duplicated large photo data in
     // localStorage and re-broadcast MENU_UPDATED on every receiving tab.
   }

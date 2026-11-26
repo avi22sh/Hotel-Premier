@@ -1,0 +1,20 @@
+{
+  "release": "22.108",
+  "date": "2026-11-26",
+  "fixes": [
+    "Committed item fields survive old layout snapshots",
+    "Newer variant text with uploaded photos survives publication merge",
+    "Atomic parent/source photo save uses storage-owned URLs",
+    "Save all flushes pending menu, room and page-text drafts; publish waits for saving",
+    "Local publisher rejects failed commits/pushes and does not claim deployment success"
+  ],
+  "verification": {
+    "regressionSuites": 82,
+    "failed": 0,
+    "browser": "Isolated public sample: edited name/description saved with Save all and restored on reload; real photo upload saved, visible after editor closed, restored on reload"
+  },
+  "ownerImages": {
+    "status": "Latest uploads are on another browser or phone; no new owner publish commit found. Export from that device or retry publishing after updating.",
+    "changedPublishedContent": false
+  }
+}

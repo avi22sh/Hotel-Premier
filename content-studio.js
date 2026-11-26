@@ -6,6 +6,12 @@
   const selector = '.editorial-title,.editorial-subtitle,.home-pillar-desc,.atmosphere-gallery-title,.atmosphere-gallery-subtitle';
   const targets = new Map();
   let draft = {version:1, text:{}, cards:[]};
+  const pendingText=new Map(),pendingCards=new Map();
+  function savePending(){
+    if(!pendingText.size&&!pendingCards.size)return;
+    const next={...draft,text:{...draft.text,...Object.fromEntries(pendingText)},cards:draft.cards.map(card=>({...card,...pendingCards.get(card.id)}))};
+    save(next);pendingText.clear();pendingCards.clear();
+  }
   const valid = value => {
     if (!value || value.version !== 1 || !value.text || typeof value.text !== 'object' || Array.isArray(value.text) || !Array.isArray(value.cards) || value.cards.length > 100) throw Error('Invalid content file.');
     for (const [key, text] of Object.entries(value.text)) {
@@ -88,10 +94,11 @@
         const field=el('label',undefined,'studio-field');
         field.append(el('span',target.original.slice(0,85)));
         const input=el('textarea'); input.rows=3; input.maxLength=3000;
-        input.value=Object.hasOwn(draft.text,key) ? draft.text[key] : target.original;
+        input.value=pendingText.get(key)??(Object.hasOwn(draft.text,key) ? draft.text[key] : target.original);
+        input.addEventListener('input',()=>{pendingText.set(key,input.value);status.textContent='Unsaved edits · choose Save all or Publish.';});
         field.append(input);
-        details.append(field,button('Save text',() => save({...draft,text:{...draft.text,[key]:input.value}})),button('Restore text',async () => {
-          const text={...draft.text}; delete text[key]; save({...draft,text}); input.value=target.original;
+        details.append(field,button('Save text',() => {save({...draft,text:{...draft.text,[key]:input.value}});pendingText.delete(key);}),button('Restore text',async () => {
+          const text={...draft.text}; delete text[key]; save({...draft,text});pendingText.delete(key); input.value=target.original;
         }));
       }
       const cards=el('div');
@@ -99,7 +106,9 @@
         const box=el('div',undefined,'studio-card');
         const title=el('input'); title.value=card.title; title.maxLength=120; title.setAttribute('aria-label','Card title');
         const body=el('textarea'); body.value=card.body; body.rows=3; body.maxLength=3000; body.setAttribute('aria-label','Card description');
-        box.append(title,body,button('Save card',() => save({...draft,cards:draft.cards.map(item => item.id===card.id ? {...item,title:title.value.trim(),body:body.value} : item)})));
+        if(pendingCards.has(card.id)){title.value=pendingCards.get(card.id).title;body.value=pendingCards.get(card.id).body;}
+        for(const input of [title,body])input.addEventListener('input',()=>{pendingCards.set(card.id,{title:title.value.trim(),body:body.value});status.textContent='Unsaved edits · choose Save all or Publish.';});
+        box.append(title,body,button('Save card',() => {save({...draft,cards:draft.cards.map(item => item.id===card.id ? {...item,title:title.value.trim(),body:body.value} : item)});pendingCards.delete(card.id);}));
         for (const [label,offset] of [['Move up',-1],['Move down',1]]) box.append(button(label,async () => {
           const next=draft.cards.slice(), peers=next.filter(item => item.section===section);
           const other=peers[peers.findIndex(item=>item.id===card.id)+offset]; if (!other) return;
@@ -133,6 +142,6 @@
     if(event.key!==KEY)return;
     try{draft=event.newValue?valid(JSON.parse(event.newValue)):valid(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.editorial||{version:1,text:{},cards:[]});apply();}catch(error){console.warn('Content update not applied:',error.message);}
   });
-  window.HotelContentStudio={render,validate:valid,snapshot:()=>JSON.parse(JSON.stringify(draft))};
+  window.HotelContentStudio={render,validate:valid,savePending,snapshot:()=>JSON.parse(JSON.stringify(draft))};
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();

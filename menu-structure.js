@@ -33,9 +33,19 @@
     return clone(value);
   }
   try { const saved=localStorage.getItem(KEY); if(saved) draft=validate(JSON.parse(saved)); } catch(error){console.warn('Menu layout not loaded:',error.message);}
-  function apply(app) {
+  function apply(app,overrides={}) {
     try { const saved=localStorage.getItem(KEY);if(saved)draft=validate(JSON.parse(saved)); } catch(error){console.warn('Menu layout refresh failed:',error.message);}
+    const current=new Map(app.menuData.map(d=>[d.id,d]));
     applyLayout(app,draft);
+    // A layout snapshot is not a newer edit of an item's photo, text or price.
+    // Keep committed record fields after applying section order and membership.
+    const publishedAt=Number(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.publishedAt)||0;
+    for(const dish of app.menuData){const before=current.get(dish.id),saved=overrides[dish.id];if(!before||!saved)continue;
+      for(const key of ['name','description','hindiName','marathiName','descriptionHi','descriptionMr','price','image','variants','tags','isSoldOut','notAvailable','categoryId']){
+        const time=Number(saved.fieldUpdatedAt?.[key]??saved.updatedAt)||0;
+        if(saved[key]!==undefined&&before[key]!==undefined&&(time>publishedAt||JSON.stringify(saved[key]).includes('blob:')||JSON.stringify(saved[key]).includes('data:image/')))dish[key]=before[key];
+      }
+    }
   }
   function applyPublished(app) {
     const layout=window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.layout;
