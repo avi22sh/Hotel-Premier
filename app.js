@@ -605,7 +605,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.118';
+    s.src = 'admin.js?v=22.119';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();

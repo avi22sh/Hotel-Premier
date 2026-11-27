@@ -42,7 +42,7 @@
   if(savingAll)return savingAll;
   savingAll=(async()=>{
    if(!allowed())throw Error('Unlock Admin to save.');
-   if(window.admin.photoUploadPending||window.admin.savingDishPhoto)throw Error('Wait for the selected photo to finish processing, then save again.');
+   if(window.admin.photoUploadPending||window.admin.savingDishPhoto||window.admin.savingRoomPhoto)throw Error('Wait for the selected photo to finish processing or saving, then save again.');
    // Snapshot all changed editors, including drafts retained while switching items/tabs.
    for(const [key,values]of [...menuDrafts])await saveMenuDraft(key,values);
    for(const [id,values]of [...roomDrafts])await saveRoomDraft(id,values);

@@ -1353,15 +1353,17 @@ class HotelPremierAdmin {
 
   openReplaceRoomPhotoModal(roomId, index) {
     if(!this.isAuthenticated)return;
-    this.activeRoomId = roomId;
-    this.activeRoomPhotoIndex = index;
     const rooms = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories) ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories : [];
     const room = rooms.find(r => r.id === roomId);
     if (!room) return;
 
     const currentImg = (window.app && window.app.roomGalleries && window.app.roomGalleries[roomId]) 
       ? window.app.roomGalleries[roomId][index] 
-      : room.image;
+      : room.images?.[index] || (index===0?room.image:null);
+    if(!Number.isInteger(index)||index<0||typeof currentImg!=='string'||!currentImg){window.app.showToast('Reopen this room gallery before replacing the photo.','info');return;}
+    this.closeImageModal();
+    this.activeRoomId = roomId;
+    this.activeRoomPhotoIndex = index;
 
     this.tempImageSource = currentImg;
     const titleEl = document.getElementById('image-modal-dish-name');
@@ -1413,37 +1415,41 @@ class HotelPremierAdmin {
   }
 
   async saveReplacedRoomPhoto() {
-    if(!this.isAuthenticated||this.photoUploadPending){window.app.showToast('Wait for the photo preview to finish, then save.','info');return;}
-    if (!this.activeRoomId || this.activeRoomPhotoIndex === null || !this.tempImageSource) return;
+    return this.saveRoomPhoto(false);
+  }
 
-    const roomId = this.activeRoomId;
-    const index = this.activeRoomPhotoIndex;
-
-    const rooms = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories) ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories : [];
-    const room = rooms.find(r => r.id === roomId);
-    const defaultImgs = (room && room.images) ? room.images : [];
-
-    let currentGallery = defaultImgs;
-    if (window.HOTEL_STORAGE) {
-      currentGallery = await window.HOTEL_STORAGE.getRoomGallery(roomId, defaultImgs);
-    }
-
-    const updatedGallery = [...currentGallery];
-    updatedGallery[index] = this.tempImageSource;
-
-    if (window.HOTEL_STORAGE) {
-      await window.HOTEL_STORAGE.saveRoomGallery(roomId, updatedGallery);
-    }
-
-    if (window.app && typeof window.app.renderRoomCarousels === 'function') {
-      await window.app.renderRoomCarousels();
-    }
-
-    this.closeImageModal();
-    if (this.currentTab === 'rooms') {
-      this.renderRoomsManager(document.getElementById('admin-tab-content'));
-    }
-    window.app.showToast('Room photo updated successfully!', 'success');
+  async saveRoomPhoto(adding) {
+    if(!this.isAuthenticated)return false;
+    if(this.photoUploadPending||this.savingRoomPhoto){window.app.showToast('Wait for the room photo to finish processing or saving.','info');return false;}
+    const roomId=this.activeRoomId,index=this.activeRoomPhotoIndex,image=this.tempImageSource;
+    if(!roomId||!image||(!adding&&!Number.isInteger(index))){window.app.showToast('Choose a room photo first.','info');return false;}
+    const session=this.adminSessionGeneration||0,view=this.adminViewGeneration||0,request=this.previewRequestId||0;
+    const current=()=>this.isAuthenticated&&this.activeRoomId===roomId&&this.activeRoomPhotoIndex===index&&this.tempImageSource===image&&session===(this.adminSessionGeneration||0)&&view===(this.adminViewGeneration||0)&&request===(this.previewRequestId||0);
+    this.savingRoomPhoto=true;
+    let committed=false;
+    try {
+      const room=window.HOTEL_PREMIER_HOTEL_DATA?.roomCategories?.find(r=>r.id===roomId);
+      if(!window.HOTEL_STORAGE?.saveRoomGallery)throw Error('Photo storage is unavailable. Reload and retry.');
+      const gallery=await window.HOTEL_STORAGE.getRoomGallery(roomId,room?.images||[]);
+      if(!current())return false;
+      if(!adding&&(index<0||index>=gallery.length))throw Error('The room gallery changed. Reopen the photo before replacing it.');
+      const updated=[...gallery];if(adding)updated.push(image);else updated[index]=image;
+      await window.HOTEL_STORAGE.saveRoomGallery(roomId,updated);
+      committed=true;
+      await window.app.renderRoomCarousels?.();
+      if(current()){
+        this.closeImageModal();
+        if(this.currentTab==='rooms')await this.renderRoomsManager(document.getElementById('admin-tab-content'));
+        window.app.showToast(adding?'Room photo added and saved.':'Room photo replaced and saved.','success');
+      }
+      return true;
+    }catch(error){
+      if(current()){
+        if(committed){this.closeImageModal();window.app.showToast('Room photo saved. Reopen Rooms to refresh the preview.','info');}
+        else window.app.showToast('Room photo not saved: '+error.message,'error');
+      }
+      return committed;
+    }finally{this.savingRoomPhoto=false;}
   }
 
   async setRoomCoverPhoto(roomId, index) {
@@ -1505,11 +1511,12 @@ class HotelPremierAdmin {
 
   openAddRoomPhotoModal(roomId) {
     if(!this.isAuthenticated)return;
-    this.activeRoomId = roomId;
-    this.activeRoomPhotoIndex = null;
     const rooms = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories) ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories : [];
     const room = rooms.find(r => r.id === roomId);
     if (!room) return;
+    this.closeImageModal();
+    this.activeRoomId = roomId;
+    this.activeRoomPhotoIndex = null;
 
     this.tempImageSource = '';
     const titleEl = document.getElementById('image-modal-dish-name');
@@ -1561,58 +1568,28 @@ class HotelPremierAdmin {
   }
 
   async handleRoomImageUpload(input) {
-    const file = input.files[0];
-    if (!file) return;
+    const file = input?.files?.[0];
+    if (!file||!this.isAuthenticated||!this.activeRoomId) return;
+    const roomId=this.activeRoomId,request=this.previewRequestId||0,session=this.adminSessionGeneration||0;
+    const current=()=>this.isAuthenticated&&this.activeRoomId===roomId&&request===(this.previewRequestId||0)&&session===(this.adminSessionGeneration||0);
 
     try {
       window.app.showToast('Optimizing room photo...', 'info');
       const compressed = await this.compressAndResizeImage(file);
+      if(!current()){window.HotelPhotoWorkflow?.release(compressed);return;}
       this.tempImageSource = compressed;
       const preview = document.getElementById('image-preview-element');
       const urlInput = document.getElementById('image-url-input-field');
       if (preview) preview.src = this.tempImageSource;
       if (urlInput) urlInput.value = '(Uploaded Local Photo - Ready to Save)';
-      window.app.showToast('Photo ready! Click "Add Photo to Room".', 'success');
+      window.app.showToast('Photo ready. Save it when you are ready.', 'success');
     } catch (err) {
-      if(err.name!=='AbortError')window.app.showToast('Failed to process room photo: ' + err.message);
+      if(err.name!=='AbortError'&&current())window.app.showToast('Failed to process room photo: ' + err.message);
     }
   }
 
   async saveNewRoomPhoto() {
-    if(!this.isAuthenticated||this.photoUploadPending){window.app.showToast('Wait for the photo preview to finish, then save.','info');return;}
-    if (!this.activeRoomId || !this.tempImageSource) {
-      window.app.showToast('Please choose or upload a photo first.');
-      return;
-    }
-    const roomId=this.activeRoomId,image=this.tempImageSource,session=this.adminSessionGeneration||0,view=this.adminViewGeneration||0,request=this.previewRequestId||0;
-    const current=()=>this.isAuthenticated&&this.activeRoomId===roomId&&session===(this.adminSessionGeneration||0)&&view===(this.adminViewGeneration||0)&&request===(this.previewRequestId||0);
-
-    const rooms = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories) ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories : [];
-    const room = rooms.find(r => r.id === roomId);
-    const defaultImgs = (room && room.images) ? room.images : [];
-
-    let currentGallery = defaultImgs;
-    if (window.HOTEL_STORAGE) {
-      currentGallery = await window.HOTEL_STORAGE.getRoomGallery(roomId, defaultImgs);
-    }
-
-    if(!current())return;
-    const updatedGallery = [...currentGallery, image];
-
-    if (window.HOTEL_STORAGE) {
-      await window.HOTEL_STORAGE.saveRoomGallery(roomId, updatedGallery);
-    }
-
-    if (window.app && typeof window.app.renderRoomCarousels === 'function') {
-      await window.app.renderRoomCarousels();
-    }
-
-    if(!current())return;
-    this.closeImageModal();
-    if (this.currentTab === 'rooms') {
-      this.renderRoomsManager(document.getElementById('admin-tab-content'));
-    }
-    window.app.showToast('Photo added to Room slideshow successfully!', 'success');
+    return this.saveRoomPhoto(true);
   }
 
   async removeRoomPhoto(roomId, index) {
