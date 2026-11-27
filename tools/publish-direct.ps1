@@ -13,6 +13,9 @@ $ErrorActionPreference = "Stop"
 try {
     $rootDir = (Get-Item $PSScriptRoot).Parent.FullName
     Set-Location $rootDir
+    $pendingTracked = git status --porcelain --untracked-files=no
+    if ($LASTEXITCODE -ne 0) { throw "The publishing repository could not be opened." }
+    if ($pendingTracked) { throw "Developer changes are being prepared on this PC. Your browser edits are safe. Finish that update before publishing again." }
 
     # 1. Parse JSON payload
     if ($InputFile -and (Test-Path $InputFile)) {

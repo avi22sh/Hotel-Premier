@@ -41,7 +41,7 @@
     // Keep committed record fields after applying section order and membership.
     const publishedAt=Number(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.publishedAt)||0;
     for(const dish of app.menuData){const before=current.get(dish.id),saved=overrides[dish.id];if(!before||!saved)continue;
-      for(const key of ['name','description','hindiName','marathiName','descriptionHi','descriptionMr','price','image','variants','tags','isSoldOut','notAvailable','categoryId']){
+      for(const key of ['name','description','hindiName','marathiName','descriptionHi','descriptionMr','price','image','variants','tags','isSoldOut','notAvailable','categoryId','portionOptions']){
         const time=Number(saved.fieldUpdatedAt?.[key]??saved.updatedAt)||0;
         if(saved[key]!==undefined&&before[key]!==undefined&&(time>publishedAt||JSON.stringify(saved[key]).includes('blob:')||JSON.stringify(saved[key]).includes('data:image/')))dish[key]=before[key];
       }

@@ -12,8 +12,9 @@
   const patch={};for(const key of textFields)patch[key]=String(values[key]??'').trim();
   patch.price=values.price===''?null:Number(values.price);
   if(values.categoryId)patch.categoryId=values.categoryId;
-  const choices=['new-arrival','bestseller','chef-special'];
+  const choices=['new-arrival','bestseller','chef-special','sweet'];
   patch.tags=[...(entry.value.tags||entry.child?.tags||[]).filter(tag=>!choices.includes(tag)),...choices.filter(tag=>values['tag-'+tag])];
+  if(entry.value.portionOptions?.length)patch.portionOptions=entry.value.portionOptions.map((option,i)=>{const name=String(values['portion-name-'+i]??option.name).trim(),value=values['portion-price-'+i],price=value===undefined?option.price:value===''?null:Number(value);if(!name||price!==null&&(!Number.isFinite(price)||price<0))throw Error('Enter a valid serving name and price.');return {...option,name,price};});
   patch.isSoldOut=values.visibility==='soldout';patch[entry.index===null?'notAvailable':'hidden']=values.visibility==='hidden';return patch;
  }
  async function saveMenuDraft(key,values){
@@ -148,12 +149,13 @@
    const value={...Object.fromEntries(textFields.map(k=>[k,entry.value[k]||''])),price:entry.value.price??null,image:''};await saveEntry(entry,value);entry.value.image='';refreshPhotos();
   }));detail.append(actions,form);
   field(form,'Item name','name',entry.value.name);field(form,'Price · ₹ (blank = on request)','price',entry.value.price,'number');field(form,'Description','description',entry.value.description,'textarea');
+  if(entry.value.portionOptions?.length){const sizes=node('details',undefined,'workspace-serving-sizes');sizes.append(node('summary','Serving sizes & prices'));for(const [i,option]of entry.value.portionOptions.entries()){field(sizes,'Serving '+(i+1),'portion-name-'+i,option.name);field(sizes,'Price · ₹ (blank = on request)','portion-price-'+i,option.price,'number');}form.append(sizes);}
   let section;if(entry.index===null&&!entry.dish.groupedUnder){section=field(form,'Menu section','categoryId','','select');for(const c of window.app.categories){const o=node('option',c.name);o.value=c.id;section.append(o);}section.value=entry.dish.categoryId;}
   const translations=node('details');translations.append(node('summary','Hindi & Marathi'));
   for(const [key,label]of [['hindiName','Name · Hindi'],['descriptionHi','Description · Hindi'],['marathiName','Name · Marathi'],['descriptionMr','Description · Marathi']])field(translations,label,key,entry.value[key],key.startsWith('description')?'textarea':'text');form.append(translations);
   const visibility=field(form,'Guest visibility','visibility','','select');for(const [value,label]of [['visible','Visible'],['soldout','Sold out'],['hidden','Hidden']]){const o=node('option',label);o.value=value;visibility.append(o);}visibility.value=entry.unlisted||entry.value.hidden||entry.dish.notAvailable?'hidden':entry.value.isSoldOut||entry.dish.isSoldOut?'soldout':'visible';
   if(entry.unlisted)form.append(node('p','This source item is not listed in its parent options. Choose Visible and save to restore it.'));
-  const tagChoices=[['new-arrival','Fresh to the Menu'],['bestseller','Bestseller'],['chef-special','Chef special']];const labels=node('fieldset',undefined,'workspace-labels');labels.append(node('legend','Menu labels'));for(const [tag,title]of tagChoices){const label=node('label',title),input=node('input');input.type='checkbox';input.name='tag-'+tag;input.checked=(entry.value.tags||entry.child?.tags||[]).includes(tag);label.prepend(input);labels.append(label);}form.append(labels);
+  const tagChoices=[['new-arrival','Fresh to the Menu'],['bestseller','Bestseller'],['chef-special','Chef special'],['sweet','Sweet']];const labels=node('fieldset',undefined,'workspace-labels');labels.append(node('legend','Menu labels'));for(const [tag,title]of tagChoices){const label=node('label',title),input=node('input');input.type='checkbox';input.name='tag-'+tag;input.checked=(entry.value.tags||entry.child?.tags||[]).includes(tag);label.prepend(input);labels.append(label);}form.append(labels);
   const message=node('p','Save on this device, then Publish to update all guests.','workspace-save-status');message.setAttribute('role','status');
   const save=node('button','Save changes','btn-primary');save.type='submit';form.append(save,message);
   for(const input of form.elements)if(menuDrafts.get(entry.key)?.[input.name]!==undefined){if(input.type==='checkbox')input.checked=menuDrafts.get(entry.key)[input.name];else input.value=menuDrafts.get(entry.key)[input.name];}

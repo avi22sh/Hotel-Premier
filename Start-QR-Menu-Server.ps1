@@ -1,26 +1,20 @@
 # ==============================================================================
 # HOTEL PREMIER - LOCAL OFFLINE QR MENU SERVER
-# Runs a zero-dependency local web server with LAN access & PWA support
+# Runs a zero-dependency, loopback-only PWA preview and publishing service
 # ==============================================================================
 
+param([switch]$NoBrowser)
 $port = 8080
 $rootDir = $PSScriptRoot
-
-# Detect Local LAN IPv4 for phone access over restaurant Wi-Fi
-$lanIp = (Get-NetIPAddress -AddressFamily IPv4 -ErrorAction SilentlyContinue | 
-          Where-Object { $_.InterfaceAlias -notmatch 'Loopback' -and $_.IPAddress -notmatch '^169\.254\.' } | 
-          Select-Object -ExpandProperty IPAddress -First 1)
 
 Write-Host "=================================================================" -ForegroundColor Cyan
 Write-Host "🏨 HOTEL PREMIER - PRIDE PURE VEG AC RESTAURANT & STAYS" -ForegroundColor Yellow
 Write-Host "   Digital QR Menu & Live CMS Server" -ForegroundColor Gray
 Write-Host "=================================================================" -ForegroundColor Cyan
-Write-Host "Serving Folder: $rootDir" -ForegroundColor Gray
+Write-Host "Serving Folder: $(Join-Path $rootDir 'dist')" -ForegroundColor Gray
 Write-Host "Local URL:      http://localhost:$port" -ForegroundColor Green
-if ($lanIp) {
-    Write-Host "Wi-Fi / LAN:    http://$($lanIp):$port  (Scan / open on mobile devices)" -ForegroundColor Cyan
-}
-Write-Host "Admin Studio:   http://localhost:$port/#admin  (PIN: admin123)" -ForegroundColor Yellow
+Write-Host "Available on this PC only; hotel networking is unchanged." -ForegroundColor Gray
+Write-Host "Admin Studio:   http://localhost:$port/#admin  (use your device's local PIN)" -ForegroundColor Yellow
 Write-Host "=================================================================" -ForegroundColor Cyan
 Write-Host "Press Ctrl+C to stop the server at any time.`n" -ForegroundColor Gray
 
@@ -33,10 +27,12 @@ using System.Threading;
 public class HotelPremierServer {
     private HttpListener listener;
     private string rootDir;
+    private string publicDir;
     private bool running = false;
 
     public HotelPremierServer(string root, int port) {
         rootDir = root;
+        publicDir = Path.Combine(root, "dist");
         listener = new HttpListener();
         listener.Prefixes.Add("http://127.0.0.1:" + port + "/");
         listener.Prefixes.Add("http://localhost:" + port + "/");
@@ -87,7 +83,7 @@ public class HotelPremierServer {
                 if (context.Request.HttpMethod == "POST") {
                     try {
                         string body;
-                        using (var reader = new StreamReader(context.Request.InputStream, context.Request.ContentEncoding)) {
+                        using (var reader = new StreamReader(context.Request.InputStream, System.Text.Encoding.UTF8, true)) {
                             body = reader.ReadToEnd();
                         }
 
@@ -141,7 +137,11 @@ public class HotelPremierServer {
             }
 
             if (rawPath == "/" || string.IsNullOrEmpty(rawPath)) rawPath = "/index.html";
-            string filePath = Path.Combine(rootDir, rawPath.TrimStart('/').Replace('/', '\\'));
+            string filePath = Path.GetFullPath(Path.Combine(publicDir, Uri.UnescapeDataString(rawPath).TrimStart('/').Replace('/', '\\')));
+            if (!filePath.StartsWith(Path.GetFullPath(publicDir) + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)) {
+                context.Response.StatusCode = 403;
+                return;
+            }
 
             if (File.Exists(filePath)) {
                 string ext = Path.GetExtension(filePath).ToLower();
@@ -184,7 +184,7 @@ public class HotelPremierServer {
 "@
 
 # Launch browser after a short delay
-Start-Process "http://localhost:$port"
+if (-not $NoBrowser) { Start-Process "http://localhost:$port" }
 
 $server = New-Object HotelPremierServer($rootDir, $port)
 $server.Start()

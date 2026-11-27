@@ -438,9 +438,10 @@ class HotelPremierApp {
     if (!dish) return;
     const modalVariant = this.currentDetailDishId===dish.id && Number.isInteger(this.currentDetailVariantIndex) ? dish.variants?.[this.currentDetailVariantIndex] : null;
     const activeVariant = modalVariant && !modalVariant.hidden ? modalVariant : dish.variants?.find(v => !v.hidden && v.name === dish._activeVariantName);
-    const currentPrice = activeVariant ? activeVariant.price : (dish._activeVariantPrice ?? dish.price);
+    const portion=this.getSelectedDishPortion?.(dish,activeVariant);
+    const currentPrice = portion ? portion.price : activeVariant ? activeVariant.price : (dish._activeVariantPrice ?? dish.price);
     const priceText = Number.isFinite(currentPrice) ? `₹${currentPrice}` : '';
-    const variantName = activeVariant ? ` - ${activeVariant.name}` : '';
+    const variantName = (activeVariant ? ` - ${activeVariant.name}` : '')+(portion?` · ${portion.name}`:'');
     const desc = (activeVariant && this.getVariantDescription?.(activeVariant)) || this.getDishDescription(dish) || '';
     const shareLink = new URL(window.location.pathname, window.location.origin);
     shareLink.searchParams.set('dish',dish.id);
@@ -604,7 +605,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.113';
+    s.src = 'admin.js?v=22.114';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1026,7 +1027,7 @@ class HotelPremierApp {
         if (ov.notAvailable !== undefined) copy.notAvailable = Boolean(ov.notAvailable);
         if (ov.tags !== undefined) copy.tags = ov.tags;
         if (ov.variants !== undefined) copy.variants = ov.variants;
-        for (const key of ['name','hindiName','marathiName','description','descriptionHi','descriptionMr','categoryId','groupedUnder','isGroupMaster']) if(ov[key]!==undefined)copy[key]=ov[key];
+        for (const key of ['name','hindiName','marathiName','description','descriptionHi','descriptionMr','categoryId','groupedUnder','isGroupMaster','portionOptions']) if(ov[key]!==undefined)copy[key]=ov[key];
         // A newer reviewed release wins over an older local field, without deleting the draft.
         const publishedAt=Number(window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.publishedAt)||0;
         if(published&&publishedAt>0)for(const [key,value]of Object.entries(published)){
@@ -1111,7 +1112,8 @@ class HotelPremierApp {
           isSoldOut: dish.isSoldOut,
           notAvailable: Boolean(dish.notAvailable),
           tags: dish.tags,
-          variants: dish.variants
+          variants: dish.variants,
+          portionOptions:dish.portionOptions
         };
         overridesMap[dish.id] = { ...(overridesMap[dish.id] || {}), ...(window.HotelPhotoStorage ? window.HotelPhotoStorage.compact(fields) : fields) };
       });
@@ -2633,6 +2635,30 @@ class HotelPremierApp {
   }
 
   // Dish Details Modal
+  getDishPortions(dish,variant=null) {
+    const child=variant&&(this.menuData||[]).find(item=>item.groupedUnder===dish.id&&(variant.id?item.id===variant.id:item.name===variant.name));
+    return (variant?.portionOptions||child?.portionOptions||(!variant?dish.portionOptions:null)||[]).filter(p=>p&&typeof p.name==='string'&&(p.price===null||Number.isFinite(p.price)&&p.price>=0));
+  }
+
+  getSelectedDishPortion(dish,variant=null) {
+    const options=this.getDishPortions(dish,variant),key=dish.id+'::'+(variant?.id||variant?.name||'');
+    return options[this.detailPortionSelections?.get(key)??Math.max(0,options.findIndex(p=>p.isDefault))]||null;
+  }
+
+  renderDishPortions(dish,variant=null) {
+    const body=document.getElementById('dish-detail-body');if(!body?.querySelectorAll||!document.createElement)return;
+    body.querySelectorAll('.dish-portions,.detail-sweet-note,.badge-tag.sweet').forEach(node=>node.remove());
+    const child=variant&&(this.menuData||[]).find(item=>item.groupedUnder===dish.id&&(variant.id?item.id===variant.id:item.name===variant.name));
+    const tags=new Set([...(variant?child?.tags||[]:dish.tags||[]),...(variant?.tags||[])]);
+    if(tags.has('sweet')){const badge=document.createElement('span');badge.className='badge-tag sweet detail-sweet-note';badge.textContent=this.t('badgeSweet');body.querySelector('.modal-dish-title')?.after(badge);}
+    const options=this.getDishPortions(dish,variant);if(!options.length)return;
+    this.detailPortionSelections ||= new Map();const key=dish.id+'::'+(variant?.id||variant?.name||''),selected=Math.min(this.detailPortionSelections.get(key)??Math.max(0,options.findIndex(p=>p.isDefault)),options.length-1);
+    const fieldset=document.createElement('fieldset'),legend=document.createElement('legend'),group=document.createElement('div');fieldset.className='dish-portions';legend.textContent=window.HotelGuestLanguage?.text?.('Serving size',this.currentLang)||'Serving size';group.className='dish-portion-options';group.setAttribute('role','group');group.setAttribute('aria-label',legend.textContent);
+    for(const [index,option]of options.entries()){const b=document.createElement('button'),name=document.createElement('span'),price=document.createElement('span');b.type='button';b.className='dish-portion-button';b.setAttribute('aria-pressed',String(index===selected));name.textContent=(this.currentLang==='hi'?option.hindiName:this.currentLang==='mr'?option.marathiName:option.name)||option.name;price.textContent=Number.isFinite(option.price)?`₹${option.price}`:'Price on request';b.append(name,price);b.addEventListener('click',()=>{this.detailPortionSelections.set(key,index);this.renderDishPortions(dish,variant);body.querySelector('.dish-portion-button[aria-pressed="true"]')?.focus({preventScroll:true});});group.append(b);}
+    fieldset.append(legend,group);const anchor=body.querySelector('.modal-dish-variants-box')||body.querySelector('.modal-dish-header');anchor?.after(fieldset);
+    const price=document.getElementById(`modal-dish-price-${dish.id}`);if(price)price.textContent=Number.isFinite(options[selected].price)?`₹${options[selected].price}`:'Price on request';
+  }
+
   newArrivalLabel(dish, variant = null) {
     const children=(this.menuData||[]).filter(item=>item.groupedUnder===dish.id);
     const fresh=dish.tags?.includes('new-arrival') || variant?.tags?.includes('new-arrival') || children.some(item=>item.tags?.includes('new-arrival')&&(!variant||item.id===variant.id||item.name===variant.name));
@@ -2894,6 +2920,7 @@ class HotelPremierApp {
     orderActions.appendChild(swiggyBtn);
     orderActions.appendChild(zomatoBtn);
     body.appendChild(orderActions);
+    this.renderDishPortions(dish,activeVariant);
     const detailContainer = body.querySelector('.modal-dish-detail-container');
     if (detailContainer) detailContainer.scrollTop = 0;
     this.syncDetailFavorite();
@@ -2988,6 +3015,7 @@ class HotelPremierApp {
     else if (this.currentLang === 'mr' && descMr) activeDesc = descMr;
     const descEl = document.querySelector('.modal-dish-desc');
     if (descEl) descEl.textContent = activeDesc || (dishObj ? this.getDishDescription(dishObj) : '');
+    if(dishObj)this.renderDishPortions(dishObj,dishObj.variants?.[this.currentDetailVariantIndex]);
 
     // 5. Update delivery buttons aria labels
     const swiggyBtn = document.querySelector('.modal-btn-swiggy-order');

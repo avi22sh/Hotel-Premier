@@ -1,8 +1,16 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
-const source=fs.readFileSync('publish-bundle.js','utf8').replace('window.HotelPublishBundle = Object.freeze','window.testPublisher={publishViaGitHubApi,verifyLivePublication};window.HotelPublishBundle = Object.freeze');
+const source=fs.readFileSync('publish-bundle.js','utf8').replace('window.HotelPublishBundle = Object.freeze','window.testPublisher={publishViaGitHubApi,verifyLivePublication,tryLocalPublish};window.HotelPublishBundle = Object.freeze');
 const ok=data=>({ok:true,status:200,json:async()=>data});
-function setup(fetch){const element={classList:{add(){}},style:{}};const c={console,AbortSignal,setTimeout:fn=>fn(),fetch,document:{getElementById:()=>element,querySelector:()=>element},window:{}};vm.runInNewContext(source,c);return c.window.testPublisher;}
+function setup(fetch){const element={classList:{add(){}},style:{}};const c={console,AbortSignal,AbortController,clearTimeout,setTimeout:fn=>fn(),fetch,document:{getElementById:()=>element,querySelector:()=>element},window:{}};vm.runInNewContext(source,c);return c.window.testPublisher;}
 (async()=>{
+ const probes=[];
+ const local=setup(async(url,options={})=>{probes.push([url,options.method||'GET']);return url==='static'?{ok:true,json:async()=>({})}:ok(options.method==='POST'?{success:true,commit:'local'}:{status:'ready'});});
+ assert.equal((await local.tryLocalPublish({overrides:{}},['static','helper'])).commit,'local');
+ assert.deepEqual(probes,[['static','GET'],['helper','GET'],['helper','POST']],'Only a ready publisher receives the saved bundle');
+ const failedCalls=[];
+ const failedLocal=setup(async(url,options={})=>{failedCalls.push(url);return options.method==='POST'?{ok:false,json:async()=>({error:'GitHub did not accept the publication'})}:ok({status:'ready'});});
+ await assert.rejects(failedLocal.tryLocalPublish({},['first','second']),/GitHub did not accept/);
+ assert.ok(!failedCalls.includes('second'),'Do not repeat an uncertain publication through another endpoint');
  const calls=[];let conflict=false;
  const api=setup(async(url,options={})=>{
   const body=options.body?JSON.parse(options.body):null;calls.push({url,method:options.method||'GET',body});

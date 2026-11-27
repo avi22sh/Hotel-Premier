@@ -8,8 +8,9 @@
     if (!window.admin?.isAuthenticated) throw Error('Unlock Admin Studio before publishing.');
     await window.HotelAdminWorkspace?.saveAll?.({notify:false});
     const images = new Map();
+    const imageTasks = new Map();
 
-    async function imagePath(source) {
+    async function convertImage(source) {
       if (typeof source !== 'string' || !/^(?:blob:|data:image\/)/.test(source)) return source;
       const response = await fetch(source);
       if (!response.ok) throw Error('A local photo is unavailable. Select it again before publishing.');
@@ -32,6 +33,11 @@
         images.set(path, { path, sha256: digest, mime: blob.type, base64: data.slice(data.indexOf(',') + 1) });
       }
       return path;
+    }
+    function imagePath(source) {
+      if(typeof source!=='string'||!/^(?:blob:|data:image\/)/.test(source))return source;
+      if(!imageTasks.has(source))imageTasks.set(source,convertImage(source));
+      return imageTasks.get(source);
     }
 
     async function publicData(value, key = '') {
@@ -57,7 +63,9 @@
         if(child&&child.image!==undefined&&!/^(blob:|data:image\/)/.test(variant.image||''))return {...variant,image:child.image};
         return variant;
       });
-      dishes[dish.id] = await publicData(variants?{...dish,variants}:dish);
+      const publicDish=variants?{...dish,variants}:dish;
+      if(dish.groupedUnder){const {variants:unusedSourceOptions,...source}=publicDish;dishes[dish.id]=await publicData(source);}
+      else dishes[dish.id] = await publicData(publicDish);
     }
 
     const roomGalleries = {};
@@ -167,6 +175,7 @@
               </p>
             </div>
             <div id="direct-pub-actions" style="margin-top:18px; display:none;">
+              <button type="button" class="btn-secondary" onclick="window.HotelDirectPublisher.export().catch(error=>window.app.showToast(error.message,'error'))">Download publish file</button>
               <button type="button" class="btn-primary" onclick="window.HotelDirectPublisher.closeModal()">Done</button>
             </div>
           </div>
@@ -213,9 +222,11 @@
     // Stage blobs without changing the live branch. Photos and content land together.
     const api = `https://api.github.com/repos/${repoOwner}/${repoName}`;
     async function github(path, body) {
-      const response = await fetch(api + path, { headers, ...(body ? { method:'POST', body:JSON.stringify(body) } : {}), signal:AbortSignal.timeout(30000) });
+      let response;
+      try{response=await fetch(api + path, { headers, ...(body ? { method:'POST', body:JSON.stringify(body) } : {}), signal:AbortSignal.timeout(30000) });}
+      catch(error){throw Error('Could not connect to GitHub. Check your internet connection and browser network access, then retry. Your edits remain on this device; you can also download the publish file below.');}
       const data = await response.json().catch(() => ({}));
-      if (!response.ok) throw Error(`GitHub could not save this release (HTTP ${response.status}): ${data.message || 'Please try again.'}`);
+      if (!response.ok) {const hint=response.status===401?' Your GitHub connection needs to be renewed.':response.status===403?' Check that the publishing connection can write to this repository.':'';throw Error(`GitHub could not save this release (HTTP ${response.status}): ${data.message || 'Please try again.'}${hint} Your edits remain saved on this device.`);}
       return data;
     }
     const head = await github(`/git/ref/heads/${branch}`);
@@ -312,6 +323,19 @@
     }
   }
 
+  async function tryLocalPublish(bundle,endpoints){
+    for(const endpoint of endpoints){
+      let ready;try{const check=await fetch(endpoint,{cache:'no-store',signal:AbortSignal.timeout(3000)});ready=check.ok&&(await check.json()).status==='ready';}catch(_){continue;}if(!ready)continue;
+      setPublishStage('🔄','Publishing from this PC','Saving your edits and photos to GitHub…',40);
+      const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),65000);let response;
+      try{response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(bundle),signal:controller.signal});}
+      catch(_){throw Error('The local publishing connection was interrupted. Your edits remain saved. Check whether the website updated before retrying, or download the publish file.');}
+      finally{clearTimeout(timer);}
+      const result=await response.json().catch(()=>({}));if(!response.ok||!result.success)throw Error(result.error||'The local publisher could not save this update. Your browser edits remain safe.');return result;
+    }
+    return null;
+  }
+
   // 5. Direct Live Publishing Orchestrator
   let pendingBundle = null;
   let publishing = false;
@@ -332,40 +356,10 @@
       // Channel A: Try Local Dev Server First
       const isLocalHost = ['localhost', '127.0.0.1'].includes(window.location.hostname) || window.location.port === '8080';
       const localEndpoints = isLocalHost
-        ? ['/api/publish-direct', 'http://localhost:8080/api/publish-direct']
-        : ['http://localhost:8080/api/publish-direct'];
-
-      let localPublished = false;
-      let result = null;
-
-      for (const endpoint of localEndpoints) {
-        try {
-          setPublishStage('🔄', 'Contacting Local Server', 'Connecting to zero-click publishing service on localhost:8080...', 35);
-          const controller = new AbortController();
-          const timer = setTimeout(() => controller.abort(), 65000); // allow git commit/push to finish
-
-          const res = await fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(bundle),
-            signal: controller.signal
-          });
-          clearTimeout(timer);
-
-          if (res.ok) {
-            result = await res.json();
-            if (result.success) {
-              localPublished = true;
-              break;
-            } else {
-              throw Error(result.error || 'Server reported publish failure.');
-            }
-          }
-        } catch (fetchErr) {
-          // If aborted or failed, try next or fallback
-          console.warn('Local endpoint attempt failed:', endpoint, fetchErr.message);
-        }
-      }
+        ? ['/api/publish-direct','http://127.0.0.1:8080/api/publish-direct','http://localhost:8080/api/publish-direct']
+        : ['http://127.0.0.1:8080/api/publish-direct','http://localhost:8080/api/publish-direct'];
+      let result=await tryLocalPublish(bundle,localEndpoints);
+      const localPublished=Boolean(result);
 
       // Channel B: Fallback to GitHub REST API if not on local server
       if (!localPublished) {

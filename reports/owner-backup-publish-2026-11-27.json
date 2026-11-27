@@ -1,0 +1,104 @@
+{
+  "release": "22.114",
+  "source": "Hotel_Premier_Full_Backup_2026-11-27.json",
+  "sourceExportedAt": "2026-11-27T09:44:08.210Z",
+  "appliedOwnerFields": 409,
+  "newPhotos": [
+    {
+      "file": "assets/menu-uploads/published-098f8d0ad8b1f0e6bc1cc6fa.webp",
+      "bytes": 301304
+    },
+    {
+      "file": "assets/menu-uploads/published-cac49f62160847afbb805ccd.webp",
+      "bytes": 149100
+    },
+    {
+      "file": "assets/menu-uploads/published-ecadbe4318c487e285af072c.webp",
+      "bytes": 169964
+    },
+    {
+      "file": "assets/menu-uploads/published-85a908624ec50803f94f329a.webp",
+      "bytes": 210322
+    },
+    {
+      "file": "assets/menu-uploads/published-4fce3a7b65195270e26462d8.webp",
+      "bytes": 174462
+    },
+    {
+      "file": "assets/menu-uploads/published-0ba35470d53c361b65d1cb79.webp",
+      "bytes": 172984
+    },
+    {
+      "file": "assets/menu-uploads/published-4d894274a0664acd4b51ad4c.webp",
+      "bytes": 330312
+    },
+    {
+      "file": "assets/menu-uploads/published-6c8ecb5b55e2de5301a4020b.webp",
+      "bytes": 346664
+    },
+    {
+      "file": "assets/menu-uploads/published-3f26b9e31df894bdb7cf590a.webp",
+      "bytes": 271024
+    },
+    {
+      "file": "assets/menu-uploads/published-05bd6ab406e1896d5c75b53b.webp",
+      "bytes": 259028
+    },
+    {
+      "file": "assets/menu-uploads/published-a461fce0fa60ffd5ccda23b7.webp",
+      "bytes": 169342
+    },
+    {
+      "file": "assets/menu-uploads/published-85b7bad2e584f910964e27b4.webp",
+      "bytes": 331924
+    }
+  ],
+  "changes": [
+    "Responsive Chana and Khichadi options",
+    "Sweet labels on Paneer Reshmi Kabab, Malai Kofta and Paneer Butter Masala",
+    "One/two-scoop options for all five configured ice creams; owner-hidden Kaju Draksh stays hidden",
+    "One/two-piece options for Gulab Jamun and Rasgulla",
+    "Removed Pink Lady, Hot Chocolate Fudge, Special Mastani and X-mas Delight",
+    "Publishing readiness checks, actionable connection errors, photo conversion deduplication and download fallback"
+  ],
+  "confirmedPrices": {
+    "gulabJamun": [
+      30,
+      55
+    ],
+    "rasgulla": [
+      35,
+      60
+    ],
+    "vanilla": [
+      40,
+      65
+    ],
+    "chocolate": [
+      50,
+      80
+    ],
+    "afghan": [
+      50,
+      80
+    ],
+    "kajuDraksh": [
+      50,
+      80
+    ],
+    "butterscotch": [
+      50,
+      80
+    ]
+  },
+  "verification": {
+    "automatedSuites": 85,
+    "failures": 0,
+    "mobileViewport": "375x812",
+    "mobilePriceSelection": "Vanilla 2 scoops 65; Chocolate 2 scoops 80; Gulab Jamun 2 pieces 55; Rasgulla 2 pieces 60",
+    "horizontalOverflow": false,
+    "localServerCompilation": "PowerShell parsed; C# compiled",
+    "browserPublishPost": "Not exercised; owner browser connection still requires a successful future publish"
+  },
+  "privacy": "Raw backup, originals, credentials and private CRM data excluded"
+}

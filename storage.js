@@ -146,7 +146,7 @@ class HotelPremierStorageManager {
   async saveDishEdits(changes,textOnly=false) {
     await this.initPromise;
     if(!this.db)throw Error('Device storage is unavailable. Your text has not been changed.');
-    const fields=['name','hindiName','marathiName','description','descriptionHi','descriptionMr','variants',...(textOnly?[]:['price','image','rawOriginalImage','isSoldOut','notAvailable','hidden','categoryId','tags'])];
+    const fields=['name','hindiName','marathiName','description','descriptionHi','descriptionMr','variants',...(textOnly?[]:['price','image','rawOriginalImage','isSoldOut','notAvailable','hidden','categoryId','tags','portionOptions'])];
     const photos=window.HotelPhotoStorage;
     let legacy={};try{legacy=JSON.parse(localStorage.getItem('hotel_premier_user_overrides_v1')||'{}');}catch(_){}
     const prepared=[];

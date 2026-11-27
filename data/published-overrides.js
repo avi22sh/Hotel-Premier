@@ -1,4 +1,4 @@
-// Reviewed owner public export; image audit corrections, 2026-11-26.
+// Reviewed owner backup, 2026-11-27. Public menu, room galleries and slides only.
 window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
   "version": 1,
   "dishes": {
@@ -16,15 +16,30 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-43aa467daf6104ee091e35f2.webp",
       "tags": [
-        "veg",
-        "chef-special",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "rating": 4.9,
       "prepTime": "15-20 mins",
       "variants": [
+        {
+          "id": "tc-10",
+          "name": "Paneer Combo Tikka",
+          "hindiName": "वेज हरा भरा कबाब",
+          "marathiName": "व्हेज हरा भरा कबाब",
+          "price": 425,
+          "image": "assets/menu-images/tandoor-classics/paneer-combo-tikka.jpg",
+          "description": "A trio of Paneer Tikka, Jungli Paneer Tikka and Paneer Zafrani Tikka, with 4 pieces of each.",
+          "descriptionHi": "",
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
+        },
         {
           "name": "Paneer Tikka (Classic)",
           "hindiName": "पनीर टिक्का (क्लासिक)",
@@ -33,7 +48,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/paneer-tikka.jpg",
           "description": "Fresh cottage cheese cubes marinated in spiced hung curd, skewered with bell peppers and roasted in clay oven.",
           "descriptionHi": "ताज़े पनीर के टुकड़े, गाढ़े दही और पारंपरिक मसालों में मैरीनेट कर तंदूर में भूने हुए।",
-          "descriptionMr": "ताज्या पनीरचे तुकडे, मसालेदार दही व खमंग मसाल्यांमध्ये घोळवून तंदूरमध्ये भाजलेले."
+          "descriptionMr": "ताज्या पनीरचे तुकडे, मसालेदार दही व खमंग मसाल्यांमध्ये घोळवून तंदूरमध्ये भाजलेले.",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Lehsuni Paneer Tikka",
@@ -43,7 +63,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/lasooni-paneer-tikka.jpg",
           "description": "Charcoal grilled cottage cheese marinated with freshly roasted garlic and aromatic spices.",
           "descriptionHi": "भुने हुए ताज़े लहसुन और खुशबूदार मसालों के खास तंदूरी मैरिनेशन में तैयार पनीर टिक्का।",
-          "descriptionMr": "खमंग भाजलेला लसूण आणि खास तंदूरी मसाल्यांच्या चवीचा मऊ लुसलुशीत पनीर टिक्का."
+          "descriptionMr": "खमंग भाजलेला लसूण आणि खास तंदूरी मसाल्यांच्या चवीचा मऊ लुसलुशीत पनीर टिक्का.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Achari Tikka",
@@ -53,7 +79,28 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/achari-paneer-tikka.jpg",
           "description": "Paneer cubes marinated with tangy pickling spices and slow grilled in traditional tandoor.",
           "descriptionHi": "अचारी मसालों और कलौंजी के तीखे-चटपटे स्वाद में रंगा हुआ तंदूरी पनीर टिक्का।",
-          "descriptionMr": "चटपटीत लोणच्याचे मसाले आणि मोहरीच्या चवीमध्ये मुरवलेला तंदूरी पनीर टिक्का."
+          "descriptionMr": "चटपटीत लोणच्याचे मसाले आणि मोहरीच्या चवीमध्ये मुरवलेला तंदूरी पनीर टिक्का.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
+        },
+        {
+          "name": "Jungli Paneer Tikka",
+          "hindiName": "जंगली पनीर टिक्का",
+          "marathiName": "जंगली पनीर टिक्का",
+          "price": 295,
+          "image": "assets/menu-images/tandoor-classics/jungli-paneer-tikka.jpg",
+          "description": "Rustic countryside spiced paneer tikka with crushed coriander seeds and cracked black pepper.",
+          "descriptionHi": "साबुत कुटे धनिया, काली मिर्च और पुदीने के देहाती जंगली तड़के वाला पनीर टिक्का।",
+          "descriptionMr": "धणे, काळी मिरी आणि पुदिन्याची गावरान खमंग चव असलेला जंगली पनीर टिक्का.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Reshmi Kabab",
@@ -63,7 +110,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/paneer-reshmi-tikka.jpg",
           "description": "Silky smooth paneer tikka marinated in rich cashew cream and mild aromatic royal spices.",
           "descriptionHi": "काजू का पेस्ट, मलाई और खुशबूदार केसरिया मसालों में डूबा हुआ बेहद नरम व मखमली कबाब।",
-          "descriptionMr": "काजूची पेस्ट, ताजी साय आणि सुगंधी मसाल्यात तयार केलेला मऊ रेशमी कबाब."
+          "descriptionMr": "काजूची पेस्ट, ताजी साय आणि सुगंधी मसाल्यात तयार केलेला मऊ रेशमी कबाब.",
+          "tags": [
+            "veg",
+            "sweet"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Afghani Tikka",
@@ -83,7 +136,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpg",
           "description": "Extra fiery and spicy tandoori paneer marinated in red chilli flakes and Khandeshi herbs.",
           "descriptionHi": "तीखी लाल मिर्च, नींबू और भुने खड़े मसालों का धमाकेदार तीखा स्वाद।",
-          "descriptionMr": "झणझणीत लाल मिरची आणि खानदेशी मसाल्यांचा धमाकेदार तडका असलेला तिखट टिक्का."
+          "descriptionMr": "झणझणीत लाल मिरची आणि खानदेशी मसाल्यांचा धमाकेदार तडका असलेला तिखट टिक्का.",
+          "tags": [
+            "veg",
+            "spicy",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Jafrani Tikka",
@@ -93,28 +153,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/paneer-zafrani-tikka.jpg",
           "description": "Regal paneer tikka scented with pure saffron strands, mace, cream and royal spices.",
           "descriptionHi": "शुद्ध कश्मीरी केसर, जावित्री और मलाई के शाही मिश्रण में पका हुआ ज़ाफ़रानी पनीर टिक्का।",
-          "descriptionMr": "शुद्ध काश्मिरी केशर, जायपत्री आणि सायीच्या शाही मिश्रणात भाजलेला जाफरानी टिक्का."
-        },
-        {
-          "name": "Jungli Paneer Tikka",
-          "hindiName": "जंगली पनीर टिक्का",
-          "marathiName": "जंगली पनीर टिक्का",
-          "price": 295,
-          "image": "assets/menu-images/tandoor-classics/jungli-paneer-tikka.jpg",
-          "description": "Rustic countryside spiced paneer tikka with crushed coriander seeds and cracked black pepper.",
-          "descriptionHi": "साबुत कुटे धनिया, काली मिर्च और पुदीने के देहाती जंगली तड़के वाला पनीर टिक्का।",
-          "descriptionMr": "धणे, काळी मिरी आणि पुदिन्याची गावरान खमंग चव असलेला जंगली पनीर टिक्का."
-        },
-        {
-          "id": "tc-10",
-          "name": "Paneer Combo Tikka",
-          "hindiName": "वेज हरा भरा कबाब",
-          "marathiName": "व्हेज हरा भरा कबाब",
-          "price": 425,
-          "image": "assets/menu-images/tandoor-classics/paneer-combo-tikka.jpg",
-          "description": "A trio of Paneer Tikka, Jungli Paneer Tikka and Paneer Zafrani Tikka, with 4 pieces of each.",
-          "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "शुद्ध काश्मिरी केशर, जायपत्री आणि सायीच्या शाही मिश्रणात भाजलेला जाफरानी टिक्का.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "notAvailable": false
@@ -133,8 +177,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-17f6bd5da60d28efa69a3e40.webp",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -233,8 +276,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-03a1c0e5d75be91b21257e96.webp",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -259,7 +301,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-03a1c0e5d75be91b21257e96.webp",
           "description": "Tender chickpeas and finely chopped garden vegetables tossed with lemon juice, chaat spices and zesty chutney.",
           "descriptionHi": "उबले काबुली चने, बारीक कटी सब्जियाँ और नींबू-मसालों का चटपटा स्वास्थ्यवर्धक मेल।",
-          "descriptionMr": "काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट."
+          "descriptionMr": "काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Peanut Chaat",
@@ -269,7 +317,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tasty-tidbits/peanut-chaat.jpg",
           "description": "Roasted crunchy peanuts tossed with diced onions, juicy tomatoes, green chillies and fresh lemon coriander.",
           "descriptionHi": "कुरकुरी भुनी मूंगफली, प्याज, टमाटर और हरी मिर्च की चटपटी चाट।",
-          "descriptionMr": "खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट."
+          "descriptionMr": "खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Chinese Bhel",
@@ -279,7 +332,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tasty-tidbits/chinese-bhel.jpg",
           "description": "Crisp fried noodles tossed with wok-tossed cabbage, carrots and spicy tangy Indo-Chinese Schezwan sauce.",
           "descriptionHi": "कुरकुरी फ्राइड नूडल्स, शिमला मिर्च, पत्तागोभी और तीखी शेजवान सॉस से बनी लोकप्रिय चाइनीज़ भेल।",
-          "descriptionMr": "कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ."
+          "descriptionMr": "कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ.",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "notAvailable": false
@@ -298,8 +357,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-8f55f2b1b4cd141e320a6fca.webp",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -334,8 +392,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "",
           "descriptionHi": "",
           "descriptionMr": "",
-          "price": null,
-          "image": "assets/menu-uploads/published-50df8a456ad3ff814a906d9d.webp"
+          "price": 170,
+          "image": "assets/menu-uploads/published-50df8a456ad3ff814a906d9d.webp",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "notAvailable": false
@@ -354,8 +418,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-9e759742fc638993e4c4c88d.webp",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -380,7 +443,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "",
           "description": "Crispy fried rolls filled with wok-tossed Hakka noodles, spring onions and savory Chinese spices.",
           "descriptionHi": "चटपटे हक्का नूडल्स और हरी सब्जियों के कुरकुरे स्वादिष्ट स्प्रिंग रोल।",
-          "descriptionMr": "हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स."
+          "descriptionMr": "हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स.",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Spring Roll",
@@ -390,7 +459,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg",
           "description": "Delicate pastry sheets packed with seasoned shredded cottage cheese, peppers and oriental spices.",
           "descriptionHi": "ताज़े पनीर के स्वादिष्ट भरावन और मसालों से बने क्रिस्पी पनीर स्प्रिंग रोल।",
-          "descriptionMr": "मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स."
+          "descriptionMr": "मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Spider Roll",
@@ -400,7 +475,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-2b15ebe65352faa3a15be66d.webp",
           "description": "Chef signature appetizer: crunchy noodle-web wrapped paneer batons tossed in a tangy glaze.",
           "descriptionHi": "नूडल्स की क्रिस्पी जाली में लिपटा हुआ स्पेशल पनीर, शेफ की खास रेसिपी।",
-          "descriptionMr": "नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी."
+          "descriptionMr": "नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी.",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "notAvailable": false
@@ -419,9 +500,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
       "tags": [
-        "veg",
-        "bestseller",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -459,7 +538,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
           "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
           "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
+          "id": "ic-10",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Satay",
@@ -470,7 +554,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
           "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
           "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
+          "id": "ic-5",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Thread Paneer",
@@ -481,7 +571,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
           "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
           "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
+          "id": "ic-8",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer in Hot Garlic Sauce",
@@ -514,7 +610,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
           "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
           "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
+          "id": "ic-9",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ic-28",
@@ -553,8 +655,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-ac94204645905c43ddbbb11e.webp",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -570,7 +671,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
           "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
           "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
+          "id": "ic-14",
+          "tags": [
+            "veg",
+            "zomato-top",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Veg Crispy",
@@ -581,7 +689,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
           "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
           "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
+          "id": "ic-18",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Veg 65",
@@ -603,7 +717,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
           "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
           "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
+          "id": "ic-15",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Veg Bullet",
@@ -614,7 +734,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
           "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
           "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
+          "id": "ic-22",
+          "tags": [
+            "veg",
+            "spicy",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Veg Hot Pan",
@@ -675,8 +802,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-22e3a6ff3ae8d1bcdd7a1f8c.webp",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -701,7 +827,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg",
           "description": "Crisp golden potato batons tossed in a sweet and spicy honey, chilli and toasted sesame glaze.",
           "descriptionHi": "शहद, लाल मिर्च और भुने तिल की मीठी-तीखी चमक से सजे कुरकुरे आलू फिंगर्स।",
-          "descriptionMr": "मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे."
+          "descriptionMr": "मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे.",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Mushroom Babycorn Chilly",
@@ -890,26 +1022,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-9ee113de407358ac284eceee.webp",
       "tags": [
-        "veg",
-        "bestseller",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "rating": 4.9,
       "prepTime": "15-20 mins",
       "variants": [
-        {
-          "id": "kf-1",
-          "name": "Malai Kofta",
-          "hindiName": "मलाई कोफ्ता",
-          "marathiName": "मलाई कोफ्ता",
-          "price": 290,
-          "image": "assets/menu-images/delicious-kofta/malai-kofta.jpg",
-          "description": "Melt-in-mouth cottage cheese and mawa dumplings simmered in an opulent, velvety cashew nut and cream gravy.",
-          "descriptionHi": "मुलायम पनीर और खोया के कोफ्ते, काजू और मलाई की शाही मखमली ग्रेवी में।",
-          "descriptionMr": "काजू आणि मलईच्या शाही मऊशार ग्रेव्हीत भिजवलेले मखमली मलाई कोफ्ते."
-        },
         {
           "id": "kf-2",
           "name": "Nargisi Kofta",
@@ -919,7 +1038,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-673bfa04e4d72a40212563eb.webp",
           "description": "Royal stuffed cottage cheese and dry fruit dumplings cooked in a deeply aromatic, rich brown gravy.",
           "descriptionHi": "मेवों और पनीर से भरे शाही नरगिसी कोफ्ते, महकती मसालेदार ग्रेवी के साथ।",
-          "descriptionMr": "ड्रायफ्रूट्स आणि पनीरचे भरलेले शाही कोफ्ते, सुगंधी मसालेदार ग्रेव्हीत."
+          "descriptionMr": "ड्रायफ्रूट्स आणि पनीरचे भरलेले शाही कोफ्ते, सुगंधी मसालेदार ग्रेव्हीत.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "kf-3",
@@ -930,7 +1055,31 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-9803829a6ab2c1aa4553eb85.webp",
           "description": "Two-toned stuffed vegetable and cottage cheese koftas served in a dual chef-curated royal yellow and red gravy.",
           "descriptionHi": "दो रंगों वाले स्वादिष्ट वेज कोफ्ते, शेफ की खास सुनहरी क्रीमी ग्रेवी के साथ।",
-          "descriptionMr": "दोन रंगांचे भरलेले कोफ्ते, शेफच्या खास शाही पिवळ्या ग्रेव्हीत."
+          "descriptionMr": "दोन रंगांचे भरलेले कोफ्ते, शेफच्या खास शाही पिवळ्या ग्रेव्हीत.",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
+        },
+        {
+          "id": "kf-1",
+          "name": "Malai Kofta",
+          "hindiName": "मलाई कोफ्ता",
+          "marathiName": "मलाई कोफ्ता",
+          "price": 290,
+          "image": "assets/menu-images/delicious-kofta/malai-kofta.jpg",
+          "description": "Melt-in-mouth cottage cheese and mawa dumplings simmered in an opulent, velvety cashew nut and cream gravy.",
+          "descriptionHi": "मुलायम पनीर और खोया के कोफ्ते, काजू और मलाई की शाही मखमली ग्रेवी में।",
+          "descriptionMr": "काजू आणि मलईच्या शाही मऊशार ग्रेव्हीत भिजवलेले मखमली मलाई कोफ्ते.",
+          "tags": [
+            "veg",
+            "sweet",
+            "zomato-top"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "kf-4",
@@ -963,7 +1112,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-9de57ac7a2aff4226e10bfca.webp",
           "description": "Pure cottage cheese dumplings infused with green chillies and mint, simmered in a luscious cashew curry.",
           "descriptionHi": "हरी मिर्च और पुदीने से सुगंधित शुद्ध पनीर के कोफ्ते, गाढ़ी काजू ग्रेवी में।",
-          "descriptionMr": "शुद्ध पनीरचे कोफ्ते, पुदिना आणि काजूच्या शाही दाट ग्रेव्हीत."
+          "descriptionMr": "शुद्ध पनीरचे कोफ्ते, पुदिना आणि काजूच्या शाही दाट ग्रेव्हीत.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "kf-7",
@@ -974,7 +1128,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/delicious-kofta/veg-diwani-handi.jpg",
           "description": "Vegetable koftas simmered in a creamy, mildly spiced handi-style gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "kf-8",
@@ -985,7 +1144,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-9ee113de407358ac284eceee.webp",
           "description": "Heart-shaped koftas in a velvety yellow gravy enriched with cashews and paneer.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-15",
@@ -996,7 +1162,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/delicious-kofta/veg-hariyali.jpg",
           "description": "Mixed vegetables in a rich green gravy flavoured with herbs.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "groupedUnder": null,
@@ -1022,58 +1194,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isSoldOut": false,
       "rating": 4.7,
       "prepTime": "5 mins",
-      "variants": [
-        {
-          "name": "Roasted Papad",
-          "hindiName": "रोस्टेड पापड़",
-          "marathiName": "भाजलेला पापड",
-          "price": 30,
-          "image": "assets/menu-images/accompaniments/roasted-papad.jpg",
-          "description": "Crisp char-roasted urad dal papad served with tangy mint chutney.",
-          "descriptionHi": "आंच पर भुना हुआ कुरकुरा उड़द दाल पापड़, हरी चटनी के साथ।",
-          "descriptionMr": "आचेवर भाजलेला कुरकुरीत उडीद पापड, पुदिना चटणीसोबत."
-        },
-        {
-          "name": "Fried Papad",
-          "hindiName": "फ्राइड पापड़",
-          "marathiName": "तळलेला पापड",
-          "price": 35,
-          "image": "assets/menu-images/accompaniments/fried-papad.jpg",
-          "description": "Golden deep-fried crisp urad dal papad.",
-          "descriptionHi": "तेल में तला हुआ एकदम कुरकुरा व खस्ता उड़द पापड़।",
-          "descriptionMr": "तेलात तळून काढलेला खरपूस व कुरकुरीत उडीद पापड."
-        },
-        {
-          "name": "Masala Papad",
-          "hindiName": "मसाला पापड़",
-          "marathiName": "मसाला पापड",
-          "price": 50,
-          "image": "assets/menu-images/accompaniments/masala-papad.jpg",
-          "description": "Crisp fried papad loaded with diced onions, tomatoes, fresh coriander, sev and chaat masala.",
-          "descriptionHi": "बारीक कटे प्याज, टमाटर, धनिया, बारीक सेव और चाट मसाले से सजा मसाला पापड़।",
-          "descriptionMr": "बारीक कांदा, टोमॅटो, कोथिंबीर, बारीक शेव व चाट मसाल्याने सजवलेला चवदार मसाला पापड."
-        },
-        {
-          "name": "Cheese Masala Papad",
-          "hindiName": "चीज़ मसाला पापड़",
-          "marathiName": "चीज मसाला पापड",
-          "price": 80,
-          "image": "assets/menu-images/accompaniments/cheese-masala-papad.jpg",
-          "description": "Crunchy masala papad generously loaded with fresh salad, spices and finely grated melted cheese.",
-          "descriptionHi": "चटपटी कटी सब्जियों, चाट मसाले और ढेर सारे कद्दूकस किए हुए चीज़ से सजा शाही मसाला पापड़।",
-          "descriptionMr": "कांदा, टोमॅटो, कोथिंबीर आणि भरपूर किसलेले चीज घातलेला लज्जतदार चीज मसाला पापड."
-        },
-        {
-          "name": "Sindhi Papad",
-          "hindiName": "सिंधी पापड़",
-          "marathiName": "सिंधी पापड",
-          "price": 70,
-          "image": "assets/menu-images/accompaniments/sindhi-papad.jpg",
-          "description": "Special spicy Sindhi seasoned papad packed with cracked black pepper and royal cumin.",
-          "descriptionHi": "काली मिर्च और जीरे के तीखे-चटपटे स्वाद वाला खास बड़ा सिंधी पापड़।",
-          "descriptionMr": "काळी मिरी व जिऱ्याचा झणझणीत स्वाद असलेला खास सिंधी पापड."
-        }
-      ],
       "notAvailable": true,
       "groupedUnder": "fa-7"
     },
@@ -1229,8 +1349,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "image": "assets/menu-uploads/published-737b30f0f452daffead89c81.webp",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -1309,7 +1428,26 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-10ba49c1d54b1d4b4d91005d.webp",
           "description": "Classic velvety vanilla bean ice cream scoop.",
           "descriptionHi": "पारंपरिक मखमली वैनिला आइसक्रीम का ठंडा स्कूप।",
-          "descriptionMr": "अत्यंत मऊ, मलईदार आणि चविष्ट व्हॅनिला आईस्क्रीम."
+          "descriptionMr": "अत्यंत मऊ, मलईदार आणि चविष्ट व्हॅनिला आईस्क्रीम.",
+          "id": "ff-2",
+          "portionOptions": [
+            {
+              "id": "one-scoop",
+              "name": "1 Scoop",
+              "hindiName": "1 स्कूप",
+              "marathiName": "1 स्कूप",
+              "price": 40,
+              "isDefault": true
+            },
+            {
+              "id": "two-scoops",
+              "name": "2 Scoops",
+              "hindiName": "2 स्कूप",
+              "marathiName": "2 स्कूप",
+              "price": 65,
+              "isDefault": false
+            }
+          ]
         },
         {
           "name": "Butterscotch Ice Cream",
@@ -1319,7 +1457,31 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-2d9ca7870b605d674ff97e85.webp",
           "description": "Rich creamy butterscotch ice cream with crunchy praline nuts.",
           "descriptionHi": "कुरकुरे कैरेमल प्रालिन नट्स वाला गाढ़ा बटरस्कॉच आइसक्रीम।",
-          "descriptionMr": "कुरकुरीत कॅरॅमल नट्स असलेला स्वादिष्ट बटरस्कॉच आईस्क्रीम."
+          "descriptionMr": "कुरकुरीत कॅरॅमल नट्स असलेला स्वादिष्ट बटरस्कॉच आईस्क्रीम.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false,
+          "id": "ff-1",
+          "portionOptions": [
+            {
+              "id": "one-scoop",
+              "name": "1 Scoop",
+              "hindiName": "1 स्कूप",
+              "marathiName": "1 स्कूप",
+              "price": 50,
+              "isDefault": true
+            },
+            {
+              "id": "two-scoops",
+              "name": "2 Scoops",
+              "hindiName": "2 स्कूप",
+              "marathiName": "2 स्कूप",
+              "price": 80,
+              "isDefault": false
+            }
+          ]
         },
         {
           "name": "Chocolate Ice Cream",
@@ -1329,7 +1491,32 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-36585ac248c131d159575d6d.webp",
           "description": "Decadent deep cocoa chocolate ice cream scoop.",
           "descriptionHi": "रिच डार्क कोकोआ और मलाई से भरपूर चॉकलेट आइसक्रीम।",
-          "descriptionMr": "डार्क कोको आणि सायीने भरलेला चॉकलेटी आईस्क्रीम."
+          "descriptionMr": "डार्क कोको आणि सायीने भरलेला चॉकलेटी आईस्क्रीम.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false,
+          "id": "ff-4",
+          "portionOptions": [
+            {
+              "id": "one-scoop",
+              "name": "1 Scoop",
+              "hindiName": "1 स्कूप",
+              "marathiName": "1 स्कूप",
+              "price": 50,
+              "isDefault": true
+            },
+            {
+              "id": "two-scoops",
+              "name": "2 Scoops",
+              "hindiName": "2 स्कूप",
+              "marathiName": "2 स्कूप",
+              "price": 80,
+              "isDefault": false
+            }
+          ]
         },
         {
           "name": "Kaju Draksh Ice Cream",
@@ -1339,17 +1526,66 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "",
           "description": "Traditional royal ice cream loaded with cashew nuts and sweet raisins.",
           "descriptionHi": "कुरकुरे काजू और किशमिश के टुकड़ों से भरा स्वादिष्ट आइसक्रीम।",
-          "descriptionMr": "काजूचे काप आणि मनुका घातलेला शाही चवीचा आईस्क्रीम."
+          "descriptionMr": "काजूचे काप आणि मनुका घातलेला शाही चवीचा आईस्क्रीम.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": true,
+          "id": "ff-3",
+          "portionOptions": [
+            {
+              "id": "one-scoop",
+              "name": "1 Scoop",
+              "hindiName": "1 स्कूप",
+              "marathiName": "1 स्कूप",
+              "price": 50,
+              "isDefault": true
+            },
+            {
+              "id": "two-scoops",
+              "name": "2 Scoops",
+              "hindiName": "2 स्कूप",
+              "marathiName": "2 स्कूप",
+              "price": 80,
+              "isDefault": false
+            }
+          ]
         },
         {
           "name": "Afghan Dry Fruit Ice Cream",
           "hindiName": "अफ़गान ड्राई फ्रूट आइसक्रीम",
           "marathiName": "अफगाण ड्रायफ्रूट आईस्क्रीम",
-          "price": 40,
+          "price": 50,
           "image": "assets/menu-uploads/published-c65f9f6523843a9e432a011a.webp",
           "description": "Exotic dried fruits and roasted nuts infused into chilled sweet cream.",
           "descriptionHi": "मेवों और भुने हुए बादाम-पिस्ते से सजा अफ़गानी ड्राई फ्रूट आइसक्रीम।",
-          "descriptionMr": "बदाम, पिस्ता आणि सुकामेव्याने युक्त थंडगार अफगाणी आईस्क्रीम."
+          "descriptionMr": "बदाम, पिस्ता आणि सुकामेव्याने युक्त थंडगार अफगाणी आईस्क्रीम.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false,
+          "id": "ff-5",
+          "portionOptions": [
+            {
+              "id": "one-scoop",
+              "name": "1 Scoop",
+              "hindiName": "1 स्कूप",
+              "marathiName": "1 स्कूप",
+              "price": 50,
+              "isDefault": true
+            },
+            {
+              "id": "two-scoops",
+              "name": "2 Scoops",
+              "hindiName": "2 स्कूप",
+              "marathiName": "2 स्कूप",
+              "price": 80,
+              "isDefault": false
+            }
+          ]
         }
       ],
       "notAvailable": false
@@ -1366,7 +1602,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 150,
       "displayPriceRange": "₹150 – ₹165",
       "isGroupMaster": true,
-      "image": "assets/menu-uploads/published-fb754d0ba742b58cd58ecfd9.webp",
+      "image": "assets/menu-uploads/published-098f8d0ad8b1f0e6bc1cc6fa.webp",
       "tags": [
         "veg"
       ],
@@ -1393,7 +1629,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-3e334ff6ff7f834a3c3a95e0.webp",
           "description": "Nutritious spinach dal finished with a sizzling tempered garlic, cumin and ghee tadka.",
           "descriptionHi": "देसी घी, लहसुन, साबुत लाल मिर्च और जीरे के तेज़ तड़के वाली पालक दाल।",
-          "descriptionMr": "साजूक तूप, लसूण आणि जिऱ्याची चमचमीत फोडणी दिलेली खमंग डाळ पालक."
+          "descriptionMr": "साजूक तूप, लसूण आणि जिऱ्याची चमचमीत फोडणी दिलेली खमंग डाळ पालक.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Dal Methi",
@@ -1413,7 +1655,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/flavorful-dal/dal-methi-tadka.jpg",
           "description": "Fenugreek leaves simmered in dal, elevated with a fragrant cumin, garlic and chilli tadka.",
           "descriptionHi": "साबुत लाल मिर्च, लहसुन और हींग-जीरे के कड़क तड़के से सजी दाल मेथी।",
-          "descriptionMr": "हिंग, जिरे, लसूण व लाल मिरचीची कडक फोडणी दिलेली झणझणीत डाळ मेथी."
+          "descriptionMr": "हिंग, जिरे, लसूण व लाल मिरचीची कडक फोडणी दिलेली झणझणीत डाळ मेथी.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "notAvailable": false
@@ -1425,19 +1673,19 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Achari Tikka",
       "hindiName": "पनीर अचारी टिक्का",
       "marathiName": "पनीर अचारी टिक्का",
-      "description": "Paneer cubes marinated with tangy pickling spices and grilled for a bold achari flavour.",
+      "description": "Paneer cubes marinated with tangy pickling spices and slow grilled in traditional tandoor.",
       "price": 240,
       "image": "assets/menu-images/tandoor-classics/achari-paneer-tikka.jpg",
       "tags": [
-        "veg",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "अचारी मसालों और कलौंजी के तीखे-चटपटे स्वाद में रंगा हुआ तंदूरी पनीर टिक्का।",
+      "descriptionMr": "चटपटीत लोणच्याचे मसाले आणि मोहरीच्या चवीमध्ये मुरवलेला तंदूरी पनीर टिक्का."
     },
     "fa-curd": {
       "id": "fa-curd",
@@ -1455,58 +1703,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isSoldOut": false,
       "rating": 4.7,
       "prepTime": "5 mins",
-      "variants": [
-        {
-          "name": "Mix Veg Raita",
-          "hindiName": "मिक्स वेज रायता",
-          "marathiName": "मिक्स व्हेज रायता",
-          "price": 80,
-          "image": "assets/menu-images/accompaniments/mix-veg-raita.jpg",
-          "description": "Chilled creamy yogurt blended with diced cucumber, onions, tomatoes and subtle spices.",
-          "descriptionHi": "बारीक कटे खीरे, प्याज, टमाटर और भुने मसालों से बना ताज़ा वेज रायता।",
-          "descriptionMr": "बारीक चिरलेली काकडी, कांदा, टोमॅटो आणि जिरेपूड घातलेले ताजे व्हेज रायता."
-        },
-        {
-          "name": "Boondi Raita",
-          "hindiName": "बूंदी रायता",
-          "marathiName": "बुंदी रायता",
-          "price": 90,
-          "image": "assets/menu-images/accompaniments/boondi-raita.jpg",
-          "description": "Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.",
-          "descriptionHi": "भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।",
-          "descriptionMr": "भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता."
-        },
-        {
-          "name": "Pineapple Raita",
-          "hindiName": "पाइनएप्पल रायता",
-          "marathiName": "अननस रायता",
-          "price": 120,
-          "image": "assets/menu-images/accompaniments/pineapple-raita.jpg",
-          "description": "Sweet juicy pineapple titbits folded in velvety sweetened chilled yogurt.",
-          "descriptionHi": "मीठे रसीले अनन्नास के टुकड़ों और ठंडे गाढ़े दही का लाजवाब संगम।",
-          "descriptionMr": "गोड रसाळ अननसाचे तुकडे आणि थंडगार दाट दह्याचे स्वादिष्ट रायता."
-        },
-        {
-          "name": "Mix Fruit Raita",
-          "hindiName": "मिक्स फ्रूट रायता",
-          "marathiName": "मिक्स फ्रूट रायता",
-          "price": 130,
-          "image": "assets/menu-images/accompaniments/mix-fruit-raita.jpg",
-          "description": "A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.",
-          "descriptionHi": "ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।",
-          "descriptionMr": "ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता."
-        },
-        {
-          "name": "Curd (Plain)",
-          "hindiName": "ताज़ा दही",
-          "marathiName": "ताजे दही",
-          "price": 60,
-          "image": "assets/menu-images/accompaniments/curd.jpg",
-          "description": "Traditional thick, creamy and fresh home-set dairy yogurt.",
-          "descriptionHi": "शुद्ध दूध से जमाया हुआ गाढ़ा, ताज़ा और मीठा सादा दही।",
-          "descriptionMr": "घरगुती पद्धतीने लावलेले घट्ट, ताजे आणि चवदार साधे दही."
-        }
-      ],
       "groupedUnder": "fa-raita-group",
       "notAvailable": false
     },
@@ -1609,16 +1805,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "अतिरिक्त पूरी (1 नग)",
           "marathiName": "अतिरिक्त पुरी (1 नग)",
           "price": 25,
-          "image": "",
+          "image": "assets/menu-uploads/published-cac49f62160847afbb805ccd.webp",
           "description": "One fresh, piping-hot golden puffed poori."
-        },
-        {
-          "name": "Extra Poori (2 pcs)",
-          "hindiName": "अतिरिक्त पूरी (2 नग)",
-          "marathiName": "अतिरिक्त पुरी (2 नग)",
-          "price": 45,
-          "image": "",
-          "description": "Two fresh, piping-hot golden puffed pooris."
         }
       ],
       "tags": [
@@ -1657,29 +1845,28 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "अतिरिक्त भटूरा (1 नग)",
           "marathiName": "अतिरिक्त भटूरा (1 नग)",
           "price": 45,
-          "image": "",
-          "description": "One freshly fried large, fluffy Punjabi bhatura."
-        },
-        {
-          "name": "Extra Bhatura (2 pcs)",
-          "hindiName": "अतिरिक्त भटूरा (2 नग)",
-          "marathiName": "अतिरिक्त भटूरा (2 नग)",
-          "price": 85,
-          "image": "",
-          "description": "Two freshly fried large, fluffy Punjabi bhaturas."
+          "image": "assets/menu-uploads/published-ecadbe4318c487e285af072c.webp",
+          "description": "One freshly fried large, fluffy Punjabi bhatura.",
+          "descriptionHi": "",
+          "descriptionMr": "",
+          "tags": [],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "tags": [
         "veg",
-        "bestseller",
-        "swiggy-top"
+        "swiggy-top",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "assets/menu-uploads/published-853d24e9308993667bee32ef.webp",
+      "image": "assets/menu-uploads/published-85a908624ec50803f94f329a.webp",
       "rating": 4.9,
       "prepTime": "18 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "md-parathas-group": {
       "id": "md-parathas-group",
@@ -1694,8 +1881,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "displayPriceRange": "₹120 – ₹170",
       "isGroupMaster": true,
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -1711,7 +1897,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg",
           "description": "Whole-wheat paratha filled with spiced potatoes and fragrant herbs, served with chilled creamy curd and pickle.",
           "descriptionHi": "मसालेदार उबले आलू और हरी मिर्च के चटपटे भरावन से बना तवा पराठा, ताज़ा गाढ़े दही और अचार के साथ।",
-          "descriptionMr": "मसालेदार बटाट्याचे खमंग सारण भरून तव्यावर खरपूस भाजलेला पराठा, ताज्या घट्ट दह्यासोबत."
+          "descriptionMr": "मसालेदार बटाट्याचे खमंग सारण भरून तव्यावर खरपूस भाजलेला पराठा, ताज्या घट्ट दह्यासोबत.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Gobi Paratha with Curd",
@@ -1750,69 +1942,30 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "id": "md-3",
       "categoryId": "morning-delights",
       "name": "Aloo Paratha with Curd",
-      "hindiName": "आलू पराठा",
-      "marathiName": "आलू पराठा",
+      "hindiName": "आलू पराठा (दही के साथ)",
+      "marathiName": "आलू पराठा (दह्यासोबत)",
       "description": "Whole-wheat paratha filled with spiced potatoes and fragrant herbs, served with chilled creamy curd and pickle.",
       "price": 120,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Aloo Paratha with Curd",
-          "hindiName": "आलू पराठा (दही के साथ)",
-          "marathiName": "आलू पराठा (दह्यासोबत)",
-          "price": 120,
-          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg",
-          "description": "Whole-wheat paratha filled with spiced potatoes and fragrant herbs, served with chilled creamy curd and pickle.",
-          "descriptionHi": "मसालेदार उबले आलू और हरी मिर्च के चटपटे भरावन से बना तवा पराठा, ताज़ा गाढ़े दही और अचार के साथ।",
-          "descriptionMr": "मसालेदार बटाट्याचे खमंग सारण भरून तव्यावर खरपूस भाजलेला पराठा, ताज्या घट्ट दह्यासोबत."
-        },
-        {
-          "name": "Gobi Paratha with Curd",
-          "hindiName": "गोभी पराठा (दही के साथ)",
-          "marathiName": "गोभी पराठा (दह्यासोबत)",
-          "price": 130,
-          "image": "assets/menu-images/morning-delight/gobhi-paratha-with-curd.jpg",
-          "description": "Crisp whole-wheat paratha stuffed with finely grated spiced cauliflower, served with fresh curd and pickle.",
-          "descriptionHi": "कद्दूकस की हुई ताज़ी फूलगोभी और भुने मसालों के भरावन से तैयार कुरकुरा पराठा, ताज़ा दही के साथ।",
-          "descriptionMr": "बारीक किसलेल्या ताज्या फ्लॉवरचे खमंग सारण भरलेला चवदार पराठा, ताज्या दह्यासोबत."
-        },
-        {
-          "name": "Paneer Paratha with Curd",
-          "hindiName": "पनीर पराठा (दही के साथ)",
-          "marathiName": "पनीर पराठा (दह्यासोबत)",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/paneer-paratha-with-curd.jpg",
-          "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
-          "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
-          "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
-        },
-        {
-          "name": "Mix Veg Paratha with Curd",
-          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
-          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
-          "price": 140,
-          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
-          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
-          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
-          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
-        }
-      ],
       "groupedUnder": "md-parathas-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मसालेदार उबले आलू और हरी मिर्च के चटपटे भरावन से बना तवा पराठा, ताज़ा गाढ़े दही और अचार के साथ।",
+      "descriptionMr": "मसालेदार बटाट्याचे खमंग सारण भरून तव्यावर खरपूस भाजलेला पराठा, ताज्या घट्ट दह्यासोबत."
     },
     "md-4": {
       "id": "md-4",
       "categoryId": "morning-delights",
       "name": "Gobi Paratha with Curd",
-      "hindiName": "गोभी पराठा",
-      "marathiName": "गोभी पराठा",
+      "hindiName": "गोभी पराठा (दही के साथ)",
+      "marathiName": "गोभी पराठा (दह्यासोबत)",
       "description": "Crisp whole-wheat paratha stuffed with finely grated spiced cauliflower, served with fresh curd and pickle.",
       "price": 130,
       "tags": [
@@ -1823,57 +1976,17 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/gobhi-paratha-with-curd.jpg",
       "rating": 4.6,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Aloo Paratha with Curd",
-          "hindiName": "आलू पराठा (दही के साथ)",
-          "marathiName": "आलू पराठा (दह्यासोबत)",
-          "price": 120,
-          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg",
-          "description": "Whole-wheat paratha filled with spiced potatoes and fragrant herbs, served with chilled creamy curd and pickle.",
-          "descriptionHi": "मसालेदार उबले आलू और हरी मिर्च के चटपटे भरावन से बना तवा पराठा, ताज़ा गाढ़े दही और अचार के साथ।",
-          "descriptionMr": "मसालेदार बटाट्याचे खमंग सारण भरून तव्यावर खरपूस भाजलेला पराठा, ताज्या घट्ट दह्यासोबत."
-        },
-        {
-          "name": "Gobi Paratha with Curd",
-          "hindiName": "गोभी पराठा (दही के साथ)",
-          "marathiName": "गोभी पराठा (दह्यासोबत)",
-          "price": 130,
-          "image": "assets/menu-images/morning-delight/gobhi-paratha-with-curd.jpg",
-          "description": "Crisp whole-wheat paratha stuffed with finely grated spiced cauliflower, served with fresh curd and pickle.",
-          "descriptionHi": "कद्दूकस की हुई ताज़ी फूलगोभी और भुने मसालों के भरावन से तैयार कुरकुरा पराठा, ताज़ा दही के साथ।",
-          "descriptionMr": "बारीक किसलेल्या ताज्या फ्लॉवरचे खमंग सारण भरलेला चवदार पराठा, ताज्या दह्यासोबत."
-        },
-        {
-          "name": "Paneer Paratha with Curd",
-          "hindiName": "पनीर पराठा (दही के साथ)",
-          "marathiName": "पनीर पराठा (दह्यासोबत)",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/paneer-paratha-with-curd.jpg",
-          "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
-          "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
-          "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
-        },
-        {
-          "name": "Mix Veg Paratha with Curd",
-          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
-          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
-          "price": 140,
-          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
-          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
-          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
-          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
-        }
-      ],
       "groupedUnder": "md-parathas-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "कद्दूकस की हुई ताज़ी फूलगोभी और भुने मसालों के भरावन से तैयार कुरकुरा पराठा, ताज़ा दही के साथ।",
+      "descriptionMr": "बारीक किसलेल्या ताज्या फ्लॉवरचे खमंग सारण भरलेला चवदार पराठा, ताज्या दह्यासोबत."
     },
     "md-5": {
       "id": "md-5",
       "categoryId": "morning-delights",
       "name": "Paneer Paratha with Curd",
-      "hindiName": "पनीर पराठा",
-      "marathiName": "पनीर पराठा",
+      "hindiName": "पनीर पराठा (दही के साथ)",
+      "marathiName": "पनीर पराठा (दह्यासोबत)",
       "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
       "price": 150,
       "tags": [
@@ -1885,50 +1998,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/paneer-paratha-with-curd.jpg",
       "rating": 4.9,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Aloo Paratha with Curd",
-          "hindiName": "आलू पराठा (दही के साथ)",
-          "marathiName": "आलू पराठा (दह्यासोबत)",
-          "price": 120,
-          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg",
-          "description": "Whole-wheat paratha filled with spiced potatoes and fragrant herbs, served with chilled creamy curd and pickle.",
-          "descriptionHi": "मसालेदार उबले आलू और हरी मिर्च के चटपटे भरावन से बना तवा पराठा, ताज़ा गाढ़े दही और अचार के साथ।",
-          "descriptionMr": "मसालेदार बटाट्याचे खमंग सारण भरून तव्यावर खरपूस भाजलेला पराठा, ताज्या घट्ट दह्यासोबत."
-        },
-        {
-          "name": "Gobi Paratha with Curd",
-          "hindiName": "गोभी पराठा (दही के साथ)",
-          "marathiName": "गोभी पराठा (दह्यासोबत)",
-          "price": 130,
-          "image": "assets/menu-images/morning-delight/gobhi-paratha-with-curd.jpg",
-          "description": "Crisp whole-wheat paratha stuffed with finely grated spiced cauliflower, served with fresh curd and pickle.",
-          "descriptionHi": "कद्दूकस की हुई ताज़ी फूलगोभी और भुने मसालों के भरावन से तैयार कुरकुरा पराठा, ताज़ा दही के साथ।",
-          "descriptionMr": "बारीक किसलेल्या ताज्या फ्लॉवरचे खमंग सारण भरलेला चवदार पराठा, ताज्या दह्यासोबत."
-        },
-        {
-          "name": "Paneer Paratha with Curd",
-          "hindiName": "पनीर पराठा (दही के साथ)",
-          "marathiName": "पनीर पराठा (दह्यासोबत)",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/paneer-paratha-with-curd.jpg",
-          "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
-          "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
-          "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
-        },
-        {
-          "name": "Mix Veg Paratha with Curd",
-          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
-          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
-          "price": 140,
-          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
-          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
-          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
-          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
-        }
-      ],
       "groupedUnder": "md-parathas-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
+      "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
     },
     "md-mix-veg-paratha": {
       "id": "md-mix-veg-paratha",
@@ -1936,7 +2009,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Mix Veg Paratha with Curd",
       "hindiName": "मिक्स वेज पराठा (दही के साथ)",
       "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
-      "description": "A golden paratha stuffed with finely chopped seasonal vegetables, herbs and aromatic spices, crisp outside and soft within.",
+      "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
       "price": 140,
       "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
       "tags": [
@@ -1946,50 +2019,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isSoldOut": false,
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Aloo Paratha with Curd",
-          "hindiName": "आलू पराठा (दही के साथ)",
-          "marathiName": "आलू पराठा (दह्यासोबत)",
-          "price": 120,
-          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd-1.jpg",
-          "description": "Whole-wheat paratha filled with spiced potatoes and fragrant herbs, served with chilled creamy curd and pickle.",
-          "descriptionHi": "मसालेदार उबले आलू और हरी मिर्च के चटपटे भरावन से बना तवा पराठा, ताज़ा गाढ़े दही और अचार के साथ।",
-          "descriptionMr": "मसालेदार बटाट्याचे खमंग सारण भरून तव्यावर खरपूस भाजलेला पराठा, ताज्या घट्ट दह्यासोबत."
-        },
-        {
-          "name": "Gobi Paratha with Curd",
-          "hindiName": "गोभी पराठा (दही के साथ)",
-          "marathiName": "गोभी पराठा (दह्यासोबत)",
-          "price": 130,
-          "image": "assets/menu-images/morning-delight/gobhi-paratha-with-curd.jpg",
-          "description": "Crisp whole-wheat paratha stuffed with finely grated spiced cauliflower, served with fresh curd and pickle.",
-          "descriptionHi": "कद्दूकस की हुई ताज़ी फूलगोभी और भुने मसालों के भरावन से तैयार कुरकुरा पराठा, ताज़ा दही के साथ।",
-          "descriptionMr": "बारीक किसलेल्या ताज्या फ्लॉवरचे खमंग सारण भरलेला चवदार पराठा, ताज्या दह्यासोबत."
-        },
-        {
-          "name": "Paneer Paratha with Curd",
-          "hindiName": "पनीर पराठा (दही के साथ)",
-          "marathiName": "पनीर पराठा (दह्यासोबत)",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/paneer-paratha-with-curd.jpg",
-          "description": "Royal whole-wheat paratha generously stuffed with spiced cottage cheese (paneer), served with fresh curd.",
-          "descriptionHi": "ताज़ा कद्दूकस पनीर, हरी धनिया और खुशबूदार मसालों से भरा शाही पराठा, ताज़ा गाढ़े दही के साथ।",
-          "descriptionMr": "ताज्या पनीरचे भरपूर सारण भरलेला मऊ व खमंग शाही पराठा, ताज्या दह्यासोबत."
-        },
-        {
-          "name": "Mix Veg Paratha with Curd",
-          "hindiName": "मिक्स वेज पराठा (दही के साथ)",
-          "marathiName": "मिक्स व्हेज पराठा (दह्यासोबत)",
-          "price": 140,
-          "image": "assets/menu-images/morning-delight/aloo-paratha-with-curd.jpg",
-          "description": "Golden whole-wheat paratha packed with finely chopped seasonal vegetables, herbs and roasted cumin, served with curd.",
-          "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
-          "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
-        }
-      ],
       "groupedUnder": "md-parathas-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "बारीक कटी मौसमी हरी सब्जियों, पनीर और मसालों के मेल से बना पौष्टिक व स्वादिष्ट पराठा।",
+      "descriptionMr": "मटार, गाजर व ताज्या भाज्यांचे खमंग मिश्रण भरलेला पौष्टिक व कुरकुरीत पराठा, दह्यासोबत."
     },
     "md-6": {
       "id": "md-6",
@@ -2044,98 +2077,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-dea7a277128e01c1c57ce863.webp",
       "rating": 4.4,
       "prepTime": "5 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -2155,98 +2096,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
       "rating": 4.3,
       "prepTime": "5 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -2382,98 +2231,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-bf5200e777f3bb4ec3d88768.webp",
       "rating": 5,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -2493,98 +2250,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
       "rating": 4.7,
       "prepTime": "10 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -2604,98 +2269,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
       "rating": 4.8,
       "prepTime": "12 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -2715,98 +2288,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-3adff2d1dc318b7faa5f962c.webp",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -2826,98 +2307,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
       "rating": 4.6,
       "prepTime": "12 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -2937,98 +2326,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
       "rating": 4.8,
       "prepTime": "12 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -3048,98 +2345,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
       "rating": 4.5,
       "prepTime": "8 mins",
-      "variants": [
-        {
-          "name": "Bread Butter Toast",
-          "hindiName": "ब्रेड बटर टोस्ट",
-          "marathiName": "ब्रेड बटर टोस्ट",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-toast.jpg",
-          "description": "Golden crispy toasted bread generously brushed with fresh creamy dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ सुनहरा कुरकुरा टोस्टेड ब्रेड।",
-          "descriptionMr": "ताज्या लोण्याने/बटरने शेकलेला गरमागरम खमंग टोस्टेड ब्रेड."
-        },
-        {
-          "name": "Bread Butter with Jam",
-          "hindiName": "ब्रेड बटर जैम",
-          "marathiName": "ब्रेड बटर जॅम",
-          "price": 80,
-          "image": "assets/menu-images/morning-delight/bread-butter-jam.jpg",
-          "description": "Soft fresh bread layered with smooth dairy butter and sweet mixed fruit jam.",
-          "descriptionHi": "मुलायम ताज़ा ब्रेड, बटर और मीठे मिक्स्ड फ्रूट जैम की स्वादिष्ट मिठास।",
-          "descriptionMr": "मऊ ब्रेड, ताजे बटर आणि गोड फ्रूट जॅमचे चविष्ट कॉम्बिनेशन."
-        },
-        {
-          "name": "Veg Sandwich",
-          "hindiName": "वेज सैंडविच",
-          "marathiName": "व्हेज सँडविच",
-          "price": 100,
-          "image": "assets/menu-images/morning-delight/veg-sandwich.jpg",
-          "description": "Fresh sandwich bread layered with crisp cucumber, juicy tomatoes, fresh butter and zesty mint chutney.",
-          "descriptionHi": "खीरा, टमाटर, ताज़ा मक्खन और पुदीना चटनी की ताजगी से बना क्लासिक सादा सैंडविच।",
-          "descriptionMr": "काकडी, टोमॅटो, ताजे बटर आणि पुदिना चटणीचे हलके व चविष्ट साधे सँडविच."
-        },
-        {
-          "name": "Cheese Chutney Sandwich",
-          "hindiName": "चीज़ चटनी सैंडविच",
-          "marathiName": "चीज चटणी सँडविच",
-          "price": 90,
-          "image": "assets/menu-images/morning-delight/cheese-chutney-sandwich.jpg",
-          "description": "Soft bread layered with creamy dairy cheese and spicy coriander-mint green chutney.",
-          "descriptionHi": "मुलायम ब्रेड स्लाइस पर भरपूर चीज़ और तीखी हरी चटनी की स्वादिष्ट जुगलबंदी।",
-          "descriptionMr": "मऊ ब्रेड, भरपूर चीज आणि झणझणीत हिरवी चटणी यांचे परिपूर्ण चविष्ट सँडविच."
-        },
-        {
-          "name": "Veg Grilled Sandwich",
-          "hindiName": "वेज ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज ग्रील्ड सँडविच",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/veg-grilled-sandwich.jpg",
-          "description": "Crisp vegetable medley packed inside buttered bread and toasted golden on the grill with chaat spices.",
-          "descriptionHi": "ताज़ी सब्जियों और मक्खन के साथ ग्रिल में सुनहरा कुरकुरा सेका हुआ वेज सैंडविच।",
-          "descriptionMr": "बटर लावून खरपूस सोनेरी ग्रील केलेले ताज्या भाज्यांचे कुरकुरीत सँडविच."
-        },
-        {
-          "name": "Cheese Grilled Sandwich",
-          "hindiName": "चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "चीज ग्रील्ड सँडविच",
-          "price": 160,
-          "image": "assets/menu-images/morning-delight/cheese-grilled-sandwich.jpg",
-          "description": "Golden toasted grilled sandwich generously loaded with molten gooey cheese and mild herbs.",
-          "descriptionHi": "अंदर से पिघलते हुए भरपूर चीज़ और बटर के साथ क्रिस्पी ग्रिल किया गया चीज़ी सैंडविच।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज आणि बाहेरून कुरकुरीत ग्रील केलेले अप्रतिम सँडविच."
-        },
-        {
-          "name": "Veg Cheese Grilled Sandwich",
-          "hindiName": "वेज चीज़ ग्रिल्ड सैंडविच",
-          "marathiName": "व्हेज चीज ग्रील्ड सँडविच",
-          "price": 170,
-          "image": "assets/menu-images/morning-delight/veg-cheese-grilled-sandwich.jpg",
-          "description": "Our most popular grilled sandwich, stuffed with crisp garden vegetables, cheese slices and toasted crisp.",
-          "descriptionHi": "ताज़ी सब्जियाँ और पिघले हुए चीज़ के अद्भुत संगम से बना होटल प्राइड का लोकप्रिय ग्रिल्ड सैंडविच।",
-          "descriptionMr": "ताज्या भाज्या व भरपूर वितळलेल्या चीजचे परिपूर्ण मिश्रण असलेले गरमागरम ग्रील्ड सँडविच."
-        },
-        {
-          "name": "Veg Club Sandwich",
-          "hindiName": "वेज क्लब सैंडविच",
-          "marathiName": "व्हेज क्लब सँडविच",
-          "price": 180,
-          "image": "",
-          "description": "Triple-layer toasted sandwich stacked with crunchy vegetables, mint spread, cheese and chatpata spices.",
-          "descriptionHi": "तीन स्वादिष्ट परतों वाला क्लब सैंडविच, ताज़ी सब्जियों, चीज़ और स्पेशल चटनी के साथ।",
-          "descriptionMr": "तीन पदरी ट्रिपल-लेयर क्लब सँडविच, भाज्या, चीज आणि चटपटीत मसाल्यांनी परिपूर्ण."
-        },
-        {
-          "name": "Pride Special Sandwich",
-          "hindiName": "प्राइड स्पेशल सैंडविच",
-          "marathiName": "प्राईड स्पेशल सँडविच",
-          "price": 200,
-          "image": "assets/menu-images/morning-delight/pride-special-sandwich.jpg",
-          "description": "Chef signature club sandwich with seasoned vegetable cutlet, cheese, fresh greens, pineapple and glazed cherry.",
-          "descriptionHi": "शेफ की खास रेसिपी - क्रिस्पी वेज पैटी, चीज़, हरी सब्जियां, अनानास और चेरी से सजा रॉयल सैंडविच।",
-          "descriptionMr": "शेफची स्वाक्षरी रेसिपी - कुरकुरीत कटलेट, चीज, अननस आणि चेरीने सजवलेले भव्य स्पेशल सँडविच."
-        }
-      ],
       "groupedUnder": "md-sandwiches-group",
       "notAvailable": false
     },
@@ -3160,28 +2365,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/sabudana-khichadi.jpg",
       "rating": 4.9,
       "prepTime": "12 mins",
-      "variants": [
-        {
-          "name": "Sabudana Khichadi",
-          "hindiName": "साबुदाना खिचड़ी",
-          "marathiName": "साबुदाणा खिचडी",
-          "price": 140,
-          "image": "assets/menu-images/morning-delight/sabudana-khichadi.jpg",
-          "description": "Soaked tapioca pearls tossed with potatoes, roasted peanuts, green chillies, fresh coriander and rock salt.",
-          "descriptionHi": "मूंगफली, हरी मिर्च और सेंधा नमक के साथ बनी पारंपरिक व्रत स्पेशल साबुदाना खिचड़ी।",
-          "descriptionMr": "शेंगदाण्याचा कूट, हिरवी मिरची व बटाट्यासह बनवलेली सात्विक उपवासाची साबुदाणा खिचडी."
-        },
-        {
-          "name": "Sabudana Wada with Curd",
-          "hindiName": "साबुदाना वड़ा (दही के साथ)",
-          "marathiName": "साबुदाणा वडा (दह्यासोबत)",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/sabudana-wada.jpg",
-          "description": "Crisp golden deep-fried sago and potato patties, served hot with sweetened fresh curd.",
-          "descriptionHi": "बाहर से कुरकुरे और अंदर से नर्म साबुदाना वड़े, ठंडे मीठे दही के साथ परोसे जाते हैं।",
-          "descriptionMr": "कुरकुरीत गरमागरम साबुदाणा वडे, गोडसर ताज्या दह्यासोबत वाढलेले."
-        }
-      ],
       "groupedUnder": "upvas-fasting-group",
       "notAvailable": false
     },
@@ -3202,28 +2385,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/morning-delight/sabudana-wada.jpg",
       "rating": 4.9,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Sabudana Khichadi",
-          "hindiName": "साबुदाना खिचड़ी",
-          "marathiName": "साबुदाणा खिचडी",
-          "price": 140,
-          "image": "assets/menu-images/morning-delight/sabudana-khichadi.jpg",
-          "description": "Soaked tapioca pearls tossed with potatoes, roasted peanuts, green chillies, fresh coriander and rock salt.",
-          "descriptionHi": "मूंगफली, हरी मिर्च और सेंधा नमक के साथ बनी पारंपरिक व्रत स्पेशल साबुदाना खिचड़ी।",
-          "descriptionMr": "शेंगदाण्याचा कूट, हिरवी मिरची व बटाट्यासह बनवलेली सात्विक उपवासाची साबुदाणा खिचडी."
-        },
-        {
-          "name": "Sabudana Wada with Curd",
-          "hindiName": "साबुदाना वड़ा (दही के साथ)",
-          "marathiName": "साबुदाणा वडा (दह्यासोबत)",
-          "price": 150,
-          "image": "assets/menu-images/morning-delight/sabudana-wada.jpg",
-          "description": "Crisp golden deep-fried sago and potato patties, served hot with sweetened fresh curd.",
-          "descriptionHi": "बाहर से कुरकुरे और अंदर से नर्म साबुदाना वड़े, ठंडे मीठे दही के साथ परोसे जाते हैं।",
-          "descriptionMr": "कुरकुरीत गरमागरम साबुदाणा वडे, गोडसर ताज्या दह्यासोबत वाढलेले."
-        }
-      ],
       "groupedUnder": "upvas-fasting-group",
       "notAvailable": false
     },
@@ -3406,10 +2567,15 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "मसाला फ्रेंच फ्राइज",
           "marathiName": "मसाला फ्रेंच फ्राईज",
           "price": 150,
-          "image": "",
+          "image": "assets/menu-uploads/published-4fce3a7b65195270e26462d8.webp",
           "description": "",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "groupedUnder": null,
@@ -3422,7 +2588,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Chana Roasted",
       "hindiName": "चना रोस्ट",
       "marathiName": "चना रोस्ट",
-      "description": "Chickpeas roasted until golden and tossed with spices.",
+      "description": "Whole chickpeas roasted golden-brown with dry roasted aromatic Indian spices, crispy and wholesome.",
       "price": 170,
       "tags": [
         "veg"
@@ -3432,41 +2598,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/tasty-tidbits/chana-roast.jpg",
       "rating": 4.4,
       "prepTime": "10 mins",
-      "variants": [
-        {
-          "name": "Chana Roasted",
-          "hindiName": "चना रोस्ट",
-          "marathiName": "चना रोस्ट",
-          "price": 170,
-          "image": "assets/menu-images/tasty-tidbits/chana-roast.jpg",
-          "description": "Whole chickpeas roasted golden-brown with dry roasted aromatic Indian spices, crispy and wholesome.",
-          "descriptionHi": "विशेष मसालों में सुनहरा कुरकुरा भुना हुआ काबुली चना, शाम के नाश्ते के लिए उत्तम।",
-          "descriptionMr": "खमंग भाजलेले चणे व मसाल्यांचा कुरकुरीत पारंपारिक चणा रोस्ट."
-        },
-        {
-          "name": "Chana Garlic Roast",
-          "hindiName": "चना लहसुन रोस्ट",
-          "marathiName": "चना लसूण रोस्ट",
-          "price": 200,
-          "image": "assets/menu-uploads/published-51bd423f04763c21c2099f6f.webp",
-          "description": "Golden roasted chickpeas infused with intense burnt garlic, crushed pepper and savory house spices.",
-          "descriptionHi": "भुने हुए चने में भुने लहसुन और तीखे मसालों का तीखा व लाजवाब स्वाद।",
-          "descriptionMr": "तळलेला लसूण आणि खमंग मसाल्यांनी युक्त कुरकुरीत चणा लसूण रोस्ट."
-        },
-        {
-          "id": "tt-chana-koliwada",
-          "name": "Chana Koliwada",
-          "hindiName": "चना कोलीवाड़ा",
-          "marathiName": "चणा कोळीवाडा",
-          "description": "",
-          "descriptionHi": "",
-          "descriptionMr": "",
-          "price": null,
-          "image": ""
-        }
-      ],
       "groupedUnder": "tt-chana-roast-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "विशेष मसालों में सुनहरा कुरकुरा भुना हुआ काबुली चना, शाम के नाश्ते के लिए उत्तम।",
+      "descriptionMr": "खमंग भाजलेले चणे व मसाल्यांचा कुरकुरीत पारंपारिक चणा रोस्ट."
     },
     "tt-6": {
       "id": "tt-6",
@@ -3474,60 +2609,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Chana Chaat",
       "hindiName": "चना चाट",
       "marathiName": "चना चाट",
-      "description": "Chickpeas and vegetables tossed with tangy chutneys and a lively blend of spices.",
+      "description": "Tender chickpeas and finely chopped garden vegetables tossed with lemon juice, chaat spices and zesty chutney.",
       "price": 160,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-03a1c0e5d75be91b21257e96.webp",
       "rating": 4.7,
       "prepTime": "10 mins",
-      "variants": [
-        {
-          "name": "Aloo Chaat",
-          "hindiName": "आलू चाट",
-          "marathiName": "आलू चाट",
-          "price": 110,
-          "image": "assets/menu-uploads/published-9ea648e389cec7ac19b9dc0d.webp",
-          "description": "Crisp potato cubes tossed with tangy tamarind chutney, mint spread, chaat masala and fresh coriander.",
-          "descriptionHi": "कुरकुरे उबले आलू, खट्टी-मीठी इमली की चटनी और तीखे मसालों से बनी चटपटी आलू चाट।",
-          "descriptionMr": "उकडलेले खमंग बटाटे, चिंचेची चटणी व चाट मसाल्याची खमंग चटपटीत आलू चाट."
-        },
-        {
-          "name": "Chana Chaat",
-          "hindiName": "चना चाट",
-          "marathiName": "चना चाट",
-          "price": 160,
-          "image": "assets/menu-uploads/published-03a1c0e5d75be91b21257e96.webp",
-          "description": "Tender chickpeas and finely chopped garden vegetables tossed with lemon juice, chaat spices and zesty chutney.",
-          "descriptionHi": "उबले काबुली चने, बारीक कटी सब्जियाँ और नींबू-मसालों का चटपटा स्वास्थ्यवर्धक मेल।",
-          "descriptionMr": "काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट."
-        },
-        {
-          "name": "Peanut Chaat",
-          "hindiName": "पीनट चाट",
-          "marathiName": "पीनट चाट",
-          "price": 190,
-          "image": "assets/menu-images/tasty-tidbits/peanut-chaat.jpg",
-          "description": "Roasted crunchy peanuts tossed with diced onions, juicy tomatoes, green chillies and fresh lemon coriander.",
-          "descriptionHi": "कुरकुरी भुनी मूंगफली, प्याज, टमाटर और हरी मिर्च की चटपटी चाट।",
-          "descriptionMr": "खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट."
-        },
-        {
-          "name": "Chinese Bhel",
-          "hindiName": "चाइनीज़ भेल",
-          "marathiName": "चायनीज भेळ",
-          "price": 200,
-          "image": "assets/menu-images/tasty-tidbits/chinese-bhel.jpg",
-          "description": "Crisp fried noodles tossed with wok-tossed cabbage, carrots and spicy tangy Indo-Chinese Schezwan sauce.",
-          "descriptionHi": "कुरकुरी फ्राइड नूडल्स, शिमला मिर्च, पत्तागोभी और तीखी शेजवान सॉस से बनी लोकप्रिय चाइनीज़ भेल।",
-          "descriptionMr": "कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ."
-        }
-      ],
       "groupedUnder": "tt-chaat-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "उबले काबुली चने, बारीक कटी सब्जियाँ और नींबू-मसालों का चटपटा स्वास्थ्यवर्धक मेल।",
+      "descriptionMr": "काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट."
     },
     "tt-7": {
       "id": "tt-7",
@@ -3535,7 +2631,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Peanut Chaat",
       "hindiName": "पीनट चाट",
       "marathiName": "पीनट चाट",
-      "description": "Crunchy peanuts tossed with fresh vegetables, tangy chutney and spices.",
+      "description": "Roasted crunchy peanuts tossed with diced onions, juicy tomatoes, green chillies and fresh lemon coriander.",
       "price": 190,
       "tags": [
         "veg"
@@ -3545,50 +2641,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/tasty-tidbits/peanut-chaat.jpg",
       "rating": 4.8,
       "prepTime": "10 mins",
-      "variants": [
-        {
-          "name": "Aloo Chaat",
-          "hindiName": "आलू चाट",
-          "marathiName": "आलू चाट",
-          "price": 110,
-          "image": "assets/menu-uploads/published-9ea648e389cec7ac19b9dc0d.webp",
-          "description": "Crisp potato cubes tossed with tangy tamarind chutney, mint spread, chaat masala and fresh coriander.",
-          "descriptionHi": "कुरकुरे उबले आलू, खट्टी-मीठी इमली की चटनी और तीखे मसालों से बनी चटपटी आलू चाट।",
-          "descriptionMr": "उकडलेले खमंग बटाटे, चिंचेची चटणी व चाट मसाल्याची खमंग चटपटीत आलू चाट."
-        },
-        {
-          "name": "Chana Chaat",
-          "hindiName": "चना चाट",
-          "marathiName": "चना चाट",
-          "price": 160,
-          "image": "assets/menu-uploads/published-03a1c0e5d75be91b21257e96.webp",
-          "description": "Tender chickpeas and finely chopped garden vegetables tossed with lemon juice, chaat spices and zesty chutney.",
-          "descriptionHi": "उबले काबुली चने, बारीक कटी सब्जियाँ और नींबू-मसालों का चटपटा स्वास्थ्यवर्धक मेल।",
-          "descriptionMr": "काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट."
-        },
-        {
-          "name": "Peanut Chaat",
-          "hindiName": "पीनट चाट",
-          "marathiName": "पीनट चाट",
-          "price": 190,
-          "image": "assets/menu-images/tasty-tidbits/peanut-chaat.jpg",
-          "description": "Roasted crunchy peanuts tossed with diced onions, juicy tomatoes, green chillies and fresh lemon coriander.",
-          "descriptionHi": "कुरकुरी भुनी मूंगफली, प्याज, टमाटर और हरी मिर्च की चटपटी चाट।",
-          "descriptionMr": "खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट."
-        },
-        {
-          "name": "Chinese Bhel",
-          "hindiName": "चाइनीज़ भेल",
-          "marathiName": "चायनीज भेळ",
-          "price": 200,
-          "image": "assets/menu-images/tasty-tidbits/chinese-bhel.jpg",
-          "description": "Crisp fried noodles tossed with wok-tossed cabbage, carrots and spicy tangy Indo-Chinese Schezwan sauce.",
-          "descriptionHi": "कुरकुरी फ्राइड नूडल्स, शिमला मिर्च, पत्तागोभी और तीखी शेजवान सॉस से बनी लोकप्रिय चाइनीज़ भेल।",
-          "descriptionMr": "कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ."
-        }
-      ],
       "groupedUnder": "tt-chaat-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "कुरकुरी भुनी मूंगफली, प्याज, टमाटर और हरी मिर्च की चटपटी चाट।",
+      "descriptionMr": "खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट."
     },
     "tt-8": {
       "id": "tt-8",
@@ -3596,7 +2652,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Chana Garlic Roast",
       "hindiName": "चना लहसुन रोस्ट",
       "marathiName": "चना लसूण रोस्ट",
-      "description": "Crisp roasted chickpeas seasoned with garlic and spices.",
+      "description": "Golden roasted chickpeas infused with intense burnt garlic, crushed pepper and savory house spices.",
       "price": 200,
       "tags": [
         "veg",
@@ -3607,41 +2663,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-51bd423f04763c21c2099f6f.webp",
       "rating": 4.9,
       "prepTime": "12 mins",
-      "variants": [
-        {
-          "name": "Chana Roasted",
-          "hindiName": "चना रोस्ट",
-          "marathiName": "चना रोस्ट",
-          "price": 170,
-          "image": "assets/menu-images/tasty-tidbits/chana-roast.jpg",
-          "description": "Whole chickpeas roasted golden-brown with dry roasted aromatic Indian spices, crispy and wholesome.",
-          "descriptionHi": "विशेष मसालों में सुनहरा कुरकुरा भुना हुआ काबुली चना, शाम के नाश्ते के लिए उत्तम।",
-          "descriptionMr": "खमंग भाजलेले चणे व मसाल्यांचा कुरकुरीत पारंपारिक चणा रोस्ट."
-        },
-        {
-          "name": "Chana Garlic Roast",
-          "hindiName": "चना लहसुन रोस्ट",
-          "marathiName": "चना लसूण रोस्ट",
-          "price": 200,
-          "image": "assets/menu-uploads/published-51bd423f04763c21c2099f6f.webp",
-          "description": "Golden roasted chickpeas infused with intense burnt garlic, crushed pepper and savory house spices.",
-          "descriptionHi": "भुने हुए चने में भुने लहसुन और तीखे मसालों का तीखा व लाजवाब स्वाद।",
-          "descriptionMr": "तळलेला लसूण आणि खमंग मसाल्यांनी युक्त कुरकुरीत चणा लसूण रोस्ट."
-        },
-        {
-          "id": "tt-chana-koliwada",
-          "name": "Chana Koliwada",
-          "hindiName": "चना कोलीवाड़ा",
-          "marathiName": "चणा कोळीवाडा",
-          "description": "",
-          "descriptionHi": "",
-          "descriptionMr": "",
-          "price": null,
-          "image": ""
-        }
-      ],
       "groupedUnder": "tt-chana-roast-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "भुने हुए चने में भुने लहसुन और तीखे मसालों का तीखा व लाजवाब स्वाद।",
+      "descriptionMr": "तळलेला लसूण आणि खमंग मसाल्यांनी युक्त कुरकुरीत चणा लसूण रोस्ट."
     },
     "tt-9": {
       "id": "tt-9",
@@ -3649,7 +2674,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Aloo Chaat",
       "hindiName": "आलू चाट",
       "marathiName": "आलू चाट",
-      "description": "Potato cubes tossed with tangy chutneys and a blend of spices.",
+      "description": "Crisp potato cubes tossed with tangy tamarind chutney, mint spread, chaat masala and fresh coriander.",
       "price": 110,
       "tags": [
         "veg"
@@ -3659,50 +2684,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-9ea648e389cec7ac19b9dc0d.webp",
       "rating": 4.6,
       "prepTime": "10 mins",
-      "variants": [
-        {
-          "name": "Aloo Chaat",
-          "hindiName": "आलू चाट",
-          "marathiName": "आलू चाट",
-          "price": 110,
-          "image": "assets/menu-uploads/published-9ea648e389cec7ac19b9dc0d.webp",
-          "description": "Crisp potato cubes tossed with tangy tamarind chutney, mint spread, chaat masala and fresh coriander.",
-          "descriptionHi": "कुरकुरे उबले आलू, खट्टी-मीठी इमली की चटनी और तीखे मसालों से बनी चटपटी आलू चाट।",
-          "descriptionMr": "उकडलेले खमंग बटाटे, चिंचेची चटणी व चाट मसाल्याची खमंग चटपटीत आलू चाट."
-        },
-        {
-          "name": "Chana Chaat",
-          "hindiName": "चना चाट",
-          "marathiName": "चना चाट",
-          "price": 160,
-          "image": "assets/menu-uploads/published-03a1c0e5d75be91b21257e96.webp",
-          "description": "Tender chickpeas and finely chopped garden vegetables tossed with lemon juice, chaat spices and zesty chutney.",
-          "descriptionHi": "उबले काबुली चने, बारीक कटी सब्जियाँ और नींबू-मसालों का चटपटा स्वास्थ्यवर्धक मेल।",
-          "descriptionMr": "काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट."
-        },
-        {
-          "name": "Peanut Chaat",
-          "hindiName": "पीनट चाट",
-          "marathiName": "पीनट चाट",
-          "price": 190,
-          "image": "assets/menu-images/tasty-tidbits/peanut-chaat.jpg",
-          "description": "Roasted crunchy peanuts tossed with diced onions, juicy tomatoes, green chillies and fresh lemon coriander.",
-          "descriptionHi": "कुरकुरी भुनी मूंगफली, प्याज, टमाटर और हरी मिर्च की चटपटी चाट।",
-          "descriptionMr": "खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट."
-        },
-        {
-          "name": "Chinese Bhel",
-          "hindiName": "चाइनीज़ भेल",
-          "marathiName": "चायनीज भेळ",
-          "price": 200,
-          "image": "assets/menu-images/tasty-tidbits/chinese-bhel.jpg",
-          "description": "Crisp fried noodles tossed with wok-tossed cabbage, carrots and spicy tangy Indo-Chinese Schezwan sauce.",
-          "descriptionHi": "कुरकुरी फ्राइड नूडल्स, शिमला मिर्च, पत्तागोभी और तीखी शेजवान सॉस से बनी लोकप्रिय चाइनीज़ भेल।",
-          "descriptionMr": "कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ."
-        }
-      ],
       "groupedUnder": "tt-chaat-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "कुरकुरे उबले आलू, खट्टी-मीठी इमली की चटनी और तीखे मसालों से बनी चटपटी आलू चाट।",
+      "descriptionMr": "उकडलेले खमंग बटाटे, चिंचेची चटणी व चाट मसाल्याची खमंग चटपटीत आलू चाट."
     },
     "tt-10": {
       "id": "tt-10",
@@ -3710,61 +2695,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Chinese Bhel",
       "hindiName": "चाइनीज़ भेल",
       "marathiName": "चायनीज भेळ",
-      "description": "Crisp fried noodles tossed with sauteed vegetables and a tangy, spicy Indo-Chinese sauce, finished with spring onions.",
+      "description": "Crisp fried noodles tossed with wok-tossed cabbage, carrots and spicy tangy Indo-Chinese Schezwan sauce.",
       "price": 200,
       "tags": [
         "veg",
-        "bestseller"
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/tasty-tidbits/chinese-bhel.jpg",
       "rating": 4.8,
       "prepTime": "12 mins",
-      "variants": [
-        {
-          "name": "Aloo Chaat",
-          "hindiName": "आलू चाट",
-          "marathiName": "आलू चाट",
-          "price": 110,
-          "image": "assets/menu-uploads/published-9ea648e389cec7ac19b9dc0d.webp",
-          "description": "Crisp potato cubes tossed with tangy tamarind chutney, mint spread, chaat masala and fresh coriander.",
-          "descriptionHi": "कुरकुरे उबले आलू, खट्टी-मीठी इमली की चटनी और तीखे मसालों से बनी चटपटी आलू चाट।",
-          "descriptionMr": "उकडलेले खमंग बटाटे, चिंचेची चटणी व चाट मसाल्याची खमंग चटपटीत आलू चाट."
-        },
-        {
-          "name": "Chana Chaat",
-          "hindiName": "चना चाट",
-          "marathiName": "चना चाट",
-          "price": 160,
-          "image": "assets/menu-uploads/published-03a1c0e5d75be91b21257e96.webp",
-          "description": "Tender chickpeas and finely chopped garden vegetables tossed with lemon juice, chaat spices and zesty chutney.",
-          "descriptionHi": "उबले काबुली चने, बारीक कटी सब्जियाँ और नींबू-मसालों का चटपटा स्वास्थ्यवर्धक मेल।",
-          "descriptionMr": "काबुली चणे, कांदा, टोमॅटो व लिंबू-मसाल्याने तयार केलेली चविष्ट चना चाट."
-        },
-        {
-          "name": "Peanut Chaat",
-          "hindiName": "पीनट चाट",
-          "marathiName": "पीनट चाट",
-          "price": 190,
-          "image": "assets/menu-images/tasty-tidbits/peanut-chaat.jpg",
-          "description": "Roasted crunchy peanuts tossed with diced onions, juicy tomatoes, green chillies and fresh lemon coriander.",
-          "descriptionHi": "कुरकुरी भुनी मूंगफली, प्याज, टमाटर और हरी मिर्च की चटपटी चाट।",
-          "descriptionMr": "खमंग भाजलेले शेंगदाणे, कांदा, टोमॅटो व लिंबाचा रस घातलेली चटकदार पीनट चाट."
-        },
-        {
-          "name": "Chinese Bhel",
-          "hindiName": "चाइनीज़ भेल",
-          "marathiName": "चायनीज भेळ",
-          "price": 200,
-          "image": "assets/menu-images/tasty-tidbits/chinese-bhel.jpg",
-          "description": "Crisp fried noodles tossed with wok-tossed cabbage, carrots and spicy tangy Indo-Chinese Schezwan sauce.",
-          "descriptionHi": "कुरकुरी फ्राइड नूडल्स, शिमला मिर्च, पत्तागोभी और तीखी शेजवान सॉस से बनी लोकप्रिय चाइनीज़ भेल।",
-          "descriptionMr": "कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ."
-        }
-      ],
       "groupedUnder": "tt-chaat-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "कुरकुरी फ्राइड नूडल्स, शिमला मिर्च, पत्तागोभी और तीखी शेजवान सॉस से बनी लोकप्रिय चाइनीज़ भेल।",
+      "descriptionMr": "कुरकुरीत नूडल्स, कोबी व शेजवान सॉस एकत्र करून बनवलेली प्रसिद्ध चायनीज भेळ."
     },
     "sp-soups-group": {
       "id": "sp-soups-group",
@@ -3787,7 +2732,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/soups/veg-manchow-soup.jpg",
           "description": "A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.",
           "descriptionHi": "लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।",
-          "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप."
+          "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Hot & Sour Soup",
@@ -3807,7 +2758,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/soups/tomato-soup.jpg",
           "description": "Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.",
           "descriptionHi": "ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।",
-          "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह."
+          "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह.",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Lemon Coriander Soup",
@@ -3817,7 +2774,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/soups/lemon-coriander-soup.jpg",
           "description": "Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.",
           "descriptionHi": "हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।",
-          "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप."
+          "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Sweetcorn Soup",
@@ -3841,8 +2804,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         }
       ],
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -3857,70 +2819,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Manchow Soup",
       "hindiName": "वेज मंचाऊ सूप",
       "marathiName": "व्हेज मंचाव सूप",
-      "description": "A spicy, tangy vegetable soup with garlic, soy sauce and chilli, finished with crisp fried noodles.",
+      "description": "A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.",
       "price": 140,
-      "variants": [
-        {
-          "name": "Veg Manchow Soup",
-          "hindiName": "वेज मंचाऊ सूप",
-          "marathiName": "व्हेज मंचाव सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-manchow-soup.jpg",
-          "description": "A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.",
-          "descriptionHi": "लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।",
-          "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप."
-        },
-        {
-          "name": "Hot & Sour Soup",
-          "hindiName": "हॉट एंड सोर सूप",
-          "marathiName": "हॉट अँड सोर सूप",
-          "price": 140,
-          "image": "assets/menu-uploads/published-4397eb1e050df9b70ba873d6.webp",
-          "description": "Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.",
-          "descriptionHi": "तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।",
-          "descriptionMr": "तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप."
-        },
-        {
-          "name": "Tomato Soup",
-          "hindiName": "टमाटर सूप",
-          "marathiName": "टोमॅटो सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/tomato-soup.jpg",
-          "description": "Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.",
-          "descriptionHi": "ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।",
-          "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह."
-        },
-        {
-          "name": "Lemon Coriander Soup",
-          "hindiName": "लेमन कोरिएंडर सूप",
-          "marathiName": "लेमन कोथिंबीर सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/lemon-coriander-soup.jpg",
-          "description": "Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.",
-          "descriptionHi": "हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।",
-          "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप."
-        },
-        {
-          "name": "Sweetcorn Soup",
-          "hindiName": "वेज स्वीटकॉर्न सूप",
-          "marathiName": "व्हेज स्वीटकॉर्न सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-sweetcorn-soup.jpg",
-          "description": "Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.",
-          "descriptionHi": "मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।",
-          "descriptionMr": "गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप."
-        },
-        {
-          "name": "Veg Clear Soup",
-          "hindiName": "वेज क्लियर सूप",
-          "marathiName": "व्हेज क्लिअर सूप",
-          "price": 120,
-          "image": "assets/menu-images/soups/veg-clear-soup.jpg",
-          "description": "Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.",
-          "descriptionHi": "गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।",
-          "descriptionMr": "गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप."
-        }
-      ],
       "groupedUnder": "sp-soups-group",
       "tags": [
         "veg",
@@ -3931,7 +2831,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/soups/veg-manchow-soup.jpg",
       "rating": 4.8,
       "prepTime": "12 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।",
+      "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप."
     },
     "sp-2": {
       "id": "sp-2",
@@ -3939,70 +2841,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Hot & Sour Soup",
       "hindiName": "हॉट एंड सोर सूप",
       "marathiName": "हॉट अँड सोर सूप",
-      "description": "Vegetable soup with the warmth of chilli and black pepper, balanced by a tangy splash of vinegar.",
+      "description": "Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.",
       "price": 140,
-      "variants": [
-        {
-          "name": "Veg Manchow Soup",
-          "hindiName": "वेज मंचाऊ सूप",
-          "marathiName": "व्हेज मंचाव सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-manchow-soup.jpg",
-          "description": "A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.",
-          "descriptionHi": "लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।",
-          "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप."
-        },
-        {
-          "name": "Hot & Sour Soup",
-          "hindiName": "हॉट एंड सोर सूप",
-          "marathiName": "हॉट अँड सोर सूप",
-          "price": 140,
-          "image": "assets/menu-uploads/published-4397eb1e050df9b70ba873d6.webp",
-          "description": "Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.",
-          "descriptionHi": "तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।",
-          "descriptionMr": "तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप."
-        },
-        {
-          "name": "Tomato Soup",
-          "hindiName": "टमाटर सूप",
-          "marathiName": "टोमॅटो सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/tomato-soup.jpg",
-          "description": "Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.",
-          "descriptionHi": "ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।",
-          "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह."
-        },
-        {
-          "name": "Lemon Coriander Soup",
-          "hindiName": "लेमन कोरिएंडर सूप",
-          "marathiName": "लेमन कोथिंबीर सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/lemon-coriander-soup.jpg",
-          "description": "Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.",
-          "descriptionHi": "हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।",
-          "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप."
-        },
-        {
-          "name": "Sweetcorn Soup",
-          "hindiName": "वेज स्वीटकॉर्न सूप",
-          "marathiName": "व्हेज स्वीटकॉर्न सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-sweetcorn-soup.jpg",
-          "description": "Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.",
-          "descriptionHi": "मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।",
-          "descriptionMr": "गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप."
-        },
-        {
-          "name": "Veg Clear Soup",
-          "hindiName": "वेज क्लियर सूप",
-          "marathiName": "व्हेज क्लिअर सूप",
-          "price": 120,
-          "image": "assets/menu-images/soups/veg-clear-soup.jpg",
-          "description": "Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.",
-          "descriptionHi": "गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।",
-          "descriptionMr": "गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप."
-        }
-      ],
       "groupedUnder": "sp-soups-group",
       "tags": [
         "veg"
@@ -4012,7 +2852,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-4397eb1e050df9b70ba873d6.webp",
       "rating": 4.7,
       "prepTime": "12 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।",
+      "descriptionMr": "तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप."
     },
     "sp-3": {
       "id": "sp-3",
@@ -4020,81 +2862,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Tomato Soup",
       "hindiName": "टमाटर सूप",
       "marathiName": "टोमॅटो सूप",
-      "description": "Smooth tomato soup with a gently tangy finish.",
+      "description": "Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.",
       "price": 140,
-      "variants": [
-        {
-          "name": "Veg Manchow Soup",
-          "hindiName": "वेज मंचाऊ सूप",
-          "marathiName": "व्हेज मंचाव सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-manchow-soup.jpg",
-          "description": "A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.",
-          "descriptionHi": "लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।",
-          "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप."
-        },
-        {
-          "name": "Hot & Sour Soup",
-          "hindiName": "हॉट एंड सोर सूप",
-          "marathiName": "हॉट अँड सोर सूप",
-          "price": 140,
-          "image": "assets/menu-uploads/published-4397eb1e050df9b70ba873d6.webp",
-          "description": "Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.",
-          "descriptionHi": "तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।",
-          "descriptionMr": "तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप."
-        },
-        {
-          "name": "Tomato Soup",
-          "hindiName": "टमाटर सूप",
-          "marathiName": "टोमॅटो सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/tomato-soup.jpg",
-          "description": "Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.",
-          "descriptionHi": "ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।",
-          "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह."
-        },
-        {
-          "name": "Lemon Coriander Soup",
-          "hindiName": "लेमन कोरिएंडर सूप",
-          "marathiName": "लेमन कोथिंबीर सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/lemon-coriander-soup.jpg",
-          "description": "Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.",
-          "descriptionHi": "हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।",
-          "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप."
-        },
-        {
-          "name": "Sweetcorn Soup",
-          "hindiName": "वेज स्वीटकॉर्न सूप",
-          "marathiName": "व्हेज स्वीटकॉर्न सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-sweetcorn-soup.jpg",
-          "description": "Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.",
-          "descriptionHi": "मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।",
-          "descriptionMr": "गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप."
-        },
-        {
-          "name": "Veg Clear Soup",
-          "hindiName": "वेज क्लियर सूप",
-          "marathiName": "व्हेज क्लिअर सूप",
-          "price": 120,
-          "image": "assets/menu-images/soups/veg-clear-soup.jpg",
-          "description": "Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.",
-          "descriptionHi": "गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।",
-          "descriptionMr": "गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप."
-        }
-      ],
       "groupedUnder": "sp-soups-group",
       "tags": [
         "veg",
-        "bestseller"
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/soups/tomato-soup.jpg",
       "rating": 4.8,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।",
+      "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह."
     },
     "sp-4": {
       "id": "sp-4",
@@ -4102,80 +2884,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Lemon Coriander Soup",
       "hindiName": "लेमन कोरिएंडर सूप",
       "marathiName": "लेमन कोथिंबीर सूप",
-      "description": "A light, clear soup brightened with fresh coriander and lemon juice.",
+      "description": "Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.",
       "price": 140,
-      "variants": [
-        {
-          "name": "Veg Manchow Soup",
-          "hindiName": "वेज मंचाऊ सूप",
-          "marathiName": "व्हेज मंचाव सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-manchow-soup.jpg",
-          "description": "A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.",
-          "descriptionHi": "लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।",
-          "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप."
-        },
-        {
-          "name": "Hot & Sour Soup",
-          "hindiName": "हॉट एंड सोर सूप",
-          "marathiName": "हॉट अँड सोर सूप",
-          "price": 140,
-          "image": "assets/menu-uploads/published-4397eb1e050df9b70ba873d6.webp",
-          "description": "Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.",
-          "descriptionHi": "तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।",
-          "descriptionMr": "तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप."
-        },
-        {
-          "name": "Tomato Soup",
-          "hindiName": "टमाटर सूप",
-          "marathiName": "टोमॅटो सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/tomato-soup.jpg",
-          "description": "Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.",
-          "descriptionHi": "ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।",
-          "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह."
-        },
-        {
-          "name": "Lemon Coriander Soup",
-          "hindiName": "लेमन कोरिएंडर सूप",
-          "marathiName": "लेमन कोथिंबीर सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/lemon-coriander-soup.jpg",
-          "description": "Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.",
-          "descriptionHi": "हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।",
-          "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप."
-        },
-        {
-          "name": "Sweetcorn Soup",
-          "hindiName": "वेज स्वीटकॉर्न सूप",
-          "marathiName": "व्हेज स्वीटकॉर्न सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-sweetcorn-soup.jpg",
-          "description": "Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.",
-          "descriptionHi": "मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।",
-          "descriptionMr": "गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप."
-        },
-        {
-          "name": "Veg Clear Soup",
-          "hindiName": "वेज क्लियर सूप",
-          "marathiName": "व्हेज क्लिअर सूप",
-          "price": 120,
-          "image": "assets/menu-images/soups/veg-clear-soup.jpg",
-          "description": "Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.",
-          "descriptionHi": "गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।",
-          "descriptionMr": "गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप."
-        }
-      ],
       "groupedUnder": "sp-soups-group",
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/soups/lemon-coriander-soup.jpg",
       "rating": 4.8,
       "prepTime": "12 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।",
+      "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप."
     },
     "sp-5": {
       "id": "sp-5",
@@ -4183,70 +2906,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Sweetcorn Soup",
       "hindiName": "वेज स्वीटकॉर्न सूप",
       "marathiName": "व्हेज स्वीटकॉर्न सूप",
-      "description": "A comforting sweetcorn soup with aromatic seasoning.",
+      "description": "Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.",
       "price": 140,
-      "variants": [
-        {
-          "name": "Veg Manchow Soup",
-          "hindiName": "वेज मंचाऊ सूप",
-          "marathiName": "व्हेज मंचाव सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-manchow-soup.jpg",
-          "description": "A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.",
-          "descriptionHi": "लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।",
-          "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप."
-        },
-        {
-          "name": "Hot & Sour Soup",
-          "hindiName": "हॉट एंड सोर सूप",
-          "marathiName": "हॉट अँड सोर सूप",
-          "price": 140,
-          "image": "assets/menu-uploads/published-4397eb1e050df9b70ba873d6.webp",
-          "description": "Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.",
-          "descriptionHi": "तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।",
-          "descriptionMr": "तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप."
-        },
-        {
-          "name": "Tomato Soup",
-          "hindiName": "टमाटर सूप",
-          "marathiName": "टोमॅटो सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/tomato-soup.jpg",
-          "description": "Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.",
-          "descriptionHi": "ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।",
-          "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह."
-        },
-        {
-          "name": "Lemon Coriander Soup",
-          "hindiName": "लेमन कोरिएंडर सूप",
-          "marathiName": "लेमन कोथिंबीर सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/lemon-coriander-soup.jpg",
-          "description": "Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.",
-          "descriptionHi": "हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।",
-          "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप."
-        },
-        {
-          "name": "Sweetcorn Soup",
-          "hindiName": "वेज स्वीटकॉर्न सूप",
-          "marathiName": "व्हेज स्वीटकॉर्न सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-sweetcorn-soup.jpg",
-          "description": "Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.",
-          "descriptionHi": "मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।",
-          "descriptionMr": "गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप."
-        },
-        {
-          "name": "Veg Clear Soup",
-          "hindiName": "वेज क्लियर सूप",
-          "marathiName": "व्हेज क्लिअर सूप",
-          "price": 120,
-          "image": "assets/menu-images/soups/veg-clear-soup.jpg",
-          "description": "Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.",
-          "descriptionHi": "गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।",
-          "descriptionMr": "गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप."
-        }
-      ],
       "groupedUnder": "sp-soups-group",
       "tags": [
         "veg"
@@ -4256,7 +2917,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/soups/veg-sweetcorn-soup.jpg",
       "rating": 4.7,
       "prepTime": "12 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।",
+      "descriptionMr": "गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप."
     },
     "sp-6": {
       "id": "sp-6",
@@ -4264,70 +2927,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Clear Soup",
       "hindiName": "वेज क्लियर सूप",
       "marathiName": "व्हेज क्लिअर सूप",
-      "description": "A light broth with carrots, beans, button mushrooms and onions, topped with spring onions.",
+      "description": "Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.",
       "price": 120,
-      "variants": [
-        {
-          "name": "Veg Manchow Soup",
-          "hindiName": "वेज मंचाऊ सूप",
-          "marathiName": "व्हेज मंचाव सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-manchow-soup.jpg",
-          "description": "A spicy, tangy vegetable soup with garlic, soy and chilli, finished with crisp fried noodles.",
-          "descriptionHi": "लहसुन, हरी मिर्च, सोय सॉस और कुरकुरे फ्राइड नूडल्स वाला मशहूर तीखा मंचाऊ सूप।",
-          "descriptionMr": "लसूण, हिरवी मिरची, सोया सॉस आणि कुरकुरीत तळलेल्या नूडल्ससह लोकप्रिय मंचाव सूप."
-        },
-        {
-          "name": "Hot & Sour Soup",
-          "hindiName": "हॉट एंड सोर सूप",
-          "marathiName": "हॉट अँड सोर सूप",
-          "price": 140,
-          "image": "assets/menu-uploads/published-4397eb1e050df9b70ba873d6.webp",
-          "description": "Zesty Asian vegetable soup balanced with spicy red chillies and tangy vinegar.",
-          "descriptionHi": "तीखी मिर्च, काली मिर्च और खट्टे सिरके के संतुलन से बना गरमागरम सूप।",
-          "descriptionMr": "तिखट मिरची, काळीमिरी आणि आंबट व्हिनेगरच्या चविष्ट मिश्रणाने बनवलेले सूप."
-        },
-        {
-          "name": "Tomato Soup",
-          "hindiName": "टमाटर सूप",
-          "marathiName": "टोमॅटो सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/tomato-soup.jpg",
-          "description": "Velvety ripe tomato soup served with crunchy golden croutons and fresh cream.",
-          "descriptionHi": "ताज़े पके टमाटरों का मखमली क्रीमी सूप, कुरकुरे क्रूटॉन्स के साथ।",
-          "descriptionMr": "पिकलेल्या ताज्या टोमॅटोचे मऊ क्रीमी सूप, कुरकुरीत ब्रेड क्रूटॉन्ससह."
-        },
-        {
-          "name": "Lemon Coriander Soup",
-          "hindiName": "लेमन कोरिएंडर सूप",
-          "marathiName": "लेमन कोथिंबीर सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/lemon-coriander-soup.jpg",
-          "description": "Refreshing aromatic clear broth infused with fresh coriander stems and zesty lemon juice.",
-          "descriptionHi": "हरी धनिया और ताज़े नींबू के रस से भरपूर ताजगी देने वाला हल्का सूप।",
-          "descriptionMr": "ताजी कोथिंबीर आणि लिंबाच्या रसाने युक्त हलके व ताजगी देणारे सूप."
-        },
-        {
-          "name": "Sweetcorn Soup",
-          "hindiName": "वेज स्वीटकॉर्न सूप",
-          "marathiName": "व्हेज स्वीटकॉर्न सूप",
-          "price": 140,
-          "image": "assets/menu-images/soups/veg-sweetcorn-soup.jpg",
-          "description": "Creamy wholesome American sweetcorn soup with tender vegetables and mild white pepper.",
-          "descriptionHi": "मीठे भुट्टे के दानों और बारीक सब्जियों से बना गाढ़ा व स्वादिष्ट स्वीटकॉर्न सूप।",
-          "descriptionMr": "गोड मक्याचे दाणे आणि बारीक भाज्यांचे मऊ, चविष्ट व पौष्टिक स्वीटकॉर्न सूप."
-        },
-        {
-          "name": "Veg Clear Soup",
-          "hindiName": "वेज क्लियर सूप",
-          "marathiName": "व्हेज क्लिअर सूप",
-          "price": 120,
-          "image": "assets/menu-images/soups/veg-clear-soup.jpg",
-          "description": "Light aromatic vegetable broth with tender carrots, mushrooms, beans and spring onions.",
-          "descriptionHi": "गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।",
-          "descriptionMr": "गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप."
-        }
-      ],
       "groupedUnder": "sp-soups-group",
       "tags": [
         "veg"
@@ -4337,7 +2938,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/soups/veg-clear-soup.jpg",
       "rating": 4.5,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "गाजर, बीन्स, मशरूम और हरे प्याज से बना सुपाच्य एवं पौष्टिक हल्का सूप।",
+      "descriptionMr": "गाजर, फरसबी, मशरूम आणि कांद्याच्या पातीचे पौष्टिक, पचनास हलके सूप."
     },
     "ic-1": {
       "id": "ic-1",
@@ -4356,7 +2959,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-a08bcafc2521e26b2f62b95d.webp",
       "rating": 5,
       "prepTime": "22 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ic-2": {
       "id": "ic-2",
@@ -4364,7 +2969,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Chilly",
       "hindiName": "पनीर चिली",
       "marathiName": "पनीर चिली",
-      "description": "Paneer tossed with bell peppers and onions in a spicy, tangy Indo-Chinese sauce.",
+      "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
       "price": 265,
       "tags": [
         "veg",
@@ -4376,118 +2981,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
       "rating": 4.9,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
       "groupedUnder": "ic-paneer-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
+      "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली."
     },
     "ic-3": {
       "id": "ic-3",
@@ -4495,7 +2992,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Manchurian",
       "hindiName": "पनीर मंचूरियन",
       "marathiName": "पनीर मंचूरियन",
-      "description": "Crisp fried paneer cubes coated in a tangy, spicy Indo-Chinese sauce.",
+      "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
       "price": 265,
       "tags": [
         "veg"
@@ -4505,118 +3002,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-6e6d0267d4057cc488fc318b.webp",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
       "groupedUnder": "ic-paneer-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
+      "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन."
     },
     "ic-4": {
       "id": "ic-4",
@@ -4624,7 +3013,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Sancho",
       "hindiName": "पनीर सांचो",
       "marathiName": "पनीर सांचो",
-      "description": "Stuffed paneer triangles coated and fried crisp, tossed in tangy, spicy salsa and finished with fresh herbs.",
+      "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
       "price": 315,
       "tags": [
         "veg",
@@ -4635,118 +3024,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
       "rating": 4.9,
       "prepTime": "18 mins",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
       "groupedUnder": "ic-paneer-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
+      "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह."
     },
     "ic-5": {
       "id": "ic-5",
@@ -4754,128 +3035,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Satay",
       "hindiName": "पनीर साते",
       "marathiName": "पनीर साते",
-      "description": "Paneer fingers flavoured with creamy peanut butter.",
+      "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
       "price": 265,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
       "rating": 4.7,
       "prepTime": "18 mins",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
       "groupedUnder": "ic-paneer-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
+      "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते."
     },
     "ic-6": {
       "id": "ic-6",
@@ -4883,7 +3057,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Spider Roll",
       "hindiName": "पनीर स्पाइडर रोल",
       "marathiName": "पनीर स्पायडर रोल",
-      "description": "Crisp noodle-wrapped paneer tossed in a tangy sauce.",
+      "description": "Chef signature appetizer: crunchy noodle-web wrapped paneer batons tossed in a tangy glaze.",
       "price": 300,
       "tags": [
         "veg",
@@ -4894,50 +3068,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-2b15ebe65352faa3a15be66d.webp",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "variants": [
-        {
-          "name": "Veg Spring Roll",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "price": 300,
-          "image": "assets/menu-uploads/published-9e759742fc638993e4c4c88d.webp",
-          "description": "Golden-fried crisp rolls stuffed with julienned seasonal vegetables and glass noodles, served with spicy Schezwan dip.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, तीखी शेज़वान सॉस के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, शेजवान चटणीसह."
-        },
-        {
-          "name": "Noodles Spring Roll",
-          "hindiName": "नूडल्स स्प्रिंग रोल",
-          "marathiName": "नूडल्स स्प्रिंग रोल",
-          "price": 280,
-          "image": "",
-          "description": "Crispy fried rolls filled with wok-tossed Hakka noodles, spring onions and savory Chinese spices.",
-          "descriptionHi": "चटपटे हक्का नूडल्स और हरी सब्जियों के कुरकुरे स्वादिष्ट स्प्रिंग रोल।",
-          "descriptionMr": "हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स."
-        },
-        {
-          "name": "Paneer Spring Roll",
-          "hindiName": "पनीर स्प्रिंग रोल",
-          "marathiName": "पनीर स्प्रिंग रोल",
-          "price": 325,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg",
-          "description": "Delicate pastry sheets packed with seasoned shredded cottage cheese, peppers and oriental spices.",
-          "descriptionHi": "ताज़े पनीर के स्वादिष्ट भरावन और मसालों से बने क्रिस्पी पनीर स्प्रिंग रोल।",
-          "descriptionMr": "मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स."
-        },
-        {
-          "name": "Paneer Spider Roll",
-          "hindiName": "पनीर स्पाइडर रोल",
-          "marathiName": "पनीर स्पायडर रोल",
-          "price": 300,
-          "image": "assets/menu-uploads/published-2b15ebe65352faa3a15be66d.webp",
-          "description": "Chef signature appetizer: crunchy noodle-web wrapped paneer batons tossed in a tangy glaze.",
-          "descriptionHi": "नूडल्स की क्रिस्पी जाली में लिपटा हुआ स्पेशल पनीर, शेफ की खास रेसिपी।",
-          "descriptionMr": "नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी."
-        }
-      ],
       "groupedUnder": "ic-spring-rolls-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "नूडल्स की क्रिस्पी जाली में लिपटा हुआ स्पेशल पनीर, शेफ की खास रेसिपी।",
+      "descriptionMr": "नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी."
     },
     "ic-7": {
       "id": "ic-7",
@@ -4945,60 +3079,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Spring Roll",
       "hindiName": "पनीर स्प्रिंग रोल",
       "marathiName": "पनीर स्प्रिंग रोल",
-      "description": "Crisp rolls filled with seasoned paneer and vegetables.",
+      "description": "Delicate pastry sheets packed with seasoned shredded cottage cheese, peppers and oriental spices.",
       "price": 325,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg",
       "rating": 4.8,
       "prepTime": "18 mins",
-      "variants": [
-        {
-          "name": "Veg Spring Roll",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "price": 300,
-          "image": "assets/menu-uploads/published-9e759742fc638993e4c4c88d.webp",
-          "description": "Golden-fried crisp rolls stuffed with julienned seasonal vegetables and glass noodles, served with spicy Schezwan dip.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, तीखी शेज़वान सॉस के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, शेजवान चटणीसह."
-        },
-        {
-          "name": "Noodles Spring Roll",
-          "hindiName": "नूडल्स स्प्रिंग रोल",
-          "marathiName": "नूडल्स स्प्रिंग रोल",
-          "price": 280,
-          "image": "",
-          "description": "Crispy fried rolls filled with wok-tossed Hakka noodles, spring onions and savory Chinese spices.",
-          "descriptionHi": "चटपटे हक्का नूडल्स और हरी सब्जियों के कुरकुरे स्वादिष्ट स्प्रिंग रोल।",
-          "descriptionMr": "हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स."
-        },
-        {
-          "name": "Paneer Spring Roll",
-          "hindiName": "पनीर स्प्रिंग रोल",
-          "marathiName": "पनीर स्प्रिंग रोल",
-          "price": 325,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg",
-          "description": "Delicate pastry sheets packed with seasoned shredded cottage cheese, peppers and oriental spices.",
-          "descriptionHi": "ताज़े पनीर के स्वादिष्ट भरावन और मसालों से बने क्रिस्पी पनीर स्प्रिंग रोल।",
-          "descriptionMr": "मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स."
-        },
-        {
-          "name": "Paneer Spider Roll",
-          "hindiName": "पनीर स्पाइडर रोल",
-          "marathiName": "पनीर स्पायडर रोल",
-          "price": 300,
-          "image": "assets/menu-uploads/published-2b15ebe65352faa3a15be66d.webp",
-          "description": "Chef signature appetizer: crunchy noodle-web wrapped paneer batons tossed in a tangy glaze.",
-          "descriptionHi": "नूडल्स की क्रिस्पी जाली में लिपटा हुआ स्पेशल पनीर, शेफ की खास रेसिपी।",
-          "descriptionMr": "नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी."
-        }
-      ],
       "groupedUnder": "ic-spring-rolls-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़े पनीर के स्वादिष्ट भरावन और मसालों से बने क्रिस्पी पनीर स्प्रिंग रोल।",
+      "descriptionMr": "मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स."
     },
     "ic-8": {
       "id": "ic-8",
@@ -5006,265 +3101,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Thread Paneer",
       "hindiName": "थ्रेड पनीर",
       "marathiName": "थ्रेड पनीर",
-      "description": "Triangle-cut paneer coated in a spicy red ginger-garlic sauce.",
-      "price": 275,
-      "tags": [
-        "veg"
-      ],
-      "dietary": "pure-veg",
-      "isSoldOut": false,
-      "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-      "rating": 4.8,
-      "prepTime": "18 mins",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
-      "groupedUnder": "ic-paneer-starters-group",
-      "notAvailable": false
-    },
-    "ic-9": {
-      "id": "ic-9",
-      "categoryId": "indo-chinese",
-      "name": "Paneer Salton",
-      "hindiName": "पनीर साल्टन",
-      "marathiName": "पनीर साल्टन",
-      "description": "Paneer fingers tossed in a yellow cheese sauce with ginger and garlic.",
-      "price": 270,
-      "tags": [
-        "veg"
-      ],
-      "dietary": "pure-veg",
-      "isSoldOut": false,
-      "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-      "rating": 4.7,
-      "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
-      "groupedUnder": "ic-paneer-starters-group",
-      "notAvailable": false
-    },
-    "ic-10": {
-      "id": "ic-10",
-      "categoryId": "indo-chinese",
-      "name": "Paneer 65",
-      "hindiName": "पनीर 65",
-      "marathiName": "पनीर ६५",
-      "description": "Spicy paneer fingers tossed with curd, mustard, curry leaves and red tadka masala.",
+      "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
       "price": 275,
       "tags": [
         "veg",
@@ -5272,129 +3109,64 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
+      "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
+      "rating": 4.8,
+      "prepTime": "18 mins",
+      "groupedUnder": "ic-paneer-starters-group",
+      "notAvailable": false,
+      "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
+      "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर."
+    },
+    "ic-9": {
+      "id": "ic-9",
+      "categoryId": "indo-chinese",
+      "name": "Paneer Salton",
+      "hindiName": "पनीर साल्टन",
+      "marathiName": "पनीर साल्टन",
+      "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
+      "price": 270,
+      "tags": [
+        "veg",
+        "chef-special"
+      ],
+      "dietary": "pure-veg",
+      "isSoldOut": false,
+      "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
+      "rating": 4.7,
+      "prepTime": "15 mins",
+      "groupedUnder": "ic-paneer-starters-group",
+      "notAvailable": false,
+      "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
+      "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन."
+    },
+    "ic-10": {
+      "id": "ic-10",
+      "categoryId": "indo-chinese",
+      "name": "Paneer 65",
+      "hindiName": "पनीर 65",
+      "marathiName": "पनीर ६५",
+      "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
+      "price": 275,
+      "tags": [
+        "veg"
+      ],
+      "dietary": "pure-veg",
+      "isSoldOut": false,
       "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
       "rating": 4.9,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
       "groupedUnder": "ic-paneer-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
+      "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५."
     },
     "ic-11": {
       "id": "ic-11",
       "categoryId": "indo-chinese",
       "name": "Paneer in Hot Garlic Sauce",
-      "hindiName": "वेज मंचूरियन",
-      "marathiName": "व्हेज मंचूरियन",
-      "description": "Tender paneer cubes in a spicy, aromatic garlic sauce.",
+      "hindiName": "पनीर इन हॉट गार्लिक सॉस",
+      "marathiName": "पनीर इन हॉट गार्लिक सॉस",
+      "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
       "price": 265,
       "tags": [
         "veg",
@@ -5405,118 +3177,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/2026-10-15/ic-11.png",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
       "groupedUnder": "ic-paneer-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
+      "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर."
     },
     "ic-12": {
       "id": "ic-12",
@@ -5538,178 +3202,27 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "ic-paneer-starters-group",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
       "notAvailable": false
     },
     "ic-13": {
       "id": "ic-13",
       "categoryId": "indo-chinese",
       "name": "Noodles Spring Roll",
-      "hindiName": "वेज 65",
-      "marathiName": "व्हेज ६५",
-      "description": "Crispy batter-fried garden vegetables tempered with curry leaves, mustard seeds, and yogurt.",
-      "descriptionHi": "राई और करी पत्ते के तड़के में तैयार की गई कुरकुरी तली हुई मसालेदार सब्जियां।",
-      "descriptionMr": "मोहरी आणि कढीपत्त्याच्या खमंग फोडणीत तळलेल्या कुरकुरीत तिखट भाज्या.",
+      "hindiName": "नूडल्स स्प्रिंग रोल",
+      "marathiName": "नूडल्स स्प्रिंग रोल",
+      "description": "Crispy fried rolls filled with wok-tossed Hakka noodles, spring onions and savory Chinese spices.",
+      "descriptionHi": "चटपटे हक्का नूडल्स और हरी सब्जियों के कुरकुरे स्वादिष्ट स्प्रिंग रोल।",
+      "descriptionMr": "हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स.",
       "price": 280,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "",
       "rating": 4.8,
       "prepTime": "16 mins",
-      "variants": [
-        {
-          "name": "Veg Spring Roll",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "price": 300,
-          "image": "assets/menu-uploads/published-9e759742fc638993e4c4c88d.webp",
-          "description": "Golden-fried crisp rolls stuffed with julienned seasonal vegetables and glass noodles, served with spicy Schezwan dip.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, तीखी शेज़वान सॉस के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, शेजवान चटणीसह."
-        },
-        {
-          "name": "Noodles Spring Roll",
-          "hindiName": "नूडल्स स्प्रिंग रोल",
-          "marathiName": "नूडल्स स्प्रिंग रोल",
-          "price": 280,
-          "image": "",
-          "description": "Crispy fried rolls filled with wok-tossed Hakka noodles, spring onions and savory Chinese spices.",
-          "descriptionHi": "चटपटे हक्का नूडल्स और हरी सब्जियों के कुरकुरे स्वादिष्ट स्प्रिंग रोल।",
-          "descriptionMr": "हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स."
-        },
-        {
-          "name": "Paneer Spring Roll",
-          "hindiName": "पनीर स्प्रिंग रोल",
-          "marathiName": "पनीर स्प्रिंग रोल",
-          "price": 325,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg",
-          "description": "Delicate pastry sheets packed with seasoned shredded cottage cheese, peppers and oriental spices.",
-          "descriptionHi": "ताज़े पनीर के स्वादिष्ट भरावन और मसालों से बने क्रिस्पी पनीर स्प्रिंग रोल।",
-          "descriptionMr": "मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स."
-        },
-        {
-          "name": "Paneer Spider Roll",
-          "hindiName": "पनीर स्पाइडर रोल",
-          "marathiName": "पनीर स्पायडर रोल",
-          "price": 300,
-          "image": "assets/menu-uploads/published-2b15ebe65352faa3a15be66d.webp",
-          "description": "Chef signature appetizer: crunchy noodle-web wrapped paneer batons tossed in a tangy glaze.",
-          "descriptionHi": "नूडल्स की क्रिस्पी जाली में लिपटा हुआ स्पेशल पनीर, शेफ की खास रेसिपी।",
-          "descriptionMr": "नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी."
-        }
-      ],
       "groupedUnder": "ic-spring-rolls-group",
       "notAvailable": false
     },
@@ -5717,14 +3230,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "id": "ic-14",
       "categoryId": "indo-chinese",
       "name": "Veg Manchurian",
-      "hindiName": "वेज क्रिस्पी",
-      "marathiName": "व्हेज क्रिस्पी",
-      "description": "Deep-fried mixed-vegetable balls coated in a tangy Indo-Chinese sauce.",
+      "hindiName": "वेज मंचूरियन",
+      "marathiName": "व्हेज मंचूरियन",
+      "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
       "price": 240,
       "tags": [
         "veg",
-        "bestseller",
-        "zomato-top"
+        "zomato-top",
+        "bestseller"
       ],
       "zomatoRating": "4.3",
       "dietary": "pure-veg",
@@ -5732,107 +3245,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/2026-10-15/ic-14.png",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "groupedUnder": "ic-veg-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
+      "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत."
     },
     "ic-15": {
       "id": "ic-15",
@@ -5840,125 +3256,29 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Lollipop",
       "hindiName": "वेज लॉलीपॉप",
       "marathiName": "व्हेज लॉलीपॉप",
-      "description": "Crisp, seasoned vegetable bites with a savoury crunch.",
+      "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
       "price": 260,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "groupedUnder": "ic-veg-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
+      "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत."
     },
     "ic-16": {
       "id": "ic-16",
       "categoryId": "indo-chinese",
       "name": "Veg Spring Roll",
-      "hindiName": "मशरूम बेबीकॉर्न चिली",
-      "marathiName": "मशरूम बेबीकॉर्न चिली",
-      "description": "Crisp rolls filled with mixed vegetables, served with a dipping sauce.",
+      "hindiName": "वेज स्प्रिंग रोल",
+      "marathiName": "व्हेज स्प्रिंग रोल",
+      "description": "Golden-fried crisp rolls stuffed with julienned seasonal vegetables and glass noodles, served with spicy Schezwan dip.",
       "price": 300,
       "tags": [
         "veg"
@@ -5968,58 +3288,18 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-9e759742fc638993e4c4c88d.webp",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Spring Roll",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "price": 300,
-          "image": "assets/menu-uploads/published-9e759742fc638993e4c4c88d.webp",
-          "description": "Golden-fried crisp rolls stuffed with julienned seasonal vegetables and glass noodles, served with spicy Schezwan dip.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, तीखी शेज़वान सॉस के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, शेजवान चटणीसह."
-        },
-        {
-          "name": "Noodles Spring Roll",
-          "hindiName": "नूडल्स स्प्रिंग रोल",
-          "marathiName": "नूडल्स स्प्रिंग रोल",
-          "price": 280,
-          "image": "",
-          "description": "Crispy fried rolls filled with wok-tossed Hakka noodles, spring onions and savory Chinese spices.",
-          "descriptionHi": "चटपटे हक्का नूडल्स और हरी सब्जियों के कुरकुरे स्वादिष्ट स्प्रिंग रोल।",
-          "descriptionMr": "हक्का नूडल्स आणि कांद्याची पात भरलेले कुरकुरीत खमंग स्प्रिंग रोल्स."
-        },
-        {
-          "name": "Paneer Spring Roll",
-          "hindiName": "पनीर स्प्रिंग रोल",
-          "marathiName": "पनीर स्प्रिंग रोल",
-          "price": 325,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-spring-roll.jpg",
-          "description": "Delicate pastry sheets packed with seasoned shredded cottage cheese, peppers and oriental spices.",
-          "descriptionHi": "ताज़े पनीर के स्वादिष्ट भरावन और मसालों से बने क्रिस्पी पनीर स्प्रिंग रोल।",
-          "descriptionMr": "मऊ पनीर आणि मसाल्यांचे चविष्ट सारण भरलेले कुरकुरीत पनीर स्प्रिंग रोल्स."
-        },
-        {
-          "name": "Paneer Spider Roll",
-          "hindiName": "पनीर स्पाइडर रोल",
-          "marathiName": "पनीर स्पायडर रोल",
-          "price": 300,
-          "image": "assets/menu-uploads/published-2b15ebe65352faa3a15be66d.webp",
-          "description": "Chef signature appetizer: crunchy noodle-web wrapped paneer batons tossed in a tangy glaze.",
-          "descriptionHi": "नूडल्स की क्रिस्पी जाली में लिपटा हुआ स्पेशल पनीर, शेफ की खास रेसिपी।",
-          "descriptionMr": "नूडल्सच्या कुरकुरीत जाळीत लपेटलेले पनीर, शेफची स्पेशल स्वाक्षरी रेसिपी."
-        }
-      ],
       "groupedUnder": "ic-spring-rolls-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, तीखी शेज़वान सॉस के साथ।",
+      "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, शेजवान चटणीसह."
     },
     "ic-17": {
       "id": "ic-17",
       "categoryId": "indo-chinese",
       "name": "Veg 65",
-      "hindiName": "वेज कोठे",
-      "marathiName": "व्हेज कोठे",
-      "description": "Crisp fried vegetables tossed with curd, mustard, curry leaves and red tadka masala for a spicy, tangy finish.",
+      "hindiName": "वेज 65",
+      "marathiName": "व्हेज ६५",
+      "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
       "price": 240,
       "tags": [
         "veg"
@@ -6029,115 +3309,18 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "groupedUnder": "ic-veg-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
+      "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५."
     },
     "ic-18": {
       "id": "ic-18",
       "categoryId": "indo-chinese",
       "name": "Veg Crispy",
-      "hindiName": "वेज बुलेट",
-      "marathiName": "व्हेज बुलेट",
-      "description": "Assorted vegetables coated in a spicy, garlic-flavoured batter and fried crisp.",
+      "hindiName": "वेज क्रिस्पी",
+      "marathiName": "व्हेज क्रिस्पी",
+      "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
       "price": 240,
       "tags": [
         "veg",
@@ -6148,107 +3331,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "groupedUnder": "ic-veg-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
+      "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या."
     },
     "ic-19": {
       "id": "ic-19",
@@ -6256,7 +3342,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Ball in Hot Garlic Sauce",
       "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
       "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-      "description": "Crisp vegetable balls coated in a zesty, spicy garlic sauce.",
+      "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
       "price": 250,
       "tags": [
         "veg"
@@ -6266,115 +3352,18 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "groupedUnder": "ic-veg-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
+      "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स."
     },
     "ic-20": {
       "id": "ic-20",
       "categoryId": "indo-chinese",
       "name": "Mushroom Babycorn Chilly",
-      "hindiName": "वेज हॉट पैन",
-      "marathiName": "व्हेज हॉट पॅन",
-      "description": "Deep-fried baby corn and button mushrooms coated with soy sauce and seasoned with salt and pepper.",
+      "hindiName": "मशरूम बेबीकॉर्न चिली",
+      "marathiName": "मशरूम बेबीकॉर्न चिली",
+      "description": "Button mushrooms and crisp baby corn stir-fried with capsicum, garlic and dark soya sauce.",
       "price": 270,
       "tags": [
         "veg"
@@ -6384,58 +3373,18 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Crispy Corn Chilly",
-          "hindiName": "क्रिस्पी कॉर्न चिली",
-          "marathiName": "क्रिस्पी कॉर्न चिली",
-          "price": 210,
-          "image": "assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg",
-          "description": "Golden fried sweet corn kernels tossed with crunchy capsicum, onions, spring onions and black pepper.",
-          "descriptionHi": "कुरकुरे फ्राइड स्वीटकॉर्न, शिमला मिर्च और काली मिर्च का चटपटा स्वाद।",
-          "descriptionMr": "कुरकुरीत तळलेले मक्याचे दाणे, शिमला मिरची आणि काळी मिरीचे चटकदार स्टार्टर."
-        },
-        {
-          "name": "Honey Chilly Potato",
-          "hindiName": "हनी चिली पोटैटो",
-          "marathiName": "हनी चिली पोटॅटो",
-          "price": 260,
-          "image": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg",
-          "description": "Crisp golden potato batons tossed in a sweet and spicy honey, chilli and toasted sesame glaze.",
-          "descriptionHi": "शहद, लाल मिर्च और भुने तिल की मीठी-तीखी चमक से सजे कुरकुरे आलू फिंगर्स।",
-          "descriptionMr": "मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे."
-        },
-        {
-          "name": "Mushroom Babycorn Chilly",
-          "hindiName": "मशरूम बेबीकॉर्न चिली",
-          "marathiName": "मशरूम बेबीकॉर्न चिली",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpg",
-          "description": "Button mushrooms and crisp baby corn stir-fried with capsicum, garlic and dark soya sauce.",
-          "descriptionHi": "ताज़े मशरूम और बेबीकॉर्न को शिमला मिर्च व लहसुन के साथ फ्राई किया हुआ स्टार्टर।",
-          "descriptionMr": "ताजे अळंबी (मशरूम) आणि कोवळी मका (बेबीकॉर्न) यांचे झणझणीत चायनीज स्टार्टर."
-        },
-        {
-          "name": "Soyabean Chilly",
-          "hindiName": "सोयाबीन चिली",
-          "marathiName": "सोयाबीन चिली",
-          "price": 240,
-          "image": "assets/menu-images/indo-chinese-nibbles/soyabean-chilli.jpg",
-          "description": "High-protein soya chunks coated and tossed with bell peppers in a spicy, savory garlic chilli glaze.",
-          "descriptionHi": "प्रोटीन से भरपूर सोया चंक्स, शिमला मिर्च और तीखे मसालों से बना हेल्दी चिली स्टार्टर।",
-          "descriptionMr": "पौष्टिक सोयाबीन वड्या आणि शिमला मिरचीचे चमचमीत चिली स्टार्टर."
-        }
-      ],
       "groupedUnder": "ic-corn-potato-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़े मशरूम और बेबीकॉर्न को शिमला मिर्च व लहसुन के साथ फ्राई किया हुआ स्टार्टर।",
+      "descriptionMr": "ताजे अळंबी (मशरूम) आणि कोवळी मका (बेबीकॉर्न) यांचे झणझणीत चायनीज स्टार्टर."
     },
     "ic-21": {
       "id": "ic-21",
       "categoryId": "indo-chinese",
       "name": "Veg Kothe",
-      "hindiName": "पनीर टिक्का शावर्मा",
-      "marathiName": "पनीर टिक्का शॉर्मा",
-      "description": "Crisp vegetable dumplings tossed with vegetables, herbs and spices in a savoury Indo-Chinese sauce.",
+      "hindiName": "वेज कोठे",
+      "marathiName": "व्हेज कोठे",
+      "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
       "price": 250,
       "tags": [
         "veg"
@@ -6445,234 +3394,41 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "",
       "rating": 4.8,
       "prepTime": "16 mins",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "groupedUnder": "ic-veg-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
+      "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे."
     },
     "ic-22": {
       "id": "ic-22",
       "categoryId": "indo-chinese",
       "name": "Veg Bullet",
-      "hindiName": "पनीर लेमन",
-      "marathiName": "पनीर लेमन",
-      "description": "Crisp, spiced vegetable balls served with a tangy dipping sauce.",
+      "hindiName": "वेज बुलेट",
+      "marathiName": "व्हेज बुलेट",
+      "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
       "price": 280,
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "groupedUnder": "ic-veg-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
+      "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट."
     },
     "ic-23": {
       "id": "ic-23",
       "categoryId": "indo-chinese",
       "name": "Veg Hot Pan",
-      "hindiName": "क्रिस्पी कॉर्न चिली",
-      "marathiName": "क्रिस्पी कॉर्न चिली",
-      "description": "Deep-fried vegetable dumplings tossed in a tangy Indo-Chinese sauce and served on a sizzling platter.",
+      "hindiName": "वेज हॉट पैन",
+      "marathiName": "व्हेज हॉट पॅन",
+      "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
       "price": 270,
       "tags": [
         "veg"
@@ -6682,115 +3438,18 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
       "rating": 4.8,
       "prepTime": "16 mins",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "groupedUnder": "ic-veg-starters-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
+      "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स."
     },
     "ic-24": {
       "id": "ic-24",
       "categoryId": "indo-chinese",
       "name": "Crispy Corn Chilly",
-      "hindiName": "हनी चिली पोटैटो",
-      "marathiName": "हनी चिली पोटॅटो",
-      "description": "Crisp corn tossed in a spicy, tangy chilli sauce.",
+      "hindiName": "क्रिस्पी कॉर्न चिली",
+      "marathiName": "क्रिस्पी कॉर्न चिली",
+      "description": "Golden fried sweet corn kernels tossed with crunchy capsicum, onions, spring onions and black pepper.",
       "price": 210,
       "tags": [
         "veg",
@@ -6802,119 +3461,40 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg",
       "rating": 4.8,
       "prepTime": "12 mins",
-      "variants": [
-        {
-          "name": "Crispy Corn Chilly",
-          "hindiName": "क्रिस्पी कॉर्न चिली",
-          "marathiName": "क्रिस्पी कॉर्न चिली",
-          "price": 210,
-          "image": "assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg",
-          "description": "Golden fried sweet corn kernels tossed with crunchy capsicum, onions, spring onions and black pepper.",
-          "descriptionHi": "कुरकुरे फ्राइड स्वीटकॉर्न, शिमला मिर्च और काली मिर्च का चटपटा स्वाद।",
-          "descriptionMr": "कुरकुरीत तळलेले मक्याचे दाणे, शिमला मिरची आणि काळी मिरीचे चटकदार स्टार्टर."
-        },
-        {
-          "name": "Honey Chilly Potato",
-          "hindiName": "हनी चिली पोटैटो",
-          "marathiName": "हनी चिली पोटॅटो",
-          "price": 260,
-          "image": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg",
-          "description": "Crisp golden potato batons tossed in a sweet and spicy honey, chilli and toasted sesame glaze.",
-          "descriptionHi": "शहद, लाल मिर्च और भुने तिल की मीठी-तीखी चमक से सजे कुरकुरे आलू फिंगर्स।",
-          "descriptionMr": "मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे."
-        },
-        {
-          "name": "Mushroom Babycorn Chilly",
-          "hindiName": "मशरूम बेबीकॉर्न चिली",
-          "marathiName": "मशरूम बेबीकॉर्न चिली",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpg",
-          "description": "Button mushrooms and crisp baby corn stir-fried with capsicum, garlic and dark soya sauce.",
-          "descriptionHi": "ताज़े मशरूम और बेबीकॉर्न को शिमला मिर्च व लहसुन के साथ फ्राई किया हुआ स्टार्टर।",
-          "descriptionMr": "ताजे अळंबी (मशरूम) आणि कोवळी मका (बेबीकॉर्न) यांचे झणझणीत चायनीज स्टार्टर."
-        },
-        {
-          "name": "Soyabean Chilly",
-          "hindiName": "सोयाबीन चिली",
-          "marathiName": "सोयाबीन चिली",
-          "price": 240,
-          "image": "assets/menu-images/indo-chinese-nibbles/soyabean-chilli.jpg",
-          "description": "High-protein soya chunks coated and tossed with bell peppers in a spicy, savory garlic chilli glaze.",
-          "descriptionHi": "प्रोटीन से भरपूर सोया चंक्स, शिमला मिर्च और तीखे मसालों से बना हेल्दी चिली स्टार्टर।",
-          "descriptionMr": "पौष्टिक सोयाबीन वड्या आणि शिमला मिरचीचे चमचमीत चिली स्टार्टर."
-        }
-      ],
       "groupedUnder": "ic-corn-potato-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "कुरकुरे फ्राइड स्वीटकॉर्न, शिमला मिर्च और काली मिर्च का चटपटा स्वाद।",
+      "descriptionMr": "कुरकुरीत तळलेले मक्याचे दाणे, शिमला मिरची आणि काळी मिरीचे चटकदार स्टार्टर."
     },
     "ic-25": {
       "id": "ic-25",
       "categoryId": "indo-chinese",
       "name": "Honey Chilly Potato",
-      "hindiName": "सोयाबीन चिली",
-      "marathiName": "सोयाबीन चिली",
-      "description": "Crisp potato slices glazed with sweet honey and spicy chilli sauce.",
+      "hindiName": "हनी चिली पोटैटो",
+      "marathiName": "हनी चिली पोटॅटो",
+      "description": "Crisp golden potato batons tossed in a sweet and spicy honey, chilli and toasted sesame glaze.",
       "price": 260,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Crispy Corn Chilly",
-          "hindiName": "क्रिस्पी कॉर्न चिली",
-          "marathiName": "क्रिस्पी कॉर्न चिली",
-          "price": 210,
-          "image": "assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg",
-          "description": "Golden fried sweet corn kernels tossed with crunchy capsicum, onions, spring onions and black pepper.",
-          "descriptionHi": "कुरकुरे फ्राइड स्वीटकॉर्न, शिमला मिर्च और काली मिर्च का चटपटा स्वाद।",
-          "descriptionMr": "कुरकुरीत तळलेले मक्याचे दाणे, शिमला मिरची आणि काळी मिरीचे चटकदार स्टार्टर."
-        },
-        {
-          "name": "Honey Chilly Potato",
-          "hindiName": "हनी चिली पोटैटो",
-          "marathiName": "हनी चिली पोटॅटो",
-          "price": 260,
-          "image": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg",
-          "description": "Crisp golden potato batons tossed in a sweet and spicy honey, chilli and toasted sesame glaze.",
-          "descriptionHi": "शहद, लाल मिर्च और भुने तिल की मीठी-तीखी चमक से सजे कुरकुरे आलू फिंगर्स।",
-          "descriptionMr": "मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे."
-        },
-        {
-          "name": "Mushroom Babycorn Chilly",
-          "hindiName": "मशरूम बेबीकॉर्न चिली",
-          "marathiName": "मशरूम बेबीकॉर्न चिली",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpg",
-          "description": "Button mushrooms and crisp baby corn stir-fried with capsicum, garlic and dark soya sauce.",
-          "descriptionHi": "ताज़े मशरूम और बेबीकॉर्न को शिमला मिर्च व लहसुन के साथ फ्राई किया हुआ स्टार्टर।",
-          "descriptionMr": "ताजे अळंबी (मशरूम) आणि कोवळी मका (बेबीकॉर्न) यांचे झणझणीत चायनीज स्टार्टर."
-        },
-        {
-          "name": "Soyabean Chilly",
-          "hindiName": "सोयाबीन चिली",
-          "marathiName": "सोयाबीन चिली",
-          "price": 240,
-          "image": "assets/menu-images/indo-chinese-nibbles/soyabean-chilli.jpg",
-          "description": "High-protein soya chunks coated and tossed with bell peppers in a spicy, savory garlic chilli glaze.",
-          "descriptionHi": "प्रोटीन से भरपूर सोया चंक्स, शिमला मिर्च और तीखे मसालों से बना हेल्दी चिली स्टार्टर।",
-          "descriptionMr": "पौष्टिक सोयाबीन वड्या आणि शिमला मिरचीचे चमचमीत चिली स्टार्टर."
-        }
-      ],
       "groupedUnder": "ic-corn-potato-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "शहद, लाल मिर्च और भुने तिल की मीठी-तीखी चमक से सजे कुरकुरे आलू फिंगर्स।",
+      "descriptionMr": "मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे."
     },
     "ic-26": {
       "id": "ic-26",
       "categoryId": "indo-chinese",
       "name": "Soyabean Chilly",
-      "hindiName": "पनीर क्रिस्पी",
-      "marathiName": "पनीर क्रिस्पी",
-      "description": "Crisp soyabean chunks tossed with vegetables in a spicy, tangy sauce.",
+      "hindiName": "सोयाबीन चिली",
+      "marathiName": "सोयाबीन चिली",
+      "description": "High-protein soya chunks coated and tossed with bell peppers in a spicy, savory garlic chilli glaze.",
       "price": 240,
       "tags": [
         "veg"
@@ -6924,50 +3504,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/indo-chinese-nibbles/soyabean-chilli.jpg",
       "rating": 4.6,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Crispy Corn Chilly",
-          "hindiName": "क्रिस्पी कॉर्न चिली",
-          "marathiName": "क्रिस्पी कॉर्न चिली",
-          "price": 210,
-          "image": "assets/menu-images/indo-chinese-nibbles/crispy-corn-chilli.jpg",
-          "description": "Golden fried sweet corn kernels tossed with crunchy capsicum, onions, spring onions and black pepper.",
-          "descriptionHi": "कुरकुरे फ्राइड स्वीटकॉर्न, शिमला मिर्च और काली मिर्च का चटपटा स्वाद।",
-          "descriptionMr": "कुरकुरीत तळलेले मक्याचे दाणे, शिमला मिरची आणि काळी मिरीचे चटकदार स्टार्टर."
-        },
-        {
-          "name": "Honey Chilly Potato",
-          "hindiName": "हनी चिली पोटैटो",
-          "marathiName": "हनी चिली पोटॅटो",
-          "price": 260,
-          "image": "assets/menu-images/indo-chinese-nibbles/honey-chilli-potato.jpg",
-          "description": "Crisp golden potato batons tossed in a sweet and spicy honey, chilli and toasted sesame glaze.",
-          "descriptionHi": "शहद, लाल मिर्च और भुने तिल की मीठी-तीखी चमक से सजे कुरकुरे आलू फिंगर्स।",
-          "descriptionMr": "मध, लाल मिरची आणि तिळाच्या गोडसर-तिखट चवीतील कुरकुरीत बटाटे."
-        },
-        {
-          "name": "Mushroom Babycorn Chilly",
-          "hindiName": "मशरूम बेबीकॉर्न चिली",
-          "marathiName": "मशरूम बेबीकॉर्न चिली",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/mushroom-babycorn-chilli.jpg",
-          "description": "Button mushrooms and crisp baby corn stir-fried with capsicum, garlic and dark soya sauce.",
-          "descriptionHi": "ताज़े मशरूम और बेबीकॉर्न को शिमला मिर्च व लहसुन के साथ फ्राई किया हुआ स्टार्टर।",
-          "descriptionMr": "ताजे अळंबी (मशरूम) आणि कोवळी मका (बेबीकॉर्न) यांचे झणझणीत चायनीज स्टार्टर."
-        },
-        {
-          "name": "Soyabean Chilly",
-          "hindiName": "सोयाबीन चिली",
-          "marathiName": "सोयाबीन चिली",
-          "price": 240,
-          "image": "assets/menu-images/indo-chinese-nibbles/soyabean-chilli.jpg",
-          "description": "High-protein soya chunks coated and tossed with bell peppers in a spicy, savory garlic chilli glaze.",
-          "descriptionHi": "प्रोटीन से भरपूर सोया चंक्स, शिमला मिर्च और तीखे मसालों से बना हेल्दी चिली स्टार्टर।",
-          "descriptionMr": "पौष्टिक सोयाबीन वड्या आणि शिमला मिरचीचे चमचमीत चिली स्टार्टर."
-        }
-      ],
       "groupedUnder": "ic-corn-potato-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "प्रोटीन से भरपूर सोया चंक्स, शिमला मिर्च और तीखे मसालों से बना हेल्दी चिली स्टार्टर।",
+      "descriptionMr": "पौष्टिक सोयाबीन वड्या आणि शिमला मिरचीचे चमचमीत चिली स्टार्टर."
     },
     "tc-1": {
       "id": "tc-1",
@@ -6979,8 +3519,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 600,
       "tags": [
         "veg",
-        "chef-special",
-        "zomato-top"
+        "zomato-top",
+        "chef-special"
       ],
       "zomatoRating": "4.5",
       "dietary": "pure-veg",
@@ -6988,7 +3528,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-d22f152887e312c94e7d68cc.webp",
       "rating": 5,
       "prepTime": "25 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-2": {
       "id": "tc-2",
@@ -7008,7 +3550,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/tandoor-classics/paneer-tikka.jpg",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "variants": [],
       "notAvailable": false
     },
     "tc-3": {
@@ -7018,19 +3559,20 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Jungli Paneer Tikka",
       "hindiName": "जंगली पनीर टिक्का",
       "marathiName": "जंगली पनीर टिक्का",
-      "description": "Paneer marinated with fresh green herbs and spices, then grilled for a spicy, tangy finish.",
+      "description": "Rustic countryside spiced paneer tikka with crushed coriander seeds and cracked black pepper.",
       "price": 295,
       "tags": [
         "veg",
-        "chef-special"
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/tandoor-classics/jungli-paneer-tikka.jpg",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "साबुत कुटे धनिया, काली मिर्च और पुदीने के देहाती जंगली तड़के वाला पनीर टिक्का।",
+      "descriptionMr": "धणे, काळी मिरी आणि पुदिन्याची गावरान खमंग चव असलेला जंगली पनीर टिक्का."
     },
     "tc-4": {
       "id": "tc-4",
@@ -7039,19 +3581,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Patakha Tikka",
       "hindiName": "पनीर पटाखा टिक्का",
       "marathiName": "पनीर फटाका टिक्का",
-      "description": "Boldly spiced paneer cubes marinated and grilled in the tandoor.",
+      "description": "Extra fiery and spicy tandoori paneer marinated in red chilli flakes and Khandeshi herbs.",
       "price": 300,
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/tandoor-classics/paneer-patakha-tikka.jpg",
       "rating": 4.8,
       "prepTime": "20 mins",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तीखी लाल मिर्च, नींबू और भुने खड़े मसालों का धमाकेदार तीखा स्वाद।",
+      "descriptionMr": "झणझणीत लाल मिरची आणि खानदेशी मसाल्यांचा धमाकेदार तडका असलेला तिखट टिक्का."
     },
     "tc-5": {
       "id": "tc-5",
@@ -7060,28 +3604,29 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Reshmi Kabab",
       "hindiName": "पनीर रेशमी कबाब",
       "marathiName": "पनीर रेशमी कबाब",
-      "description": "Paneer cubes in a creamy spice marinade, gently grilled in the tandoor.",
+      "description": "Silky smooth paneer tikka marinated in rich cashew cream and mild aromatic royal spices.",
       "price": 300,
       "tags": [
         "veg",
-        "chef-special"
+        "sweet"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/tandoor-classics/paneer-reshmi-tikka.jpg",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "काजू का पेस्ट, मलाई और खुशबूदार केसरिया मसालों में डूबा हुआ बेहद नरम व मखमली कबाब।",
+      "descriptionMr": "काजूची पेस्ट, ताजी साय आणि सुगंधी मसाल्यात तयार केलेला मऊ रेशमी कबाब."
     },
     "tc-6": {
       "id": "tc-6",
       "categoryId": "tandoor-classics",
       "groupedUnder": "tc-paneer-tikka-group",
       "name": "Paneer Afghani Tikka",
-      "hindiName": "पनीर अफ़गानी टिक्का",
+      "hindiName": "पनीर अफगानी टिक्का",
       "marathiName": "पनीर अफगाणी टिक्का",
-      "description": "Tender paneer marinated in rich, spiced yogurt and char-grilled.",
+      "description": "Mellow, rich paneer cubes infused with curd, cheese, black pepper and cardamom roasted to perfection.",
       "price": 285,
       "tags": [
         "veg"
@@ -7091,49 +3636,52 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/tandoor-classics/paneer-afghani-tikka.jpg",
       "rating": 4.8,
       "prepTime": "20 mins",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "दही, चीज़, काली मिर्च और छोटी इलायची के सुगंधित अफ़गानी मिश्रण में भुना हुआ पनीर।",
+      "descriptionMr": "दही, चीज, काळी मिरी आणि वेलचीच्या शाही चवीत भाजलेला अफगाणी पनीर टिक्का."
     },
     "tc-7": {
       "id": "tc-7",
       "categoryId": "tandoor-classics",
       "groupedUnder": "tc-paneer-tikka-group",
       "name": "Lehsuni Paneer Tikka",
-      "hindiName": "पनीर ज़ाफ़रानी टिक्का",
-      "marathiName": "पनीर झाफरानी टिक्का",
-      "description": "Garlic-marinated paneer grilled with a warming blend of spices.",
+      "hindiName": "लहसुनी पनीर टिक्का",
+      "marathiName": "लसुणी पनीर टिक्का",
+      "description": "Charcoal grilled cottage cheese marinated with freshly roasted garlic and aromatic spices.",
       "price": 300,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/tandoor-classics/lasooni-paneer-tikka.jpg",
       "rating": 4.8,
       "prepTime": "20 mins",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "भुने हुए ताज़े लहसुन और खुशबूदार मसालों के खास तंदूरी मैरिनेशन में तैयार पनीर टिक्का।",
+      "descriptionMr": "खमंग भाजलेला लसूण आणि खास तंदूरी मसाल्यांच्या चवीचा मऊ लुसलुशीत पनीर टिक्का."
     },
     "tc-8": {
       "id": "tc-8",
       "categoryId": "tandoor-classics",
       "groupedUnder": "tc-paneer-tikka-group",
       "name": "Paneer Jafrani Tikka",
-      "hindiName": "पनीर अचारी टिक्का",
-      "marathiName": "पनीर अचारी टिक्का",
-      "description": "Paneer marinated with saffron-infused spices and char-grilled in the tandoor.",
+      "hindiName": "पनीर ज़ाफ़रानी टिक्का",
+      "marathiName": "पनीर जाफरानी टिक्का",
+      "description": "Regal paneer tikka scented with pure saffron strands, mace, cream and royal spices.",
       "price": 315,
       "tags": [
-        "veg",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/tandoor-classics/paneer-zafrani-tikka.jpg",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "शुद्ध कश्मीरी केसर, जावित्री और मलाई के शाही मिश्रण में पका हुआ ज़ाफ़रानी पनीर टिक्का।",
+      "descriptionMr": "शुद्ध काश्मिरी केशर, जायपत्री आणि सायीच्या शाही मिश्रणात भाजलेला जाफरानी टिक्का."
     },
     "tc-9": {
       "id": "tc-9",
@@ -7152,7 +3700,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-363abab2c639c78d02cf4c6b.webp",
       "rating": 4.9,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-10": {
       "id": "tc-10",
@@ -7172,8 +3722,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 5,
       "prepTime": "22 mins",
       "groupedUnder": "tc-paneer-tikka-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-11": {
       "id": "tc-11",
@@ -7193,8 +3744,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "15 mins",
       "groupedUnder": "tt-fried-veg-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-12": {
       "id": "tc-12",
@@ -7205,7 +3757,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Seasoned mixed vegetables shaped around skewers and grilled.",
       "price": 270,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -7213,8 +3766,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "18 mins",
       "groupedUnder": "tc-veg-starters-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-13": {
       "id": "tc-13",
@@ -7225,7 +3779,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Skewered vegetable balls grilled with spicy, tangy Indo-Chinese flavours.",
       "price": 260,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -7233,8 +3788,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "18 mins",
       "groupedUnder": "tc-veg-starters-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-14": {
       "id": "tc-14",
@@ -7253,8 +3809,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "tc-veg-starters-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-15": {
       "id": "tc-15",
@@ -7273,8 +3830,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "tt-fried-veg-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-16": {
       "id": "tc-16",
@@ -7293,8 +3851,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "15 mins",
       "groupedUnder": "tc-veg-starters-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-17": {
       "id": "tc-17",
@@ -7305,7 +3864,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Mixed vegetables shaped around skewers, coated with sesame seeds and grilled.",
       "price": 280,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -7313,8 +3873,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "tc-veg-starters-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tc-18": {
       "id": "tc-18",
@@ -7325,7 +3886,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Heart-shaped vegetable patties coated with sesame seeds, cooked crisp and served with tangy mint chutney.",
       "price": 280,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -7333,8 +3895,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "tt-fried-veg-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "rn-1": {
       "id": "rn-1",
@@ -7353,58 +3916,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg",
       "rating": 4.9,
       "prepTime": "18 mins",
-      "variants": [
-        {
-          "name": "Veg Fried Rice",
-          "hindiName": "वेज फ्राइड राइस",
-          "marathiName": "व्हेज फ्राईड राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
-          "description": "Aromatic long-grain basmati rice stir-fried in a hot wok with finely diced vegetables and mild soya seasoning.",
-          "descriptionHi": "बारीक कटी सब्जियों और हल्के मसालों के साथ वोक में भुना हुआ क्लासिक फ्राइड राइस।",
-          "descriptionMr": "बारीक चिरलेल्या भाज्या आणि सुगंधी बासमती तांदळाचा पारंपरिक फ्राईड राईस."
-        },
-        {
-          "name": "Veg Schezwan Rice",
-          "hindiName": "वेज शेज़वान राइस",
-          "marathiName": "व्हेज शेजवान राईस",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg",
-          "description": "Wok-tossed basmati rice infused with fiery red Schezwan sauce, garlic, celery and garden vegetables.",
-          "descriptionHi": "तीखी लाल शेज़वान सॉस, लहसुन और ताज़ी सब्जियों के मेल से बना स्पाइसी राइस।",
-          "descriptionMr": "झणझणीत शेजवान सॉस आणि भाज्यांनी युक्त खमंग शेजवान राईस."
-        },
-        {
-          "name": "Veg Combination Rice",
-          "hindiName": "वेज कॉम्बिनेशन राइस",
-          "marathiName": "व्हेज कॉम्बिनेशन राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg",
-          "description": "The best of both worlds: fragrant basmati rice and Hakka noodles stir-fried together with vegetables.",
-          "descriptionHi": "चावल और नूडल्स का लाजवाब संगम, ताज़ी सब्जियों और चाइनीज़ मसालों के साथ।",
-          "descriptionMr": "बासमती तांदूळ आणि नूडल्स एकत्र करून बनवलेला स्वादिष्ट कॉम्बिनेशन राईस."
-        },
-        {
-          "name": "Mushroom Garlic Rice",
-          "hindiName": "मशरूम गार्लिक राइस",
-          "marathiName": "मशरूम गार्लिक राईस",
-          "price": 260,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg",
-          "description": "Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.",
-          "descriptionHi": "भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।",
-          "descriptionMr": "परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात."
-        },
-        {
-          "name": "Veg Triple Schezwan Rice",
-          "hindiName": "वेज ट्रिपल शेज़वान राइस",
-          "marathiName": "व्हेज ट्रिपल शेजवान राईस",
-          "price": 290,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg",
-          "description": "Hotel Pride blockbuster: Schezwan rice and noodles layered with crispy noodles and served with spicy Manchurian gravy.",
-          "descriptionHi": "शेज़वान राइस, नूडल्स, क्रिस्पी फ्राइड नूडल्स और गरमागरम मंचूरियन ग्रेवी की रॉयल दावत।",
-          "descriptionMr": "शेजवान राईस, नूडल्स, कुरकुरीत नूडल्स आणि गरमागरम मंचूरियन ग्रेव्हीचे भव्य कॉम्बिनेशन."
-        }
-      ],
       "groupedUnder": "rn-fried-rice-group",
       "notAvailable": false
     },
@@ -7425,58 +3936,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Fried Rice",
-          "hindiName": "वेज फ्राइड राइस",
-          "marathiName": "व्हेज फ्राईड राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
-          "description": "Aromatic long-grain basmati rice stir-fried in a hot wok with finely diced vegetables and mild soya seasoning.",
-          "descriptionHi": "बारीक कटी सब्जियों और हल्के मसालों के साथ वोक में भुना हुआ क्लासिक फ्राइड राइस।",
-          "descriptionMr": "बारीक चिरलेल्या भाज्या आणि सुगंधी बासमती तांदळाचा पारंपरिक फ्राईड राईस."
-        },
-        {
-          "name": "Veg Schezwan Rice",
-          "hindiName": "वेज शेज़वान राइस",
-          "marathiName": "व्हेज शेजवान राईस",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg",
-          "description": "Wok-tossed basmati rice infused with fiery red Schezwan sauce, garlic, celery and garden vegetables.",
-          "descriptionHi": "तीखी लाल शेज़वान सॉस, लहसुन और ताज़ी सब्जियों के मेल से बना स्पाइसी राइस।",
-          "descriptionMr": "झणझणीत शेजवान सॉस आणि भाज्यांनी युक्त खमंग शेजवान राईस."
-        },
-        {
-          "name": "Veg Combination Rice",
-          "hindiName": "वेज कॉम्बिनेशन राइस",
-          "marathiName": "व्हेज कॉम्बिनेशन राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg",
-          "description": "The best of both worlds: fragrant basmati rice and Hakka noodles stir-fried together with vegetables.",
-          "descriptionHi": "चावल और नूडल्स का लाजवाब संगम, ताज़ी सब्जियों और चाइनीज़ मसालों के साथ।",
-          "descriptionMr": "बासमती तांदूळ आणि नूडल्स एकत्र करून बनवलेला स्वादिष्ट कॉम्बिनेशन राईस."
-        },
-        {
-          "name": "Mushroom Garlic Rice",
-          "hindiName": "मशरूम गार्लिक राइस",
-          "marathiName": "मशरूम गार्लिक राईस",
-          "price": 260,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg",
-          "description": "Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.",
-          "descriptionHi": "भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।",
-          "descriptionMr": "परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात."
-        },
-        {
-          "name": "Veg Triple Schezwan Rice",
-          "hindiName": "वेज ट्रिपल शेज़वान राइस",
-          "marathiName": "व्हेज ट्रिपल शेजवान राईस",
-          "price": 290,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg",
-          "description": "Hotel Pride blockbuster: Schezwan rice and noodles layered with crispy noodles and served with spicy Manchurian gravy.",
-          "descriptionHi": "शेज़वान राइस, नूडल्स, क्रिस्पी फ्राइड नूडल्स और गरमागरम मंचूरियन ग्रेवी की रॉयल दावत।",
-          "descriptionMr": "शेजवान राईस, नूडल्स, कुरकुरीत नूडल्स आणि गरमागरम मंचूरियन ग्रेव्हीचे भव्य कॉम्बिनेशन."
-        }
-      ],
       "groupedUnder": "rn-fried-rice-group",
       "notAvailable": false
     },
@@ -7497,58 +3956,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Fried Rice",
-          "hindiName": "वेज फ्राइड राइस",
-          "marathiName": "व्हेज फ्राईड राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
-          "description": "Aromatic long-grain basmati rice stir-fried in a hot wok with finely diced vegetables and mild soya seasoning.",
-          "descriptionHi": "बारीक कटी सब्जियों और हल्के मसालों के साथ वोक में भुना हुआ क्लासिक फ्राइड राइस।",
-          "descriptionMr": "बारीक चिरलेल्या भाज्या आणि सुगंधी बासमती तांदळाचा पारंपरिक फ्राईड राईस."
-        },
-        {
-          "name": "Veg Schezwan Rice",
-          "hindiName": "वेज शेज़वान राइस",
-          "marathiName": "व्हेज शेजवान राईस",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg",
-          "description": "Wok-tossed basmati rice infused with fiery red Schezwan sauce, garlic, celery and garden vegetables.",
-          "descriptionHi": "तीखी लाल शेज़वान सॉस, लहसुन और ताज़ी सब्जियों के मेल से बना स्पाइसी राइस।",
-          "descriptionMr": "झणझणीत शेजवान सॉस आणि भाज्यांनी युक्त खमंग शेजवान राईस."
-        },
-        {
-          "name": "Veg Combination Rice",
-          "hindiName": "वेज कॉम्बिनेशन राइस",
-          "marathiName": "व्हेज कॉम्बिनेशन राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg",
-          "description": "The best of both worlds: fragrant basmati rice and Hakka noodles stir-fried together with vegetables.",
-          "descriptionHi": "चावल और नूडल्स का लाजवाब संगम, ताज़ी सब्जियों और चाइनीज़ मसालों के साथ।",
-          "descriptionMr": "बासमती तांदूळ आणि नूडल्स एकत्र करून बनवलेला स्वादिष्ट कॉम्बिनेशन राईस."
-        },
-        {
-          "name": "Mushroom Garlic Rice",
-          "hindiName": "मशरूम गार्लिक राइस",
-          "marathiName": "मशरूम गार्लिक राईस",
-          "price": 260,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg",
-          "description": "Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.",
-          "descriptionHi": "भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।",
-          "descriptionMr": "परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात."
-        },
-        {
-          "name": "Veg Triple Schezwan Rice",
-          "hindiName": "वेज ट्रिपल शेज़वान राइस",
-          "marathiName": "व्हेज ट्रिपल शेजवान राईस",
-          "price": 290,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg",
-          "description": "Hotel Pride blockbuster: Schezwan rice and noodles layered with crispy noodles and served with spicy Manchurian gravy.",
-          "descriptionHi": "शेज़वान राइस, नूडल्स, क्रिस्पी फ्राइड नूडल्स और गरमागरम मंचूरियन ग्रेवी की रॉयल दावत।",
-          "descriptionMr": "शेजवान राईस, नूडल्स, कुरकुरीत नूडल्स आणि गरमागरम मंचूरियन ग्रेव्हीचे भव्य कॉम्बिनेशन."
-        }
-      ],
       "groupedUnder": "rn-fried-rice-group",
       "notAvailable": false
     },
@@ -7568,58 +3975,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Fried Rice",
-          "hindiName": "वेज फ्राइड राइस",
-          "marathiName": "व्हेज फ्राईड राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
-          "description": "Aromatic long-grain basmati rice stir-fried in a hot wok with finely diced vegetables and mild soya seasoning.",
-          "descriptionHi": "बारीक कटी सब्जियों और हल्के मसालों के साथ वोक में भुना हुआ क्लासिक फ्राइड राइस।",
-          "descriptionMr": "बारीक चिरलेल्या भाज्या आणि सुगंधी बासमती तांदळाचा पारंपरिक फ्राईड राईस."
-        },
-        {
-          "name": "Veg Schezwan Rice",
-          "hindiName": "वेज शेज़वान राइस",
-          "marathiName": "व्हेज शेजवान राईस",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg",
-          "description": "Wok-tossed basmati rice infused with fiery red Schezwan sauce, garlic, celery and garden vegetables.",
-          "descriptionHi": "तीखी लाल शेज़वान सॉस, लहसुन और ताज़ी सब्जियों के मेल से बना स्पाइसी राइस।",
-          "descriptionMr": "झणझणीत शेजवान सॉस आणि भाज्यांनी युक्त खमंग शेजवान राईस."
-        },
-        {
-          "name": "Veg Combination Rice",
-          "hindiName": "वेज कॉम्बिनेशन राइस",
-          "marathiName": "व्हेज कॉम्बिनेशन राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg",
-          "description": "The best of both worlds: fragrant basmati rice and Hakka noodles stir-fried together with vegetables.",
-          "descriptionHi": "चावल और नूडल्स का लाजवाब संगम, ताज़ी सब्जियों और चाइनीज़ मसालों के साथ।",
-          "descriptionMr": "बासमती तांदूळ आणि नूडल्स एकत्र करून बनवलेला स्वादिष्ट कॉम्बिनेशन राईस."
-        },
-        {
-          "name": "Mushroom Garlic Rice",
-          "hindiName": "मशरूम गार्लिक राइस",
-          "marathiName": "मशरूम गार्लिक राईस",
-          "price": 260,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg",
-          "description": "Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.",
-          "descriptionHi": "भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।",
-          "descriptionMr": "परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात."
-        },
-        {
-          "name": "Veg Triple Schezwan Rice",
-          "hindiName": "वेज ट्रिपल शेज़वान राइस",
-          "marathiName": "व्हेज ट्रिपल शेजवान राईस",
-          "price": 290,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg",
-          "description": "Hotel Pride blockbuster: Schezwan rice and noodles layered with crispy noodles and served with spicy Manchurian gravy.",
-          "descriptionHi": "शेज़वान राइस, नूडल्स, क्रिस्पी फ्राइड नूडल्स और गरमागरम मंचूरियन ग्रेवी की रॉयल दावत।",
-          "descriptionMr": "शेजवान राईस, नूडल्स, कुरकुरीत नूडल्स आणि गरमागरम मंचूरियन ग्रेव्हीचे भव्य कॉम्बिनेशन."
-        }
-      ],
       "groupedUnder": "rn-fried-rice-group",
       "notAvailable": false
     },
@@ -7639,58 +3994,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Fried Rice",
-          "hindiName": "वेज फ्राइड राइस",
-          "marathiName": "व्हेज फ्राईड राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
-          "description": "Aromatic long-grain basmati rice stir-fried in a hot wok with finely diced vegetables and mild soya seasoning.",
-          "descriptionHi": "बारीक कटी सब्जियों और हल्के मसालों के साथ वोक में भुना हुआ क्लासिक फ्राइड राइस।",
-          "descriptionMr": "बारीक चिरलेल्या भाज्या आणि सुगंधी बासमती तांदळाचा पारंपरिक फ्राईड राईस."
-        },
-        {
-          "name": "Veg Schezwan Rice",
-          "hindiName": "वेज शेज़वान राइस",
-          "marathiName": "व्हेज शेजवान राईस",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg",
-          "description": "Wok-tossed basmati rice infused with fiery red Schezwan sauce, garlic, celery and garden vegetables.",
-          "descriptionHi": "तीखी लाल शेज़वान सॉस, लहसुन और ताज़ी सब्जियों के मेल से बना स्पाइसी राइस।",
-          "descriptionMr": "झणझणीत शेजवान सॉस आणि भाज्यांनी युक्त खमंग शेजवान राईस."
-        },
-        {
-          "name": "Veg Combination Rice",
-          "hindiName": "वेज कॉम्बिनेशन राइस",
-          "marathiName": "व्हेज कॉम्बिनेशन राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg",
-          "description": "The best of both worlds: fragrant basmati rice and Hakka noodles stir-fried together with vegetables.",
-          "descriptionHi": "चावल और नूडल्स का लाजवाब संगम, ताज़ी सब्जियों और चाइनीज़ मसालों के साथ।",
-          "descriptionMr": "बासमती तांदूळ आणि नूडल्स एकत्र करून बनवलेला स्वादिष्ट कॉम्बिनेशन राईस."
-        },
-        {
-          "name": "Mushroom Garlic Rice",
-          "hindiName": "मशरूम गार्लिक राइस",
-          "marathiName": "मशरूम गार्लिक राईस",
-          "price": 260,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg",
-          "description": "Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.",
-          "descriptionHi": "भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।",
-          "descriptionMr": "परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात."
-        },
-        {
-          "name": "Veg Triple Schezwan Rice",
-          "hindiName": "वेज ट्रिपल शेज़वान राइस",
-          "marathiName": "व्हेज ट्रिपल शेजवान राईस",
-          "price": 290,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice-2.jpg",
-          "description": "Hotel Pride blockbuster: Schezwan rice and noodles layered with crispy noodles and served with spicy Manchurian gravy.",
-          "descriptionHi": "शेज़वान राइस, नूडल्स, क्रिस्पी फ्राइड नूडल्स और गरमागरम मंचूरियन ग्रेवी की रॉयल दावत।",
-          "descriptionMr": "शेजवान राईस, नूडल्स, कुरकुरीत नूडल्स आणि गरमागरम मंचूरियन ग्रेव्हीचे भव्य कॉम्बिनेशन."
-        }
-      ],
       "groupedUnder": "rn-fried-rice-group",
       "notAvailable": false
     },
@@ -7710,58 +4013,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg",
       "rating": 4.8,
       "prepTime": "18 mins",
-      "variants": [
-        {
-          "name": "Veg Hakka Noodles",
-          "hindiName": "वेज हक्का नूडल्स",
-          "marathiName": "व्हेज हक्का नूडल्स",
-          "price": 230,
-          "image": "assets/menu-uploads/published-650bf534a92e3089c6f82f92.webp",
-          "description": "Wok-tossed thin noodles with shredded cabbage, carrots, bell peppers, spring onions and savory soya seasoning.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च के साथ वोक में टॉस किए गए क्लासिक हक्का नूडल्स।",
-          "descriptionMr": "शिमला मिरची, कोबी व गाजराच्या पातळ कापांसह टॉस केलेले प्रसिद्ध हक्का नूडल्स."
-        },
-        {
-          "name": "Veg Schezwan Noodles",
-          "hindiName": "वेज शेज़वान नूडल्स",
-          "marathiName": "व्हेज शेजवान नूडल्स",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg",
-          "description": "Fiery wok-fried noodles tossed in our house-made Schezwan paste with crunchy vegetables and spring onions.",
-          "descriptionHi": "तीखी शेज़वान सॉस और कटी सब्जियों से बने गरमागरम स्पाइसी नूडल्स।",
-          "descriptionMr": "तिखट शेजवान सॉस आणि भाज्यांनी युक्त गरमागरम शेजवान नूडल्स."
-        },
-        {
-          "name": "Veg Singapuri Noodles",
-          "hindiName": "वेज सिंगापुरी नूडल्स",
-          "marathiName": "व्हेज सिंगापुरी नूडल्स",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg",
-          "description": "Curry-seasoned yellow noodles stir-fried with vegetables and garnished with roasted cashew nuts.",
-          "descriptionHi": "हल्की कढ़ी मसालों की खुशबू और काजू से सजे अनोखे सिंगापुरी नूडल्स।",
-          "descriptionMr": "खमंग काजू आणि मसाल्यांच्या फोडणीत तयार केलेले पिवळसर सिंगापुरी नूडल्स."
-        },
-        {
-          "name": "Veg Manchurian Noodles",
-          "hindiName": "वेज मंचूरियन नूडल्स",
-          "marathiName": "व्हेज मंचूरियन नूडल्स",
-          "price": 240,
-          "image": "assets/menu-uploads/published-e91a26868980e42640fb1dd2.webp",
-          "description": "Stir-fried noodles paired with succulent vegetable Manchurian dumplings in a savory, dark sauce.",
-          "descriptionHi": "मंचूरियन कोफ्तों और स्वादिष्ट ग्रेवी के साथ वोक-टॉस्ड चाइनीज़ नूडल्स।",
-          "descriptionMr": "मंचूरियन बॉल्स आणि खमंग ग्रेव्हीसह टॉस केलेले मंचूरियन नूडल्स."
-        },
-        {
-          "name": "Veg Triple Schezwan Noodles",
-          "hindiName": "वेज ट्रिपल शेज़वान नूडल्स",
-          "marathiName": "व्हेज ट्रिपल शेजवान नूडल्स",
-          "price": 280,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg",
-          "description": "A lavish combo of spicy Schezwan noodles topped with crisp fried noodles and accompanied by vegetable Manchurian gravy.",
-          "descriptionHi": "स्पाइसी शेज़वान नूडल्स, क्रिस्पी फ्राइड नूडल्स और मंचूरियन ग्रेवी का संपूर्ण भोजन।",
-          "descriptionMr": "तिखट शेजवान नूडल्स, वरून कुरकुरीत नूडल्स आणि सोबत मंचूरियन ग्रेव्ही."
-        }
-      ],
       "groupedUnder": "rn-noodles-group",
       "notAvailable": false
     },
@@ -7782,58 +4033,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Hakka Noodles",
-          "hindiName": "वेज हक्का नूडल्स",
-          "marathiName": "व्हेज हक्का नूडल्स",
-          "price": 230,
-          "image": "assets/menu-uploads/published-650bf534a92e3089c6f82f92.webp",
-          "description": "Wok-tossed thin noodles with shredded cabbage, carrots, bell peppers, spring onions and savory soya seasoning.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च के साथ वोक में टॉस किए गए क्लासिक हक्का नूडल्स।",
-          "descriptionMr": "शिमला मिरची, कोबी व गाजराच्या पातळ कापांसह टॉस केलेले प्रसिद्ध हक्का नूडल्स."
-        },
-        {
-          "name": "Veg Schezwan Noodles",
-          "hindiName": "वेज शेज़वान नूडल्स",
-          "marathiName": "व्हेज शेजवान नूडल्स",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg",
-          "description": "Fiery wok-fried noodles tossed in our house-made Schezwan paste with crunchy vegetables and spring onions.",
-          "descriptionHi": "तीखी शेज़वान सॉस और कटी सब्जियों से बने गरमागरम स्पाइसी नूडल्स।",
-          "descriptionMr": "तिखट शेजवान सॉस आणि भाज्यांनी युक्त गरमागरम शेजवान नूडल्स."
-        },
-        {
-          "name": "Veg Singapuri Noodles",
-          "hindiName": "वेज सिंगापुरी नूडल्स",
-          "marathiName": "व्हेज सिंगापुरी नूडल्स",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg",
-          "description": "Curry-seasoned yellow noodles stir-fried with vegetables and garnished with roasted cashew nuts.",
-          "descriptionHi": "हल्की कढ़ी मसालों की खुशबू और काजू से सजे अनोखे सिंगापुरी नूडल्स।",
-          "descriptionMr": "खमंग काजू आणि मसाल्यांच्या फोडणीत तयार केलेले पिवळसर सिंगापुरी नूडल्स."
-        },
-        {
-          "name": "Veg Manchurian Noodles",
-          "hindiName": "वेज मंचूरियन नूडल्स",
-          "marathiName": "व्हेज मंचूरियन नूडल्स",
-          "price": 240,
-          "image": "assets/menu-uploads/published-e91a26868980e42640fb1dd2.webp",
-          "description": "Stir-fried noodles paired with succulent vegetable Manchurian dumplings in a savory, dark sauce.",
-          "descriptionHi": "मंचूरियन कोफ्तों और स्वादिष्ट ग्रेवी के साथ वोक-टॉस्ड चाइनीज़ नूडल्स।",
-          "descriptionMr": "मंचूरियन बॉल्स आणि खमंग ग्रेव्हीसह टॉस केलेले मंचूरियन नूडल्स."
-        },
-        {
-          "name": "Veg Triple Schezwan Noodles",
-          "hindiName": "वेज ट्रिपल शेज़वान नूडल्स",
-          "marathiName": "व्हेज ट्रिपल शेजवान नूडल्स",
-          "price": 280,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg",
-          "description": "A lavish combo of spicy Schezwan noodles topped with crisp fried noodles and accompanied by vegetable Manchurian gravy.",
-          "descriptionHi": "स्पाइसी शेज़वान नूडल्स, क्रिस्पी फ्राइड नूडल्स और मंचूरियन ग्रेवी का संपूर्ण भोजन।",
-          "descriptionMr": "तिखट शेजवान नूडल्स, वरून कुरकुरीत नूडल्स आणि सोबत मंचूरियन ग्रेव्ही."
-        }
-      ],
       "groupedUnder": "rn-noodles-group",
       "notAvailable": false
     },
@@ -7855,58 +4054,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-650bf534a92e3089c6f82f92.webp",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Hakka Noodles",
-          "hindiName": "वेज हक्का नूडल्स",
-          "marathiName": "व्हेज हक्का नूडल्स",
-          "price": 230,
-          "image": "assets/menu-uploads/published-650bf534a92e3089c6f82f92.webp",
-          "description": "Wok-tossed thin noodles with shredded cabbage, carrots, bell peppers, spring onions and savory soya seasoning.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च के साथ वोक में टॉस किए गए क्लासिक हक्का नूडल्स।",
-          "descriptionMr": "शिमला मिरची, कोबी व गाजराच्या पातळ कापांसह टॉस केलेले प्रसिद्ध हक्का नूडल्स."
-        },
-        {
-          "name": "Veg Schezwan Noodles",
-          "hindiName": "वेज शेज़वान नूडल्स",
-          "marathiName": "व्हेज शेजवान नूडल्स",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg",
-          "description": "Fiery wok-fried noodles tossed in our house-made Schezwan paste with crunchy vegetables and spring onions.",
-          "descriptionHi": "तीखी शेज़वान सॉस और कटी सब्जियों से बने गरमागरम स्पाइसी नूडल्स।",
-          "descriptionMr": "तिखट शेजवान सॉस आणि भाज्यांनी युक्त गरमागरम शेजवान नूडल्स."
-        },
-        {
-          "name": "Veg Singapuri Noodles",
-          "hindiName": "वेज सिंगापुरी नूडल्स",
-          "marathiName": "व्हेज सिंगापुरी नूडल्स",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg",
-          "description": "Curry-seasoned yellow noodles stir-fried with vegetables and garnished with roasted cashew nuts.",
-          "descriptionHi": "हल्की कढ़ी मसालों की खुशबू और काजू से सजे अनोखे सिंगापुरी नूडल्स।",
-          "descriptionMr": "खमंग काजू आणि मसाल्यांच्या फोडणीत तयार केलेले पिवळसर सिंगापुरी नूडल्स."
-        },
-        {
-          "name": "Veg Manchurian Noodles",
-          "hindiName": "वेज मंचूरियन नूडल्स",
-          "marathiName": "व्हेज मंचूरियन नूडल्स",
-          "price": 240,
-          "image": "assets/menu-uploads/published-e91a26868980e42640fb1dd2.webp",
-          "description": "Stir-fried noodles paired with succulent vegetable Manchurian dumplings in a savory, dark sauce.",
-          "descriptionHi": "मंचूरियन कोफ्तों और स्वादिष्ट ग्रेवी के साथ वोक-टॉस्ड चाइनीज़ नूडल्स।",
-          "descriptionMr": "मंचूरियन बॉल्स आणि खमंग ग्रेव्हीसह टॉस केलेले मंचूरियन नूडल्स."
-        },
-        {
-          "name": "Veg Triple Schezwan Noodles",
-          "hindiName": "वेज ट्रिपल शेज़वान नूडल्स",
-          "marathiName": "व्हेज ट्रिपल शेजवान नूडल्स",
-          "price": 280,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg",
-          "description": "A lavish combo of spicy Schezwan noodles topped with crisp fried noodles and accompanied by vegetable Manchurian gravy.",
-          "descriptionHi": "स्पाइसी शेज़वान नूडल्स, क्रिस्पी फ्राइड नूडल्स और मंचूरियन ग्रेवी का संपूर्ण भोजन।",
-          "descriptionMr": "तिखट शेजवान नूडल्स, वरून कुरकुरीत नूडल्स आणि सोबत मंचूरियन ग्रेव्ही."
-        }
-      ],
       "groupedUnder": "rn-noodles-group",
       "notAvailable": false
     },
@@ -7926,58 +4073,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Hakka Noodles",
-          "hindiName": "वेज हक्का नूडल्स",
-          "marathiName": "व्हेज हक्का नूडल्स",
-          "price": 230,
-          "image": "assets/menu-uploads/published-650bf534a92e3089c6f82f92.webp",
-          "description": "Wok-tossed thin noodles with shredded cabbage, carrots, bell peppers, spring onions and savory soya seasoning.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च के साथ वोक में टॉस किए गए क्लासिक हक्का नूडल्स।",
-          "descriptionMr": "शिमला मिरची, कोबी व गाजराच्या पातळ कापांसह टॉस केलेले प्रसिद्ध हक्का नूडल्स."
-        },
-        {
-          "name": "Veg Schezwan Noodles",
-          "hindiName": "वेज शेज़वान नूडल्स",
-          "marathiName": "व्हेज शेजवान नूडल्स",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg",
-          "description": "Fiery wok-fried noodles tossed in our house-made Schezwan paste with crunchy vegetables and spring onions.",
-          "descriptionHi": "तीखी शेज़वान सॉस और कटी सब्जियों से बने गरमागरम स्पाइसी नूडल्स।",
-          "descriptionMr": "तिखट शेजवान सॉस आणि भाज्यांनी युक्त गरमागरम शेजवान नूडल्स."
-        },
-        {
-          "name": "Veg Singapuri Noodles",
-          "hindiName": "वेज सिंगापुरी नूडल्स",
-          "marathiName": "व्हेज सिंगापुरी नूडल्स",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg",
-          "description": "Curry-seasoned yellow noodles stir-fried with vegetables and garnished with roasted cashew nuts.",
-          "descriptionHi": "हल्की कढ़ी मसालों की खुशबू और काजू से सजे अनोखे सिंगापुरी नूडल्स।",
-          "descriptionMr": "खमंग काजू आणि मसाल्यांच्या फोडणीत तयार केलेले पिवळसर सिंगापुरी नूडल्स."
-        },
-        {
-          "name": "Veg Manchurian Noodles",
-          "hindiName": "वेज मंचूरियन नूडल्स",
-          "marathiName": "व्हेज मंचूरियन नूडल्स",
-          "price": 240,
-          "image": "assets/menu-uploads/published-e91a26868980e42640fb1dd2.webp",
-          "description": "Stir-fried noodles paired with succulent vegetable Manchurian dumplings in a savory, dark sauce.",
-          "descriptionHi": "मंचूरियन कोफ्तों और स्वादिष्ट ग्रेवी के साथ वोक-टॉस्ड चाइनीज़ नूडल्स।",
-          "descriptionMr": "मंचूरियन बॉल्स आणि खमंग ग्रेव्हीसह टॉस केलेले मंचूरियन नूडल्स."
-        },
-        {
-          "name": "Veg Triple Schezwan Noodles",
-          "hindiName": "वेज ट्रिपल शेज़वान नूडल्स",
-          "marathiName": "व्हेज ट्रिपल शेजवान नूडल्स",
-          "price": 280,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg",
-          "description": "A lavish combo of spicy Schezwan noodles topped with crisp fried noodles and accompanied by vegetable Manchurian gravy.",
-          "descriptionHi": "स्पाइसी शेज़वान नूडल्स, क्रिस्पी फ्राइड नूडल्स और मंचूरियन ग्रेवी का संपूर्ण भोजन।",
-          "descriptionMr": "तिखट शेजवान नूडल्स, वरून कुरकुरीत नूडल्स आणि सोबत मंचूरियन ग्रेव्ही."
-        }
-      ],
       "groupedUnder": "rn-noodles-group",
       "notAvailable": false
     },
@@ -7997,58 +4092,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-e91a26868980e42640fb1dd2.webp",
       "rating": 4.8,
       "prepTime": "16 mins",
-      "variants": [
-        {
-          "name": "Veg Hakka Noodles",
-          "hindiName": "वेज हक्का नूडल्स",
-          "marathiName": "व्हेज हक्का नूडल्स",
-          "price": 230,
-          "image": "assets/menu-uploads/published-650bf534a92e3089c6f82f92.webp",
-          "description": "Wok-tossed thin noodles with shredded cabbage, carrots, bell peppers, spring onions and savory soya seasoning.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च के साथ वोक में टॉस किए गए क्लासिक हक्का नूडल्स।",
-          "descriptionMr": "शिमला मिरची, कोबी व गाजराच्या पातळ कापांसह टॉस केलेले प्रसिद्ध हक्का नूडल्स."
-        },
-        {
-          "name": "Veg Schezwan Noodles",
-          "hindiName": "वेज शेज़वान नूडल्स",
-          "marathiName": "व्हेज शेजवान नूडल्स",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-noodles-2.jpg",
-          "description": "Fiery wok-fried noodles tossed in our house-made Schezwan paste with crunchy vegetables and spring onions.",
-          "descriptionHi": "तीखी शेज़वान सॉस और कटी सब्जियों से बने गरमागरम स्पाइसी नूडल्स।",
-          "descriptionMr": "तिखट शेजवान सॉस आणि भाज्यांनी युक्त गरमागरम शेजवान नूडल्स."
-        },
-        {
-          "name": "Veg Singapuri Noodles",
-          "hindiName": "वेज सिंगापुरी नूडल्स",
-          "marathiName": "व्हेज सिंगापुरी नूडल्स",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-singapuri-noodles.jpg",
-          "description": "Curry-seasoned yellow noodles stir-fried with vegetables and garnished with roasted cashew nuts.",
-          "descriptionHi": "हल्की कढ़ी मसालों की खुशबू और काजू से सजे अनोखे सिंगापुरी नूडल्स।",
-          "descriptionMr": "खमंग काजू आणि मसाल्यांच्या फोडणीत तयार केलेले पिवळसर सिंगापुरी नूडल्स."
-        },
-        {
-          "name": "Veg Manchurian Noodles",
-          "hindiName": "वेज मंचूरियन नूडल्स",
-          "marathiName": "व्हेज मंचूरियन नूडल्स",
-          "price": 240,
-          "image": "assets/menu-uploads/published-e91a26868980e42640fb1dd2.webp",
-          "description": "Stir-fried noodles paired with succulent vegetable Manchurian dumplings in a savory, dark sauce.",
-          "descriptionHi": "मंचूरियन कोफ्तों और स्वादिष्ट ग्रेवी के साथ वोक-टॉस्ड चाइनीज़ नूडल्स।",
-          "descriptionMr": "मंचूरियन बॉल्स आणि खमंग ग्रेव्हीसह टॉस केलेले मंचूरियन नूडल्स."
-        },
-        {
-          "name": "Veg Triple Schezwan Noodles",
-          "hindiName": "वेज ट्रिपल शेज़वान नूडल्स",
-          "marathiName": "व्हेज ट्रिपल शेजवान नूडल्स",
-          "price": 280,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-noodles.jpg",
-          "description": "A lavish combo of spicy Schezwan noodles topped with crisp fried noodles and accompanied by vegetable Manchurian gravy.",
-          "descriptionHi": "स्पाइसी शेज़वान नूडल्स, क्रिस्पी फ्राइड नूडल्स और मंचूरियन ग्रेवी का संपूर्ण भोजन।",
-          "descriptionMr": "तिखट शेजवान नूडल्स, वरून कुरकुरीत नूडल्स आणि सोबत मंचूरियन ग्रेव्ही."
-        }
-      ],
       "groupedUnder": "rn-noodles-group",
       "notAvailable": false
     },
@@ -8141,10 +4184,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 220,
       "tags": [
         "veg",
-        "chef-special",
         "online-exclusive",
         "swiggy-top",
-        "zomato-top"
+        "zomato-top",
+        "chef-special"
       ],
       "zomatoRating": "4.3",
       "dietary": "pure-veg",
@@ -8164,6 +4207,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 340,
       "tags": [
         "veg",
+        "bestseller",
         "chef-special"
       ],
       "dietary": "pure-veg",
@@ -8172,8 +4216,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 5,
       "prepTime": "20 mins",
       "groupedUnder": "vs-royal-gravies-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-2": {
       "id": "vs-2",
@@ -8186,7 +4231,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "tags": [
         "veg",
         "khandeshi-special",
-        "bestseller",
         "spicy",
         "zomato-top"
       ],
@@ -8206,7 +4250,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "marathiName": "शेव भाजी",
           "description": "A spicy onion and tomato curry topped with crisp sev.",
           "price": 180,
-          "image": "assets/menu-images/veg-specialities/shev-bhaji.jpg"
+          "image": "assets/menu-images/veg-specialities/shev-bhaji.jpg",
+          "descriptionHi": "",
+          "descriptionMr": "",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-shev-latpat",
@@ -8228,10 +4279,19 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "descriptionHi": "ताज़ा दूध और हल्के मसालों की समृद्ध ग्रेवी में बनी स्वादिष्ट खानदेशी दूध शेव भाजी।",
           "descriptionMr": "ताजे दूध आणि खमंग मसाल्यांच्या चवदार रश्श्यात बनवलेली प्रसिद्ध दूध शेव भाजी.",
           "price": 180,
-          "image": ""
+          "image": "",
+          "tags": [
+            "veg",
+            "khandeshi-special",
+            "new-arrival"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-3": {
       "id": "vs-3",
@@ -8241,10 +4301,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "काजू करी",
       "description": "Whole cashews in a spicy red curry. For the creamy yellow-gravy preparation, choose Kaju Masala.",
       "price": 290,
-      "variants": [],
       "tags": [
         "veg",
-        "bestseller",
         "zomato-top"
       ],
       "zomatoRating": "4.3",
@@ -8254,7 +4312,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "18 mins",
       "groupedUnder": "vs-royal-gravies-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-4": {
       "id": "vs-4",
@@ -8265,7 +4325,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "A pairing of tangy red vegetable gravy and green gravy with mushrooms and baby corn.",
       "price": 290,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8273,8 +4335,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "vs-tawa-kadhai-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-5": {
       "id": "vs-5",
@@ -8293,8 +4356,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "18 mins",
       "groupedUnder": "vs-tawa-kadhai-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-6": {
       "id": "vs-6",
@@ -8313,8 +4377,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "vs-tawa-kadhai-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-7": {
       "id": "vs-7",
@@ -8326,7 +4391,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 270,
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8334,8 +4400,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "vs-tawa-kadhai-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-8": {
       "id": "vs-8",
@@ -8354,8 +4421,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "vs-royal-gravies-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-9": {
       "id": "vs-9",
@@ -8376,7 +4444,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "15 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
       "notAvailable": false
     },
     "vs-10": {
@@ -8388,7 +4455,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Chickpeas simmered in a spicy, tangy gravy with aromatic spices.",
       "price": 230,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8396,8 +4464,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "15 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-11": {
       "id": "vs-11",
@@ -8407,9 +4476,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "लसूणी मेथी",
       "description": "Fenugreek leaves in a rich, flavourful sauce, finished with crisp fried garlic. The Palak option uses spinach in place of fenugreek.",
       "price": 250,
-      "variants": [],
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8417,7 +4486,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "vs-homestyle-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-12": {
       "id": "vs-12",
@@ -8429,7 +4500,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 290,
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "bestseller",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8437,8 +4510,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "vs-tawa-kadhai-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-13": {
       "id": "vs-13",
@@ -8449,7 +4523,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Mixed vegetables cooked with aromatic spices in a rich, creamy gravy.",
       "price": 270,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8457,8 +4532,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "18 mins",
       "groupedUnder": "vs-royal-gravies-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-14": {
       "id": "vs-14",
@@ -8469,7 +4545,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Mixed vegetables tossed in a rich yellow cheese gravy and finished with a cheese cube.",
       "price": 300,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8477,8 +4554,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "15 mins",
       "groupedUnder": "vs-tawa-kadhai-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-15": {
       "id": "vs-15",
@@ -8489,7 +4567,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Mixed vegetables in a rich green gravy flavoured with herbs.",
       "price": 300,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8497,8 +4576,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "kd-kofta-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-16": {
       "id": "vs-16",
@@ -8509,7 +4589,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Potatoes and cauliflower cooked with aromatic spices in a rich, tangy gravy.",
       "price": 240,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8517,8 +4598,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "15 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-17": {
       "id": "vs-17",
@@ -8529,8 +4611,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Bread topped with chopped vegetables and white sesame, fried golden and cooked in a mildly spiced yellow gravy.",
       "price": 300,
       "tags": [
-        "veg",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8538,8 +4619,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "20 mins",
       "groupedUnder": "vs-royal-gravies-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-18": {
       "id": "vs-18",
@@ -8558,8 +4640,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "18 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-19": {
       "id": "vs-19",
@@ -8578,8 +4661,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.6,
       "prepTime": "15 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-20": {
       "id": "vs-20",
@@ -8590,7 +4674,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Crisp corn and spinach cooked in a rich, spiced gravy.",
       "price": 280,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8598,8 +4683,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-21": {
       "id": "vs-21",
@@ -8618,8 +4704,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "vs-tawa-kadhai-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-22": {
       "id": "vs-22",
@@ -8638,8 +4725,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "15 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "kf-1": {
       "id": "kf-1",
@@ -8647,11 +4735,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Malai Kofta",
       "hindiName": "मलाई कोफ्ता",
       "marathiName": "मलाई कोफ्ता",
-      "description": "Soft fried dumplings in a rich, creamy white gravy with a gentle sweetness.",
+      "description": "Melt-in-mouth cottage cheese and mawa dumplings simmered in an opulent, velvety cashew nut and cream gravy.",
       "price": 290,
       "tags": [
         "veg",
-        "bestseller",
         "sweet",
         "zomato-top"
       ],
@@ -8661,9 +4748,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/delicious-kofta/malai-kofta.jpg",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "variants": [],
       "groupedUnder": "kd-kofta-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मुलायम पनीर और खोया के कोफ्ते, काजू और मलाई की शाही मखमली ग्रेवी में।",
+      "descriptionMr": "काजू आणि मलईच्या शाही मऊशार ग्रेव्हीत भिजवलेले मखमली मलाई कोफ्ते."
     },
     "kf-2": {
       "id": "kf-2",
@@ -8671,20 +4759,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Nargisi Kofta",
       "hindiName": "नरगिसी कोफ्ता",
       "marathiName": "नरगिसी कोफ्ता",
-      "description": "Deep-fried vegetable dumplings in a rich, creamy tomato gravy.",
+      "description": "Royal stuffed cottage cheese and dry fruit dumplings cooked in a deeply aromatic, rich brown gravy.",
       "price": 300,
       "tags": [
         "veg",
-        "chef-special"
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-673bfa04e4d72a40212563eb.webp",
       "rating": 4.8,
       "prepTime": "20 mins",
-      "variants": [],
       "groupedUnder": "kd-kofta-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मेवों और पनीर से भरे शाही नरगिसी कोफ्ते, महकती मसालेदार ग्रेवी के साथ।",
+      "descriptionMr": "ड्रायफ्रूट्स आणि पनीरचे भरलेले शाही कोफ्ते, सुगंधी मसालेदार ग्रेव्हीत."
     },
     "kf-3": {
       "id": "kf-3",
@@ -8692,19 +4781,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Sunrise Kofta",
       "hindiName": "वेज सनराइज कोफ्ता",
       "marathiName": "व्हेज सनराईज कोफ्ता",
-      "description": "Vegetable and paneer koftas served in a rich yellow cheese gravy.",
+      "description": "Two-toned stuffed vegetable and cottage cheese koftas served in a dual chef-curated royal yellow and red gravy.",
       "price": 290,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-9803829a6ab2c1aa4553eb85.webp",
       "rating": 4.8,
       "prepTime": "20 mins",
-      "variants": [],
       "groupedUnder": "kd-kofta-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "दो रंगों वाले स्वादिष्ट वेज कोफ्ते, शेफ की खास सुनहरी क्रीमी ग्रेवी के साथ।",
+      "descriptionMr": "दोन रंगांचे भरलेले कोफ्ते, शेफच्या खास शाही पिवळ्या ग्रेव्हीत."
     },
     "kf-4": {
       "id": "kf-4",
@@ -8712,7 +4803,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Cheese Kofta",
       "hindiName": "चीज़ कोफ्ता",
       "marathiName": "चीज कोफ्ता",
-      "description": "Soft cheese balls in a richly spiced tomato gravy.",
+      "description": "Gooey molten mozzarella and paneer balls cooked in a rich, buttery tomato velvet gravy.",
       "price": 300,
       "tags": [
         "veg"
@@ -8722,9 +4813,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-fbf00c08e8a68a6de9db45e9.webp",
       "rating": 4.8,
       "prepTime": "20 mins",
-      "variants": [],
       "groupedUnder": "kd-kofta-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "अंदर से पिघलते चीज़ वाले कोफ्ते, बटर और टमाटर की मखमली ग्रेवी में।",
+      "descriptionMr": "आत वितळलेले चीज असलेले कोफ्ते, बटर आणि टोमॅटोच्या मऊशार ग्रेव्हीत."
     },
     "kf-5": {
       "id": "kf-5",
@@ -8732,7 +4824,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Kofta",
       "hindiName": "वेज कोफ्ता",
       "marathiName": "व्हेज कोफ्ता",
-      "description": "Vegetable koftas in a medium-spiced onion and tomato gravy.",
+      "description": "Spiced minced garden vegetable dumplings simmered in a homestyle onion, tomato and garam masala curry.",
       "price": 290,
       "tags": [
         "veg"
@@ -8742,9 +4834,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-67ea7d2e2e7f1278687a8cf0.webp",
       "rating": 4.7,
       "prepTime": "18 mins",
-      "variants": [],
       "groupedUnder": "kd-kofta-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "सब्जियों के स्वादिष्ट कोफ्ते, प्याज और टमाटर की पारंपरिक मसालेदार ग्रेवी में।",
+      "descriptionMr": "कांदा, टोमॅटो आणि मसाल्यांच्या पारंपरिक ग्रेव्हीत बनवलेले व्हेज कोफ्ते."
     },
     "kf-6": {
       "id": "kf-6",
@@ -8752,20 +4845,20 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Kofta",
       "hindiName": "पनीर कोफ्ता",
       "marathiName": "पनीर कोफ्ता",
-      "description": "Soft paneer dumplings simmered in a rich, flavourful gravy.",
+      "description": "Pure cottage cheese dumplings infused with green chillies and mint, simmered in a luscious cashew curry.",
       "price": 315,
       "tags": [
-        "veg",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-9de57ac7a2aff4226e10bfca.webp",
       "rating": 4.8,
       "prepTime": "20 mins",
-      "variants": [],
       "groupedUnder": "kd-kofta-group",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "हरी मिर्च और पुदीने से सुगंधित शुद्ध पनीर के कोफ्ते, गाढ़ी काजू ग्रेवी में।",
+      "descriptionMr": "शुद्ध पनीरचे कोफ्ते, पुदिना आणि काजूच्या शाही दाट ग्रेव्हीत."
     },
     "ps-mumtaz": {
       "id": "ps-mumtaz",
@@ -8786,8 +4879,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "20 mins",
       "groupedUnder": "ps-signatures-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-1": {
       "id": "ps-1",
@@ -8799,6 +4893,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 345,
       "tags": [
         "veg",
+        "bestseller",
         "chef-special"
       ],
       "dietary": "pure-veg",
@@ -8807,8 +4902,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 5,
       "prepTime": "22 mins",
       "groupedUnder": "ps-signatures-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-2": {
       "id": "ps-2",
@@ -8820,8 +4916,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 320,
       "tags": [
         "veg",
+        "zomato-top",
         "bestseller",
-        "zomato-top"
+        "chef-special"
       ],
       "zomatoRating": "4.4",
       "dietary": "pure-veg",
@@ -8830,8 +4927,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "20 mins",
       "groupedUnder": "ps-creamy-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-3": {
       "id": "ps-3",
@@ -8853,8 +4951,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "18 mins",
       "groupedUnder": "ps-creamy-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-4": {
       "id": "ps-4",
@@ -8866,7 +4965,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 325,
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8874,8 +4974,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "20 mins",
       "groupedUnder": "ps-spicy-tawa-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-5": {
       "id": "ps-5",
@@ -8887,6 +4988,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 310,
       "tags": [
         "veg",
+        "bestseller",
         "chef-special"
       ],
       "dietary": "pure-veg",
@@ -8895,8 +4997,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "20 mins",
       "groupedUnder": "ps-spicy-tawa-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-6": {
       "id": "ps-6",
@@ -8915,8 +5018,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "20 mins",
       "groupedUnder": "ps-creamy-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-7": {
       "id": "ps-7",
@@ -8928,7 +5032,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 315,
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "bestseller",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -8936,8 +5042,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "ps-spicy-tawa-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-8": {
       "id": "ps-8",
@@ -8956,8 +5063,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "ps-creamy-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-9": {
       "id": "ps-9",
@@ -8977,8 +5085,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "15 mins",
       "groupedUnder": "ps-spicy-tawa-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-10": {
       "id": "ps-10",
@@ -8997,8 +5106,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "18 mins",
       "groupedUnder": "ps-spicy-tawa-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-11": {
       "id": "ps-11",
@@ -9018,8 +5128,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "20 mins",
       "groupedUnder": "ps-signatures-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-12": {
       "id": "ps-12",
@@ -9030,7 +5141,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Paneer cubes and cashews simmered in a rich onion and tomato gravy.",
       "price": 310,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -9038,8 +5151,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "20 mins",
       "groupedUnder": "ps-creamy-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-13": {
       "id": "ps-13",
@@ -9050,7 +5164,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Shredded paneer with capsicum and onion in a spiced yellow gravy.",
       "price": 315,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -9058,8 +5173,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "20 mins",
       "groupedUnder": "ps-signatures-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-14": {
       "id": "ps-14",
@@ -9070,7 +5186,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Tandoor-roasted paneer tikka in a rich, spicy red gravy.",
       "price": 310,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -9078,8 +5196,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "20 mins",
       "groupedUnder": "ps-signatures-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-15": {
       "id": "ps-15",
@@ -9099,8 +5218,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 5,
       "prepTime": "20 mins",
       "groupedUnder": "ps-signatures-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-16": {
       "id": "ps-16",
@@ -9112,7 +5232,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 295,
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -9120,8 +5241,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "ps-spicy-tawa-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-17": {
       "id": "ps-17",
@@ -9140,8 +5262,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "ps-creamy-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-18": {
       "id": "ps-18",
@@ -9152,7 +5275,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Paneer in a rich, creamy gravy of spinach and fenugreek.",
       "price": 305,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -9160,8 +5284,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "ps-creamy-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-19": {
       "id": "ps-19",
@@ -9180,8 +5305,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "ps-spicy-tawa-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-20": {
       "id": "ps-20",
@@ -9193,7 +5319,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 285,
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -9201,8 +5328,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "ps-spicy-tawa-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "ps-21": {
       "id": "ps-21",
@@ -9221,8 +5349,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "20 mins",
       "groupedUnder": "ps-creamy-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "fd-dal-fry-group": {
       "id": "fd-dal-fry-group",
@@ -9279,28 +5408,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "डाळ फ्राय",
       "description": "Yellow lentils gently simmered and sautéed with onions, ripe tomatoes and aromatic spices.",
       "price": 190,
-      "variants": [
-        {
-          "name": "Dal Fry",
-          "hindiName": "दाल फ्राई",
-          "marathiName": "डाळ फ्राय",
-          "price": 190,
-          "image": "assets/menu-images/flavorful-dal/dal-fry.jpg",
-          "description": "Yellow lentils gently simmered and sautéed with onions, ripe tomatoes and aromatic spices.",
-          "descriptionHi": "प्याज, टमाटर और हरी मिर्च के साथ भुनी हुई स्वादिष्ट पीली दाल।",
-          "descriptionMr": "कांदा, टोमॅटो व मसाल्यांची खमंग फोडणी दिलेली चवदार डाळ फ्राय."
-        },
-        {
-          "name": "Dal Tadka (Desi Ghee)",
-          "hindiName": "दाल तड़का (देसी घी)",
-          "marathiName": "डाळ तडका (साजूक तूप)",
-          "price": 210,
-          "image": "assets/menu-images/flavorful-dal/dal-tadka.jpg",
-          "description": "Creamy yellow lentils tempered with pure desi ghee, cumin seeds, garlic, red chillies and hing.",
-          "descriptionHi": "देसी घी, लहसुन, सूखी लाल मिर्च और जीरे के तड़के वाली होटल प्राइड की खास दाल तड़का।",
-          "descriptionMr": "साजूक तूप, लसूण, जिरे व लाल मिरचीची झणझणीत फोडणी दिलेली डाळ तडका."
-        }
-      ],
       "groupedUnder": "fd-dal-fry-group",
       "tags": [
         "veg"
@@ -9320,28 +5427,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "डाळ तडका (साजूक तूप)",
       "description": "Lentils finished with a fragrant ghee tadka of cumin, garlic, curry leaves and coriander.",
       "price": 210,
-      "variants": [
-        {
-          "name": "Dal Fry",
-          "hindiName": "दाल फ्राई",
-          "marathiName": "डाळ फ्राय",
-          "price": 190,
-          "image": "assets/menu-images/flavorful-dal/dal-fry.jpg",
-          "description": "Yellow lentils gently simmered and sautéed with onions, ripe tomatoes and aromatic spices.",
-          "descriptionHi": "प्याज, टमाटर और हरी मिर्च के साथ भुनी हुई स्वादिष्ट पीली दाल।",
-          "descriptionMr": "कांदा, टोमॅटो व मसाल्यांची खमंग फोडणी दिलेली चवदार डाळ फ्राय."
-        },
-        {
-          "name": "Dal Tadka (Desi Ghee)",
-          "hindiName": "दाल तड़का (देसी घी)",
-          "marathiName": "डाळ तडका (साजूक तूप)",
-          "price": 210,
-          "image": "assets/menu-images/flavorful-dal/dal-tadka.jpg",
-          "description": "Creamy yellow lentils tempered with pure desi ghee, cumin seeds, garlic, red chillies and hing.",
-          "descriptionHi": "देसी घी, लहसुन, सूखी लाल मिर्च और जीरे के तड़के वाली होटल प्राइड की खास दाल तड़का।",
-          "descriptionMr": "साजूक तूप, लसूण, जिरे व लाल मिरचीची झणझणीत फोडणी दिलेली डाळ तडका."
-        }
-      ],
       "groupedUnder": "fd-dal-fry-group",
       "tags": [
         "veg",
@@ -9366,6 +5451,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 220,
       "tags": [
         "veg",
+        "bestseller",
         "chef-special"
       ],
       "dietary": "pure-veg",
@@ -9373,7 +5459,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-b083d1e25331d5ac033f39b4.webp",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "fd-4": {
       "id": "fd-4",
@@ -9391,7 +5479,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/flavorful-dal/kadhi-pakoda.jpg",
       "rating": 4.7,
       "prepTime": "18 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "fa-1": {
       "id": "fa-1",
@@ -9442,8 +5532,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "displayPriceRange": "₹60 – ₹130",
       "isGroupMaster": true,
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -9469,7 +5558,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/accompaniments/boondi-raita.jpg",
           "description": "Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.",
           "descriptionHi": "भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।",
-          "descriptionMr": "भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता."
+          "descriptionMr": "भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Pineapple Raita",
@@ -9489,7 +5584,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/accompaniments/mix-fruit-raita.jpg",
           "description": "A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.",
           "descriptionHi": "ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।",
-          "descriptionMr": "ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता."
+          "descriptionMr": "ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता.",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Curd (Plain)",
@@ -9510,70 +5611,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Boondi Raita",
       "hindiName": "बूंदी रायता",
       "marathiName": "बुंदी रायता",
-      "description": "Creamy yogurt blended with lightly spiced boondi.",
+      "description": "Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.",
       "price": 90,
-      "variants": [
-        {
-          "name": "Mix Veg Raita",
-          "hindiName": "मिक्स वेज रायता",
-          "marathiName": "मिक्स व्हेज रायता",
-          "price": 80,
-          "image": "assets/menu-images/accompaniments/mix-veg-raita.jpg",
-          "description": "Chilled creamy yogurt blended with diced cucumber, onions, tomatoes and subtle spices.",
-          "descriptionHi": "बारीक कटे खीरे, प्याज, टमाटर और भुने मसालों से बना ताज़ा वेज रायता।",
-          "descriptionMr": "बारीक चिरलेली काकडी, कांदा, टोमॅटो आणि जिरेपूड घातलेले ताजे व्हेज रायता."
-        },
-        {
-          "name": "Boondi Raita",
-          "hindiName": "बूंदी रायता",
-          "marathiName": "बुंदी रायता",
-          "price": 90,
-          "image": "assets/menu-images/accompaniments/boondi-raita.jpg",
-          "description": "Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.",
-          "descriptionHi": "भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।",
-          "descriptionMr": "भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता."
-        },
-        {
-          "name": "Pineapple Raita",
-          "hindiName": "पाइनएप्पल रायता",
-          "marathiName": "अननस रायता",
-          "price": 120,
-          "image": "assets/menu-images/accompaniments/pineapple-raita.jpg",
-          "description": "Sweet juicy pineapple titbits folded in velvety sweetened chilled yogurt.",
-          "descriptionHi": "मीठे रसीले अनन्नास के टुकड़ों और ठंडे गाढ़े दही का लाजवाब संगम।",
-          "descriptionMr": "गोड रसाळ अननसाचे तुकडे आणि थंडगार दाट दह्याचे स्वादिष्ट रायता."
-        },
-        {
-          "name": "Mix Fruit Raita",
-          "hindiName": "मिक्स फ्रूट रायता",
-          "marathiName": "मिक्स फ्रूट रायता",
-          "price": 130,
-          "image": "assets/menu-images/accompaniments/mix-fruit-raita.jpg",
-          "description": "A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.",
-          "descriptionHi": "ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।",
-          "descriptionMr": "ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता."
-        },
-        {
-          "name": "Curd (Plain)",
-          "hindiName": "ताज़ा दही",
-          "marathiName": "ताजे दही",
-          "price": 60,
-          "image": "assets/menu-images/accompaniments/curd.jpg",
-          "description": "Traditional thick, creamy and fresh home-set dairy yogurt.",
-          "descriptionHi": "शुद्ध दूध से जमाया हुआ गाढ़ा, ताज़ा और मीठा सादा दही।",
-          "descriptionMr": "घरगुती पद्धतीने लावलेले घट्ट, ताजे आणि चवदार साधे दही."
-        }
-      ],
       "groupedUnder": "fa-raita-group",
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/accompaniments/boondi-raita.jpg",
       "rating": 4.8,
       "prepTime": "5 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।",
+      "descriptionMr": "भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता."
     },
     "fa-4": {
       "id": "fa-4",
@@ -9581,60 +5633,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Pineapple Raita",
       "hindiName": "पाइनएप्पल रायता",
       "marathiName": "अननस रायता",
-      "description": "Creamy yogurt with sweet pineapple chunks and a light touch of spice.",
+      "description": "Sweet juicy pineapple titbits folded in velvety sweetened chilled yogurt.",
       "price": 120,
-      "variants": [
-        {
-          "name": "Mix Veg Raita",
-          "hindiName": "मिक्स वेज रायता",
-          "marathiName": "मिक्स व्हेज रायता",
-          "price": 80,
-          "image": "assets/menu-images/accompaniments/mix-veg-raita.jpg",
-          "description": "Chilled creamy yogurt blended with diced cucumber, onions, tomatoes and subtle spices.",
-          "descriptionHi": "बारीक कटे खीरे, प्याज, टमाटर और भुने मसालों से बना ताज़ा वेज रायता।",
-          "descriptionMr": "बारीक चिरलेली काकडी, कांदा, टोमॅटो आणि जिरेपूड घातलेले ताजे व्हेज रायता."
-        },
-        {
-          "name": "Boondi Raita",
-          "hindiName": "बूंदी रायता",
-          "marathiName": "बुंदी रायता",
-          "price": 90,
-          "image": "assets/menu-images/accompaniments/boondi-raita.jpg",
-          "description": "Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.",
-          "descriptionHi": "भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।",
-          "descriptionMr": "भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता."
-        },
-        {
-          "name": "Pineapple Raita",
-          "hindiName": "पाइनएप्पल रायता",
-          "marathiName": "अननस रायता",
-          "price": 120,
-          "image": "assets/menu-images/accompaniments/pineapple-raita.jpg",
-          "description": "Sweet juicy pineapple titbits folded in velvety sweetened chilled yogurt.",
-          "descriptionHi": "मीठे रसीले अनन्नास के टुकड़ों और ठंडे गाढ़े दही का लाजवाब संगम।",
-          "descriptionMr": "गोड रसाळ अननसाचे तुकडे आणि थंडगार दाट दह्याचे स्वादिष्ट रायता."
-        },
-        {
-          "name": "Mix Fruit Raita",
-          "hindiName": "मिक्स फ्रूट रायता",
-          "marathiName": "मिक्स फ्रूट रायता",
-          "price": 130,
-          "image": "assets/menu-images/accompaniments/mix-fruit-raita.jpg",
-          "description": "A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.",
-          "descriptionHi": "ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।",
-          "descriptionMr": "ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता."
-        },
-        {
-          "name": "Curd (Plain)",
-          "hindiName": "ताज़ा दही",
-          "marathiName": "ताजे दही",
-          "price": 60,
-          "image": "assets/menu-images/accompaniments/curd.jpg",
-          "description": "Traditional thick, creamy and fresh home-set dairy yogurt.",
-          "descriptionHi": "शुद्ध दूध से जमाया हुआ गाढ़ा, ताज़ा और मीठा सादा दही।",
-          "descriptionMr": "घरगुती पद्धतीने लावलेले घट्ट, ताजे आणि चवदार साधे दही."
-        }
-      ],
       "groupedUnder": "fa-raita-group",
       "tags": [
         "veg"
@@ -9644,7 +5644,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/accompaniments/pineapple-raita.jpg",
       "rating": 4.8,
       "prepTime": "5 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मीठे रसीले अनन्नास के टुकड़ों और ठंडे गाढ़े दही का लाजवाब संगम।",
+      "descriptionMr": "गोड रसाळ अननसाचे तुकडे आणि थंडगार दाट दह्याचे स्वादिष्ट रायता."
     },
     "fa-5": {
       "id": "fa-5",
@@ -9652,70 +5654,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Mix Fruit Raita",
       "hindiName": "मिक्स फ्रूट रायता",
       "marathiName": "मिक्स फ्रूट रायता",
-      "description": "Creamy yogurt folded with a medley of juicy fruits.",
+      "description": "A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.",
       "price": 130,
-      "variants": [
-        {
-          "name": "Mix Veg Raita",
-          "hindiName": "मिक्स वेज रायता",
-          "marathiName": "मिक्स व्हेज रायता",
-          "price": 80,
-          "image": "assets/menu-images/accompaniments/mix-veg-raita.jpg",
-          "description": "Chilled creamy yogurt blended with diced cucumber, onions, tomatoes and subtle spices.",
-          "descriptionHi": "बारीक कटे खीरे, प्याज, टमाटर और भुने मसालों से बना ताज़ा वेज रायता।",
-          "descriptionMr": "बारीक चिरलेली काकडी, कांदा, टोमॅटो आणि जिरेपूड घातलेले ताजे व्हेज रायता."
-        },
-        {
-          "name": "Boondi Raita",
-          "hindiName": "बूंदी रायता",
-          "marathiName": "बुंदी रायता",
-          "price": 90,
-          "image": "assets/menu-images/accompaniments/boondi-raita.jpg",
-          "description": "Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.",
-          "descriptionHi": "भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।",
-          "descriptionMr": "भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता."
-        },
-        {
-          "name": "Pineapple Raita",
-          "hindiName": "पाइनएप्पल रायता",
-          "marathiName": "अननस रायता",
-          "price": 120,
-          "image": "assets/menu-images/accompaniments/pineapple-raita.jpg",
-          "description": "Sweet juicy pineapple titbits folded in velvety sweetened chilled yogurt.",
-          "descriptionHi": "मीठे रसीले अनन्नास के टुकड़ों और ठंडे गाढ़े दही का लाजवाब संगम।",
-          "descriptionMr": "गोड रसाळ अननसाचे तुकडे आणि थंडगार दाट दह्याचे स्वादिष्ट रायता."
-        },
-        {
-          "name": "Mix Fruit Raita",
-          "hindiName": "मिक्स फ्रूट रायता",
-          "marathiName": "मिक्स फ्रूट रायता",
-          "price": 130,
-          "image": "assets/menu-images/accompaniments/mix-fruit-raita.jpg",
-          "description": "A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.",
-          "descriptionHi": "ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।",
-          "descriptionMr": "ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता."
-        },
-        {
-          "name": "Curd (Plain)",
-          "hindiName": "ताज़ा दही",
-          "marathiName": "ताजे दही",
-          "price": 60,
-          "image": "assets/menu-images/accompaniments/curd.jpg",
-          "description": "Traditional thick, creamy and fresh home-set dairy yogurt.",
-          "descriptionHi": "शुद्ध दूध से जमाया हुआ गाढ़ा, ताज़ा और मीठा सादा दही।",
-          "descriptionMr": "घरगुती पद्धतीने लावलेले घट्ट, ताजे आणि चवदार साधे दही."
-        }
-      ],
       "groupedUnder": "fa-raita-group",
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/accompaniments/mix-fruit-raita.jpg",
       "rating": 4.8,
       "prepTime": "5 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।",
+      "descriptionMr": "ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता."
     },
     "fa-6": {
       "id": "fa-6",
@@ -9779,30 +5732,39 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Crisp fried urad papad loaded with onion, tomato, coriander, sev and chaat masala.",
           "descriptionHi": "बारीक कटे प्याज, टमाटर, धनिया, बारीक सेव और चाट मसाले से सजा मसाला पापड़।",
           "descriptionMr": "बारीक कांदा, टोमॅटो, कोथिंबीर, बारीक शेव व चाट मसाल्याने सजवलेला चवदार मसाला पापड.",
-          "id": "fa-7-masala"
+          "id": "fa-7-masala",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Urad Papad · Cheese Masala",
           "hindiName": "चीज़ मसाला उड़द पापड़",
           "marathiName": "चीज मसाला उडीद पापड",
           "price": 80,
-          "image": "assets/menu-images/accompaniments/cheese-masala-papad.jpg",
+          "image": "",
           "description": "Crunchy masala papad generously loaded with fresh salad, spices and finely grated melted cheese.",
           "descriptionHi": "चटपटी कटी सब्जियों, चाट मसाले और ढेर सारे कद्दूकस किए हुए चीज़ से सजा शाही मसाला पापड़।",
           "descriptionMr": "कांदा, टोमॅटो, कोथिंबीर आणि भरपूर किसलेले चीज घातलेला लज्जतदार चीज मसाला पापड.",
-          "id": "fa-7-cheese-masala"
+          "id": "fa-7-cheese-masala",
+          "tags": [],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "assets/menu-images/accompaniments/roasted-papad.jpg",
+      "image": "assets/menu-uploads/published-0ba35470d53c361b65d1cb79.webp",
       "rating": 4.8,
       "prepTime": "5 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "fa-8": {
       "id": "fa-8",
@@ -9847,14 +5809,19 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Crunchy nagli papad topped with fresh salad, chaat spices and fine sev.",
           "descriptionHi": "चटपटी कटी सब्जियों, चाट मसाले और सेव से भरपूर नागली मसाला पापड़।",
           "descriptionMr": "कांदा, टोमॅटो, कोथिंबीर आणि शेव घातलेला चटपटीत नाचणी मसाला पापड.",
-          "id": "fa-8-masala"
+          "id": "fa-8-masala",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Nagali Papad · Cheese Masala",
           "hindiName": "चीज़ मसाला नागली पापड़",
           "marathiName": "चीज मसाला नाचणी पापड",
           "price": 80,
-          "image": "",
+          "image": "assets/menu-uploads/published-4d894274a0664acd4b51ad4c.webp",
           "description": "Wholesome crunchy nagli papad topped with chopped fresh salad, chaat spices and abundant grated cheese.",
           "descriptionHi": "पौष्टिक नागली पापड़ पर ताज़ा सलाद, चाट मसाला और भरपूर कद्दूकस किया चीज़।",
           "descriptionMr": "पौष्टिक नाचणी पापडावर कांदा, टोमॅटो आणि भरपूर किसलेले चीज घातलेला चवदार पापड.",
@@ -9866,7 +5833,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "assets/menu-images/accompaniments/roasted-nagali-papad.jpg",
+      "image": "assets/menu-uploads/published-6c8ecb5b55e2de5301a4020b.webp",
       "rating": 4.7,
       "prepTime": "5 mins",
       "notAvailable": false
@@ -9884,8 +5851,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "displayPriceRange": "₹20 – ₹50",
       "isGroupMaster": true,
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -9944,28 +5910,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "प्लेन तवा चपाती",
       "description": "Home-style soft puffed whole-wheat flatbread freshly cooked on an iron griddle.",
       "price": 20,
-      "variants": [
-        {
-          "name": "Plain Tawa Chapati",
-          "hindiName": "प्लेन तवा चपाती",
-          "marathiName": "प्लेन तवा चपाती",
-          "price": 20,
-          "image": "assets/menu-images/signature-indian-breads/chapati.jpg",
-          "description": "Soft home-style whole-wheat flatbread freshly cooked on an iron griddle.",
-          "descriptionHi": "लोहे के तवे पर सिकी हुई घर जैसी फूली हुई मुलायम गेहूं की चपाती।",
-          "descriptionMr": "तव्यावर भाजलेली घरगुती पद्धतीची मऊ व लुसलुशीत गव्हाची चपाती."
-        },
-        {
-          "name": "Butter Tawa Chapati",
-          "hindiName": "बटर तवा चपाती",
-          "marathiName": "बटर तवा चपाती",
-          "price": 25,
-          "image": "assets/menu-images/signature-indian-breads/butter-chapati.jpg",
-          "description": "Soft home-style whole-wheat chapati generously brushed with dairy butter.",
-          "descriptionHi": "ताज़े मक्खन से चुपड़ी हुई गरमागरम मुलायम तवा चपाती।",
-          "descriptionMr": "ताजे बटर लावलेली गरमागरम मऊ तवा चपाती."
-        }
-      ],
       "groupedUnder": "sb-tawa-group",
       "tags": [
         "veg"
@@ -9985,28 +5929,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "बटर तवा चपाती",
       "description": "Soft home-style whole-wheat chapati generously brushed with golden dairy butter.",
       "price": 25,
-      "variants": [
-        {
-          "name": "Plain Tawa Chapati",
-          "hindiName": "प्लेन तवा चपाती",
-          "marathiName": "प्लेन तवा चपाती",
-          "price": 20,
-          "image": "assets/menu-images/signature-indian-breads/chapati.jpg",
-          "description": "Soft home-style whole-wheat flatbread freshly cooked on an iron griddle.",
-          "descriptionHi": "लोहे के तवे पर सिकी हुई घर जैसी फूली हुई मुलायम गेहूं की चपाती।",
-          "descriptionMr": "तव्यावर भाजलेली घरगुती पद्धतीची मऊ व लुसलुशीत गव्हाची चपाती."
-        },
-        {
-          "name": "Butter Tawa Chapati",
-          "hindiName": "बटर तवा चपाती",
-          "marathiName": "बटर तवा चपाती",
-          "price": 25,
-          "image": "assets/menu-images/signature-indian-breads/butter-chapati.jpg",
-          "description": "Soft home-style whole-wheat chapati generously brushed with dairy butter.",
-          "descriptionHi": "ताज़े मक्खन से चुपड़ी हुई गरमागरम मुलायम तवा चपाती।",
-          "descriptionMr": "ताजे बटर लावलेली गरमागरम मऊ तवा चपाती."
-        }
-      ],
       "groupedUnder": "sb-tawa-group",
       "tags": [
         "veg",
@@ -10027,28 +5949,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "प्लेन तवा पराठा",
       "description": "Flaky layered whole-wheat flatbread pan-fried golden crisp on the tawa.",
       "price": 40,
-      "variants": [
-        {
-          "name": "Plain Tawa Paratha",
-          "hindiName": "प्लेन तवा पराठा",
-          "marathiName": "प्लेन तवा पराठा",
-          "price": 40,
-          "image": "assets/menu-images/signature-indian-breads/tawa-paratha.jpg",
-          "description": "Flaky layered whole-wheat flatbread cooked golden on a flat tawa.",
-          "descriptionHi": "तवे पर सिका हुआ स्वादिष्ट और कुरकुरा गेहूं का पराठा।",
-          "descriptionMr": "तव्यावर भाजलेला खरपूस व पदरदार गव्हाचा पराठा."
-        },
-        {
-          "name": "Butter Tawa Paratha",
-          "hindiName": "बटर तवा पराठा",
-          "marathiName": "बटर तवा पराठा",
-          "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/butter-tawa-paratha.jpg",
-          "description": "Flaky layered whole-wheat flatbread roasted with pure dairy butter.",
-          "descriptionHi": "भरपूर मक्खन में सिका हुआ खस्ता परतदार तवा पराठा।",
-          "descriptionMr": "भरपूर बटरमध्ये भाजलेला खमंग पदरदार तवा पराठा."
-        }
-      ],
       "groupedUnder": "sb-tawa-group",
       "tags": [
         "veg"
@@ -10068,28 +5968,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "बटर तवा पराठा",
       "description": "Flaky layered whole-wheat flatbread roasted with pure golden dairy butter.",
       "price": 50,
-      "variants": [
-        {
-          "name": "Plain Tawa Paratha",
-          "hindiName": "प्लेन तवा पराठा",
-          "marathiName": "प्लेन तवा पराठा",
-          "price": 40,
-          "image": "assets/menu-images/signature-indian-breads/tawa-paratha.jpg",
-          "description": "Flaky layered whole-wheat flatbread cooked golden on a flat tawa.",
-          "descriptionHi": "तवे पर सिका हुआ स्वादिष्ट और कुरकुरा गेहूं का पराठा।",
-          "descriptionMr": "तव्यावर भाजलेला खरपूस व पदरदार गव्हाचा पराठा."
-        },
-        {
-          "name": "Butter Tawa Paratha",
-          "hindiName": "बटर तवा पराठा",
-          "marathiName": "बटर तवा पराठा",
-          "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/butter-tawa-paratha.jpg",
-          "description": "Flaky layered whole-wheat flatbread roasted with pure dairy butter.",
-          "descriptionHi": "भरपूर मक्खन में सिका हुआ खस्ता परतदार तवा पराठा।",
-          "descriptionMr": "भरपूर बटरमध्ये भाजलेला खमंग पदरदार तवा पराठा."
-        }
-      ],
       "groupedUnder": "sb-tawa-group",
       "tags": [
         "veg",
@@ -10115,8 +5993,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "displayPriceRange": "₹20 – ₹45",
       "isGroupMaster": true,
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -10142,7 +6019,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/signature-indian-breads/butter-roti.jpg",
           "description": "Crisp whole wheat tandoori roti glazed with golden melted butter.",
           "descriptionHi": "तंदूर में सिकी कुरकुरी रोटी, ऊपर से पिघले हुए मक्खन के साथ।",
-          "descriptionMr": "तंदूरमध्ये भाजलेली खरपूस रोटी, त्यावर ताजे वितळलेले बटर."
+          "descriptionMr": "तंदूरमध्ये भाजलेली खरपूस रोटी, त्यावर ताजे वितळलेले बटर.",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Missi Roti (Plain)",
@@ -10162,7 +6044,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/signature-indian-breads/butter-missi-roti.jpg",
           "description": "Spiced gram flour flatbread baked in tandoor and glazed with pure dairy butter.",
           "descriptionHi": "मक्खन से चुपड़ी हुई स्वादिष्ट और खमंग तंदूरी मिस्सी रोटी।",
-          "descriptionMr": "भरपूर बटर लावलेली खमंग व चवदार तंदूरी मिस्सी रोटी."
+          "descriptionMr": "भरपूर बटर लावलेली खमंग व चवदार तंदूरी मिस्सी रोटी.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Methi Roti (Plain)",
@@ -10195,28 +6082,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "तंदूरी रोटी (साधी)",
       "description": "Crisp and tender whole-wheat flatbread baked inside the traditional clay tandoor.",
       "price": 20,
-      "variants": [
-        {
-          "name": "Tandoori Roti (Plain)",
-          "hindiName": "तंदूरी रोटी (सादा)",
-          "marathiName": "तंदूरी रोटी (साधी)",
-          "price": 20,
-          "image": "assets/menu-images/signature-indian-breads/roti.jpg",
-          "description": "Whole wheat flatbread baked crisp and tender inside the traditional clay tandoor.",
-          "descriptionHi": "पारंपरिक मिट्टी के तंदूर में सिकी हुई गेहूं की गरमागरम सादी रोटी।",
-          "descriptionMr": "मातीच्या तंदूरमध्ये भाजलेली गव्हाची साधी व खमंग तंदूरी रोटी."
-        },
-        {
-          "name": "Tandoori Butter Roti",
-          "hindiName": "तंदूरी बटर रोटी",
-          "marathiName": "तंदूरी बटर रोटी",
-          "price": 25,
-          "image": "assets/menu-images/signature-indian-breads/butter-roti.jpg",
-          "description": "Crisp whole wheat tandoori roti glazed with golden melted butter.",
-          "descriptionHi": "तंदूर में सिकी कुरकुरी रोटी, ऊपर से पिघले हुए मक्खन के साथ।",
-          "descriptionMr": "तंदूरमध्ये भाजलेली खरपूस रोटी, त्यावर ताजे वितळलेले बटर."
-        }
-      ],
       "groupedUnder": "sb-roti-group",
       "tags": [
         "veg"
@@ -10236,28 +6101,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "बटर तंदूरी रोटी",
       "description": "Tandoor-baked whole wheat roti glazed generously with golden melted butter.",
       "price": 25,
-      "variants": [
-        {
-          "name": "Tandoori Roti (Plain)",
-          "hindiName": "तंदूरी रोटी (सादा)",
-          "marathiName": "तंदूरी रोटी (साधी)",
-          "price": 20,
-          "image": "assets/menu-images/signature-indian-breads/roti.jpg",
-          "description": "Whole wheat flatbread baked crisp and tender inside the traditional clay tandoor.",
-          "descriptionHi": "पारंपरिक मिट्टी के तंदूर में सिकी हुई गेहूं की गरमागरम सादी रोटी।",
-          "descriptionMr": "मातीच्या तंदूरमध्ये भाजलेली गव्हाची साधी व खमंग तंदूरी रोटी."
-        },
-        {
-          "name": "Tandoori Butter Roti",
-          "hindiName": "तंदूरी बटर रोटी",
-          "marathiName": "तंदूरी बटर रोटी",
-          "price": 25,
-          "image": "assets/menu-images/signature-indian-breads/butter-roti.jpg",
-          "description": "Crisp whole wheat tandoori roti glazed with golden melted butter.",
-          "descriptionHi": "तंदूर में सिकी कुरकुरी रोटी, ऊपर से पिघले हुए मक्खन के साथ।",
-          "descriptionMr": "तंदूरमध्ये भाजलेली खरपूस रोटी, त्यावर ताजे वितळलेले बटर."
-        }
-      ],
       "groupedUnder": "sb-roti-group",
       "tags": [
         "veg",
@@ -10278,28 +6121,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "प्लेन मिस्सी रोटी",
       "description": "A spiced flatbread of gram flour (besan) and whole wheat with onions, carom seeds and green chillies.",
       "price": 40,
-      "variants": [
-        {
-          "name": "Missi Roti (Plain)",
-          "hindiName": "मिस्सी रोटी (सादा)",
-          "marathiName": "मिस्सी रोटी (साधी)",
-          "price": 40,
-          "image": "assets/menu-images/signature-indian-breads/missi-roti.jpg",
-          "description": "A spiced flatbread of gram flour (besan) and whole wheat with onions, carom seeds and green chillies.",
-          "descriptionHi": "बेसन, अजवायन, प्याज और कस्तूरी मेथी से बनी पारंपरिक राजस्थानी मिस्सी रोटी।",
-          "descriptionMr": "बेसन, ओवा, कांदा आणि मसाल्यांची खमंग चव असलेली पारंपरिक मिस्सी रोटी."
-        },
-        {
-          "name": "Butter Missi Roti",
-          "hindiName": "बटर मिस्सी रोटी",
-          "marathiName": "बटर मिस्सी रोटी",
-          "price": 45,
-          "image": "assets/menu-images/signature-indian-breads/butter-missi-roti.jpg",
-          "description": "Spiced gram flour flatbread baked in tandoor and glazed with pure dairy butter.",
-          "descriptionHi": "मक्खन से चुपड़ी हुई स्वादिष्ट और खमंग तंदूरी मिस्सी रोटी।",
-          "descriptionMr": "भरपूर बटर लावलेली खमंग व चवदार तंदूरी मिस्सी रोटी."
-        }
-      ],
       "groupedUnder": "sb-roti-group",
       "tags": [
         "veg"
@@ -10317,41 +6138,20 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Butter Missi Roti",
       "hindiName": "बटर मिस्सी रोटी",
       "marathiName": "बटर मिस्सी रोटी",
-      "description": "Spiced gram flour and whole-wheat tandoori flatbread finished with pure dairy butter.",
+      "description": "Spiced gram flour flatbread baked in tandoor and glazed with pure dairy butter.",
       "price": 45,
-      "variants": [
-        {
-          "name": "Missi Roti (Plain)",
-          "hindiName": "मिस्सी रोटी (सादा)",
-          "marathiName": "मिस्सी रोटी (साधी)",
-          "price": 40,
-          "image": "assets/menu-images/signature-indian-breads/missi-roti.jpg",
-          "description": "A spiced flatbread of gram flour (besan) and whole wheat with onions, carom seeds and green chillies.",
-          "descriptionHi": "बेसन, अजवायन, प्याज और कस्तूरी मेथी से बनी पारंपरिक राजस्थानी मिस्सी रोटी।",
-          "descriptionMr": "बेसन, ओवा, कांदा आणि मसाल्यांची खमंग चव असलेली पारंपरिक मिस्सी रोटी."
-        },
-        {
-          "name": "Butter Missi Roti",
-          "hindiName": "बटर मिस्सी रोटी",
-          "marathiName": "बटर मिस्सी रोटी",
-          "price": 45,
-          "image": "assets/menu-images/signature-indian-breads/butter-missi-roti.jpg",
-          "description": "Spiced gram flour flatbread baked in tandoor and glazed with pure dairy butter.",
-          "descriptionHi": "मक्खन से चुपड़ी हुई स्वादिष्ट और खमंग तंदूरी मिस्सी रोटी।",
-          "descriptionMr": "भरपूर बटर लावलेली खमंग व चवदार तंदूरी मिस्सी रोटी."
-        }
-      ],
       "groupedUnder": "sb-roti-group",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/signature-indian-breads/butter-missi-roti.jpg",
       "rating": 4.8,
       "prepTime": "8 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मक्खन से चुपड़ी हुई स्वादिष्ट और खमंग तंदूरी मिस्सी रोटी।",
+      "descriptionMr": "भरपूर बटर लावलेली खमंग व चवदार तंदूरी मिस्सी रोटी."
     },
     "sb-14": {
       "id": "sb-14",
@@ -10361,28 +6161,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "प्लेन मेथी रोटी",
       "description": "Soft whole-wheat flatbread kneaded with fresh fenugreek leaves and mild aromatic spices.",
       "price": 40,
-      "variants": [
-        {
-          "name": "Methi Roti (Plain)",
-          "hindiName": "मेथी रोटी (सादा)",
-          "marathiName": "मेथी रोटी (साधी)",
-          "price": 40,
-          "image": "assets/menu-images/signature-indian-breads/methi-roti.jpg",
-          "description": "Wholesome wheat flatbread kneaded with fresh chopped fenugreek leaves and mild spices.",
-          "descriptionHi": "ताज़ी हरी मेथी और मसालों से गूंथी हुई पौष्टिक तंदूरी रोटी।",
-          "descriptionMr": "ताजी मेथी आणि मसाल्यांनी मळलेली पौष्टिक व चवदार तंदूरी रोटी."
-        },
-        {
-          "name": "Butter Methi Roti",
-          "hindiName": "बटर मेथी रोटी",
-          "marathiName": "बटर मेथी रोटी",
-          "price": 45,
-          "image": "assets/menu-images/signature-indian-breads/butter-methi-roti.jpg",
-          "description": "Fresh fenugreek leaves wheat flatbread baked in tandoor and glazed with golden butter.",
-          "descriptionHi": "ताज़ी मेथी से बनी तंदूरी रोटी, ऊपर से पिघले हुए मक्खन की चमक के साथ।",
-          "descriptionMr": "ताजी मेथीची तंदूरी रोटी, त्यावर ताजे वितळलेले बटर."
-        }
-      ],
       "groupedUnder": "sb-roti-group",
       "tags": [
         "veg"
@@ -10400,30 +6178,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Butter Methi Roti",
       "hindiName": "बटर मेथी रोटी",
       "marathiName": "बटर मेथी रोटी",
-      "description": "Wholesome fresh fenugreek wheat flatbread baked in tandoor and brushed with melted butter.",
+      "description": "Fresh fenugreek leaves wheat flatbread baked in tandoor and glazed with golden butter.",
       "price": 45,
-      "variants": [
-        {
-          "name": "Methi Roti (Plain)",
-          "hindiName": "मेथी रोटी (सादा)",
-          "marathiName": "मेथी रोटी (साधी)",
-          "price": 40,
-          "image": "assets/menu-images/signature-indian-breads/methi-roti.jpg",
-          "description": "Wholesome wheat flatbread kneaded with fresh chopped fenugreek leaves and mild spices.",
-          "descriptionHi": "ताज़ी हरी मेथी और मसालों से गूंथी हुई पौष्टिक तंदूरी रोटी।",
-          "descriptionMr": "ताजी मेथी आणि मसाल्यांनी मळलेली पौष्टिक व चवदार तंदूरी रोटी."
-        },
-        {
-          "name": "Butter Methi Roti",
-          "hindiName": "बटर मेथी रोटी",
-          "marathiName": "बटर मेथी रोटी",
-          "price": 45,
-          "image": "assets/menu-images/signature-indian-breads/butter-methi-roti.jpg",
-          "description": "Fresh fenugreek leaves wheat flatbread baked in tandoor and glazed with golden butter.",
-          "descriptionHi": "ताज़ी मेथी से बनी तंदूरी रोटी, ऊपर से पिघले हुए मक्खन की चमक के साथ।",
-          "descriptionMr": "ताजी मेथीची तंदूरी रोटी, त्यावर ताजे वितळलेले बटर."
-        }
-      ],
       "groupedUnder": "sb-roti-group",
       "tags": [
         "veg",
@@ -10434,7 +6190,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/signature-indian-breads/butter-methi-roti.jpg",
       "rating": 4.8,
       "prepTime": "8 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़ी मेथी से बनी तंदूरी रोटी, ऊपर से पिघले हुए मक्खन की चमक के साथ।",
+      "descriptionMr": "ताजी मेथीची तंदूरी रोटी, त्यावर ताजे वितळलेले बटर."
     },
     "sb-naan-group": {
       "id": "sb-naan-group",
@@ -10449,9 +6207,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "displayPriceRange": "₹50 – ₹160",
       "isGroupMaster": true,
       "tags": [
-        "veg",
-        "bestseller",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -10497,7 +6253,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
           "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
           "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
-          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
+          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Cheese Naan",
@@ -10517,7 +6279,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
           "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
           "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
-          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
+          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Cheese Garlic Naan",
@@ -10560,98 +6327,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "प्लेन नान",
       "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
       "price": 50,
-      "variants": [
-        {
-          "name": "Plain Naan",
-          "hindiName": "प्लेन नान",
-          "marathiName": "प्लेन नान",
-          "price": 50,
-          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
-          "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
-          "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
-        },
-        {
-          "name": "Butter Naan",
-          "hindiName": "बटर नान",
-          "marathiName": "बटर नान",
-          "price": 55,
-          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
-          "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
-          "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
-        },
-        {
-          "name": "Garlic Naan",
-          "hindiName": "गार्लिक नान",
-          "marathiName": "गार्लिक नान",
-          "price": 110,
-          "image": "assets/menu-uploads/published-33a981c74ad08f85ea78b8e4.webp",
-          "description": "Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
-          "descriptionHi": "बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।",
-          "descriptionMr": "बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान."
-        },
-        {
-          "name": "Butter Garlic Naan",
-          "hindiName": "बटर गार्लिक नान",
-          "marathiName": "बटर गार्लिक नान",
-          "price": 130,
-          "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
-          "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
-          "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
-          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
-        },
-        {
-          "name": "Cheese Naan",
-          "hindiName": "चीज़ नान",
-          "marathiName": "चीज नान",
-          "price": 120,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.",
-          "descriptionHi": "अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान."
-        },
-        {
-          "name": "Butter Cheese Naan",
-          "hindiName": "बटर चीज़ नान",
-          "marathiName": "बटर चीज नान",
-          "price": 150,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
-          "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
-          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
-        },
-        {
-          "name": "Cheese Garlic Naan",
-          "hindiName": "चीज़ गार्लिक नान",
-          "marathiName": "चीज गार्लिक नान",
-          "price": 140,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.",
-          "descriptionHi": "अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।",
-          "descriptionMr": "आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान."
-        },
-        {
-          "name": "Butter Cheese Garlic Naan",
-          "hindiName": "बटर चीज़ गार्लिक नान",
-          "marathiName": "बटर चीज गार्लिक नान",
-          "price": 160,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Decadent chef special naan with melted cheese, roasted garlic and rich butter.",
-          "descriptionHi": "चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।",
-          "descriptionMr": "चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान."
-        },
-        {
-          "name": "Kashmiri Naan",
-          "hindiName": "कश्मीरी नान",
-          "marathiName": "काश्मिरी नान",
-          "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/kashmiri-naan.jpg",
-          "description": "Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.",
-          "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
-          "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
         "veg"
@@ -10661,7 +6336,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
       "rating": 4.8,
       "prepTime": "8 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
+      "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
     },
     "sb-5": {
       "id": "sb-5",
@@ -10671,98 +6348,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "बटर नान",
       "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
       "price": 55,
-      "variants": [
-        {
-          "name": "Plain Naan",
-          "hindiName": "प्लेन नान",
-          "marathiName": "प्लेन नान",
-          "price": 50,
-          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
-          "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
-          "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
-        },
-        {
-          "name": "Butter Naan",
-          "hindiName": "बटर नान",
-          "marathiName": "बटर नान",
-          "price": 55,
-          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
-          "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
-          "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
-        },
-        {
-          "name": "Garlic Naan",
-          "hindiName": "गार्लिक नान",
-          "marathiName": "गार्लिक नान",
-          "price": 110,
-          "image": "assets/menu-uploads/published-33a981c74ad08f85ea78b8e4.webp",
-          "description": "Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
-          "descriptionHi": "बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।",
-          "descriptionMr": "बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान."
-        },
-        {
-          "name": "Butter Garlic Naan",
-          "hindiName": "बटर गार्लिक नान",
-          "marathiName": "बटर गार्लिक नान",
-          "price": 130,
-          "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
-          "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
-          "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
-          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
-        },
-        {
-          "name": "Cheese Naan",
-          "hindiName": "चीज़ नान",
-          "marathiName": "चीज नान",
-          "price": 120,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.",
-          "descriptionHi": "अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान."
-        },
-        {
-          "name": "Butter Cheese Naan",
-          "hindiName": "बटर चीज़ नान",
-          "marathiName": "बटर चीज नान",
-          "price": 150,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
-          "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
-          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
-        },
-        {
-          "name": "Cheese Garlic Naan",
-          "hindiName": "चीज़ गार्लिक नान",
-          "marathiName": "चीज गार्लिक नान",
-          "price": 140,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.",
-          "descriptionHi": "अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।",
-          "descriptionMr": "आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान."
-        },
-        {
-          "name": "Butter Cheese Garlic Naan",
-          "hindiName": "बटर चीज़ गार्लिक नान",
-          "marathiName": "बटर चीज गार्लिक नान",
-          "price": 160,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Decadent chef special naan with melted cheese, roasted garlic and rich butter.",
-          "descriptionHi": "चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।",
-          "descriptionMr": "चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान."
-        },
-        {
-          "name": "Kashmiri Naan",
-          "hindiName": "कश्मीरी नान",
-          "marathiName": "काश्मिरी नान",
-          "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/kashmiri-naan.jpg",
-          "description": "Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.",
-          "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
-          "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
         "veg",
@@ -10773,7 +6358,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
       "rating": 4.9,
       "prepTime": "8 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
+      "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
     },
     "sb-6": {
       "id": "sb-6",
@@ -10783,98 +6370,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "प्लेन गार्लिक नान",
       "description": "Soft tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
       "price": 110,
-      "variants": [
-        {
-          "name": "Plain Naan",
-          "hindiName": "प्लेन नान",
-          "marathiName": "प्लेन नान",
-          "price": 50,
-          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
-          "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
-          "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
-        },
-        {
-          "name": "Butter Naan",
-          "hindiName": "बटर नान",
-          "marathiName": "बटर नान",
-          "price": 55,
-          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
-          "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
-          "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
-        },
-        {
-          "name": "Garlic Naan",
-          "hindiName": "गार्लिक नान",
-          "marathiName": "गार्लिक नान",
-          "price": 110,
-          "image": "assets/menu-uploads/published-33a981c74ad08f85ea78b8e4.webp",
-          "description": "Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
-          "descriptionHi": "बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।",
-          "descriptionMr": "बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान."
-        },
-        {
-          "name": "Butter Garlic Naan",
-          "hindiName": "बटर गार्लिक नान",
-          "marathiName": "बटर गार्लिक नान",
-          "price": 130,
-          "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
-          "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
-          "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
-          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
-        },
-        {
-          "name": "Cheese Naan",
-          "hindiName": "चीज़ नान",
-          "marathiName": "चीज नान",
-          "price": 120,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.",
-          "descriptionHi": "अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान."
-        },
-        {
-          "name": "Butter Cheese Naan",
-          "hindiName": "बटर चीज़ नान",
-          "marathiName": "बटर चीज नान",
-          "price": 150,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
-          "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
-          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
-        },
-        {
-          "name": "Cheese Garlic Naan",
-          "hindiName": "चीज़ गार्लिक नान",
-          "marathiName": "चीज गार्लिक नान",
-          "price": 140,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.",
-          "descriptionHi": "अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।",
-          "descriptionMr": "आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान."
-        },
-        {
-          "name": "Butter Cheese Garlic Naan",
-          "hindiName": "बटर चीज़ गार्लिक नान",
-          "marathiName": "बटर चीज गार्लिक नान",
-          "price": 160,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Decadent chef special naan with melted cheese, roasted garlic and rich butter.",
-          "descriptionHi": "चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।",
-          "descriptionMr": "चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान."
-        },
-        {
-          "name": "Kashmiri Naan",
-          "hindiName": "कश्मीरी नान",
-          "marathiName": "काश्मिरी नान",
-          "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/kashmiri-naan.jpg",
-          "description": "Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.",
-          "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
-          "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
         "veg",
@@ -10895,32 +6390,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "बटर गार्लिक नान",
       "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
       "price": 130,
-      "variants": [
-        {
-          "name": "Garlic Naan (Plain)",
-          "hindiName": "गार्लिक नान (सादा)",
-          "marathiName": "गार्लिक नान (साधा)",
-          "price": 110,
-          "image": "assets/menu-images/signature-indian-breads/garlic-naan.jpg",
-          "description": "Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
-          "descriptionHi": "बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।",
-          "descriptionMr": "बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान."
-        },
-        {
-          "name": "Butter Garlic Naan",
-          "hindiName": "बटर गार्लिक नान",
-          "marathiName": "बटर गार्लिक नान",
-          "price": 130,
-          "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
-          "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
-          "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
-          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
         "veg",
-        "chef-special",
         "bestseller"
       ],
       "dietary": "pure-veg",
@@ -10928,7 +6400,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
       "rating": 5,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
+      "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
     },
     "sb-7": {
       "id": "sb-7",
@@ -10938,98 +6412,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "प्लेन चीज नान",
       "description": "Soft leavened tandoor flatbread generously stuffed with gooey molten cheese.",
       "price": 120,
-      "variants": [
-        {
-          "name": "Plain Naan",
-          "hindiName": "प्लेन नान",
-          "marathiName": "प्लेन नान",
-          "price": 50,
-          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
-          "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
-          "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
-        },
-        {
-          "name": "Butter Naan",
-          "hindiName": "बटर नान",
-          "marathiName": "बटर नान",
-          "price": 55,
-          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
-          "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
-          "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
-        },
-        {
-          "name": "Garlic Naan",
-          "hindiName": "गार्लिक नान",
-          "marathiName": "गार्लिक नान",
-          "price": 110,
-          "image": "assets/menu-uploads/published-33a981c74ad08f85ea78b8e4.webp",
-          "description": "Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
-          "descriptionHi": "बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।",
-          "descriptionMr": "बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान."
-        },
-        {
-          "name": "Butter Garlic Naan",
-          "hindiName": "बटर गार्लिक नान",
-          "marathiName": "बटर गार्लिक नान",
-          "price": 130,
-          "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
-          "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
-          "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
-          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
-        },
-        {
-          "name": "Cheese Naan",
-          "hindiName": "चीज़ नान",
-          "marathiName": "चीज नान",
-          "price": 120,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.",
-          "descriptionHi": "अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान."
-        },
-        {
-          "name": "Butter Cheese Naan",
-          "hindiName": "बटर चीज़ नान",
-          "marathiName": "बटर चीज नान",
-          "price": 150,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
-          "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
-          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
-        },
-        {
-          "name": "Cheese Garlic Naan",
-          "hindiName": "चीज़ गार्लिक नान",
-          "marathiName": "चीज गार्लिक नान",
-          "price": 140,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.",
-          "descriptionHi": "अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।",
-          "descriptionMr": "आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान."
-        },
-        {
-          "name": "Butter Cheese Garlic Naan",
-          "hindiName": "बटर चीज़ गार्लिक नान",
-          "marathiName": "बटर चीज गार्लिक नान",
-          "price": 160,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Decadent chef special naan with melted cheese, roasted garlic and rich butter.",
-          "descriptionHi": "चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।",
-          "descriptionMr": "चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान."
-        },
-        {
-          "name": "Kashmiri Naan",
-          "hindiName": "कश्मीरी नान",
-          "marathiName": "काश्मिरी नान",
-          "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/kashmiri-naan.jpg",
-          "description": "Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.",
-          "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
-          "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
         "veg",
@@ -11048,42 +6430,20 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Butter Cheese Naan",
       "hindiName": "बटर चीज़ नान",
       "marathiName": "बटर चीज नान",
-      "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden melted butter.",
+      "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
       "price": 150,
-      "variants": [
-        {
-          "name": "Cheese Naan (Plain)",
-          "hindiName": "चीज़ नान (सादा)",
-          "marathiName": "चीज नान (साधा)",
-          "price": 120,
-          "image": "assets/menu-images/signature-indian-breads/cheese-naan.avif",
-          "description": "Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.",
-          "descriptionHi": "अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान."
-        },
-        {
-          "name": "Butter Cheese Naan",
-          "hindiName": "बटर चीज़ नान",
-          "marathiName": "बटर चीज नान",
-          "price": 150,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
-          "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
-          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
-        "veg",
-        "chef-special",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
       "rating": 5,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
+      "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
     },
     "sb-8": {
       "id": "sb-8",
@@ -11091,100 +6451,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Cheese Garlic Naan",
       "hindiName": "चीज़ गार्लिक नान",
       "marathiName": "चीज गार्लिक नान",
-      "description": "Tandoor-baked maida naan stuffed with molten cheese and topped with roasted garlic.",
+      "description": "Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.",
       "price": 140,
-      "variants": [
-        {
-          "name": "Plain Naan",
-          "hindiName": "प्लेन नान",
-          "marathiName": "प्लेन नान",
-          "price": 50,
-          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
-          "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
-          "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
-        },
-        {
-          "name": "Butter Naan",
-          "hindiName": "बटर नान",
-          "marathiName": "बटर नान",
-          "price": 55,
-          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
-          "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
-          "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
-        },
-        {
-          "name": "Garlic Naan",
-          "hindiName": "गार्लिक नान",
-          "marathiName": "गार्लिक नान",
-          "price": 110,
-          "image": "assets/menu-uploads/published-33a981c74ad08f85ea78b8e4.webp",
-          "description": "Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
-          "descriptionHi": "बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।",
-          "descriptionMr": "बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान."
-        },
-        {
-          "name": "Butter Garlic Naan",
-          "hindiName": "बटर गार्लिक नान",
-          "marathiName": "बटर गार्लिक नान",
-          "price": 130,
-          "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
-          "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
-          "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
-          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
-        },
-        {
-          "name": "Cheese Naan",
-          "hindiName": "चीज़ नान",
-          "marathiName": "चीज नान",
-          "price": 120,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.",
-          "descriptionHi": "अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान."
-        },
-        {
-          "name": "Butter Cheese Naan",
-          "hindiName": "बटर चीज़ नान",
-          "marathiName": "बटर चीज नान",
-          "price": 150,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
-          "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
-          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
-        },
-        {
-          "name": "Cheese Garlic Naan",
-          "hindiName": "चीज़ गार्लिक नान",
-          "marathiName": "चीज गार्लिक नान",
-          "price": 140,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.",
-          "descriptionHi": "अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।",
-          "descriptionMr": "आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान."
-        },
-        {
-          "name": "Butter Cheese Garlic Naan",
-          "hindiName": "बटर चीज़ गार्लिक नान",
-          "marathiName": "बटर चीज गार्लिक नान",
-          "price": 160,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Decadent chef special naan with melted cheese, roasted garlic and rich butter.",
-          "descriptionHi": "चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।",
-          "descriptionMr": "चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान."
-        },
-        {
-          "name": "Kashmiri Naan",
-          "hindiName": "कश्मीरी नान",
-          "marathiName": "काश्मिरी नान",
-          "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/kashmiri-naan.jpg",
-          "description": "Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.",
-          "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
-          "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
         "veg",
@@ -11196,7 +6464,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
       "rating": 5,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।",
+      "descriptionMr": "आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान."
     },
     "sb-butter-cheese-garlic-naan": {
       "id": "sb-butter-cheese-garlic-naan",
@@ -11204,30 +6474,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Butter Cheese Garlic Naan",
       "hindiName": "बटर चीज़ गार्लिक नान",
       "marathiName": "बटर चीज गार्लिक नान",
-      "description": "Decadent chef special naan with melted cheese, roasted garlic and rich melted butter.",
+      "description": "Decadent chef special naan with melted cheese, roasted garlic and rich butter.",
       "price": 160,
-      "variants": [
-        {
-          "name": "Cheese Garlic Naan (Plain)",
-          "hindiName": "चीज़ गार्लिक नान (सादा)",
-          "marathiName": "चीज गार्लिक नान (साधा)",
-          "price": 140,
-          "image": "assets/menu-images/signature-indian-breads/cheese-garlic-naan.jpg",
-          "description": "Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.",
-          "descriptionHi": "अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।",
-          "descriptionMr": "आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान."
-        },
-        {
-          "name": "Butter Cheese Garlic Naan",
-          "hindiName": "बटर चीज़ गार्लिक नान",
-          "marathiName": "बटर चीज गार्लिक नान",
-          "price": 160,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Decadent chef special naan with melted cheese, roasted garlic and rich butter.",
-          "descriptionHi": "चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।",
-          "descriptionMr": "चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
         "veg",
@@ -11239,7 +6487,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
       "rating": 5,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।",
+      "descriptionMr": "चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान."
     },
     "sb-15": {
       "id": "sb-15",
@@ -11247,101 +6497,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Kashmiri Naan",
       "hindiName": "कश्मीरी नान",
       "marathiName": "काश्मिरी नान",
-      "description": "A softly sweet naan stuffed with dry fruits, nuts and fragrant cardamom.",
+      "description": "Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.",
       "price": 60,
       "displayPriceRange": "₹60 – ₹70",
-      "variants": [
-        {
-          "name": "Plain Naan",
-          "hindiName": "प्लेन नान",
-          "marathiName": "प्लेन नान",
-          "price": 50,
-          "image": "assets/menu-uploads/published-f4f97a4a443fe54891ddce0d.webp",
-          "description": "Soft, pillowy leavened flatbread baked against the intense heat of the tandoor.",
-          "descriptionHi": "तंदूर में सिका हुआ पारंपरिक मुलायम और फूला हुआ सादा नान।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ व हलका पारंपरिक प्लेन नान."
-        },
-        {
-          "name": "Butter Naan",
-          "hindiName": "बटर नान",
-          "marathiName": "बटर नान",
-          "price": 55,
-          "image": "assets/menu-uploads/published-66f623a5c015b2b395ff649a.webp",
-          "description": "Classic soft tandoor naan glazed generously with golden melted butter.",
-          "descriptionHi": "तंदूर में सिका मखमली नान, जिस पर पिघला हुआ मक्खन लगाया गया हो।",
-          "descriptionMr": "तंदूरमध्ये भाजलेला मऊ नान, त्यावर भरपूर बटर लावलेला."
-        },
-        {
-          "name": "Garlic Naan",
-          "hindiName": "गार्लिक नान",
-          "marathiName": "गार्लिक नान",
-          "price": 110,
-          "image": "assets/menu-uploads/published-33a981c74ad08f85ea78b8e4.webp",
-          "description": "Tandoor naan topped with crushed garlic cloves and fresh coriander leaves.",
-          "descriptionHi": "बारीक कटे लहसुन और ताज़ी धनिया की महक से भरपूर तंदूरी नान।",
-          "descriptionMr": "बारीक लसूण व कोथिंबीर लावून तंदूरमध्ये भाजलेला सुगंधी गार्लिक नान."
-        },
-        {
-          "name": "Butter Garlic Naan",
-          "hindiName": "बटर गार्लिक नान",
-          "marathiName": "बटर गार्लिक नान",
-          "price": 130,
-          "image": "assets/menu-images/signature-indian-breads/butter-garlic-naan.jpg",
-          "description": "Crisp aromatic garlic naan drenched generously in warm melted butter.",
-          "descriptionHi": "लहसुन और धनिया के स्वाद वाला नान, भरपूर मक्खन के साथ।",
-          "descriptionMr": "लसूण व कोथिंबीरच्या खमंग चवीवर भरपूर बटर घातलेला उत्कृष्ट नान."
-        },
-        {
-          "name": "Cheese Naan",
-          "hindiName": "चीज़ नान",
-          "marathiName": "चीज नान",
-          "price": 120,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Soft leavened tandoor flatbread generously stuffed with molten dairy cheese.",
-          "descriptionHi": "अंदर से पिघले हुए स्वादिष्ट चीज़ से भरा, तंदूर में सिका गरमागरम नान।",
-          "descriptionMr": "आत भरपूर वितळलेले चीज भरलेला, तंदूरमध्ये भाजलेला गरमागरम मऊ नान."
-        },
-        {
-          "name": "Butter Cheese Naan",
-          "hindiName": "बटर चीज़ नान",
-          "marathiName": "बटर चीज नान",
-          "price": 150,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-naan.jpg",
-          "description": "Cheese-stuffed tandoori naan finished with a rich layer of golden butter.",
-          "descriptionHi": "चीज़ के स्वादिष्ट भरावन वाला नान, ऊपर से मक्खन की चमक के साथ।",
-          "descriptionMr": "चीजचे सारण भरलेला नान, वरून भरपूर बटर लावून दिलेला."
-        },
-        {
-          "name": "Cheese Garlic Naan",
-          "hindiName": "चीज़ गार्लिक नान",
-          "marathiName": "चीज गार्लिक नान",
-          "price": 140,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Molten cheese stuffed inside and roasted garlic on top, baked in the tandoor.",
-          "descriptionHi": "अंदर पिघलता चीज़ और ऊपर भुना हुआ लहसुन, बेहतरीन तंदूरी स्वाद।",
-          "descriptionMr": "आत वितळलेले चीज आणि वरून भाजलेला खमंग लसूण असलेला खास नान."
-        },
-        {
-          "name": "Butter Cheese Garlic Naan",
-          "hindiName": "बटर चीज़ गार्लिक नान",
-          "marathiName": "बटर चीज गार्लिक नान",
-          "price": 160,
-          "image": "assets/menu-images/signature-indian-breads/butter-cheese-garlic-naan.jpg",
-          "description": "Decadent chef special naan with melted cheese, roasted garlic and rich butter.",
-          "descriptionHi": "चीज़, भुना लहसुन और ढेर सारे मक्खन से बना होटल प्राइड का सबसे पसंदीदा नान।",
-          "descriptionMr": "चीज, लसूण आणि भरपूर बटरचा परिपूर्ण मेळ असलेला प्राइड स्पेशल नान."
-        },
-        {
-          "name": "Kashmiri Naan",
-          "hindiName": "कश्मीरी नान",
-          "marathiName": "काश्मिरी नान",
-          "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/kashmiri-naan.jpg",
-          "description": "Delicately sweet tandoor naan stuffed with dried fruits, nuts and fragrant cardamom.",
-          "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
-          "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
-        }
-      ],
       "groupedUnder": "sb-naan-group",
       "tags": [
         "veg",
@@ -11352,7 +6510,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-f3cfda6684bac859da1b5a11.webp",
       "rating": 4.8,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "काजू, किशमिश और इलायची के मीठे भरावन से बना कश्मीरी शाही नान।",
+      "descriptionMr": "सुकामेवा व वेलचीचे गोड सारण भरून तंदूरमध्ये भाजलेला काश्मिरी नान."
     },
     "sb-kulcha-group": {
       "id": "sb-kulcha-group",
@@ -11413,7 +6573,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/signature-indian-breads/butter-stuffed-kulcha.jpg",
           "description": "Tandoor-baked stuffed vegetable and paneer kulcha finished with rich dairy butter.",
           "descriptionHi": "मक्खन की परत वाला भरवां पनीर व सब्जी कुलचा।",
-          "descriptionMr": "भरपूर बटर लावलेला खमंग भरलेला पनीर कुलचा."
+          "descriptionMr": "भरपूर बटर लावलेला खमंग भरलेला पनीर कुलचा.",
+          "tags": [
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Laccha Paratha (Plain)",
@@ -11444,30 +6609,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Plain Kulcha",
       "hindiName": "प्लेन कुलचा",
       "marathiName": "प्लेन कुलचा",
-      "description": "Soft maida flatbread flavoured with black sesame and coriander, baked in the tandoor.",
+      "description": "Soft leavened refined flour bread topped with nigella seeds and baked tender in the tandoor.",
       "price": 50,
-      "variants": [
-        {
-          "name": "Plain Kulcha",
-          "hindiName": "प्लेन कुलचा",
-          "marathiName": "प्लेन कुलचा",
-          "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/kulcha.jpg",
-          "description": "Soft leavened refined flour bread topped with nigella seeds and baked tender in the tandoor.",
-          "descriptionHi": "कलौंजी और धनिए से सजा, तंदूर में सिका हुआ सादा मुलायम कुलचा।",
-          "descriptionMr": "कलौंजी व कोथिंबीर लावून तंदूरमध्ये भाजलेला मऊ प्लेन कुलचा."
-        },
-        {
-          "name": "Butter Kulcha",
-          "hindiName": "बटर कुलचा",
-          "marathiName": "बटर कुलचा",
-          "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/butter-kulcha.jpg",
-          "description": "Fluffy tandoori kulcha generously brushed with melted dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ फूला हुआ गरमागरम कुलचा।",
-          "descriptionMr": "भरपूर बटर लावलेला तंदूरमधील गरमागरम मऊ कुलचा."
-        }
-      ],
       "groupedUnder": "sb-kulcha-group",
       "tags": [
         "veg"
@@ -11477,7 +6620,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/signature-indian-breads/butter-kulcha-1.jpg",
       "rating": 4.8,
       "prepTime": "8 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "कलौंजी और धनिए से सजा, तंदूर में सिका हुआ सादा मुलायम कुलचा।",
+      "descriptionMr": "कलौंजी व कोथिंबीर लावून तंदूरमध्ये भाजलेला मऊ प्लेन कुलचा."
     },
     "sb-butter-kulcha": {
       "id": "sb-butter-kulcha",
@@ -11485,30 +6630,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Butter Kulcha",
       "hindiName": "बटर कुलचा",
       "marathiName": "बटर कुलचा",
-      "description": "Fluffy tandoori kulcha generously brushed with warm melted dairy butter.",
+      "description": "Fluffy tandoori kulcha generously brushed with melted dairy butter.",
       "price": 60,
-      "variants": [
-        {
-          "name": "Plain Kulcha",
-          "hindiName": "प्लेन कुलचा",
-          "marathiName": "प्लेन कुलचा",
-          "price": 50,
-          "image": "assets/menu-images/signature-indian-breads/kulcha.jpg",
-          "description": "Soft leavened refined flour bread topped with nigella seeds and baked tender in the tandoor.",
-          "descriptionHi": "कलौंजी और धनिए से सजा, तंदूर में सिका हुआ सादा मुलायम कुलचा।",
-          "descriptionMr": "कलौंजी व कोथिंबीर लावून तंदूरमध्ये भाजलेला मऊ प्लेन कुलचा."
-        },
-        {
-          "name": "Butter Kulcha",
-          "hindiName": "बटर कुलचा",
-          "marathiName": "बटर कुलचा",
-          "price": 60,
-          "image": "assets/menu-images/signature-indian-breads/butter-kulcha.jpg",
-          "description": "Fluffy tandoori kulcha generously brushed with melted dairy butter.",
-          "descriptionHi": "मक्खन से तर-ब-तर किया हुआ फूला हुआ गरमागरम कुलचा।",
-          "descriptionMr": "भरपूर बटर लावलेला तंदूरमधील गरमागरम मऊ कुलचा."
-        }
-      ],
       "groupedUnder": "sb-kulcha-group",
       "tags": [
         "veg",
@@ -11519,7 +6642,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/signature-indian-breads/butter-kulcha.jpg",
       "rating": 4.8,
       "prepTime": "8 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मक्खन से तर-ब-तर किया हुआ फूला हुआ गरमागरम कुलचा।",
+      "descriptionMr": "भरपूर बटर लावलेला तंदूरमधील गरमागरम मऊ कुलचा."
     },
     "sb-10": {
       "id": "sb-10",
@@ -11530,28 +6655,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Tandoor-baked maida bread stuffed with spiced potatoes, cottage cheese and fresh herbs.",
       "price": 110,
       "displayPriceRange": "₹110 – ₹120",
-      "variants": [
-        {
-          "name": "Stuffed Kulcha (Plain)",
-          "hindiName": "स्टफ्ड कुलचा (सादा)",
-          "marathiName": "स्टफ्ड कुलचा (साधा)",
-          "price": 110,
-          "image": "assets/menu-images/signature-indian-breads/stuffed-kulcha.jpg",
-          "description": "Tandoor-baked maida bread stuffed with potatoes, paneer, cauliflower, beans and carrots.",
-          "descriptionHi": "मसालेदार पनीर और सब्जियों के स्वादिष्ट भरावन वाला तंदूरी कुलचा।",
-          "descriptionMr": "चवदार पनीर व भाज्यांचे सारण भरून तंदूरमध्ये भाजलेला गरमागरम कुलचा."
-        },
-        {
-          "name": "Butter Stuffed Kulcha",
-          "hindiName": "बटर स्टफ्ड कुलचा",
-          "marathiName": "बटर स्टफ्ड कुलचा",
-          "price": 120,
-          "image": "assets/menu-images/signature-indian-breads/butter-stuffed-kulcha.jpg",
-          "description": "Tandoor-baked stuffed vegetable and paneer kulcha finished with rich dairy butter.",
-          "descriptionHi": "मक्खन की परत वाला भरवां पनीर व सब्जी कुलचा।",
-          "descriptionMr": "भरपूर बटर लावलेला खमंग भरलेला पनीर कुलचा."
-        }
-      ],
       "groupedUnder": "sb-kulcha-group",
       "tags": [
         "veg",
@@ -11572,28 +6675,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "प्लेन लच्छा पराठा",
       "description": "Crisp, multi-layered whole-wheat flatbread roasted golden to pair with rich curries.",
       "price": 70,
-      "variants": [
-        {
-          "name": "Laccha Paratha (Plain)",
-          "hindiName": "लच्छा पराठा (सादा)",
-          "marathiName": "लच्छा पराठा (साधा)",
-          "price": 70,
-          "image": "assets/menu-images/signature-indian-breads/lachha-paratha.jpg",
-          "description": "Multi-layered crispy flatbread made with whole wheat, laminated and roasted golden.",
-          "descriptionHi": "कई परतों वाला खस्ता और कुरकुरा लच्छेदार तंदूरी पराठा।",
-          "descriptionMr": "अनेक पदरांचा कुरकुरीत व खमंग लच्छा पराठा."
-        },
-        {
-          "name": "Butter Laccha Paratha",
-          "hindiName": "बटर लच्छा पराठा",
-          "marathiName": "बटर लच्छा पराठा",
-          "price": 80,
-          "image": "assets/menu-images/signature-indian-breads/butter-lachha-paratha.jpg",
-          "description": "Multi-layered crispy tandoori flatbread finished with pure dairy butter.",
-          "descriptionHi": "मक्खन से भरपूर कुरकुरा परतदार लच्छा पराठा।",
-          "descriptionMr": "भरपूर बटर घातलेला खमंग पदरदार लच्छा पराठा."
-        }
-      ],
       "groupedUnder": "sb-kulcha-group",
       "tags": [
         "veg"
@@ -11611,30 +6692,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Butter Laccha Paratha",
       "hindiName": "बटर लच्छा पराठा",
       "marathiName": "बटर लच्छा पराठा",
-      "description": "Crisp multi-layered tandoori flatbread finished generously with melted dairy butter.",
+      "description": "Multi-layered crispy tandoori flatbread finished with pure dairy butter.",
       "price": 80,
-      "variants": [
-        {
-          "name": "Laccha Paratha (Plain)",
-          "hindiName": "लच्छा पराठा (सादा)",
-          "marathiName": "लच्छा पराठा (साधा)",
-          "price": 70,
-          "image": "assets/menu-images/signature-indian-breads/lachha-paratha.jpg",
-          "description": "Multi-layered crispy flatbread made with whole wheat, laminated and roasted golden.",
-          "descriptionHi": "कई परतों वाला खस्ता और कुरकुरा लच्छेदार तंदूरी पराठा।",
-          "descriptionMr": "अनेक पदरांचा कुरकुरीत व खमंग लच्छा पराठा."
-        },
-        {
-          "name": "Butter Laccha Paratha",
-          "hindiName": "बटर लच्छा पराठा",
-          "marathiName": "बटर लच्छा पराठा",
-          "price": 80,
-          "image": "assets/menu-images/signature-indian-breads/butter-lachha-paratha.jpg",
-          "description": "Multi-layered crispy tandoori flatbread finished with pure dairy butter.",
-          "descriptionHi": "मक्खन से भरपूर कुरकुरा परतदार लच्छा पराठा।",
-          "descriptionMr": "भरपूर बटर घातलेला खमंग पदरदार लच्छा पराठा."
-        }
-      ],
       "groupedUnder": "sb-kulcha-group",
       "tags": [
         "veg",
@@ -11645,7 +6704,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/signature-indian-breads/butter-lachha-paratha.jpg",
       "rating": 4.9,
       "prepTime": "8 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "मक्खन से भरपूर कुरकुरा परतदार लच्छा पराठा।",
+      "descriptionMr": "भरपूर बटर घातलेला खमंग पदरदार लच्छा पराठा."
     },
     "sb-16": {
       "id": "sb-16",
@@ -11664,7 +6725,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "marathiName": "प्लेन रोटी बास्केट",
           "price": 480,
           "image": "",
-          "description": "Nine assorted plain breads: tandoori roti, naan, missi roti, pudina roti, kulcha, laccha paratha, garlic naan, methi paratha and aloo paratha."
+          "description": "Nine assorted plain breads: tandoori roti, naan, missi roti, pudina roti, kulcha, laccha paratha, garlic naan, methi paratha and aloo paratha.",
+          "descriptionHi": "",
+          "descriptionMr": "",
+          "tags": [
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Butter Roti Basket",
@@ -11672,20 +6740,29 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "marathiName": "बटर रोटी बास्केट",
           "price": 520,
           "image": "",
-          "description": "Nine assorted breads glazed with golden butter: butter roti, butter naan, butter kulcha, butter laccha paratha and specialties."
+          "description": "Nine assorted breads glazed with golden butter: butter roti, butter naan, butter kulcha, butter laccha paratha and specialties.",
+          "descriptionHi": "",
+          "descriptionMr": "",
+          "tags": [
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "tags": [
         "veg",
-        "chef-special",
-        "bestseller"
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "",
       "rating": 5,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "rb-biryani-group": {
       "id": "rb-biryani-group",
@@ -11718,7 +6795,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg",
           "description": "Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.",
           "descriptionHi": "हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।",
-          "descriptionMr": "हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी."
+          "descriptionMr": "हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी.",
+          "tags": [
+            "veg",
+            "spicy",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Tikka Biryani",
@@ -11728,7 +6812,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg",
           "description": "Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.",
           "descriptionHi": "तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।",
-          "descriptionMr": "तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी."
+          "descriptionMr": "तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Kaju Paneer Biryani",
@@ -11738,7 +6828,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg",
           "description": "Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.",
           "descriptionHi": "घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।",
-          "descriptionMr": "तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी."
+          "descriptionMr": "तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी.",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Paneer Patakha Biryani",
@@ -11748,13 +6845,20 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg",
           "description": "Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.",
           "descriptionHi": "तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।",
-          "descriptionMr": "झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका."
+          "descriptionMr": "झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका.",
+          "tags": [
+            "veg",
+            "spicy",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "tags": [
         "veg",
-        "bestseller",
         "zomato-top",
+        "bestseller",
         "chef-special"
       ],
       "dietary": "pure-veg",
@@ -11771,60 +6875,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Dum Biryani",
       "hindiName": "वेज दम बिरयानी",
       "marathiName": "व्हेज दम बिर्याणी",
-      "description": "Vegetable biryani with crunchy cashews, saffron, coriander and mint.",
+      "description": "Layered basmati rice slow-cooked on dum with vegetables, saffron, mint and roasted cashews.",
       "price": 260,
-      "variants": [
-        {
-          "name": "Veg Dum Biryani",
-          "hindiName": "वेज दम बिरयानी",
-          "marathiName": "व्हेज दम बिर्याणी",
-          "price": 260,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg",
-          "description": "Layered basmati rice slow-cooked on dum with vegetables, saffron, mint and roasted cashews.",
-          "descriptionHi": "धीमी आंच पर दम देकर पकाई गई खुशबूदार केसर, पुदीना और काजू वाली खास वेज बिरयानी।",
-          "descriptionMr": "दमवर शिजवलेला सुगंधी बासमती तांदूळ, भाज्या, केशर, पुदिना आणि काजू घातलेली शाही बिर्याणी."
-        },
-        {
-          "name": "Veg Hyderabadi Biryani",
-          "hindiName": "वेज हैदराबादी बिरयानी",
-          "marathiName": "व्हेज हैदराबादी बिर्याणी",
-          "price": 270,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg",
-          "description": "Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.",
-          "descriptionHi": "हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।",
-          "descriptionMr": "हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी."
-        },
-        {
-          "name": "Paneer Tikka Biryani",
-          "hindiName": "पनीर टिक्का बिरयानी",
-          "marathiName": "पनीर टिक्का बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg",
-          "description": "Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.",
-          "descriptionHi": "तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।",
-          "descriptionMr": "तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी."
-        },
-        {
-          "name": "Kaju Paneer Biryani",
-          "hindiName": "काजू पनीर बिरयानी",
-          "marathiName": "काजू पनीर बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg",
-          "description": "Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.",
-          "descriptionHi": "घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।",
-          "descriptionMr": "तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी."
-        },
-        {
-          "name": "Paneer Patakha Biryani",
-          "hindiName": "पनीर पटाखा बिरयानी",
-          "marathiName": "पनीर फटाका बिर्याणी",
-          "price": 285,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg",
-          "description": "Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.",
-          "descriptionHi": "तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।",
-          "descriptionMr": "झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका."
-        }
-      ],
       "groupedUnder": "rb-biryani-group",
       "tags": [
         "veg",
@@ -11837,7 +6889,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "zomatoRating": "4.4",
       "prepTime": "20 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "धीमी आंच पर दम देकर पकाई गई खुशबूदार केसर, पुदीना और काजू वाली खास वेज बिरयानी।",
+      "descriptionMr": "दमवर शिजवलेला सुगंधी बासमती तांदूळ, भाज्या, केशर, पुदिना आणि काजू घातलेली शाही बिर्याणी."
     },
     "rb-2": {
       "id": "rb-2",
@@ -11845,71 +6899,22 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Hyderabadi Biryani",
       "hindiName": "वेज हैदराबादी बिरयानी",
       "marathiName": "व्हेज हैदराबादी बिर्याणी",
-      "description": "Fragrant, spiced vegetable biryani prepared in a green Hyderabadi style.",
+      "description": "Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.",
       "price": 270,
-      "variants": [
-        {
-          "name": "Veg Dum Biryani",
-          "hindiName": "वेज दम बिरयानी",
-          "marathiName": "व्हेज दम बिर्याणी",
-          "price": 260,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg",
-          "description": "Layered basmati rice slow-cooked on dum with vegetables, saffron, mint and roasted cashews.",
-          "descriptionHi": "धीमी आंच पर दम देकर पकाई गई खुशबूदार केसर, पुदीना और काजू वाली खास वेज बिरयानी।",
-          "descriptionMr": "दमवर शिजवलेला सुगंधी बासमती तांदूळ, भाज्या, केशर, पुदिना आणि काजू घातलेली शाही बिर्याणी."
-        },
-        {
-          "name": "Veg Hyderabadi Biryani",
-          "hindiName": "वेज हैदराबादी बिरयानी",
-          "marathiName": "व्हेज हैदराबादी बिर्याणी",
-          "price": 270,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg",
-          "description": "Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.",
-          "descriptionHi": "हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।",
-          "descriptionMr": "हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी."
-        },
-        {
-          "name": "Paneer Tikka Biryani",
-          "hindiName": "पनीर टिक्का बिरयानी",
-          "marathiName": "पनीर टिक्का बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg",
-          "description": "Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.",
-          "descriptionHi": "तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।",
-          "descriptionMr": "तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी."
-        },
-        {
-          "name": "Kaju Paneer Biryani",
-          "hindiName": "काजू पनीर बिरयानी",
-          "marathiName": "काजू पनीर बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg",
-          "description": "Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.",
-          "descriptionHi": "घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।",
-          "descriptionMr": "तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी."
-        },
-        {
-          "name": "Paneer Patakha Biryani",
-          "hindiName": "पनीर पटाखा बिरयानी",
-          "marathiName": "पनीर फटाका बिर्याणी",
-          "price": 285,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg",
-          "description": "Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.",
-          "descriptionHi": "तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।",
-          "descriptionMr": "झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका."
-        }
-      ],
       "groupedUnder": "rb-biryani-group",
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg",
       "rating": 4.8,
       "prepTime": "20 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।",
+      "descriptionMr": "हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी."
     },
     "rb-3": {
       "id": "rb-3",
@@ -11917,71 +6922,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Tikka Biryani",
       "hindiName": "पनीर टिक्का बिरयानी",
       "marathiName": "पनीर टिक्का बिर्याणी",
-      "description": "Grilled paneer paired with aromatic, spiced biryani rice.",
+      "description": "Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.",
       "price": 275,
-      "variants": [
-        {
-          "name": "Veg Dum Biryani",
-          "hindiName": "वेज दम बिरयानी",
-          "marathiName": "व्हेज दम बिर्याणी",
-          "price": 260,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg",
-          "description": "Layered basmati rice slow-cooked on dum with vegetables, saffron, mint and roasted cashews.",
-          "descriptionHi": "धीमी आंच पर दम देकर पकाई गई खुशबूदार केसर, पुदीना और काजू वाली खास वेज बिरयानी।",
-          "descriptionMr": "दमवर शिजवलेला सुगंधी बासमती तांदूळ, भाज्या, केशर, पुदिना आणि काजू घातलेली शाही बिर्याणी."
-        },
-        {
-          "name": "Veg Hyderabadi Biryani",
-          "hindiName": "वेज हैदराबादी बिरयानी",
-          "marathiName": "व्हेज हैदराबादी बिर्याणी",
-          "price": 270,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg",
-          "description": "Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.",
-          "descriptionHi": "हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।",
-          "descriptionMr": "हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी."
-        },
-        {
-          "name": "Paneer Tikka Biryani",
-          "hindiName": "पनीर टिक्का बिरयानी",
-          "marathiName": "पनीर टिक्का बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg",
-          "description": "Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.",
-          "descriptionHi": "तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।",
-          "descriptionMr": "तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी."
-        },
-        {
-          "name": "Kaju Paneer Biryani",
-          "hindiName": "काजू पनीर बिरयानी",
-          "marathiName": "काजू पनीर बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg",
-          "description": "Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.",
-          "descriptionHi": "घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।",
-          "descriptionMr": "तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी."
-        },
-        {
-          "name": "Paneer Patakha Biryani",
-          "hindiName": "पनीर पटाखा बिरयानी",
-          "marathiName": "पनीर फटाका बिर्याणी",
-          "price": 285,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg",
-          "description": "Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.",
-          "descriptionHi": "तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।",
-          "descriptionMr": "झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका."
-        }
-      ],
       "groupedUnder": "rb-biryani-group",
       "tags": [
         "veg",
-        "chef-special"
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg",
       "rating": 5,
       "prepTime": "20 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।",
+      "descriptionMr": "तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी."
     },
     "rb-4": {
       "id": "rb-4",
@@ -11989,70 +6944,22 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Kaju Paneer Biryani",
       "hindiName": "काजू पनीर बिरयानी",
       "marathiName": "काजू पनीर बिर्याणी",
-      "description": "Fragrant rice cooked with paneer, cashews and aromatic spices.",
+      "description": "Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.",
       "price": 275,
-      "variants": [
-        {
-          "name": "Veg Dum Biryani",
-          "hindiName": "वेज दम बिरयानी",
-          "marathiName": "व्हेज दम बिर्याणी",
-          "price": 260,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg",
-          "description": "Layered basmati rice slow-cooked on dum with vegetables, saffron, mint and roasted cashews.",
-          "descriptionHi": "धीमी आंच पर दम देकर पकाई गई खुशबूदार केसर, पुदीना और काजू वाली खास वेज बिरयानी।",
-          "descriptionMr": "दमवर शिजवलेला सुगंधी बासमती तांदूळ, भाज्या, केशर, पुदिना आणि काजू घातलेली शाही बिर्याणी."
-        },
-        {
-          "name": "Veg Hyderabadi Biryani",
-          "hindiName": "वेज हैदराबादी बिरयानी",
-          "marathiName": "व्हेज हैदराबादी बिर्याणी",
-          "price": 270,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg",
-          "description": "Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.",
-          "descriptionHi": "हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।",
-          "descriptionMr": "हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी."
-        },
-        {
-          "name": "Paneer Tikka Biryani",
-          "hindiName": "पनीर टिक्का बिरयानी",
-          "marathiName": "पनीर टिक्का बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg",
-          "description": "Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.",
-          "descriptionHi": "तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।",
-          "descriptionMr": "तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी."
-        },
-        {
-          "name": "Kaju Paneer Biryani",
-          "hindiName": "काजू पनीर बिरयानी",
-          "marathiName": "काजू पनीर बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg",
-          "description": "Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.",
-          "descriptionHi": "घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।",
-          "descriptionMr": "तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी."
-        },
-        {
-          "name": "Paneer Patakha Biryani",
-          "hindiName": "पनीर पटाखा बिरयानी",
-          "marathiName": "पनीर फटाका बिर्याणी",
-          "price": 285,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg",
-          "description": "Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.",
-          "descriptionHi": "तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।",
-          "descriptionMr": "झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका."
-        }
-      ],
       "groupedUnder": "rb-biryani-group",
       "tags": [
-        "veg"
+        "veg",
+        "bestseller",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।",
+      "descriptionMr": "तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी."
     },
     "rb-5": {
       "id": "rb-5",
@@ -12060,71 +6967,22 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Paneer Patakha Biryani",
       "hindiName": "पनीर पटाखा बिरयानी",
       "marathiName": "पनीर फटाका बिर्याणी",
-      "description": "Spicy paneer tikka roasted in the tandoor and cooked with fragrant basmati rice.",
+      "description": "Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.",
       "price": 285,
-      "variants": [
-        {
-          "name": "Veg Dum Biryani",
-          "hindiName": "वेज दम बिरयानी",
-          "marathiName": "व्हेज दम बिर्याणी",
-          "price": 260,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-dum-biryani.jpg",
-          "description": "Layered basmati rice slow-cooked on dum with vegetables, saffron, mint and roasted cashews.",
-          "descriptionHi": "धीमी आंच पर दम देकर पकाई गई खुशबूदार केसर, पुदीना और काजू वाली खास वेज बिरयानी।",
-          "descriptionMr": "दमवर शिजवलेला सुगंधी बासमती तांदूळ, भाज्या, केशर, पुदिना आणि काजू घातलेली शाही बिर्याणी."
-        },
-        {
-          "name": "Veg Hyderabadi Biryani",
-          "hindiName": "वेज हैदराबादी बिरयानी",
-          "marathiName": "व्हेज हैदराबादी बिर्याणी",
-          "price": 270,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-hyderabadi-biryani.jpg",
-          "description": "Spicy, richly spiced vegetable biryani prepared in the signature Hyderabadi green masala.",
-          "descriptionHi": "हैदराबादी हरी मिर्च, पुदीना और साबुत मसालों में बनी चटपटी और तीखी बिरयानी।",
-          "descriptionMr": "हैदराबादी हिरवा मसाला, पुदिना आणि खमंग मसाल्यांमध्ये शिजवलेली झणझणीत बिर्याणी."
-        },
-        {
-          "name": "Paneer Tikka Biryani",
-          "hindiName": "पनीर टिक्का बिरयानी",
-          "marathiName": "पनीर टिक्का बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-tikka-biryani.jpg",
-          "description": "Smoky clay-oven tandoori paneer tikka layered with aromatic saffron-infused basmati rice.",
-          "descriptionHi": "तंदूर में भुने स्मोकी पनीर टिक्का और खुशबूदार बासमती चावल की बेहद लोकप्रिय बिरयानी।",
-          "descriptionMr": "तंदूरमध्ये भाजलेले पनीर टिक्का आणि सुगंधी बासमती भाताची अत्यंत लोकप्रिय बिर्याणी."
-        },
-        {
-          "name": "Kaju Paneer Biryani",
-          "hindiName": "काजू पनीर बिरयानी",
-          "marathiName": "काजू पनीर बिर्याणी",
-          "price": 275,
-          "image": "assets/menu-images/rice-biryani-fiesta/kaju-paneer-biryani-1.jpg",
-          "description": "Royal delicacy loaded with golden fried whole cashews, fresh paneer cubes and mild spices.",
-          "descriptionHi": "घी में भुने काजू और ताज़े पनीर के टुकड़ों से सजी शाही खुशबूदार बिरयानी।",
-          "descriptionMr": "तुपात तळलेले काजू आणि ताजे पनीरचे तुकडे घातलेली शाही चवीची बिर्याणी."
-        },
-        {
-          "name": "Paneer Patakha Biryani",
-          "hindiName": "पनीर पटाखा बिरयानी",
-          "marathiName": "पनीर फटाका बिर्याणी",
-          "price": 285,
-          "image": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg",
-          "description": "Chef special fiery paneer cubes roasted in spicy tandoori marinade with long-grain rice.",
-          "descriptionHi": "तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।",
-          "descriptionMr": "झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका."
-        }
-      ],
       "groupedUnder": "rb-biryani-group",
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/rice-biryani-fiesta/paneer-patakha-biryani.jpg",
       "rating": 4.9,
       "prepTime": "20 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "तीखे व चटपटे तंदूरी मसालों में भुना पनीर और बासमती चावल का धमाकेदार स्वाद।",
+      "descriptionMr": "झणझणीत तंदूरी मसाल्यात भाजलेले पनीर आणि बासमती भाताचा खमंग तडका."
     },
     "rb-6": {
       "id": "rb-6",
@@ -12155,7 +7013,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Fluffy basmati rice tossed with roasted cumin seeds and fresh coriander in pure ghee.",
           "descriptionHi": "देसी घी में भुने जीरे और हरी धनिया के साथ तड़का लगाया हुआ बासमती चावल।",
           "descriptionMr": "साजूक तुपात भाजलेले जिरे व कोथिंबिरीचा तडका दिलेला खमंग बासमती जिरा राईस.",
-          "id": "rb-6"
+          "id": "rb-6",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "tags": [
@@ -12179,30 +7042,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "स्टीम्ड राईस",
       "description": "Aromatic long-grain basmati rice, steamed tender and fluffy.",
       "price": 180,
-      "variants": [
-        {
-          "name": "Steamed Rice",
-          "hindiName": "स्टीम्ड राइस",
-          "marathiName": "स्टीम्ड राईस",
-          "price": 180,
-          "image": "assets/menu-images/rice-biryani-fiesta/steamed-rice.jpg",
-          "description": "Aromatic long-grain basmati rice, steamed tender and fluffy.",
-          "descriptionHi": "खुशबूदार लंबे दाने वाला बासमती सादा उबला चावल।",
-          "descriptionMr": "सुगंधी लांब दाण्यांचा मऊ व मोकळा शिजवलेला बासमती भात.",
-          "id": "rb-7"
-        },
-        {
-          "name": "Jeera Rice",
-          "hindiName": "जीरा राइस",
-          "marathiName": "जिरा राईस",
-          "price": 190,
-          "image": "assets/menu-images/rice-biryani-fiesta/jeera-rice.jpg",
-          "description": "Fluffy basmati rice tossed with roasted cumin seeds and fresh coriander in pure ghee.",
-          "descriptionHi": "देसी घी में भुने जीरे और हरी धनिया के साथ तड़का लगाया हुआ बासमती चावल।",
-          "descriptionMr": "साजूक तुपात भाजलेले जिरे व कोथिंबिरीचा तडका दिलेला खमंग बासमती जिरा राईस.",
-          "id": "rb-6"
-        }
-      ],
       "tags": [
         "veg"
       ],
@@ -12212,7 +7051,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.6,
       "prepTime": "10 mins",
       "groupedUnder": "rb-6",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "खुशबूदार लंबे दाने वाला बासमती सादा उबला चावल।",
+      "descriptionMr": "सुगंधी लांब दाण्यांचा मऊ व मोकळा शिजवलेला बासमती भात."
     },
     "rb-8": {
       "id": "rb-8",
@@ -12237,11 +7078,16 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "name": "Butter Dal Khichadi",
           "hindiName": "बटर दाल खिचड़ी",
           "marathiName": "बटर डाळ खिचडी",
-          "price": null,
-          "image": "",
+          "price": 250,
+          "image": "assets/menu-uploads/published-3f26b9e31df894bdb7cf590a.webp",
           "description": "",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "rb-9",
@@ -12257,11 +7103,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "name": "Butter Dal Khichadi Tadka",
           "hindiName": "बटर दाल खिचड़ी तड़का",
           "marathiName": "बटर डाळ खिचडी तडका",
-          "price": null,
-          "image": "",
+          "price": 255,
+          "image": "assets/menu-uploads/published-05bd6ab406e1896d5c75b53b.webp",
           "description": "",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "tags": [
@@ -12269,7 +7118,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "assets/menu-images/rice-biryani-fiesta/dal-khichadi.jpg",
+      "image": "assets/menu-uploads/published-05bd6ab406e1896d5c75b53b.webp",
       "rating": 4.8,
       "prepTime": "15 mins",
       "isGroupMaster": true,
@@ -12284,48 +7133,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "डाळ खिचडी तडका",
       "description": "Aromatic dal khichadi finished with a sizzling tempering of cumin, garlic, curry leaves and dry red chillies.",
       "price": 245,
-      "variants": [
-        {
-          "id": "rb-8",
-          "name": "Dal Khichadi",
-          "hindiName": "दाल खिचड़ी",
-          "marathiName": "डाळ खिचडी",
-          "description": "A comforting combination of aged basmati rice and yellow lentils cooked with mild spices and butter.",
-          "price": 240,
-          "image": "assets/menu-images/rice-biryani-fiesta/dal-khichadi.jpg"
-        },
-        {
-          "id": "rb-butter-khichadi",
-          "name": "Butter Dal Khichadi",
-          "hindiName": "बटर दाल खिचड़ी",
-          "marathiName": "बटर डाळ खिचडी",
-          "price": null,
-          "image": "",
-          "description": "",
-          "descriptionHi": "",
-          "descriptionMr": ""
-        },
-        {
-          "id": "rb-9",
-          "name": "Dal Khichadi with Tadka",
-          "hindiName": "दाल खिचड़ी तड़का",
-          "marathiName": "डाळ खिचडी तडका",
-          "description": "Aromatic dal khichadi finished with a sizzling tempering of cumin, garlic, curry leaves and dry red chillies.",
-          "price": 245,
-          "image": "assets/menu-images/rice-biryani-fiesta/dal-khichadi-with-tadka.jpg"
-        },
-        {
-          "id": "rb-butter-khichadi-tadka",
-          "name": "Butter Dal Khichadi Tadka",
-          "hindiName": "बटर दाल खिचड़ी तड़का",
-          "marathiName": "बटर डाळ खिचडी तडका",
-          "price": null,
-          "image": "",
-          "description": "",
-          "descriptionHi": "",
-          "descriptionMr": ""
-        }
-      ],
       "tags": [
         "veg",
         "bestseller"
@@ -12359,7 +7166,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg",
           "description": "Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.",
           "descriptionHi": "ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।",
-          "descriptionMr": "ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव."
+          "descriptionMr": "ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Mutter Paneer Pulao",
@@ -12369,7 +7182,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg",
           "description": "Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.",
           "descriptionHi": "नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।",
-          "descriptionMr": "मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव."
+          "descriptionMr": "मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "name": "Masala Rice",
@@ -12403,8 +7222,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         }
       ],
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -12419,70 +7237,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Veg Pulao",
       "hindiName": "वेज पुलाव",
       "marathiName": "व्हेज पुलाव",
-      "description": "Rice cooked with a medley of vegetables and spices.",
+      "description": "Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.",
       "price": 240,
-      "variants": [
-        {
-          "name": "Veg Pulao",
-          "hindiName": "वेज पुलाव",
-          "marathiName": "व्हेज पुलाव",
-          "price": 240,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg",
-          "description": "Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.",
-          "descriptionHi": "ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।",
-          "descriptionMr": "ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव."
-        },
-        {
-          "name": "Mutter Paneer Pulao",
-          "hindiName": "मटर पनीर पुलाव",
-          "marathiName": "मटार पनीर पुलाव",
-          "price": 245,
-          "image": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg",
-          "description": "Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.",
-          "descriptionHi": "नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।",
-          "descriptionMr": "मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव."
-        },
-        {
-          "name": "Masala Rice",
-          "hindiName": "मसाला राइस",
-          "marathiName": "मसाला राईस",
-          "price": 250,
-          "image": "assets/menu-images/rice-biryani-fiesta/masala-rice.jpg",
-          "description": "Aromatic basmati rice cooked with authentic Khandeshi spices, onions, tomatoes and coriander.",
-          "descriptionHi": "खानदेशी भुने मसालों, प्याज, टमाटर और हरी धनिया से तैयार चटपटा मसाला चावल।",
-          "descriptionMr": "खानदेशी खमंग मसाले, कांदा, टोमॅटो व कोथिंबीर घालून परतलेला झणझणीत मसाला भात."
-        },
-        {
-          "name": "Lemon Rice",
-          "hindiName": "लेमन राइस",
-          "marathiName": "लेमन राईस",
-          "price": 200,
-          "image": "assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg",
-          "description": "Tangy South Indian-style basmati rice tempered with mustard seeds, curry leaves and lemon.",
-          "descriptionHi": "राई, कढ़ी पत्ता, हरी मिर्च और ताज़े नींबू के रस के तड़के वाला खट्टा-नमकीन चावल।",
-          "descriptionMr": "मोहरी, कढीपत्ता, हिरवी मिरची आणि ताज्या लिंबाचा रस घातलेला चवदार लेमन राईस."
-        },
-        {
-          "name": "Curd Rice",
-          "hindiName": "कर्ड राइस",
-          "marathiName": "कर्ड राईस",
-          "price": 230,
-          "image": "assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg",
-          "description": "Cool comforting basmati rice blended with fresh creamy curd and tempered with mustard and ginger.",
-          "descriptionHi": "ताज़े गाढ़े दही और चावल का मेल, राई, अदरक और कढ़ी पत्ते के तड़के के साथ।",
-          "descriptionMr": "थंडगार ताजे दही व मऊ भाताचे मिश्रण, मोहरी, आले आणि कढीपत्त्याची खमंग फोडणी."
-        }
-      ],
       "groupedUnder": "rb-pulao-group",
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।",
+      "descriptionMr": "ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव."
     },
     "rb-11": {
       "id": "rb-11",
@@ -12490,70 +7259,21 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Mutter Paneer Pulao",
       "hindiName": "मटर पनीर पुलाव",
       "marathiName": "मटार पनीर पुलाव",
-      "description": "Fragrant rice with green peas, soft paneer and aromatic spices.",
+      "description": "Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.",
       "price": 245,
-      "variants": [
-        {
-          "name": "Veg Pulao",
-          "hindiName": "वेज पुलाव",
-          "marathiName": "व्हेज पुलाव",
-          "price": 240,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg",
-          "description": "Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.",
-          "descriptionHi": "ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।",
-          "descriptionMr": "ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव."
-        },
-        {
-          "name": "Mutter Paneer Pulao",
-          "hindiName": "मटर पनीर पुलाव",
-          "marathiName": "मटार पनीर पुलाव",
-          "price": 245,
-          "image": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg",
-          "description": "Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.",
-          "descriptionHi": "नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।",
-          "descriptionMr": "मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव."
-        },
-        {
-          "name": "Masala Rice",
-          "hindiName": "मसाला राइस",
-          "marathiName": "मसाला राईस",
-          "price": 250,
-          "image": "assets/menu-images/rice-biryani-fiesta/masala-rice.jpg",
-          "description": "Aromatic basmati rice cooked with authentic Khandeshi spices, onions, tomatoes and coriander.",
-          "descriptionHi": "खानदेशी भुने मसालों, प्याज, टमाटर और हरी धनिया से तैयार चटपटा मसाला चावल।",
-          "descriptionMr": "खानदेशी खमंग मसाले, कांदा, टोमॅटो व कोथिंबीर घालून परतलेला झणझणीत मसाला भात."
-        },
-        {
-          "name": "Lemon Rice",
-          "hindiName": "लेमन राइस",
-          "marathiName": "लेमन राईस",
-          "price": 200,
-          "image": "assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg",
-          "description": "Tangy South Indian-style basmati rice tempered with mustard seeds, curry leaves and lemon.",
-          "descriptionHi": "राई, कढ़ी पत्ता, हरी मिर्च और ताज़े नींबू के रस के तड़के वाला खट्टा-नमकीन चावल।",
-          "descriptionMr": "मोहरी, कढीपत्ता, हिरवी मिरची आणि ताज्या लिंबाचा रस घातलेला चवदार लेमन राईस."
-        },
-        {
-          "name": "Curd Rice",
-          "hindiName": "कर्ड राइस",
-          "marathiName": "कर्ड राईस",
-          "price": 230,
-          "image": "assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg",
-          "description": "Cool comforting basmati rice blended with fresh creamy curd and tempered with mustard and ginger.",
-          "descriptionHi": "ताज़े गाढ़े दही और चावल का मेल, राई, अदरक और कढ़ी पत्ते के तड़के के साथ।",
-          "descriptionMr": "थंडगार ताजे दही व मऊ भाताचे मिश्रण, मोहरी, आले आणि कढीपत्त्याची खमंग फोडणी."
-        }
-      ],
       "groupedUnder": "rb-pulao-group",
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।",
+      "descriptionMr": "मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव."
     },
     "rb-12": {
       "id": "rb-12",
@@ -12561,60 +7281,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Curd Rice",
       "hindiName": "कर्ड राइस",
       "marathiName": "कर्ड राईस",
-      "description": "Rice mixed with yogurt and seasoned with mustard, curry leaves and spices.",
+      "description": "Cool comforting basmati rice blended with fresh creamy curd and tempered with mustard and ginger.",
       "price": 230,
-      "variants": [
-        {
-          "name": "Veg Pulao",
-          "hindiName": "वेज पुलाव",
-          "marathiName": "व्हेज पुलाव",
-          "price": 240,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg",
-          "description": "Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.",
-          "descriptionHi": "ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।",
-          "descriptionMr": "ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव."
-        },
-        {
-          "name": "Mutter Paneer Pulao",
-          "hindiName": "मटर पनीर पुलाव",
-          "marathiName": "मटार पनीर पुलाव",
-          "price": 245,
-          "image": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg",
-          "description": "Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.",
-          "descriptionHi": "नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।",
-          "descriptionMr": "मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव."
-        },
-        {
-          "name": "Masala Rice",
-          "hindiName": "मसाला राइस",
-          "marathiName": "मसाला राईस",
-          "price": 250,
-          "image": "assets/menu-images/rice-biryani-fiesta/masala-rice.jpg",
-          "description": "Aromatic basmati rice cooked with authentic Khandeshi spices, onions, tomatoes and coriander.",
-          "descriptionHi": "खानदेशी भुने मसालों, प्याज, टमाटर और हरी धनिया से तैयार चटपटा मसाला चावल।",
-          "descriptionMr": "खानदेशी खमंग मसाले, कांदा, टोमॅटो व कोथिंबीर घालून परतलेला झणझणीत मसाला भात."
-        },
-        {
-          "name": "Lemon Rice",
-          "hindiName": "लेमन राइस",
-          "marathiName": "लेमन राईस",
-          "price": 200,
-          "image": "assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg",
-          "description": "Tangy South Indian-style basmati rice tempered with mustard seeds, curry leaves and lemon.",
-          "descriptionHi": "राई, कढ़ी पत्ता, हरी मिर्च और ताज़े नींबू के रस के तड़के वाला खट्टा-नमकीन चावल।",
-          "descriptionMr": "मोहरी, कढीपत्ता, हिरवी मिरची आणि ताज्या लिंबाचा रस घातलेला चवदार लेमन राईस."
-        },
-        {
-          "name": "Curd Rice",
-          "hindiName": "कर्ड राइस",
-          "marathiName": "कर्ड राईस",
-          "price": 230,
-          "image": "assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg",
-          "description": "Cool comforting basmati rice blended with fresh creamy curd and tempered with mustard and ginger.",
-          "descriptionHi": "ताज़े गाढ़े दही और चावल का मेल, राई, अदरक और कढ़ी पत्ते के तड़के के साथ।",
-          "descriptionMr": "थंडगार ताजे दही व मऊ भाताचे मिश्रण, मोहरी, आले आणि कढीपत्त्याची खमंग फोडणी."
-        }
-      ],
       "groupedUnder": "rb-pulao-group",
       "tags": [
         "veg"
@@ -12624,7 +7292,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg",
       "rating": 4.8,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़े गाढ़े दही और चावल का मेल, राई, अदरक और कढ़ी पत्ते के तड़के के साथ।",
+      "descriptionMr": "थंडगार ताजे दही व मऊ भाताचे मिश्रण, मोहरी, आले आणि कढीपत्त्याची खमंग फोडणी."
     },
     "rb-13": {
       "id": "rb-13",
@@ -12632,60 +7302,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Masala Rice",
       "hindiName": "मसाला राइस",
       "marathiName": "मसाला राईस",
-      "description": "Basmati rice seasoned with aromatic herbs and spices.",
+      "description": "Aromatic basmati rice cooked with authentic Khandeshi spices, onions, tomatoes and coriander.",
       "price": 250,
-      "variants": [
-        {
-          "name": "Veg Pulao",
-          "hindiName": "वेज पुलाव",
-          "marathiName": "व्हेज पुलाव",
-          "price": 240,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg",
-          "description": "Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.",
-          "descriptionHi": "ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।",
-          "descriptionMr": "ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव."
-        },
-        {
-          "name": "Mutter Paneer Pulao",
-          "hindiName": "मटर पनीर पुलाव",
-          "marathiName": "मटार पनीर पुलाव",
-          "price": 245,
-          "image": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg",
-          "description": "Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.",
-          "descriptionHi": "नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।",
-          "descriptionMr": "मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव."
-        },
-        {
-          "name": "Masala Rice",
-          "hindiName": "मसाला राइस",
-          "marathiName": "मसाला राईस",
-          "price": 250,
-          "image": "assets/menu-images/rice-biryani-fiesta/masala-rice.jpg",
-          "description": "Aromatic basmati rice cooked with authentic Khandeshi spices, onions, tomatoes and coriander.",
-          "descriptionHi": "खानदेशी भुने मसालों, प्याज, टमाटर और हरी धनिया से तैयार चटपटा मसाला चावल।",
-          "descriptionMr": "खानदेशी खमंग मसाले, कांदा, टोमॅटो व कोथिंबीर घालून परतलेला झणझणीत मसाला भात."
-        },
-        {
-          "name": "Lemon Rice",
-          "hindiName": "लेमन राइस",
-          "marathiName": "लेमन राईस",
-          "price": 200,
-          "image": "assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg",
-          "description": "Tangy South Indian-style basmati rice tempered with mustard seeds, curry leaves and lemon.",
-          "descriptionHi": "राई, कढ़ी पत्ता, हरी मिर्च और ताज़े नींबू के रस के तड़के वाला खट्टा-नमकीन चावल।",
-          "descriptionMr": "मोहरी, कढीपत्ता, हिरवी मिरची आणि ताज्या लिंबाचा रस घातलेला चवदार लेमन राईस."
-        },
-        {
-          "name": "Curd Rice",
-          "hindiName": "कर्ड राइस",
-          "marathiName": "कर्ड राईस",
-          "price": 230,
-          "image": "assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg",
-          "description": "Cool comforting basmati rice blended with fresh creamy curd and tempered with mustard and ginger.",
-          "descriptionHi": "ताज़े गाढ़े दही और चावल का मेल, राई, अदरक और कढ़ी पत्ते के तड़के के साथ।",
-          "descriptionMr": "थंडगार ताजे दही व मऊ भाताचे मिश्रण, मोहरी, आले आणि कढीपत्त्याची खमंग फोडणी."
-        }
-      ],
       "groupedUnder": "rb-pulao-group",
       "tags": [
         "veg"
@@ -12695,7 +7313,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/rice-biryani-fiesta/masala-rice.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "खानदेशी भुने मसालों, प्याज, टमाटर और हरी धनिया से तैयार चटपटा मसाला चावल।",
+      "descriptionMr": "खानदेशी खमंग मसाले, कांदा, टोमॅटो व कोथिंबीर घालून परतलेला झणझणीत मसाला भात."
     },
     "rb-14": {
       "id": "rb-14",
@@ -12703,60 +7323,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Lemon Rice",
       "hindiName": "लेमन राइस",
       "marathiName": "लेमन राईस",
-      "description": "Tangy South Indian-style rice with lemon juice, mustard seeds and curry leaves.",
+      "description": "Tangy South Indian-style basmati rice tempered with mustard seeds, curry leaves and lemon.",
       "price": 200,
-      "variants": [
-        {
-          "name": "Veg Pulao",
-          "hindiName": "वेज पुलाव",
-          "marathiName": "व्हेज पुलाव",
-          "price": 240,
-          "image": "assets/menu-images/rice-biryani-fiesta/veg-pulao.jpg",
-          "description": "Fragrant basmati rice gently tossed with green peas, carrots, french beans and whole spices.",
-          "descriptionHi": "ताज़ी हरी सब्जियों और खड़े मसालों के साथ पकाया हुआ स्वादिष्ट पारंपरिक वेज पुलाव।",
-          "descriptionMr": "ताजी मटार, गाजर, फरसबी आणि खड्या मसाल्यांसह शिजवलेला खमंग वेज पुलाव."
-        },
-        {
-          "name": "Mutter Paneer Pulao",
-          "hindiName": "मटर पनीर पुलाव",
-          "marathiName": "मटार पनीर पुलाव",
-          "price": 245,
-          "image": "assets/menu-images/rice-biryani-fiesta/mutter-paneer-pulao.jpg",
-          "description": "Delicate basmati rice sautéed with soft paneer cubes, sweet green peas and cumin in pure ghee.",
-          "descriptionHi": "नरम पनीर के टुकड़े, हरी मटर और देसी घी में तड़का लगाया हुआ खास पुलाव।",
-          "descriptionMr": "मऊ पनीरचे तुकडे, गोड हिरवी मटार आणि साजूक तुपाची खमंग फोडणी दिलेला पुलाव."
-        },
-        {
-          "name": "Masala Rice",
-          "hindiName": "मसाला राइस",
-          "marathiName": "मसाला राईस",
-          "price": 250,
-          "image": "assets/menu-images/rice-biryani-fiesta/masala-rice.jpg",
-          "description": "Aromatic basmati rice cooked with authentic Khandeshi spices, onions, tomatoes and coriander.",
-          "descriptionHi": "खानदेशी भुने मसालों, प्याज, टमाटर और हरी धनिया से तैयार चटपटा मसाला चावल।",
-          "descriptionMr": "खानदेशी खमंग मसाले, कांदा, टोमॅटो व कोथिंबीर घालून परतलेला झणझणीत मसाला भात."
-        },
-        {
-          "name": "Lemon Rice",
-          "hindiName": "लेमन राइस",
-          "marathiName": "लेमन राईस",
-          "price": 200,
-          "image": "assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg",
-          "description": "Tangy South Indian-style basmati rice tempered with mustard seeds, curry leaves and lemon.",
-          "descriptionHi": "राई, कढ़ी पत्ता, हरी मिर्च और ताज़े नींबू के रस के तड़के वाला खट्टा-नमकीन चावल।",
-          "descriptionMr": "मोहरी, कढीपत्ता, हिरवी मिरची आणि ताज्या लिंबाचा रस घातलेला चवदार लेमन राईस."
-        },
-        {
-          "name": "Curd Rice",
-          "hindiName": "कर्ड राइस",
-          "marathiName": "कर्ड राईस",
-          "price": 230,
-          "image": "assets/menu-images/rice-biryani-fiesta/curd-rice-1.jpg",
-          "description": "Cool comforting basmati rice blended with fresh creamy curd and tempered with mustard and ginger.",
-          "descriptionHi": "ताज़े गाढ़े दही और चावल का मेल, राई, अदरक और कढ़ी पत्ते के तड़के के साथ।",
-          "descriptionMr": "थंडगार ताजे दही व मऊ भाताचे मिश्रण, मोहरी, आले आणि कढीपत्त्याची खमंग फोडणी."
-        }
-      ],
       "groupedUnder": "rb-pulao-group",
       "tags": [
         "veg"
@@ -12766,7 +7334,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/rice-biryani-fiesta/lemon-rice-1.jpg",
       "rating": 4.7,
       "prepTime": "12 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "राई, कढ़ी पत्ता, हरी मिर्च और ताज़े नींबू के रस के तड़के वाला खट्टा-नमकीन चावल।",
+      "descriptionMr": "मोहरी, कढीपत्ता, हिरवी मिरची आणि ताज्या लिंबाचा रस घातलेला चवदार लेमन राईस."
     },
     "mm-1": {
       "id": "mm-1",
@@ -12779,8 +7349,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "descriptionMr": "विविध आईस्क्रीम स्कूप्स, सुका मेवा, चॉकलेट सॉस आणि ताज्या फळांनी सजवलेला खास संडे.",
       "price": 550,
       "tags": [
-        "veg",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -12788,38 +7357,16 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 5,
       "prepTime": "10 mins",
       "groupedUnder": "mm-sundae-group",
-      "variants": [],
       "notAvailable": false
-    },
-    "mm-2": {
-      "id": "mm-2",
-      "categoryId": "mithai-magic",
-      "name": "Hot Chocolate Fudge",
-      "hindiName": "हॉट चॉकलेट फज",
-      "marathiName": "हॉट चॉकलेट फज",
-      "description": "Warm dark chocolate fudge poured over velvety vanilla ice cream and topped with roasted cashews.",
-      "descriptionHi": "ठंडी वैनिला आइसक्रीम पर गरमागरम गाढ़ा चॉकलेट फज और भुने हुए काजू डालकर परोसा जाता है।",
-      "descriptionMr": "थंड व्हॅनिला आईस्क्रीमवर गरमागरम चॉकलेट फज सॉस आणि भाजलेले काजू घालून दिलेला खास पदार्थ.",
-      "price": 200,
-      "tags": [
-        "veg",
-        "bestseller"
-      ],
-      "dietary": "pure-veg",
-      "isSoldOut": false,
-      "image": "",
-      "rating": 4.9,
-      "prepTime": "8 mins",
-      "notAvailable": true
     },
     "mm-3": {
       "id": "mm-3",
       "categoryId": "mithai-magic",
-      "name": "Gulab Jamun (2 Pcs)",
-      "hindiName": "गुलाब जामुन (२ नग)",
-      "marathiName": "गुलाबजाम (२ नग)",
-      "description": "Two soft milk-solid dumplings soaked in fragrant sugar syrup.",
-      "price": 55,
+      "name": "Gulab Jamun",
+      "hindiName": "गुलाब जामुन",
+      "marathiName": "गुलाबजाम",
+      "description": "Soft milk-solid dumplings soaked in fragrant sugar syrup.",
+      "price": 30,
       "tags": [
         "veg",
         "bestseller"
@@ -12830,17 +7377,37 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "5 mins",
       "groupedUnder": "mm-traditional-group",
+      "notAvailable": false,
+      "portionOptions": [
+        {
+          "id": "one-piece",
+          "name": "1 Piece",
+          "hindiName": "1 पीस",
+          "marathiName": "1 नग",
+          "price": 30,
+          "isDefault": true
+        },
+        {
+          "id": "two-pieces",
+          "name": "2 Pieces",
+          "hindiName": "2 पीस",
+          "marathiName": "2 नग",
+          "price": 55,
+          "isDefault": false
+        }
+      ],
       "variants": [],
-      "notAvailable": false
+      "descriptionHi": "खुशबूदार चाशनी में भीगे नरम गुलाब जामुन।",
+      "descriptionMr": "सुगंधी साखरेच्या पाकात मुरलेले मऊ गुलाबजाम."
     },
     "mm-4": {
       "id": "mm-4",
       "categoryId": "mithai-magic",
-      "name": "Rasgulla (2 Pcs)",
-      "hindiName": "रसगुल्ला (२ नग)",
-      "marathiName": "रसगुल्ला (२ नग)",
-      "description": "Two soft, spongy rasgullas soaked in sweet syrup.",
-      "price": 60,
+      "name": "Rasgulla",
+      "hindiName": "रसगुल्ला",
+      "marathiName": "रसगुल्ला",
+      "description": "Soft, spongy rasgullas soaked in delicate sweet syrup.",
+      "price": 35,
       "tags": [
         "veg"
       ],
@@ -12850,8 +7417,28 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "5 mins",
       "groupedUnder": "mm-traditional-group",
+      "notAvailable": false,
+      "portionOptions": [
+        {
+          "id": "one-piece",
+          "name": "1 Piece",
+          "hindiName": "1 पीस",
+          "marathiName": "1 नग",
+          "price": 35,
+          "isDefault": true
+        },
+        {
+          "id": "two-pieces",
+          "name": "2 Pieces",
+          "hindiName": "2 पीस",
+          "marathiName": "2 नग",
+          "price": 60,
+          "isDefault": false
+        }
+      ],
       "variants": [],
-      "notAvailable": false
+      "descriptionHi": "हल्की मीठी चाशनी में भीगे नरम, स्पंजी रसगुल्ले।",
+      "descriptionMr": "हलका गोडवा असलेल्या पाकात मुरलेले मऊ, स्पंजी रसगुल्ले."
     },
     "mm-5": {
       "id": "mm-5",
@@ -12864,8 +7451,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "descriptionMr": "विविध फ्लेवर्सचे आईस्क्रीम, सुका मेवा आणि बेरी सॉसने सजवलेला वीकेंड स्पेशल संडे.",
       "price": 500,
       "tags": [
-        "veg",
-        "chef-special"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -12873,7 +7459,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "10 mins",
       "groupedUnder": "mm-sundae-group",
-      "variants": [],
       "notAvailable": false
     },
     "mm-6": {
@@ -12895,29 +7480,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "8 mins",
       "groupedUnder": "mm-sundae-group",
-      "variants": [],
-      "notAvailable": false
-    },
-    "mm-7": {
-      "id": "mm-7",
-      "categoryId": "mithai-magic",
-      "name": "X-mas Delight",
-      "hindiName": "क्रिसमस डिलाइट",
-      "marathiName": "ख्रिसमस डिलाईट",
-      "description": "Festive dessert specialty combining rich chocolate cake, ice cream, and dark cherry compote.",
-      "descriptionHi": "चॉकलेट केक, क्रीमी आइसक्रीम और चेरी के रसीले स्वाद से भरपूर खास फेस्टिव डेज़र्ट।",
-      "descriptionMr": "चॉकलेट केक, मखमली आईस्क्रीम आणि चेरीच्या रसाळ स्वादाने भरलेला खास मिष्टान्न.",
-      "price": 220,
-      "tags": [
-        "veg"
-      ],
-      "dietary": "pure-veg",
-      "isSoldOut": false,
-      "image": "",
-      "rating": 4.8,
-      "prepTime": "8 mins",
-      "groupedUnder": "mm-sundae-group",
-      "variants": [],
       "notAvailable": false
     },
     "ff-1": {
@@ -12927,35 +7489,39 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Butterscotch Ice Cream",
       "hindiName": "बटरस्कॉच आइसक्रीम",
       "marathiName": "बटरस्कॉच आईस्क्रीम",
-      "description": "Creamy golden butterscotch ice cream loaded with crunchy caramelized praline nuggets.",
-      "descriptionHi": "कुरकुरे कैरेमल क्रंच और मक्खनी स्वाद से भरपूर क्रीमी बटरस्कॉच आइसक्रीम।",
-      "descriptionMr": "कुरकुरीत कॅरॅमल क्रंच आणि लोणीच्या चवीने युक्त मलईदार बटरस्कॉच आईस्क्रीम.",
+      "description": "Rich creamy butterscotch ice cream with crunchy praline nuts.",
+      "descriptionHi": "कुरकुरे कैरेमल प्रालिन नट्स वाला गाढ़ा बटरस्कॉच आइसक्रीम।",
+      "descriptionMr": "कुरकुरीत कॅरॅमल नट्स असलेला स्वादिष्ट बटरस्कॉच आईस्क्रीम.",
       "price": 50,
-      "displayPriceRange": "₹50 – ₹130",
-      "variants": [
-        {
-          "name": "1 Scoop",
-          "hindiName": "1 स्कूप",
-          "marathiName": "1 स्कूप",
-          "price": 50
-        },
-        {
-          "name": "3 Scoops",
-          "hindiName": "3 स्कूप",
-          "marathiName": "3 स्कूप",
-          "price": 130
-        }
-      ],
+      "displayPriceRange": "₹50 – ₹80",
       "tags": [
-        "veg",
-        "bestseller"
+        "veg"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-2d9ca7870b605d674ff97e85.webp",
       "rating": 4.8,
       "prepTime": "5 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "portionOptions": [
+        {
+          "id": "one-scoop",
+          "name": "1 Scoop",
+          "hindiName": "1 स्कूप",
+          "marathiName": "1 स्कूप",
+          "price": 50,
+          "isDefault": true
+        },
+        {
+          "id": "two-scoops",
+          "name": "2 Scoops",
+          "hindiName": "2 स्कूप",
+          "marathiName": "2 स्कूप",
+          "price": 80,
+          "isDefault": false
+        }
+      ],
+      "variants": []
     },
     "ff-2": {
       "id": "ff-2",
@@ -12964,25 +7530,11 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Vanilla Ice Cream",
       "hindiName": "वैनिला आइसक्रीम",
       "marathiName": "व्हॅनिला आईस्क्रीम",
-      "description": "Classic velvety dairy ice cream flavored with aromatic natural vanilla bean.",
-      "descriptionHi": "शुद्ध दूध और प्राकृतिक वैनिला की खुशबू से बना क्लासिक मखमली आइसक्रीम स्कूप।",
-      "descriptionMr": "शुद्ध दूध आणि नैसर्गिक व्हॅनिलाच्या सुवासाने तयार केलेला क्लासिक आईस्क्रीम स्कूप.",
+      "description": "Classic velvety vanilla bean ice cream scoop.",
+      "descriptionHi": "पारंपरिक मखमली वैनिला आइसक्रीम का ठंडा स्कूप।",
+      "descriptionMr": "अत्यंत मऊ, मलईदार आणि चविष्ट व्हॅनिला आईस्क्रीम.",
       "price": 40,
-      "displayPriceRange": "₹40 – ₹110",
-      "variants": [
-        {
-          "name": "1 Scoop",
-          "hindiName": "1 स्कूप",
-          "marathiName": "1 स्कूप",
-          "price": 40
-        },
-        {
-          "name": "3 Scoops",
-          "hindiName": "3 स्कूप",
-          "marathiName": "3 स्कूप",
-          "price": 110
-        }
-      ],
+      "displayPriceRange": "₹40 – ₹65",
       "tags": [
         "veg"
       ],
@@ -12991,7 +7543,26 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-10ba49c1d54b1d4b4d91005d.webp",
       "rating": 4.7,
       "prepTime": "5 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "portionOptions": [
+        {
+          "id": "one-scoop",
+          "name": "1 Scoop",
+          "hindiName": "1 स्कूप",
+          "marathiName": "1 स्कूप",
+          "price": 40,
+          "isDefault": true
+        },
+        {
+          "id": "two-scoops",
+          "name": "2 Scoops",
+          "hindiName": "2 स्कूप",
+          "marathiName": "2 स्कूप",
+          "price": 65,
+          "isDefault": false
+        }
+      ],
+      "variants": []
     },
     "ff-3": {
       "id": "ff-3",
@@ -13002,25 +7573,11 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Kaju Draksh Ice Cream",
       "hindiName": "काजू द्राक्ष आइसक्रीम",
       "marathiName": "काजू द्राक्ष आईस्क्रीम",
-      "description": "Rich royal ice cream loaded with crunchy roasted cashews and sweet juicy black raisins.",
-      "descriptionHi": "भुने हुए काजू और मीठी काली किशमिश से भरपूर गाढ़ी और शाही मलाईदार आइसक्रीम।",
-      "descriptionMr": "भाजलेले काजू आणि गोड काळ्या मनुकांनी भरलेले दाट आणि शाही आईस्क्रीम.",
+      "description": "Traditional royal ice cream loaded with cashew nuts and sweet raisins.",
+      "descriptionHi": "कुरकुरे काजू और किशमिश के टुकड़ों से भरा स्वादिष्ट आइसक्रीम।",
+      "descriptionMr": "काजूचे काप आणि मनुका घातलेला शाही चवीचा आईस्क्रीम.",
       "price": 50,
-      "displayPriceRange": "₹50 – ₹130",
-      "variants": [
-        {
-          "name": "1 Scoop",
-          "hindiName": "1 स्कूप",
-          "marathiName": "1 स्कूप",
-          "price": 50
-        },
-        {
-          "name": "3 Scoops",
-          "hindiName": "3 स्कूप",
-          "marathiName": "3 स्कूप",
-          "price": 130
-        }
-      ],
+      "displayPriceRange": "₹50 – ₹80",
       "tags": [
         "veg"
       ],
@@ -13028,7 +7585,26 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isSoldOut": false,
       "image": "",
       "rating": 4.9,
-      "prepTime": "5 mins"
+      "prepTime": "5 mins",
+      "portionOptions": [
+        {
+          "id": "one-scoop",
+          "name": "1 Scoop",
+          "hindiName": "1 स्कूप",
+          "marathiName": "1 स्कूप",
+          "price": 50,
+          "isDefault": true
+        },
+        {
+          "id": "two-scoops",
+          "name": "2 Scoops",
+          "hindiName": "2 स्कूप",
+          "marathiName": "2 स्कूप",
+          "price": 80,
+          "isDefault": false
+        }
+      ],
+      "variants": []
     },
     "ff-4": {
       "id": "ff-4",
@@ -13037,25 +7613,11 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Chocolate Ice Cream",
       "hindiName": "चॉकलेट आइसक्रीम",
       "marathiName": "चॉकलेट आईस्क्रीम",
-      "description": "Decadent scoop of rich dark Dutch chocolate dairy ice cream.",
-      "descriptionHi": "गाढ़े डच कोको और शुद्ध दूध से बनी बेहद स्वादिष्ट और क्रीमी चॉकलेट आइसक्रीम।",
-      "descriptionMr": "दाट डच कोको आणि दुधापासून बनवलेले मखमली आणि चवदार चॉकलेट आईस्क्रीम.",
+      "description": "Decadent deep cocoa chocolate ice cream scoop.",
+      "descriptionHi": "रिच डार्क कोकोआ और मलाई से भरपूर चॉकलेट आइसक्रीम।",
+      "descriptionMr": "डार्क कोको आणि सायीने भरलेला चॉकलेटी आईस्क्रीम.",
       "price": 50,
-      "displayPriceRange": "₹50 – ₹130",
-      "variants": [
-        {
-          "name": "1 Scoop",
-          "hindiName": "1 स्कूप",
-          "marathiName": "1 स्कूप",
-          "price": 50
-        },
-        {
-          "name": "3 Scoops",
-          "hindiName": "3 स्कूप",
-          "marathiName": "3 स्कूप",
-          "price": 130
-        }
-      ],
+      "displayPriceRange": "₹50 – ₹80",
       "tags": [
         "veg",
         "bestseller"
@@ -13065,7 +7627,26 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-36585ac248c131d159575d6d.webp",
       "rating": 4.9,
       "prepTime": "5 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "portionOptions": [
+        {
+          "id": "one-scoop",
+          "name": "1 Scoop",
+          "hindiName": "1 स्कूप",
+          "marathiName": "1 स्कूप",
+          "price": 50,
+          "isDefault": true
+        },
+        {
+          "id": "two-scoops",
+          "name": "2 Scoops",
+          "hindiName": "2 स्कूप",
+          "marathiName": "2 स्कूप",
+          "price": 80,
+          "isDefault": false
+        }
+      ],
+      "variants": []
     },
     "ff-5": {
       "id": "ff-5",
@@ -13073,36 +7654,41 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "groupedUnder": "ff-ice-cream-group",
       "name": "Afghan Dry Fruit Ice Cream",
       "hindiName": "अफ़गान ड्राई फ्रूट आइसक्रीम",
-      "marathiName": "अफाण ड्रायफ्रूट आईस्क्रीम",
-      "description": "Authentic Afghani dry-fruit infused ice cream with pistachios, almonds, and dried figs.",
-      "descriptionHi": "पिस्ता, बादाम, अंजीर और शाही मेवों से भरपूर पारंपरिक अफगानी आइसक्रीम।",
-      "descriptionMr": "पिस्ता, बदाम, अंजीर आणि सुक्या मेव्याने समृद्ध असलेले पारंपरिक अफगाणी आईस्क्रीम.",
+      "marathiName": "अफगाण ड्रायफ्रूट आईस्क्रीम",
+      "description": "Exotic dried fruits and roasted nuts infused into chilled sweet cream.",
+      "descriptionHi": "मेवों और भुने हुए बादाम-पिस्ते से सजा अफ़गानी ड्राई फ्रूट आइसक्रीम।",
+      "descriptionMr": "बदाम, पिस्ता आणि सुकामेव्याने युक्त थंडगार अफगाणी आईस्क्रीम.",
       "price": 50,
-      "displayPriceRange": "₹50 – ₹130",
-      "variants": [
-        {
-          "name": "1 Scoop",
-          "hindiName": "1 स्कूप",
-          "marathiName": "1 स्कूप",
-          "price": 50
-        },
-        {
-          "name": "3 Scoops",
-          "hindiName": "3 स्कूप",
-          "marathiName": "3 स्कूप",
-          "price": 130
-        }
-      ],
+      "displayPriceRange": "₹50 – ₹80",
       "tags": [
         "veg",
-        "chef-special"
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-c65f9f6523843a9e432a011a.webp",
       "rating": 4.9,
       "prepTime": "5 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "portionOptions": [
+        {
+          "id": "one-scoop",
+          "name": "1 Scoop",
+          "hindiName": "1 स्कूप",
+          "marathiName": "1 स्कूप",
+          "price": 50,
+          "isDefault": true
+        },
+        {
+          "id": "two-scoops",
+          "name": "2 Scoops",
+          "hindiName": "2 स्कूप",
+          "marathiName": "2 स्कूप",
+          "price": 80,
+          "isDefault": false
+        }
+      ],
+      "variants": []
     },
     "mc-1": {
       "id": "mc-1",
@@ -13124,7 +7710,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "8 mins",
       "groupedUnder": "cb-mocktails-group",
-      "variants": [],
       "notAvailable": false
     },
     "mc-2": {
@@ -13138,7 +7723,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "descriptionMr": "आंबा, पेरू, अननस आणि संत्र्याच्या रसाचे मिश्रण, वर व्हॅनिला आईस्क्रीमसह.",
       "price": 120,
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -13146,7 +7732,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "8 mins",
       "groupedUnder": "cb-mocktails-group",
-      "variants": [],
       "notAvailable": false
     },
     "mc-3": {
@@ -13168,7 +7753,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "8 mins",
       "groupedUnder": "cb-mocktails-group",
-      "variants": [],
       "notAvailable": false
     },
     "mc-4": {
@@ -13190,28 +7774,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "8 mins",
       "groupedUnder": "cb-mocktails-group",
-      "variants": [],
       "notAvailable": false
-    },
-    "mc-5": {
-      "id": "mc-5",
-      "categoryId": "chilled-beverages",
-      "name": "Pink Lady",
-      "hindiName": "पिंक लेडी",
-      "marathiName": "पिंक लेडी",
-      "description": "Delicate strawberry cream mocktail shaken with crushed ice and sparkling fizz.",
-      "descriptionHi": "स्ट्रॉबेरी और हल्की क्रीम का ठंडा, झागदार और स्वादिष्ट मॉकटेल ड्रिंक।",
-      "descriptionMr": "स्ट्रॉबेरी आणि हलक्या मलईचे थंडगार, फेसळलेले आणि चवदार मॉकतेल पेय.",
-      "price": 110,
-      "tags": [
-        "veg"
-      ],
-      "dietary": "pure-veg",
-      "isSoldOut": true,
-      "image": "",
-      "rating": 4.7,
-      "prepTime": "8 mins",
-      "notAvailable": true
     },
     "ms-1": {
       "id": "ms-1",
@@ -13234,30 +7797,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 5,
       "prepTime": "10 mins",
       "groupedUnder": "cb-mastani-group",
-      "variants": [],
       "notAvailable": false
-    },
-    "ms-2": {
-      "id": "ms-2",
-      "categoryId": "chilled-beverages",
-      "name": "Special Mastani",
-      "hindiName": "स्पेशल मस्तानी",
-      "marathiName": "स्पेशल मस्तानी",
-      "description": "Hotel Premier signature royal mastani with mixed dry fruits, saffron cream, and double ice cream.",
-      "descriptionHi": "होटल प्रीमियर की खास शाही मस्तानी, मेवों, रबड़ी, केसर और डबल आइसक्रीम के साथ।",
-      "descriptionMr": "हॉटेल प्रीमियरची खास शाही मस्तानी, सुका मेवा, रबडी, केशर आणि डबल आईस्क्रीमसह.",
-      "price": 200,
-      "tags": [
-        "veg",
-        "chef-special"
-      ],
-      "dietary": "pure-veg",
-      "isSoldOut": true,
-      "notAvailable": true,
-      "hidden": true,
-      "image": "",
-      "rating": 5,
-      "prepTime": "10 mins"
     },
     "ms-3": {
       "id": "ms-3",
@@ -13279,7 +7819,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "10 mins",
       "groupedUnder": "cb-mastani-group",
-      "variants": [],
       "notAvailable": false
     },
     "ms-7": {
@@ -13309,7 +7848,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Special Punjabi Lassi",
       "hindiName": "स्पेशल पंजाबी लस्सी",
       "marathiName": "स्पेशल पंजाबी लस्सी",
-      "description": "Rich creamy Punjabi sweet lassi topped with a luscious scoop of vanilla ice cream and dry fruits.",
+      "description": "Rich creamy Punjabi sweet lassi topped with a luscious scoop of vanilla ice cream.",
       "descriptionHi": "गाढ़ी, मलाईदार पंजाबी मीठी लस्सी, ऊपर वैनिला आइसक्रीम और सूखे मेवों के साथ।",
       "descriptionMr": "दाट, मलईदार पंजाबी गोड लस्सी, वरून व्हॅनिला आईस्क्रीम आणि सुका मेवा घालून.",
       "price": 110,
@@ -13358,7 +7897,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/brand-placeholder.svg",
           "description": "Refreshing churned buttermilk tempered with roasted cumin, rock salt, ginger and fresh coriander.",
           "descriptionHi": "भुने जीरे, अदरक, सेंधा नमक और हरी धनिया से भरपूर स्वादिष्ट मसाला छाछ।",
-          "descriptionMr": "भाजलेले जिरे, आले, सैंधव मीठ आणि कोथिंबीर घातलेले खमंग मसाला ताक."
+          "descriptionMr": "भाजलेले जिरे, आले, सैंधव मीठ आणि कोथिंबीर घातलेले खमंग मसाला ताक.",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "tags": [
@@ -13403,7 +7947,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/brand-placeholder.svg",
           "description": "Sparkling effervescent cooler blended with cumin, mint, black salt and chilled club soda.",
           "descriptionHi": "फ़िज़ी क्लब सोडे और चटपटे जलजीरा मसालों का ताजगी भरा पेय।",
-          "descriptionMr": "थंडगार क्लब सोडा आणि चटपटीत जलजिरा मसाल्यांचे फिजी पेय."
+          "descriptionMr": "थंडगार क्लब सोडा आणि चटपटीत जलजिरा मसाल्यांचे फिजी पेय.",
+          "tags": [
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "tags": [
@@ -13434,7 +7983,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "फ्रेश लाइम पानी",
           "marathiName": "फ्रेश लाईम पाणी",
           "price": 35,
-          "image": "assets/brand-placeholder.svg",
+          "image": "assets/menu-uploads/published-d6651e96cb3f92d429b8c597.webp",
           "description": "Fresh squeezed lime juice served chilled with purified water, sweet or salted as per your taste.",
           "descriptionHi": "ताज़े नींबू का रस और ठंडा पानी, मीठा या नमकीन आपकी पसंद अनुसार।",
           "descriptionMr": "ताज्या लिंबाचा रस व थंड पाणी, आपल्या आवडीनुसार गोड किंवा खारट."
@@ -13444,7 +7993,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "फ्रेश लाइम सोडा",
           "marathiName": "फ्रेश लाईम सोडा",
           "price": 40,
-          "image": "assets/brand-placeholder.svg",
+          "image": "assets/menu-uploads/published-a461fce0fa60ffd5ccda23b7.webp",
           "description": "Fresh squeezed lime juice served with effervescent sparkling club soda, sweet or salted.",
           "descriptionHi": "ताज़े नींबू के रस और फ़िज़ी क्लब सोडे का ताजगी भरा शीतल पेय।",
           "descriptionMr": "ताज्या लिंबाचा रस आणि फिजी क्लब सोड्याचे खमंग थंडगार पेय."
@@ -13456,7 +8005,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "assets/menu-uploads/published-d6651e96cb3f92d429b8c597.webp",
+      "image": "assets/menu-uploads/published-a461fce0fa60ffd5ccda23b7.webp",
       "rating": 4.8,
       "prepTime": "5 mins",
       "notAvailable": false
@@ -13482,17 +8031,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "isGroupMaster": true,
       "variants": [
         {
-          "id": "cb-water-500ml",
-          "name": "Packaged Mineral Water (500 ml)",
-          "hindiName": "मिनरल वॉटर (५०० मि.ली.)",
-          "marathiName": "मिनरल वॉटर (५०० मि.ली.)",
-          "price": 10,
-          "image": "",
-          "description": "Sealed 500 ml packaged mineral water bottle.",
-          "descriptionHi": "सीलबंद ५०० मि.ली. पैकेज्ड मिनरल वॉटर की बोतल।",
-          "descriptionMr": "सीलबंद ५०० मि.ली. पॅकेज्ड मिनरल वॉटरची बाटली."
-        },
-        {
           "id": "cb-5",
           "name": "Packaged Mineral Water (1 Ltr)",
           "hindiName": "मिनरल वॉटर (१ ली.)",
@@ -13502,6 +8040,17 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Sealed purified packaged drinking water bottle (served at MRP).",
           "descriptionHi": "सीलबंद शुद्ध पैकेज्ड मिनरल वॉटर की बोतल (एमआरपी पर उपलब्ध)।",
           "descriptionMr": "सील केलेले शुद्ध पॅकेज्ड पिण्याचे पाणी (एमआरपीनुसार उपलब्ध)."
+        },
+        {
+          "id": "cb-water-500ml",
+          "name": "Packaged Mineral Water (500 ml)",
+          "hindiName": "मिनरल वॉटर (५०० मि.ली.)",
+          "marathiName": "मिनरल वॉटर (५०० मि.ली.)",
+          "price": 10,
+          "image": "",
+          "description": "Sealed 500 ml packaged mineral water bottle.",
+          "descriptionHi": "सीलबंद ५०० मि.ली. पैकेज्ड मिनरल वॉटर की बोतल।",
+          "descriptionMr": "सीलबंद ५०० मि.ली. पॅकेज्ड मिनरल वॉटरची बाटली."
         }
       ],
       "notAvailable": false
@@ -13649,116 +8198,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.6,
       "prepTime": "15 mins",
       "groupedUnder": "ic-paneer-starters-group",
-      "variants": [
-        {
-          "name": "Paneer Chilly",
-          "hindiName": "पनीर चिली",
-          "marathiName": "पनीर चिली",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paaneer-chilli-1-1.jpg",
-          "description": "Fresh cottage cheese cubes tossed with bell peppers, green chillies, onions and dark soya sauce.",
-          "descriptionHi": "शिमला मिर्च, प्याज और तीखी चिली-सोया सॉस में बना लोकप्रिय इंडो-चाइनीज़ पनीर चिली।",
-          "descriptionMr": "शिमला मिरची, कांदा आणि झणझणीत चायनीज सॉसमध्ये बनवलेले सर्वांचे आवडते पनीर चिली.",
-          "id": "ic-2"
-        },
-        {
-          "name": "Paneer Manchurian",
-          "hindiName": "पनीर मंचूरियन",
-          "marathiName": "पनीर मंचूरियन",
-          "price": 265,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-manchurian.jpg",
-          "description": "Crisp fried paneer cubes glazed with fragrant ginger, garlic, celery and savory coriander gravy.",
-          "descriptionHi": "अदरक, लहसुन और स्पेशल मंचूरियन सॉस में लिपटे हुए कुरकुरे पनीर के टुकड़े।",
-          "descriptionMr": "आले, लसूण आणि मंचूरियन सॉसमध्ये घोळवलेले कुरकुरीत चवदार पनीर मंचूरियन.",
-          "id": "ic-3"
-        },
-        {
-          "name": "Paneer 65",
-          "hindiName": "पनीर 65",
-          "marathiName": "पनीर ६५",
-          "price": 275,
-          "image": "assets/menu-uploads/approved/ic-10-v1-1280.webp",
-          "description": "South Indian fusion: spicy batter-fried paneer tossed with aromatic curry leaves, mustard seeds and curd tadka.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के में तैयार किया गया लाजवाब पनीर 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी व दह्याच्या खमंग फोडणीत टॉस केलेले चटकदार पनीर ६५.",
-          "id": "ic-10"
-        },
-        {
-          "name": "Paneer Satay",
-          "hindiName": "पनीर साते",
-          "marathiName": "पनीर साते",
-          "price": 265,
-          "image": "assets/menu-uploads/published-a77517c03dad340b2436b9fb.webp",
-          "description": "Grilled paneer fingers marinated with oriental herbs and glazed with a rich peanut sesame sauce.",
-          "descriptionHi": "मूंगफली, तिल और खास मसालों की स्वादिष्ट सॉस में तैयार किया गया पनीर साते।",
-          "descriptionMr": "शेंगदाणे, तीळ आणि खमंग सॉसमध्ये तयार केलेले चवदार पनीर साते.",
-          "id": "ic-5"
-        },
-        {
-          "name": "Thread Paneer",
-          "hindiName": "थ्रेड पनीर",
-          "marathiName": "थ्रेड पनीर",
-          "price": 275,
-          "image": "assets/menu-images/indo-chinese-nibbles/thread-paneer.jpg",
-          "description": "Marinated paneer wrapped in fine crispy noodle threads and fried golden with spicy red ginger-garlic sauce.",
-          "descriptionHi": "नूडल्स के बारीक धागों में लिपटा और कुरकुरा सेका गया स्वादिष्ट थ्रेड पनीर।",
-          "descriptionMr": "बारीक नूडल्सच्या धाग्यात गुंडाळलेले आणि कुरकुरीत तळलेले अप्रतिम थ्रेड पनीर.",
-          "id": "ic-8"
-        },
-        {
-          "name": "Paneer in Hot Garlic Sauce",
-          "hindiName": "पनीर इन हॉट गार्लिक सॉस",
-          "marathiName": "पनीर इन हॉट गार्लिक सॉस",
-          "price": 265,
-          "image": "assets/menu-uploads/2026-10-15/ic-11.png",
-          "description": "Tender paneer cubes simmered in a robust, fiery garlic and crushed red chilli sauce.",
-          "descriptionHi": "तीखे लहसुन और लाल मिर्च के गर्म तड़के वाली सॉस में डूबा हुआ नर्म पनीर।",
-          "descriptionMr": "झणझणीत लसूण आणि लाल मिरचीच्या सॉसमध्ये बनवलेले गरमागरम पनीर.",
-          "id": "ic-11"
-        },
-        {
-          "name": "Paneer Sancho",
-          "hindiName": "पनीर सांचो",
-          "marathiName": "पनीर सांचो",
-          "price": 315,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-sancho-1.jpg",
-          "description": "Stuffed cottage cheese triangles fried crisp and tossed in tangy, spicy salsa with fresh garden herbs.",
-          "descriptionHi": "स्टफ्ड पनीर ट्राएंगल, खट्टी-मीठी सालसा और ताज़ी बूटियों का अनोखा संगम।",
-          "descriptionMr": "सारण भरलेले कुरकुरीत पनीर त्रिकोण, चटपटीत सालसा सॉससह.",
-          "id": "ic-4"
-        },
-        {
-          "name": "Paneer Salton",
-          "hindiName": "पनीर साल्टन",
-          "marathiName": "पनीर साल्टन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-salton.jpg",
-          "description": "Paneer fingers tossed in a creamy yellow cheese and butter sauce infused with mild ginger and garlic.",
-          "descriptionHi": "चीज़ी बटर सॉस, अदरक और लहसुन की हल्की खुशबू से सजा शाही पनीर स्टार्टर।",
-          "descriptionMr": "चीज व बटरच्या मलाईदार सॉसमध्ये टॉस केलेले मऊ व स्वादिष्ट पनीर साल्टन.",
-          "id": "ic-9"
-        },
-        {
-          "id": "ic-28",
-          "name": "Paneer Black Pepper",
-          "hindiName": "पनीर ब्लैक पेपर",
-          "marathiName": "पनीर ब्लॅक पेपर",
-          "price": 210,
-          "description": "Soft paneer cubes coated in a rich, savoury black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/paneer-black-pepper.jpg"
-        },
-        {
-          "id": "ic-12",
-          "name": "Paneer Basket Sauce",
-          "hindiName": "वेज स्प्रिंग रोल",
-          "marathiName": "व्हेज स्प्रिंग रोल",
-          "description": "Golden-fried crisp rolls stuffed with seasoned shredded vegetables and glass noodles.",
-          "descriptionHi": "पत्तागोभी, गाजर और शिमला मिर्च से भरे कुरकुरे रोल, शेज़वान डिप के साथ।",
-          "descriptionMr": "कोबी, गाजर आणि शिमला मिरचीने भरलेले कुरकुरीत रोल्स, सॉससह दिले जातात.",
-          "price": 260,
-          "image": "assets/menu-uploads/published-cd12ab386d297de18b98ce62.webp"
-        }
-      ],
       "notAvailable": false
     },
     "ic-29": {
@@ -13779,105 +8218,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.6,
       "prepTime": "15 mins",
       "groupedUnder": "ic-veg-starters-group",
-      "variants": [
-        {
-          "name": "Veg Manchurian",
-          "hindiName": "वेज मंचूरियन",
-          "marathiName": "व्हेज मंचूरियन",
-          "price": 240,
-          "image": "assets/menu-uploads/2026-10-15/ic-14.png",
-          "description": "Crisp vegetable dumplings tossed with ginger, garlic, green chillies and dark soya gravy.",
-          "descriptionHi": "बारीक कटी सब्जियों के कुरकुरे कोफ्ते, अदरक-लहसुन की इंडो-चाइनीज़ सॉस में।",
-          "descriptionMr": "ताज्या भाज्यांचे कुरकुरीत गोळे, आले-लसूण आणि सोया सॉसच्या खमंग ग्रेव्हीत.",
-          "id": "ic-14"
-        },
-        {
-          "name": "Veg Crispy",
-          "hindiName": "वेज क्रिस्पी",
-          "marathiName": "व्हेज क्रिस्पी",
-          "price": 240,
-          "image": "assets/menu-uploads/published-1234d0dec11a6ce6e86810cf.webp",
-          "description": "Crisp golden batter-fried seasonal vegetables tossed in sweet, tangy and spicy Schezwan sauce.",
-          "descriptionHi": "खट्टी-मीठी और तीखी शेज़वान सॉस में तली हुई बेहद कुरकुरी ताज़ी हरी सब्जियाँ।",
-          "descriptionMr": "चटपटीत शेजवान सॉसमध्ये तळलेल्या अतिशय कुरकुरीत ताज्या भाज्या.",
-          "id": "ic-18"
-        },
-        {
-          "name": "Veg 65",
-          "hindiName": "वेज 65",
-          "marathiName": "व्हेज ६५",
-          "price": 240,
-          "image": "assets/menu-uploads/published-61f1774106568703d4e7ae70.webp",
-          "description": "Vegetable florets tossed with curd, mustard seeds, curry leaves and hot Southern spices.",
-          "descriptionHi": "कढ़ी पत्ता, सरसों और दही के तीखे तड़के के साथ तैयार कुरकुरा वेज 65।",
-          "descriptionMr": "कढीपत्ता, मोहरी आणि दह्याच्या खमंग फोडणीत परतलेला कुरकुरीत व्हेज ६५.",
-          "id": "ic-17"
-        },
-        {
-          "name": "Veg Lollipop",
-          "hindiName": "वेज लॉलीपॉप",
-          "marathiName": "व्हेज लॉलीपॉप",
-          "price": 260,
-          "image": "assets/menu-uploads/published-68afc050b1a314c1f85f6481.webp",
-          "description": "Spiced vegetable and potato cutlet lollipops fried golden-crisp and served with Schezwan dip.",
-          "descriptionHi": "मसालेदार सब्जियों के कुरकुरे वेज लॉलीपॉप, शेज़वान चटनी के साथ।",
-          "descriptionMr": "भाज्यांचे खमंग कुरकुरीत लॉलीपॉप्स, शेजवान चटणीसोबत.",
-          "id": "ic-15"
-        },
-        {
-          "name": "Veg Bullet",
-          "hindiName": "वेज बुलेट",
-          "marathiName": "व्हेज बुलेट",
-          "price": 280,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-bullet-1.jpg",
-          "description": "Spicy vegetable cylinders infused with herbs and cottage cheese, deep-fried crunchy with dipping sauce.",
-          "descriptionHi": "तीखे मसालों और पनीर से भरपूर कुरकुरे सिलिंड्रिकल वेज बुलेट।",
-          "descriptionMr": "तिखट मसाले व पनीरचे खमंग कुरकुरीत सिलिंड्रिकल व्हेज बुलेट.",
-          "id": "ic-22"
-        },
-        {
-          "name": "Veg Hot Pan",
-          "hindiName": "वेज हॉट पैन",
-          "marathiName": "व्हेज हॉट पॅन",
-          "price": 270,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-hot-pan-1.jpg",
-          "description": "Vegetable dumplings tossed in zesty Chinese sauce and served piping hot on a sizzling platter.",
-          "descriptionHi": "सिज़लिंग हॉट पैन पर गरमागरम परोसे जाने वाले चटपटे वेज कोफ्ते।",
-          "descriptionMr": "गरमागरम सिझलिंग पॅनवर वाढलेले चटकदार व्हेज मंचूरियन बॉल्स.",
-          "id": "ic-23"
-        },
-        {
-          "name": "Veg Kothe",
-          "hindiName": "वेज कोठे",
-          "marathiName": "व्हेज कोठे",
-          "price": 250,
-          "image": "",
-          "description": "Pan-seared spiced vegetable dumplings seasoned with herbs and aromatic Indo-Chinese spices.",
-          "descriptionHi": "तवे पर सेके हुए कुरकुरे स्वादिष्ट वेज कोठे, खास शेफ की रेसिपी।",
-          "descriptionMr": "तव्यावर खमंग भाजलेले चवदार व्हेज कोठे.",
-          "id": "ic-21"
-        },
-        {
-          "name": "Veg Ball in Hot Garlic Sauce",
-          "hindiName": "वेज बॉल इन हॉट गार्लिक सॉस",
-          "marathiName": "व्हेज बॉल इन हॉट गार्लिक सॉस",
-          "price": 250,
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-ball-in-hot-garlic-sauce.jpg",
-          "description": "Crisp vegetable balls simmered in a spicy, pungent garlic and crushed pepper gravy.",
-          "descriptionHi": "लहसुन और काली मिर्च की तीखी सॉस में लिपटे हुए वेज बॉल्स।",
-          "descriptionMr": "लसूण आणि काळ्या मिरीच्या झणझणीत सॉसमध्ये शिजवलेले व्हेज बॉल्स.",
-          "id": "ic-19"
-        },
-        {
-          "id": "ic-29",
-          "name": "Veg Black Pepper",
-          "hindiName": "वेज ब्लैक पेपर",
-          "marathiName": "व्हेज ब्लॅक पेपर",
-          "price": 190,
-          "description": "Stir-fried mixed vegetables tossed in a spicy black pepper sauce.",
-          "image": "assets/menu-images/indo-chinese-nibbles/veg-black-pepper-1.jpg"
-        }
-      ],
       "notAvailable": false
     },
     "ic-30": {
@@ -13890,14 +8230,17 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Vegetarian pasta stir-fried with garlic, green chilli, mixed vegetables and bold Indo-Chinese sauces.",
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/italian-fusion-pasta/chilli-chinese-pasta.png",
       "rating": 4.7,
       "prepTime": "16 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "tt-11": {
       "id": "tt-11",
@@ -13909,14 +8252,17 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Pasta tossed in a rich desi masala with onions, tomatoes, capsicum and Indian spices.",
       "tags": [
         "veg",
-        "spicy"
+        "spicy",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-386477ed3f8578778a4cffda.webp",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-23": {
       "id": "vs-23",
@@ -13935,8 +8281,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.6,
       "prepTime": "18 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-24": {
       "id": "vs-24",
@@ -13948,6 +8295,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Whole cashews simmered in a rich, creamy yellow gravy.",
       "tags": [
         "veg",
+        "bestseller",
         "chef-special"
       ],
       "dietary": "pure-veg",
@@ -13956,8 +8304,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "18 mins",
       "groupedUnder": "vs-royal-gravies-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "vs-25": {
       "id": "vs-25",
@@ -13968,7 +8317,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 180,
       "description": "Spinach in a rich sauce, finished with crisp fried garlic.",
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -13976,8 +8326,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.7,
       "prepTime": "16 mins",
       "groupedUnder": "vs-homestyle-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "kf-7": {
       "id": "kf-7",
@@ -13996,8 +8347,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "kd-kofta-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "kf-8": {
       "id": "kf-8",
@@ -14009,6 +8361,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "Heart-shaped koftas in a velvety yellow gravy enriched with cashews and paneer.",
       "tags": [
         "veg",
+        "bestseller",
         "chef-special"
       ],
       "dietary": "pure-veg",
@@ -14017,8 +8370,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "18 mins",
       "groupedUnder": "kd-kofta-group",
-      "variants": [],
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "",
+      "descriptionMr": ""
     },
     "fd-5": {
       "id": "fd-5",
@@ -14028,29 +8382,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "hindiName": "दाल पालक",
       "marathiName": "डाळ पालक",
       "price": 150,
-      "variants": [
-        {
-          "name": "Dal Palak",
-          "hindiName": "दाल पालक",
-          "marathiName": "डाळ पालक",
-          "price": 150,
-          "image": "assets/menu-uploads/published-3a598b3f8c05c2b234bbcdab.webp",
-          "description": "Wholesome yellow lentils cooked with fresh nutritious spinach leaves and mild spices.",
-          "descriptionHi": "ताज़ी पालक और पीली दाल का पौष्टिक व स्वादिष्ट मेल।",
-          "descriptionMr": "ताजी पालकाची पाने व डाळीचे पौष्टिक आणि खमंग मिश्रण."
-        },
-        {
-          "name": "Dal Palak Tadka",
-          "hindiName": "दाल पालक तड़का",
-          "marathiName": "डाळ पालक तडका",
-          "price": 165,
-          "image": "assets/menu-uploads/published-3e334ff6ff7f834a3c3a95e0.webp",
-          "description": "Nutritious dal palak finished with an aromatic tempering of garlic, cumin and ghee.",
-          "descriptionHi": "देसी घी, भुने लहसुन और जीरे के तड़के वाली गरमागरम दाल पालक।",
-          "descriptionMr": "लसूण, जिरे आणि साजूक तुपाची खमंग फोडणी दिलेली पौष्टिक डाळ पालक तडका."
-        }
-      ],
-      "description": "Wholesome yellow lentils cooked with fresh nutritious spinach leaves and mild spices.",
+      "description": "Yellow lentils gently simmered with fresh tender spinach leaves and mild garlic.",
       "tags": [
         "veg"
       ],
@@ -14059,7 +8391,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-3a598b3f8c05c2b234bbcdab.webp",
       "rating": 4.6,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़ी पालक और पीली दाल का सुपाच्य एवं पौष्टिक हल्का मेल।",
+      "descriptionMr": "ताजी हिरवीगार पालक आणि पिवळी डाळ एकत्र शिजवून लसणाची खमंग फोडणी."
     },
     "fd-6": {
       "id": "fd-6",
@@ -14069,38 +8403,19 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "hindiName": "दाल पालक तड़का",
       "marathiName": "डाळ पालक तडका",
       "price": 165,
-      "variants": [
-        {
-          "name": "Dal Palak",
-          "hindiName": "दाल पालक",
-          "marathiName": "डाळ पालक",
-          "price": 150,
-          "image": "assets/menu-uploads/published-3a598b3f8c05c2b234bbcdab.webp",
-          "description": "Wholesome yellow lentils cooked with fresh nutritious spinach leaves and mild spices.",
-          "descriptionHi": "ताज़ी पालक और पीली दाल का पौष्टिक व स्वादिष्ट मेल।",
-          "descriptionMr": "ताजी पालकाची पाने व डाळीचे पौष्टिक आणि खमंग मिश्रण."
-        },
-        {
-          "name": "Dal Palak Tadka",
-          "hindiName": "दाल पालक तड़का",
-          "marathiName": "डाळ पालक तडका",
-          "price": 165,
-          "image": "assets/menu-uploads/published-3e334ff6ff7f834a3c3a95e0.webp",
-          "description": "Nutritious dal palak finished with an aromatic tempering of garlic, cumin and ghee.",
-          "descriptionHi": "देसी घी, भुने लहसुन और जीरे के तड़के वाली गरमागरम दाल पालक।",
-          "descriptionMr": "लसूण, जिरे आणि साजूक तुपाची खमंग फोडणी दिलेली पौष्टिक डाळ पालक तडका."
-        }
-      ],
-      "description": "Nutritious dal palak finished with an aromatic tempering of garlic, cumin and ghee.",
+      "description": "Nutritious spinach dal finished with a sizzling tempered garlic, cumin and ghee tadka.",
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-uploads/published-3e334ff6ff7f834a3c3a95e0.webp",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "देसी घी, लहसुन, साबुत लाल मिर्च और जीरे के तेज़ तड़के वाली पालक दाल।",
+      "descriptionMr": "साजूक तूप, लसूण आणि जिऱ्याची चमचमीत फोडणी दिलेली खमंग डाळ पालक."
     },
     "fd-7": {
       "id": "fd-7",
@@ -14110,29 +8425,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "hindiName": "दाल मेथी",
       "marathiName": "डाळ मेथी",
       "price": 150,
-      "variants": [
-        {
-          "name": "Dal Methi",
-          "hindiName": "दाल मेथी",
-          "marathiName": "डाळ मेथी",
-          "price": 150,
-          "image": "assets/menu-images/flavorful-dal/dal-methi.jpg",
-          "description": "Healthy yellow lentils cooked with fresh earthy fenugreek leaves and ground spices.",
-          "descriptionHi": "ताज़ी हरी मेथी और पीली दाल का स्वादिष्ट संगम।",
-          "descriptionMr": "ताजी मेथीची पाने व डाळ एकत्र शिजवून तयार केलेली चवदार डाळ."
-        },
-        {
-          "name": "Dal Methi Tadka",
-          "hindiName": "दाल मेथी तड़का",
-          "marathiName": "डाळ मेथी तडका",
-          "price": 165,
-          "image": "assets/menu-images/flavorful-dal/dal-methi-tadka.jpg",
-          "description": "Flavorful dal methi tempered with sizzling garlic, cumin and whole red chillies in ghee.",
-          "descriptionHi": "देसी घी, लहसुन और साबुत लाल मिर्च के तड़के वाली दाल मेथी।",
-          "descriptionMr": "साजूक तूप, लसूण व लाल मिरचीची खमंग फोडणी दिलेली डाळ मेथी तडका."
-        }
-      ],
-      "description": "Healthy yellow lentils cooked with fresh earthy fenugreek leaves and ground spices.",
+      "description": "Wholesome yellow lentils cooked with fresh aromatic fenugreek (methi) leaves.",
       "tags": [
         "veg"
       ],
@@ -14141,7 +8434,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/flavorful-dal/dal-methi.jpg",
       "rating": 4.6,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "ताज़ी खुशबूदार मेथी की पत्तियों और पीली दाल की स्वादिष्ट पारंपरिक तैयारी।",
+      "descriptionMr": "ताजी मेथीची पाने आणि डाळ एकत्र शिजवून तयार केलेली पौष्टिक डाळ."
     },
     "fd-8": {
       "id": "fd-8",
@@ -14151,38 +8446,19 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "hindiName": "दाल मेथी तड़का",
       "marathiName": "डाळ मेथी तडका",
       "price": 165,
-      "variants": [
-        {
-          "name": "Dal Methi",
-          "hindiName": "दाल मेथी",
-          "marathiName": "डाळ मेथी",
-          "price": 150,
-          "image": "assets/menu-images/flavorful-dal/dal-methi.jpg",
-          "description": "Healthy yellow lentils cooked with fresh earthy fenugreek leaves and ground spices.",
-          "descriptionHi": "ताज़ी हरी मेथी और पीली दाल का स्वादिष्ट संगम।",
-          "descriptionMr": "ताजी मेथीची पाने व डाळ एकत्र शिजवून तयार केलेली चवदार डाळ."
-        },
-        {
-          "name": "Dal Methi Tadka",
-          "hindiName": "दाल मेथी तड़का",
-          "marathiName": "डाळ मेथी तडका",
-          "price": 165,
-          "image": "assets/menu-images/flavorful-dal/dal-methi-tadka.jpg",
-          "description": "Flavorful dal methi tempered with sizzling garlic, cumin and whole red chillies in ghee.",
-          "descriptionHi": "देसी घी, लहसुन और साबुत लाल मिर्च के तड़के वाली दाल मेथी।",
-          "descriptionMr": "साजूक तूप, लसूण व लाल मिरचीची खमंग फोडणी दिलेली डाळ मेथी तडका."
-        }
-      ],
-      "description": "Flavorful dal methi tempered with sizzling garlic, cumin and whole red chillies in ghee.",
+      "description": "Fenugreek leaves simmered in dal, elevated with a fragrant cumin, garlic and chilli tadka.",
       "tags": [
-        "veg"
+        "veg",
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "image": "assets/menu-images/flavorful-dal/dal-methi-tadka.jpg",
       "rating": 4.7,
       "prepTime": "15 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "साबुत लाल मिर्च, लहसुन और हींग-जीरे के कड़क तड़के से सजी दाल मेथी।",
+      "descriptionMr": "हिंग, जिरे, लसूण व लाल मिरचीची कडक फोडणी दिलेली झणझणीत डाळ मेथी."
     },
     "fa-9": {
       "id": "fa-9",
@@ -14191,60 +8467,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "hindiName": "मिक्स वेज रायता",
       "marathiName": "मिक्स व्हेज रायता",
       "price": 80,
-      "variants": [
-        {
-          "name": "Mix Veg Raita",
-          "hindiName": "मिक्स वेज रायता",
-          "marathiName": "मिक्स व्हेज रायता",
-          "price": 80,
-          "image": "assets/menu-images/accompaniments/mix-veg-raita.jpg",
-          "description": "Chilled creamy yogurt blended with diced cucumber, onions, tomatoes and subtle spices.",
-          "descriptionHi": "बारीक कटे खीरे, प्याज, टमाटर और भुने मसालों से बना ताज़ा वेज रायता।",
-          "descriptionMr": "बारीक चिरलेली काकडी, कांदा, टोमॅटो आणि जिरेपूड घातलेले ताजे व्हेज रायता."
-        },
-        {
-          "name": "Boondi Raita",
-          "hindiName": "बूंदी रायता",
-          "marathiName": "बुंदी रायता",
-          "price": 90,
-          "image": "assets/menu-images/accompaniments/boondi-raita.jpg",
-          "description": "Crispy gram-flour pearls soaked in seasoned chilled yogurt with roasted cumin and mint.",
-          "descriptionHi": "भुने जीरे, पुदीने और चाट मसाले से भरपूर ताज़ा बूंदी रायता।",
-          "descriptionMr": "भाजलेले जिरे, पुदिना आणि मसाल्यांच्या फोडणीसह थंडगार ताजे बुंदी रायता."
-        },
-        {
-          "name": "Pineapple Raita",
-          "hindiName": "पाइनएप्पल रायता",
-          "marathiName": "अननस रायता",
-          "price": 120,
-          "image": "assets/menu-images/accompaniments/pineapple-raita.jpg",
-          "description": "Sweet juicy pineapple titbits folded in velvety sweetened chilled yogurt.",
-          "descriptionHi": "मीठे रसीले अनन्नास के टुकड़ों और ठंडे गाढ़े दही का लाजवाब संगम।",
-          "descriptionMr": "गोड रसाळ अननसाचे तुकडे आणि थंडगार दाट दह्याचे स्वादिष्ट रायता."
-        },
-        {
-          "name": "Mix Fruit Raita",
-          "hindiName": "मिक्स फ्रूट रायता",
-          "marathiName": "मिक्स फ्रूट रायता",
-          "price": 130,
-          "image": "assets/menu-images/accompaniments/mix-fruit-raita.jpg",
-          "description": "A rich festive medley of fresh seasonal fruits folded in sweetened chilled yogurt.",
-          "descriptionHi": "ताज़े मौसमी फलों और मखमली ठंडे दही से बना शाही फ्रूट रायता।",
-          "descriptionMr": "ताजी मोसमी फळे आणि थंडगार गोड दह्यापासून तयार केलेले शाही फ्रूट रायता."
-        },
-        {
-          "name": "Curd (Plain)",
-          "hindiName": "ताज़ा दही",
-          "marathiName": "ताजे दही",
-          "price": 60,
-          "image": "assets/menu-images/accompaniments/curd.jpg",
-          "description": "Traditional thick, creamy and fresh home-set dairy yogurt.",
-          "descriptionHi": "शुद्ध दूध से जमाया हुआ गाढ़ा, ताज़ा और मीठा सादा दही।",
-          "descriptionMr": "घरगुती पद्धतीने लावलेले घट्ट, ताजे आणि चवदार साधे दही."
-        }
-      ],
       "groupedUnder": "fa-raita-group",
-      "description": "Chilled yogurt blended with mixed vegetables and subtle spices.",
+      "description": "Chilled creamy yogurt blended with diced cucumber, onions, tomatoes and subtle spices.",
       "tags": [
         "veg"
       ],
@@ -14253,7 +8477,9 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-images/accompaniments/mix-veg-raita.jpg",
       "rating": 4.6,
       "prepTime": "10 mins",
-      "notAvailable": false
+      "notAvailable": false,
+      "descriptionHi": "बारीक कटे खीरे, प्याज, टमाटर और भुने मसालों से बना ताज़ा वेज रायता।",
+      "descriptionMr": "बारीक चिरलेली काकडी, कांदा, टोमॅटो आणि जिरेपूड घातलेले ताजे व्हेज रायता."
     },
     "rn-11": {
       "id": "rn-11",
@@ -14274,68 +8500,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "image": "assets/menu-uploads/published-2f31d7cdc98f98523dad7538.webp",
       "rating": 4.8,
       "prepTime": "15 mins",
-      "variants": [
-        {
-          "name": "Veg Fried Rice",
-          "hindiName": "वेज फ्राइड राइस",
-          "marathiName": "व्हेज फ्राईड राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
-          "description": "Aromatic long-grain basmati rice stir-fried in a hot wok with finely diced vegetables and mild soya seasoning.",
-          "descriptionHi": "बारीक कटी सब्जियों और हल्के मसालों के साथ वोक में भुना हुआ क्लासिक फ्राइड राइस।",
-          "descriptionMr": "बारीक चिरलेल्या भाज्या आणि सुगंधी बासमती तांदळाचा पारंपरिक फ्राईड राईस."
-        },
-        {
-          "name": "Veg Schezwan Rice",
-          "hindiName": "वेज शेज़वान राइस",
-          "marathiName": "व्हेज शेजवान राईस",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-schezwan-fried-rice.jpg",
-          "description": "Wok-tossed basmati rice infused with fiery red Schezwan sauce, garlic, celery and garden vegetables.",
-          "descriptionHi": "तीखी लाल शेज़वान सॉस, लहसुन और ताज़ी सब्जियों के मेल से बना स्पाइसी राइस।",
-          "descriptionMr": "झणझणीत शेजवान सॉस आणि भाज्यांनी युक्त खमंग शेजवान राईस."
-        },
-        {
-          "name": "Veg Combination Rice",
-          "hindiName": "वेज कॉम्बिनेशन राइस",
-          "marathiName": "व्हेज कॉम्बिनेशन राईस",
-          "price": 230,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-combination-rice.jpg",
-          "description": "The best of both worlds: fragrant basmati rice and Hakka noodles stir-fried together with vegetables.",
-          "descriptionHi": "चावल और नूडल्स का लाजवाब संगम, ताज़ी सब्जियों और चाइनीज़ मसालों के साथ।",
-          "descriptionMr": "बासमती तांदूळ आणि नूडल्स एकत्र करून बनवलेला स्वादिष्ट कॉम्बिनेशन राईस."
-        },
-        {
-          "name": "Mushroom Garlic Rice",
-          "hindiName": "मशरूम गार्लिक राइस",
-          "marathiName": "मशरूम गार्लिक राईस",
-          "price": 260,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/mushroom-garlic-fried-rice.jpg",
-          "description": "Tender sliced button mushrooms and golden burnt garlic tossed with seasoned basmati rice.",
-          "descriptionHi": "भुने हुए लहसुन और ताज़े मशरूम के भरपूर स्वाद वाला सुगंधित राइस।",
-          "descriptionMr": "परतलेला लसूण आणि मऊ मशरूमच्या खमंग चवीचा सुगंधी भात."
-        },
-        {
-          "name": "Veg Manchurian Rice",
-          "hindiName": "वेज मंचूरियन राइस",
-          "marathiName": "व्हेज मंचूरियन राईस",
-          "price": 240,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-fried-rice.jpg",
-          "description": "Aromatic wok-tossed basmati rice blended with savoury golden vegetable Manchurian balls in rich oriental seasonings.",
-          "descriptionHi": "खस्ता वेज मंचूरियन बॉल्स और ताज़ी सब्जियों के साथ वोक में भुना हुआ स्वादिष्ट राइस।",
-          "descriptionMr": "चवदार व्हेज मंचूरियन बॉल्स आणि भाज्यांसोबत परतून तयार केलेला खास मंचूरियन राईस."
-        },
-        {
-          "name": "Veg Triple Schezwan Rice",
-          "hindiName": "वेज ट्रिपल शेज़वान राइस",
-          "marathiName": "व्हेज ट्रिपल शेजवान राईस",
-          "price": 290,
-          "image": "assets/menu-images/sizzling-rice-and-noodles/veg-triple-schezwan-rice.jpg",
-          "description": "Hotel Pride blockbuster: Schezwan rice and noodles layered with crispy noodles and served with spicy Manchurian gravy.",
-          "descriptionHi": "शेज़वान राइस, नूडल्स, क्रिस्पी फ्राइड नूडल्स और गरमागरम मंचूरियन ग्रेवी की रॉयल दावत।",
-          "descriptionMr": "शेजवान राईस, नूडल्स, कुरकुरीत नूडल्स आणि गरमागरम मंचूरियन ग्रेव्हीचे भव्य कॉम्बिनेशन."
-        }
-      ],
       "groupedUnder": "rn-fried-rice-group",
       "notAvailable": false
     },
@@ -14351,7 +8515,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 180,
       "tags": [
         "veg",
-        "khandeshi-special"
+        "khandeshi-special",
+        "new-arrival"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
@@ -14359,39 +8524,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "15 mins",
       "groupedUnder": "vs-2",
-      "variants": [
-        {
-          "id": "vs-2",
-          "name": "Shev Bhaji",
-          "hindiName": "शेव भाजी",
-          "marathiName": "शेव भाजी",
-          "description": "A spicy onion and tomato curry topped with crisp sev.",
-          "price": 180,
-          "image": "assets/menu-images/veg-specialities/shev-bhaji.jpg"
-        },
-        {
-          "id": "vs-shev-latpat",
-          "name": "Shev Latpat",
-          "hindiName": "शेव लटपट",
-          "marathiName": "शेव लटपट",
-          "description": "Authentic Khandeshi semi-dry thick spicy masala gravy enveloping crisp golden sev.",
-          "descriptionHi": "गाढ़ी और चटपटी खानदेशी मसालेदार ग्रेवी में लिपटी हुई कुरकुरी शेव लटपट।",
-          "descriptionMr": "झणझणीत खानदेशी मसाल्यात लटपटलेली अस्सल चवीची कुरकुरीत शेव लटपट.",
-          "price": 180,
-          "image": ""
-        },
-        {
-          "id": "vs-doodh-shev",
-          "name": "Doodh Shev Bhaji",
-          "hindiName": "दूध शेव भाजी",
-          "marathiName": "दूध शेव भाजी",
-          "description": "A rich Khandeshi delicacy of crisp sev simmered in a mildly spiced, creamy milk and aromatic onion gravy.",
-          "descriptionHi": "ताज़ा दूध और हल्के मसालों की समृद्ध ग्रेवी में बनी स्वादिष्ट खानदेशी दूध शेव भाजी।",
-          "descriptionMr": "ताजे दूध आणि खमंग मसाल्यांच्या चवदार रश्श्यात बनवलेली प्रसिद्ध दूध शेव भाजी.",
-          "price": 180,
-          "image": ""
-        }
-      ],
       "notAvailable": false
     },
     "vs-shev-latpat": {
@@ -14415,39 +8547,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.8,
       "prepTime": "15 mins",
       "groupedUnder": "vs-2",
-      "variants": [
-        {
-          "id": "vs-2",
-          "name": "Shev Bhaji",
-          "hindiName": "शेव भाजी",
-          "marathiName": "शेव भाजी",
-          "description": "A spicy onion and tomato curry topped with crisp sev.",
-          "price": 180,
-          "image": "assets/menu-images/veg-specialities/shev-bhaji.jpg"
-        },
-        {
-          "id": "vs-shev-latpat",
-          "name": "Shev Latpat",
-          "hindiName": "शेव लटपट",
-          "marathiName": "शेव लटपट",
-          "description": "Authentic Khandeshi semi-dry thick spicy masala gravy enveloping crisp golden sev.",
-          "descriptionHi": "गाढ़ी और चटपटी खानदेशी मसालेदार ग्रेवी में लिपटी हुई कुरकुरी शेव लटपट।",
-          "descriptionMr": "झणझणीत खानदेशी मसाल्यात लटपटलेली अस्सल चवीची कुरकुरीत शेव लटपट.",
-          "price": 180,
-          "image": ""
-        },
-        {
-          "id": "vs-doodh-shev",
-          "name": "Doodh Shev Bhaji",
-          "hindiName": "दूध शेव भाजी",
-          "marathiName": "दूध शेव भाजी",
-          "description": "A rich Khandeshi delicacy of crisp sev simmered in a mildly spiced, creamy milk and aromatic onion gravy.",
-          "descriptionHi": "ताज़ा दूध और हल्के मसालों की समृद्ध ग्रेवी में बनी स्वादिष्ट खानदेशी दूध शेव भाजी।",
-          "descriptionMr": "ताजे दूध आणि खमंग मसाल्यांच्या चवदार रश्श्यात बनवलेली प्रसिद्ध दूध शेव भाजी.",
-          "price": 180,
-          "image": ""
-        }
-      ],
       "notAvailable": false
     },
     "ms-vanilla": {
@@ -14486,11 +8585,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "",
+      "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
       "rating": 4.9,
       "prepTime": "8 mins",
       "groupedUnder": "cb-milkshakes-group",
-      "variants": [],
       "notAvailable": false
     },
     "ms-chocolate": {
@@ -14534,7 +8632,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rating": 4.9,
       "prepTime": "8 mins",
       "groupedUnder": "cb-milkshakes-group",
-      "variants": [],
       "notAvailable": false
     },
     "ms-mango": {
@@ -14564,7 +8661,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "name": "Mango Milkshake",
       "hindiName": "मैंगो मिल्कशेक",
       "marathiName": "मँगो मिल्कशेक",
-      "description": "Thick mango milkshake topped with a rich velvety scoop of mango or vanilla ice cream.",
+      "description": "Thick mango milkshake topped with a rich velvety scoop of vanilla ice cream.",
       "descriptionHi": "गाढ़े मैंगो शेक के ऊपर ठंडी मखमली वैनिला या मैंगो आइसक्रीम का स्कूप।",
       "descriptionMr": "दाट मँगो शेकवर थंडगार व्हॅनिला अथवा मँगो आईस्क्रीमचा मऊ स्कूप.",
       "price": 160,
@@ -14573,11 +8670,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "assets/menu-uploads/published-3cbfedfec96a3a17a11d93e2.webp",
+      "image": "assets/brand-placeholder.svg",
       "rating": 4.9,
       "prepTime": "8 mins",
       "groupedUnder": "cb-milkshakes-group",
-      "variants": [],
       "notAvailable": false
     },
     "ms-dryfruit": {
@@ -14613,15 +8709,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "price": 170,
       "tags": [
         "veg",
-        "chef-special"
+        "bestseller"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
-      "image": "assets/menu-uploads/published-b6ddd5da0bd225d18a4ce770.webp",
+      "image": "assets/brand-placeholder.svg",
       "rating": 4.9,
       "prepTime": "8 mins",
       "groupedUnder": "cb-milkshakes-group",
-      "variants": [],
       "notAvailable": false
     },
     "ms-cold-coffee": {
@@ -14664,7 +8759,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "वैनिला मिल्कशेक",
           "marathiName": "व्हॅनिला मिल्कशेक",
           "price": 150,
-          "image": "",
+          "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
           "description": "Smooth chilled vanilla milkshake served with a generous scoop of rich vanilla ice cream.",
           "descriptionHi": "स्वादिष्ट वैनिला शेक के ऊपर भरपूर वैनिला आइसक्रीम का ठंडा मलाईदार स्कूप।",
           "descriptionMr": "चवदार व्हॅनिला मिल्कशेकवर थंडगार व्हॅनिला आईस्क्रीमचा मोठा स्कूप."
@@ -14686,10 +8781,15 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "मैंगो मिल्कशेक",
           "marathiName": "मँगो मिल्कशेक",
           "price": 160,
-          "image": "assets/menu-uploads/published-3cbfedfec96a3a17a11d93e2.webp",
-          "description": "Thick mango milkshake topped with a rich velvety scoop of mango or vanilla ice cream.",
+          "image": "assets/brand-placeholder.svg",
+          "description": "Thick mango milkshake topped with a rich velvety scoop of vanilla ice cream.",
           "descriptionHi": "गाढ़े मैंगो शेक के ऊपर ठंडी मखमली वैनिला या मैंगो आइसक्रीम का स्कूप।",
-          "descriptionMr": "दाट मँगो शेकवर थंडगार व्हॅनिला अथवा मँगो आईस्क्रीमचा मऊ स्कूप."
+          "descriptionMr": "दाट मँगो शेकवर थंडगार व्हॅनिला अथवा मँगो आईस्क्रीमचा मऊ स्कूप.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ms-dryfruit-icecream",
@@ -14697,10 +8797,16 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "hindiName": "ड्राई फ्रूट मिल्कशेक",
           "marathiName": "ड्रायफ्रूट मिल्कशेक",
           "price": 170,
-          "image": "assets/menu-uploads/published-b6ddd5da0bd225d18a4ce770.webp",
+          "image": "assets/brand-placeholder.svg",
           "description": "Nutritious dry fruit shake topped with a rich dairy ice cream scoop and nut slivers.",
           "descriptionHi": "ड्राई फ्रूट शेक के ऊपर मलाईदार आइसक्रीम का स्कूप और भुने मेवों की कतरन।",
-          "descriptionMr": "ड्रायफ्रूट शेकवर मखमली आईस्क्रीमचा स्कूप आणि सुका मेव्याचे खमंग काप."
+          "descriptionMr": "ड्रायफ्रूट शेकवर मखमली आईस्क्रीमचा स्कूप आणि सुका मेव्याचे खमंग काप.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "id": "cb-milkshakes-group"
@@ -14737,7 +8843,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-1d88e2ba7eea05c1e4ed0522.webp",
           "description": "Thick rich dry-fruit shake garnished with sliced almonds, pistachios, cashews, and ice cream.",
           "descriptionHi": "काजू, बादाम और पिस्ता से बना गाढ़ा मिल्कशेक, ऊपर आइसक्रीम और मेवों की सजावट।",
-          "descriptionMr": "काजू, बदाम आणि पिस्त्याचा दाट मिल्कशेकमध्ये आईस्क्रीम आणि सुका मेव्याची भरपूर सजावट."
+          "descriptionMr": "काजू, बदाम आणि पिस्त्याचा दाट मिल्कशेकमध्ये आईस्क्रीम आणि सुका मेव्याची भरपूर सजावट.",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "id": "cb-mastani-group"
@@ -14748,7 +8860,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "marathiName": "मॉकटेल",
       "categoryId": "chilled-beverages",
       "price": 110,
-      "image": "assets/menu-uploads/published-3623d6a414c56c840865534f.webp",
+      "image": "assets/menu-uploads/published-28d16d8229b27e604c44c9a0.webp",
       "description": "",
       "descriptionHi": "",
       "descriptionMr": "",
@@ -14774,7 +8886,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-28d16d8229b27e604c44c9a0.webp",
           "description": "Tropical medley of mango, guava, pineapple, and orange juices crowned with vanilla ice cream.",
           "descriptionHi": "आम, अमरूद, अनानास और संतरे के रस का मिश्रण, ऊपर वैनिला आइसक्रीम के साथ।",
-          "descriptionMr": "आंबा, पेरू, अननस आणि संत्र्याच्या रसाचे मिश्रण, वर व्हॅनिला आईस्क्रीमसह."
+          "descriptionMr": "आंबा, पेरू, अननस आणि संत्र्याच्या रसाचे मिश्रण, वर व्हॅनिला आईस्क्रीमसह.",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "mc-3",
@@ -14810,47 +8928,16 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "description": "",
       "descriptionHi": "",
       "descriptionMr": "",
-      "price": null,
-      "image": "assets/menu-uploads/published-50df8a456ad3ff814a906d9d.webp",
+      "price": 170,
       "tags": [
-        "veg"
+        "veg",
+        "chef-special"
       ],
       "dietary": "pure-veg",
       "isSoldOut": false,
       "groupedUnder": "tt-chana-roast-group",
-      "variants": [
-        {
-          "name": "Chana Roasted",
-          "hindiName": "चना रोस्ट",
-          "marathiName": "चना रोस्ट",
-          "price": 170,
-          "image": "assets/menu-images/tasty-tidbits/chana-roast.jpg",
-          "description": "Whole chickpeas roasted golden-brown with dry roasted aromatic Indian spices, crispy and wholesome.",
-          "descriptionHi": "विशेष मसालों में सुनहरा कुरकुरा भुना हुआ काबुली चना, शाम के नाश्ते के लिए उत्तम।",
-          "descriptionMr": "खमंग भाजलेले चणे व मसाल्यांचा कुरकुरीत पारंपारिक चणा रोस्ट."
-        },
-        {
-          "name": "Chana Garlic Roast",
-          "hindiName": "चना लहसुन रोस्ट",
-          "marathiName": "चना लसूण रोस्ट",
-          "price": 200,
-          "image": "assets/menu-uploads/published-51bd423f04763c21c2099f6f.webp",
-          "description": "Golden roasted chickpeas infused with intense burnt garlic, crushed pepper and savory house spices.",
-          "descriptionHi": "भुने हुए चने में भुने लहसुन और तीखे मसालों का तीखा व लाजवाब स्वाद।",
-          "descriptionMr": "तळलेला लसूण आणि खमंग मसाल्यांनी युक्त कुरकुरीत चणा लसूण रोस्ट."
-        },
-        {
-          "id": "tt-chana-koliwada",
-          "name": "Chana Koliwada",
-          "hindiName": "चना कोलीवाड़ा",
-          "marathiName": "चणा कोळीवाडा",
-          "description": "",
-          "descriptionHi": "",
-          "descriptionMr": "",
-          "price": null,
-          "image": ""
-        }
-      ]
+      "image": "assets/menu-uploads/published-50df8a456ad3ff814a906d9d.webp",
+      "notAvailable": false
     },
     "tc-veg-starters-group": {
       "id": "tc-veg-starters-group",
@@ -14870,7 +8957,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/veg-seekh-kebab.jpg",
           "description": "Seasoned mixed vegetables shaped around skewers and grilled.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "tc-13",
@@ -14881,7 +8974,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/veg-manchrian-tikka.jpg",
           "description": "Skewered vegetable balls grilled with spicy, tangy Indo-Chinese flavours.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "tc-14",
@@ -14914,7 +9013,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/veg-gulzari-kabab.jpg",
           "description": "Mixed vegetables shaped around skewers, coated with sesame seeds and grilled.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "price": 240,
@@ -14946,7 +9051,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/veg-hara-bhara-kabab-1.jpg",
           "description": "Crisp, spiced vegetable patties served with tangy mint chutney.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "tc-15",
@@ -14968,7 +9079,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/tandoor-classics/veg-uttaranchali-kabab.jpg",
           "description": "Heart-shaped vegetable patties coated with sesame seeds, cooked crisp and served with tangy mint chutney.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "price": 270,
@@ -14992,17 +9109,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "groupedUnder": null,
       "variants": [
         {
-          "id": "vs-9",
-          "name": "Bhindi Do Pyaza",
-          "hindiName": "भिंडी दो प्याज़ा",
-          "marathiName": "भेंडी दो प्याजा",
-          "price": 210,
-          "image": "assets/menu-uploads/published-9070a404ef8a4ce750998287.webp",
-          "description": "Fresh tender ladyfingers sautéed with double portion of caramelized onions and aromatic spices.",
-          "descriptionHi": "नरम भिंडी और भुने हुए प्याज़ के लच्छों से बनी, खड़े मसालों से भरपूर स्वादिष्ट सूखी सब्ज़ी।",
-          "descriptionMr": "ताजी भेंडी आणि भरपूर कांद्यासोबत खमंग मसाल्यांमध्ये परतलेली चवदार सुकी भाजी."
-        },
-        {
           "id": "vs-10",
           "name": "Chole Masala",
           "hindiName": "छोले मसाला",
@@ -15011,7 +9117,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/chole-masala.jpg",
           "description": "Chickpeas simmered in a spicy, tangy gravy with aromatic spices.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-11",
@@ -15022,7 +9134,29 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/lasooni-methi.jpg",
           "description": "Fenugreek leaves in a rich, flavourful sauce, finished with crisp fried garlic. The Palak option uses spinach in place of fenugreek.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
+        },
+        {
+          "id": "vs-9",
+          "name": "Bhindi Do Pyaza",
+          "hindiName": "भिंडी दो प्याज़ा",
+          "marathiName": "भेंडी दो प्याजा",
+          "price": 210,
+          "image": "assets/menu-uploads/published-9070a404ef8a4ce750998287.webp",
+          "description": "Fresh tender ladyfingers sautéed with double portion of caramelized onions and aromatic spices.",
+          "descriptionHi": "नरम भिंडी और भुने हुए प्याज़ के लच्छों से बनी, खड़े मसालों से भरपूर स्वादिष्ट सूखी सब्ज़ी।",
+          "descriptionMr": "ताजी भेंडी आणि भरपूर कांद्यासोबत खमंग मसाल्यांमध्ये परतलेली चवदार सुकी भाजी.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-16",
@@ -15033,7 +9167,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/aloo-gobi-banarsi.jpg",
           "description": "Potatoes and cauliflower cooked with aromatic spices in a rich, tangy gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-18",
@@ -15066,7 +9206,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/corn-palak.jpg",
           "description": "Crisp corn and spinach cooked in a rich, spiced gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-22",
@@ -15099,14 +9245,20 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/lasooni-palak.jpg",
           "description": "Spinach in a rich sauce, finished with crisp fried garlic.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "price": 180,
       "description": "",
       "descriptionHi": "",
       "descriptionMr": "",
-      "image": "assets/menu-images/veg-specialities/chole-masala.jpg",
+      "image": "assets/menu-uploads/published-85b7bad2e584f910964e27b4.webp",
       "tags": [
         "veg"
       ],
@@ -15131,18 +9283,32 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-uploads/published-613e8d37e481509f05a76181.webp",
           "description": "Three contrasting gravies: tangy red with chopped vegetables, green with mushrooms and baby corn, and sweet yellow with mixed fruit.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
-          "id": "vs-3",
-          "name": "Kaju Curry",
-          "hindiName": "काजू करी",
-          "marathiName": "काजू करी",
-          "price": 290,
-          "image": "assets/menu-images/veg-specialities/kaju-curry.jpg",
-          "description": "Whole cashews in a spicy red curry. For the creamy yellow-gravy preparation, choose Kaju Masala.",
+          "id": "vs-24",
+          "name": "Kaju Masala",
+          "hindiName": "काजू मसाला",
+          "marathiName": "काजू मसाला",
+          "price": 240,
+          "image": "assets/menu-images/veg-specialities/kaju-masala.jpg",
+          "description": "Whole cashews simmered in a rich, creamy yellow gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-8",
@@ -15164,7 +9330,30 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/veg-jaipuri.jpg",
           "description": "Mixed vegetables cooked with aromatic spices in a rich, creamy gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
+        },
+        {
+          "id": "vs-3",
+          "name": "Kaju Curry",
+          "hindiName": "काजू करी",
+          "marathiName": "काजू करी",
+          "price": 290,
+          "image": "assets/menu-images/veg-specialities/kaju-curry.jpg",
+          "description": "Whole cashews in a spicy red curry. For the creamy yellow-gravy preparation, choose Kaju Masala.",
+          "descriptionHi": "",
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "zomato-top"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-17",
@@ -15175,18 +9364,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/veg-bukhara-1.jpg",
           "description": "Bread topped with chopped vegetables and white sesame, fried golden and cooked in a mildly spiced yellow gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
-        },
-        {
-          "id": "vs-24",
-          "name": "Kaju Masala",
-          "hindiName": "काजू मसाला",
-          "marathiName": "काजू मसाला",
-          "price": 240,
-          "image": "assets/menu-images/veg-specialities/kaju-masala.jpg",
-          "description": "Whole cashews simmered in a rich, creamy yellow gravy.",
-          "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "price": 240,
@@ -15218,7 +9401,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/veg-chilli-milli.jpg",
           "description": "A pairing of tangy red vegetable gravy and green gravy with mushrooms and baby corn.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-5",
@@ -15251,7 +9441,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/veg-kolhapuri-1.jpg",
           "description": "Vegetables in a Kolhapuri-spiced gravy with cashews, onions, ginger, garlic and tomatoes.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "spicy",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-12",
@@ -15262,7 +9459,15 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/veg-toofani.jpg",
           "description": "Crisp vegetable fritters in a spicy red gravy, served on a sizzling platter.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "spicy",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-14",
@@ -15273,7 +9478,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/veg-specialities/veg-zatpat.jpg",
           "description": "Mixed vegetables tossed in a rich yellow cheese gravy and finished with a cheese cube.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "vs-21",
@@ -15327,7 +9538,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-three-style-1.jpg",
           "description": "Paneer slices with three-colour stuffing, fried and simmered in a rich yellow gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-11",
@@ -15349,7 +9567,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/lachhedar-paneer.jpg",
           "description": "Shredded paneer with capsicum and onion in a spiced yellow gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-14",
@@ -15360,7 +9584,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-changezi.jpg",
           "description": "Tandoor-roasted paneer tikka in a rich, spicy red gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-15",
@@ -15371,19 +9602,26 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-power.jpg",
           "description": "Fried paneer triangles tossed in a rich, spicy red gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "price": 300,
       "description": "",
       "descriptionHi": "",
       "descriptionMr": "",
-      "image": "assets/menu-uploads/published-4b372a99579ab1581fb8dd4c.webp",
       "tags": [
         "veg"
       ],
       "dietary": "pure-veg",
-      "isSoldOut": false
+      "isSoldOut": false,
+      "image": "assets/menu-uploads/published-4b372a99579ab1581fb8dd4c.webp",
+      "notAvailable": false
     },
     "ps-creamy-group": {
       "id": "ps-creamy-group",
@@ -15403,7 +9641,15 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-tikka-masala.jpg",
           "description": "Tandoor-cooked paneer cubes in a rich, creamy tomato gravy with aromatic spices.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "zomato-top",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-3",
@@ -15414,7 +9660,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-butter-masala.jpg",
           "description": "Paneer simmered in a creamy tomato gravy enriched with butter and aromatic spices.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "sweet"
+          ]
         },
         {
           "id": "ps-6",
@@ -15447,7 +9696,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/kaju-paneeer-masala.jpg",
           "description": "Paneer cubes and cashews simmered in a rich onion and tomato gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-17",
@@ -15469,7 +9725,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-methi-chaman.jpg",
           "description": "Paneer in a rich, creamy gravy of spinach and fenugreek.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-21",
@@ -15512,7 +9774,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-patakha-masala.jpg",
           "description": "Marinated paneer cooked in the tandoor and served in a richly spiced gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "spicy",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-5",
@@ -15523,7 +9792,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-angara.jpg",
           "description": "Paneer finished with a charcoal-smoking technique for a distinctive smoky flavour.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-7",
@@ -15534,7 +9810,15 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-toofani.jpg",
           "description": "Crisp paneer fritters in a spicy red gravy, served on a sizzling platter.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "spicy",
+            "bestseller",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-9",
@@ -15567,7 +9851,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-mirch-masala.jpg",
           "description": "Paneer and capsicum cooked in a spicy, chilli-flavoured gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "spicy",
+            "chef-special"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "ps-19",
@@ -15589,7 +9880,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "assets/menu-images/paneer-specialities/paneer-kolhapuri.jpg",
           "description": "Paneer simmered in a rich, tangy and spicy Kolhapuri-style gravy.",
           "descriptionHi": "",
-          "descriptionMr": ""
+          "descriptionMr": "",
+          "tags": [
+            "veg",
+            "spicy",
+            "bestseller"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         }
       ],
       "price": 285,
@@ -15614,25 +9912,61 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "variants": [
         {
           "id": "mm-3",
-          "name": "Gulab Jamun (2 Pcs)",
-          "hindiName": "गुलाब जामुन (२ नग)",
-          "marathiName": "गुलाबजाम (२ नग)",
-          "price": 55,
+          "name": "Gulab Jamun",
+          "hindiName": "गुलाब जामुन",
+          "marathiName": "गुलाबजाम",
+          "price": 30,
           "image": "assets/menu-images/desserts/gulab-jamun.jpg",
-          "description": "Two soft milk-solid dumplings soaked in fragrant sugar syrup.",
-          "descriptionHi": "",
-          "descriptionMr": ""
+          "description": "Soft milk-solid dumplings soaked in fragrant sugar syrup.",
+          "descriptionHi": "खुशबूदार चाशनी में भीगे नरम गुलाब जामुन।",
+          "descriptionMr": "सुगंधी साखरेच्या पाकात मुरलेले मऊ गुलाबजाम.",
+          "portionOptions": [
+            {
+              "id": "one-piece",
+              "name": "1 Piece",
+              "hindiName": "1 पीस",
+              "marathiName": "1 नग",
+              "price": 30,
+              "isDefault": true
+            },
+            {
+              "id": "two-pieces",
+              "name": "2 Pieces",
+              "hindiName": "2 पीस",
+              "marathiName": "2 नग",
+              "price": 55,
+              "isDefault": false
+            }
+          ]
         },
         {
           "id": "mm-4",
-          "name": "Rasgulla (2 Pcs)",
-          "hindiName": "रसगुल्ला (२ नग)",
-          "marathiName": "रसगुल्ला (२ नग)",
-          "price": 60,
+          "name": "Rasgulla",
+          "hindiName": "रसगुल्ला",
+          "marathiName": "रसगुल्ला",
+          "price": 35,
           "image": "assets/menu-images/desserts/rasgulla.jpg",
-          "description": "Two soft, spongy rasgullas soaked in sweet syrup.",
-          "descriptionHi": "",
-          "descriptionMr": ""
+          "description": "Soft, spongy rasgullas soaked in delicate sweet syrup.",
+          "descriptionHi": "हल्की मीठी चाशनी में भीगे नरम, स्पंजी रसगुल्ले।",
+          "descriptionMr": "हलका गोडवा असलेल्या पाकात मुरलेले मऊ, स्पंजी रसगुल्ले.",
+          "portionOptions": [
+            {
+              "id": "one-piece",
+              "name": "1 Piece",
+              "hindiName": "1 पीस",
+              "marathiName": "1 नग",
+              "price": 35,
+              "isDefault": true
+            },
+            {
+              "id": "two-pieces",
+              "name": "2 Pieces",
+              "hindiName": "2 पीस",
+              "marathiName": "2 नग",
+              "price": 60,
+              "isDefault": false
+            }
+          ]
         }
       ],
       "price": 55,
@@ -15664,7 +9998,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "",
           "description": "Grand signature sundae loaded with gourmet ice cream scoops, assorted nuts, and chocolate drizzle.",
           "descriptionHi": "आइसक्रीम स्कूप्स, मेवों, चॉकलेट सिरप और ताज़े फलों से सजा हमारा सबसे खास शाही संडे।",
-          "descriptionMr": "विविध आईस्क्रीम स्कूप्स, सुका मेवा, चॉकलेट सॉस आणि ताज्या फळांनी सजवलेला खास संडे."
+          "descriptionMr": "विविध आईस्क्रीम स्कूप्स, सुका मेवा, चॉकलेट सॉस आणि ताज्या फळांनी सजवलेला खास संडे.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "mm-5",
@@ -15675,7 +10014,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "image": "",
           "description": "Special weekend extravaganza with multi-flavored ice creams, dry fruits, and rich berry syrup.",
           "descriptionHi": "अलग-अलग फ्लेवर वाली आइसक्रीम, सूखे मेवों और बेरी सिरप से तैयार किया गया खास संडे।",
-          "descriptionMr": "विविध फ्लेवर्सचे आईस्क्रीम, सुका मेवा आणि बेरी सॉसने सजवलेला वीकेंड स्पेशल संडे."
+          "descriptionMr": "विविध फ्लेवर्सचे आईस्क्रीम, सुका मेवा आणि बेरी सॉसने सजवलेला वीकेंड स्पेशल संडे.",
+          "tags": [
+            "veg"
+          ],
+          "isSoldOut": false,
+          "hidden": false
         },
         {
           "id": "mm-6",
@@ -15687,17 +10031,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "description": "Delightful sundae with candied tutti-frutti, roasted cashew pralines, and strawberry swirl.",
           "descriptionHi": "रंग-बिरंगी टूटी-फ्रूटी, कुरकुरे भुने काजू और स्ट्रॉबेरी सिरप से सजा स्वादिष्ट आइसक्रीम संडे।",
           "descriptionMr": "रंगीबेरंगी टुटी-फ्रुटी, भाजलेले काजू आणि स्ट्रॉबेरी सॉसने सजवलेला चवदार आईस्क्रीम संडे."
-        },
-        {
-          "id": "mm-7",
-          "name": "X-mas Delight",
-          "hindiName": "क्रिसमस डिलाइट",
-          "marathiName": "ख्रिसमस डिलाईट",
-          "price": 220,
-          "image": "",
-          "description": "Festive dessert specialty combining rich chocolate cake, ice cream, and dark cherry compote.",
-          "descriptionHi": "चॉकलेट केक, क्रीमी आइसक्रीम और चेरी के रसीले स्वाद से भरपूर खास फेस्टिव डेज़र्ट।",
-          "descriptionMr": "चॉकलेट केक, मखमली आईस्क्रीम आणि चेरीच्या रसाळ स्वादाने भरलेला खास मिष्टान्न."
         }
       ],
       "price": 220,
@@ -15954,7 +10287,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         "marathiName": "मिष्टान्न (डेझर्ट)",
         "icon": "🍨",
         "image": "assets/menu-images/desserts/gulab-jamun.jpg",
-        "description": "Hot Chocolate Fudge, Honeymoon Surprise Sundae, Gulab Jamun & Rasgulla"
+        "description": "Traditional Indian sweets, ice cream scoops and signature sundaes"
       },
       {
         "id": "frozen-fantasies",
@@ -16756,10 +11089,8 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "marathiName": "आईस्क्रीम संडे",
           "dishIds": [
             "mm-1",
-            "mm-2",
             "mm-5",
-            "mm-6",
-            "mm-7"
+            "mm-6"
           ]
         },
         {
@@ -16819,8 +11150,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "dishIds": [
             "mc-1",
             "mc-3",
-            "mc-4",
-            "mc-5"
+            "mc-4"
           ]
         },
         {
@@ -16847,7 +11177,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
           "marathiName": "स्पेशल मस्तानी",
           "dishIds": [
             "ms-1",
-            "ms-2",
             "ms-3"
           ]
         },
@@ -16932,7 +11261,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "hindiName": "वैनिला मिल्कशेक",
             "marathiName": "व्हॅनिला मिल्कशेक",
             "price": 150,
-            "image": "",
+            "image": "assets/menu-uploads/published-82cbbb2880a2c3ef45f5e4b7.webp",
             "description": "Smooth chilled vanilla milkshake served with a generous scoop of rich vanilla ice cream.",
             "descriptionHi": "स्वादिष्ट वैनिला शेक के ऊपर भरपूर वैनिला आइसक्रीम का ठंडा मलाईदार स्कूप।",
             "descriptionMr": "चवदार व्हॅनिला मिल्कशेकवर थंडगार व्हॅनिला आईस्क्रीमचा मोठा स्कूप."
@@ -16955,9 +11284,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "marathiName": "मँगो मिल्कशेक",
             "price": 160,
             "image": "assets/brand-placeholder.svg",
-            "description": "Thick mango milkshake topped with a rich velvety scoop of mango or vanilla ice cream.",
+            "description": "Thick mango milkshake topped with a rich velvety scoop of vanilla ice cream.",
             "descriptionHi": "गाढ़े मैंगो शेक के ऊपर ठंडी मखमली वैनिला या मैंगो आइसक्रीम का स्कूप।",
-            "descriptionMr": "दाट मँगो शेकवर थंडगार व्हॅनिला अथवा मँगो आईस्क्रीमचा मऊ स्कूप."
+            "descriptionMr": "दाट मँगो शेकवर थंडगार व्हॅनिला अथवा मँगो आईस्क्रीमचा मऊ स्कूप.",
+            "tags": [
+              "veg"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ms-dryfruit-icecream",
@@ -16968,7 +11302,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/brand-placeholder.svg",
             "description": "Nutritious dry fruit shake topped with a rich dairy ice cream scoop and nut slivers.",
             "descriptionHi": "ड्राई फ्रूट शेक के ऊपर मलाईदार आइसक्रीम का स्कूप और भुने मेवों की कतरन।",
-            "descriptionMr": "ड्रायफ्रूट शेकवर मखमली आईस्क्रीमचा स्कूप आणि सुका मेव्याचे खमंग काप."
+            "descriptionMr": "ड्रायफ्रूट शेकवर मखमली आईस्क्रीमचा स्कूप आणि सुका मेव्याचे खमंग काप.",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           }
         ],
         "id": "cb-milkshakes-group"
@@ -17005,7 +11345,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-uploads/published-1d88e2ba7eea05c1e4ed0522.webp",
             "description": "Thick rich dry-fruit shake garnished with sliced almonds, pistachios, cashews, and ice cream.",
             "descriptionHi": "काजू, बादाम और पिस्ता से बना गाढ़ा मिल्कशेक, ऊपर आइसक्रीम और मेवों की सजावट।",
-            "descriptionMr": "काजू, बदाम आणि पिस्त्याचा दाट मिल्कशेकमध्ये आईस्क्रीम आणि सुका मेव्याची भरपूर सजावट."
+            "descriptionMr": "काजू, बदाम आणि पिस्त्याचा दाट मिल्कशेकमध्ये आईस्क्रीम आणि सुका मेव्याची भरपूर सजावट.",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           }
         ],
         "id": "cb-mastani-group"
@@ -17016,7 +11362,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         "marathiName": "मॉकटेल",
         "categoryId": "chilled-beverages",
         "price": 110,
-        "image": "assets/menu-uploads/published-3623d6a414c56c840865534f.webp",
+        "image": "assets/menu-uploads/published-28d16d8229b27e604c44c9a0.webp",
         "description": "",
         "descriptionHi": "",
         "descriptionMr": "",
@@ -17042,7 +11388,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-uploads/published-28d16d8229b27e604c44c9a0.webp",
             "description": "Tropical medley of mango, guava, pineapple, and orange juices crowned with vanilla ice cream.",
             "descriptionHi": "आम, अमरूद, अनानास और संतरे के रस का मिश्रण, ऊपर वैनिला आइसक्रीम के साथ।",
-            "descriptionMr": "आंबा, पेरू, अननस आणि संत्र्याच्या रसाचे मिश्रण, वर व्हॅनिला आईस्क्रीमसह."
+            "descriptionMr": "आंबा, पेरू, अननस आणि संत्र्याच्या रसाचे मिश्रण, वर व्हॅनिला आईस्क्रीमसह.",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "mc-3",
@@ -17078,9 +11430,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         "description": "",
         "descriptionHi": "",
         "descriptionMr": "",
-        "price": null,
+        "price": 170,
         "tags": [
-          "veg"
+          "veg",
+          "chef-special"
         ],
         "dietary": "pure-veg",
         "isSoldOut": false,
@@ -17137,7 +11490,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/tandoor-classics/veg-seekh-kebab.jpg",
             "description": "Seasoned mixed vegetables shaped around skewers and grilled.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "tc-13",
@@ -17148,7 +11507,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/tandoor-classics/veg-manchrian-tikka.jpg",
             "description": "Skewered vegetable balls grilled with spicy, tangy Indo-Chinese flavours.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "tc-14",
@@ -17181,7 +11546,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/tandoor-classics/veg-gulzari-kabab.jpg",
             "description": "Mixed vegetables shaped around skewers, coated with sesame seeds and grilled.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           }
         ],
         "price": 240,
@@ -17213,7 +11584,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/tandoor-classics/veg-hara-bhara-kabab-1.jpg",
             "description": "Crisp, spiced vegetable patties served with tangy mint chutney.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "tc-15",
@@ -17235,7 +11612,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/tandoor-classics/veg-uttaranchali-kabab.jpg",
             "description": "Heart-shaped vegetable patties coated with sesame seeds, cooked crisp and served with tangy mint chutney.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           }
         ],
         "price": 270,
@@ -17259,17 +11642,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         "groupedUnder": null,
         "variants": [
           {
-            "id": "vs-9",
-            "name": "Bhindi Do Pyaza",
-            "hindiName": "भिंडी दो प्याज़ा",
-            "marathiName": "भेंडी दो प्याजा",
-            "price": 210,
-            "image": "",
-            "description": "Fresh tender ladyfingers sautéed with double portion of caramelized onions and aromatic spices.",
-            "descriptionHi": "नरम भिंडी और भुने हुए प्याज़ के लच्छों से बनी, खड़े मसालों से भरपूर स्वादिष्ट सूखी सब्ज़ी।",
-            "descriptionMr": "ताजी भेंडी आणि भरपूर कांद्यासोबत खमंग मसाल्यांमध्ये परतलेली चवदार सुकी भाजी."
-          },
-          {
             "id": "vs-10",
             "name": "Chole Masala",
             "hindiName": "छोले मसाला",
@@ -17278,7 +11650,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/chole-masala.jpg",
             "description": "Chickpeas simmered in a spicy, tangy gravy with aromatic spices.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-11",
@@ -17289,7 +11667,29 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/lasooni-methi.jpg",
             "description": "Fenugreek leaves in a rich, flavourful sauce, finished with crisp fried garlic. The Palak option uses spinach in place of fenugreek.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
+          },
+          {
+            "id": "vs-9",
+            "name": "Bhindi Do Pyaza",
+            "hindiName": "भिंडी दो प्याज़ा",
+            "marathiName": "भेंडी दो प्याजा",
+            "price": 210,
+            "image": "assets/menu-uploads/published-9070a404ef8a4ce750998287.webp",
+            "description": "Fresh tender ladyfingers sautéed with double portion of caramelized onions and aromatic spices.",
+            "descriptionHi": "नरम भिंडी और भुने हुए प्याज़ के लच्छों से बनी, खड़े मसालों से भरपूर स्वादिष्ट सूखी सब्ज़ी।",
+            "descriptionMr": "ताजी भेंडी आणि भरपूर कांद्यासोबत खमंग मसाल्यांमध्ये परतलेली चवदार सुकी भाजी.",
+            "tags": [
+              "veg"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-16",
@@ -17300,7 +11700,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/aloo-gobi-banarsi.jpg",
             "description": "Potatoes and cauliflower cooked with aromatic spices in a rich, tangy gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-18",
@@ -17333,7 +11739,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/corn-palak.jpg",
             "description": "Crisp corn and spinach cooked in a rich, spiced gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-22",
@@ -17366,14 +11778,20 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/lasooni-palak.jpg",
             "description": "Spinach in a rich sauce, finished with crisp fried garlic.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           }
         ],
         "price": 180,
         "description": "",
         "descriptionHi": "",
         "descriptionMr": "",
-        "image": "assets/menu-images/veg-specialities/chole-masala.jpg",
+        "image": "assets/menu-uploads/published-85b7bad2e584f910964e27b4.webp",
         "tags": [
           "veg"
         ],
@@ -17398,18 +11816,32 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-uploads/published-613e8d37e481509f05a76181.webp",
             "description": "Three contrasting gravies: tangy red with chopped vegetables, green with mushrooms and baby corn, and sweet yellow with mixed fruit.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
-            "id": "vs-3",
-            "name": "Kaju Curry",
-            "hindiName": "काजू करी",
-            "marathiName": "काजू करी",
-            "price": 290,
-            "image": "assets/menu-images/veg-specialities/kaju-curry.jpg",
-            "description": "Whole cashews in a spicy red curry. For the creamy yellow-gravy preparation, choose Kaju Masala.",
+            "id": "vs-24",
+            "name": "Kaju Masala",
+            "hindiName": "काजू मसाला",
+            "marathiName": "काजू मसाला",
+            "price": 240,
+            "image": "assets/menu-images/veg-specialities/kaju-masala.jpg",
+            "description": "Whole cashews simmered in a rich, creamy yellow gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-8",
@@ -17431,7 +11863,30 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/veg-jaipuri.jpg",
             "description": "Mixed vegetables cooked with aromatic spices in a rich, creamy gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
+          },
+          {
+            "id": "vs-3",
+            "name": "Kaju Curry",
+            "hindiName": "काजू करी",
+            "marathiName": "काजू करी",
+            "price": 290,
+            "image": "assets/menu-images/veg-specialities/kaju-curry.jpg",
+            "description": "Whole cashews in a spicy red curry. For the creamy yellow-gravy preparation, choose Kaju Masala.",
+            "descriptionHi": "",
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "zomato-top"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-17",
@@ -17442,18 +11897,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/veg-bukhara-1.jpg",
             "description": "Bread topped with chopped vegetables and white sesame, fried golden and cooked in a mildly spiced yellow gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
-          },
-          {
-            "id": "vs-24",
-            "name": "Kaju Masala",
-            "hindiName": "काजू मसाला",
-            "marathiName": "काजू मसाला",
-            "price": 240,
-            "image": "assets/menu-images/veg-specialities/kaju-masala.jpg",
-            "description": "Whole cashews simmered in a rich, creamy yellow gravy.",
-            "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           }
         ],
         "price": 240,
@@ -17485,7 +11934,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/veg-chilli-milli.jpg",
             "description": "A pairing of tangy red vegetable gravy and green gravy with mushrooms and baby corn.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-5",
@@ -17518,7 +11974,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/veg-kolhapuri-1.jpg",
             "description": "Vegetables in a Kolhapuri-spiced gravy with cashews, onions, ginger, garlic and tomatoes.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "spicy",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-12",
@@ -17529,7 +11992,15 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/veg-toofani.jpg",
             "description": "Crisp vegetable fritters in a spicy red gravy, served on a sizzling platter.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "spicy",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-14",
@@ -17540,7 +12011,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/veg-specialities/veg-zatpat.jpg",
             "description": "Mixed vegetables tossed in a rich yellow cheese gravy and finished with a cheese cube.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "vs-21",
@@ -17594,7 +12071,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-three-style-1.jpg",
             "description": "Paneer slices with three-colour stuffing, fried and simmered in a rich yellow gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-11",
@@ -17616,7 +12100,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/lachhedar-paneer.jpg",
             "description": "Shredded paneer with capsicum and onion in a spiced yellow gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-14",
@@ -17627,7 +12117,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-changezi.jpg",
             "description": "Tandoor-roasted paneer tikka in a rich, spicy red gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-15",
@@ -17638,7 +12135,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-power.jpg",
             "description": "Fried paneer triangles tossed in a rich, spicy red gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           }
         ],
         "price": 300,
@@ -17669,7 +12172,15 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-tikka-masala.jpg",
             "description": "Tandoor-cooked paneer cubes in a rich, creamy tomato gravy with aromatic spices.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "zomato-top",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-3",
@@ -17680,7 +12191,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-butter-masala.jpg",
             "description": "Paneer simmered in a creamy tomato gravy enriched with butter and aromatic spices.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "sweet"
+            ]
           },
           {
             "id": "ps-6",
@@ -17713,7 +12227,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/kaju-paneeer-masala.jpg",
             "description": "Paneer cubes and cashews simmered in a rich onion and tomato gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-17",
@@ -17735,7 +12256,13 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-methi-chaman.jpg",
             "description": "Paneer in a rich, creamy gravy of spinach and fenugreek.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-21",
@@ -17778,7 +12305,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-patakha-masala.jpg",
             "description": "Marinated paneer cooked in the tandoor and served in a richly spiced gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "spicy",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-5",
@@ -17789,7 +12323,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-angara.jpg",
             "description": "Paneer finished with a charcoal-smoking technique for a distinctive smoky flavour.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-7",
@@ -17800,7 +12341,15 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-toofani.jpg",
             "description": "Crisp paneer fritters in a spicy red gravy, served on a sizzling platter.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "spicy",
+              "bestseller",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-9",
@@ -17833,7 +12382,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-mirch-masala.jpg",
             "description": "Paneer and capsicum cooked in a spicy, chilli-flavoured gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "spicy",
+              "chef-special"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "ps-19",
@@ -17855,7 +12411,14 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "assets/menu-images/paneer-specialities/paneer-kolhapuri.jpg",
             "description": "Paneer simmered in a rich, tangy and spicy Kolhapuri-style gravy.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "tags": [
+              "veg",
+              "spicy",
+              "bestseller"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           }
         ],
         "price": 285,
@@ -17880,25 +12443,61 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         "variants": [
           {
             "id": "mm-3",
-            "name": "Gulab Jamun (2 Pcs)",
-            "hindiName": "गुलाब जामुन (२ नग)",
-            "marathiName": "गुलाबजाम (२ नग)",
-            "price": 55,
+            "name": "Gulab Jamun",
+            "hindiName": "गुलाब जामुन",
+            "marathiName": "गुलाबजाम",
+            "price": 30,
             "image": "assets/menu-images/desserts/gulab-jamun.jpg",
             "description": "Two soft milk-solid dumplings soaked in fragrant sugar syrup.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "portionOptions": [
+              {
+                "id": "one-piece",
+                "name": "1 Piece",
+                "hindiName": "1 पीस",
+                "marathiName": "1 नग",
+                "price": 30,
+                "isDefault": true
+              },
+              {
+                "id": "two-pieces",
+                "name": "2 Pieces",
+                "hindiName": "2 पीस",
+                "marathiName": "2 नग",
+                "price": 55,
+                "isDefault": false
+              }
+            ]
           },
           {
             "id": "mm-4",
-            "name": "Rasgulla (2 Pcs)",
-            "hindiName": "रसगुल्ला (२ नग)",
-            "marathiName": "रसगुल्ला (२ नग)",
-            "price": 60,
+            "name": "Rasgulla",
+            "hindiName": "रसगुल्ला",
+            "marathiName": "रसगुल्ला",
+            "price": 35,
             "image": "assets/menu-images/desserts/rasgulla.jpg",
             "description": "Two soft, spongy rasgullas soaked in sweet syrup.",
             "descriptionHi": "",
-            "descriptionMr": ""
+            "descriptionMr": "",
+            "portionOptions": [
+              {
+                "id": "one-piece",
+                "name": "1 Piece",
+                "hindiName": "1 पीस",
+                "marathiName": "1 नग",
+                "price": 35,
+                "isDefault": true
+              },
+              {
+                "id": "two-pieces",
+                "name": "2 Pieces",
+                "hindiName": "2 पीस",
+                "marathiName": "2 नग",
+                "price": 60,
+                "isDefault": false
+              }
+            ]
           }
         ],
         "price": 55,
@@ -17930,7 +12529,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "",
             "description": "Grand signature sundae loaded with gourmet ice cream scoops, assorted nuts, and chocolate drizzle.",
             "descriptionHi": "आइसक्रीम स्कूप्स, मेवों, चॉकलेट सिरप और ताज़े फलों से सजा हमारा सबसे खास शाही संडे।",
-            "descriptionMr": "विविध आईस्क्रीम स्कूप्स, सुका मेवा, चॉकलेट सॉस आणि ताज्या फळांनी सजवलेला खास संडे."
+            "descriptionMr": "विविध आईस्क्रीम स्कूप्स, सुका मेवा, चॉकलेट सॉस आणि ताज्या फळांनी सजवलेला खास संडे.",
+            "tags": [
+              "veg"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "mm-5",
@@ -17941,7 +12545,12 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "image": "",
             "description": "Special weekend extravaganza with multi-flavored ice creams, dry fruits, and rich berry syrup.",
             "descriptionHi": "अलग-अलग फ्लेवर वाली आइसक्रीम, सूखे मेवों और बेरी सिरप से तैयार किया गया खास संडे।",
-            "descriptionMr": "विविध फ्लेवर्सचे आईस्क्रीम, सुका मेवा आणि बेरी सॉसने सजवलेला वीकेंड स्पेशल संडे."
+            "descriptionMr": "विविध फ्लेवर्सचे आईस्क्रीम, सुका मेवा आणि बेरी सॉसने सजवलेला वीकेंड स्पेशल संडे.",
+            "tags": [
+              "veg"
+            ],
+            "isSoldOut": false,
+            "hidden": false
           },
           {
             "id": "mm-6",
@@ -17953,17 +12562,6 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
             "description": "Delightful sundae with candied tutti-frutti, roasted cashew pralines, and strawberry swirl.",
             "descriptionHi": "रंग-बिरंगी टूटी-फ्रूटी, कुरकुरे भुने काजू और स्ट्रॉबेरी सिरप से सजा स्वादिष्ट आइसक्रीम संडे।",
             "descriptionMr": "रंगीबेरंगी टुटी-फ्रुटी, भाजलेले काजू आणि स्ट्रॉबेरी सॉसने सजवलेला चवदार आईस्क्रीम संडे."
-          },
-          {
-            "id": "mm-7",
-            "name": "X-mas Delight",
-            "hindiName": "क्रिसमस डिलाइट",
-            "marathiName": "ख्रिसमस डिलाईट",
-            "price": 220,
-            "image": "",
-            "description": "Festive dessert specialty combining rich chocolate cake, ice cream, and dark cherry compote.",
-            "descriptionHi": "चॉकलेट केक, क्रीमी आइसक्रीम और चेरी के रसीले स्वाद से भरपूर खास फेस्टिव डेज़र्ट।",
-            "descriptionMr": "चॉकलेट केक, मखमली आईस्क्रीम आणि चेरीच्या रसाळ स्वादाने भरलेला खास मिष्टान्न."
           }
         ],
         "price": 220,
@@ -17976,6 +12574,18 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
         ],
         "dietary": "pure-veg",
         "isSoldOut": false
+      },
+      "mc-5": {
+        "_deleted": true
+      },
+      "mm-2": {
+        "_deleted": true
+      },
+      "ms-2": {
+        "_deleted": true
+      },
+      "mm-7": {
+        "_deleted": true
       }
     },
     "order": [
@@ -18213,12 +12823,10 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "rb-13",
       "rb-14",
       "mm-1",
-      "mm-2",
       "mm-3",
       "mm-4",
       "mm-5",
       "mm-6",
-      "mm-7",
       "ff-1",
       "ff-2",
       "ff-3",
@@ -18228,9 +12836,7 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "mc-2",
       "mc-3",
       "mc-4",
-      "mc-5",
       "ms-1",
-      "ms-2",
       "ms-3",
       "ms-7",
       "cb-1",
@@ -18286,5 +12892,5 @@ window.HOTEL_PREMIER_PUBLISHED_OVERRIDES = {
       "mm-sundae-group"
     ]
   },
-  "publishedAt": 1795643454187
+  "publishedAt": 1795773491021
 };

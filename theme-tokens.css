@@ -991,4 +991,16 @@ dialog.dish-photo-viewer[open] { display:grid; grid-template-rows:auto minmax(0,
 .dish-photo-controls button:disabled { opacity:.4; cursor:default; }
 .dish-photo-controls button:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
 .dish-photo-viewer .photo-reference-note { text-align:center; margin:0; }
+.dish-portions { min-width:0; margin:14px 0; padding:12px; border:1px solid var(--border); border-radius:14px; }
+.dish-portions legend { padding:0 6px; font-weight:700; color:var(--text); }
+.dish-portion-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.dish-portion-button { min-width:0; min-height:48px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; padding:10px; border:1px solid var(--border); border-radius:10px; background:var(--surface-secondary); color:var(--text); font:600 .85rem/1.4 var(--font-sans); cursor:pointer; }
+.dish-portion-button[aria-pressed=true] { background:var(--gold-polish); color:var(--gold-ink); border-color:var(--gold-edge); box-shadow:var(--gold-relief); }
+.dish-portion-button:focus-visible { outline:3px solid var(--focus); outline-offset:2px; }
+.detail-sweet-note { display:inline-block; margin-top:6px; }
+#section-dine .dish-card-chip { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:7px; max-width:min(240px,100%); white-space:normal; }
+#section-dine .dish-card-chip .chip-name { min-width:0; overflow-wrap:anywhere; text-align:left; }
+#section-dine .dish-card-chip .chip-price { white-space:nowrap; align-self:center; }
+#dish-detail-modal .variant-btn-name { min-width:0; overflow-wrap:anywhere; }
+#dish-detail-modal .variant-btn-price { flex:none; align-self:center; }
 @media(max-width:600px) { dialog.dish-photo-viewer[open] { width:100%; height:var(--overlay-viewport-height,100dvh); border-radius:0; padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); } }

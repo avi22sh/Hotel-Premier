@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-11-26T14:43:56.069Z",
-  "passed": 83,
+  "createdAt": "2026-11-27T11:06:46.022Z",
+  "passed": 85,
   "failed": [],
   "results": [
     {
@@ -188,6 +188,10 @@
       "passed": true
     },
     {
+      "file": "menu-panel-search-regression.cjs",
+      "passed": true
+    },
+    {
       "file": "menu-restructure-regression.cjs",
       "passed": true
     },
@@ -209,6 +213,10 @@
     },
     {
       "file": "overlay-manager-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "owner-nov27-menu-regression.cjs",
       "passed": true
     },
     {

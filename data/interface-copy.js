@@ -1,5 +1,10 @@
 /* Reviewed interface copy. Columns: English ~ Hindi ~ Marathi. Brand names and guest records are not rewritten. */
 window.HOTEL_PREMIER_INTERFACE_COPY = `
+Serving size~परोसने की मात्रा~सर्व्हिंगचे प्रमाण
+1 Scoop~1 स्कूप~1 स्कूप
+2 Scoops~2 स्कूप~2 स्कूप
+1 Piece~1 पीस~1 नग
+2 Pieces~2 पीस~2 नग
 Menu~मेन्यू~मेनू
 All dishes~सभी व्यंजन~सर्व पदार्थ
 Search menu~मेन्यू में खोजें~मेनूमध्ये शोधा
