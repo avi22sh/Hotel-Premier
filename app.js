@@ -605,7 +605,7 @@ class HotelPremierApp {
     }
     this.showToast('Loading admin tools...', 'info');
     const s = document.createElement('script');
-    s.src = 'admin.js?v=22.117';
+    s.src = 'admin.js?v=22.118';
     s.onload = () => {
       if (typeof initializeHotelPremierAdmin === 'function') {
         initializeHotelPremierAdmin();
@@ -1447,9 +1447,9 @@ class HotelPremierApp {
         }).join('');
       }
 
-      const activeIdx = this.roomSlideIndices[room.id] || 0;
+      const activeIdx = this.clampRoomSlideIndex(room.id);
       if (counter) {
-        counter.innerText = `${activeIdx + 1} / ${images.length}`;
+        counter.innerText = `${images.length ? activeIdx + 1 : 0} / ${images.length}`;
       }
 
       if (dotsContainer) {
@@ -1463,9 +1463,17 @@ class HotelPremierApp {
     window.HotelAdminWorkspace?.syncRoomViews();
   }
 
+  clampRoomSlideIndex(roomId) {
+    const count = this.roomGalleries[roomId]?.length || 0;
+    const selected = this.roomSlideIndices[roomId];
+    const index = Number.isInteger(selected) ? selected : 0;
+    this.roomSlideIndices[roomId] = Math.max(0, Math.min(index, count - 1));
+    return this.roomSlideIndices[roomId];
+  }
+
   updateRoomSlidePosition(roomId) {
     const track = document.getElementById(`room-track-${roomId}`);
-    const activeIdx = this.roomSlideIndices[roomId] || 0;
+    const activeIdx = this.clampRoomSlideIndex(roomId);
     const images = this.roomGalleries[roomId] || [];
 
     if (track) {
@@ -1473,8 +1481,8 @@ class HotelPremierApp {
     }
 
     const counter = document.getElementById(`room-counter-${roomId}`);
-    if (counter && images.length > 0) {
-      counter.innerText = `${activeIdx + 1} / ${images.length}`;
+    if (counter) {
+      counter.innerText = `${images.length ? activeIdx + 1 : 0} / ${images.length}`;
     }
 
     const dots = document.querySelectorAll(`#room-dots-${roomId} .room-dot`);
@@ -1486,7 +1494,7 @@ class HotelPremierApp {
   nextRoomSlide(roomId, e) {
     if (e) e.stopPropagation();
     let images = this.roomGalleries[roomId];
-    if (!images || images.length === 0) {
+    if (!Array.isArray(images)) {
       const room = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories)
         ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories.find(r => r.id === roomId)
         : null;
@@ -1501,7 +1509,7 @@ class HotelPremierApp {
   prevRoomSlide(roomId, e) {
     if (e) e.stopPropagation();
     let images = this.roomGalleries[roomId];
-    if (!images || images.length === 0) {
+    if (!Array.isArray(images)) {
       const room = (window.HOTEL_PREMIER_HOTEL_DATA && window.HOTEL_PREMIER_HOTEL_DATA.roomCategories)
         ? window.HOTEL_PREMIER_HOTEL_DATA.roomCategories.find(r => r.id === roomId)
         : null;

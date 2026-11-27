@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-11-27T12:58:58.239Z",
-  "passed": 87,
+  "createdAt": "2026-11-27T13:09:51.669Z",
+  "passed": 88,
   "failed": [],
   "results": [
     {
@@ -313,6 +313,10 @@
     },
     {
       "file": "review-provenance-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "room-gallery-index-regression.cjs",
       "passed": true
     },
     {
