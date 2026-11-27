@@ -902,6 +902,7 @@ html:is([lang="hi"],[lang="mr"]) :is(.dish-title,.room-suite-title,.tariff-suite
 .workspace-edit-form > details,.workspace-edit-form > .workspace-save-status,.workspace-edit-form > .studio-field:has(textarea) { grid-column:1/-1; }
 .workspace-host details > summary { cursor:pointer; padding:14px 0; font-weight:700; color:var(--text); }
 .workspace-host details .studio-field { margin-bottom:12px; }
+.workspace-serving-row { display:grid; grid-template-columns:minmax(0,1fr) minmax(100px,.65fr); align-items:end; gap:12px; }
 .workspace-options { margin-top:20px; }
 .workspace-option { display:flex; align-items:center; gap:10px; width:100%; margin:6px 0; padding:10px; border:1px solid var(--border); border-radius:10px; background:var(--surface-secondary); color:var(--text); text-align:left; }
 .workspace-option img { width:44px; height:44px; object-fit:contain; border-radius:8px; }

@@ -10,11 +10,14 @@
  const valuesOf=form=>Object.fromEntries([...form.elements].filter(e=>e.name).map(e=>[e.name,e.type==='checkbox'?e.checked:e.value]));
  function menuPatch(entry,values){
   const patch={};for(const key of textFields)patch[key]=String(values[key]??'').trim();
-  patch.price=values.price===''?null:Number(values.price);
+  patch.price=values.price===undefined?(entry.value.price??null):values.price===''?null:Number(values.price);
   if(values.categoryId)patch.categoryId=values.categoryId;
   const choices=['new-arrival','bestseller','chef-special','sweet'];
   patch.tags=[...(entry.value.tags||entry.child?.tags||[]).filter(tag=>!choices.includes(tag)),...choices.filter(tag=>values['tag-'+tag])];
-  if(entry.value.portionOptions?.length)patch.portionOptions=entry.value.portionOptions.map((option,i)=>{const name=String(values['portion-name-'+i]??option.name).trim(),value=values['portion-price-'+i],price=value===undefined?option.price:value===''?null:Number(value);if(!name||price!==null&&(!Number.isFinite(price)||price<0))throw Error('Enter a valid serving name and price.');return {...option,name,price};});
+  if(entry.value.portionOptions?.length){
+   patch.portionOptions=entry.value.portionOptions.map((option,i)=>{const name=String(values['portion-name-'+i]??option.name).trim(),value=values['portion-price-'+i],price=value===undefined?option.price:value===''?null:Number(value);if(!name||price!==null&&(!Number.isFinite(price)||price<0))throw Error('Enter a valid serving name and price.');return {...option,name,price};});
+   patch.price=(patch.portionOptions.find(option=>option.isDefault)||patch.portionOptions[0]).price;
+  }
   patch.isSoldOut=values.visibility==='soldout';patch[entry.index===null?'notAvailable':'hidden']=values.visibility==='hidden';return patch;
  }
  async function saveMenuDraft(key,values){
@@ -148,8 +151,8 @@
    if(!await window.HotelDialogs.confirm('Remove this photo? The item will remain editable.'))return;
    const value={...Object.fromEntries(textFields.map(k=>[k,entry.value[k]||''])),price:entry.value.price??null,image:''};await saveEntry(entry,value);entry.value.image='';refreshPhotos();
   }));detail.append(actions,form);
-  field(form,'Item name','name',entry.value.name);field(form,'Price · ₹ (blank = on request)','price',entry.value.price,'number');field(form,'Description','description',entry.value.description,'textarea');
-  if(entry.value.portionOptions?.length){const sizes=node('details',undefined,'workspace-serving-sizes');sizes.append(node('summary','Serving sizes & prices'));for(const [i,option]of entry.value.portionOptions.entries()){field(sizes,'Serving '+(i+1),'portion-name-'+i,option.name);field(sizes,'Price · ₹ (blank = on request)','portion-price-'+i,option.price,'number');}form.append(sizes);}
+  field(form,'Item name','name',entry.value.name);if(!entry.value.portionOptions?.length)field(form,'Price · ₹ (blank = on request)','price',entry.value.price,'number');field(form,'Description','description',entry.value.description,'textarea');
+  if(entry.value.portionOptions?.length){const sizes=node('details',undefined,'workspace-serving-sizes');sizes.open=true;sizes.append(node('summary','Serving sizes & prices'),node('p','Menu uses the default serving price. Blank prices show “Price on request”.'));for(const [i,option]of entry.value.portionOptions.entries()){const row=node('div',undefined,'workspace-serving-row');field(row,'Serving '+(i+1),'portion-name-'+i,option.name);field(row,'Price · ₹','portion-price-'+i,option.price,'number');sizes.append(row);}form.append(sizes);}
   let section;if(entry.index===null&&!entry.dish.groupedUnder){section=field(form,'Menu section','categoryId','','select');for(const c of window.app.categories){const o=node('option',c.name);o.value=c.id;section.append(o);}section.value=entry.dish.categoryId;}
   const translations=node('details');translations.append(node('summary','Hindi & Marathi'));
   for(const [key,label]of [['hindiName','Name · Hindi'],['descriptionHi','Description · Hindi'],['marathiName','Name · Marathi'],['descriptionMr','Description · Marathi']])field(translations,label,key,entry.value[key],key.startsWith('description')?'textarea':'text');form.append(translations);
