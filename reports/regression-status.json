@@ -1,6 +1,6 @@
 {
-  "createdAt": "2026-11-27T11:06:46.022Z",
-  "passed": 85,
+  "createdAt": "2026-11-27T12:50:32.963Z",
+  "passed": 87,
   "failed": [],
   "results": [
     {
@@ -168,6 +168,10 @@
       "passed": true
     },
     {
+      "file": "local-publish-response-regression.cjs",
+      "passed": true
+    },
+    {
       "file": "local-update-scope-regression.cjs",
       "passed": true
     },
@@ -189,6 +193,10 @@
     },
     {
       "file": "menu-panel-search-regression.cjs",
+      "passed": true
+    },
+    {
+      "file": "menu-publication-roundtrip-regression.cjs",
       "passed": true
     },
     {

@@ -69,7 +69,13 @@
     app.menuData=[...layout.order.filter(id=>map.has(id)).map(id=>{const d=map.get(id);map.delete(id);return d;}),...map.values()];
   }
   function snapshot(app) {
-    return {...clone(draft),categories:clone(app.categories),subcategories:clone(window.HOTEL_PREMIER_SUB_CATEGORIES || {}),order:app.menuData.map(d=>d.id)};
+    const published=window.HOTEL_PREMIER_PUBLISHED_OVERRIDES?.layout;
+    const items={...clone(published?.items||{}),...clone(draft.items||{})};
+    const live=new Set(app.menuData.map(d=>d.id));
+    // Deletions must survive a fresh browser exporting the published catalogue.
+    for(const dish of window.HOTEL_PREMIER_INITIAL_MENU||[])if(!live.has(dish.id))items[dish.id]={_deleted:true};
+    for(const id of live)if(items[id]?._deleted)delete items[id]._deleted;
+    return {...clone(draft),items,categories:clone(app.categories),subcategories:clone(window.HOTEL_PREMIER_SUB_CATEGORIES || {}),order:app.menuData.map(d=>d.id)};
   }
   function commit(next,app) {
     if(!window.admin?.isAuthenticated) throw Error('Sign in to Admin Studio first.');

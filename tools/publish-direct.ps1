@@ -5,10 +5,21 @@
 # ==============================================================================
 param(
     [string]$InputFile,
-    [string]$JsonPayload
+    [string]$JsonPayload,
+    [string]$ResultFile
 )
 
 $ErrorActionPreference = "Stop"
+
+# Keep the API result separate from Git/PowerShell console output.
+function Write-PublishResult($Value) {
+    $resultJson = $Value | ConvertTo-Json -Depth 10 -Compress
+    if ($ResultFile) {
+        [IO.File]::WriteAllText($ResultFile, $resultJson, [System.Text.UTF8Encoding]::new($false))
+    } else {
+        $resultJson
+    }
+}
 
 try {
     $rootDir = (Get-Item $PSScriptRoot).Parent.FullName
@@ -60,6 +71,18 @@ try {
     $bundle.overrides | Add-Member -MemberType NoteProperty -Name "publishedAt" -Value $nowMs -Force
 
     $overridesFile = Join-Path $rootDir "data\published-overrides.js"
+    # Older open tabs may omit deletion markers from their layout snapshot.
+    # Keep committed removals unless the owner explicitly restores that item.
+    if ((Test-Path $overridesFile) -and $bundle.overrides.layout.items) {
+        $previousCode = [IO.File]::ReadAllText($overridesFile)
+        $previousJson = $previousCode.Substring($previousCode.IndexOf('=') + 1).Trim().TrimEnd(';')
+        $previous = $previousJson | ConvertFrom-Json
+        foreach ($property in $previous.layout.items.PSObject.Properties) {
+            if ($property.Value._deleted -and -not $bundle.overrides.dishes.PSObject.Properties[$property.Name]) {
+                $bundle.overrides.layout.items | Add-Member -MemberType NoteProperty -Name $property.Name -Value ([PSCustomObject]@{_deleted=$true}) -Force
+            }
+        }
+    }
     $overridesJson = ($bundle.overrides | ConvertTo-Json -Depth 25)
     $timestamp = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
     $fileHeader = "// Reviewed owner public export, $timestamp.`nwindow.HOTEL_PREMIER_PUBLISHED_OVERRIDES = "
@@ -140,12 +163,12 @@ try {
         message = "Saved to GitHub. Website deployment must still be verified."
     }
 
-    $result | ConvertTo-Json
+    Write-PublishResult $result
 } catch {
     $errObj = [PSCustomObject]@{
         success = $false
         error = $_.Exception.Message
     }
-    $errObj | ConvertTo-Json
+    Write-PublishResult $errObj
     exit 1
 }

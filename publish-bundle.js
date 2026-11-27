@@ -7,6 +7,7 @@
   async function buildBundle() {
     if (!window.admin?.isAuthenticated) throw Error('Unlock Admin Studio before publishing.');
     await window.HotelAdminWorkspace?.saveAll?.({notify:false});
+    window.HotelMenuStructure?.capture?.(window.app);
     const images = new Map();
     const imageTasks = new Map();
 

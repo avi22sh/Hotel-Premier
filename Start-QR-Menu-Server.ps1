@@ -91,9 +91,10 @@ public class HotelPremierServer {
                         File.WriteAllText(tempFile, body, System.Text.Encoding.UTF8);
 
                         string scriptPath = Path.Combine(rootDir, "tools", "publish-direct.ps1");
+                        string resultFile = tempFile + ".result.json";
                         var startInfo = new System.Diagnostics.ProcessStartInfo {
                             FileName = "powershell.exe",
-                            Arguments = "-ExecutionPolicy Bypass -NoProfile -File \"" + scriptPath + "\" -InputFile \"" + tempFile + "\"",
+                            Arguments = "-ExecutionPolicy Bypass -NoProfile -File \"" + scriptPath + "\" -InputFile \"" + tempFile + "\" -ResultFile \"" + resultFile + "\"",
                             RedirectStandardOutput = true,
                             RedirectStandardError = true,
                             UseShellExecute = false,
@@ -102,20 +103,24 @@ public class HotelPremierServer {
                         };
 
                         using (var process = System.Diagnostics.Process.Start(startInfo)) {
-                            string output = process.StandardOutput.ReadToEnd();
-                            string err = process.StandardError.ReadToEnd();
-                            process.WaitForExit(90000);
+                            var outputTask = process.StandardOutput.ReadToEndAsync();
+                            var errorTask = process.StandardError.ReadToEndAsync();
+                            if (!process.WaitForExit(90000)) {
+                                try { process.Kill(); } catch { }
+                                throw new TimeoutException("Publishing took too long. Your edits remain saved; check the live site before retrying.");
+                            }
+                            string output = File.Exists(resultFile) ? File.ReadAllText(resultFile, System.Text.Encoding.UTF8) : "";
 
                             try { if (File.Exists(tempFile)) File.Delete(tempFile); } catch { }
+                            try { if (File.Exists(resultFile)) File.Delete(resultFile); } catch { }
 
-                            if (process.ExitCode == 0 && !string.IsNullOrWhiteSpace(output)) {
+                            if (!string.IsNullOrWhiteSpace(output)) {
                                 byte[] resBytes = System.Text.Encoding.UTF8.GetBytes(output.Trim());
-                                context.Response.StatusCode = 200;
+                                context.Response.StatusCode = process.ExitCode == 0 ? 200 : 500;
                                 context.Response.OutputStream.Write(resBytes, 0, resBytes.Length);
                             } else {
                                 context.Response.StatusCode = 500;
-                                string cleanErr = (err + " " + output).Replace("\"", "\\\"").Replace("\r", "").Replace("\n", " ");
-                                string errJson = "{\"success\":false,\"error\":\"" + cleanErr + "\"}";
+                                string errJson = "{\"success\":false,\"error\":\"The publishing helper did not return a result. Your edits remain saved; check the live site before retrying.\"}";
                                 byte[] errBytes = System.Text.Encoding.UTF8.GetBytes(errJson);
                                 context.Response.OutputStream.Write(errBytes, 0, errBytes.Length);
                             }
